@@ -13,7 +13,7 @@ The price watch can't read Amazon, so Amazon deals on watched items reach the us
 
 Real names come from Labels in your settings.
 
-- **`has-amazon-alert`:** an Amazon alert is set for this item. While it's on a closed ticket, the alert is still live and needs removing.
+- **`has-amazon-alert`** (by its name from Labels in your settings; so for every label below): an Amazon alert is set for this item. While it's on a closed ticket, the alert is still live and needs removing.
 - **`amazon-unavailable`:** the item isn't sold on Amazon in the condition the watch wants, so no alert is set.
 
 An open watched item **needs an alert** when it has neither label.

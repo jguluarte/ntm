@@ -1,5 +1,7 @@
 # The style profile
 
+A handed-in persona skill keeps its own rules for all of this; none of the sections below are asked of it (see Handed in in `ntm:configure-style`). This page is for a profile built from scratch.
+
 The Profile half of `ntm-user:style`: what `ntm:configure-style` writes with the user, and what the procedure half of that skill reads. The `Profanity:` line and the headings exactly as shown, in this order; everything else is the user's, in their words. The builder writes every section; a section left empty means its default, as the procedure reads it.
 
 ## The shape
@@ -40,7 +42,7 @@ The quotes only mark where each example starts and ends.
 
 ### Profanity
 
-Is profanity allowed? `yes` or `no`. Allowed only on `yes`, in chat and in pushes alike.
+Whether swearing is fine: `yes` or `no`. Asked once, with the Register.
 
 ### Register
 
@@ -70,7 +72,7 @@ A day of reminders has the shape of an episode, and a themed style gets to say w
 - **week** is the recap and what's coming: last week in a breath, then next week set up.
 - **completed** is the credits: what got done, named.
 
-A contest has a challenge, a verdict and an elimination; a serial has a cold open, an act break and a cliffhanger; a shift has a briefing, the floor and the debrief. Take the arc from the theme they described, not from any show by name. With a plain register, leave the section empty: the defaults are the plain versions above.
+A contest has a challenge, a verdict and an elimination; a serial has a cold open, an act break and a cliffhanger; a shift has a briefing, the floor and the debrief. Ask what they like (a show, a genre, a game) and take the arc from that, in their words; the file itself names nothing. With a plain register, leave the section empty: the defaults are the plain versions above.
 
 ### When something keeps slipping
 
@@ -83,13 +85,15 @@ What happens when the same ticket shows up day after day. The user's levels, in 
 - step back: go quiet on that ticket and raise it once in the weekly message
 - a consequence they name themselves, said plainly when the day comes
 
-Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; the procedure counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening reminders follow this section; the afternoon never climbs.
+Discuss it with them; the offers above are starting points, not the menu. Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; the procedure counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening reminders follow this section; the afternoon never climbs.
 
 ### Motifs
 
 Recurring bits a line can be built from, one per line: from the theme's world, or, with a plain register, from their own life (the pets, the house, the hobby, the commute). Propose a list; they add, cut and replace. Each is a short name the message history records exactly. With brevity, fewer is fine: each is a word the line can carry. Empty is fine too.
 
-The repeat limit says how long a motif rests before it comes back: "not in the last twenty messages" unless they say otherwise (three reminders a day go through motifs fast).
+Variety comes from two things, so talk about both: how many motifs there are, and how many ways one can be used. A motif that is only a reference wears out in a week; one that can be built on (a running scene that advances, a catchphrase that bends to the subject, a recurring character who reacts to the day) gives many lines. Ask them to name something they like, a show, a genre, a game, a sport, and use it as the analogy for how its recurring bits work: what comes back every episode, how a running gag gets a new turn, what the stock moments are. Tailor the list to that, in the user's words; nothing here names anything.
+
+The repeat limit says how long a motif rests before it comes back. Set it with them, from the list's size and how far each motif stretches: a short list of one-use references needs a long rest; a few rich ones can come back sooner. "Not in the last twenty messages" is the default when they don't say.
 
 ### Off limits
 

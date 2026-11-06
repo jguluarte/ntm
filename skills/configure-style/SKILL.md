@@ -36,7 +36,7 @@ One line, three choices, none favoured: plain; describe a theme; or hand me a pe
 
 Every section answered plainly, no persona:
 
-- **Register:** `Plain.` and one sentence on manner (warm, dry, brisk), in their words. Ask about profanity: `yes` or `no`.
+- **Register:** `Plain.` and one sentence on manner (warm, dry, brisk), in their words, and whether swearing is fine (`Profanity: yes` or `no`).
 - **What gets you to read:** offer the builder's list; write their answer in their words.
 - **The reminders:** the defaults; nothing to ask.
 - **When something keeps slipping:** offer the builder's list. One level is a complete answer ("same every day"). If they want a climb, they name each level and say after how many earlier days it starts. Write that number on every level after the first.
@@ -48,11 +48,11 @@ Every section answered plainly, no persona:
 
 The user describes who is talking. Derive each section with them, in order, with the builder's questions:
 
-- **Register:** who is talking, what they sound like, what they never do; two or three sentences. Profanity: `yes` or `no`.
+- **Register:** who is talking, what they sound like, what they never do; two or three sentences, and whether swearing is fine (`Profanity: yes` or `no`).
 - **What gets you to read:** the builder's list; more than one can combine; with what it needs (what a serial is about).
-- **The reminders:** the episode arc in the theme's terms (the builder's The reminders section): what the morning is in that world, what the afternoon is, the evening, the week, the credits. Propose each as one line; they rename or cut.
+- **The reminders:** what each of the five is in the theme's terms (the builder's The reminders section), using the thing they named as the analogy: what the morning is in that world, what the afternoon is, the evening, the week, the credits. Propose each as one line; they rename or cut.
 - **When something keeps slipping:** their levels, in order, each with the name they give it and after how many earlier days it starts; then the climb rule in one line.
-- **Motifs:** recurring bits from the theme's world, one per line, each a short name the message history records exactly. Propose a list; they add, cut and replace. The repeat limit, or the default.
+- **Motifs:** recurring bits from the theme's world, one per line, each a short name the message history records exactly, built with them as the builder's Motifs section says: ask what they like and use it as the analogy, prefer motifs that can be built on, and set the repeat limit from how much variety the list gives. They add, cut and replace.
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke about.
 - **Examples:** one per level and one for nothing open. Ticket ids use Ticket prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when that isn't configured yet. The tasks in them are ordinary household ones. Write them, read them back, revise: if they chose humor, until they laugh at least once; otherwise until each reads like something they'd open.
 

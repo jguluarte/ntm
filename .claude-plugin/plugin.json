@@ -1,7 +1,9 @@
 {
-  "name": "nudge",
-  "version": "0.1.0",
-  "description": "A personal task-nudging system: one planned task per day on your own ticket board, reminders in a voice you choose, weekly planning and cleanup, optional price watching. Run nudge:setup once to make it yours.",
-  "keywords": ["tasks", "reminders", "scheduling", "habits", "linear", "pushover"],
+  "name": "ntm",
+  "displayName": "Neurodivergent Task Manager",
+  "version": "0.2.0",
+  "description": "One planned task per weekday on your own ticket board, reminders in a style you choose, weekly planning and cleanup, optional price watching. Run /ntm:configure once; your settings and style live in a small plugin of your own.",
+  "author": { "name": "Neurodivergent Task Manager contributors" },
+  "keywords": ["tasks", "reminders", "scheduling", "neurodivergent", "linear", "pushover"],
   "license": "MIT"
 }

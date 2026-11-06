@@ -1,62 +1,90 @@
-# nudge
+# ntm
 
-A personal task-nudging system that runs on your own ticket board and a few scheduled tasks. It plans one task per weekday, reminds you about it in a voice you pick, tells you in the evening how the day went, recaps and plans every week, and can watch prices on things you want to buy.
+ntm (Neurodivergent Task Manager) is a personal task system that runs on your own ticket board and a few scheduled tasks. It plans one task per weekday, reminds you about it in a style you choose, asks in the evening how the day went, plans every week, and can watch prices on things you want to buy.
 
-It was built by one person for the places that got in their way: starting tasks, keeping multi-day work moving, and noticing when things have quietly gone stale. It stays deliberately low-process. If it starts bogging you down, turn pieces off.
+It was built by one person for the places that got in their way: starting tasks, keeping multi-day work moving, and noticing when things have quietly gone stale. It stays low-process. If it starts bogging you down, turn pieces off.
 
-## How it works
+## Two plugins
 
-- **Your board** is the source of truth. A ticket's planned date is the day you'll do it. Planners set those dates; you can set them yourself too, and a day you dated counts as planned.
-- **Jobs** (scheduled tasks) run the skills on a schedule: a morning plan, an afternoon nudge, an evening check-in, a weekly recap and plan, and an optional daily price watch. Each job's procedure is a skill of its own, so you can also run one by hand ("run the morning plan now").
-- **The messenger** writes every reminder from a profile you design with `nudge:messenger`: who is talking, what gets you to read, what happens when something keeps slipping. The profile lives in a note on your board, and the voice keeps a history so lines stay fresh.
-- **Days off** stop automatic planning. Work you dated yourself for a day off still gets its reminders.
-- **Grooming** happens in chat when you ask: closing obsolete tickets, sizing and splitting the rest.
+- **ntm** is the behaviour: the skills below, and three agents (planner, messenger, shopper) that carry out their steps. It holds none of your values, so it installs from a marketplace or a zip and updates like any plugin.
+- **ntm-user** is yours. `/ntm:configure` generates it: `ntm-user:settings` (where your board is, your label names, how reminders reach you, anything you do differently) and `ntm-user:style` (how reminders talk to you). Keep it private; it can hold your Pushover keys.
 
-## Getting started
+## First steps
 
-1. Install the plugin and open a chat.
-2. Make sure your tracker is connected. Linear is free for individuals and is the tested path; other trackers work through an adapter drafted during setup.
-3. Run `/nudge:setup`. It asks about your tracker, notifications, price watch and rhythm, designs your messenger with `nudge:messenger`, hands you a personalized copy of the plugin and creates your scheduled tasks.
-4. Install the personalized copy in place of this one. It holds your values (and, if you chose Pushover, your credentials), so keep it private.
-
-## Components
-
-- **Skills**: the knowledge and procedures, one each, listed below. Jobs and agents load them by name.
-- **Agents**: the roles. The **planner** decides what you work on: it makes today ready in the morning, plans the week, and answers "what's due"; `/nudge:plan --weekly --replan` plans the week with you in chat. The **messenger** reaches you: given the facts of a run: morning, afternoon, evening or week, it writes the message the way your profile says you'll read it and sends it through your channel. The **price-checker** runs one purchase ticket's price check.
-- **MCP servers**: Linear, the included tracker connector.
+1. Install ntm. On the Connectors tab, connect Linear if that's your board (free for individuals, and the tested path); Claude Docs needs no connector.
+2. Open a chat and run `/ntm:configure`. It asks about the trigger word, you, your board, notifications, style and schedule. It creates your scheduled tasks and hands you `ntm-user.plugin` to install.
+3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop once on a throwaway ticket and removes it.
 
 ## Skills
 
+Every day:
+
 | Skill | What it does |
 | --- | --- |
-| `nudge:setup` | One-time onboarding. Produces your personalized copy and your scheduled tasks. |
-| `nudge:board` | The board's rules. Every other skill loads it first. |
-| `nudge:ping` | Checks the session can reach your board. |
-| `nudge:adapter` | Drafts an adapter for another tracker with you and smoke-tests it on your board. |
-| `nudge:days-off` | Days off. |
-| `nudge:due` | What's due. |
-| `nudge:recap` | What got done over a span. |
-| `nudge:plan` | Plans the week or today. |
-| `nudge:cleanup` | Closes finished parents and clears stale dates. |
-| `nudge:groom` | Grooms the board with you in chat. |
-| `nudge:messenger` | Sets up or revises the messenger profile with you and saves it to its note. |
-| `nudge:voice` | Rewrites a message the way your messenger profile says it gets read. |
-| `nudge:notify` | Sends a notification through your chosen channel. |
-| `nudge:morning` | The morning plan: carries missed work to today, plans today if it's empty, sends the morning message. |
-| `nudge:afternoon` | The afternoon nudge: a friendly poke about what's still planned for today. |
-| `nudge:evening` | The evening check-in: what closed, what's still open. |
-| `nudge:week` | The weekly recap and plan: recap, cleanup, next week, one message. |
-| `nudge:jobs` | Creates and maintains the scheduled tasks that run the four above and the price watch. |
-| `nudge:price-watch` | Daily price check on purchase tickets. Optional. |
-| `nudge:amazon-alerts` | Keeps Amazon's own price alerts in step with your watch list, from your computer. Optional. |
+| `/ntm:todo-list` | What's planned: open tickets planned for today or earlier, or any scope you describe. |
+| `/ntm:show-completed` | What got done over a span, and what's still open from it when you ask. |
+| `/ntm:plan` | Plans the week or a day: with you in chat, or on its own for jobs. |
+| `/ntm:pause` | Days when nothing gets planned automatically. |
+| `/ntm:style-message` | Puts a message in your style. |
+| `/ntm:notify` | Sends a notification through your channel. |
+| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder` | The three daily reminders. Jobs run them; so can you ("run the morning reminder now"). |
+
+Planning and tidying:
+
+| Skill | What it does |
+| --- | --- |
+| `/ntm:review-todo-list` | Grooms the todo list with you in chat: close, size, split. |
+| `/ntm:fix-todo-list` | Closes parents whose sub-tickets are all closed and clears stale planned dates. |
+
+Price watch (on when your settings name a price watch project):
+
+| Skill | What it does |
+| --- | --- |
+| `/ntm:run-price-watch` | The daily price check on the tickets in that project. |
+| `/ntm:sync-price-watch-with-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
+
+Setup and settings:
+
+| Skill | What it does |
+| --- | --- |
+| `/ntm:configure` | The wizard. `/ntm:configure <part>` goes straight to one part. |
+| `/ntm:configure-integration` | Which board, and how it's laid out. |
+| `/ntm:configure-notifications` | How reminders reach you. |
+| `/ntm:configure-communication-style` | How reminders talk to you. |
+| `/ntm:configure-schedule` | The jobs: which, which days, what time, what title. |
+| `/ntm:settings` | Shows your settings and changes them; produces a new `ntm-user.plugin`. |
+| `/ntm:ready-check` | Can this session run a job? |
+| `/ntm:self-test` | The whole loop once, on a throwaway ticket. |
+| `/ntm:help` | This text. |
+| `ntm:conventions` | The rules every skill loads first. Not run by hand. |
+
+## What you can customize
+
+- **The trigger word.** `ntm` in `/ntm:plan` can be any word: `/ntm:configure` asks first, and `/ntm:settings` does it any time.
+- **The style.** Plain, a theme you describe, or a profile you already have: `/ntm:configure-communication-style`.
+- **Labels and note titles.** The real names on your board, in `ntm-user:settings`.
+- **The schedule.** Which jobs run, which days, what time, what they're called: `/ntm:configure-schedule`.
+- **Deviations.** Anything you do differently from the conventions, written in your settings and read last.
+
+## Where your values live
+
+All of them in `ntm-user`: `ntm-user:settings` (About you, Board, Labels, Notifications, Deviations) and `ntm-user:style`. ntm has no settings file and no placeholders. Changing a value means a new `ntm-user.plugin` from `/ntm:settings`, installed in place of the old one. What the jobs write (pauses, the message history, the grooming log, price watch stores) lives in notes on your board.
+
+## What the plugin sends where
+
+- **Your board** (Linear, Claude Docs, or your own): tickets, planned dates, labels and the notes above.
+- **Pushover**, when it's your channel: each reminder's title and message, with your app token and user key, over HTTPS from the run. With the claude-push channel nothing is sent; the scheduled task's own completion push carries the reminder.
+- **The web**: searches of store sites for the items you're watching (price watch only), and, when `Template source:` names a URL, the template's own release for the trigger-word rename and the weekly upstream check.
+- **Your browser**, for Amazon alert sync only: Claude in Chrome on your computer.
+
+Nothing else leaves a run. No skill but `ntm:notify` sends anything.
+
+## The connector it bundles
+
+Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors tab for you to connect. On another backend, ignore it. See `CONNECTORS.md`.
 
 ## Requirements
 
-- A ticket tracker connected to Claude. Linear is supported out of the box; any tracker with a connector can be adapted with `nudge:adapter`, and `claude-docs` (a board kept in a Claude Doc) needs no tracker connector, only Claude Docs.
-- Scheduled tasks available on your Claude account.
-- For Pushover notifications: a Pushover account, an application token and your user key.
+- Scheduled tasks on your Claude account, for the reminders.
+- For Pushover: an account, an application token and your user key.
 - For Amazon alert sync: Claude in Chrome on your computer.
-
-## Privacy
-
-The template plugin holds no personal values. Your personalized copy does. Share the template, not your copy.

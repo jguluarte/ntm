@@ -1,25 +1,29 @@
 ---
 name: notify
-description: Sends a notification to the user's phone through the channel chosen in the config, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert, nudge or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
+description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
 ---
 
-# nudge:notify
+# ntm:notify
 
-Sends a notification to the user's phone. Any scheduled task or workflow can use it to reach them directly, without depending on another app's notification quirks. This is the only skill in the system that sends anything; every other skill returns text and the job decides what goes out.
+Sends a notification to the user's phone. Any scheduled task or workflow can use it to reach them. This is the only skill in the system that sends anything; every other skill returns text and the job decides what goes out.
 
 ## Usage
 
 ```
-/nudge:notify --title "<title>" --message "<message>" [--url <link>] [--priority n]
+/ntm:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--job "<name>"] [--token <t> --user <u>]
 ```
 
 - `title` and `message` are the notification.
 - `url`: optional link attached below the message, usually a ticket's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
+- `job`: the job this notification is for (the calling skill passes its job name); a per-reminder token written in Notifications is chosen by it.
+- `token` and `user`: a Pushover app token and user key for this one call, in place of the ones in your settings (`/ntm:configure-notifications` uses them for its test push).
 
 ## Channel
 
-The config's `channel` says which section below applies: `pushover` or `claude-push`. Links in messages use the ticket's `url`.
+Load `ntm-user:settings` by name and read Notifications. Its Channel line says which section below applies: `pushover` or `claude-push`. Anything else written there is how the user wants to be notified (quiet hours, priorities, a different app token per reminder, …): follow it as written. A per-reminder token written in Notifications is chosen by `--job`; without `--job`, the default token. With `--token` and `--user`, the channel is Pushover with those keys, whatever Notifications says. With neither a channel nor those two, return `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
+
+A linked ticket arrives in `message` as the conventions' "Talking to the user about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it as that section says.
 
 ## Pushover
 
@@ -27,21 +31,21 @@ Sends through the [Pushover API](https://pushover.net/api).
 
 ### Credentials
 
-The config's `pushover app token` and `pushover user key`. In a personalized copy they are filled in below; the template holds placeholders.
+The Pushover app token and Pushover user key from Notifications in your settings, or the ones `--token` and `--user` give.
 
 ### Sending
 
-Always send in a single Bash call using this exact pattern:
+Always send in a single Bash call using this exact pattern, with the two keys in place of `<app token>` and `<user key>`:
 
 ```bash
-TITLE='Nudge'
+TITLE='Morning reminder'
 MSG=$(cat <<'EOF'
-Tonight's pick: <a href="https://tracker.example/ABC-12">ABC-12</a>, order storage boxes (~5 min from the couch).
+Tonight's pick: <a href="https://tracker.example/ABC-12">the storage boxes (ABC-12)</a> (~5 min from the couch).
 EOF
 )
 curl -sS --max-time 20 \
-  --form-string "token=~~pushover app token" \
-  --form-string "user=~~pushover user key" \
+  --form-string "token=<app token>" \
+  --form-string "user=<user key>" \
   --form-string "html=1" \
   --form-string "title=$TITLE" \
   --form-string "message=$MSG" \
@@ -71,7 +75,7 @@ Add these as extra `--form-string` lines when they're useful:
 
 ### HTML mode
 
-`html=1` is on by default in the pattern above. Supported tags: `<a href>`, `<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept.
+`html=1` is on by default in the pattern above. Supported tags: `<a href>`, `<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked ticket `[<words> (<id>)](<url>)` in the message becomes `<a href="<url>"><words> (<id>)</a>`, as the conventions' "Talking to the user about tickets" says.
 
 Escape `&`, `<` and `>` in plain text you insert, such as ticket titles, as `&amp;`, `&lt;` and `&gt;`. Otherwise a title like "Tubing & fittings" breaks the markup.
 
@@ -98,6 +102,12 @@ NOTIFY VIA FINAL REPLY
 <message>
 ```
 
-Return the title on the line after the marker and the message under it, with HTML tags removed and each link as its bare url. The job's final reply is then everything after the marker line, verbatim, followed by anything else its FINAL REPLY calls for, as the board rules' Results paragraph says; the completion push shows that reply. `url` and `priority` have no effect on this channel.
+Return the title on the line after the marker and the message under it, with linked tickets kept as the markdown they arrived in, as the conventions' "Talking to the user about tickets" says. The job's final reply is then everything after the marker line, verbatim, and nothing else, as the conventions' Results say. The completion push shows that reply. `url` and `priority` have no effect on this channel.
 
-In chat, this channel can't send anything; say so in one line and show the title and message instead.
+In chat the block is returned the same way; the reply that shows it is the delivery.
+
+## Result
+
+- `Sent: <title>` when Pushover answered `"status":1`.
+- The delivery block above on the `claude-push` channel.
+- `Notify FAILED: <why>` otherwise, with the response's `errors` or curl's error as the why.

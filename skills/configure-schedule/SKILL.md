@@ -1,0 +1,82 @@
+---
+name: configure-schedule
+description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /ntm:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
+---
+
+# ntm:configure-schedule
+
+The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user, never trigger, routine or cron job. This is a chat conversation: short rounds, the user's answers win. It changes nothing in `ntm-user:settings` and writes no file: the tasks it creates are the result.
+
+## Tools
+
+Find the scheduling tools: `list_triggers`, `create_trigger`, `update_trigger`, `delete_trigger`, `fire_trigger` (when tools are deferred, ToolSearch `select:mcp__claude-code-remote__list_triggers,mcp__claude-code-remote__create_trigger,mcp__claude-code-remote__update_trigger,mcp__claude-code-remote__delete_trigger,mcp__claude-code-remote__fire_trigger`). If none of them exist, scheduled tasks aren't available from here; say so and stop.
+
+Load `ntm:conventions`: Timezone under About you in your settings is the timezone every job runs in, and Board says whether price watch is on. On a first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the timezone and the price watch project `configure` hands you.
+
+## The kinds
+
+| Kind | Default title | Default days and time | Prompt | Offered |
+| --- | --- | --- | --- | --- |
+| morning reminder | Morning reminder | weekdays 09:00 | `references/jobs/morning.md` | always |
+| afternoon reminder | Afternoon reminder | weekdays 14:30 | `references/jobs/afternoon.md` | always |
+| evening reminder | Evening reminder | weekdays 19:30 | `references/jobs/evening.md` | always |
+| weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/week.md` | always |
+| price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Board in your settings names a price watch project |
+| completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
+
+Each prompt file starts with a header (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. The reminder prompts are short wrappers that load the matching `ntm:` skill, so a template update reaches the jobs without touching them; the weekly planning and completed prompts are the sequence itself. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+
+## Walking the kinds
+
+For each kind in the order above, ask: do they want it; which days; what time; what title. A title is only a label; the kind's default title stays the name notifications and tokens are matched by. Offer the defaults and move on when they take them. For completed, also weekly or monthly, and the span in the prompt follows (see its header). Skip price watch when Board names no price watch project.
+
+Then, for each job they want:
+
+1. Read its prompt file; the prompt is everything after `--- prompt ---`. If they want the prompt to say something else, change it with them; it's theirs.
+2. Pick the time. The default is the starting point; the user can name another. Then apply the jitter rule: never land on :00 or :30. When a time would land on the hour or half hour, move it 1–29 minutes earlier (the number of letters in the title, modulo 29, plus 1), and say so. Runs that start between 06:00 and 09:00 Pacific time can be delayed: convert the job's time to Pacific, and if it falls in that window, say so and keep it unless they'd rather move it.
+3. `create_trigger` with:
+   - `name`: the title.
+   - `prompt`: the prompt.
+   - `cron_expression`: `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`, days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a monthly completed job, the same with `1 * *` as the last three fields.
+   - `notifications`: `{push: true}`. Push carries the run's completion summary, which is the reminder itself on the `claude-push` channel.
+   - `initiation`: `human_request`.
+   - Leave `permission_mode` unset.
+4. Set the model: `update_trigger` with the new task's id and `model: claude-opus-5-5`, or the model the user named. A new task inherits the model of the chat that created it, and a job that runs every day doesn't need the heaviest one.
+5. Tell the user, in one sentence, which model the job runs on and which approval setting it got, and that automatic approval can be turned on in the task's settings if the organization allows it. The setting is `derived_state.permission_mode` in the result: `auto` means runs go ahead on their own; absent means a run stops when an action needs approval, and nobody is there to approve a scheduled run.
+6. Check the new task's `mcp_connections` (in the `create_trigger` result, or `list_triggers`) for the backend connector named by Board. If it isn't there, say so: attach the connector to this session and create the job again, or every run will fail its ready check.
+
+## Connectors
+
+A job inherits the connectors attached to the session that creates it. A browser is never attached to a job.
+
+## Already set up
+
+When jobs exist, list them and ask what to change, instead of walking the kinds again. `list_triggers`, recurring only. Match the user's jobs by title against the titles above, and otherwise by the first line of the stored prompt (`derived_state.prompt` in `list_triggers`): every prompt file opens with the kind's default title (`Morning reminder.`, `Weekly planning for the board…`, `Completed this week:…`, `Price watch.`). Show each as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the last run's status in a word (succeeded, failed) and its time. Omit `trigger_id`s unless asked. Then ask what to change: a time, the days, a title, the prompt, the model, on or off, delete, or a kind not yet created (walk that one as above).
+
+## Running a job now
+
+`fire_trigger` with `trigger_id` starts a run outside its schedule, with the job's own prompt and connectors; that's the way to check a new job. To do a job's work in chat instead, load its skill and follow it from step 1 ("run the morning reminder now").
+
+## Re-syncing a prompt
+
+A stored prompt only goes stale when its prompt file changes. After a rename, `ntm:settings` substitutes the stored prompts itself; this section is for a prompt file that changed. When that happens: `list_triggers`, match each job as Already set up says, read the prompt file again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep anything the user added to the prompt (the stored prompt is `derived_state.prompt` in `list_triggers`), and any last step `ntm:settings` added to the weekly planning prompt; change only what came from the file. Nothing else changes; the job keeps its schedule and run history. Never delete and recreate a job to change its prompt.
+
+## Changing a time, days or title
+
+`update_trigger` with `trigger_id` and a new `cron_expression`, built as in Walking the kinds steps 2 and 3, keeping whatever they didn't ask to change; or a new `name`. Confirm the new schedule in words, and say when the jitter rule moved the minute.
+
+## Changing the model
+
+`update_trigger` with `trigger_id` and `model`, only when the user asks for it in their own words. Show the current one first: it's `derived_state.model` in `list_triggers`.
+
+## Turning a job off and on
+
+`update_trigger` with `trigger_id` and `enabled: false` to turn a job off, `enabled: true` to turn it on. A job that's off stays stored and never fires. Say "off" and "on", never "paused": this is for stretches when the user wants no reminders at all. For a day or a range, `/ntm:pause` is the lighter tool, since work they dated themselves still gets its reminders.
+
+## Deleting
+
+Confirm with the user first; deleting also removes the sessions the job started. Then `delete_trigger` with `trigger_id`. To stop a job without losing its history, turn it off instead.
+
+## Finishing
+
+End with one line per job: title, schedule in words, on or off. Run from `ntm:configure`, that list goes back to it; nothing here needs `ntm-user.plugin` regenerated.

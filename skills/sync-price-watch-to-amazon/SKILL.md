@@ -1,19 +1,19 @@
 ---
 name: sync-price-watch-to-amazon
-description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser on the user's computer (Claude in Chrome). Run by the user whenever they want, or when the price watch says a sync is due; never by a job.
+description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser Claude can drive, signed in to Amazon. Run by the user whenever they want, or when the price watch says a sync is due; never by a job.
 ---
 
 # ntm:sync-price-watch-to-amazon
 
-This skill needs a browser on the user's computer: Claude in Chrome, connected to the chat it runs from. The user runs it themselves, from a session linked to that computer, whenever they like; no job runs it, and the price watch only says when a sync is due. It can be interactive: when you're not sure you have the right product, ask them.
+This skill needs a browser Claude can drive: Claude's built-in browser, or the user's own browser through the Claude extension. The user runs it themselves, whenever they like; no job runs it, and the price watch only says when a sync is due. It can be interactive: when you're not sure you have the right product, ask them.
 
 The price watch can't read Amazon, so Amazon deals on watched items reach the user through Amazon's own price alerts instead. This skill keeps those alerts in step with the todo list: every open watched item gets an alert or is marked as not on Amazon, and every closed one has its alert removed.
 
 ## Labels
 
-Real names come from Labels in your settings.
+Every label in this skill goes by its real name from Labels in your settings.
 
-- **`has-amazon-alert`** (by its name from Labels in your settings; so for every label below): an Amazon alert is set for this item. While it's on a closed ticket, the alert is still live and needs removing.
+- **`has-amazon-alert`:** an Amazon alert is set for this item. While it's on a closed ticket, the alert is still live and needs removing.
 - **`amazon-unavailable`:** the item isn't sold on Amazon in the condition the watch wants, so no alert is set.
 
 An open watched item **needs an alert** when it has neither label.
@@ -31,13 +31,13 @@ Load `ntm:conventions` (the list's rules and your settings), then run `/ntm:read
 
 Price watch is on when Todo list in your settings names a price watch project. If it names none, end with `Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
 
-Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Sync-price-watch-to-amazon FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
+Use the browser Browser under Shopping in your settings names; when it's blank, the one the user's Claude settings prefer. Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If no browser is available or it can't be reached, end with `Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
 
 Amazon's store for this user is the one serving the country in Country and currency under About you in your settings; prices are in that currency. The condition an item must be in is Condition under Shopping, unless the ticket says otherwise.
 
 ## 2: The work
 
-1. **Open items:** fetch every open ticket the way "Every open ticket" in `ntm:conventions` says, and keep the ones with the `price-watch` project label (its real name from Labels), counting labels inherited from their project (the conventions' "Project labels"). Split them: those with neither label need an alert; those with `has-amazon-alert` are set; those with `amazon-unavailable` need nothing.
+1. **Open items:** fetch every open ticket the way "Every open ticket" in `ntm:conventions` says, and keep the ones with the `price-watch` project label, counting labels inherited from their project (the conventions' "Project labels"). Split them: those with neither label need an alert; those with `has-amazon-alert` are set; those with `amazon-unavailable` need nothing.
 2. **Closed items:** the guide's `fetch closed` for the `has-amazon-alert` label, canceled and duplicate included, with the standard fields.
 
 If there's nothing to set and nothing to remove, say "Amazon alerts are in sync; nothing to do." and stop.

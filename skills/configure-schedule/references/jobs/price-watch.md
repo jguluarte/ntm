@@ -1,7 +1,9 @@
 # Price watch
 
-Default title: Price watch
-Suggested schedule: `CRON_TZ=<timezone from About you in your settings> 0 7 * * *` (every day, paused days included, 07:00, before the jitter rule)
+| | |
+| --- | --- |
+| Default title | Price watch |
+| Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 0 7 * * *` (every day, paused days included, 07:00, before the jitter rule) |
 
 --- prompt ---
 

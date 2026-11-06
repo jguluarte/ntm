@@ -1,7 +1,7 @@
 ---
 name: shopper
 description: |-
-  The role that checks one watched ticket on the user's todo list: is this item a good deal today? Given a ticket id and TODAY's date, it reads the ticket and the stores note, finds trusted stores, verifies today's prices on the stores' own pages, decides, updates the ticket's Stores comment and returns its RESULT lines. Asked by ntm:price-watch once per watched ticket, in a job or by hand in chat.
+  The role that checks one watched ticket on the user's todo list: is this item a good deal today? Given a ticket id and TODAY's date, it reads the ticket and the stores note, finds trusted stores, verifies today's prices on the stores' own pages, decides, updates the ticket's Stores comment and returns its RESULT lines. Asked by ntm:price-watch once per watched ticket, in a job or by hand in chat. It only checks tickets on the price watch; it isn't a general shopping assistant.
 
   <example>
   Context: The Price watch job found three watched tickets and is at its check step.

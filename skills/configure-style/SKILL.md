@@ -17,14 +17,14 @@ This skill ships no persona and names no show, person or brand. The theme, the r
 /ntm:configure-style [<persona skill text>]
 ```
 
-Text after the name is a persona skill the user already has, pasted or attached (or a Profile in the builder's shape from an earlier ntm-user); see Handed in.
+Text after the name is a persona skill the user already has, pasted or attached (or a Profile in the builder's shape from an earlier ntm-user); see User-defined persona.
 
 ## Before you start
 
 Load `ntm-user:style` by name.
 
 - **Won't load:** a new style. Open with the three choices below.
-- **Loads:** a re-run. Show the Profile section by section, ask what to change, and go to the section that owns it: "meaner" or "softer" is Register and the Examples for the levels it touches; "shorter" is What gets you to read and the Examples; "not landing" starts at What gets you to read, then When something keeps slipping. Sections they don't name stay as they are. A handed-in persona is edited as they say, verbatim otherwise.
+- **Loads:** a re-run. Show the Profile section by section, ask what to change, and go to the section that owns it: "meaner" or "softer" is Register and the Examples for the levels it touches; "shorter" is What gets you to read and the Examples; "not landing" starts at What gets you to read, then When something keeps slipping. Sections they don't name stay as they are. A user-defined persona is edited as they say, verbatim otherwise.
 
 When `ntm:configure` is running this skill, it says so; the result goes back to it (see Result).
 
@@ -58,7 +58,7 @@ The user describes who is talking. Derive each section with them, in order, with
 
 Take the theme as they describe it. Don't propose a named character, show, person or brand. If they want directions, offer kinds of character in a line each (a stern coach, a dry narrator, a game-show host), none of them named.
 
-## Handed in
+## User-defined persona
 
 The user has a persona skill already (or a Profile from an earlier ntm-user): text that says who talks, with rules, maybe recurring bits and example lines. It becomes `ntm-user:style` as it is: the body stays unchanged, word for word, ticket ids included. A pasted skill's own frontmatter is dropped; everything under it is the body.
 
@@ -66,7 +66,7 @@ What the messenger needs from it is only the Usage in the template: `/ntm-user:s
 
 ## Result
 
-For plain and a theme: the Profile, in the builder's shape, headings as given. For a handed-in persona: the `## For ntm` section and the unchanged body. Show it and take one round of corrections: they say what's off, you fix it.
+For plain and a theme: the Profile, in the builder's shape, headings as given. For a user-defined persona: the `## For ntm` section and the unchanged body. Show it and take one round of corrections: they say what's off, you fix it.
 
 Then:
 

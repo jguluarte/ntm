@@ -45,7 +45,7 @@ Price watch (on when your settings name a price watch project):
 | Skill | What it does |
 | --- | --- |
 | `/ntm:price-watch` | The daily price check on the tickets in that project. |
-| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
+| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser Claude can drive. |
 
 Setup and settings:
 
@@ -99,7 +99,7 @@ All of them in `ntm-user`: `ntm-user:settings` (About you, Todo list, Labels, Pl
 - **Your todo list** (Linear, Claude Docs, or your own): tickets, planned dates, labels and the notes above.
 - **Pushover**, when it's your channel: each reminder's title and message, with your app token and user key, over HTTPS from the run. With the claude-push channel nothing is sent; the scheduled task's own completion push carries the reminder.
 - **The web**: searches of store sites for the items you're watching (price watch only).
-- **Your browser**, for Amazon alert sync only: Claude in Chrome on your computer.
+- **Your browser**, for Amazon alert sync only: Claude's built-in browser, or your own through the Claude extension (Browser under Shopping in your settings).
 
 Nothing else leaves a run. No skill but `ntm:notify` sends anything.
 
@@ -111,4 +111,4 @@ Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors ta
 
 - Scheduled tasks on your Claude account, for the reminders.
 - For Pushover: an account, an application token and your user key.
-- For Amazon alert sync: Claude in Chrome on your computer.
+- For Amazon alert sync: Claude's built-in browser, or your own browser with the Claude extension.

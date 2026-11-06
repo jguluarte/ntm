@@ -49,7 +49,6 @@ The user may reply in this thread after the run, possibly on a later day. If the
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and change nothing. Otherwise add a comment to that ticket right away (the guide's `write comment`), using the store, price and sale end date from this run's alert: "Skip: <price> at <store>, sale ends <date or unknown>, skipped YYYY-MM-DD. Reason: <their reason, in their words, or "none given">." Confirm in one line. If they didn't say why, ask why in the same message; if they answer, update that comment with their reason.
 - **They bought it:** a watched ticket is the purchase itself, so set its status to done (the guide's `set status`; if it's already closed, say so). Then add the `pending-shipment` label (its real name from Labels) to any open ticket it blocks, where the work lives. Confirm in one line. If the ticket has the `has-amazon-alert` label, add that its Amazon alert gets removed the next time they run `/ntm:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the price watch stores note, titled as Notes under Todo list in your settings says and kept in the price watch project (the guide's `read note` and `write note`, with that project; when it's missing, `write note` creates it with the headings `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list (Vouched or Blocked) if it's there; leave the Seed list alone unless they say otherwise. Record its domain as they give it, or from that note or the item's "Stores:" comment, and ask them only if neither has it. Add the date and their reason if they gave one. Confirm in one line.
-- **Anything else:** answer it, using what this run found.
 
 # FINAL REPLY
 
@@ -58,7 +57,7 @@ Unless reporting an error, start the final reply with one short line saying what
 
 If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is instead everything after that line, verbatim (the title, then the message), so the job's own completion push carries them. Drop the "what happened" line (the title says it); the per-item lines, NOTES and the sync line follow.
 
-If step 3 found Amazon alerts to sync, end with one line: "Run /ntm:sync-price-watch-to-amazon on your computer:" then the items needing an alert and the closed items whose alert needs removing, each as a few words with its ticket id. Leave this line out when nothing needs syncing.
+If step 3 found Amazon alerts to sync, end with one line: "Run /ntm:sync-price-watch-to-amazon:" then the items needing an alert and the closed items whose alert needs removing, each as a few words with its ticket id. Leave this line out when nothing needs syncing.
 
 **One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above. Add that Amazon isn't checked here; its own alert covers it.
 

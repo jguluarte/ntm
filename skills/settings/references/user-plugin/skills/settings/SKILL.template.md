@@ -66,11 +66,12 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent.
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Browser by `ntm:sync-price-watch-to-amazon`.
 
 - Condition: new <!-- unless a ticket says otherwise -->
 - Delivery: online only, to your country
 - A deal: at or near the ticket's target, or well below the usual price <!-- what gets you an alert -->
+- Browser: <!-- for the Amazon sync: Claude's built-in browser, or your own browser through the Claude extension; blank means whichever your Claude settings prefer -->
 
 <!-- Anything else about how you shop: stores you always or never use are kept in the price watch stores note; say here what counts beyond that. -->
 

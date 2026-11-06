@@ -5,7 +5,7 @@ description: Your settings for ntm. Read by ntm:conventions; change them with /n
 
 Values for ntm, read by `ntm:conventions`. Shown only when a person invokes this skill directly.
 
-Each section is read by heading. A line that is missing means its default. Prose is fine: say what you do in your own words.
+Each section is read by heading. Every line is something you agreed to during setup; a line that is missing means its default. Prose is fine: say what you do in your own words.
 
 ## About you
 
@@ -16,9 +16,9 @@ Each section is read by heading. A line that is missing means its default. Prose
 ## Board
 
 - Backend: <!-- linear | claude-docs | describe your own below -->
-- Board name: <!-- the team or workspace that holds every ticket, as the backend names it -->
+- Board name: <!-- the team, doc, project or workspace that holds every ticket, as the backend names it -->
 - Board id: <!-- if the backend needs one for lookups; blank otherwise -->
-- Ticket prefix: <!-- e.g. HOME for HOME-12 -->
+- Ticket prefix: <!-- e.g. HOME for HOME-12; blank where ids carry none -->
 - Statuses — the board's real names for each class:
   - plannable: <!-- usually three: a backlog, a to-do and an in-progress status -->
   - started: <!-- which of the plannable statuses means work has begun -->
@@ -28,13 +28,13 @@ Each section is read by heading. A line that is missing means its default. Prose
   - duplicate:
 - Price watch project: <!-- the project whose tickets are purchases waiting for a good price; blank = price watch off -->
 - Notes — the title of each document the system keeps:
-  - pauses: NTM: pauses
-  - message history: NTM: message history
-  - grooming log: NTM: grooming log
-  - price watch stores: NTM: price watch stores
-  - Amazon alert steps: NTM: Amazon alert steps
+  - pauses: Pauses
+  - message history: Message history
+  - grooming log: Grooming log
+  - price watch stores: Price watch stores
+  - Amazon alert steps: Amazon alert steps
 
-<!-- If your backend isn't linear or claude-docs, describe here how to do each operation ntm:conventions' contract lists, in your words. /ntm:configure-integration walks through them with you. -->
+<!-- If your backend isn't linear or claude-docs, describe here how to do each operation ntm:conventions' contract lists, in your words. /ntm:configure-board walks through them with you. -->
 
 ## Labels
 
@@ -43,12 +43,36 @@ The real name on your board for each label the system uses.
 - Issue labels:
   - no-autoschedule: no-autoschedule
   - pending-shipment: pending-shipment
-  - deadline: deadline
   - has-amazon-price-watch: has-amazon-price-watch
   - amazon-unavailable: amazon-unavailable
 - Project labels (tickets inherit them):
   - price-watch: price-watch
   - no-autoschedule: no-autoschedule
+
+## Planning
+
+How the planner works your board. Read by `ntm:plan`, the planner agent and the weekly planning.
+
+- Rhythm: one task per weekday <!-- or: one per day; two per weekday; whatever you keep up with -->
+- Planning days: weekdays <!-- the days that get a task automatically -->
+- Week ahead: Monday to Friday <!-- what "the week" means to the weekly planning: Monday to Friday; the next two weeks; the month -->
+- Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day <!-- what an estimate means on your board; the planner guesses from the title when a ticket has none -->
+- A day's worth: about an hour <!-- what the planner aims for when it picks -->
+- Never picks: no-autoschedule, pending-shipment, blocked status <!-- the exclusions, each checked on the ticket and its ancestors -->
+- Parents: plan the open sub-tickets, never the parent
+- Weekly message: what got done, what's still open, the week ahead <!-- the halves the weekly planning message carries -->
+
+<!-- Anything else about how you want planning done, as you'd say it: "nothing heavy on Fridays", "garage work only on weekends". -->
+
+## Shopping
+
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent.
+
+- Condition: new <!-- unless a ticket says otherwise -->
+- Delivery: online only, to your country
+- A deal: at or near the ticket's target, or well below the usual price <!-- what gets you an alert -->
+
+<!-- Anything else about how you shop: stores you always or never use are kept in the price watch stores note; say here what counts beyond that. -->
 
 ## Notifications
 

@@ -17,7 +17,7 @@ Runs every skill a job uses, and every backend operation they need, once, on a t
 
 - Load `ntm:conventions` and compute `TODAY` as its Dates section says.
 - One throwaway ticket, titled `ntm self-test`, labeled with the `no-autoschedule` label by its real name from Labels in your settings, in no project. Keep its id once created; `ABC-12` below stands for it.
-- One throwaway note, titled `NTM: self-test`, at board level. It's not under Notes in Board; only this skill knows it.
+- One throwaway note, titled `ntm self-test`, at board level. It's not under Notes in Board; only this skill knows it.
 - If an earlier run left either behind (`fetch open` shows a ticket with that title; `read note` finds the note), remove them first, as Cleanup says, so this run starts clean.
 
 ## Steps

@@ -17,7 +17,7 @@ Fixes board state that's always safe to fix, and returns what it changed. It nev
 
 1. Load `ntm:conventions`.
 2. Compute `TODAY` once, as the conventions' Dates section says, and use it for the whole run, even if the run crosses midnight.
-3. Fetch every open ticket with the guide's `fetch open`, and keep every result, including excluded tickets and parents. Skip the Scheduling fetch's other steps, and skip listing the projects with their labels: the only label these rules check is the `deadline` label (its real name from Labels in your settings), and the conventions put it on a ticket, never a project.
+3. Fetch every open ticket with the guide's `fetch open`, and keep every result, including excluded tickets and parents. Skip the Planning fetch's other steps, and skip listing the projects with their labels: these rules check no labels.
 
 ## Rules
 
@@ -32,7 +32,7 @@ tickets where status is open
 → set status to done
 ```
 
-Fetch the closed tickets that have a parent (the guide's `fetch closed`, with the canceled and duplicate statuses as well as done, keeping those with a parent id). Check each distinct parent that's among the open tickets: read it with `read ticket`, and if it's still open, list its sub-tickets with the guide's `list sub-tickets`. If every one is closed, set the parent to done with `set status` and change nothing else. This includes tickets with the `deadline` label.
+Fetch the closed tickets that have a parent (the guide's `fetch closed`, with the canceled and duplicate statuses as well as done, keeping those with a parent id). Check each distinct parent that's among the open tickets: read it with `read ticket`, and if it's still open, list its sub-tickets with the guide's `list sub-tickets`. If every one is closed, set the parent to done with `set status` and change nothing else.
 
 Whenever you close a parent, check its own parent the same way, even if you already checked it this run, so a chain closes in one run. The board's automation may close that parent as soon as you close its last sub-ticket; the guide says whether the backend does that. If `read ticket` shows it's already closed, don't write it, report it as `Closed` like your own closes, and carry on up the chain from it. Any other parent found already closed is skipped without a report, and a parent whose close failed counts as still open.
 
@@ -40,7 +40,6 @@ Whenever you close a parent, check its own parent the same way, even if you alre
 
 ```
 tickets where status is open
-  and labels does not contain the deadline label
   and planned date is not null
   and planned date < TODAY
 → clear planned date

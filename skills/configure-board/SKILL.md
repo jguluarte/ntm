@@ -1,16 +1,16 @@
 ---
-name: configure-integration
+name: configure-board
 description: Sets up or changes where the user's ntm board lives and how it's laid out, in chat: the backend, the board, the status names for each class, the labels and the notes. Run from ntm:configure, or when the user says "set up my board", "connect Linear", "use Claude Docs for my board", "use Todoist as my board", "rename my labels" or "change my board settings".
 ---
 
-# ntm:configure-integration
+# ntm:configure-board
 
 Settles Board and Labels in `ntm-user:settings` with the user and returns their text. Everything happens in chat, in short rounds: you bring proposals, they react. Never hand them a form. This skill never writes a file.
 
 ## Usage
 
 ```
-/ntm:configure-integration [linear|claude-docs|<name>]
+/ntm:configure-board [linear|claude-docs|<name>]
 ```
 
 The backend to use. Without one, ask (see The backend).
@@ -25,7 +25,7 @@ The backend to use. Without one, ask (see The backend).
 
 Ask what they keep tasks in today. If they're undecided, offer the three choices in one line: Linear (free for individuals, and the tested path), Claude Docs (no ticket system; Claude keeps the board in one doc; untested, and heavier per run), or their own backend, which they describe.
 
-If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-integration FAILED: <backend> connector not attached`.
+If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-board FAILED: <backend> connector not attached`.
 
 ### Linear
 
@@ -53,7 +53,7 @@ The board is one Claude Doc that Claude reads and edits itself. There are no boa
 
 Backend is the name they give. Walk the contract with them in order: What the backend needs to have, Board, Status classes, each operation in the Operations table, Notes, Setup operations, Writing. For each operation, name the tool and the parameters that carry it out. Read the tool's schema from the ToolSearch result rather than guessing: which date field is the planned date, how results paginate, whether labels add or replace, whether a comment can be edited in place. Where a choice is theirs (which date field, which grouping is a project), propose one and let them react. Try a read by hand where it's cheap. The setup operations run below as described; every other write waits for `/ntm:self-test`.
 
-The contract names the survivable gaps (no estimate field, no blocked-by relation, no labels on groups, no documents) and the two fatal ones (no date field, no way to tell open from closed). Say which the backend has. A fatal one ends here: `Configure-integration FAILED: <backend> has no <thing>`. With no documents, each note lives in the description of an open ticket titled with the note's title, as the contract's Notes section says; tell them.
+The contract names the survivable gaps (no estimate field, no blocked-by relation, no labels on groups, no documents) and the two fatal ones (no date field, no way to tell open from closed). Say which the backend has. A fatal one ends here: `Configure-board FAILED: <backend> has no <thing>`. With no documents, each note lives in the description of an open ticket titled with the note's title, as the contract's Notes section says; tell them.
 
 What you settle goes under Board as prose, in their words, below the template's lines: one short paragraph per contract heading. Statuses, Labels and Notes below then go through the setup operations as they described them.
 
@@ -79,7 +79,7 @@ Each note under Board has a title; the defaults are in the section shapes below.
 - **message history:** its first content is the line `Keep: 60 entries or 8 weeks`.
 - **grooming log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project is named; created in that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for a few seed stores by category to put under Seed, with their domains, or leave Seed empty and say the first price watch run will report it. Vouched and Blocked start empty.
-- **Amazon alert steps:** find only. `ntm:sync-price-watch-with-amazon` writes it the first time it learns the steps.
+- **Amazon alert steps:** find only. `ntm:amazon-alerts` writes it the first time it learns the steps.
 
 A new Claude Doc doesn't exist yet at this point: settle the titles only, then `create board`, which makes a section per note (the message history's `Keep:` line included). Then `create project` for the price watch project if one was chosen, and finish the pauses, grooming log and price watch stores notes with `write note`.
 

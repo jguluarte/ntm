@@ -1,11 +1,11 @@
 ---
-name: configure-communication-style
-description: Builds or revises the user's style profile (ntm-user:style), which ntm:style-message writes every reminder from, with them in chat: plain, a theme they describe, or a profile they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own profile"; ntm:configure runs it as one of its parts.
+name: configure-style
+description: Builds or revises the user's style profile (ntm-user:style), which ntm-user:style writes every reminder from, with them in chat: plain, a theme they describe, or a profile they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own profile"; ntm:configure runs it as one of its parts.
 ---
 
-# ntm:configure-communication-style
+# ntm:configure-style
 
-The profile is `ntm-user:style`: a `Profanity:` line, then Register, What gets you to read, When something keeps slipping, Motifs, Off limits and Examples. `ntm:style-message` reads it for every reminder. This skill writes it with the user in short rounds: you bring proposals, they react. Never hand them a form.
+The profile is `ntm-user:style`: a `Profanity:` line, then Register, What gets you to read, When something keeps slipping, Motifs, Off limits and Examples. `ntm-user:style` reads it for every reminder. This skill writes it with the user in short rounds: you bring proposals, they react. Never hand them a form.
 
 Read `references/builder.md` once before starting: it holds the shape, the questions for each section, and one plain example.
 
@@ -14,7 +14,7 @@ This skill ships no persona and names no show, person or brand. The theme, the l
 ## Usage
 
 ```
-/ntm:configure-communication-style [<profile or skill text>]
+/ntm:configure-style [<profile or skill text>]
 ```
 
 Text after the name is a profile or a persona skill the user already has, pasted or attached; see Handed in.
@@ -58,11 +58,11 @@ Take the theme as they describe it. Don't propose a named character, show, perso
 
 ## Handed in
 
-The user has a profile or a persona skill already: text that says who talks, with rules, maybe a list of recurring bits and example lines. Its body stays unchanged, word for word, ticket ids included. A pasted skill's own frontmatter is dropped; everything under it is the body. It gets the frontmatter and opening line the template gives every style; `ntm:settings` applies those. Fill nothing in from it: `ntm:style-message` reads what's there, and a section it lacks means its default. The defaults: Register, the whole profile as given; What gets you to read, the examples show it; Motifs, none; Off limits, the fixed set; Examples, the body's own.
+The user has a profile or a persona skill already: text that says who talks, with rules, maybe a list of recurring bits and example lines. Its body stays unchanged, word for word, ticket ids included. A pasted skill's own frontmatter is dropped; everything under it is the body. It gets the frontmatter and opening line the template gives every style; `ntm:settings` applies those. Fill nothing in from it: `ntm-user:style` reads what's there, and a section it lacks means its default. The defaults: Register, the whole profile as given; What gets you to read, the examples show it; Motifs, none; Off limits, the fixed set; Examples, the body's own.
 
-Ask two things, in one round, and a third when it applies. Profanity: propose `yes` when the body's own lines swear, `no` otherwise; they confirm. Then: what should happen when something keeps slipping? And when the body keeps its own list of recurring bits (themes, references, running jokes) under a heading of its own, `ntm:style-message` won't find it there, since it reads Motifs by heading; so propose that list as the Motifs. Write `Profanity: <answer>` as the first line, then the `## When something keeps slipping` section, then, if they took the motifs, a `## Motifs` section with the list copied line for line, then the unchanged body (the builder's order). The levels section is in the builder's shape: named levels in order, the number (after how many earlier days it starts) on every level after the first, and the climb rule.
+Ask two things, in one round, and a third when it applies. Profanity: propose `yes` when the body's own lines swear, `no` otherwise; they confirm. Then: what should happen when something keeps slipping? And when the body keeps its own list of recurring bits (themes, references, running jokes) under a heading of its own, `ntm-user:style` won't find it there, since it reads Motifs by heading; so propose that list as the Motifs. Write `Profanity: <answer>` as the first line, then the `## When something keeps slipping` section, then, if they took the motifs, a `## Motifs` section with the list copied line for line, then the unchanged body (the builder's order). The levels section is in the builder's shape: named levels in order, the number (after how many earlier days it starts) on every level after the first, and the climb rule.
 
-When the body groups its examples under headings (light, escalated, harsh, say), propose those groups as the levels, in that order: the first as the everyday one, the second after 1 earlier day, each further one a day later. Propose "harder each day a ticket carries over, back to the first level once it closes" as the climb rule. The user confirms or edits. Those groups are then the levels `ntm:style-message` uses.
+When the body groups its examples under headings (light, escalated, harsh, say), propose those groups as the levels, in that order: the first as the everyday one, the second after 1 earlier day, each further one a day later. Propose "harder each day a ticket carries over, back to the first level once it closes" as the climb rule. The user confirms or edits. Those groups are then the levels `ntm-user:style` uses.
 
 ## Result
 

@@ -1,9 +1,9 @@
 ---
 name: style
-description: How ntm reminders talk to you. Read by ntm:style-message; change it with /ntm:configure-communication-style.
+description: How ntm reminders talk to you. Read by ntm-user:style; change it with /ntm:configure-style.
 ---
 
-Values for ntm, read by `ntm:style-message`. Shown only when a person invokes this skill directly.
+Values for ntm, read by `ntm-user:style`. Shown only when a person invokes this skill directly.
 
 Profanity: <!-- yes or no -->
 

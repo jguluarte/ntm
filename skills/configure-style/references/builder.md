@@ -1,6 +1,6 @@
 # The style profile
 
-The body of `ntm-user:style`: what `ntm:configure-communication-style` writes and `ntm:style-message` reads. The `Profanity:` line and the headings exactly as shown, in this order; everything else is the user's, in their words. The builder writes every section; a section a handed-in profile lacks means its default, as `ntm:style-message` reads it.
+The body of `ntm-user:style`: what `ntm:configure-style` writes and `ntm-user:style` reads. The `Profanity:` line and the headings exactly as shown, in this order; everything else is the user's, in their words. The builder writes every section; a section a handed-in profile lacks means its default, as `ntm-user:style` reads it.
 
 ## The shape
 
@@ -37,7 +37,7 @@ The quotes only mark where each example starts and ends.
 
 ### Profanity
 
-Is profanity allowed? `yes` or `no`. `ntm:style-message` allows it only on `yes`, in chat and in pushes alike.
+Is profanity allowed? `yes` or `no`. `ntm-user:style` allows it only on `yes`, in chat and in pushes alike.
 
 ### Register
 
@@ -68,7 +68,7 @@ What happens when the same ticket shows up day after day. The user's levels, in 
 - step back: go quiet on that ticket and raise it once in the weekly message
 - a consequence they name themselves, said plainly when the day comes
 
-Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; `ntm:style-message` counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening reminders follow this section; the afternoon one never climbs.
+Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; `ntm-user:style` counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening reminders follow this section; the afternoon one never climbs.
 
 ### Motifs
 
@@ -82,7 +82,7 @@ What the style never rewrites or jokes about. Ticket ids, titles, planned dates,
 
 ### Examples
 
-One per level, in the level's name, and one for "nothing open" (the evening when everything closed: a win for the day, not the year). Ticket ids use the user's Ticket prefix from Board in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when neither exists yet. The tasks in them are ordinary household ones. They show how each level lands, how long it runs, and how a motif ties to the subject. `ntm:style-message` borrows their energy and never their sentences.
+One per level, in the level's name, and one for "nothing open" (the evening when everything closed: a win for the day, not the year). Ticket ids use the user's Ticket prefix from Board in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when neither exists yet. The tasks in them are ordinary household ones. They show how each level lands, how long it runs, and how a motif ties to the subject. `ntm-user:style` borrows their energy and never their sentences.
 
 ## A plain example
 

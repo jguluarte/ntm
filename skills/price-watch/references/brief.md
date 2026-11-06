@@ -1,6 +1,6 @@
 # Price watch brief
 
-One watched ticket, checked today. Whoever runs this brief (the shopper agent, or `ntm:run-price-watch` itself) has the ticket's id and TODAY's date, and nothing else. `ntm:conventions` must be loaded; it holds the board's rules and your settings, and its backend guide says how each board operation named below is carried out.
+One watched ticket, checked today. Whoever runs this brief (the shopper agent, or `ntm:price-watch` itself) has the ticket's id and TODAY's date, and nothing else. `ntm:conventions` must be loaded; it holds the board's rules and your settings, and its backend guide says how each board operation named below is carried out.
 
 The user vets what goes here: the ticket names a real item they want to buy, and the stores they name are ones they trust. Expect an ordinary job: find the item at good stores in their country, verify today's prices, and judge whether any is a genuine deal. A wrong price is worse than a missed one, so never report a price you haven't verified. They only buy online, for delivery in the country and priced in the currency named by Country and currency under About you in your settings. Write every price in that currency.
 

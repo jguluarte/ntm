@@ -5,7 +5,7 @@ Your own settings and communication style for the ntm plugin (Neurodivergent Tas
 - `ntm-user:settings` — where your board is, your label names, how reminders reach you, and anything you do differently from ntm's conventions.
 - `ntm-user:style` — how your reminders talk to you.
 
-`/ntm:configure` generates this plugin for you and hands it back to install. `/ntm:settings` changes the settings; `/ntm:configure-communication-style` changes the style. Each change hands you a new copy to install in place of this one.
+`/ntm:configure` generates this plugin for you and hands it back to install. `/ntm:settings` changes the settings; `/ntm:configure-style` changes the style. Each change hands you a new copy to install in place of this one.
 
 Keep this plugin private. It can hold your Pushover keys. Share ntm, not this.
 

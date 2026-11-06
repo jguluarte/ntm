@@ -82,9 +82,9 @@ Every note is a section on tab 2 (body id from the doc read's second `files[]` e
 
 ## Setup operations
 
-Used by `ntm:configure-integration`.
+Used by `ntm:configure-board`.
 
-- **`list boards`:** none; the user pastes the doc's link, or `ntm:configure-integration` runs `create board`.
+- **`list boards`:** none; the user pastes the doc's link, or `ntm:configure-board` runs `create board`.
 - **`create board`:** one `batch` with `container = {"kind":"project","create":{"name":"<Board name>","doc":{"markdown":"# Board"}}}` and members, in order: the Status enum (`{"$lid":"s","verb":"create","object":"enum","payload":{"value":{"name":"Status","options":[{"name":"<status>"},…]}}}`, the statuses from Board in the order under Status classes); an `update` on `$lid:n` inserting at `{"kind":"root"}` `"side":"end"` the markdown `## Tickets`, the header-only ticket table, `## Projects` and the header-only projects table (the enum can't be referenced from the birth's own `doc.markdown`, hence the separate member); a file `{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with parent `$lid:f2` and content `# <note title>` for each note under Board (with the message history note's `Keep:` line under its heading), the `update` pointing `f2` at `n2`; and the project patch placing `$lid:f` as "Board" (`order` `a0`) and `$lid:f2` as "Notes" (`a1`). The ack's `created.minted` is the doc id: Board id. Give the user its link.
 - **`list statuses`:** the enum read under Status classes (enum id from any Status cell, or the birth ack's `lids.s`).
 - **`list labels`:** the distinct names across the Labels columns of both tables; one set serves as issue and project labels.

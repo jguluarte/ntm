@@ -22,10 +22,10 @@ Every day:
 | Skill | What it does |
 | --- | --- |
 | `/ntm:todo-list` | What's planned: open tickets planned for today or earlier, or any scope you describe. |
-| `/ntm:show-completed` | What got done over a span, and what's still open from it when you ask. |
+| `/ntm:completed` | What got done over a span, and what's still open from it when you ask. |
 | `/ntm:plan` | Plans the week or a day: with you in chat, or on its own for jobs. |
 | `/ntm:pause` | Days when nothing gets planned automatically. |
-| `/ntm:style-message` | Puts a message in your style. |
+| `/ntm-user:style` | Puts a message in your style. |
 | `/ntm:notify` | Sends a notification through your channel. |
 | `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`, `/ntm:weekly-planning` | The three daily reminders and the Sunday planning. Jobs run them; so can you ("run the morning reminder now"). |
 
@@ -40,17 +40,17 @@ Price watch (on when your settings name a price watch project):
 
 | Skill | What it does |
 | --- | --- |
-| `/ntm:run-price-watch` | The daily price check on the tickets in that project. |
-| `/ntm:sync-price-watch-with-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
+| `/ntm:price-watch` | The daily price check on the tickets in that project. |
+| `/ntm:amazon-alerts` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
 
 Setup and settings:
 
 | Skill | What it does |
 | --- | --- |
 | `/ntm:configure` | The wizard. `/ntm:configure <part>` goes straight to one part. |
-| `/ntm:configure-integration` | Which board, and how it's laid out. |
+| `/ntm:configure-board` | Which board, and how it's laid out. |
 | `/ntm:configure-notifications` | How reminders reach you. |
-| `/ntm:configure-communication-style` | How reminders talk to you. |
+| `/ntm:configure-style` | How reminders talk to you. |
 | `/ntm:configure-schedule` | The jobs: which, which days, what time, what title. |
 | `/ntm:settings` | Shows your settings and changes them; produces a new `ntm-user.plugin`. |
 | `/ntm:ready-check` | Can this session run a job? |
@@ -61,7 +61,7 @@ Setup and settings:
 ## What you can customize
 
 - **The trigger word.** `ntm` in `/ntm:plan` can be any word: `/ntm:configure` asks first, and `/ntm:settings` does it any time.
-- **The style.** Plain, a theme you describe, or a profile you already have: `/ntm:configure-communication-style`.
+- **The style.** Plain, a theme you describe, or a profile you already have: `/ntm:configure-style`.
 - **Labels and note titles.** The real names on your board, in `ntm-user:settings`.
 - **The schedule.** Which jobs run, which days, what time, what they're called: `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in your settings and read last.

@@ -79,7 +79,7 @@ Notes are Linear documents in the team, titled as Notes under Board says. A note
 
 ## Setup operations
 
-Used by `ntm:configure-integration`.
+Used by `ntm:configure-board`.
 
 - **`list boards`:** `list_teams`. Each comes back with its name, id and issue key (the ticket prefix).
 - **`create board`:** not needed; Linear has teams to list.

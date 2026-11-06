@@ -17,10 +17,10 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 
 | Kind | Default title | Default days and time | Prompt | Offered |
 | --- | --- | --- | --- | --- |
-| morning reminder | Morning reminder | weekdays 09:00 | `references/jobs/morning.md` | always |
-| afternoon reminder | Afternoon reminder | weekdays 14:30 | `references/jobs/afternoon.md` | always |
-| evening reminder | Evening reminder | weekdays 19:30 | `references/jobs/evening.md` | always |
-| weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/week.md` | always |
+| morning reminder | Morning reminder | weekdays 09:00 | `references/jobs/morning-reminder.md` | always |
+| afternoon reminder | Afternoon reminder | weekdays 14:30 | `references/jobs/afternoon-reminder.md` | always |
+| evening reminder | Evening reminder | weekdays 19:30 | `references/jobs/evening-reminder.md` | always |
+| weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/weekly-planning.md` | always |
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Board in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 

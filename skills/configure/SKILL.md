@@ -48,9 +48,9 @@ Write them as the About you section, in the shape `ntm-user:settings` uses.
 
 In order, each by loading its skill and saying it runs from `ntm:configure`:
 
-1. `ntm:configure-integration`: which backend, which board, statuses, labels, notes. Returns Board and Labels.
+1. `ntm:configure-board`: which backend, which board, statuses, labels, notes. Returns Board and Labels.
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns Notifications.
-3. `ntm:configure-communication-style`: plain, a theme, or a profile they have. Returns the `ntm-user:style` body.
+3. `ntm:configure-style`: plain, a theme, or a profile they have. Returns the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand it the timezone from About you and the price watch project from Board as settled above. Creates the scheduled tasks itself; returns nothing to package.
 
 Keep the returned text; write nothing.

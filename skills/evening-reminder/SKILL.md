@@ -14,8 +14,8 @@ Run `/ntm:ready-check --notify --job "Evening reminder"`.
 # 2: How did today go
 Hand the planner agent these steps, or do them yourself:
 
-1. Load `ntm:conventions` and `ntm:show-completed`. Compute `TODAY` as the conventions' Dates section says.
-2. Run `/ntm:show-completed today and what's still open` and return its result.
+1. Load `ntm:conventions` and `ntm:completed`. Compute `TODAY` as the conventions' Dates section says.
+2. Run `/ntm:completed today and what's still open` and return its result.
 
 Read what comes back: the `Done (<n>):` lines are what closed today (`Done: none` when nothing did); the `Still open (<n>):` lines are what's still open that was planned for today. Any `… FAILED` line: ERROR HANDLING.
 
@@ -35,9 +35,9 @@ One `done:` line per ticket closed today, or `done: none` when nothing closed (n
 
 The messenger's steps, or do them yourself:
 
-1. Load `ntm:conventions`, `ntm:style-message` and `ntm:notify`.
+1. Load `ntm:conventions`, `ntm-user:style` and `ntm:notify`.
 2. Write one or two sentences for the evening: with open tickets, how the day went and what's still open, naming each open id; with `nothing open`, an affirmation for the day, naming what got done.
-3. Run them through `/ntm:style-message --for evening "<tone>" <sentences>`, with a tone that opens with the job name (`Evening reminder; …`), then each still-open id with its `(was <date>, carried <n> days)` when given, or that nothing is open and what got done. What each open ticket gets is the style's When something keeps slipping, by the history count `style-message` computes; nothing open gets the register of its "nothing open" example. When the style's What gets you to read names a scoreboard (load `ntm-user:style` and read its What gets you to read), load `ntm:show-completed`, run `/ntm:show-completed this week`, and put its Done count in the tone. Style-message returns the message with `Title: …` as its last line (with no style configured, your sentences as given plus that line).
+3. Run them through `/ntm-user:style --for evening "<tone>" <sentences>`, with a tone that opens with the job name (`Evening reminder; …`), then each still-open id with its `(was <date>, carried <n> days)` when given, or that nothing is open and what got done. What each open ticket gets is the style's When something keeps slipping, by the history count `ntm-user:style` computes; nothing open gets the register of its "nothing open" example. When the style's What gets you to read names a scoreboard (load `ntm-user:style` and read its What gets you to read), load `ntm:completed`, run `/ntm:completed this week`, and put its Done count in the tone. Style-message returns the message with `Title: …` as its last line (with no style configured, your sentences as given plus that line).
 4. Under the styled lines, what's still open, one line each: the ticket as a linked ticket, exactly as the conventions' "Talking to the user about tickets" says, with its `(was <date>, carried <n> days)` when given. With `nothing open`, no list.
 5. Send with `/ntm:notify --job "Evening reminder" --title "<the words after Title:>" --message "<everything above the Title line, with the list under it>"`.
 6. Return exactly one of these, unchanged, and nothing else: `Sent: <title>`; the delivery block starting `NOTIFY VIA FINAL REPLY`, verbatim; `Notify FAILED: <why>`. A `<Skill> FAILED: …` line from a skill in these steps comes back the same way, in place of the send.

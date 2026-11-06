@@ -1,6 +1,6 @@
 # Backend contract
 
-A backend guide maps the operations the conventions name onto one backend's connector. `linear.md` is the complete, tested one. `claude-docs.md` is the second shipped guide, for a board kept in a Claude Doc with no ticket-system connector at all. It's untested, and heavier per run (every read pulls a whole table and every write edits a row), but fine for a few dozen tickets. For any other backend, Board in `ntm-user:settings` says how each operation here is done, in the user's words. `/ntm:configure-integration` fills it with the user against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks it.
+A backend guide maps the operations the conventions name onto one backend's connector. `linear.md` is the complete, tested one. `claude-docs.md` is the second shipped guide, for a board kept in a Claude Doc with no ticket-system connector at all. It's untested, and heavier per run (every read pulls a whole table and every write edits a row), but fine for a few dozen tickets. For any other backend, Board in `ntm-user:settings` says how each operation here is done, in the user's words. `/ntm:configure-board` fills it with the user against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks it.
 
 Write a guide as a list of operations, each saying which tool calls carry it out and which fields map to the conventions' names. Keep the headings below so skills can find what they need.
 
@@ -48,11 +48,11 @@ If the backend has documents, use them, found by title. If it doesn't, keep each
 
 ## Setup operations
 
-Used by `ntm:configure-integration`. Say which call does each.
+Used by `ntm:configure-board`. Say which call does each.
 
 | Operation | Must say |
 | --- | --- |
-| `list boards` | the boards the connector can see, by name and id; or, where the backend has no boards to list, say so (the user names or pastes theirs, or `ntm:configure-integration` runs `create board`) |
+| `list boards` | the boards the connector can see, by name and id; or, where the backend has no boards to list, say so (the user names or pastes theirs, or `ntm:configure-board` runs `create board`) |
 | `create board` | only where the backend has no boards to list: make one with the statuses, labels and notes settled so far, and return its id |
 | `list statuses` | a board's status names, so each class can be matched to real names |
 | `list labels` | the board's issue labels, and its project labels when those are a separate set |

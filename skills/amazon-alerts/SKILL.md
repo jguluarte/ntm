@@ -1,9 +1,9 @@
 ---
-name: sync-price-watch-with-amazon
+name: amazon-alerts
 description: Syncs Amazon's own price alerts with the user's watched tickets: sets an alert for each open item that has none, and removes the alert once an item closes. Needs a browser on the user's computer. Run by the user, when they ask to sync Amazon price alerts or the daily price watch says a sync is needed.
 ---
 
-# ntm:sync-price-watch-with-amazon
+# ntm:amazon-alerts
 
 The daily price watch can't read Amazon, so Amazon deals on watched items reach the user through Amazon's own price alerts instead. This skill keeps those alerts in step with the board: every open watched item gets an alert or is marked as not on Amazon, and every closed one has its alert removed.
 
@@ -29,9 +29,9 @@ An open watched item **needs an alert** when it has neither label.
 
 Load `ntm:conventions` (the board's rules and your settings), then run `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Price watch is on when Board in your settings names a price watch project. If it names none, end with `Sync-price-watch-with-amazon: price watch is off; Board in your settings names no price watch project. Name one with /ntm:settings or disable the price watch job with /ntm:configure-schedule.`
+Price watch is on when Board in your settings names a price watch project. If it names none, end with `Amazon-alerts: price watch is off; Board in your settings names no price watch project. Name one with /ntm:settings or disable the price watch job with /ntm:configure-schedule.`
 
-Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Sync-price-watch-with-amazon FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
+Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Amazon-alerts FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
 
 Amazon's store for this user is the one for the country in Country and currency under About you in your settings (amazon.com in the US); prices are in that currency.
 

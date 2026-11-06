@@ -86,7 +86,7 @@ Ticket labels:
 
 - **`no-autoschedule`:** the user has opted this ticket out of automatic planning. Planners never pick it, but once the user dates it themselves, it's reminded about like any other dated ticket.
 - **`pending-shipment`:** something has been ordered for this ticket and hasn't arrived, so the user can't start it.
-- **`has-amazon-alert`:** an Amazon price alert is set for this ticket. `ntm:amazon-alerts` sets and clears it.
+- **`has-amazon-alert`:** an Amazon price alert is set for this ticket. `ntm:sync-price-watch-to-amazon` sets and clears it.
 - **`amazon-unavailable`:** the item isn't sold new on Amazon, so no alert is set.
 
 Project labels (tickets inherit them; see Project labels):
@@ -110,7 +110,7 @@ The title of each note is under Notes under Todo list in your settings; the defa
 - **message history** (`Message history`): what reminders have said. Its first line is a `Keep:` line that `ntm-user:style`, its writer, prunes to; the style template says what it writes.
 - **grooming log** (`Grooming log`): `ntm:configure-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch project. `ntm:price-watch` keeps it, from the user's vouch and block replies; the shopper reads it.
-- **Amazon alert steps** (`Amazon alert steps`): `ntm:amazon-alerts` keeps it.
+- **Amazon alert steps** (`Amazon alert steps`): `ntm:sync-price-watch-to-amazon` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description of an open ticket titled with the note's title and labeled `no-autoschedule`; see Notes in `references/CONTRACT.md`.
 

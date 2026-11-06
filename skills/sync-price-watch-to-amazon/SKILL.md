@@ -1,9 +1,9 @@
 ---
-name: amazon-alerts
+name: sync-price-watch-to-amazon
 description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser on the user's computer (Claude in Chrome). Run by the user whenever they want, or when the price watch says a sync is due; never by a job.
 ---
 
-# ntm:amazon-alerts
+# ntm:sync-price-watch-to-amazon
 
 This skill needs a browser on the user's computer: Claude in Chrome, connected to the chat it runs from. The user runs it themselves, from a session linked to that computer, whenever they like; no job runs it, and the price watch only says when a sync is due. It can be interactive: when you're not sure you have the right product, ask them.
 
@@ -29,9 +29,9 @@ An open watched item **needs an alert** when it has neither label.
 
 Load `ntm:conventions` (the list's rules and your settings), then run `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Price watch is on when Todo list in your settings names a price watch project. If it names none, end with `Amazon-alerts: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
+Price watch is on when Todo list in your settings names a price watch project. If it names none, end with `Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
 
-Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Amazon-alerts FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
+Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Sync-price-watch-to-amazon FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
 
 Amazon's store for this user is the one serving the country in Country and currency under About you in your settings; prices are in that currency. The condition an item must be in is Condition under Shopping, unless the ticket says otherwise.
 
@@ -80,4 +80,4 @@ End with one short line on the outcome, then one line per item, worded the way t
 
 - `<item> (ABC-12): alert set at <price>` / `not on Amazon` / `alert removed` / `skipped: <reason>`
 
-For any other error, end with `Amazon-alerts FAILED: <the error, stated plainly>`.
+For any other error, end with `Sync-price-watch-to-amazon FAILED: <the error, stated plainly>`.

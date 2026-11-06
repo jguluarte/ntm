@@ -45,7 +45,7 @@ Price watch (on when your settings name a price watch project):
 | Skill | What it does |
 | --- | --- |
 | `/ntm:price-watch` | The daily price check on the tickets in that project. |
-| `/ntm:amazon-alerts` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
+| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser on your computer. |
 
 Setup and settings:
 
@@ -79,7 +79,7 @@ Rules live in `ntm:conventions` and name the values they depend on by key; the v
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm-user:style` |
 | Grooming log note | How you like tickets written and sized, learned while grooming. | `/ntm:configure-todo-list` |
 | Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/ntm:price-watch` |
-| Amazon alert steps note | How to set an alert on Amazon, learned once. | `/ntm:amazon-alerts` |
+| Amazon alert steps note | How to set an alert on Amazon, learned once. | `/ntm:sync-price-watch-to-amazon` |
 
 The notes live on your todo list, under the titles in your settings.
 

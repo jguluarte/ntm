@@ -10,7 +10,7 @@ The README is the one text about ntm. This skill reads it and answers the person
 ## Finding the README
 
 ```bash
-find ~/.claude/plugins -path '*/ntm/README.md'
+find ~/.claude/plugins -path '*ntm*' -name README.md -not -path '*/user-plugin/*'
 ```
 
 Read the file it finds and answer from it. If nothing is found, say in one line that ntm is a personal task system on the user's own board, with reminders in their own style and a price watch, and that the README is on the plugin's Contents tab under Customize > Plugins, or in the repository.

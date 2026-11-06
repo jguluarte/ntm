@@ -33,7 +33,7 @@ For each kind in the order above, ask: do they want it; which days (Planning day
 Then, for each job they want:
 
 1. Read its prompt file; the prompt is everything after `--- prompt ---`. If they want the prompt to say something else, change it with them; it's theirs.
-2. Pick the time. The default is the starting point; the user can name another. Then apply the jitter rule: never land on :00 or :30. When a time would land on the hour or half hour, move it 1–29 minutes earlier (the number of letters in the title, modulo 29, plus 1), and say so. Runs that start between 06:00 and 09:00 Pacific time can be delayed: convert the job's time to Pacific, and if it falls in that window, say so and keep it unless they'd rather move it.
+2. Pick the time. The default is the starting point; the user can name another. Then apply the jitter rule: never land on :00 or :30. When a time would land on the hour or half hour, move it 1–29 minutes earlier (the number of letters in the title, spaces not counted, modulo 29, plus 1), and say so. Runs that start between 06:00 and 09:00 Pacific time can be delayed: convert the job's time to Pacific, and if it falls in that window, say so and keep it unless they'd rather move it.
 3. `create_trigger` with:
    - `name`: the title.
    - `prompt`: the prompt.
@@ -43,7 +43,7 @@ Then, for each job they want:
    - Leave `permission_mode` unset.
 4. Set the model they chose: `update_trigger` with the new task's id and `model: <the id>`. This is their request from the walk, not the skill's. If the id is rejected, say so, leave the job on the model it inherited, and carry on.
 5. Tell the user, in one sentence, which model the job runs on and which approval setting it got, and that automatic approval can be turned on in the task's settings if the organization allows it. The setting is `derived_state.permission_mode` in the result: `auto` means runs go ahead on their own; absent means a run stops when an action needs approval, and nobody is there to approve a scheduled run.
-6. When the result lists the task's connectors (`mcp_connections`), check that the backend connector named by Board is among them; if it isn't, say so: attach the connector to this session and create the job again, or every run will fail its ready check. Either way, the proof is a run: offer `fire_trigger` (Running a job now) and read its ready check.
+6. When the result lists the task's connectors (`mcp_connections`), check that the backend connector named by Board is among them; if it isn't, say so: attach the connector to this session and create the job again, or every run will fail its ready check. Either way, the proof is a run, once `ntm-user` is installed: offer `fire_trigger` (Running a job now) then, and read its ready check.
 
 ## Connectors
 

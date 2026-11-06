@@ -65,16 +65,16 @@ The span is from `TODAY` to the end of the week ahead as Planning defines it (Fr
 
 ## In chat
 
-Only in chat, with the user. The span is what they name, or the `--auto week` span when they name none, or today when they say "today". The rules above are your defaults, not their limits: the user has the final say. Advise them when something looks like a problem, such as a blocked chain that can't finish in the span, then do what they decide.
+Only in chat, with the user. The span is what they name, or the `--auto week` span when they name none (next week when a day or less of this one is left), or today when they say "today". Scope words ("the garage") match by project, parent, label or title; when the words aren't enough to plan from, ask. The rules above are your defaults, not their limits: the user has the final say. Advise them when something looks like a problem, such as a blocked chain that can't finish in the span, then do what they decide.
 
 1. Show the span as it stands: each day's tickets, and which days are paused.
-2. Go on what they said. If it isn't enough to plan from, ask once what they want the span to be about; they may name a project, a goal or a mood, or just say "reset it".
+2. Go on what they said. If it isn't enough to plan from, ask what they want the span to be about; they may name a project, a goal or a mood, or just say "reset it".
 3. Propose a plan, leaning toward what they asked for, and keep revising until they approve. Any open ticket can move, including one already dated later in the week; say which day it leaves empty. Every ticket the plan bumps off a day gets its date cleared, unless the user asks to move it to a later day. Days they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears, including dates they set themselves. When they approve, write them, with `set planned date` and `clear planned date`. Return the saved plan as Result says, marking days they chose to leave empty `left open`.
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each planned ticket on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best guess at how long it takes. For any ticket this run picked, put its one-line reason on the next line, indented.
+Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Typed in chat, present it as the conventions' "Talking to the user about tickets" says. Write each planned ticket on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best guess at how long it takes. For any ticket this run picked, put its one-line reason on the next line, indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines for each day in order, `<date>: paused` for a paused day and `<date>: nothing to plan` for a day nothing qualified for.
 - `--auto day`, or today in chat: the lines for today; when nothing qualifies, `No task today: nothing to plan.`

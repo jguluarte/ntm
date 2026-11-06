@@ -25,7 +25,7 @@ The backend to use. Without one, ask (see The backend).
 
 Ask what they keep tasks in today. If they're undecided, offer the three choices in one line: Linear (free for individuals; the guide most used), Claude Docs (no ticket system; Claude keeps the board in one doc; untested, and heavier per run), or their own backend, which they describe.
 
-If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-board FAILED: <backend> connector not attached`.
+If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Read the chosen backend's guide (`references/linear.md` or `references/claude-docs.md` under `ntm:conventions`) now, since the settings don't name it yet. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-board FAILED: <backend> connector not attached`.
 
 ### Linear
 

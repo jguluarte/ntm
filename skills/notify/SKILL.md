@@ -21,7 +21,7 @@ Sends a notification to the user's phone. Any scheduled task or workflow can use
 
 ## Channel
 
-Load `ntm-user:settings` by name and read Notifications. Its Channel line says which section below applies: `pushover` or `claude-push`. Anything else written there is how the user wants to be notified (quiet hours, priorities, a different app token per reminder, …): follow it as written. A per-reminder token written in Notifications is chosen by `--job`; without `--job`, the default token. With `--app-token` and `--user-key`, the channel is Pushover with those keys, whatever Notifications says. With neither a channel nor those two, return `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
+Load `ntm-user:settings` by name and read Notifications. Its Channel line says which section below applies: `pushover` or `claude-push`. Anything else written there is how the user wants to be notified (quiet hours, priorities, a different app token per reminder, …): follow it as written. A per-reminder token is a line `Pushover app token for <job>: …` in Notifications, chosen by `--job`; without `--job`, or with no such line, the default token. With `--app-token` and `--user-key`, the channel is Pushover with those keys, whatever Notifications says. With neither a channel nor those two, return `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
 
 A linked ticket arrives in `message` as the conventions' "Talking to the user about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it as that section says.
 

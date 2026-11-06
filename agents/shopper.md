@@ -44,7 +44,7 @@ Read the ticket with `read ticket` and its comments with `read comments`, and no
 
 - The exact item, including model number and variant. A different variant is a different item.
 - The condition: Condition from Shopping, unless the ticket says otherwise.
-- The target price, and any notes on what counts as acceptable.
+- The target price, from the ticket's description or, failing that, a comment, and any notes on what counts as acceptable.
 - Any stores the ticket or the user's comments name as places to buy.
 - Every comment that starts with "Skip:". Each records a sale the user chose to pass on.
 - The comment that starts with "Stores:", if there is one: its id, trusted stores and their domains, "Not used" entries, and last full search date.

@@ -23,7 +23,7 @@ Profanity: <yes or no>
 
 ### Motifs
 - <one recurring bit per line, each a short name>
-Repeat limit: <not in the last eight messages, unless the user says otherwise>
+Repeat limit: <not in the last twenty messages, unless the user says otherwise>
 
 ### Off limits
 What the style never rewrites or jokes about: ticket ids, titles, planned dates, counts and names are carried as given. <anything the user adds>
@@ -89,7 +89,7 @@ Then the climb rule in one line, such as "harder each day a ticket carries over,
 
 Recurring bits a line can be built from, one per line: from the theme's world, or, with a plain register, from their own life (the pets, the house, the hobby, the commute). Propose a list; they add, cut and replace. Each is a short name the message history records exactly. With brevity, fewer is fine: each is a word the line can carry. Empty is fine too.
 
-The repeat limit says how long a motif rests before it comes back: "not in the last eight messages" unless they say otherwise.
+The repeat limit says how long a motif rests before it comes back: "not in the last twenty messages" unless they say otherwise (three reminders a day go through motifs fast).
 
 ### Off limits
 
@@ -128,7 +128,7 @@ Back to Everyday once the ticket closes.
 - the cat
 - the garden
 - the long walk
-Repeat limit: not in the last eight messages.
+Repeat limit: not in the last twenty messages.
 
 ### Off limits
 

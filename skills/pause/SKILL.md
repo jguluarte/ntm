@@ -17,7 +17,7 @@ Read it with the guide's `read note`. A missing note, or one with no pause lines
 
 A line whose dates have no year is invalid. Whenever the note is read, for any reason, ignore those lines and remove them on the next save.
 
-To save, use the guide's `write note` and change only the lines under `## Pauses`, with `None.` if nothing is left. Pauses never overlap: before saving, merge any that overlap into one line covering all their days, with their reasons joined by `; ` in start-date order. When the note is missing, `write note` creates it, with the `## Pauses` heading.
+To save, use the guide's `write note` with the whole note, only the lines under `## Pauses` changed (`None.` if nothing is left); when the note is missing, the content is the `## Pauses` heading and the lines. Pauses never overlap: before saving, merge any that overlap into one line covering all their days, with their reasons joined by `; ` in start-date order. When the note is missing, `write note` creates it, with the `## Pauses` heading.
 
 ## Usage
 
@@ -35,7 +35,7 @@ Dates passed to `--check` can be in any form a person would write (`2026-10-15`,
 
 ## Dates
 
-Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range covers both its start and end days. A weekday name means the coming one (after today); "next <weekday>" means that weekday of next week (weeks start on Monday); a date without a year is the next one. Show the resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no confirmation round-trip before saving.
+Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range covers both its start and end days. A weekday name means the next one, today included when today is that day; "next <weekday>" means that weekday of next week (weeks start on Monday); a date without a year is the next one. Show the resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no confirmation round-trip before saving.
 
 ## With `--check`
 
@@ -47,7 +47,7 @@ Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range co
 If a job calls this without `--check`, change nothing and say this needs a chat with the user.
 
 1. Read the note. Drop every pause that ended before `TODAY` and every invalid line, and tell the user which ones went.
-2. Show the user the remaining pauses, then make the changes they ask for, if any. A new pause gets a short reason in the user's words, or `paused` if they give none. To end a range early, set its end to the last paused day; if that's before `TODAY` (as with ending it today), remove the line.
+2. Show the user the remaining pauses, then make the changes they ask for, if any, without an approval round-trip: they said what they want. When a day they pause holds planned work, clear those dates and load `ntm:plan` to replan the rest of the week with them, in chat. A new pause gets a short reason in the user's words, or `paused` if they give none. To end a range early, set its end to the last paused day; if that's before `TODAY` (as with ending it today), remove the line.
 3. If anything changed, step 1 included, save and show the user the saved list.
 
 ## Result

@@ -51,7 +51,7 @@ Every rule below exists so that those skills, and any agent working on the board
 - **Board:** Board name from Board in your settings, with Board id where the backend needs it. Ticket ids use Ticket prefix.
 - **Ticket URLs:** use the ticket's own `url` field, one of the standard fields.
 - **Scope:** the user is the only person on the board. Consider every ticket in it, regardless of assignee. Never filter by assignee unless explicitly asked.
-- **Chat, jobs and agents:** a skill typed in chat runs in the chat. The reminder skills and the price watch hand their work to the plugin's agents (planner, messenger, shopper), in a job or in chat alike; each of those skills says what it hands over and what to do when the agent isn't available.
+- **Chat, jobs and agents:** a skill typed in chat runs in the chat. The reminder skills, `completed --notify` and the price watch hand their work to the plugin's agents (planner, messenger, shopper), in a job or in chat alike; each says what it hands over. When an agent isn't available in the session, read its file from the installed plugin and do what it says yourself, with the same request: `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin may sit under a versioned folder; the two `-path` tests find it either way). One copy of each procedure, either way; say nothing to the user about which way it ran.
 - **Automations:** if the backend auto-closes a parent when its last sub-ticket closes, or sub-tickets when their parent closes, the backend guide says so; `ntm:fix-todo-list` accounts for it.
 
 ## Talking to the user about tickets

@@ -13,7 +13,7 @@ description: Reports what the user got done on their ntm board over a span of ti
 
 What to look at is a description in plain words:
 
-- **Span** (required): such as "the last 7 days", "this month" or "since Oct 1".
+- **Span** (required): a number of days ending today, today included. "The last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month had (31 at the start of November, 28 or 29 at the start of March); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
 - **Open tickets** (optional): ask for them ("and what's still open") to add a Still open section.
 - **Canceled or duplicate tickets** (optional): ask for them to add their own sections.
 
@@ -26,7 +26,7 @@ Without a span, ask the user what span they want. Never assume one.
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says, and work out the span, which ends now.
+2. Compute `TODAY` as the conventions' Dates section says, and work out the span as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tickets, adding canceled and duplicate ones only when the request asks for them. Add the guide's `fetch open`, keeping excluded tickets, only when it asks for open tickets.
 4. Keep the tickets completed in the span, in the timezone from About you in your settings. Done tickets of any kind count, price watch buys included.
 5. When the description narrows the scope, keep only the tickets that match it, by project, parent, label or title.
@@ -35,7 +35,7 @@ If any step fails, stop and return `Completed FAILED: <what failed>`.
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each ticket as `<id> <title> <url>`, followed by its date.
+Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each ticket as `<id> <title> <url> <date>`, the date on the same line: the completion date for Done, the planned date for Still open.
 
 - `<first day> to <last day>`, plus the scope when it's narrowed.
 - `Done (<count>):` the tickets completed in the span, oldest first, with sub-tickets indented under their parent when it's listed too; or `Done: none`.
@@ -51,8 +51,8 @@ With `--notify`, after the result, ask the messenger agent, with the beat `compl
 ```
 beat: completed
 job: Completed this week
-span: 2026-10-30 to 2026-11-05
+span: 2026-10-31 to 2026-11-06
 done: ABC-12 Order storage boxes <url>
 ```
 
-When the messenger agent isn't available in this session, read `agents/messenger.md` from the installed plugin (`find ~/.claude/plugins -path '*/ntm/agents/messenger.md'`) and do what it says yourself. It returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and nothing else; otherwise one short line on what happened. A `… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.
+When the messenger agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and nothing else; otherwise one short line on what happened. A `… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.

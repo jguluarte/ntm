@@ -80,7 +80,7 @@ How the price watch judges a deal. Read by `ntm:price-watch` and the shopper age
 - Pushover app token: <!-- only with pushover -->
 - Pushover user key: <!-- only with pushover -->
 
-<!-- Anything about how you want to be notified, as you'd say it: a different app token per reminder, quiet hours, priorities. ntm:notify follows what's written here. -->
+<!-- Anything about how you want to be notified, as you'd say it: quiet hours, priorities. A different app token for one reminder goes on its own line: `Pushover app token for Morning reminder: …`. ntm:notify follows what's written here. -->
 
 ## Deviations
 

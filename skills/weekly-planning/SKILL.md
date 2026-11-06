@@ -5,7 +5,7 @@ description: The weekly planning for the user's ntm board: closes out the week (
 
 # ntm:weekly-planning
 
-The weekly planning: close out the week and start the next one knowing what's coming. Two agents do the work: the planner gathers the facts, the messenger writes and sends the message. This skill names the request, the handoff and what ends the run. When an agent isn't available in this session, read its file from the installed plugin and do what it says yourself, with the same request: `find ~/.claude/plugins -path '*/ntm/agents/<name>.md'`. One copy of each procedure, either way; say nothing to the user about which way it ran.
+The weekly planning: close out the week and start the next one knowing what's coming. Two agents do the work: the planner gathers the facts, the messenger writes and sends the message. This skill names the request, the handoff and what ends the run. When an agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
 Run `/ntm:ready-check --notify-failure --job "Weekly planning"`.

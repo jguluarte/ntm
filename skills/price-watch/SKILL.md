@@ -5,7 +5,7 @@ description: The price watch for the user's ntm board, which watched items are a
 
 # ntm:price-watch
 
-The price watch: which watched items are a good deal today? One shopper per item does the checking; this skill finds the watched tickets, hands each to a shopper, alerts on the deals and handles the user's replies. The shopper's procedure is `agents/shopper.md`; nothing here restates it. When the shopper agent isn't available in this session, read that file from the installed plugin (`find ~/.claude/plugins -path '*/ntm/agents/shopper.md'`) and do what it says yourself, one ticket at a time, with the same two values. Say nothing to the user about which way it ran.
+The price watch: which watched items are a good deal today? One shopper per item does the checking; this skill finds the watched tickets, hands each to a shopper, alerts on the deals and handles the user's replies. The shopper's procedure is `agents/shopper.md`; nothing here restates it. When the shopper agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read that file from the installed plugin and follow it yourself, one ticket at a time, with the same two values.
 
 The user vets what goes on the watch: every watched ticket is a real item they want, and the stores they name are ones they trust. So the shopper's results are reported as they come, and anything it couldn't do reaches the user to fix; nobody works around a block.
 
@@ -38,11 +38,11 @@ A check that fails, returns `Shopper FAILED`, or returns no RESULT line means th
 # 5: The alert
 If no result is DEAL, send nothing and go straight to FINAL REPLY. A DEAL whose DEAL line lacks a price, store or product link isn't usable: don't alert on it, and report it as a failed check.
 
-Use `/ntm:notify --job "Price watch"` for a short overview of the DEAL results. Title: "Good price: <item> <price>", or "Price watch: N deals" for more than one. Message: one short line per item with the item, price and store, adding the condition when it isn't the one from Condition under Shopping, and "(membership)" or "(coupon)" when the price needs one, then "Details in the Claude thread." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing was sent yet: the final reply is everything after that line, verbatim, followed by anything else FINAL REPLY calls for.
+Use `/ntm:notify --job "Price watch"` for a short overview of the DEAL results. Title: "Good price: <item> <price>", or "Price watch: N deals" for more than one. Message: one short line per item with the item, price and store, adding the condition when it isn't the one from Condition under Shopping, and "(membership)" or "(coupon)" when the price needs one, then "Details in the run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing was sent yet: the final reply is everything after that line, verbatim, followed by anything else FINAL REPLY calls for.
 
-Then post the full details in this thread with SendUserMessage, from the DEAL results. One section per item, starting with a few words for the item and its ticket id in parentheses, linked to its `url` (the conventions' "Talking to the user about tickets"): the price and store with the product link, the marketplace seller if there is one, its condition, how it compares to the target and the usual price, any shipping, membership or coupon note, the sale end date, the other verified prices, and its CHECKED line. End with: Reply 'skip this sale' to pass on one of these, or say if a store should be vouched for or blocked.
+Then the full details, from the DEAL results, go in the FINAL REPLY, which the job's completion push carries: One section per item, starting with a few words for the item and its ticket id in parentheses, linked to its `url` (the conventions' "Talking to the user about tickets"): the price and store with the product link, the marketplace seller if there is one, its condition, how it compares to the target and the usual price, any shipping, membership or coupon note, the sale end date, the other verified prices, and its CHECKED line. End with: Reply 'skip this sale' to pass on one of these, or say if a store should be vouched for or blocked.
 
-If the push fails, still post in this thread and say the push failed in the final reply. If the thread post fails, put the full details in the final reply instead.
+If the push fails, say so in the final reply; the details are there either way.
 
 # The user's replies
 The user may reply in this thread after the run, possibly on a later day. If the alert had more than one item and they don't say which, ask before changing anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
@@ -58,7 +58,7 @@ If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is
 
 If step 3 found Amazon alerts to sync, end with one line: "Run /ntm:amazon-alerts on your computer:" then the items needing an alert and the closed items whose alert needs removing, each as a few words with its ticket id. Leave this line out when nothing needs syncing.
 
-**One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above.
+**One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above. Add that Amazon isn't checked here; its own alert covers it.
 
 # ERROR HANDLING
 If step 2 fails, end with what it returned and nothing more. A check failing isn't an error; FINAL REPLY covers it. For any other error, don't use the notification channel: end the run with `Price-watch FAILED: <the error, stated plainly>`; the job's own completion push carries it to the user.

@@ -27,7 +27,7 @@ If any step fails, stop and return `Todo-list FAILED: <what failed>`.
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write one ticket per line, oldest planned date first; same date: started first, then by id. Each line is `<id> <title> <url> <planned date> <status> [label, label]`. The brackets hold the ticket's labels, inherited ones included, and stay empty (`[]`) when it has none. When the ticket's status is the one Board in your settings names as started, add `(started)` after the status, before the labels.
+Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write one ticket per line, oldest planned date first; same date: started first, then by id. Each line is `<id> <title> <url> <planned date> <status> <estimate or -> [label, label]`, with `(started)` after the status when it's the started one. The brackets hold the ticket's labels, inherited ones included, and stay empty (`[]`) when it has none. When the ticket's status is the one Board in your settings names as started, add `(started)` after the status, before the labels.
 
 Typed in chat, present the result as the conventions' "Talking to the user about tickets" says (natural words, the id in parentheses); the raw lines are for skills and jobs.
 

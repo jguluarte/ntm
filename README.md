@@ -9,7 +9,7 @@ The price watch is there to bridge the impulse to buy. Sometimes we buy right aw
 ## Two plugins
 
 - **ntm** is the behaviour: the skills below, three agents (planner, messenger, shopper) that own the procedures, and the prompts for the scheduled tasks. It holds nothing of yours, so it installs from a marketplace or a zip and updates like any plugin.
-- **ntm-user** is yours. You build it with your own agent during `/ntm:configure`, and it holds your unique settings and style: `ntm-user:settings` (every value you agreed to: where your board is, your label names, how planning and shopping work, how reminders reach you, anything you do differently) and `ntm-user:style` (how reminders talk to you). Keep it private; it can hold your Pushover keys.
+- **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your unique settings and style: `ntm-user:settings` (every value you agreed to: where your board is, your label names, how planning and shopping work, how reminders reach you, anything you do differently) and `ntm-user:style` (how reminders talk to you). Keep it private; it can hold your Pushover keys.
 
 The trigger word is the plugin's name, `ntm`; to use another, fork the template and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in capitals, in every file and in `plugin.json`'s `name`), then create your jobs from that copy.
 
@@ -17,7 +17,7 @@ The trigger word is the plugin's name, `ntm`; to use another, fork the template 
 
 1. Install ntm. Connect whatever system holds your tickets, todos or reminders: Linear and Claude Docs are the two shipped guides (Linear from the Connectors tab; Claude Docs needs no connector), and your own backend is described during setup.
 2. Open a chat and run `/ntm:configure`. It asks about you, your board, notifications, style and schedule, creates your scheduled tasks, and hands you `ntm-user.plugin` to install.
-3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop once on a throwaway ticket and removes it.
+3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop once on a throwaway ticket, then cancels the ticket and empties its note.
 
 ## Skills
 

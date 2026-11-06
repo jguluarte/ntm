@@ -5,7 +5,7 @@ description: Rules for reading and writing the user's ntm board, in backend-neut
 
 # ntm:conventions
 
-Version: 0.2.0
+Version: 0.2.1
 Template source: none yet
 
 This is not meant to cover every edge case. It's a general guide to working with the user's board; the other skills and the jobs keep the board self-healing.

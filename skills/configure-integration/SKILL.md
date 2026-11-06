@@ -25,11 +25,20 @@ The backend to use. Without one, ask (see The backend).
 
 Ask what they keep tasks in today. If they're undecided, offer the three choices in one line: Linear (free for individuals, and the tested path), Claude Docs (no ticket system; Claude keeps the board in one doc; untested, and heavier per run), or their own backend, which they describe.
 
-Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-integration FAILED: <backend> connector not attached`.
+If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-integration FAILED: <backend> connector not attached`.
 
 ### Linear
 
 The tested path. Backend is `linear`.
+
+**Starting from nothing.** If they don't have Linear yet, these happen outside the chat, on their side; walk them through in order and wait for "done" before step 1:
+
+1. Sign up at linear.app. The free plan is enough: one workspace, unlimited issues.
+2. The new workspace comes with one team; that team is the board. Its key (the few capital letters Linear asks for when naming it, `HOME` for `HOME-12`) becomes Ticket prefix, so pick one they'll be happy reading in reminders.
+3. A new team's statuses already match the classes: Backlog, Todo, In Progress, Done, Canceled and Duplicate. Nothing to change. If they want a "can't move right now" status, they add one named Blocked in the team's workflow settings; otherwise the `pending-shipment` label and blocked-by links cover that ground.
+4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add Linear and sign in to the workspace. Then come back here and say so.
+
+Labels, the price watch project and the notes don't need making by hand: Labels and Notes below create them.
 
 1. **The board.** `list boards`; propose the team. Board name is its name, Board id its id, Ticket prefix its issue key.
 2. **The price watch project.** `list projects`; ask which project holds purchases waiting for a good price, or none (none = price watch off). If they want one that doesn't exist yet, settle its name now; it's created in Labels, once the project labels exist.

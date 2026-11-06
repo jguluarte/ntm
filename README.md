@@ -99,7 +99,7 @@ All of them in `ntm-user`: `ntm-user:settings` (About you, Todo list, Labels, Pl
 - **Your todo list** (Linear, Claude Docs, or your own): tickets, planned dates, labels and the notes above.
 - **Pushover**, when it's your channel: each reminder's title and message, with your app token and user key, over HTTPS from the run. With the claude-push channel nothing is sent; the scheduled task's own completion push carries the reminder.
 - **The web**: searches of store sites for the items you're watching (price watch only).
-- **Your browser**, for Amazon alert sync only: Claude's built-in browser, or your own through the Claude extension (Browser under Shopping in your settings).
+- **Your browser**, for Amazon alert sync only: Claude's built-in browser, or your own through the Claude extension (Amazon interface under Shopping in your settings).
 
 Nothing else leaves a run. No skill but `ntm:notify` sends anything.
 

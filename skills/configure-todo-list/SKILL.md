@@ -115,7 +115,7 @@ Only when a price watch project was chosen; otherwise skip and return no Shoppin
 - **Condition:** new, unless a ticket says otherwise.
 - **Delivery:** online only, to their country (from About you).
 - **A deal:** at or near the ticket's target, or well below the usual price. What gets them an alert.
-- **Browser:** the one `/ntm:sync-price-watch-to-amazon` uses: Claude's built-in browser, or their own browser through the Claude extension. Blank means whichever their Claude settings prefer.
+- **Amazon interface:** the one `/ntm:sync-price-watch-to-amazon` uses: Claude's built-in browser, or their own browser through the Claude extension. Blank means whichever their Claude settings prefer.
 
 Then ask, once: anything else about how they shop? Stores they always or never use go in the price watch stores note (Seed above), not here; this is for what counts beyond that. Capture it as written below the lines; "nothing" leaves it blank.
 
@@ -177,12 +177,12 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Browser by `ntm:sync-price-watch-to-amazon`.
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 - Condition: <default new>
 - Delivery: <default online only, to your country>
 - A deal: <default at or near the ticket's target, or well below the usual price>
-- Browser: <default blank>
+- Amazon interface: <default blank>
 
 <anything else about how they shop, as written; or nothing>
 ```

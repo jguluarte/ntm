@@ -1,0 +1,7 @@
+{
+  "name": "nudge",
+  "version": "0.1.0",
+  "description": "A personal task-nudging system: one planned task per day on your own ticket board, reminders in a voice you choose, weekly planning and cleanup, optional price watching. Run nudge:setup once to make it yours.",
+  "keywords": ["tasks", "reminders", "scheduling", "habits", "linear", "pushover"],
+  "license": "MIT"
+}

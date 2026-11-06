@@ -54,7 +54,7 @@ The user describes who is talking. Derive each section with them, in order, with
 - **When something keeps slipping:** their levels, in order, each with the name they give it and after how many earlier days it starts; then the climb rule in one line.
 - **Motifs:** recurring bits from the theme's world, one per line, each a short name the message history records exactly. Propose a list; they add, cut and replace. The repeat limit, or the default.
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke about.
-- **Examples:** one per level and one for nothing open. Ticket ids use Ticket prefix from Board in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when that isn't configured yet. The tasks in them are ordinary household ones. Write them, read them back, revise: if they chose humor, until they laugh at least once; otherwise until each reads like something they'd open.
+- **Examples:** one per level and one for nothing open. Ticket ids use Ticket prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when that isn't configured yet. The tasks in them are ordinary household ones. Write them, read them back, revise: if they chose humor, until they laugh at least once; otherwise until each reads like something they'd open.
 
 Take the theme as they describe it. Don't propose a named character, show, person or brand. If they want directions, offer kinds of character in a line each (a stern coach, a dry narrator, a game-show host), none of them named.
 

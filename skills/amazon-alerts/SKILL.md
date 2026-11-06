@@ -7,7 +7,7 @@ description: Amazon's side of the user's ntm price watch, does every watched ite
 
 This skill needs a browser on the user's computer: Claude in Chrome, connected to the chat it runs from. The user runs it themselves, from a session linked to that computer, whenever they like; no job runs it, and the price watch only says when a sync is due. It can be interactive: when you're not sure you have the right product, ask them.
 
-The price watch can't read Amazon, so Amazon deals on watched items reach the user through Amazon's own price alerts instead. This skill keeps those alerts in step with the board: every open watched item gets an alert or is marked as not on Amazon, and every closed one has its alert removed.
+The price watch can't read Amazon, so Amazon deals on watched items reach the user through Amazon's own price alerts instead. This skill keeps those alerts in step with the todo list: every open watched item gets an alert or is marked as not on Amazon, and every closed one has its alert removed.
 
 ## Labels
 
@@ -27,9 +27,9 @@ An open watched item **needs an alert** when it has neither label.
 
 ## 1: The rules and the browser
 
-Load `ntm:conventions` (the board's rules and your settings), then run `/ntm:ready-check`. If it fails, stop and give the user its result line.
+Load `ntm:conventions` (the list's rules and your settings), then run `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Price watch is on when Board in your settings names a price watch project. If it names none, end with `Amazon-alerts: price watch is off; Board in your settings names no price watch project. Name one with /ntm:settings.`
+Price watch is on when Todo list in your settings names a price watch project. If it names none, end with `Amazon-alerts: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
 
 Load the Claude in Chrome skill (`chrome-browser`) and follow it to load the Claude in Chrome tools. If that skill or those tools aren't available, or the browser isn't reachable, end with `Amazon-alerts FAILED: needs a browser on your computer. Run this from a chat on the computer where Chrome is running with the Claude extension connected.`
 
@@ -46,7 +46,7 @@ Tell the user in one short message what you're about to do, for example: "Settin
 
 ## 3: The alert steps
 
-Amazon's price-alert steps are recorded in the Amazon alert steps note, titled as Notes in Board in your settings says. Read it with the guide's `read note` and follow it for setting, checking, listing and removing alerts.
+Amazon's price-alert steps are recorded in the Amazon alert steps note, titled as Notes under Todo list in your settings says. Read it with the guide's `read note` and follow it for setting, checking, listing and removing alerts.
 
 If that note is missing, or the steps no longer work as it describes, learn them again: on the first item's product page (step 4), find how Amazon's site sets a price alert and where it lists your existing alerts, show the user what you found, and set that first alert with them watching. If Amazon's site no longer has a way to set a price alert from the website, stop: don't switch to another tracker on your own. Tell the user what you saw and ask how they want to go on. Once the steps work again, save them with `write note`, so the next run can follow them.
 
@@ -74,7 +74,7 @@ If the alert is already gone, just remove the label and say so in the comment. I
 
 ## 6: The report
 
-Writes follow the conventions' "Writing to the board" (retry once, then report). Dates are `TODAY`, computed as the conventions' Dates section says.
+Writes follow the conventions' "Writing to the todo list" (retry once, then report). Dates are `TODAY`, computed as the conventions' Dates section says.
 
 End with one short line on the outcome, then one line per item, worded the way the conventions' "Talking to the user about tickets" says:
 

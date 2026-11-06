@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Plans the user's ntm board by setting planned dates, at the rhythm Planning in their settings gives, and returns the plan. --auto week fills the week ahead and --auto day picks one task for today, unattended; anything else plans with the user in chat. Run by the planner agent for the morning and weekly planning, or by the user ("plan my week", "plan Thursday around the garage").
+description: Plans the user's todo list by setting planned dates, at the rhythm Planning in their settings gives, and returns the plan. --auto week fills the week ahead and --auto day picks one task for today, unattended; anything else plans with the user in chat. Run by the planner agent for the morning and weekly planning, or by the user ("plan my week", "plan Thursday around the garage").
 ---
 
 # ntm:plan
@@ -19,9 +19,9 @@ description: Plans the user's ntm board by setting planned dates, at the rhythm 
 
 ## Setup
 
-1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this user wants their board planned: rhythm, planning days, sizing, a day's worth, what's never picked, and anything else they wrote there.
+1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this user wants their todo list planned: rhythm, planning days, sizing, a day's worth, what's never picked, and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the board with the guide's `fetch open`, keeping excluded tickets, and work out which tickets are parents.
+3. Fetch the todo list with the guide's `fetch open`, keeping excluded tickets, and work out which tickets are parents.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 

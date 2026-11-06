@@ -1,6 +1,6 @@
 ---
 name: morning-reminder
-description: The morning reminder for the user's ntm board: what's on the table today. Carries stale planned work to today, plans today if it's empty, and sends the morning message in the user's style. Run by the "Morning reminder" job, or by hand ("run the morning reminder now").
+description: The morning reminder for the user's todo list: what's on the table today. Carries stale planned work to today, plans today if it's empty, and sends the morning message in the user's style. Run by the "Morning reminder" job, or by hand ("run the morning reminder now").
 ---
 
 # ntm:morning-reminder
@@ -28,10 +28,10 @@ job: Morning reminder
 <the planner's lines>
 ```
 
-It returns `Sent: <title>`, a delivery block, or a `… FAILED` line.
+It returns `Sent: <title>` (followed by `List:` lines when the push couldn't carry the list), a delivery block, or a `… FAILED` line.
 
 # FINAL REPLY
-When the messenger returned a delivery block, the final reply is the title line and the message, verbatim, then any `kept:` and `couldn't move:` lines from the planner as they came, and nothing else. Otherwise, unless reporting an error, end the run with one short line saying what happened, such as "Sent the morning reminder." or "Paused today; nothing sent.", then any `kept:` and `couldn't move:` lines. That line is for the Pushover case.
+When the messenger returned a delivery block, the final reply is the title line and the message, verbatim, then any `kept:` and `couldn't move:` lines from the planner as they came, and nothing else. Otherwise, unless reporting an error, end the run with one short line saying what happened, such as "Sent the morning reminder." or "Paused today; nothing sent.", then any `kept:` and `couldn't move:` lines. That line is for the Pushover case; when the messenger returned lines after `Sent:` (the list the push couldn't carry), they follow it.
 
 # ERROR HANDLING
 If step 1 fails, end with what the ready check returned, and nothing more; that is what reaches the user. For any later error, including a `… FAILED` line from the planner or the messenger, never use `/ntm:notify`. End the run with the error stated plainly in your final reply; the scheduled task's own completion push carries it.

@@ -1,6 +1,6 @@
 ---
 name: pause
-description: Pauses for the user's ntm board, the days when nothing gets planned automatically. See or change them in chat ("pause Friday", "unpause next week", "show my pauses"), or check whether days are paused.
+description: Pauses for the user's todo list, the days when nothing gets planned automatically. See or change them in chat ("pause Friday", "unpause next week", "show my pauses"), or check whether days are paused.
 ---
 
 # ntm:pause
@@ -11,7 +11,7 @@ A pause is a day or a date range when nothing new gets planned automatically. Wo
 
 ## Where pauses live
 
-The pauses note, titled as Notes in Board in your settings says, holds one line per pause under its `## Pauses` heading, sorted by start date. Each line is bare, with no list marker: `YYYY-MM-DD: <why>` for a single day, or `YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when there are none.
+The pauses note, titled as Notes under Todo list in your settings says, holds one line per pause under its `## Pauses` heading, sorted by start date. Each line is bare, with no list marker: `YYYY-MM-DD: <why>` for a single day, or `YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when there are none.
 
 Read it with the guide's `read note`. A missing note, or one with no pause lines, means there are no pauses. If the read itself fails, stop and return `Pause FAILED: <why>`, so a caller never takes an unreadable note for "not paused".
 

@@ -5,7 +5,7 @@ description: Shows the user's ntm settings (ntm-user:settings) and changes them:
 
 # ntm:settings
 
-`ntm-user:settings` holds every value the user agreed to: About you, Board, Labels, Planning, Shopping, Notifications, Deviations. It lives in the `ntm-user` plugin, which only this skill produces. Changing a value means a new `ntm-user.plugin` the user installs in place of the old one.
+`ntm-user:settings` holds every value the user agreed to: About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations. It lives in the `ntm-user` plugin, which only this skill produces. Changing a value means a new `ntm-user.plugin` the user installs in place of the old one.
 
 ## Usage
 

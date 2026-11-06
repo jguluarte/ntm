@@ -97,7 +97,7 @@ What the style never rewrites or jokes about. Ticket ids, titles, planned dates,
 
 ### Examples
 
-One per level, in the level's name, and one for "nothing open" (the evening when everything closed: a win for the day, not the year). Ticket ids use the user's Ticket prefix from Board in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when neither exists yet. The tasks in them are ordinary household ones. They show how each level lands, how long it runs, and how a motif ties to the subject. The procedure borrows their energy and never their sentences.
+One per level, in the level's name, and one for "nothing open" (the evening when everything closed: a win for the day, not the year). Ticket ids use the user's Ticket prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in this conversation, or `ABC-12` style when neither exists yet. The tasks in them are ordinary household ones. They show how each level lands, how long it runs, and how a motif ties to the subject. The procedure borrows their energy and never their sentences.
 
 ## A plain example
 

@@ -82,7 +82,7 @@ Read the Profile by heading. A section left empty means: Register, plain; What g
 
 Load `ntm:conventions`; it reads your settings and names the backend guide whose `read note` and `write note` are used here.
 
-**History.** The message history note, titled as Notes under Board in your settings says, keeps recent lines in its `jsonl` code block, newest first, one JSON object per line: `{"date": "YYYY-MM-DD", "motif": "…", "line": "…"}`. Its first line is `Keep: <n> entries or <n> weeks`. Read it with `read note`. If the note is missing, or the block is empty, there's no history yet. If the board can't be reached, write the line without history and skip saving.
+**History.** The message history note, titled as Notes under Todo list in your settings says, keeps recent lines in its `jsonl` code block, newest first, one JSON object per line: `{"date": "YYYY-MM-DD", "motif": "…", "line": "…"}`. Its first line is `Keep: <n> entries or <n> weeks`. Read it with `read note`. If the note is missing, or the block is empty, there's no history yet. If the todo list can't be reached, write the line without history and skip saving.
 
 **Motifs.** Pick a motif when the Profile lists any; a line that uses none records `"motif": "none"`. Take the motifs that suit the tone and drop any used within the repeat limit (the newest twenty entries unless the Profile says otherwise). Among the rest, take one not in the history at all when there is one. Go off the list when nothing on it suits, or every motif that suits was used within the limit; give an off-list motif a short name. Build the line from that motif and the message's own subject.
 

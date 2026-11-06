@@ -1,6 +1,6 @@
 ---
 name: completed
-description: Reports what the user got done on their ntm board over a span of time they or a job describes ("what did I finish last week", "what got done this month"), and, when asked, what's still open from it; --notify sends it as a message in the user's style. Run by the planner agent, by the "Completed this week" job, or by the user.
+description: Reports what the user got done on their todo list over a span of time they or a job describes ("what did I finish last week", "what got done this month"), and, when asked, what's still open from it; --notify sends it as a message in the user's style. Run by the planner agent, by the "Completed this week" job, or by the user.
 ---
 
 # ntm:completed
@@ -13,7 +13,7 @@ description: Reports what the user got done on their ntm board over a span of ti
 
 What to look at is a description in plain words:
 
-- **Span** (required): a number of days ending today, today included. "The last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month had (31 at the start of November, 28 or 29 at the start of March); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
+- **Span** (required): a number of days ending today, today included. "The last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month of that year had (31 at the start of November; 28 or 29 at the start of March, by that year's February); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
 - **Open tickets** (optional): ask for them ("and what's still open") to add a Still open section.
 - **Canceled or duplicate tickets** (optional): ask for them to add their own sections.
 
@@ -55,4 +55,4 @@ span: 2026-10-31 to 2026-11-06
 done: ABC-12 Order storage boxes <url>
 ```
 
-When the messenger agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and nothing else; otherwise one short line on what happened. A `… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.
+When the messenger agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and nothing else; otherwise one short line on what happened, then any lines the messenger returned after `Sent:` (the list the push couldn't carry). A `… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.

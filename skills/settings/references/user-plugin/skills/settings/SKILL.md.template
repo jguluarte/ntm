@@ -13,16 +13,16 @@ Each section is read by heading. Every line is something you agreed to during se
 - Timezone: <!-- IANA zone, e.g. America/Chicago. Every date in the system is computed in it -->
 - Country and currency: <!-- for price watch, e.g. US, USD -->
 
-## Board
+## Todo list
 
 - Backend: <!-- linear | claude-docs | describe your own below -->
-- Board name: <!-- the team, doc, project or workspace that holds every ticket, as the backend names it -->
-- Board id: <!-- if the backend needs one for lookups; blank otherwise -->
+- List name: <!-- the team, doc, project or workspace that holds every ticket, as the backend names it -->
+- List id: <!-- if the backend needs one for lookups; blank otherwise -->
 - Ticket prefix: <!-- e.g. HOME for HOME-12; blank where ids carry none -->
-- Statuses — the board's real names for each class:
+- Statuses — the list's real names for each class:
   - plannable: <!-- usually three: a backlog, a to-do and an in-progress status -->
   - started: <!-- which of the plannable statuses means work has begun -->
-  - blocked: <!-- open, but you can't move it right now; blank if the board has none -->
+  - blocked: <!-- open, but you can't move it right now; blank if the todo list has none -->
   - done:
   - canceled:
   - duplicate:
@@ -34,11 +34,11 @@ Each section is read by heading. Every line is something you agreed to during se
   - price watch stores: Price watch stores
   - Amazon alert steps: Amazon alert steps
 
-<!-- If your backend isn't linear or claude-docs, describe here how to do each operation ntm:conventions' contract lists, in your words. /ntm:configure-board walks through them with you. -->
+<!-- If your backend isn't linear or claude-docs, describe here how to do each operation ntm:conventions' contract lists, in your words. /ntm:configure-todo-list walks through them with you. -->
 
 ## Labels
 
-The real name on your board for each label the system uses.
+The real name on your todo list for each label the system uses.
 
 - Ticket labels:
   - no-autoschedule: no-autoschedule
@@ -51,12 +51,12 @@ The real name on your board for each label the system uses.
 
 ## Planning
 
-How the planner works your board. Read by `ntm:plan`, the planner agent and the weekly planning.
+How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning.
 
 - Rhythm: one task per weekday <!-- or: one per day; two per weekday; whatever you keep up with -->
 - Planning days: weekdays <!-- the days that get a task automatically -->
 - Plans ahead: one week <!-- how far the weekly planning plans: one week (Monday to Friday); two weeks; the month -->
-- Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day <!-- what an estimate means on your board; the planner guesses from the title when a ticket has none -->
+- Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day <!-- what an estimate means on your todo list; the planner guesses from the title when a ticket has none -->
 - A day's worth: about an hour <!-- what the planner aims for when it picks -->
 - Never picks: no-autoschedule, pending-shipment, blocked status <!-- the exclusions, each checked on the ticket and its ancestors -->
 - Parents: plan the open sub-tickets, never the parent

@@ -1,11 +1,11 @@
 ---
 name: fix-todo-list
-description: Tidies the user's ntm board by closing parents whose sub-tickets are all closed and clearing stale planned dates, then returns what it changed. Run by the weekly planning job, or by the user ("fix my todo list", "tidy my board").
+description: Tidies the user's todo list by closing parents whose sub-tickets are all closed and clearing stale planned dates, then returns what it changed. Run by the weekly planning job, or by the user ("fix my todo list", "tidy my todo list").
 ---
 
 # ntm:fix-todo-list
 
-Fixes board state that's always safe to fix, and returns what it changed. It never notifies anyone: whoever called it decides what to tell the user.
+Fixes todo list state that's always safe to fix, and returns what it changed. It never notifies anyone: whoever called it decides what to tell the user.
 
 ## Usage
 
@@ -36,7 +36,7 @@ tickets where status is open
 
 Fetch the closed tickets that have a parent (the guide's `fetch closed`, with the canceled and duplicate statuses as well as done, keeping those with a parent id). Check each distinct parent that's among the open tickets: read it with `read ticket`, and if it's still open, list its sub-tickets with the guide's `list sub-tickets`. If every one is closed, set the parent to done with `set status` and change nothing else.
 
-Whenever you close a parent, check its own parent the same way, even if you already checked it this run, so a chain closes in one run. The board's automation may close that parent as soon as you close its last sub-ticket; the guide says whether the backend does that. If `read ticket` shows it's already closed, don't write it, report it as `Closed` like your own closes, and carry on up the chain from it. Any other parent found already closed is skipped without a report, and a parent whose close failed counts as still open.
+Whenever you close a parent, check its own parent the same way, even if you already checked it this run, so a chain closes in one run. The list's automation may close that parent as soon as you close its last sub-ticket; the guide says whether the backend does that. If `read ticket` shows it's already closed, don't write it, report it as `Closed` like your own closes, and carry on up the chain from it. Any other parent found already closed is skipped without a report, and a parent whose close failed counts as still open.
 
 ### 2. Clear stale dates
 

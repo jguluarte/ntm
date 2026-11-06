@@ -11,7 +11,7 @@ It was built by one person for the places that got in their way: starting tasks,
 
 ## First steps
 
-1. Install ntm. On the Connectors tab, connect Linear if that's your board (free for individuals, and the tested path); Claude Docs needs no connector.
+1. Install ntm. On the Connectors tab, connect Linear if that's your board (free for individuals, and the tested path; no Linear yet? `/ntm:configure` walks you through signing up); Claude Docs needs no connector.
 2. Open a chat and run `/ntm:configure`. It asks about the trigger word, you, your board, notifications, style and schedule. It creates your scheduled tasks and hands you `ntm-user.plugin` to install.
 3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop once on a throwaway ticket and removes it.
 

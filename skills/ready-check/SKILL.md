@@ -8,11 +8,10 @@ description: Proves this session can run an ntm job: the user's settings load, t
 ## Usage
 
 ```
-/ntm:ready-check [--notify-failure] [--job "<name>"]
+/ntm:ready-check [--notify-failure "<job name>"]
 ```
 
-- `--notify-failure`: on failure, send the result through `ntm:notify`. Without it, nothing is sent.
-- `--job "<name>"`: the job that called this check, such as `"Morning reminder"`. Defaults to `"Ready check"`.
+- `--notify-failure "<job name>"`: on failure, send the result through `ntm:notify`, from the job named, such as `"Morning reminder"`. Without it, nothing is sent.
 
 ## The check
 
@@ -45,7 +44,7 @@ End with one result line, after the notification if there is one:
 
 ## With `--notify-failure`
 
-When the check fails, load `ntm:notify` and run `/ntm:notify --job "<job name>" --title "<List name> — <job name> failed" --message "<job name>: <failure>. <fix>"`.
+When the check fails, load `ntm:notify` and run `/ntm:notify --from "<job name>" --title "<List name> — <job name> failed" --message "<job name>: <failure>. <fix>"`.
 
 This is the one error that may use the notification channel; a job reports every later error in its final reply instead. If `ntm:notify` can't be loaded or the send fails, append `(notification not sent: <reason>)` to the result line.
 

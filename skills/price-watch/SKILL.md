@@ -15,7 +15,7 @@ Run the same way by the job and by hand. The job runs every day, paused days inc
 Load `ntm:conventions` before anything else: it holds the list's rules and your settings, and every later step follows them. Compute `TODAY` as the conventions' Dates section says, unless whoever loaded this skill gave a date.
 
 # 2: Ready check
-Run by the job: `/ntm:ready-check --notify-failure --job "Price watch"`. Typed in chat: a plain `/ntm:ready-check`.
+Run by the job: `/ntm:ready-check --notify-failure "Price watch"`. Typed in chat: a plain `/ntm:ready-check`.
 **If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch
@@ -38,7 +38,7 @@ A check that fails, returns `Shopper FAILED`, or returns no RESULT line means th
 # 5: The alert
 If no result is DEAL, send nothing and go straight to FINAL REPLY. A DEAL whose DEAL line lacks a price, store or product link isn't usable: don't alert on it, and report it as a failed check.
 
-Use `/ntm:notify --job "Price watch"` for a short overview of the DEAL results. Title: "Good price: <item> <price>", or "Price watch: N deals" for more than one. Message: one short line per item with the item, price and store, adding the condition when it isn't the one from Condition under Shopping, and "(membership)" or "(coupon)" when the price needs one, then "Details in the run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing was sent yet: the final reply is everything after that line, verbatim, followed by anything else FINAL REPLY calls for.
+Use `/ntm:notify --from "Price watch"` for a short overview of the DEAL results. Title: "Good price: <item> <price>", or "Price watch: N deals" for more than one. Message: one short line per item with the item, price and store, adding the condition when it isn't the one from Condition under Shopping, and "(membership)" or "(coupon)" when the price needs one, then "Details in the run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing was sent yet: the final reply is everything after that line, verbatim, followed by anything else FINAL REPLY calls for.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the job's completion push carries: One section per item, starting with a few words for the item and its ticket id in parentheses, linked to its `url` (the conventions' "Talking to the user about tickets"): the price and store with the product link, the marketplace seller if there is one, its condition, how it compares to the target and the usual price, any shipping, membership or coupon note, the sale end date, the other verified prices, and its CHECKED line. End with: Reply 'skip this sale' to pass on one of these, or say if a store should be vouched for or blocked.
 

@@ -31,7 +31,7 @@ Run in order. Each ends with one line, `<n>. <step>: pass` or `<n>. <step>: FAIL
 5. **style:** `/ntm-user:style --for morning "Morning reminder; self-test, ABC-12 planned for today" ABC-12 is planned for today`. Pass when the output contains `ABC-12` and ends with a `Title:` line. When `ntm-user:style` won't load, the line is `5. style: skipped (no style)` and the next step uses the message as given with the title `Morning reminder`. Keep the message and the title for the next step.
 6. **notify:** read Channel in Notifications in your settings first. On `pushover`, `/ntm:notify --title "<the title>" --message "<the message>"`. Pass on `Sent:`, as `6. notify: pass (push sent; check your phone)`. Nobody waits for the phone: the user asked for this test, so one push is expected, and whether it arrived is theirs to confirm. On the `claude-push` channel, run `ntm:notify` anyway; it returns its delivery block instead of sending. Show the block and pass as `6. notify: pass (claude-push; shown, not sent)`. `Notify FAILED` is the why.
 7. **close:** `set status` to the done status from Todo list. Pass when `read ticket` shows it closed.
-8. **completed:** `/ntm:completed today`. Pass when `ABC-12` is listed under `Done`.
+8. **completed:** `/ntm:show-completed today`. Pass when `ABC-12` is listed under `Done`.
 9. **fix-todo-list:** `/ntm:fix-todo-list --dry-run`. Pass on `Dry run <TODAY>:` with any lines, or `Dry run <TODAY>: nothing to fix.`; `Fix-todo-list FAILED` is the why.
 10. **pause --check:** `/ntm:pause --check`. Pass on one `<TODAY>: true` or `<TODAY>: false` line.
 11. **note:** `write note` on the throwaway note with the content `self-test <TODAY>`, then `read note` returns the same content. Pass when it does.

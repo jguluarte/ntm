@@ -26,7 +26,7 @@ Every day:
 | Skill | What it does |
 | --- | --- |
 | `/ntm:today` | What's planned: open tickets planned for today or earlier, or any scope you describe. |
-| `/ntm:completed` | What got done over a span, and what's still open from it when you ask. |
+| `/ntm:show-completed` | What got done over a span, and what's still open from it when you ask. |
 | `/ntm:plan` | Plans the week or a day: with you in chat, or on its own for jobs. |
 | `/ntm:pause` | Days when nothing gets planned automatically. |
 | `/ntm-user:style` | Puts a message in your style. |

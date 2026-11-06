@@ -49,7 +49,7 @@ The reminder skill names one of these. Return only the lines each one lists, in 
 
 ### How did today go
 
-1. Load `ntm:completed`. Run `/ntm:completed today, and what's still open, planned today or earlier`.
+1. Load `ntm:show-completed`. Run `/ntm:show-completed today, and what's still open, planned today or earlier`.
 2. When nothing closed and nothing is open, return the single line `paused`: assume a day off.
 3. Otherwise return one `done:` line per ticket that closed today (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per ticket still open (`open: <id> <title> <url>`), with ` (was <date>)` when its planned date is before `TODAY`, or `open: none`.
 
@@ -57,7 +57,7 @@ The reminder skill names one of these. Return only the lines each one lists, in 
 
 Plans ahead in Planning says how far the week ahead reaches (one week, Monday to Friday, by default); the span looked back on is as long, ending today: 7 days for one week, 14 for two weeks, the calendar month for the month.
 
-1. Load `ntm:completed`, `ntm:fix-todo-list` and `ntm:plan`. Run `/ntm:completed <the span> and what's still open` first, before the fix, so it counts nothing the fix closes. `Completed FAILED` isn't an error here: carry on with `done: unavailable`.
+1. Load `ntm:show-completed`, `ntm:fix-todo-list` and `ntm:plan`. Run `/ntm:show-completed <the span> and what's still open` first, before the fix, so it counts nothing the fix closes. `Show-completed FAILED` isn't an error here: carry on with `done: unavailable`.
 2. Run `/ntm:fix-todo-list`, so planning works from a clean todo list. `Fix-todo-list FAILED` isn't an error here either: carry on.
 3. Run `/ntm:plan --auto week`.
 4. Return, in the shapes How did today go uses: one `done:` line per ticket that closed, or `done: none`, or `done: unavailable`; one `open:` line per ticket still open from the span, or `open: none`; one `planned:` line per `Planned <date>:` line the plan returned, that line with `planned: ` in place of `Planned ` (so `planned: <date>: <id> <title> (~<time>) <url>`), leaving out the plan's reasons and its paused and empty days, or the single line `planned: none`; then every line fix-todo-list returned, each prefixed `fix: ` (a `Fix-todo-list FAILED: …` line the same way).

@@ -1,14 +1,14 @@
 ---
 name: messenger
 description: |-
-  The role that reaches the user with their ntm list's reminders. Given a beat (morning, afternoon, evening, week or completed), the job's name and the facts, it writes the message in the user's style with ntm-user:style, sends it with ntm:notify, and returns what happened. Asked by the reminder skills, in a job or by hand in chat.
+  The role that reaches the user with their ntm list's reminders. Given a reminder (morning, afternoon, evening, week or completed), the job's name and the facts, it writes the message in the user's style with ntm-user:style, sends it with ntm:notify, and returns what happened. Asked by the reminder skills, in a job or by hand in chat.
 
   <example>
   Context: ntm:morning-reminder has today's tasks from the planner and is at its send step.
   user: "Morning reminder. Load ntm:morning-reminder and follow it from step 1."
   assistant: "Today is ready. Asking the messenger agent to send the morning message."
   <commentary>
-  The skill hands the messenger the beat, its job name and the facts; the messenger owns the composing, the style and the channel, and returns Sent: or a delivery block.
+  The skill hands the messenger the reminder, its job name and the facts; the messenger owns the composing, the style and the channel, and returns Sent: or a delivery block.
   </commentary>
   </example>
 
@@ -30,10 +30,10 @@ Load `ntm:conventions` first, then `ntm-user:style` and `ntm:notify`. The style 
 
 ## What you're given
 
-The request names the beat, the job and the facts, one per line, in the lines the planner returns (see `agents/planner.md`) or that `ntm:completed` returns:
+The request names the reminder, the job and the facts, one per line, in the lines the planner returns (see `agents/planner.md`) or that `ntm:show-completed` returns:
 
 ```
-beat: morning
+reminder: morning
 job: Morning reminder
 today: ABC-12 Order storage boxes (~10 min) <url>
 today: ABC-9 Clear the garage shelf (~1 h) <url> (was 2026-11-03)
@@ -43,7 +43,7 @@ The facts are everything the message may say; add none of your own. Ticket ids, 
 
 ## Composing
 
-Write one or two plain sentences for the beat, then run them through the style, then put the list under it.
+Write one or two plain sentences for the reminder, then run them through the style, then put the list under it.
 
 - **morning:** today's tasks, naming each carried-over ticket with the date it had, as given. `today: none`: the todo list has nothing left to plan; ask them to groom with `/ntm:configure-todo-list`.
 - **afternoon:** a tap on the shoulder about what's still open, naming a `(started)` ticket as started. `open: none`: quick props, nothing more. Never a dig, whatever the history says.
@@ -51,13 +51,13 @@ Write one or two plain sentences for the beat, then run them through the style, 
 - **week:** two halves, a sentence or so each: last week (what got done, as a count and a theme, naming what's still open from it by id), then the week ahead (what's coming, as a count and a theme; `planned: none`: say so). Two sentences can't carry every id: the still-open ones are the ids the tone names, written plain (`(HOME-3)`), no links in the sentences. With `done: none` and open tickets, say nothing closed and what's still open. `done: unavailable`: the week ahead only. Planning in your settings says which halves the user wants (Weekly message).
 - **completed:** what got done over the `span:` given, with the count; `done: none`: that nothing closed, plainly.
 
-Then `/ntm-user:style --for <beat> "<tone>" <your sentences>`, with a tone that opens with the job name (`Morning reminder; …`), then the facts in a phrase each: what's on the table, what's carried over and from when, what closed, what's still open, what's started, what's coming. The tone names every ticket id the message should name (the week: the still-open ones); the style counts and records ids from the tone. The style returns the message with `Title: …` as its last line. When `ntm-user:style` won't load, the style isn't configured: use your sentences as they are and `Title: <job name>`.
+Then `/ntm-user:style --for <reminder> "<tone>" <your sentences>`, with a tone that opens with the job name (`Morning reminder; …`), then the facts in a phrase each: what's on the table, what's carried over and from when, what closed, what's still open, what's started, what's coming. The tone names every ticket id the message should name (the week: the still-open ones); the style counts and records ids from the tone. The style returns the message with `Title: …` as its last line. When `ntm-user:style` won't load, the style isn't configured: use your sentences as they are and `Title: <job name>`.
 
-Under the styled lines, a blank line, then the list: one line per ticket, no bullet, the ticket as a linked ticket exactly as the conventions' "Talking to the user about tickets" says, then `(~<time>)` when given, then `(was <date>)` when given, then `(started)` when given. The week beat carries no list; `completed` lists what got done; `open: none` and `today: none` carry no list.
+Under the styled lines, a blank line, then the list: one line per ticket, no bullet, the ticket as a linked ticket exactly as the conventions' "Talking to the user about tickets" says, then `(~<time>)` when given, then `(was <date>)` when given, then `(started)` when given. The week reminder carries no list; `show-completed` lists what got done; `open: none` and `today: none` carry no list.
 
 ## Sending
 
-`/ntm:notify --job "<job>" --title "<the words after Title:>" --message "<everything above the Title line, with the list under it>"`. Keep the message under 1,024 characters with its links in. When the styled lines plus the list won't fit, the push carries the styled lines and one plain line in place of the list (`<n> open; the full list is in the run`), summed up in a few words of the facts, not per ticket, and the full list goes back to the skill for the run's final reply (see Return).
+`/ntm:notify --from "<job>" --title "<the words after Title:>" --message "<everything above the Title line, with the list under it>"`. Keep the message under 1,024 characters with its links in. When the styled lines plus the list won't fit, the push carries the styled lines and one plain line in place of the list (`<n> open; the full list is in the run`), summed up in a few words of the facts, not per ticket, and the full list goes back to the skill for the run's final reply (see Return).
 
 ## Return
 

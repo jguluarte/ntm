@@ -1,9 +1,7 @@
 # Evening reminder
 
-| | |
-| --- | --- |
-| Default title | Evening reminder |
-| Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 30 19 * * 1-5` (weekdays 19:30, before the jitter rule) |
+Default title: Evening reminder
+Suggested schedule: `CRON_TZ=<timezone from About you in your settings> 30 19 * * 1-5` (weekdays 19:30, before the jitter rule)
 
 --- prompt ---
 

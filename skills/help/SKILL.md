@@ -32,7 +32,7 @@ Every day:
 | `/ntm:pause` | Days when nothing gets planned automatically. |
 | `/ntm:style-message` | Puts a message in your style. |
 | `/ntm:notify` | Sends a notification through your channel. |
-| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder` | The three daily reminders. Jobs run them; so can you ("run the morning reminder now"). |
+| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`, `/ntm:weekly-planning` | The three daily reminders and the Sunday planning. Jobs run them; so can you ("run the morning reminder now"). |
 
 Planning and tidying:
 

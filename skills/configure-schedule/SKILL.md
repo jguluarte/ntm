@@ -24,7 +24,7 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Board in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 
-Each prompt file starts with a header (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. The reminder prompts are short wrappers that load the matching `ntm:` skill, so a template update reaches the jobs without touching them; the weekly planning and completed prompts are the sequence itself. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+Each prompt file starts with a header (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. The prompts are short wrappers that load the matching `ntm:` skill, so a template update reaches the jobs without touching them; the completed prompt is still the sequence itself. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
 
 ## Walking the kinds
 

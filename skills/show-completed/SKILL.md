@@ -13,40 +13,70 @@ description: Reports what the user got done on their todo list over a span of ti
 
 What to look at is a description in plain words:
 
-- **Span** (required): a number of days ending today, today included. "Today" is 1; "the last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month of that year had (31 at the start of November; 28 or 29 at the start of March, by that year's February); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
-- **Open tickets** (optional): ask for them ("and what's still open") to add a Still open section.
-- **Canceled or duplicate tickets** (optional): ask for them to add their own sections.
+- **Span** (required): a number of days ending today, today included. "Today" is
+  1; "the last 7 days" is 7; "last week" is 7; "last month" is as many days as
+  the previous calendar month of that year had (31 at the start of November; 28
+  or 29 at the start of March, by that year's February); "since Oct 1" counts
+  from that day. No calendar weeks, no overlap logic.
+- **Open tickets** (optional): ask for them ("and what's still open") to add a
+  Still open section.
+- **Canceled or duplicate tickets** (optional): ask for them to add their own
+  sections.
 
-The description can also narrow the scope, such as "the garage" or "the Office project". Take whatever scope it describes; never ask for one.
+The description can also narrow the scope, such as "the garage" or "the Office
+project". Take whatever scope it describes; never ask for one.
 
 Without a span, ask the user what span they want. Never assume one.
 
-`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure "<job name>"`, before Setup; `Ready-check FAILED` ends the run with what it returned. The "Completed this week" and "Completed this month" jobs run `/ntm:show-completed the last 7 days --notify` and `/ntm:show-completed last month --notify`.
+`--notify`: also send the result as a message, through the messenger agent (see
+Notify below). The job name is `Completed this week` for a span of a week,
+`Completed this month` for a month, else `Completed`; read it off the words
+given. `--notify` starts with `/ntm:ready-check --notify-failure "<job name>"`,
+before Setup; `Ready-check FAILED` ends the run with what it returned. The
+"Completed this week" and "Completed this month" jobs run
+`/ntm:show-completed the last 7 days --notify` and
+`/ntm:show-completed last month --notify`.
 
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says, and work out the span as Usage says: it ends today.
-3. Fetch with the guide's `fetch closed`: done tickets, adding canceled and duplicate ones only when the request asks for them. Add the guide's `fetch open`, keeping excluded tickets, only when it asks for open tickets.
-4. Keep the tickets completed in the span, in the timezone from About you in your settings. Done tickets of any kind count, price watch buys included.
-5. When the description narrows the scope, keep only the tickets that match it, by project, parent, label or title.
+2. Compute `TODAY` as the conventions' Dates section says, and work out the span
+   as Usage says: it ends today.
+3. Fetch with the guide's `fetch closed`: done tickets, adding canceled and
+   duplicate ones only when the request asks for them. Add the guide's
+   `fetch open`, keeping excluded tickets, only when it asks for open tickets.
+4. Keep the tickets completed in the span, in the timezone from About you in
+   your settings. Done tickets of any kind count, price watch buys included.
+5. When the description narrows the scope, keep only the tickets that match it,
+   by project, parent, label or title.
 
 If any step fails, stop and return `Show-completed FAILED: <what failed>`.
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each ticket as `<id> <title> <url> <date>`, the date on the same line: the completion date for Done, the planned date for Still open.
+Return plain text for whoever called the skill; the job or skill that called it
+decides what to tell the user and how. Write each ticket as
+`<id> <title> <url> <date>`, the date on the same line: the completion date for
+Done, the planned date for Still open.
 
 - `<first day> to <last day>`, plus the scope when it's narrowed.
-- `Done (<count>):` the tickets completed in the span, oldest first, with sub-tickets indented under their parent when it's listed too; or `Done: none`.
-- Canceled and duplicate tickets, when asked for, in their own `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same way.
-- `Still open (<count>):` when asked for: open tickets planned in the span, or in the range the request names for them ("planned today or earlier").
+- `Done (<count>):` the tickets completed in the span, oldest first, with
+  sub-tickets indented under their parent when it's listed too; or `Done: none`.
+- Canceled and duplicate tickets, when asked for, in their own
+  `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same
+  way.
+- `Still open (<count>):` when asked for: open tickets planned in the span, or
+  in the range the request names for them ("planned today or earlier").
 
-Typed in chat, present the result as the conventions' "Talking to the user about tickets" says (natural words, the id in parentheses); the raw lines are for skills and jobs.
+Typed in chat, present the result as the conventions' "Talking to the user about
+tickets" says (natural words, the id in parentheses); the raw lines are for
+skills and jobs.
 
 ## Notify
 
-With `--notify`, after the result, ask the messenger agent, with the reminder `show-completed`, the job name, a `span:` line (the result's first line) and one `done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
+With `--notify`, after the result, ask the messenger agent, with the reminder
+`show-completed`, the job name, a `span:` line (the result's first line) and one
+`done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
 
 ```
 reminder: completed
@@ -55,4 +85,10 @@ span: 2026-10-31 to 2026-11-06
 done: ABC-12 Order storage boxes <url>
 ```
 
-When the messenger agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and nothing else; otherwise one short line on what happened, then any lines the messenger returned after `Sent:` (the list the push couldn't carry). A `… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.
+When the messenger agent isn't available in this session, do what the
+conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the
+installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery
+block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and
+nothing else; otherwise one short line on what happened, then any lines the
+messenger returned after `Sent:` (the list the push couldn't carry). A
+`… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.

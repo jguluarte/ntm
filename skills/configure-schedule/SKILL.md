@@ -5,13 +5,23 @@ description: Sets up and maintains the user's ntm jobs, the scheduled tasks that
 
 # ntm:configure-schedule
 
-The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user, never trigger, routine or cron job. This is a chat conversation: short rounds, the user's answers win. It changes nothing in `ntm-user:settings` and writes no file: the tasks it creates are the result.
+The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
+never trigger, routine or cron job. This is a chat conversation: short rounds,
+the user's answers win. It changes nothing in `ntm-user:settings` and writes no
+file: the tasks it creates are the result.
 
 ## Tools
 
-Find the scheduling tools: `list_triggers`, `create_trigger`, `update_trigger`, `delete_trigger`, `fire_trigger` (when tools are deferred, ToolSearch `select:mcp__claude-code-remote__list_triggers,mcp__claude-code-remote__create_trigger,mcp__claude-code-remote__update_trigger,mcp__claude-code-remote__delete_trigger,mcp__claude-code-remote__fire_trigger`). If none of them exist, scheduled tasks aren't available from here; say so and stop.
+Find the scheduling tools: `list_triggers`, `create_trigger`, `update_trigger`,
+`delete_trigger`, `fire_trigger` (when tools are deferred, ToolSearch
+`select:mcp__claude-code-remote__list_triggers,mcp__claude-code-remote__create_trigger,mcp__claude-code-remote__update_trigger,mcp__claude-code-remote__delete_trigger,mcp__claude-code-remote__fire_trigger`).
+If none of them exist, scheduled tasks aren't available from here; say so and
+stop.
 
-Load `ntm:conventions`: Timezone under About you in your settings is the timezone every job runs in, and Todo list says whether price watch is on. On a first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the timezone, the price watch project and the Planning days `configure` hands you.
+Load `ntm:conventions`: Timezone under About you in your settings is the
+timezone every job runs in, and Todo list says whether price watch is on. On a
+first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the
+timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
@@ -24,59 +34,135 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Todo list in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 
-Each prompt file is named after its kind and starts with a table of what differs per job (the default title and the suggested schedule; for completed, the monthly variant), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+Each prompt file is named after its kind and starts with a table of what differs
+per job (the default title and the suggested schedule; for completed, the
+monthly variant), then a `--- prompt ---` line; everything after that line is
+the prompt. Every prompt is three lines that load the matching `ntm:` skill, so
+a template update reaches the jobs without touching them, and a job carries no
+logic of its own. Titles and prompt text are the user's: offer the defaults,
+take what they say, and lock nothing.
 
 ## Walking the kinds
 
-For each kind in the order above, ask: do they want it; which days (Planning days from Planning, weekdays by default, for the three daily reminders); what time; what title. Ask once, for all the jobs: which model should they run on? Propose Opus (`claude-opus-5-5`): a new task inherits the model of the chat that creates it, and a job that runs every day doesn't need the heaviest one. Their answer is the model every job gets. A title is only a label; the kind's default title stays the name notifications and tokens are matched by. Offer the defaults and move on when they take them. For completed, also weekly or monthly, and the span in the prompt follows (see its header). Skip price watch when Todo list names no price watch project.
+For each kind in the order above, ask: do they want it; which days (Planning
+days from Planning, weekdays by default, for the three daily reminders); what
+time; what title. Ask once, for all the jobs: which model should they run on?
+Propose Opus (`claude-opus-5-5`): a new task inherits the model of the chat that
+creates it, and a job that runs every day doesn't need the heaviest one. Their
+answer is the model every job gets. A title is only a label; the kind's default
+title stays the name notifications and tokens are matched by. Offer the defaults
+and move on when they take them. For completed, also weekly or monthly, and the
+span in the prompt follows (see its header). Skip price watch when Todo list
+names no price watch project.
 
 Then, for each job they want:
 
-1. Read its prompt file; the prompt is everything after `--- prompt ---`. If they want the prompt to say something else, change it with them; it's theirs.
-2. Pick the time. The default is the starting point; the user can name another. Then apply the jitter rule: never land on :00 or :30. When a time would land on the hour or half hour, move it 1–29 minutes earlier (the number of letters in the title, spaces not counted, modulo 29, plus 1), and say so. Runs that start between 06:00 and 09:00 Pacific time can be delayed: convert the job's time to Pacific, and if it falls in that window, say so and keep it unless they'd rather move it.
+1. Read its prompt file; the prompt is everything after `--- prompt ---`. If
+   they want the prompt to say something else, change it with them; it's theirs.
+2. Pick the time. The default is the starting point; the user can name another.
+   Then apply the jitter rule: never land on :00 or :30. When a time would land
+   on the hour or half hour, move it 1–29 minutes earlier (the number of letters
+   in the title, spaces not counted, modulo 29, plus 1), and say so. Runs that
+   start between 06:00 and 09:00 Pacific time can be delayed: convert the job's
+   time to Pacific, and if it falls in that window, say so and keep it unless
+   they'd rather move it.
 3. `create_trigger` with:
    - `name`: the title.
    - `prompt`: the prompt.
-   - `cron_expression`: `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`, days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a monthly completed job, the same with `1 * *` as the last three fields.
-   - `notifications`: `{push: true}`. Push carries the run's completion summary, which is the reminder itself on the `claude-push` channel. On the `pushover` channel it's a second, shorter push; say so, and that the task's settings can turn it off.
+   - `cron_expression`:
+     `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`,
+     days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a
+     monthly completed job, the same with `1 * *` as the last three fields.
+   - `notifications`: `{push: true}`. Push carries the run's completion summary,
+     which is the reminder itself on the `claude-push` channel. On the
+     `pushover` channel it's a second, shorter push; say so, and that the task's
+     settings can turn it off.
    - `initiation`: `human_request`.
    - Leave `permission_mode` unset.
-4. Set the model they chose: `update_trigger` with the new task's id and `model: <the id>`. This is their request from the walk, not the skill's. If the id is rejected, say so, leave the job on the model it inherited, and carry on.
-5. Tell the user, in one sentence, which model the job runs on and which approval setting it got, and that automatic approval can be turned on in the task's settings if the organization allows it. The setting is `derived_state.permission_mode` in the result: `auto` means runs go ahead on their own; absent means a run stops when an action needs approval, and nobody is there to approve a scheduled run.
-6. When the result lists the task's connectors (`mcp_connections`), check that the backend connector named by Todo list is among them; if it isn't, say so: attach the connector to this session and create the job again, or every run will fail its ready check. Either way, the proof is a run, once `ntm-user` is installed: offer `fire_trigger` (Running a job now) then, and read its ready check.
+4. Set the model they chose: `update_trigger` with the new task's id and
+   `model: <the id>`. This is their request from the walk, not the skill's. If
+   the id is rejected, say so, leave the job on the model it inherited, and
+   carry on.
+5. Tell the user, in one sentence, which model the job runs on and which
+   approval setting it got, and that automatic approval can be turned on in the
+   task's settings if the organization allows it. The setting is
+   `derived_state.permission_mode` in the result: `auto` means runs go ahead on
+   their own; absent means a run stops when an action needs approval, and nobody
+   is there to approve a scheduled run.
+6. When the result lists the task's connectors (`mcp_connections`), check that
+   the backend connector named by Todo list is among them; if it isn't, say so:
+   attach the connector to this session and create the job again, or every run
+   will fail its ready check. Either way, the proof is a run, once `ntm-user` is
+   installed: offer `fire_trigger` (Running a job now) then, and read its ready
+   check.
 
 ## Connectors
 
-A job inherits the connectors attached to the session that creates it. A browser is never attached to a job.
+A job inherits the connectors attached to the session that creates it. A browser
+is never attached to a job.
 
 ## Already set up
 
-When jobs exist, list them and ask what to change, instead of walking the kinds again. `list_triggers`, recurring only. Match the user's jobs by title against the titles above, and otherwise by the first line of the stored prompt (`derived_state.prompt`, when the `list_triggers` entry carries it; when it doesn't, ask the user which job it is): every prompt file opens with the kind's default title and a full stop (`Morning reminder.`, `Weekly planning.`, `Completed this week.`, `Price watch.`). Show each as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the last run's status in a word (succeeded, failed) and its time. Omit `trigger_id`s unless asked. Then ask what to change: a time, the days, a title, the prompt, the model, on or off, delete, or a kind not yet created (walk that one as above).
+When jobs exist, list them and ask what to change, instead of walking the kinds
+again. `list_triggers`, recurring only. Match the user's jobs by title against
+the titles above, and otherwise by the first line of the stored prompt
+(`derived_state.prompt`, when the `list_triggers` entry carries it; when it
+doesn't, ask the user which job it is): every prompt file opens with the kind's
+default title and a full stop (`Morning reminder.`, `Weekly planning.`,
+`Completed this week.`, `Price watch.`). Show each as: title, schedule in words
+in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the
+last run's status in a word (succeeded, failed) and its time. Omit `trigger_id`s
+unless asked. Then ask what to change: a time, the days, a title, the prompt,
+the model, on or off, delete, or a kind not yet created (walk that one as
+above).
 
 ## Running a job now
 
-`fire_trigger` with `trigger_id` starts a run outside its schedule, with the job's own prompt and connectors; that's the way to check a new job. To do a job's work in chat instead, load its skill and follow it from step 1 ("run the morning reminder now").
+`fire_trigger` with `trigger_id` starts a run outside its schedule, with the
+job's own prompt and connectors; that's the way to check a new job. To do a
+job's work in chat instead, load its skill and follow it from step 1 ("run the
+morning reminder now").
 
 ## Re-syncing a prompt
 
-A stored prompt only goes stale when its prompt file changes. When that happens: `list_triggers`, match each job as Already set up says, read the prompt file again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep anything the user added to the prompt (the stored prompt is `derived_state.prompt`, when the entry carries it; when it doesn't, tell the user the file's prompt replaces theirs and to re-add anything they had put in); change only what came from the file. Nothing else changes; the job keeps its schedule and run history. Never delete and recreate a job to change its prompt.
+A stored prompt only goes stale when its prompt file changes. When that happens:
+`list_triggers`, match each job as Already set up says, read the prompt file
+again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep
+anything the user added to the prompt (the stored prompt is
+`derived_state.prompt`, when the entry carries it; when it doesn't, tell the
+user the file's prompt replaces theirs and to re-add anything they had put in);
+change only what came from the file. Nothing else changes; the job keeps its
+schedule and run history. Never delete and recreate a job to change its prompt.
 
 ## Changing a time, days or title
 
-`update_trigger` with `trigger_id` and a new `cron_expression`, built as in Walking the kinds steps 2 and 3, keeping whatever they didn't ask to change; or a new `name`. Confirm the new schedule in words, and say when the jitter rule moved the minute.
+`update_trigger` with `trigger_id` and a new `cron_expression`, built as in
+Walking the kinds steps 2 and 3, keeping whatever they didn't ask to change; or
+a new `name`. Confirm the new schedule in words, and say when the jitter rule
+moved the minute.
 
 ## Changing the model
 
-`update_trigger` with `trigger_id` and `model`, only when the user asks for it in their own words. Show the current one first when the `list_triggers` entry carries it (`derived_state.model`).
+`update_trigger` with `trigger_id` and `model`, only when the user asks for it
+in their own words. Show the current one first when the `list_triggers` entry
+carries it (`derived_state.model`).
 
 ## Turning a job off and on
 
-`update_trigger` with `trigger_id` and `enabled: false` to turn a job off, `enabled: true` to turn it on. A job that's off stays stored and never fires. Say "off" and "on", never "paused": this is for stretches when the user wants no reminders at all. For a day or a range, `/ntm:pause` is the lighter tool, since work they dated themselves still gets its reminders.
+`update_trigger` with `trigger_id` and `enabled: false` to turn a job off,
+`enabled: true` to turn it on. A job that's off stays stored and never fires.
+Say "off" and "on", never "paused": this is for stretches when the user wants no
+reminders at all. For a day or a range, `/ntm:pause` is the lighter tool, since
+work they dated themselves still gets its reminders.
 
 ## Deleting
 
-Confirm with the user first; deleting also removes the sessions the job started. Then `delete_trigger` with `trigger_id`. To stop a job without losing its history, turn it off instead.
+Confirm with the user first; deleting also removes the sessions the job started.
+Then `delete_trigger` with `trigger_id`. To stop a job without losing its
+history, turn it off instead.
 
 ## Finishing
 
-End with one line per job: title, schedule in words, on or off. Run from `ntm:configure`, that list goes back to it; nothing here needs `ntm-user.plugin` regenerated.
+End with one line per job: title, schedule in words, on or off. Run from
+`ntm:configure`, that list goes back to it; nothing here needs `ntm-user.plugin`
+regenerated.

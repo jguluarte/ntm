@@ -71,7 +71,7 @@ How the price watch judges a deal. Read by `ntm:price-watch` and the shopper age
 - Condition: new <!-- unless a ticket says otherwise -->
 - Delivery: online only, to your country
 - A deal: at or near the ticket's target, or well below the usual price <!-- what gets you an alert -->
-- Amazon interface: <!-- for the Amazon sync: Claude's built-in browser, or your own browser through the Claude extension; blank means whichever your Claude settings prefer -->
+- Amazon interface: <!-- how /ntm:sync-price-watch-to-amazon reaches Amazon: Claude's built-in browser, your own browser through the Claude extension, or off; blank means it asks -->
 
 <!-- Anything else about how you shop: stores you always or never use are kept in the price watch stores note; say here what counts beyond that. -->
 

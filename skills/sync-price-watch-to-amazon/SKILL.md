@@ -1,17 +1,17 @@
 ---
 name: sync-price-watch-to-amazon
-description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser Claude can drive, signed in to Amazon. Run by the user whenever they want, or when the price watch says a sync is due; never by a job.
+description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser Claude can drive, signed in to Amazon. Run when the user asks, or when the price watch says a sync is due.
 ---
 
 # ntm:sync-price-watch-to-amazon
 
-This skill needs a browser Claude can drive: Claude's built-in browser, or the user's own browser through the Claude extension. The user runs it themselves, whenever they like; no job runs it, and the price watch only says when a sync is due. It can be interactive: when you're not sure you have the right product, ask them.
+This skill needs a browser Claude can drive: Amazon interface under Shopping in your settings names it. It can be interactive: when you're not sure you have the right product, ask the user; when no one is there to ask, skip that item and say why in the report.
 
 The price watch can't read Amazon, so Amazon deals on watched items reach the user through Amazon's own price alerts instead. This skill keeps those alerts in step with the todo list: every open watched item gets an alert or is marked as not on Amazon, and every closed one has its alert removed.
 
 ## Labels
 
-Every label in this skill goes by its real name from Labels in your settings.
+The labels below are named by their keys in Labels in your settings; on the todo list each goes by the real name its key maps to.
 
 - **`has-amazon-alert`:** an Amazon alert is set for this item. While it's on a closed ticket, the alert is still live and needs removing.
 - **`amazon-unavailable`:** the item isn't sold on Amazon in the condition the watch wants, so no alert is set.
@@ -31,7 +31,7 @@ Load `ntm:conventions` (the list's rules and your settings), then run `/ntm:read
 
 Price watch is on when Todo list in your settings names a price watch project. If it names none, end with `Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
 
-Use the browser Amazon interface under Shopping in your settings names; when it's blank, the one the user's Claude settings prefer. Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If no browser is available or it can't be reached, end with `Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
+Use the browser the user names for this run, or else the one Amazon interface under Shopping in your settings names; if you still don't know, ask them. If Amazon interface is off and they named none, end with `Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.` Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If that browser can't be reached, end with `Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
 
 Amazon's store for this user is the one serving the country in Country and currency under About you in your settings; prices are in that currency. The condition an item must be in is Condition under Shopping, unless the ticket says otherwise.
 

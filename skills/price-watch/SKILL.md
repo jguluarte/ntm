@@ -25,7 +25,7 @@ Fetch every open ticket the way "Every open ticket" in `ntm:conventions` says, a
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price today?"): the watch is that one ticket, found by its id or by its words among the watched tickets. Skip the sync check below and step 5; FINAL REPLY says how to word the answer.
 
-**Amazon alerts.** Amazon is covered by Amazon's own price alerts, which the user keeps in step with `/ntm:sync-price-watch-to-amazon` from their computer. This run can't set them, so it only notices when a sync is due. With the `has-amazon-alert` and `amazon-unavailable` labels by their real names from Labels, note:
+**Amazon alerts.** Amazon is covered by Amazon's own price alerts, which `/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it only notices when a sync is due; when Amazon interface under Shopping in your settings is off, skip this check. With the `has-amazon-alert` and `amazon-unavailable` labels by their real names from Labels, note:
 - each open watched ticket with neither label (it needs an alert);
 - each closed ticket that still has the `has-amazon-alert` label (its alert needs removing). Find these with the guide's `fetch closed` for that label, canceled and duplicate included.
 Change nothing; FINAL REPLY reports it.
@@ -59,7 +59,7 @@ If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is
 
 If step 3 found Amazon alerts to sync, end with one line: "Run /ntm:sync-price-watch-to-amazon:" then the items needing an alert and the closed items whose alert needs removing, each as a few words with its ticket id. Leave this line out when nothing needs syncing.
 
-**One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above. Add that Amazon isn't checked here; its own alert covers it.
+**One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above. Add that Amazon isn't checked here.
 
 # ERROR HANDLING
 If step 2 fails, end with what it returned and nothing more. A check failing isn't an error; FINAL REPLY covers it. For any other error, don't use the notification channel: end the run with `Price-watch FAILED: <the error, stated plainly>`; the job's own completion push carries it to the user.

@@ -10,12 +10,12 @@ Yours: `/ntm:configure-style` wrote it with you, and it's read only by ntm's mes
 ## Usage
 
 ```
-/ntm-user:style [--stay-fresh] [--for <beat>] ["<tone>"] <message>
+/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
 ```
 
 - `tone` is freeform: how to rewrite the message, and why. "escalated: still open from yesterday", "light: fresh work". Without one, the everyday level.
 - `--stay-fresh`: for scheduled runs, which keep lines fresh with the message history.
-- `--for <beat>`: one of `morning`, `afternoon`, `evening`, `week`, `completed`. Implies `--stay-fresh` and adds a `Title:` line. The messenger opens the tone with the job name (`Morning reminder; …`).
+- `--for <reminder>`: one of `morning`, `afternoon`, `evening`, `week`, `show-completed`. Implies `--stay-fresh` and adds a `Title:` line. The messenger opens the tone with the job name (`Morning reminder; …`).
 
 Output: the rewritten message, plain text, and with `--for` a last line `Title: <a few words in the same style>`. Nothing else.
 
@@ -31,7 +31,7 @@ Profanity: <!-- yes or no -->
 
 <!-- The one thing that actually gets you to open and read a message, in your words: brevity, a curiosity hook, warmth, humor, a scoreboard, a running bit, surprise, and what it needs. -->
 
-### Beats
+### The reminders
 
 <!-- What each moment of the day is, in your theme's terms. The defaults: morning sets the day up (a look back only when something slipped into today); afternoon is the middle of it, a nudge; evening is how it ended, good, bad or to be continued; week is the recap and what's coming; completed is the credits. Rename them, or leave this empty for the defaults. -->
 
@@ -60,7 +60,7 @@ What the style never rewrites or jokes about: ticket ids, titles, planned dates,
 
 ## How a message gets written
 
-Read the Profile by heading. A section left empty means: Register, plain; What gets you to read, the Examples show it; Beats, the defaults above; When something keeps slipping, one level and no climb; Motifs, none, with a repeat limit of twenty; Off limits, the fixed sentence; Examples, none.
+Read the Profile by heading. A section left empty means: Register, plain; What gets you to read, the Examples show it; The reminders, the defaults above; When something keeps slipping, one level and no climb; Motifs, none, with a repeat limit of twenty; Off limits, the fixed sentence; Examples, none.
 
 **Register.** The Register is who talks. A plain register has no character: the message speaks as itself, in the manner the section gives, and the mechanism below carries the line.
 
@@ -74,7 +74,7 @@ Read the Profile by heading. A section left empty means: Register, plain; What g
 - a running bit or serial: continue the bit from the newest history entries, one step further each time
 - surprise: a form the last few history entries didn't use (a question, a list, a quote, a headline, one word)
 
-**Levels.** The levels under When something keeps slipping, in the Profile's order and with its names, are the only levels. The first is the everyday one: fresh work, work already planned for today, and every line when there is one level. For a ticket the tone names as carried over or still open, the level comes from its history count (below). The level is the last one whose "after N earlier days" the count has reached; count 0 is always the first level. Levels listed without numbers get 0, 1, 2… in order. Without `--for` there is no count: the tone says how hard, and the first level otherwise. Back to the first level once a ticket closes. The afternoon beat never climbs.
+**Levels.** The levels under When something keeps slipping, in the Profile's order and with its names, are the only levels. The first is the everyday one: fresh work, work already planned for today, and every line when there is one level. For a ticket the tone names as carried over or still open, the level comes from its history count (below). The level is the last one whose "after N earlier days" the count has reached; count 0 is always the first level. Levels listed without numbers get 0, 1, 2… in order. Without `--for` there is no count: the tone says how hard, and the first level otherwise. Back to the first level once a ticket closes. The afternoon reminder never climbs.
 
 **Examples** show the register for each level, and for nothing open: how hard it lands, how long it runs, and how a motif ties to the subject. They are not a pool to pick from. Write a new line every time, built from the message and the tone in front of you. Borrow the energy, never the sentence; if a line you've written sounds like one in the Profile, write a different one.
 
@@ -92,7 +92,7 @@ After writing, add a new object at the top of the block: `date` today (computed 
 
 ### With `--for`
 
-Each beat sets the register as Beats says; the tone says what's on the table.
+Each reminder sets the register as The reminders says; the tone says what's on the table.
 
 - **morning**: the day set up. Fresh or already planned tasks get the first level. Anything carried over gets what When something keeps slipping says, by the count below; the tone names each with the date it had (`was <date>`), and the message may state the count, which is yours alone.
 - **afternoon**: the middle of the day, a tap on the shoulder. Playful, never a dig, whatever the history says. The first level, always.

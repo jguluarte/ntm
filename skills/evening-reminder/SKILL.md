@@ -8,7 +8,7 @@ description: The evening reminder for the user's todo list: a friend asking how 
 The evening reminder: a friend asking how the day went. Two agents do the work: the planner gathers the facts, the messenger writes and sends the message. This skill names the request, the handoff and what ends the run. When an agent isn't available in this session, do what the conventions' "Chat, jobs and agents" says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify-failure --job "Evening reminder"`.
+Run `/ntm:ready-check --notify-failure "Evening reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned and nothing more.**
 
 # 2: The facts
@@ -20,10 +20,10 @@ Read what comes back:
 - Any `… FAILED` line: ERROR HANDLING.
 
 # 3: The message
-Ask the messenger agent, with the beat, the job and the planner's lines:
+Ask the messenger agent, with the reminder, the job and the planner's lines:
 
 ```
-beat: evening
+reminder: evening
 job: Evening reminder
 <the planner's lines>
 ```

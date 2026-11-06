@@ -13,7 +13,7 @@ Profanity: <yes or no>
 ### What gets you to read
 <the attention mechanism, in the user's words>
 
-### Beats
+### The reminders
 <morning, afternoon, evening, week, completed: what each is in the theme's terms, one line each; or empty for the defaults>
 
 ### When something keeps slipping
@@ -60,7 +60,7 @@ What makes them open a reminder instead of swatting it. Offer these, one line ea
 
 Write the answer in their words, one or two lines, with anything it needs (what the serial is about).
 
-### Beats
+### The reminders
 
 A day of reminders has the shape of an episode, and a themed style gets to say what each moment is in its own world. Propose the five in the theme's terms, one line each, and let them rename or cut:
 
@@ -83,7 +83,7 @@ What happens when the same ticket shows up day after day. The user's levels, in 
 - step back: go quiet on that ticket and raise it once in the weekly message
 - a consequence they name themselves, said plainly when the day comes
 
-Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; the procedure counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening beats follow this section; the afternoon never climbs.
+Then the climb rule in one line, such as "harder each day a ticket carries over, back to the first level once it closes". An earlier day is a day before today on which a reminder mentioned the ticket; the procedure counts them from the message history. Levels listed without numbers get 0, 1, 2… in order. The morning and evening reminders follow this section; the afternoon never climbs.
 
 ### Motifs
 
@@ -114,7 +114,7 @@ Plain. Brisk and friendly; says the thing and stops.
 
 Brevity. One line, and the task is the first thing in it.
 
-### Beats
+### The reminders
 
 ### When something keeps slipping
 

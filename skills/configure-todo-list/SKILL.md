@@ -200,7 +200,7 @@ Daily reminders only help when they point at something the user could pick up. G
 
 - **A short session is a good session.** One project, or three items, is fine. Stop the moment the user wants to, and never push for more.
 - **You bring proposals; the user reacts.** Never make them fill in fields, and never hit them with a list of questions.
-- **Good enough beats complete.** A ticket can be rough, or just a checklist, as long as the user says it's adequate.
+- **Good enough reminders complete.** A ticket can be rough, or just a checklist, as long as the user says it's adequate.
 - **The user drives the wording.** Your unvetted wording tends toward filler, so propose enough, keep it short, and never expand their descriptions unless they ask.
 
 ## Setup

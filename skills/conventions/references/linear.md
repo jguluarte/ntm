@@ -14,7 +14,7 @@ Values below that name a settings section (Todo list, Labels, About you) come fr
 
 ## Status classes
 
-Todo list in your settings maps each class to the status names. `list_issues` filters by `state` with a status name; results carry `status` (the name) and `statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `completed`, `canceled`, `duplicate`). Use the names from Todo list to filter and to write; use `statusType` to tell closed from open when a result mixes states. A ticket's status class is the class whose line in Todo list lists its `status` name; `statusType` alone doesn't give it.
+Todo list in your settings maps each class to the status names. `list_issues` filters by `state` with a status name; results carry `status` (the name) and `statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `show-completed`, `canceled`, `duplicate`). Use the names from Todo list to filter and to write; use `statusType` to tell closed from open when a result mixes states. A ticket's status class is the class whose line in Todo list lists its `status` name; `statusType` alone doesn't give it.
 
 ## Operations
 
@@ -83,7 +83,7 @@ Used by `ntm:configure-todo-list`.
 
 - **`list todo-lists`:** `list_teams`. Each comes back with its name, id and issue key (the ticket prefix).
 - **`create todo-list`:** not needed; Linear has teams to list.
-- **`list statuses`:** `list_issue_statuses` with `team`. Each comes back with its name and `type`, which suggests the class (`backlog`, `unstarted` and `started` are plannable, `started` the started one; `completed` done; `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
+- **`list statuses`:** `list_issue_statuses` with `team`. Each comes back with its name and `type`, which suggests the class (`backlog`, `unstarted` and `started` are plannable, `started` the started one; `show-completed` done; `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
 - **`list labels`:** `list_issue_labels` with `team` for issue labels; `list_project_labels` with `team` for project labels, a separate set.
 - **`create label`:** `save_issue_label` with `name`, `teamId: "<List id>"` and `description` for an issue label; `save_project_label` with `name`, `teamId` and `description` for a project label.
 - **`list projects`:** `list_projects` with `team: "<List name>"`, `fields` `name` and `labels`, paginating with `cursor`. Each comes back with its id.

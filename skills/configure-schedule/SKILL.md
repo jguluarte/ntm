@@ -24,7 +24,7 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Todo list in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 
-Each prompt file is named after its kind and starts with a table of what differs per job (the default title and the suggested schedule; for completed, the monthly variant), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+Each prompt file is named after its kind and starts with the lines that differ per job (the default title and the suggested schedule; for completed, the monthly variant), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
 
 ## Walking the kinds
 

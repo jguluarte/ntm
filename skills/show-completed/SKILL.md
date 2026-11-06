@@ -1,14 +1,14 @@
 ---
-name: completed
+name: show-completed
 description: Reports what the user got done on their todo list over a span of time they or a job describes ("what did I finish last week", "what got done this month"), and, when asked, what's still open from it; --notify sends it as a message in the user's style. Run by the planner agent, by the "Completed this week" job, or by the user.
 ---
 
-# ntm:completed
+# ntm:show-completed
 
 ## Usage
 
 ```
-/ntm:completed <span in words> [--notify]
+/ntm:show-completed <span in words> [--notify]
 ```
 
 What to look at is a description in plain words:
@@ -21,7 +21,7 @@ The description can also narrow the scope, such as "the garage" or "the Office p
 
 Without a span, ask the user what span they want. Never assume one.
 
-`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure --job "<job name>"`, before Setup; `Ready-check FAILED` ends the run with what it returned. The "Completed this week" and "Completed this month" jobs run `/ntm:completed the last 7 days --notify` and `/ntm:completed last month --notify`.
+`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure "<job name>"`, before Setup; `Ready-check FAILED` ends the run with what it returned. The "Completed this week" and "Completed this month" jobs run `/ntm:show-completed the last 7 days --notify` and `/ntm:show-completed last month --notify`.
 
 ## Setup
 
@@ -31,7 +31,7 @@ Without a span, ask the user what span they want. Never assume one.
 4. Keep the tickets completed in the span, in the timezone from About you in your settings. Done tickets of any kind count, price watch buys included.
 5. When the description narrows the scope, keep only the tickets that match it, by project, parent, label or title.
 
-If any step fails, stop and return `Completed FAILED: <what failed>`.
+If any step fails, stop and return `Show-completed FAILED: <what failed>`.
 
 ## Result
 
@@ -46,10 +46,10 @@ Typed in chat, present the result as the conventions' "Talking to the user about
 
 ## Notify
 
-With `--notify`, after the result, ask the messenger agent, with the beat `completed`, the job name, a `span:` line (the result's first line) and one `done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
+With `--notify`, after the result, ask the messenger agent, with the reminder `show-completed`, the job name, a `span:` line (the result's first line) and one `done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
 
 ```
-beat: completed
+reminder: completed
 job: Completed this week
 span: 2026-10-31 to 2026-11-06
 done: ABC-12 Order storage boxes <url>

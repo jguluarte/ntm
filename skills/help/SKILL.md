@@ -7,21 +7,13 @@ description: What Neurodivergent Task Manager (ntm) is and how to use it, answer
 
 The README is the one text about ntm. This skill reads it and answers the person from it, in prose; it never pastes the file.
 
-## What ntm is
-
-Say this in your own words when they ask what ntm is or where it came from, and let the README fill in the rest.
-
-Neurodivergent Task Manager (ntm) is a personal task system on the user's own board. It was built by one person for the places that got in their way: starting things, keeping multi-day work moving, noticing when things have quietly gone stale, not forgetting things, and buying on a good price instead of on impulse. The price watch is there to bridge the impulse to buy: sometimes we buy right away only so we don't forget, and we don't always still want it later; an item on the watch isn't forgotten, and waiting for a good price becomes the easy option.
-
-The trigger word is the plugin's name, `ntm`; to use another, fork the template and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in capitals, in every file and in `plugin.json`'s `name`), then create your jobs from that copy.
-
 ## Finding the README
 
 ```bash
 find ~/.claude/plugins -path '*/ntm/README.md'
 ```
 
-Read the file it finds. If nothing is found, say where to read it: the plugin's Contents tab under Customize > Plugins, or the repository. Then answer what you can from the section above.
+Read the file it finds and answer from it. If nothing is found, say in one line that ntm is a personal task system on the user's own board, with reminders in their own style and a price watch, and that the README is on the plugin's Contents tab under Customize > Plugins, or in the repository.
 
 ## Answering
 

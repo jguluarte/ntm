@@ -40,10 +40,10 @@ Each section is read by heading. Every line is something you agreed to during se
 
 The real name on your board for each label the system uses.
 
-- Issue labels:
+- Ticket labels:
   - no-autoschedule: no-autoschedule
   - pending-shipment: pending-shipment
-  - has-amazon-price-watch: has-amazon-price-watch
+  - has-amazon-alert: has-amazon-alert
   - amazon-unavailable: amazon-unavailable
 - Project labels (tickets inherit them):
   - price-watch: price-watch
@@ -55,7 +55,7 @@ How the planner works your board. Read by `ntm:plan`, the planner agent and the 
 
 - Rhythm: one task per weekday <!-- or: one per day; two per weekday; whatever you keep up with -->
 - Planning days: weekdays <!-- the days that get a task automatically -->
-- Week ahead: Monday to Friday <!-- what "the week" means to the weekly planning: Monday to Friday; the next two weeks; the month -->
+- Plans ahead: one week <!-- how far the weekly planning plans: one week (Monday to Friday); two weeks; the month -->
 - Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day <!-- what an estimate means on your board; the planner guesses from the title when a ticket has none -->
 - A day's worth: about an hour <!-- what the planner aims for when it picks -->
 - Never picks: no-autoschedule, pending-shipment, blocked status <!-- the exclusions, each checked on the ticket and its ancestors -->

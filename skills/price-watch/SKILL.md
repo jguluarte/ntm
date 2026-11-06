@@ -15,7 +15,7 @@ Run the same way by the job and by hand. The job runs every day, paused days inc
 Load `ntm:conventions` before anything else: it holds the board's rules and your settings, and every later step follows them. Compute `TODAY` as the conventions' Dates section says, unless whoever loaded this skill gave a date.
 
 # 2: Ready check
-Run by the job: `/ntm:ready-check --notify --job "Price watch"`. Typed in chat: a plain `/ntm:ready-check`.
+Run by the job: `/ntm:ready-check --notify-failure --job "Price watch"`. Typed in chat: a plain `/ntm:ready-check`.
 **If it fails, STOP: end with its result line and nothing more.**
 
 # 3: The watch
@@ -25,9 +25,9 @@ Fetch every open ticket the way "Every open ticket" in `ntm:conventions` says, a
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price today?"): the watch is that one ticket, found by its id or by its words among the watched tickets. Skip the sync check below and step 5; FINAL REPLY says how to word the answer.
 
-**Amazon alerts.** Amazon is covered by Amazon's own price alerts, which the user keeps in step with `/ntm:amazon-alerts` from their computer. This run can't set them, so it only notices when a sync is due. With the `has-amazon-price-watch` and `amazon-unavailable` labels by their real names from Labels, note:
+**Amazon alerts.** Amazon is covered by Amazon's own price alerts, which the user keeps in step with `/ntm:amazon-alerts` from their computer. This run can't set them, so it only notices when a sync is due. With the `has-amazon-alert` and `amazon-unavailable` labels by their real names from Labels, note:
 - each open watched ticket with neither label (it needs an alert);
-- each closed ticket that still has the `has-amazon-price-watch` label (its alert needs removing). Find these with the guide's `fetch closed` for that label, canceled and duplicate included.
+- each closed ticket that still has the `has-amazon-alert` label (its alert needs removing). Find these with the guide's `fetch closed` for that label, canceled and duplicate included.
 Change nothing; FINAL REPLY reports it.
 
 # 4: The checks
@@ -47,7 +47,7 @@ If the push fails, still post in this thread and say the push failed in the fina
 # The user's replies
 The user may reply in this thread after the run, possibly on a later day. If the alert had more than one item and they don't say which, ask before changing anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and change nothing. Otherwise add a comment to that ticket right away (the guide's `write comment`), using the store, price and sale end date from this run's alert: "Skip: <price> at <store>, sale ends <date or unknown>, skipped YYYY-MM-DD. Reason: <their reason, in their words, or "none given">." Confirm in one line. If they didn't say why, ask why in the same message; if they answer, update that comment with their reason.
-- **They bought it:** a watched ticket is the purchase itself, so set its status to done (the guide's `set status`; if it's already closed, say so). Then add the `pending-shipment` label (its real name from Labels) to any open ticket it blocks, where the work lives. Confirm in one line. If the ticket has the `has-amazon-price-watch` label, add that its Amazon alert gets removed the next time they run `/ntm:amazon-alerts`.
+- **They bought it:** a watched ticket is the purchase itself, so set its status to done (the guide's `set status`; if it's already closed, say so). Then add the `pending-shipment` label (its real name from Labels) to any open ticket it blocks, where the work lives. Confirm in one line. If the ticket has the `has-amazon-alert` label, add that its Amazon alert gets removed the next time they run `/ntm:amazon-alerts`.
 - **Vouching for or blocking a store:** update the price watch stores note, titled as Notes in Board in your settings says and kept in the price watch project (the guide's `read note` and `write note`, with that project; when it's missing, `write note` creates it with the headings `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list (Vouched or Blocked) if it's there; leave the Seed list alone unless they say otherwise. Record its domain as they give it, or from that note or the item's "Stores:" comment, and ask them only if neither has it. Add the date and their reason if they gave one. Confirm in one line.
 - **Anything else:** answer it, using what this run found.
 

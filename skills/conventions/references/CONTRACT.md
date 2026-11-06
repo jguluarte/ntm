@@ -55,7 +55,7 @@ Used by `ntm:configure-board`. Say which call does each.
 | `list boards` | the boards the connector can see, by name and id; or, where the backend has no boards to list, say so (the user names or pastes theirs, or `ntm:configure-board` runs `create board`) |
 | `create board` | only where the backend has no boards to list: make one with the statuses, labels and notes settled so far, and return its id |
 | `list statuses` | a board's status names, so each class can be matched to real names |
-| `list labels` | the board's issue labels, and its project labels when those are a separate set |
+| `list labels` | the board's ticket labels, and its project labels when those are a separate set |
 | `create label` | an issue label by name, with a description; and a project label by name when those are a separate set |
 | `list projects` | every project with its name, id and labels |
 | `create project` | a project by name, with the project labels it should carry |

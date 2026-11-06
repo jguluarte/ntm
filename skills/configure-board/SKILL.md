@@ -65,7 +65,7 @@ A new Claude Doc has no statuses to list: propose the names (for example Backlog
 
 ## Labels
 
-Show the defaults in one table, issue labels and project labels, with the one-line meaning of each from the conventions' System labels: issue labels `no-autoschedule`, `pending-shipment`, `has-amazon-price-watch`, `amazon-unavailable`; project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name; record any rename.
+Show the defaults in one table, ticket labels and project labels, with the one-line meaning of each from the conventions' System labels: ticket labels `no-autoschedule`, `pending-shipment`, `has-amazon-alert`, `amazon-unavailable`; project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name; record any rename.
 
 Then `list labels`, issue and project sets. For each label the board lacks, offer to create it with `create label` under its settled name, with its one-line meaning as the description. Project labels are their own set where the backend keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels, so projects can carry them. On Claude Docs labels are free text and nothing is created.
 
@@ -89,7 +89,7 @@ How the planner works the board. Show the defaults as one short list, one line e
 
 - **Rhythm:** one task per weekday. What the planner gives each planning day.
 - **Planning days:** weekdays. The days that get a task automatically.
-- **Week ahead:** Monday to Friday. What "the week" means to the weekly planning; could be the next two weeks, or the month.
+- **Plans ahead:** Monday to Friday. What "the week" means to the weekly planning; could be the next two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day. What an estimate means on their board; the planner guesses from the title when a ticket has none. On a backend with no estimate field, say the grooming log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The exclusions, each checked on the ticket and its ancestors; name the labels by the names settled above.
@@ -140,10 +140,10 @@ Write the sections in exactly these line shapes, the ones the `ntm-user:settings
 
 The real name on your board for each label the system uses.
 
-- Issue labels:
+- Ticket labels:
   - no-autoschedule: <real name; default no-autoschedule>
   - pending-shipment: <real name; default pending-shipment>
-  - has-amazon-price-watch: <real name; default has-amazon-price-watch>
+  - has-amazon-alert: <real name; default has-amazon-alert>
   - amazon-unavailable: <real name; default amazon-unavailable>
 - Project labels (tickets inherit them):
   - price-watch: <real name; default price-watch>
@@ -155,7 +155,7 @@ How the planner works your board. Read by `ntm:plan`, the planner agent and the 
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
-- Week ahead: <default Monday to Friday>
+- Plans ahead: <default Monday to Friday>
 - Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>

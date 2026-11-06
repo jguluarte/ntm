@@ -14,14 +14,14 @@ description: Plans the user's ntm board by setting planned dates, at the rhythm 
 ```
 
 - `--auto day`: pick one task for today and date it, unattended. The planner agent runs it from the morning reminder once it has checked that today is empty and not paused; run by the user in chat, their asking is the check.
-- `--auto week`: fill each remaining planning day of the week ahead, today included, around whatever is already planned, unattended. Run by the planner agent from the weekly planning. Week ahead and Planning days in Planning in your settings say what the week is (Monday to Friday by default); on a day outside it, plan the next one.
+- `--auto week`: fill each remaining planning day of the week ahead, today included, around whatever is already planned, unattended. Run by the planner agent from the weekly planning. Plans ahead and Planning days in Planning in your settings say what the week is (Monday to Friday by default); on a day outside it, plan the next one.
 - Anything else: plan with the user in chat, following what they say ("plan the week around the garage", "give Thursday something small", "reset today"), and asking only if it's still ambiguous. Bare `/ntm:plan` is the week as the span.
 
 ## Setup
 
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this user wants their board planned: rhythm, planning days, sizing, a day's worth, what's never picked, and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the board as the conventions' Planning fetch says, keeping excluded tickets, and work out which tickets are parents.
+3. Fetch the board with the guide's `fetch open`, keeping excluded tickets, and work out which tickets are parents.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 
@@ -74,7 +74,7 @@ Only in chat, with the user. The span is what they name, or the `--auto week` sp
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each planned ticket on its own line as `Planned <date>: <id> <title> <url> (~<how long>)`, with your best guess at how long it takes. For any ticket this run picked, put its one-line reason on the next line, indented.
+Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Write each planned ticket on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best guess at how long it takes. For any ticket this run picked, put its one-line reason on the next line, indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines for each day in order, `<date>: paused` for a paused day and `<date>: nothing to plan` for a day nothing qualified for.
 - `--auto day`, or today in chat: the lines for today; when nothing qualifies, `No task today: nothing to plan.`

@@ -82,11 +82,11 @@ Nothing outside the plannable class is ever planned. An open ticket is any ticke
 
 Each label below is named by its line in Labels in your settings; the names shown are the defaults.
 
-Issue labels:
+Ticket labels:
 
 - **`no-autoschedule`:** the user has opted this ticket out of automatic planning. Planners never pick it, but once the user dates it themselves, it's reminded about like any other dated ticket.
 - **`pending-shipment`:** something has been ordered for this ticket and hasn't arrived, so the user can't start it.
-- **`has-amazon-price-watch`:** an Amazon price alert is set for this ticket. `ntm:amazon-alerts` sets and clears it.
+- **`has-amazon-alert`:** an Amazon price alert is set for this ticket. `ntm:amazon-alerts` sets and clears it.
 - **`amazon-unavailable`:** the item isn't sold new on Amazon, so no alert is set.
 
 Project labels (tickets inherit them; see Project labels):
@@ -107,9 +107,9 @@ Price watch is on when Board names a price watch project; the watched set is the
 The title of each note is under Notes in Board in your settings; the defaults are the plain names below. Read and write them with the guide's `read note` / `write note`. Each note has one writer; everything else only reads it.
 
 - **pauses** (default title `Pauses`): the pause schedule, under `## Pauses`. `ntm:pause` keeps it.
-- **message history** (`Message history`): what reminders have said. Its first line is `Keep: 60 entries or 8 weeks`, written when the note is created; `ntm-user:style` keeps it and prunes to that line.
+- **message history** (`Message history`): what reminders have said. Its first line is a `Keep:` line that `ntm-user:style`, its writer, prunes to; the style template says what it writes.
 - **grooming log** (`Grooming log`): `ntm:review-todo-list` keeps it.
-- **price watch stores** (`Price watch stores`): kept in the price watch project. `ntm:price-watch` keeps it, through the shopper's Stores comments.
+- **price watch stores** (`Price watch stores`): kept in the price watch project. `ntm:price-watch` keeps it, from the user's vouch and block replies; the shopper reads it.
 - **Amazon alert steps** (`Amazon alert steps`): `ntm:amazon-alerts` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description of an open ticket titled with the note's title and labeled `no-autoschedule`; see Notes in `references/CONTRACT.md`.
@@ -118,13 +118,13 @@ Where the backend has no documents, the guide keeps each note in the description
 
 The guide's `fetch open` returns every open ticket with the standard fields: id, title, url, status, status class, priority, estimate, planned date, labels, project, parent id, completed at, updated at. It also lists every project with its name and labels, so inherited labels count (see Project labels), and its summary when a skill asks for it.
 
-- **Planning** (planners and reminders): `fetch open`, which includes blocked tickets so parents and ancestors are fully visible. A ticket is a parent when an open ticket in the results names it as parent id. Keep excluded tickets in the results; Exclusions says who skips them. Before planning a candidate, `read ticket` on it and its parent chain to see blockers.
+- **For planning and reminders:** `fetch open`, which includes blocked tickets so parents and ancestors are fully visible. A ticket is a parent when an open ticket in the results names it as parent id. Keep excluded tickets in the results; Never picks says who skips them. Before planning a candidate, `read ticket` on it and its parent chain to see blockers.
 - **Every open ticket** (grooming, and anything else that needs the whole open board): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
 
-### Exclusions
+### Never picks
 
-Planning in your settings lists what planners never pick; the default is: a ticket that, itself or through any ancestor (project, or parent, parent's parent, and so on), has the `no-autoschedule` label, the `pending-shipment` label or the blocked status.
+Never picks in Planning in your settings lists what planners never pick; the default is: a ticket that, itself or through any ancestor (project, or parent, parent's parent, and so on), has the `no-autoschedule` label, the `pending-shipment` label or the blocked status.
 
 Planners skip excluded tickets: they never pick or date them. Reminders don't: any open ticket the user has dated gets reminded about, excluded or not.
 
@@ -177,7 +177,7 @@ The backend's response says whether a write succeeded. If one fails, retry it on
 
 Skills return text; jobs decide what reaches the user. No skill other than `ntm:notify` sends anything.
 
-Every skill a job calls returns plain text. A skill's status line (OK / FAILED) starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`, `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`, `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill. A job's final reply is one line on what happened. When `ntm:notify` returned `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as its first line and the message under it, nothing else. The weekly planning adds fix-todo-list's result after the message.
+Every skill a job calls returns plain text. A skill's status line (OK / FAILED) starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`, `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`, `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill. A job's final reply is one line on what happened. When `ntm:notify` returned `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as its first line and the message under it, nothing else. The weekly planning adds fix-todo-list's result after the message, and the morning reminder its `kept:` and `couldn't move:` lines.
 
 ## Creating tickets when the user asks
 

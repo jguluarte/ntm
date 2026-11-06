@@ -8,7 +8,7 @@ description: The afternoon reminder for the user's ntm board: a tap on the shoul
 The afternoon reminder: a tap on the shoulder about what's still open. Two agents do the work: the planner gathers the facts, the messenger writes and sends the message. This skill names the request, the handoff and what ends the run. When an agent isn't available in this session, read its file from the installed plugin and do what it says yourself, with the same request: `find ~/.claude/plugins -path '*/ntm/agents/<name>.md'`. One copy of each procedure, either way; say nothing to the user about which way it ran.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify --job "Afternoon reminder"`.
+Run `/ntm:ready-check --notify-failure --job "Afternoon reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned and nothing more.**
 
 # 2: The facts
@@ -16,7 +16,7 @@ Ask the planner agent: **what's still open** (its request of that name in `agent
 
 Read what comes back:
 - `paused`: nothing open and the user has paused today. STOP and send nothing.
-- `open:` lines, or `nothing open`: the facts for the message.
+- `open:` lines, or `open: none`: the facts for the message.
 - Any `… FAILED` line: ERROR HANDLING.
 
 # 3: The message

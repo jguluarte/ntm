@@ -21,7 +21,7 @@ This skill only reads the board. It never changes a ticket.
 
 1. Load `ntm:conventions`.
 2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch every open ticket with the conventions' Planning fetch (the guide's `fetch open`), keeping excluded tickets, and keep the ones with a planned date in range.
+3. Fetch every open ticket with the guide's `fetch open`, keeping excluded tickets, and keep the ones with a planned date in range.
 
 If any step fails, stop and return `Todo-list FAILED: <what failed>`.
 

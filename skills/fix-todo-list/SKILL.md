@@ -10,14 +10,16 @@ Fixes board state that's always safe to fix, and returns what it changed. It nev
 ## Usage
 
 ```
-/ntm:fix-todo-list
+/ntm:fix-todo-list [--dry-run]
 ```
+
+`--dry-run`: report what would change and write nothing; see Failures and dry runs.
 
 ## Setup
 
 1. Load `ntm:conventions`.
 2. Compute `TODAY` once, as the conventions' Dates section says, and use it for the whole run, even if the run crosses midnight.
-3. Fetch every open ticket with the guide's `fetch open`, and keep every result, including excluded tickets and parents. Skip the Planning fetch's other steps, and skip listing the projects with their labels: these rules check no labels.
+3. Fetch every open ticket with the guide's `fetch open`, and keep every result, including excluded tickets and parents. Skip the parent and blocker reads, and skip listing the projects with their labels: these rules check no labels.
 
 ## Rules
 
@@ -51,7 +53,7 @@ Of the open tickets, keep those that match, leaving out any that rule 1 closed o
 
 Retry a failed read (a Setup fetch or a read in rule 1) once. If it still fails, stop and return `Fix-todo-list FAILED: <what failed>`. Only if anything was changed or failed to write before it, add the result as below (never `Nothing to fix.`). Writes follow the conventions; list any that still fail under `Couldn't write:`.
 
-If the caller asks for a dry run, make no writes, and treat every parent that would be closed as closed, both when checking its own parent and in rule 2. In the result, write `Dry run <TODAY>:` in place of `Fixed <TODAY>:`, and `Would close` and `Would clear` in place of `Closed` and `Cleared`.
+With `--dry-run`, make no writes, and treat every parent that would be closed as closed, both when checking its own parent and in rule 2. In the result, write `Dry run <TODAY>:` in place of `Fixed <TODAY>:`, and `Would close` and `Would clear` in place of `Closed` and `Cleared`.
 
 ## Result
 

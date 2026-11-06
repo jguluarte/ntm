@@ -24,11 +24,11 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Board in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 
-Each prompt file is named after its title and starts with a table (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+Each prompt file is named after its kind and starts with a table (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
 
 ## Walking the kinds
 
-For each kind in the order above, ask: do they want it; which days; what time; what title. A title is only a label; the kind's default title stays the name notifications and tokens are matched by. Offer the defaults and move on when they take them. For completed, also weekly or monthly, and the span in the prompt follows (see its header). Skip price watch when Board names no price watch project.
+For each kind in the order above, ask: do they want it; which days (Planning days from Planning, weekdays by default, for the three daily reminders); what time; what title. Ask once, for all the jobs: which model should they run on? Propose Opus (`claude-opus-5-5`): a new task inherits the model of the chat that creates it, and a job that runs every day doesn't need the heaviest one. Their answer is the model every job gets. A title is only a label; the kind's default title stays the name notifications and tokens are matched by. Offer the defaults and move on when they take them. For completed, also weekly or monthly, and the span in the prompt follows (see its header). Skip price watch when Board names no price watch project.
 
 Then, for each job they want:
 
@@ -41,9 +41,9 @@ Then, for each job they want:
    - `notifications`: `{push: true}`. Push carries the run's completion summary, which is the reminder itself on the `claude-push` channel.
    - `initiation`: `human_request`.
    - Leave `permission_mode` unset.
-4. Set the model: `update_trigger` with the new task's id and `model: claude-opus-5-5`, or the model the user named. A new task inherits the model of the chat that created it, and a job that runs every day doesn't need the heaviest one.
+4. Set the model they chose: `update_trigger` with the new task's id and `model: <the id>`. This is their request from the walk, not the skill's.
 5. Tell the user, in one sentence, which model the job runs on and which approval setting it got, and that automatic approval can be turned on in the task's settings if the organization allows it. The setting is `derived_state.permission_mode` in the result: `auto` means runs go ahead on their own; absent means a run stops when an action needs approval, and nobody is there to approve a scheduled run.
-6. Check the new task's `mcp_connections` (in the `create_trigger` result, or `list_triggers`) for the backend connector named by Board. If it isn't there, say so: attach the connector to this session and create the job again, or every run will fail its ready check.
+6. When the result lists the task's connectors (`mcp_connections`), check that the backend connector named by Board is among them; if it isn't, say so: attach the connector to this session and create the job again, or every run will fail its ready check. Either way, the proof is a run: offer `fire_trigger` (Running a job now) and read its ready check.
 
 ## Connectors
 
@@ -51,7 +51,7 @@ A job inherits the connectors attached to the session that creates it. A browser
 
 ## Already set up
 
-When jobs exist, list them and ask what to change, instead of walking the kinds again. `list_triggers`, recurring only. Match the user's jobs by title against the titles above, and otherwise by the first line of the stored prompt (`derived_state.prompt` in `list_triggers`): every prompt file opens with the kind's default title (`Morning reminder.`, `Weekly planning for the board…`, `Completed this week:…`, `Price watch.`). Show each as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the last run's status in a word (succeeded, failed) and its time. Omit `trigger_id`s unless asked. Then ask what to change: a time, the days, a title, the prompt, the model, on or off, delete, or a kind not yet created (walk that one as above).
+When jobs exist, list them and ask what to change, instead of walking the kinds again. `list_triggers`, recurring only. Match the user's jobs by title against the titles above, and otherwise by the first line of the stored prompt (`derived_state.prompt` in `list_triggers`): every prompt file opens with the kind's default title and a full stop (`Morning reminder.`, `Weekly planning.`, `Completed this week.`, `Price watch.`). Show each as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the last run's status in a word (succeeded, failed) and its time. Omit `trigger_id`s unless asked. Then ask what to change: a time, the days, a title, the prompt, the model, on or off, delete, or a kind not yet created (walk that one as above).
 
 ## Running a job now
 
@@ -59,7 +59,7 @@ When jobs exist, list them and ask what to change, instead of walking the kinds 
 
 ## Re-syncing a prompt
 
-A stored prompt only goes stale when its prompt file changes. After a rename, `ntm:settings` substitutes the stored prompts itself; this section is for a prompt file that changed. When that happens: `list_triggers`, match each job as Already set up says, read the prompt file again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep anything the user added to the prompt (the stored prompt is `derived_state.prompt` in `list_triggers`), and any last step `ntm:settings` added to the weekly planning prompt; change only what came from the file. Nothing else changes; the job keeps its schedule and run history. Never delete and recreate a job to change its prompt.
+A stored prompt only goes stale when its prompt file changes. When that happens: `list_triggers`, match each job as Already set up says, read the prompt file again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep anything the user added to the prompt (the stored prompt is `derived_state.prompt` in `list_triggers`); change only what came from the file. Nothing else changes; the job keeps its schedule and run history. Never delete and recreate a job to change its prompt.
 
 ## Changing a time, days or title
 

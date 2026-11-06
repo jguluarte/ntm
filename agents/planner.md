@@ -39,32 +39,32 @@ The reminder skill names one of these. Return only the lines each one lists, in 
 1. Load `ntm:todo-list`, `ntm:pause` and `ntm:plan`. Run `/ntm:todo-list`.
 2. **Carry over.** Every ticket it lists with a planned date before `TODAY` is stale. Move the ones in the plannable class to `TODAY` with the guide's `set planned date`, whatever their labels and even when one blocks another: the user dated them, so they should just work. A stale ticket in the blocked class keeps its date. Do this on a paused day too.
 3. **Today.** If nothing is planned for `TODAY` after the moves: run `/ntm:pause --check`. Paused: return `paused` and stop. Otherwise run `/ntm:plan --auto day`, which picks one task for today and dates it.
-4. Return one `today:` line per ticket planned for `TODAY`: `today: <id> <title> (~<time>) <url>`, then ` (was <date>, carried <n> days)` on a ticket you moved, `n` being `TODAY` minus its old date in calendar days (`carried 1 day` when it's one). A stale ticket that couldn't move: `couldn't move: <id> (blocked)`. When plan returned `No task today: nothing to plan.`, the single line `nothing to plan`.
+4. Return one `today:` line per ticket planned for `TODAY`: `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a ticket you moved, the date it had. A stale ticket the rule kept where it was: `kept: <id> (blocked)`; one whose move failed twice: `couldn't move: <id> (write failed)`. When plan returned `No task today: nothing to plan.`, the single line `today: none`. How many days a ticket has slipped is the style's to count, from the message history; don't compute it here.
 
 ### What's still open
 
 1. Load `ntm:todo-list` and `ntm:pause`. Run `/ntm:todo-list`.
-2. Return one `open:` line per ticket it lists: `open: <id> <title> (~<time>) <url>`, then ` (was <date>, carried <n> days)` when its planned date is before `TODAY`, then ` (started)` when todo-list marked it so. Remind about everything listed, whatever its labels or status, even on a paused day: the user dated it.
-3. With nothing listed: run `/ntm:pause --check`. Paused: `paused`. Otherwise `nothing open`.
+2. Return one `open:` line per ticket it lists: `open: <id> <title> (~<time>) <url>`, then ` (was <date>)` when its planned date is before `TODAY`, then ` (started)` when todo-list marked it so. Remind about everything listed, whatever its labels or status, even on a paused day: the user dated it.
+3. With nothing listed: run `/ntm:pause --check`. Paused: `paused`. Otherwise `open: none`.
 
 ### How did today go
 
-1. Load `ntm:completed`. Run `/ntm:completed today and what's still open`.
-2. Return one `done:` line per ticket that closed today (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per ticket still open that was planned for today, with ` (was <date>, carried <n> days)` when its date is before `TODAY`, or `nothing open`.
+1. Load `ntm:completed`. Run `/ntm:completed today, and what's still open, planned today or earlier`.
+2. Return one `done:` line per ticket that closed today (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per ticket still open (`open: <id> <title> <url>`), with ` (was <date>)` when its planned date is before `TODAY`, or `open: none`.
 3. When nothing closed and nothing is open, return `paused`: assume a day off.
 
 ### Close out the week and plan the next
 
-Week ahead in Planning says what the week is (Monday to Friday by default); the span looked back on is the same length, ending today.
+Plans ahead in Planning says how far the week ahead reaches (one week, Monday to Friday, by default); the span looked back on is the same number of calendar days ending today (7 for one week).
 
 1. Load `ntm:completed`, `ntm:fix-todo-list` and `ntm:plan`. Run `/ntm:completed <the span> and what's still open` first, before the fix, so it counts nothing the fix closes. `Completed FAILED` isn't an error here: carry on with `done: unavailable`.
 2. Run `/ntm:fix-todo-list`, so planning works from a clean board. `Fix-todo-list FAILED` isn't an error here either: carry on.
 3. Run `/ntm:plan --auto week`.
-4. Return: one `done:` line per ticket that closed, or `done: none`, or `done: unavailable`; one `open:` line per ticket still open from the span; one `planned:` line per `Planned <date>:` line the plan returned, as `planned: <date>: <id> <title> (~<time>) <url>`, leaving out the plan's reasons and its paused and empty days, or the single line `nothing to plan`; then every line fix-todo-list returned, each prefixed `fix: `.
+4. Return: one `done:` line per ticket that closed, or `done: none`, or `done: unavailable`; one `open:` line per ticket still open from the span; one `planned:` line per `Planned <date>:` line the plan returned, that line with `planned: ` in place of `Planned ` (so `planned: <date>: <id> <title> (~<time>) <url>`), leaving out the plan's reasons and its paused and empty days, or the single line `planned: none`; then every line fix-todo-list returned, each prefixed `fix: `.
 
 ## Estimating
 
-`(~<time>)` on a line is your best guess at how long the task takes, so the user can see what the day asks of them. Take it from `ntm:plan` when it gave one. Otherwise: with an estimate on the ticket, read it on the Sizing scale in Planning (on the default scale, 1 is an evening or less, 2 is a couple of hours, 3 or more is multi-day, so name the first sitting); without one, a rough guess from the title and description, in the user's units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
+`(~<time>)` on a line is your best guess at how long the task takes, so the user can see what the day asks of them. Take it from `ntm:plan` when it gave one. Otherwise: with an estimate on the ticket, read it on the Sizing scale in Planning and name the first sitting; without one, a rough guess from the title and description, in the user's units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
 
 ## Errors
 

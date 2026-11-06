@@ -94,7 +94,7 @@ After writing, add a new object at the top of the block: `date` today (computed 
 
 Each beat sets the register as Beats says; the tone says what's on the table.
 
-- **morning**: the day set up. Fresh or already planned tasks get the first level. Anything carried over gets what When something keeps slipping says, by the count below; the tone names each with `was <date>, carried <n> days`, and the message may state that count, adding nothing to it.
+- **morning**: the day set up. Fresh or already planned tasks get the first level. Anything carried over gets what When something keeps slipping says, by the count below; the tone names each with the date it had (`was <date>`), and the message may state the count, which is yours alone.
 - **afternoon**: the middle of the day, a tap on the shoulder. Playful, never a dig, whatever the history says. The first level, always.
 - **evening**: how the day ended. Open work gets what When something keeps slipping says, by the same count as the morning. Nothing open gets the register of the Profile's "Nothing open" example: a win for the day, not the year.
 - **week**: two halves in one message, a sentence or so each: the week that was, then the week ahead. If the tone says there's nothing to look back on, the week ahead only. No history count: every ticket gets the first level.

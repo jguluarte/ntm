@@ -32,7 +32,7 @@ Run in order. Each ends with one line, `<n>. <step>: pass` or `<n>. <step>: FAIL
 6. **notify:** read Channel in Notifications in your settings first. On `pushover`, `/ntm:notify --title "<the title>" --message "<the message>"`. Pass on `Sent:`, as `6. notify: pass (push sent; check your phone)`. Nobody waits for the phone: the user asked for this test, so one push is expected, and whether it arrived is theirs to confirm. On the `claude-push` channel, run `ntm:notify` anyway; it returns its delivery block instead of sending. Show the block and pass as `6. notify: pass (claude-push; shown, not sent)`. `Notify FAILED` is the why.
 7. **close:** `set status` to the done status from Board. Pass when `read ticket` shows it closed.
 8. **completed:** `/ntm:completed today`. Pass when `ABC-12` is listed under `Done`.
-9. **fix-todo-list:** `/ntm:fix-todo-list` as a dry run. Pass on `Dry run <TODAY>:` with any lines, or `Dry run <TODAY>: nothing to fix.`; `Fix-todo-list FAILED` is the why.
+9. **fix-todo-list:** `/ntm:fix-todo-list --dry-run`. Pass on `Dry run <TODAY>:` with any lines, or `Dry run <TODAY>: nothing to fix.`; `Fix-todo-list FAILED` is the why.
 10. **pause --check:** `/ntm:pause --check`. Pass on one `<TODAY>: true` or `<TODAY>: false` line.
 11. **note:** `write note` on the throwaway note with the content `self-test <TODAY>`, then `read note` returns the same content. Pass when it does.
 
@@ -42,7 +42,6 @@ Always, whether the steps passed or stopped, and in this order; one line each, `
 
 - **The ticket:** if it was created, `set status` to the canceled status from Board, so it never counts as work done (leave it done when Board's canceled line is blank). Where the backend keeps notes in tickets, cancel the note's ticket the same way.
 - **The note:** if it was written, `write note` it empty.
-- **The message history:** step 5 added one entry to the message history note (titled as Notes in Board says) when a style is configured. `read note`, remove the entry whose `line` is the test message, and `write note`.
 
 Nothing else on the board is touched: the test dates, closes and removes its own ticket only.
 

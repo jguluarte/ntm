@@ -8,7 +8,7 @@ description: The morning reminder for the user's ntm board: what's on the table 
 The morning reminder: what's on the table today, said the way the user reads. Two agents do the work: the planner gathers the facts, the messenger writes and sends the message. This skill names the request, the handoff and what ends the run. When an agent isn't available in this session, read its file from the installed plugin and do what it says yourself, with the same request: `find ~/.claude/plugins -path '*/ntm/agents/<name>.md'`. One copy of each procedure, either way; say nothing to the user about which way it ran.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify --job "Morning reminder"`.
+Run `/ntm:ready-check --notify-failure --job "Morning reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned and nothing more.**
 
 # 2: The facts
@@ -16,7 +16,7 @@ Ask the planner agent: **make today ready** (its request of that name in `agents
 
 Read what comes back:
 - `paused`: the user has paused today. STOP and send nothing.
-- `today:` lines, or `nothing to plan`: the facts for the message. Leave `couldn't move:` lines out of what you hand the messenger; they're for the final reply.
+- `today:` lines, or `today: none`: the facts for the message. Leave `kept:` and `couldn't move:` lines out of what you hand the messenger; they're for the final reply.
 - Any `… FAILED` line: ERROR HANDLING.
 
 # 3: The message
@@ -31,7 +31,7 @@ job: Morning reminder
 It returns `Sent: <title>`, a delivery block, or a `… FAILED` line.
 
 # FINAL REPLY
-When the messenger returned a delivery block, the final reply is the title line and the message, verbatim, then any `couldn't move:` lines from the planner as they came, and nothing else. Otherwise, unless reporting an error, end the run with one short line saying what happened, such as "Sent the morning reminder." or "Paused today; nothing sent.", then any `couldn't move:` lines. That line is for the Pushover case.
+When the messenger returned a delivery block, the final reply is the title line and the message, verbatim, then any `kept:` and `couldn't move:` lines from the planner as they came, and nothing else. Otherwise, unless reporting an error, end the run with one short line saying what happened, such as "Sent the morning reminder." or "Paused today; nothing sent.", then any `kept:` and `couldn't move:` lines. That line is for the Pushover case.
 
 # ERROR HANDLING
 If step 1 fails, end with what the ready check returned, and nothing more; that is what reaches the user. For any later error, including a `… FAILED` line from the planner or the messenger, never use `/ntm:notify`. End the run with the error stated plainly in your final reply; the scheduled task's own completion push carries it.

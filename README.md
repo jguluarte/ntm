@@ -85,7 +85,7 @@ The notes live on your board, under the titles in your settings.
 
 ## What you can customize
 
-- **The style.** Plain, a theme you describe, or a profile you already have: `/ntm:configure-style`.
+- **The style.** Plain, a theme you describe, or a persona skill you already have: `/ntm:configure-style`.
 - **The board agreements.** Labels and note titles, the planning rhythm and days, what the weekly message includes, how the shopper judges a deal. `/ntm:configure-board` proposes a default for each and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called: `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in your settings and read last.
@@ -98,7 +98,7 @@ All of them in `ntm-user`: `ntm-user:settings` (About you, Board, Labels, Planni
 
 - **Your board** (Linear, Claude Docs, or your own): tickets, planned dates, labels and the notes above.
 - **Pushover**, when it's your channel: each reminder's title and message, with your app token and user key, over HTTPS from the run. With the claude-push channel nothing is sent; the scheduled task's own completion push carries the reminder.
-- **The web**: searches of store sites for the items you're watching (price watch only), and, when `Template source:` in `ntm:conventions` names a URL, the template's own release for the weekly upstream check.
+- **The web**: searches of store sites for the items you're watching (price watch only).
 - **Your browser**, for Amazon alert sync only: Claude in Chrome on your computer.
 
 Nothing else leaves a run. No skill but `ntm:notify` sends anything.

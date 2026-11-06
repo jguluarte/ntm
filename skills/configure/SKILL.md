@@ -47,7 +47,7 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 1. `ntm:configure-board`: which backend, which board, statuses, labels, notes, and the agreements the planner and the shopper work by. Returns Board, Labels, Planning and Shopping (Shopping only when a price watch project was chosen).
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns Notifications.
 3. `ntm:configure-style`: plain, a theme, or a profile they have. Returns the `ntm-user:style` body.
-4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand it the timezone from About you and the price watch project from Board as settled above. Creates the scheduled tasks itself; returns nothing to package.
+4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand it the timezone from About you, the price watch project from Board and Planning days from Planning, as settled above. Creates the scheduled tasks itself; returns nothing to package.
 
 Keep the returned text; write nothing.
 

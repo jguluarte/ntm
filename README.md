@@ -1,23 +1,48 @@
 # Neurodivergent Task Manager (ntm)
 
-ntm runs a personal task system on your own todo list, with a few scheduled tasks that keep it moving. It plans your days and weeks, reminds you in a style you choose, asks in the evening how the day went, tidies what has gone stale, and watches prices on things you want to buy.
+ntm runs a personal task system on your own todo list, with a few scheduled
+tasks that keep it moving. It plans your days and weeks, reminds you in a style
+you choose, asks in the evening how the day went, tidies what has gone stale,
+and watches prices on things you want to buy.
 
-It was built by one person for the places that got in their way: starting things, keeping multi-day work moving, noticing when things have quietly gone stale, not forgetting things, and buying on a good price instead of on impulse. It stays low-process. If it starts bogging you down, turn pieces off.
+It was built by one person for the places that got in their way: starting
+things, keeping multi-day work moving, noticing when things have quietly gone
+stale, not forgetting things, and buying on a good price instead of on impulse.
+It stays low-process. If it starts bogging you down, turn pieces off.
 
-The price watch is there to bridge the impulse to buy. Sometimes we buy right away only so we don't forget, and we don't always still want it later. Put the item on the watch instead: it isn't forgotten, and waiting for a good price becomes the easy option.
+The price watch is there to bridge the impulse to buy. Sometimes we buy right
+away only so we don't forget, and we don't always still want it later. Put the
+item on the watch instead: it isn't forgotten, and waiting for a good price
+becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, three agents (planner, messenger, shopper) that own the procedures, and the prompts for the scheduled tasks. It holds nothing of yours, so it installs from a marketplace or a zip and updates like any plugin.
-- **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your unique settings and style: `ntm-user:settings` (every value you agreed to: where your todo list is, your label names, how planning and shopping work, how reminders reach you, anything you do differently) and `ntm-user:style` (how reminders talk to you). Keep it private; it can hold your Pushover keys.
+- **ntm** is the behaviour: the skills below, three agents (planner, messenger,
+  shopper) that own the procedures, and the prompts for the scheduled tasks. It
+  holds nothing of yours, so it installs from a marketplace or a zip and updates
+  like any plugin.
+- **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your
+  unique settings and style: `ntm-user:settings` (every value you agreed to:
+  where your todo list is, your label names, how planning and shopping work, how
+  reminders reach you, anything you do differently) and `ntm-user:style` (how
+  reminders talk to you). Keep it private; it can hold your Pushover keys.
 
-The trigger word is the plugin's name, `ntm`; to use another, fork the template and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in capitals, in every file and in `plugin.json`'s `name`), then create your jobs from that copy.
+The trigger word is the plugin's name, `ntm`; to use another, fork the template
+and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in
+capitals, in every file and in `plugin.json`'s `name`), then create your jobs
+from that copy.
 
 ## First steps
 
-1. Install ntm. Connect whatever system holds your tickets, todos or reminders: Linear and Claude Docs are the two shipped guides (Linear from the Connectors tab; Claude Docs needs no connector), and your own backend is described during setup.
-2. Open a chat and run `/ntm:configure`. It asks about you, your todo list, notifications, style and schedule, creates your scheduled tasks, and hands you `ntm-user.plugin` to install.
-3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop once on a throwaway ticket, then cancels the ticket and empties its note.
+1. Install ntm. Connect whatever system holds your tickets, todos or reminders:
+   Linear and Claude Docs are the two shipped guides (Linear from the Connectors
+   tab; Claude Docs needs no connector), and your own backend is described
+   during setup.
+2. Open a chat and run `/ntm:configure`. It asks about you, your todo list,
+   notifications, style and schedule, creates your scheduled tasks, and hands
+   you `ntm-user.plugin` to install.
+3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop
+   once on a throwaway ticket, then cancels the ticket and empties its note.
 
 ## Skills
 
@@ -64,7 +89,10 @@ Setup and settings:
 
 ## What's what
 
-Rules live in `ntm:conventions` and name the values they depend on by key; the values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic: each is three lines naming the skill it runs. The reminder skills gather facts and hand them to an agent; agents own the procedures.
+Rules live in `ntm:conventions` and name the values they depend on by key; the
+values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
+each is three lines naming the skill it runs. The reminder skills gather facts
+and hand them to an agent; agents own the procedures.
 
 | Noun | What it is | Who writes it |
 | --- | --- | --- |
@@ -85,30 +113,49 @@ The notes live on your todo list, under the titles in your settings.
 
 ## What you can customize
 
-- **The style.** Plain, a theme you describe, or a persona skill you already have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels and note titles, the planning rhythm and days, what the weekly message includes, how the shopper judges a deal. `/ntm:configure-todo-list` proposes a default for each and records your answer.
-- **The schedule.** Which jobs run, which days, what time, what they're called: `/ntm:configure-schedule`.
-- **Deviations.** Anything you do differently from the conventions, written in your settings and read last.
+- **The style.** Plain, a theme you describe, or a persona skill you already
+  have: `/ntm:configure-style`.
+- **The todo list agreements.** Labels and note titles, the planning rhythm and
+  days, what the weekly message includes, how the shopper judges a deal.
+  `/ntm:configure-todo-list` proposes a default for each and records your
+  answer.
+- **The schedule.** Which jobs run, which days, what time, what they're called:
+  `/ntm:configure-schedule`.
+- **Deviations.** Anything you do differently from the conventions, written in
+  your settings and read last.
 
 ## Where your values live
 
-All of them in `ntm-user`: `ntm-user:settings` (About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations) and `ntm-user:style`. ntm has no settings file and no placeholders. Changing a value means a new `ntm-user.plugin` from `/ntm:settings`, installed in place of the old one. What the jobs write (the notes above) lives on your todo list.
+All of them in `ntm-user`: `ntm-user:settings` (About you, Todo list, Labels,
+Planning, Shopping, Notifications, Deviations) and `ntm-user:style`. ntm has no
+settings file and no placeholders. Changing a value means a new
+`ntm-user.plugin` from `/ntm:settings`, installed in place of the old one. What
+the jobs write (the notes above) lives on your todo list.
 
 ## What the plugin sends where
 
-- **Your todo list** (Linear, Claude Docs, or your own): tickets, planned dates, labels and the notes above.
-- **Pushover**, when it's your channel: each reminder's title and message, with your app token and user key, over HTTPS from the run. With the claude-push channel nothing is sent; the scheduled task's own completion push carries the reminder.
-- **The web**: searches of store sites for the items you're watching (price watch only).
-- **Your browser**, for Amazon alert sync only: Claude's built-in browser, or your own through the Claude extension (Amazon interface under Shopping in your settings).
+- **Your todo list** (Linear, Claude Docs, or your own): tickets, planned dates,
+  labels and the notes above.
+- **Pushover**, when it's your channel: each reminder's title and message, with
+  your app token and user key, over HTTPS from the run. With the claude-push
+  channel nothing is sent; the scheduled task's own completion push carries the
+  reminder.
+- **The web**: searches of store sites for the items you're watching (price
+  watch only).
+- **Your browser**, for Amazon alert sync only: Claude's built-in browser, or
+  your own through the Claude extension (Amazon interface under Shopping in your
+  settings).
 
 Nothing else leaves a run. No skill but `ntm:notify` sends anything.
 
 ## The connector it bundles
 
-Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors tab for you to connect. On another backend, ignore it. See `CONNECTORS.md`.
+Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors
+tab for you to connect. On another backend, ignore it. See `CONNECTORS.md`.
 
 ## Requirements
 
 - Scheduled tasks on your Claude account, for the reminders.
 - For Pushover: an account, an application token and your user key.
-- For Amazon alert sync: Claude's built-in browser, or your own browser with the Claude extension.
+- For Amazon alert sync: Claude's built-in browser, or your own browser with the
+  Claude extension.

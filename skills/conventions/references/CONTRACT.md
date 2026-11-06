@@ -1,28 +1,62 @@
 # Backend contract
 
-A backend guide maps the operations the conventions name onto one backend's connector. `linear.md` is the complete, tested one. `claude-docs.md` is the second shipped guide, for a todo list kept in a Claude Doc with no ticket-system connector at all. It's untested, and heavier per run (every read pulls a whole table and every write edits a row), but fine for a few dozen tickets. For any other backend, Todo list in `ntm-user:settings` says how each operation here is done, in the user's words. `/ntm:configure-todo-list` fills it with the user against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks it.
+A backend guide maps the operations the conventions name onto one backend's
+connector. `linear.md` is the complete, tested one. `claude-docs.md` is the
+second shipped guide, for a todo list kept in a Claude Doc with no ticket-system
+connector at all. It's untested, and heavier per run (every read pulls a whole
+table and every write edits a row), but fine for a few dozen tickets. For any
+other backend, Todo list in `ntm-user:settings` says how each operation here is
+done, in the user's words. `/ntm:configure-todo-list` fills it with the user
+against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
+it.
 
-Write a guide as a list of operations, each saying which tool calls carry it out and which fields map to the conventions' names. Keep the headings below so skills can find what they need.
+Write a guide as a list of operations, each saying which tool calls carry it out
+and which fields map to the conventions' names. Keep the headings below so
+skills can find what they need.
 
 ## What the backend needs to have
 
-- Tickets with: an id, a title, a description, a status, labels, a single date field usable as the planned date, a parent/sub-ticket relation, and a web url. An estimate field and a blocked-by relation are used when present. Say in the guide if the backend lacks them; the skills that use them (grooming, planning) work from titles and descriptions instead. With no estimate field, the grooming log's Estimates block is the record: a ticket counts as groomed when it has an entry there, and `update ticket` skips the estimate.
-- Some way to group tickets (projects, folders, epics) that can carry labels. If groups can't carry labels, say so; the conventions' project-label inheritance then doesn't apply, and the user puts system labels on tickets directly.
+- Tickets with: an id, a title, a description, a status, labels, a single date
+  field usable as the planned date, a parent/sub-ticket relation, and a web url.
+  An estimate field and a blocked-by relation are used when present. Say in the
+  guide if the backend lacks them; the skills that use them (grooming, planning)
+  work from titles and descriptions instead. With no estimate field, the
+  grooming log's Estimates block is the record: a ticket counts as groomed when
+  it has an entry there, and `update ticket` skips the estimate.
+- Some way to group tickets (projects, folders, epics) that can carry labels. If
+  groups can't carry labels, say so; the conventions' project-label inheritance
+  then doesn't apply, and the user puts system labels on tickets directly.
 - A connector for Claude that can list, read and write the above.
 
-Some gaps are survivable: no estimate field, no blocked-by relation, no labels on groups, no priority, no updated-at, no documents (see Notes), no way to keep a note inside a project (then every note is at list level). The guide says which it lacks, and the skills work around them as above. Two aren't: a backend with no date field to use as the planned date, or no way to tell open tickets from closed, can't run this system.
+Some gaps are survivable: no estimate field, no blocked-by relation, no labels
+on groups, no priority, no updated-at, no documents (see Notes), no way to keep
+a note inside a project (then every note is at list level). The guide says which
+it lacks, and the skills work around them as above. Two aren't: a backend with
+no date field to use as the planned date, or no way to tell open tickets from
+closed, can't run this system.
 
 ## Todo list
 
-Name the todo list (List name in Todo list), what id it needs (List id), and which automations the backend runs on parent/sub-ticket closing, if any. If the backend has no unit above projects, the todo list is the whole account (List name is what the backend calls it, List id blank). If ids carry no prefix, Ticket prefix is blank and ids are the backend's own; `(ABC-12)` in the conventions then means the bare id.
+Name the todo list (List name in Todo list), what id it needs (List id), and
+which automations the backend runs on parent/sub-ticket closing, if any. If the
+backend has no unit above projects, the todo list is the whole account (List
+name is what the backend calls it, List id blank). If ids carry no prefix,
+Ticket prefix is blank and ids are the backend's own; `(ABC-12)` in the
+conventions then means the bare id.
 
 ## Status classes
 
-Say how the status names in Todo list are used to filter and to write, and how to tell open from closed in results. A backend with no status names, only open and closed, lists `open` as the one plannable status, `closed` as done, and leaves started, blocked, canceled and duplicate blank. The classes those lines name then don't exist on this todo list, and `set status` to done closes the ticket.
+Say how the status names in Todo list are used to filter and to write, and how
+to tell open from closed in results. A backend with no status names, only open
+and closed, lists `open` as the one plannable status, `closed` as done, and
+leaves started, blocked, canceled and duplicate blank. The classes those lines
+name then don't exist on this todo list, and `set status` to done closes the
+ticket.
 
 ## Operations
 
-Each must be covered. Operation names are what every skill uses; keep them exactly.
+Each must be covered. Operation names are what every skill uses; keep them
+exactly.
 
 | Operation | Must say |
 | --- | --- |
@@ -42,9 +76,20 @@ Each must be covered. Operation names are what every skill uses; keep them exact
 
 ## Notes
 
-Notes are the texts the system keeps on the todo list, titled as Notes under Todo list says. `read note <title>` returns the note's content, or says it's missing. `write note <title>` replaces the content, and creates a missing note with the content given. Both take an optional project, for a note kept in a project.
+Notes are the texts the system keeps on the todo list, titled as Notes under
+Todo list says. `read note <title>` returns the note's content, or says it's
+missing. `write note <title>` replaces the content, and creates a missing note
+with the content given. Both take an optional project, for a note kept in a
+project.
 
-If the backend has documents, use them, found by title. If it doesn't, keep each note in the description of a ticket titled with the note's title, labeled with the `no-autoschedule` label (its real name from Labels) and left open in a plannable status. `ntm:fix-todo-list` never touches it (no sub-tickets, no date) and planners skip it for its label. `read note` is then a title search that reads that ticket's description; `write note` replaces it, creating the ticket when there is none. A note kept in a project is a ticket created in that project. The conventions say every skill ignores such a ticket as work.
+If the backend has documents, use them, found by title. If it doesn't, keep each
+note in the description of a ticket titled with the note's title, labeled with
+the `no-autoschedule` label (its real name from Labels) and left open in a
+plannable status. `ntm:fix-todo-list` never touches it (no sub-tickets, no date)
+and planners skip it for its label. `read note` is then a title search that
+reads that ticket's description; `write note` replaces it, creating the ticket
+when there is none. A note kept in a project is a ticket created in that
+project. The conventions say every skill ignores such a ticket as work.
 
 ## Setup operations
 
@@ -63,4 +108,5 @@ Used by `ntm:configure-todo-list`. Say which call does each.
 
 ## Writing
 
-Say how a write reports success, so the conventions' retry rule (retry once, then report) can be applied.
+Say how a write reports success, so the conventions' retry rule (retry once,
+then report) can be applied.

@@ -1,6 +1,6 @@
 # The style profile
 
-A user-defined persona skill keeps its own rules for all of this; none of the sections below are asked of it (see User-defined persona in `ntm:configure-style`). This page is for a profile built from scratch.
+A persona skill keeps its own rules for all of this; none of the sections below are asked of it (see User-defined persona in `ntm:configure-style`). This page is for a profile built from scratch.
 
 The Profile half of `ntm-user:style`: what `ntm:configure-style` writes with the user, and what the procedure half of that skill reads. The `Profanity:` line and the headings exactly as shown, in this order; everything else is the user's, in their words. The builder writes every section; a section left empty means its default, as the procedure reads it.
 

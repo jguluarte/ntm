@@ -115,7 +115,7 @@ Only when a price watch project was chosen; otherwise skip and return no Shoppin
 - **Condition:** new, unless a ticket says otherwise.
 - **Delivery:** online only, to their country (from About you).
 - **A deal:** at or near the ticket's target, or well below the usual price. What gets them an alert.
-- **Amazon interface:** the one `/ntm:sync-price-watch-to-amazon` uses: Claude's built-in browser, or their own browser through the Claude extension. Blank means whichever their Claude settings prefer.
+- **Amazon interface:** how `/ntm:sync-price-watch-to-amazon` reaches Amazon: Claude's built-in browser, their own browser through the Claude extension, or off (no Amazon alerts). Blank means it asks.
 
 Then ask, once: anything else about how they shop? Stores they always or never use go in the price watch stores note (Seed above), not here; this is for what counts beyond that. Capture it as written below the lines; "nothing" leaves it blank.
 

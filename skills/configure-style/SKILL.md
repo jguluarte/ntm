@@ -24,7 +24,7 @@ Text after the name is a persona skill the user already has, pasted or attached 
 Load `ntm-user:style` by name.
 
 - **Won't load:** a new style. Open with the three choices below.
-- **Loads:** a re-run. Show the Profile section by section, ask what to change, and go to the section that owns it: "meaner" or "softer" is Register and the Examples for the levels it touches; "shorter" is What gets you to read and the Examples; "not landing" starts at What gets you to read, then When something keeps slipping. Sections they don't name stay as they are. A user-defined persona is edited as they say, verbatim otherwise.
+- **Loads:** a re-run. Show the Profile section by section, ask what to change, and go to the section that owns it: "meaner" or "softer" is Register and the Examples for the levels it touches; "shorter" is What gets you to read and the Examples; "not landing" starts at What gets you to read, then When something keeps slipping. Sections they don't name stay as they are. A persona is edited as they say, verbatim otherwise.
 
 When `ntm:configure` is running this skill, it says so; the result goes back to it (see Result).
 
@@ -66,7 +66,7 @@ What the messenger needs from it is only the Usage in the template: `/ntm-user:s
 
 ## Result
 
-For plain and a theme: the Profile, in the builder's shape, headings as given. For a user-defined persona: the `## For ntm` section and the unchanged body. Show it and take one round of corrections: they say what's off, you fix it.
+For plain and a theme: the Profile, in the builder's shape, headings as given. For a persona: the `## For ntm` section and the unchanged body. Show it and take one round of corrections: they say what's off, you fix it.
 
 Then:
 

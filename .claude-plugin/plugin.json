@@ -1,0 +1,9 @@
+{
+  "name": "ntm",
+  "displayName": "Neurodivergent Task Manager (ntm)",
+  "version": "0.3.2",
+  "description": "A personal task system on your own todo list, for the places that get in the way: starting things, keeping multi-day work moving, noticing what has gone stale, not forgetting things, and buying on a good price instead of on impulse. Plans your days and weeks, reminds you in a style you choose, and watches prices so you can wait for a good one without forgetting. Run /ntm:configure once; your settings and style live in a small plugin of your own.",
+  "author": { "name": "Neurodivergent Task Manager contributors" },
+  "keywords": ["tasks", "reminders", "planning", "price watch", "neurodivergent", "linear", "pushover"],
+  "license": "MIT"
+}

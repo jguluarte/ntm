@@ -1,0 +1,63 @@
+---
+name: settings
+description: Your settings for ntm. Read by ntm:conventions; change them with /ntm:settings.
+---
+
+Values for ntm, read by `ntm:conventions`. Shown only when a person invokes this skill directly.
+
+Each section is read by heading. A line that is missing means its default. Prose is fine: say what you do in your own words.
+
+## About you
+
+- Name: <!-- how a message title addresses you -->
+- Timezone: <!-- IANA zone, e.g. America/Chicago. Every date in the system is computed in it -->
+- Country and currency: <!-- for price watch, e.g. US, USD -->
+
+## Board
+
+- Backend: <!-- linear | claude-docs | describe your own below -->
+- Board name: <!-- the team or workspace that holds every ticket, as the backend names it -->
+- Board id: <!-- if the backend needs one for lookups; blank otherwise -->
+- Ticket prefix: <!-- e.g. HOME for HOME-12 -->
+- Statuses — the board's real names for each class:
+  - plannable: <!-- usually three: a backlog, a to-do and an in-progress status -->
+  - started: <!-- which of the plannable statuses means work has begun -->
+  - blocked: <!-- open, but you can't move it right now; blank if the board has none -->
+  - done:
+  - canceled:
+  - duplicate:
+- Price watch project: <!-- the project whose tickets are purchases waiting for a good price; blank = price watch off -->
+- Notes — the title of each document the system keeps:
+  - pauses: NTM: pauses
+  - message history: NTM: message history
+  - grooming log: NTM: grooming log
+  - price watch stores: NTM: price watch stores
+  - Amazon alert steps: NTM: Amazon alert steps
+
+<!-- If your backend isn't linear or claude-docs, describe here how to do each operation ntm:conventions' contract lists, in your words. /ntm:configure-integration walks through them with you. -->
+
+## Labels
+
+The real name on your board for each label the system uses.
+
+- Issue labels:
+  - no-autoschedule: no-autoschedule
+  - pending-shipment: pending-shipment
+  - deadline: deadline
+  - has-amazon-price-watch: has-amazon-price-watch
+  - amazon-unavailable: amazon-unavailable
+- Project labels (tickets inherit them):
+  - price-watch: price-watch
+  - no-autoschedule: no-autoschedule
+
+## Notifications
+
+- Channel: <!-- pushover | claude-push -->
+- Pushover app token: <!-- only with pushover -->
+- Pushover user key: <!-- only with pushover -->
+
+<!-- Anything about how you want to be notified, as you'd say it: a different app token per reminder, quiet hours, priorities. ntm:notify follows what's written here. -->
+
+## Deviations
+
+<!-- Anything you do differently from ntm's conventions. ntm:conventions reads this last and lets it override. -->

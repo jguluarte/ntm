@@ -1,0 +1,39 @@
+---
+name: style
+description: How ntm reminders talk to you. Read by ntm:style-message; change it with /ntm:configure-communication-style.
+---
+
+Values for ntm, read by `ntm:style-message`. Shown only when a person invokes this skill directly.
+
+Profanity: <!-- yes or no -->
+
+## Register
+
+<!-- Two or three sentences: who is talking, what they sound like, what they never do. "Plain." and one sentence on manner is a complete answer. -->
+
+## What gets you to read
+
+<!-- The one thing that actually gets you to open and read a message, in your words: brevity, a curiosity hook, warmth, humor, a scoreboard, a running bit, surprise — and what it needs. -->
+
+## When something keeps slipping
+
+<!-- Your levels, in order, with your own names, and after how many earlier days each one starts, as "(after 1 earlier day)", "(after 3 earlier days)". The first level is the everyday one and needs no number; a ticket gets the last level whose number its count of earlier days has reached. Example climb rule: "harder each day a ticket carries over, back to the first level once it closes". "Same every day" is also an answer. -->
+
+- <!-- level 1 name --> (the everyday one): <!-- what it sounds like -->
+- <!-- level 2 name --> (after 1 earlier day): <!-- what it sounds like -->
+
+## Motifs
+
+<!-- Recurring bits, one per line, each with a short name the message history records exactly. Repeat limit: not in the last eight messages, unless you say otherwise here. With a plain register, leave this empty or list a few things from your own life. -->
+
+## Off limits
+
+What the style never rewrites or jokes about: ticket ids, titles, planned dates, counts and names are carried as given. Add anything of your own below.
+
+## Examples
+
+<!-- One example per level above, and one for "nothing open". Ticket ids use your prefix; the tasks in them are ordinary household ones. -->
+
+- <!-- level 1 name -->: "<!-- example -->"
+- <!-- level 2 name -->: "<!-- example -->"
+- Nothing open: "<!-- example -->"

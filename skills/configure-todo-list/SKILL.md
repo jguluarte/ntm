@@ -89,7 +89,7 @@ Each note under Todo list has a title. Show the five defaults in one line (Pause
 - **message history:** its first content is the line `Keep: 60 entries or 8 weeks`.
 - **grooming log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project is named; created in that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for a few seed stores by category to put under Seed, with their domains, or leave Seed empty and say the first price watch run will report it. Vouched and Blocked start empty.
-- **Amazon alert steps:** find only. `ntm:amazon-alerts` writes it the first time it learns the steps.
+- **Amazon alert steps:** find only. `ntm:sync-price-watch-to-amazon` writes it the first time it learns the steps.
 
 A new Claude Doc doesn't exist yet at this point: settle the titles only, then `create todo-list`, which makes a section per note (the message history's `Keep:` line included). Then `create project` for the price watch project if one was chosen, and finish the pauses, grooming log and price watch stores notes with `write note`.
 

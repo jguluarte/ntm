@@ -7,7 +7,7 @@ description: Builds or revises ntm-user:style, the skill that writes every remin
 
 `ntm-user:style` is the user's own skill: the messenger runs it for every reminder. It has two halves: a Profile (who talks, what gets them to read, the reminders of the day, the levels when something keeps slipping, motifs, off limits, examples) and the procedure that writes a line from facts. This skill writes it with the user in short rounds: you bring proposals, they react. Never hand them a form.
 
-Read `references/builder.md` once before starting: it holds the Profile's shape, the questions for each section, the episode arc the reminders follow, and one plain example. The template the procedure half comes from is `skills/settings/references/user-plugin/skills/style/SKILL.md.template` in `ntm:settings`; `ntm:settings` assembles the file (see Result).
+Read `references/builder.md` once before starting: it holds the Profile's shape, the questions for each section, the episode arc the reminders follow, and one plain example. The template the procedure half comes from is `skills/settings/references/user-plugin/skills/style/SKILL.template.md` in `ntm:settings`; `ntm:settings` assembles the file (see Result).
 
 This skill ships no persona and names no show, person or brand. The theme, the reminders, the levels and their names are the user's, in their words.
 

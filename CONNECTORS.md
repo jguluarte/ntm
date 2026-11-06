@@ -8,6 +8,6 @@ ntm holds no connector of yours; what it needs depends on your todo list and you
 | Your todo list, on Claude Docs | None | Claude Docs is first-party and needs no connector. `ntm:conventions`' guide for it is untested. |
 | Your todo list, on anything else | Your own connector for that backend | Todo list in `ntm-user:settings` says how each operation is done; `/ntm:configure-todo-list` writes it with you and `/ntm:self-test` proves it. |
 | Notifications | None | Pushover is reached over HTTPS from the run, with the keys in `ntm-user:settings`. The claude-push channel uses the scheduled task's own completion push. |
-| Amazon alert sync | Claude in Chrome on your computer | Only for `/ntm:amazon-alerts`; never attached to a scheduled task. |
+| Amazon alert sync | Claude in Chrome on your computer | Only for `/ntm:sync-price-watch-to-amazon`; never attached to a scheduled task. |
 
 A scheduled task inherits the connectors of the session that creates it, so the list's connector must be attached when `/ntm:configure-schedule` runs.

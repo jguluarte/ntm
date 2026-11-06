@@ -60,7 +60,7 @@ Today is a full search when there's no "Stores:" comment, or its last full searc
 - Every day: every trusted store on the item's list, every store the user named for it, and any Vouched store that sells this kind of item.
 - Full search: also look well past them: the Seed stores that fit this kind of item (starting points, not a limit), the manufacturer's own store and where-to-buy page, and deal-community threads found through web search. Aim for as many trusted stores as this kind of item realistically has: often 8–15 for mainstream products, only a few for niche ones. Never pad.
 - Other days: a short look for stores not on the list yet.
-- Never use a Blocked store. Amazon is left to its own alerts (`ntm:amazon-alerts`): don't price it.
+- Never use a Blocked store. Amazon is left to its own alerts (`ntm:sync-price-watch-to-amazon`): don't price it.
 
 **Trusted stores:** Seed stores, the manufacturer's own store, stores the user named, Vouched stores, well-known retailers serving the user's country, and any other store with real evidence behind it. Evidence means the manufacturer lists it as authorized, or independent buyers vouch for it over time on the deal communities and retailer review sites for that country. A store without that evidence goes under "Not used", and you don't price it.
 

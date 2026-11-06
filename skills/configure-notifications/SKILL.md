@@ -35,7 +35,7 @@ Ask for the two: the user key is on the Pushover dashboard after signing in; the
 Then one test push, with the keys for this call only, so the test doesn't depend on anything being installed yet. Load `ntm:notify` and run:
 
 ```
-/ntm:notify --title "ntm test" --message "If you can read this, ntm can reach you." --token <app token> --user <user key>
+/ntm:notify --title "ntm test" --message "If you can read this, ntm can reach you." --app-token <app token> --user-key <user key>
 ```
 
 - `Sent: ntm test`: ask them to say "got it" when it arrives, and wait. If nothing arrives, the keys were accepted and the push is on Pushover's side: have them check the app is installed and signed in with the same account as the user key, then send once more.

@@ -1,13 +1,9 @@
 # Afternoon reminder
 
-Header; not part of the prompt.
-
 | | |
 | --- | --- |
 | Default title | Afternoon reminder |
 | Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 30 14 * * 1-5` (weekdays 14:30, before the jitter rule) |
-| Connectors | the backend connector named by Board in your settings. Never a browser. |
-| Notifications | push on |
 
 --- prompt ---
 

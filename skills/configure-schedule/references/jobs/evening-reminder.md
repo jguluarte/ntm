@@ -1,7 +1,5 @@
 # Evening reminder
 
-Header; not part of the prompt.
-
 | | |
 | --- | --- |
 | Default title | Evening reminder |

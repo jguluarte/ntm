@@ -1,7 +1,5 @@
 # Morning reminder
 
-Header; not part of the prompt.
-
 | | |
 | --- | --- |
 | Default title | Morning reminder |

@@ -1,7 +1,5 @@
 # Weekly planning
 
-Header; not part of the prompt.
-
 | | |
 | --- | --- |
 | Default title | Weekly planning |

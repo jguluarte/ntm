@@ -17,14 +17,14 @@ Load `ntm:conventions`: Timezone under About you in your settings is the timezon
 
 | Kind | Default title | Default days and time | Prompt | Offered |
 | --- | --- | --- | --- | --- |
-| morning reminder | Morning reminder | weekdays 09:00 | `references/jobs/morning-reminder.md` | always |
-| afternoon reminder | Afternoon reminder | weekdays 14:30 | `references/jobs/afternoon-reminder.md` | always |
-| evening reminder | Evening reminder | weekdays 19:30 | `references/jobs/evening-reminder.md` | always |
+| morning reminder | Morning reminder | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md` | always |
+| afternoon reminder | Afternoon reminder | planning days 14:30 | `references/jobs/afternoon-reminder.md` | always |
+| evening reminder | Evening reminder | planning days 19:30 | `references/jobs/evening-reminder.md` | always |
 | weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/weekly-planning.md` | always |
 | price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Board in your settings names a price watch project |
 | completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
 
-Each prompt file starts with a header (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. The prompts are short wrappers that load the matching `ntm:` skill, so a template update reaches the jobs without touching them; the completed prompt is still the sequence itself. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
+Each prompt file is named after its title and starts with a table (the default title, the suggested schedule, connectors, notifications), then a `--- prompt ---` line; everything after that line is the prompt. Every prompt is three lines that load the matching `ntm:` skill, so a template update reaches the jobs without touching them, and a job carries no logic of its own. Titles and prompt text are the user's: offer the defaults, take what they say, and lock nothing.
 
 ## Walking the kinds
 

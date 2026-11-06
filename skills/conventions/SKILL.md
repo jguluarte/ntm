@@ -5,7 +5,7 @@ description: Rules for reading and writing the user's todo list, in backend-neut
 
 # ntm:conventions
 
-Version: 0.3.0
+Version: 0.3.1
 Template source: none yet
 
 This is a general guide to working with the user's todo list, not a rulebook for every edge. The other skills and the jobs keep the todo list self-healing. Every value these rules depend on is one the user agreed to during setup and can change in `ntm-user:settings`; the rules here name the value, the settings hold it.

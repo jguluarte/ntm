@@ -5,7 +5,7 @@ description: Rules for reading and writing the user's todo list, in backend-neut
 
 # ntm:conventions
 
-Version: 0.3.1
+Version: 0.3.2
 Template source: none yet
 
 This is a general guide to working with the user's todo list, not a rulebook for

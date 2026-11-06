@@ -35,7 +35,7 @@ Dates passed to `--check` can be in any form a person would write (`2026-10-15`,
 
 ## Dates
 
-Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range covers both its start and end days. A weekday name means the next one, today included when today is that day; "next <weekday>" means that weekday of next week (weeks start on Monday); a date without a year is the next one. Show the resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no confirmation round-trip before saving.
+Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range covers both its start and end days. A weekday name means the next one, today included when today is that day (the example below was typed on a Thursday); "next <weekday>" means that weekday of next week (weeks start on Monday); a date without a year is the next one. Show the resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no confirmation round-trip before saving.
 
 ## With `--check`
 
@@ -51,6 +51,8 @@ If a job calls this without `--check`, change nothing and say this needs a chat 
 3. If anything changed, step 1 included, save and show the user the saved list.
 
 ## Result
+
+A save `--check` makes while tidying ended or invalid lines doesn't change the answer; if it fails, answer anyway.
 
 Plain text for whoever called the skill.
 

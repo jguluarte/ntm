@@ -52,6 +52,8 @@ The user may reply in this thread after the run, possibly on a later day. If the
 - **Anything else:** answer it, using what this run found.
 
 # FINAL REPLY
+
+When step 5 sent an alert, the full details follow the first line: one section per deal as step 5 lays them out, then the line inviting a reply. With `NOTIFY VIA FINAL REPLY`, the title and message come first, then those sections, then the per-item lines, NOTES and the sync line.
 Unless reporting an error, start the final reply with one short line saying what happened, such as "Sent a price alert for the backup battery (ABC-24)." or "No good deals today; nothing sent." If no result had a verified price, say "No prices verified today; nothing sent."; if no check came back usable, say that instead; if nothing is being watched, say "Nothing on price watch; nothing sent." Then, per item, a few words for it with its ticket id in parentheses, followed by its CHECKED line, or that its check failed, or that it's not actionable and why. Then any NOTES that aren't "none": these are things for the user to fix.
 
 If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is instead everything after that line, verbatim (the title, then the message), so the job's own completion push carries them. Drop the "what happened" line (the title says it); the per-item lines, NOTES and the sync line follow.

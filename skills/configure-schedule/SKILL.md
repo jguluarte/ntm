@@ -38,7 +38,7 @@ Then, for each job they want:
    - `name`: the title.
    - `prompt`: the prompt.
    - `cron_expression`: `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`, days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a monthly completed job, the same with `1 * *` as the last three fields.
-   - `notifications`: `{push: true}`. Push carries the run's completion summary, which is the reminder itself on the `claude-push` channel.
+   - `notifications`: `{push: true}`. Push carries the run's completion summary, which is the reminder itself on the `claude-push` channel. On the `pushover` channel it's a second, shorter push; say so, and that the task's settings can turn it off.
    - `initiation`: `human_request`.
    - Leave `permission_mode` unset.
 4. Set the model they chose: `update_trigger` with the new task's id and `model: <the id>`. This is their request from the walk, not the skill's. If the id is rejected, say so, leave the job on the model it inherited, and carry on.

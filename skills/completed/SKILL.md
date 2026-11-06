@@ -13,7 +13,7 @@ description: Reports what the user got done on their todo list over a span of ti
 
 What to look at is a description in plain words:
 
-- **Span** (required): a number of days ending today, today included. "The last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month of that year had (31 at the start of November; 28 or 29 at the start of March, by that year's February); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
+- **Span** (required): a number of days ending today, today included. "Today" is 1; "the last 7 days" is 7; "last week" is 7; "last month" is as many days as the previous calendar month of that year had (31 at the start of November; 28 or 29 at the start of March, by that year's February); "since Oct 1" counts from that day. No calendar weeks, no overlap logic.
 - **Open tickets** (optional): ask for them ("and what's still open") to add a Still open section.
 - **Canceled or duplicate tickets** (optional): ask for them to add their own sections.
 

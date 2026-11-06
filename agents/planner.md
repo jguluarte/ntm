@@ -37,7 +37,7 @@ The reminder skill names one of these. Return only the lines each one lists, in 
 ### Make today ready
 
 1. Load `ntm:today`, `ntm:pause` and `ntm:plan`. Run `/ntm:today`.
-2. **Carry over.** Every ticket it lists with a planned date before `TODAY` is stale. Move the ones in the plannable class to `TODAY` with the guide's `set planned date`, whatever their labels and even when one blocks another: the user dated them, so they should just work (the conventions' Blocks rule is for picking work; carrying a date isn't picking). A stale ticket in the blocked class keeps its date. Do this on a paused day too.
+2. **Carry over.** Every ticket it lists with a planned date before `TODAY` is stale. Move the ones in the plannable class that aren't parents (a parent's date means nothing) to `TODAY` with the guide's `set planned date`, whatever their labels and even when one blocks another: the user dated them, so they should just work (the conventions' Blocks rule is for picking work; carrying a date isn't picking). A stale ticket in the blocked class keeps its date. Do this on a paused day too.
 3. **Today.** If nothing is planned for `TODAY` after the moves: run `/ntm:pause --check`. Paused (its line for today ends `true`): return `paused` and stop. Otherwise run `/ntm:plan --auto day`, which picks one task for today and dates it.
 4. Return one `today:` line per ticket planned for `TODAY`: `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a ticket you moved, the date it had, then ` (started)` when the list marked it so. A `Couldn't write:` line from plan comes back as `couldn't move: <id> (write failed)`. A stale ticket the rule kept where it was: `kept: <id> (blocked)`; one whose move failed twice: `couldn't move: <id> (write failed)`. When plan returned `No task today: nothing to plan.`, the single line `today: none`. How many days a ticket has slipped is the style's to count, from the message history; don't compute it here.
 
@@ -64,7 +64,7 @@ Plans ahead in Planning says how far the week ahead reaches (one week, Monday to
 
 ## Estimating
 
-`(~<time>)` on a line is your best guess at how long the task takes, so the user can see what the day asks of them. Take it from `ntm:plan` when it gave one. Otherwise: with an estimate on the ticket, read it on the Sizing scale in Planning and name the first evening's work (a multi-day ticket is `~1 h` today, not the whole of it); without one, a rough guess from the title and description, in the user's units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
+`(~<time>)` on a line is your best guess at how long the task takes, so the user can see what the day asks of them. Take it from `ntm:plan` when it gave one. Otherwise: with an estimate on the ticket, read it on the Sizing scale in Planning: a 1 is an evening or less, so guess the time from the title (`~20 min`, `~1 h`); a multi-day ticket is `~1 h` today, not the whole of it; without one, a rough guess from the title and description, in the user's units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
 
 ## Errors
 

@@ -74,9 +74,9 @@ Only in chat, with the user. The span is what they name, or the `--auto week` sp
 
 ## Result
 
-Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Typed in chat, present it as the conventions' "Talking to the user about tickets" says. Write each planned ticket on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best guess at how long it takes. For any ticket this run picked, put its one-line reason on the next line, indented.
+Return plain text for whoever called the skill; the job or skill that called it decides what to tell the user and how. Typed in chat, present it as the conventions' "Talking to the user about tickets" says. Write each planned ticket on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best guess at how long it takes; a day the user had already dated is listed the same way. For any ticket this run picked, put its one-line reason on the next line, indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines for each day in order, `<date>: paused` for a paused day and `<date>: nothing to plan` for a day nothing qualified for.
 - `--auto day`, or today in chat: the lines for today; when nothing qualifies, `No task today: nothing to plan.`
-- `Couldn't write:` with any failed writes, only when there are some.
+- `Couldn't write: <id> (<why>)`, one line per failed write, only when there are some.
 - `Plan FAILED: <what failed>` when Setup or the pause check fails.

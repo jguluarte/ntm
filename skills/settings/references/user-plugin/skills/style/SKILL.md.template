@@ -1,39 +1,118 @@
 ---
 name: style
-description: How ntm reminders talk to you. Read by ntm-user:style; change it with /ntm:configure-style.
+description: How ntm reminders talk to you, and the skill that writes them that way. Run by the messenger agent for every reminder, and in chat when you ask for a message in your style; change it with /ntm:configure-style.
 ---
 
-Values for ntm, read by `ntm-user:style`. Shown only when a person invokes this skill directly.
+# ntm-user:style
+
+Yours: `/ntm:configure-style` wrote it with you, and it's read only by ntm's messenger and by you. The Profile is what you said; How a message gets written is the procedure that turns facts into a line in your register. Both are yours to edit; keep the Usage the same, since the messenger relies on it.
+
+## Usage
+
+```
+/ntm-user:style [--stay-fresh] [--for <beat>] ["<tone>"] <message>
+```
+
+- `tone` is freeform: how to rewrite the message, and why. "escalated: still open from yesterday", "light: fresh work". Without one, the everyday level.
+- `--stay-fresh`: for scheduled runs, which keep lines fresh with the message history.
+- `--for <beat>`: one of `morning`, `afternoon`, `evening`, `week`, `completed`. Implies `--stay-fresh` and adds a `Title:` line. The messenger opens the tone with the job name (`Morning reminder; …`).
+
+Output: the rewritten message, plain text, and with `--for` a last line `Title: <a few words in the same style>`. Nothing else.
+
+## Profile
 
 Profanity: <!-- yes or no -->
 
-## Register
+### Register
 
 <!-- Two or three sentences: who is talking, what they sound like, what they never do. "Plain." and one sentence on manner is a complete answer. -->
 
-## What gets you to read
+### What gets you to read
 
-<!-- The one thing that actually gets you to open and read a message, in your words: brevity, a curiosity hook, warmth, humor, a scoreboard, a running bit, surprise — and what it needs. -->
+<!-- The one thing that actually gets you to open and read a message, in your words: brevity, a curiosity hook, warmth, humor, a scoreboard, a running bit, surprise, and what it needs. -->
 
-## When something keeps slipping
+### Beats
+
+<!-- What each moment of the day is, in your theme's terms. The defaults: morning sets the day up (a look back only when something slipped into today); afternoon is the middle of it, a nudge; evening is how it ended, good, bad or to be continued; week is the recap and what's coming; completed is the credits. Rename them, or leave this empty for the defaults. -->
+
+### When something keeps slipping
 
 <!-- Your levels, in order, with your own names, and after how many earlier days each one starts, as "(after 1 earlier day)", "(after 3 earlier days)". The first level is the everyday one and needs no number; a ticket gets the last level whose number its count of earlier days has reached. Example climb rule: "harder each day a ticket carries over, back to the first level once it closes". "Same every day" is also an answer. -->
 
 - <!-- level 1 name --> (the everyday one): <!-- what it sounds like -->
 - <!-- level 2 name --> (after 1 earlier day): <!-- what it sounds like -->
 
-## Motifs
+### Motifs
 
 <!-- Recurring bits, one per line, each with a short name the message history records exactly. Repeat limit: not in the last eight messages, unless you say otherwise here. With a plain register, leave this empty or list a few things from your own life. -->
 
-## Off limits
+### Off limits
 
 What the style never rewrites or jokes about: ticket ids, titles, planned dates, counts and names are carried as given. Add anything of your own below.
 
-## Examples
+### Examples
 
 <!-- One example per level above, and one for "nothing open". Ticket ids use your prefix; the tasks in them are ordinary household ones. -->
 
 - <!-- level 1 name -->: "<!-- example -->"
 - <!-- level 2 name -->: "<!-- example -->"
 - Nothing open: "<!-- example -->"
+
+## How a message gets written
+
+Read the Profile by heading. A section left empty means: Register, plain; What gets you to read, the Examples show it; Beats, the defaults above; When something keeps slipping, one level and no climb; Motifs, none, with a repeat limit of eight; Off limits, the fixed sentence; Examples, none.
+
+**Register.** The Register is who talks. A plain register has no character: the message speaks as itself, in the manner the section gives, and the mechanism below carries the line.
+
+**What gets you to read** shapes every line. Follow what the Profile says, as it combines them:
+
+- brevity: one line, no ornament; a motif is a word, not a bit
+- a curiosity hook: open with a question or a fact from the message itself, before the ask
+- warmth and encouragement: on their side, never a dig; the ask comes after the regard
+- humor: the joke is the point; build it from the facts and a motif
+- a scoreboard: the count the tone gives, up front
+- a running bit or serial: continue the bit from the newest history entries, one step further each time
+- surprise: a form the last few history entries didn't use (a question, a list, a quote, a headline, one word)
+
+**Levels.** The levels under When something keeps slipping, in the Profile's order and with its names, are the only levels. The first is the everyday one: fresh work, work already planned for today, and every line when there is one level. For a ticket the tone names as carried over or still open, the level comes from its history count (below). The level is the last one whose "after N earlier days" the count has reached; count 0 is always the first level. Levels listed without numbers get 0, 1, 2… in order. Without `--for` there is no count: the tone says how hard, and the first level otherwise. Back to the first level once a ticket closes. The afternoon beat never climbs.
+
+**Examples** show the register for each level, and for nothing open: how hard it lands, how long it runs, and how a motif ties to the subject. They are not a pool to pick from. Write a new line every time, built from the message and the tone in front of you. Borrow the energy, never the sentence; if a line you've written sounds like one in the Profile, write a different one.
+
+### With `--stay-fresh`
+
+Load `ntm:conventions`; it reads your settings and names the backend guide whose `read note` and `write note` are used here.
+
+**History.** The message history note, titled as Notes under Board in your settings says, keeps recent lines in its `jsonl` code block, newest first, one JSON object per line: `{"date": "YYYY-MM-DD", "theme": "…", "line": "…"}`. Its first line is `Keep: <n> entries or <n> weeks`. Read it with `read note`. If the note is missing, or the block is empty, there's no history yet. If the board can't be reached, write the line without history and skip saving.
+
+**Motifs.** Pick a motif when the Profile lists any; a line that uses none records `"theme": "none"`. Take the motifs that suit the tone and drop any used within the repeat limit (the newest eight entries unless the Profile says otherwise). Among the rest, prefer ones not in the history at all. Go off the list only when nothing on it suits, or every motif that suits was used within the limit; give an off-list motif a short name. Build the line from that motif and the message's own subject.
+
+Don't reuse a joke structure, pun or opening from any history entry. The message's own facts (ids, titles) can repeat, and leading with an id is fine, but the words around them must differ from every history entry. A catchphrase can come back with its motif, in a new structure.
+
+After writing, add a new object at the top of the block: `date` today (computed as the conventions' Dates section says), `theme` the motif's name exactly as listed (its short name if off the list; `none`), `line` the exact output (with `--for`, the message without its `Title:` line). Prune to the note's `Keep:` line: delete every entry older than its weeks (`8 weeks` means a `date` 56 or more days before today), then keep only its newest entries (60). Change nothing outside the block, and save with `write note`. When the note doesn't exist yet, write it as `Keep: 60 entries or 8 weeks`, a blank line, then the block; `write note` creates it.
+
+### With `--for`
+
+Each beat sets the register as Beats says; the tone says what's on the table.
+
+- **morning**: the day set up. Fresh or already planned tasks get the first level. Anything carried over gets what When something keeps slipping says, by the count below; the tone names each with `was <date>, carried <n> days`, and the message may state that count, adding nothing to it.
+- **afternoon**: the middle of the day, a tap on the shoulder. Playful, never a dig, whatever the history says. The first level, always.
+- **evening**: how the day ended. Open work gets what When something keeps slipping says, by the same count as the morning. Nothing open gets the register of the Profile's "Nothing open" example: a win for the day, not the year.
+- **week**: two halves in one message, a sentence or so each: the week that was, then the week ahead. If the tone says there's nothing to look back on, the week ahead only. No history count: every ticket gets the first level.
+- **completed**: what got done over the span, the count up front. The first level.
+
+**The history count** (morning and evening only). For each ticket id the tone names as carried over or still open, count the earlier days it appears in the history: the distinct dates, before today, of entries whose `line` contains the id. Compute it once, here.
+
+**Title line.** With `--for`, the output's last line is `Title: <a few words in the same style>`, on its own line after the message.
+
+### Rules
+
+- Include every id in the message, and every id the tone names. Titles are optional. Keep names, titles, dates and counts exactly as given when you use them. Facts given in the tone count as given. Add no other facts about the subject.
+- Address the user by Name from About you in your settings when the register addresses them by name; otherwise "you".
+- Honour Off limits.
+- Short: about one or two sentences. With brevity in the Profile, one.
+- Follow the tone as described, as hard or as soft as it asks. Profanity only when the `Profanity:` line says `yes`, in chat and in pushes alike.
+- Don't repeat a joke structure or pun from earlier in the conversation.
+- Plain text only: emojis only if the message had them, and no Markdown, HTML or quotes around the output.
+- Output only the rewritten message (plus the `Title:` line with `--for`).
+
+Write the line they'd open. If they chose humor, make them laugh.

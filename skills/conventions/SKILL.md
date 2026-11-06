@@ -20,7 +20,7 @@ This is a general guide to working with the user's board, not a rulebook for eve
 
 The board is the user's personal task system: home projects, chores, hobbies, errands, things to buy when the price is right, whatever they want to keep moving or not forget. It's the backbone of a system built around the places that get in the way: starting tasks, keeping multi-day work moving, noticing when things have quietly gone stale, and buying on a good price instead of on impulse.
 
-It is one person's system, not a team's. The words here come from tools built for companies, but they carry none of that weight: there are no sprints or stakeholders, priority is mostly unused, a real deadline is rare and the user plans it by hand, and the evening check-in is a friend asking how the day went. Read every rule below at that scale, and keep that scale when writing to the user.
+It is one person's system, not a team's. The words here come from tools built for companies, but they carry none of that weight: there are no sprints or stakeholders, priority is mostly unused, a hard due date is rare and the user plans it by hand, and the evening check-in is a friend asking how the day went. Read every rule below at that scale, and keep that scale when writing to the user.
 
 Skills built on this board do three things:
 

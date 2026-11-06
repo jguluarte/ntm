@@ -1,11 +1,11 @@
 ---
 name: configure-board
-description: Sets up or changes where the user's ntm board lives and how it's laid out, in chat: the backend, the board, the status names for each class, the labels and the notes. Run from ntm:configure, or when the user says "set up my board", "connect Linear", "use Claude Docs for my board", "use Todoist as my board", "rename my labels" or "change my board settings".
+description: Sets up or changes where the user's ntm board lives and the agreements ntm works by on it, in chat: the backend, the board, the status names for each class, the labels, the notes, how planning runs and how the price watch judges a deal. Run from ntm:configure, or when the user says "set up my board", "connect Linear", "use Claude Docs for my board", "use Todoist as my board", "rename my labels", "change how my week is planned" or "change my board settings".
 ---
 
 # ntm:configure-board
 
-Settles Board and Labels in `ntm-user:settings` with the user and returns their text. Everything happens in chat, in short rounds: you bring proposals, they react. Never hand them a form. This skill never writes a file.
+Settles Board, Labels, Planning and Shopping in `ntm-user:settings` with the user and returns their text. Everything here is an agreement with a proposed default: show the default in one line, take their answer, record it. Everything happens in chat, in short rounds: you bring proposals, they react. Never hand them a form. This skill never writes a file.
 
 ## Usage
 
@@ -18,18 +18,18 @@ The backend to use. Without one, ask (see The backend).
 ## Before you start
 
 1. Load `ntm:conventions`. On a first run its first step says "not configured; run `/ntm:configure`". That's expected: carry on with the values you settle here. Its `references/CONTRACT.md` is the contract every backend meets; `references/linear.md` and `references/claude-docs.md` are the two guides it ships.
-2. If `ntm-user:settings` loaded and its Board names a backend, this is a re-run. Show the current Board and Labels sections, ask what to change, and go to the step below that owns it; everything else stays as it is.
+2. If `ntm-user:settings` loaded and its Board names a backend, this is a re-run. Show the current Board, Labels, Planning and Shopping sections, ask what to change, and go to the step below that owns it; everything else stays as it is.
 3. Keep a running list of what you've settled. Produce the sections at the end, not as you go, so a change of mind costs nothing.
 
 ## The backend
 
-Ask what they keep tasks in today. If they're undecided, offer the three choices in one line: Linear (free for individuals, and the tested path), Claude Docs (no ticket system; Claude keeps the board in one doc; untested, and heavier per run), or their own backend, which they describe.
+Ask what they keep tasks in today. If they're undecided, offer the three choices in one line: Linear (free for individuals; the guide most used), Claude Docs (no ticket system; Claude keeps the board in one doc; untested, and heavier per run), or their own backend, which they describe.
 
 If they chose Linear and don't have it yet, do Linear's Starting from nothing first. Then confirm the connector: ToolSearch for the tool the guide's `ping` names (for their own backend, the tool they name). If it isn't there, ask them to connect it on the Connectors tab and come back, and stop with `Configure-board FAILED: <backend> connector not attached`.
 
 ### Linear
 
-The tested path. Backend is `linear`.
+Backend is `linear`.
 
 **Starting from nothing.** If they don't have Linear yet, these happen outside the chat, on their side; walk them through in order and wait for "done" before step 1:
 
@@ -65,7 +65,7 @@ A new Claude Doc has no statuses to list: propose the names (for example Backlog
 
 ## Labels
 
-Show the defaults in one table, issue labels and project labels, with the one-line meaning of each from the conventions' System labels: issue labels `no-autoschedule`, `pending-shipment`, `deadline`, `has-amazon-price-watch`, `amazon-unavailable`; project labels `price-watch`, `no-autoschedule`. Most people keep the names; record any rename.
+Show the defaults in one table, issue labels and project labels, with the one-line meaning of each from the conventions' System labels: issue labels `no-autoschedule`, `pending-shipment`, `has-amazon-price-watch`, `amazon-unavailable`; project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name; record any rename.
 
 Then `list labels`, issue and project sets. For each label the board lacks, offer to create it with `create label` under its settled name, with its one-line meaning as the description. Project labels are their own set where the backend keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels, so projects can carry them. On Claude Docs labels are free text and nothing is created.
 
@@ -73,7 +73,7 @@ Then the price watch project, when one was chosen: create it now with `create pr
 
 ## Notes
 
-Each note under Board has a title; the defaults are in the section shapes below. For each, `read note` by its default title. Found: keep it. Missing: ask whether a document already holds that thing under another title (record that title) or create it with `create note`:
+Each note under Board has a title. Show the five defaults in one line (Pauses, Message history, Grooming log, Price watch stores, Amazon alert steps); a plain "ok" keeps them, and they rename any. Then, for each, `read note` by its settled title. Found: keep it. Missing: ask whether a document already holds that thing under another title (record that title) or create it with `create note`:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line `Keep: 60 entries or 8 weeks`.
@@ -83,9 +83,34 @@ Each note under Board has a title; the defaults are in the section shapes below.
 
 A new Claude Doc doesn't exist yet at this point: settle the titles only, then `create board`, which makes a section per note (the message history's `Keep:` line included). Then `create project` for the price watch project if one was chosen, and finish the pauses, grooming log and price watch stores notes with `write note`.
 
+## Planning
+
+How the planner works the board. Show the defaults as one short list, one line each, and say what each is for in a few words; a plain "ok" keeps them all, and they change any line in their own words:
+
+- **Rhythm:** one task per weekday. What the planner gives each planning day.
+- **Planning days:** weekdays. The days that get a task automatically.
+- **Week ahead:** Monday to Friday. What "the week" means to the weekly planning; could be the next two weeks, or the month.
+- **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day. What an estimate means on their board; the planner guesses from the title when a ticket has none. On a backend with no estimate field, say the grooming log is the record.
+- **A day's worth:** about an hour. What the planner aims for when it picks.
+- **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The exclusions, each checked on the ticket and its ancestors; name the labels by the names settled above.
+- **Parents:** plan the open sub-tickets, never the parent.
+- **Weekly message:** what got done, what's still open, the week ahead. The halves the weekly planning message carries.
+
+Then ask, once: anything else about how they want planning done? Capture it as written below the lines ("nothing heavy on Fridays", "garage work only on weekends"). "Nothing" leaves it blank.
+
+## Shopping
+
+Only when a price watch project was chosen; otherwise skip and return no Shopping section. How the shopper judges a deal. The same way as Planning, one line each:
+
+- **Condition:** new, unless a ticket says otherwise.
+- **Delivery:** online only, to their country (from About you).
+- **A deal:** at or near the ticket's target, or well below the usual price. What gets them an alert.
+
+Then ask, once: anything else about how they shop? Stores they always or never use go in the price watch stores note (Seed above), not here; this is for what counts beyond that. Capture it as written below the lines; "nothing" leaves it blank.
+
 ## Returning the sections
 
-Write Board and Labels in exactly these line shapes, the ones the `ntm-user:settings` template uses, filled with what you settled. A line may be left blank where the shape says so. Fill the defaults in where they kept them. For a backend of their own, the operations prose follows the Board lines. Show both sections and let them react.
+Write the sections in exactly these line shapes, the ones the `ntm-user:settings` template uses, filled with what you settled. A line may be left blank where the shape says so. Fill the defaults in where they kept them. For a backend of their own, the operations prose follows the Board lines. Show the sections and let them react.
 
 ```
 ## Board
@@ -103,11 +128,11 @@ Write Board and Labels in exactly these line shapes, the ones the `ntm-user:sett
   - duplicate: <name>
 - Price watch project: <project name; blank = price watch off>
 - Notes — the title of each document the system keeps:
-  - pauses: <title; default NTM: pauses>
-  - message history: <title; default NTM: message history>
-  - grooming log: <title; default NTM: grooming log>
-  - price watch stores: <title; default NTM: price watch stores>
-  - Amazon alert steps: <title; default NTM: Amazon alert steps>
+  - pauses: <title; default Pauses>
+  - message history: <title; default Message history>
+  - grooming log: <title; default Grooming log>
+  - price watch stores: <title; default Price watch stores>
+  - Amazon alert steps: <title; default Amazon alert steps>
 
 <for their own backend: how each operation in the contract is done, in their words>
 
@@ -118,12 +143,36 @@ The real name on your board for each label the system uses.
 - Issue labels:
   - no-autoschedule: <real name; default no-autoschedule>
   - pending-shipment: <real name; default pending-shipment>
-  - deadline: <real name; default deadline>
   - has-amazon-price-watch: <real name; default has-amazon-price-watch>
   - amazon-unavailable: <real name; default amazon-unavailable>
 - Project labels (tickets inherit them):
   - price-watch: <real name; default price-watch>
   - no-autoschedule: <real name; default no-autoschedule>
+
+## Planning
+
+How the planner works your board. Read by `ntm:plan`, the planner agent and the weekly planning.
+
+- Rhythm: <default one task per weekday>
+- Planning days: <default weekdays>
+- Week ahead: <default Monday to Friday>
+- Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
+- A day's worth: <default about an hour>
+- Never picks: <default no-autoschedule, pending-shipment, blocked status>
+- Parents: <default plan the open sub-tickets, never the parent>
+- Weekly message: <default what got done, what's still open, the week ahead>
+
+<anything else about how they want planning done, as written; or nothing>
+
+## Shopping
+
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent.
+
+- Condition: <default new>
+- Delivery: <default online only, to your country>
+- A deal: <default at or near the ticket's target, or well below the usual price>
+
+<anything else about how they shop, as written; or nothing>
 ```
 
 Then:

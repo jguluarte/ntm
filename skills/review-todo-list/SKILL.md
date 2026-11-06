@@ -9,7 +9,7 @@ description: Grooms the user's ntm board with them in chat: closes obsolete or d
 
 Daily reminders only help when they point at something the user could pick up. Grooming gets tickets there, and it has to stay cheap enough that the user keeps doing it: if it turns into a process, they'll stop. When in doubt, take the lighter option:
 
-- **A short session is a good session.** One project, or three tickets, is fine. Stop the moment the user wants to, and never push for more.
+- **A short session is a good session.** One project, or three items, is fine. Stop the moment the user wants to, and never push for more.
 - **You bring proposals; the user reacts.** Never make them fill in fields, and never hit them with a list of questions.
 - **Good enough beats complete.** A ticket can be rough, or just a checklist, as long as the user says it's adequate.
 - **The user drives the wording.** Your unvetted wording tends toward filler, so propose enough, keep it short, and never expand their descriptions unless they ask.
@@ -55,7 +55,7 @@ If much of the slice waits on another project, say so and offer to start there i
 
 ## 3. Ticket by ticket
 
-One ticket per message, in the agreed order:
+One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
 2. Your proposed **estimate**, with a few words on why, guided by how past guesses in the grooming log compared with what the user settled on. If it already has one (on a backend without an estimate field, its latest log entry's `final`), say what it is.
@@ -95,4 +95,4 @@ Save it with `write note` whenever you change it, leaving the rest as it was.
 
 ## Ending
 
-When the user stops, or the slice is done, fold anything you learned into `## How you work` and save the log, then sum up in a line or two: how many tickets were groomed, closed and split, and what's still ungroomed in the slice.
+When the user stops, or the slice is done, fold anything you learned into `## How you work` and save the log, then sum up in a line or two: how many items were groomed, closed and split, and what's still ungroomed in the slice.

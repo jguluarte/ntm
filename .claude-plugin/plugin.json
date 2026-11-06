@@ -1,9 +1,9 @@
 {
   "name": "ntm",
-  "displayName": "Neurodivergent Task Manager",
-  "version": "0.2.1",
-  "description": "One planned task per weekday on your own ticket board, reminders in a style you choose, weekly planning and cleanup, optional price watching. Run /ntm:configure once; your settings and style live in a small plugin of your own.",
+  "displayName": "Neurodivergent Task Manager (ntm)",
+  "version": "0.3.0",
+  "description": "A personal task system on your own board, for the places that get in the way: starting things, keeping multi-day work moving, noticing what has gone stale, not forgetting things, and buying on a good price instead of on impulse. Plans your days and weeks, reminds you in a style you choose, and watches prices so you can wait for a good one without forgetting. Run /ntm:configure once; your settings and style live in a small plugin of your own.",
   "author": { "name": "Neurodivergent Task Manager contributors" },
-  "keywords": ["tasks", "reminders", "scheduling", "neurodivergent", "linear", "pushover"],
+  "keywords": ["tasks", "reminders", "planning", "price watch", "neurodivergent", "linear", "pushover"],
   "license": "MIT"
 }

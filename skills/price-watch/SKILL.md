@@ -16,7 +16,7 @@ Load `ntm:conventions` before anything else: it holds the board's rules and your
 
 # 2: Ready check
 Run by the job: `/ntm:ready-check --notify-failure --job "Price watch"`. Typed in chat: a plain `/ntm:ready-check`.
-**If it fails, STOP: end with its result line and nothing more.**
+**If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch
 Price watch is on when Board in your settings names a price watch project. If it names none, end with `Price-watch: price watch is off; Board in your settings names no price watch project. Name one with /ntm:settings or turn off the Price watch job with /ntm:configure-schedule.`
@@ -61,4 +61,4 @@ If step 3 found Amazon alerts to sync, end with one line: "Run /ntm:amazon-alert
 **One item asked for in chat:** no alert and no sync line; answer the person. Say whether it's a deal today and, for a DEAL, the price, store and product link with the DEAL line's conditions; otherwise the best verified price and where, or that nothing could be verified, or why it's not actionable. Then its CHECKED line and any NOTES that aren't "none". Leave out the per-item form above.
 
 # ERROR HANDLING
-If step 2 fails, end with its result line and nothing more. A check failing isn't an error; FINAL REPLY covers it. For any other error, don't use the notification channel: end the run with `Price-watch FAILED: <the error, stated plainly>`; the job's own completion push carries it to the user.
+If step 2 fails, end with what it returned and nothing more. A check failing isn't an error; FINAL REPLY covers it. For any other error, don't use the notification channel: end the run with `Price-watch FAILED: <the error, stated plainly>`; the job's own completion push carries it to the user.

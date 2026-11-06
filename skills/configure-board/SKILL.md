@@ -67,13 +67,13 @@ A new Claude Doc has no statuses to list: propose the names (for example Backlog
 
 Show the defaults in one table, ticket labels and project labels, with the one-line meaning of each from the conventions' System labels: ticket labels `no-autoschedule`, `pending-shipment`, `has-amazon-alert`, `amazon-unavailable`; project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name; record any rename.
 
-Then `list labels`, issue and project sets. For each label the board lacks, offer to create it with `create label` under its settled name, with its one-line meaning as the description. Project labels are their own set where the backend keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels, so projects can carry them. On Claude Docs labels are free text and nothing is created.
+Then `list labels`, ticket and project sets. For each label the board lacks, offer to create it with `create label` under its settled name, with its one-line meaning as the description. Project labels are their own set where the backend keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels, so projects can carry them. On Claude Docs labels are free text and nothing is created.
 
 Then the price watch project, when one was chosen: create it now with `create project`, carrying both project labels. If it already exists, make sure it carries both; the guide says whether `labels` replaces the set.
 
 ## Notes
 
-Each note under Board has a title. Show the five defaults in one line (Pauses, Message history, Grooming log, Price watch stores, Amazon alert steps); a plain "ok" keeps them, and they rename any. Then, for each, `read note` by its settled title. Found: keep it. Missing: ask whether a document already holds that thing under another title (record that title) or create it with `create note`:
+Each note under Board has a title. Show the five defaults in one line (Pauses, Message history, Grooming log, Price watch stores, Amazon alert steps); a plain "ok" keeps them, and they rename any. Then, for each, `read note` by its settled title. Found: keep it. Missing: ask whether a note already exists under another title (record that title) or create it with `create note`:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line `Keep: 60 entries or 8 weeks`.
@@ -127,7 +127,7 @@ Write the sections in exactly these line shapes, the ones the `ntm-user:settings
   - canceled: <name>
   - duplicate: <name>
 - Price watch project: <project name; blank = price watch off>
-- Notes — the title of each document the system keeps:
+- Notes — the title of each note the system keeps:
   - pauses: <title; default Pauses>
   - message history: <title; default Message history>
   - grooming log: <title; default Grooming log>
@@ -155,7 +155,7 @@ How the planner works your board. Read by `ntm:plan`, the planner agent and the 
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
-- Plans ahead: <default one week (Monday to Friday)>
+- Plans ahead: <default one week>
 - Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>

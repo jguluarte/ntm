@@ -21,7 +21,7 @@ The description can also narrow the scope, such as "the garage" or "the Office p
 
 Without a span, ask the user what span they want. Never assume one.
 
-`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure --job "<job name>"`, before Setup; `Ready-check FAILED` ends the run with its line. The "Completed this week" and "Completed this month" jobs run `/ntm:completed the last 7 days --notify` and `/ntm:completed last month --notify`.
+`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure --job "<job name>"`, before Setup; `Ready-check FAILED` ends the run with what it returned. The "Completed this week" and "Completed this month" jobs run `/ntm:completed the last 7 days --notify` and `/ntm:completed last month --notify`.
 
 ## Setup
 

@@ -46,16 +46,16 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 
 1. `ntm:configure-board`: which backend, which board, statuses, labels, notes, and the agreements the planner and the shopper work by. Returns Board, Labels, Planning and Shopping (Shopping only when a price watch project was chosen).
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns Notifications.
-3. `ntm:configure-style`: plain, a theme, or a profile they have. Returns the `ntm-user:style` body.
+3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand it the timezone from About you, the price watch project from Board and Planning days from Planning, as settled above. Creates the scheduled tasks itself; returns nothing to package.
 
 Keep the returned text; write nothing.
 
-The sections and what reads them, in case they ask: About you is read by everything; Board and Labels by `ntm:conventions`; Planning (rhythm, days, how far ahead the week plans, sizing, exclusions, what the weekly message includes) by `ntm:plan`, the planner and the weekly planning; Shopping (condition, delivery, what counts as a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-board` settles Planning and Shopping alongside Board, since each default is about the same board.
+The sections and what reads them, in case they ask: About you is read by everything; Board and Labels by `ntm:conventions`; Planning (rhythm, days, how far ahead the week plans, sizing, what's never picked, what the weekly message includes) by `ntm:plan`, the planner and the weekly planning; Shopping (condition, delivery, what counts as a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-board` settles Planning and Shopping alongside Board, since each default is about the same board.
 
 ### Packaging
 
-Load `ntm:settings` and follow its "Regenerating `ntm-user.plugin`" section with every section the parts returned: About you, Board, Labels, Planning, Shopping, Notifications, the style body. `ntm:settings` tells them to install it and open a new chat. Add that the first thing to run there is `/ntm:self-test`: it starts with `ready-check` and exercises every operation Board describes. Until it's installed, every scheduled run ends with "not configured".
+Load `ntm:settings` and follow its "Regenerating `ntm-user.plugin`" section with every section the parts returned: About you, Board, Labels, Planning, Shopping, Notifications, the style body. `ntm:settings` tells them to install it and open a new chat. Add that the first thing to run there is `/ntm:self-test`: it starts with `ready-check` and exercises the operations the jobs use, on a throwaway ticket. Until it's installed, every scheduled run ends with "not configured".
 
 ## Configured
 

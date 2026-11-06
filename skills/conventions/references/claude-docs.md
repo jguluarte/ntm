@@ -11,8 +11,8 @@ Notation below: `C` = `{"kind":"project","id":"<Board id>"}`, carried as `contai
 ## Board
 
 - **Doc:** Board name from Board is the doc's title; Board id is the doc's id, the trailing part of its link (`https://claude.ai/artifact/<id>`). Docs can't be found by title, so Board id is required; `read( ref = {"object":"project","id":"<Board id>"} )` accepts the id or the whole link.
-- **Tabs:** tab 1, "Board", holds two pipe tables: the ticket table under `## Tickets` (columns Id, Title, Status, Planned date, Labels, Project, Parent, Blocked by, Estimate, Done on, Notes) and the projects table under `## Projects` (Name, Labels, Summary). Tab 2, "Notes", holds one section per note, headed `# <note title>`. The doc read lists the tabs (`files[]`, each with its `content.id`, the tab body id); the tab outline (`payload = {"projection":"outline"}`) gives the two table ids.
-- **Cells:** Id is `<Ticket prefix>-<n>`. Status is a dropdown chip on the doc's Status enum. Planned date and Done on are date chips. Labels and Blocked by are comma-separated text; Parent is an id; Project is a project name; Estimate is a number. Notes holds the ticket's comments, one paragraph each, `YYYY-MM-DD: text`. There is no description column; a ticket's description is its first Notes line.
+- **Tabs:** tab 1, "Board", holds two pipe tables: the ticket table under `## Tickets` (columns Id, Title, Status, Planned date, Labels, Project, Parent, Blocked by, Estimate, Done on, Comments) and the projects table under `## Projects` (Name, Labels, Summary). Tab 2, "Notes", holds one section per note, headed `# <note title>`. The doc read lists the tabs (`files[]`, each with its `content.id`, the tab body id); the tab outline (`payload = {"projection":"outline"}`) gives the two table ids.
+- **Cells:** Id is `<Ticket prefix>-<n>`. Status is a dropdown chip on the doc's Status enum. Planned date and Done on are date chips. Labels and Blocked by are comma-separated text; Parent is an id; Project is a project name; Estimate is a number. Comments holds the ticket's comments, one paragraph each, `YYYY-MM-DD: text`. There is no description column; a ticket's description is its first Comments line.
 - **Projects:** the projects table; a project's Labels cell is comma-separated text, and inheritance matches those names against ticket labels. Ticket labels and project labels are one set of names here.
 - **Automations:** none. Nothing closes or dates itself; `ntm:fix-todo-list` closes finished parents itself.
 - **Missing fields:** no priority (every ticket's priority is none) and no updated-at (blank).
@@ -39,7 +39,7 @@ The same read, keeping rows whose status is the done name; canceled and duplicat
 
 ### `read ticket`
 
-Its row from the fetch: Notes is the description and comments, Parent its parent, Blocked by its blockers. When a skill reads one ticket outside a fetch, `payload = {"kind":"search","text":"<id>"}` gives the row id of every cell holding the id (its own row, and rows naming it as Parent or Blocked by); then `{"kind":"view","parentId":"<row id>"}` reads a row alone.
+Its row from the fetch: Comments is the description and comments, Parent its parent, Blocked by its blockers. When a skill reads one ticket outside a fetch, `payload = {"kind":"search","text":"<id>"}` gives the row id of every cell holding the id (its own row, and rows naming it as Parent or Blocked by); then `{"kind":"view","parentId":"<row id>"}` reads a row alone.
 
 ### `list sub-tickets`
 
@@ -47,7 +47,7 @@ Every row of the ticket table as read for `fetch open` (before the status filter
 
 ### `read comments` / `write comment` / `update comment`
 
-The Notes cell's paragraphs after the first (the first is the description), dated lines. `write comment`: `insert` after the cell's last paragraph id (`"side":"after"`, `"as":"markdown"`, content `<TODAY>: <text>`); on an empty cell, `replace` the cell instead. `update comment`: `replace` the line's words, `{"kind":"find","text":"<the line as read>","within":{"kind":"cell","table":"<ticket table id>","row":<n>,"col":10}}`, `"as":"text"`.
+The Comments cell's paragraphs after the first (the first is the description), dated lines. `write comment`: `insert` after the cell's last paragraph id (`"side":"after"`, `"as":"markdown"`, content `<TODAY>: <text>`); on an empty cell, `replace` the cell instead. `update comment`: `replace` the line's words, `{"kind":"find","text":"<the line as read>","within":{"kind":"cell","table":"<ticket table id>","row":<n>,"col":10}}`, `"as":"text"`.
 
 ### `set planned date` / `clear planned date`
 
@@ -67,7 +67,7 @@ The Notes cell's paragraphs after the first (the first is the description), date
 
 ### `create ticket`
 
-Check for an existing match by title in the fetched rows first. Id = `<Ticket prefix>-<max n in the Id column + 1>`, closed rows included. Append a row: `insert` on the ticket table id, `"side":"end"`, `"as":"blocks"`, content one `row` of eleven `cell`s each holding a `paragraph` (text runs `{"type":"text","text":"…"}`; an empty paragraph for a blank cell): Id, Title, blank, blank, Labels, Project, Parent, Blocked by, blank, blank, the description as a dated first Notes line. Then `set status` on the new row (position `-1`, the last row, with `ifRev` set to the append's ack `rev`) with the first plannable status, and `set planned date` when one is given.
+Check for an existing match by title in the fetched rows first. Id = `<Ticket prefix>-<max n in the Id column + 1>`, closed rows included. Append a row: `insert` on the ticket table id, `"side":"end"`, `"as":"blocks"`, content one `row` of eleven `cell`s each holding a `paragraph` (text runs `{"type":"text","text":"…"}`; an empty paragraph for a blank cell): Id, Title, blank, blank, Labels, Project, Parent, Blocked by, blank, blank, the description as a dated first Comments line. Then `set status` on the new row (position `-1`, the last row, with `ifRev` set to the append's ack `rev`) with the first plannable status, and `set planned date` when one is given.
 
 ### `update ticket`
 
@@ -87,7 +87,7 @@ Used by `ntm:configure-board`.
 - **`list boards`:** none; the user pastes the doc's link, or `ntm:configure-board` runs `create board`.
 - **`create board`:** one `batch` with `container = {"kind":"project","create":{"name":"<Board name>","doc":{"markdown":"# Board"}}}` and members, in order: the Status enum (`{"$lid":"s","verb":"create","object":"enum","payload":{"value":{"name":"Status","options":[{"name":"<status>"},…]}}}`, the statuses from Board in the order under Status classes); an `update` on `$lid:n` inserting at `{"kind":"root"}` `"side":"end"` the markdown `## Tickets`, the header-only ticket table, `## Projects` and the header-only projects table (the enum can't be referenced from the birth's own `doc.markdown`, hence the separate member); a file `{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with parent `$lid:f2` and content `# <note title>` for each note under Board (with the message history note's `Keep:` line under its heading), the `update` pointing `f2` at `n2`; and the project patch placing `$lid:f` as "Board" (`order` `a0`) and `$lid:f2` as "Notes" (`a1`). The ack's `created.minted` is the doc id: Board id. Give the user its link.
 - **`list statuses`:** the enum read under Status classes (enum id from any Status cell, or the birth ack's `lids.s`).
-- **`list labels`:** the distinct names across the Labels columns of both tables; one set serves as issue and project labels.
+- **`list labels`:** the distinct names across the Labels columns of both tables; one set serves as ticket and project labels.
 - **`create label`:** nothing to create; labels are free text.
 - **`list projects`:** the projects table, read as in `fetch open`; a project's id is its name.
 - **`create project`:** append a row to the projects table (`insert` `"as":"blocks"` as in `create ticket`, three cells: Name, Labels, Summary).

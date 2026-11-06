@@ -27,7 +27,7 @@ Each section is read by heading. Every line is something you agreed to during se
   - canceled:
   - duplicate:
 - Price watch project: <!-- the project whose tickets are purchases waiting for a good price; blank = price watch off -->
-- Notes — the title of each document the system keeps:
+- Notes — the title of each note the system keeps:
   - pauses: Pauses
   - message history: Message history
   - grooming log: Grooming log

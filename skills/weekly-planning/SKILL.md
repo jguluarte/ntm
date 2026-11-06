@@ -15,7 +15,7 @@ Run `/ntm:ready-check --notify-failure --job "Weekly planning"`.
 Ask the planner agent: **close out the week and plan the next** (its request of that name in `agents/planner.md`). It returns the facts as lines.
 
 Read what comes back:
-- `done:`, `open:` and `planned:` lines (or `done: none`, `done: unavailable`, `planned: none`): the facts for the message. Leave the `fix:` lines out of what you hand the messenger; they're for the final reply.
+- `done:`, `open:` and `planned:` lines (or `done: none`, `done: unavailable`, `open: none`, `planned: none`): the facts for the message. Leave the `fix:` lines out of what you hand the messenger; they're for the final reply.
 - Any `… FAILED` line: ERROR HANDLING.
 
 # 3: The message

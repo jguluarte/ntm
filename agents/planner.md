@@ -60,7 +60,7 @@ Plans ahead in Planning says how far the week ahead reaches (one week, Monday to
 1. Load `ntm:completed`, `ntm:fix-todo-list` and `ntm:plan`. Run `/ntm:completed <the span> and what's still open` first, before the fix, so it counts nothing the fix closes. `Completed FAILED` isn't an error here: carry on with `done: unavailable`.
 2. Run `/ntm:fix-todo-list`, so planning works from a clean board. `Fix-todo-list FAILED` isn't an error here either: carry on.
 3. Run `/ntm:plan --auto week`.
-4. Return: one `done:` line per ticket that closed, or `done: none`, or `done: unavailable`; one `open:` line per ticket still open from the span; one `planned:` line per `Planned <date>:` line the plan returned, that line with `planned: ` in place of `Planned ` (so `planned: <date>: <id> <title> (~<time>) <url>`), leaving out the plan's reasons and its paused and empty days, or the single line `planned: none`; then every line fix-todo-list returned, each prefixed `fix: `.
+4. Return: one `done:` line per ticket that closed, or `done: none`, or `done: unavailable`; one `open:` line per ticket still open from the span, or `open: none`; one `planned:` line per `Planned <date>:` line the plan returned, that line with `planned: ` in place of `Planned ` (so `planned: <date>: <id> <title> (~<time>) <url>`), leaving out the plan's reasons and its paused and empty days, or the single line `planned: none`; then every line fix-todo-list returned, each prefixed `fix: `.
 
 ## Estimating
 

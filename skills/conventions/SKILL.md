@@ -91,8 +91,8 @@ Ticket labels:
 
 Project labels (tickets inherit them; see Project labels):
 
-- **`price-watch`:** the project's tickets are purchases waiting for a good price. There is no `price-watch` issue label.
-- **`no-autoschedule`:** as the issue label, for every ticket in the project.
+- **`price-watch`:** the project's tickets are purchases waiting for a good price. There is no `price-watch` ticket label.
+- **`no-autoschedule`:** as the ticket label, for every ticket in the project.
 
 Any other label is an ordinary category as far as these rules go. A skill or job can still give a label its own meaning without any change here; the label's description on the board says what it's for.
 

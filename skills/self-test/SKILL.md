@@ -43,7 +43,7 @@ Always, whether the steps passed or stopped, and in this order; one line each, `
 - **The ticket:** if it was created, `set status` to the canceled status from Board, so it never counts as work done (leave it done when Board's canceled line is blank). Where the backend keeps notes in tickets, cancel the note's ticket the same way.
 - **The note:** if it was written, `write note` it empty.
 
-Nothing else on the board is touched: the test dates, closes and removes its own ticket only.
+Nothing else on the board is touched: the test dates, closes and removes its own ticket and note only, plus the one history entry the style writes in step 5, which ages out.
 
 ## Result
 

@@ -14,10 +14,10 @@ This skill ships no persona and names no show, person or brand. The theme, the b
 ## Usage
 
 ```
-/ntm:configure-style [<profile or persona skill text>]
+/ntm:configure-style [<persona skill text>]
 ```
 
-Text after the name is a profile or a persona skill the user already has, pasted or attached; see Handed in.
+Text after the name is a persona skill the user already has, pasted or attached (or a Profile in the builder's shape from an earlier ntm-user); see Handed in.
 
 ## Before you start
 
@@ -60,7 +60,7 @@ Take the theme as they describe it. Don't propose a named character, show, perso
 
 ## Handed in
 
-The user has a persona skill or a profile already: text that says who talks, with rules, maybe recurring bits and example lines. It becomes `ntm-user:style` as it is: the body stays unchanged, word for word, ticket ids included. A pasted skill's own frontmatter is dropped; everything under it is the body.
+The user has a persona skill already (or a Profile from an earlier ntm-user): text that says who talks, with rules, maybe recurring bits and example lines. It becomes `ntm-user:style` as it is: the body stays unchanged, word for word, ticket ids included. A pasted skill's own frontmatter is dropped; everything under it is the body.
 
 What the messenger needs from it is only the Usage in the template: `/ntm-user:style [--stay-fresh] [--for <beat>] ["<tone>"] <message>`, returning the message with `Title: …` as its last line under `--for`. Read the body for how it names these things (a `--beat` flag, a `Subject:` line, its own history note) and write a short section, `## For ntm`, that goes above the body and says, in a line each, how the messenger's call maps onto the persona's own words: what `--for <beat>` means to it, that `Title:` is its last line (in place of whatever it calls it), that `--stay-fresh` is its freshness mechanism, and that the message history note is the one titled under Notes in `ntm-user:settings` (when the persona names its own note, the settings' title should be that one). Show them the section; they confirm. Nothing else is added or filled in: the persona's own levels, profanity and motifs stand.
 

@@ -10,18 +10,18 @@ Sends a notification to the user's phone. Any scheduled task or workflow can use
 ## Usage
 
 ```
-/ntm:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--job "<name>"] [--token <t> --user <u>]
+/ntm:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--job "<name>"] [--app-token <t> --user-key <u>]
 ```
 
 - `title` and `message` are the notification.
 - `url`: optional link attached below the message, usually a ticket's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
 - `job`: the job this notification is for (the calling skill passes its job name); a per-reminder token written in Notifications is chosen by it.
-- `token` and `user`: a Pushover app token and user key for this one call, in place of the ones in your settings (`/ntm:configure-notifications` uses them for its test push).
+- `app-token` and `user-key`: a Pushover app token and user key for this one call, in place of the ones in your settings (`/ntm:configure-notifications` uses them for its test push).
 
 ## Channel
 
-Load `ntm-user:settings` by name and read Notifications. Its Channel line says which section below applies: `pushover` or `claude-push`. Anything else written there is how the user wants to be notified (quiet hours, priorities, a different app token per reminder, …): follow it as written. A per-reminder token written in Notifications is chosen by `--job`; without `--job`, the default token. With `--token` and `--user`, the channel is Pushover with those keys, whatever Notifications says. With neither a channel nor those two, return `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
+Load `ntm-user:settings` by name and read Notifications. Its Channel line says which section below applies: `pushover` or `claude-push`. Anything else written there is how the user wants to be notified (quiet hours, priorities, a different app token per reminder, …): follow it as written. A per-reminder token is a line `Pushover app token for <job>: …` in Notifications, chosen by `--job`; without `--job`, or with no such line, the default token. With `--app-token` and `--user-key`, the channel is Pushover with those keys, whatever Notifications says, and `ntm-user:settings` not loading is no failure (the test push runs before it exists). With neither a channel nor those two, return `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
 
 A linked ticket arrives in `message` as the conventions' "Talking to the user about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it as that section says.
 
@@ -31,7 +31,7 @@ Sends through the [Pushover API](https://pushover.net/api).
 
 ### Credentials
 
-The Pushover app token and Pushover user key from Notifications in your settings, or the ones `--token` and `--user` give.
+The Pushover app token and Pushover user key from Notifications in your settings, or the ones `--app-token` and `--user-key` give.
 
 ### Sending
 
@@ -81,7 +81,7 @@ Escape `&`, `<` and `>` in plain text you insert, such as ticket titles, as `&am
 
 ### Limits
 
-- The message can be at most 1024 characters and the title at most 250. Pushover rejects anything longer, so trim before sending.
+- The message can be at most 1024 characters as sent (links converted) and the title at most 250. Pushover rejects anything longer, so trim before sending.
 - The rate limit is 10,000 messages per month per app, well beyond what scheduled tasks use.
 
 ### Checking the result

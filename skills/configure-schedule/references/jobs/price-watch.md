@@ -1,16 +1,12 @@
 # Price watch
 
-Header; not part of the prompt. Optional: offer this job only when Board in your settings names a price watch project.
-
 | | |
 | --- | --- |
 | Default title | Price watch |
 | Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 0 7 * * *` (every day, paused days included, 07:00, before the jitter rule) |
-| Connectors | the backend connector named by Board in your settings. Never a browser. |
-| Notifications | push on |
 
 --- prompt ---
 
 Price watch.
-Load `ntm:run-price-watch` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `ntm:run-price-watch` can't be loaded, end the run with `Price watch FAILED: ntm:run-price-watch couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `ntm:price-watch` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
+If `ntm:price-watch` can't be loaded, end the run with `Price watch FAILED: ntm:price-watch couldn't be loaded; check the ntm plugin is installed and enabled.`

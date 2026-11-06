@@ -177,7 +177,7 @@ The backend's response says whether a write succeeded. If one fails, retry it on
 
 Skills return text; jobs decide what reaches the user. No skill other than `ntm:notify` sends anything.
 
-Every skill a job calls returns plain text. A skill's status line (OK / FAILED) starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`, `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`, `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill. A job's final reply is one line on what happened. When `ntm:notify` returned `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as its first line and the message under it, nothing else. The weekly planning adds fix-todo-list's result after the message, and the morning reminder its `kept:` and `couldn't move:` lines.
+Every skill a job calls returns plain text. A skill's status line (OK / FAILED) starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`, `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`, `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill. A job's final reply is one line on what happened. When `ntm:notify` returned `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as its first line and the message under it, nothing else. The weekly planning adds fix-todo-list's result after the message, the morning reminder its `kept:` and `couldn't move:` lines, and the price watch its per-item report.
 
 ## Creating tickets when the user asks
 

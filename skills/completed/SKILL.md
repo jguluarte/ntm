@@ -21,7 +21,7 @@ The description can also narrow the scope, such as "the garage" or "the Office p
 
 Without a span, ask the user what span they want. Never assume one.
 
-`--notify`: also send the result as a message, through the messenger agent (see Notify below). The "Completed this week" and "Completed this month" jobs run `/ntm:completed the last 7 days --notify` and `/ntm:completed last month --notify`. In a job, `--notify` starts with the ready check: run `/ntm:ready-check --notify-failure --job "<job>"` before Setup; `Ready-check FAILED` ends the run with its line.
+`--notify`: also send the result as a message, through the messenger agent (see Notify below). The job name is `Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`; read it off the words given. `--notify` starts with `/ntm:ready-check --notify-failure --job "<job name>"`, before Setup; `Ready-check FAILED` ends the run with its line. The "Completed this week" and "Completed this month" jobs run `/ntm:completed the last 7 days --notify` and `/ntm:completed last month --notify`.
 
 ## Setup
 
@@ -40,17 +40,18 @@ Return plain text for whoever called the skill; the job or skill that called it 
 - `<first day> to <last day>`, plus the scope when it's narrowed.
 - `Done (<count>):` the tickets completed in the span, oldest first, with sub-tickets indented under their parent when it's listed too; or `Done: none`.
 - Canceled and duplicate tickets, when asked for, in their own `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same way.
-- `Still open (<count>):` when asked for: open tickets planned in the span.
+- `Still open (<count>):` when asked for: open tickets planned in the span, or in the range the request names for them ("planned today or earlier").
 
 Typed in chat, present the result as the conventions' "Talking to the user about tickets" says (natural words, the id in parentheses); the raw lines are for skills and jobs.
 
 ## Notify
 
-With `--notify`, after the result, ask the messenger agent, with the beat `completed`, the job name (`Completed this week` for a span of a week, `Completed this month` for a month, else `Completed`) and one `done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
+With `--notify`, after the result, ask the messenger agent, with the beat `completed`, the job name, a `span:` line (the result's first line) and one `done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
 
 ```
 beat: completed
 job: Completed this week
+span: 2026-10-30 to 2026-11-05
 done: ABC-12 Order storage boxes <url>
 ```
 

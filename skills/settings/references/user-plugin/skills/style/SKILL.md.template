@@ -88,7 +88,7 @@ Load `ntm:conventions`; it reads your settings and names the backend guide whose
 
 Don't reuse a joke structure, pun or opening from any history entry. The message's own facts (ids, titles) can repeat, and leading with an id is fine, but the words around them must differ from every history entry. A catchphrase can come back with its motif, in a new structure.
 
-After writing, add a new object at the top of the block: `date` today (computed as the conventions' Dates section says), `theme` the motif's name exactly as listed (its short name if off the list; `none`), `line` the exact output (with `--for`, the message without its `Title:` line). Prune to the note's `Keep:` line: delete every entry older than its weeks (`8 weeks` means a `date` 56 or more days before today), then keep only its newest entries (60). Change nothing outside the block, and save with `write note`. When the note doesn't exist yet, write it as `Keep: 60 entries or 8 weeks`, a blank line, then the block; `write note` creates it.
+After writing, add a new object at the top of the block: `date` today (computed as the conventions' Dates section says), `theme` the motif's name exactly as listed (its short name if off the list; `none`), `line` the exact output (with `--for`, the message without its `Title:` line). Prune to the note's `Keep:` line: delete every entry older than its weeks (`8 weeks` means a `date` 56 or more days before today), then keep only its newest entries (60). Change nothing outside the block, and save with `write note`. When the note has no block yet, add one under the `Keep:` line. When the note doesn't exist yet, write it as `Keep: 60 entries or 8 weeks`, a blank line, then the block; `write note` creates it.
 
 ### With `--for`
 

@@ -55,7 +55,7 @@ The reminder skill names one of these. Return only the lines each one lists, in 
 
 ### Close out the week and plan the next
 
-Plans ahead in Planning says how far the week ahead reaches (one week, Monday to Friday, by default); the span looked back on is the same number of calendar days ending today (7 for one week).
+Plans ahead in Planning says how far the week ahead reaches (one week, Monday to Friday, by default); the span looked back on is as long, ending today: 7 days for one week, 14 for two weeks, the calendar month for the month.
 
 1. Load `ntm:completed`, `ntm:fix-todo-list` and `ntm:plan`. Run `/ntm:completed <the span> and what's still open` first, before the fix, so it counts nothing the fix closes. `Completed FAILED` isn't an error here: carry on with `done: unavailable`.
 2. Run `/ntm:fix-todo-list`, so planning works from a clean board. `Fix-todo-list FAILED` isn't an error here either: carry on.

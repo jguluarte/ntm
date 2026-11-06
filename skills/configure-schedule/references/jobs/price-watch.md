@@ -3,10 +3,7 @@
 | | |
 | --- | --- |
 | Default title | Price watch |
-| Offered | only when Board in your settings names a price watch project |
 | Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 0 7 * * *` (every day, paused days included, 07:00, before the jitter rule) |
-| Connectors | the backend connector named by Board in your settings. Never a browser. |
-| Notifications | push on |
 
 --- prompt ---
 

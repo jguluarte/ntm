@@ -8,10 +8,10 @@ description: Proves this session can run an ntm job: the user's settings load, t
 ## Usage
 
 ```
-/ntm:ready-check [--notify] [--job "<name>"]
+/ntm:ready-check [--notify-failure] [--job "<name>"]
 ```
 
-- `--notify`: on failure, send the result through `ntm:notify`. Without it, nothing is sent.
+- `--notify-failure`: on failure, send the result through `ntm:notify`. Without it, nothing is sent.
 - `--job "<name>"`: the job that called this check, such as `"Morning reminder"`. Defaults to `"Ready check"`.
 
 ## The check
@@ -43,7 +43,7 @@ End with one result line, after the notification if there is one:
 | Wrong account | The connector can't see the board named in Board in your settings. Reconnect it with the account that owns that board. |
 | Backend error | The backend returned <the error, shortened> on retry. Usually temporary; if it repeats, check the backend's status page. |
 
-## With `--notify`
+## With `--notify-failure`
 
 When the check fails, load `ntm:notify` and run `/ntm:notify --job "<job name>" --title "<Board name> — <job name> failed" --message "<job name>: <failure>. <fix>"`.
 

@@ -31,7 +31,7 @@ If they chose Linear and don't have it yet, do Linear's Starting from nothing fi
 
 Backend is `linear`.
 
-**Starting from nothing.** If they don't have Linear yet, these happen outside the chat, on their side; walk them through in order and wait for "done" before step 1:
+**Starting from nothing.** If they don't have Linear yet, these happen outside the chat, on their side; walk them through in order and wait for "done" before The board below:
 
 1. Sign up at linear.app. The free plan is enough: one workspace, unlimited issues.
 2. The new workspace comes with one team; that team is the board. Its key (the few capital letters Linear asks for when naming it, `HOME` for `HOME-12`) becomes Ticket prefix, so pick one they'll be happy reading in reminders.
@@ -89,7 +89,7 @@ How the planner works the board. Show the defaults as one short list, one line e
 
 - **Rhythm:** one task per weekday. What the planner gives each planning day.
 - **Planning days:** weekdays. The days that get a task automatically.
-- **Plans ahead:** Monday to Friday. What "the week" means to the weekly planning; could be the next two weeks, or the month.
+- **Plans ahead:** one week (Monday to Friday). How far the weekly planning plans; could be two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day. What an estimate means on their board; the planner guesses from the title when a ticket has none. On a backend with no estimate field, say the grooming log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The exclusions, each checked on the ticket and its ancestors; name the labels by the names settled above.
@@ -155,7 +155,7 @@ How the planner works your board. Read by `ntm:plan`, the planner agent and the 
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
-- Plans ahead: <default Monday to Friday>
+- Plans ahead: <default one week (Monday to Friday)>
 - Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
@@ -180,4 +180,4 @@ Then:
 - Run from `ntm:configure`: return the sections to the caller, which packages once at the end.
 - Run directly: load `ntm:settings` and follow its Regenerating `ntm-user.plugin` section with the section text you produced.
 
-One more line, for every backend: once `ntm-user` is installed, run `/ntm:self-test` in a new chat. It starts with `ready-check`, exercises every operation Board describes on a throwaway ticket, and is the smoke test for the guide. Say it now when run directly. When run from `ntm:configure`, return it with the sections so `configure` says it at its end.
+One more line, for every backend: once `ntm-user` is installed, run `/ntm:self-test` in a new chat. It starts with `ready-check` and exercises the operations the jobs use on a throwaway ticket, and is the smoke test for the guide. Say it now when run directly. When run from `ntm:configure`, return it with the sections so `configure` says it at its end.

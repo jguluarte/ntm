@@ -17,7 +17,7 @@ Sends a notification to the user's phone. Any scheduled task or workflow can use
 - `url`: optional link attached below the message, usually a ticket's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
 - `job`: the job this notification is for (the calling skill passes its job name); a per-reminder token written in Notifications is chosen by it.
-- `token` and `user`: a Pushover app token and user key for this one call, in place of the ones in your settings (`/ntm:configure-notifications` uses them for its test push).
+- `app-token` and `user-key`: a Pushover app token and user key for this one call, in place of the ones in your settings (`/ntm:configure-notifications` uses them for its test push).
 
 ## Channel
 

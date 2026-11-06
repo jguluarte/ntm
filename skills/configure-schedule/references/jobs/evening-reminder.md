@@ -4,8 +4,6 @@
 | --- | --- |
 | Default title | Evening reminder |
 | Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 30 19 * * 1-5` (weekdays 19:30, before the jitter rule) |
-| Connectors | the backend connector named by Board in your settings. Never a browser. |
-| Notifications | push on |
 
 --- prompt ---
 

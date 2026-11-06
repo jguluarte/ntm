@@ -49,7 +49,7 @@ Write one or two plain sentences for the beat, then run them through the style, 
 - **afternoon:** a tap on the shoulder about what's still open, naming a `(started)` ticket as started. `open: none`: quick props, nothing more. Never a dig, whatever the history says.
 - **evening:** how the day went: what's still open, naming each that was carried over with the date it had, as given; or, with `open: none`, what got done. The style decides how hard a carried-over ticket gets it, from its own count of the days.
 - **week:** two halves, a sentence or so each: last week (what got done, naming what's still open from it), then the week ahead (what's coming and what the week is shaping up to be about; `planned: none`: say so). `done: unavailable`: the week ahead only. Planning in your settings says which halves the user wants (Weekly message).
-- **completed:** what got done over the span, with the count; `done: none`: that nothing closed, plainly.
+- **completed:** what got done over the `span:` given, with the count; `done: none`: that nothing closed, plainly.
 
 Then `/ntm-user:style --for <beat> "<tone>" <your sentences>`, with a tone that opens with the job name (`Morning reminder; …`), then the facts in a phrase each: what's on the table, what's carried over and from when, what closed, what's still open, what's coming. The style returns the message with `Title: …` as its last line. When `ntm-user:style` won't load, the style isn't configured: use your sentences as they are and `Title: <job name>`.
 

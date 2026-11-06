@@ -78,7 +78,7 @@ Rules live in `ntm:conventions` and name the values they depend on by key; the v
 | Pauses note | The days when nothing gets planned automatically. | `/ntm:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm-user:style` |
 | Grooming log note | How you like tickets written and sized, learned while grooming. | `/ntm:review-todo-list` |
-| Price watch stores note | Stores the shopper has vouched for, or blocked. | `/ntm:price-watch` |
+| Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/ntm:price-watch` |
 | Amazon alert steps note | How to set an alert on Amazon, learned once. | `/ntm:amazon-alerts` |
 
 The notes live on your board, under the titles in your settings.

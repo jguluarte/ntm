@@ -4,8 +4,6 @@
 | --- | --- |
 | Default title | Weekly planning |
 | Suggested schedule | `CRON_TZ=<timezone from About you in your settings> 0 22 * * 0` (Sunday 22:00, before the jitter rule) |
-| Connectors | the backend connector named by Board in your settings. Never a browser. |
-| Notifications | push on |
 
 --- prompt ---
 

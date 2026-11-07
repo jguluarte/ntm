@@ -24,7 +24,7 @@ todo list compact.
 Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
 `container` on every call inside the doc. Every `update` on a tab is:
 
-```
+```python
 update(
     ref = {
         "object": "node",
@@ -93,7 +93,7 @@ else: backend error.
 
 Read the task table in full:
 
-```
+```python
 read(
     ref = {
         "object": "node",
@@ -147,7 +147,7 @@ dated lines. `write comment`: `insert` after the cell's last paragraph id
 cell, `replace` the cell instead. `update comment`: `replace` the line's words,
 with `"as":"text"`, at:
 
-```
+```python
 {
     "kind": "find",
     "text": "<the line as read>",
@@ -166,18 +166,20 @@ with `"as":"text"`, at:
 (`{"kind":"cell","table":"<task table id>","row":<n>,"col":3}`,
 `"ifRev":<rev of the read>`) with a date chip:
 
-```
-"with": {
-    "as": "markdown",
-    "blocks": {
-        "d": {
-            "type": "date",
-            "value": "YYYY-MM-DD"
+```json
+{
+    "with": {
+        "as": "markdown",
+        "blocks": {
+            "d": {
+                "type": "date",
+                "value": "YYYY-MM-DD"
+            }
+        },
+        "from": {
+            "kind": "inline",
+            "content": "<?claude block d?>"
         }
-    },
-    "from": {
-        "kind": "inline",
-        "content": "<?claude block d?>"
     }
 }
 ```
@@ -190,7 +192,7 @@ Nothing else in the row changes.
 
 `replace` the Status cell (col 2) with
 
-```
+```python
 "blocks": {
     "st": {
         "type": "dropdown",
@@ -269,7 +271,7 @@ None; the user pastes the doc's link, or `ntm:configure-todo-list` runs
 
 One `batch` with
 
-```
+```python
 container = {
     "kind": "project",
     "create": {
@@ -284,7 +286,7 @@ container = {
 and members, in order: the Status enum (the statuses from Todo list in the order
 under Status classes):
 
-```
+```python
 {
     "$lid": "s",
     "verb": "create",

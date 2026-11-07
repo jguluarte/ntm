@@ -1,0 +1,13 @@
+{
+    "printWidth": 80,
+    "tabWidth": 4,
+    "proseWrap": "always",
+    "overrides": [
+        {
+            "files": "skills/configure-todo-list/SKILL.md",
+            "options": {
+                "embeddedLanguageFormatting": "off"
+            }
+        }
+    ]
+}

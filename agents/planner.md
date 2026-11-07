@@ -141,12 +141,6 @@ matter here: Estimate mapping, when set, says how each size is stored on the
 backend (the guide converts), and Estimate help says how much to explain when
 estimates come up.
 
-Parents aren't estimated; their sub-tasks are. Any other task **has been
-reviewed when it has an estimate,** and hasn't when it doesn't. Estimates are
-set by the user, or with their approval while reviewing. Planners use an
-estimate when one is set and judge size from the title and description
-otherwise.
-
 On a backend with no estimate field, the task review log's Estimates block is
 the record: a task with an entry there counts as reviewed. Planners judge its
 size from the title and description.
@@ -203,8 +197,9 @@ lighter option:
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
-A task is **unreviewed** when it's open and hasn't been reviewed, as Estimating
-says.
+A task is **unreviewed** when it's open, has no estimate, and isn't a parent
+with open sub-tasks. On a backend without an estimate field, "no estimate" means
+no entry in the log's Estimates block.
 
 ### The slice
 

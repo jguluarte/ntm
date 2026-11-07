@@ -1,6 +1,14 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tickets, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
+description: >-
+    The user's todo list, with them in chat. On a first run, where it lives and
+    the agreements ntm works by on it (the backend, the list, the status names
+    for each class, the labels, the notes, how planning and shopping work),
+    returned as settings. Once configured, grooming: closes obsolete or
+    duplicate tickets, then sizes and splits ungroomed ones with their approval;
+    or a change to those settings. Run from ntm:configure, or when the user says
+    "set up my todo list", "connect Linear", "let's groom", "review the kitchen
+    project", "rename my labels" or "change how my week is planned".
 ---
 
 # ntm:configure-todo-list

@@ -1,6 +1,6 @@
 ---
 name: conventions
-description:
+description: >-
     Rules for reading and writing the user's todo list, in backend-neutral
     terms, plus the backend guides that map them onto Linear or Claude Docs.
     Load before any list query, and before creating or editing a ticket for the

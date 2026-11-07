@@ -1,6 +1,10 @@
 ---
 name: settings
-description: Shows the user's ntm settings (ntm-user:settings) and changes them: a line, a section, or Deviations. The one place ntm-user.plugin is regenerated; every configure skill ends here. Run when the user says "show my settings", "change my timezone", "add a deviation", or asks where a value lives.
+description: >-
+    Shows the user's ntm settings (ntm-user:settings) and changes them: a line,
+    a section, or Deviations. The one place ntm-user.plugin is regenerated;
+    every configure skill ends here. Run when the user says "show my settings",
+    "change my timezone", "add a deviation", or asks where a value lives.
 ---
 
 # ntm:settings

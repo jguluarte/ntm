@@ -1,6 +1,10 @@
 ---
 name: morning-reminder
-description: The morning reminder for the user's todo list: what's on the table today. Carries stale planned work to today, plans today if it's empty, and sends the morning message in the user's style. Run by the "Morning reminder" job, or by hand ("run the morning reminder now").
+description: >-
+    The morning reminder for the user's todo list: what's on the table today.
+    Carries stale planned work to today, plans today if it's empty, and sends
+    the morning message in the user's style. Run by the "Morning reminder" job,
+    or by hand ("run the morning reminder now").
 ---
 
 # ntm:morning-reminder

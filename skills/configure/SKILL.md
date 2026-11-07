@@ -1,6 +1,6 @@
 ---
 name: configure
-description:
+description: >-
     The ntm wizard. Walks the user through everything ntm needs in one chat
     (about you, todo list, notifications, style, schedule), hands each part to
     its configure skill, and ends with ntm-user.plugin to install. Run when the

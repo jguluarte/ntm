@@ -1,6 +1,12 @@
 ---
 name: configure-style
-description: Builds or revises ntm-user:style, the skill that writes every reminder in the user's own register, with them in chat: plain, a theme they describe, or a persona skill they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own persona"; ntm:configure runs it as one of its parts.
+description: >-
+    Builds or revises ntm-user:style, the skill that writes every reminder in
+    the user's own register, with them in chat: plain, a theme they describe, or
+    a persona skill they already have. Run when the user says "set up the
+    style", "change how reminders talk to me", "make it meaner", "make it
+    softer", "make it shorter", "the reminders aren't landing" or "use my own
+    persona"; ntm:configure runs it as one of its parts.
 ---
 
 # ntm:configure-style

@@ -1,6 +1,10 @@
 ---
 name: ready-check
-description: Proves this session can run an ntm job: the user's settings load, the backend connector is present, and the todo list answers. Run at the start of a scheduled run, or by hand ("can you see my todo list?", "check the connection", "is ntm ready?").
+description: >-
+    Proves this session can run an ntm job: the user's settings load, the
+    backend connector is present, and the todo list answers. Run at the start of
+    a scheduled run, or by hand ("can you see my todo list?", "check the
+    connection", "is ntm ready?").
 ---
 
 # ntm:ready-check

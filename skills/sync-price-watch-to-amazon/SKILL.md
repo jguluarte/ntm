@@ -1,6 +1,6 @@
 ---
 name: sync-price-watch-to-amazon
-description:
+description: >-
     Amazon's side of the user's ntm price watch, does every watched item have an
     Amazon alert, and no closed one keep its? Sets an alert for each open
     watched item that has none, and removes the alert once an item closes. Needs

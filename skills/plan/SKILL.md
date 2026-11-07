@@ -1,6 +1,6 @@
 ---
 name: plan
-description:
+description: >-
     Plans the user's todo list by setting planned dates, at the rhythm Planning
     in their settings gives, and returns the plan. --auto week fills the week
     ahead and --auto day picks one task for today, unattended; anything else

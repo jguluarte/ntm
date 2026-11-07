@@ -1,6 +1,6 @@
 ---
 name: notify
-description:
+description: >-
     Sends a notification to the user's phone through the channel chosen in their
     settings, Pushover or the scheduled task's own push. Use whenever a task,
     scheduled job or workflow needs to deliver a notification, alert or reminder

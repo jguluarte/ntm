@@ -1,6 +1,6 @@
 ---
 name: self-test
-description:
+description: >-
     Exercises the whole ntm loop on a throwaway ticket and a throwaway note, one
     line per step, and ends with Self-test OK or the first step that failed. The
     first thing to run after installing ntm and ntm-user ("test ntm", "run the

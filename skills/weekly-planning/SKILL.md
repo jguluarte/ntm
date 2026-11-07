@@ -1,6 +1,11 @@
 ---
 name: weekly-planning
-description: The weekly planning for the user's todo list: closes out the week (what got done, what's still open), tidies the todo list, plans the week ahead as Planning in the user's settings defines it, and sends one message with both halves in the user's style. Run by the "Weekly planning" job, or by hand ("run the weekly planning now").
+description: >-
+    The weekly planning for the user's todo list: closes out the week (what got
+    done, what's still open), tidies the todo list, plans the week ahead as
+    Planning in the user's settings defines it, and sends one message with both
+    halves in the user's style. Run by the "Weekly planning" job, or by hand
+    ("run the weekly planning now").
 ---
 
 # ntm:weekly-planning

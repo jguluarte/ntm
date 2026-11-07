@@ -1,6 +1,10 @@
 ---
 name: evening-reminder
-description: The evening reminder for the user's todo list: a friend asking how the day went. What closed, what's still open, and the evening message in the user's style. Run by the "Evening reminder" job, or by hand ("run the evening reminder now").
+description: >-
+    The evening reminder for the user's todo list: a friend asking how the day
+    went. What closed, what's still open, and the evening message in the user's
+    style. Run by the "Evening reminder" job, or by hand ("run the evening
+    reminder now").
 ---
 
 # ntm:evening-reminder

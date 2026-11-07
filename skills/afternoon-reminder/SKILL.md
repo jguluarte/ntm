@@ -1,6 +1,9 @@
 ---
 name: afternoon-reminder
-description: The afternoon reminder for the user's todo list: a tap on the shoulder about what's still open today, with started work marked; never a dig. Run by the "Afternoon reminder" job, or by hand ("run the afternoon reminder now").
+description: >-
+    The afternoon reminder for the user's todo list: a tap on the shoulder about
+    what's still open today, with started work marked; never a dig. Run by the
+    "Afternoon reminder" job, or by hand ("run the afternoon reminder now").
 ---
 
 # ntm:afternoon-reminder

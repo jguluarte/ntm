@@ -1,6 +1,6 @@
 ---
 name: settings
-description:
+description: >-
     Your settings for ntm. Read by ntm:conventions; change them with
     /ntm:settings.
 ---

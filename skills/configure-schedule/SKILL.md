@@ -1,6 +1,12 @@
 ---
 name: configure-schedule
-description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /ntm:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
+description: >-
+    Sets up and maintains the user's ntm jobs, the scheduled tasks that send
+    their reminders: which kinds they want, on which days, at what time, under
+    what title. Creates and updates the tasks, lists them, runs one now, turns
+    one off or on, deletes. Run from /ntm:configure, or when the user asks about
+    their reminders' schedule ("set up my reminders", "change the morning time",
+    "turn off the evening reminder").
 ---
 
 # ntm:configure-schedule

@@ -1,6 +1,6 @@
 ---
 name: price-watch
-description:
+description: >-
     The price watch for the user's todo list, which watched items are a good
     deal today? Finds every watched ticket, asks the shopper agent about each
     one, sends one alert for the deals, posts the details and reports. Run by

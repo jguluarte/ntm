@@ -1,6 +1,6 @@
 ---
 name: fix-todo-list
-description:
+description: >-
     Tidies the user's todo list by closing parents whose sub-tickets are all
     closed and clearing stale planned dates, then returns what it changed. Run
     by the weekly planning job, or by the user ("fix my todo list", "tidy my

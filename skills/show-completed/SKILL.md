@@ -1,6 +1,6 @@
 ---
 name: show-completed
-description:
+description: >-
     Reports what the user got done on their todo list over a span of time they
     or a job describes ("what did I finish last week", "what got done this
     month"), and, when asked, what's still open from it; --notify sends it as a

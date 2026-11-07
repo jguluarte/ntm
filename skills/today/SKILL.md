@@ -1,6 +1,6 @@
 ---
 name: today
-description:
+description: >-
     Lists what's planned on the user's todo list, by default every open ticket
     planned for today or earlier, or whatever scope the user or a job describes
     ("what's on today", "what's planned this week"). Read-only. Run by jobs, or

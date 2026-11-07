@@ -101,14 +101,13 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, with a few words on why, guided by how past
-   guesses in the grooming log compared with what the user settled on. If it
-   already has one (on a backend without an estimate field, its latest log
-   entry's `final`), say what it is.
-3. If its estimate, on the Sizing scale in Planning in your settings, makes it
-   bigger than a typical sitting, one line on whether it looks like it splits.
-   Some things can't, and that's fine. Pieces come up in the talk that follows
-   (see Splits).
+2. Your proposed **estimate**, on the Sizing scale in Planning in your settings,
+   with a few words on why, guided by how past guesses in the grooming log
+   compared with what the user settled on. If it already has one (on a backend
+   without an estimate field, its latest log entry's `final`), say what it is.
+3. If its estimate makes it bigger than a typical sitting, one line on whether
+   it looks like it splits. Some things can't, and that's fine. Pieces come up
+   in the talk that follows (see Splits).
 4. Usually no edits. Suggest one or two at most, only where the ticket would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
@@ -163,7 +162,8 @@ A `jsonl` code block, newest first, one object per approved estimate:
 {"date": "YYYY-MM-DD", "id": "ABC-12", "guess": 2, "final": 3, "why": "wiring took longer than it looked"}
 ```
 
-`guess` is what you proposed and `final` what the user approved. Keep `why` to a
+`guess` is what you proposed and `final` what the user approved, each written
+the way the Sizing scale writes it (`3`, `"2 h"`, `"weekend"`). Keep `why` to a
 few words: what made them change it, or what made the guess right. Keep the
 newest 150 entries. On a backend without an estimate field the log is the only
 record of what's reviewed, so keep every entry.

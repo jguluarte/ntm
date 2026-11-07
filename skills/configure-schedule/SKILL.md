@@ -91,14 +91,14 @@ off by default. Always offered; the default answer is no.
 
 For each kind in the order above, ask: do they want it; which days (Planning
 days from Planning, weekdays by default, for the three daily reminders); what
-time; what title. Ask once, for all the jobs: which model should they run on?
-Propose Opus (`claude-opus-5-5`): a new job inherits the model of the chat that
-creates it, and a job that runs every day doesn't need the heaviest one. Their
-answer is the model every job gets. A title is only a label; the kind's default
-title stays the name notifications and tokens are matched by. Offer the defaults
-and move on when they take them. For completed, also weekly or monthly, and the
-span in the prompt follows. Skip price watch when Todo list names no price watch
-project.
+time; what title. Ask once, for all the jobs: which model should they run on? A
+new job inherits the model of the chat that creates it, and that can be the
+heaviest one. Suggest a lighter model, such as Opus or Sonnet, then use the one
+they choose; it's the model every job gets. A title is only a label; the kind's
+default title stays the name notifications and tokens are matched by. Offer the
+defaults and move on when they take them. For completed, also weekly or monthly,
+and the span in the prompt follows. Skip price watch when Todo list names no
+price watch project.
 
 Then, for each job they want:
 

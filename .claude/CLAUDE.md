@@ -56,9 +56,10 @@ and says go.
 80 columns everywhere: prose, frontmatter, fenced blocks. Indents are 4 spaces.
 `tools/reflow.py` stays outside the repo. Tables and unbreakable text (a URL, a
 code span) are exempt. A long `description:` is a `>-` folded block. Run
-`npm run fix`, then `npm run lint`, which must pass; CI runs the same lint on
-every PR. The lint doesn't check line length inside fenced blocks yet
-(markdownlint's Prettier preset turns MD013 off), so check those by eye.
+`make fix`, then `make lint`, which must pass (devbox provides Node through
+direnv); CI runs the same lint on every PR. The lint doesn't check line length
+inside fenced blocks yet (markdownlint's Prettier preset turns MD013 off), so
+check those by eye.
 
 In agent files, pseudo-markup like `<example>` is indented like nested markup.
 

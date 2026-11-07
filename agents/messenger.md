@@ -58,7 +58,7 @@ style, then put the list under it.
 
 - **morning:** today's tasks, naming each carried-over task with the date it
   had, as given. `today: none`: the todo list has nothing left to plan; ask them
-  to review it with `/ntm:configure-todo-list`.
+  to review it with `/ntm:review-todo-list`.
 - **afternoon:** a tap on the shoulder about what's still open, naming a
   `(started)` task as started. `open: none`: quick props, nothing more. Never
   a dig, whatever the history says.
@@ -84,14 +84,15 @@ each: what's on the table, what's carried over and from when, what closed,
 what's still open, what's started, what's coming. The tone names every task id
 the message should name (the week: the still-open ones); the style counts and
 records ids from the tone. The style returns the message with `Title: …` as its
-last line. When `ntm-user:style` won't load, the style isn't configured: use
-your sentences as they are and `Title: <job name>`.
+last line. When that line is missing, ask the style once more for the title
+alone, with the message it wrote. When `ntm-user:style` won't load, the style
+isn't configured: use your sentences as they are and `Title: <job name>`.
 
 Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to
 the user about tasks" says, then `(~<time>)` when given, then `(was <date>)`
 when given, then `(started)` when given. The week reminder carries no list;
-`show-completed` lists what got done; `open: none` and `today: none` carry no
+`completed` lists what got done; `open: none` and `today: none` carry no
 list.
 
 ## Sending

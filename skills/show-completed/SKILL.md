@@ -75,7 +75,7 @@ skills and jobs.
 ## Notify
 
 With `--notify`, after the result, ask the messenger agent, with the reminder
-`show-completed`, the job name, a `span:` line (the result's first line) and one
+`completed`, the job name, a `span:` line (the result's first line) and one
 `done:` line per Done task (`done: <id> <title> <url>`), or `done: none`:
 
 ```

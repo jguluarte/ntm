@@ -19,7 +19,7 @@ every other skill returns text and the job decides what goes out.
 - `url`: optional link attached below the message, usually a task's `url`
   field.
 - `priority`: optional; see the optional-fields table. Default 0.
-- `job`: the job this notification is for (the calling skill passes its job
+- `from`: the job this notification is for (the calling skill passes its job
   name); a per-reminder token written in Notifications is chosen by it.
 - `app-token` and `user-key`: a Pushover app token and user key for this one
   call, in place of the ones in your settings (`/ntm:configure-notifications`

@@ -53,8 +53,8 @@ Skills built on this todo list do three things:
   planned date to the day. The user can add more to a day themselves, and a day
   they have already dated counts as planned.
 - **Remind.** Jobs push the user reminders about the day's tasks.
-- **Keep the todo list honest.** They clear stale dates, and reviewing with the
-  user sizes and splits oversized work.
+- **Keep the todo list honest.** They clear stale dates, and reviewing the list
+  with the user sizes and splits oversized work.
 
 Every rule below exists so that those skills, and any agent working on the todo
 list, read it the same way. When a rule seems arbitrary, the purpose above is
@@ -98,11 +98,11 @@ the tie-breaker.
   in it, regardless of assignee. Never filter by assignee unless explicitly
   asked.
 - **Chat, jobs and agents:** a skill typed in chat runs in the chat. The
-  reminder skills, `completed --notify` and the price watch hand their work to
-  the plugin's agents (planner, messenger, shopper), in a job or in chat alike;
-  each says what it hands over. When an agent isn't available in the session,
-  read its file from the installed plugin and do what it says yourself, with the
-  same request:
+  reminder skills, `show-completed --notify` and the price watch hand their
+  work to the plugin's agents (planner, messenger, shopper), in a job or in chat
+  alike; each says what it hands over. When an agent isn't available in the
+  session, read its file from the installed plugin and do what it says yourself,
+  with the same request:
   `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
   may sit under a versioned folder; the two `-path` tests find it either way).
   One copy of each procedure, either way; say nothing to the user about which
@@ -213,7 +213,7 @@ it.
 - **message history** (`Message history`): what reminders have said. Its first
   line is a `Keep:` line that `ntm-user:style`, its writer, prunes to; the style
   template says what it writes.
-- **task review log** (`Task review log`): `ntm:configure-todo-list` keeps it.
+- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch
   project. `ntm:price-watch` keeps it, from the user's vouch and block replies;
   the shopper reads it.

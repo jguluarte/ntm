@@ -25,10 +25,8 @@ changes:
 - Work is split the way a human team would split it: small PRs against main, one
   concern each, one Opus agent per PR. Agents can't start agents (no Agent tool
   in subagents), so the orchestrator does any fan-out.
-- Whenever PRs are open, run a Sonnet watcher on `.claude/scripts/watch_prs.sh`
-  that forwards his comments; route each to the PR's author agent, which replies
-  on the thread and pushes a new commit. Resolve finished threads in the browser
-  (GraphQL is blocked, so the API can't). Stop the watcher when nothing is open.
+- Route each of his PR comments to the PR's author agent, which replies on the
+  thread and pushes a new commit. Resolve finished threads.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
 - Once he's reviewing a PR, no rebase or force-push; bring main in with a merge
   commit.

@@ -24,8 +24,8 @@ When your branch's commits are done:
    `gh pr comment` fail):
    `gh api repos/jguluarte/ntm/pulls -f base=main -f head=<branch> -f title="<plain title>" -F body=@<body file> --jq .html_url`
 4. Send the main session the pull request's URL and your report with SendMessage
-   (to: "main"), and stop. A separate watcher polls the pull requests; when the
-   owner comments on yours, the main session sends you the comments.
+   (to: "main"), and stop. When the owner comments on yours, the main session
+   sends you the comments.
 
 ## Answering the owner's comments
 
@@ -41,8 +41,8 @@ For each:
   reply that you've passed it on, and send it to the main session with
   SendMessage (to: "main"), with the comment's link.
 
-Every reply you post ends with a blank line and `<!-- ntm-agent -->`, so the
-watcher skips it. Reply to a line comment with
+Every reply you post ends with a blank line and `<!-- ntm-agent -->`, so your
+replies can be told from the owner's. Reply to a line comment with
 `gh api repos/jguluarte/ntm/pulls/<number>/comments/<id>/replies -F body=@<file>`;
 to a conversation comment or a review with
 `gh api repos/jguluarte/ntm/issues/<number>/comments -F body=@<file>`. Write

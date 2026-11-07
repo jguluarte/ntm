@@ -157,7 +157,6 @@ and they change any line in their own words:
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
   names settled above.
-- **Parents:** plan the open sub-tasks, never the parent.
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
@@ -252,7 +251,6 @@ Estimate scale, Estimate mapping and Estimate help by the estimator agent.
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
-- Parents: <default plan the open sub-tasks, never the parent>
 - Weekly message: <default what got done, what's still open, the week ahead>
 
 <anything else about how they want planning done, as written; or nothing>

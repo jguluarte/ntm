@@ -243,8 +243,7 @@ its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
 - **For planning and reminders:** `fetch open`, which includes blocked tasks so
-  parents and ancestors are fully visible. A task is a parent when an open task
-  in the results names it as parent id. Keep excluded tasks in the results;
+  parents and ancestors are fully visible. Keep excluded tasks in the results;
   Never picks says who skips them. Before planning a candidate, `read task` on
   it and its parent chain to see blockers.
 - **Every open task** (reviewing, and anything else that needs the whole open
@@ -288,12 +287,6 @@ the task is still open.
 
 How each relation affects planning. Planning in your settings can say otherwise;
 these are the defaults.
-
-### Parent and sub-tasks
-
-- **A task with no open sub-tasks** is an ordinary task.
-- **A task with open sub-tasks is a parent.** Plan its open sub-tasks, never the
-  parent.
 
 ### Blocks and blocked by
 

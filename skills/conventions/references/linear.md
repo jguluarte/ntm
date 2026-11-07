@@ -33,13 +33,18 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 
 ## Status classes
 
-Todo list in your settings maps each class to the status names. `list_issues`
-filters by `state` with a status name; results carry `status` (the name) and
-`statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `completed`,
-`canceled`, `duplicate`). Use the names from Todo list to filter and to write;
-use `statusType` to tell closed from open when a result mixes states. A task's
-status class is the class whose line in Todo list lists its `status` name;
-`statusType` alone doesn't give it.
+A task's class comes from `statusType`, Linear's own type for its status:
+
+- `backlog` and `unstarted`: plannable.
+- `started`: plannable and started.
+- `completed`: done.
+- `canceled`: canceled.
+- `duplicate`: duplicate.
+
+One exception: a status named Blocked is the blocked class, whatever its type
+(Deviations can name another). Results carry `status` (the name) and
+`statusType`. `list_issues` and `save_issue` take either a type or a name in
+`state`.
 
 ## Operations
 
@@ -51,9 +56,9 @@ found: wrong account. Anything else: backend error.
 
 ### `fetch open`
 
-One `list_issues` call per open status name: every plannable status, plus the
-blocked status (skip the blocked call when Todo list's blocked line is blank).
-Each call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
+One `list_issues` call per open type: `state` set to `backlog`, `unstarted` and
+`started`. A Blocked status has one of these types, so it comes back too. Each
+call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
 `status`, `statusType`, `priority`, `estimate`, `dueDate`, `labels`, `project`,
 `parentId`, `completedAt`, `updatedAt`. Merge the results.
 
@@ -68,10 +73,10 @@ task's link; always ask for it in `fields`. `priority` is `0` when none is set;
 
 ### `fetch closed`
 
-`list_issues` as above with `state` set to the done status name; add a call each
-for the canceled and duplicate names only when asked. For a span, pass
-`completedAt` as the span's start and then keep issues whose `completedAt` falls
-in it, in the timezone from About you. When a skill asks for one label, add
+`list_issues` as above with `state` set to `completed`; add a call each for
+`canceled` and `duplicate` only when asked. For a span, pass `completedAt` as
+the span's start and then keep issues whose `completedAt` falls in it, in the
+timezone from About you. When a skill asks for one label, add
 `label: "<label name>"` to each call.
 
 ### `read task`
@@ -96,7 +101,10 @@ Change nothing else on the issue.
 
 ### `set status`
 
-`save_issue` with `id` and `state: "<status name from Todo list>"`.
+`save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
+type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked` (or
+the name Deviations gives). For a plannable status, pass its name from
+`list statuses`.
 
 ### `add labels` / `remove labels`
 
@@ -106,8 +114,7 @@ first time.
 
 ### `mark duplicate of`
 
-`save_issue` with `id`, `duplicateOf: "<original id>"` and
-`state: "<duplicate status name from Todo list>"`.
+`save_issue` with `id`, `duplicateOf: "<original id>"` and `state: "duplicate"`.
 
 ### `create task`
 
@@ -213,10 +220,8 @@ Not needed; Linear has teams to list.
 
 ### `list statuses`
 
-`list_issue_statuses` with `team`. Each comes back with its name and `type`,
-which suggests the class (`backlog`, `unstarted` and `started` are plannable,
-`started` the started one; `completed` done; `canceled` canceled; `duplicate`
-duplicate); the user confirms the mapping.
+`list_issue_statuses` with `team`. Each comes back with its name and `type`;
+Status classes above gives each one's class.
 
 ### `sample estimates`
 

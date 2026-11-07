@@ -80,8 +80,8 @@ the tie-breaker.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
   `ntm:plan`.
-- **Started:** the one plannable status (see Status classes) that means work has
-  begun. Jobs give credit for it.
+- **Started:** a plannable status that means work has begun (see Status
+  classes). Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
   user dated themselves still gets its reminders. Kept in the pauses note.
 - **Note:** a text the system keeps on the todo list, found by title (see
@@ -145,24 +145,23 @@ id in parentheses inside the link text, the url the task's own `url` field.
 
 ## Statuses and labels
 
-Todo list in your settings maps each status class to the list's real status
-names, and Labels gives the real name of each label the system uses. Don't
-assume other statuses exist. The defaults below are what
-`/ntm:configure-todo-list` proposes; the user's todo list may use other names,
-and the settings are what count.
+Every status on the todo list falls into one of the classes below, read from the
+backend as the guide says; nothing about statuses is stored in your settings.
+Labels in your settings gives the real name of each label the system uses. The
+label names below are the defaults `/ntm:configure-todo-list` proposes; the
+user's todo list may use other names, and the settings are what count.
 
 ### Status classes
 
-- **plannable**: open work. Todo list in your settings lists the plannable
-  statuses (usually a backlog, a to-do and an in-progress status); the one it
-  names as **started** means work has begun.
-- **blocked**: the user has put the task in the blocked status (its name is on
-  the blocked line in Todo list in your settings) because they can't move it
+- **plannable**: open work, usually a backlog, a to-do and an in-progress
+  status. The in-progress kind is **started**: work has begun.
+- **blocked**: the user has put the task in the blocked status (by default the
+  status named Blocked; Deviations can name another) because they can't move it
   forward right now. What's in the way is an open blocking task linked to it, a
   reason described in its comments, or both. Waiting on an order usually gets
   the $pending-shipment label instead. A blocked-by relation alone doesn't make
-  a task blocked; see Blocks and blocked by. The blocked line is blank when the
-  todo list has no such status.
+  a task blocked; see Blocks and blocked by. The class is empty when the todo
+  list has no such status.
 - **done**: finished.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.

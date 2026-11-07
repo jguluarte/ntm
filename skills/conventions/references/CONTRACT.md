@@ -48,12 +48,12 @@ stands for the backend's own task id, whatever its shape.
 
 ## Status classes
 
-Say how the status names in Todo list are used to filter and to write, and how
-to tell open from closed in results. A backend with no status names, only open
-and closed, lists `open` as the one plannable status, `closed` as done, and
-leaves started, blocked, canceled and duplicate blank. The classes those lines
-name then don't exist on this todo list, and `set status` to done closes the
-task.
+Ask the user how their statuses map to the classes in the conventions
+(plannable, started, blocked, done, canceled, duplicate), and record it here in
+their words. Say how to filter by class and how to write a status, and how to
+tell open from closed in results. A backend with no status names, only open and
+closed, maps open to plannable and closed to done, and has no started, blocked,
+canceled or duplicate status; `set status` to done closes the task.
 
 ## Operations
 
@@ -68,9 +68,9 @@ error (the names `ntm:ready-check` reports).
 
 ### `fetch open`
 
-Gets every open task (every plannable status, plus blocked when Todo list's
-blocked line isn't blank) with the standard fields, paginated, plus every
-project with its name and labels, and its summary when a skill asks for it.
+Gets every open task (every plannable status, plus blocked where the todo list
+has one) with the standard fields, paginated, plus every project with its name
+and labels, and its summary when a skill asks for it.
 
 The standard fields are id, title, url (the task's link), status, status class,
 priority, estimate, planned date, labels, project, parent id, completed at and
@@ -103,7 +103,7 @@ changes.
 
 ### `set status`
 
-Sets a task's status, by its name in Todo list.
+Sets a task's status to one in a given class, as Status classes says.
 
 ### `add labels` / `remove labels`
 

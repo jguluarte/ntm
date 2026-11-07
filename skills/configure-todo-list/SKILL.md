@@ -2,11 +2,11 @@
 name: configure-todo-list
 description: >-
     The user's todo list, with them in chat. On a first run, where it lives and
-    the agreements ntm works by on it (the backend, the list, the status names
-    for each class, the labels, the notes, how planning and shopping work),
-    returned as settings. Once configured, a change to those settings. Run from
-    ntm:configure, or when the user says "set up my todo list", "connect
-    Linear", "rename my labels" or "change how my week is planned".
+    the agreements ntm works by on it (the backend, the list, the labels, the
+    notes, how planning and shopping work), returned as settings. Once
+    configured, a change to those settings. Run from ntm:configure, or when the
+    user says "set up my todo list", "connect Linear", "rename my labels" or
+    "change how my week is planned".
 ---
 
 # ntm:configure-todo-list
@@ -86,16 +86,17 @@ note's title, as the contract's Notes section says; tell them.
 What you settle goes under Todo list as prose, in their words, below its lines
 (see Returning the sections): one short paragraph per contract heading.
 Statuses, Labels and Notes below then go through the setup operations as they
-described them.
+described them; the status mapping they gave is the Status classes paragraph.
 
 ## Statuses
 
-`list statuses` on the todo list. Propose a mapping from the names you see:
-usually a backlog, a to-do and an in-progress status as plannable, the
-in-progress one as started; then done, canceled and duplicate. The status `type`
-suggests the class; the user confirms. If the todo list has a status that means
-"can't move right now", that's blocked. If not, leave blocked blank and say the
-$pending-shipment label and blocked-by links cover the same ground.
+Nothing to store: each status's class is read from the backend at run time, as
+the conventions' Status classes says. `list statuses` on the todo list and show
+in one short list which class each status falls in (the guide says how; for
+their own backend, as they described it). Blocked is the status named Blocked.
+If their "can't move right now" status has another name, or a status belongs in
+another class, write it as a line for Deviations. If there's no blocked status,
+say the $pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
 
@@ -199,13 +200,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Statuses — the list's real names for each class:
-  - plannable: <one or more names>
-  - started: <one of the plannable names>
-  - blocked: <blank if the todo list has none>
-  - done: <name>
-  - canceled: <name>
-  - duplicate: <name>
 - Price watch project: <project name; blank = price watch off>
 - Notes — the title of each note the system keeps:
   - pauses: <title; default Pauses>
@@ -261,6 +255,10 @@ agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 <anything else about how they shop, as written; or nothing>
 ```
+
+Any lines for Deviations (from Statuses) come after the sections, under
+`## Deviations`; they are added to what Deviations already holds, never in place
+of it.
 
 Then:
 

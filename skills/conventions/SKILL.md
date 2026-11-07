@@ -281,13 +281,10 @@ the task is still open.
 
 ## Estimates
 
-Sizing in Planning in your settings says what an estimate means on this todo
-list. The default scale is Fibonacci points (1, 2, 3, 5, 8, …) measuring
-complexity and effort, not hours: 1 definitely finishes in a night; 2 is iffy
-for one evening; 3 or more is a multi-day effort. Two more lines in Planning
-matter here: Estimate mapping, when set, says how each size is stored on the
-backend (the guide converts), and Estimate help says how much to explain when
-estimates come up.
+Sizing in Planning in your settings defines the scale and what each size means
+on this todo list. Two more lines in Planning matter here: Estimate mapping,
+when set, says how each size is stored on the backend (the guide converts), and
+Estimate help says how much to explain when estimates come up.
 
 Parents aren't estimated; their sub-tasks are. Otherwise, **a task with an
 estimate has been reviewed;** one without hasn't. Estimates are set by the user,

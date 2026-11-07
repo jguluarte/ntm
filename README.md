@@ -62,7 +62,7 @@ Planning and tidying:
 
 | Skill | What it does |
 | --- | --- |
-| `/ntm:configure-todo-list` | Grooms the todo list with you in chat: close, size, split. The same skill sets the list up the first time (below). |
+| `/ntm:review-todo-list` | Reviews the todo list with you in chat: close, size, split. |
 | `/ntm:fix-todo-list` | Closes parents whose sub-tickets are all closed and clears stale planned dates. |
 
 Price watch (on when your settings name a price watch project):
@@ -77,7 +77,7 @@ Setup and settings:
 | Skill | What it does |
 | --- | --- |
 | `/ntm:configure` | The wizard. `/ntm:configure <part>` goes straight to one part. |
-| `/ntm:configure-todo-list` | Where your list lives, how it's laid out, and the planning and shopping agreements; once set up, grooming. |
+| `/ntm:configure-todo-list` | Where your list lives, how it's laid out, and the planning and shopping agreements. |
 | `/ntm:configure-notifications` | How reminders reach you. |
 | `/ntm:configure-style` | How reminders talk to you. |
 | `/ntm:configure-schedule` | The jobs: which, which days, what time, what title. |
@@ -105,7 +105,7 @@ and hand them to an agent; agents own the procedures.
 | The shopper | Is this item a good deal today? One per watched ticket. | ntm |
 | Pauses note | The days when nothing gets planned automatically. | `/ntm:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm-user:style` |
-| Grooming log note | How you like tickets written and sized, learned while grooming. | `/ntm:configure-todo-list` |
+| Grooming log note | How you like tickets written and sized, learned while reviewing. | `/ntm:review-todo-list` |
 | Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/ntm:price-watch` |
 | Amazon alert steps note | How to set an alert on Amazon, learned once. | `/ntm:sync-price-watch-to-amazon` |
 

@@ -92,7 +92,9 @@ Setup and settings:
 Rules live in `ntm:conventions` and name the values they depend on by key; the
 values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
 each is three lines naming the skill it runs. The reminder skills gather facts
-and hand them to an agent; agents own the procedures.
+and hand them to an agent; agents own the procedures. In the skills, a name with
+a `$` in front, like $no-autoschedule, is a label you configure, written by its
+default name.
 
 | Noun | What it is | Who writes it |
 | --- | --- | --- |

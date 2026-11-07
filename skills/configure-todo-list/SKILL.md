@@ -83,7 +83,7 @@ The todo list below:
 3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
    Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
    right now" status, they add one named Blocked in the team's workflow
-   settings; otherwise the `pending-shipment` label and blocked-by links cover
+   settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
 4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
    Linear and sign in to the workspace. Then come back here and say so.
@@ -142,7 +142,7 @@ usually a backlog, a to-do and an in-progress status as plannable, the
 in-progress one as started; then done, canceled and duplicate. The status `type`
 suggests the class; the user confirms. If the todo list has a status that means
 "can't move right now", that's blocked. If not, leave blocked blank and say the
-`pending-shipment` label and blocked-by links cover the same ground.
+$pending-shipment label and blocked-by links cover the same ground.
 
 A new Claude Doc has no statuses to list: propose the names (for example
 Backlog, Todo, In Progress as started, Done, Canceled, Duplicate; blocked only
@@ -152,14 +152,14 @@ if they want one) and `create todo-list` makes them.
 
 Show the defaults in one table, task labels and project labels, with the
 one-line meaning of each from the conventions' System labels: task labels
-`no-autoschedule`, `pending-shipment`, `has-amazon-alert`, `amazon-unavailable`;
-project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name;
+$no-autoschedule, $pending-shipment, $has-amazon-alert, $amazon-unavailable;
+project labels $price-watch, $no-autoschedule. A plain "ok" keeps every name;
 record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
 meaning as the description. Project labels are their own set where the backend
-keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels,
+keeps one (Linear does): $price-watch and $no-autoschedule as project labels,
 so projects can carry them. On Claude Docs labels are free text and nothing is
 created.
 
@@ -209,7 +209,7 @@ and they change any line in their own words:
   the planner guesses from the title when a task has none. On a backend with
   no estimate field, say the task review log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
-- **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The
+- **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by
   the names settled above.
 - **Parents:** plan the open sub-tasks, never the parent.

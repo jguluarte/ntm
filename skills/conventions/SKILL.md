@@ -146,7 +146,7 @@ and the settings are what count.
 - **blocked**: the user has put it in the status Todo list in your settings
   names as blocked because they can't move it forward right now. What's in the
   way is an open blocking task linked to it, a reason described in its
-  comments, or both. Waiting on an order usually gets the `pending-shipment`
+  comments, or both. Waiting on an order usually gets the $pending-shipment
   label instead. A blocked-by relation alone doesn't make a task blocked; see
   Blocks and blocked by. Blank in Todo list when the todo list has no such
   status.
@@ -161,25 +161,27 @@ open.
 ### System labels
 
 Each label below is named by its line in Labels in your settings; the names
-shown are the defaults.
+shown are the defaults. A name with a `$` in front, like $no-autoschedule, is a
+label the user configures, written by its default name: use its real name from
+Labels, and never show the `$` to the user.
 
 Task labels:
 
-- **`no-autoschedule`:** the user has opted this task out of automatic
+- **$no-autoschedule:** the user has opted this task out of automatic
   planning. Planners never pick it, but once the user dates it themselves, it's
   reminded about like any other dated task.
-- **`pending-shipment`:** something has been ordered for this task and hasn't
+- **$pending-shipment:** something has been ordered for this task and hasn't
   arrived, so the user can't start it.
-- **`has-amazon-alert`:** an Amazon price alert is set for this task.
+- **$has-amazon-alert:** an Amazon price alert is set for this task.
   `ntm:sync-price-watch-to-amazon` sets and clears it.
-- **`amazon-unavailable`:** the item isn't sold new on Amazon, so no alert is
+- **$amazon-unavailable:** the item isn't sold new on Amazon, so no alert is
   set.
 
 Project labels (tasks inherit them; see Project labels):
 
-- **`price-watch`:** the project's tasks are purchases waiting for a good
-  price. There is no `price-watch` task label.
-- **`no-autoschedule`:** as the task label, for every task in the project.
+- **$price-watch:** the project's tasks are purchases waiting for a good
+  price. There is no $price-watch task label.
+- **$no-autoschedule:** as the task label, for every task in the project.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -195,7 +197,7 @@ no change to these rules. Where the backend can't put labels on groups, the
 guide says so and the user puts the labels on tasks directly.
 
 Price watch is on when Todo list names a price watch project; the watched set is
-the open tasks carrying the `price-watch` project label. There is no separate
+the open tasks carrying the $price-watch project label. There is no separate
 switch.
 
 ## Notes
@@ -218,7 +220,7 @@ it.
   `ntm:sync-price-watch-to-amazon` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description
-of an open task titled with the note's title and labeled `no-autoschedule`;
+of an open task titled with the note's title and labeled $no-autoschedule;
 see Notes in `references/CONTRACT.md`.
 
 ## Fetching
@@ -242,8 +244,8 @@ summary when a skill asks for it.
 
 Never picks in Planning in your settings lists what planners never pick; the
 default is: a task that, itself or through any ancestor (project, or parent,
-parent's parent, and so on), has the `no-autoschedule` label, the
-`pending-shipment` label or the blocked status.
+parent's parent, and so on), has the $no-autoschedule label, the
+$pending-shipment label or the blocked status.
 
 Planners skip excluded tasks: they never pick or date them. Reminders don't:
 any open task the user has dated gets reminded about, excluded or not.

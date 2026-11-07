@@ -39,7 +39,7 @@ If it names none, end with
 `Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings or turn off the Price watch job with /ntm:configure-schedule.`
 
 Fetch every open task the way "Every open task" in `ntm:conventions` says,
-and keep the ones with the `price-watch` project label (its real name from
+and keep the ones with the $price-watch project label (its real name from
 Labels in your settings), counting labels inherited from their project (the
 conventions' "Project labels"). Note each one's id, title and `url`. If none are
 being watched, send nothing and go straight to FINAL REPLY.
@@ -52,10 +52,10 @@ to word the answer.
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
 `/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it
 only notices when a sync is due; when Amazon interface under Shopping in your
-settings is off, skip this check. With the `has-amazon-alert` and
-`amazon-unavailable` labels by their real names from Labels, note:
+settings is off, skip this check. With the $has-amazon-alert and
+$amazon-unavailable labels by their real names from Labels, note:
 - each open watched task with neither label (it needs an alert);
-- each closed task that still has the `has-amazon-alert` label (its alert
+- each closed task that still has the $has-amazon-alert label (its alert
   needs removing). Find these with the guide's `fetch closed` for that label,
   canceled and duplicate included.
 Change nothing; FINAL REPLY reports it.
@@ -110,9 +110,9 @@ anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
   answer, update that comment with their reason.
 - **They bought it:** a watched task is the purchase itself, so set its status
   to done (the guide's `set status`; if it's already closed, say so). Then add
-  the `pending-shipment` label (its real name from Labels) to any open task it
+  the $pending-shipment label (its real name from Labels) to any open task it
   blocks, where the work lives. Confirm in one line. If the task has the
-  `has-amazon-alert` label, add that its Amazon alert gets removed the next time
+  $has-amazon-alert label, add that its Amazon alert gets removed the next time
   they run `/ntm:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the price watch stores note,
   titled as Notes under Todo list in your settings says and kept in the price

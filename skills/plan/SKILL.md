@@ -40,7 +40,7 @@ If any step fails, stop and return `Plan FAILED: <what failed>`.
 
 A candidate is an open task with a plannable status, no open sub-tasks, and
 either no planned date or a stale one, and not one Planning's Never picks rules
-out (by default anything carrying the `no-autoschedule` or `pending-shipment`
+out (by default anything carrying the $no-autoschedule or $pending-shipment
 label, by their real names from Labels, or the blocked status, itself or through
 an ancestor). Read each candidate and its ancestors with the guide's
 `read task` for descriptions and relations. Blocked-by relations follow the

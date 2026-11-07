@@ -4,10 +4,10 @@ description: >-
     Plans the user's todo list by setting planned dates, one task a weekday by
     default, and returns the plan. --auto day makes today ready (carries stale
     work to today, plans today if it's empty); --auto with a range in words
-    (week, week mon-fri, all weekdays this month) closes out a span that long
-    and plans the days it covers; anything else plans with the user in chat. Run
-    by the morning reminder and the weekly planning, or by the user ("plan my
-    week", "plan Thursday around the garage").
+    (week, week mon-fri, all weekdays this month) plans the days it covers;
+    anything else plans with the user in chat. Run by the morning reminder and
+    the weekly planning, or by the user ("plan my week", "plan Thursday around
+    the garage").
 ---
 
 # ntm:plan
@@ -23,11 +23,9 @@ description: >-
 - `--auto day`: make today ready, unattended. Carries stale work to today, then
   picks one task for today when nothing is planned and today isn't paused. Run
   by the morning reminder.
-- `--auto <range>`: close out a span and plan the next, unattended. The range is
-  in words, such as `week`, `week mon-fri` or `all weekdays this month`. Reports
-  what got done and what's still open, tidies the todo list, then fills each
-  planning day in the range around whatever is already planned. Run by the
-  weekly planning.
+- `--auto <range>`: plan a span, unattended. The range is in words, such as
+  `week`, `week mon-fri` or `all weekdays this month`. Fills each planning day
+  in the range around whatever is already planned. Run by the weekly planning.
 - Anything else: plan with the user in chat, following what they say ("plan the
   week around the garage", "give Thursday something small", "reset today"), and
   asking only if it's still ambiguous. Bare `/ntm:plan` is the week as the span.
@@ -54,7 +52,6 @@ states only what differs for its user.
    and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
 3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
-   `--auto <range>` fetches after its tidy.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 
@@ -138,32 +135,23 @@ the days in Defaults. `week` alone is the rest of this week, or the coming week
 when run on a weekend. If the words give no days at all, stop and return
 `Plan FAILED: can't tell which days "<range>" means`.
 
-The span looked back on is as long as the range, ending today: 7 days for a
-week, 14 for two weeks, the calendar month for a month.
-
-1. Load `ntm:show-completed` and `ntm:fix-todo-list`. Run
-   `/ntm:show-completed <the span looked back on> and what's still open` first,
-   so it counts nothing the tidy closes. `Show-completed FAILED` isn't an error
-   here: carry on with `done: unavailable`.
-2. Run `/ntm:fix-todo-list`, so planning works from a tidy todo list.
-   `Fix-todo-list FAILED` isn't an error here either: carry on.
-3. Fetch as Setup says. The span is from `TODAY` to the range's last day; only
-   its planning days get picks. Check it for paused days, as Paused days says.
-4. Give each remaining planning day that doesn't already have a task its picks.
+1. The span is from `TODAY` to the range's last day; only its planning days get
+   picks. Check it for paused days, as Paused days says.
+2. Give each remaining planning day that doesn't already have a task its picks.
    If no candidate is left, plan nothing.
-5. Return the plan as Result says.
+3. Return the plan as Result says.
 
 ## In chat
 
-Only in chat, with the user. The span is what they name, or the `--auto week`
-span when they name none (next week when a day or less of this one is left), or
-today when they say "today". A day they name gets planned even when Defaults or
-Deviations would leave it out, such as a weekend; say in one line that it goes
-against their usual plan. Scope words ("the garage") match by project, parent,
-label or title; when the words aren't enough to plan from, ask. The rules above
-are your defaults, not their limits: the user has the final say. Advise them
-when something looks like a problem, such as a blocked chain that can't finish
-in the span, then do what they decide.
+Only in chat, with the user. The span is what they name, or a week when they
+name none (next week when a day or less of this one is left), or today when they
+say "today". A day they name gets planned even when Defaults or Deviations would
+leave it out, such as a weekend; say in one line that it goes against their
+usual plan. Scope words ("the garage") match by project, parent, label or title;
+when the words aren't enough to plan from, ask. The rules above are your
+defaults, not their limits: the user has the final say. Advise them when
+something looks like a problem, such as a blocked chain that can't finish in the
+span, then do what they decide.
 
 1. Show the span as it stands: each day's tasks, and which days are paused.
 2. Go on what they said. If it isn't enough to plan from, ask what they want the
@@ -194,14 +182,10 @@ A ` (~<time>)` in a line below appears only on a task this run picked.
   A stale task left where it was: `kept: <id> (blocked)`. How many days a task
   has slipped is the style's to count, from the message history; don't compute
   it here.
-- `--auto <range>`: one `done:` line per task that closed in the span looked
-  back on (`done: <id> <title> <url>`), or `done: none`, or `done: unavailable`;
-  one `open:` line per task still open from it (`open: <id> <title> <url>`, then
-  ` (was <date>)` when its planned date is before `TODAY`), or `open: none`; one
-  `planned:` line per task planned in the range, days the user had already dated
-  included, in day order (`planned: <date>: <id> <title> (~<time>) <url>`), or
-  the single line `planned: none`; then every line fix-todo-list returned, each
-  prefixed `fix: ` (a `Fix-todo-list FAILED: …` line the same way).
+- `--auto <range>`: one `planned:` line per task planned in the range, days the
+  user had already dated included, in day order
+  (`planned: <date>: <id> <title> (~<time>) <url>`), or the single line
+  `planned: none`.
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
 - In chat: the saved plan, presented as the conventions' "Talking to the user
   about tasks" says: each day in order with its tasks, the time and reason for

@@ -1,12 +1,13 @@
 # Backend contract
 
-A backend guide maps the operations the conventions name onto one backend's
-connector. `linear.md` is the complete, tested one. For any other backend, Todo
-list in `ntm-user:settings` says how each operation here is done, in the user's
-words. A backend can be built on anything the user's agent can reach, for
-example a table in a Claude Doc (the Claude Docs connector's own guide gives its
-calls). `/ntm:configure-todo-list` fills it with the user against this contract,
-and once `ntm-user` is installed, `/ntm:self-test` checks it.
+What a backend has to have, and what its guide has to say, for ntm to run on it.
+A backend guide maps each operation the conventions name onto one backend's
+connector; `linear.md` is the complete, tested one. Any other backend has no
+guide file: the user's own description under Todo list in `ntm-user:settings` is
+its guide. `/ntm:configure-todo-list` writes that description with the user by
+walking this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
+it. A backend can be built on anything the user's agent can reach, for example a
+table in a Claude Doc (the Claude Docs connector's own guide gives its calls).
 
 Write a guide as a list of operations, each saying which tool calls carry it out
 and which fields map to the conventions' names. Keep the headings below so
@@ -16,22 +17,26 @@ skills can find what they need.
 
 - Tasks with: an id, a title, a description, a status, labels, a single date
   field usable as the planned date, a parent/sub-task relation, and a web url.
-  An estimate field and a blocked-by relation are used when present. Say in the
-  guide if the backend lacks them; the skills that use them (reviewing,
-  planning) work from titles and descriptions instead. With no estimate field,
-  the task review log's Estimates block is the record: a task counts as reviewed
-  when it has an entry there, and `update task` skips the estimate.
-- Some way to group tasks (projects, folders, epics) that can carry labels. If
-  groups can't carry labels, say so; the conventions' project-label inheritance
-  then doesn't apply, and the user puts system labels on tasks directly.
+- Some way to group tasks (projects, folders, epics), ideally one that can carry
+  labels.
 - A connector for Claude that can list, read and write the above.
 
-Some gaps are survivable: no estimate field, no blocked-by relation, no labels
-on groups, no priority, no updated-at, no documents (see Notes), no way to keep
-a note inside a project (then every note is at list level). The guide says which
-it lacks, and the skills work around them as above. Two aren't: a backend with
-no date field to use as the planned date, or no way to tell open tasks from
-closed, can't run this system.
+Two gaps are fatal: a backend with no date field to use as the planned date, or
+no way to tell open tasks from closed, can't run this system.
+
+Other gaps are survivable. The guide says which the backend lacks, and the
+skills work around them:
+
+- **No estimate field:** the task review log's Estimates block is the record: a
+  task counts as reviewed when it has an entry there, and `update task` skips
+  the estimate. Reviewing and planning judge size from titles and descriptions.
+- **No blocked-by relation:** reviewing and planning work from titles and
+  descriptions instead.
+- **No labels on groups:** the conventions' project-label inheritance doesn't
+  apply, and the user puts system labels on tasks directly.
+- **No priority, or no updated-at:** skills do without them.
+- **No documents:** notes are kept in tasks (see Notes).
+- **No way to keep a note inside a project:** every note is at list level.
 
 ## Todo list
 
@@ -53,8 +58,7 @@ task.
 
 ## Operations
 
-Each must be covered. Operation names are what every skill uses; keep them
-exactly.
+Cover every operation. Skills call them by these names; keep them exactly.
 
 | Operation                                            | Must say                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -85,9 +89,9 @@ note in the description of a task titled with the note's title, labeled with the
 $no-autoschedule label (its real name from Labels) and left open in a plannable
 status. `ntm:fix-todo-list` never touches it (no sub-tasks, no date) and
 planners skip it for its label. `read note` is then a title search that reads
-that task's description; `write note` replaces it, creating the task when there
-is none. A note kept in a project is a task created in that project. The
-conventions say every skill ignores such a task as work.
+that task's description; `write note` replaces the description, creating the
+task when there is none. A note kept in a project is a task created in that
+project. The conventions say every skill ignores such a task as work.
 
 ## Setup operations
 

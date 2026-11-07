@@ -1,21 +1,22 @@
 # ntm: working rules
 
 Read `.claude/HANDOFF.md` first for where things are and what's next, then
-`.claude/DECISIONS.md` for history. `.claude/DESIGN-0.4.md` is raw material and
-out of date; don't author from it.
+`.claude/DECISIONS.md` for what's decided, and `.claude/NAMES.md` for every name
+and whether Justin approved it.
 
 ## The repo
 
 A Claude plugin: markdown skills and agents, and a few JSON files. On main the
 base plugin is `ntm` and the user's generated plugin is `ntm-user`; 0.4 renames
 them (base `neurodivergent-task-manager`, user `ntm`). Use main's names, paths
-and words.
+and words. Talk 0.4 through with Justin before authoring any of it.
 
 ## Justin owns the plugin
 
 - Nothing lands unless he asked for it or approved it. Don't run ahead.
 - Decisions go to him one at a time. User-facing names are his. A rename lands
-  only after his explicit yes; silence is not approval.
+  only after his explicit yes; silence is not approval. His yes goes in
+  `NAMES.md`.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 

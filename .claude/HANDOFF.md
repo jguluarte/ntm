@@ -1,7 +1,7 @@
 # ntm: where things are (updated 2026-11-07)
 
 Current state and what's next, for the orchestrating session. The working rules
-are in `CLAUDE.md`; history is in `DECISIONS.md`.
+are in `CLAUDE.md`, what's decided in `DECISIONS.md`, and names in `NAMES.md`.
 
 ## Main
 
@@ -15,8 +15,8 @@ merged into `ntm:plan`, estimate wording (`Estimate scale`).
 
 ## Branches and PRs
 
-- No open PRs. #2, the single-branch 0.4 attempt, is closed unmerged; its branch
-  `v0.4` stays as raw material for 0.4, along with `DESIGN-0.4.md`.
+- Open PRs: `gh pr list`. #2, the single-branch 0.4 attempt, is closed unmerged;
+  its branch `v0.4` stays as raw material for 0.4.
 - `plugin-history-2026-11-06`: history from before the 0.3 squash.
 - History was rewritten on 2026-11-07 to take a leaked address out of commit
   metadata. A clone from before then is stale; re-clone. GitHub Support has a
@@ -30,10 +30,4 @@ setup.
 
 ## Next
 
-- A small PR: turn on line-length checking for fenced blocks in the lint.
-- 0.4, talked through with Justin before any authoring: the user plugin as the
-  way in (contracts, entry points, configure absorbing settings and upgrades),
-  plugin renames (base `neurodivergent-task-manager`, user `ntm`), and the base
-  as a guide the user's agent follows rather than a prescriptive generator (main
-  already does this for ntm-user, #16).
-- `/domain-first-design` revision and his design agents: parked (GULU-314).
+The Deferred and open section of `DECISIONS.md`.

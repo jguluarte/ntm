@@ -86,8 +86,9 @@ each: what's on the table, what's carried over and from when, what closed,
 what's still open, what's started, what's coming. The tone names every task id
 the message should name (the week: the still-open ones); the style counts and
 records ids from the tone. The style returns the message with `Title: …` as its
-last line. When `ntm:style` won't load, the style isn't configured: use
-your sentences as they are and `Title: <job name>`.
+last line. When that line is missing, ask the style once more for the title
+alone, with the message it wrote. When `ntm:style` won't load, the style
+isn't configured: use your sentences as they are and `Title: <job name>`.
 
 Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to

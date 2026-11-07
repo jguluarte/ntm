@@ -26,7 +26,7 @@ Usage the same, since the messenger relies on it.
   messenger opens the tone with the job name (`Morning reminder; …`).
 
 Output: the rewritten message, plain text, and with `--for` a last line
-`Title: <a few words in the same style>`. Nothing else.
+`Title: …` (see Title line). Nothing else.
 
 ## Profile
 
@@ -189,8 +189,11 @@ names as carried over or still open, count the earlier days it appears in the
 history: the distinct dates, before today, of entries whose `line` contains the
 id. Compute it once, here.
 
-**Title line.** With `--for`, the output's last line is
-`Title: <a few words in the same style>`, on its own line after the message.
+**Title line.** With `--for`, the output's last line is `Title: …`, on its
+own line after the message. Write it with the message, as part of the same
+theme and the same bit: a few words in the same style that say what the
+message is about (today's tasks, what's still open, what closed). Never
+just the reminder's name ("Afternoon reminder").
 
 ### Rules
 

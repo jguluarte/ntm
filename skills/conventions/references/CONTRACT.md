@@ -27,9 +27,8 @@ no way to tell open tasks from closed, can't run this system.
 Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
 
-- **No estimate field:** the task review log's Estimates block is the record: a
-  task counts as reviewed when it has an entry there, and `update task` skips
-  the estimate. Reviewing and planning judge size from titles and descriptions.
+- **No estimate field:** the task review log is the record, as the conventions'
+  Estimates says, and `update task` skips the estimate.
 - **No blocked-by relation:** reviewing and planning work from titles and
   descriptions instead.
 - **No labels on groups:** the conventions' project-label inheritance doesn't

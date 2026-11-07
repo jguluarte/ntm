@@ -153,10 +153,10 @@ and they change any line in their own words:
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
-  evening, 3 or more is multi-day. What an estimate means on their todo list;
-  the planner guesses from the title when a task has none. Asked on its own,
-  below. On a backend with no estimate field, say the task review log is the
-  record.
+  evening, 3 or more is multi-day. The scale and what each size means (the
+  conventions' Estimates says how it's used). Asked on its own, below. On a
+  backend with no estimate field, tell them where estimates are kept, as the
+  conventions' Estimates says.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the

@@ -92,7 +92,7 @@ the tie-breaker.
   Notes). A task titled with a note's title is a note, not work; every skill
   ignores it.
 - **Label:** a tag on a task or project.
-- **Estimate:** how big a task is, on the scale Planning in your settings names.
+- **Estimate:** how big a task is; see Estimates.
 - **Job:** a scheduled run, what the Claude app calls a scheduled task. Never
   "trigger", "routine" or "cron job" when talking to the user.
 
@@ -281,16 +281,21 @@ the task is still open.
 
 ## Estimates
 
-Sizing in Planning in your settings defines the scale and what each size means
-on this todo list. Two more lines in Planning matter here: Estimate mapping,
-when set, says how each size is stored on the backend (the guide converts), and
-Estimate help says how much to explain when estimates come up.
+An estimate is how big a task is. Sizing in Planning in your settings defines
+the scale and what each size means on this todo list. Two more lines in Planning
+matter here: Estimate mapping, when set, says how each size is stored on the
+backend (the guide converts), and Estimate help says how much to explain when
+estimates come up.
 
-Parents aren't estimated; their sub-tasks are. Otherwise, **a task with an
-estimate has been reviewed;** one without hasn't. Estimates are set by the user,
-or with their approval while reviewing. Planners use an estimate when one is set
-and judge size from the title and description otherwise. On a backend with no
-estimate field, the task review log's Estimates block is the record.
+Parents aren't estimated; their sub-tasks are. Any other task **has been
+reviewed when it has an estimate,** and hasn't when it doesn't. Estimates are
+set by the user, or with their approval while reviewing. Planners use an
+estimate when one is set and judge size from the title and description
+otherwise.
+
+On a backend with no estimate field, the task review log's Estimates block is
+the record: a task with an entry there counts as reviewed. Planners judge its
+size from the title and description.
 
 ## Relationships
 

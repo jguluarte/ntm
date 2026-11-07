@@ -43,10 +43,8 @@ lighter option:
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
-A task is **unreviewed** when it's open, has no estimate, and isn't a parent
-with open sub-tasks. On a backend without an estimate field (its guide or Todo
-list in your settings says), "no estimate" means no entry in the log's Estimates
-block.
+A task is **unreviewed** when it's open and hasn't been reviewed, as the
+conventions' Estimates says.
 
 ## The slice
 
@@ -172,8 +170,8 @@ A `jsonl` code block, newest first, one object per approved estimate:
 `guess` is what you proposed and `final` what the user approved, each written
 the way the Sizing scale writes it (`3`, `"2 h"`, `"weekend"`). Keep `why` to a
 few words: what made them change it, or what made the guess right. Keep the
-newest 150 entries. On a backend without an estimate field the log is the only
-record of what's reviewed, so keep every entry.
+newest 150 entries. On a backend without an estimate field, where the log is the
+record (see the conventions' Estimates), keep every entry.
 
 Save it with `write note` whenever you change it, leaving the rest as it was.
 

@@ -26,9 +26,10 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
   team can extend its scale or allow zero. Times can't be stored. The connector
-  doesn't say which type a team uses; the user does. When Planning has an
-  Estimate mapping, convert through it: the user's estimate to its point when
-  writing, a point back to their estimate when reading.
+  doesn't say which type a team uses; the user does. When Planning's Estimate
+  pattern gives a point for each estimate, convert through it: the user's
+  estimate to its point when writing, a point back to their estimate when
+  reading.
 
 ## Status classes
 
@@ -204,7 +205,7 @@ T-shirt sizes (Estimates, under Todo list above, has each one's points). If
 they're unsure, it's in Linear under the team's settings, Estimates. If they
 still don't know, run `sample estimates` and suggest the type that fits. When
 their scale isn't the team's, agree with them which of the team's points each
-estimate on their scale becomes, and record it as Estimate mapping.
+estimate on their scale becomes, and add that to Estimate pattern.
 
 ## Setup operations
 

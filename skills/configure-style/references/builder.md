@@ -37,10 +37,6 @@ terms, one line each; or empty for the defaults>
 - <one recurring bit per line, each a short name>
 Repeat limit: <not in the last twenty messages, unless the user says otherwise>
 
-### Off limits
-What the style never rewrites or jokes about: task ids, titles, planned dates,
-counts and names are carried as given. <anything the user adds>
-
 ### Examples
 - <level 1 name>: "<example>"
 - <level 2 name>: "<example>"
@@ -149,12 +145,6 @@ them, from the list's size and how far each motif stretches: a short list of
 one-use references needs a long rest; a few rich ones can come back sooner. "Not
 in the last twenty messages" is the default when they don't say.
 
-### Off limits
-
-What the style never rewrites or jokes about. Task ids, titles, planned dates,
-counts and names are always carried as given; that sentence stays. Add whatever
-they name: a subject, a person, a kind of joke.
-
 ### Examples
 
 One per level, in the level's name, and one for "nothing open" (the evening when
@@ -197,11 +187,6 @@ Back to Everyday once the task closes.
 - the garden
 - the long walk
 Repeat limit: not in the last twenty messages.
-
-### Off limits
-
-What the style never rewrites or jokes about: task ids, titles, planned dates,
-counts and names are carried as given. Nothing about the neighbours.
 
 ### Examples
 

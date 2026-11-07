@@ -22,7 +22,7 @@ section text, and `ntm:settings` packages everything once at the end.
 /ntm:configure <part>
 ```
 
-Parts: `about-you`, `todo list`, `notifications`, `style`, `schedule`.
+Parts: `about-you`, `todo-list`, `notifications`, `style`, `schedule`.
 
 ## Before you start
 
@@ -35,8 +35,9 @@ Load `ntm-user:settings` by name.
 
 Say two lines first:
 
-1. ntm keeps your settings and style in a small plugin of your own, `ntm-user`;
-   this builds it with you and hands it back to install at the end.
+1. Neurodivergent Task Manager (ntm) keeps your settings and style in a small
+   plugin of your own, `ntm-user`; this builds it with you and hands it back to
+   install at the end.
 2. The steps: about you, your todo list (and how planning and shopping work on
    it), how reminders reach you, how they talk to you, and the schedule. Each is
    a short conversation, and your own plugin is written once, at the end.
@@ -74,10 +75,10 @@ Keep the returned text; write nothing.
 
 The sections and what reads them, in case they ask: About you is read by
 everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
-how far ahead the week plans, the estimate scale, what's never picked, what the
-weekly message includes) by `ntm:plan` and the weekly planning, and its estimate
-lines by the estimator; Shopping (condition, delivery, what counts as a deal) by
-the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
+how far ahead the week plans, the estimate pattern, what's never picked, what
+the weekly message includes) by `ntm:plan` and the weekly planning, and its
+Estimate pattern by the estimator; Shopping (condition, delivery, what counts as
+a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
 `ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
 since each default is about the same todo list.
 
@@ -104,6 +105,6 @@ changes nothing in `ntm-user`, so there's nothing to package after it.
 ## `configure <part>`
 
 Straight to that part, no state lines: `about-you` to About you above; the other
-four to their skill. Then Packaging for `about-you`, `todo list`,
+four to their skill. Then Packaging for `about-you`, `todo-list`,
 `notifications` and `style`. `schedule` packages nothing: a schedule change
 changes nothing in `ntm-user`.

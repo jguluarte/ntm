@@ -222,8 +222,6 @@ it.
 - **price watch stores** (`Price watch stores`): stored in the project that
   carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
   from the user's vouch and block replies; the shopper reads it.
-- **Amazon alert steps** (`Amazon alert steps`):
-  `ntm:sync-price-watch-to-amazon` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description
 of an open task titled with the note's title and labeled $no-autoschedule; see

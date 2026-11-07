@@ -48,8 +48,9 @@ Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
 Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with
-`Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
+If it names none, end with `Sync-price-watch-to-amazon: price watch is off;`
+followed on the same line by why (Todo list in your settings names no price
+watch project) and the fix (name one with /ntm:settings).
 
 Use the browser the user names for this run, or else the one Amazon interface
 under Shopping in your settings names; if you still don't know, ask them. If
@@ -57,7 +58,9 @@ Amazon interface is off and they named none, end with
 `Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.`
 Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow
 it. If that browser can't be reached, end with
-`Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
+`Sync-price-watch-to-amazon FAILED: needs a browser.` followed on the same line
+by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
+your own browser, then run this again.
 
 Amazon's store for this user is the one serving the country in Country and
 currency under About you in your settings; prices are in that currency. The

@@ -108,12 +108,12 @@ the tie-breaker.
 
 ## Chat, jobs and agents
 
-A skill typed in chat runs in the chat. The reminder skills, `ntm:plan`,
-`show-completed --notify` and the price watch hand work to the plugin's agents
-(messenger, shopper, estimator), in a job or in chat alike. Only skills ask
-agents: an agent can't start another agent. Reviewing follows the estimator's
-Review in the chat, and setting up the todo list asks the estimator to explain
-the ways to estimate. Each says what it hands over.
+A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,
+in a job or in chat alike; an agent can't start another agent. The reminder
+skills and `show-completed --notify` ask the messenger, and the price watch the
+shopper. The estimator is for planning: `ntm:plan` asks it how long the tasks it
+picks take, reviewing follows its Review in the chat, and setting up the todo
+list asks it to explain the ways to estimate. Each says what it hands over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:

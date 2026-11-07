@@ -166,8 +166,8 @@ Is this item a good deal today? One per watched task. Ships with ntm.
 
 How big is each task, on your own scale, and is it ready to plan? Reviews the
 todo list with you through `/ntm:review-todo-list`, sizing and splitting tasks,
-guesses how long each task in a reminder takes, and explains the ways to
-estimate when you want to know. Ships with ntm.
+guesses how long each task takes when tasks are planned, and explains the ways
+to estimate when you want to know. Ships with ntm.
 
 ### Pauses note
 

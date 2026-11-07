@@ -10,9 +10,10 @@ description: >-
 
 The afternoon reminder: a tap on the shoulder about what's still open.
 `ntm:today` gives the facts; the messenger agent writes and sends the message.
-This skill names the steps, the handoffs and what ends the run. When an agent
-isn't available in this session, do what the conventions' "Chat, jobs and
-agents" says: read its file from the installed plugin and follow it yourself.
+This skill names the steps, the handoff and what ends the run. When the
+messenger agent isn't available in this session, do what the conventions' "Chat,
+jobs and agents" says: read its file from the installed plugin and follow it
+yourself.
 
 # 1: Ready check
 
@@ -26,11 +27,10 @@ and nothing more.**
 Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
 - Tasks listed: the facts are one `open:` line per task,
-  `open: <id> <title> (~<time>) <url>`, then ` (was <date>)` when its planned
-  date is before today, then ` (started)` when today marked it so. Remind about
+  `open: <id> <title> <url>`, then ` (was <date>)` when its planned date is
+  before today, then ` (started)` when today marked it so. Remind about
   everything listed, whatever its labels or status, even on a paused day: the
-  user dated it. Get each `~<time>` from the estimator agent's Time tasks, asked
-  once with every task listed.
+  user dated it.
 - Nothing listed: run `/ntm:pause --check`. Paused (its line for today ends
   `true`): STOP and send nothing. Otherwise the facts are `open: none`.
 - Any `… FAILED` line: ERROR HANDLING.

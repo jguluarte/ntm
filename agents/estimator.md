@@ -6,21 +6,21 @@ description: >-
     It holds what an estimate means, proposes estimates, guesses how long tasks
     take and explains the ways to estimate. It owns reviewing the todo list with
     the user (closing obsolete or duplicate tasks, then sizing and splitting,
-    with their approval) and keeps the task review log. Asked by ntm:plan and
-    the afternoon reminder for times, and by ntm:configure-todo-list when the
-    user wants more detail on sizing; its Review runs in the chat through
+    with their approval) and keeps the task review log. Asked by ntm:plan for
+    times when it picks tasks, and by ntm:configure-todo-list when the user
+    wants more detail on sizing; its Review runs in the chat through
     ntm:review-todo-list. It never plans or dates tasks.
 
         <example>
-        Context: ntm:plan is making today ready and has two tasks to put on
-        today's lines.
+        Context: ntm:plan is picking a task for today and has three likely
+        picks.
         user: "Morning reminder. Load ntm:morning-reminder and follow it from
         step 1."
-        assistant: "Asking the estimator agent how long each of today's tasks
+        assistant: "Asking the estimator agent how long each likely pick
         takes."
         <commentary>
-        Plan hands the estimator the tasks; it returns one time per task for
-        the lines.
+        Plan hands the estimator its shortlist; it returns one time per task,
+        for judging fit and for the line of the task plan picks.
         </commentary>
         </example>
 

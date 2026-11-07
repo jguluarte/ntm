@@ -87,11 +87,11 @@ one more.
 
 ## A task's time
 
-Every task the result lists shows how long it should take, so the user can see
-what the day asks of them. Ask the estimator agent's Time tasks once per run,
-with every task that needs a time: the shortlist when the run picks, and every
-task the result lists. When the agent isn't loaded, follow its file as the
-conventions' "Chat, jobs and agents" says.
+When the run picks tasks, ask the estimator agent's Time tasks once, with the
+shortlist. Its times judge fit, and go on the lines of the tasks this run picks
+so the user can see what the day asks of them; other lines carry no time. When
+the agent isn't loaded, follow its file as the conventions' "Chat, jobs and
+agents" says.
 
 ## Paused days
 
@@ -169,6 +169,8 @@ Return plain text for whoever called the skill; the job or skill that called it
 decides what reaches the user. The reminders hand these lines to the messenger
 as they are.
 
+A ` (~<time>)` in a line below appears only on a task this run picked.
+
 - `--auto day`: one `today:` line per task planned for `TODAY`:
   `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a task carried
   over, the date it had, then ` (started)` when its status is the started one.
@@ -187,7 +189,7 @@ as they are.
   (a `Fix-todo-list FAILED: …` line the same way).
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
 - In chat: the saved plan, presented as the conventions' "Talking to the user
-  about tasks" says: each day in order with its tasks and their times, the
-  reason for each task this run picked, and which days are paused, left open or
-  had nothing to plan. Name any write that failed.
+  about tasks" says: each day in order with its tasks, the time and reason for
+  each task this run picked, and which days are paused, left open or had nothing
+  to plan. Name any write that failed.
 - `Plan FAILED: <what failed>` when Setup or the pause check fails.

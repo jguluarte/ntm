@@ -37,8 +37,9 @@ Dates section says, unless whoever loaded this skill gave a date.
 # 2: Ready check
 
 Run by the job: `/ntm:ready-check --notify-failure "Price watch"`. Typed in
-chat: a plain `/ntm:ready-check`. **If it fails, STOP: end with what it returned
-and nothing more.**
+chat: a plain `/ntm:ready-check`.
+
+**If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch
 
@@ -66,7 +67,9 @@ settings is off, skip this check. With the `has-amazon-alert` and
 - each open watched ticket with neither label (it needs an alert);
 - each closed ticket that still has the `has-amazon-alert` label (its alert
   needs removing). Find these with the guide's `fetch closed` for that label,
-  canceled and duplicate included. Change nothing; FINAL REPLY reports it.
+  canceled and duplicate included.
+
+Change nothing; FINAL REPLY reports it.
 
 # 4: The checks
 
@@ -141,15 +144,17 @@ anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
 When step 5 sent an alert, the full details follow the first line: one section
 per deal as step 5 lays them out, then the line inviting a reply. With
 `NOTIFY VIA FINAL REPLY`, the title and message come first, then those sections,
-then the per-item lines, NOTES and the sync line. Unless reporting an error,
-start the final reply with one short line saying what happened, such as "Sent a
-price alert for the backup battery (ABC-24)." or "No good deals today; nothing
-sent." If no result had a verified price, say "No prices verified today; nothing
-sent."; if no check came back usable, say that instead; if nothing is being
-watched, say "Nothing on price watch; nothing sent." Then, per item, a few words
-for it with its ticket id in parentheses, followed by its CHECKED line, or that
-its check failed, or that it's not actionable and why. Then any NOTES that
-aren't "none": these are things for the user to fix.
+then the per-item lines, NOTES and the sync line.
+
+Unless reporting an error, start the final reply with one short line saying what
+happened, such as "Sent a price alert for the backup battery (ABC-24)." or "No
+good deals today; nothing sent." If no result had a verified price, say "No
+prices verified today; nothing sent."; if no check came back usable, say that
+instead; if nothing is being watched, say "Nothing on price watch; nothing
+sent." Then, per item, a few words for it with its ticket id in parentheses,
+followed by its CHECKED line, or that its check failed, or that it's not
+actionable and why. Then any NOTES that aren't "none": these are things for the
+user to fix.
 
 If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is
 instead everything after that line, verbatim (the title, then the message), so

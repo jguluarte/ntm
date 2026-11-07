@@ -9,7 +9,9 @@ description: >-
 
 # ntm:conventions
 
-Version: 0.3.2 Template source: none yet
+Version: 0.3.2
+
+Template source: none yet
 
 This is a general guide to working with the user's todo list, not a rulebook for
 every edge. The other skills and the jobs keep the todo list self-healing. Every

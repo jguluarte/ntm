@@ -18,9 +18,10 @@ it yourself.
 
 # 1: Ready check
 
-Run `/ntm:ready-check --notify-failure "Morning reminder"`. **If it returns
-`Ready-check FAILED`, STOP: end the run with what it returned and nothing
-more.**
+Run `/ntm:ready-check --notify-failure "Morning reminder"`.
+
+**If it returns `Ready-check FAILED`, STOP: end the run with what it returned
+and nothing more.**
 
 # 2: The facts
 

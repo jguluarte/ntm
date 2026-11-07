@@ -80,8 +80,10 @@ unplanned.
 ### What if a day already has a task?
 
 A day already has a task when any open task is planned for that day, whatever
-its labels or status. Consider that day planned, however many tasks it holds.
-Use its work as a theme to anchor the other days of the week.
+its labels or status. Its work is a theme to anchor the other days of the week.
+Unattended, consider that day planned, however many tasks it holds. In chat, it
+counts as planned only until the user asks for something more on it; then add
+one more.
 
 ## A task's time
 

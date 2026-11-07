@@ -8,8 +8,8 @@ list's connector must be attached when `/ntm:configure-schedule` runs.
 
 ## Your todo list, on Linear
 
-The Linear MCP server (`https://mcp.linear.app/mcp`), declared in `.mcp.json` so
-installing ntm lists it on the Connectors tab. Free for individuals.
+Linear's connector, added on the Connectors tab in Claude's settings;
+`/ntm:configure-todo-list` walks you through it. Free for individuals.
 
 ## Your todo list, on anything else
 

@@ -230,10 +230,10 @@ the jobs write (the notes above) lives on your todo list.
 
 Nothing else leaves a run. No skill but `ntm:notify` sends anything.
 
-## The connector it bundles
+## Connectors
 
-Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors
-tab for you to connect. On another backend, ignore it. See `CONNECTORS.md`.
+ntm bundles none. For Linear, add it on the Connectors tab in Claude's settings;
+setup walks you through it. See `CONNECTORS.md`.
 
 ## Requirements
 

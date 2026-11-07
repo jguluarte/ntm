@@ -250,8 +250,9 @@ never make the user wait.
 
 ### Splits
 
-- The user usually brings their own split ideas. Propose pieces only when they
-  don't; otherwise just check whether they missed something obvious.
+- The user usually brings their own ideas for how to split a task. When they do,
+  use their pieces, and only point out a piece they seem to have left out. When
+  they don't, propose the pieces yourself.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
   write only that: the original with the guide's `update task`, the new tasks as

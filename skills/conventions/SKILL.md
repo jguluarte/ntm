@@ -290,12 +290,12 @@ these are the defaults.
 
 ### Blocks and blocked by
 
-A task blocked by open linked tasks, directly or through its parent chain, can
-be planned for any day after the planned days of all those blockers. Never the
-same day, but not necessarily the next either: any later day works. A blocker's
-planned day is its planned date. A blocker with no planned date, or a stale one,
-has no planned day, and the tasks it blocks wait. A planner can date a blocker
-and then the task it blocks in the same run.
+A task blocked by open linked tasks can be planned for any day after the planned
+days of all those blockers. Never the same day, but not necessarily the next
+either: any later day works. A blocker's planned day is its planned date. A
+blocker with no planned date, or a stale one, has no planned day, and the tasks
+it blocks wait. A planner can date a blocker and then the task it blocks in the
+same run.
 
 For example, if task `two` is blocked by task `one`, then `two` can be planned
 for Wednesday only if `one` is planned for Tuesday or earlier. If `one` has no

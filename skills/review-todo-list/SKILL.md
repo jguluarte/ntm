@@ -102,12 +102,12 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, on the Sizing scale in Planning in your settings,
-   with a few words on why, guided by how past guesses in the task review log
-   compared with what the user settled on. If it already has one (on a backend
-   without an estimate field, its latest log entry's `final`), say what it is.
-   Explain the scale only as much as Estimate help in Planning says: a few words
-   on what the size means for someone new to it, nothing for someone
+2. Your proposed **estimate**, on the user's scale (see the conventions'
+   Estimates), with a few words on why, guided by how past guesses in the task
+   review log compared with what the user settled on. If it already has one (on
+   a backend without an estimate field, its latest log entry's `final`), say
+   what it is. Explain the scale only as much as Estimate help in Planning says:
+   a few words on what the size means for someone new to it, nothing for someone
    comfortable.
 3. If its estimate makes it bigger than a typical sitting, one line on whether
    it looks like it splits. Some things can't, and that's fine. Pieces come up

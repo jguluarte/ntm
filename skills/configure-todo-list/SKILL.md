@@ -152,11 +152,8 @@ and they change any line in their own words:
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
-- **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
-  evening, 3 or more is multi-day. The scale and what each size means (the
-  conventions' Estimates says how it's used). Asked on its own, below. On a
-  backend with no estimate field, tell them where estimates are kept, as the
-  conventions' Estimates says.
+- **Sizing:** asked on its own, below. On a backend with no estimate field, tell
+  them where estimates are kept, as the conventions' Estimates says.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
@@ -166,10 +163,9 @@ and they change any line in their own words:
   halves the weekly planning message carries.
 
 Sizing gets its own question: ask how they like to size their tasks. If they're
-unsure, offer a short explanation of two ways to estimate: compare tasks to each
-other (this one is about twice that one), or say how long each would take.
-Record their answer as Sizing, and as Estimate help whether they're new to
-estimating or comfortable with it.
+unsure, describe the common ways in a phrase each (the conventions' Estimates
+names them). Record their answer as Sizing, in their words, and as Estimate help
+whether they're new to estimating or comfortable with it.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -247,7 +243,7 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
-- Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
+- Sizing: <how they size their tasks, in their words>
 - Estimate mapping: <each size on their scale and the list's point it becomes; blank when their scale is the list's>
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>

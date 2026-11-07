@@ -281,8 +281,9 @@ the task is still open.
 
 ## Estimates
 
-An estimate is how big a task is. Sizing in Planning in your settings defines
-the scale and what each size means on this todo list. Two more lines in Planning
+An estimate says how big a task is, on the user's own scale: points that compare
+tasks with each other, a time, or size words. Sizing in Planning in your
+settings records that scale and what each size means. Two more lines in Planning
 matter here: Estimate mapping, when set, says how each size is stored on the
 backend (the guide converts), and Estimate help says how much to explain when
 estimates come up.

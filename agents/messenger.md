@@ -61,6 +61,9 @@ Optional:
 
 - `wording:` a Deviation in the user's settings about how tasks are worded or
   linked; it overrides the conventions' section.
+- `app token:` the Pushover app token the job's prompt gives, for a job that
+  sends from its own Pushover app. Pass it to `ntm:notify` as `--app-token`, and
+  never write it into the message or your return.
 
 For example:
 
@@ -128,6 +131,7 @@ given, then `(started)` when given. The week reminder carries no list;
 ```
 /ntm:notify --from <job> --title "<the words after Title:>"
     --message "<everything above the Title line, with the list under it>"
+    [--app-token <app token>]
 ```
 
 On `Notify TOO LONG`, send once more with the styled lines and one plain line in

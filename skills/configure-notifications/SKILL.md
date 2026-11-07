@@ -73,11 +73,11 @@ The keys are settled once they've said "got it".
 ## How you want to be notified
 
 Ask: "anything about how you want to be notified?" Give the kind of thing that
-fits in one breath: quiet hours, a different app token per reminder (named by
-the kind's default title, whatever the job is called: "Morning reminder uses
-token …", "Weekly planning uses token …"), a priority for a certain reminder.
-Capture their answer as written, under the section. `ntm:notify` follows it word
-for word. "Nothing" leaves it blank.
+fits in one breath: quiet hours, a priority for a certain reminder. A job that
+should send from its own Pushover app gets that app's token in its prompt, from
+`/ntm:configure-schedule`; it overrides the token here. Capture their answer as
+written, under the section. `ntm:notify` follows it word for word. "Nothing"
+leaves it blank.
 
 ## Returning the section
 

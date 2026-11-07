@@ -162,9 +162,11 @@ and they change any line in their own words:
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
-Sizing gets its own question: ask how they like to size their tasks. If they're
-unsure, explain the common ways as the planner's Estimating says. Record their
-answer as Sizing, in their words, and as Estimate help whether they're new to
+Sizing gets its own question, one high-level question: how would they like to
+size their tasks? Only if they want more detail, ask the planner agent's Explain
+estimating request and pass its ways on; when the agent isn't available, follow
+its file as the conventions' "Chat, jobs and agents" says. Record their answer
+as Sizing, in their words, and as Estimate help whether they're new to
 estimating or comfortable with it.
 
 Then ask, once: anything else about how they want planning done? Capture it as

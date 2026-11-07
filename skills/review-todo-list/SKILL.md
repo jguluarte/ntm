@@ -103,14 +103,14 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, on the user's scale, with a few words on why,
-   guided by how past guesses in the task review log compared with what the user
-   settled on. If it already has one (on a backend without an estimate field,
-   its latest log entry's `final`), say what it is. Explain the size as the
-   planner's Estimating says.
-3. If its estimate makes it bigger than a typical sitting, one line on whether
-   it looks like it splits. Some things can't, and that's fine. Pieces come up
-   in the talk that follows (see Splits).
+2. Your proposed **estimate**, with a few words on why. Get it from the planner
+   agent's Size a task request: hand it the task and the task review log's
+   Estimates entries; when the agent isn't available, follow its file as the
+   conventions' "Chat, jobs and agents" says. If the task already has an
+   estimate (on a backend without an estimate field, its latest log entry's
+   `final`), say what it is. Explain the size as the planner's Estimating says.
+3. When the planner's `split:` line names pieces, one line on whether it looks
+   like it splits. Pieces come up in the talk that follows (see Splits).
 4. Usually no edits. Suggest one or two at most, only where the task would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
@@ -119,8 +119,8 @@ One item per message, in the agreed order:
 Make it one proposal: a plain "ok" approves all of it, and the user changes any
 part in their own words. They'll very likely want to talk most tasks through, so
 do that. If it splits, the estimate is for what's left of the original; if the
-split came after your guess, re-propose for what's left and log that as `guess`.
-"Skip" leaves the task unreviewed for another day.
+split came after your guess, re-propose for what's left (Size a task again) and
+log that as `guess`. "Skip" leaves the task unreviewed for another day.
 
 Once a task is settled, write it with the guide's `update task` (estimate, and
 any approved title, description or blocked-by link) and update the log. Do both

@@ -110,8 +110,9 @@ the tie-breaker.
 
 A skill typed in chat runs in the chat. The reminder skills,
 `show-completed --notify` and the price watch hand their work to the plugin's
-agents (planner, messenger, shopper), in a job or in chat alike; each says what
-it hands over.
+agents (planner, messenger, shopper), in a job or in chat alike; reviewing and
+setting up the todo list ask the planner about estimates. Each says what it
+hands over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:

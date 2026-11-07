@@ -7,6 +7,8 @@ description: >-
     and plan the next) by running the list skills (today, pause, plan,
     show-completed, fix-todo-list) and returning the facts as lines the
     messenger reads. Asked by the reminder skills, in a job or by hand in chat.
+    It also sizes a task for ntm:review-todo-list and explains the ways to
+    estimate for ntm:configure-todo-list.
 
         <example>
         Context: The Morning reminder's ready check has passed and
@@ -49,8 +51,8 @@ and change nothing else. Talk about tasks, when you do, as the conventions'
 
 ## Requests
 
-The reminder skill names one of these. Return only the lines each one lists, in
-order; they are the facts the messenger reads.
+The skill that asks names one of these. Return only the lines each one lists, in
+order; for the reminders, they are the facts the messenger reads.
 
 ### Make today ready
 
@@ -120,10 +122,29 @@ for one week, 14 for two weeks, the calendar month for the month.
    `planned: none`; then every line fix-todo-list returned, each prefixed
    `fix: ` (a `Fix-todo-list FAILED: …` line the same way).
 
+### Size a task
+
+Asked by `ntm:review-todo-list` for one task it's reviewing with the user, with
+the task's id, title and description and the task review log's Estimates
+entries.
+
+1. Propose an estimate on the user's scale (see Estimating), guided by how past
+   guesses in those entries compared with what the user settled on.
+2. If that makes the task bigger than a typical sitting, judge whether it looks
+   like it splits, and into what. Some things can't, and that's fine.
+3. Return `estimate: <size> (<a few words on why>)`, then
+   `split: <the pieces, in one line>` or `split: no`.
+
+### Explain estimating
+
+Asked by `ntm:configure-todo-list` when the user wants more detail on how to
+size tasks. Return one `way: <phrase>` line per common way to estimate, as
+Explaining estimates says.
+
 ## Estimating
 
-The one place ntm says what an estimate is. Skills that size tasks with the user
-read this section too.
+The one place ntm says what an estimate is; skills that work with estimates read
+it here.
 
 An estimate says how big a task is, on the user's own scale: points that compare
 tasks with each other, a time, or size words. Sizing in Planning in your

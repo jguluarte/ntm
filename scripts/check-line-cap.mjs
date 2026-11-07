@@ -2,10 +2,18 @@
 // where Prettier and markdownlint allow it (tables, long code spans, URLs).
 // The house rule is still 80; 145 is the limit nothing may exceed. Columns
 // are counted in characters, not bytes, so an en dash is one. Files that
-// .gitattributes marks linguist-generated (lock files) are skipped.
+// .gitattributes marks linguist-generated (lock files) are skipped, and so
+// are the files in SKIPPED.
 
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+
+// Files the cap can't apply to, each with the reason.
+const SKIPPED = new Set([
+    // Its description is one JSON string, which can't be wrapped, and the
+    // plugin loader needs strict JSON, so there's no comment to mark it with.
+    ".claude-plugin/plugin.json",
+]);
 
 const MAX_COLUMNS = 145;
 const GENERATED = "linguist-generated";
@@ -19,7 +27,9 @@ class TrackedFiles {
         const tracked = paths.filter(Boolean);
         const generated = TrackedFiles.#generated(tracked);
 
-        return tracked.filter((path) => !generated.has(path));
+        const skipped = (path) => generated.has(path) || SKIPPED.has(path);
+
+        return tracked.filter((path) => !skipped(path));
     }
 
     // check-attr -z prints <path> NUL <attribute> NUL <value> NUL per path.

@@ -105,8 +105,10 @@ One item per message, in the agreed order:
    guesses in the grooming log compared with what the user settled on. If it
    already has one (on a backend without an estimate field, its latest log
    entry's `final`), say what it is.
-3. If it's a 3 or more, one line on whether it looks like it splits. Some things
-   can't, and that's fine. Pieces come up in the talk that follows (see Splits).
+3. If its estimate, on the Sizing scale in Planning in your settings, makes it
+   bigger than a typical sitting, one line on whether it looks like it splits.
+   Some things can't, and that's fine. Pieces come up in the talk that follows
+   (see Splits).
 4. Usually no edits. Suggest one or two at most, only where the ticket would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.

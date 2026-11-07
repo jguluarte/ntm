@@ -94,7 +94,7 @@ Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to
 the user about tasks" says, then `(~<time>)` when given, then `(was <date>)`
 when given, then `(started)` when given. The week reminder carries no list;
-`show-completed` lists what got done; `open: none` and `today: none` carry no
+`completed` lists what got done; `open: none` and `today: none` carry no
 list.
 
 ## Sending

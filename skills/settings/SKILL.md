@@ -85,10 +85,9 @@ and say what's missing.
     - rewrite the message in the user's register, from their Profile
       (`references/builder.md` in `ntm:configure-style` says what each section
       means);
-    - with `--stay-fresh`, keep lines fresh: read the message history note
-      (titled under Notes in Todo list) through `ntm:conventions`, avoid what
-      recent entries used, and add the new line, pruned to the note's `Keep:`
-      line;
+    - with `--stay-fresh`, keep lines fresh: read the message history database
+      through `ntm:conventions`, avoid what recent entries used, and add the new
+      line, pruned to the database's `Keep:` line;
     - with `--for`, end with a `Title:` line that says what the message is about
       in the same style, never just the reminder's name;
     - output only the message, plain text, and that `Title:` line.

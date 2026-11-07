@@ -58,7 +58,7 @@ Write them as the About you section, one line each: `- Name:`, `- Timezone:`,
 In order, each by loading its skill and saying it runs from `ntm:configure`:
 
 1. `ntm:configure-todo-list`: which backend, which todo list, statuses, labels,
-   notes, and the agreements planning and the shopper work by. Returns Todo
+   databases, and the agreements planning and the shopper work by. Returns Todo
    list, Labels, Planning and Shopping (Shopping only when a price watch project
    was chosen).
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns

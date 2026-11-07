@@ -158,7 +158,7 @@ nothing first.
 ### Starting from nothing
 
 These happen outside the chat, on the user's side; walk them through in order
-and wait for "done" before The todo list below:
+and wait for "done" before The connector below:
 
 1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
    issues.
@@ -171,11 +171,15 @@ and wait for "done" before The todo list below:
    right now" status, they add one named Blocked in the team's workflow
    settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
-4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
-   Linear and sign in to the workspace. Then come back here and say so.
 
 Labels, the price watch project and the notes don't need to be made by hand:
 Labels and Notes in `ntm:configure-todo-list` create them.
+
+### The connector
+
+Check that a signed-in Linear connector is present: search for `list_teams`. If
+it isn't there, walk the user through it: in Claude's settings, the Connectors
+tab, add Linear and sign in to their workspace, then come back here and say so.
 
 ### The todo list
 

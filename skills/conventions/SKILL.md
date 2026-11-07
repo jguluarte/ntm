@@ -298,7 +298,7 @@ these are the defaults.
 
 - **A task with no open sub-tasks** is an ordinary task.
 - **A task with open sub-tasks is a parent.** Plan its open sub-tasks, never the
-  parent; its own planned date means nothing to planners.
+  parent.
 
 ### Blocks and blocked by
 

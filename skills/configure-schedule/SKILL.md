@@ -140,19 +140,24 @@ If a skill can't be loaded, end the run with this line:
    prompt's Weekly planning lists. The title is theirs: suggest a plain one
    ("Morning reminder") and take what they say. For `show-completed`, weekly or
    monthly, and the span follows.
-3. Ask once, for all the jobs: which model should they run on? A new job
+3. For weekly planning and `morning-reminder`, ask what should differ from
+   `ntm:plan`'s defaults: the planning days (weekdays), tasks a day (one), task
+   size (about an hour or less). Write only what differs into those two jobs'
+   prompts, as one line after the timezone line, such as
+   `Planning: two tasks a day, weekends too.`; when nothing differs, add none.
+4. Ask once, for all the jobs: which model should they run on? A new job
    inherits the model of the chat that creates it, and that can be the heaviest
    one. Suggest a lighter model, such as Opus or Sonnet, then use the one they
    choose; it's the model every job gets.
-4. On the `pushover` channel, ask once whether any job should send from its own
+5. On the `pushover` channel, ask once whether any job should send from its own
    Pushover app; take each token as The prompt says.
-5. Apply the jitter rule to each time: never land on :00 or :30. When a time
+6. Apply the jitter rule to each time: never land on :00 or :30. When a time
    would land on the hour or half hour, move it 1–29 minutes earlier (the number
    of letters in the title, spaces not counted, modulo 29, plus 1). Runs that
    start between 06:00 and 09:00 Pacific time can be delayed: convert the job's
    time to Pacific, and if it falls in that window, say so and keep it unless
    they'd rather move it.
-6. Show what you plan to set up as a short table, one row per job: job, days,
+7. Show what you plan to set up as a short table, one row per job: job, days,
    time, title. Say which times the jitter rule moved. They approve or change
    it; revise until they approve. Create nothing before that.
 

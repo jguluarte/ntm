@@ -5,7 +5,7 @@ Linear connector (`mcp__Linear__*` tools). Load the tools you need with
 ToolSearch (`select:mcp__Linear__list_issues,mcp__Linear__save_issue,…`) before
 calling them.
 
-The connector accepts human-readable references: ticket ids like `ABC-12`, the
+The connector accepts human-readable references: task ids like `ABC-12`, the
 todo list name as `team`, and `me` for the signed-in user.
 
 Values below that name a settings section (Todo list, Labels, About you) come
@@ -14,7 +14,7 @@ from `ntm-user:settings`, read as the conventions' Loading step says.
 ## Todo list
 
 - **Team:** List name from Todo list (List id is the team id, used wherever a
-  call below takes `teamId`). Ticket ids use Ticket prefix from Todo list.
+  call below takes `teamId`). Task ids use Task prefix from Todo list.
 - **Project labels:** labels on a project are Linear project labels, a separate
   set from issue labels (`list_project_labels` / `save_project_label`).
   Inheritance matches them to issue labels by name, so a system label a project
@@ -28,11 +28,11 @@ from `ntm-user:settings`, read as the conventions' Loading step says.
 
 Todo list in your settings maps each class to the status names. `list_issues`
 filters by `state` with a status name; results carry `status` (the name) and
-`statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `completed`,
-`canceled`, `duplicate`). Use the names from Todo list to filter and to write;
-use `statusType` to tell closed from open when a result mixes states. A ticket's
-status class is the class whose line in Todo list lists its `status` name;
-`statusType` alone doesn't give it.
+`statusType` (Linear's own type: `backlog`, `unstarted`, `started`,
+`completed`, `canceled`, `duplicate`). Use the names from Todo list to
+filter and to write; use `statusType` to tell closed from open when a result
+mixes states. A task's status class is the class whose line in Todo list lists
+its `status` name; `statusType` alone doesn't give it.
 
 ## Operations
 
@@ -57,7 +57,7 @@ summary, paginating with `cursor`). Match each issue's `project` against them by
 name, so inherited labels count.
 
 `dueDate` holds the planned date: the day the work is planned for. `url` is the
-ticket's link; always ask for it in `fields`. `priority` is `0` when none is
+task's link; always ask for it in `fields`. `priority` is `0` when none is
 set; `1` is the highest.
 
 ### `fetch closed`
@@ -68,12 +68,12 @@ for the canceled and duplicate names only when asked. For a span, pass
 in it, in the timezone from About you. When a skill asks for one label, add
 `label: "<label name>"` to each call.
 
-### `read ticket`
+### `read task`
 
 `get_issue` with the id, `includeRelations: true` for parent and blocked-by
 relations. Descriptions come with it; comments and sub-issues don't.
 
-### `list sub-tickets`
+### `list sub-tasks`
 
 `list_issues` with `parentId: "<id>"` and no `state`, same `fields` as
 `fetch open`.
@@ -103,13 +103,13 @@ Never use `labels`, which replaces the whole set. Check a label exists with
 `save_issue` with `id`, `duplicateOf: "<original id>"` and
 `state: "<duplicate status name from Todo list>"`.
 
-### `create ticket`
+### `create task`
 
 `save_issue` without `id`: `team`, `title`, `description`, optional `project`,
 `parentId`, `dueDate`, `labels`. Blocked-by relations: `blockedBy: ["<id>"]`.
 Check for an existing match with `list_issues` (`query`) first.
 
-### `update ticket`
+### `update task`
 
 `save_issue` with `id` and only the fields the skill changes: `title`,
 `description`, `estimate`, `project` (`project: null` to remove it), `parentId`,
@@ -138,7 +138,7 @@ project from Todo list) lives in that project's documents instead. Search with
 Used by `ntm:configure-todo-list`.
 
 - **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
-  issue key (the ticket prefix).
+  issue key (the task prefix).
 - **`create todo-list`:** not needed; Linear has teams to list.
 - **`list statuses`:** `list_issue_statuses` with `team`. Each comes back with
   its name and `type`, which suggests the class (`backlog`, `unstarted` and

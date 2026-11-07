@@ -25,7 +25,7 @@ Contents tab under Customize > Plugins, or in the repository.
 ## Answering
 
 - **How do I start?** The README's First steps, told as the next thing to do:
-  connect the system that holds their tickets, run `/ntm:configure`, install
+  connect the system that holds their tasks, run `/ntm:configure`, install
   `ntm-user`, run `/ntm:self-test`.
 - **What does X do?** Find X in the README (the skill tables, What's what, the
   customize list) and answer with that, plus the one-line call to make.

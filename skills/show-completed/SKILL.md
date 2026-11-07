@@ -23,9 +23,9 @@ What to look at is a description in plain words:
   the previous calendar month of that year had (31 at the start of November; 28
   or 29 at the start of March, by that year's February); "since Oct 1" counts
   from that day. No calendar weeks, no overlap logic.
-- **Open tickets** (optional): ask for them ("and what's still open") to add a
+- **Open tasks** (optional): ask for them ("and what's still open") to add a
   Still open section.
-- **Canceled or duplicate tickets** (optional): ask for them to add their own
+- **Canceled or duplicate tasks** (optional): ask for them to add their own
   sections.
 
 The description can also narrow the scope, such as "the garage" or "the Office
@@ -47,12 +47,12 @@ before Setup; `Ready-check FAILED` ends the run with what it returned. The
 1. Load `ntm:conventions`.
 2. Compute `TODAY` as the conventions' Dates section says, and work out the span
    as Usage says: it ends today.
-3. Fetch with the guide's `fetch closed`: done tickets, adding canceled and
+3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's
-   `fetch open`, keeping excluded tickets, only when it asks for open tickets.
-4. Keep the tickets completed in the span, in the timezone from About you in
-   your settings. Done tickets of any kind count, price watch buys included.
-5. When the description narrows the scope, keep only the tickets that match it,
+   `fetch open`, keeping excluded tasks, only when it asks for open tasks.
+4. Keep the tasks completed in the span, in the timezone from About you in
+   your settings. Done tasks of any kind count, price watch buys included.
+5. When the description narrows the scope, keep only the tasks that match it,
    by project, parent, label or title.
 
 If any step fails, stop and return `Show-completed FAILED: <what failed>`.
@@ -60,28 +60,28 @@ If any step fails, stop and return `Show-completed FAILED: <what failed>`.
 ## Result
 
 Return plain text for whoever called the skill; the job or skill that called it
-decides what to tell the user and how. Write each ticket as
+decides what to tell the user and how. Write each task as
 `<id> <title> <url> <date>`, the date on the same line: the completion date for
 Done, the planned date for Still open.
 
 - `<first day> to <last day>`, plus the scope when it's narrowed.
-- `Done (<count>):` the tickets completed in the span, oldest first, with
-  sub-tickets indented under their parent when it's listed too; or `Done: none`.
-- Canceled and duplicate tickets, when asked for, in their own
+- `Done (<count>):` the tasks completed in the span, oldest first, with
+  sub-tasks indented under their parent when it's listed too; or `Done: none`.
+- Canceled and duplicate tasks, when asked for, in their own
   `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same
   way.
-- `Still open (<count>):` when asked for: open tickets planned in the span, or
+- `Still open (<count>):` when asked for: open tasks planned in the span, or
   in the range the request names for them ("planned today or earlier").
 
 Typed in chat, present the result as the conventions' "Talking to the user about
-tickets" says (natural words, the id in parentheses); the raw lines are for
+tasks" says (natural words, the id in parentheses); the raw lines are for
 skills and jobs.
 
 ## Notify
 
 With `--notify`, after the result, ask the messenger agent, with the reminder
 `completed`, the job name, a `span:` line (the result's first line) and one
-`done:` line per Done ticket (`done: <id> <title> <url>`), or `done: none`:
+`done:` line per Done task (`done: <id> <title> <url>`), or `done: none`:
 
 ```
 reminder: completed

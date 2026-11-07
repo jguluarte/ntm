@@ -39,7 +39,7 @@ Two channels; offer both in a line each:
   channel, and the only one a chat request ("ping me") can use.
 - **`claude-push`:** the scheduled task's own completion push carries the
   reminder. Nothing to set up here; `/ntm:configure-schedule` turns it on per
-  task when it creates them. Best effort: it fires when a run finishes, and a
+  job when it creates them. Best effort: it fires when a run finishes, and a
   chat request can't use it.
 
 Record the channel.

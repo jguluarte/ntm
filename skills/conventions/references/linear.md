@@ -1,7 +1,9 @@
 # Linear guide
 
-Tested. How each operation named in the conventions is carried out with the
-Linear connector (`mcp__Linear__*` tools). Load the tools you need with
+The backend guide for Linear, and a tested one: how each operation the
+conventions name is carried out with the Linear connector (`mcp__Linear__*`
+tools). `ntm:conventions` reads it when Backend is `linear`;
+`ntm:configure-todo-list` reads it for Setup. Load the tools you need with
 ToolSearch (`select:mcp__Linear__list_issues,mcp__Linear__save_issue,…`) before
 calling them.
 
@@ -45,9 +47,9 @@ status class is the class whose line in Todo list lists its `status` name;
 
 ### `ping`
 
-`get_team` (`query: "<List id>"`). A team named as List name says comes back:
-pass. A different team: wrong account. Unauthorized or forbidden: sign-in
-expired. Not found: wrong account. Anything else: backend error.
+`get_team` (`query: "<List id>"`). The team named in List name comes back: pass.
+A different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
+found: wrong account. Anything else: backend error.
 
 ### `fetch open`
 
@@ -137,24 +139,25 @@ project from Todo list) lives in that project's documents instead. Search with
   `title` is the note's title. No match means the note is missing.
 - **`write note`:** `save_document` with the note's `id` and the new `content`,
   changing only what the skill says to change. When the note is missing, create
-  it as `create note` does, with the content given as its content (not only a
-  `Keep:` line; the content for the message history note already starts with its
+  it the way `create note` does, but with the whole content given, not only a
+  `Keep:` line (the content for the message history note already starts with its
   `Keep:` line).
 
 ## Setup
 
-Used by `ntm:configure-todo-list`, in order; a part named for one of its steps
-(Planning) runs at that step.
+The walkthrough `ntm:configure-todo-list` follows with the user, part by part in
+order; a part named for one of its steps (Planning) waits for that step. The
+calls it uses are under Setup operations.
 
 ### The backend
 
-Backend is `linear`. If they don't have Linear yet, do Starting from nothing
-first.
+Backend is `linear`. If the user doesn't have Linear yet, do Starting from
+nothing first.
 
 ### Starting from nothing
 
-If they don't have Linear yet, these happen outside the chat, on their side;
-walk them through in order and wait for "done" before The todo list below:
+These happen outside the chat, on the user's side; walk them through in order
+and wait for "done" before The todo list below:
 
 1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
    issues.
@@ -170,8 +173,8 @@ walk them through in order and wait for "done" before The todo list below:
 4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
    Linear and sign in to the workspace. Then come back here and say so.
 
-Labels, the price watch project and the notes don't need making by hand: Labels
-and Notes in `ntm:configure-todo-list` create them.
+Labels, the price watch project and the notes don't need to be made by hand:
+Labels and Notes in `ntm:configure-todo-list` create them.
 
 ### The todo list
 
@@ -180,13 +183,13 @@ prefix its issue key.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
-all done. Off, the weekly planning closes those parents instead.
+all done. If it stays off, the weekly planning closes those parents instead.
 
 ### The price watch project
 
 `list projects`; ask which project holds purchases waiting for a good price, or
-none (none = price watch off). If they want one that doesn't exist yet, settle
-its name now; it's created in Labels, once the project labels exist.
+none (none turns price watch off). If they want one that doesn't exist yet,
+settle its name now; it's created in Labels, once the project labels exist.
 
 ### Planning
 
@@ -244,8 +247,8 @@ paginating with `cursor`. Each comes back with its id.
 
 Create the project labels it should carry first (`create label`), then
 `save_project` with `name`, `addTeams` naming the todo list, and `labels`.
-`labels` replaces the set, so pass current plus missing when updating an
-existing project.
+`labels` replaces the set, so when updating an existing project, pass its
+current labels plus the missing ones.
 
 ### `create note`
 

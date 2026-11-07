@@ -428,3 +428,14 @@ restructure. His comments, read as principles and applied everywhere they fit:
   laptop: GraphQL works there (`gh pr create`), the remote is `jguluarte`, and
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`. Lasting rules
   move into `.claude/CLAUDE.md`; HANDOFF keeps only state and next steps.
+
+## 2026-11-07 afternoon
+
+- The base plugin no longer bundles a Linear server (`.mcp.json` removed); setup
+  connects Linear through the Connectors tab.
+- In 0.4, the generated user plugin bundles the connector for the user's
+  backend. Open for 0.4: first-run setup needs Linear before the user plugin
+  exists, so the user connects through the Connectors tab first, and a bundled
+  server would be a second Linear; 0.4 decides which one wins.
+- Backend guides leave call mechanics to the connector's own instructions; a
+  guide says which tool does each operation and which values go where.

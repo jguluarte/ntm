@@ -50,7 +50,8 @@ This skill owns About you. Ask:
   date in the system is computed in it.
 - Country and currency, for price watch (`US, USD`).
 
-Write them as the About you section, in the shape `ntm-user:settings` uses.
+Write them as the About you section, one line each: `- Name:`, `- Timezone:`,
+`- Country and currency:`.
 
 ### The parts
 

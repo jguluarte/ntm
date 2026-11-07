@@ -14,7 +14,7 @@ from it, in prose; it never pastes the file.
 ## Finding the README
 
 ```bash
-find ~/.claude/plugins -path '*ntm*' -name README.md -not -path '*/user-plugin/*'
+find ~/.claude/plugins -path '*ntm*' -name README.md -not -path '*ntm-user*'
 ```
 
 Read the file it finds and answer from it. If nothing is found, say in one line

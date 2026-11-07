@@ -31,8 +31,8 @@ their last four characters. Then say what can change here: a line (a name, a
 timezone, a label's real name, the planning rhythm), a whole section, and
 Deviations (anything they do differently from `ntm:conventions`). Add that
 `/ntm:configure <part>` is the guided version for a whole part, and that a
-different trigger word than `ntm` means a renamed fork of the template, as the
-README says.
+different trigger word than `ntm` means a renamed fork of ntm, as the README
+says.
 
 ## With words
 
@@ -58,38 +58,54 @@ The only place this happens. Every `configure-<part>` and `ntm:configure` ends
 by loading this skill and following this section with the section text it
 produced.
 
-1. **The template** is `references/user-plugin/` in this skill's folder (the
-   directory this SKILL.md was loaded from): `plugin.template.json`,
-   `README.md`, `skills/settings/SKILL.template.md`,
-   `skills/style/SKILL.template.md` (the `.template` in their names keeps the
-   plugin installer from reading them as a second plugin). Copy it to a fresh
-   folder and put the files in their installed places:
-   `rm -rf /tmp/ntm-user && cp -r <this skill's folder>/references/user-plugin /tmp/ntm-user && cd /tmp/ntm-user && mkdir .claude-plugin && mv plugin.template.json .claude-plugin/plugin.json && mv skills/settings/SKILL.template.md skills/settings/SKILL.md && mv skills/style/SKILL.template.md skills/style/SKILL.md`.
-2. **The current values.** Load `ntm-user:settings` and `ntm-user:style` by
-   name. One that won't load means the template's own text is the current one.
-3. **`skills/settings/SKILL.md`:** the template's text above `## About you`,
-   then the current sections, with each changed section in place of its current
-   one under the same heading. A section nobody has set keeps the template's
-   text, hints included.
-4. **`skills/style/SKILL.md`:** the template is the whole skill with an empty
-   Profile. A Profile from `ntm:configure-style` (plain or a theme) replaces the
-   template's `## Profile` section, hints included, heading kept; the Usage and
-   the procedure stay the template's. A persona replaces everything below the
-   template's frontmatter: the `## For ntm` section `configure-style` wrote,
-   then the persona's body, unchanged. When nothing changed, the current
-   `ntm-user:style` goes in as it is.
-5. **Bump the version** in `.claude-plugin/plugin.json`:
-   `1.<YYYYMMDD>.<HHMM as a number>` from the session clock,
+You build `ntm-user` yourself from this guide, in a fresh folder,
+`/tmp/ntm-user`; it says what the plugin must hold, not its text. First load
+`ntm-user:settings` and `ntm-user:style` by name: what loads is the current
+text; what won't is new. If something you need is missing, build what you can
+and say what's missing.
+
+1. **The plugin:** named `ntm-user`, with a one-sentence description: the user's
+   settings and style for ntm, kept private because it can hold notification
+   keys. Version `1.<YYYYMMDD>.<HHMM as a number>` from the session clock,
    `1.$(date -u +%Y%m%d).$((10#$(date -u +%H%M)))`, which is always higher than
    the last regeneration's.
-6. **Zip:**
+2. **`ntm-user:settings`:** its description says it holds the user's values for
+   ntm, read by `ntm:conventions`, changed with `/ntm:settings`. Its sections
+   are the headings `ntm:conventions` reads, in its order: About you, Todo list,
+   Labels, Planning, Shopping, Notifications, Deviations. A changed section is
+   the text its configure skill returned, which says what it holds; every other
+   section is carried over unchanged. A section nobody has set is its heading
+   alone, which means its defaults.
+3. **`ntm-user:style`:** its description says it writes ntm's reminders in the
+   user's style, run by the messenger, changed with `/ntm:configure-style`. The
+   messenger calls it as
+   `/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`:
+   `<reminder>` is `morning`, `afternoon`, `evening`, `week` or `completed` and
+   implies `--stay-fresh`; the tone is freeform. It must:
+    - rewrite the message in the user's register, from their Profile
+      (`references/builder.md` in `ntm:configure-style` says what each section
+      means);
+    - with `--stay-fresh`, keep lines fresh: read the message history note
+      (titled under Notes in Todo list) through `ntm:conventions`, avoid what
+      recent entries used, and add the new line, pruned to the note's `Keep:`
+      line;
+    - with `--for`, end with a `Title:` line that says what the message is about
+      in the same style, never just the reminder's name;
+    - output only the message, plain text, and that `Title:` line.
+
+    For plain or a theme, it carries the Profile `ntm:configure-style` wrote;
+    for a persona, the persona's body as handed in, under the `## For ntm`
+    section `configure-style` wrote. When nothing changed, the current one goes
+    in as it is.
+
+4. **Zip:**
    `cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin && zip -r /tmp/ntm-user.plugin .`
    (without `zip`: `python3 -m zipfile -c /tmp/ntm-user.plugin .`).
-7. **Present:** copy it to the session's outputs folder, the folder the
+5. **Present:** copy it to the session's outputs folder, the folder the
    session's instructions name for files to hand back (`/mnt/user-data/outputs/`
    on chat). That copy is what shows the accept card in Cowork; say where it is.
    Where a SendUserFile tool exists, send it with that as well.
-8. **Then say:** install it in place of the old one (from Customize > Plugins if
+6. **Then say:** install it in place of the old one (from Customize > Plugins if
    no card appears), open a new chat, and run `/ntm:self-test`.
 
 Never paste the keys back into chat; they go in the file.

@@ -207,8 +207,7 @@ it.
 - **pauses** (default title `Pauses`): the pause schedule, under `## Pauses`.
   `ntm:pause` keeps it.
 - **message history** (`Message history`): what reminders have said. Its first
-  line is a `Keep:` line that `ntm-user:style`, its writer, prunes to; the style
-  template says what it writes.
+  line is a `Keep:` line that `ntm-user:style`, its writer, prunes to.
 - **task review log** (`Task review log`): `ntm:review-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch
   project. `ntm:price-watch` keeps it, from the user's vouch and block replies;

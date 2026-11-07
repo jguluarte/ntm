@@ -220,7 +220,7 @@ it.
   keeps it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
-  history to keep; the style template says what it writes.
+  history to keep.
 - **task review log** (`Task review log`): the planner keeps it, in its Review.
 - **price watch stores** (`Price watch stores`): stored in the price watch
   project, not at list level. `ntm:price-watch` keeps it, from the user's vouch

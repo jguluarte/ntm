@@ -79,9 +79,9 @@ for word. "Nothing" leaves it blank.
 
 ## Returning the section
 
-Write Notifications in exactly these line shapes, the ones the
-`ntm-user:settings` template uses. The two key lines are left blank with
-`claude-push`; the free text follows the lines, as they said it:
+Write Notifications in exactly these line shapes, the ones `ntm-user:settings`
+uses. The two key lines are left blank with `claude-push`; the free text follows
+the lines, as they said it:
 
 ```
 ## Notifications

@@ -83,9 +83,10 @@ ends here: `Configure-todo-list FAILED: <backend> has no <thing>`. With no
 documents, each note lives in the description of an open task titled with the
 note's title, as the contract's Notes section says; tell them.
 
-What you settle goes under Todo list as prose, in their words, below the
-template's lines: one short paragraph per contract heading. Statuses, Labels and
-Notes below then go through the setup operations as they described them.
+What you settle goes under Todo list as prose, in their words, below its lines
+(see Returning the sections): one short paragraph per contract heading.
+Statuses, Labels and Notes below then go through the setup operations as they
+described them.
 
 ## Your tasks
 
@@ -192,11 +193,11 @@ blank.
 
 ## Returning the sections
 
-Write the sections in exactly these line shapes, the ones the
-`ntm-user:settings` template uses, filled with what you settled. A line may be
-left blank where the shape says so. Fill the defaults in where they kept them.
-For a backend of their own, the operations prose follows the Todo list lines.
-Show the sections and let them react.
+Write the sections in exactly these line shapes, the ones `ntm-user:settings`
+uses, filled with what you settled. A line may be left blank where the shape
+says so. Fill the defaults in where they kept them. For a backend of their own,
+the operations prose follows the Todo list lines. Show the sections and let them
+react.
 
 ```
 ## Todo list

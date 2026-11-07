@@ -27,8 +27,8 @@ becomes the easy option.
   reminders reach you, anything you do differently) and `ntm-user:style` (how
   reminders talk to you). Keep it private; it can hold your Pushover keys.
 
-The trigger word is the plugin's name, `ntm`; to use another, fork the template
-and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in
+The trigger word is the plugin's name, `ntm`; to use another, fork ntm and
+rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in
 capitals, in every file and in `plugin.json`'s `name`), then create your jobs
 from that copy.
 

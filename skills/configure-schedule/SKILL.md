@@ -29,18 +29,19 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-Every job's prompt is these three sentences, with the kind's default title and
+Every job's prompt is these four sentences, with the kind's default title and
 skill filled in:
 
 ```
 <default title>.
+The user's timezone is <timezone from About you in your settings>.
 Load `<skill>` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING
 are this job's.
 If `<skill>` can't be loaded, end the run with this line:
 `<default title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
 ```
 
-For completed, the second sentence is instead:
+For completed, the third sentence is instead:
 
 ```
 Load `ntm:show-completed` and run `/ntm:show-completed <span> --notify`. Its

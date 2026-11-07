@@ -2,13 +2,13 @@
 
 Names change only with Justin's explicit yes, and this file is the authority.
 
-Every name in the tables is as it is on main; the last two sections are not on
-main. "Approved" means the notes record his yes, and the Source column says
-where. A yes counts when his words name the thing: case and hyphens in his prose
-lists don't matter ("price-watch stores" is `Price watch stores`), different
-words do. Anything else is a question for him, and the questions come first.
-Dates are 2026-11-05 unless given; times are entries in the old decision log,
-which git history keeps.
+Every name in the tables is as it is on main; the last section is not on main.
+"Approved" means the notes record his yes, and the Source column says where. A
+yes counts when his words name the thing: case and hyphens in his prose lists
+don't matter ("price-watch stores" is `Price watch stores`), different words do.
+Anything else is a question for him, and the questions come first. Dates are
+2026-11-05 unless given; times are entries in the old decision log, which git
+history keeps.
 
 ## Questions for Justin
 
@@ -58,8 +58,8 @@ Never approved:
     `--stay-fresh`, `--for` and its values; every `notify` flag; the `configure`
     part names (`about-you` has a hyphen, `todo list` a space).
 12. Internal names nobody ruled on (see Agent requests, Note and comment
-    headings, Internal markers, Other lines, The style profile): one yes for the
-    lot, or one by one?
+    headings, Internal markers, The style profile): one yes for the lot, or one
+    by one?
 13. Optional: `weekly-planning` for good (his yes was tentative).
 
 ## Skills
@@ -218,13 +218,8 @@ Lines skills and agents return to each other.
 | `Ready-check OK`, `Ready-check OK (no style)`                                                                                                                      | NEVER APPROVED (Q12) |                                          |
 | `Self-test OK`, `Self-test FAILED at <step>:`                                                                                                                      | NEVER APPROVED (Q12) | proposed at 20:12, "name pending Justin" |
 | `Sent:`, `List:`, `NOTIFY VIA FINAL REPLY`, `Price-watch:`                                                                                                         | NEVER APPROVED (Q12) |                                          |
+| `Notify TOO LONG:`, `Messenger NEEDS:`                                                                                                                             | NEVER APPROVED (Q12) | #18                                      |
 | the shopper's result lines `RESULT`, `DEAL`, `COMPARE`, `OTHER VERIFIED`, `CHECKED`, `NOTES`, and results `DEAL`, `NO DEAL`, `NO VERIFIED PRICE`, `NOT ACTIONABLE` | NEVER APPROVED (Q12) |                                          |
-
-## Other lines
-
-| Where         | Name                                          | Status                                         |
-| ------------- | --------------------------------------------- | ---------------------------------------------- |
-| `conventions` | `Version: 0.3.2`, `Template source: none yet` | NEVER APPROVED (Q12); open PR #19 removes both |
 
 ## The style profile
 
@@ -243,11 +238,6 @@ moves (+ repeat limit), what stays untouched, examples.
 | `Examples`                                   | approved (18:13)                                              |
 | `Profanity:` line                            | NEVER APPROVED (Q12)                                          |
 | `## For ntm`, written above a persona's body | NEVER APPROVED as a name (Q12)                                |
-
-## In open PRs, not on main yet
-
-- #18: `Notify TOO LONG`, `Messenger NEEDS`.
-- #19: removes `Version:` and `Template source:` from `conventions`.
 
 ## 0.4 only (decided for 0.4, not on main)
 

@@ -1,10 +1,9 @@
 # ntm decisions in force
 
 What's decided and in force on main, by topic. After the topics: what's decided
-for 0.4, what open PRs would change, test-drive findings the plugin doesn't
-handle yet, and what's deferred or still open. Names are in `NAMES.md`; the
-working rules are in `CLAUDE.md`. When something changes, edit its line here;
-don't add a dated entry.
+for 0.4, test-drive findings the plugin doesn't handle yet, and what's deferred
+or still open. Names are in `NAMES.md`; the working rules are in `CLAUDE.md`.
+When something changes, edit its line here; don't add a dated entry.
 
 ## Plugin shape
 
@@ -64,10 +63,13 @@ don't add a dated entry.
 - The estimator owns estimates, time guesses, explaining the ways to estimate,
   and review with the task review log. It never plans.
 - With no estimate field, the estimate goes in the task description.
-- The messenger is handed the reminder, the job and the facts by the skill that
-  asks. It loads `conventions`, `ntm-user:style` and `notify`, reads Weekly
-  message from settings itself, and sends through `notify`. When the style
-  returns no title, it asks the style once more.
+- The messenger never reads settings; the skill that asks hands it the reminder,
+  the job, the facts and any setting it needs. Its inputs are a contract
+  (required and optional), and a missing required one comes back as
+  `Messenger NEEDS`. Wording Deviations reach it only when a caller hands them
+  in. It reads only the task-wording section of `conventions`, loads
+  `ntm-user:style`, and sends through `notify`. When the style returns no title,
+  it asks the style once more.
 - The shopper owns its brief. It gets a task id and today's date only.
 
 ## Notifications
@@ -78,9 +80,10 @@ don't add a dated entry.
   asks.
 - On the Claude channel, jobs are created with push on, and the run's summary is
   the reminder. Reminders run from chat get no special case.
-- A push that would run past Pushover's 1,024 characters is summarized, not
-  trimmed: the messenger puts one line in place of the list, and the full list
-  goes in the run's final reply.
+- Channel caps live in `notify`, and the messenger carries no channel rules. On
+  Pushover, a message or title over the cap isn't trimmed or sent: `notify`
+  returns `Notify TOO LONG` with the cap and why, and the caller shortens once.
+  The Claude channel has no cap.
 
 ## Backends
 
@@ -220,19 +223,6 @@ generated one, which 0.4 names `ntm`.
   identifiable. The old wording, "`Template source:` points at a release", named
   a line #19 removed from `conventions`, so how the release is identified is
   open.
-
-## In open PRs, not on main
-
-When one merges, move its lines into the topics above.
-
-- #18: Channel caps live in `notify`. It returns `Notify TOO LONG` with the cap
-  and why, instead of trimming, and the caller shortens once. The messenger
-  carries no channel rules. Replaces the summarizing line under Notifications.
-- #18: The messenger never reads settings; its caller hands it the values it
-  needs. It reads only the task-wording section of `conventions`, states its
-  inputs as a contract (required and optional), and returns `Messenger NEEDS`
-  when a required one is missing. Wording Deviations reach it only when a caller
-  hands them in. Replaces the messenger line under Agents.
 
 ## Test-drive findings
 

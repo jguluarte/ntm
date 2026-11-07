@@ -94,7 +94,7 @@ tells them to install it
 and open a new chat. Add that the first thing to run there is
 `/neurodivergent-task-manager:self-test`:
 it starts with `ready-check` and exercises the operations the jobs use, on a
-throwaway ticket. Until it's installed, every scheduled run ends with "not
+throwaway task. Until it's installed, every scheduled run ends with "not
 configured".
 
 ## Configured

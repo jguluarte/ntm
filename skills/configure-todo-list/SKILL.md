@@ -1,6 +1,6 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tickets, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from neurodivergent-task-manager:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
+description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tasks, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from neurodivergent-task-manager:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
 ---
 
 # neurodivergent-task-manager:configure-todo-list
@@ -15,7 +15,7 @@ a matter of context:
 - Configured, and the words are about where the list lives or how it's worked (a
   backend, a label name, the planning rhythm, what counts as a deal): Part 1's
   re-run path, which changes those settings.
-- Configured, and the words are about the tickets themselves ("let's groom",
+- Configured, and the words are about the tasks themselves ("let's groom",
   "review the kitchen project", "size the garage work"), or there are no words:
   **Part 2, Grooming**.
 
@@ -58,7 +58,7 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 Ask what they keep tasks in today. If they're undecided, offer the three choices
 in one line: Linear (free for individuals; the guide most used), Claude Docs (no
-ticket system; Claude keeps the todo list in one doc; untested, and heavier per
+task system; Claude keeps the todo list in one doc; untested, and heavier per
 run), or their own backend, which they describe.
 
 If they chose Linear and don't have it yet, do Linear's Starting from nothing
@@ -82,7 +82,7 @@ The todo list below:
    issues.
 2. The new workspace comes with one team; that team is the todo list. Its key
    (the few capital letters Linear asks for when naming it, `HOME` for
-   `HOME-12`) becomes Ticket prefix, so pick one they'll be happy reading in
+   `HOME-12`) becomes Task prefix, so pick one they'll be happy reading in
    reminders.
 3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
    Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
@@ -96,7 +96,7 @@ Labels, the price watch project and the notes don't need making by hand: Labels
 and Notes below create them.
 
 1. **The todo list.** `list todo-lists`; propose the team. List name is its
-   name, List id its id, Ticket prefix its issue key.
+   name, List id its id, Task prefix its issue key.
 2. **The price watch project.** `list projects`; ask which project holds
    purchases waiting for a good price, or none (none = price watch off). If they
    want one that doesn't exist yet, settle its name now; it's created in Labels,
@@ -110,7 +110,7 @@ The todo list is one Claude Doc that Claude reads and edits itself. There are no
 todo lists to list. If they already have a todo list doc, List id is the
 trailing part of the link they paste and List name the doc's title. Otherwise
 propose a title, create the doc with `create todo-list` once Statuses, Labels
-and Notes are settled (it's built from them), and record the id it mints. Ticket
+and Notes are settled (it's built from them), and record the id it mints. Task
 prefix is whatever they want on their ids. The price watch project is a row in
 the doc's projects table: an existing one, a new one made with `create project`,
 or none.
@@ -132,7 +132,7 @@ The contract names the survivable gaps (no estimate field, no blocked-by
 relation, no labels on groups, no documents) and the two fatal ones (no date
 field, no way to tell open from closed). Say which the backend has. A fatal one
 ends here: `Configure-todo-list FAILED: <backend> has no <thing>`. With no
-documents, each note lives in the description of an open ticket titled with the
+documents, each note lives in the description of an open task titled with the
 note's title, as the contract's Notes section says; tell them.
 
 What you settle goes under Todo list as prose, in their words, below the
@@ -154,13 +154,13 @@ if they want one) and `create todo-list` makes them.
 
 ## Labels
 
-Show the defaults in one table, ticket labels and project labels, with the
-one-line meaning of each from the conventions' System labels: ticket labels
+Show the defaults in one table, task labels and project labels, with the
+one-line meaning of each from the conventions' System labels: task labels
 `no-autoschedule`, `pending-shipment`, `has-amazon-alert`, `amazon-unavailable`;
 project labels `price-watch`, `no-autoschedule`. A plain "ok" keeps every name;
 record any rename.
 
-Then `list labels`, ticket and project sets. For each label the todo list lacks,
+Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
 meaning as the description. Project labels are their own set where the backend
 keeps one (Linear does): `price-watch` and `no-autoschedule` as project labels,
@@ -210,13 +210,13 @@ and they change any line in their own words:
   plans; could be two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
   evening, 3 or more is multi-day. What an estimate means on their todo list;
-  the planner guesses from the title when a ticket has none. On a backend with
+  the planner guesses from the title when a task has none. On a backend with
   no estimate field, say the grooming log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The
-  exclusions, each checked on the ticket and its ancestors; name the labels by
+  exclusions, each checked on the task and its ancestors; name the labels by
   the names settled above.
-- **Parents:** plan the open sub-tickets, never the parent.
+- **Parents:** plan the open sub-tasks, never the parent.
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
@@ -230,9 +230,9 @@ Only when a price watch project was chosen; otherwise skip and return no
 Shopping section. How the shopper judges a deal. The same way as Planning, one
 line each:
 
-- **Condition:** new, unless a ticket says otherwise.
+- **Condition:** new, unless a task says otherwise.
 - **Delivery:** online only, to their country (from About you).
-- **A deal:** at or near the ticket's target, or well below the usual price.
+- **A deal:** at or near the task's target, or well below the usual price.
   What gets them an alert.
 - **Amazon interface:** how
   `/neurodivergent-task-manager:sync-price-watch-to-amazon` reaches Amazon:
@@ -258,7 +258,7 @@ Show the sections and let them react.
 - Backend: <linear | claude-docs | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Ticket prefix: <e.g. HOME for HOME-12>
+- Task prefix: <e.g. HOME for HOME-12>
 - Statuses — the list's real names for each class:
   - plannable: <one or more names>
   - started: <one of the plannable names>
@@ -280,12 +280,12 @@ Show the sections and let them react.
 
 The real name on your todo list for each label the system uses.
 
-- Ticket labels:
+- Task labels:
   - no-autoschedule: <real name; default no-autoschedule>
   - pending-shipment: <real name; default pending-shipment>
   - has-amazon-alert: <real name; default has-amazon-alert>
   - amazon-unavailable: <real name; default amazon-unavailable>
-- Project labels (tickets inherit them):
+- Project labels (tasks inherit them):
   - price-watch: <real name; default price-watch>
   - no-autoschedule: <real name; default no-autoschedule>
 
@@ -299,7 +299,7 @@ How the planner works your todo list. Read by `neurodivergent-task-manager:plan`
 - Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
-- Parents: <default plan the open sub-tickets, never the parent>
+- Parents: <default plan the open sub-tasks, never the parent>
 - Weekly message: <default what got done, what's still open, the week ahead>
 
 <anything else about how they want planning done, as written; or nothing>
@@ -310,7 +310,7 @@ How the price watch judges a deal. Read by `neurodivergent-task-manager:price-wa
 
 - Condition: <default new>
 - Delivery: <default online only, to your country>
-- A deal: <default at or near the ticket's target, or well below the usual price>
+- A deal: <default at or near the task's target, or well below the usual price>
 - Amazon interface: <default blank>
 
 <anything else about how they shop, as written; or nothing>
@@ -328,7 +328,7 @@ Then:
 One more line, for every backend: once `ntm` is installed, run
 `/neurodivergent-task-manager:self-test` in a new chat. It starts with
 `ready-check` and exercises the
-operations the jobs use on a throwaway ticket, and is the smoke test for the
+operations the jobs use on a throwaway task, and is the smoke test for the
 guide. Say it now when run directly. When run from
 `neurodivergent-task-manager:configure`, return it
 with the sections so `configure` says it at its end.
@@ -338,7 +338,7 @@ with the sections so `configure` says it at its end.
 ## Why this exists
 
 Daily reminders only help when they point at something the user could pick up.
-Grooming gets tickets there, and it has to stay cheap enough that the user keeps
+Grooming gets tasks there, and it has to stay cheap enough that the user keeps
 doing it: if it turns into a process, they'll stop. When in doubt, take the
 lighter option:
 
@@ -346,7 +346,7 @@ lighter option:
   Stop the moment the user wants to, and never push for more.
 - **You bring proposals; the user reacts.** Never make them fill in fields, and
   never hit them with a list of questions.
-- **Good enough reminders complete.** A ticket can be rough, or just a
+- **Good enough reminders complete.** A task can be rough, or just a
   checklist, as long as the user says it's adequate.
 - **The user drives the wording.** Your unvetted wording tends toward filler, so
   propose enough, keep it short, and never expand their descriptions unless they
@@ -357,46 +357,46 @@ lighter option:
 1. Load `neurodivergent-task-manager:conventions`, and compute `TODAY` as its
    Dates section says.
 2. Read the grooming log (see below).
-3. Fetch every open ticket and list the projects, both as the conventions'
+3. Fetch every open task and list the projects, both as the conventions'
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
-A ticket is **ungroomed** when it's open, has no estimate, and isn't a parent
-with open sub-tickets. On a backend without an estimate field (its guide or Todo
+A task is **ungroomed** when it's open, has no estimate, and isn't a parent
+with open sub-tasks. On a backend without an estimate field (its guide or Todo
 list in your settings says), "no estimate" means no entry in the log's Estimates
 block.
 
 ## The slice
 
 The user names what to groom however they like: a project, part of one, a few
-tickets, or something already groomed that they want to look at again. Take what
+tasks, or something already groomed that they want to look at again. Take what
 they say.
 
 If they don't name one, use what Setup fetched to propose one project, with a
 one-line reason such as how much is left ungroomed. Go once they agree.
 
-Tickets with no project get grouped by likeness and groomed a group at a time. A
+Tasks with no project get grouped by likeness and groomed a group at a time. A
 group can also be a reason to propose a project to file it under, even a new
 one.
 
 ## 1. Overview
 
 Clear out what doesn't belong before looking at details. Look over every open
-ticket in the slice by title, reading a description only where the title isn't
+task in the slice by title, reading a description only where the title isn't
 enough. Also skim the titles in projects whose names or topics overlap with the
-slice, for tickets logged twice or filed in the wrong place.
+slice, for tasks logged twice or filed in the wrong place.
 
-Propose, as one numbered list, one short line each, only for tickets you'd
+Propose, as one numbered list, one short line each, only for tasks you'd
 change:
 
 - **Close as obsolete:** canceled, or done if it looks like it already happened,
   with the guide's `set status`.
-- **Duplicates:** identify all of the tickets that are ultimately duplicated,
+- **Duplicates:** identify all of the tasks that are ultimately duplicated,
   and quote anything that appears only on a specific one. You can propose what
   to do, but the user has the final say. On approval, do what they say and close
   the other(s) with the guide's `mark duplicate of`.
 - **Move:** to the project it belongs in, or to none, with the guide's
-  `update ticket`.
+  `update task`.
 
 A plain "ok" approves the whole list; the user can strike items by number. If
 nothing stands out, say so in one line and move on. Write what they approve as
@@ -404,21 +404,21 @@ soon as they approve it.
 
 ## 2. Order of operations
 
-Read the slice's ungroomed tickets, plus any groomed ones the user named, and
-their parent chains, with the guide's `read ticket`. For a blocked ticket with
+Read the slice's ungroomed tasks, plus any groomed ones the user named, and
+their parent chains, with the guide's `read task`. For a blocked task with
 no blocked-by link, check its comments (`read comments`) for what it waits on.
 
 Propose an order to groom them in, as a short list of ids and titles. Blockers
-come before what they block. When a ticket waits on something outside the slice:
+come before what they block. When a task waits on something outside the slice:
 
 - If the blocker has an obvious end state ("the desk is clear"), groom the
-  ticket anyway, assuming that end state, and mention that when you present it.
+  task anyway, assuming that end state, and mention that when you present it.
 - Otherwise ask the user about it when you reach it.
 
 If much of the slice waits on another project, say so and offer to start there
 instead. The user adjusts the order however they like, then you start.
 
-## 3. Ticket by ticket
+## 3. Task by task
 
 One item per message, in the agreed order:
 
@@ -429,34 +429,34 @@ One item per message, in the agreed order:
    entry's `final`), say what it is.
 3. If it's a 3 or more, one line on whether it looks like it splits. Some things
    can't, and that's fine. Pieces come up in the talk that follows (see Splits).
-4. Usually no edits. Suggest one or two at most, only where the ticket would
+4. Usually no edits. Suggest one or two at most, only where the task would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
 5. The description, exactly as written.
 
 Make it one proposal: a plain "ok" approves all of it, and the user changes any
-part in their own words. They'll very likely want to talk most tickets through,
+part in their own words. They'll very likely want to talk most tasks through,
 so do that. If it splits, the estimate is for what's left of the original; if
 the split came after your guess, re-propose for what's left and log that as
-`guess`. "Skip" leaves the ticket ungroomed for another day.
+`guess`. "Skip" leaves the task ungroomed for another day.
 
-Once a ticket is settled, write it with the guide's `update ticket` (estimate,
+Once a task is settled, write it with the guide's `update task` (estimate,
 and any approved title, description or blocked-by link) and update the log. Do
-both in the same turn that presents the next ticket (or ends the session), so
+both in the same turn that presents the next task (or ends the session), so
 writes never make the user wait.
 
 ### Splits
 
 - The user usually brings their own split ideas. Propose pieces only when they
   don't; otherwise just check whether they missed something obvious.
-- Split pieces off as new tickets, and leave the original with its reduced
+- Split pieces off as new tasks, and leave the original with its reduced
   scope. Show the exact text for the original's reduced scope and each new
-  title, and write only that: the original with the guide's `update ticket`, the
-  new tickets as the next bullet says. New tickets get the original's project
-  and parent. When the order matters, the later ticket is blocked by the earlier
-  one. Don't default to sub-tickets.
-- Write new tickets with the guide's `create ticket`, the way the conventions'
-  "Creating tickets when the user asks" section says. They join the end of the
+  title, and write only that: the original with the guide's `update task`, the
+  new tasks as the next bullet says. New tasks get the original's project
+  and parent. When the order matters, the later task is blocked by the earlier
+  one. Don't default to sub-tasks.
+- Write new tasks with the guide's `create task`, the way the conventions'
+  "Creating tasks when the user asks" section says. They join the end of the
   grooming order un-estimated, unless the user asks to do them next.
 
 ## The grooming log
@@ -469,7 +469,7 @@ the two sections below.
 ### `## How you work`
 
 Short bullets about the user, written to them (it's their note too), on whatever
-would help you do better with them next time: how they like tickets written and
+would help you do better with them next time: how they like tasks written and
 split, how they like sessions to go, and what they keep correcting. Learn from
 what they change, push back on or say. When something would apply again, fold it
 in: rewrite and merge bullets rather than appending, and keep the section to

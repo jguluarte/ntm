@@ -1,12 +1,12 @@
 ---
 name: self-test
-description: Exercises the whole ntm loop on a throwaway ticket and a throwaway note, one line per step, and ends with Self-test OK or the first step that failed. The first thing to run after installing ntm and ntm ("test ntm", "run the self test", "is everything wired up?"), and the smoke test for a backend the user described themselves.
+description: Exercises the whole ntm loop on a throwaway task and a throwaway note, one line per step, and ends with Self-test OK or the first step that failed. The first thing to run after installing ntm and ntm ("test ntm", "run the self test", "is everything wired up?"), and the smoke test for a backend the user described themselves.
 ---
 
 # neurodivergent-task-manager:self-test
 
 Runs every skill a job uses, and every backend operation they need, once, on a
-ticket and a note made for the purpose and canceled and emptied at the end. Run
+task and a note made for the purpose and canceled and emptied at the end. Run
 it in chat, in a new chat after installing `ntm`: it's the first thing to
 run after install, and the thing to run again after changing Todo list in your
 settings.
@@ -21,12 +21,12 @@ settings.
 
 - Load `neurodivergent-task-manager:conventions` and compute `TODAY` as its
   Dates section says.
-- One throwaway ticket, titled `ntm self-test`, labeled with the
+- One throwaway task, titled `ntm self-test`, labeled with the
   `no-autoschedule` label by its real name from Labels in your settings, in no
   project. Keep its id once created; `ABC-12` below stands for it.
 - One throwaway note, titled `ntm self-test`, at list level. It's not under
   Notes in Todo list; only this skill knows it.
-- If an earlier run left either behind (`fetch open` shows a ticket with that
+- If an earlier run left either behind (`fetch open` shows a task with that
   title; `read note` finds the note), remove them first, as Cleanup says, so
   this run starts clean.
 
@@ -40,7 +40,7 @@ the conventions say; a second failure is the step's failure.
 1. **ready-check:** `/ntm:ready-check`. Pass on
    `Ready-check OK` or
    `Ready-check OK (no style)`; the text after `Ready-check FAILED:` is the why.
-2. **create ticket:** the guide's `create ticket` with the title, a one-line
+2. **create task:** the guide's `create task` with the title, a one-line
    description (`ntm self-test, <TODAY>; safe to remove`), the label, and
    nothing else. Create it new; a canceled one from an earlier run is not a
    match. Pass when it comes back with an id. If the backend rejects the label,
@@ -50,9 +50,9 @@ the conventions say; a second failure is the step's failure.
    `/neurodivergent-task-manager:plan put ABC-12 on today and move nothing else`.
    The user
    asked for this test, so that is their approval. Take the plan it proposes as
-   approved when it dates only that ticket, paused day or not; otherwise answer
+   approved when it dates only that task, paused day or not; otherwise answer
    that only ABC-12 moves, and approve that. The `no-autoschedule` label doesn't
-   stop it; in chat the user has the final say. Pass when `read ticket` shows
+   stop it; in chat the user has the final say. Pass when `read task` shows
    the planned date as `TODAY`.
 4. **today:** `/neurodivergent-task-manager:today`. Pass when a line starts with
    `ABC-12`.
@@ -73,7 +73,7 @@ the conventions say; a second failure is the step's failure.
    Show the block and pass as `6. notify: pass (claude-push; shown, not sent)`.
    `Notify FAILED` is the why.
 7. **close:** `set status` to the done status from Todo list. Pass when
-   `read ticket` shows it closed.
+   `read task` shows it closed.
 8. **completed:** `/neurodivergent-task-manager:show-completed today`. Pass when
    `ABC-12` is listed
    under `Done`.
@@ -93,14 +93,14 @@ the conventions say; a second failure is the step's failure.
 Always, whether the steps passed or stopped, and in this order; one line each,
 `cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
 
-- **The ticket:** if it was created, `set status` to the canceled status from
+- **The task:** if it was created, `set status` to the canceled status from
   Todo list, so it never counts as work done (leave it done when Todo list's
-  canceled line is blank). Where the backend keeps notes in tickets, cancel the
-  note's ticket the same way.
+  canceled line is blank). Where the backend keeps notes in tasks, cancel the
+  note's task the same way.
 - **The note:** if it was written, `write note` it empty.
 
 Nothing else on the todo list is touched: the test dates, closes and cancels its
-own ticket and empties its own note only, plus the one history entry the style
+own task and empties its own note only, plus the one history entry the style
 writes in step 5, which ages out.
 
 ## Result

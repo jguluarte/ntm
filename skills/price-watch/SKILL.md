@@ -1,19 +1,19 @@
 ---
 name: price-watch
-description: The price watch for the user's todo list, which watched items are a good deal today? Finds every watched ticket, asks the shopper agent about each one, sends one alert for the deals, posts the details and reports. Run by the "Price watch" job, or by hand in chat ("/neurodivergent-task-manager:price-watch", "check my watch list", "is the backup battery a good price today?").
+description: The price watch for the user's todo list, which watched items are a good deal today? Finds every watched task, asks the shopper agent about each one, sends one alert for the deals, posts the details and reports. Run by the "Price watch" job, or by hand in chat ("/neurodivergent-task-manager:price-watch", "check my watch list", "is the backup battery a good price today?").
 ---
 
 # neurodivergent-task-manager:price-watch
 
 The price watch: which watched items are a good deal today? One shopper per item
-does the checking; this skill finds the watched tickets, hands each to a
+does the checking; this skill finds the watched tasks, hands each to a
 shopper, alerts on the deals and handles the user's replies. The shopper's
 procedure is `agents/shopper.md`; nothing here restates it. When the shopper
 agent isn't available in this session, do what the conventions' "Chat, jobs and
 agents" says: read that file from the installed plugin and follow it yourself,
-one ticket at a time, with the same two values.
+one task at a time, with the same two values.
 
-The user vets what goes on the watch: every watched ticket is a real item they
+The user vets what goes on the watch: every watched task is a real item they
 want, and the stores they name are ones they trust. So the shopper's results are
 reported as they come, and anything it couldn't do reaches the user to fix;
 nobody works around a block.
@@ -42,7 +42,7 @@ Price watch is on when Todo list in your settings names a price watch project.
 If it names none, end with
 `Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /neurodivergent-task-manager:settings or turn off the Price watch job with /neurodivergent-task-manager:configure-schedule.`
 
-Fetch every open ticket the way "Every open ticket" in
+Fetch every open task the way "Every open task" in
 `neurodivergent-task-manager:conventions` says,
 and keep the ones with the `price-watch` project label (its real name from
 Labels in your settings), counting labels inherited from their project (the
@@ -50,8 +50,8 @@ conventions' "Project labels"). Note each one's id, title and `url`. If none are
 being watched, send nothing and go straight to FINAL REPLY.
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price
-today?"): the watch is that one ticket, found by its id or by its words among
-the watched tickets. Skip the sync check below and step 5; FINAL REPLY says how
+today?"): the watch is that one task, found by its id or by its words among
+the watched tasks. Skip the sync check below and step 5; FINAL REPLY says how
 to word the answer.
 
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
@@ -60,15 +60,15 @@ run can't set them, so it
 only notices when a sync is due; when Amazon interface under Shopping in your
 settings is off, skip this check. With the `has-amazon-alert` and
 `amazon-unavailable` labels by their real names from Labels, note:
-- each open watched ticket with neither label (it needs an alert);
-- each closed ticket that still has the `has-amazon-alert` label (its alert
+- each open watched task with neither label (it needs an alert);
+- each closed task that still has the `has-amazon-alert` label (its alert
   needs removing). Find these with the guide's `fetch closed` for that label,
   canceled and duplicate included.
 Change nothing; FINAL REPLY reports it.
 
 # 4: The checks
-Ask the shopper agent once per watched ticket, all at once, giving each its
-ticket id and `TODAY` and nothing else. Each returns its RESULT lines (listed
+Ask the shopper agent once per watched task, all at once, giving each its
+task id and `TODAY` and nothing else. Each returns its RESULT lines (listed
 under "Your result" in `agents/shopper.md`): RESULT, then DEAL and COMPARE for a
 deal, OTHER VERIFIED, CHECKED and NOTES.
 
@@ -95,8 +95,8 @@ by anything else FINAL REPLY calls for.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the
 job's completion push carries: One section per item, starting with a few words
-for the item and its ticket id in parentheses, linked to its `url` (the
-conventions' "Talking to the user about tickets"): the price and store with the
+for the item and its task id in parentheses, linked to its `url` (the
+conventions' "Talking to the user about tasks"): the price and store with the
 product link, the marketplace seller if there is one, its condition, how it
 compares to the target and the usual price, any shipping, membership or coupon
 note, the sale end date, the other verified prices, and its CHECKED line. End
@@ -111,16 +111,16 @@ alert had more than one item and they don't say which, ask before changing
 anything. Dates below are `TODAY` per `neurodivergent-task-manager:conventions`,
 computed at reply time.
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and
-  change nothing. Otherwise add a comment to that ticket right away (the guide's
+  change nothing. Otherwise add a comment to that task right away (the guide's
   `write comment`), using the store, price and sale end date from this run's
   alert: "Skip: <price> at <store>, sale ends <date or unknown>, skipped
   YYYY-MM-DD. Reason: <their reason, in their words, or "none given">." Confirm
   in one line. If they didn't say why, ask why in the same message; if they
   answer, update that comment with their reason.
-- **They bought it:** a watched ticket is the purchase itself, so set its status
+- **They bought it:** a watched task is the purchase itself, so set its status
   to done (the guide's `set status`; if it's already closed, say so). Then add
-  the `pending-shipment` label (its real name from Labels) to any open ticket it
-  blocks, where the work lives. Confirm in one line. If the ticket has the
+  the `pending-shipment` label (its real name from Labels) to any open task it
+  blocks, where the work lives. Confirm in one line. If the task has the
   `has-amazon-alert` label, add that its Amazon alert gets removed the next time
   they run `/neurodivergent-task-manager:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the price watch stores note,
@@ -144,7 +144,7 @@ happened, such as "Sent a price alert for the backup battery (ABC-24)." or "No
 good deals today; nothing sent." If no result had a verified price, say "No
 prices verified today; nothing sent."; if no check came back usable, say that
 instead; if nothing is being watched, say "Nothing on price watch; nothing
-sent." Then, per item, a few words for it with its ticket id in parentheses,
+sent." Then, per item, a few words for it with its task id in parentheses,
 followed by its CHECKED line, or that its check failed, or that it's not
 actionable and why. Then any NOTES that aren't "none": these are things for the
 user to fix.
@@ -158,7 +158,7 @@ title says it); the per-item lines, NOTES and the sync line follow.
 If step 3 found Amazon alerts to sync, end with one line: "Run
 /neurodivergent-task-manager:sync-price-watch-to-amazon:" then the items needing
 an alert and the closed
-items whose alert needs removing, each as a few words with its ticket id. Leave
+items whose alert needs removing, each as a few words with its task id. Leave
 this line out when nothing needs syncing.
 
 **One item asked for in chat:** no alert and no sync line; answer the person.

@@ -35,7 +35,7 @@ from that copy.
 
 ## First steps
 
-1. Install ntm. Connect whatever system holds your tickets, todos or reminders:
+1. Install ntm. Connect whatever system holds your tasks, todos or reminders:
    Linear and Claude Docs are the two shipped guides (Linear from the Connectors
    tab; Claude Docs needs no connector), and your own backend is described
    during setup.
@@ -45,7 +45,7 @@ from that copy.
    you `ntm.plugin` to install.
 3. Install it, open a new chat, and run
    `/neurodivergent-task-manager:self-test`. It runs the whole loop
-   once on a throwaway ticket, then cancels the ticket and empties its note.
+   once on a throwaway task, then cancels the task and empties its note.
 
 ## Skills
 
@@ -53,7 +53,7 @@ Every day:
 
 | Skill | What it does |
 | --- | --- |
-| `/neurodivergent-task-manager:today` | What's planned: open tickets planned for today or earlier, or any scope you describe. |
+| `/neurodivergent-task-manager:today` | What's planned: open tasks planned for today or earlier, or any scope you describe. |
 | `/neurodivergent-task-manager:show-completed` | What got done over a span, and what's still open from it when you ask. |
 | `/neurodivergent-task-manager:plan` | Plans the week or a day: with you in chat, or on its own for jobs. |
 | `/neurodivergent-task-manager:pause` | Days when nothing gets planned automatically. |
@@ -66,13 +66,13 @@ Planning and tidying:
 | Skill | What it does |
 | --- | --- |
 | `/neurodivergent-task-manager:configure-todo-list` | Grooms the todo list with you in chat: close, size, split. The same skill sets the list up the first time (below). |
-| `/neurodivergent-task-manager:fix-todo-list` | Closes parents whose sub-tickets are all closed and clears stale planned dates. |
+| `/neurodivergent-task-manager:fix-todo-list` | Closes parents whose sub-tasks are all closed and clears stale planned dates. |
 
 Price watch (on when your settings name a price watch project):
 
 | Skill | What it does |
 | --- | --- |
-| `/neurodivergent-task-manager:price-watch` | The daily price check on the tickets in that project. |
+| `/neurodivergent-task-manager:price-watch` | The daily price check on the tasks in that project. |
 | `/neurodivergent-task-manager:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser Claude can drive. |
 
 Setup and settings:
@@ -86,7 +86,7 @@ Setup and settings:
 | `/neurodivergent-task-manager:configure-schedule` | The jobs: which, which days, what time, what title. |
 | `/neurodivergent-task-manager:settings` | Shows your settings and changes them; produces a new `ntm.plugin`. |
 | `/ntm:ready-check` | Can this session run a job? |
-| `/neurodivergent-task-manager:self-test` | The whole loop once, on a throwaway ticket. |
+| `/neurodivergent-task-manager:self-test` | The whole loop once, on a throwaway task. |
 | `/neurodivergent-task-manager:help` | Answers questions from this README. |
 | `neurodivergent-task-manager:conventions` | The rules every skill loads first. Not run by hand. |
 
@@ -106,10 +106,10 @@ and hand them to an agent; agents own the procedures.
 | Jobs | The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning, Completed (weekly or monthly), Price watch. Each runs one skill. | `/neurodivergent-task-manager:configure-schedule` |
 | The planner | What is planned, what got done, is today ready? Runs the list skills for the reminders. | ntm |
 | The messenger | What will you actually open? Composes in your style and sends through your channel. | ntm |
-| The shopper | Is this item a good deal today? One per watched ticket. | ntm |
+| The shopper | Is this item a good deal today? One per watched task. | ntm |
 | Pauses note | The days when nothing gets planned automatically. | `/neurodivergent-task-manager:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm:style` |
-| Grooming log note | How you like tickets written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
+| Grooming log note | How you like tasks written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
 | Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/neurodivergent-task-manager:price-watch` |
 | Amazon alert steps note | How to set an alert on Amazon, learned once. | `/neurodivergent-task-manager:sync-price-watch-to-amazon` |
 
@@ -140,7 +140,7 @@ the jobs write (the notes above) lives on your todo list.
 
 ## What the plugin sends where
 
-- **Your todo list** (Linear, Claude Docs, or your own): tickets, planned dates,
+- **Your todo list** (Linear, Claude Docs, or your own): tasks, planned dates,
   labels and the notes above.
 - **Pushover**, when it's your channel: each reminder's title and message, with
   your app token and user key, over HTTPS from the run. With the claude-push

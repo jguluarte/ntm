@@ -21,10 +21,10 @@ in your own words.
 ## Todo list
 
 - Backend: <!-- linear | claude-docs | describe your own below -->
-- List name: <!-- the team, doc, project or workspace that holds every ticket,
+- List name: <!-- the team, doc, project or workspace that holds every task,
   as the backend names it -->
 - List id: <!-- if the backend needs one for lookups; blank otherwise -->
-- Ticket prefix: <!-- e.g. HOME for HOME-12; blank where ids carry none -->
+- Task prefix: <!-- e.g. HOME for HOME-12; blank where ids carry none -->
 - Statuses — the list's real names for each class:
   - plannable: <!-- usually three: a backlog, a to-do and an in-progress status -->
   - started: <!-- which of the plannable statuses means work has begun -->
@@ -33,7 +33,7 @@ in your own words.
   - done:
   - canceled:
   - duplicate:
-- Price watch project: <!-- the project whose tickets are purchases waiting for
+- Price watch project: <!-- the project whose tasks are purchases waiting for
   a good price; blank = price watch off -->
 - Notes — the title of each note the system keeps:
   - pauses: Pauses
@@ -51,12 +51,12 @@ words.
 
 The real name on your todo list for each label the system uses.
 
-- Ticket labels:
+- Task labels:
   - no-autoschedule: no-autoschedule
   - pending-shipment: pending-shipment
   - has-amazon-alert: has-amazon-alert
   - amazon-unavailable: amazon-unavailable
-- Project labels (tickets inherit them):
+- Project labels (tasks inherit them):
   - price-watch: price-watch
   - no-autoschedule: no-autoschedule
 
@@ -73,11 +73,11 @@ the weekly planning.
   to Friday); two weeks; the month -->
 - Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3
   or more is multi-day <!-- what an estimate means on your todo list; the
-  planner guesses from the title when a ticket has none -->
+  planner guesses from the title when a task has none -->
 - A day's worth: about an hour <!-- what the planner aims for when it picks -->
 - Never picks: no-autoschedule, pending-shipment, blocked status <!-- the
-  exclusions, each checked on the ticket and its ancestors -->
-- Parents: plan the open sub-tickets, never the parent
+  exclusions, each checked on the task and its ancestors -->
+- Parents: plan the open sub-tasks, never the parent
 - Weekly message: what got done, what's still open, the week ahead <!-- the
   halves the weekly planning message carries -->
 
@@ -91,9 +91,9 @@ How the price watch judges a deal. Read by
 agent; Amazon interface by
 `neurodivergent-task-manager:sync-price-watch-to-amazon`.
 
-- Condition: new <!-- unless a ticket says otherwise -->
+- Condition: new <!-- unless a task says otherwise -->
 - Delivery: online only, to your country
-- A deal: at or near the ticket's target, or well below the usual price
+- A deal: at or near the task's target, or well below the usual price
   <!-- what gets you an alert -->
 - Amazon interface: <!-- how
   /neurodivergent-task-manager:sync-price-watch-to-amazon reaches Amazon:

@@ -22,7 +22,7 @@ Contents tab under Customize > Plugins, or in the repository.
 ## Answering
 
 - **How do I start?** The README's First steps, told as the next thing to do:
-  connect the system that holds their tickets, run
+  connect the system that holds their tasks, run
   `/neurodivergent-task-manager:configure`, install
   `ntm`, run `/neurodivergent-task-manager:self-test`.
 - **What does X do?** Find X in the README (the skill tables, What's what, the

@@ -17,9 +17,8 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   call below takes `teamId`).
 - **Project labels:** labels on a project are Linear project labels, a separate
   set from issue labels (`list_project_labels` / `save_project_label`).
-  Inheritance matches them to issue labels by name, so a system label a project
-  should carry needs a project label of the same name (the project labels under
-  Labels).
+  Inheritance matches them to issue labels by name, so a label a project carries
+  needs a project label with the same name.
 - **Automations:** Linear can close a parent when its sub-issues are all done
   (Parent auto-close, in the team's settings under Workflow). Either way,
   `ntm:fix-todo-list` closes any finished parent still open.

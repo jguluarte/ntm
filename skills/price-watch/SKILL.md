@@ -44,8 +44,8 @@ chat: a plain `/ntm:ready-check`.
 # 3: The watch
 
 Fetch every open task the way "Every open task" in `ntm:conventions` says, and
-keep the ones with the $price-watch project label (its real name from Labels in
-your settings), counting labels inherited from their project (the conventions'
+keep the ones with the $price-watch label (its real name from Labels in your
+settings), counting labels inherited from their project (the conventions'
 "Project labels"). Note each one's id, title and `url`. If none are being
 watched, send nothing and go straight to FINAL REPLY.
 

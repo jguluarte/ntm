@@ -175,8 +175,8 @@ Each label below has a line in Labels in your settings that gives its real name
 on the todo list; the names shown here are the defaults. A label written with a
 `$` in front, like $no-autoschedule, is one the user configures, written by its
 default name: use its real name from Labels, and never show the `$` to the user.
-
-Task labels:
+Any of them can sit on a task or on a project; on a project, every task in it
+carries it too (see Project labels).
 
 - **$no-autoschedule:** the user has opted this task out of automatic planning.
   Planners never pick it, but once the user dates it themselves, it's reminded
@@ -187,14 +187,10 @@ Task labels:
   `ntm:sync-price-watch-to-amazon` sets and clears it.
 - **$amazon-unavailable:** the item isn't sold new on Amazon, so no alert is
   set.
-
-Labels set on a project (its tasks inherit them; see Project labels):
-
-- **$price-watch:** the project's tasks are purchases waiting for a good price.
-  There is no $price-watch task label. The watched tasks are the open tasks
-  carrying this label. Price watch is off when nothing carries it or the Price
-  watch job isn't scheduled; there is no separate switch.
-- **$no-autoschedule:** as the task label, for every task in the project.
+- **$price-watch:** usually on a project: its tasks are purchases waiting for a
+  good price. The watched tasks are the open tasks carrying this label. Price
+  watch is off when nothing carries it or the Price watch job isn't scheduled;
+  there is no separate switch.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's

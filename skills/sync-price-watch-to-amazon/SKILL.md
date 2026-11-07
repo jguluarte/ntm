@@ -63,10 +63,10 @@ otherwise.
 ## 2: The work
 
 1. **Open items:** fetch every open task the way "Every open task" in
-   `ntm:conventions` says, and keep the ones with the $price-watch project
-   label, counting labels inherited from their project (the conventions'
-   "Project labels"). Split them: those with neither label need an alert; those
-   with $has-amazon-alert are set; those with $amazon-unavailable need nothing.
+   `ntm:conventions` says, and keep the ones with the $price-watch label,
+   counting labels inherited from their project (the conventions' "Project
+   labels"). Split them: those with neither label need an alert; those with
+   $has-amazon-alert are set; those with $amazon-unavailable need nothing.
 2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
    canceled and duplicate included, with the standard fields.
 

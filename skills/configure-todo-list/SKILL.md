@@ -100,11 +100,10 @@ say the $pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
 
-Show the defaults in one table, task labels and project labels, with the
-one-line meaning of each from the conventions' System labels: task labels
-$no-autoschedule, $pending-shipment, $has-amazon-alert, $amazon-unavailable;
-project labels $price-watch, $no-autoschedule. A plain "ok" keeps every name;
-record any rename.
+Show the defaults in one table, with the one-line meaning of each from the
+conventions' System labels: $no-autoschedule, $pending-shipment,
+$has-amazon-alert, $amazon-unavailable, $price-watch. A plain "ok" keeps every
+name; record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
@@ -214,14 +213,11 @@ words>
 
 The real name on your todo list for each label the system uses.
 
-- Task labels:
-  - no-autoschedule: <real name; default no-autoschedule>
-  - pending-shipment: <real name; default pending-shipment>
-  - has-amazon-alert: <real name; default has-amazon-alert>
-  - amazon-unavailable: <real name; default amazon-unavailable>
-- Project labels (tasks inherit them):
-  - price-watch: <real name; default price-watch>
-  - no-autoschedule: <real name; default no-autoschedule>
+- no-autoschedule: <real name; default no-autoschedule>
+- pending-shipment: <real name; default pending-shipment>
+- has-amazon-alert: <real name; default has-amazon-alert>
+- amazon-unavailable: <real name; default amazon-unavailable>
+- price-watch: <real name; default price-watch>
 
 ## Planning
 

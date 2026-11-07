@@ -24,7 +24,7 @@ other skill returns text and the job decides what goes out.
 
 - `title` and `message` are the notification.
 - `url`: optional link attached below the message, usually a task's `url` field.
-- `priority`: optional; see the optional-fields table. Default 0.
+- `priority`: optional; see Optional fields. Default 0.
 - `from`: the job this notification is for (the calling skill passes its job
   name); a per-reminder token written in Notifications is chosen by it.
 - `app-token` and `user-key`: a Pushover app token and user key for this one
@@ -93,17 +93,15 @@ Rules, each of which prevents a real failure:
 
 Add these as extra `--form-string` lines when they're useful:
 
-| Field       | Purpose                                                                 |
-| ----------- | ----------------------------------------------------------------------- |
-| `url`       | A link attached below the message, e.g. a task. Tappable.               |
-| `url_title` | Label for `url` instead of the raw link, e.g. `Open task`.              |
-| `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
-| `sound`     | Notification sound; `pushover` is the default.                          |
-
-- **Priority 1** bypasses quiet hours. Use it sparingly.
-- **Priority 2** repeats until acknowledged and requires `retry` (seconds, 30 or
-  more) and `expire` (seconds, at most 10800). Reserve it for genuine
-  emergencies.
+- `url`: a link attached below the message, e.g. a task. Tappable.
+- `url_title`: label for `url` instead of the raw link, e.g. `Open task`.
+- `priority`: `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2`
+  emergency.
+    - **Priority 1** bypasses quiet hours. Use it sparingly.
+    - **Priority 2** repeats until acknowledged and requires `retry` (seconds,
+      30 or more) and `expire` (seconds, at most 10800). Reserve it for genuine
+      emergencies.
+- `sound`: notification sound; `pushover` is the default.
 
 ### HTML mode
 

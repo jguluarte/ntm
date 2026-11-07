@@ -96,9 +96,6 @@ and Notes below create them.
    purchases waiting for a good price, or none (none = price watch off). If they
    want one that doesn't exist yet, settle its name now; it's created in Labels,
    once the project labels exist.
-3. **Parent auto-close.** Suggest they turn on Parent auto-close in the team's
-   settings under Workflow, so a parent closes as soon as its sub-tasks are all
-   done. Off, the weekly planning closes those parents instead.
 
 ### Claude Docs
 

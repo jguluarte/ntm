@@ -21,8 +21,7 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   should carry needs a project label of the same name (the project labels under
   Labels).
 - **Automations:** Linear can close a parent when its sub-issues are all done
-  (Parent auto-close, in the team's settings under Workflow).
-  `ntm:configure-todo-list` suggests turning it on. Either way,
+  (Parent auto-close, in the team's settings under Workflow). Either way,
   `ntm:fix-todo-list` closes any finished parent still open.
 - **Estimates:** `estimate` holds the team's points. When Planning has an
   Estimate mapping, convert through it: the user's size to its point when
@@ -140,7 +139,10 @@ project from Todo list) lives in that project's documents instead. Search with
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`.
+Used by `ntm:configure-todo-list`. Once the team is chosen, suggest the user
+turn on Parent auto-close in the team's settings under Workflow, so a parent
+closes as soon as its sub-tasks are all done. Off, the weekly planning closes
+those parents instead.
 
 - **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
   issue key (the task prefix).

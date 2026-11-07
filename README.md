@@ -188,11 +188,6 @@ the estimator, through `/ntm:review-todo-list`.
 Stores you've vouched for or blocked in replies to a price alert; the shopper
 reads it. Written by `/ntm:price-watch`.
 
-### Amazon alert steps note
-
-How to set an alert on Amazon, learned once. Written by
-`/ntm:sync-price-watch-to-amazon`.
-
 ## What you can customize
 
 - **The style.** Plain, a theme you describe, or a persona skill you already

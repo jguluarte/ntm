@@ -69,8 +69,7 @@ the conventions say; a second failure is the step's failure.
    run `ntm:notify` anyway; it returns its delivery block instead of sending.
    Show the block and pass as `6. notify: pass (claude-push; shown, not sent)`.
    `Notify FAILED` is the why.
-7. **close:** `set status` to the done status from Todo list. Pass when
-   `read task` shows it closed.
+7. **close:** `set status` to done. Pass when `read task` shows it closed.
 8. **completed:** `/ntm:show-completed today`. Pass when `ABC-12` is listed
    under `Done`.
 9. **fix-todo-list:** `/ntm:fix-todo-list --dry-run`. Pass on `Dry run <TODAY>:`
@@ -87,10 +86,9 @@ the conventions say; a second failure is the step's failure.
 Always, whether the steps passed or stopped, and in this order; one line each,
 `cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
 
-- **The task:** if it was created, `set status` to the canceled status from Todo
-  list, so it never counts as work done (leave it done when Todo list's canceled
-  line is blank). Where the backend keeps databases in tasks, cancel the
-  database's task the same way.
+- **The task:** if it was created, `set status` to canceled, so it never counts
+  as work done (leave it done when the todo list has no canceled status). Where
+  the backend keeps databases in tasks, cancel the database's task the same way.
 - **The database:** if it was written, `write database` it empty.
 
 Nothing else on the todo list is touched: the test dates, closes and cancels its

@@ -71,8 +71,8 @@ the tie-breaker.
   or the user's own description under Todo list (see Loading).
 - **Task:** one thing on the todo list. Each backend shows a task its own way: a
   [Linear issue](https://linear.app/docs/conceptual-model), a row in a Claude
-  Doc's table, a reminder, a todo. Ids look like `<task prefix>-<number>` where
-  the backend has a prefix.
+  Doc's table, a reminder, a todo. Its id is whatever the backend gives it, such
+  as `ABC-12`.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
 - **Parent task:** a task with open sub-tasks.
@@ -80,8 +80,8 @@ the tie-breaker.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
   `ntm:plan`.
-- **Started:** the one plannable status (see Status classes) that means work has
-  begun. Jobs give credit for it.
+- **Started:** a plannable status that means work has begun (see Status
+  classes). Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
   user dated themselves still gets its reminders. Kept in the pauses database.
 - **Database:** a document the system keeps its own records in, on the todo
@@ -96,11 +96,11 @@ the tie-breaker.
 ## Workspace
 
 - **Todo list:** List name from Todo list in your settings, with List id where
-  the backend needs it. Task ids use Task prefix.
+  the backend needs it.
 - **Task URLs:** use the task's own `url` field, one of the standard fields.
-- **Whose tasks:** Your tasks under Todo list in your settings says which tasks
-  on the list are the user's; by default, every task, regardless of assignee.
-  Consider only those, and filter no further unless explicitly asked.
+- **Whose tasks:** every task on the list is the user's; don't filter by
+  assignee unless asked. If they share the list with someone, Deviations in your
+  settings says how to tell theirs apart.
 
 ## Chat, jobs and agents
 
@@ -145,24 +145,23 @@ id in parentheses inside the link text, the url the task's own `url` field.
 
 ## Statuses and labels
 
-Todo list in your settings maps each status class to the list's real status
-names, and Labels gives the real name of each label the system uses. Don't
-assume other statuses exist. The defaults below are what
-`/ntm:configure-todo-list` proposes; the user's todo list may use other names,
-and the settings are what count.
+Every status on the todo list falls into one of the classes below, read from the
+backend as the guide says; nothing about statuses is stored in your settings.
+Labels in your settings gives the real name of each label the system uses. The
+label names below are the defaults `/ntm:configure-todo-list` proposes; the
+user's todo list may use other names, and the settings are what count.
 
 ### Status classes
 
-- **plannable**: open work. Todo list in your settings lists the plannable
-  statuses (usually a backlog, a to-do and an in-progress status); the one it
-  names as **started** means work has begun.
-- **blocked**: the user has put the task in the blocked status (its name is on
-  the blocked line in Todo list in your settings) because they can't move it
+- **plannable**: open work, usually a backlog, a to-do and an in-progress
+  status. The in-progress kind is **started**: work has begun.
+- **blocked**: the user has put the task in the blocked status (by default the
+  status named Blocked; Deviations can name another) because they can't move it
   forward right now. What's in the way is an open blocking task linked to it, a
   reason described in its comments, or both. Waiting on an order usually gets
   the $pending-shipment label instead. A blocked-by relation alone doesn't make
-  a task blocked; see Blocks and blocked by. The blocked line is blank when the
-  todo list has no such status.
+  a task blocked; see Blocks and blocked by. The class is empty when the todo
+  list has no such status.
 - **done**: finished.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.
@@ -176,8 +175,8 @@ Each label below has a line in Labels in your settings that gives its real name
 on the todo list; the names shown here are the defaults. A label written with a
 `$` in front, like $no-autoschedule, is one the user configures, written by its
 default name: use its real name from Labels, and never show the `$` to the user.
-
-Task labels:
+Any of them can sit on a task or on a project; on a project, every task in it
+carries it too (see Project labels).
 
 - **$no-autoschedule:** the user has opted this task out of automatic planning.
   Planners never pick it, but once the user dates it themselves, it's reminded
@@ -188,14 +187,10 @@ Task labels:
   `ntm:sync-price-watch-to-amazon` sets and clears it.
 - **$amazon-unavailable:** the item isn't sold new on Amazon, so no alert is
   set.
-
-Labels set on a project (its tasks inherit them; see Project labels):
-
-- **$price-watch:** the project's tasks are purchases waiting for a good price.
-  There is no $price-watch task label. Price watch is on when Todo list names a
-  price watch project; the watched tasks are the open tasks carrying this label.
-  There is no separate switch.
-- **$no-autoschedule:** as the task label, for every task in the project.
+- **$price-watch:** usually on a project: its tasks are purchases waiting for a
+  good price. The watched tasks are the open tasks carrying this label. Price
+  watch is off when nothing carries it or the Price watch job isn't scheduled;
+  there is no separate switch.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -224,11 +219,9 @@ Deviations. Read and write them with the guide's `read database` /
   much history to keep; the user changes it there.
 - **task review log** (`Task review log`): the estimator keeps it, in its
   Review.
-- **price watch stores** (`Price watch stores`): stored in the price watch
-  project, not at list level. `ntm:price-watch` keeps it, from the user's vouch
-  and block replies; the shopper reads it.
-- **Amazon alert steps** (`Amazon alert steps`):
-  `ntm:sync-price-watch-to-amazon` keeps it.
+- **price watch stores** (`Price watch stores`): stored in the project that
+  carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
+  from the user's vouch and block replies; the shopper reads it.
 
 Where the backend has no documents, the guide keeps each database in the
 description of an open task titled with the database's title and labeled

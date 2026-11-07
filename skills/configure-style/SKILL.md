@@ -13,10 +13,10 @@ description: >-
 
 `ntm-user:style` is the user's own skill: the messenger runs it for every
 reminder. It has two halves: a Profile (who talks, what gets them to read, the
-reminders of the day, the levels when something keeps slipping, motifs, off
-limits, examples) and the procedure that writes a line from facts. This skill
-writes it with the user in short rounds: you bring proposals, they react. Never
-hand them a form.
+reminders of the day, the levels when something keeps slipping, motifs and
+examples) and the procedure that writes a line from facts. This skill writes it
+with the user in short rounds: you bring proposals, they react. Never hand them
+a form.
 
 Read `references/builder.md` once before starting: it holds the Profile's shape,
 the questions for each section, the episode arc the reminders follow, and one
@@ -70,7 +70,6 @@ Every section answered plainly, no persona:
   level after the first.
 - **Motifs:** empty, or a few things from their own life, each a short name.
   Repeat limit: the default unless they say otherwise.
-- **Off limits:** the fixed sentence; add anything they name.
 - **Examples:** one per level and one for nothing open, showing the mechanism
   from What gets you to read at work.
 
@@ -95,14 +94,10 @@ the builder's questions:
   Motifs section says: ask what they like and use it as the analogy, prefer
   motifs that can be built on, and set the repeat limit from how much variety
   the list gives. They add, cut and replace.
-- **Off limits:** the fixed sentence, plus whatever the theme must never joke
-  about.
-- **Examples:** one per level and one for nothing open. Task ids use Task prefix
-  from Todo list in `ntm-user:settings`, or the prefix settled earlier in this
-  conversation, or `ABC-12` style when that isn't configured yet. The tasks in
-  them are ordinary household ones. Write them, read them back, revise: if they
-  chose humor, until they laugh at least once; otherwise until each reads like
-  something they'd open.
+- **Examples:** one per level and one for nothing open. Task ids are generic,
+  like `ABC-12`. The tasks in them are ordinary household ones. Write them, read
+  them back, revise: if they chose humor, until they laugh at least once;
+  otherwise until each reads like something they'd open.
 
 Take the theme as they describe it. Don't propose a named character, show,
 person or brand. If they want directions, offer kinds of character in a line

@@ -88,11 +88,11 @@ Read the task with `read task` and its comments with `read comments`, and note:
 ## The stores database
 
 The `Price watch stores` database (see Databases in `ntm:conventions`), kept in
-the price watch project (`read database`, with that project). It applies to
-every item and has three lists under the headings `## Seed`, `## Vouched` and
-`## Blocked`, each store with its domain; Seed stores are starting points by
-category. If it comes back missing, go on with empty lists and say so under
-Problems; don't create it.
+the project that carries the $price-watch label (`read database`, with that
+project). It applies to every item and has three lists under the headings
+`## Seed`, `## Vouched` and `## Blocked`, each store with its domain; Seed
+stores are starting points by category. If it comes back missing, go on with
+empty lists and say so under Problems; don't create it.
 
 ## The stores
 

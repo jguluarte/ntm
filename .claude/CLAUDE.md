@@ -1,21 +1,25 @@
 # ntm: working rules
 
-Read `.claude/HANDOFF.md` first for where things are and what's next, then
-`.claude/DECISIONS.md` for history. `.claude/DESIGN-0.4.md` is raw material and
-out of date; don't author from it.
+Read `.claude/NAMES.md` for every name and whether Justin approved it, and
+`.claude/DECISIONS.md` for what's decided and what's next.
 
 ## The repo
 
 A Claude plugin: markdown skills and agents, and a few JSON files. On main the
 base plugin is `ntm` and the user's generated plugin is `ntm-user`; 0.4 renames
 them (base `neurodivergent-task-manager`, user `ntm`). Use main's names, paths
-and words.
+and words. Main is the source: don't author from the `v0.4` branch, the old 0.4
+design page, or his installed 0.3.0 copy. The 0.4 decisions in `DECISIONS.md`
+set direction only; author nothing for 0.4 until Justin has talked it through
+and says go.
 
 ## Justin owns the plugin
 
 - Nothing lands unless he asked for it or approved it. Don't run ahead.
 - Decisions go to him one at a time. User-facing names are his. A rename lands
-  only after his explicit yes; silence is not approval.
+  only after his explicit yes; silence is not approval. His yes goes in
+  `NAMES.md`. Plugin-internal names (status, delivery and result lines) don't
+  need it.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 
@@ -24,14 +28,21 @@ and words.
 - Small PRs against main, one concern each, one Opus agent per PR, briefed with
   `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
   agents; the orchestrator does any fan-out.
+- The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
+  worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
+- Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
+- Fable, the costliest model, on a weekly budget, runs only when he says so.
 - His PR comments go to the PR's author agent, which replies on the thread and
   pushes a new commit. Agents post under his account, and every reply ends with
   `<!-- ntm-agent -->`. The orchestrator resolves finished threads; author
   agents don't.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
+- A squash merge gets a written message: one short paragraph on the net change,
+  not GitHub's default list of every commit.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring main in with a
   merge commit.
-- Versions are set at merge. He doesn't want patch version bumps.
+- Versions are set at merge; PR branches don't change them. He doesn't want
+  patch version bumps.
 
 ## Commits
 
@@ -44,12 +55,12 @@ and words.
 
 ## Lint
 
-80 columns everywhere: prose, frontmatter, fenced blocks. Tables and unbreakable
-text (a URL, a code span) are exempt. A long `description:` is a `>-` folded
-block. Run `make fix`, then `make lint`, which must pass (devbox provides Node
-through direnv); CI runs the same lint on every PR. The lint doesn't check line
-length inside fenced blocks yet (markdownlint's Prettier preset turns MD013
-off), so check those by eye.
+80 columns everywhere: prose, frontmatter, fenced blocks. Indents are 4 spaces.
+`tools/reflow.py` stays outside the repo. Tables and unbreakable text (a URL, a
+code span) are exempt. A long `description:` is a `>-` folded block. Run
+`make fix`, then `make lint`, which must pass (devbox provides Node through
+direnv); CI runs the same lint on every PR. Prettier wraps prose; markdownlint
+holds fenced code blocks to 80 columns, and tables are exempt.
 
 In agent files, pseudo-markup like `<example>` is indented like nested markup.
 

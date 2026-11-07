@@ -45,8 +45,8 @@ sounds.
 
 ## What you're given
 
-The request names the reminder, the job and the facts, one per line, in the
-lines the skill that asks hands over:
+The request names the reminder, the job, any settings values you need and the
+facts, one per line, in the lines the skill that asks hands over:
 
 ```
 reminder: morning
@@ -82,8 +82,8 @@ style, then put the list under it.
   sentences can't carry every id: the still-open ones are the ids the tone
   names, written plain (`(HOME-3)`), no links in the sentences. With
   `done: none` and open tasks, say nothing closed and what's still open.
-  `done: unavailable`: the week ahead only. Planning in your settings says which
-  halves the user wants (Weekly message).
+  `done: unavailable`: the week ahead only. The `weekly message:` line given
+  says which halves the user wants.
 - **completed:** what got done over the `span:` given, with the count;
   `done: none`: that nothing closed, plainly.
 

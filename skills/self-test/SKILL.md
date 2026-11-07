@@ -1,14 +1,19 @@
 ---
 name: self-test
-description: Exercises the whole ntm loop on a throwaway task and a throwaway note, one line per step, and ends with Self-test OK or the first step that failed. The first thing to run after installing ntm and ntm-user ("test ntm", "run the self test", "is everything wired up?"), and the smoke test for a backend the user described themselves.
+description: >-
+    Exercises the whole ntm loop on a throwaway task and a throwaway note, one
+    line per step, and ends with Self-test OK or the first step that failed. The
+    first thing to run after installing ntm and ntm-user ("test ntm", "run the
+    self test", "is everything wired up?"), and the smoke test for a backend the
+    user described themselves.
 ---
 
 # ntm:self-test
 
 Runs every skill a job uses, and every backend operation they need, once, on a
-task and a note made for the purpose and canceled and emptied at the end. Run
-it in chat, in a new chat after installing `ntm-user`: it's the first thing to
-run after install, and the thing to run again after changing Todo list in your
+task and a note made for the purpose and canceled and emptied at the end. Run it
+in chat, in a new chat after installing `ntm-user`: it's the first thing to run
+after install, and the thing to run again after changing Todo list in your
 settings.
 
 ## Usage
@@ -20,9 +25,9 @@ settings.
 ## What it uses
 
 - Load `ntm:conventions` and compute `TODAY` as its Dates section says.
-- One throwaway task, titled `ntm self-test`, labeled with the
-  $no-autoschedule label by its real name from Labels in your settings, in no
-  project. Keep its id once created; `ABC-12` below stands for it.
+- One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
+  label by its real name from Labels in your settings, in no project. Keep its
+  id once created; `ABC-12` below stands for it.
 - One throwaway note, titled `ntm self-test`, at list level. It's not under
   Notes in Todo list; only this skill knows it.
 - If an earlier run left either behind (`fetch open` shows a task with that
@@ -47,8 +52,8 @@ the conventions say; a second failure is the step's failure.
    asked for this test, so that is their approval. Take the plan it proposes as
    approved when it dates only that task, paused day or not; otherwise answer
    that only ABC-12 moves, and approve that. The $no-autoschedule label doesn't
-   stop it; in chat the user has the final say. Pass when `read task` shows
-   the planned date as `TODAY`.
+   stop it; in chat the user has the final say. Pass when `read task` shows the
+   planned date as `TODAY`.
 4. **today:** `/ntm:today`. Pass when a line starts with `ABC-12`.
 5. **style:**
    `/ntm-user:style --for morning "Morning reminder; self-test, ABC-12 planned for today" ABC-12 is planned for today`.
@@ -82,10 +87,10 @@ the conventions say; a second failure is the step's failure.
 Always, whether the steps passed or stopped, and in this order; one line each,
 `cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
 
-- **The task:** if it was created, `set status` to the canceled status from
-  Todo list, so it never counts as work done (leave it done when Todo list's
-  canceled line is blank). Where the backend keeps notes in tasks, cancel the
-  note's task the same way.
+- **The task:** if it was created, `set status` to the canceled status from Todo
+  list, so it never counts as work done (leave it done when Todo list's canceled
+  line is blank). Where the backend keeps notes in tasks, cancel the note's task
+  the same way.
 - **The note:** if it was written, `write note` it empty.
 
 Nothing else on the todo list is touched: the test dates, closes and cancels its

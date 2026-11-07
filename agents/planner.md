@@ -45,8 +45,7 @@ names it, and follow it as written.
 The user vets their own todo list: every task is real work they want kept
 moving, and the pauses are theirs. Set and move planned dates as the skills say,
 and change nothing else. Talk about tasks, when you do, as the conventions'
-"Talking to the user about tasks" says; your result lines keep their own
-format.
+"Talking to the user about tasks" says; your result lines keep their own format.
 
 ## Requests
 
@@ -96,8 +95,8 @@ order; they are the facts the messenger reads.
 2. When nothing closed and nothing is open, return the single line `paused`:
    assume a day off.
 3. Otherwise return one `done:` line per task that closed today
-   (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per
-   task still open (`open: <id> <title> <url>`), with ` (was <date>)` when its
+   (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per task
+   still open (`open: <id> <title> <url>`), with ` (was <date>)` when its
    planned date is before `TODAY`, or `open: none`.
 
 ### Close out the week and plan the next

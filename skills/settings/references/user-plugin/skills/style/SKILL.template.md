@@ -1,6 +1,9 @@
 ---
 name: style
-description: How ntm reminders talk to you, and the skill that writes them that way. Run by the messenger agent for every reminder, and in chat when you ask for a message in your style; change it with /ntm:configure-style.
+description: >-
+    How ntm reminders talk to you, and the skill that writes them that way. Run
+    by the messenger agent for every reminder, and in chat when you ask for a
+    message in your style; change it with /ntm:configure-style.
 ---
 
 # ntm-user:style
@@ -21,8 +24,8 @@ to edit; keep the Usage the same, since the messenger relies on it.
 - `--stay-fresh`: for scheduled runs, which keep lines fresh with the message
   history.
 - `--for <reminder>`: one of `morning`, `afternoon`, `evening`, `week`,
-  `completed`. Implies `--stay-fresh` and adds a `Title:` line. The
-  messenger opens the tone with the job name (`Morning reminder; …`).
+  `completed`. Implies `--stay-fresh` and adds a `Title:` line. The messenger
+  opens the tone with the job name (`Morning reminder; …`).
 
 Output: the rewritten message, plain text, and with `--for` a last line
 `Title: …` (see Title line). Nothing else.
@@ -112,12 +115,12 @@ combines them:
 **Levels.** The levels under When something keeps slipping, in the Profile's
 order and with its names, are the only levels. The first is the everyday one:
 fresh work, work already planned for today, and every line when there is one
-level. For a task the tone names as carried over or still open, the level
-comes from its history count (below). The level is the last one whose "after N
-earlier days" the count has reached; count 0 is always the first level. Levels
-listed without numbers get 0, 1, 2… in order. Without `--for` there is no count:
-the tone says how hard, and the first level otherwise. Back to the first level
-once a task closes. The afternoon reminder never climbs.
+level. For a task the tone names as carried over or still open, the level comes
+from its history count (below). The level is the last one whose "after N earlier
+days" the count has reached; count 0 is always the first level. Levels listed
+without numbers get 0, 1, 2… in order. Without `--for` there is no count: the
+tone says how hard, and the first level otherwise. Back to the first level once
+a task closes. The afternoon reminder never climbs.
 
 **Examples** show the register for each level, and for nothing open: how hard it
 lands, how long it runs, and how a motif ties to the subject. They are not a
@@ -187,11 +190,11 @@ names as carried over or still open, count the earlier days it appears in the
 history: the distinct dates, before today, of entries whose `line` contains the
 id. Compute it once, here.
 
-**Title line.** With `--for`, the output's last line is `Title: …`, on its
-own line after the message. Write it with the message, as part of the same
-theme and the same bit: a few words in the same style that say what the
-message is about (today's tasks, what's still open, what closed). Never
-just the reminder's name ("Afternoon reminder").
+**Title line.** With `--for`, the output's last line is `Title: …`, on its own
+line after the message. Write it with the message, as part of the same theme and
+the same bit: a few words in the same style that say what the message is about
+(today's tasks, what's still open, what closed). Never just the reminder's name
+("Afternoon reminder").
 
 ### Rules
 

@@ -48,10 +48,10 @@ A candidate is an open task with a plannable status, no open sub-tasks, and
 either no planned date or a stale one, and not one Planning's Never picks rules
 out (by default anything carrying the $no-autoschedule or $pending-shipment
 label, by their real names from Labels, or the blocked status, itself or through
-an ancestor). Read each candidate and its ancestors with the guide's
-`read task` for descriptions and relations. Blocked-by relations follow the
-conventions' Blocks and blocked by rule; the picks made in this run count as
-planned days, so a chain can fill the week in order.
+an ancestor). Read each candidate and its ancestors with the guide's `read task`
+for descriptions and relations. Blocked-by relations follow the conventions'
+Blocks and blocked by rule; the picks made in this run count as planned days, so
+a chain can fill the week in order.
 
 Pick as many candidates per day as Planning's Rhythm says (one by default),
 using judgement, and give each pick a one-line reason. Weigh, roughly in this
@@ -124,9 +124,9 @@ can't finish in the span, then do what they decide.
    "reset it".
 3. Propose a plan, leaning toward what they asked for, and keep revising until
    they approve. Any open task can move, including one already dated later in
-   the week; say which day it leaves empty. Every task the plan bumps off a
-   day gets its date cleared, unless the user asks to move it to a later day.
-   Days they want empty stay empty, and paused days get planned if they want.
+   the week; say which day it leaves empty. Every task the plan bumps off a day
+   gets its date cleared, unless the user asks to move it to a later day. Days
+   they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears,
    including dates they set themselves. When they approve, write them, with
    `set planned date` and `clear planned date`. Return the saved plan as Result
@@ -136,11 +136,11 @@ can't finish in the span, then do what they decide.
 
 Return plain text for whoever called the skill; the job or skill that called it
 decides what to tell the user and how. Typed in chat, present it as the
-conventions' "Talking to the user about tasks" says. Write each planned task
-on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your
-best guess at how long it takes; a day the user had already dated is listed the
-same way. For any task this run picked, put its one-line reason on the next
-line, indented.
+conventions' "Talking to the user about tasks" says. Write each planned task on
+its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best
+guess at how long it takes; a day the user had already dated is listed the same
+way. For any task this run picked, put its one-line reason on the next line,
+indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines
   for each day in order, `<date>: paused` for a paused day and

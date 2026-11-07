@@ -70,10 +70,9 @@ otherwise.
    `ntm:conventions` says, and keep the ones with the $price-watch project
    label, counting labels inherited from their project (the conventions'
    "Project labels"). Split them: those with neither label need an alert; those
-   with $has-amazon-alert are set; those with $amazon-unavailable need
-   nothing.
-2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert
-   label, canceled and duplicate included, with the standard fields.
+   with $has-amazon-alert are set; those with $amazon-unavailable need nothing.
+2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
+   canceled and duplicate included, with the standard fields.
 
 If there's nothing to set and nothing to remove, say "Amazon alerts are in sync;
 nothing to do." and stop.
@@ -118,10 +117,10 @@ For each open item that needs an alert:
    `Amazon alert: not on Amazon, checked YYYY-MM-DD. <one line on what you found>`.
 5. **Set the alert.** Alert price, per unit: the task's acceptable price if it
    names one; otherwise the target plus about 10–15%, rounded to a sensible
-   figure. With no target on the task, ask the user what to use. Set the
-   alert, then check it shows up where Amazon lists alerts.
-6. **Record it.** Add the $has-amazon-alert label (keep the task's other
-   labels) and comment:
+   figure. With no target on the task, ask the user what to use. Set the alert,
+   then check it shows up where Amazon lists alerts.
+6. **Record it.** Add the $has-amazon-alert label (keep the task's other labels)
+   and comment:
    `Amazon alert: alert at <price>, set YYYY-MM-DD. ASIN <asin>, <product link>.`
 
 If an alert can't be set for a reason the user could fix, skip that item, leave

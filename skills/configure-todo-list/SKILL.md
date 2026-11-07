@@ -1,6 +1,12 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "rename my labels" or "change how my week is planned".
+description: >-
+    The user's todo list, with them in chat. On a first run, where it lives and
+    the agreements ntm works by on it (the backend, the list, the status names
+    for each class, the labels, the notes, how planning and shopping work),
+    returned as settings. Once configured, a change to those settings. Run from
+    ntm:configure, or when the user says "set up my todo list", "connect
+    Linear", "rename my labels" or "change how my week is planned".
 ---
 
 # ntm:configure-todo-list
@@ -19,8 +25,8 @@ Which path runs is a matter of context:
   settings: a backend, a label name, the planning rhythm, what counts as a deal.
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
-project", "size the garage work") is `/ntm:review-todo-list`; when the words
-are about that, load it and follow it instead.
+project", "size the garage work") is `/ntm:review-todo-list`; when the words are
+about that, load it and follow it instead.
 
 ## Usage
 
@@ -152,8 +158,8 @@ record any rename.
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
 meaning as the description. Project labels are their own set where the backend
-keeps one (Linear does): $price-watch and $no-autoschedule as project labels,
-so projects can carry them. On Claude Docs labels are free text and nothing is
+keeps one (Linear does): $price-watch and $no-autoschedule as project labels, so
+projects can carry them. On Claude Docs labels are free text and nothing is
 created.
 
 Then the price watch project, when one was chosen: create it now with
@@ -164,10 +170,10 @@ it carries both; the guide says whether `labels` replaces the set.
 
 Each note under Todo list has a title. Show the five defaults in one line
 (Pauses, Message history, Task review log, Price watch stores, Amazon alert
-steps);
-a plain "ok" keeps them, and they rename any. Then, for each, `read note` by its
-settled title. Found: keep it. Missing: ask whether a note already exists under
-another title (record that title) or create it with `create note`:
+steps); a plain "ok" keeps them, and they rename any. Then, for each,
+`read note` by its settled title. Found: keep it. Missing: ask whether a note
+already exists under another title (record that title) or create it with
+`create note`:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line
@@ -199,12 +205,12 @@ and they change any line in their own words:
   plans; could be two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
   evening, 3 or more is multi-day. What an estimate means on their todo list;
-  the planner guesses from the title when a task has none. On a backend with
-  no estimate field, say the task review log is the record.
+  the planner guesses from the title when a task has none. On a backend with no
+  estimate field, say the task review log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
-  exclusions, each checked on the task and its ancestors; name the labels by
-  the names settled above.
+  exclusions, each checked on the task and its ancestors; name the labels by the
+  names settled above.
 - **Parents:** plan the open sub-tasks, never the parent.
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
@@ -221,8 +227,8 @@ line each:
 
 - **Condition:** new, unless a task says otherwise.
 - **Delivery:** online only, to their country (from About you).
-- **A deal:** at or near the task's target, or well below the usual price.
-  What gets them an alert.
+- **A deal:** at or near the task's target, or well below the usual price. What
+  gets them an alert.
 - **Amazon interface:** how `/ntm:sync-price-watch-to-amazon` reaches Amazon:
   Claude's built-in browser, their own browser through the Claude extension, or
   off (no Amazon alerts). Blank means it asks.

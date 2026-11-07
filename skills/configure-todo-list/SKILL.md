@@ -67,15 +67,14 @@ to connect it on the Connectors tab and come back, and stop with
 ### Your own
 
 Backend is the name they give. Walk the contract with them in order: What the
-backend needs to have, Todo list, Status classes, each operation in the
-Operations table, Notes, Setup operations, Writing. For each operation, name the
-tool and the parameters that carry it out. Read the tool's schema from the
-ToolSearch result rather than guessing: which date field is the planned date,
-how results paginate, whether labels add or replace, whether a comment can be
-edited in place. Where a choice is theirs (which date field, which grouping is a
-project), propose one and let them react. Try a read by hand where it's cheap.
-The setup operations run below as described; every other write waits for
-`/ntm:self-test`.
+backend needs to have, Todo list, Status classes, each operation under
+Operations, Notes, Setup operations, Writing. For each operation, name the tool
+and the parameters that carry it out. Read the tool's schema from the ToolSearch
+result rather than guessing: which date field is the planned date, how results
+paginate, whether labels add or replace, whether a comment can be edited in
+place. Where a choice is theirs (which date field, which grouping is a project),
+propose one and let them react. Try a read by hand where it's cheap. The setup
+operations run below as described; every other write waits for `/ntm:self-test`.
 
 The contract names the survivable gaps (no estimate field, no blocked-by
 relation, no labels on groups, no documents) and the two fatal ones (no date

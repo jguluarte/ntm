@@ -23,7 +23,11 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 - **Automations:** Linear can close a parent when its sub-issues are all done
   (Parent auto-close, in the team's settings under Workflow). Either way,
   `ntm:fix-todo-list` closes any finished parent still open.
-- **Estimates:** `estimate` holds the team's points. When Planning has an
+- **Estimates:** `estimate` holds the team's points, on the team's estimate
+  type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
+  3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
+  team can extend its scale or allow zero. Times can't be stored. The connector
+  doesn't say which type a team uses; the user does. When Planning has an
   Estimate mapping, convert through it: the user's size to its point when
   writing, a point back to its size when reading.
 
@@ -151,10 +155,12 @@ those parents instead.
   its name and `type`, which suggests the class (`backlog`, `unstarted` and
   `started` are plannable, `started` the started one; `completed` done;
   `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
-- **`read estimate type`:** `get_team` with `query: "<List id>"`; its estimate
-  type is the scale `estimate` takes: linear (1–5), exponential, Fibonacci, or
-  T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). Times can't be
-  stored.
+- **`sample estimates`:** `list_issues` with `team: "<List name>"`, `limit: 50`
+  and `fields` `title` and `estimate`. Suggest the estimate type (Estimates,
+  above) whose points fit the ones already set: a 4 rules out Fibonacci and
+  T-shirt, a 5 rules out exponential. Fibonacci and T-shirt store the same
+  points; ask which they see on their tasks in Linear. No estimates set means no
+  suggestion.
 - **`list labels`:** `list_issue_labels` with `team` for issue labels;
   `list_project_labels` with `team` for project labels, a separate set.
 - **`create label`:** `save_issue_label` with `name`, `teamId: "<List id>"` and

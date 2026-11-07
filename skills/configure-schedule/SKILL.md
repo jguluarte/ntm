@@ -31,22 +31,36 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-| Kind               | Default title                              | Default days and time                                                | Prompt                                  | Offered                                                          |
-| ------------------ | ------------------------------------------ | -------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
-| morning reminder   | Morning reminder                           | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md`   | always                                                           |
-| afternoon reminder | Afternoon reminder                         | planning days 14:30                                                  | `references/jobs/afternoon-reminder.md` | always                                                           |
-| evening reminder   | Evening reminder                           | planning days 19:30                                                  | `references/jobs/evening-reminder.md`   | always                                                           |
-| weekly planning    | Weekly planning                            | Sunday 22:00                                                         | `references/jobs/weekly-planning.md`    | always                                                           |
-| price watch        | Price watch                                | every day 07:00                                                      | `references/jobs/price-watch.md`        | only when Todo list in your settings names a price watch project |
-| completed          | Completed this week / Completed this month | weekly or monthly; off by default                                    | `references/jobs/completed.md`          | always; the default answer is no                                 |
+| Kind               | Default title                              | Default days and time                                                | Skill                    | Offered                                                          |
+| ------------------ | ------------------------------------------ | -------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------- |
+| morning reminder   | Morning reminder                           | planning days (Planning in your settings; weekdays by default) 09:00 | `ntm:morning-reminder`   | always                                                           |
+| afternoon reminder | Afternoon reminder                         | planning days 14:30                                                  | `ntm:afternoon-reminder` | always                                                           |
+| evening reminder   | Evening reminder                           | planning days 19:30                                                  | `ntm:evening-reminder`   | always                                                           |
+| weekly planning    | Weekly planning                            | Sunday 22:00                                                         | `ntm:weekly-planning`    | always                                                           |
+| price watch        | Price watch                                | every day 07:00, paused days included                                | `ntm:price-watch`        | only when Todo list in your settings names a price watch project |
+| completed          | Completed this week / Completed this month | weekly, Sunday 20:00, or monthly, the 1st 20:00; off by default      | `ntm:show-completed`     | always; the default answer is no                                 |
 
-Each prompt file is named after its kind and starts with a table of what differs
-per job (the default title and the suggested schedule; for completed, the
-monthly variant), then a `--- prompt ---` line; everything after that line is
-the prompt. Every prompt is three lines that load the matching `ntm:` skill, so
-a template update reaches the jobs without touching them, and a job carries no
-logic of its own. Titles and prompt text are the user's: offer the defaults,
-take what they say, and lock nothing.
+Every job's prompt is these three lines, with the kind's default title and skill
+filled in:
+
+```
+<default title>.
+Load `<skill>` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
+If `<skill>` can't be loaded, end the run with `<default title> FAILED: <skill> couldn't be loaded; check the ntm plugin is installed and enabled.`
+```
+
+For completed, the second line is instead:
+
+```
+Load `ntm:show-completed` and run `/ntm:show-completed <span> --notify`. Its Notify section's final reply and error handling are this job's.
+```
+
+The span is `the last 7 days` for Completed this week and `last month` for
+Completed this month. The prompt only loads the skill, so a plugin update
+reaches the jobs without touching them, and a job carries no logic of its own.
+Keep the last line: without it, a job whose plugin didn't load ends without a
+word. Titles and prompt text are the user's: offer the defaults, take what they
+say, and lock nothing.
 
 ## Walking the kinds
 
@@ -58,13 +72,13 @@ creates it, and a job that runs every day doesn't need the heaviest one. Their
 answer is the model every job gets. A title is only a label; the kind's default
 title stays the name notifications and tokens are matched by. Offer the defaults
 and move on when they take them. For completed, also weekly or monthly, and the
-span in the prompt follows (see its header). Skip price watch when Todo list
-names no price watch project.
+span in the prompt follows. Skip price watch when Todo list names no price watch
+project.
 
 Then, for each job they want:
 
-1. Read its prompt file; the prompt is everything after `--- prompt ---`. If
-   they want the prompt to say something else, change it with them; it's theirs.
+1. Fill in its prompt from The kinds. If they want the prompt to say something
+   else, change it with them; it's theirs.
 2. Pick the time. The default is the starting point; the user can name another.
    Then apply the jitter rule: never land on :00 or :30. When a time would land
    on the hour or half hour, move it 1–29 minutes earlier (the number of letters
@@ -113,7 +127,7 @@ When jobs exist, list them and ask what to change, instead of walking the kinds
 again. `list_triggers`, recurring only. Match the user's jobs by title against
 the titles above, and otherwise by the first line of the stored prompt
 (`derived_state.prompt`, when the `list_triggers` entry carries it; when it
-doesn't, ask the user which job it is): every prompt file opens with the kind's
+doesn't, ask the user which job it is): every prompt opens with the kind's
 default title and a full stop (`Morning reminder.`, `Weekly planning.`,
 `Completed this week.`, `Price watch.`). Show each as: title, schedule in words
 in the user's timezone (from its `CRON_TZ` cron expression), on or off, and the
@@ -131,13 +145,13 @@ morning reminder now").
 
 ## Re-syncing a prompt
 
-A stored prompt only goes stale when its prompt file changes. When that happens:
-`list_triggers`, match each job as Already set up says, read the prompt file
-again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep
+A stored prompt only goes stale when the prompt in The kinds changes. When that
+happens: `list_triggers`, match each job as Already set up says, fill in the
+prompt again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep
 anything the user added to the prompt (the stored prompt is
 `derived_state.prompt`, when the entry carries it; when it doesn't, tell the
-user the file's prompt replaces theirs and to re-add anything they had put in);
-change only what came from the file. Nothing else changes; the job keeps its
+user the new prompt replaces theirs and to re-add anything they had put in);
+change only what came from The kinds. Nothing else changes; the job keeps its
 schedule and run history. Never delete and recreate a job to change its prompt.
 
 ## Changing a time, days or title

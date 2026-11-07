@@ -226,10 +226,13 @@ Sizing gets its own question: ask how they like to size their tasks. If they're
 unsure, offer a short explanation of two ways to estimate: compare tasks to each
 other (this one is about twice that one), or say how long each would take.
 Record their answer as Sizing, and as Estimate help whether they're new to
-estimating or comfortable with it. On Linear, read the team's estimate type with
-the guide's `read estimate type`. When their scale isn't the team's, agree with
-them which of the team's points each size on their scale becomes, and record it
-as Estimate mapping.
+estimating or comfortable with it. On Linear, ask which estimate type their team
+uses: linear, exponential, Fibonacci or T-shirt sizes (the guide's Estimates
+line has each one's points). If they're unsure, it's in Linear under the team's
+settings, Estimates. If they still don't know, run the guide's
+`sample estimates` and suggest the type that fits. When their scale isn't the
+team's, agree with them which of the team's points each size on their scale
+becomes, and record it as Estimate mapping.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on

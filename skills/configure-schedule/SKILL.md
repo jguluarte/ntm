@@ -78,9 +78,8 @@ time: Sunday, 22:00. Always offered.
 ### Price watch
 
 Runs `ntm:price-watch`. Default title: Price watch. Default days and time: every
-day, 07:00, paused days included. Always offered, except on a first run when no
-price watch project was chosen. It watches the tasks carrying the $price-watch
-label.
+day, 07:00, ignore pause. Always offered, except on a first run when no price
+watch project was chosen. It watches the tasks carrying the $price-watch label.
 
 ### Completed
 

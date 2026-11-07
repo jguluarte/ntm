@@ -156,7 +156,8 @@ Completed (weekly or monthly), Price watch. Each runs one skill. Written by
 ### The planner
 
 What is planned, what got done, is today ready? Runs the list skills for the
-reminders. Ships with ntm.
+reminders, owns what an estimate is, and reviews the todo list with you through
+`/ntm:review-todo-list`. Ships with ntm.
 
 ### The messenger
 
@@ -178,8 +179,8 @@ What reminders have said, so they don't repeat themselves. Written by
 
 ### Task review log note
 
-How you like tasks written and sized, learned while reviewing. Written by
-`/ntm:review-todo-list`.
+How you like tasks written and sized, learned while reviewing. Written by the
+planner, through `/ntm:review-todo-list`.
 
 ### Price watch stores note
 

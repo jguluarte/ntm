@@ -110,9 +110,9 @@ the tie-breaker.
 
 A skill typed in chat runs in the chat. The reminder skills,
 `show-completed --notify` and the price watch hand their work to the plugin's
-agents (planner, messenger, shopper), in a job or in chat alike; reviewing and
-setting up the todo list ask the planner about estimates. Each says what it
-hands over.
+agents (planner, messenger, shopper), in a job or in chat alike. Reviewing and
+setting up the todo list follow parts of the planner's file in the chat. Each
+says what it hands over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:
@@ -220,7 +220,7 @@ it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
   history to keep; the style template says what it writes.
-- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it.
+- **task review log** (`Task review log`): the planner keeps it, in its Review.
 - **price watch stores** (`Price watch stores`): stored in the price watch
   project, not at list level. `ntm:price-watch` keeps it, from the user's vouch
   and block replies; the shopper reads it.

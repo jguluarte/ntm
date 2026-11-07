@@ -18,7 +18,8 @@ and says go.
 - Nothing lands unless he asked for it or approved it. Don't run ahead.
 - Decisions go to him one at a time. User-facing names are his. A rename lands
   only after his explicit yes; silence is not approval. His yes goes in
-  `NAMES.md`.
+  `NAMES.md`. Plugin-internal names (status, delivery and result lines) don't
+  need it.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 

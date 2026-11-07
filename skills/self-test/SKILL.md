@@ -56,11 +56,18 @@ the conventions say; a second failure is the step's failure.
    planned date as `TODAY`.
 4. **today:** `/ntm:today`. Pass when a line starts with `ABC-12`.
 5. **style:**
-   `/ntm-user:style --for morning "Morning reminder; self-test, ABC-12 planned for today" ABC-12 is planned for today`.
-   Pass when the output contains `ABC-12` and ends with a `Title:` line. When
-   `ntm-user:style` won't load, the line is `5. style: skipped (no style)` and
-   the next step uses the message as given with the title `Morning reminder`.
-   Keep the message and the title for the next step.
+
+    ```
+    /ntm-user:style --for morning
+        "Morning reminder; self-test, ABC-12 planned for today"
+        ABC-12 is planned for today
+    ```
+
+    Pass when the output contains `ABC-12` and ends with a `Title:` line. When
+    `ntm-user:style` won't load, the line is `5. style: skipped (no style)` and
+    the next step uses the message as given with the title `Morning reminder`.
+    Keep the message and the title for the next step.
+
 6. **notify:** read Channel in Notifications in your settings first. On
    `pushover`, `/ntm:notify --title "<the title>" --message "<the message>"`.
    Pass on `Sent:`, as `6. notify: pass (push sent; check your phone)`. Nobody

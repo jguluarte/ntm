@@ -71,8 +71,12 @@ The failures, and the fix for each:
 
 ## With `--notify-failure`
 
-When the check fails, load `ntm:notify` and run
-`/ntm:notify --from "<job name>" --title "<List name> — <job name> failed" --message "<job name>: <failure>. <fix>"`.
+When the check fails, load `ntm:notify` and run:
+
+```
+/ntm:notify --from "<job name>" --title "<List name> — <job name> failed"
+    --message "<job name>: <failure>. <fix>"
+```
 
 This is the one error that may use the notification channel; a job reports every
 later error in its final reply instead. If `ntm:notify` can't be loaded or the

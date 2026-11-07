@@ -99,8 +99,15 @@ and say what's missing.
     in as it is.
 
 4. **Zip:**
-   `cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin && zip -r /tmp/ntm-user.plugin .`
-   (without `zip`: `python3 -m zipfile -c /tmp/ntm-user.plugin .`).
+
+    ```
+    cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin &&
+        zip -r /tmp/ntm-user.plugin .
+    ```
+
+    Without `zip`, the last command is
+    `python3 -m zipfile -c /tmp/ntm-user.plugin .`.
+
 5. **Present:** copy it to the session's outputs folder, the folder the
    session's instructions name for files to hand back (`/mnt/user-data/outputs/`
    on chat). That copy is what shows the accept card in Cowork; say where it is.

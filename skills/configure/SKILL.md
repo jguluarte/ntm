@@ -75,11 +75,11 @@ Keep the returned text; write nothing.
 The sections and what reads them, in case they ask: About you is read by
 everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
 how far ahead the week plans, sizing, what's never picked, what the weekly
-message includes) by `ntm:plan`, the planner and the weekly planning; Shopping
-(condition, delivery, what counts as a deal) by the shopper and
-`ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-todo-list`
-settles Planning and Shopping alongside Todo list, since each default is about
-the same todo list.
+message includes) by `ntm:plan`, the planner and the weekly planning, and its
+sizing lines by the estimator; Shopping (condition, delivery, what counts as a
+deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
+`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
+since each default is about the same todo list.
 
 ### Packaging
 

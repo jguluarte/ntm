@@ -239,7 +239,7 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning.
+How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning; Sizing, Estimate mapping and Estimate help by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>

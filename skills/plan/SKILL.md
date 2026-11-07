@@ -137,9 +137,11 @@ can't finish in the span, then do what they decide.
 Return plain text for whoever called the skill; the job or skill that called it
 decides what to tell the user and how. Typed in chat, present it as the
 conventions' "Talking to the user about tasks" says. Write each planned task on
-its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your best
-guess at how long it takes; a day the user had already dated is listed the same
-way. For any task this run picked, put its one-line reason on the next line,
+its own line as `Planned <date>: <id> <title> (~<time>) <url>`; a day the user
+had already dated is listed the same way. Get each `~<time>` from the estimator
+agent's Time tasks, asked once with every task listed (when the agent isn't
+available, follow its file as the conventions' "Chat, jobs and agents" says).
+For any task this run picked, put its one-line reason on the next line,
 indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines

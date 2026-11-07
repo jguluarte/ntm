@@ -86,11 +86,6 @@ The afternoon reminder: what's still open today. A job runs it; so can you.
 The evening reminder: how the day went, what closed and what's still open. A job
 runs it; so can you.
 
-#### `/ntm:weekly-planning`
-
-The weekly planning: closes out the week and plans the week ahead. A job runs
-it; so can you.
-
 ### Planning and tidying
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
@@ -124,12 +119,12 @@ On when your settings name a price watch project.
 ## What's what
 
 Rules live in `ntm:conventions` and name the values they depend on by key; the
-values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
-each is three sentences naming the skill it runs. The reminder skills gather
-facts and hand them to an agent; agents own the procedures. In the skills, a
-name with a `$` in front, like $no-autoschedule, is a label you configure,
-written by its default name. The notes live on your todo list, under the titles
-in your settings.
+values live in `ntm-user:settings`, agreed during setup. Jobs carry little
+logic: most just name the skill they run. The reminder skills gather facts and
+hand them to an agent; agents own the procedures. In the skills, a name with a
+`$` in front, like $no-autoschedule, is a label you configure, written by its
+default name. The notes live on your todo list, under the titles in your
+settings.
 
 ### `ntm:conventions`
 
@@ -149,9 +144,9 @@ How reminders talk to you, and the message history. Written by
 
 ### Jobs
 
-The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning,
-Completed (weekly or monthly), Price watch. Each runs one skill. Written by
-`/ntm:configure-schedule`.
+The scheduled tasks that run the skills on your schedule, under titles you
+choose: the reminders, a weekly planning, what you got done, the price watch.
+Built with you by `/ntm:configure-schedule`.
 
 ### The messenger
 

@@ -52,10 +52,12 @@ A candidate is an open task with a plannable status, no open sub-tasks, and
 either no planned date or a stale one, and not one Planning's Never picks rules
 out (by default anything carrying the $no-autoschedule or $pending-shipment
 label, by their real names from Labels, or the blocked status, itself or through
-an ancestor). Read each candidate and its ancestors with the guide's `read task`
-for descriptions and relations. Blocked-by relations follow the conventions'
-Blocks and blocked by rule; the picks made in this run count as planned days, so
-a chain can fill the week in order.
+an ancestor). Shortlist the likeliest picks from what the fetch already returns
+(status, project, labels, titles, planned dates) before reading any task in
+full; then read only the shortlist and its ancestors with the guide's
+`read task`, for descriptions and relations. Blocked-by relations follow the
+conventions' Blocks and blocked by rule; the picks made in this run count as
+planned days, so a chain can fill the week in order.
 
 Pick as many candidates per day as Planning's Rhythm says (one by default),
 using judgement; in chat, give each pick a one-line reason. Weigh, roughly in
@@ -85,7 +87,7 @@ Use its work as a theme to anchor the other days of the week.
 
 Every task the result lists shows how long it should take, so the user can see
 what the day asks of them. Ask the estimator agent's Time tasks once per run,
-with every task that needs a time: the candidates when the run picks, and every
+with every task that needs a time: the shortlist when the run picks, and every
 task the result lists. When the agent isn't loaded, follow its file as the
 conventions' "Chat, jobs and agents" says.
 

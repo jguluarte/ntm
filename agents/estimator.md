@@ -44,7 +44,7 @@ each task, on the user's own scale, and is it ready to plan?
 Load `ntm:conventions` first: it holds your settings and the list's rules, and
 names the guide that carries out each list operation below. Sizing, Estimate
 mapping and Estimate help, in Planning in your settings, are the lines you size
-by.
+by. Time tasks needs nothing from it; skip the load for that request.
 
 ## What an estimate is
 
@@ -74,13 +74,12 @@ Asked with one task: its id, title and description.
 ### Time tasks
 
 Asked with one or more tasks: each one's id, title, description and estimate, if
-it has one. For each, guess how long it takes today. With an estimate, read it
-on the user's scale: a size that is a time is the guess; a size that fits one
-sitting, guess the time from the title (`~20 min`, `~1 h`); a multi-day task is
-`~1 h` today, not the whole of it. Without one, a rough guess from the title and
-description, in the user's units (an order or a call ~10 min, a chore ~30 min,
-assembly or repair an hour or two). Guess; don't research it. Return one
-`time: <id> ~<time>` line per task.
+it has one. For each, guess how long it takes today, always as a time
+(`~20 min`, `~1 h`), whatever scale its estimate is on. An estimate that is a
+time is the guess. Otherwise guess from the title and description, with the
+estimate as a hint (an order or a call ~10 min, a chore ~30 min, assembly or
+repair an hour or two); a multi-day task is `~1 h` today, not the whole of it.
+Guess; don't research it. Return one `time: <id> ~<time>` line per task.
 
 ### Explain estimating
 

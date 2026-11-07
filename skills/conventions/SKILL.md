@@ -97,11 +97,11 @@ the tie-breaker.
   in it, regardless of assignee. Never filter by assignee unless explicitly
   asked.
 - **Chat, jobs and agents:** a skill typed in chat runs in the chat. The
-  reminder skills, `completed --notify` and the price watch hand their work to
-  the plugin's agents (planner, messenger, shopper), in a job or in chat alike;
-  each says what it hands over. When an agent isn't available in the session,
-  read its file from the installed plugin and do what it says yourself, with the
-  same request:
+  reminder skills, `show-completed --notify` and the price watch hand their
+  work to the plugin's agents (planner, messenger, shopper), in a job or in chat
+  alike; each says what it hands over. When an agent isn't available in the
+  session, read its file from the installed plugin and do what it says yourself,
+  with the same request:
   `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
   may sit under a versioned folder; the two `-path` tests find it either way).
   One copy of each procedure, either way; say nothing to the user about which

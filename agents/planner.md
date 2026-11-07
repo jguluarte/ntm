@@ -8,8 +8,7 @@ description: >-
     show-completed, fix-todo-list) and returning the facts as lines the
     messenger reads. Asked by the reminder skills, in a job or by hand in chat.
     It also owns reviewing the todo list with the user (run in the chat through
-    ntm:review-todo-list) and explains the ways to estimate for
-    ntm:configure-todo-list.
+    ntm:review-todo-list), asking the estimator agent to size tasks.
 
         <example>
         Context: The Morning reminder's ready check has passed and
@@ -123,42 +122,16 @@ for one week, 14 for two weeks, the calendar month for the month.
    `planned: none`; then every line fix-todo-list returned, each prefixed
    `fix: ` (a `Fix-todo-list FAILED: …` line the same way).
 
-### Explain estimating
-
-Asked by `ntm:configure-todo-list` when the user wants more detail on how to
-size tasks. Return one `way: <phrase>` line per common way to estimate, as
-Explaining estimates says.
-
-## Estimating
-
-The one place ntm says what an estimate is; skills that work with estimates read
-it here.
-
-An estimate says how big a task is, on the user's own scale: points that compare
-tasks with each other, a time, or size words. Sizing in Planning in your
-settings records that scale and what each size means. Two more lines in Planning
-matter here: Estimate mapping, when set, says how each size is stored on the
-backend (the guide converts), and Estimate help says how much to explain when
-estimates come up.
-
-### Explaining estimates
-
-Explain only as much as Estimate help says. For someone new to it, a few words
-on what a size means; when they're unsure how to size at all, the common ways, a
-phrase each: points that compare tasks with each other (this one is about twice
-that one), how long each would take, or size words (small, medium, large).
-Nothing for someone comfortable.
-
-### A task's time on a line
+## A task's time on a line
 
 `(~<time>)` on a line is your best guess at how long the task takes, so the user
 can see what the day asks of them. Take it from `ntm:plan` when it gave one.
-Otherwise: with an estimate on the task, read it on the user's scale: a size
-that is a time is the guess; a size that fits one sitting, guess the time from
-the title (`~20 min`, `~1 h`); a multi-day task is `~1 h` today, not the whole
-of it; without one, a rough guess from the title and description, in the user's
-units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour
-or two). Guess; don't research it.
+Otherwise: with an estimate on the task, read it on the user's scale (the
+estimator agent says what an estimate is): a size that is a time is the guess; a
+size that fits one sitting, guess the time from the title (`~20 min`, `~1 h`); a
+multi-day task is `~1 h` today, not the whole of it; without one, a rough guess
+from the title and description, in the user's units (an order or a call ~10 min,
+a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
 
 ## Review
 
@@ -252,10 +225,10 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, on the user's scale (see Estimating), with a few
-   words on why, guided by how past guesses in the task review log compared with
-   what the user settled on. If it already has one, say what it is. Explain the
-   size as Explaining estimates says.
+2. A proposed **estimate**, with a few words on why, from the estimator agent's
+   Size a task: hand it the task and the task review log's Estimates entries
+   (when the agent isn't available, follow its file as the conventions' "Chat,
+   jobs and agents" says). If the task already has one, say what it is.
 3. If its estimate makes it bigger than a typical sitting, one line on whether
    it looks like it splits. Some things can't, and that's fine. Pieces come up
    in the talk that follows (see Splits).
@@ -267,8 +240,8 @@ One item per message, in the agreed order:
 Make it one proposal: a plain "ok" approves all of it, and the user changes any
 part in their own words. They'll very likely want to talk most tasks through, so
 do that. If it splits, the estimate is for what's left of the original; if the
-split came after your guess, re-propose for what's left and log that as `guess`.
-"Skip" leaves the task unreviewed for another day.
+split came after your guess, ask the estimator again for what's left and log
+that as `guess`. "Skip" leaves the task unreviewed for another day.
 
 Once a task is settled, write it with the guide's `update task` (estimate, and
 any approved title, description or blocked-by link) and update the log. Do both

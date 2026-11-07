@@ -17,10 +17,10 @@ becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, three agents (planner, messenger,
-  shopper) that own the procedures, and the prompts for the jobs. It holds
-  nothing of yours, so it installs from a marketplace or a zip and updates like
-  any plugin.
+- **ntm** is the behaviour: the skills below, four agents (planner, messenger,
+  shopper, estimator) that own the procedures, and the prompts for the jobs. It
+  holds nothing of yours, so it installs from a marketplace or a zip and updates
+  like any plugin.
 - **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your
   unique settings and style: `ntm-user:settings` (every value you agreed to:
   where your todo list is, your label names, how planning and shopping work, how
@@ -156,8 +156,8 @@ Completed (weekly or monthly), Price watch. Each runs one skill. Written by
 ### The planner
 
 What is planned, what got done, is today ready? Runs the list skills for the
-reminders, owns what an estimate is, and reviews the todo list with you through
-`/ntm:review-todo-list`. Ships with ntm.
+reminders, and reviews the todo list with you through `/ntm:review-todo-list`.
+Ships with ntm.
 
 ### The messenger
 
@@ -167,6 +167,11 @@ channel. Ships with ntm.
 ### The shopper
 
 Is this item a good deal today? One per watched task. Ships with ntm.
+
+### The estimator
+
+How big is this task, on your own scale? Proposes sizes while reviewing, and
+explains the ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses note
 

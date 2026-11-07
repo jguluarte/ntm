@@ -92,8 +92,8 @@ the tie-breaker.
   Notes). A task titled with a note's title is a note, not work; every skill
   ignores it.
 - **Label:** a tag on a task or project.
-- **Estimate:** how big a task is; Estimating in the planner agent
-  (`agents/planner.md`) says what it means.
+- **Estimate:** how big a task is; the estimator agent (`agents/estimator.md`)
+  says what it means.
 - **Job:** a scheduled run, what the Claude app calls a scheduled task. Never
   "trigger", "routine" or "cron job" when talking to the user.
 
@@ -110,9 +110,10 @@ the tie-breaker.
 
 A skill typed in chat runs in the chat. The reminder skills,
 `show-completed --notify` and the price watch hand their work to the plugin's
-agents (planner, messenger, shopper), in a job or in chat alike. Reviewing and
-setting up the todo list follow parts of the planner's file in the chat. Each
-says what it hands over.
+agents (planner, messenger, shopper, estimator), in a job or in chat alike.
+Reviewing follows the planner's Review in the chat and asks the estimator to
+size tasks; setting up the todo list asks the estimator to explain the ways to
+estimate. Each says what it hands over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:

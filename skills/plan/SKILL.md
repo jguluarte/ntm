@@ -61,10 +61,10 @@ order:
   prefer picks that build on it: the next pieces of the same chain or project,
   so the week reads as one theme rather than scattered tasks.
 - **Small and concrete.** Prefer tasks that fit A day's worth in Planning (about
-  an hour by default), judging size as the planner's Estimating says
-  (`agents/planner.md`, found as the conventions' "Chat, jobs and agents" says).
-  Sometimes something bigger needs scheduling, and that's fine: the user can do
-  it on momentum from recent days, or break it up themselves.
+  an hour by default), judging size from its estimate when it has one (the
+  estimator agent says what an estimate is) and from the title and description
+  otherwise. Sometimes something bigger needs scheduling, and that's fine: the
+  user can do it on momentum from recent days, or break it up themselves.
 - **Unblocking.** Prefer work that frees up other open work.
 - **Priority, when set.** A priority the user set counts, where the backend has
   one. A missing one means nothing.

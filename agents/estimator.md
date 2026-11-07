@@ -184,8 +184,9 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, with a few words on why, worked out as Estimate
-   says for a size. If the task already has one, say what it is.
+2. Your proposed **estimate**, in the user's own terms (their Estimate pattern),
+   with a few words on why, worked out as Estimate says. If the task already has
+   one, say what it is.
 3. If it doesn't fit a sitting, one line on whether it looks like it splits.
    Some things can't, and that's fine. Pieces come up in the talk that follows
    (see Splits).

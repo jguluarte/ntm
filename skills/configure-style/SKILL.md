@@ -119,11 +119,14 @@ body for how it names these things (a `--reminder` flag, a `Subject:` line, its
 own history note) and write a short section, `## For ntm`, that goes above the
 body and says, in a line each, how the messenger's call maps onto the persona's
 own words: what `--for <reminder>` means to it, that `Title:` is its last line
-(in place of whatever it calls it), that `--stay-fresh` is its freshness
-mechanism, and that the message history note is the one titled under Notes in
-`ntm-user:settings` (when the persona names its own note, the settings' title
-should be that one). Show them the section; they confirm. Nothing else is added
-or filled in: the persona's own levels, profanity and motifs stand.
+(in place of whatever it calls it; when the persona has no subject line of its
+own, the section gives it the template's Title line rule, so the title is
+written with the message as part of its theme), that `--stay-fresh` is its
+freshness mechanism, and that the message history note is the one titled under
+Notes in `ntm-user:settings` (when the persona names its own note, the
+settings' title should be that one). Show them the section; they confirm.
+Nothing else is added or filled in: the persona's own levels, profanity and
+motifs stand.
 
 ## Result
 

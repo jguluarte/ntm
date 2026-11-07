@@ -123,11 +123,11 @@ it carries both; the guide says whether `labels` replaces the set.
 
 ## Notes
 
-Each note under Todo list has a title. Show the four defaults in one line
+Each database under Todo list has a title. Show the four databases in one line
 (Pauses, Message history, Task review log, Price watch stores); a plain "ok"
-keeps them, and they rename any. Then, for each, `read note` by its settled
-title. Found: keep it. Missing: ask whether a note already exists under another
-title (record that title) or create it with `create note`:
+keeps those titles, and they rename any. Then, for each, `read note` by its
+settled title. Found: keep it. Missing: ask whether the database already exists
+under another title (record that title) or create it with `create note`:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line

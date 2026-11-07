@@ -1,6 +1,12 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "rename my labels" or "change how my week is planned".
+description: >-
+    The user's todo list, with them in chat. On a first run, where it lives and
+    the agreements ntm works by on it (the backend, the list, the status names
+    for each class, the labels, the notes, how planning and shopping work),
+    returned as settings. Once configured, a change to those settings. Run from
+    ntm:configure, or when the user says "set up my todo list", "connect
+    Linear", "rename my labels" or "change how my week is planned".
 ---
 
 # ntm:configure-todo-list
@@ -19,8 +25,8 @@ Which path runs is a matter of context:
   settings: a backend, a label name, the planning rhythm, what counts as a deal.
 
 Reviewing the tickets themselves ("let's review my list", "review the kitchen
-project", "size the garage work") is `/ntm:review-todo-list`; when the words
-are about that, load it and follow it instead.
+project", "size the garage work") is `/ntm:review-todo-list`; when the words are
+about that, load it and follow it instead.
 
 ## Usage
 

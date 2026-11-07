@@ -1,6 +1,10 @@
 ---
 name: review-todo-list
-description: Reviews the user's todo list with them in chat: closes obsolete or duplicate tickets, then sizes and splits unreviewed ones with their approval. Run by the user in chat, never by a job ("let's review my list", "review the kitchen project", "size the garage work").
+description: >-
+    Reviews the user's todo list with them in chat: closes obsolete or duplicate
+    tickets, then sizes and splits unreviewed ones with their approval. Run by
+    the user in chat, never by a job ("let's review my list", "review the
+    kitchen project", "size the garage work").
 ---
 
 # ntm:review-todo-list
@@ -158,6 +162,7 @@ about 20 bullets.
 
 A `jsonl` code block, newest first, one object per approved estimate:
 
+<!-- prettier-ignore -->
 ```jsonl
 {"date": "YYYY-MM-DD", "id": "ABC-12", "guess": 2, "final": 3, "why": "wiring took longer than it looked"}
 ```

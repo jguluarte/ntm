@@ -129,10 +129,9 @@ own words: what `--for <reminder>` means to it, that `Title:` is its last line
 own, the section gives it the template's Title line rule, so the title is
 written with the message as part of its theme), that `--stay-fresh` is its
 freshness mechanism, and that the message history note is the one titled under
-Notes in `ntm-user:settings` (when the persona names its own note, the
-settings' title should be that one). Show them the section; they confirm.
-Nothing else is added or filled in: the persona's own levels, profanity and
-motifs stand.
+Notes in `ntm-user:settings` (when the persona names its own note, the settings'
+title should be that one). Show them the section; they confirm. Nothing else is
+added or filled in: the persona's own levels, profanity and motifs stand.
 
 ## Result
 

@@ -102,8 +102,8 @@ the tie-breaker.
   in it, regardless of assignee. Never filter by assignee unless explicitly
   asked.
 - **Chat, jobs and agents:** a skill typed in chat runs in the chat. The
-  reminder skills, `show-completed --notify` and the price watch hand their
-  work to the plugin's agents (planner, messenger, shopper), in a job or in chat
+  reminder skills, `show-completed --notify` and the price watch hand their work
+  to the plugin's agents (planner, messenger, shopper), in a job or in chat
   alike; each says what it hands over. When an agent isn't available in the
   session, read its file from the installed plugin and do what it says yourself,
   with the same request:

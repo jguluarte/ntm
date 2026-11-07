@@ -28,11 +28,11 @@ from `ntm-user:settings`, read as the conventions' Loading step says.
 
 Todo list in your settings maps each class to the status names. `list_issues`
 filters by `state` with a status name; results carry `status` (the name) and
-`statusType` (Linear's own type: `backlog`, `unstarted`, `started`,
-`completed`, `canceled`, `duplicate`). Use the names from Todo list to
-filter and to write; use `statusType` to tell closed from open when a result
-mixes states. A ticket's status class is the class whose line in Todo list lists
-its `status` name; `statusType` alone doesn't give it.
+`statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `completed`,
+`canceled`, `duplicate`). Use the names from Todo list to filter and to write;
+use `statusType` to tell closed from open when a result mixes states. A ticket's
+status class is the class whose line in Todo list lists its `status` name;
+`statusType` alone doesn't give it.
 
 ## Operations
 

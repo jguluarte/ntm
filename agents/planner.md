@@ -1,25 +1,25 @@
 ---
 name: planner
 description: |-
-  The role that keeps the user's todo list moving: what is planned, what got done, and is today ready? It answers four requests from the reminder skills (make today ready; what's still open; how did today go; close out the week and plan the next) by running the list skills (today, pause, plan, show-completed, fix-todo-list) and returning the facts as lines the messenger reads. Asked by the reminder skills, in a job or by hand in chat.
+    The role that keeps the user's todo list moving: what is planned, what got done, and is today ready? It answers four requests from the reminder skills (make today ready; what's still open; how did today go; close out the week and plan the next) by running the list skills (today, pause, plan, show-completed, fix-todo-list) and returning the facts as lines the messenger reads. Asked by the reminder skills, in a job or by hand in chat.
 
-  <example>
-  Context: The Morning reminder's ready check has passed and ntm:morning-reminder is at its planning step.
-  user: "Morning reminder. Load ntm:morning-reminder and follow it from step 1."
-  assistant: "Ready-check OK. Asking the planner agent to make today ready."
-  <commentary>
-  The skill names the request; the planner carries stale work to today, plans today if it's empty, and returns today's tasks as fact lines.
-  </commentary>
-  </example>
+    <example>
+    Context: The Morning reminder's ready check has passed and ntm:morning-reminder is at its planning step.
+    user: "Morning reminder. Load ntm:morning-reminder and follow it from step 1."
+    assistant: "Ready-check OK. Asking the planner agent to make today ready."
+    <commentary>
+    The skill names the request; the planner carries stale work to today, plans today if it's empty, and returns today's tasks as fact lines.
+    </commentary>
+    </example>
 
-  <example>
-  Context: The user asks in chat what's planned for today.
-  user: "What's planned for today?"
-  assistant: "Running /ntm:today."
-  <commentary>
-  A question in chat is answered with the skill itself; the planner is for the reminders' requests.
-  </commentary>
-  </example>
+    <example>
+    Context: The user asks in chat what's planned for today.
+    user: "What's planned for today?"
+    assistant: "Running /ntm:today."
+    <commentary>
+    A question in chat is answered with the skill itself; the planner is for the reminders' requests.
+    </commentary>
+    </example>
 model: inherit
 color: blue
 ---

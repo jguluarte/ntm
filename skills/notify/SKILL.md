@@ -122,8 +122,12 @@ the markup.
 
 ### Limits
 
-- The message can be at most 1024 characters as sent (links converted) and the
-  title at most 250. Pushover rejects anything longer, so trim before sending.
+- The message can be at most 1,024 characters as sent (links converted) and the
+  title at most 250. Pushover rejects anything longer. When either is over,
+  don't trim it and don't send: return
+  `Notify TOO LONG: <the cap and why>; this was <n>`, the cap in plain words
+  (for the message: Pushover takes at most 1,024 characters as sent, links
+  included; for the title: at most 250 characters), and the caller shortens it.
 - The rate limit is 10,000 messages per month per app, well beyond what the jobs
   use.
 
@@ -162,6 +166,10 @@ delivery.
 ## Result
 
 - `Sent: <title>` when Pushover answered `"status":1`.
-- The delivery block above on the `claude-push` channel.
+- The delivery block above on the `claude-push` channel, which has no length
+  cap.
+- `Notify TOO LONG: <the cap and why>; this was <n>` on Pushover when the
+  message or title is over its cap (see Limits); nothing was sent. Shorten it
+  and call once more.
 - `Notify FAILED: <why>` otherwise, with the response's `errors` or curl's error
   as the why.

@@ -111,6 +111,11 @@ shopper. The estimator is for planning: `ntm:plan` asks it how long the tasks it
 picks take, reviewing follows its Review in the chat, and setting up the todo
 list asks it to explain the ways to estimate. Each says what it hands over.
 
+A skill asking the messenger also hands it a `wording:` line for any Deviation
+about how tasks are worded or linked. When the messenger returns
+`Messenger NEEDS: …`, supply what it names and ask once more; a second one
+counts as `Messenger FAILED`.
+
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:
 `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
@@ -321,6 +326,10 @@ Every skill a job calls returns plain text. A skill's status line (OK / FAILED)
 starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`,
 `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`today:`,
 `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill.
+
+When `ntm:notify` returns `Notify TOO LONG: …`, nothing was sent: shorten the
+message or title to fit the cap it names and call it once more. A second
+`Notify TOO LONG` counts as `Notify FAILED`.
 
 A job's final reply is one line on what happened. When `ntm:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as

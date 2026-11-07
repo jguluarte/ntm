@@ -326,6 +326,10 @@ starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`,
 `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`today:`,
 `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill.
 
+When `ntm:notify` returns `Notify TOO LONG: …`, nothing was sent: shorten the
+message or title to fit the cap it names and call it once more. A second
+`Notify TOO LONG` counts as `Notify FAILED`.
+
 A job's final reply is one line on what happened. When `ntm:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as
 its first line and the message under it, nothing else. The weekly planning adds

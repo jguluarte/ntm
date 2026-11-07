@@ -88,7 +88,7 @@ configured".
 
 One line of state per part, from what loads: About you (name, timezone); todo
 list (backend, todo list name, price watch project or off); notifications
-(channel); style (`ntm-user:style` loads, or not); schedule (which tasks exist,
+(channel); style (`ntm-user:style` loads, or not); schedule (which jobs exist,
 from `ntm:configure-schedule`'s listing). Ask which to change and hand off to
 that part; it shows its current state and asks what to change. About you is
 handled here the same way. Then package as Packaging says, with what it

@@ -67,13 +67,14 @@ the tie-breaker.
   user keeps tasks in.
 - **Backend:** the system behind the todo list: Linear, Claude Docs, or the
   user's own.
-- **Task:** one thing on the todo list. This plugin's word for it; the user's
-  system may call it an issue, a task, a todo or a reminder, and so may the
-  user. Ids look like `<task prefix>-<number>` where the backend has a prefix.
+- **Task:** one thing on the todo list. Each kind of list shows one its own way:
+  a [Linear issue](https://linear.app/docs/conceptual-model), a row in a Claude
+  Doc's table, a reminder, a todo. Ids look like `<task prefix>-<number>` where
+  the backend has a prefix.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
-- **Parent:** a task with open sub-tasks.
-- **Sub-task:** a task under a parent, where the backend has that relation.
+- **Parent task:** a task with open sub-tasks.
+- **Sub-task:** a task under a parent task, where the backend has that relation.
 - **Planned date:** the task's one date field, the day the work is planned
   for.
 - **Started:** the one plannable status that means work has begun. Jobs give
@@ -84,9 +85,9 @@ the tie-breaker.
   Notes). A task titled with a note's title is a note, not work; every skill
   ignores it.
 - **Label:** a tag on a task or project.
-- **Estimate:** reviewed size, on the scale Planning in your settings names.
-- **Job:** a scheduled task. Never "trigger", "routine" or "cron job" when
-  talking to the user.
+- **Estimate:** how big a task is, on the scale Planning in your settings names.
+- **Job:** a scheduled run, what the Claude app calls a scheduled task. Never
+  "trigger", "routine" or "cron job" when talking to the user.
 
 ## Workspace
 

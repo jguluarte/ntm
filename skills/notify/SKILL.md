@@ -1,11 +1,11 @@
 ---
 name: notify
-description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
+description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a skill, job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
 ---
 
 # ntm:notify
 
-Sends a notification to the user's phone. Any scheduled task or workflow can use
+Sends a notification to the user's phone. Any job or workflow can use
 it to reach them. This is the only skill in the system that sends anything;
 every other skill returns text and the job decides what goes out.
 
@@ -116,7 +116,7 @@ the markup.
 - The message can be at most 1024 characters as sent (links converted) and the
   title at most 250. Pushover rejects anything longer, so trim before sending.
 - The rate limit is 10,000 messages per month per app, well beyond what
-  scheduled tasks use.
+  the jobs use.
 
 ### Checking the result
 

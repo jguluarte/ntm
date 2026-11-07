@@ -1,7 +1,7 @@
 # Neurodivergent Task Manager (ntm)
 
 ntm runs a personal task system on your own todo list, with a few scheduled
-tasks that keep it moving. It plans your days and weeks, reminds you in a style
+jobs that keep it moving. It plans your days and weeks, reminds you in a style
 you choose, asks in the evening how the day went, tidies what has gone stale,
 and watches prices on things you want to buy.
 
@@ -18,7 +18,7 @@ becomes the easy option.
 ## Two plugins
 
 - **ntm** is the behaviour: the skills below, three agents (planner, messenger,
-  shopper) that own the procedures, and the prompts for the scheduled tasks. It
+  shopper) that own the procedures, and the prompts for the jobs. It
   holds nothing of yours, so it installs from a marketplace or a zip and updates
   like any plugin.
 - **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your

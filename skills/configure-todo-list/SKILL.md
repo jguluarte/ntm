@@ -151,9 +151,7 @@ and they change any line in their own words:
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
-- **Sizing:** asked on its own, below. On a backend with no estimate field, tell
-  them where estimates are kept, as the planner's Estimating says
-  (`agents/planner.md`, found as the conventions' "Chat, jobs and agents" says).
+- **Sizing:** asked on its own, below.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the

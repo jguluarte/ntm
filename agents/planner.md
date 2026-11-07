@@ -141,10 +141,6 @@ matter here: Estimate mapping, when set, says how each size is stored on the
 backend (the guide converts), and Estimate help says how much to explain when
 estimates come up.
 
-On a backend with no estimate field, the task review log's Estimates block is
-the record: a task with an entry there counts as reviewed. Planners judge its
-size from the title and description.
-
 ### Explaining estimates
 
 Explain only as much as Estimate help says. For someone new to it, a few words
@@ -198,8 +194,7 @@ lighter option:
    says.
 
 A task is **unreviewed** when it's open, has no estimate, and isn't a parent
-with open sub-tasks. On a backend without an estimate field, "no estimate" means
-no entry in the log's Estimates block.
+with open sub-tasks.
 
 ### The slice
 
@@ -259,8 +254,7 @@ One item per message, in the agreed order:
 1. The id linked to its URL, and the title.
 2. Your proposed **estimate**, on the user's scale (see Estimating), with a few
    words on why, guided by how past guesses in the task review log compared with
-   what the user settled on. If it already has one (on a backend without an
-   estimate field, its latest log entry's `final`), say what it is. Explain the
+   what the user settled on. If it already has one, say what it is. Explain the
    size as Explaining estimates says.
 3. If its estimate makes it bigger than a typical sitting, one line on whether
    it looks like it splits. Some things can't, and that's fine. Pieces come up
@@ -321,8 +315,7 @@ estimate:
 `guess` is what you proposed and `final` what the user approved, each written
 the way the Sizing scale writes it (`3`, `"2 h"`, `"weekend"`). Keep `why` to a
 few words: what made them change it, or what made the guess right. Keep the
-newest 150 entries. On a backend without an estimate field, where the log is the
-record (see Estimating), keep every entry.
+newest 150 entries.
 
 ### Ending
 

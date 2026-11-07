@@ -56,12 +56,11 @@ order; they are the facts the messenger reads.
 
 1. Load `ntm:today`, `ntm:pause` and `ntm:plan`. Run `/ntm:today`.
 2. **Carry over.** Every task it lists with a planned date before `TODAY` is
-   stale. Move the ones in the plannable class that aren't parents (a parent's
-   date means nothing) to `TODAY` with the guide's `set planned date`, whatever
-   their labels and even when one blocks another: the user dated them, so they
-   should just work (the conventions' Blocks rule is for picking work; carrying
-   a date isn't picking). A stale task in the blocked class keeps its date. Do
-   this on a paused day too.
+   stale. Move the ones in the plannable class to `TODAY` with the guide's
+   `set planned date`, whatever their labels and even when one blocks another:
+   the user dated them, so they should just work (the conventions' Blocks rule
+   is for picking work; carrying a date isn't picking). A stale task in the
+   blocked class keeps its date. Do this on a paused day too.
 3. **Today.** If nothing is planned for `TODAY` after the moves: run
    `/ntm:pause --check`. Paused (its line for today ends `true`): return
    `paused` and stop. Otherwise run `/ntm:plan --auto day`, which picks one task

@@ -31,19 +31,22 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-Every job's prompt is these three lines, with the kind's default title and skill
-filled in:
+Every job's prompt is these three sentences, with the kind's default title and
+skill filled in:
 
 ```
 <default title>.
-Load `<skill>` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `<skill>` can't be loaded, end the run with `<default title> FAILED: <skill> couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `<skill>` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING
+are this job's.
+If `<skill>` can't be loaded, end the run with this line:
+`<default title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
 ```
 
-For completed, the second line is instead:
+For completed, the second sentence is instead:
 
 ```
-Load `ntm:show-completed` and run `/ntm:show-completed <span> --notify`. Its Notify section's final reply and error handling are this job's.
+Load `ntm:show-completed` and run `/ntm:show-completed <span> --notify`. Its
+Notify section's final reply and error handling are this job's.
 ```
 
 The span is `the last 7 days` for Completed this week and `last month` for

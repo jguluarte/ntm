@@ -19,7 +19,8 @@ other skill returns text and the job decides what goes out.
 ## Usage
 
 ```
-/ntm:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
+/ntm:notify --title "<title>" --message "<message>" [--url <link>]
+    [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
 ```
 
 - `title` and `message` are the notification.
@@ -65,7 +66,9 @@ place of `<app token>` and `<user key>`:
 ```bash
 TITLE='Morning reminder'
 MSG=$(cat <<'EOF'
-Tonight's pick: <a href="https://tracker.example/ABC-12">the storage boxes (ABC-12)</a> (~5 min from the couch).
+Tonight's pick is a quick one, ~5 min from the couch.
+
+<a href="https://tracker.example/ABC-12">the storage boxes (ABC-12)</a>
 EOF
 )
 curl -sS --max-time 20 \

@@ -222,7 +222,8 @@ react.
   - price watch stores: <title; default Price watch stores>
   - Amazon alert steps: <title; default Amazon alert steps>
 
-<for their own backend: how each operation in the contract is done, in their words>
+<for their own backend: how each operation in the contract is done, in their
+words>
 
 ## Labels
 
@@ -239,13 +240,15 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan` and the weekly planning; Estimate scale, Estimate mapping and Estimate help by the estimator agent.
+How your todo list is planned. Read by `ntm:plan` and the weekly planning;
+Estimate scale, Estimate mapping and Estimate help by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
 - Estimate scale: <how they estimate their tasks, in their words>
-- Estimate mapping: <each estimate on their scale and the list's point it becomes; blank when their scale is the list's>
+- Estimate mapping: <each estimate on their scale and the list's point it
+  becomes; blank when their scale is the list's>
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
@@ -256,7 +259,8 @@ How your todo list is planned. Read by `ntm:plan` and the weekly planning; Estim
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper
+agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 - Condition: <default new>
 - Delivery: <default online only, to your country>

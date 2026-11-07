@@ -242,7 +242,7 @@ estimate:
 
 <!-- prettier-ignore -->
 ```jsonl
-{"date": "YYYY-MM-DD", "id": "ABC-12", "guess": 2, "final": 3, "why": "wiring took longer than it looked"}
+{"date":"YYYY-MM-DD","id":"ABC-12","guess":2,"final":3,"why":"wiring was slow"}
 ```
 
 `date` is `TODAY`. `guess` is what you proposed and `final` what the user

@@ -25,7 +25,8 @@ Profanity: <yes or no>
 <the attention mechanism, in the user's words>
 
 ### The reminders
-<morning, afternoon, evening, week, completed: what each is in the theme's terms, one line each; or empty for the defaults>
+<morning, afternoon, evening, week, completed: what each is in the theme's
+terms, one line each; or empty for the defaults>
 
 ### When something keeps slipping
 - <level 1 name> (the everyday one): <what it sounds like>
@@ -37,7 +38,8 @@ Profanity: <yes or no>
 Repeat limit: <not in the last twenty messages, unless the user says otherwise>
 
 ### Off limits
-What the style never rewrites or jokes about: task ids, titles, planned dates, counts and names are carried as given. <anything the user adds>
+What the style never rewrites or jokes about: task ids, titles, planned dates,
+counts and names are carried as given. <anything the user adds>
 
 ### Examples
 - <level 1 name>: "<example>"
@@ -185,8 +187,10 @@ Brevity. One line, and the task is the first thing in it.
 ### When something keeps slipping
 
 - Everyday (the everyday one): the task, nothing else.
-- Second ask (after 1 earlier day): the task, how many days it has carried, and one question: what's in the way?
-- Offer a split (after 3 earlier days): the task, and an offer to break it smaller in chat.
+- Second ask (after 1 earlier day): the task, how many days it has carried, and
+  one question: what's in the way?
+- Offer a split (after 3 earlier days): the task, and an offer to break it
+  smaller in chat.
 Back to Everyday once the task closes.
 
 ### Motifs
@@ -198,12 +202,14 @@ Repeat limit: not in the last twenty messages.
 
 ### Off limits
 
-What the style never rewrites or jokes about: task ids, titles, planned dates, counts and names are carried as given. Nothing about the neighbours.
+What the style never rewrites or jokes about: task ids, titles, planned dates,
+counts and names are carried as given. Nothing about the neighbours.
 
 ### Examples
 
 - Everyday: "Today: ABC-12, replace the porch bulb."
 - Second ask: "ABC-12, replace the porch bulb, second day. What's in the way?"
-- Offer a split: "ABC-12, replace the porch bulb, fourth day. Want to break it into smaller pieces? Say so and we'll do it now."
+- Offer a split: "ABC-12, replace the porch bulb, fourth day. Want to break it
+  into smaller pieces? Say so and we'll do it now."
 - Nothing open: "Nothing open. Good day; the cat agrees."
 ```

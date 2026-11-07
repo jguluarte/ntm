@@ -54,9 +54,9 @@ Rename them, or leave this empty for the defaults. -->
 
 <!-- Your levels, in order, with your own names, and after how many earlier days
 each one starts, as "(after 1 earlier day)", "(after 3 earlier days)". The first
-level is the everyday one and needs no number; a ticket gets the last level
+level is the everyday one and needs no number; a task gets the last level
 whose number its count of earlier days has reached. Example climb rule: "harder
-each day a ticket carries over, back to the first level once it closes". "Same
+each day a task carries over, back to the first level once it closes". "Same
 every day" is also an answer. -->
 
 - <!-- level 1 name --> (the everyday one): <!-- what it sounds like -->
@@ -71,12 +71,12 @@ from your own life. -->
 
 ### Off limits
 
-What the style never rewrites or jokes about: ticket ids, titles, planned dates,
+What the style never rewrites or jokes about: task ids, titles, planned dates,
 counts and names are carried as given. Add anything of your own below.
 
 ### Examples
 
-<!-- One example per level above, and one for "nothing open". Ticket ids use
+<!-- One example per level above, and one for "nothing open". Task ids use
 your prefix; the tasks in them are ordinary household ones. -->
 
 - <!-- level 1 name -->: "<!-- example -->"
@@ -112,12 +112,12 @@ combines them:
 **Levels.** The levels under When something keeps slipping, in the Profile's
 order and with its names, are the only levels. The first is the everyday one:
 fresh work, work already planned for today, and every line when there is one
-level. For a ticket the tone names as carried over or still open, the level
+level. For a task the tone names as carried over or still open, the level
 comes from its history count (below). The level is the last one whose "after N
 earlier days" the count has reached; count 0 is always the first level. Levels
 listed without numbers get 0, 1, 2… in order. Without `--for` there is no count:
 the tone says how hard, and the first level otherwise. Back to the first level
-once a ticket closes. The afternoon reminder never climbs.
+once a task closes. The afternoon reminder never climbs.
 
 **Examples** show the register for each level, and for nothing open: how hard it
 lands, how long it runs, and how a motif ties to the subject. They are not a
@@ -178,11 +178,11 @@ the table.
   year.
 - **week**: two halves in one message, a sentence or so each: the week that was,
   then the week ahead. If the tone says there's nothing to look back on, the
-  week ahead only. No history count: every ticket gets the first level.
+  week ahead only. No history count: every task gets the first level.
 - **completed**: what got done over the span, the count up front. The first
   level.
 
-**The history count** (morning and evening only). For each ticket id the tone
+**The history count** (morning and evening only). For each task id the tone
 names as carried over or still open, count the earlier days it appears in the
 history: the distinct dates, before today, of entries whose `line` contains the
 id. Compute it once, here.

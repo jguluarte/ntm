@@ -16,7 +16,7 @@ every other skill returns text and the job decides what goes out.
 ```
 
 - `title` and `message` are the notification.
-- `url`: optional link attached below the message, usually a ticket's `url`
+- `url`: optional link attached below the message, usually a task's `url`
   field.
 - `priority`: optional; see the optional-fields table. Default 0.
 - `job`: the job this notification is for (the calling skill passes its job
@@ -38,8 +38,8 @@ says, and `ntm-user:settings` not loading is no failure (the test push runs
 before it exists). With neither a channel nor those two, return
 `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
 
-A linked ticket arrives in `message` as the conventions' "Talking to the user
-about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it
+A linked task arrives in `message` as the conventions' "Talking to the user
+about tasks" says (`[<words> (<id>)](<url>)`); each channel below converts it
 as that section says.
 
 ## Pushover
@@ -89,8 +89,8 @@ Add these as extra `--form-string` lines when they're useful:
 
 | Field | Purpose |
 |---|---|
-| `url` | A link attached below the message, e.g. a ticket. Tappable. |
-| `url_title` | Label for `url` instead of the raw link, e.g. `Open ticket`. |
+| `url` | A link attached below the message, e.g. a task. Tappable. |
+| `url_title` | Label for `url` instead of the raw link, e.g. `Open task`. |
 | `priority` | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
 | `sound` | Notification sound; `pushover` is the default. |
 
@@ -102,12 +102,12 @@ Add these as extra `--form-string` lines when they're useful:
 ### HTML mode
 
 `html=1` is on by default in the pattern above. Supported tags: `<a href>`,
-`<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked ticket
+`<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked task
 `[<words> (<id>)](<url>)` in the message becomes
 `<a href="<url>"><words> (<id>)</a>`, as the conventions' "Talking to the user
-about tickets" says.
+about tasks" says.
 
-Escape `&`, `<` and `>` in plain text you insert, such as ticket titles, as
+Escape `&`, `<` and `>` in plain text you insert, such as task titles, as
 `&amp;`, `&lt;` and `&gt;`. Otherwise a title like "Tubing & fittings" breaks
 the markup.
 
@@ -141,8 +141,8 @@ NOTIFY VIA FINAL REPLY
 ```
 
 Return the title on the line after the marker and the message under it, with
-linked tickets kept as the markdown they arrived in, as the conventions'
-"Talking to the user about tickets" says. The job's final reply is then
+linked tasks kept as the markdown they arrived in, as the conventions'
+"Talking to the user about tasks" says. The job's final reply is then
 everything after the marker line, verbatim, and nothing else, as the
 conventions' Results say. The completion push shows that reply. `url` and
 `priority` have no effect on this channel.

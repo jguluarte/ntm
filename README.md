@@ -65,7 +65,7 @@ Planning and tidying:
 
 | Skill | What it does |
 | --- | --- |
-| `/neurodivergent-task-manager:configure-todo-list` | Grooms the todo list with you in chat: close, size, split. The same skill sets the list up the first time (below). |
+| `/neurodivergent-task-manager:review-todo-list` | Reviews the todo list with you in chat: close, size, split. |
 | `/neurodivergent-task-manager:fix-todo-list` | Closes parents whose sub-tasks are all closed and clears stale planned dates. |
 
 Price watch (on when your settings name a price watch project):
@@ -80,7 +80,7 @@ Setup and settings:
 | Skill | What it does |
 | --- | --- |
 | `/neurodivergent-task-manager:configure` | The wizard. `/neurodivergent-task-manager:configure <part>` goes straight to one part. |
-| `/neurodivergent-task-manager:configure-todo-list` | Where your list lives, how it's laid out, and the planning and shopping agreements; once set up, grooming. |
+| `/neurodivergent-task-manager:configure-todo-list` | Where your list lives, how it's laid out, and the planning and shopping agreements. |
 | `/neurodivergent-task-manager:configure-notifications` | How reminders reach you. |
 | `/neurodivergent-task-manager:configure-style` | How reminders talk to you. |
 | `/neurodivergent-task-manager:configure-schedule` | The jobs: which, which days, what time, what title. |
@@ -113,7 +113,7 @@ Labels in `ntm:settings`, and never show you the `$`.
 | The shopper | Is this item a good deal today? One per watched task. | neurodivergent-task-manager |
 | Pauses note | The days when nothing gets planned automatically. | `/neurodivergent-task-manager:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm:style` |
-| Task review log note | How you like tasks written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
+| Task review log note | How you like tasks written and sized, learned while reviewing. | `/neurodivergent-task-manager:review-todo-list` |
 | Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/neurodivergent-task-manager:price-watch` |
 | Amazon alert steps note | How to set an alert on Amazon, learned once. | `/neurodivergent-task-manager:sync-price-watch-to-amazon` |
 

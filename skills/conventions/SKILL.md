@@ -54,8 +54,8 @@ Skills built on this todo list do three things:
   planned date to the day. The user can add more to a day themselves, and a day
   they have already dated counts as planned.
 - **Remind.** Jobs push the user reminders about the day's tasks.
-- **Keep the todo list honest.** They clear stale dates, and grooming with the
-  user sizes and splits oversized work.
+- **Keep the todo list honest.** They clear stale dates, and reviewing the list
+  with the user sizes and splits oversized work.
 
 Every rule below exists so that those skills, and any agent working on the todo
 list, read it the same way. When a rule seems arbitrary, the purpose above is
@@ -220,7 +220,7 @@ it.
   line is a `Keep:` line that `ntm:style`, its writer, prunes to; the style
   template says what it writes.
 - **task review log** (`Task review log`):
-  `neurodivergent-task-manager:configure-todo-list` keeps it.
+  `neurodivergent-task-manager:review-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch
   project. `neurodivergent-task-manager:price-watch` keeps it, from the user's
   vouch and block replies;
@@ -245,7 +245,7 @@ summary when a skill asks for it.
   task in the results names it as parent id. Keep excluded tasks in the
   results; Never picks says who skips them. Before planning a candidate,
   `read task` on it and its parent chain to see blockers.
-- **Every open task** (grooming, and anything else that needs the whole open
+- **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
 
@@ -292,8 +292,8 @@ complexity and effort, not hours: 1 definitely finishes in a night; 2 is iffy
 for one evening; 3 or more is a multi-day effort.
 
 Parents aren't estimated; their sub-tasks are. Otherwise, **a task with an
-estimate has been groomed;** one without hasn't. Estimates are set by the user,
-or with their approval while grooming. Planners use an estimate when one is set
+estimate has been reviewed;** one without hasn't. Estimates are set by the user,
+or with their approval while reviewing. Planners use an estimate when one is set
 and judge size from the title and description otherwise. On a backend with no
 estimate field, the task review log's Estimates block is the record.
 
@@ -350,7 +350,7 @@ fix-todo-list's result after the message, the morning reminder its `kept:` and
 ## Creating tasks when the user asks
 
 The user often files something just so they don't forget it; what it takes gets
-figured out later, while grooming. Make what they asked for, plainly and in
+figured out later, while reviewing. Make what they asked for, plainly and in
 their terms, and don't add meaning they didn't give it.
 
 File it in an existing project that fits, or none. If nothing fits, you can ask

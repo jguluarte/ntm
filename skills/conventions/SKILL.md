@@ -82,8 +82,8 @@ the tie-breaker.
 - **Parent task:** a task with open sub-tasks.
 - **Sub-task:** a task under a parent task, where the backend has that relation.
 - **Planned date:** the task's one date field, the day the work is planned for.
-- **Planner:** a skill or agent that picks tasks and sets their planned dates,
-  such as `ntm:plan` and the planner agent.
+- **Planner:** a skill that picks tasks and sets their planned dates, such as
+  `ntm:plan`.
 - **Started:** the one plannable status (see Status classes) that means work has
   begun. Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
@@ -108,12 +108,12 @@ the tie-breaker.
 
 ## Chat, jobs and agents
 
-A skill typed in chat runs in the chat. The reminder skills,
-`show-completed --notify` and the price watch hand their work to the plugin's
-agents (planner, messenger, shopper, estimator), in a job or in chat alike.
-Reviewing follows the estimator's Review in the chat, and setting up the todo
-list asks the estimator to explain the ways to estimate. Each says what it hands
-over.
+A skill typed in chat runs in the chat. The reminder skills, `ntm:plan`,
+`show-completed --notify` and the price watch hand work to the plugin's agents
+(messenger, shopper, estimator), in a job or in chat alike. Only skills ask
+agents: an agent can't start another agent. Reviewing follows the estimator's
+Review in the chat, and setting up the todo list asks the estimator to explain
+the ways to estimate. Each says what it hands over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:

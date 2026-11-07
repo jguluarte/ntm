@@ -17,10 +17,10 @@ becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, four agents (planner, messenger,
-  shopper, estimator) that own the procedures, and the prompts for the jobs. It
-  holds nothing of yours, so it installs from a marketplace or a zip and updates
-  like any plugin.
+- **ntm** is the behaviour: the skills below, three agents (messenger, shopper,
+  estimator) that own the procedures, and the prompts for the jobs. It holds
+  nothing of yours, so it installs from a marketplace or a zip and updates like
+  any plugin.
 - **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your
   unique settings and style: `ntm-user:settings` (every value you agreed to:
   where your todo list is, your label names, how planning and shopping work, how
@@ -152,11 +152,6 @@ How reminders talk to you, and the message history. Written by
 The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning,
 Completed (weekly or monthly), Price watch. Each runs one skill. Written by
 `/ntm:configure-schedule`.
-
-### The planner
-
-What is planned, what got done, is today ready? Runs the list skills for the
-reminders. Ships with ntm.
 
 ### The messenger
 

@@ -144,16 +144,16 @@ already exists under another title (record that title) or create it with
 
 ## Planning
 
-How the planner works the todo list. Show the defaults as one short list, one
+How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a plain "ok" keeps them all,
 and they change any line in their own words:
 
-- **Rhythm:** one task per weekday. What the planner gives each planning day.
+- **Rhythm:** one task per weekday. What each planning day gets.
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
 - **Sizing:** asked on its own, below.
-- **A day's worth:** about an hour. What the planner aims for when it picks.
+- **A day's worth:** about an hour. What a day's picks aim for.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
   names settled above.
@@ -239,7 +239,7 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning; Sizing, Estimate mapping and Estimate help by the estimator agent.
+How your todo list is planned. Read by `ntm:plan` and the weekly planning; Sizing, Estimate mapping and Estimate help by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>

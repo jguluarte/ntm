@@ -58,7 +58,7 @@ Write them as the About you section, one line each: `- Name:`, `- Timezone:`,
 In order, each by loading its skill and saying it runs from `ntm:configure`:
 
 1. `ntm:configure-todo-list`: which backend, which todo list, statuses, labels,
-   notes, and the agreements the planner and the shopper work by. Returns Todo
+   notes, and the agreements planning and the shopper work by. Returns Todo
    list, Labels, Planning and Shopping (Shopping only when a price watch project
    was chosen).
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns
@@ -75,9 +75,9 @@ Keep the returned text; write nothing.
 The sections and what reads them, in case they ask: About you is read by
 everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
 how far ahead the week plans, sizing, what's never picked, what the weekly
-message includes) by `ntm:plan`, the planner and the weekly planning, and its
-sizing lines by the estimator; Shopping (condition, delivery, what counts as a
-deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
+message includes) by `ntm:plan` and the weekly planning, and its sizing lines by
+the estimator; Shopping (condition, delivery, what counts as a deal) by the
+shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
 `ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
 since each default is about the same todo list.
 

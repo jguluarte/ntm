@@ -26,6 +26,8 @@ in your own words.
   as the backend names it -->
 - List id: <!-- if the backend needs one for lookups; blank otherwise -->
 - Task prefix: <!-- e.g. HOME for HOME-12; blank where ids carry none -->
+- Your tasks: every task on the list <!-- if others use the list too, how to
+  tell yours apart, e.g. assigned to you -->
 - Statuses — the list's real names for each class:
     - plannable:
       <!-- usually three: a backlog, a to-do and an in-progress status -->

@@ -49,7 +49,8 @@ expired. Not found: wrong account. Anything else: backend error.
 
 One `list_issues` call per open status name: every plannable status, plus the
 blocked status (skip the blocked call when Todo list's blocked line is blank).
-Each call has `team: "<List name>"`, no assignee filter, `limit: 250`, and
+Each call has `team: "<List name>"`, `assignee: "me"` only when Your tasks in
+Todo list says the user's tasks are the ones assigned to them, `limit: 250`, and
 `fields`: `title`, `url`, `status`, `statusType`, `priority`, `estimate`,
 `dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Paginate
 with `cursor` while `hasNextPage` is true. Merge the results.

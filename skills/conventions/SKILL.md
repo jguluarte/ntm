@@ -98,9 +98,9 @@ the tie-breaker.
 - **Todo list:** List name from Todo list in your settings, with List id where
   the backend needs it. Task ids use Task prefix.
 - **Task URLs:** use the task's own `url` field, one of the standard fields.
-- **Scope:** the user is the only person on the todo list. Consider every task
-  in it, regardless of assignee. Never filter by assignee unless explicitly
-  asked.
+- **Scope:** Your tasks under Todo list in your settings says which tasks on the
+  list are the user's; by default, every task, regardless of assignee. Consider
+  only those, and filter no further unless explicitly asked.
 - **Chat, jobs and agents:** a skill typed in chat runs in the chat. The
   reminder skills, `show-completed --notify` and the price watch hand their work
   to the plugin's agents (planner, messenger, shopper), in a job or in chat

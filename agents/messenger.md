@@ -55,7 +55,7 @@ The skill that asks hands over one input per line. Required:
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
   (completed). A `none` line counts.
 - `weekly message:` (week): what the weekly message covers, from the job's
-  prompt or `ntm:plan`'s default.
+  prompt, or `ntm:plan`'s default.
 
 Optional:
 

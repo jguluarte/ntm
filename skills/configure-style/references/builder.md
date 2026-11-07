@@ -1,10 +1,12 @@
 # The style profile
 
 A persona skill keeps its own rules for all of this; none of the sections below
-are asked of it (see User-defined persona in `ntm:configure-style`). This page
+are asked of it (see User-defined persona in
+`neurodivergent-task-manager:configure-style`). This page
 is for a profile built from scratch.
 
-The Profile half of `ntm-user:style`: what `ntm:configure-style` writes with the
+The Profile half of `ntm:style`: what
+`neurodivergent-task-manager:configure-style` writes with the
 user, and what the procedure half of that skill reads. The `Profanity:` line and
 the headings exactly as shown, in this order; everything else is the user's, in
 their words. The builder writes every section; a section left empty means its
@@ -151,7 +153,7 @@ they name: a subject, a person, a kind of joke.
 
 One per level, in the level's name, and one for "nothing open" (the evening when
 everything closed: a win for the day, not the year). Ticket ids use the user's
-Ticket prefix from Todo list in `ntm-user:settings`, or the prefix settled
+Ticket prefix from Todo list in `ntm:settings`, or the prefix settled
 earlier in this conversation, or `ABC-12` style when neither exists yet. The
 tasks in them are ordinary household ones. They show how each level lands, how
 long it runs, and how a motif ties to the subject. The procedure borrows their

@@ -8,5 +8,5 @@
 --- prompt ---
 
 Afternoon reminder.
-Load `ntm:afternoon-reminder` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `ntm:afternoon-reminder` can't be loaded, end the run with `Afternoon reminder FAILED: ntm:afternoon-reminder couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `neurodivergent-task-manager:afternoon-reminder` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
+If `neurodivergent-task-manager:afternoon-reminder` can't be loaded, end the run with `Afternoon reminder FAILED: neurodivergent-task-manager:afternoon-reminder couldn't be loaded; check the ntm plugin is installed and enabled.`

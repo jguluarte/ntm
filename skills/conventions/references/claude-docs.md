@@ -15,7 +15,7 @@ writes are row-by-row cell edits, so each run spends more tokens than a
 connector to a ticket system would. That's fine for a few dozen tickets.
 
 Values below that name a settings section (Todo list, Labels, About you) come
-from `ntm-user:settings`, read as the conventions' Loading step says.
+from `ntm:settings`, read as the conventions' Loading step says.
 
 Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
 `container` on every call inside the doc. Every `update` on a tab is
@@ -44,7 +44,8 @@ Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
 - **Projects:** the projects table; a project's Labels cell is comma-separated
   text, and inheritance matches those names against ticket labels. Ticket labels
   and project labels are one set of names here.
-- **Automations:** none. Nothing closes or dates itself; `ntm:fix-todo-list`
+- **Automations:** none. Nothing closes or dates itself;
+  `neurodivergent-task-manager:fix-todo-list`
   closes finished parents itself.
 - **Missing fields:** no priority (every ticket's priority is none) and no
   updated-at (blank).
@@ -184,10 +185,10 @@ is ignored: a note "kept in a project" lives on tab 2 like the rest.
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`.
+Used by `neurodivergent-task-manager:configure-todo-list`.
 
 - **`list todo-lists`:** none; the user pastes the doc's link, or
-  `ntm:configure-todo-list` runs `create todo-list`.
+  `neurodivergent-task-manager:configure-todo-list` runs `create todo-list`.
 - **`create todo-list`:** one `batch` with
   `container = {"kind":"project","create":{"name":"<List name>","doc":{"markdown":"# Todo list"}}}`
   and members, in order: the Status enum

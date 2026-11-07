@@ -3,12 +3,12 @@ name: show-completed
 description: Reports what the user got done on their todo list over a span of time they or a job describes ("what did I finish last week", "what got done this month"), and, when asked, what's still open from it; --notify sends it as a message in the user's style. Run by the planner agent, by the "Completed this week" job, or by the user.
 ---
 
-# ntm:show-completed
+# neurodivergent-task-manager:show-completed
 
 ## Usage
 
 ```
-/ntm:show-completed <span in words> [--notify]
+/neurodivergent-task-manager:show-completed <span in words> [--notify]
 ```
 
 What to look at is a description in plain words:
@@ -31,15 +31,16 @@ Without a span, ask the user what span they want. Never assume one.
 `--notify`: also send the result as a message, through the messenger agent (see
 Notify below). The job name is `Completed this week` for a span of a week,
 `Completed this month` for a month, else `Completed`; read it off the words
-given. `--notify` starts with `/ntm:ready-check --notify-failure "<job name>"`,
+given. `--notify` starts with
+`/neurodivergent-task-manager:ready-check --notify-failure "<job name>"`,
 before Setup; `Ready-check FAILED` ends the run with what it returned. The
 "Completed this week" and "Completed this month" jobs run
-`/ntm:show-completed the last 7 days --notify` and
-`/ntm:show-completed last month --notify`.
+`/neurodivergent-task-manager:show-completed the last 7 days --notify` and
+`/neurodivergent-task-manager:show-completed last month --notify`.
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Compute `TODAY` as the conventions' Dates section says, and work out the span
    as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tickets, adding canceled and
@@ -91,4 +92,5 @@ installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery
 block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and
 nothing else; otherwise one short line on what happened, then any lines the
 messenger returned after `Sent:` (the list the push couldn't carry). A
-`… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.
+`… FAILED` line: never use `/neurodivergent-task-manager:notify`; end with the
+error stated plainly.

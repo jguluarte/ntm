@@ -3,12 +3,12 @@ name: today
 description: Lists what's planned on the user's todo list, by default every open ticket planned for today or earlier, or whatever scope the user or a job describes ("what's on today", "what's planned this week"). Read-only. Run by jobs, or by the user.
 ---
 
-# ntm:today
+# neurodivergent-task-manager:today
 
 ## Usage
 
 ```
-/ntm:today [<scope in words>]
+/neurodivergent-task-manager:today [<scope in words>]
 ```
 
 With nothing after it, list every open ticket with a planned date of today or
@@ -23,7 +23,7 @@ This skill only reads the todo list. It never changes a ticket.
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Compute `TODAY` as the conventions' Dates section says.
 3. Fetch every open ticket with the guide's `fetch open`, keeping excluded
    tickets, and keep the ones with a planned date in range.
@@ -45,7 +45,8 @@ Typed in chat, present the result as the conventions' "Talking to the user about
 tickets" says (natural words, the id in parentheses); the raw lines are for
 skills and jobs.
 
-- With nothing after `/ntm:today`: `Planned by <TODAY> (<count>):` then the
+- With nothing after `/neurodivergent-task-manager:today`:
+  `Planned by <TODAY> (<count>):` then the
   tickets, or `Nothing planned for today.`
 - With words: `Planned <first day> to <last day> (<count>):`, plus the scope
   when it's narrowed, then the tickets, or

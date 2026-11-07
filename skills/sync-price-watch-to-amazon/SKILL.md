@@ -3,7 +3,7 @@ name: sync-price-watch-to-amazon
 description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser Claude can drive, signed in to Amazon. Run when the user asks, or when the price watch says a sync is due.
 ---
 
-# ntm:sync-price-watch-to-amazon
+# neurodivergent-task-manager:sync-price-watch-to-amazon
 
 This skill needs a browser Claude can drive: Amazon interface under Shopping in
 your settings names it. It can be interactive: when you're not sure you have the
@@ -39,12 +39,14 @@ An open watched item **needs an alert** when it has neither label.
 
 ## 1: The rules and the browser
 
-Load `ntm:conventions` (the list's rules and your settings), then run
-`/ntm:ready-check`. If it fails, stop and give the user its result line.
+Load `neurodivergent-task-manager:conventions` (the list's rules and your
+settings), then run
+`/neurodivergent-task-manager:ready-check`. If it fails, stop and give the user
+its result line.
 
 Price watch is on when Todo list in your settings names a price watch project.
 If it names none, end with
-`Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
+`Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /neurodivergent-task-manager:settings.`
 
 Use the browser the user names for this run, or else the one Amazon interface
 under Shopping in your settings names; if you still don't know, ask them. If
@@ -62,7 +64,8 @@ otherwise.
 ## 2: The work
 
 1. **Open items:** fetch every open ticket the way "Every open ticket" in
-   `ntm:conventions` says, and keep the ones with the `price-watch` project
+   `neurodivergent-task-manager:conventions` says, and keep the ones with the
+   `price-watch` project
    label, counting labels inherited from their project (the conventions'
    "Project labels"). Split them: those with neither label need an alert; those
    with `has-amazon-alert` are set; those with `amazon-unavailable` need

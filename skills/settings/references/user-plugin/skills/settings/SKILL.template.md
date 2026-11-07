@@ -1,9 +1,10 @@
 ---
 name: settings
-description: Your settings for ntm. Read by ntm:conventions; change them with /ntm:settings.
+description: Your settings for ntm. Read by neurodivergent-task-manager:conventions; change them with /neurodivergent-task-manager:settings.
 ---
 
-Values for ntm, read by `ntm:conventions`. Shown only when a person invokes this
+Values for ntm, read by `neurodivergent-task-manager:conventions`. Shown only
+when a person invokes this
 skill directly.
 
 Each section is read by heading. Every line is something you agreed to during
@@ -42,8 +43,9 @@ in your own words.
   - Amazon alert steps: Amazon alert steps
 
 <!-- If your backend isn't linear or claude-docs, describe here how to do each
-operation ntm:conventions' contract lists, in your words.
-/ntm:configure-todo-list walks through them with you. -->
+operation neurodivergent-task-manager:conventions' contract lists, in your
+words.
+/neurodivergent-task-manager:configure-todo-list walks through them with you. -->
 
 ## Labels
 
@@ -60,7 +62,8 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How the planner works your todo list. Read by `ntm:plan`, the planner agent and
+How the planner works your todo list. Read by
+`neurodivergent-task-manager:plan`, the planner agent and
 the weekly planning.
 
 - Rhythm: one task per weekday <!-- or: one per day; two per weekday; whatever
@@ -83,14 +86,17 @@ heavy on Fridays", "garage work only on weekends". -->
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper
-agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
+How the price watch judges a deal. Read by
+`neurodivergent-task-manager:price-watch` and the shopper
+agent; Amazon interface by
+`neurodivergent-task-manager:sync-price-watch-to-amazon`.
 
 - Condition: new <!-- unless a ticket says otherwise -->
 - Delivery: online only, to your country
 - A deal: at or near the ticket's target, or well below the usual price
   <!-- what gets you an alert -->
-- Amazon interface: <!-- how /ntm:sync-price-watch-to-amazon reaches Amazon:
+- Amazon interface: <!-- how
+  /neurodivergent-task-manager:sync-price-watch-to-amazon reaches Amazon:
   Claude's built-in browser, your own browser through the Claude extension, or
   off; blank means it asks -->
 
@@ -105,10 +111,12 @@ in the price watch stores note; say here what counts beyond that. -->
 
 <!-- Anything about how you want to be notified, as you'd say it: quiet hours,
 priorities. A different app token for one reminder goes on its own line:
-`Pushover app token for Morning reminder: …`. ntm:notify follows what's written
+`Pushover app token for Morning reminder: …`. neurodivergent-task-manager:notify
+follows what's written
 here. -->
 
 ## Deviations
 
-<!-- Anything you do differently from ntm's conventions. ntm:conventions reads
+<!-- Anything you do differently from ntm's conventions.
+neurodivergent-task-manager:conventions reads
 this last and lets it override. -->

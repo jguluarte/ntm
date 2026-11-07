@@ -8,5 +8,5 @@
 --- prompt ---
 
 Price watch.
-Load `ntm:price-watch` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `ntm:price-watch` can't be loaded, end the run with `Price watch FAILED: ntm:price-watch couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `neurodivergent-task-manager:price-watch` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
+If `neurodivergent-task-manager:price-watch` can't be loaded, end the run with `Price watch FAILED: neurodivergent-task-manager:price-watch couldn't be loaded; check the ntm plugin is installed and enabled.`

@@ -3,7 +3,7 @@ name: pause
 description: Pauses for the user's todo list, the days when nothing gets planned automatically. See or change them in chat ("pause Friday", "unpause next week", "show my pauses"), or check whether days are paused.
 ---
 
-# ntm:pause
+# neurodivergent-task-manager:pause
 
 A pause is a day or a date range when nothing new gets planned automatically.
 Work the user dated themselves for a paused day still gets its reminders.
@@ -37,9 +37,9 @@ reasons joined by `; ` in start-date order. When the note is missing,
 ## Usage
 
 ```
-/ntm:pause
-/ntm:pause <words>
-/ntm:pause --check [<day>] [--until <day>]
+/neurodivergent-task-manager:pause
+/neurodivergent-task-manager:pause <words>
+/neurodivergent-task-manager:pause --check [<day>] [--until <day>]
 ```
 
 - Bare: ask the user whether they want to see the pause schedule or change it,
@@ -58,7 +58,8 @@ uses `YYYY-MM-DD`.
 
 ## Dates
 
-Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range
+Load `neurodivergent-task-manager:conventions` and compute `TODAY` as its Dates
+section says. A range
 covers both its start and end days. A weekday name means the next one, today
 included when today is that day (the example below was typed on a Thursday);
 "next <weekday>" means that weekday of next week (weeks start on Monday); a date
@@ -82,7 +83,8 @@ with the user.
    line, and tell the user which ones went.
 2. Show the user the remaining pauses, then make the changes they ask for, if
    any, without an approval round-trip: they said what they want. When a day
-   they pause holds planned work, clear those dates and load `ntm:plan` to
+   they pause holds planned work, clear those dates and load
+   `neurodivergent-task-manager:plan` to
    replan the rest of the week with them, in chat. A new pause gets a short
    reason in the user's words, or `paused` if they give none. To end a range
    early, set its end to the last paused day; if that's before `TODAY` (as with

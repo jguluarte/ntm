@@ -9,7 +9,7 @@ The connector accepts human-readable references: ticket ids like `ABC-12`, the
 todo list name as `team`, and `me` for the signed-in user.
 
 Values below that name a settings section (Todo list, Labels, About you) come
-from `ntm-user:settings`, read as the conventions' Loading step says.
+from `ntm:settings`, read as the conventions' Loading step says.
 
 ## Todo list
 
@@ -22,7 +22,8 @@ from `ntm-user:settings`, read as the conventions' Loading step says.
   Labels).
 - **Automations:** a parent auto-closes when its last sub-issue closes, and
   sub-issues auto-close when their parent closes, if the todo list has Linear's
-  default workflow automations on. `ntm:fix-todo-list` handles either case.
+  default workflow automations on. `neurodivergent-task-manager:fix-todo-list`
+  handles either case.
 
 ## Status classes
 
@@ -135,7 +136,7 @@ project from Todo list) lives in that project's documents instead. Search with
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`.
+Used by `neurodivergent-task-manager:configure-todo-list`.
 
 - **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
   issue key (the ticket prefix).

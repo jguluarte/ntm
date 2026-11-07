@@ -3,7 +3,7 @@ name: afternoon-reminder
 description: The afternoon reminder for the user's todo list: a tap on the shoulder about what's still open today, with started work marked; never a dig. Run by the "Afternoon reminder" job, or by hand ("run the afternoon reminder now").
 ---
 
-# ntm:afternoon-reminder
+# neurodivergent-task-manager:afternoon-reminder
 
 The afternoon reminder: a tap on the shoulder about what's still open. Two
 agents do the work: the planner gathers the facts, the messenger writes and
@@ -13,7 +13,8 @@ run. When an agent isn't available in this session, do what the conventions'
 it yourself.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify-failure "Afternoon reminder"`.
+Run
+`/neurodivergent-task-manager:ready-check --notify-failure "Afternoon reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
 
@@ -49,6 +50,7 @@ after `Sent:` (the list the push couldn't carry), they follow it.
 # ERROR HANDLING
 If step 1 fails, end with what the ready check returned, and nothing more; that
 is what reaches the user. For any later error, including a `… FAILED` line from
-the planner or the messenger, never use `/ntm:notify`. End the run with the
+the planner or the messenger, never use `/neurodivergent-task-manager:notify`.
+End the run with the
 error stated plainly in your final reply; the scheduled task's own completion
 push carries it.

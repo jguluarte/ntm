@@ -8,5 +8,5 @@
 --- prompt ---
 
 Weekly planning.
-Load `ntm:weekly-planning` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `ntm:weekly-planning` can't be loaded, end the run with `Weekly planning FAILED: ntm:weekly-planning couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `neurodivergent-task-manager:weekly-planning` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
+If `neurodivergent-task-manager:weekly-planning` can't be loaded, end the run with `Weekly planning FAILED: neurodivergent-task-manager:weekly-planning couldn't be loaded; check the ntm plugin is installed and enabled.`

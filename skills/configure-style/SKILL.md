@@ -1,11 +1,11 @@
 ---
 name: configure-style
-description: Builds or revises ntm-user:style, the skill that writes every reminder in the user's own register, with them in chat: plain, a theme they describe, or a persona skill they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own persona"; ntm:configure runs it as one of its parts.
+description: Builds or revises ntm:style, the skill that writes every reminder in the user's own register, with them in chat: plain, a theme they describe, or a persona skill they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own persona"; neurodivergent-task-manager:configure runs it as one of its parts.
 ---
 
-# ntm:configure-style
+# neurodivergent-task-manager:configure-style
 
-`ntm-user:style` is the user's own skill: the messenger runs it for every
+`ntm:style` is the user's own skill: the messenger runs it for every
 reminder. It has two halves: a Profile (who talks, what gets them to read, the
 reminders of the day, the levels when something keeps slipping, motifs, off
 limits, examples) and the procedure that writes a line from facts. This skill
@@ -16,7 +16,8 @@ Read `references/builder.md` once before starting: it holds the Profile's shape,
 the questions for each section, the episode arc the reminders follow, and one
 plain example. The template the procedure half comes from is
 `skills/settings/references/user-plugin/skills/style/SKILL.template.md` in
-`ntm:settings`; `ntm:settings` assembles the file (see Result).
+`neurodivergent-task-manager:settings`; `neurodivergent-task-manager:settings`
+assembles the file (see Result).
 
 This skill ships no persona and names no show, person or brand. The theme, the
 reminders, the levels and their names are the user's, in their words.
@@ -24,16 +25,16 @@ reminders, the levels and their names are the user's, in their words.
 ## Usage
 
 ```
-/ntm:configure-style [<persona skill text>]
+/neurodivergent-task-manager:configure-style [<persona skill text>]
 ```
 
 Text after the name is a persona skill the user already has, pasted or attached
-(or a Profile in the builder's shape from an earlier ntm-user); see User-defined
+(or a Profile in the builder's shape from an earlier ntm); see User-defined
 persona.
 
 ## Before you start
 
-Load `ntm-user:style` by name.
+Load `ntm:style` by name.
 
 - **Won't load:** a new style. Open with the three choices below.
 - **Loads:** a re-run. Show the Profile section by section, ask what to change,
@@ -43,7 +44,8 @@ Load `ntm-user:style` by name.
   keeps slipping. Sections they don't name stay as they are. A persona is edited
   as they say, verbatim otherwise.
 
-When `ntm:configure` is running this skill, it says so; the result goes back to
+When `neurodivergent-task-manager:configure` is running this skill, it says so;
+the result goes back to
 it (see Result).
 
 ## Opening
@@ -94,7 +96,7 @@ the builder's questions:
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke
   about.
 - **Examples:** one per level and one for nothing open. Ticket ids use Ticket
-  prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in
+  prefix from Todo list in `ntm:settings`, or the prefix settled earlier in
   this conversation, or `ABC-12` style when that isn't configured yet. The tasks
   in them are ordinary household ones. Write them, read them back, revise: if
   they chose humor, until they laugh at least once; otherwise until each reads
@@ -106,14 +108,14 @@ each (a stern coach, a dry narrator, a game-show host), none of them named.
 
 ## User-defined persona
 
-The user has a persona skill already (or a Profile from an earlier ntm-user):
+The user has a persona skill already (or a Profile from an earlier ntm):
 text that says who talks, with rules, maybe recurring bits and example lines. It
-becomes `ntm-user:style` as it is: the body stays unchanged, word for word,
+becomes `ntm:style` as it is: the body stays unchanged, word for word,
 ticket ids included. A pasted skill's own frontmatter is dropped; everything
 under it is the body.
 
 What the messenger needs from it is only the Usage in the template:
-`/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
+`/ntm:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
 returning the message with `Title: …` as its last line under `--for`. Read the
 body for how it names these things (a `--reminder` flag, a `Subject:` line, its
 own history note) and write a short section, `## For ntm`, that goes above the
@@ -121,7 +123,7 @@ body and says, in a line each, how the messenger's call maps onto the persona's
 own words: what `--for <reminder>` means to it, that `Title:` is its last line
 (in place of whatever it calls it), that `--stay-fresh` is its freshness
 mechanism, and that the message history note is the one titled under Notes in
-`ntm-user:settings` (when the persona names its own note, the settings' title
+`ntm:settings` (when the persona names its own note, the settings' title
 should be that one). Show them the section; they confirm. Nothing else is added
 or filled in: the persona's own levels, profanity and motifs stand.
 
@@ -133,8 +135,10 @@ one round of corrections: they say what's off, you fix it.
 
 Then:
 
-- Run by `ntm:configure`: return it to `configure`; it packages once at the end.
-- Run on its own: load `ntm:settings` and follow its "Regenerating
-  `ntm-user.plugin`" section with it as the changed part.
+- Run by `neurodivergent-task-manager:configure`: return it to `configure`; it
+  packages once at the end.
+- Run on its own: load `neurodivergent-task-manager:settings` and follow its
+  "Regenerating
+  `ntm.plugin`" section with it as the changed part.
 
-Nothing is written anywhere else; the style lives only in `ntm-user`.
+Nothing is written anywhere else; the style lives only in `ntm`.

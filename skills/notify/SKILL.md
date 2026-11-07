@@ -3,7 +3,7 @@ name: notify
 description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
 ---
 
-# ntm:notify
+# neurodivergent-task-manager:notify
 
 Sends a notification to the user's phone. Any scheduled task or workflow can use
 it to reach them. This is the only skill in the system that sends anything;
@@ -12,7 +12,7 @@ every other skill returns text and the job decides what goes out.
 ## Usage
 
 ```
-/ntm:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
+/neurodivergent-task-manager:notify --title "<title>" --message "<message>" [--url <link>] [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
 ```
 
 - `title` and `message` are the notification.
@@ -22,21 +22,22 @@ every other skill returns text and the job decides what goes out.
 - `job`: the job this notification is for (the calling skill passes its job
   name); a per-reminder token written in Notifications is chosen by it.
 - `app-token` and `user-key`: a Pushover app token and user key for this one
-  call, in place of the ones in your settings (`/ntm:configure-notifications`
+  call, in place of the ones in your settings
+  (`/neurodivergent-task-manager:configure-notifications`
   uses them for its test push).
 
 ## Channel
 
-Load `ntm-user:settings` by name and read Notifications. Its Channel line says
+Load `ntm:settings` by name and read Notifications. Its Channel line says
 which section below applies: `pushover` or `claude-push`. Anything else written
 there is how the user wants to be notified (quiet hours, priorities, a different
 app token per reminder, …): follow it as written. A per-reminder token is a line
 `Pushover app token for <job>: …` in Notifications, chosen by `--from`; without
 `--from`, or with no such line, the default token. With `--app-token` and
 `--user-key`, the channel is Pushover with those keys, whatever Notifications
-says, and `ntm-user:settings` not loading is no failure (the test push runs
+says, and `ntm:settings` not loading is no failure (the test push runs
 before it exists). With neither a channel nor those two, return
-`Notify FAILED: no channel configured; run /ntm:configure-notifications`.
+`Notify FAILED: no channel configured; run /neurodivergent-task-manager:configure-notifications`.
 
 A linked ticket arrives in `message` as the conventions' "Talking to the user
 about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it

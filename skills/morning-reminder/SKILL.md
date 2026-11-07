@@ -3,7 +3,7 @@ name: morning-reminder
 description: The morning reminder for the user's todo list: what's on the table today. Carries stale planned work to today, plans today if it's empty, and sends the morning message in the user's style. Run by the "Morning reminder" job, or by hand ("run the morning reminder now").
 ---
 
-# ntm:morning-reminder
+# neurodivergent-task-manager:morning-reminder
 
 The morning reminder: what's on the table today, said the way the user reads.
 Two agents do the work: the planner gathers the facts, the messenger writes and
@@ -13,7 +13,8 @@ run. When an agent isn't available in this session, do what the conventions'
 it yourself.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify-failure "Morning reminder"`.
+Run
+`/neurodivergent-task-manager:ready-check --notify-failure "Morning reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
 
@@ -52,6 +53,7 @@ returned lines after `Sent:` (the list the push couldn't carry), they follow it.
 # ERROR HANDLING
 If step 1 fails, end with what the ready check returned, and nothing more; that
 is what reaches the user. For any later error, including a `… FAILED` line from
-the planner or the messenger, never use `/ntm:notify`. End the run with the
+the planner or the messenger, never use `/neurodivergent-task-manager:notify`.
+End the run with the
 error stated plainly in your final reply; the scheduled task's own completion
 push carries it.

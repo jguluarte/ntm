@@ -1,9 +1,9 @@
 ---
 name: price-watch
-description: The price watch for the user's todo list, which watched items are a good deal today? Finds every watched ticket, asks the shopper agent about each one, sends one alert for the deals, posts the details and reports. Run by the "Price watch" job, or by hand in chat ("/ntm:price-watch", "check my watch list", "is the backup battery a good price today?").
+description: The price watch for the user's todo list, which watched items are a good deal today? Finds every watched ticket, asks the shopper agent about each one, sends one alert for the deals, posts the details and reports. Run by the "Price watch" job, or by hand in chat ("/neurodivergent-task-manager:price-watch", "check my watch list", "is the backup battery a good price today?").
 ---
 
-# ntm:price-watch
+# neurodivergent-task-manager:price-watch
 
 The price watch: which watched items are a good deal today? One shopper per item
 does the checking; this skill finds the watched tickets, hands each to a
@@ -20,25 +20,30 @@ nobody works around a block.
 
 Run the same way by the job and by hand. The job runs every day, paused days
 included: a good deal is worth hearing about on a paused day, so don't check
-`ntm:pause`. Write plainly; don't use `ntm-user:style`. Prices are in the
+`neurodivergent-task-manager:pause`. Write plainly; don't use `ntm:style`.
+Prices are in the
 currency from Country and currency under About you in your settings.
 
 # 1: Todo list rules
-Load `ntm:conventions` before anything else: it holds the list's rules and your
+Load `neurodivergent-task-manager:conventions` before anything else: it holds
+the list's rules and your
 settings, and every later step follows them. Compute `TODAY` as the conventions'
 Dates section says, unless whoever loaded this skill gave a date.
 
 # 2: Ready check
-Run by the job: `/ntm:ready-check --notify-failure "Price watch"`. Typed in
-chat: a plain `/ntm:ready-check`.
+Run by the job:
+`/neurodivergent-task-manager:ready-check --notify-failure "Price watch"`. Typed
+in
+chat: a plain `/neurodivergent-task-manager:ready-check`.
 **If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch
 Price watch is on when Todo list in your settings names a price watch project.
 If it names none, end with
-`Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings or turn off the Price watch job with /ntm:configure-schedule.`
+`Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /neurodivergent-task-manager:settings or turn off the Price watch job with /neurodivergent-task-manager:configure-schedule.`
 
-Fetch every open ticket the way "Every open ticket" in `ntm:conventions` says,
+Fetch every open ticket the way "Every open ticket" in
+`neurodivergent-task-manager:conventions` says,
 and keep the ones with the `price-watch` project label (its real name from
 Labels in your settings), counting labels inherited from their project (the
 conventions' "Project labels"). Note each one's id, title and `url`. If none are
@@ -50,7 +55,8 @@ the watched tickets. Skip the sync check below and step 5; FINAL REPLY says how
 to word the answer.
 
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
-`/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it
+`/neurodivergent-task-manager:sync-price-watch-to-amazon` keeps in step. This
+run can't set them, so it
 only notices when a sync is due; when Amazon interface under Shopping in your
 settings is off, skip this check. With the `has-amazon-alert` and
 `amazon-unavailable` labels by their real names from Labels, note:
@@ -76,12 +82,14 @@ If no result is DEAL, send nothing and go straight to FINAL REPLY. A DEAL whose
 DEAL line lacks a price, store or product link isn't usable: don't alert on it,
 and report it as a failed check.
 
-Use `/ntm:notify --from "Price watch"` for a short overview of the DEAL results.
+Use `/neurodivergent-task-manager:notify --from "Price watch"` for a short
+overview of the DEAL results.
 Title: "Good price: <item> <price>", or "Price watch: N deals" for more than
 one. Message: one short line per item with the item, price and store, adding the
 condition when it isn't the one from Condition under Shopping, and
 "(membership)" or "(coupon)" when the price needs one, then "Details in the
-run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing
+run." Keep it brief. If `/neurodivergent-task-manager:notify` returns
+`NOTIFY VIA FINAL REPLY`, nothing
 was sent yet: the final reply is everything after that line, verbatim, followed
 by anything else FINAL REPLY calls for.
 
@@ -100,7 +108,8 @@ If the push fails, say so in the final reply; the details are there either way.
 # The user's replies
 The user may reply in this thread after the run, possibly on a later day. If the
 alert had more than one item and they don't say which, ask before changing
-anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
+anything. Dates below are `TODAY` per `neurodivergent-task-manager:conventions`,
+computed at reply time.
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and
   change nothing. Otherwise add a comment to that ticket right away (the guide's
   `write comment`), using the store, price and sale end date from this run's
@@ -113,7 +122,7 @@ anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
   the `pending-shipment` label (its real name from Labels) to any open ticket it
   blocks, where the work lives. Confirm in one line. If the ticket has the
   `has-amazon-alert` label, add that its Amazon alert gets removed the next time
-  they run `/ntm:sync-price-watch-to-amazon`.
+  they run `/neurodivergent-task-manager:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the price watch stores note,
   titled as Notes under Todo list in your settings says and kept in the price
   watch project (the guide's `read note` and `write note`, with that project;
@@ -140,13 +149,15 @@ followed by its CHECKED line, or that its check failed, or that it's not
 actionable and why. Then any NOTES that aren't "none": these are things for the
 user to fix.
 
-If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is
+If `/neurodivergent-task-manager:notify` returned `NOTIFY VIA FINAL REPLY` in
+step 5, the final reply is
 instead everything after that line, verbatim (the title, then the message), so
 the job's own completion push carries them. Drop the "what happened" line (the
 title says it); the per-item lines, NOTES and the sync line follow.
 
 If step 3 found Amazon alerts to sync, end with one line: "Run
-/ntm:sync-price-watch-to-amazon:" then the items needing an alert and the closed
+/neurodivergent-task-manager:sync-price-watch-to-amazon:" then the items needing
+an alert and the closed
 items whose alert needs removing, each as a few words with its ticket id. Leave
 this line out when nothing needs syncing.
 

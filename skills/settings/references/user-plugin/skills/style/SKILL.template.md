@@ -1,11 +1,12 @@
 ---
 name: style
-description: How ntm reminders talk to you, and the skill that writes them that way. Run by the messenger agent for every reminder, and in chat when you ask for a message in your style; change it with /ntm:configure-style.
+description: How ntm reminders talk to you, and the skill that writes them that way. Run by the messenger agent for every reminder, and in chat when you ask for a message in your style; change it with /neurodivergent-task-manager:configure-style.
 ---
 
-# ntm-user:style
+# ntm:style
 
-Yours: `/ntm:configure-style` wrote it with you, and it's read only by ntm's
+Yours: `/neurodivergent-task-manager:configure-style` wrote it with you, and
+it's read only by ntm's
 messenger and by you. The Profile is what you said; How a message gets written
 is the procedure that turns facts into a line in your register. Both are yours
 to edit; keep the Usage the same, since the messenger relies on it.
@@ -13,7 +14,7 @@ to edit; keep the Usage the same, since the messenger relies on it.
 ## Usage
 
 ```
-/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
+/ntm:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
 ```
 
 - `tone` is freeform: how to rewrite the message, and why. "escalated: still
@@ -127,7 +128,8 @@ written sounds like one in the Profile, write a different one.
 
 ### With `--stay-fresh`
 
-Load `ntm:conventions`; it reads your settings and names the backend guide whose
+Load `neurodivergent-task-manager:conventions`; it reads your settings and names
+the backend guide whose
 `read note` and `write note` are used here.
 
 **History.** The message history note, titled as Notes under Todo list in your

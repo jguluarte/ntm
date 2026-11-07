@@ -3,7 +3,7 @@ name: fix-todo-list
 description: Tidies the user's todo list by closing parents whose sub-tickets are all closed and clearing stale planned dates, then returns what it changed. Run by the weekly planning job, or by the user ("fix my todo list", "tidy my todo list").
 ---
 
-# ntm:fix-todo-list
+# neurodivergent-task-manager:fix-todo-list
 
 Fixes todo list state that's always safe to fix, and returns what it changed. It
 never notifies anyone: whoever called it decides what to tell the user.
@@ -11,7 +11,7 @@ never notifies anyone: whoever called it decides what to tell the user.
 ## Usage
 
 ```
-/ntm:fix-todo-list [--dry-run]
+/neurodivergent-task-manager:fix-todo-list [--dry-run]
 ```
 
 `--dry-run`: report what would change and write nothing; see Failures and dry
@@ -19,7 +19,7 @@ runs.
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Compute `TODAY` once, as the conventions' Dates section says, and use it for
    the whole run, even if the run crosses midnight.
 3. Fetch every open ticket with the guide's `fetch open`, and keep every result,

@@ -5,9 +5,11 @@ connector. `linear.md` is the complete, tested one. `claude-docs.md` is the
 second shipped guide, for a todo list kept in a Claude Doc with no ticket-system
 connector at all. It's untested, and heavier per run (every read pulls a whole
 table and every write edits a row), but fine for a few dozen tickets. For any
-other backend, Todo list in `ntm-user:settings` says how each operation here is
-done, in the user's words. `/ntm:configure-todo-list` fills it with the user
-against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
+other backend, Todo list in `ntm:settings` says how each operation here is
+done, in the user's words. `/neurodivergent-task-manager:configure-todo-list`
+fills it with the user
+against this contract, and once `ntm` is installed,
+`/neurodivergent-task-manager:self-test` checks
 it.
 
 Write a guide as a list of operations, each saying which tool calls carry it out
@@ -60,7 +62,7 @@ exactly.
 
 | Operation | Must say |
 | --- | --- |
-| `ping` | one read that proves the connector works and sees the todo list named in Todo list, and how to tell sign-in expired from wrong account from backend error (the names `ntm:ready-check` reports) |
+| `ping` | one read that proves the connector works and sees the todo list named in Todo list, and how to tell sign-in expired from wrong account from backend error (the names `neurodivergent-task-manager:ready-check` reports) |
 | `fetch open` | how to get every open ticket (every plannable status, plus blocked when Todo list's blocked line isn't blank) with the standard fields, paginated, plus every project with its name and labels, and its summary when a skill asks for it. Standard fields: id, title, url (the ticket's link), status, status class, priority, estimate, planned date, labels, project, parent id, completed at, updated at; and, for priority, which value is highest and which means none |
 | `fetch closed` | closed tickets (done; canceled and duplicate on request) with their completion time, how to limit to a span, and how to limit to one label |
 | `read ticket` | one ticket with description, parent and blocked-by relations |
@@ -85,7 +87,8 @@ project.
 If the backend has documents, use them, found by title. If it doesn't, keep each
 note in the description of a ticket titled with the note's title, labeled with
 the `no-autoschedule` label (its real name from Labels) and left open in a
-plannable status. `ntm:fix-todo-list` never touches it (no sub-tickets, no date)
+plannable status. `neurodivergent-task-manager:fix-todo-list` never touches it
+(no sub-tickets, no date)
 and planners skip it for its label. `read note` is then a title search that
 reads that ticket's description; `write note` replaces it, creating the ticket
 when there is none. A note kept in a project is a ticket created in that
@@ -93,11 +96,12 @@ project. The conventions say every skill ignores such a ticket as work.
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`. Say which call does each.
+Used by `neurodivergent-task-manager:configure-todo-list`. Say which call does
+each.
 
 | Operation | Must say |
 | --- | --- |
-| `list todo-lists` | the todo lists the connector can see, by name and id; or, where the backend has no todo lists to list, say so (the user names or pastes theirs, or `ntm:configure-todo-list` runs `create todo-list`) |
+| `list todo-lists` | the todo lists the connector can see, by name and id; or, where the backend has no todo lists to list, say so (the user names or pastes theirs, or `neurodivergent-task-manager:configure-todo-list` runs `create todo-list`) |
 | `create todo-list` | only where the backend has no todo lists to list: make one with the statuses, labels and notes settled so far, and return its id |
 | `list statuses` | a list's status names, so each class can be matched to real names |
 | `list labels` | the list's ticket labels, and its project labels when those are a separate set |

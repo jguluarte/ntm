@@ -3,7 +3,7 @@ name: evening-reminder
 description: The evening reminder for the user's todo list: a friend asking how the day went. What closed, what's still open, and the evening message in the user's style. Run by the "Evening reminder" job, or by hand ("run the evening reminder now").
 ---
 
-# ntm:evening-reminder
+# neurodivergent-task-manager:evening-reminder
 
 The evening reminder: a friend asking how the day went. Two agents do the work:
 the planner gathers the facts, the messenger writes and sends the message. This
@@ -12,7 +12,8 @@ available in this session, do what the conventions' "Chat, jobs and agents"
 says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
-Run `/ntm:ready-check --notify-failure "Evening reminder"`.
+Run
+`/neurodivergent-task-manager:ready-check --notify-failure "Evening reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
 
@@ -50,6 +51,7 @@ after `Sent:` (the list the push couldn't carry), they follow it.
 # ERROR HANDLING
 If step 1 fails, end with what the ready check returned, and nothing more; that
 is what reaches the user. For any later error, including a `… FAILED` line from
-the planner or the messenger, never use `/ntm:notify`. End the run with the
+the planner or the messenger, never use `/neurodivergent-task-manager:notify`.
+End the run with the
 error stated plainly in your final reply; the scheduled task's own completion
 push carries it.

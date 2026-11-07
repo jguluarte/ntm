@@ -3,7 +3,7 @@ name: conventions
 description: Rules for reading and writing the user's todo list, in backend-neutral terms, plus the backend guides that map them onto Linear or Claude Docs. Load before any list query, and before creating or editing a ticket for the user.
 ---
 
-# ntm:conventions
+# neurodivergent-task-manager:conventions
 
 Version: 0.3.2
 Template source: none yet
@@ -11,18 +11,19 @@ Template source: none yet
 This is a general guide to working with the user's todo list, not a rulebook for
 every edge. The other skills and the jobs keep the todo list self-healing. Every
 value these rules depend on is one the user agreed to during setup and can
-change in `ntm-user:settings`; the rules here name the value, the settings hold
+change in `ntm:settings`; the rules here name the value, the settings hold
 it.
 
 ## Loading
 
-1. Load `ntm-user:settings` by name and read it by heading: About you, Todo
+1. Load `ntm:settings` by name and read it by heading: About you, Todo
    list, Labels, Planning, Shopping, Notifications, Deviations. Every value
    below that says "from <section> in your settings" comes from there. A missing
-   section or line means its default. If `ntm-user:settings` won't load, say in
-   one line "not configured; run `/ntm:configure`" and continue with the
+   section or line means its default. If `ntm:settings` won't load, say in
+   one line "not configured; run `/neurodivergent-task-manager:configure`" and
+   continue with the
    defaults below. A caller that holds values of its own, such as
-   `ntm:configure-todo-list`, uses those.
+   `neurodivergent-task-manager:configure-todo-list`, uses those.
 2. Read the backend guide for the backend named in Todo list:
    `references/linear.md` for `linear`, `references/claude-docs.md` for
    `claude-docs`. For any other backend, Todo list itself says how each
@@ -102,13 +103,14 @@ the tie-breaker.
   each says what it hands over. When an agent isn't available in the session,
   read its file from the installed plugin and do what it says yourself, with the
   same request:
-  `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
+  `find ~/.claude/plugins -path '*neurodivergent-task-manager*' -path '*/agents/<name>.md'`
+  (the plugin
   may sit under a versioned folder; the two `-path` tests find it either way).
   One copy of each procedure, either way; say nothing to the user about which
   way it ran.
 - **Automations:** if the backend auto-closes a parent when its last sub-ticket
   closes, or sub-tickets when their parent closes, the backend guide says so;
-  `ntm:fix-todo-list` accounts for it.
+  `neurodivergent-task-manager:fix-todo-list` accounts for it.
 
 ## Talking to the user about tickets
 
@@ -122,12 +124,14 @@ reads like a report, not a person talking. Instead, say "you already finished
 the kitchen tap (ABC-15)". The example is only an illustration; there's no need
 to look it up. Where the backend has no ids, the words alone.
 
-Lines another skill parses (like `/ntm:today`'s result lines) keep their format,
+Lines another skill parses (like `/neurodivergent-task-manager:today`'s result
+lines) keep their format,
 but when you pass them on to the user, word them this way too.
 
 A linked ticket is `[<words> (<id>)](<url>)`: the words as this section says,
 the id in parentheses inside the link text, the url the ticket's own `url`
-field. `ntm:notify` converts for its channel: Pushover html=1 gets
+field. `neurodivergent-task-manager:notify` converts for its channel: Pushover
+html=1 gets
 `<a href="<url>"><words> (<id>)</a>`; claude-push keeps the markdown.
 
 ## Statuses and labels
@@ -135,7 +139,8 @@ field. `ntm:notify` converts for its channel: Pushover html=1 gets
 Todo list in your settings maps each status class to the list's real status
 names, and Labels gives the real name of each label the system uses. Don't
 assume other statuses exist. The defaults below are what
-`/ntm:configure-todo-list` proposes; the user's todo list may use other names,
+`/neurodivergent-task-manager:configure-todo-list` proposes; the user's todo
+list may use other names,
 and the settings are what count.
 
 ### Status classes
@@ -171,7 +176,7 @@ Ticket labels:
 - **`pending-shipment`:** something has been ordered for this ticket and hasn't
   arrived, so the user can't start it.
 - **`has-amazon-alert`:** an Amazon price alert is set for this ticket.
-  `ntm:sync-price-watch-to-amazon` sets and clears it.
+  `neurodivergent-task-manager:sync-price-watch-to-amazon` sets and clears it.
 - **`amazon-unavailable`:** the item isn't sold new on Amazon, so no alert is
   set.
 
@@ -206,16 +211,18 @@ defaults are the plain names below. Read and write them with the guide's
 it.
 
 - **pauses** (default title `Pauses`): the pause schedule, under `## Pauses`.
-  `ntm:pause` keeps it.
+  `neurodivergent-task-manager:pause` keeps it.
 - **message history** (`Message history`): what reminders have said. Its first
-  line is a `Keep:` line that `ntm-user:style`, its writer, prunes to; the style
+  line is a `Keep:` line that `ntm:style`, its writer, prunes to; the style
   template says what it writes.
-- **grooming log** (`Grooming log`): `ntm:configure-todo-list` keeps it.
+- **grooming log** (`Grooming log`):
+  `neurodivergent-task-manager:configure-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch
-  project. `ntm:price-watch` keeps it, from the user's vouch and block replies;
+  project. `neurodivergent-task-manager:price-watch` keeps it, from the user's
+  vouch and block replies;
   the shopper reads it.
 - **Amazon alert steps** (`Amazon alert steps`):
-  `ntm:sync-price-watch-to-amazon` keeps it.
+  `neurodivergent-task-manager:sync-price-watch-to-amazon` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description
 of an open ticket titled with the note's title and labeled `no-autoschedule`;
@@ -248,7 +255,8 @@ parent's parent, and so on), has the `no-autoschedule` label, the
 Planners skip excluded tickets: they never pick or date them. Reminders don't:
 any open ticket the user has dated gets reminded about, excluded or not.
 
-Planners also never plan onto a paused day (`/ntm:pause --check` over the span
+Planners also never plan onto a paused day
+(`/neurodivergent-task-manager:pause --check` over the span
 says which days are). A date the user set on a paused day stands, and gets its
 reminders.
 
@@ -322,13 +330,14 @@ a skill returns.
 ## Results
 
 Skills return text; jobs decide what reaches the user. No skill other than
-`ntm:notify` sends anything.
+`neurodivergent-task-manager:notify` sends anything.
 
 Every skill a job calls returns plain text. A skill's status line (OK / FAILED)
 starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`,
 `Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`,
 `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill. A
-job's final reply is one line on what happened. When `ntm:notify` returned
+job's final reply is one line on what happened. When
+`neurodivergent-task-manager:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as
 its first line and the message under it, nothing else. The weekly planning adds
 fix-todo-list's result after the message, the morning reminder its `kept:` and

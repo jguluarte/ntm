@@ -1,14 +1,15 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tickets, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
+description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tickets, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from neurodivergent-task-manager:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
 ---
 
-# ntm:configure-todo-list
+# neurodivergent-task-manager:configure-todo-list
 
 One interactive skill for the user's todo list, in two parts. Which part runs is
 a matter of context:
 
-- `ntm-user:settings` won't load, or `ntm:configure` is running this: **Part 1,
+- `ntm:settings` won't load, or `neurodivergent-task-manager:configure` is
+  running this: **Part 1,
   Where your list lives**: the setup walk, which returns the Todo list, Labels,
   Planning and Shopping sections.
 - Configured, and the words are about where the list lives or how it's worked (a
@@ -23,7 +24,7 @@ Never hand them a form.
 
 # Part 1: Where your list lives
 
-Settles Todo list, Labels, Planning and Shopping in `ntm-user:settings` with the
+Settles Todo list, Labels, Planning and Shopping in `ntm:settings` with the
 user and returns their text. Everything here is an agreement with a proposed
 default: show the default in one line, take their answer, record it. Everything
 happens in chat, in short rounds: you bring proposals, they react. Never hand
@@ -32,19 +33,21 @@ them a form. This skill never writes a file.
 ## Usage
 
 ```
-/ntm:configure-todo-list [linear|claude-docs|<name>]
+/neurodivergent-task-manager:configure-todo-list [linear|claude-docs|<name>]
 ```
 
 The backend to use on a first run. Without one, ask (see The backend).
 
 ## Before you start
 
-1. Load `ntm:conventions`. On a first run its first step says "not configured;
-   run `/ntm:configure`". That's expected: carry on with the values you settle
+1. Load `neurodivergent-task-manager:conventions`. On a first run its first step
+   says "not configured;
+   run `/neurodivergent-task-manager:configure`". That's expected: carry on with
+   the values you settle
    here. Its `references/CONTRACT.md` is the contract every backend meets;
    `references/linear.md` and `references/claude-docs.md` are the two guides it
    ships.
-2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
+2. If `ntm:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
    stays as it is.
@@ -60,7 +63,8 @@ run), or their own backend, which they describe.
 
 If they chose Linear and don't have it yet, do Linear's Starting from nothing
 first. Read the chosen backend's guide (`references/linear.md` or
-`references/claude-docs.md` under `ntm:conventions`) now, since the settings
+`references/claude-docs.md` under `neurodivergent-task-manager:conventions`)
+now, since the settings
 don't name it yet. Then confirm the connector: ToolSearch for the tool the
 guide's `ping` names (for their own backend, the tool they name). If it isn't
 there, ask them to connect it on the Connectors tab and come back, and stop with
@@ -122,7 +126,7 @@ how results paginate, whether labels add or replace, whether a comment can be
 edited in place. Where a choice is theirs (which date field, which grouping is a
 project), propose one and let them react. Try a read by hand where it's cheap.
 The setup operations run below as described; every other write waits for
-`/ntm:self-test`.
+`/neurodivergent-task-manager:self-test`.
 
 The contract names the survivable gaps (no estimate field, no blocked-by
 relation, no labels on groups, no documents) and the two fatal ones (no date
@@ -184,7 +188,8 @@ another title (record that title) or create it with `create note`:
   a few seed stores by category to put under Seed, with their domains, or leave
   Seed empty and say the first price watch run will report it. Vouched and
   Blocked start empty.
-- **Amazon alert steps:** find only. `ntm:sync-price-watch-to-amazon` writes it
+- **Amazon alert steps:** find only.
+  `neurodivergent-task-manager:sync-price-watch-to-amazon` writes it
   the first time it learns the steps.
 
 A new Claude Doc doesn't exist yet at this point: settle the titles only, then
@@ -229,7 +234,8 @@ line each:
 - **Delivery:** online only, to their country (from About you).
 - **A deal:** at or near the ticket's target, or well below the usual price.
   What gets them an alert.
-- **Amazon interface:** how `/ntm:sync-price-watch-to-amazon` reaches Amazon:
+- **Amazon interface:** how
+  `/neurodivergent-task-manager:sync-price-watch-to-amazon` reaches Amazon:
   Claude's built-in browser, their own browser through the Claude extension, or
   off (no Amazon alerts). Blank means it asks.
 
@@ -241,7 +247,7 @@ blank.
 ## Returning the sections
 
 Write the sections in exactly these line shapes, the ones the
-`ntm-user:settings` template uses, filled with what you settled. A line may be
+`ntm:settings` template uses, filled with what you settled. A line may be
 left blank where the shape says so. Fill the defaults in where they kept them.
 For a backend of their own, the operations prose follows the Todo list lines.
 Show the sections and let them react.
@@ -285,7 +291,7 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning.
+How the planner works your todo list. Read by `neurodivergent-task-manager:plan`, the planner agent and the weekly planning.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
@@ -300,7 +306,7 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
+How the price watch judges a deal. Read by `neurodivergent-task-manager:price-watch` and the shopper agent; Amazon interface by `neurodivergent-task-manager:sync-price-watch-to-amazon`.
 
 - Condition: <default new>
 - Delivery: <default online only, to your country>
@@ -312,15 +318,19 @@ How the price watch judges a deal. Read by `ntm:price-watch` and the shopper age
 
 Then:
 
-- Run from `ntm:configure`: return the sections to the caller, which packages
+- Run from `neurodivergent-task-manager:configure`: return the sections to the
+  caller, which packages
   once at the end.
-- Run directly: load `ntm:settings` and follow its Regenerating
-  `ntm-user.plugin` section with the section text you produced.
+- Run directly: load `neurodivergent-task-manager:settings` and follow its
+  Regenerating
+  `ntm.plugin` section with the section text you produced.
 
-One more line, for every backend: once `ntm-user` is installed, run
-`/ntm:self-test` in a new chat. It starts with `ready-check` and exercises the
+One more line, for every backend: once `ntm` is installed, run
+`/neurodivergent-task-manager:self-test` in a new chat. It starts with
+`ready-check` and exercises the
 operations the jobs use on a throwaway ticket, and is the smoke test for the
-guide. Say it now when run directly. When run from `ntm:configure`, return it
+guide. Say it now when run directly. When run from
+`neurodivergent-task-manager:configure`, return it
 with the sections so `configure` says it at its end.
 
 # Part 2: Grooming
@@ -344,7 +354,8 @@ lighter option:
 
 ## Setup
 
-1. Load `ntm:conventions`, and compute `TODAY` as its Dates section says.
+1. Load `neurodivergent-task-manager:conventions`, and compute `TODAY` as its
+   Dates section says.
 2. Read the grooming log (see below).
 3. Fetch every open ticket and list the projects, both as the conventions'
    Fetching says. Add each project's summary to the project fields, as the guide

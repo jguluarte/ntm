@@ -9,5 +9,5 @@
 --- prompt ---
 
 Completed this week.
-Load `ntm:show-completed` and run `/ntm:show-completed the last 7 days --notify`. Its Notify section's final reply and error handling are this job's.
-If `ntm:show-completed` can't be loaded, end the run with `Completed this week FAILED: ntm:show-completed couldn't be loaded; check the ntm plugin is installed and enabled.`
+Load `neurodivergent-task-manager:show-completed` and run `/neurodivergent-task-manager:show-completed the last 7 days --notify`. Its Notify section's final reply and error handling are this job's.
+If `neurodivergent-task-manager:show-completed` can't be loaded, end the run with `Completed this week FAILED: neurodivergent-task-manager:show-completed couldn't be loaded; check the ntm plugin is installed and enabled.`

@@ -3,14 +3,14 @@ name: plan
 description: Plans the user's todo list by setting planned dates, at the rhythm Planning in their settings gives, and returns the plan. --auto week fills the week ahead and --auto day picks one task for today, unattended; anything else plans with the user in chat. Run by the planner agent for the morning and weekly planning, or by the user ("plan my week", "plan Thursday around the garage").
 ---
 
-# ntm:plan
+# neurodivergent-task-manager:plan
 
 ## Usage
 
 ```
-/ntm:plan --auto day
-/ntm:plan --auto week
-/ntm:plan [<anything>]
+/neurodivergent-task-manager:plan --auto day
+/neurodivergent-task-manager:plan --auto week
+/neurodivergent-task-manager:plan [<anything>]
 ```
 
 - `--auto day`: pick one task for today and date it, unattended. The planner
@@ -23,11 +23,13 @@ description: Plans the user's todo list by setting planned dates, at the rhythm 
   outside it, plan the next one.
 - Anything else: plan with the user in chat, following what they say ("plan the
   week around the garage", "give Thursday something small", "reset today"), and
-  asking only if it's still ambiguous. Bare `/ntm:plan` is the week as the span.
+  asking only if it's still ambiguous. Bare `/neurodivergent-task-manager:plan`
+  is the week as the span.
 
 ## Setup
 
-1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
+1. Load `neurodivergent-task-manager:conventions` and
+   `neurodivergent-task-manager:pause`. Planning in your settings is how this
    user wants their todo list planned: rhythm, planning days, sizing, a day's
    worth, what's never picked, and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
@@ -75,7 +77,8 @@ Use its work as a theme to anchor the other days of the week.
 ## Paused days
 
 Nothing is planned onto a paused day. Before picking a span, run
-`/ntm:pause --check <first day> --until <last day>` over it and skip every day
+`/neurodivergent-task-manager:pause --check <first day> --until <last day>` over
+it and skip every day
 whose line ends `true`. `--auto day` doesn't check: its caller has (the planner
 agent), or the user asked. If it returns `Pause FAILED`, stop and return
 `Plan FAILED: <its reason>`. A date the user set on a paused day stands.

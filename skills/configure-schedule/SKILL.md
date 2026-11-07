@@ -1,13 +1,13 @@
 ---
 name: configure-schedule
-description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /ntm:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
+description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /neurodivergent-task-manager:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
 ---
 
-# ntm:configure-schedule
+# neurodivergent-task-manager:configure-schedule
 
 The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
 never trigger, routine or cron job. This is a chat conversation: short rounds,
-the user's answers win. It changes nothing in `ntm-user:settings` and writes no
+the user's answers win. It changes nothing in `ntm:settings` and writes no
 file: the tasks it creates are the result.
 
 ## Tools
@@ -18,9 +18,11 @@ Find the scheduling tools: `list_triggers`, `create_trigger`, `update_trigger`,
 If none of them exist, scheduled tasks aren't available from here; say so and
 stop.
 
-Load `ntm:conventions`: Timezone under About you in your settings is the
+Load `neurodivergent-task-manager:conventions`: Timezone under About you in your
+settings is the
 timezone every job runs in, and Todo list says whether price watch is on. On a
-first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the
+first run from `neurodivergent-task-manager:configure`, `ntm:settings` doesn't
+exist yet: use the
 timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
@@ -92,7 +94,7 @@ Then, for each job they want:
 6. When the result lists the task's connectors (`mcp_connections`), check that
    the backend connector named by Todo list is among them; if it isn't, say so:
    attach the connector to this session and create the job again, or every run
-   will fail its ready check. Either way, the proof is a run, once `ntm-user` is
+   will fail its ready check. Either way, the proof is a run, once `ntm` is
    installed: offer `fire_trigger` (Running a job now) then, and read its ready
    check.
 
@@ -152,7 +154,8 @@ carries it (`derived_state.model`).
 `update_trigger` with `trigger_id` and `enabled: false` to turn a job off,
 `enabled: true` to turn it on. A job that's off stays stored and never fires.
 Say "off" and "on", never "paused": this is for stretches when the user wants no
-reminders at all. For a day or a range, `/ntm:pause` is the lighter tool, since
+reminders at all. For a day or a range, `/neurodivergent-task-manager:pause` is
+the lighter tool, since
 work they dated themselves still gets its reminders.
 
 ## Deleting
@@ -164,5 +167,6 @@ history, turn it off instead.
 ## Finishing
 
 End with one line per job: title, schedule in words, on or off. Run from
-`ntm:configure`, that list goes back to it; nothing here needs `ntm-user.plugin`
+`neurodivergent-task-manager:configure`, that list goes back to it; nothing here
+needs `ntm.plugin`
 regenerated.

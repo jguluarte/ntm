@@ -47,18 +47,15 @@ from that copy.
 
 ### Every day
 
-- `/ntm:today`: what's planned (open tasks planned for today or earlier, or any
-  scope you describe).
-- `/ntm:show-completed`: what got done over a span, and what's still open from
-  it when you ask.
-- `/ntm:plan`: plans the week or a day, with you in chat, or on its own for
-  jobs.
-- `/ntm:pause`: days when nothing gets planned automatically.
-- `/ntm-user:style`: puts a message in your style.
-- `/ntm:notify`: sends a notification through your channel.
-- `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`,
-  `/ntm:weekly-planning`: the three daily reminders and the weekly planning.
-  Jobs run them; so can you ("run the morning reminder now").
+| Skill                                                                                               | What it does                                                                                                   |
+| --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `/ntm:today`                                                                                        | What's planned: open tasks planned for today or earlier, or any scope you describe.                            |
+| `/ntm:show-completed`                                                                               | What got done over a span, and what's still open from it when you ask.                                         |
+| `/ntm:plan`                                                                                         | Plans the week or a day: with you in chat, or on its own for jobs.                                             |
+| `/ntm:pause`                                                                                        | Days when nothing gets planned automatically.                                                                  |
+| `/ntm-user:style`                                                                                   | Puts a message in your style.                                                                                  |
+| `/ntm:notify`                                                                                       | Sends a notification through your channel.                                                                     |
+| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`, `/ntm:weekly-planning` | The three daily reminders and the weekly planning. Jobs run them; so can you ("run the morning reminder now"). |
 
 ### Planning and tidying
 

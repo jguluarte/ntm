@@ -8,7 +8,7 @@ description: >-
     by the reminder skills, in a job or by hand in chat.
 
         <example>
-        Context: ntm:morning-reminder has today's tasks from the planner and is
+        Context: ntm:morning-reminder has today's tasks from ntm:plan and is
         at its send step.
         user: "Morning reminder. Load ntm:morning-reminder and follow it from
         step 1."
@@ -46,8 +46,7 @@ sounds.
 ## What you're given
 
 The request names the reminder, the job and the facts, one per line, in the
-lines the planner returns (see `agents/planner.md`) or that `ntm:show-completed`
-returns:
+lines the skill that asks hands over:
 
 ```
 reminder: morning

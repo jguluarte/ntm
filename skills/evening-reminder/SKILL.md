@@ -9,11 +9,11 @@ description: >-
 
 # ntm:evening-reminder
 
-The evening reminder: a friend asking how the day went. Two agents do the work:
-the planner gathers the facts, the messenger writes and sends the message. This
-skill names the request, the handoff and what ends the run. When an agent isn't
-available in this session, do what the conventions' "Chat, jobs and agents"
-says: read its file from the installed plugin and follow it yourself.
+The evening reminder: a friend asking how the day went. `ntm:show-completed`
+gives the facts; the messenger agent writes and sends the message. This skill
+names the steps, the handoff and what ends the run. When the messenger agent
+isn't available in this session, do what the conventions' "Chat, jobs and
+agents" says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
 
@@ -24,25 +24,24 @@ and nothing more.**
 
 # 2: The facts
 
-Ask the planner agent: **how did today go** (its request of that name in
-`agents/planner.md`). It returns the facts as lines.
+Load `ntm:show-completed` and run
+`/ntm:show-completed today, and what's still open, planned today or earlier`.
 
-Read what comes back:
-
-- `paused`: nothing closed and nothing is open; assume a day off. STOP and send
-  nothing.
-- `done:` and `open:` lines (or `done: none`, `open: none`): the facts for the
-  message.
-- Any `… FAILED` line: ERROR HANDLING.
+- Nothing done and nothing still open: assume a day off. STOP and send nothing.
+- Otherwise the facts are one `done:` line per Done task
+  (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per Still
+  open task (`open: <id> <title> <url>`, then ` (was <date>)` when its planned
+  date is before today), or `open: none`.
+- `Show-completed FAILED`: ERROR HANDLING.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the planner's lines:
+Ask the messenger agent, with the reminder, the job and the facts:
 
 ```
 reminder: evening
 job: Evening reminder
-<the planner's lines>
+<the facts>
 ```
 
 It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
@@ -61,6 +60,6 @@ after `Sent:` (the list the push couldn't carry), they follow it.
 
 If step 1 fails, end with what the ready check returned, and nothing more; that
 is what reaches the user. For any later error, including a `… FAILED` line from
-the planner or the messenger, never use `/ntm:notify`. End the run with the
+show-completed or the messenger, never use `/ntm:notify`. End the run with the
 error stated plainly in your final reply; the scheduled task's own completion
 push carries it.

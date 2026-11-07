@@ -8,12 +8,11 @@ description: >-
 
 # ntm:afternoon-reminder
 
-The afternoon reminder: a tap on the shoulder about what's still open. Two
-agents do the work: the planner gathers the facts, the messenger writes and
-sends the message. This skill names the request, the handoff and what ends the
-run. When an agent isn't available in this session, do what the conventions'
-"Chat, jobs and agents" says: read its file from the installed plugin and follow
-it yourself.
+The afternoon reminder: a tap on the shoulder about what's still open.
+`ntm:today` gives the facts; the messenger agent writes and sends the message.
+This skill names the steps, the handoffs and what ends the run. When an agent
+isn't available in this session, do what the conventions' "Chat, jobs and
+agents" says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
 
@@ -24,23 +23,26 @@ and nothing more.**
 
 # 2: The facts
 
-Ask the planner agent: **what's still open** (its request of that name in
-`agents/planner.md`). It returns the facts as lines.
+Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
-Read what comes back:
-
-- `paused`: nothing open and the user has paused today. STOP and send nothing.
-- `open:` lines, or `open: none`: the facts for the message.
+- Tasks listed: the facts are one `open:` line per task,
+  `open: <id> <title> (~<time>) <url>`, then ` (was <date>)` when its planned
+  date is before today, then ` (started)` when today marked it so. Remind about
+  everything listed, whatever its labels or status, even on a paused day: the
+  user dated it. Get each `~<time>` from the estimator agent's Time tasks, asked
+  once with every task listed.
+- Nothing listed: run `/ntm:pause --check`. Paused (its line for today ends
+  `true`): STOP and send nothing. Otherwise the facts are `open: none`.
 - Any `… FAILED` line: ERROR HANDLING.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the planner's lines:
+Ask the messenger agent, with the reminder, the job and the facts:
 
 ```
 reminder: afternoon
 job: Afternoon reminder
-<the planner's lines>
+<the facts>
 ```
 
 It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
@@ -59,6 +61,6 @@ after `Sent:` (the list the push couldn't carry), they follow it.
 
 If step 1 fails, end with what the ready check returned, and nothing more; that
 is what reaches the user. For any later error, including a `… FAILED` line from
-the planner or the messenger, never use `/ntm:notify`. End the run with the
-error stated plainly in your final reply; the scheduled task's own completion
-push carries it.
+a skill or the messenger, never use `/ntm:notify`. End the run with the error
+stated plainly in your final reply; the scheduled task's own completion push
+carries it.

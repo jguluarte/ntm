@@ -323,14 +323,15 @@ Skills return text; jobs decide what reaches the user. No skill other than
 
 Every skill a job calls returns plain text. A skill's status line (OK / FAILED)
 starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`,
-`Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`Planned <date>:`,
+`Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`today:`,
 `Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill.
 
 A job's final reply is one line on what happened. When `ntm:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as
 its first line and the message under it, nothing else. The weekly planning adds
-fix-todo-list's result after the message, the morning reminder its `kept:` and
-`couldn't move:` lines, and the price watch its per-item report.
+fix-todo-list's result and its `couldn't move:` lines after the message, the
+morning reminder its `kept:` and `couldn't move:` lines, and the price watch its
+per-item report.
 
 ## Creating tasks when the user asks
 

@@ -1,6 +1,9 @@
 ---
 name: help
-description: What Neurodivergent Task Manager (ntm) is and how to use it, answered from the installed plugin's README. Shown when the user asks what ntm does, how to get started, what a skill is for, or for help with ntm.
+description:
+    What Neurodivergent Task Manager (ntm) is and how to use it, answered from
+    the installed plugin's README. Shown when the user asks what ntm does, how
+    to get started, what a skill is for, or for help with ntm.
 ---
 
 # ntm:help

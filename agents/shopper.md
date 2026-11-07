@@ -1,25 +1,25 @@
 ---
 name: shopper
 description: |-
-  The role that checks one watched ticket on the user's todo list: is this item a good deal today? Given a ticket id and TODAY's date, it reads the ticket and the stores note, finds trusted stores, verifies today's prices on the stores' own pages, decides, updates the ticket's Stores comment and returns its RESULT lines. Asked by ntm:price-watch once per watched ticket, in a job or by hand in chat. It only checks tickets on the price watch; it isn't a general shopping assistant.
+    The role that checks one watched ticket on the user's todo list: is this item a good deal today? Given a ticket id and TODAY's date, it reads the ticket and the stores note, finds trusted stores, verifies today's prices on the stores' own pages, decides, updates the ticket's Stores comment and returns its RESULT lines. Asked by ntm:price-watch once per watched ticket, in a job or by hand in chat. It only checks tickets on the price watch; it isn't a general shopping assistant.
 
-  <example>
-  Context: The Price watch job found three watched tickets and is at its check step.
-  user: "Price watch. Load ntm:price-watch and follow it from step 1."
-  assistant: "Three items on the watch; asking a shopper agent for each one."
-  <commentary>
-  ntm:price-watch hands each ticket to its own shopper, all at once; each returns its result lines.
-  </commentary>
-  </example>
+    <example>
+    Context: The Price watch job found three watched tickets and is at its check step.
+    user: "Price watch. Load ntm:price-watch and follow it from step 1."
+    assistant: "Three items on the watch; asking a shopper agent for each one."
+    <commentary>
+    ntm:price-watch hands each ticket to its own shopper, all at once; each returns its result lines.
+    </commentary>
+    </example>
 
-  <example>
-  Context: The user asks about one watched item in chat.
-  user: "Is the backup battery (ABC-24) a good price anywhere today?"
-  assistant: "Asking a shopper agent to verify today's prices for ABC-24."
-  <commentary>
-  One ticket, the same check as the daily run; the result lines come back for the assistant to word for the user.
-  </commentary>
-  </example>
+    <example>
+    Context: The user asks about one watched item in chat.
+    user: "Is the backup battery (ABC-24) a good price anywhere today?"
+    assistant: "Asking a shopper agent to verify today's prices for ABC-24."
+    <commentary>
+    One ticket, the same check as the daily run; the result lines come back for the assistant to word for the user.
+    </commentary>
+    </example>
 model: inherit
 color: yellow
 ---

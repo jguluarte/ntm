@@ -1,6 +1,13 @@
 ---
 name: notify
-description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
+description:
+    Sends a notification to the user's phone through the channel chosen in their
+    settings, Pushover or the scheduled task's own push. Use whenever a task,
+    scheduled job or workflow needs to deliver a notification, alert or reminder
+    to the user, even if the channel isn't named. Trigger on phrases like
+    "notify me", "send me a push", "remind me on my phone", "alert me", "ping
+    me", or any context where the output is a mobile notification rather than a
+    file or message in another app.
 ---
 
 # ntm:notify
@@ -87,12 +94,12 @@ Rules, each of which prevents a real failure:
 
 Add these as extra `--form-string` lines when they're useful:
 
-| Field | Purpose |
-|---|---|
-| `url` | A link attached below the message, e.g. a ticket. Tappable. |
-| `url_title` | Label for `url` instead of the raw link, e.g. `Open ticket`. |
-| `priority` | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
-| `sound` | Notification sound; `pushover` is the default. |
+| Field       | Purpose                                                                 |
+| ----------- | ----------------------------------------------------------------------- |
+| `url`       | A link attached below the message, e.g. a ticket. Tappable.             |
+| `url_title` | Label for `url` instead of the raw link, e.g. `Open ticket`.            |
+| `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
+| `sound`     | Notification sound; `pushover` is the default.                          |
 
 - **Priority 1** bypasses quiet hours. Use it sparingly.
 - **Priority 2** repeats until acknowledged and requires `retry` (seconds, 30 or

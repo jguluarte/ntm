@@ -1,6 +1,11 @@
 ---
 name: sync-price-watch-to-amazon
-description: Amazon's side of the user's ntm price watch, does every watched item have an Amazon alert, and no closed one keep its? Sets an alert for each open watched item that has none, and removes the alert once an item closes. Needs a browser Claude can drive, signed in to Amazon. Run when the user asks, or when the price watch says a sync is due.
+description:
+    Amazon's side of the user's ntm price watch, does every watched item have an
+    Amazon alert, and no closed one keep its? Sets an alert for each open
+    watched item that has none, and removes the alert once an item closes. Needs
+    a browser Claude can drive, signed in to Amazon. Run when the user asks, or
+    when the price watch says a sync is due.
 ---
 
 # ntm:sync-price-watch-to-amazon

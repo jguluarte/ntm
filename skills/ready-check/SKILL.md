@@ -31,12 +31,13 @@ Stop at the first failure.
    passes; a different todo list is **Wrong account**. If the call errors, go to
    step 4.
 4. **If the call errors,** classify it the way the guide's `ping` says:
-   - An authentication or authorization error (unauthorized, forbidden, invalid
-     or expired token): **Sign-in expired**.
-   - The todo list isn't found: **Wrong account**.
-   - Anything else (a timeout, a server error): retry once. If the retry returns
-     a todo list, apply step 3 to it. If it errors, classify an authentication
-     or not-found error as above, and anything else as **Backend error**.
+    - An authentication or authorization error (unauthorized, forbidden, invalid
+      or expired token): **Sign-in expired**.
+    - The todo list isn't found: **Wrong account**.
+    - Anything else (a timeout, a server error): retry once. If the retry
+      returns a todo list, apply step 3 to it. If it errors, classify an
+      authentication or not-found error as above, and anything else as **Backend
+      error**.
 5. **Load `ntm-user:style`.** It's optional: if it won't load, the check still
    passes, as `(no style)`.
 
@@ -48,14 +49,14 @@ End with one result line, after the notification if there is one:
   didn't load
 - Fail: `Ready-check FAILED: <failure> — <fix>`
 
-| Failure | Fix |
-|---|---|
-| Dependency missing | The ntm:conventions skill couldn't be loaded. Check the ntm plugin is installed and enabled. |
-| Not configured | ntm-user:settings couldn't be loaded. Run /ntm:configure and install the ntm-user plugin it produces. |
-| Connector not attached | The backend connector isn't available in this session. Connect it and, for a scheduled task, check it's attached there. |
-| Sign-in expired | The backend rejected the connector's sign-in. Reconnect the connector. |
-| Wrong account | The connector can't see the todo list named in Todo list in your settings. Reconnect it with the account that owns that todo list. |
-| Backend error | The backend returned <the error, shortened> on retry. Usually temporary; if it repeats, check the backend's status page. |
+| Failure                | Fix                                                                                                                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Dependency missing     | The ntm:conventions skill couldn't be loaded. Check the ntm plugin is installed and enabled.                                       |
+| Not configured         | ntm-user:settings couldn't be loaded. Run /ntm:configure and install the ntm-user plugin it produces.                              |
+| Connector not attached | The backend connector isn't available in this session. Connect it and, for a scheduled task, check it's attached there.            |
+| Sign-in expired        | The backend rejected the connector's sign-in. Reconnect the connector.                                                             |
+| Wrong account          | The connector can't see the todo list named in Todo list in your settings. Reconnect it with the account that owns that todo list. |
+| Backend error          | The backend returned <the error, shortened> on retry. Usually temporary; if it repeats, check the backend's status page.           |
 
 ## With `--notify-failure`
 

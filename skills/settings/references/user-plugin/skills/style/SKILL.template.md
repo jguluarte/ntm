@@ -1,6 +1,9 @@
 ---
 name: style
-description: How ntm reminders talk to you, and the skill that writes them that way. Run by the messenger agent for every reminder, and in chat when you ask for a message in your style; change it with /ntm:configure-style.
+description:
+    How ntm reminders talk to you, and the skill that writes them that way. Run
+    by the messenger agent for every reminder, and in chat when you ask for a
+    message in your style; change it with /ntm:configure-style.
 ---
 
 # ntm-user:style

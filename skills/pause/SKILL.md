@@ -1,6 +1,9 @@
 ---
 name: pause
-description: Pauses for the user's todo list, the days when nothing gets planned automatically. See or change them in chat ("pause Friday", "unpause next week", "show my pauses"), or check whether days are paused.
+description:
+    Pauses for the user's todo list, the days when nothing gets planned
+    automatically. See or change them in chat ("pause Friday", "unpause next
+    week", "show my pauses"), or check whether days are paused.
 ---
 
 # ntm:pause

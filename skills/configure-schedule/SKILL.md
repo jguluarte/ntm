@@ -25,14 +25,14 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-| Kind | Default title | Default days and time | Prompt | Offered |
-| --- | --- | --- | --- | --- |
-| morning reminder | Morning reminder | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md` | always |
-| afternoon reminder | Afternoon reminder | planning days 14:30 | `references/jobs/afternoon-reminder.md` | always |
-| evening reminder | Evening reminder | planning days 19:30 | `references/jobs/evening-reminder.md` | always |
-| weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/weekly-planning.md` | always |
-| price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Todo list in your settings names a price watch project |
-| completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
+| Kind               | Default title                              | Default days and time                                                | Prompt                                  | Offered                                                          |
+| ------------------ | ------------------------------------------ | -------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| morning reminder   | Morning reminder                           | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md`   | always                                                           |
+| afternoon reminder | Afternoon reminder                         | planning days 14:30                                                  | `references/jobs/afternoon-reminder.md` | always                                                           |
+| evening reminder   | Evening reminder                           | planning days 19:30                                                  | `references/jobs/evening-reminder.md`   | always                                                           |
+| weekly planning    | Weekly planning                            | Sunday 22:00                                                         | `references/jobs/weekly-planning.md`    | always                                                           |
+| price watch        | Price watch                                | every day 07:00                                                      | `references/jobs/price-watch.md`        | only when Todo list in your settings names a price watch project |
+| completed          | Completed this week / Completed this month | weekly or monthly; off by default                                    | `references/jobs/completed.md`          | always; the default answer is no                                 |
 
 Each prompt file is named after its kind and starts with a table of what differs
 per job (the default title and the suggested schedule; for completed, the
@@ -67,18 +67,18 @@ Then, for each job they want:
    time to Pacific, and if it falls in that window, say so and keep it unless
    they'd rather move it.
 3. `create_trigger` with:
-   - `name`: the title.
-   - `prompt`: the prompt.
-   - `cron_expression`:
-     `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`,
-     days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a
-     monthly completed job, the same with `1 * *` as the last three fields.
-   - `notifications`: `{push: true}`. Push carries the run's completion summary,
-     which is the reminder itself on the `claude-push` channel. On the
-     `pushover` channel it's a second, shorter push; say so, and that the task's
-     settings can turn it off.
-   - `initiation`: `human_request`.
-   - Leave `permission_mode` unset.
+    - `name`: the title.
+    - `prompt`: the prompt.
+    - `cron_expression`:
+      `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`,
+      days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a
+      monthly completed job, the same with `1 * *` as the last three fields.
+    - `notifications`: `{push: true}`. Push carries the run's completion
+      summary, which is the reminder itself on the `claude-push` channel. On the
+      `pushover` channel it's a second, shorter push; say so, and that the
+      task's settings can turn it off.
+    - `initiation`: `human_request`.
+    - Leave `permission_mode` unset.
 4. Set the model they chose: `update_trigger` with the new task's id and
    `model: <the id>`. This is their request from the walk, not the skill's. If
    the id is rejected, say so, leave the job on the model it inherited, and

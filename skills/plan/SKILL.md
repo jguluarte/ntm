@@ -1,6 +1,12 @@
 ---
 name: plan
-description: Plans the user's todo list by setting planned dates, at the rhythm Planning in their settings gives, and returns the plan. --auto week fills the week ahead and --auto day picks one task for today, unattended; anything else plans with the user in chat. Run by the planner agent for the morning and weekly planning, or by the user ("plan my week", "plan Thursday around the garage").
+description:
+    Plans the user's todo list by setting planned dates, at the rhythm Planning
+    in their settings gives, and returns the plan. --auto week fills the week
+    ahead and --auto day picks one task for today, unattended; anything else
+    plans with the user in chat. Run by the planner agent for the morning and
+    weekly planning, or by the user ("plan my week", "plan Thursday around the
+    garage").
 ---
 
 # ntm:plan

@@ -1,6 +1,10 @@
 ---
 name: fix-todo-list
-description: Tidies the user's todo list by closing parents whose sub-tickets are all closed and clearing stale planned dates, then returns what it changed. Run by the weekly planning job, or by the user ("fix my todo list", "tidy my todo list").
+description:
+    Tidies the user's todo list by closing parents whose sub-tickets are all
+    closed and clearing stale planned dates, then returns what it changed. Run
+    by the weekly planning job, or by the user ("fix my todo list", "tidy my
+    todo list").
 ---
 
 # ntm:fix-todo-list
@@ -28,7 +32,8 @@ runs.
 
 ## Rules
 
-Apply the rules in order, so a ticket rule 1 closes isn't also cleared by rule 2.
+Apply the rules in order, so a ticket rule 1 closes isn't also cleared by
+rule 2.
 
 ### 1. Close finished parents
 
@@ -85,8 +90,8 @@ closed, both when checking its own parent and in rule 2. In the result, write
 Return plain text:
 
 - `Fixed <TODAY>:` then one line per change:
-  - `Closed <id> <title> <url>`
-  - `Cleared <id> <title> <url> (was <date>)`
+    - `Closed <id> <title> <url>`
+    - `Cleared <id> <title> <url> (was <date>)`
 - `Nothing to fix.` when nothing matched, or `Dry run <TODAY>: nothing to fix.`
   in a dry run. If writes were attempted but all failed, give the header with no
   change lines.

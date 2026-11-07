@@ -1,9 +1,9 @@
 ---
 name: help
 description: >-
-    What Neurodivergent Task Manager (ntm) is and how to use it, answered from
-    the installed plugin's README. Shown when the user asks what ntm does, how
-    to get started, what a skill is for, or for help with ntm.
+    What Neurodivergent Task Manager is and how to use it, answered from the
+    installed plugin's README. Shown when the user asks what ntm does, how to
+    get started, what a skill is for, or for help with ntm.
 ---
 
 # ntm:help
@@ -18,9 +18,10 @@ find ~/.claude/plugins -path '*ntm*' -name README.md -not -path '*ntm-user*'
 ```
 
 Read the file it finds and answer from it. If nothing is found, say in one line
-that ntm is a personal task system on the user's own todo list, with reminders
-in their own style and a price watch, and that the README is on the plugin's
-Contents tab under Customize > Plugins, or in the repository.
+that Neurodivergent Task Manager (ntm) is a personal task system on the user's
+own todo list, with reminders in their own style and a price watch, and that the
+README is on the plugin's Contents tab under Customize > Plugins, or in the
+repository.
 
 ## Answering
 

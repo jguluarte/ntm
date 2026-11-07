@@ -52,9 +52,9 @@ carry the list), a delivery block, or a `… FAILED` line.
 When the messenger returned a delivery block, the final reply is the title line
 and the message, verbatim, and nothing else, as the conventions' Results say.
 Otherwise, unless reporting an error, end the run with one short line saying
-what happened, such as "Sent the evening reminder." or "Paused today; nothing
-sent." That line is for the Pushover case; when the messenger returned lines
-after `Sent:` (the list the push couldn't carry), they follow it.
+what happened, such as "Sent the evening reminder." That line is for the
+Pushover case; when the messenger returned lines after `Sent:` (the list the
+push couldn't carry), they follow it.
 
 # ERROR HANDLING
 

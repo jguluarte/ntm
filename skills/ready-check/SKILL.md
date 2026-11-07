@@ -57,7 +57,7 @@ End with one result line, after the notification if there is one:
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Dependency missing     | The ntm:conventions skill couldn't be loaded. Check the ntm plugin is installed and enabled.                                       |
 | Not configured         | ntm-user:settings couldn't be loaded. Run /ntm:configure and install the ntm-user plugin it produces.                              |
-| Connector not attached | The backend connector isn't available in this session. Connect it and, for a scheduled task, check it's attached there.            |
+| Connector not attached | The backend connector isn't in this session. Connect it as /ntm:configure-todo-list shows; for a scheduled task, attach it there.  |
 | Sign-in expired        | The backend rejected the connector's sign-in. Reconnect the connector.                                                             |
 | Wrong account          | The connector can't see the todo list named in Todo list in your settings. Reconnect it with the account that owns that todo list. |
 | Backend error          | The backend returned <the error, shortened> on retry. Usually temporary; if it repeats, check the backend's status page.           |

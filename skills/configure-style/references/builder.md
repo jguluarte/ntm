@@ -207,9 +207,9 @@ counts and names are carried as given. Nothing about the neighbours.
 
 ### Examples
 
-- Everyday: "Today: ABC-12, replace the porch bulb."
-- Second ask: "ABC-12, replace the porch bulb, second day. What's in the way?"
-- Offer a split: "ABC-12, replace the porch bulb, fourth day. Want to break it
+- Everyday: "Today: replace the porch bulb (ABC-12)."
+- Second ask: "Replace the porch bulb (ABC-12), second day. What's in the way?"
+- Offer a split: "Replace the porch bulb (ABC-12), fourth day. Want to break it
   into smaller pieces? Say so and we'll do it now."
 - Nothing open: "Nothing open. Good day; the cat agrees."
 ```

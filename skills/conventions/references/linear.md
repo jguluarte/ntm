@@ -1,14 +1,12 @@
 # Linear guide
 
 The backend guide for Linear, and a tested one: how each operation the
-conventions name is carried out with the Linear connector (`mcp__Linear__*`
-tools). `ntm:conventions` reads it when Backend is `linear`;
-`ntm:configure-todo-list` reads it for Setup. Load the tools you need with
-ToolSearch (`select:mcp__Linear__list_issues,mcp__Linear__save_issue,…`) before
-calling them.
+conventions name is carried out with the Linear connector. `ntm:conventions`
+reads it when Backend is `linear`; `ntm:configure-todo-list` reads it for Setup.
 
-The connector accepts human-readable references: task ids like `ABC-12`, the
-todo list name as `team`, and `me` for the signed-in user.
+Use the tools of the Linear connector that's signed in. Its own instructions and
+tool descriptions are the authority on how to call them. This guide says which
+tool does each operation and which of the user's values goes where.
 
 Values below that name a settings section (Todo list, Labels, Planning, About
 you) come from `ntm-user:settings`, read as the conventions' Loading step says.
@@ -58,13 +56,13 @@ blocked status (skip the blocked call when Todo list's blocked line is blank).
 Each call has `team: "<List name>"`, `assignee: "me"` only when Your tasks in
 Todo list says the user's tasks are the ones assigned to them, `limit: 250`, and
 `fields`: `title`, `url`, `status`, `statusType`, `priority`, `estimate`,
-`dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Paginate
-with `cursor` while `hasNextPage` is true. Merge the results.
+`dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Merge
+the results.
 
 Also list every project once with `list_projects` (`team: "<List name>"`,
 `fields` `name` and `labels`, plus `summary` when a skill asks for the project's
-summary, paginating with `cursor`). Match each issue's `project` against them by
-name, so inherited labels count.
+summary). Match each issue's `project` against them by name, so inherited labels
+count.
 
 `dueDate` holds the planned date: the day the work is planned for. `url` is the
 task's link; always ask for it in `fields`. `priority` is `0` when none is set;
@@ -81,7 +79,7 @@ in it, in the timezone from About you. When a skill asks for one label, add
 ### `read task`
 
 `get_issue` with the id, `includeRelations: true` for parent and blocked-by
-relations. Descriptions come with it; comments and sub-issues don't.
+relations. Descriptions come with it; sub-issues don't.
 
 ### `list sub-tasks`
 
@@ -105,8 +103,8 @@ Change nothing else on the issue.
 ### `add labels` / `remove labels`
 
 `save_issue` with `id` and `addLabels` or `removeLabels` (lists of label names).
-Never use `labels`, which replaces the whole set. Check a label exists with
-`list_issue_labels` (`team`) before adding one for the first time.
+Check a label exists with `list_issue_labels` (`team`) before adding one for the
+first time.
 
 ### `mark duplicate of`
 
@@ -157,7 +155,7 @@ nothing first.
 ### Starting from nothing
 
 These happen outside the chat, on the user's side; walk them through in order
-and wait for "done" before The todo list below:
+and wait for "done" before The connector below:
 
 1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
    issues.
@@ -170,11 +168,15 @@ and wait for "done" before The todo list below:
    right now" status, they add one named Blocked in the team's workflow
    settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
-4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
-   Linear and sign in to the workspace. Then come back here and say so.
 
 Labels, the price watch project and the notes don't need to be made by hand:
 Labels and Notes in `ntm:configure-todo-list` create them.
+
+### The connector
+
+Check that a signed-in Linear connector is present. If it isn't there, walk the
+user through it: in Claude's settings, the Connectors tab, add Linear and sign
+in to their workspace, then come back here and say so.
 
 ### The todo list
 
@@ -240,15 +242,14 @@ project label.
 
 ### `list projects`
 
-`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`,
-paginating with `cursor`. Each comes back with its id.
+`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`. Each
+comes back with its id.
 
 ### `create project`
 
 Create the project labels it should carry first (`create label`), then
-`save_project` with `name`, `addTeams` naming the todo list, and `labels`.
-`labels` replaces the set, so when updating an existing project, pass its
-current labels plus the missing ones.
+`save_project` with `name`, `addTeams` naming the todo list, and `labels`. When
+updating an existing project, pass its current labels plus the missing ones.
 
 ### `create note`
 
@@ -260,7 +261,5 @@ line).
 
 ## Writing
 
-`save_issue`, `save_comment`, `save_document`, `save_project` and the label
-saves both create and update: omit `id` to create, pass `id` to update, and pass
-only the fields to change. The response says whether the write succeeded; the
-conventions' retry rule applies.
+The response says whether the write succeeded; the conventions' retry rule
+applies.

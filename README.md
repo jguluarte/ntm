@@ -1,9 +1,9 @@
-# Neurodivergent Task Manager
+# Neurodivergent Task Manager (ntm)
 
-Neurodivergent Task Manager (ntm) runs a personal task system on your own todo
-list, with a few scheduled jobs that keep it moving. It plans your days and
-weeks, reminds you in a style you choose, asks in the evening how the day went,
-tidies what has gone stale, and watches prices on things you want to buy.
+ntm runs a personal task system on your own todo list, with a few scheduled jobs
+that keep it moving. It plans your days and weeks, reminds you in a style you
+choose, asks in the evening how the day went, tidies what has gone stale, and
+watches prices on things you want to buy.
 
 It was built by one person for the places that got in their way: starting
 things, keeping multi-day work moving, noticing when things have quietly gone

@@ -31,38 +31,24 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-- **morning reminder**
-    - Default title: Morning reminder
-    - Default days and time: planning days (Planning in your settings; weekdays
-      by default) 09:00
-    - Skill: `ntm:morning-reminder`
-    - Offered: always
-- **afternoon reminder**
-    - Default title: Afternoon reminder
-    - Default days and time: planning days 14:30
-    - Skill: `ntm:afternoon-reminder`
-    - Offered: always
-- **evening reminder**
-    - Default title: Evening reminder
-    - Default days and time: planning days 19:30
-    - Skill: `ntm:evening-reminder`
-    - Offered: always
-- **weekly planning**
-    - Default title: Weekly planning
-    - Default days and time: Sunday 22:00
-    - Skill: `ntm:weekly-planning`
-    - Offered: always
-- **price watch**
-    - Default title: Price watch
-    - Default days and time: every day 07:00, paused days included
-    - Skill: `ntm:price-watch`
-    - Offered: only when Todo list in your settings names a price watch project
-- **completed**
-    - Default title: Completed this week / Completed this month
-    - Default days and time: weekly, Sunday 20:00, or monthly, the 1st 20:00;
-      off by default
-    - Skill: `ntm:show-completed`
-    - Offered: always; the default answer is no
+Each kind with its skill, default title, default days and time, and when it's
+offered:
+
+- **morning reminder** (`ntm:morning-reminder`): titled Morning reminder;
+  planning days (Planning in your settings; weekdays by default) 09:00; always
+  offered.
+- **afternoon reminder** (`ntm:afternoon-reminder`): titled Afternoon reminder;
+  planning days 14:30; always offered.
+- **evening reminder** (`ntm:evening-reminder`): titled Evening reminder;
+  planning days 19:30; always offered.
+- **weekly planning** (`ntm:weekly-planning`): titled Weekly planning; Sunday
+  22:00; always offered.
+- **price watch** (`ntm:price-watch`): titled Price watch; every day 07:00,
+  paused days included; offered only when Todo list in your settings names a
+  price watch project.
+- **completed** (`ntm:show-completed`): titled Completed this week / Completed
+  this month; weekly, Sunday 20:00, or monthly, the 1st 20:00; off by default;
+  always offered, and the default answer is no.
 
 Every job's prompt is these three lines, with the kind's default title and skill
 filled in:

@@ -34,7 +34,7 @@ Profanity: <yes or no>
 Repeat limit: <not in the last twenty messages, unless the user says otherwise>
 
 ### Off limits
-What the style never rewrites or jokes about: ticket ids, titles, planned dates, counts and names are carried as given. <anything the user adds>
+What the style never rewrites or jokes about: task ids, titles, planned dates, counts and names are carried as given. <anything the user adds>
 
 ### Examples
 - <level 1 name>: "<example>"
@@ -97,27 +97,27 @@ leave the section empty: the defaults are the plain versions above.
 
 ### When something keeps slipping
 
-What happens when the same ticket shows up day after day. The user's levels, in
+What happens when the same task shows up day after day. The user's levels, in
 order, each with the name they give it and after how many earlier days it
 starts. The first level is the everyday one, for fresh work and work already
 planned for today; it carries no number. Write the number on every level after
-the first: a ticket's level is the last one whose number its count of earlier
-days has reached, and a count of 0 is always the first level. Offer these, one
-line each, without favouring any:
+the first: a task's level is the last one whose number its count of earlier days
+has reached, and a count of 0 is always the first level. Offer these, one line
+each, without favouring any:
 
 - the same every day: one level, no climb
 - the same tone, plus a direct question: "what's in the way?"
 - break it smaller: the message offers a split or a replan in chat
 - harder each day: a level per day, in their names
-- step back: go quiet on that ticket and raise it once in the weekly message
+- step back: go quiet on that task and raise it once in the weekly message
 - a consequence they name themselves, said plainly when the day comes
 
 Discuss it with them; the offers above are starting points, not the menu. Then
-the climb rule in one line, such as "harder each day a ticket carries over, back
+the climb rule in one line, such as "harder each day a task carries over, back
 to the first level once it closes". An earlier day is a day before today on
-which a reminder mentioned the ticket; the procedure counts them from the
-message history. Levels listed without numbers get 0, 1, 2… in order. The
-morning and evening reminders follow this section; the afternoon never climbs.
+which a reminder mentioned the task; the procedure counts them from the message
+history. Levels listed without numbers get 0, 1, 2… in order. The morning and
+evening reminders follow this section; the afternoon never climbs.
 
 ### Motifs
 
@@ -143,19 +143,19 @@ in the last twenty messages" is the default when they don't say.
 
 ### Off limits
 
-What the style never rewrites or jokes about. Ticket ids, titles, planned dates,
+What the style never rewrites or jokes about. Task ids, titles, planned dates,
 counts and names are always carried as given; that sentence stays. Add whatever
 they name: a subject, a person, a kind of joke.
 
 ### Examples
 
 One per level, in the level's name, and one for "nothing open" (the evening when
-everything closed: a win for the day, not the year). Ticket ids use the user's
-Ticket prefix from Todo list in `ntm-user:settings`, or the prefix settled
-earlier in this conversation, or `ABC-12` style when neither exists yet. The
-tasks in them are ordinary household ones. They show how each level lands, how
-long it runs, and how a motif ties to the subject. The procedure borrows their
-energy and never their sentences.
+everything closed: a win for the day, not the year). Task ids use the user's
+Task prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier
+in this conversation, or `ABC-12` style when neither exists yet. The tasks in
+them are ordinary household ones. They show how each level lands, how long it
+runs, and how a motif ties to the subject. The procedure borrows their energy
+and never their sentences.
 
 ## A plain example
 
@@ -181,7 +181,7 @@ Brevity. One line, and the task is the first thing in it.
 - Everyday (the everyday one): the task, nothing else.
 - Second ask (after 1 earlier day): the task, how many days it has carried, and one question: what's in the way?
 - Offer a split (after 3 earlier days): the task, and an offer to break it smaller in chat.
-Back to Everyday once the ticket closes.
+Back to Everyday once the task closes.
 
 ### Motifs
 
@@ -192,7 +192,7 @@ Repeat limit: not in the last twenty messages.
 
 ### Off limits
 
-What the style never rewrites or jokes about: ticket ids, titles, planned dates, counts and names are carried as given. Nothing about the neighbours.
+What the style never rewrites or jokes about: task ids, titles, planned dates, counts and names are carried as given. Nothing about the neighbours.
 
 ### Examples
 

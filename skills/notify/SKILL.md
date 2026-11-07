@@ -1,13 +1,20 @@
 ---
 name: notify
-description: Sends a notification to the user's phone through the channel chosen in their settings, Pushover or the scheduled task's own push. Use whenever a task, scheduled job or workflow needs to deliver a notification, alert or reminder to the user, even if the channel isn't named. Trigger on phrases like "notify me", "send me a push", "remind me on my phone", "alert me", "ping me", or any context where the output is a mobile notification rather than a file or message in another app.
+description: >-
+    Sends a notification to the user's phone through the channel chosen in their
+    settings, Pushover or the scheduled task's own push. Use whenever a skill,
+    job or workflow needs to deliver a notification, alert or reminder to the
+    user, even if the channel isn't named. Trigger on phrases like "notify me",
+    "send me a push", "remind me on my phone", "alert me", "ping me", or any
+    context where the output is a mobile notification rather than a file or
+    message in another app.
 ---
 
 # ntm:notify
 
-Sends a notification to the user's phone. Any scheduled task or workflow can use
-it to reach them. This is the only skill in the system that sends anything;
-every other skill returns text and the job decides what goes out.
+Sends a notification to the user's phone. Any job or workflow can use it to
+reach them. This is the only skill in the system that sends anything; every
+other skill returns text and the job decides what goes out.
 
 ## Usage
 
@@ -16,8 +23,7 @@ every other skill returns text and the job decides what goes out.
 ```
 
 - `title` and `message` are the notification.
-- `url`: optional link attached below the message, usually a ticket's `url`
-  field.
+- `url`: optional link attached below the message, usually a task's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
 - `from`: the job this notification is for (the calling skill passes its job
   name); a per-reminder token written in Notifications is chosen by it.
@@ -38,9 +44,9 @@ says, and `ntm-user:settings` not loading is no failure (the test push runs
 before it exists). With neither a channel nor those two, return
 `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
 
-A linked ticket arrives in `message` as the conventions' "Talking to the user
-about tickets" says (`[<words> (<id>)](<url>)`); each channel below converts it
-as that section says.
+A linked task arrives in `message` as the conventions' "Talking to the user
+about tasks" says (`[<words> (<id>)](<url>)`); each channel below converts it as
+that section says.
 
 ## Pushover
 
@@ -87,12 +93,12 @@ Rules, each of which prevents a real failure:
 
 Add these as extra `--form-string` lines when they're useful:
 
-| Field | Purpose |
-|---|---|
-| `url` | A link attached below the message, e.g. a ticket. Tappable. |
-| `url_title` | Label for `url` instead of the raw link, e.g. `Open ticket`. |
-| `priority` | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
-| `sound` | Notification sound; `pushover` is the default. |
+| Field       | Purpose                                                                 |
+| ----------- | ----------------------------------------------------------------------- |
+| `url`       | A link attached below the message, e.g. a task. Tappable.               |
+| `url_title` | Label for `url` instead of the raw link, e.g. `Open task`.              |
+| `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
+| `sound`     | Notification sound; `pushover` is the default.                          |
 
 - **Priority 1** bypasses quiet hours. Use it sparingly.
 - **Priority 2** repeats until acknowledged and requires `retry` (seconds, 30 or
@@ -102,12 +108,12 @@ Add these as extra `--form-string` lines when they're useful:
 ### HTML mode
 
 `html=1` is on by default in the pattern above. Supported tags: `<a href>`,
-`<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked ticket
+`<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked task
 `[<words> (<id>)](<url>)` in the message becomes
 `<a href="<url>"><words> (<id>)</a>`, as the conventions' "Talking to the user
-about tickets" says.
+about tasks" says.
 
-Escape `&`, `<` and `>` in plain text you insert, such as ticket titles, as
+Escape `&`, `<` and `>` in plain text you insert, such as task titles, as
 `&amp;`, `&lt;` and `&gt;`. Otherwise a title like "Tubing & fittings" breaks
 the markup.
 
@@ -115,8 +121,8 @@ the markup.
 
 - The message can be at most 1024 characters as sent (links converted) and the
   title at most 250. Pushover rejects anything longer, so trim before sending.
-- The rate limit is 10,000 messages per month per app, well beyond what
-  scheduled tasks use.
+- The rate limit is 10,000 messages per month per app, well beyond what the jobs
+  use.
 
 ### Checking the result
 
@@ -141,11 +147,11 @@ NOTIFY VIA FINAL REPLY
 ```
 
 Return the title on the line after the marker and the message under it, with
-linked tickets kept as the markdown they arrived in, as the conventions'
-"Talking to the user about tickets" says. The job's final reply is then
-everything after the marker line, verbatim, and nothing else, as the
-conventions' Results say. The completion push shows that reply. `url` and
-`priority` have no effect on this channel.
+linked tasks kept as the markdown they arrived in, as the conventions' "Talking
+to the user about tasks" says. The job's final reply is then everything after
+the marker line, verbatim, and nothing else, as the conventions' Results say.
+The completion push shows that reply. `url` and `priority` have no effect on
+this channel.
 
 In chat the block is returned the same way; the reply that shows it is the
 delivery.

@@ -1,6 +1,12 @@
 ---
 name: configure-notifications
-description: Sets up or changes how ntm's reminders reach the user, in chat: the channel (Pushover, or the scheduled task's own push), the Pushover keys with one test push, and anything about how they want to be notified. Run from ntm:configure, or when the user says "set up notifications", "change my Pushover keys", "switch to Pushover", "use Claude's push instead" or "notify me differently".
+description: >-
+    Sets up or changes how ntm's reminders reach the user, in chat: the channel
+    (Pushover, or the scheduled task's own push), the Pushover keys with one
+    test push, and anything about how they want to be notified. Run from
+    ntm:configure, or when the user says "set up notifications", "change my
+    Pushover keys", "switch to Pushover", "use Claude's push instead" or "notify
+    me differently".
 ---
 
 # ntm:configure-notifications
@@ -33,7 +39,7 @@ Two channels; offer both in a line each:
   channel, and the only one a chat request ("ping me") can use.
 - **`claude-push`:** the scheduled task's own completion push carries the
   reminder. Nothing to set up here; `/ntm:configure-schedule` turns it on per
-  task when it creates them. Best effort: it fires when a run finishes, and a
+  job when it creates them. Best effort: it fires when a run finishes, and a
   chat request can't use it.
 
 Record the channel.

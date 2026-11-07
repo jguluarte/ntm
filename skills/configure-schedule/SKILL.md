@@ -1,6 +1,12 @@
 ---
 name: configure-schedule
-description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /ntm:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
+description: >-
+    Sets up and maintains the user's ntm jobs, the scheduled tasks that send
+    their reminders: which kinds they want, on which days, at what time, under
+    what title. Creates and updates the jobs, lists them, runs one now, turns
+    one off or on, deletes. Run from /ntm:configure, or when the user asks about
+    their reminders' schedule ("set up my reminders", "change the morning time",
+    "turn off the evening reminder").
 ---
 
 # ntm:configure-schedule
@@ -8,7 +14,7 @@ description: Sets up and maintains the user's ntm jobs, the scheduled tasks that
 The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
 never trigger, routine or cron job. This is a chat conversation: short rounds,
 the user's answers win. It changes nothing in `ntm-user:settings` and writes no
-file: the tasks it creates are the result.
+file: the jobs it creates are the result.
 
 ## Tools
 
@@ -25,14 +31,14 @@ timezone, the price watch project and the Planning days `configure` hands you.
 
 ## The kinds
 
-| Kind | Default title | Default days and time | Prompt | Offered |
-| --- | --- | --- | --- | --- |
-| morning reminder | Morning reminder | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md` | always |
-| afternoon reminder | Afternoon reminder | planning days 14:30 | `references/jobs/afternoon-reminder.md` | always |
-| evening reminder | Evening reminder | planning days 19:30 | `references/jobs/evening-reminder.md` | always |
-| weekly planning | Weekly planning | Sunday 22:00 | `references/jobs/weekly-planning.md` | always |
-| price watch | Price watch | every day 07:00 | `references/jobs/price-watch.md` | only when Todo list in your settings names a price watch project |
-| completed | Completed this week / Completed this month | weekly or monthly; off by default | `references/jobs/completed.md` | always; the default answer is no |
+| Kind               | Default title                              | Default days and time                                                | Prompt                                  | Offered                                                          |
+| ------------------ | ------------------------------------------ | -------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| morning reminder   | Morning reminder                           | planning days (Planning in your settings; weekdays by default) 09:00 | `references/jobs/morning-reminder.md`   | always                                                           |
+| afternoon reminder | Afternoon reminder                         | planning days 14:30                                                  | `references/jobs/afternoon-reminder.md` | always                                                           |
+| evening reminder   | Evening reminder                           | planning days 19:30                                                  | `references/jobs/evening-reminder.md`   | always                                                           |
+| weekly planning    | Weekly planning                            | Sunday 22:00                                                         | `references/jobs/weekly-planning.md`    | always                                                           |
+| price watch        | Price watch                                | every day 07:00                                                      | `references/jobs/price-watch.md`        | only when Todo list in your settings names a price watch project |
+| completed          | Completed this week / Completed this month | weekly or monthly; off by default                                    | `references/jobs/completed.md`          | always; the default answer is no                                 |
 
 Each prompt file is named after its kind and starts with a table of what differs
 per job (the default title and the suggested schedule; for completed, the
@@ -47,7 +53,7 @@ take what they say, and lock nothing.
 For each kind in the order above, ask: do they want it; which days (Planning
 days from Planning, weekdays by default, for the three daily reminders); what
 time; what title. Ask once, for all the jobs: which model should they run on?
-Propose Opus (`claude-opus-5-5`): a new task inherits the model of the chat that
+Propose Opus (`claude-opus-5-5`): a new job inherits the model of the chat that
 creates it, and a job that runs every day doesn't need the heaviest one. Their
 answer is the model every job gets. A title is only a label; the kind's default
 title stays the name notifications and tokens are matched by. Offer the defaults
@@ -67,29 +73,29 @@ Then, for each job they want:
    time to Pacific, and if it falls in that window, say so and keep it unless
    they'd rather move it.
 3. `create_trigger` with:
-   - `name`: the title.
-   - `prompt`: the prompt.
-   - `cron_expression`:
-     `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`,
-     days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a
-     monthly completed job, the same with `1 * *` as the last three fields.
-   - `notifications`: `{push: true}`. Push carries the run's completion summary,
-     which is the reminder itself on the `claude-push` channel. On the
-     `pushover` channel it's a second, shorter push; say so, and that the task's
-     settings can turn it off.
-   - `initiation`: `human_request`.
-   - Leave `permission_mode` unset.
-4. Set the model they chose: `update_trigger` with the new task's id and
+    - `name`: the title.
+    - `prompt`: the prompt.
+    - `cron_expression`:
+      `CRON_TZ=<timezone from About you in your settings> <minute> <hour> * * <days>`,
+      days as they chose (`1-5` weekdays, `0` Sunday, `*` every day); for a
+      monthly completed job, the same with `1 * *` as the last three fields.
+    - `notifications`: `{push: true}`. Push carries the run's completion
+      summary, which is the reminder itself on the `claude-push` channel. On the
+      `pushover` channel it's a second, shorter push; say so, and that the
+      scheduled task's settings can turn it off.
+    - `initiation`: `human_request`.
+    - Leave `permission_mode` unset.
+4. Set the model they chose: `update_trigger` with the new job's id and
    `model: <the id>`. This is their request from the walk, not the skill's. If
    the id is rejected, say so, leave the job on the model it inherited, and
    carry on.
 5. Tell the user, in one sentence, which model the job runs on and which
    approval setting it got, and that automatic approval can be turned on in the
-   task's settings if the organization allows it. The setting is
+   scheduled task's settings if the organization allows it. The setting is
    `derived_state.permission_mode` in the result: `auto` means runs go ahead on
    their own; absent means a run stops when an action needs approval, and nobody
    is there to approve a scheduled run.
-6. When the result lists the task's connectors (`mcp_connections`), check that
+6. When the result lists the job's connectors (`mcp_connections`), check that
    the backend connector named by Todo list is among them; if it isn't, say so:
    attach the connector to this session and create the job again, or every run
    will fail its ready check. Either way, the proof is a run, once `ntm-user` is

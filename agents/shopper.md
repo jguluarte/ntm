@@ -198,7 +198,8 @@ Return exactly these lines and nothing else. Leave out the DEAL and COMPARE
 lines unless the result is DEAL. The result is NO VERIFIED PRICE when no trusted
 store had a verified, in-stock price today; if there were verified prices but a
 skip covers them all, it's NO DEAL. Every price is in the currency from Country
-and currency.
+and currency. Each line starts with its label and is a single line; it's wrapped
+here only for width.
 
     RESULT: <one of DEAL, NO DEAL, NO VERIFIED PRICE, NOT ACTIONABLE (reason)>
     DEAL: <price> at <store> <(sold by <seller>) if a marketplace seller> |

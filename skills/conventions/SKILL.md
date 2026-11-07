@@ -8,10 +8,6 @@ description: >-
 
 # ntm:conventions
 
-Version: 0.3.2
-
-Template source: none yet
-
 The rules every ntm skill and agent follows to read and write the user's todo
 list. Load them before any list query, and before creating or editing a task.
 They are a general guide, not a rulebook for every edge; the other skills and

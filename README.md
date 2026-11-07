@@ -98,37 +98,68 @@ values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
 each is three lines naming the skill it runs. The reminder skills gather facts
 and hand them to an agent; agents own the procedures. In the skills, a name with
 a `$` in front, like $no-autoschedule, is a label you configure, written by its
-default name.
+default name. The notes live on your todo list, under the titles in your
+settings.
 
-- **`ntm:conventions`**: the rules for reading and writing the todo list, in
-  backend-neutral terms, with a guide per backend (Linear, or the one you
-  describe). Ships with ntm.
-- **`ntm-user:settings`**: every value you agreed to (About you, Todo list,
-  Labels, Planning, Shopping, Notifications, Deviations). Written by
-  `/ntm:configure` and `/ntm:settings`, with you.
-- **`ntm-user:style`**: how reminders talk to you, and the message history.
-  Written by `/ntm:configure-style`, with you.
-- **Jobs**: the scheduled tasks (Morning, Afternoon and Evening reminders,
-  Weekly planning, Completed weekly or monthly, Price watch). Each runs one
-  skill. Written by `/ntm:configure-schedule`.
-- **The planner**: what is planned, what got done, is today ready? Runs the list
-  skills for the reminders. Ships with ntm.
-- **The messenger**: what will you actually open? Composes in your style and
-  sends through your channel. Ships with ntm.
-- **The shopper**: is this item a good deal today? One per watched task. Ships
-  with ntm.
-- **Pauses note**: the days when nothing gets planned automatically. Written by
-  `/ntm:pause`.
-- **Message history note**: what reminders have said, so they don't repeat
-  themselves. Written by `ntm-user:style`.
-- **Task review log note**: how you like tasks written and sized, learned while
-  reviewing. Written by `/ntm:review-todo-list`.
-- **Price watch stores note**: stores you've vouched for or blocked in replies
-  to a price alert; the shopper reads it. Written by `/ntm:price-watch`.
-- **Amazon alert steps note**: how to set an alert on Amazon, learned once.
-  Written by `/ntm:sync-price-watch-to-amazon`.
+### `ntm:conventions`
 
-The notes live on your todo list, under the titles in your settings.
+The rules for reading and writing the todo list, in backend-neutral terms, with
+a guide per backend (Linear, or the one you describe). Ships with ntm.
+
+### `ntm-user:settings`
+
+Every value you agreed to: About you, Todo list, Labels, Planning, Shopping,
+Notifications, Deviations. Written by `/ntm:configure` and `/ntm:settings`, with
+you.
+
+### `ntm-user:style`
+
+How reminders talk to you, and the message history. Written by
+`/ntm:configure-style`, with you.
+
+### Jobs
+
+The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning,
+Completed (weekly or monthly), Price watch. Each runs one skill. Written by
+`/ntm:configure-schedule`.
+
+### The planner
+
+What is planned, what got done, is today ready? Runs the list skills for the
+reminders. Ships with ntm.
+
+### The messenger
+
+What will you actually open? Composes in your style and sends through your
+channel. Ships with ntm.
+
+### The shopper
+
+Is this item a good deal today? One per watched task. Ships with ntm.
+
+### Pauses note
+
+The days when nothing gets planned automatically. Written by `/ntm:pause`.
+
+### Message history note
+
+What reminders have said, so they don't repeat themselves. Written by
+`ntm-user:style`.
+
+### Task review log note
+
+How you like tasks written and sized, learned while reviewing. Written by
+`/ntm:review-todo-list`.
+
+### Price watch stores note
+
+Stores you've vouched for or blocked in replies to a price alert; the shopper
+reads it. Written by `/ntm:price-watch`.
+
+### Amazon alert steps note
+
+How to set an alert on Amazon, learned once. Written by
+`/ntm:sync-price-watch-to-amazon`.
 
 ## What you can customize
 

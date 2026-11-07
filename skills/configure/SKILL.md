@@ -86,11 +86,11 @@ since each default is about the same todo list.
 
 Load `ntm:settings` and follow its "Regenerating `ntm-user.plugin`" section with
 every section the parts returned: About you, Todo list, Labels, Planning,
-Shopping, Notifications, Deviations, the style body. `ntm:settings` tells them
-to install it and open a new chat. Add that the first thing to run there is
-`/ntm:self-test`: it starts with `ready-check` and exercises the operations the
-jobs use, on a throwaway task. Until it's installed, every scheduled run ends
-with "not configured".
+Shopping, Notifications, the style body. `ntm:settings` tells them to install it
+and open a new chat. Add that the first thing to run there is `/ntm:self-test`:
+it starts with `ready-check` and exercises the operations the jobs use, on a
+throwaway task. Until it's installed, every scheduled run ends with "not
+configured".
 
 ## Configured
 

@@ -92,10 +92,9 @@ described them; the status mapping they gave is the Status classes paragraph.
 
 Nothing to store: each status's class is read from the backend at run time, as
 the conventions' Status classes says. `list statuses` on the todo list and show
-in one short list which class each status falls in (the guide says how; for
-their own backend, as they described it). Blocked is the status named Blocked.
-If their "can't move right now" status has another name, or a status belongs in
-another class, write it as a line for Deviations. If there's no blocked status,
+in one short list which class each status falls in (the guide says how). Blocked
+is the status named Blocked. For their own backend, the mapping they gave goes
+in its guide's Status classes paragraph, above. If there's no blocked status,
 say the $pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
@@ -243,10 +242,6 @@ agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 <anything else about how they shop, as written; or nothing>
 ```
-
-Any lines for Deviations (from Statuses) come after the sections, under
-`## Deviations`; they are added to what Deviations already holds, never in place
-of it.
 
 Then:
 

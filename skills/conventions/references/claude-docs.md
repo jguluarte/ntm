@@ -8,11 +8,11 @@ connector (`mcp__Claude_Docs__*` tools). `batch`, `guide` and `update` are
 always listed; load `read` with ToolSearch (`select:mcp__Claude_Docs__read`)
 before calling it. Before the first docs call of a run,
 `guide( items = ["topic.index","topic.editing"] )`: the reads, cell targets, row
-inserts and refusal codes used below are defined there. There is no task
-tracker here: the todo list is one Claude Doc that Claude keeps, and every
-operation is a read or an edit of that doc. Cost: reads pull a whole table, and
-writes are row-by-row cell edits, so each run spends more tokens than a
-connector to a task tracker would. That's fine for a few dozen tasks.
+inserts and refusal codes used below are defined there. There is no task tracker
+here: the todo list is one Claude Doc that Claude keeps, and every operation is
+a read or an edit of that doc. Cost: reads pull a whole table, and writes are
+row-by-row cell edits, so each run spends more tokens than a connector to a task
+tracker would. That's fine for a few dozen tasks.
 
 Values below that name a settings section (Todo list, Labels, About you) come
 from `ntm-user:settings`, read as the conventions' Loading step says.
@@ -29,8 +29,8 @@ Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
   `read( ref = {"object":"project","id":"<List id>"} )` accepts the id or the
   whole link.
 - **Tabs:** tab 1, "Todo list", holds two pipe tables: the task table under
-  `## Tasks` (columns Id, Title, Status, Planned date, Labels, Project,
-  Parent, Blocked by, Estimate, Done on, Comments) and the projects table under
+  `## Tasks` (columns Id, Title, Status, Planned date, Labels, Project, Parent,
+  Blocked by, Estimate, Done on, Comments) and the projects table under
   `## Projects` (Name, Labels, Summary). Tab 2, "Notes", holds one section per
   note, headed `# <note title>`. The doc read lists the tabs (`files[]`, each
   with its `content.id`, the tab body id); the tab outline
@@ -42,8 +42,8 @@ Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
   `YYYY-MM-DD: text`. There is no description column; a task's description is
   its first Comments line.
 - **Projects:** the projects table; a project's Labels cell is comma-separated
-  text, and inheritance matches those names against task labels. Task labels
-  and project labels are one set of names here.
+  text, and inheritance matches those names against task labels. Task labels and
+  project labels are one set of names here.
 - **Automations:** none. Nothing closes or dates itself; `ntm:fix-todo-list`
   closes finished parents itself.
 - **Missing fields:** no priority (every task's priority is none) and no
@@ -104,8 +104,8 @@ holding the id (its own row, and rows naming it as Parent or Blocked by); then
 
 ### `list sub-tasks`
 
-Every row of the task table as read for `fetch open` (before the status
-filter), open and closed, whose Parent is the id.
+Every row of the task table as read for `fetch open` (before the status filter),
+open and closed, whose Parent is the id.
 
 ### `read comments` / `write comment` / `update comment`
 
@@ -149,8 +149,8 @@ nothing to create first.
 
 Check for an existing match by title in the fetched rows first. Id =
 `<Task prefix>-<max n in the Id column + 1>`, closed rows included. Append a
-row: `insert` on the task table id, `"side":"end"`, `"as":"blocks"`, content
-one `row` of eleven `cell`s each holding a `paragraph` (text runs
+row: `insert` on the task table id, `"side":"end"`, `"as":"blocks"`, content one
+`row` of eleven `cell`s each holding a `paragraph` (text runs
 `{"type":"text","text":"…"}`; an empty paragraph for a blank cell): Id, Title,
 blank, blank, Labels, Project, Parent, Blocked by, blank, blank, the description
 as a dated first Comments line. Then `set status` on the new row (position `-1`,

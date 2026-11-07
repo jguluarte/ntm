@@ -101,9 +101,9 @@ What happens when the same task shows up day after day. The user's levels, in
 order, each with the name they give it and after how many earlier days it
 starts. The first level is the everyday one, for fresh work and work already
 planned for today; it carries no number. Write the number on every level after
-the first: a task's level is the last one whose number its count of earlier
-days has reached, and a count of 0 is always the first level. Offer these, one
-line each, without favouring any:
+the first: a task's level is the last one whose number its count of earlier days
+has reached, and a count of 0 is always the first level. Offer these, one line
+each, without favouring any:
 
 - the same every day: one level, no climb
 - the same tone, plus a direct question: "what's in the way?"
@@ -115,9 +115,9 @@ line each, without favouring any:
 Discuss it with them; the offers above are starting points, not the menu. Then
 the climb rule in one line, such as "harder each day a task carries over, back
 to the first level once it closes". An earlier day is a day before today on
-which a reminder mentioned the task; the procedure counts them from the
-message history. Levels listed without numbers get 0, 1, 2… in order. The
-morning and evening reminders follow this section; the afternoon never climbs.
+which a reminder mentioned the task; the procedure counts them from the message
+history. Levels listed without numbers get 0, 1, 2… in order. The morning and
+evening reminders follow this section; the afternoon never climbs.
 
 ### Motifs
 
@@ -151,11 +151,11 @@ they name: a subject, a person, a kind of joke.
 
 One per level, in the level's name, and one for "nothing open" (the evening when
 everything closed: a win for the day, not the year). Task ids use the user's
-Task prefix from Todo list in `ntm-user:settings`, or the prefix settled
-earlier in this conversation, or `ABC-12` style when neither exists yet. The
-tasks in them are ordinary household ones. They show how each level lands, how
-long it runs, and how a motif ties to the subject. The procedure borrows their
-energy and never their sentences.
+Task prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier
+in this conversation, or `ABC-12` style when neither exists yet. The tasks in
+them are ordinary household ones. They show how each level lands, how long it
+runs, and how a motif ties to the subject. The procedure borrows their energy
+and never their sentences.
 
 ## A plain example
 

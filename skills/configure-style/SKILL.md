@@ -1,6 +1,12 @@
 ---
 name: configure-style
-description: Builds or revises ntm-user:style, the skill that writes every reminder in the user's own register, with them in chat: plain, a theme they describe, or a persona skill they already have. Run when the user says "set up the style", "change how reminders talk to me", "make it meaner", "make it softer", "make it shorter", "the reminders aren't landing" or "use my own persona"; ntm:configure runs it as one of its parts.
+description: >-
+    Builds or revises ntm-user:style, the skill that writes every reminder in
+    the user's own register, with them in chat: plain, a theme they describe, or
+    a persona skill they already have. Run when the user says "set up the
+    style", "change how reminders talk to me", "make it meaner", "make it
+    softer", "make it shorter", "the reminders aren't landing" or "use my own
+    persona"; ntm:configure runs it as one of its parts.
 ---
 
 # ntm:configure-style
@@ -93,12 +99,12 @@ the builder's questions:
   the list gives. They add, cut and replace.
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke
   about.
-- **Examples:** one per level and one for nothing open. Task ids use Task
-  prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in
-  this conversation, or `ABC-12` style when that isn't configured yet. The tasks
-  in them are ordinary household ones. Write them, read them back, revise: if
-  they chose humor, until they laugh at least once; otherwise until each reads
-  like something they'd open.
+- **Examples:** one per level and one for nothing open. Task ids use Task prefix
+  from Todo list in `ntm-user:settings`, or the prefix settled earlier in this
+  conversation, or `ABC-12` style when that isn't configured yet. The tasks in
+  them are ordinary household ones. Write them, read them back, revise: if they
+  chose humor, until they laugh at least once; otherwise until each reads like
+  something they'd open.
 
 Take the theme as they describe it. Don't propose a named character, show,
 person or brand. If they want directions, offer kinds of character in a line
@@ -108,9 +114,9 @@ each (a stern coach, a dry narrator, a game-show host), none of them named.
 
 The user has a persona skill already (or a Profile from an earlier ntm-user):
 text that says who talks, with rules, maybe recurring bits and example lines. It
-becomes `ntm-user:style` as it is: the body stays unchanged, word for word,
-task ids included. A pasted skill's own frontmatter is dropped; everything
-under it is the body.
+becomes `ntm-user:style` as it is: the body stays unchanged, word for word, task
+ids included. A pasted skill's own frontmatter is dropped; everything under it
+is the body.
 
 What the messenger needs from it is only the Usage in the template:
 `/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
@@ -123,10 +129,9 @@ own words: what `--for <reminder>` means to it, that `Title:` is its last line
 own, the section gives it the template's Title line rule, so the title is
 written with the message as part of its theme), that `--stay-fresh` is its
 freshness mechanism, and that the message history note is the one titled under
-Notes in `ntm-user:settings` (when the persona names its own note, the
-settings' title should be that one). Show them the section; they confirm.
-Nothing else is added or filled in: the persona's own levels, profanity and
-motifs stand.
+Notes in `ntm-user:settings` (when the persona names its own note, the settings'
+title should be that one). Show them the section; they confirm. Nothing else is
+added or filled in: the persona's own levels, profanity and motifs stand.
 
 ## Result
 

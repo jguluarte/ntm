@@ -1,6 +1,11 @@
 ---
 name: show-completed
-description: Reports what the user got done on their todo list over a span of time they or a job describes ("what did I finish last week", "what got done this month"), and, when asked, what's still open from it; --notify sends it as a message in the user's style. Run by the planner agent, by the "Completed this week" job, or by the user.
+description: >-
+    Reports what the user got done on their todo list over a span of time they
+    or a job describes ("what did I finish last week", "what got done this
+    month"), and, when asked, what's still open from it; --notify sends it as a
+    message in the user's style. Run by the planner agent, by the "Completed
+    this week" job, or by the user.
 ---
 
 # ntm:show-completed
@@ -45,10 +50,10 @@ before Setup; `Ready-check FAILED` ends the run with what it returned. The
 3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's
    `fetch open`, keeping excluded tasks, only when it asks for open tasks.
-4. Keep the tasks completed in the span, in the timezone from About you in
-   your settings. Done tasks of any kind count, price watch buys included.
-5. When the description narrows the scope, keep only the tasks that match it,
-   by project, parent, label or title.
+4. Keep the tasks completed in the span, in the timezone from About you in your
+   settings. Done tasks of any kind count, price watch buys included.
+5. When the description narrows the scope, keep only the tasks that match it, by
+   project, parent, label or title.
 
 If any step fails, stop and return `Show-completed FAILED: <what failed>`.
 
@@ -65,12 +70,12 @@ Done, the planned date for Still open.
 - Canceled and duplicate tasks, when asked for, in their own
   `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same
   way.
-- `Still open (<count>):` when asked for: open tasks planned in the span, or
-  in the range the request names for them ("planned today or earlier").
+- `Still open (<count>):` when asked for: open tasks planned in the span, or in
+  the range the request names for them ("planned today or earlier").
 
 Typed in chat, present the result as the conventions' "Talking to the user about
-tasks" says (natural words, the id in parentheses); the raw lines are for
-skills and jobs.
+tasks" says (natural words, the id in parentheses); the raw lines are for skills
+and jobs.
 
 ## Notify
 

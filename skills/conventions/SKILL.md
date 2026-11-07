@@ -1,11 +1,16 @@
 ---
 name: conventions
-description: Rules for reading and writing the user's todo list, in backend-neutral terms, plus the backend guides that map them onto Linear or Claude Docs. Load before any list query, and before creating or editing a task for the user.
+description: >-
+    Rules for reading and writing the user's todo list, in backend-neutral
+    terms, plus the backend guides that map them onto Linear or Claude Docs.
+    Load before any list query, and before creating or editing a task for the
+    user.
 ---
 
 # ntm:conventions
 
 Version: 0.3.2
+
 Template source: none yet
 
 This is a general guide to working with the user's todo list, not a rulebook for
@@ -75,8 +80,7 @@ the tie-breaker.
   carry labels their tasks inherit.
 - **Parent task:** a task with open sub-tasks.
 - **Sub-task:** a task under a parent task, where the backend has that relation.
-- **Planned date:** the task's one date field, the day the work is planned
-  for.
+- **Planned date:** the task's one date field, the day the work is planned for.
 - **Started:** the one plannable status that means work has begun. Jobs give
   credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
@@ -98,8 +102,8 @@ the tie-breaker.
   in it, regardless of assignee. Never filter by assignee unless explicitly
   asked.
 - **Chat, jobs and agents:** a skill typed in chat runs in the chat. The
-  reminder skills, `show-completed --notify` and the price watch hand their
-  work to the plugin's agents (planner, messenger, shopper), in a job or in chat
+  reminder skills, `show-completed --notify` and the price watch hand their work
+  to the plugin's agents (planner, messenger, shopper), in a job or in chat
   alike; each says what it hands over. When an agent isn't available in the
   session, read its file from the installed plugin and do what it says yourself,
   with the same request:
@@ -113,9 +117,9 @@ the tie-breaker.
 
 ## Talking to the user about tasks
 
-The user doesn't know what a task means by number alone. When you mention a
-task to them, refer to it the way a person would in conversation: a few
-natural words for what it is, with the id in parentheses after it.
+The user doesn't know what a task means by number alone. When you mention a task
+to them, refer to it the way a person would in conversation: a few natural words
+for what it is, with the id in parentheses after it.
 
 For example, take ABC-15, titled "Replace the kitchen tap". Telling the user
 "you already finished ABC-15" means nothing to them, and quoting the full title
@@ -126,9 +130,9 @@ to look it up. Where the backend has no ids, the words alone.
 Lines another skill parses (like `/ntm:today`'s result lines) keep their format,
 but when you pass them on to the user, word them this way too.
 
-A linked task is `[<words> (<id>)](<url>)`: the words as this section says,
-the id in parentheses inside the link text, the url the task's own `url`
-field. `ntm:notify` converts for its channel: Pushover html=1 gets
+A linked task is `[<words> (<id>)](<url>)`: the words as this section says, the
+id in parentheses inside the link text, the url the task's own `url` field.
+`ntm:notify` converts for its channel: Pushover html=1 gets
 `<a href="<url>"><words> (<id>)</a>`; claude-push keeps the markdown.
 
 ## Statuses and labels
@@ -146,18 +150,16 @@ and the settings are what count.
   names as **started** means work has begun.
 - **blocked**: the user has put it in the status Todo list in your settings
   names as blocked because they can't move it forward right now. What's in the
-  way is an open blocking task linked to it, a reason described in its
-  comments, or both. Waiting on an order usually gets the $pending-shipment
-  label instead. A blocked-by relation alone doesn't make a task blocked; see
-  Blocks and blocked by. Blank in Todo list when the todo list has no such
-  status.
+  way is an open blocking task linked to it, a reason described in its comments,
+  or both. Waiting on an order usually gets the $pending-shipment label instead.
+  A blocked-by relation alone doesn't make a task blocked; see Blocks and
+  blocked by. Blank in Todo list when the todo list has no such status.
 - **done**: done.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.
 
-Nothing outside the plannable class is ever planned. An open task is any
-task that isn't done, canceled or duplicate, so a blocked task is still
-open.
+Nothing outside the plannable class is ever planned. An open task is any task
+that isn't done, canceled or duplicate, so a blocked task is still open.
 
 ### System labels
 
@@ -168,9 +170,9 @@ Labels, and never show the `$` to the user.
 
 Task labels:
 
-- **$no-autoschedule:** the user has opted this task out of automatic
-  planning. Planners never pick it, but once the user dates it themselves, it's
-  reminded about like any other dated task.
+- **$no-autoschedule:** the user has opted this task out of automatic planning.
+  Planners never pick it, but once the user dates it themselves, it's reminded
+  about like any other dated task.
 - **$pending-shipment:** something has been ordered for this task and hasn't
   arrived, so the user can't start it.
 - **$has-amazon-alert:** an Amazon price alert is set for this task.
@@ -180,8 +182,8 @@ Task labels:
 
 Project labels (tasks inherit them; see Project labels):
 
-- **$price-watch:** the project's tasks are purchases waiting for a good
-  price. There is no $price-watch task label.
+- **$price-watch:** the project's tasks are purchases waiting for a good price.
+  There is no $price-watch task label.
 - **$no-autoschedule:** as the task label, for every task in the project.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
@@ -192,10 +194,10 @@ description on the todo list says what it's for.
 
 Projects carry labels too. Any label on a project, system label or ordinary
 category, counts as a label on every task in that project and on their
-sub-tasks. Wherever a rule checks a task's labels, it checks the ones
-inherited from its project too. This holds for labels added later as well, with
-no change to these rules. Where the backend can't put labels on groups, the
-guide says so and the user puts the labels on tasks directly.
+sub-tasks. Wherever a rule checks a task's labels, it checks the ones inherited
+from its project too. This holds for labels added later as well, with no change
+to these rules. Where the backend can't put labels on groups, the guide says so
+and the user puts the labels on tasks directly.
 
 Price watch is on when Todo list names a price watch project; the watched set is
 the open tasks carrying the $price-watch project label. There is no separate
@@ -221,8 +223,8 @@ it.
   `ntm:sync-price-watch-to-amazon` keeps it.
 
 Where the backend has no documents, the guide keeps each note in the description
-of an open task titled with the note's title and labeled $no-autoschedule;
-see Notes in `references/CONTRACT.md`.
+of an open task titled with the note's title and labeled $no-autoschedule; see
+Notes in `references/CONTRACT.md`.
 
 ## Fetching
 
@@ -232,11 +234,11 @@ project, parent id, completed at, updated at. It also lists every project with
 its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
-- **For planning and reminders:** `fetch open`, which includes blocked tasks
-  so parents and ancestors are fully visible. A task is a parent when an open
-  task in the results names it as parent id. Keep excluded tasks in the
-  results; Never picks says who skips them. Before planning a candidate,
-  `read task` on it and its parent chain to see blockers.
+- **For planning and reminders:** `fetch open`, which includes blocked tasks so
+  parents and ancestors are fully visible. A task is a parent when an open task
+  in the results names it as parent id. Keep excluded tasks in the results;
+  Never picks says who skips them. Before planning a candidate, `read task` on
+  it and its parent chain to see blockers.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
@@ -248,8 +250,8 @@ default is: a task that, itself or through any ancestor (project, or parent,
 parent's parent, and so on), has the $no-autoschedule label, the
 $pending-shipment label or the blocked status.
 
-Planners skip excluded tasks: they never pick or date them. Reminders don't:
-any open task the user has dated gets reminded about, excluded or not.
+Planners skip excluded tasks: they never pick or date them. Reminders don't: any
+open task the user has dated gets reminded about, excluded or not.
 
 Planners also never plan onto a paused day (`/ntm:pause --check` over the span
 says which days are). A date the user set on a paused day stands, and gets its
@@ -296,25 +298,24 @@ these are the defaults.
 ### Parent and sub-tasks
 
 - **A task with no open sub-tasks** is an ordinary task.
-- **A task with open sub-tasks is a parent.** Plan its open sub-tasks,
-  never the parent; its own planned date means nothing to planners.
+- **A task with open sub-tasks is a parent.** Plan its open sub-tasks, never the
+  parent; its own planned date means nothing to planners.
 
 ### Blocks and blocked by
 
-A task blocked by open linked tasks, directly or through its parent chain,
-can be planned for any day after the planned days of all those blockers. Never
-the same day, but not necessarily the next either: any later day works. A
-blocker's planned day is its planned date. A blocker with no planned date, or a
-stale one, has no planned day, and the tasks it blocks wait. A planner can
-date a blocker and then the task it blocks in the same run. The user also uses
-blocked-by loosely, to push one thing behind another; that's fine, and nothing
-to query.
+A task blocked by open linked tasks, directly or through its parent chain, can
+be planned for any day after the planned days of all those blockers. Never the
+same day, but not necessarily the next either: any later day works. A blocker's
+planned day is its planned date. A blocker with no planned date, or a stale one,
+has no planned day, and the tasks it blocks wait. A planner can date a blocker
+and then the task it blocks in the same run. The user also uses blocked-by
+loosely, to push one thing behind another; that's fine, and nothing to query.
 
 #### Example
 
-If task `two` is blocked by task `one`, then `two` can be planned for
-Wednesday only if `one` is planned for Tuesday or earlier. If `one` has no
-planned day, `two` can't be planned yet.
+If task `two` is blocked by task `one`, then `two` can be planned for Wednesday
+only if `one` is planned for Tuesday or earlier. If `one` has no planned day,
+`two` can't be planned yet.
 
 ## Writing to the todo list
 

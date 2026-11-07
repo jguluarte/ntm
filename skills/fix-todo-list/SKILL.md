@@ -1,6 +1,10 @@
 ---
 name: fix-todo-list
-description: Tidies the user's todo list by closing parents whose sub-tasks are all closed and clearing stale planned dates, then returns what it changed. Run by the weekly planning job, or by the user ("fix my todo list", "tidy my todo list").
+description: >-
+    Tidies the user's todo list by closing parents whose sub-tasks are all
+    closed and clearing stale planned dates, then returns what it changed. Run
+    by the weekly planning job, or by the user ("fix my todo list", "tidy my
+    todo list").
 ---
 
 # ntm:fix-todo-list
@@ -23,8 +27,8 @@ runs.
 2. Compute `TODAY` once, as the conventions' Dates section says, and use it for
    the whole run, even if the run crosses midnight.
 3. Fetch every open task with the guide's `fetch open`, and keep every result,
-   including excluded tasks and parents. Skip the parent and blocker reads,
-   and skip listing the projects with their labels: these rules check no labels.
+   including excluded tasks and parents. Skip the parent and blocker reads, and
+   skip listing the projects with their labels: these rules check no labels.
 
 ## Rules
 
@@ -39,8 +43,8 @@ tasks where status is open
 → set status to done
 ```
 
-Fetch the closed tasks that have a parent (the guide's `fetch closed`, with
-the canceled and duplicate statuses as well as done, keeping those with a parent
+Fetch the closed tasks that have a parent (the guide's `fetch closed`, with the
+canceled and duplicate statuses as well as done, keeping those with a parent
 id). Check each distinct parent that's among the open tasks: read it with
 `read task`, and if it's still open, list its sub-tasks with the guide's
 `list sub-tasks`. If every one is closed, set the parent to done with
@@ -63,8 +67,8 @@ tasks where status is open
 → clear planned date
 ```
 
-Of the open tasks, keep those that match, leaving out any that rule 1 closed
-or found already closed. Clear each with the guide's `clear planned date` and
+Of the open tasks, keep those that match, leaving out any that rule 1 closed or
+found already closed. Clear each with the guide's `clear planned date` and
 change nothing else.
 
 ### Failures and dry runs
@@ -85,8 +89,8 @@ closed, both when checking its own parent and in rule 2. In the result, write
 Return plain text:
 
 - `Fixed <TODAY>:` then one line per change:
-  - `Closed <id> <title> <url>`
-  - `Cleared <id> <title> <url> (was <date>)`
+    - `Closed <id> <title> <url>`
+    - `Cleared <id> <title> <url> (was <date>)`
 - `Nothing to fix.` when nothing matched, or `Dry run <TODAY>: nothing to fix.`
   in a dry run. If writes were attempted but all failed, give the header with no
   change lines.

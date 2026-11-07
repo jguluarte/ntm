@@ -1,0 +1,17 @@
+{
+    // Prettier owns wrapping and whitespace; markdownlint makes the checks
+    // Prettier doesn't. Rules the plugin's text breaks on purpose are off:
+    // numbered steps as top-level headings, agents that open with prose,
+    // <placeholders> that read as HTML, bare code fences, and code spans
+    // whose spaces matter.
+    "config": {
+        "extends": "markdownlint/style/prettier",
+        "MD025": false,
+        "MD041": false,
+        "MD033": false,
+        "MD040": false,
+        "MD038": false,
+    },
+    "globs": ["**/*.md"],
+    "gitignore": true,
+}

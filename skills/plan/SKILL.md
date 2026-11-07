@@ -40,8 +40,7 @@ skill says, and change nothing else on a task.
    user wants their todo list planned: rhythm, planning days, how far ahead the
    week plans, the estimate scale, a day's worth, what's never picked, and
    anything else they wrote there.
-2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks,
+2. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks,
    and work out which tasks are parents. `--auto week` fetches after its tidy.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
@@ -107,13 +106,13 @@ conventions; Result says how to list any that still fail.
 
 ## --auto day
 
-1. **Carry over.** Every task planned before `TODAY` is stale. Move the ones in
-   the plannable class to `TODAY` with `set planned date`, whatever their labels
+1. **Carry over.** Every task planned before today is stale. Move the ones in
+   the plannable class to today with `set planned date`, whatever their labels
    and even when one blocks another: the user dated them, so they should just
    work (the conventions' Blocks rule is for picking work; carrying a date isn't
    picking). A stale task in the blocked class keeps its date. Carry over on a
    paused day too.
-2. **Today.** If nothing is planned for `TODAY` after the moves, check today as
+2. **Today.** If nothing is planned for today after the moves, check today as
    Paused days says. Paused: return `paused` and stop. Otherwise pick for today
    as Choosing a task says, and date the pick today.
 3. Return today's plan as Result says.
@@ -131,7 +130,7 @@ calendar month for the month.
    here: carry on with `done: unavailable`.
 2. Run `/ntm:fix-todo-list`, so planning works from a tidy todo list.
    `Fix-todo-list FAILED` isn't an error here either: carry on.
-3. Fetch as Setup says. The span is from `TODAY` to the end of the week ahead;
+3. Fetch as Setup says. The span is from today to the end of the week ahead;
    only Planning days get picks. Check it for paused days, as Paused days says.
 4. Give each remaining planning day that doesn't already have a task its picks.
    If no candidate is left, plan nothing.
@@ -171,7 +170,7 @@ as they are.
 
 A ` (~<time>)` in a line below appears only on a task this run picked.
 
-- `--auto day`: one `today:` line per task planned for `TODAY`:
+- `--auto day`: one `today:` line per task planned for today:
   `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a task carried
   over, the date it had, then ` (started)` when its status is the started one.
   When nothing is planned and nothing qualified, the single line `today: none`.
@@ -181,7 +180,7 @@ A ` (~<time>)` in a line below appears only on a task this run picked.
 - `--auto week`: one `done:` line per task that closed in the span looked back
   on (`done: <id> <title> <url>`), or `done: none`, or `done: unavailable`; one
   `open:` line per task still open from it (`open: <id> <title> <url>`, then
-  ` (was <date>)` when its planned date is before `TODAY`), or `open: none`; one
+  ` (was <date>)` when its planned date is before today), or `open: none`; one
   `planned:` line per task planned in the week ahead, days the user had already
   dated included, in day order
   (`planned: <date>: <id> <title> (~<time>) <url>`), or the single line

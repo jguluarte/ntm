@@ -50,7 +50,7 @@ reasons joined by `; ` in start-date order. When the note is missing,
 - Words ("Friday", "next week", "remove the 12th", "show my pauses"): follow
   them; see or change the pauses with the user.
 - `--check`: are these days paused? It checks the first day through the
-  `--until` day, both included. The first day defaults to `TODAY`, and the
+  `--until` day, both included. The first day defaults to today, and the
   `--until` day defaults to the first. So `--check` alone checks today,
   `--check --until 2026-10-15` checks today through the 15th, and
   `--check 2026-10-14 --until 2026-10-15` checks just those two days.
@@ -61,17 +61,16 @@ uses `YYYY-MM-DD`.
 
 ## Dates
 
-Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range
-covers both its start and end days. A weekday name means the next one, today
-included when today is that day (the example below was typed on a Thursday);
-"next <weekday>" means that weekday of next week (weeks start on Monday); a date
-without a year is the next one. Show the resolved date in the reply
-(`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no
-confirmation round-trip before saving.
+Load `ntm:conventions`. A range covers both its start and end days. A weekday
+name means the next one, today included when today is that day (the example
+below was typed on a Thursday); "next <weekday>" means that weekday of next week
+(weeks start on Monday); a date without a year is the next one. Show the
+resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is
+visible; there is no confirmation round-trip before saving.
 
 ## With `--check`
 
-1. Read the note. If any pause ended before `TODAY`, or any line is invalid,
+1. Read the note. If any pause ended before today, or any line is invalid,
    remove those lines and save.
 2. Return one line per day from the first day to the `--until` day, in order,
    and nothing else, as Result says.
@@ -81,14 +80,14 @@ confirmation round-trip before saving.
 If a job calls this without `--check`, change nothing and say this needs a chat
 with the user.
 
-1. Read the note. Drop every pause that ended before `TODAY` and every invalid
+1. Read the note. Drop every pause that ended before today and every invalid
    line, and tell the user which ones went.
 2. Show the user the remaining pauses, then make the changes they ask for, if
    any, without an approval round-trip: they said what they want. When a day
    they pause holds planned work, clear those dates and load `ntm:plan` to
    replan the rest of the week with them, in chat. A new pause gets a short
    reason in the user's words, or `paused` if they give none. To end a range
-   early, set its end to the last paused day; if that's before `TODAY` (as with
+   early, set its end to the last paused day; if that's before today (as with
    ending it today), remove the line.
 3. If anything changed, step 1 included, save and show the user the saved list.
 

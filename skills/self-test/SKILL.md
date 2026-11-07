@@ -24,7 +24,7 @@ settings.
 
 ## What it uses
 
-- Load `ntm:conventions` and compute `TODAY` as its Dates section says.
+- Load `ntm:conventions`.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
   label by its real name from Labels in your settings, in no project. Keep its
   id once created; `ABC-12` below stands for it.
@@ -44,7 +44,7 @@ the conventions say; a second failure is the step's failure.
 1. **ready-check:** `/ntm:ready-check`. Pass on `Ready-check OK` or
    `Ready-check OK (no style)`; the text after `Ready-check FAILED:` is the why.
 2. **create task:** the guide's `create task` with the title, a one-line
-   description (`ntm self-test, <TODAY>; safe to remove`), the label, and
+   description (`ntm self-test, <today>; safe to remove`), the label, and
    nothing else. Create it new; a canceled one from an earlier run is not a
    match. Pass when it comes back with an id. If the backend rejects the label,
    the why is `no-autoschedule label missing; run /ntm:configure-todo-list`.
@@ -53,7 +53,7 @@ the conventions say; a second failure is the step's failure.
    approved when it dates only that task, paused day or not; otherwise answer
    that only ABC-12 moves, and approve that. The $no-autoschedule label doesn't
    stop it; in chat the user has the final say. Pass when `read task` shows the
-   planned date as `TODAY`.
+   planned date as today.
 4. **today:** `/ntm:today`. Pass when a line starts with `ABC-12`.
 5. **style:**
    `/ntm-user:style --for morning "Morning reminder; self-test, ABC-12 planned for today" ABC-12 is planned for today`.
@@ -73,13 +73,13 @@ the conventions say; a second failure is the step's failure.
    `read task` shows it closed.
 8. **completed:** `/ntm:show-completed today`. Pass when `ABC-12` is listed
    under `Done`.
-9. **fix-todo-list:** `/ntm:fix-todo-list --dry-run`. Pass on `Dry run <TODAY>:`
-   with any lines, or `Dry run <TODAY>: nothing to fix.`; `Fix-todo-list FAILED`
+9. **fix-todo-list:** `/ntm:fix-todo-list --dry-run`. Pass on `Dry run <today>:`
+   with any lines, or `Dry run <today>: nothing to fix.`; `Fix-todo-list FAILED`
    is the why.
-10. **pause --check:** `/ntm:pause --check`. Pass on one `<TODAY>: true` or
-    `<TODAY>: false` line.
+10. **pause --check:** `/ntm:pause --check`. Pass on one `<today>: true` or
+    `<today>: false` line.
 11. **note:** `write note` on the throwaway note with the content
-    `self-test <TODAY>`, then `read note` returns the same content. Pass when it
+    `self-test <today>`, then `read note` returns the same content. Pass when it
     does.
 
 ## Cleanup

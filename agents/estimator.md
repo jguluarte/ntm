@@ -119,9 +119,8 @@ lighter option:
 
 ### Setup
 
-1. Compute `TODAY` as the conventions' Dates section says.
-2. Read the task review log (see The task review log).
-3. Fetch every open task and list the projects, both as the conventions'
+1. Read the task review log (see The task review log).
+2. Fetch every open task and list the projects, both as the conventions'
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
@@ -246,7 +245,7 @@ estimate:
 {"date":"YYYY-MM-DD","id":"ABC-12","guess":2,"final":3,"why":"wiring was slow"}
 ```
 
-`date` is `TODAY`. `guess` is what you proposed and `final` what the user
+`date` is today. `guess` is what you proposed and `final` what the user
 approved, each written the way the Estimate scale writes it (`3`, `"2 h"`,
 `"weekend"`). Keep `why` to a few words: what made them change it, or what made
 the guess right. Keep the newest 150 entries.

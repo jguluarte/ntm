@@ -46,8 +46,8 @@ Say two lines first:
 This skill owns About you. Ask:
 
 - Name: how a message title addresses you.
-- Timezone: an IANA name; confirm the city when they give one instead. Every
-  date in the system is computed in it.
+- Timezone: an IANA name; confirm the city when they give one instead. Jobs run
+  in it.
 - Country and currency, for price watch (`US, USD`).
 
 Write them as the About you section, one line each: `- Name:`, `- Timezone:`,

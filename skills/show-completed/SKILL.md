@@ -45,8 +45,7 @@ before Setup; `Ready-check FAILED` ends the run with what it returned. The
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says, and work out the span
-   as Usage says: it ends today.
+2. Work out the span as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's
    `fetch open`, keeping excluded tasks, only when it asks for open tasks.

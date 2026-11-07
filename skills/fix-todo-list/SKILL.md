@@ -24,9 +24,7 @@ runs.
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` once, as the conventions' Dates section says, and use it for
-   the whole run, even if the run crosses midnight.
-3. Fetch every open task with the guide's `fetch open`, and keep every result,
+2. Fetch every open task with the guide's `fetch open`, and keep every result,
    including excluded tasks and parents. Skip the parent and blocker reads, and
    skip listing the projects with their labels: these rules check no labels.
 
@@ -63,7 +61,7 @@ a parent whose close failed counts as still open.
 ```
 tasks where status is open
   and planned date is not null
-  and planned date < TODAY
+  and planned date < today
 → clear planned date
 ```
 
@@ -81,17 +79,17 @@ under `Couldn't write:`.
 
 With `--dry-run`, make no writes, and treat every parent that would be closed as
 closed, both when checking its own parent and in rule 2. In the result, write
-`Dry run <TODAY>:` in place of `Fixed <TODAY>:`, and `Would close` and
+`Dry run <today>:` in place of `Fixed <today>:`, and `Would close` and
 `Would clear` in place of `Closed` and `Cleared`.
 
 ## Result
 
 Return plain text:
 
-- `Fixed <TODAY>:` then one line per change:
+- `Fixed <today>:` then one line per change:
     - `Closed <id> <title> <url>`
     - `Cleared <id> <title> <url> (was <date>)`
-- `Nothing to fix.` when nothing matched, or `Dry run <TODAY>: nothing to fix.`
+- `Nothing to fix.` when nothing matched, or `Dry run <today>: nothing to fix.`
   in a dry run. If writes were attempted but all failed, give the header with no
   change lines.
 - `Couldn't write:` with any failed writes, only when there are some.

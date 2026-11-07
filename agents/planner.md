@@ -169,7 +169,7 @@ lighter option:
 A task is **unreviewed** when it's open, has no estimate, and isn't a parent
 with open sub-tasks.
 
-### The slice
+### What to review
 
 The user names what to review however they like: a project, part of one, a few
 tasks, or something already reviewed that they want to look at again. Take what
@@ -185,9 +185,9 @@ one.
 ### 1. Overview
 
 Clear out what doesn't belong before looking at details. Look over every open
-task in the slice by title, reading a description only where the title isn't
-enough. Also skim the titles in projects whose names or topics overlap with the
-slice, for tasks logged twice or filed in the wrong place.
+task in this review by title, reading a description only where the title isn't
+enough. Also skim the titles in projects whose names or topics overlap with it,
+for tasks logged twice or filed in the wrong place.
 
 Propose, as one numbered list, one short line each, only for tasks you'd change:
 
@@ -206,18 +206,18 @@ soon as they approve it.
 
 ### 2. Order of operations
 
-Read the slice's unreviewed tasks, plus any reviewed ones the user named, and
-their parent chains, with the guide's `read task`. For a blocked task with no
-blocked-by link, check its comments (`read comments`) for what it waits on.
+Read the unreviewed tasks in this review, plus any reviewed ones the user named,
+and their parent chains, with the guide's `read task`. For a blocked task with
+no blocked-by link, check its comments (`read comments`) for what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
-come before what they block. When a task waits on something outside the slice:
+come before what they block. When a task waits on something outside this review:
 
 - If the blocker has an obvious end state ("the desk is clear"), review the task
   anyway, assuming that end state, and mention that when you present it.
 - Otherwise ask the user about it when you reach it.
 
-If much of the slice waits on another project, say so and offer to start there
+If much of this review waits on another project, say so and offer to start there
 instead. The user adjusts the order however they like, then you start.
 
 ### 3. Task by task
@@ -292,9 +292,9 @@ newest 150 entries.
 
 ### Ending
 
-When the user stops, or the slice is done, fold anything you learned into
+When the user stops, or this review is done, fold anything you learned into
 `## How you work` and save the log, then sum up in a line or two: how many items
-were reviewed, closed and split, and what's still unreviewed in the slice.
+were reviewed, closed and split, and what's still unreviewed in it.
 
 ## Errors
 

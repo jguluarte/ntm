@@ -15,8 +15,8 @@ description: >-
 /ntm:review-todo-list [<what to review, in words>]
 ```
 
-What to review is a project, part of one, or a few tasks; see The slice in the
-planner's Review. Without it, the review proposes one.
+What to review is a project, part of one, or a few tasks; see What to review in
+the planner's Review. Without it, the review proposes one.
 
 ## Running the review
 

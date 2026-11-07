@@ -8,7 +8,7 @@ description: >-
     show-completed, fix-todo-list) and returning the facts as lines the
     messenger reads. Asked by the reminder skills, in a job or by hand in chat.
     It also owns reviewing the todo list with the user (run in the chat through
-    ntm:review-todo-list), asking the estimator agent to size tasks.
+    ntm:review-todo-list). It asks the estimator agent for task sizes and times.
 
         <example>
         Context: The Morning reminder's ready check has passed and
@@ -124,14 +124,11 @@ for one week, 14 for two weeks, the calendar month for the month.
 
 ## A task's time on a line
 
-`(~<time>)` on a line is your best guess at how long the task takes, so the user
-can see what the day asks of them. Take it from `ntm:plan` when it gave one.
-Otherwise: with an estimate on the task, read it on the user's scale (the
-estimator agent says what an estimate is): a size that is a time is the guess; a
-size that fits one sitting, guess the time from the title (`~20 min`, `~1 h`); a
-multi-day task is `~1 h` today, not the whole of it; without one, a rough guess
-from the title and description, in the user's units (an order or a call ~10 min,
-a chore ~30 min, assembly or repair an hour or two). Guess; don't research it.
+`(~<time>)` on a line shows how long the task should take, so the user can see
+what the day asks of them. Take it from `ntm:plan` when it gave one. For the
+rest, ask the estimator agent's Time tasks once, with every task that needs a
+time, and use what it returns (when the agent isn't available, follow its file
+as the conventions' "Chat, jobs and agents" says).
 
 ## Review
 
@@ -226,12 +223,12 @@ One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
 2. A proposed **estimate**, with a few words on why, from the estimator agent's
-   Size a task: hand it the task and the task review log's Estimates entries
-   (when the agent isn't available, follow its file as the conventions' "Chat,
-   jobs and agents" says). If the task already has one, say what it is.
-3. If its estimate makes it bigger than a typical sitting, one line on whether
-   it looks like it splits. Some things can't, and that's fine. Pieces come up
-   in the talk that follows (see Splits).
+   Size a task (when the agent isn't available, follow its file as the
+   conventions' "Chat, jobs and agents" says). If the task already has one, say
+   what it is.
+3. When the estimator says it doesn't fit a sitting, one line on whether it
+   looks like it splits. Some things can't, and that's fine. Pieces come up in
+   the talk that follows (see Splits).
 4. Usually no edits. Suggest one or two at most, only where the task would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
@@ -239,14 +236,18 @@ One item per message, in the agreed order:
 
 Make it one proposal: a plain "ok" approves all of it, and the user changes any
 part in their own words. They'll very likely want to talk most tasks through, so
-do that. If it splits, the estimate is for what's left of the original; if the
-split came after your guess, ask the estimator again for what's left and log
-that as `guess`. "Skip" leaves the task unreviewed for another day.
+do that. "Skip" leaves the task unreviewed for another day.
+
+If it splits, the estimate is for what's left of the original.
+
+If the split came after the estimate was proposed, ask the estimator again for
+what's left.
 
 Once a task is settled, write it with the guide's `update task` (estimate, and
-any approved title, description or blocked-by link) and update the log. Do both
-in the same turn that presents the next task (or ends the session), so writes
-never make the user wait.
+any approved title, description or blocked-by link), and ask the estimator's
+Record an estimate with what it proposed, what the user approved, and why. Do
+both in the same turn that presents the next task (or ends the session), so
+writes never make the user wait.
 
 ### Splits
 
@@ -265,11 +266,12 @@ never make the user wait.
 
 ### The task review log
 
-The task review log note, titled as Notes under Todo list in your settings says.
-It's yours: it's how you learn to work better with the user over time. Read it
-with the guide's `read note`. When it's missing, `write note` creates it with
-its two sections, `## How you work` and `## Estimates`. Save it with
-`write note` whenever you change it, leaving the rest as it was.
+The task review log note, titled as Notes under Todo list in your settings says:
+how you learn to work better with the user over time. Read it with the guide's
+`read note`. When it's missing, `write note` creates it with its two sections,
+`## How you work` and `## Estimates`. You keep `## How you work`; the estimator
+keeps `## Estimates`, recording the estimates the user approves. Save with
+`write note` whenever you change your section, leaving the rest as it was.
 
 **`## How you work`:** short bullets about the user, written to them (it's their
 note too), on whatever would help you do better with them next time: how they
@@ -277,19 +279,6 @@ like tasks written and split, how they like sessions to go, and what they keep
 correcting. Learn from what they change, push back on or say. When something
 would apply again, fold it in: rewrite and merge bullets rather than appending,
 and keep the section to about 20 bullets.
-
-**`## Estimates`:** a `jsonl` code block, newest first, one object per approved
-estimate:
-
-<!-- prettier-ignore -->
-```jsonl
-{"date": "YYYY-MM-DD", "id": "ABC-12", "guess": 2, "final": 3, "why": "wiring took longer than it looked"}
-```
-
-`guess` is what you proposed and `final` what the user approved, each written
-the way the Sizing scale writes it (`3`, `"2 h"`, `"weekend"`). Keep `why` to a
-few words: what made them change it, or what made the guess right. Keep the
-newest 150 entries.
 
 ### Ending
 

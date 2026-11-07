@@ -170,8 +170,9 @@ Is this item a good deal today? One per watched task. Ships with ntm.
 
 ### The estimator
 
-How big is this task, on your own scale? Proposes sizes while reviewing, and
-explains the ways to estimate when you want to know. Ships with ntm.
+How big is this task, on your own scale? Proposes sizes while reviewing and
+records the ones you approve, guesses how long each task in a reminder takes,
+and explains the ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses note
 
@@ -185,7 +186,7 @@ What reminders have said, so they don't repeat themselves. Written by
 ### Task review log note
 
 How you like tasks written and sized, learned while reviewing. Written by the
-planner, through `/ntm:review-todo-list`.
+planner and the estimator, through `/ntm:review-todo-list`.
 
 ### Price watch stores note
 

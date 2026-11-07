@@ -21,7 +21,7 @@ in your own words.
 
 ## Todo list
 
-- Backend: <!-- linear | claude-docs | describe your own below -->
+- Backend: <!-- linear | describe your own below -->
 - List name: <!-- the team, doc, project or workspace that holds every task,
   as the backend names it -->
 - List id: <!-- if the backend needs one for lookups; blank otherwise -->
@@ -47,7 +47,7 @@ in your own words.
     - price watch stores: Price watch stores
     - Amazon alert steps: Amazon alert steps
 
-<!-- If your backend isn't linear or claude-docs, describe here how to do each
+<!-- If your backend isn't linear, describe here how to do each
 operation ntm:conventions' contract lists, in your words.
 /ntm:configure-todo-list walks through them with you. -->
 

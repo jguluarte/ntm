@@ -31,7 +31,7 @@ about that, load it and follow it instead.
 ## Usage
 
 ```
-/ntm:configure-todo-list [linear|claude-docs|<name>]
+/ntm:configure-todo-list [linear|<name>]
 ```
 
 The backend to use on a first run. Without one, ask (see The backend).
@@ -41,8 +41,7 @@ The backend to use on a first run. Without one, ask (see The backend).
 1. Load `ntm:conventions`. On a first run its first step says "not configured;
    run `/ntm:configure`". That's expected: carry on with the values you settle
    here. Its `references/CONTRACT.md` is the contract every backend meets;
-   `references/linear.md` and `references/claude-docs.md` are the two guides it
-   ships.
+   `references/linear.md` is the guide it ships.
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
@@ -52,18 +51,17 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 ## The backend
 
-Ask what they keep tasks in today. If they're undecided, offer the three choices
-in one line: Linear (free for individuals; the guide most used), Claude Docs (no
-task tracker; Claude keeps the todo list in one doc; untested, and heavier per
-run), or their own backend, which they describe.
+Ask what they keep tasks in today. If they're undecided, offer the two choices
+in one line: Linear (free for individuals; the guide ntm ships) or their own
+backend, which they describe. With no tracker at all, a table in a Claude Doc is
+an easy one to build on.
 
-Read the chosen backend's guide (`references/linear.md` or
-`references/claude-docs.md` under `ntm:conventions`) now, since the settings
-don't name it yet, and follow its Setup section in order; a part the guide ties
-to a step below waits for that step. Before its first call, confirm the
-connector: ToolSearch for the tool the guide's `ping` names (for their own
-backend, the tool they name). If it isn't there, ask them to connect it on the
-Connectors tab and come back, and stop with
+Read the chosen backend's guide (`references/linear.md` under `ntm:conventions`)
+now, since the settings don't name it yet, and follow its Setup section in
+order; a part the guide ties to a step below waits for that step. Before its
+first call, confirm the connector: ToolSearch for the tool the guide's `ping`
+names (for their own backend, the tool they name). If it isn't there, ask them
+to connect it on the Connectors tab and come back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
 ### Your own
@@ -207,7 +205,7 @@ Show the sections and let them react.
 ```
 ## Todo list
 
-- Backend: <linear | claude-docs | the name they gave>
+- Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
 - Task prefix: <e.g. HOME for HOME-12>

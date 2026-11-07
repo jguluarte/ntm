@@ -45,46 +45,52 @@ from that copy.
 
 ## Skills
 
-Every day:
+### Every day
 
-| Skill                                                                                               | What it does                                                                                                   |
-| --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `/ntm:today`                                                                                        | What's planned: open tasks planned for today or earlier, or any scope you describe.                            |
-| `/ntm:show-completed`                                                                               | What got done over a span, and what's still open from it when you ask.                                         |
-| `/ntm:plan`                                                                                         | Plans the week or a day: with you in chat, or on its own for jobs.                                             |
-| `/ntm:pause`                                                                                        | Days when nothing gets planned automatically.                                                                  |
-| `/ntm-user:style`                                                                                   | Puts a message in your style.                                                                                  |
-| `/ntm:notify`                                                                                       | Sends a notification through your channel.                                                                     |
-| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`, `/ntm:weekly-planning` | The three daily reminders and the weekly planning. Jobs run them; so can you ("run the morning reminder now"). |
+- `/ntm:today`: what's planned (open tasks planned for today or earlier, or any
+  scope you describe).
+- `/ntm:show-completed`: what got done over a span, and what's still open from
+  it when you ask.
+- `/ntm:plan`: plans the week or a day, with you in chat, or on its own for
+  jobs.
+- `/ntm:pause`: days when nothing gets planned automatically.
+- `/ntm-user:style`: puts a message in your style.
+- `/ntm:notify`: sends a notification through your channel.
+- `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`,
+  `/ntm:weekly-planning`: the three daily reminders and the weekly planning.
+  Jobs run them; so can you ("run the morning reminder now").
 
-Planning and tidying:
+### Planning and tidying
 
-| Skill                   | What it does                                                                  |
-| ----------------------- | ----------------------------------------------------------------------------- |
-| `/ntm:review-todo-list` | Reviews the todo list with you in chat: close, size, split.                   |
-| `/ntm:fix-todo-list`    | Closes parents whose sub-tasks are all closed and clears stale planned dates. |
+- `/ntm:review-todo-list`: reviews the todo list with you in chat (close, size,
+  split).
+- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
+  stale planned dates.
 
-Price watch (on when your settings name a price watch project):
+### Price watch
 
-| Skill                             | What it does                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `/ntm:price-watch`                | The daily price check on the tasks in that project.                                               |
-| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser Claude can drive. |
+On when your settings name a price watch project.
 
-Setup and settings:
+- `/ntm:price-watch`: the daily price check on the tasks in that project.
+- `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
+  with the watched items. Needs a browser Claude can drive.
 
-| Skill                          | What it does                                                                        |
-| ------------------------------ | ----------------------------------------------------------------------------------- |
-| `/ntm:configure`               | The wizard. `/ntm:configure <part>` goes straight to one part.                      |
-| `/ntm:configure-todo-list`     | Where your list lives, how it's laid out, and the planning and shopping agreements. |
-| `/ntm:configure-notifications` | How reminders reach you.                                                            |
-| `/ntm:configure-style`         | How reminders talk to you.                                                          |
-| `/ntm:configure-schedule`      | The jobs: which, which days, what time, what title.                                 |
-| `/ntm:settings`                | Shows your settings and changes them; produces a new `ntm-user.plugin`.             |
-| `/ntm:ready-check`             | Can this session run a job?                                                         |
-| `/ntm:self-test`               | The whole loop once, on a throwaway task.                                           |
-| `/ntm:help`                    | Answers questions from this README.                                                 |
-| `ntm:conventions`              | The rules every skill loads first. Not run by hand.                                 |
+### Setup and settings
+
+- `/ntm:configure`: the wizard. `/ntm:configure <part>` goes straight to one
+  part.
+- `/ntm:configure-todo-list`: where your list lives, how it's laid out, and the
+  planning and shopping agreements.
+- `/ntm:configure-notifications`: how reminders reach you.
+- `/ntm:configure-style`: how reminders talk to you.
+- `/ntm:configure-schedule`: the jobs (which, which days, what time, what
+  title).
+- `/ntm:settings`: shows your settings and changes them; produces a new
+  `ntm-user.plugin`.
+- `/ntm:ready-check`: can this session run a job?
+- `/ntm:self-test`: the whole loop once, on a throwaway task.
+- `/ntm:help`: answers questions from this README.
+- `ntm:conventions`: the rules every skill loads first. Not run by hand.
 
 ## What's what
 
@@ -95,20 +101,33 @@ and hand them to an agent; agents own the procedures. In the skills, a name with
 a `$` in front, like $no-autoschedule, is a label you configure, written by its
 default name.
 
-| Noun                    | What it is                                                                                                                                       | Who writes it                                  |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
-| `ntm:conventions`       | The rules for reading and writing the todo list, in backend-neutral terms, with a guide per backend (Linear, or the one you describe).           | ntm                                            |
-| `ntm-user:settings`     | Every value you agreed to: About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations.                                          | `/ntm:configure` and `/ntm:settings`, with you |
-| `ntm-user:style`        | How reminders talk to you, and the message history.                                                                                              | `/ntm:configure-style`, with you               |
-| Jobs                    | The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning, Completed (weekly or monthly), Price watch. Each runs one skill. | `/ntm:configure-schedule`                      |
-| The planner             | What is planned, what got done, is today ready? Runs the list skills for the reminders.                                                          | ntm                                            |
-| The messenger           | What will you actually open? Composes in your style and sends through your channel.                                                              | ntm                                            |
-| The shopper             | Is this item a good deal today? One per watched task.                                                                                            | ntm                                            |
-| Pauses note             | The days when nothing gets planned automatically.                                                                                                | `/ntm:pause`                                   |
-| Message history note    | What reminders have said, so they don't repeat themselves.                                                                                       | `ntm-user:style`                               |
-| Task review log note    | How you like tasks written and sized, learned while reviewing.                                                                                   | `/ntm:review-todo-list`                        |
-| Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it.                                                          | `/ntm:price-watch`                             |
-| Amazon alert steps note | How to set an alert on Amazon, learned once.                                                                                                     | `/ntm:sync-price-watch-to-amazon`              |
+- `ntm:conventions`: the rules for reading and writing the todo list, in
+  backend-neutral terms, with a guide per backend (Linear, or the one you
+  describe). Written by ntm.
+- `ntm-user:settings`: every value you agreed to (About you, Todo list, Labels,
+  Planning, Shopping, Notifications, Deviations). Written by `/ntm:configure`
+  and `/ntm:settings`, with you.
+- `ntm-user:style`: how reminders talk to you, and the message history. Written
+  by `/ntm:configure-style`, with you.
+- **Jobs**: the scheduled tasks (Morning, Afternoon and Evening reminders,
+  Weekly planning, Completed weekly or monthly, Price watch). Each runs one
+  skill. Written by `/ntm:configure-schedule`.
+- **The planner**: what is planned, what got done, is today ready? Runs the list
+  skills for the reminders. Written by ntm.
+- **The messenger**: what will you actually open? Composes in your style and
+  sends through your channel. Written by ntm.
+- **The shopper**: is this item a good deal today? One per watched task. Written
+  by ntm.
+- **Pauses note**: the days when nothing gets planned automatically. Written by
+  `/ntm:pause`.
+- **Message history note**: what reminders have said, so they don't repeat
+  themselves. Written by `ntm-user:style`.
+- **Task review log note**: how you like tasks written and sized, learned while
+  reviewing. Written by `/ntm:review-todo-list`.
+- **Price watch stores note**: stores you've vouched for or blocked in replies
+  to a price alert; the shopper reads it. Written by `/ntm:price-watch`.
+- **Amazon alert steps note**: how to set an alert on Amazon, learned once.
+  Written by `/ntm:sync-price-watch-to-amazon`.
 
 The notes live on your todo list, under the titles in your settings.
 

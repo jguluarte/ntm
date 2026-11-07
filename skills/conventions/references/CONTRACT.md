@@ -167,6 +167,12 @@ labels and notes settled so far, and returns its id.
 
 Lists a todo list's status names, so each class can be matched to real names.
 
+### `sample estimates`
+
+Only where the backend stores estimates on a scale of its own: reads the
+estimates already set on some of the list's tasks, so the backend's scale can be
+suggested when the user doesn't know it.
+
 ### `list labels`
 
 Lists the todo list's task labels, and its project labels when those are a

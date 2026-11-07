@@ -129,7 +129,7 @@ already exists under another title (record that title) or create it with
 - **message history:** its first content is the line
   `Keep: 60 entries or 8 weeks`.
 - **task review log:** `## How you work` and `## Estimates`, both empty.
-- **price watch stores:** only when a price watch project is named; created in
+- **price watch stores:** only when a price watch project was chosen; created in
   that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
   a few seed stores by category to put under Seed, with their domains, or leave
   Seed empty and say the first price watch run will report it. Vouched and
@@ -200,7 +200,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Price watch project: <project name; blank = price watch off>
 - Notes — the title of each note the system keeps:
   - pauses: <title; default Pauses>
   - message history: <title; default Message history>

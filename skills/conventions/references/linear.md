@@ -131,11 +131,11 @@ and `blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
 ### Notes
 
 Notes are Linear documents in the team, titled as Notes under Todo list says. A
-note kept inside a project (the price watch stores note, in the price watch
-project from Todo list) lives in that project's documents instead. Search with
-`projectId` instead of `teamId` (the project's id, from `list_projects` with
-`team: "<List name>"` and `query: "<project name>"`), and create with
-`project: "<project name>"` instead of `team`.
+note kept inside a project (the price watch stores note, in the project that
+carries the $price-watch label) lives in that project's documents instead.
+Search with `projectId` instead of `teamId` (the project's id, from
+`list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
+create with `project: "<project name>"` instead of `team`.
 
 - **`read note`:** `list_documents` with `query: "<note title>"` and
   `teamId: "<List id>"`, then `get_document` with the id of the result whose
@@ -194,8 +194,9 @@ all done. If it stays off, the weekly planning closes those parents instead.
 ### The price watch project
 
 `list projects`; ask which project holds purchases waiting for a good price, or
-none (none turns price watch off). If they want one that doesn't exist yet,
-settle its name now; it's created in Labels, once the project labels exist.
+none (no price watch; the $price-watch label on a project later turns it on). If
+they want one that doesn't exist yet, settle its name now; it's created in
+Labels, once the project labels exist.
 
 ### Planning
 

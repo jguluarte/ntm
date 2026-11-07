@@ -191,9 +191,9 @@ Task labels:
 Labels set on a project (its tasks inherit them; see Project labels):
 
 - **$price-watch:** the project's tasks are purchases waiting for a good price.
-  There is no $price-watch task label. Price watch is on when Todo list names a
-  price watch project; the watched tasks are the open tasks carrying this label.
-  There is no separate switch.
+  There is no $price-watch task label. The watched tasks are the open tasks
+  carrying this label. Price watch is off when nothing carries it or the Price
+  watch job isn't scheduled; there is no separate switch.
 - **$no-autoschedule:** as the task label, for every task in the project.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
@@ -223,9 +223,9 @@ it.
   history to keep.
 - **task review log** (`Task review log`): the estimator keeps it, in its
   Review.
-- **price watch stores** (`Price watch stores`): stored in the price watch
-  project, not at list level. `ntm:price-watch` keeps it, from the user's vouch
-  and block replies; the shopper reads it.
+- **price watch stores** (`Price watch stores`): stored in the project that
+  carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
+  from the user's vouch and block replies; the shopper reads it.
 - **Amazon alert steps** (`Amazon alert steps`):
   `ntm:sync-price-watch-to-amazon` keeps it.
 

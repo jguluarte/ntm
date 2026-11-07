@@ -100,7 +100,8 @@ it; so can you.
 
 ### Price watch
 
-On when your settings name a price watch project.
+On when a project carries the $price-watch label and the Price watch job is
+scheduled.
 
 - `/ntm:price-watch`: the daily price check on the tasks in that project.
 - `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step

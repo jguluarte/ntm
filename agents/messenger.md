@@ -58,7 +58,7 @@ style, then put the list under it.
 
 - **morning:** today's tasks, naming each carried-over ticket with the date it
   had, as given. `today: none`: the todo list has nothing left to plan; ask them
-  to groom with `/ntm:configure-todo-list`.
+  to review it with `/ntm:review-todo-list`.
 - **afternoon:** a tap on the shoulder about what's still open, naming a
   `(started)` ticket as started. `open: none`: quick props, nothing more. Never
   a dig, whatever the history says.

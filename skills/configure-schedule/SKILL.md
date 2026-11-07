@@ -18,11 +18,9 @@ file: the jobs it creates are the result.
 
 ## Tools
 
-Find the scheduling tools by their own names with a ToolSearch keyword search:
-`list_triggers`, `create_trigger`, `update_trigger`, `delete_trigger`,
-`fire_trigger`. The prefix on the full names depends on how the connector was
-connected; use the server that's signed in. If none of them exist, scheduled
-tasks aren't available from here; say so and stop.
+Use the scheduling tools this session has: they list, create, update, delete and
+run scheduled tasks. If there are none, scheduled tasks aren't available from
+here; say so and stop.
 
 Load `ntm:conventions`: Timezone under About you in your settings is the
 timezone every job runs in, and Todo list says whether price watch is on. On a

@@ -4,13 +4,9 @@ The backend guide for Linear, and a tested one: how each operation the
 conventions name is carried out with the Linear connector. `ntm:conventions`
 reads it when Backend is `linear`; `ntm:configure-todo-list` reads it for Setup.
 
-Find each tool by its own name (`list_issues`, `save_issue`, …) with a
-ToolSearch keyword search before calling it. The prefix on the full name depends
-on how Linear was connected; use the server that's signed in.
-
-The connector's own instructions and tool descriptions are the authority on how
-to call it. This guide says which tool does each operation and which of the
-user's values goes where.
+Use the tools of the Linear connector that's signed in. Its own instructions and
+tool descriptions are the authority on how to call them. This guide says which
+tool does each operation and which of the user's values goes where.
 
 Values below that name a settings section (Todo list, Labels, Planning, About
 you) come from `ntm-user:settings`, read as the conventions' Loading step says.
@@ -178,9 +174,9 @@ Labels and Notes in `ntm:configure-todo-list` create them.
 
 ### The connector
 
-Check that a signed-in Linear connector is present: search for `list_teams`. If
-it isn't there, walk the user through it: in Claude's settings, the Connectors
-tab, add Linear and sign in to their workspace, then come back here and say so.
+Check that a signed-in Linear connector is present. If it isn't there, walk the
+user through it: in Claude's settings, the Connectors tab, add Linear and sign
+in to their workspace, then come back here and say so.
 
 ### The todo list
 

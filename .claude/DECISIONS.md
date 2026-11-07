@@ -174,6 +174,9 @@ The text rules in `CLAUDE.md` apply; these add to them.
 - devbox provides Node, and direnv turns it on in the repo. The Makefile is the
   way in: `make lint` and `make fix` run the npm scripts, and install the
   linters only when `package-lock.json` changes. CI runs npm directly.
+- Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
+  columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
+  declined `stern` and any change to the prose limit.
 - Lock files are generated: `.gitattributes` marks `*.lock` and
   `package-lock.json` `linguist-generated=true`, so GitHub collapses them in
   diffs. Justin's rule for all his repos: a new kind of lock file gets a line
@@ -293,7 +296,5 @@ Not handled by the plugin yet.
 - Before 0.4: install main on Justin's account with a fresh setup and use it for
   a few days (see Justin's installed copy). His call, and only with his
   go-ahead.
-- Small PR, in flight as #21: line-length checking inside fenced blocks in the
-  lint (no current file breaks it).
 - Revising the `/domain-first-design` skill and Justin's design agents, his
   tooling outside ntm: parked, tracked on his own list as GULU-314.

@@ -5,18 +5,20 @@ are in `CLAUDE.md`, what's decided in `DECISIONS.md`, and names in `NAMES.md`.
 
 ## Main
 
-0.3.2 plus #3 to #16, all squash merges: bug fixes, review-todo-list, task and
-review wording, lint (Prettier, markdownlint, CI), estimates on the user's
-scale, author, Linear estimate type, job prompts as one pattern, backend guides
-that own their setup (no Claude Docs guide), conventions fixes, tables as
-sections, the ntm-user template replaced by a guide, and #15: the estimator
-agent (estimates, time guesses, review and the task review log), the planner
-merged into `ntm:plan`, estimate wording (`Estimate scale`).
+Version 0.3.2 in plugin.json; no PR since #1 has changed it. #3 to #17 are all
+squash-merged: bug fixes, the review-todo-list skill, wording, lint and CI,
+estimates on the user's own scale, the job prompts, the backend guides, the
+conventions, the `ntm-user` guide, the estimator agent (#15, which also merged
+the planner agent into `ntm:plan`), and Linear connected from the Connectors tab
+(#17). `DECISIONS.md` has what each settled.
 
 ## Branches and PRs
 
-- Open PRs: `gh pr list`. #2, the single-branch 0.4 attempt, is closed unmerged;
-  its branch `v0.4` stays as raw material for 0.4.
+- Open PRs: `gh pr list`. On 2026-11-07: #18 (notify owns the channel caps; the
+  messenger is handed its settings), #19 (small fixes), #20 (devbox, direnv,
+  make), #21 (line length in fenced blocks).
+- #2, the single-branch 0.4 attempt, is closed unmerged; its branch `v0.4` stays
+  as raw material for 0.4.
 - `plugin-history-2026-11-06`: history from before the 0.3 squash.
 - History was rewritten on 2026-11-07 to take a leaked address out of commit
   metadata. A clone from before then is stale; re-clone. GitHub Support has a
@@ -30,4 +32,6 @@ setup.
 
 ## Next
 
-The Deferred and open section of `DECISIONS.md`.
+1. The questions in `NAMES.md`, one at a time.
+2. The open PRs, as he reviews them.
+3. Then the rest of Deferred and open in `DECISIONS.md`, as he picks.

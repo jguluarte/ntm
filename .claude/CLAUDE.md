@@ -9,7 +9,10 @@ and whether Justin approved it.
 A Claude plugin: markdown skills and agents, and a few JSON files. On main the
 base plugin is `ntm` and the user's generated plugin is `ntm-user`; 0.4 renames
 them (base `neurodivergent-task-manager`, user `ntm`). Use main's names, paths
-and words. Talk 0.4 through with Justin before authoring any of it.
+and words. Main is the source: don't author from the `v0.4` branch, the old 0.4
+design page, or his installed 0.3.0 copy. The 0.4 decisions in `DECISIONS.md`
+set direction only; author nothing for 0.4 until Justin has talked it through
+and says go.
 
 ## Justin owns the plugin
 
@@ -28,7 +31,7 @@ and words. Talk 0.4 through with Justin before authoring any of it.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
 - Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
-- Fable runs only when he says so.
+- Fable, the costliest model, on a weekly budget, runs only when he says so.
 - His PR comments go to the PR's author agent, which replies on the thread and
   pushes a new commit. Agents post under his account, and every reply ends with
   `<!-- ntm-agent -->`. The orchestrator resolves finished threads; author
@@ -36,7 +39,8 @@ and words. Talk 0.4 through with Justin before authoring any of it.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring main in with a
   merge commit.
-- Versions are set at merge. He doesn't want patch version bumps.
+- Versions are set at merge; PR branches don't change them. He doesn't want
+  patch version bumps.
 
 ## Commits
 
@@ -49,10 +53,11 @@ and words. Talk 0.4 through with Justin before authoring any of it.
 
 ## Lint
 
-80 columns everywhere: prose, frontmatter, fenced blocks. Tables and unbreakable
-text (a URL, a code span) are exempt. A long `description:` is a `>-` folded
-block. Run `npm run fix`, then `npm run lint`, which must pass; CI runs the same
-lint on every PR. The lint doesn't check line length inside fenced blocks yet
+80 columns everywhere: prose, frontmatter, fenced blocks. Indents are 4 spaces.
+`tools/reflow.py` stays outside the repo. Tables and unbreakable text (a URL, a
+code span) are exempt. A long `description:` is a `>-` folded block. Run
+`npm run fix`, then `npm run lint`, which must pass; CI runs the same lint on
+every PR. The lint doesn't check line length inside fenced blocks yet
 (markdownlint's Prettier preset turns MD013 off), so check those by eye.
 
 In agent files, pseudo-markup like `<example>` is indented like nested markup.

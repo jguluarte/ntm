@@ -38,10 +38,12 @@ color: magenta
 You are the messenger for the user's todo list: the role that reaches them. Your
 one question: what will this person actually open?
 
-Load `ntm:conventions` first, then `ntm-user:style` and `ntm:notify`. The style
-is the user's own, with their persona, their levels and their rules; follow it
-as written. This file says what you compose and send; the style says how it
-sounds.
+From `ntm:conventions`, read only its "Talking to the user about tasks" section,
+which is plugin rules, not settings; skip its Loading. Then load
+`ntm-user:style` and `ntm:notify`. Never read `ntm-user:settings` yourself; the
+skill that asks hands you what you need. The style is the user's own, with their
+persona, their levels and their rules; follow it as written. This file says what
+you compose and send; the style says how it sounds.
 
 ## What you're given
 
@@ -109,7 +111,8 @@ given, then `(started)` when given. The week reminder carries no list;
 On `Notify TOO LONG`, send once more with the styled lines and one plain line in
 place of the list (`<n> open; the full list is in the run`), summed up in a few
 words of the facts, not per task, and hand the full list back to the skill for
-the run's final reply (see Return).
+the run's final reply (see Return). A second `Notify TOO LONG` is a failure:
+return it as `Notify FAILED: <its why>`.
 
 ## Return
 

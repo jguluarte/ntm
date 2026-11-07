@@ -1,6 +1,10 @@
 ---
 name: today
-description: Lists what's planned on the user's todo list, by default every open task planned for today or earlier, or whatever scope the user or a job describes ("what's on today", "what's planned this week"). Read-only. Run by jobs, or by the user.
+description: >-
+    Lists what's planned on the user's todo list, by default every open task
+    planned for today or earlier, or whatever scope the user or a job describes
+    ("what's on today", "what's planned this week"). Read-only. Run by jobs, or
+    by the user.
 ---
 
 # ntm:today
@@ -25,8 +29,8 @@ This skill only reads the todo list. It never changes a task.
 
 1. Load `ntm:conventions`.
 2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch every open task with the guide's `fetch open`, keeping excluded
-   tasks, and keep the ones with a planned date in range.
+3. Fetch every open task with the guide's `fetch open`, keeping excluded tasks,
+   and keep the ones with a planned date in range.
 
 If any step fails, stop and return `Today FAILED: <what failed>`.
 
@@ -42,8 +46,8 @@ none. When the task's status is the one Todo list in your settings names as
 started, add `(started)` after the status, before the labels.
 
 Typed in chat, present the result as the conventions' "Talking to the user about
-tasks" says (natural words, the id in parentheses); the raw lines are for
-skills and jobs.
+tasks" says (natural words, the id in parentheses); the raw lines are for skills
+and jobs.
 
 - With nothing after `/ntm:today`: `Planned by <TODAY> (<count>):` then the
   tasks, or `Nothing planned for today.`

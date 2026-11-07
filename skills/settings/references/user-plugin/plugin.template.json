@@ -1,8 +1,8 @@
 {
-  "name": "ntm-user",
-  "displayName": "NTM — my settings and style",
-  "version": "1.0.0",
-  "description": "Your own settings and style for the ntm plugin (Neurodivergent Task Manager). Built with /ntm:configure; change it with /ntm:settings or /ntm:configure-style. Keep it private: it can hold notification keys.",
-  "keywords": ["ntm"],
-  "license": "MIT"
+    "name": "ntm-user",
+    "displayName": "NTM — my settings and style",
+    "version": "1.0.0",
+    "keywords": ["ntm"],
+    "license": "MIT",
+    "description": "Your own settings and style for the ntm plugin (Neurodivergent Task Manager). Built with /ntm:configure; change it with /ntm:settings or /ntm:configure-style. Keep it private: it can hold notification keys."
 }

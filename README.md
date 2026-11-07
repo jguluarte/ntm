@@ -47,31 +47,64 @@ from that copy.
 
 ### Every day
 
-| Skill                                                                                               | What it does                                                                                                   |
-| --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `/ntm:today`                                                                                        | What's planned: open tasks planned for today or earlier, or any scope you describe.                            |
-| `/ntm:show-completed`                                                                               | What got done over a span, and what's still open from it when you ask.                                         |
-| `/ntm:plan`                                                                                         | Plans the week or a day: with you in chat, or on its own for jobs.                                             |
-| `/ntm:pause`                                                                                        | Days when nothing gets planned automatically.                                                                  |
-| `/ntm-user:style`                                                                                   | Puts a message in your style.                                                                                  |
-| `/ntm:notify`                                                                                       | Sends a notification through your channel.                                                                     |
-| `/ntm:morning-reminder`, `/ntm:afternoon-reminder`, `/ntm:evening-reminder`, `/ntm:weekly-planning` | The three daily reminders and the weekly planning. Jobs run them; so can you ("run the morning reminder now"). |
+#### `/ntm:today`
+
+What's planned: open tasks planned for today or earlier, or any scope you
+describe.
+
+#### `/ntm:show-completed`
+
+What got done over a span, and what's still open from it when you ask.
+
+#### `/ntm:plan`
+
+Plans the week or a day: with you in chat, or on its own for jobs.
+
+#### `/ntm:pause`
+
+Days when nothing gets planned automatically.
+
+#### `/ntm-user:style`
+
+Puts a message in your style.
+
+#### `/ntm:notify`
+
+Sends a notification through your channel.
+
+#### `/ntm:morning-reminder`
+
+The morning reminder: what's on the table today. A job runs it; so can you ("run
+the morning reminder now").
+
+#### `/ntm:afternoon-reminder`
+
+The afternoon reminder: what's still open today. A job runs it; so can you.
+
+#### `/ntm:evening-reminder`
+
+The evening reminder: how the day went, what closed and what's still open. A job
+runs it; so can you.
+
+#### `/ntm:weekly-planning`
+
+The weekly planning: closes out the week and plans the week ahead. A job runs
+it; so can you.
 
 ### Planning and tidying
 
-| Skill                   | What it does                                                                  |
-| ----------------------- | ----------------------------------------------------------------------------- |
-| `/ntm:review-todo-list` | Reviews the todo list with you in chat: close, size, split.                   |
-| `/ntm:fix-todo-list`    | Closes parents whose sub-tasks are all closed and clears stale planned dates. |
+- `/ntm:review-todo-list`: reviews the todo list with you in chat (close, size,
+  split).
+- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
+  stale planned dates.
 
 ### Price watch
 
 On when your settings name a price watch project.
 
-| Skill                             | What it does                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `/ntm:price-watch`                | The daily price check on the tasks in that project.                                               |
-| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser Claude can drive. |
+- `/ntm:price-watch`: the daily price check on the tasks in that project.
+- `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
+  with the watched items. Needs a browser Claude can drive.
 
 ### Setup and settings
 

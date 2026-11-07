@@ -152,7 +152,7 @@ and they change any line in their own words:
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
-- **Estimate scale:** asked on its own, below.
+- **Estimate pattern:** asked on its own, below.
 - **A day's worth:** about an hour. What a day's picks aim for.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
@@ -161,12 +161,11 @@ and they change any line in their own words:
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
-Estimate scale gets its own question, one high-level question: how would they
+Estimate pattern gets its own question, one high-level question: how would they
 like to estimate their tasks? Only if they want more detail, ask the estimator
 agent's Explain estimating request and pass its ways on; when the agent isn't
 available, follow its file as the conventions' "Chat, jobs and agents" says.
-Record their answer as Estimate scale, in their words, and as Estimate help
-whether they're new to estimating or comfortable with it.
+Record their answer as Estimate pattern, in their words.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -241,15 +240,13 @@ The real name on your todo list for each label the system uses.
 ## Planning
 
 How your todo list is planned. Read by `ntm:plan` and the weekly planning;
-Estimate scale, Estimate mapping and Estimate help by the estimator agent.
+Estimate pattern by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
-- Estimate scale: <how they estimate their tasks, in their words>
-- Estimate mapping: <each estimate on their scale and the list's point it
-  becomes; blank when their scale is the list's>
-- Estimate help: <new to it | comfortable; default new to it>
+- Estimate pattern: <how they size their tasks and what to do with that, in
+  their words; with the list's point for each estimate when the list needs one>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
 - Parents: <default plan the open sub-tasks, never the parent>

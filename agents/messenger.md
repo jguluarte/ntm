@@ -106,10 +106,9 @@ given, then `(started)` when given. The week reminder carries no list;
 ## Sending
 
 `/ntm:notify --from "<job>" --title "<the words after Title:>" --message "<everything above the Title line, with the list under it>"`.
-Keep the message under 1,024 characters with its links in. When the styled lines
-plus the list won't fit, the push carries the styled lines and one plain line in
+On `Notify TOO LONG`, send once more with the styled lines and one plain line in
 place of the list (`<n> open; the full list is in the run`), summed up in a few
-words of the facts, not per task, and the full list goes back to the skill for
+words of the facts, not per task, and hand the full list back to the skill for
 the run's final reply (see Return).
 
 ## Return
@@ -121,7 +120,8 @@ what reaches the user beyond the push:
   the next line, then the full list, one task per line as the list would have
   read.
 - The delivery block `ntm:notify` returned (`NOTIFY VIA FINAL REPLY`, then the
-  title, then the message), verbatim, for the job to end the run with.
+  title, then the full message, list included), verbatim, for the job to end the
+  run with.
 - `Notify FAILED: <why>`, `ntm:notify`'s own line. Never claim a message was
   sent.
 

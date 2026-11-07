@@ -36,6 +36,8 @@ and says go.
   `<!-- ntm-agent -->`. The orchestrator resolves finished threads; author
   agents don't.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
+- A squash merge gets a written message: one short paragraph on the net change,
+  not GitHub's default list of every commit.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring main in with a
   merge commit.
 - Versions are set at merge; PR branches don't change them. He doesn't want

@@ -6,7 +6,8 @@
         "node": ">=22"
     },
     "scripts": {
-        "lint": "prettier --check . && markdownlint-cli2",
+        "lint": "prettier --check . && markdownlint-cli2 && npm run lint:names",
+        "lint:names": "node scripts/check-names.mjs",
         "fix": "prettier --write . && markdownlint-cli2 --fix"
     },
     "devDependencies": {

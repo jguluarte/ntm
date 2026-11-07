@@ -93,7 +93,7 @@ the builder's questions:
   the list gives. They add, cut and replace.
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke
   about.
-- **Examples:** one per level and one for nothing open. Ticket ids use Ticket
+- **Examples:** one per level and one for nothing open. Task ids use Task
   prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier in
   this conversation, or `ABC-12` style when that isn't configured yet. The tasks
   in them are ordinary household ones. Write them, read them back, revise: if
@@ -109,7 +109,7 @@ each (a stern coach, a dry narrator, a game-show host), none of them named.
 The user has a persona skill already (or a Profile from an earlier ntm-user):
 text that says who talks, with rules, maybe recurring bits and example lines. It
 becomes `ntm-user:style` as it is: the body stays unchanged, word for word,
-ticket ids included. A pasted skill's own frontmatter is dropped; everything
+task ids included. A pasted skill's own frontmatter is dropped; everything
 under it is the body.
 
 What the messenger needs from it is only the Usage in the template:

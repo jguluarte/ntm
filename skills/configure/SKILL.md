@@ -102,7 +102,7 @@ configured".
 
 One line of state per part, from what loads: About you (name, timezone); todo
 list (backend, todo list name, price watch project or off); notifications
-(channel); style (`ntm:style` loads, or not); schedule (which tasks exist,
+(channel); style (`ntm:style` loads, or not); schedule (which jobs exist,
 from `neurodivergent-task-manager:configure-schedule`'s listing). Ask which to
 change and hand off to
 that part; it shows its current state and asks what to change. About you is

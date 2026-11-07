@@ -1,7 +1,7 @@
 # Neurodivergent Task Manager (ntm)
 
 ntm runs a personal task system on your own todo list, with a few scheduled
-tasks that keep it moving. It plans your days and weeks, reminds you in a style
+jobs that keep it moving. It plans your days and weeks, reminds you in a style
 you choose, asks in the evening how the day went, tidies what has gone stale,
 and watches prices on things you want to buy.
 
@@ -19,8 +19,8 @@ becomes the easy option.
 
 - **neurodivergent-task-manager** is the behaviour: the skills below, three
   agents (planner, messenger, shopper) that own the procedures, and the prompts
-  for the scheduled tasks. It holds nothing of yours, so it installs from a
-  marketplace or a zip and updates like any plugin.
+  for the jobs. It holds nothing of yours, so it installs from a marketplace or
+  a zip and updates like any plugin.
 - **ntm** is yours. `/neurodivergent-task-manager:configure` builds it with you,
   and it holds your
   unique settings and style: `ntm:settings` (every value you agreed to:
@@ -97,6 +97,10 @@ depend on by key; the
 values live in `ntm:settings`, agreed during setup. Jobs carry no logic:
 each is three lines naming the skill it runs. The reminder skills gather facts
 and hand them to an agent; agents own the procedures.
+
+In the skills, a name with a `$` in front, like $no-autoschedule, is a label
+you configure, written by its default name; the skills use its real name from
+Labels in `ntm:settings`, and never show you the `$`.
 
 | Noun | What it is | Who writes it |
 | --- | --- | --- |

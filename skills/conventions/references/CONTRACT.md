@@ -86,7 +86,7 @@ project.
 
 If the backend has documents, use them, found by title. If it doesn't, keep each
 note in the description of a task titled with the note's title, labeled with
-the `no-autoschedule` label (its real name from Labels) and left open in a
+the $no-autoschedule label (its real name from Labels) and left open in a
 plannable status. `neurodivergent-task-manager:fix-todo-list` never touches it
 (no sub-tasks, no date)
 and planners skip it for its label. `read note` is then a title search that

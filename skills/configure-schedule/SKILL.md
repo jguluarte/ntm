@@ -1,6 +1,6 @@
 ---
 name: configure-schedule
-description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the tasks, lists them, runs one now, turns one off or on, deletes. Run from /neurodivergent-task-manager:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
+description: Sets up and maintains the user's ntm jobs, the scheduled tasks that send their reminders: which kinds they want, on which days, at what time, under what title. Creates and updates the jobs, lists them, runs one now, turns one off or on, deletes. Run from /neurodivergent-task-manager:configure, or when the user asks about their reminders' schedule ("set up my reminders", "change the morning time", "turn off the evening reminder").
 ---
 
 # neurodivergent-task-manager:configure-schedule
@@ -8,7 +8,7 @@ description: Sets up and maintains the user's ntm jobs, the scheduled tasks that
 The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
 never trigger, routine or cron job. This is a chat conversation: short rounds,
 the user's answers win. It changes nothing in `ntm:settings` and writes no
-file: the tasks it creates are the result.
+file: the jobs it creates are the result.
 
 ## Tools
 
@@ -50,7 +50,7 @@ take what they say, and lock nothing.
 For each kind in the order above, ask: do they want it; which days (Planning
 days from Planning, weekdays by default, for the three daily reminders); what
 time; what title. Ask once, for all the jobs: which model should they run on?
-Propose Opus (`claude-opus-5-5`): a new task inherits the model of the chat that
+Propose Opus (`claude-opus-5-5`): a new job inherits the model of the chat that
 creates it, and a job that runs every day doesn't need the heaviest one. Their
 answer is the model every job gets. A title is only a label; the kind's default
 title stays the name notifications and tokens are matched by. Offer the defaults
@@ -78,21 +78,21 @@ Then, for each job they want:
      monthly completed job, the same with `1 * *` as the last three fields.
    - `notifications`: `{push: true}`. Push carries the run's completion summary,
      which is the reminder itself on the `claude-push` channel. On the
-     `pushover` channel it's a second, shorter push; say so, and that the task's
-     settings can turn it off.
+     `pushover` channel it's a second, shorter push; say so, and that the
+     scheduled task's settings can turn it off.
    - `initiation`: `human_request`.
    - Leave `permission_mode` unset.
-4. Set the model they chose: `update_trigger` with the new task's id and
+4. Set the model they chose: `update_trigger` with the new job's id and
    `model: <the id>`. This is their request from the walk, not the skill's. If
    the id is rejected, say so, leave the job on the model it inherited, and
    carry on.
 5. Tell the user, in one sentence, which model the job runs on and which
    approval setting it got, and that automatic approval can be turned on in the
-   task's settings if the organization allows it. The setting is
+   scheduled task's settings if the organization allows it. The setting is
    `derived_state.permission_mode` in the result: `auto` means runs go ahead on
    their own; absent means a run stops when an action needs approval, and nobody
    is there to approve a scheduled run.
-6. When the result lists the task's connectors (`mcp_connections`), check that
+6. When the result lists the job's connectors (`mcp_connections`), check that
    the backend connector named by Todo list is among them; if it isn't, say so:
    attach the connector to this session and create the job again, or every run
    will fail its ready check. Either way, the proof is a run, once `ntm` is

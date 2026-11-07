@@ -22,7 +22,7 @@ settings.
 - Load `neurodivergent-task-manager:conventions` and compute `TODAY` as its
   Dates section says.
 - One throwaway task, titled `ntm self-test`, labeled with the
-  `no-autoschedule` label by its real name from Labels in your settings, in no
+  $no-autoschedule label by its real name from Labels in your settings, in no
   project. Keep its id once created; `ABC-12` below stands for it.
 - One throwaway note, titled `ntm self-test`, at list level. It's not under
   Notes in Todo list; only this skill knows it.
@@ -51,7 +51,7 @@ the conventions say; a second failure is the step's failure.
    The user
    asked for this test, so that is their approval. Take the plan it proposes as
    approved when it dates only that task, paused day or not; otherwise answer
-   that only ABC-12 moves, and approve that. The `no-autoschedule` label doesn't
+   that only ABC-12 moves, and approve that. The $no-autoschedule label doesn't
    stop it; in chat the user has the final say. Pass when `read task` shows
    the planned date as `TODAY`.
 4. **today:** `/neurodivergent-task-manager:today`. Pass when a line starts with

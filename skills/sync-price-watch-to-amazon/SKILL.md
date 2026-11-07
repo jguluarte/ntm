@@ -20,9 +20,9 @@ not on Amazon, and every closed one has its alert removed.
 The labels below are named by their keys in Labels in your settings; on the todo
 list each goes by the real name its key maps to.
 
-- **`has-amazon-alert`:** an Amazon alert is set for this item. While it's on a
+- **$has-amazon-alert:** an Amazon alert is set for this item. While it's on a
   closed task, the alert is still live and needs removing.
-- **`amazon-unavailable`:** the item isn't sold on Amazon in the condition the
+- **$amazon-unavailable:** the item isn't sold on Amazon in the condition the
   watch wants, so no alert is set.
 
 An open watched item **needs an alert** when it has neither label.
@@ -65,12 +65,12 @@ otherwise.
 
 1. **Open items:** fetch every open task the way "Every open task" in
    `neurodivergent-task-manager:conventions` says, and keep the ones with the
-   `price-watch` project
+   $price-watch project
    label, counting labels inherited from their project (the conventions'
    "Project labels"). Split them: those with neither label need an alert; those
-   with `has-amazon-alert` are set; those with `amazon-unavailable` need
+   with $has-amazon-alert are set; those with $amazon-unavailable need
    nothing.
-2. **Closed items:** the guide's `fetch closed` for the `has-amazon-alert`
+2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert
    label, canceled and duplicate included, with the standard fields.
 
 If there's nothing to set and nothing to remove, say "Amazon alerts are in sync;
@@ -111,14 +111,14 @@ For each open item that needs an alert:
    show the candidates' titles, prices and ASINs, plus "Not on Amazon". Never
    set an alert on a guess.
 4. **Not on Amazon:** if it isn't sold in that condition on Amazon's site, or
-   the user says so, add the `amazon-unavailable` label (the guide's
+   the user says so, add the $amazon-unavailable label (the guide's
    `add labels`) and comment (`write comment`):
    `Amazon alert: not on Amazon, checked YYYY-MM-DD. <one line on what you found>`.
 5. **Set the alert.** Alert price, per unit: the task's acceptable price if it
    names one; otherwise the target plus about 10–15%, rounded to a sensible
    figure. With no target on the task, ask the user what to use. Set the
    alert, then check it shows up where Amazon lists alerts.
-6. **Record it.** Add the `has-amazon-alert` label (keep the task's other
+6. **Record it.** Add the $has-amazon-alert label (keep the task's other
    labels) and comment:
    `Amazon alert: alert at <price>, set YYYY-MM-DD. ASIN <asin>, <product link>.`
 
@@ -127,11 +127,11 @@ it unlabelled, and say why in the report.
 
 ## 5: Alerts for closed items
 
-For each closed item with the `has-amazon-alert` label:
+For each closed item with the $has-amazon-alert label:
 
 1. Find its alert using the ASIN in the latest comment starting `Amazon alert:`,
    and remove it. Check it's gone from Amazon's list of alerts.
-2. Remove the `has-amazon-alert` label (the guide's `remove labels`, keeping the
+2. Remove the $has-amazon-alert label (the guide's `remove labels`, keeping the
    task's other labels) and comment: `Amazon alert: alert removed YYYY-MM-DD.`
 
 If the alert is already gone, just remove the label and say so in the comment.

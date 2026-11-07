@@ -111,9 +111,6 @@ the tie-breaker.
   may sit under a versioned folder; the two `-path` tests find it either way).
   One copy of each procedure, either way; say nothing to the user about which
   way it ran.
-- **Automations:** if the backend auto-closes a parent when its last sub-task
-  closes, or sub-tasks when their parent closes, the backend guide says so;
-  `ntm:fix-todo-list` accounts for it.
 
 ## Talking to the user about tasks
 

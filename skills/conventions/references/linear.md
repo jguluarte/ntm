@@ -20,9 +20,10 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   Inheritance matches them to issue labels by name, so a system label a project
   should carry needs a project label of the same name (the project labels under
   Labels).
-- **Automations:** a parent auto-closes when its last sub-issue closes, and
-  sub-issues auto-close when their parent closes, if the todo list has Linear's
-  default workflow automations on. `ntm:fix-todo-list` handles either case.
+- **Automations:** Linear can close a parent when its sub-issues are all done
+  (Parent auto-close, in the team's settings under Workflow).
+  `ntm:configure-todo-list` suggests turning it on. Either way,
+  `ntm:fix-todo-list` closes any finished parent still open.
 - **Estimates:** `estimate` holds the team's points. When Planning has an
   Estimate mapping, convert through it: the user's size to its point when
   writing, a point back to its size when reading.

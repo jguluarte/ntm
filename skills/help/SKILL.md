@@ -27,8 +27,8 @@ Contents tab under Customize > Plugins, or in the repository.
 - **How do I start?** The README's First steps, told as the next thing to do:
   connect the system that holds their tasks, run `/ntm:configure`, install
   `ntm-user`, run `/ntm:self-test`.
-- **What does X do?** Find X in the README (the skill lists, What's what, the
-  customize list) and answer with that, plus the one-line call to make.
+- **What does X do?** Find X in the README (Skills, What's what, the customize
+  list) and answer with that, plus the one-line call to make.
 - **Where does a value live, what can I change?** Where your values live and
   What you can customize.
 - **What does it send where?** That section, as written.

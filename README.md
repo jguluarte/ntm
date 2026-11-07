@@ -62,35 +62,34 @@ from that copy.
 
 ### Planning and tidying
 
-- `/ntm:review-todo-list`: reviews the todo list with you in chat (close, size,
-  split).
-- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
-  stale planned dates.
+| Skill                   | What it does                                                                  |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `/ntm:review-todo-list` | Reviews the todo list with you in chat: close, size, split.                   |
+| `/ntm:fix-todo-list`    | Closes parents whose sub-tasks are all closed and clears stale planned dates. |
 
 ### Price watch
 
 On when your settings name a price watch project.
 
-- `/ntm:price-watch`: the daily price check on the tasks in that project.
-- `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
-  with the watched items. Needs a browser Claude can drive.
+| Skill                             | What it does                                                                                      |
+| --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `/ntm:price-watch`                | The daily price check on the tasks in that project.                                               |
+| `/ntm:sync-price-watch-to-amazon` | Keeps Amazon's own price alerts in step with the watched items. Needs a browser Claude can drive. |
 
 ### Setup and settings
 
-- `/ntm:configure`: the wizard. `/ntm:configure <part>` goes straight to one
-  part.
-- `/ntm:configure-todo-list`: where your list lives, how it's laid out, and the
-  planning and shopping agreements.
-- `/ntm:configure-notifications`: how reminders reach you.
-- `/ntm:configure-style`: how reminders talk to you.
-- `/ntm:configure-schedule`: the jobs (which, which days, what time, what
-  title).
-- `/ntm:settings`: shows your settings and changes them; produces a new
-  `ntm-user.plugin`.
-- `/ntm:ready-check`: can this session run a job?
-- `/ntm:self-test`: the whole loop once, on a throwaway task.
-- `/ntm:help`: answers questions from this README.
-- `ntm:conventions`: the rules every skill loads first. Not run by hand.
+| Skill                          | What it does                                                                        |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| `/ntm:configure`               | The wizard. `/ntm:configure <part>` goes straight to one part.                      |
+| `/ntm:configure-todo-list`     | Where your list lives, how it's laid out, and the planning and shopping agreements. |
+| `/ntm:configure-notifications` | How reminders reach you.                                                            |
+| `/ntm:configure-style`         | How reminders talk to you.                                                          |
+| `/ntm:configure-schedule`      | The jobs: which, which days, what time, what title.                                 |
+| `/ntm:settings`                | Shows your settings and changes them; produces a new `ntm-user.plugin`.             |
+| `/ntm:ready-check`             | Can this session run a job?                                                         |
+| `/ntm:self-test`               | The whole loop once, on a throwaway task.                                           |
+| `/ntm:help`                    | Answers questions from this README.                                                 |
+| `ntm:conventions`              | The rules every skill loads first. Not run by hand.                                 |
 
 ## What's what
 

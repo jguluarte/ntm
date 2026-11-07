@@ -148,35 +148,59 @@ turn on Parent auto-close in the team's settings under Workflow, so a parent
 closes as soon as its sub-tasks are all done. Off, the weekly planning closes
 those parents instead.
 
-- **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
-  issue key (the task prefix).
-- **`create todo-list`:** not needed; Linear has teams to list.
-- **`list statuses`:** `list_issue_statuses` with `team`. Each comes back with
-  its name and `type`, which suggests the class (`backlog`, `unstarted` and
-  `started` are plannable, `started` the started one; `completed` done;
-  `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
-- **`sample estimates`:** `list_issues` with `team: "<List name>"`, `limit: 50`
-  and `fields` `title` and `estimate`. Suggest the estimate type (Estimates,
-  above) whose points fit the ones already set: a 4 rules out Fibonacci and
-  T-shirt, a 5 rules out exponential. Fibonacci and T-shirt store the same
-  points; ask which they see on their tasks in Linear. No estimates set means no
-  suggestion.
-- **`list labels`:** `list_issue_labels` with `team` for issue labels;
-  `list_project_labels` with `team` for project labels, a separate set.
-- **`create label`:** `save_issue_label` with `name`, `teamId: "<List id>"` and
-  `description` for an issue label; `save_project_label` with `name`, `teamId`
-  and `description` for a project label.
-- **`list projects`:** `list_projects` with `team: "<List name>"`, `fields`
-  `name` and `labels`, paginating with `cursor`. Each comes back with its id.
-- **`create project`:** create the project labels it should carry first
-  (`create label`), then `save_project` with `name`, `addTeams` naming the todo
-  list, and `labels`. `labels` replaces the set, so pass current plus missing
-  when updating an existing project.
-- **`create note`:** `read note` first; one that exists is left alone. Otherwise
-  `save_document` without `id`, with `team: "<List name>"` (or
-  `project: "<project name>"` for a note kept in a project), `title` set to the
-  note's title from Todo list, and `content` set to its first content (for the
-  message history note, the `Keep:` line).
+### `list todo-lists`
+
+`list_teams`. Each comes back with its name, id and issue key (the task prefix).
+
+### `create todo-list`
+
+Not needed; Linear has teams to list.
+
+### `list statuses`
+
+`list_issue_statuses` with `team`. Each comes back with its name and `type`,
+which suggests the class (`backlog`, `unstarted` and `started` are plannable,
+`started` the started one; `completed` done; `canceled` canceled; `duplicate`
+duplicate); the user confirms the mapping.
+
+### `sample estimates`
+
+`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
+`estimate`. Suggest the estimate type (Estimates, above) whose points fit the
+ones already set: a 4 rules out Fibonacci and T-shirt, a 5 rules out
+exponential. Fibonacci and T-shirt store the same points; ask which they see on
+their tasks in Linear. No estimates set means no suggestion.
+
+### `list labels`
+
+`list_issue_labels` with `team` for issue labels; `list_project_labels` with
+`team` for project labels, a separate set.
+
+### `create label`
+
+`save_issue_label` with `name`, `teamId: "<List id>"` and `description` for an
+issue label; `save_project_label` with `name`, `teamId` and `description` for a
+project label.
+
+### `list projects`
+
+`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`,
+paginating with `cursor`. Each comes back with its id.
+
+### `create project`
+
+Create the project labels it should carry first (`create label`), then
+`save_project` with `name`, `addTeams` naming the todo list, and `labels`.
+`labels` replaces the set, so pass current plus missing when updating an
+existing project.
+
+### `create note`
+
+`read note` first; one that exists is left alone. Otherwise `save_document`
+without `id`, with `team: "<List name>"` (or `project: "<project name>"` for a
+note kept in a project), `title` set to the note's title from Todo list, and
+`content` set to its first content (for the message history note, the `Keep:`
+line).
 
 ## Writing
 

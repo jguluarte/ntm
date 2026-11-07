@@ -1,11 +1,12 @@
 # Linear guide
 
 The backend guide for Linear, and a tested one: how each operation the
-conventions name is carried out with the Linear connector (`mcp__Linear__*`
-tools). `ntm:conventions` reads it when Backend is `linear`;
-`ntm:configure-todo-list` reads it for Setup. Load the tools you need with
-ToolSearch (`select:mcp__Linear__list_issues,mcp__Linear__save_issue,…`) before
-calling them.
+conventions name is carried out with the Linear connector. `ntm:conventions`
+reads it when Backend is `linear`; `ntm:configure-todo-list` reads it for Setup.
+
+Find each tool by its own name (`list_issues`, `save_issue`, …) with a
+ToolSearch keyword search before calling it. The prefix on the full name depends
+on how Linear was connected; use the server that's signed in.
 
 The connector accepts human-readable references: task ids like `ABC-12`, the
 todo list name as `team`, and `me` for the signed-in user.

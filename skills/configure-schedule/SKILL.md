@@ -18,11 +18,11 @@ file: the jobs it creates are the result.
 
 ## Tools
 
-Find the scheduling tools: `list_triggers`, `create_trigger`, `update_trigger`,
-`delete_trigger`, `fire_trigger` (when tools are deferred, ToolSearch
-`select:mcp__claude-code-remote__list_triggers,mcp__claude-code-remote__create_trigger,mcp__claude-code-remote__update_trigger,mcp__claude-code-remote__delete_trigger,mcp__claude-code-remote__fire_trigger`).
-If none of them exist, scheduled tasks aren't available from here; say so and
-stop.
+Find the scheduling tools by their own names with a ToolSearch keyword search:
+`list_triggers`, `create_trigger`, `update_trigger`, `delete_trigger`,
+`fire_trigger`. The prefix on the full names depends on how the connector was
+connected; use the server that's signed in. If none of them exist, scheduled
+tasks aren't available from here; say so and stop.
 
 Load `ntm:conventions`: Timezone under About you in your settings is the
 timezone every job runs in, and Todo list says whether price watch is on. On a

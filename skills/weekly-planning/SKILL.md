@@ -39,11 +39,13 @@ Read what comes back:
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent, with the reminder, the job, the Weekly message setting
+and the facts:
 
 ```
 reminder: week
 job: Weekly planning
+weekly message: <Weekly message under Planning in your settings>
 <the facts>
 ```
 

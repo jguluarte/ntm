@@ -44,8 +44,10 @@ chat: a plain `/ntm:ready-check`.
 # 3: The watch
 
 Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with
-`Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings or turn off the Price watch job with /ntm:configure-schedule.`
+If it names none, end with one line: `Price-watch: price watch is off;`, then
+that Todo list in your settings names no price watch project, and to name one
+with `/ntm:settings` or turn off the Price watch job with
+`/ntm:configure-schedule`.
 
 Fetch every open task the way "Every open task" in `ntm:conventions` says, and
 keep the ones with the $price-watch project label (its real name from Labels in
@@ -95,8 +97,7 @@ one. Message: one short line per item with the item, price and store, adding the
 condition when it isn't the one from Condition under Shopping, and
 "(membership)" or "(coupon)" when the price needs one, then "Details in the
 run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing
-was sent yet: the final reply is everything after that line, verbatim, followed
-by anything else FINAL REPLY calls for.
+was sent yet; FINAL REPLY says what the final reply carries.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the
 job's completion push carries: One section per item, starting with a few words
@@ -141,25 +142,20 @@ anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
 
 # FINAL REPLY
 
-When step 5 sent an alert, the full details follow the first line: one section
-per deal as step 5 lays them out, then the line inviting a reply. With
-`NOTIFY VIA FINAL REPLY`, the title and message come first, then those sections,
-then the per-item lines, NOTES and the sync line.
-
 Unless reporting an error, start the final reply with one short line saying what
 happened, such as "Sent a price alert for the backup battery (ABC-24)." or "No
 good deals today; nothing sent." If no result had a verified price, say "No
 prices verified today; nothing sent."; if no check came back usable, say that
 instead; if nothing is being watched, say "Nothing on price watch; nothing
-sent." Then, per item, a few words for it with its task id in parentheses,
-followed by its CHECKED line, or that its check failed, or that it's not
-actionable and why. Then any NOTES that aren't "none": these are things for the
-user to fix.
+sent." When `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, start
+instead with everything after that line, verbatim (the title, then the message),
+and drop the "what happened" line: the title says it.
 
-If `/ntm:notify` returned `NOTIFY VIA FINAL REPLY` in step 5, the final reply is
-instead everything after that line, verbatim (the title, then the message), so
-the job's own completion push carries them. Drop the "what happened" line (the
-title says it); the per-item lines, NOTES and the sync line follow.
+When step 5 alerted, the full details follow: one section per deal as step 5
+lays them out, then the line inviting a reply. Then, per item, a few words for
+it with its task id in parentheses, followed by its CHECKED line, or that its
+check failed, or that it's not actionable and why. Then any NOTES that aren't
+"none": these are things for the user to fix.
 
 If step 3 found Amazon alerts to sync, end with one line: "Run
 /ntm:sync-price-watch-to-amazon:" then the items needing an alert and the closed

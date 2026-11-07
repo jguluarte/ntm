@@ -137,7 +137,9 @@ calendar month for the month.
 
 Only in chat, with the user. The span is what they name, or the `--auto week`
 span when they name none (next week when a day or less of this one is left), or
-today when they say "today". Scope words ("the garage") match by project,
+today when they say "today". A day they name gets planned even when Planning
+days or Deviations would leave it out, such as a weekend; say in one line that
+it goes against their settings. Scope words ("the garage") match by project,
 parent, label or title; when the words aren't enough to plan from, ask. The
 rules above are your defaults, not their limits: the user has the final say.
 Advise them when something looks like a problem, such as a blocked chain that

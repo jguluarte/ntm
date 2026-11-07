@@ -24,9 +24,9 @@ run scheduled tasks. If there are none, scheduled tasks aren't available from
 here; say so and stop.
 
 Load `ntm:conventions`: Timezone under About you in your settings is the
-timezone every job runs in, and Todo list says whether price watch is on. On a
-first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the
-timezone and the price watch project `configure` hands you.
+timezone every job runs in. On a first run from `ntm:configure`,
+`ntm-user:settings` doesn't exist yet: use the timezone `configure` hands you,
+and whether a price watch project was chosen.
 
 ## What a job can run
 
@@ -43,8 +43,8 @@ here are only suggestions:
 | `show-completed`     | What got done over a span, sent     | Sunday 20:00, for the last 7 days |
 | `price-watch`        | Which watched items are a good deal | Every day, 07:00                  |
 
-Offer `price-watch` only when Todo list in your settings names a price watch
-project. It runs on paused days too.
+Offer `price-watch` on every later run. On a first run, offer it only when
+`configure` says a price watch project was chosen. It runs on paused days too.
 
 ## The prompt
 

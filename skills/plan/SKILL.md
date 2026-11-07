@@ -38,7 +38,7 @@ skill says, and change nothing else on a task.
 
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
    user wants their todo list planned: rhythm, planning days, how far ahead the
-   week plans, the estimate scale, a day's worth, what's never picked, and
+   week plans, the estimate pattern, a day's worth, what's never picked, and
    anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
 3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks,

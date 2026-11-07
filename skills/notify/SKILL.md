@@ -97,11 +97,11 @@ Add these as extra `--form-string` lines when they're useful:
 - `url_title`: label for `url` instead of the raw link, e.g. `Open task`.
 - `priority`: `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2`
   emergency.
-    - **Priority 1** bypasses quiet hours. Use it sparingly.
-    - **Priority 2** repeats until acknowledged and requires `retry` (seconds,
-      30 or more) and `expire` (seconds, at most 10800). Reserve it for genuine
-      emergencies.
 - `sound`: notification sound; `pushover` is the default.
+
+Priority 1 bypasses quiet hours, so use it sparingly. Priority 2 repeats until
+acknowledged and requires `retry` (seconds, 30 or more) and `expire` (seconds,
+at most 10800); reserve it for genuine emergencies.
 
 ### HTML mode
 

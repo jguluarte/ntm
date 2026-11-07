@@ -66,20 +66,19 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you, the price watch project from Todo list and
-   Planning days from Planning, as settled above. Creates the scheduled tasks
-   itself; returns nothing to package.
+   it the timezone from About you and the price watch project from Todo list, as
+   settled above. Creates the scheduled tasks itself; returns nothing to
+   package.
 
 Keep the returned text; write nothing.
 
 The sections and what reads them, in case they ask: About you is read by
-everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
-how far ahead the week plans, the estimate scale, the excluded labels, what the
-weekly message includes) by `ntm:plan` and the weekly planning, and its estimate
-lines by the estimator; Shopping (condition, delivery, what counts as a deal) by
-the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
-`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
-since each default is about the same todo list.
+everything; Todo list and Labels by `ntm:conventions`; Planning (the estimate
+scale, the excluded labels) by `ntm:plan`, and its estimate lines by the
+estimator; Shopping (condition, delivery, what counts as a deal) by the shopper
+and `ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-todo-list`
+settles Planning and Shopping alongside Todo list, since each default is about
+the same todo list.
 
 ### Packaging
 

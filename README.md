@@ -196,10 +196,9 @@ How to set an alert on Amazon, learned once. Written by
 
 - **The style.** Plain, a theme you describe, or a persona skill you already
   have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels and note titles, the planning rhythm and
-  days, what the weekly message includes, how the shopper judges a deal.
-  `/ntm:configure-todo-list` proposes a default for each and records your
-  answer.
+- **The todo list agreements.** Labels and note titles, the labels planning
+  skips, how the shopper judges a deal. `/ntm:configure-todo-list` proposes a
+  default for each and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called:
   `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in

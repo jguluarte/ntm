@@ -1,12 +1,12 @@
 ---
 name: plan
 description: >-
-    Plans the user's todo list by setting planned dates, at the rhythm Planning
-    in their settings gives, and returns the plan. --auto day makes today ready
-    (carries stale work to today, plans today if it's empty); --auto week closes
-    out the week and plans the next; anything else plans with the user in chat.
-    Run by the morning reminder and the weekly planning, or by the user ("plan
-    my week", "plan Thursday around the garage").
+    Plans the user's todo list by setting planned dates, one task a weekday by
+    default, and returns the plan. --auto day makes today ready (carries stale
+    work to today, plans today if it's empty); --auto week closes out the week
+    and plans the next; anything else plans with the user in chat. Run by the
+    morning reminder and the weekly planning, or by the user ("plan my week",
+    "plan Thursday around the garage").
 ---
 
 # ntm:plan
@@ -34,12 +34,22 @@ The user vets their own todo list: every task is real work they want kept
 moving, and the pauses are theirs. Set, move and clear planned dates as this
 skill says, and change nothing else on a task.
 
+## Defaults
+
+Plan this way unless the job's prompt or the user says otherwise. A job's prompt
+states only what differs for its user.
+
+- **Days:** weekdays.
+- **Tasks a day:** one.
+- **Size:** about an hour or less where possible. A bigger task can still be
+  planned; its size is the signal to break it up.
+- **Weekly message:** what got done, what's still open, and the week ahead.
+
 ## Setup
 
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
-   user wants their todo list planned: rhythm, planning days, how far ahead the
-   week plans, the estimate scale, a day's worth, the excluded labels, and
-   anything else they wrote there.
+   user wants their todo list planned: the estimate scale, the excluded labels,
+   and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
 3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
    `--auto week` fetches after its tidy.
@@ -59,17 +69,17 @@ full; then read only the shortlist and its ancestors with the guide's
 conventions' Blocks and blocked by rule; the picks made in this run count as
 planned days, so a chain can fill the week in order.
 
-Pick as many candidates per day as Planning's Rhythm says (one by default),
+Pick as many candidates per day as Defaults says (one, unless told otherwise),
 using judgement; in chat, give each pick a one-line reason. Weigh, roughly in
 this order:
 
 - **What's already planned.** When other days this week already hold work,
   prefer picks that build on it: the next pieces of the same chain or project,
   so the week reads as one theme rather than scattered tasks.
-- **Small and concrete.** Prefer tasks that fit A day's worth in Planning (about
-  an hour by default), judging by the time the estimator gives (see A task's
-  time). Sometimes something bigger needs scheduling, and that's fine: the user
-  can do it on momentum from recent days, or break it up themselves.
+- **Small and concrete.** Prefer tasks that fit the size in Defaults (about an
+  hour or less), judging by the time the estimator gives (see A task's time).
+  Sometimes something bigger needs scheduling, and that's fine: the user can do
+  it on momentum from recent days, or break it up themselves.
 - **Unblocking.** Prefer work that frees up other open work.
 - **Priority, when set.** A priority the user set counts, where the backend has
   one. A missing one means nothing.
@@ -120,10 +130,10 @@ conventions; Result says how to list any that still fail.
 
 ## --auto week
 
-Plans ahead in Planning says how far the week ahead reaches (one week, Monday to
-Friday, by default); on a day outside it, plan the next one. The span looked
-back on is as long, ending today: 7 days for one week, 14 for two weeks, the
-calendar month for the month.
+The week ahead is one week of the days in Defaults, unless the job's prompt says
+otherwise; on a day outside it, plan the next one. The span looked back on is as
+long, ending today: 7 days for one week, 14 for two weeks, the calendar month
+for the month.
 
 1. Load `ntm:show-completed` and `ntm:fix-todo-list`. Run
    `/ntm:show-completed <the span looked back on> and what's still open` first,
@@ -132,7 +142,8 @@ calendar month for the month.
 2. Run `/ntm:fix-todo-list`, so planning works from a tidy todo list.
    `Fix-todo-list FAILED` isn't an error here either: carry on.
 3. Fetch as Setup says. The span is from `TODAY` to the end of the week ahead;
-   only Planning days get picks. Check it for paused days, as Paused days says.
+   only the days in Defaults get picks. Check it for paused days, as Paused days
+   says.
 4. Give each remaining planning day that doesn't already have a task its picks.
    If no candidate is left, plan nothing.
 5. Return the week as Result says.
@@ -141,13 +152,13 @@ calendar month for the month.
 
 Only in chat, with the user. The span is what they name, or the `--auto week`
 span when they name none (next week when a day or less of this one is left), or
-today when they say "today". A day they name gets planned even when Planning
-days or Deviations would leave it out, such as a weekend; say in one line that
-it goes against their settings. Scope words ("the garage") match by project,
-parent, label or title; when the words aren't enough to plan from, ask. The
-rules above are your defaults, not their limits: the user has the final say.
-Advise them when something looks like a problem, such as a blocked chain that
-can't finish in the span, then do what they decide.
+today when they say "today". A day they name gets planned even when Defaults or
+Deviations would leave it out, such as a weekend; say in one line that it goes
+against their usual plan. Scope words ("the garage") match by project, parent,
+label or title; when the words aren't enough to plan from, ask. The rules above
+are your defaults, not their limits: the user has the final say. Advise them
+when something looks like a problem, such as a blocked chain that can't finish
+in the span, then do what they decide.
 
 1. Show the span as it stands: each day's tasks, and which days are paused.
 2. Go on what they said. If it isn't enough to plan from, ask what they want the

@@ -123,12 +123,11 @@ it carries both; the guide says whether `labels` replaces the set.
 
 ## Notes
 
-Each note under Todo list has a title. Show the five defaults in one line
-(Pauses, Message history, Task review log, Price watch stores, Amazon alert
-steps); a plain "ok" keeps them, and they rename any. Then, for each,
-`read note` by its settled title. Found: keep it. Missing: ask whether a note
-already exists under another title (record that title) or create it with
-`create note`:
+Each database under Todo list has a title. Show the four databases in one line
+(Pauses, Message history, Task review log, Price watch stores); a plain "ok"
+keeps those titles, and they rename any. Then, for each, `read note` by its
+settled title. Found: keep it. Missing: ask whether the database already exists
+under another title (record that title) or create it with `create note`:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line
@@ -139,8 +138,6 @@ already exists under another title (record that title) or create it with
   a few seed stores by category to put under Seed, with their domains, or leave
   Seed empty and say the first price watch run will report it. Vouched and
   Blocked start empty.
-- **Amazon alert steps:** find only. `ntm:sync-price-watch-to-amazon` writes it
-  the first time it learns the steps.
 
 ## Planning
 
@@ -219,7 +216,6 @@ react.
   - message history: <title; default Message history>
   - task review log: <title; default Task review log>
   - price watch stores: <title; default Price watch stores>
-  - Amazon alert steps: <title; default Amazon alert steps>
 
 <for their own backend: how each operation in the contract is done, in their
 words>

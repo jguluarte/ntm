@@ -98,9 +98,9 @@ the tie-breaker.
 - **Todo list:** List name from Todo list in your settings, with List id where
   the backend needs it.
 - **Task URLs:** use the task's own `url` field, one of the standard fields.
-- **Whose tasks:** Your tasks under Todo list in your settings says which tasks
-  on the list are the user's; by default, every task, regardless of assignee.
-  Consider only those, and filter no further unless explicitly asked.
+- **Whose tasks:** every task on the list is the user's; don't filter by
+  assignee unless asked. If they share the list with someone, Deviations in your
+  settings says how to tell theirs apart.
 
 ## Chat, jobs and agents
 

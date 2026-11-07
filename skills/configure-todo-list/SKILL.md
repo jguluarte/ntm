@@ -88,12 +88,6 @@ What you settle goes under Todo list as prose, in their words, below its lines
 Statuses, Labels and Notes below then go through the setup operations as they
 described them.
 
-## Your tasks
-
-Ask once, plainly: does anyone else use this list? If not, Your tasks is the
-default, every task on the list. If so, ask how to tell theirs apart (for
-example, assigned to them) and record it in their words.
-
 ## Statuses
 
 `list statuses` on the todo list. Propose a mapping from the names you see:
@@ -205,7 +199,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Your tasks: <default every task on the list; or how to tell theirs apart>
 - Statuses — the list's real names for each class:
   - plannable: <one or more names>
   - started: <one of the plannable names>

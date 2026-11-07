@@ -53,11 +53,9 @@ found: wrong account. Anything else: backend error.
 
 One `list_issues` call per open status name: every plannable status, plus the
 blocked status (skip the blocked call when Todo list's blocked line is blank).
-Each call has `team: "<List name>"`, `assignee: "me"` only when Your tasks in
-Todo list says the user's tasks are the ones assigned to them, `limit: 250`, and
-`fields`: `title`, `url`, `status`, `statusType`, `priority`, `estimate`,
-`dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Merge
-the results.
+Each call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
+`status`, `statusType`, `priority`, `estimate`, `dueDate`, `labels`, `project`,
+`parentId`, `completedAt`, `updatedAt`. Merge the results.
 
 Also list every project once with `list_projects` (`team: "<List name>"`,
 `fields` `name` and `labels`, plus `summary` when a skill asks for the project's

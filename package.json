@@ -6,8 +6,7 @@
         "node": ">=22"
     },
     "scripts": {
-        "lint": "prettier --check . && markdownlint-cli2 && npm run lint:line-cap",
-        "lint:line-cap": "node scripts/check-line-cap.mjs",
+        "lint": "prettier --check . && markdownlint-cli2",
         "fix": "prettier --write . && markdownlint-cli2 --fix"
     },
     "devDependencies": {

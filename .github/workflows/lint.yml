@@ -12,5 +12,4 @@ jobs:
               with:
                   node-version-file: package.json
                   cache: npm
-            - run: npm ci
-            - run: npm run lint
+            - run: make lint

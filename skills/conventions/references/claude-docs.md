@@ -286,7 +286,8 @@ if they want one) and `create todo-list` makes them.
 
 ### The labels
 
-Labels are free text and nothing is created.
+Labels are free text and nothing is created. The price watch project waits too:
+The notes creates it once the doc exists.
 
 ### The notes
 

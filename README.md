@@ -101,23 +101,23 @@ and hand them to an agent; agents own the procedures. In the skills, a name with
 a `$` in front, like $no-autoschedule, is a label you configure, written by its
 default name.
 
-- `ntm:conventions`: the rules for reading and writing the todo list, in
+- **`ntm:conventions`**: the rules for reading and writing the todo list, in
   backend-neutral terms, with a guide per backend (Linear, or the one you
-  describe). Written by ntm.
-- `ntm-user:settings`: every value you agreed to (About you, Todo list, Labels,
-  Planning, Shopping, Notifications, Deviations). Written by `/ntm:configure`
-  and `/ntm:settings`, with you.
-- `ntm-user:style`: how reminders talk to you, and the message history. Written
-  by `/ntm:configure-style`, with you.
+  describe). Ships with ntm.
+- **`ntm-user:settings`**: every value you agreed to (About you, Todo list,
+  Labels, Planning, Shopping, Notifications, Deviations). Written by
+  `/ntm:configure` and `/ntm:settings`, with you.
+- **`ntm-user:style`**: how reminders talk to you, and the message history.
+  Written by `/ntm:configure-style`, with you.
 - **Jobs**: the scheduled tasks (Morning, Afternoon and Evening reminders,
   Weekly planning, Completed weekly or monthly, Price watch). Each runs one
   skill. Written by `/ntm:configure-schedule`.
 - **The planner**: what is planned, what got done, is today ready? Runs the list
-  skills for the reminders. Written by ntm.
+  skills for the reminders. Ships with ntm.
 - **The messenger**: what will you actually open? Composes in your style and
-  sends through your channel. Written by ntm.
-- **The shopper**: is this item a good deal today? One per watched task. Written
-  by ntm.
+  sends through your channel. Ships with ntm.
+- **The shopper**: is this item a good deal today? One per watched task. Ships
+  with ntm.
 - **Pauses note**: the days when nothing gets planned automatically. Written by
   `/ntm:pause`.
 - **Message history note**: what reminders have said, so they don't repeat

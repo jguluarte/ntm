@@ -152,7 +152,8 @@ and they change any line in their own words:
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
 - **Sizing:** asked on its own, below. On a backend with no estimate field, tell
-  them where estimates are kept, as the conventions' Estimates says.
+  them where estimates are kept, as the planner's Estimating says
+  (`agents/planner.md`, found as the conventions' "Chat, jobs and agents" says).
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
@@ -162,9 +163,9 @@ and they change any line in their own words:
   halves the weekly planning message carries.
 
 Sizing gets its own question: ask how they like to size their tasks. If they're
-unsure, describe the common ways in a phrase each (the conventions' Estimates
-names them). Record their answer as Sizing, in their words, and as Estimate help
-whether they're new to estimating or comfortable with it.
+unsure, explain the common ways as the planner's Estimating says. Record their
+answer as Sizing, in their words, and as Estimate help whether they're new to
+estimating or comfortable with it.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on

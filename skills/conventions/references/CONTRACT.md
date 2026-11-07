@@ -27,8 +27,8 @@ no way to tell open tasks from closed, can't run this system.
 Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
 
-- **No estimate field:** the task review log is the record, as the conventions'
-  Estimates says, and `update task` skips the estimate.
+- **No estimate field:** the task review log is the record, as Estimating in the
+  planner agent says, and `update task` skips the estimate.
 - **No blocked-by relation:** reviewing and planning work from titles and
   descriptions instead.
 - **No labels on groups:** the conventions' project-label inheritance doesn't

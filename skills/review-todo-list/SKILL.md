@@ -44,7 +44,8 @@ lighter option:
    says.
 
 A task is **unreviewed** when it's open and hasn't been reviewed, as the
-conventions' Estimates says.
+planner's Estimating says (`agents/planner.md`, found as the conventions' "Chat,
+jobs and agents" says).
 
 ## The slice
 
@@ -102,13 +103,11 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, on the user's scale (see the conventions'
-   Estimates), with a few words on why, guided by how past guesses in the task
-   review log compared with what the user settled on. If it already has one (on
-   a backend without an estimate field, its latest log entry's `final`), say
-   what it is. Explain the scale only as much as Estimate help in Planning says:
-   a few words on what the size means for someone new to it, nothing for someone
-   comfortable.
+2. Your proposed **estimate**, on the user's scale, with a few words on why,
+   guided by how past guesses in the task review log compared with what the user
+   settled on. If it already has one (on a backend without an estimate field,
+   its latest log entry's `final`), say what it is. Explain the size as the
+   planner's Estimating says.
 3. If its estimate makes it bigger than a typical sitting, one line on whether
    it looks like it splits. Some things can't, and that's fine. Pieces come up
    in the talk that follows (see Splits).
@@ -171,7 +170,7 @@ A `jsonl` code block, newest first, one object per approved estimate:
 the way the Sizing scale writes it (`3`, `"2 h"`, `"weekend"`). Keep `why` to a
 few words: what made them change it, or what made the guess right. Keep the
 newest 150 entries. On a backend without an estimate field, where the log is the
-record (see the conventions' Estimates), keep every entry.
+record (see the planner's Estimating), keep every entry.
 
 Save it with `write note` whenever you change it, leaving the rest as it was.
 

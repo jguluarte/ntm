@@ -92,7 +92,8 @@ the tie-breaker.
   Notes). A task titled with a note's title is a note, not work; every skill
   ignores it.
 - **Label:** a tag on a task or project.
-- **Estimate:** how big a task is; see Estimates.
+- **Estimate:** how big a task is; Estimating in the planner agent
+  (`agents/planner.md`) says what it means.
 - **Job:** a scheduled run, what the Claude app calls a scheduled task. Never
   "trigger", "routine" or "cron job" when talking to the user.
 
@@ -278,25 +279,6 @@ Planners set, move and clear planned dates freely.
 
 A date is **stale** when it's earlier than today (`planned date < TODAY`) and
 the task is still open.
-
-## Estimates
-
-An estimate says how big a task is, on the user's own scale: points that compare
-tasks with each other, a time, or size words. Sizing in Planning in your
-settings records that scale and what each size means. Two more lines in Planning
-matter here: Estimate mapping, when set, says how each size is stored on the
-backend (the guide converts), and Estimate help says how much to explain when
-estimates come up.
-
-Parents aren't estimated; their sub-tasks are. Any other task **has been
-reviewed when it has an estimate,** and hasn't when it doesn't. Estimates are
-set by the user, or with their approval while reviewing. Planners use an
-estimate when one is set and judge size from the title and description
-otherwise.
-
-On a backend with no estimate field, the task review log's Estimates block is
-the record: a task with an entry there counts as reviewed. Planners judge its
-size from the title and description.
 
 ## Relationships
 

@@ -122,14 +122,44 @@ for one week, 14 for two weeks, the calendar month for the month.
 
 ## Estimating
 
+The one place ntm says what an estimate is. Skills that size tasks with the user
+read this section too.
+
+An estimate says how big a task is, on the user's own scale: points that compare
+tasks with each other, a time, or size words. Sizing in Planning in your
+settings records that scale and what each size means. Two more lines in Planning
+matter here: Estimate mapping, when set, says how each size is stored on the
+backend (the guide converts), and Estimate help says how much to explain when
+estimates come up.
+
+Parents aren't estimated; their sub-tasks are. Any other task **has been
+reviewed when it has an estimate,** and hasn't when it doesn't. Estimates are
+set by the user, or with their approval while reviewing. Planners use an
+estimate when one is set and judge size from the title and description
+otherwise.
+
+On a backend with no estimate field, the task review log's Estimates block is
+the record: a task with an entry there counts as reviewed. Planners judge its
+size from the title and description.
+
+### Explaining estimates
+
+Explain only as much as Estimate help says. For someone new to it, a few words
+on what a size means; when they're unsure how to size at all, the common ways, a
+phrase each: points that compare tasks with each other (this one is about twice
+that one), how long each would take, or size words (small, medium, large).
+Nothing for someone comfortable.
+
+### A task's time on a line
+
 `(~<time>)` on a line is your best guess at how long the task takes, so the user
 can see what the day asks of them. Take it from `ntm:plan` when it gave one.
-Otherwise: with an estimate on the task, read it on the user's scale, as the
-conventions' Estimates says: a size that is a time is the guess; a size that
-fits one sitting, guess the time from the title (`~20 min`, `~1 h`); a multi-day
-task is `~1 h` today, not the whole of it; without one, a rough guess from the
-title and description, in the user's units (an order or a call ~10 min, a chore
-~30 min, assembly or repair an hour or two). Guess; don't research it.
+Otherwise: with an estimate on the task, read it on the user's scale: a size
+that is a time is the guess; a size that fits one sitting, guess the time from
+the title (`~20 min`, `~1 h`); a multi-day task is `~1 h` today, not the whole
+of it; without one, a rough guess from the title and description, in the user's
+units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour
+or two). Guess; don't research it.
 
 ## Errors
 

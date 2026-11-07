@@ -17,8 +17,8 @@ becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, three agents (planner, messenger,
-  shopper) that own the procedures, and the prompts for the jobs. It holds
+- **ntm** is the behaviour: the skills below, three agents (messenger, shopper,
+  estimator) that own the procedures, and the prompts for the jobs. It holds
   nothing of yours, so it installs from a marketplace or a zip and updates like
   any plugin.
 - **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your
@@ -93,8 +93,8 @@ it; so can you.
 
 ### Planning and tidying
 
-- `/ntm:review-todo-list`: reviews the todo list with you in chat (close, size,
-  split).
+- `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
+  estimate, split).
 - `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
   stale planned dates.
 
@@ -125,11 +125,11 @@ On when your settings name a price watch project.
 
 Rules live in `ntm:conventions` and name the values they depend on by key; the
 values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
-each is three lines naming the skill it runs. The reminder skills gather facts
-and hand them to an agent; agents own the procedures. In the skills, a name with
-a `$` in front, like $no-autoschedule, is a label you configure, written by its
-default name. The notes live on your todo list, under the titles in your
-settings.
+each is three sentences naming the skill it runs. The reminder skills gather
+facts and hand them to an agent; agents own the procedures. In the skills, a
+name with a `$` in front, like $no-autoschedule, is a label you configure,
+written by its default name. The notes live on your todo list, under the titles
+in your settings.
 
 ### `ntm:conventions`
 
@@ -153,11 +153,6 @@ The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning,
 Completed (weekly or monthly), Price watch. Each runs one skill. Written by
 `/ntm:configure-schedule`.
 
-### The planner
-
-What is planned, what got done, is today ready? Runs the list skills for the
-reminders. Ships with ntm.
-
 ### The messenger
 
 What will you actually open? Composes in your style and sends through your
@@ -166,6 +161,13 @@ channel. Ships with ntm.
 ### The shopper
 
 Is this item a good deal today? One per watched task. Ships with ntm.
+
+### The estimator
+
+How big is each task, on your own scale, and is it ready to plan? Reviews the
+todo list with you through `/ntm:review-todo-list`, estimating and splitting
+tasks, guesses how long each task takes when tasks are planned, and explains the
+ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses note
 
@@ -178,8 +180,8 @@ What reminders have said, so they don't repeat themselves. Written by
 
 ### Task review log note
 
-How you like tasks written and sized, learned while reviewing. Written by
-`/ntm:review-todo-list`.
+How you like tasks written and estimated, learned while reviewing. Written by
+the estimator, through `/ntm:review-todo-list`.
 
 ### Price watch stores note
 

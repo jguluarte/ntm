@@ -25,8 +25,8 @@ Which path runs is a matter of context:
   settings: a backend, a label name, the planning rhythm, what counts as a deal.
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
-project", "size the garage work") is `/ntm:review-todo-list`; when the words are
-about that, load it and follow it instead.
+project", "estimate the garage work") is `/ntm:review-todo-list`; when the words
+are about that, load it and follow it instead.
 
 ## Usage
 
@@ -144,20 +144,16 @@ already exists under another title (record that title) or create it with
 
 ## Planning
 
-How the planner works the todo list. Show the defaults as one short list, one
+How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a plain "ok" keeps them all,
 and they change any line in their own words:
 
-- **Rhythm:** one task per weekday. What the planner gives each planning day.
+- **Rhythm:** one task per weekday. What each planning day gets.
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
-- **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
-  evening, 3 or more is multi-day. What an estimate means on their todo list;
-  the planner guesses from the title when a task has none. Asked on its own,
-  below. On a backend with no estimate field, say the task review log is the
-  record.
-- **A day's worth:** about an hour. What the planner aims for when it picks.
+- **Estimate scale:** asked on its own, below.
+- **A day's worth:** about an hour. What a day's picks aim for.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
   names settled above.
@@ -165,11 +161,12 @@ and they change any line in their own words:
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
-Sizing gets its own question: ask how they like to size their tasks. If they're
-unsure, offer a short explanation of two ways to estimate: compare tasks to each
-other (this one is about twice that one), or say how long each would take.
-Record their answer as Sizing, and as Estimate help whether they're new to
-estimating or comfortable with it.
+Estimate scale gets its own question, one high-level question: how would they
+like to estimate their tasks? Only if they want more detail, ask the estimator
+agent's Explain estimating request and pass its ways on; when the agent isn't
+available, follow its file as the conventions' "Chat, jobs and agents" says.
+Record their answer as Estimate scale, in their words, and as Estimate help
+whether they're new to estimating or comfortable with it.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -225,7 +222,8 @@ react.
   - price watch stores: <title; default Price watch stores>
   - Amazon alert steps: <title; default Amazon alert steps>
 
-<for their own backend: how each operation in the contract is done, in their words>
+<for their own backend: how each operation in the contract is done, in their
+words>
 
 ## Labels
 
@@ -242,13 +240,15 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How the planner works your todo list. Read by `ntm:plan`, the planner agent and the weekly planning.
+How your todo list is planned. Read by `ntm:plan` and the weekly planning;
+Estimate scale, Estimate mapping and Estimate help by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
-- Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
-- Estimate mapping: <each size on their scale and the list's point it becomes; blank when their scale is the list's>
+- Estimate scale: <how they estimate their tasks, in their words>
+- Estimate mapping: <each estimate on their scale and the list's point it
+  becomes; blank when their scale is the list's>
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
@@ -259,7 +259,8 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
+How the price watch judges a deal. Read by `ntm:price-watch` and the shopper
+agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 - Condition: <default new>
 - Delivery: <default online only, to your country>

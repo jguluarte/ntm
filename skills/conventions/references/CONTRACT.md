@@ -53,24 +53,78 @@ task.
 
 ## Operations
 
-Each must be covered. Operation names are what every skill uses; keep them
-exactly.
+Cover every operation: the guide's entry for each says what's under its heading
+here. Skills call operations by these names; keep them exactly.
 
-| Operation                                            | Must say                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ping`                                               | one read that proves the connector works and sees the todo list named in Todo list, and how to tell sign-in expired from wrong account from backend error (the names `ntm:ready-check` reports)                                                                                                                                                                                                                                                                         |
-| `fetch open`                                         | how to get every open task (every plannable status, plus blocked when Todo list's blocked line isn't blank) with the standard fields, paginated, plus every project with its name and labels, and its summary when a skill asks for it. Standard fields: id, title, url (the task's link), status, status class, priority, estimate, planned date, labels, project, parent id, completed at, updated at; and, for priority, which value is highest and which means none |
-| `fetch closed`                                       | closed tasks (done; canceled and duplicate on request) with their completion time, how to limit to a span, and how to limit to one label                                                                                                                                                                                                                                                                                                                                |
-| `read task`                                          | one task with description, parent and blocked-by relations                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `list sub-tasks`                                     | a task's sub-tasks, open and closed, with the standard fields                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `read comments` / `write comment` / `update comment` | per task; if the backend can't update a comment in place, say to delete and re-add, or to append                                                                                                                                                                                                                                                                                                                                                                        |
-| `set planned date` / `clear planned date`            | the date field used, and that nothing else changes                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `set status`                                         | by the status name in Todo list                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `add labels` / `remove labels`                       | without dropping the others                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `mark duplicate of`                                  | or, if the backend has no duplicate relation, close with the duplicate status and a comment naming the original                                                                                                                                                                                                                                                                                                                                                         |
-| `create task`                                        | title, description, project, parent, blocked-by, labels; and how to check for an existing match first                                                                                                                                                                                                                                                                                                                                                                   |
-| `update task`                                        | change a task's title, description, estimate, project (or none), parent, or add a blocked-by link; nothing else changes                                                                                                                                                                                                                                                                                                                                                 |
-| `read note` / `write note`                           | see Notes; `write note` creates a missing note with the content given                                                                                                                                                                                                                                                                                                                                                                                                   |
+### `ping`
+
+Makes one read that proves the connector works and sees the todo list named in
+Todo list. Says how to tell sign-in expired from wrong account from backend
+error (the names `ntm:ready-check` reports).
+
+### `fetch open`
+
+Gets every open task (every plannable status, plus blocked when Todo list's
+blocked line isn't blank) with the standard fields, paginated, plus every
+project with its name and labels, and its summary when a skill asks for it.
+
+The standard fields are id, title, url (the task's link), status, status class,
+priority, estimate, planned date, labels, project, parent id, completed at and
+updated at. For priority, the entry says which value is highest and which means
+none.
+
+### `fetch closed`
+
+Gets closed tasks (done; canceled and duplicate on request) with their
+completion time, and says how to limit them to a span and to one label.
+
+### `read task`
+
+Reads one task with its description, parent and blocked-by relations.
+
+### `list sub-tasks`
+
+Lists a task's sub-tasks, open and closed, with the standard fields (see
+`fetch open`).
+
+### `read comments` / `write comment` / `update comment`
+
+Reads, writes and updates a task's comments. If the backend can't update a
+comment in place, `update comment` says to delete and re-add, or to append.
+
+### `set planned date` / `clear planned date`
+
+Sets or clears a task's planned date. Names the date field used; nothing else
+changes.
+
+### `set status`
+
+Sets a task's status, by its name in Todo list.
+
+### `add labels` / `remove labels`
+
+Adds or removes labels without dropping the others.
+
+### `mark duplicate of`
+
+Marks a task as a duplicate of another with the backend's duplicate relation.
+With no such relation, closes it with the duplicate status and a comment naming
+the original.
+
+### `create task`
+
+Creates a task with a title, description, project, parent, blocked-by and
+labels, and says how to check for an existing match first.
+
+### `update task`
+
+Changes a task's title, description, estimate, project (or none) or parent, or
+adds a blocked-by link; nothing else changes.
+
+### `read note` / `write note`
+
+Reads or writes a note, as Notes says. `write note` creates a missing note with
+the content given.
 
 ## Notes
 
@@ -91,18 +145,47 @@ conventions say every skill ignores such a task as work.
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`. Say which call does each.
+Used by `ntm:configure-todo-list`. For each, say which call does it and what's
+under its heading here.
 
-| Operation          | Must say                                                                                                                                                                                               |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `list todo-lists`  | the todo lists the connector can see, by name and id; or, where the backend has no todo lists to list, say so (the user names or pastes theirs, or `ntm:configure-todo-list` runs `create todo-list`)  |
-| `create todo-list` | only where the backend has no todo lists to list: make one with the statuses, labels and notes settled so far, and return its id                                                                       |
-| `list statuses`    | a list's status names, so each class can be matched to real names                                                                                                                                      |
-| `list labels`      | the list's task labels, and its project labels when those are a separate set                                                                                                                           |
-| `create label`     | a task label by name, with a description; and a project label by name when those are a separate set                                                                                                    |
-| `list projects`    | every project with its name, id and labels                                                                                                                                                             |
-| `create project`   | a project by name, with the project labels it should carry                                                                                                                                             |
-| `create note`      | a note with a given title and first content, at list level or in a project, without touching one that already exists (`read note` first). The message history note's first content is its `Keep:` line |
+### `list todo-lists`
+
+Lists the todo lists the connector can see, by name and id. Where the backend
+has no todo lists to list, says so (the user names or pastes theirs, or
+`ntm:configure-todo-list` runs `create todo-list`).
+
+### `create todo-list`
+
+Only where the backend has no todo lists to list: makes one with the statuses,
+labels and notes settled so far, and returns its id.
+
+### `list statuses`
+
+Lists a todo list's status names, so each class can be matched to real names.
+
+### `list labels`
+
+Lists the todo list's task labels, and its project labels when those are a
+separate set.
+
+### `create label`
+
+Creates a task label by name, with a description, and a project label by name
+when those are a separate set.
+
+### `list projects`
+
+Lists every project with its name, id and labels.
+
+### `create project`
+
+Creates a project by name, with the project labels it should carry.
+
+### `create note`
+
+Creates a note with a given title and first content, at list level or in a
+project, without touching one that already exists (`read note` first). The
+message history note's first content is its `Keep:` line.
 
 ## Writing
 

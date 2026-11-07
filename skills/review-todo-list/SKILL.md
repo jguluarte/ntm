@@ -2,9 +2,9 @@
 name: review-todo-list
 description: >-
     Reviews the user's todo list with them in chat: closes obsolete or duplicate
-    tasks, then sizes and splits unreviewed ones with their approval. Run by the
-    user in chat, never by a job ("let's review my list", "review the kitchen
-    project", "size the garage work").
+    tasks, then estimates and splits unreviewed ones with their approval. Run by
+    the user in chat, never by a job ("let's review my list", "review the
+    kitchen project", "estimate the garage work").
 ---
 
 # ntm:review-todo-list

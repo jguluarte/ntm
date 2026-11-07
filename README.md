@@ -93,8 +93,8 @@ it; so can you.
 
 ### Planning and tidying
 
-- `/ntm:review-todo-list`: reviews the todo list with you in chat (close, size,
-  split).
+- `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
+  estimate, split).
 - `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
   stale planned dates.
 
@@ -165,9 +165,9 @@ Is this item a good deal today? One per watched task. Ships with ntm.
 ### The estimator
 
 How big is each task, on your own scale, and is it ready to plan? Reviews the
-todo list with you through `/ntm:review-todo-list`, sizing and splitting tasks,
-guesses how long each task takes when tasks are planned, and explains the ways
-to estimate when you want to know. Ships with ntm.
+todo list with you through `/ntm:review-todo-list`, estimating and splitting
+tasks, guesses how long each task takes when tasks are planned, and explains the
+ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses note
 
@@ -180,8 +180,8 @@ What reminders have said, so they don't repeat themselves. Written by
 
 ### Task review log note
 
-How you like tasks written and sized, learned while reviewing. Written by the
-estimator, through `/ntm:review-todo-list`.
+How you like tasks written and estimated, learned while reviewing. Written by
+the estimator, through `/ntm:review-todo-list`.
 
 ### Price watch stores note
 

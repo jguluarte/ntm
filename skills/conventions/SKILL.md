@@ -59,7 +59,7 @@ Skills built on this todo list do three things:
   they have already dated counts as planned.
 - **Remind.** Jobs push the user reminders about the day's tasks.
 - **Keep the todo list honest.** They clear stale dates, and reviewing the list
-  with the user sizes and splits oversized work.
+  with the user estimates and splits oversized work.
 
 Every rule below exists so that those skills, and any agent working on the todo
 list, read it the same way. When a rule seems arbitrary, the purpose above is

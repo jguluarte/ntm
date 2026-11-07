@@ -25,8 +25,8 @@ Which path runs is a matter of context:
   settings: a backend, a label name, the planning rhythm, what counts as a deal.
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
-project", "size the garage work") is `/ntm:review-todo-list`; when the words are
-about that, load it and follow it instead.
+project", "estimate the garage work") is `/ntm:review-todo-list`; when the words
+are about that, load it and follow it instead.
 
 ## Usage
 
@@ -152,7 +152,7 @@ and they change any line in their own words:
 - **Planning days:** weekdays. The days that get a task automatically.
 - **Plans ahead:** one week (Monday to Friday). How far the weekly planning
   plans; could be two weeks, or the month.
-- **Sizing:** asked on its own, below.
+- **Estimate scale:** asked on its own, below.
 - **A day's worth:** about an hour. What a day's picks aim for.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
@@ -161,12 +161,12 @@ and they change any line in their own words:
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
-Sizing gets its own question, one high-level question: how would they like to
-size their tasks? Only if they want more detail, ask the estimator agent's
-Explain estimating request and pass its ways on; when the agent isn't available,
-follow its file as the conventions' "Chat, jobs and agents" says. Record their
-answer as Sizing, in their words, and as Estimate help whether they're new to
-estimating or comfortable with it.
+Estimate scale gets its own question, one high-level question: how would they
+like to estimate their tasks? Only if they want more detail, ask the estimator
+agent's Explain estimating request and pass its ways on; when the agent isn't
+available, follow its file as the conventions' "Chat, jobs and agents" says.
+Record their answer as Estimate scale, in their words, and as Estimate help
+whether they're new to estimating or comfortable with it.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -239,13 +239,13 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan` and the weekly planning; Sizing, Estimate mapping and Estimate help by the estimator agent.
+How your todo list is planned. Read by `ntm:plan` and the weekly planning; Estimate scale, Estimate mapping and Estimate help by the estimator agent.
 
 - Rhythm: <default one task per weekday>
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
-- Sizing: <how they size their tasks, in their words>
-- Estimate mapping: <each size on their scale and the list's point it becomes; blank when their scale is the list's>
+- Estimate scale: <how they estimate their tasks, in their words>
+- Estimate mapping: <each estimate on their scale and the list's point it becomes; blank when their scale is the list's>
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>

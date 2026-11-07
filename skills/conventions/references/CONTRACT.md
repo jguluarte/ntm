@@ -28,8 +28,8 @@ Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
 
 - **No estimate field:** keep each task's estimate in its description, on a line
-  `Estimate: <size>`. The guide says how `fetch open` and `list sub-tasks` read
-  it there and how `update task` writes it.
+  `Estimate: <estimate>`. The guide says how `fetch open` and `list sub-tasks`
+  read it there and how `update task` writes it.
 - **No blocked-by relation:** reviewing and planning work from titles and
   descriptions instead.
 - **No labels on groups:** the conventions' project-label inheritance doesn't

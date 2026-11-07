@@ -108,6 +108,9 @@ One item per message, in the agreed order:
    with a few words on why, guided by how past guesses in the task review log
    compared with what the user settled on. If it already has one (on a backend
    without an estimate field, its latest log entry's `final`), say what it is.
+   Explain the scale only as much as Estimate help in Planning says: a few words
+   on what the size means for someone new to it, nothing for someone
+   comfortable.
 3. If its estimate makes it bigger than a typical sitting, one line on whether
    it looks like it splits. Some things can't, and that's fine. Pieces come up
    in the talk that follows (see Splits).

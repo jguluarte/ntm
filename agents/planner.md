@@ -125,12 +125,13 @@ for one week, 14 for two weeks, the calendar month for the month.
 
 `(~<time>)` on a line is your best guess at how long the task takes, so the user
 can see what the day asks of them. Take it from `ntm:plan` when it gave one.
-Otherwise: with an estimate on the task, read it on the Sizing scale in
-Planning: a 1 is an evening or less, so guess the time from the title
-(`~20 min`, `~1 h`); a multi-day task is `~1 h` today, not the whole of it;
-without one, a rough guess from the title and description, in the user's units
-(an order or a call ~10 min, a chore ~30 min, assembly or repair an hour or
-two). Guess; don't research it.
+Otherwise: with an estimate on the task, read it on the Sizing scale in Planning
+(on Linear, converted through Estimate mapping as the guide says): a time on
+that scale is the guess; a size that fits one sitting, guess the time from the
+title (`~20 min`, `~1 h`); a multi-day task is `~1 h` today, not the whole of
+it; without one, a rough guess from the title and description, in the user's
+units (an order or a call ~10 min, a chore ~30 min, assembly or repair an hour
+or two). Guess; don't research it.
 
 ## Errors
 

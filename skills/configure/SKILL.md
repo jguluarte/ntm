@@ -45,12 +45,11 @@ Say two lines first:
 
 This skill owns About you. Ask:
 
-- Name: how a message title addresses you.
 - Timezone: an IANA name; confirm the city when they give one instead. Every
   date in the system is computed in it.
 - Country and currency, for price watch (`US, USD`).
 
-Write them as the About you section, one line each: `- Name:`, `- Timezone:`,
+Write them as the About you section, one line each: `- Timezone:`,
 `- Country and currency:`.
 
 ### The parts
@@ -93,14 +92,14 @@ configured".
 
 ## Configured
 
-One line of state per part, from what loads: About you (name, timezone); todo
-list (backend, todo list name, price watch project or off); notifications
-(channel); style (`ntm-user:style` loads, or not); schedule (which jobs exist,
-from `ntm:configure-schedule`'s listing). Ask which to change and hand off to
-that part; it shows its current state and asks what to change. About you is
-handled here the same way. Then package as Packaging says, with what it
-returned. A schedule change alone changes nothing in `ntm-user`, so there's
-nothing to package after it.
+One line of state per part, from what loads: About you (timezone); todo list
+(backend, todo list name, price watch project or off); notifications (channel);
+style (`ntm-user:style` loads, or not); schedule (which jobs exist, from
+`ntm:configure-schedule`'s listing). Ask which to change and hand off to that
+part; it shows its current state and asks what to change. About you is handled
+here the same way. Then package as Packaging says, with what it returned. A
+schedule change alone changes nothing in `ntm-user`, so there's nothing to
+package after it.
 
 ## `configure <part>`
 

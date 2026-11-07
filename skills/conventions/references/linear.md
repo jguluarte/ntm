@@ -141,12 +141,65 @@ project from Todo list) lives in that project's documents instead. Search with
   `Keep:` line; the content for the message history note already starts with its
   `Keep:` line).
 
+## Setup
+
+Used by `ntm:configure-todo-list`, in order; a part named for one of its steps
+(Planning) runs at that step.
+
+### The backend
+
+Backend is `linear`. If they don't have Linear yet, do Starting from nothing
+first.
+
+### Starting from nothing
+
+If they don't have Linear yet, these happen outside the chat, on their side;
+walk them through in order and wait for "done" before The todo list below:
+
+1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
+   issues.
+2. The new workspace comes with one team; that team is the todo list. Its key
+   (the few capital letters Linear asks for when naming it, `HOME` for
+   `HOME-12`) becomes Task prefix, so pick one they'll be happy reading in
+   reminders.
+3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
+   Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
+   right now" status, they add one named Blocked in the team's workflow
+   settings; otherwise the $pending-shipment label and blocked-by links cover
+   that ground.
+4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
+   Linear and sign in to the workspace. Then come back here and say so.
+
+Labels, the price watch project and the notes don't need making by hand: Labels
+and Notes in `ntm:configure-todo-list` create them.
+
+### The todo list
+
+`list todo-lists`; propose the team. List name is its name, List id its id, Task
+prefix its issue key.
+
+Once the team is chosen, suggest the user turn on Parent auto-close in the
+team's settings under Workflow, so a parent closes as soon as its sub-tasks are
+all done. Off, the weekly planning closes those parents instead.
+
+### The price watch project
+
+`list projects`; ask which project holds purchases waiting for a good price, or
+none (none = price watch off). If they want one that doesn't exist yet, settle
+its name now; it's created in Labels, once the project labels exist.
+
+### Planning
+
+Ask which estimate type their team uses: linear, exponential, Fibonacci or
+T-shirt sizes (Estimates, under Todo list above, has each one's points). If
+they're unsure, it's in Linear under the team's settings, Estimates. If they
+still don't know, run `sample estimates` and suggest the type that fits. When
+their scale isn't the team's, agree with them which of the team's points each
+size on their scale becomes, and record it as Estimate mapping.
+
 ## Setup operations
 
-Used by `ntm:configure-todo-list`. Once the team is chosen, suggest the user
-turn on Parent auto-close in the team's settings under Workflow, so a parent
-closes as soon as its sub-tasks are all done. Off, the weekly planning closes
-those parents instead.
+Used by `ntm:configure-todo-list`.
 
 ### `list todo-lists`
 

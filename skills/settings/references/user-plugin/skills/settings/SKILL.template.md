@@ -77,8 +77,8 @@ the weekly planning.
 - Sizing: Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3
   or more is multi-day <!-- what an estimate means on your todo list; the
   planner guesses from the title when a task has none -->
-- Estimate mapping: <!-- on Linear, each size on your scale and the team's point
-  it's stored as; blank when your scale is the team's -->
+- Estimate mapping: <!-- each size on your scale and the list's point it's
+  stored as; blank when your scale is the list's -->
 - Estimate help: new to it <!-- or: comfortable; how much skills explain when
   estimates come up -->
 - A day's worth: about an hour <!-- what the planner aims for when it picks -->

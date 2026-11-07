@@ -215,7 +215,7 @@ it.
 - **message history** (`Message history`): what reminders have said. Its first
   line is a `Keep:` line that `ntm:style`, its writer, prunes to; the style
   template says what it writes.
-- **grooming log** (`Grooming log`):
+- **task review log** (`Task review log`):
   `neurodivergent-task-manager:configure-todo-list` keeps it.
 - **price watch stores** (`Price watch stores`): kept in the price watch
   project. `neurodivergent-task-manager:price-watch` keeps it, from the user's
@@ -291,7 +291,7 @@ Parents aren't estimated; their sub-tasks are. Otherwise, **a task with an
 estimate has been groomed;** one without hasn't. Estimates are set by the user,
 or with their approval while grooming. Planners use an estimate when one is set
 and judge size from the title and description otherwise. On a backend with no
-estimate field, the grooming log's Estimates block is the record.
+estimate field, the task review log's Estimates block is the record.
 
 ## Relationships
 

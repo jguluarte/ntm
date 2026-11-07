@@ -109,7 +109,7 @@ and hand them to an agent; agents own the procedures.
 | The shopper | Is this item a good deal today? One per watched task. | ntm |
 | Pauses note | The days when nothing gets planned automatically. | `/neurodivergent-task-manager:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm:style` |
-| Grooming log note | How you like tasks written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
+| Task review log note | How you like tasks written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
 | Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it. | `/neurodivergent-task-manager:price-watch` |
 | Amazon alert steps note | How to set an alert on Amazon, learned once. | `/neurodivergent-task-manager:sync-price-watch-to-amazon` |
 

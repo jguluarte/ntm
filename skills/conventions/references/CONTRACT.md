@@ -23,7 +23,7 @@ skills can find what they need.
   An estimate field and a blocked-by relation are used when present. Say in the
   guide if the backend lacks them; the skills that use them (grooming, planning)
   work from titles and descriptions instead. With no estimate field, the
-  grooming log's Estimates block is the record: a task counts as groomed when
+  task review log's Estimates block is the record: a task counts as groomed when
   it has an entry there, and `update task` skips the estimate.
 - Some way to group tasks (projects, folders, epics) that can carry labels. If
   groups can't carry labels, say so; the conventions' project-label inheritance

@@ -11,10 +11,6 @@ todo list name as `team`, and `me` for the signed-in user.
 Values below that name a settings section (Todo list, Labels, Planning, About
 you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 
-Any call written over several lines here is laid out for reading: send each call
-compact (one line, same keys and values), and write any JSON you store on the
-todo list compact.
-
 ## Todo list
 
 - **Team:** List name from Todo list (List id is the team id, used wherever a

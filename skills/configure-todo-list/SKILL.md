@@ -205,8 +205,9 @@ and they change any line in their own words:
   plans; could be two weeks, or the month.
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
   evening, 3 or more is multi-day. What an estimate means on their todo list;
-  the planner guesses from the title when a task has none. On a backend with no
-  estimate field, say the task review log is the record.
+  the planner guesses from the title when a task has none. Asked on its own,
+  below. On a backend with no estimate field, say the task review log is the
+  record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by the
@@ -214,6 +215,15 @@ and they change any line in their own words:
 - **Parents:** plan the open sub-tasks, never the parent.
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
+
+Sizing gets its own question: ask how they like to size their tasks. If they're
+unsure, offer a short explanation of two ways to estimate: compare tasks to each
+other (this one is about twice that one), or say how long each would take.
+Record their answer as Sizing, and as Estimate help whether they're new to
+estimating or comfortable with it. On Linear, read the team's estimate type with
+the guide's `read estimate type`. When their scale isn't the team's, agree with
+them which of the team's points each size on their scale becomes, and record it
+as Estimate mapping.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -291,6 +301,8 @@ How the planner works your todo list. Read by `ntm:plan`, the planner agent and 
 - Planning days: <default weekdays>
 - Plans ahead: <default one week>
 - Sizing: <default Fibonacci points; 1 finishes in a night, 2 is iffy for one evening, 3 or more is multi-day>
+- Estimate mapping: <on Linear, each size on their scale and the team's point it becomes; blank when their scale is the team's>
+- Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
 - Never picks: <default no-autoschedule, pending-shipment, blocked status>
 - Parents: <default plan the open sub-tasks, never the parent>

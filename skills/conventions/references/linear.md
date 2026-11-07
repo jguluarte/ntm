@@ -8,8 +8,8 @@ calling them.
 The connector accepts human-readable references: task ids like `ABC-12`, the
 todo list name as `team`, and `me` for the signed-in user.
 
-Values below that name a settings section (Todo list, Labels, About you) come
-from `ntm-user:settings`, read as the conventions' Loading step says.
+Values below that name a settings section (Todo list, Labels, Planning, About
+you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 
 ## Todo list
 
@@ -23,6 +23,9 @@ from `ntm-user:settings`, read as the conventions' Loading step says.
 - **Automations:** a parent auto-closes when its last sub-issue closes, and
   sub-issues auto-close when their parent closes, if the todo list has Linear's
   default workflow automations on. `ntm:fix-todo-list` handles either case.
+- **Estimates:** `estimate` holds the team's points. When Planning has an
+  Estimate mapping, convert through it: the user's size to its point when
+  writing, a point back to its size when reading.
 
 ## Status classes
 
@@ -144,6 +147,10 @@ Used by `ntm:configure-todo-list`.
   its name and `type`, which suggests the class (`backlog`, `unstarted` and
   `started` are plannable, `started` the started one; `completed` done;
   `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
+- **`read estimate type`:** `get_team` with `query: "<List id>"`; its estimate
+  type is the scale `estimate` takes: linear (1–5), exponential, Fibonacci, or
+  T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). Times can't be
+  stored.
 - **`list labels`:** `list_issue_labels` with `team` for issue labels;
   `list_project_labels` with `team` for project labels, a separate set.
 - **`create label`:** `save_issue_label` with `name`, `teamId: "<List id>"` and

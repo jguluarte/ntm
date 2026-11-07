@@ -16,8 +16,8 @@ Read `references/builder.md` once before starting: it holds the Profile's shape,
 the questions for each section, the episode arc the reminders follow, and one
 plain example. The template the procedure half comes from is
 `skills/configure/references/user-plugin/skills/style/SKILL.template.md` in
-`neurodivergent-task-manager:settings`; `neurodivergent-task-manager:settings`
-assembles the file (see Result).
+this plugin; `neurodivergent-task-manager:settings` assembles the file (see
+Result).
 
 This skill ships no persona and names no show, person or brand. The theme, the
 reminders, the levels and their names are the user's, in their words.

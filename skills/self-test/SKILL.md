@@ -1,6 +1,6 @@
 ---
 name: self-test
-description: Exercises the whole ntm loop on a throwaway task and a throwaway note, one line per step, and ends with Self-test OK or the first step that failed. The first thing to run after installing ntm and ntm ("test ntm", "run the self test", "is everything wired up?"), and the smoke test for a backend the user described themselves.
+description: Exercises the whole ntm loop on a throwaway task and a throwaway note, one line per step, and ends with Self-test OK or the first step that failed. The first thing to run after installing neurodivergent-task-manager and ntm ("test ntm", "run the self test", "is everything wired up?"), and the smoke test for a backend the user described themselves.
 ---
 
 # neurodivergent-task-manager:self-test

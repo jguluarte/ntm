@@ -9,10 +9,10 @@ always listed; load `read` with ToolSearch (`select:mcp__Claude_Docs__read`)
 before calling it. Before the first docs call of a run,
 `guide( items = ["topic.index","topic.editing"] )`: the reads, cell targets, row
 inserts and refusal codes used below are defined there. There is no task
-system here: the todo list is one Claude Doc that Claude keeps, and every
+tracker here: the todo list is one Claude Doc that Claude keeps, and every
 operation is a read or an edit of that doc. Cost: reads pull a whole table, and
 writes are row-by-row cell edits, so each run spends more tokens than a
-connector to a task system would. That's fine for a few dozen tasks.
+connector to a task tracker would. That's fine for a few dozen tasks.
 
 Values below that name a settings section (Todo list, Labels, About you) come
 from `ntm:settings`, read as the conventions' Loading step says.

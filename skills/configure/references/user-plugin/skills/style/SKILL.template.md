@@ -6,10 +6,10 @@ description: How ntm reminders talk to you, and the skill that writes them that 
 # ntm:style
 
 Yours: `/neurodivergent-task-manager:configure-style` wrote it with you, and
-it's read only by ntm's
-messenger and by you. The Profile is what you said; How a message gets written
-is the procedure that turns facts into a line in your register. Both are yours
-to edit; keep the Usage the same, since the messenger relies on it.
+it's read only by neurodivergent-task-manager's messenger and by you. The
+Profile is what you said; How a message gets written is the procedure that
+turns facts into a line in your register. Both are yours to edit; keep the
+Usage the same, since the messenger relies on it.
 
 ## Usage
 

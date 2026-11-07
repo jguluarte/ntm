@@ -58,7 +58,7 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 Ask what they keep tasks in today. If they're undecided, offer the three choices
 in one line: Linear (free for individuals; the guide most used), Claude Docs (no
-task system; Claude keeps the todo list in one doc; untested, and heavier per
+task tracker; Claude keeps the todo list in one doc; untested, and heavier per
 run), or their own backend, which they describe.
 
 If they chose Linear and don't have it yet, do Linear's Starting from nothing

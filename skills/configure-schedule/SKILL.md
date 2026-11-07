@@ -39,8 +39,9 @@ timezone, the price watch project and the Planning days `configure` hands you.
 Each prompt file is named after its kind and starts with a table of what differs
 per job (the default title and the suggested schedule; for completed, the
 monthly variant), then a `--- prompt ---` line; everything after that line is
-the prompt. Every prompt is three lines that load the matching `ntm:` skill, so
-a template update reaches the jobs without touching them, and a job carries no
+the prompt. Every prompt is three lines that load the matching
+`neurodivergent-task-manager:` skill, so a template update reaches the jobs
+without touching them, and a job carries no
 logic of its own. Titles and prompt text are the user's: offer the defaults,
 take what they say, and lock nothing.
 

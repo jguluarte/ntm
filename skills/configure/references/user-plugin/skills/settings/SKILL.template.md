@@ -117,6 +117,6 @@ here. -->
 
 ## Deviations
 
-<!-- Anything you do differently from ntm's conventions.
-neurodivergent-task-manager:conventions reads
-this last and lets it override. -->
+<!-- Anything you do differently from neurodivergent-task-manager's
+conventions. neurodivergent-task-manager:conventions reads this last and lets
+it override. -->

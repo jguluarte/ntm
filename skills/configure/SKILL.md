@@ -1,6 +1,6 @@
 ---
 name: configure
-description: The ntm wizard. Walks the user through everything ntm needs in one chat (about you, todo list, notifications, style, schedule), hands each part to its configure skill, and ends with ntm.plugin to install. Run when the user says "set up ntm", "configure ntm", "get started", or installs ntm for the first time; "/neurodivergent-task-manager:configure schedule" (or any other part) goes straight to that part.
+description: The ntm wizard. Walks the user through everything ntm needs in one chat (about you, todo list, notifications, style, schedule), hands each part to its configure skill, and ends with ntm.plugin to install. Run when the user says "set up ntm", "configure ntm", "get started", or installs neurodivergent-task-manager for the first time; "/neurodivergent-task-manager:configure schedule" (or any other part) goes straight to that part.
 ---
 
 # neurodivergent-task-manager:configure
@@ -30,8 +30,9 @@ Load `ntm:settings` by name.
 
 Say two lines first:
 
-1. ntm keeps your settings and style in a small plugin of your own, `ntm`;
-   this builds it with you and hands it back to install at the end.
+1. neurodivergent-task-manager keeps your settings and style in a small plugin
+   of your own, `ntm`; this builds it with you and hands it back to install at
+   the end.
 2. The steps: about you, your todo list (and how planning and shopping work on
    it), how reminders reach you, how they talk to you, and the schedule. Each is
    a short conversation, and your own plugin is written once, at the end.

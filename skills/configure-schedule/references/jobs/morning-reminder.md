@@ -9,4 +9,4 @@
 
 Morning reminder.
 Load `neurodivergent-task-manager:morning-reminder` and follow it from step 1. Its FINAL REPLY and ERROR HANDLING are this job's.
-If `neurodivergent-task-manager:morning-reminder` can't be loaded, end the run with `Morning reminder FAILED: neurodivergent-task-manager:morning-reminder couldn't be loaded; check the ntm plugin is installed and enabled.`
+If `neurodivergent-task-manager:morning-reminder` can't be loaded, end the run with `Morning reminder FAILED: neurodivergent-task-manager:morning-reminder couldn't be loaded; check the neurodivergent-task-manager plugin is installed and enabled.`

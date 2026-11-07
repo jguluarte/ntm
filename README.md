@@ -17,10 +17,10 @@ becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, three agents (planner, messenger,
-  shopper) that own the procedures, and the prompts for the scheduled tasks. It
-  holds nothing of yours, so it installs from a marketplace or a zip and updates
-  like any plugin.
+- **neurodivergent-task-manager** is the behaviour: the skills below, three
+  agents (planner, messenger, shopper) that own the procedures, and the prompts
+  for the scheduled tasks. It holds nothing of yours, so it installs from a
+  marketplace or a zip and updates like any plugin.
 - **ntm** is yours. `/neurodivergent-task-manager:configure` builds it with you,
   and it holds your
   unique settings and style: `ntm:settings` (every value you agreed to:
@@ -28,17 +28,17 @@ becomes the easy option.
   reminders reach you, anything you do differently) and `ntm:style` (how
   reminders talk to you). Keep it private; it can hold your Pushover keys.
 
-The trigger word is the plugin's name, `ntm`; to use another, fork the template
-and rename it with your agent (whole-word `ntm` to yours and `NTM` to yours in
-capitals, in every file and in `plugin.json`'s `name`), then create your jobs
-from that copy.
+The trigger word is the plugin's name, `neurodivergent-task-manager`; to use
+another, fork the template and rename it with your agent (whole-word
+`neurodivergent-task-manager` to yours and `NTM` to yours in capitals, in every
+file and in `plugin.json`'s `name`), then create your jobs from that copy.
 
 ## First steps
 
-1. Install ntm. Connect whatever system holds your tasks, todos or reminders:
-   Linear and Claude Docs are the two shipped guides (Linear from the Connectors
-   tab; Claude Docs needs no connector), and your own backend is described
-   during setup.
+1. Install neurodivergent-task-manager. Connect whatever system holds your
+   tasks, todos or reminders: Linear and Claude Docs are the two shipped guides
+   (Linear from the Connectors tab; Claude Docs needs no connector), and your
+   own backend is described during setup.
 2. Open a chat and run `/neurodivergent-task-manager:configure`. It asks about
    you, your todo list,
    notifications, style and schedule, creates your scheduled tasks, and hands
@@ -100,13 +100,13 @@ and hand them to an agent; agents own the procedures.
 
 | Noun | What it is | Who writes it |
 | --- | --- | --- |
-| `neurodivergent-task-manager:conventions` | The rules for reading and writing the todo list, in backend-neutral terms, with a guide per backend (Linear, Claude Docs, or the one you describe). | ntm |
+| `neurodivergent-task-manager:conventions` | The rules for reading and writing the todo list, in backend-neutral terms, with a guide per backend (Linear, Claude Docs, or the one you describe). | neurodivergent-task-manager |
 | `ntm:settings` | Every value you agreed to: About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations. | `/neurodivergent-task-manager:configure` and `/neurodivergent-task-manager:settings`, with you |
 | `ntm:style` | How reminders talk to you, and the message history. | `/neurodivergent-task-manager:configure-style`, with you |
 | Jobs | The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning, Completed (weekly or monthly), Price watch. Each runs one skill. | `/neurodivergent-task-manager:configure-schedule` |
-| The planner | What is planned, what got done, is today ready? Runs the list skills for the reminders. | ntm |
-| The messenger | What will you actually open? Composes in your style and sends through your channel. | ntm |
-| The shopper | Is this item a good deal today? One per watched task. | ntm |
+| The planner | What is planned, what got done, is today ready? Runs the list skills for the reminders. | neurodivergent-task-manager |
+| The messenger | What will you actually open? Composes in your style and sends through your channel. | neurodivergent-task-manager |
+| The shopper | Is this item a good deal today? One per watched task. | neurodivergent-task-manager |
 | Pauses note | The days when nothing gets planned automatically. | `/neurodivergent-task-manager:pause` |
 | Message history note | What reminders have said, so they don't repeat themselves. | `ntm:style` |
 | Task review log note | How you like tasks written and sized, learned while grooming. | `/neurodivergent-task-manager:configure-todo-list` |
@@ -131,12 +131,12 @@ The notes live on your todo list, under the titles in your settings.
 
 ## Where your values live
 
-All of them in `ntm`: `ntm:settings` (About you, Todo list, Labels,
-Planning, Shopping, Notifications, Deviations) and `ntm:style`. ntm has no
-settings file and no placeholders. Changing a value means a new
-`ntm.plugin` from `/neurodivergent-task-manager:settings`, installed in place of
-the old one. What
-the jobs write (the notes above) lives on your todo list.
+All of them in `ntm`: `ntm:settings` (About you, Todo list, Labels, Planning,
+Shopping, Notifications, Deviations) and `ntm:style`.
+neurodivergent-task-manager has no settings file and no placeholders. Changing a
+value means a new `ntm.plugin` from `/neurodivergent-task-manager:settings`,
+installed in place of the old one. What the jobs write (the notes above) lives
+on your todo list.
 
 ## What the plugin sends where
 
@@ -157,8 +157,9 @@ sends anything.
 
 ## The connector it bundles
 
-Linear, declared in `.mcp.json`, so installing ntm lists it on the Connectors
-tab for you to connect. On another backend, ignore it. See `CONNECTORS.md`.
+Linear, declared in `.mcp.json`, so installing neurodivergent-task-manager
+lists it on the Connectors tab for you to connect. On another backend, ignore
+it. See `CONNECTORS.md`.
 
 ## Requirements
 

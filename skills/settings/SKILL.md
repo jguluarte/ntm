@@ -29,8 +29,8 @@ timezone, a label's real name, the planning rhythm), a whole section, and
 Deviations (anything they do differently from
 `neurodivergent-task-manager:conventions`). Add that
 `/neurodivergent-task-manager:configure <part>` is the guided version for a
-whole part, and that a
-different trigger word than `ntm` means a renamed fork of the template, as the
+whole part, and that a different trigger word than
+`neurodivergent-task-manager` means a renamed fork of the template, as the
 README says.
 
 ## With words
@@ -61,13 +61,13 @@ by loading this skill and following this section with the section text it
 produced.
 
 1. **The template** is `references/user-plugin/` in
-   `neurodivergent-task-manager:configure`'s folder (the
-   directory this SKILL.md was loaded from): `plugin.template.json`,
+   `neurodivergent-task-manager:configure`'s folder: `plugin.template.json`,
    `README.md`, `skills/settings/SKILL.template.md`,
-   `skills/style/SKILL.template.md` (the `.template` in their names keeps the
-   plugin installer from reading them as a second plugin). Copy it to a fresh
-   folder and put the files in their installed places:
-   `rm -rf /tmp/ntm && cp -r <configure's folder>/references/user-plugin /tmp/ntm && cd /tmp/ntm && mkdir .claude-plugin && mv plugin.template.json .claude-plugin/plugin.json && mv skills/settings/SKILL.template.md skills/settings/SKILL.md && mv skills/style/SKILL.template.md skills/style/SKILL.md`.
+   `skills/style/SKILL.template.md`, `skills/ready-check/SKILL.template.md`
+   (the `.template` in their names keeps the plugin installer from reading
+   them as a second plugin). Copy it to a fresh folder and put the files in
+   their installed places:
+   `rm -rf /tmp/ntm && cp -r <configure's folder>/references/user-plugin /tmp/ntm && cd /tmp/ntm && mkdir .claude-plugin && mv plugin.template.json .claude-plugin/plugin.json && mv skills/settings/SKILL.template.md skills/settings/SKILL.md && mv skills/style/SKILL.template.md skills/style/SKILL.md && mv skills/ready-check/SKILL.template.md skills/ready-check/SKILL.md`.
 2. **The current values.** Load `ntm:settings` and `ntm:style` by
    name. One that won't load means the template's own text is the current one.
 3. **`skills/settings/SKILL.md`:** the template's text above `## About you`,

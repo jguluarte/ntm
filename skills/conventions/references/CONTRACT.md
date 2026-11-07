@@ -105,7 +105,7 @@ each.
 | `create todo-list` | only where the backend has no todo lists to list: make one with the statuses, labels and notes settled so far, and return its id |
 | `list statuses` | a list's status names, so each class can be matched to real names |
 | `list labels` | the list's task labels, and its project labels when those are a separate set |
-| `create label` | an task label by name, with a description; and a project label by name when those are a separate set |
+| `create label` | a task label by name, with a description; and a project label by name when those are a separate set |
 | `list projects` | every project with its name, id and labels |
 | `create project` | a project by name, with the project labels it should carry |
 | `create note` | a note with a given title and first content, at list level or in a project, without touching one that already exists (`read note` first). The message history note's first content is its `Keep:` line |

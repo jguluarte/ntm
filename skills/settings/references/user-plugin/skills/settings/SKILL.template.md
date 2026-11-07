@@ -37,7 +37,7 @@ in your own words.
 - Notes — the title of each note the system keeps:
   - pauses: Pauses
   - message history: Message history
-  - grooming log: Grooming log
+  - task review log: Task review log
   - price watch stores: Price watch stores
   - Amazon alert steps: Amazon alert steps
 

@@ -1,6 +1,6 @@
 ---
 name: configure-todo-list
-description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, grooming: closes obsolete or duplicate tasks, then sizes and splits ungroomed ones with their approval; or a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "let's groom", "review the kitchen project", "rename my labels" or "change how my week is planned".
+description: The user's todo list, with them in chat. On a first run, where it lives and the agreements ntm works by on it (the backend, the list, the status names for each class, the labels, the notes, how planning and shopping work), returned as settings. Once configured, review: closes obsolete or duplicate tasks, then sizes and splits unreviewed ones with their approval; or a change to those settings. Run from ntm:configure, or when the user says "set up my todo list", "connect Linear", "let's review my list", "review the kitchen project", "rename my labels" or "change how my week is planned".
 ---
 
 # ntm:configure-todo-list
@@ -14,9 +14,9 @@ a matter of context:
 - Configured, and the words are about where the list lives or how it's worked (a
   backend, a label name, the planning rhythm, what counts as a deal): Part 1's
   re-run path, which changes those settings.
-- Configured, and the words are about the tasks themselves ("let's groom",
-  "review the kitchen project", "size the garage work"), or there are no words:
-  **Part 2, Grooming**.
+- Configured, and the words are about the tasks themselves ("let's review my
+  list", "review the kitchen project", "size the garage work"), or there are no
+  words: **Part 2, Review**.
 
 Both parts happen in chat, in short rounds: you bring proposals, they react.
 Never hand them a form.
@@ -170,7 +170,8 @@ it carries both; the guide says whether `labels` replaces the set.
 ## Notes
 
 Each note under Todo list has a title. Show the five defaults in one line
-(Pauses, Message history, Grooming log, Price watch stores, Amazon alert steps);
+(Pauses, Message history, Task review log, Price watch stores, Amazon alert
+steps);
 a plain "ok" keeps them, and they rename any. Then, for each, `read note` by its
 settled title. Found: keep it. Missing: ask whether a note already exists under
 another title (record that title) or create it with `create note`:
@@ -178,7 +179,7 @@ another title (record that title) or create it with `create note`:
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is the line
   `Keep: 60 entries or 8 weeks`.
-- **grooming log:** `## How you work` and `## Estimates`, both empty.
+- **task review log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project is named; created in
   that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
   a few seed stores by category to put under Seed, with their domains, or leave
@@ -190,7 +191,7 @@ another title (record that title) or create it with `create note`:
 A new Claude Doc doesn't exist yet at this point: settle the titles only, then
 `create todo-list`, which makes a section per note (the message history's
 `Keep:` line included). Then `create project` for the price watch project if one
-was chosen, and finish the pauses, grooming log and price watch stores notes
+was chosen, and finish the pauses, task review log and price watch stores notes
 with `write note`.
 
 ## Planning
@@ -206,7 +207,7 @@ and they change any line in their own words:
 - **Sizing:** Fibonacci points; 1 finishes in a night, 2 is iffy for one
   evening, 3 or more is multi-day. What an estimate means on their todo list;
   the planner guesses from the title when a task has none. On a backend with
-  no estimate field, say the grooming log is the record.
+  no estimate field, say the task review log is the record.
 - **A day's worth:** about an hour. What the planner aims for when it picks.
 - **Never picks:** `no-autoschedule`, `pending-shipment`, blocked status. The
   exclusions, each checked on the task and its ancestors; name the labels by
@@ -264,7 +265,7 @@ Show the sections and let them react.
 - Notes — the title of each note the system keeps:
   - pauses: <title; default Pauses>
   - message history: <title; default Message history>
-  - grooming log: <title; default Grooming log>
+  - task review log: <title; default Task review log>
   - price watch stores: <title; default Price watch stores>
   - Amazon alert steps: <title; default Amazon alert steps>
 
@@ -323,12 +324,12 @@ operations the jobs use on a throwaway task, and is the smoke test for the
 guide. Say it now when run directly. When run from `ntm:configure`, return it
 with the sections so `configure` says it at its end.
 
-# Part 2: Grooming
+# Part 2: Review
 
 ## Why this exists
 
 Daily reminders only help when they point at something the user could pick up.
-Grooming gets tasks there, and it has to stay cheap enough that the user keeps
+Reviewing gets tasks there, and it has to stay cheap enough that the user keeps
 doing it: if it turns into a process, they'll stop. When in doubt, take the
 lighter option:
 
@@ -345,26 +346,26 @@ lighter option:
 ## Setup
 
 1. Load `ntm:conventions`, and compute `TODAY` as its Dates section says.
-2. Read the grooming log (see below).
+2. Read the task review log (see below).
 3. Fetch every open task and list the projects, both as the conventions'
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
-A task is **ungroomed** when it's open, has no estimate, and isn't a parent
+A task is **unreviewed** when it's open, has no estimate, and isn't a parent
 with open sub-tasks. On a backend without an estimate field (its guide or Todo
 list in your settings says), "no estimate" means no entry in the log's Estimates
 block.
 
 ## The slice
 
-The user names what to groom however they like: a project, part of one, a few
-tasks, or something already groomed that they want to look at again. Take what
+The user names what to review however they like: a project, part of one, a few
+tasks, or something already reviewed that they want to look at again. Take what
 they say.
 
 If they don't name one, use what Setup fetched to propose one project, with a
-one-line reason such as how much is left ungroomed. Go once they agree.
+one-line reason such as how much is left unreviewed. Go once they agree.
 
-Tasks with no project get grouped by likeness and groomed a group at a time. A
+Tasks with no project get grouped by likeness and reviewed a group at a time. A
 group can also be a reason to propose a project to file it under, even a new
 one.
 
@@ -393,14 +394,14 @@ soon as they approve it.
 
 ## 2. Order of operations
 
-Read the slice's ungroomed tasks, plus any groomed ones the user named, and
+Read the slice's unreviewed tasks, plus any reviewed ones the user named, and
 their parent chains, with the guide's `read task`. For a blocked task with
 no blocked-by link, check its comments (`read comments`) for what it waits on.
 
-Propose an order to groom them in, as a short list of ids and titles. Blockers
+Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside the slice:
 
-- If the blocker has an obvious end state ("the desk is clear"), groom the
+- If the blocker has an obvious end state ("the desk is clear"), review the
   task anyway, assuming that end state, and mention that when you present it.
 - Otherwise ask the user about it when you reach it.
 
@@ -413,7 +414,7 @@ One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
 2. Your proposed **estimate**, with a few words on why, guided by how past
-   guesses in the grooming log compared with what the user settled on. If it
+   guesses in the task review log compared with what the user settled on. If it
    already has one (on a backend without an estimate field, its latest log
    entry's `final`), say what it is.
 3. If it's a 3 or more, one line on whether it looks like it splits. Some things
@@ -427,7 +428,7 @@ Make it one proposal: a plain "ok" approves all of it, and the user changes any
 part in their own words. They'll very likely want to talk most tasks through,
 so do that. If it splits, the estimate is for what's left of the original; if
 the split came after your guess, re-propose for what's left and log that as
-`guess`. "Skip" leaves the task ungroomed for another day.
+`guess`. "Skip" leaves the task unreviewed for another day.
 
 Once a task is settled, write it with the guide's `update task` (estimate,
 and any approved title, description or blocked-by link) and update the log. Do
@@ -446,11 +447,11 @@ writes never make the user wait.
   one. Don't default to sub-tasks.
 - Write new tasks with the guide's `create task`, the way the conventions'
   "Creating tasks when the user asks" section says. They join the end of the
-  grooming order un-estimated, unless the user asks to do them next.
+  review order un-estimated, unless the user asks to do them next.
 
-## The grooming log
+## The task review log
 
-The grooming log note, titled as Notes under Todo list in your settings says.
+The task review log note, titled as Notes under Todo list in your settings says.
 It's yours: it's how you learn to work better with the user over time. Read it
 with the guide's `read note`. When it's missing, `write note` creates it with
 the two sections below.
@@ -475,7 +476,7 @@ A `jsonl` code block, newest first, one object per approved estimate:
 `guess` is what you proposed and `final` what the user approved. Keep `why` to a
 few words: what made them change it, or what made the guess right. Keep the
 newest 150 entries. On a backend without an estimate field the log is the only
-record of what's groomed, so keep every entry.
+record of what's reviewed, so keep every entry.
 
 Save it with `write note` whenever you change it, leaving the rest as it was.
 
@@ -483,4 +484,4 @@ Save it with `write note` whenever you change it, leaving the rest as it was.
 
 When the user stops, or the slice is done, fold anything you learned into
 `## How you work` and save the log, then sum up in a line or two: how many items
-were groomed, closed and split, and what's still ungroomed in the slice.
+were reviewed, closed and split, and what's still unreviewed in the slice.

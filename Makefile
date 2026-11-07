@@ -4,15 +4,17 @@
 
 INSTALLED := node_modules/.package-lock.json
 
-# The line length settings, shared with direnv, which loads the same file.
-include .env
-export ABSOLUTE_MAXIMUM_LINE_LENGTH EXCLUDE_MAXIMUM_LINE_LENGTH_CHECK
+# The hard cap: no line over ABSOLUTE_MAXIMUM_LINE_LENGTH (from .envrc),
+# even ones lint exempts (tables, code spans, URLs). The files it skips
+# are listed in .ignore_absolute_line_length.
+LINE_CAP_IGNORED := $(shell cat .ignore_absolute_line_length)
+LINE_CAP_FILES := git ls-files -z -- $(LINE_CAP_IGNORED:%=':!:%')
 
 .PHONY: lint fix node_modules
 
 lint: $(INSTALLED)
 	@npm run lint
-	@bin/validate_absolute_line_length
+	@$(LINE_CAP_FILES) | xargs -0 bin/validate_absolute_line_length
 
 fix: $(INSTALLED)
 	@npm run fix

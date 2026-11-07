@@ -5,7 +5,8 @@ description: >-
     reminder (morning, afternoon, evening, week or completed), the skill it is
     for and the facts, it writes the message in the user's style with
     ntm-user:style, sends it with ntm:notify, and returns what happened. Asked
-    by the reminder skills, in a job or by hand in chat.
+    by the reminder skills and the weekly planning job, in a job or by hand in
+    chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -54,8 +55,8 @@ The skill that asks hands over one input per line. Required:
 - The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
   (completed). A `none` line counts.
-- `weekly message:` (week): Weekly message under Planning in the user's
-  settings.
+- `weekly message:` (week): what the message covers, as the weekly planning
+  job's prompt says.
 
 Optional:
 

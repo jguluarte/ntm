@@ -66,9 +66,9 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you, the price watch project from Todo list and
-   Planning days from Planning, as settled above. Creates the scheduled tasks
-   itself; returns nothing to package.
+   it the timezone from About you and the price watch project from Todo list, as
+   settled above. Creates the scheduled tasks itself; returns nothing to
+   package.
 
 Keep the returned text; write nothing.
 

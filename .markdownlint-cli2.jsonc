@@ -11,6 +11,12 @@
         "MD033": false,
         "MD040": false,
         "MD038": false,
+        // MD013 is on for fenced blocks only, which Prettier doesn't wrap.
+        "line-length": {
+            "line_length": 1000,
+            "code_block_line_length": 80,
+            "tables": false,
+        },
     },
     "globs": ["**/*.md"],
     "gitignore": true,

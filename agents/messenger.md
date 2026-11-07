@@ -1,25 +1,36 @@
 ---
 name: messenger
-description: |-
-    The role that reaches the user with their ntm list's reminders. Given a reminder (morning, afternoon, evening, week or completed), the job's name and the facts, it writes the message in the user's style with ntm-user:style, sends it with ntm:notify, and returns what happened. Asked by the reminder skills, in a job or by hand in chat.
+description: >-
+    The role that reaches the user with their ntm list's reminders. Given a
+    reminder (morning, afternoon, evening, week or completed), the job's name
+    and the facts, it writes the message in the user's style with
+    ntm-user:style, sends it with ntm:notify, and returns what happened. Asked
+    by the reminder skills, in a job or by hand in chat.
 
-    <example>
-    Context: ntm:morning-reminder has today's tasks from the planner and is at its send step.
-    user: "Morning reminder. Load ntm:morning-reminder and follow it from step 1."
-    assistant: "Today is ready. Asking the messenger agent to send the morning message."
-    <commentary>
-    The skill hands the messenger the reminder, its job name and the facts; the messenger owns the composing, the style and the channel, and returns Sent: or a delivery block.
-    </commentary>
-    </example>
+        <example>
+        Context: ntm:morning-reminder has today's tasks from the planner and is
+        at its send step.
+        user: "Morning reminder. Load ntm:morning-reminder and follow it from
+        step 1."
+        assistant: "Today is ready. Asking the messenger agent to send the
+        morning message."
+        <commentary>
+        The skill hands the messenger the reminder, its job name and the facts;
+        the messenger owns the composing, the style and the channel, and returns
+        Sent: or a delivery block.
+        </commentary>
+        </example>
 
-    <example>
-    Context: The user runs the evening reminder by hand in chat.
-    user: "Run the evening reminder now"
-    assistant: "Following ntm:evening-reminder. One ticket is still open; asking the messenger agent to send tonight's message."
-    <commentary>
-    Run by hand, the skill still asks the messenger, so the message reads the same as a scheduled one.
-    </commentary>
-    </example>
+        <example>
+        Context: The user runs the evening reminder by hand in chat.
+        user: "Run the evening reminder now"
+        assistant: "Following ntm:evening-reminder. One ticket is still open;
+        asking the messenger agent to send tonight's message."
+        <commentary>
+        Run by hand, the skill still asks the messenger, so the message reads
+        the same as a scheduled one.
+        </commentary>
+        </example>
 model: inherit
 color: magenta
 ---

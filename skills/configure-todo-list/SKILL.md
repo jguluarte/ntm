@@ -154,9 +154,9 @@ and they change any line in their own words:
   plans; could be two weeks, or the month.
 - **Estimate scale:** asked on its own, below.
 - **A day's worth:** about an hour. What a day's picks aim for.
-- **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
-  exclusions, each checked on the task and its ancestors; name the labels by the
-  names settled above.
+- **Excluded labels from automatic scheduling:** $no-autoschedule,
+  $pending-shipment. Labels planning never picks, each checked on the task and
+  its ancestors; name the labels by the names settled above.
 - **Weekly message:** what got done, what's still open, the week ahead. The
   halves the weekly planning message carries.
 
@@ -250,7 +250,8 @@ Estimate scale, Estimate mapping and Estimate help by the estimator agent.
   becomes; blank when their scale is the list's>
 - Estimate help: <new to it | comfortable; default new to it>
 - A day's worth: <default about an hour>
-- Never picks: <default no-autoschedule, pending-shipment, blocked status>
+- Excluded labels from automatic scheduling: <default no-autoschedule,
+  pending-shipment>
 - Weekly message: <default what got done, what's still open, the week ahead>
 
 <anything else about how they want planning done, as written; or nothing>

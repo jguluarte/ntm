@@ -74,7 +74,7 @@ Keep the returned text; write nothing.
 
 The sections and what reads them, in case they ask: About you is read by
 everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
-how far ahead the week plans, the estimate scale, what's never picked, what the
+how far ahead the week plans, the estimate scale, the excluded labels, what the
 weekly message includes) by `ntm:plan` and the weekly planning, and its estimate
 lines by the estimator; Shopping (condition, delivery, what counts as a deal) by
 the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.

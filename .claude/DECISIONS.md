@@ -54,6 +54,7 @@ don't add a dated entry.
   pauses note.
 - Whether the style exists is the switch for styled messages; there is no on/off
   setting.
+- `conventions` has no `Version:` or `Template source:` line; nothing read them.
 
 ## Agents
 
@@ -114,8 +115,9 @@ don't add a dated entry.
   Titles and prompts belong to the user; main still matches on the default
   titles (`NAMES.md`, Q5).
 - Jobs are turned off and on, never "paused".
-- A new job takes the creating chat's model, so `configure-schedule` asks once
-  which model the jobs run on, proposes Opus, and sets it with `update_trigger`.
+- A new job takes the creating chat's model, which can be the heaviest one, so
+  `configure-schedule` asks once which model the jobs run on, suggests a lighter
+  one such as Opus or Sonnet, and sets the user's choice with `update_trigger`.
 - `configure` order: About you, todo list, notifications, style, schedule.
   `configure` writes nothing itself and ends by suggesting `/ntm:self-test` in a
   new chat.
@@ -164,6 +166,16 @@ The text rules in `CLAUDE.md` apply; these add to them.
   user. Such names are written bare, not in backticks. Plugin and skill names
   never take a `$`.
 
+## Repo tooling
+
+- devbox provides Node, and direnv turns it on in the repo. The Makefile is the
+  way in: `make lint` and `make fix` run the npm scripts, and install the
+  linters only when `package-lock.json` changes. CI runs npm directly.
+- Lock files are generated: `.gitattributes` marks `*.lock` and
+  `package-lock.json` `linguist-generated=true`, so GitHub collapses them in
+  diffs. Justin's rule for all his repos: a new kind of lock file gets a line
+  there.
+
 ## 0.4: decided
 
 The v0.4 branch and git history keep the raw material, including the old 0.4
@@ -194,8 +206,9 @@ generated one, which 0.4 names `ntm`.
 - Publishing adds: the base self-test passes with no user plugin installed;
   `configure` never sends or creates without being asked; a privacy page; the
   name check for `neurodivergent-task-manager`; the published release is
-  identifiable. The old wording, "`Template source:` points at a release", reads
-  a line open PR #19 removes: revisit when #19 merges.
+  identifiable. The old wording, "`Template source:` points at a release", named
+  a line #19 removed from `conventions`, so how the release is identified is
+  open.
 
 ## In open PRs, not on main
 
@@ -209,8 +222,6 @@ When one merges, move its lines into the topics above.
   inputs as a contract (required and optional), and returns `Messenger NEEDS`
   when a required one is missing. Wording Deviations reach it only when a caller
   hands them in. Replaces the messenger line under Agents.
-- #19: removes the `Version:` and `Template source:` lines from `conventions`;
-  nothing reads them.
 
 ## Test-drive findings
 
@@ -279,8 +290,7 @@ Not handled by the plugin yet.
 - Before 0.4: install main on Justin's account with a fresh setup and use it for
   a few days. His installed copy is 0.3.0 with old setting names. His call, and
   only with his go-ahead.
-- Small PR, in flight as #21 and #20: line-length checking inside fenced blocks
-  in the lint (no current file breaks it), and devbox.json plus a Makefile
-  (lint, fix), as in his other repos, so Node is available.
+- Small PR, in flight as #21: line-length checking inside fenced blocks in the
+  lint (no current file breaks it).
 - Revising the `/domain-first-design` skill and Justin's design agents, his
   tooling outside ntm: parked, tracked on his own list as GULU-314.

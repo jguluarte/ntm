@@ -87,7 +87,7 @@ one more.
 
 ## A task's time
 
-When the run picks tasks, ask the estimator agent's Time tasks once, with the
+When the run picks tasks, ask the estimator's Estimate for a time once, with the
 shortlist. Its times judge fit, and go on the lines of the tasks this run picks
 so the user can see what the day asks of them; other lines carry no time. When
 the agent isn't loaded, follow its file as the conventions' "Chat, jobs and

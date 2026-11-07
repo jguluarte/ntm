@@ -45,8 +45,8 @@ each task, on the user's own scale, and is it ready to plan?
 
 Load `ntm:conventions` first: it holds your settings and the list's rules, and
 names the guide that carries out each list operation below. Estimate pattern, in
-Planning in your settings, is the line you estimate by. Time tasks needs nothing
-from it; skip the load for that request.
+Planning in your settings, is the line you estimate by. An Estimate request for
+a time needs nothing from it; skip the load for that request.
 
 ## What an estimate is
 
@@ -62,28 +62,28 @@ them and keep in `## How you work` in the task review log, not a setting.
 
 Whoever asks names one of these. Return only the lines each one lists.
 
-### Estimate a task
+### Estimate
 
-Asked with one task: its id, title and description.
+Asked with one or more tasks, each one's id, title, description and estimate if
+it has one, and whether the asker wants a size or a time.
+
+**A size** is an estimate on the user's scale:
 
 1. Read the `## Estimates` block of the task review log (see The task review
    log).
-2. Propose an estimate on the user's scale, guided by how past guesses there
-   compared with what the user settled on.
-3. Return `estimate: <estimate> (<a few words on why>)`. When `## How you work`
-   says the user is new to estimating, the why also says in a few words what
-   that estimate means. Then `fits a sitting: yes` or `fits a sitting: no`:
-   whether the task fits one typical sitting.
+2. For each task, propose an estimate, guided by how past guesses there compared
+   with what the user settled on.
+3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`. When
+   `## How you work` says the user is new to estimating, the why also says in a
+   few words what that estimate means. Then `fits a sitting: <id> yes` or
+   `fits a sitting: <id> no`: whether the task fits one typical sitting.
 
-### Time tasks
-
-Asked with one or more tasks: each one's id, title, description and estimate, if
-it has one. For each, guess how long it takes today, always as a time
-(`~20 min`, `~1 h`), whatever scale its estimate is on. An estimate that is a
-time is the guess. Otherwise guess from the title and description, with the
-estimate as a hint (an order or a call ~10 min, a chore ~30 min, assembly or
-repair an hour or two); a multi-day task is `~1 h` today, not the whole of it.
-Guess; don't research it. Return one `time: <id> ~<time>` line per task.
+**A time** is how long a task takes today, always as a time (`~20 min`, `~1 h`),
+whatever scale its estimate is on. An estimate that is a time is the guess.
+Otherwise guess from the title and description, with the estimate as a hint (an
+order or a call ~10 min, a chore ~30 min, assembly or repair an hour or two); a
+multi-day task is `~1 h` today, not the whole of it. Guess; don't research it.
+Return one `time: <id> ~<time>` line per task.
 
 ### Explain estimating
 
@@ -184,8 +184,8 @@ instead. The user adjusts the order however they like, then you start.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, with a few words on why, worked out as Estimate a
-   task says. If the task already has one, say what it is.
+2. Your proposed **estimate**, with a few words on why, worked out as Estimate
+   says for a size. If the task already has one, say what it is.
 3. If it doesn't fit a sitting, one line on whether it looks like it splits.
    Some things can't, and that's fine. Pieces come up in the talk that follows
    (see Splits).

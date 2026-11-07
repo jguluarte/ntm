@@ -7,8 +7,7 @@ description: >-
     and plan the next) by running the list skills (today, pause, plan,
     show-completed, fix-todo-list) and returning the facts as lines the
     messenger reads. Asked by the reminder skills, in a job or by hand in chat.
-    It also owns reviewing the todo list with the user (run in the chat through
-    ntm:review-todo-list). It asks the estimator agent for task sizes and times.
+    It asks the estimator agent how long each task takes.
 
         <example>
         Context: The Morning reminder's ready check has passed and
@@ -130,162 +129,6 @@ rest, ask the estimator agent's Time tasks once, with every task that needs a
 time, and use what it returns (when the agent isn't available, follow its file
 as the conventions' "Chat, jobs and agents" says).
 
-## Review
-
-Reviewing the todo list with the user: closing obsolete or duplicate tasks, then
-sizing and splitting unreviewed ones, with their approval. It needs the user's
-answers, so it runs in the chat: `ntm:review-todo-list` follows this section
-there. What you learn about working with the user goes in the task review log,
-so reviewing gets better over time.
-
-### Why review exists
-
-Daily reminders only help when they point at something the user could pick up.
-Reviewing gets tasks there, and it has to stay cheap enough that the user keeps
-doing it: if it turns into a process, they'll stop. When in doubt, take the
-lighter option:
-
-- **A short session is a good session.** One project, or three items, is fine.
-  Stop the moment the user wants to, and never push for more.
-- **You bring proposals; the user reacts.** Never make them fill in fields, and
-  never hit them with a list of questions.
-- **Good enough reminders complete.** A task can be rough, or just a checklist,
-  as long as the user says it's adequate.
-- **The user drives the wording.** Your unvetted wording tends toward filler, so
-  propose enough, keep it short, and never expand their descriptions unless they
-  ask.
-
-### Setup
-
-1. Load `ntm:conventions`, and compute `TODAY` as its Dates section says.
-2. Read the task review log (see The task review log).
-3. Fetch every open task and list the projects, both as the conventions'
-   Fetching says. Add each project's summary to the project fields, as the guide
-   says.
-
-A task is **unreviewed** when it's open, has no estimate, and isn't a parent
-with open sub-tasks.
-
-### What to review
-
-The user names what to review however they like: a project, part of one, a few
-tasks, or something already reviewed that they want to look at again. Take what
-they say.
-
-If they don't name one, use what Setup fetched to propose one project, with a
-one-line reason such as how much is left unreviewed. Go once they agree.
-
-Tasks with no project get grouped by likeness and reviewed a group at a time. A
-group can also be a reason to propose a project to file it under, even a new
-one.
-
-### 1. Overview
-
-Clear out what doesn't belong before looking at details. Look over every open
-task in this review by title, reading a description only where the title isn't
-enough. Also skim the titles in projects whose names or topics overlap with it,
-for tasks logged twice or filed in the wrong place.
-
-Propose, as one numbered list, one short line each, only for tasks you'd change:
-
-- **Close as obsolete:** canceled, or done if it looks like it already happened,
-  with the guide's `set status`.
-- **Duplicates:** identify all of the tasks that are ultimately duplicated, and
-  quote anything that appears only on a specific one. You can propose what to
-  do, but the user has the final say. On approval, do what they say and close
-  the other(s) with the guide's `mark duplicate of`.
-- **Move:** to the project it belongs in, or to none, with the guide's
-  `update task`.
-
-A plain "ok" approves the whole list; the user can strike items by number. If
-nothing stands out, say so in one line and move on. Write what they approve as
-soon as they approve it.
-
-### 2. Order of operations
-
-Read the unreviewed tasks in this review, plus any reviewed ones the user named,
-and their parent chains, with the guide's `read task`. For a blocked task with
-no blocked-by link, check its comments (`read comments`) for what it waits on.
-
-Propose an order to review them in, as a short list of ids and titles. Blockers
-come before what they block. When a task waits on something outside this review:
-
-- If the blocker has an obvious end state ("the desk is clear"), review the task
-  anyway, assuming that end state, and mention that when you present it.
-- Otherwise ask the user about it when you reach it.
-
-If much of this review waits on another project, say so and offer to start there
-instead. The user adjusts the order however they like, then you start.
-
-### 3. Task by task
-
-One item per message, in the agreed order:
-
-1. The id linked to its URL, and the title.
-2. A proposed **estimate**, with a few words on why, from the estimator agent's
-   Size a task (when the agent isn't available, follow its file as the
-   conventions' "Chat, jobs and agents" says). If the task already has one, say
-   what it is.
-3. When the estimator says it doesn't fit a sitting, one line on whether it
-   looks like it splits. Some things can't, and that's fine. Pieces come up in
-   the talk that follows (see Splits).
-4. Usually no edits. Suggest one or two at most, only where the task would
-   otherwise be hard to start: a title that doesn't say what it is, or a blocker
-   that isn't linked. Show the exact new text, and write only what the user saw.
-5. The description, exactly as written.
-
-Make it one proposal: a plain "ok" approves all of it, and the user changes any
-part in their own words. They'll very likely want to talk most tasks through, so
-do that. "Skip" leaves the task unreviewed for another day.
-
-If it splits, the estimate is for what's left of the original.
-
-If the split came after the estimate was proposed, ask the estimator again for
-what's left.
-
-Once a task is settled, write it with the guide's `update task` (estimate, and
-any approved title, description or blocked-by link), and ask the estimator's
-Record an estimate with what it proposed, what the user approved, and why. Do
-both in the same turn that presents the next task (or ends the session), so
-writes never make the user wait.
-
-### Splits
-
-- The user usually brings their own ideas for how to split a task. When they do,
-  use their pieces, and only point out a piece they seem to have left out. When
-  they don't, propose the pieces yourself.
-- Split pieces off as new tasks, and leave the original with its reduced scope.
-  Show the exact text for the original's reduced scope and each new title, and
-  write only that: the original with the guide's `update task`, the new tasks as
-  the next bullet says. New tasks get the original's project and parent. When
-  the order matters, the later task is blocked by the earlier one. Don't default
-  to sub-tasks.
-- Write new tasks with the guide's `create task`, the way the conventions'
-  "Creating tasks when the user asks" section says. They join the end of the
-  review order un-estimated, unless the user asks to do them next.
-
-### The task review log
-
-The task review log note, titled as Notes under Todo list in your settings says:
-how you learn to work better with the user over time. Read it with the guide's
-`read note`. When it's missing, `write note` creates it with its two sections,
-`## How you work` and `## Estimates`. You keep `## How you work`; the estimator
-keeps `## Estimates`, recording the estimates the user approves. Save with
-`write note` whenever you change your section, leaving the rest as it was.
-
-**`## How you work`:** short bullets about the user, written to them (it's their
-note too), on whatever would help you do better with them next time: how they
-like tasks written and split, how they like sessions to go, and what they keep
-correcting. Learn from what they change, push back on or say. When something
-would apply again, fold it in: rewrite and merge bullets rather than appending,
-and keep the section to about 20 bullets.
-
-### Ending
-
-When the user stops, or this review is done, fold anything you learned into
-`## How you work` and save the log, then sum up in a line or two: how many items
-were reviewed, closed and split, and what's still unreviewed in it.
-
 ## Errors
 
 When a skill returns `<Skill> FAILED: …`, return that line where its result
@@ -297,6 +140,5 @@ plainly.
 
 Nothing you return reaches the user by itself: the skill that asked decides.
 Don't load `ntm-user:style` or `ntm:notify`, and don't message the user from a
-job. Planning and reviewing with the user need their answers, so the chat runs
-them: it loads `ntm:plan` for planning, and `ntm:review-todo-list` follows
-Review above.
+job. Planning with the user needs their answers, so it isn't yours: the chat
+loads `ntm:plan` and runs it itself.

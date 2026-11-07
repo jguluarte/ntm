@@ -111,9 +111,9 @@ the tie-breaker.
 A skill typed in chat runs in the chat. The reminder skills,
 `show-completed --notify` and the price watch hand their work to the plugin's
 agents (planner, messenger, shopper, estimator), in a job or in chat alike.
-Reviewing follows the planner's Review in the chat and asks the estimator to
-size tasks; setting up the todo list asks the estimator to explain the ways to
-estimate. Each says what it hands over.
+Reviewing follows the estimator's Review in the chat, and setting up the todo
+list asks the estimator to explain the ways to estimate. Each says what it hands
+over.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:
@@ -213,17 +213,16 @@ and the user puts the labels on tasks directly.
 
 Each note's title is set under Notes in Todo list in your settings; the default
 titles are in parentheses below. Read and write notes with the guide's
-`read note` / `write note`. Each note, or each section of one, has one writer;
-everything else only reads it.
+`read note` / `write note`. Each note has one writer; everything else only reads
+it.
 
 - **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
   keeps it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
   history to keep.
-- **task review log** (`Task review log`): the planner keeps its
-  `## How you work` section, in its Review; the estimator keeps its
-  `## Estimates` block.
+- **task review log** (`Task review log`): the estimator keeps it, in its
+  Review.
 - **price watch stores** (`Price watch stores`): stored in the price watch
   project, not at list level. `ntm:price-watch` keeps it, from the user's vouch
   and block replies; the shopper reads it.

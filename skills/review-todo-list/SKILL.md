@@ -16,15 +16,16 @@ description: >-
 ```
 
 What to review is a project, part of one, or a few tasks; see What to review in
-the planner's Review. Without it, the review proposes one.
+the estimator's Review. Without it, the review proposes one.
 
 ## Running the review
 
-The planner agent owns reviewing: the procedure is the Review section of its
+The estimator agent owns reviewing: the procedure is the Review section of its
 file, and the task review log is what it learns. Reviewing needs the user's
 answers, and an agent can't hold a conversation with them, so this skill brings
 the review into the chat.
 
-Read the planner's file (`agents/planner.md`, found as the conventions' "Chat,
-jobs and agents" says) and follow its Review section with the user, here in the
-chat, starting at its Setup. Pass on what to review, if the user named it.
+Read the estimator's file (`agents/estimator.md`, found as the conventions'
+"Chat, jobs and agents" says) and follow its Review section with the user, here
+in the chat, starting at its Setup. Load `ntm:conventions` first, as the file
+says. Pass on what to review, if the user named it.

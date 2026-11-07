@@ -44,8 +44,10 @@ chat: a plain `/ntm:ready-check`.
 # 3: The watch
 
 Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with
-`Price-watch: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings or turn off the Price watch job with /ntm:configure-schedule.`
+If it names none, end with one line: `Price-watch: price watch is off;`, then
+that Todo list in your settings names no price watch project, and to name one
+with `/ntm:settings` or turn off the Price watch job with
+`/ntm:configure-schedule`.
 
 Fetch every open task the way "Every open task" in `ntm:conventions` says, and
 keep the ones with the $price-watch project label (its real name from Labels in

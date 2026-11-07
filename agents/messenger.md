@@ -124,7 +124,11 @@ given, then `(started)` when given. The week reminder carries no list;
 
 ## Sending
 
-`/ntm:notify --from "<job>" --title "<the words after Title:>" --message "<everything above the Title line, with the list under it>"`.
+```
+/ntm:notify --from "<job>" --title "<the words after Title:>"
+    --message "<everything above the Title line, with the list under it>"
+```
+
 On `Notify TOO LONG`, send once more with the styled lines and one plain line in
 place of the list (`<n> open; the full list is in the run`), summed up in a few
 words of the facts, not per task, and hand the full list back to the skill for

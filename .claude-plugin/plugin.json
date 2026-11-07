@@ -2,7 +2,7 @@
     "name": "ntm",
     "displayName": "Neurodivergent Task Manager (ntm)",
     "version": "0.3.2",
-    "author": { "name": "Neurodivergent Task Manager contributors" },
+    "author": { "name": "Justin", "url": "https://github.com/jguluarte" },
     "keywords": [
         "tasks",
         "reminders",

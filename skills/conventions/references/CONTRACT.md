@@ -41,11 +41,13 @@ skills work around them:
 ## Todo list
 
 Name the todo list (List name in Todo list), what id it needs (List id), and
-which automations the backend runs on parent/sub-task closing, if any. If the
+whether the backend can close a parent once its sub-tasks are all done. If the
 backend has no unit above projects, the todo list is the whole account (List
 name is what the backend calls it, List id blank). If ids carry no prefix, Task
 prefix is blank and ids are the backend's own; `(ABC-12)` in the conventions
 then means the bare id.
+
+When the backend can, ask the user whether they want parents closed that way.
 
 ## Status classes
 

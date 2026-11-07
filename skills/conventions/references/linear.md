@@ -21,8 +21,7 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   should carry needs a project label of the same name (the project labels under
   Labels).
 - **Automations:** Linear can close a parent when its sub-issues are all done
-  (Parent auto-close, in the team's settings under Workflow). Either way,
-  `ntm:fix-todo-list` closes any finished parent still open.
+  (Parent auto-close, in the team's settings under Workflow).
 - **Estimates:** `estimate` holds the team's points, on the team's estimate
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
@@ -185,7 +184,7 @@ prefix its issue key.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
-all done. If it stays off, the weekly planning closes those parents instead.
+all done.
 
 ### The price watch project
 

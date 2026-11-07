@@ -428,16 +428,3 @@ restructure. His comments, read as principles and applied everywhere they fit:
   laptop: GraphQL works there (`gh pr create`), the remote is `jguluarte`, and
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`. Lasting rules
   move into `.claude/CLAUDE.md`; HANDOFF keeps only state and next steps.
-
-## 2026-11-07 afternoon
-
-- Channel caps live in `ntm:notify`. It returns `Notify TOO LONG` with the cap
-  and why, instead of trimming, and the caller shortens once. The messenger
-  carries no channel rules.
-- The messenger never reads settings; its caller hands it the values it needs.
-  It reads only the task-wording section of conventions, states its inputs as a
-  contract (required and optional), and returns `Messenger NEEDS` when a
-  required one is missing. Wording Deviations reach it only when a caller hands
-  them in.
-- 0.4: the user plugin's `notify` contract carries the Pushover-versus-chat
-  distinction for that user.

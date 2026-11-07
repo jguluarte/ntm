@@ -115,6 +115,11 @@ shopper. The estimator is for planning: `ntm:plan` asks it how long the tasks it
 picks take, reviewing follows its Review in the chat, and setting up the todo
 list asks it to explain the ways to estimate. Each says what it hands over.
 
+A skill asking the messenger also hands it a `wording:` line for any Deviation
+about how tasks are worded or linked. When the messenger returns
+`Messenger NEEDS: …`, supply what it names and ask once more; a second one
+counts as `Messenger FAILED`.
+
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:
 `find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin

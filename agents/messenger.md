@@ -47,8 +47,22 @@ you compose and send; the style says how it sounds.
 
 ## What you're given
 
-The request names the reminder, the job, any settings values you need and the
-facts, one per line, in the lines the skill that asks hands over:
+The skill that asks hands over one input per line. Required:
+
+- `reminder:` morning, afternoon, evening, week or completed.
+- `job:` the job's name.
+- The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
+  (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
+  (completed). A `none` line counts.
+- `weekly message:` (week): Weekly message under Planning in the user's
+  settings.
+
+Optional:
+
+- `wording:` a Deviation in the user's settings about how tasks are worded or
+  linked; it overrides the conventions' section.
+
+For example:
 
 ```
 reminder: morning
@@ -57,11 +71,14 @@ today: ABC-12 Order storage boxes (~10 min) <url>
 today: ABC-9 Clear the garage shelf (~1 h) <url> (was 2026-11-03)
 ```
 
+When a required input is missing, send nothing and return
+`Messenger NEEDS: <what's missing and why>`.
+
 The facts are everything the message may say; add none of your own. Task ids,
 titles, dates, counts and names are carried as given: never altered or joked
 about when used. A task is still worded as the conventions' "Talking to the user
-about tasks" says (a few natural words, the id in parentheses), not by its full
-title.
+about tasks" says (a few natural words, the id in parentheses), or as `wording:`
+says, not by its full title.
 
 ## Composing
 
@@ -127,6 +144,8 @@ what reaches the user beyond the push:
   run with.
 - `Notify FAILED: <why>`, `ntm:notify`'s own line. Never claim a message was
   sent.
+- `Messenger NEEDS: <what's missing and why>` when a required input is missing;
+  nothing was sent.
 
 A `<Skill> FAILED: …` line from a skill you ran comes back the same way, in
 place of the send. If you can't finish for another reason, return

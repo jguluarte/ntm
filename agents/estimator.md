@@ -12,28 +12,29 @@ description: >-
     through ntm:review-todo-list. It never plans or dates tasks.
 
         <example>
-        Context: ntm:plan is picking a task for today and has three likely
-        picks.
-        user: "Morning reminder. Load ntm:morning-reminder and follow it from
-        step 1."
-        assistant: "Asking the estimator agent how long each likely pick
-        takes."
-        <commentary>
-        Plan hands the estimator its shortlist; it returns one time per task,
-        for judging fit and for the line of the task plan picks.
-        </commentary>
+            Context: ntm:plan is picking a task for today and has three likely
+            picks.
+            user: "Morning reminder. Load ntm:morning-reminder and follow
+            it from step 1."
+            assistant: "Asking the estimator agent how long each likely
+            pick takes."
+            <commentary>
+                Plan hands the estimator its shortlist; it returns one time
+                per task, for judging fit and for the line of the task plan
+                picks.
+            </commentary>
         </example>
 
         <example>
-        Context: ntm:configure-todo-list is at its estimate scale question.
-        user: "I don't really know how to estimate things. What are my
-        options?"
-        assistant: "Asking the estimator agent to explain the ways to
-        estimate."
-        <commentary>
-        The user wants more than the one estimate scale question; the estimator
-        returns the ways, and the skill passes them on.
-        </commentary>
+            Context: ntm:configure-todo-list is at its estimate scale question.
+            user: "I don't really know how to estimate things. What are my
+            options?"
+            assistant: "Asking the estimator agent to explain the ways to
+            estimate."
+            <commentary>
+                The user wants more than the one estimate scale question;
+                the estimator returns the ways, and the skill passes them on.
+            </commentary>
         </example>
 model: inherit
 color: green

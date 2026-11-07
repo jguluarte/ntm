@@ -141,42 +141,119 @@ project from Todo list) lives in that project's documents instead. Search with
   `Keep:` line; the content for the message history note already starts with its
   `Keep:` line).
 
+## Setup
+
+Used by `ntm:configure-todo-list`, in order; a part named for one of its steps
+(Planning) runs at that step.
+
+### The backend
+
+Backend is `linear`. If they don't have Linear yet, do Starting from nothing
+first.
+
+### Starting from nothing
+
+If they don't have Linear yet, these happen outside the chat, on their side;
+walk them through in order and wait for "done" before The todo list below:
+
+1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
+   issues.
+2. The new workspace comes with one team; that team is the todo list. Its key
+   (the few capital letters Linear asks for when naming it, `HOME` for
+   `HOME-12`) becomes Task prefix, so pick one they'll be happy reading in
+   reminders.
+3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
+   Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
+   right now" status, they add one named Blocked in the team's workflow
+   settings; otherwise the $pending-shipment label and blocked-by links cover
+   that ground.
+4. Connect Linear to Claude: in Claude's settings, the Connectors tab, add
+   Linear and sign in to the workspace. Then come back here and say so.
+
+Labels, the price watch project and the notes don't need making by hand: Labels
+and Notes in `ntm:configure-todo-list` create them.
+
+### The todo list
+
+`list todo-lists`; propose the team. List name is its name, List id its id, Task
+prefix its issue key.
+
+Once the team is chosen, suggest the user turn on Parent auto-close in the
+team's settings under Workflow, so a parent closes as soon as its sub-tasks are
+all done. Off, the weekly planning closes those parents instead.
+
+### The price watch project
+
+`list projects`; ask which project holds purchases waiting for a good price, or
+none (none = price watch off). If they want one that doesn't exist yet, settle
+its name now; it's created in Labels, once the project labels exist.
+
+### Planning
+
+Ask which estimate type their team uses: linear, exponential, Fibonacci or
+T-shirt sizes (Estimates, under Todo list above, has each one's points). If
+they're unsure, it's in Linear under the team's settings, Estimates. If they
+still don't know, run `sample estimates` and suggest the type that fits. When
+their scale isn't the team's, agree with them which of the team's points each
+size on their scale becomes, and record it as Estimate mapping.
+
 ## Setup operations
 
-Used by `ntm:configure-todo-list`. Once the team is chosen, suggest the user
-turn on Parent auto-close in the team's settings under Workflow, so a parent
-closes as soon as its sub-tasks are all done. Off, the weekly planning closes
-those parents instead.
+Used by `ntm:configure-todo-list`.
 
-- **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
-  issue key (the task prefix).
-- **`create todo-list`:** not needed; Linear has teams to list.
-- **`list statuses`:** `list_issue_statuses` with `team`. Each comes back with
-  its name and `type`, which suggests the class (`backlog`, `unstarted` and
-  `started` are plannable, `started` the started one; `completed` done;
-  `canceled` canceled; `duplicate` duplicate); the user confirms the mapping.
-- **`sample estimates`:** `list_issues` with `team: "<List name>"`, `limit: 50`
-  and `fields` `title` and `estimate`. Suggest the estimate type (Estimates,
-  above) whose points fit the ones already set: a 4 rules out Fibonacci and
-  T-shirt, a 5 rules out exponential. Fibonacci and T-shirt store the same
-  points; ask which they see on their tasks in Linear. No estimates set means no
-  suggestion.
-- **`list labels`:** `list_issue_labels` with `team` for issue labels;
-  `list_project_labels` with `team` for project labels, a separate set.
-- **`create label`:** `save_issue_label` with `name`, `teamId: "<List id>"` and
-  `description` for an issue label; `save_project_label` with `name`, `teamId`
-  and `description` for a project label.
-- **`list projects`:** `list_projects` with `team: "<List name>"`, `fields`
-  `name` and `labels`, paginating with `cursor`. Each comes back with its id.
-- **`create project`:** create the project labels it should carry first
-  (`create label`), then `save_project` with `name`, `addTeams` naming the todo
-  list, and `labels`. `labels` replaces the set, so pass current plus missing
-  when updating an existing project.
-- **`create note`:** `read note` first; one that exists is left alone. Otherwise
-  `save_document` without `id`, with `team: "<List name>"` (or
-  `project: "<project name>"` for a note kept in a project), `title` set to the
-  note's title from Todo list, and `content` set to its first content (for the
-  message history note, the `Keep:` line).
+### `list todo-lists`
+
+`list_teams`. Each comes back with its name, id and issue key (the task prefix).
+
+### `create todo-list`
+
+Not needed; Linear has teams to list.
+
+### `list statuses`
+
+`list_issue_statuses` with `team`. Each comes back with its name and `type`,
+which suggests the class (`backlog`, `unstarted` and `started` are plannable,
+`started` the started one; `completed` done; `canceled` canceled; `duplicate`
+duplicate); the user confirms the mapping.
+
+### `sample estimates`
+
+`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
+`estimate`. Suggest the estimate type (Estimates, above) whose points fit the
+ones already set: a 4 rules out Fibonacci and T-shirt, a 5 rules out
+exponential. Fibonacci and T-shirt store the same points; ask which they see on
+their tasks in Linear. No estimates set means no suggestion.
+
+### `list labels`
+
+`list_issue_labels` with `team` for issue labels; `list_project_labels` with
+`team` for project labels, a separate set.
+
+### `create label`
+
+`save_issue_label` with `name`, `teamId: "<List id>"` and `description` for an
+issue label; `save_project_label` with `name`, `teamId` and `description` for a
+project label.
+
+### `list projects`
+
+`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`,
+paginating with `cursor`. Each comes back with its id.
+
+### `create project`
+
+Create the project labels it should carry first (`create label`), then
+`save_project` with `name`, `addTeams` naming the todo list, and `labels`.
+`labels` replaces the set, so pass current plus missing when updating an
+existing project.
+
+### `create note`
+
+`read note` first; one that exists is left alone. Otherwise `save_document`
+without `id`, with `team: "<List name>"` (or `project: "<project name>"` for a
+note kept in a project), `title` set to the note's title from Todo list, and
+`content` set to its first content (for the message history note, the `Keep:`
+line).
 
 ## Writing
 

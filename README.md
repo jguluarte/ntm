@@ -35,9 +35,8 @@ from that copy.
 ## First steps
 
 1. Install ntm. Connect whatever system holds your tasks, todos or reminders:
-   Linear and Claude Docs are the two shipped guides (Linear from the Connectors
-   tab; Claude Docs needs no connector), and your own backend is described
-   during setup.
+   Linear is the shipped guide (connect it from the Connectors tab), and your
+   own backend is described during setup.
 2. Open a chat and run `/ntm:configure`. It asks about you, your todo list,
    notifications, style and schedule, creates your scheduled tasks, and hands
    you `ntm-user.plugin` to install.
@@ -96,20 +95,20 @@ and hand them to an agent; agents own the procedures. In the skills, a name with
 a `$` in front, like $no-autoschedule, is a label you configure, written by its
 default name.
 
-| Noun                    | What it is                                                                                                                                          | Who writes it                                  |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `ntm:conventions`       | The rules for reading and writing the todo list, in backend-neutral terms, with a guide per backend (Linear, Claude Docs, or the one you describe). | ntm                                            |
-| `ntm-user:settings`     | Every value you agreed to: About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations.                                             | `/ntm:configure` and `/ntm:settings`, with you |
-| `ntm-user:style`        | How reminders talk to you, and the message history.                                                                                                 | `/ntm:configure-style`, with you               |
-| Jobs                    | The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning, Completed (weekly or monthly), Price watch. Each runs one skill.    | `/ntm:configure-schedule`                      |
-| The planner             | What is planned, what got done, is today ready? Runs the list skills for the reminders.                                                             | ntm                                            |
-| The messenger           | What will you actually open? Composes in your style and sends through your channel.                                                                 | ntm                                            |
-| The shopper             | Is this item a good deal today? One per watched task.                                                                                               | ntm                                            |
-| Pauses note             | The days when nothing gets planned automatically.                                                                                                   | `/ntm:pause`                                   |
-| Message history note    | What reminders have said, so they don't repeat themselves.                                                                                          | `ntm-user:style`                               |
-| Task review log note    | How you like tasks written and sized, learned while reviewing.                                                                                      | `/ntm:review-todo-list`                        |
-| Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it.                                                             | `/ntm:price-watch`                             |
-| Amazon alert steps note | How to set an alert on Amazon, learned once.                                                                                                        | `/ntm:sync-price-watch-to-amazon`              |
+| Noun                    | What it is                                                                                                                                       | Who writes it                                  |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| `ntm:conventions`       | The rules for reading and writing the todo list, in backend-neutral terms, with a guide per backend (Linear, or the one you describe).           | ntm                                            |
+| `ntm-user:settings`     | Every value you agreed to: About you, Todo list, Labels, Planning, Shopping, Notifications, Deviations.                                          | `/ntm:configure` and `/ntm:settings`, with you |
+| `ntm-user:style`        | How reminders talk to you, and the message history.                                                                                              | `/ntm:configure-style`, with you               |
+| Jobs                    | The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning, Completed (weekly or monthly), Price watch. Each runs one skill. | `/ntm:configure-schedule`                      |
+| The planner             | What is planned, what got done, is today ready? Runs the list skills for the reminders.                                                          | ntm                                            |
+| The messenger           | What will you actually open? Composes in your style and sends through your channel.                                                              | ntm                                            |
+| The shopper             | Is this item a good deal today? One per watched task.                                                                                            | ntm                                            |
+| Pauses note             | The days when nothing gets planned automatically.                                                                                                | `/ntm:pause`                                   |
+| Message history note    | What reminders have said, so they don't repeat themselves.                                                                                       | `ntm-user:style`                               |
+| Task review log note    | How you like tasks written and sized, learned while reviewing.                                                                                   | `/ntm:review-todo-list`                        |
+| Price watch stores note | Stores you've vouched for or blocked in replies to a price alert; the shopper reads it.                                                          | `/ntm:price-watch`                             |
+| Amazon alert steps note | How to set an alert on Amazon, learned once.                                                                                                     | `/ntm:sync-price-watch-to-amazon`              |
 
 The notes live on your todo list, under the titles in your settings.
 
@@ -136,8 +135,8 @@ the jobs write (the notes above) lives on your todo list.
 
 ## What the plugin sends where
 
-- **Your todo list** (Linear, Claude Docs, or your own): tasks, planned dates,
-  labels and the notes above.
+- **Your todo list** (Linear, or your own): tasks, planned dates, labels and the
+  notes above.
 - **Pushover**, when it's your channel: each reminder's title and message, with
   your app token and user key, over HTTPS from the run. With the claude-push
   channel nothing is sent; the scheduled task's own completion push carries the

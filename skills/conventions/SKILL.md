@@ -2,9 +2,8 @@
 name: conventions
 description: >-
     Rules for reading and writing the user's todo list, in backend-neutral
-    terms, plus the backend guides that map them onto Linear or Claude Docs.
-    Load before any list query, and before creating or editing a task for the
-    user.
+    terms, plus the guide that maps them onto Linear. Load before any list
+    query, and before creating or editing a task for the user.
 ---
 
 # ntm:conventions
@@ -29,11 +28,10 @@ it.
    defaults below. A caller that holds values of its own, such as
    `ntm:configure-todo-list`, uses those.
 2. Read the backend guide for the backend named in Todo list:
-   `references/linear.md` for `linear`, `references/claude-docs.md` for
-   `claude-docs`. For any other backend, Todo list itself says how each
-   operation is done; `references/CONTRACT.md` lists the operations it covers.
-   Skills name operations (`fetch open`, `set planned date`, `read note`); the
-   guide says how.
+   `references/linear.md` for `linear`. For any other backend, Todo list itself
+   says how each operation is done; `references/CONTRACT.md` lists the
+   operations it covers. Skills name operations (`fetch open`,
+   `set planned date`, `read note`); the guide says how.
 3. Read Deviations last; see Deviations at the end.
 
 ## What this todo list is
@@ -70,8 +68,7 @@ the tie-breaker.
 - **Todo list:** the place that holds every task (List name under Todo list in
   your settings): a Linear team, a Claude Doc, a Todoist project, whatever the
   user keeps tasks in.
-- **Backend:** the system behind the todo list: Linear, Claude Docs, or the
-  user's own.
+- **Backend:** the system behind the todo list: Linear, or the user's own.
 - **Task:** one thing on the todo list. Each kind of list shows one its own way:
   a [Linear issue](https://linear.app/docs/conceptual-model), a row in a Claude
   Doc's table, a reminder, a todo. Ids look like `<task prefix>-<number>` where

@@ -1,14 +1,12 @@
 # Backend contract
 
 A backend guide maps the operations the conventions name onto one backend's
-connector. `linear.md` is the complete, tested one. `claude-docs.md` is the
-second shipped guide, for a todo list kept in a Claude Doc with no task-tracker
-connector at all. It's untested, and heavier per run (every read pulls a whole
-table and every write edits a row), but fine for a few dozen tasks. For any
-other backend, Todo list in `ntm-user:settings` says how each operation here is
-done, in the user's words. `/ntm:configure-todo-list` fills it with the user
-against this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
-it.
+connector. `linear.md` is the complete, tested one. For any other backend, Todo
+list in `ntm-user:settings` says how each operation here is done, in the user's
+words. A backend can be built on anything the user's agent can reach, for
+example a table in a Claude Doc (the Claude Docs connector's own guide gives its
+calls). `/ntm:configure-todo-list` fills it with the user against this contract,
+and once `ntm-user` is installed, `/ntm:self-test` checks it.
 
 Write a guide as a list of operations, each saying which tool calls carry it out
 and which fields map to the conventions' names. Keep the headings below so

@@ -21,7 +21,7 @@ to edit; keep the Usage the same, since the messenger relies on it.
 - `--stay-fresh`: for scheduled runs, which keep lines fresh with the message
   history.
 - `--for <reminder>`: one of `morning`, `afternoon`, `evening`, `week`,
-  `show-completed`. Implies `--stay-fresh` and adds a `Title:` line. The
+  `completed`. Implies `--stay-fresh` and adds a `Title:` line. The
   messenger opens the tone with the job name (`Morning reminder; …`).
 
 Output: the rewritten message, plain text, and with `--for` a last line

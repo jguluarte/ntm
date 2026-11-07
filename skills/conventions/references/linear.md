@@ -138,8 +138,8 @@ create with `project: "<project name>"` instead of `team`.
 - **`write database`:** `save_document` with the database's `id` and the new
   `content`, changing only what the skill says to change. When the database is
   missing, create it the way `create database` does, but with the whole content
-  given, not only a `Keep:` line (the content for the message history database
-  already starts with its `Keep:` line).
+  given, not only its frontmatter (the content for the message history database
+  already starts with its frontmatter).
 
 ## Setup
 
@@ -256,7 +256,7 @@ updating an existing project, pass its current labels plus the missing ones.
 `read database` first; one that exists is left alone. Otherwise `save_document`
 without `id`, with `team: "<List name>"` (or `project: "<project name>"` for a
 database kept in a project), `title` set to the database's title, and `content`
-set to its first content (for the message history database, the `Keep:` line).
+set to its first content (for the message history database, its frontmatter).
 
 ## Writing
 

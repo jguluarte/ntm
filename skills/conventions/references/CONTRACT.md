@@ -198,7 +198,8 @@ Creates a project by name, with the project labels it should carry.
 
 Creates a database with a given title and first content, at list level or in a
 project, without touching one that already exists (`read database` first). The
-message history database's first content is its `Keep:` line.
+message history database's first content is its frontmatter, which holds its
+`Keep:` line.
 
 ## Writing
 

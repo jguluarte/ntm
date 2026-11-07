@@ -220,8 +220,8 @@ Deviations. Read and write them with the guide's `read database` /
 - **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
   keeps it.
 - **message history** (`Message history`): what reminders have said.
-  `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
-  history to keep.
+  `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
+  much history to keep; the user changes it there.
 - **task review log** (`Task review log`): the estimator keeps it, in its
   Review.
 - **price watch stores** (`Price watch stores`): stored in the price watch

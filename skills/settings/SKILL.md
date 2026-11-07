@@ -87,7 +87,7 @@ and say what's missing.
       means);
     - with `--stay-fresh`, keep lines fresh: read the message history database
       through `ntm:conventions`, avoid what recent entries used, and add the new
-      line, pruned to the database's `Keep:` line;
+      line, pruned to the `Keep:` line in the database's frontmatter;
     - with `--for`, end with a `Title:` line that says what the message is about
       in the same style, never just the reminder's name;
     - output only the message, plain text, and that `Title:` line.

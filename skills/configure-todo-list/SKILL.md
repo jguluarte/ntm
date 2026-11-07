@@ -132,8 +132,14 @@ that title under Deviations with `/ntm:settings`; if not, create it with
 `create database`:
 
 - **pauses:** `## Pauses` with `None.` under it.
-- **message history:** its first content is the line
-  `Keep: 60 entries or 8 weeks`.
+- **message history:** its first content is this frontmatter:
+
+    ```
+    ---
+    Keep: 60 entries or 8 weeks
+    ---
+    ```
+
 - **task review log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project is named; created in
   that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for

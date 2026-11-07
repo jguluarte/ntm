@@ -85,7 +85,7 @@ Setup and settings:
 | `/neurodivergent-task-manager:configure-style` | How reminders talk to you. |
 | `/neurodivergent-task-manager:configure-schedule` | The jobs: which, which days, what time, what title. |
 | `/neurodivergent-task-manager:settings` | Shows your settings and changes them; produces a new `ntm.plugin`. |
-| `/neurodivergent-task-manager:ready-check` | Can this session run a job? |
+| `/ntm:ready-check` | Can this session run a job? |
 | `/neurodivergent-task-manager:self-test` | The whole loop once, on a throwaway ticket. |
 | `/neurodivergent-task-manager:help` | Answers questions from this README. |
 | `neurodivergent-task-manager:conventions` | The rules every skill loads first. Not run by hand. |

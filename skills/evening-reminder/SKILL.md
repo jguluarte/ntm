@@ -13,7 +13,7 @@ says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
 Run
-`/neurodivergent-task-manager:ready-check --notify-failure "Evening reminder"`.
+`/ntm:ready-check --notify-failure "Evening reminder"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
 

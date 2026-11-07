@@ -32,9 +32,9 @@ Dates section says, unless whoever loaded this skill gave a date.
 
 # 2: Ready check
 Run by the job:
-`/neurodivergent-task-manager:ready-check --notify-failure "Price watch"`. Typed
+`/ntm:ready-check --notify-failure "Price watch"`. Typed
 in
-chat: a plain `/neurodivergent-task-manager:ready-check`.
+chat: a plain `/ntm:ready-check`.
 **If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch

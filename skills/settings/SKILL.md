@@ -60,13 +60,14 @@ The only place this happens. Every `configure-<part>` and
 by loading this skill and following this section with the section text it
 produced.
 
-1. **The template** is `references/user-plugin/` in this skill's folder (the
+1. **The template** is `references/user-plugin/` in
+   `neurodivergent-task-manager:configure`'s folder (the
    directory this SKILL.md was loaded from): `plugin.template.json`,
    `README.md`, `skills/settings/SKILL.template.md`,
    `skills/style/SKILL.template.md` (the `.template` in their names keeps the
    plugin installer from reading them as a second plugin). Copy it to a fresh
    folder and put the files in their installed places:
-   `rm -rf /tmp/ntm && cp -r <this skill's folder>/references/user-plugin /tmp/ntm && cd /tmp/ntm && mkdir .claude-plugin && mv plugin.template.json .claude-plugin/plugin.json && mv skills/settings/SKILL.template.md skills/settings/SKILL.md && mv skills/style/SKILL.template.md skills/style/SKILL.md`.
+   `rm -rf /tmp/ntm && cp -r <configure's folder>/references/user-plugin /tmp/ntm && cd /tmp/ntm && mkdir .claude-plugin && mv plugin.template.json .claude-plugin/plugin.json && mv skills/settings/SKILL.template.md skills/settings/SKILL.md && mv skills/style/SKILL.template.md skills/style/SKILL.md`.
 2. **The current values.** Load `ntm:settings` and `ntm:style` by
    name. One that won't load means the template's own text is the current one.
 3. **`skills/settings/SKILL.md`:** the template's text above `## About you`,

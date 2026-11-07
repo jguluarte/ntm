@@ -32,7 +32,7 @@ Without a span, ask the user what span they want. Never assume one.
 Notify below). The job name is `Completed this week` for a span of a week,
 `Completed this month` for a month, else `Completed`; read it off the words
 given. `--notify` starts with
-`/neurodivergent-task-manager:ready-check --notify-failure "<job name>"`,
+`/ntm:ready-check --notify-failure "<job name>"`,
 before Setup; `Ready-check FAILED` ends the run with what it returned. The
 "Completed this week" and "Completed this month" jobs run
 `/neurodivergent-task-manager:show-completed the last 7 days --notify` and

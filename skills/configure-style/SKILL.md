@@ -15,7 +15,7 @@ hand them a form.
 Read `references/builder.md` once before starting: it holds the Profile's shape,
 the questions for each section, the episode arc the reminders follow, and one
 plain example. The template the procedure half comes from is
-`skills/settings/references/user-plugin/skills/style/SKILL.template.md` in
+`skills/configure/references/user-plugin/skills/style/SKILL.template.md` in
 `neurodivergent-task-manager:settings`; `neurodivergent-task-manager:settings`
 assembles the file (see Result).
 

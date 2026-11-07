@@ -41,7 +41,7 @@ An open watched item **needs an alert** when it has neither label.
 
 Load `neurodivergent-task-manager:conventions` (the list's rules and your
 settings), then run
-`/neurodivergent-task-manager:ready-check`. If it fails, stop and give the user
+`/ntm:ready-check`. If it fails, stop and give the user
 its result line.
 
 Price watch is on when Todo list in your settings names a price watch project.

@@ -14,7 +14,7 @@ plugin and follow it yourself.
 
 # 1: Ready check
 Run
-`/neurodivergent-task-manager:ready-check --notify-failure "Weekly planning"`.
+`/ntm:ready-check --notify-failure "Weekly planning"`.
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
 

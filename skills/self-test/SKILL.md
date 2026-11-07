@@ -37,7 +37,7 @@ Run in order. Each ends with one line, `<n>. <step>: pass` or
 that fails for a backend reason (a timeout, a server error) gets one retry, as
 the conventions say; a second failure is the step's failure.
 
-1. **ready-check:** `/neurodivergent-task-manager:ready-check`. Pass on
+1. **ready-check:** `/ntm:ready-check`. Pass on
    `Ready-check OK` or
    `Ready-check OK (no style)`; the text after `Ready-check FAILED:` is the why.
 2. **create ticket:** the guide's `create ticket` with the title, a one-line

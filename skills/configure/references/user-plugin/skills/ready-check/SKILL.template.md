@@ -3,12 +3,12 @@ name: ready-check
 description: Proves this session can run an ntm job: the user's settings load, the backend connector is present, and the todo list answers. Run at the start of a scheduled run, or by hand ("can you see my todo list?", "check the connection", "is ntm ready?").
 ---
 
-# neurodivergent-task-manager:ready-check
+# ntm:ready-check
 
 ## Usage
 
 ```
-/neurodivergent-task-manager:ready-check [--notify-failure "<job name>"]
+/ntm:ready-check [--notify-failure "<job name>"]
 ```
 
 - `--notify-failure "<job name>"`: on failure, send the result through

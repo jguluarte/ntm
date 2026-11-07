@@ -62,7 +62,7 @@ exactly.
 
 | Operation | Must say |
 | --- | --- |
-| `ping` | one read that proves the connector works and sees the todo list named in Todo list, and how to tell sign-in expired from wrong account from backend error (the names `neurodivergent-task-manager:ready-check` reports) |
+| `ping` | one read that proves the connector works and sees the todo list named in Todo list, and how to tell sign-in expired from wrong account from backend error (the names `ntm:ready-check` reports) |
 | `fetch open` | how to get every open ticket (every plannable status, plus blocked when Todo list's blocked line isn't blank) with the standard fields, paginated, plus every project with its name and labels, and its summary when a skill asks for it. Standard fields: id, title, url (the ticket's link), status, status class, priority, estimate, planned date, labels, project, parent id, completed at, updated at; and, for priority, which value is highest and which means none |
 | `fetch closed` | closed tickets (done; canceled and duplicate on request) with their completion time, how to limit to a span, and how to limit to one label |
 | `read ticket` | one ticket with description, parent and blocked-by relations |

@@ -12,12 +12,11 @@ description: >-
 ## Usage
 
 ```
-/ntm:ready-check [--notify-failure "<job name>"]
+/ntm:ready-check [--notify-failure <skill>]
 ```
 
-- `--notify-failure "<job name>"`: on failure, send the result through
-  `ntm:notify`, from the job named, such as `"Morning reminder"`. Without it,
-  nothing is sent.
+- `--notify-failure <skill>`: on failure, send the result through `ntm:notify`,
+  for the skill named, such as `morning-reminder`. Without it, nothing is sent.
 
 ## The check
 
@@ -64,8 +63,15 @@ End with one result line, after the notification if there is one:
 
 ## With `--notify-failure`
 
-When the check fails, load `ntm:notify` and run
-`/ntm:notify --from "<job name>" --title "<List name> — <job name> failed" --message "<job name>: <failure>. <fix>"`.
+When the check fails, load `ntm:notify` and run:
+
+```
+/ntm:notify --from <skill> --title "<List name> — <name> failed"
+    --message "<name>: <failure>. <fix>"
+```
+
+`<name>` is the skill's name in plain words: `morning-reminder` becomes Morning
+reminder.
 
 This is the one error that may use the notification channel; a job reports every
 later error in its final reply instead. If `ntm:notify` can't be loaded or the

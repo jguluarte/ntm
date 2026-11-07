@@ -20,14 +20,15 @@ other skill returns text and the job decides what goes out.
 
 ```
 /ntm:notify --title "<title>" --message "<message>" [--url <link>]
-    [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
+    [--priority n] [--from <skill>] [--app-token <t> --user-key <u>]
 ```
 
 - `title` and `message` are the notification.
 - `url`: optional link attached below the message, usually a task's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
-- `from`: the job this notification is for (the calling skill passes its job
-  name); a per-reminder token written in Notifications is chosen by it.
+- `from`: the skill this notification is for, by name, such as
+  `morning-reminder`; a per-reminder token written in Notifications is chosen by
+  it.
 - `app-token` and `user-key`: a Pushover app token and user key for this one
   call, in place of the ones in your settings (`/ntm:configure-notifications`
   uses them for its test push).
@@ -38,11 +39,11 @@ Load `ntm-user:settings` by name and read Notifications. Its Channel line says
 which section below applies: `pushover` or `claude-push`. Anything else written
 there is how the user wants to be notified (quiet hours, priorities, a different
 app token per reminder, …): follow it as written. A per-reminder token is a line
-`Pushover app token for <job>: …` in Notifications, chosen by `--from`; without
-`--from`, or with no such line, the default token. With `--app-token` and
-`--user-key`, the channel is Pushover with those keys, whatever Notifications
-says, and `ntm-user:settings` not loading is no failure (the test push runs
-before it exists). With neither a channel nor those two, return
+`Pushover app token for <skill>: …` in Notifications, chosen by `--from`;
+without `--from`, or with no such line, the default token. With `--app-token`
+and `--user-key`, the channel is Pushover with those keys, whatever
+Notifications says, and `ntm-user:settings` not loading is no failure (the test
+push runs before it exists). With neither a channel nor those two, return
 `Notify FAILED: no channel configured; run /ntm:configure-notifications`.
 
 A linked task arrives in `message` as the conventions' "Talking to the user

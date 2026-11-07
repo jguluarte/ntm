@@ -3,8 +3,8 @@ name: morning-reminder
 description: >-
     The morning reminder for the user's todo list: what's on the table today.
     Carries stale planned work to today, plans today if it's empty, and sends
-    the morning message in the user's style. Run by the "Morning reminder" job,
-    or by hand ("run the morning reminder now").
+    the morning message in the user's style. Run by a job, or by hand ("run the
+    morning reminder now").
 ---
 
 # ntm:morning-reminder
@@ -18,7 +18,7 @@ plugin and follow it yourself.
 
 # 1: Ready check
 
-Run `/ntm:ready-check --notify-failure "Morning reminder"`.
+Run `/ntm:ready-check --notify-failure morning-reminder`.
 
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
@@ -42,7 +42,7 @@ Ask the messenger agent, with the reminder, the job and the facts:
 
 ```
 reminder: morning
-job: Morning reminder
+job: morning-reminder
 <the facts>
 ```
 

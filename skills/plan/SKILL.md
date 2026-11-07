@@ -31,19 +31,19 @@ description: Plans the user's todo list by setting planned dates, at the rhythm 
    user wants their todo list planned: rhythm, planning days, sizing, a day's
    worth, what's never picked, and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the todo list with the guide's `fetch open`, keeping excluded tickets,
-   and work out which tickets are parents.
+3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks,
+   and work out which tasks are parents.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 
 ## Choosing a task
 
-A candidate is an open ticket with a plannable status, no open sub-tickets, and
+A candidate is an open task with a plannable status, no open sub-tasks, and
 either no planned date or a stale one, and not one Planning's Never picks rules
-out (by default anything carrying the `no-autoschedule` or `pending-shipment`
+out (by default anything carrying the $no-autoschedule or $pending-shipment
 label, by their real names from Labels, or the blocked status, itself or through
 an ancestor). Read each candidate and its ancestors with the guide's
-`read ticket` for descriptions and relations. Blocked-by relations follow the
+`read task` for descriptions and relations. Blocked-by relations follow the
 conventions' Blocks and blocked by rule; the picks made in this run count as
 planned days, so a chain can fill the week in order.
 
@@ -63,12 +63,12 @@ order:
 - **Priority, when set.** A priority the user set counts, where the backend has
   one. A missing one means nothing.
 
-Each ticket is planned at most once. If no candidate is left for a day, leave it
+Each task is planned at most once. If no candidate is left for a day, leave it
 unplanned.
 
 ### What if a day already has a task?
 
-A day already has a task when any open ticket is planned for that day, whatever
+A day already has a task when any open task is planned for that day, whatever
 its labels or status. Consider that day planned, however many tasks it holds.
 Use its work as a theme to anchor the other days of the week.
 
@@ -83,7 +83,7 @@ agent), or the user asked. If it returns `Pause FAILED`, stop and return
 ## Writing
 
 Date each pick with the guide's `set planned date` and change nothing else on
-the ticket. Writes follow the conventions; list any that still fail under
+the task. Writes follow the conventions; list any that still fail under
 `Couldn't write:` in the result.
 
 ## --auto week
@@ -112,13 +112,13 @@ rules above are your defaults, not their limits: the user has the final say.
 Advise them when something looks like a problem, such as a blocked chain that
 can't finish in the span, then do what they decide.
 
-1. Show the span as it stands: each day's tickets, and which days are paused.
+1. Show the span as it stands: each day's tasks, and which days are paused.
 2. Go on what they said. If it isn't enough to plan from, ask what they want the
    span to be about; they may name a project, a goal or a mood, or just say
    "reset it".
 3. Propose a plan, leaning toward what they asked for, and keep revising until
-   they approve. Any open ticket can move, including one already dated later in
-   the week; say which day it leaves empty. Every ticket the plan bumps off a
+   they approve. Any open task can move, including one already dated later in
+   the week; say which day it leaves empty. Every task the plan bumps off a
    day gets its date cleared, unless the user asks to move it to a later day.
    Days they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears,
@@ -130,10 +130,10 @@ can't finish in the span, then do what they decide.
 
 Return plain text for whoever called the skill; the job or skill that called it
 decides what to tell the user and how. Typed in chat, present it as the
-conventions' "Talking to the user about tickets" says. Write each planned ticket
+conventions' "Talking to the user about tasks" says. Write each planned task
 on its own line as `Planned <date>: <id> <title> (~<time>) <url>`, with your
 best guess at how long it takes; a day the user had already dated is listed the
-same way. For any ticket this run picked, put its one-line reason on the next
+same way. For any task this run picked, put its one-line reason on the next
 line, indented.
 
 - `--auto week`, or the week in chat: `Week of <Monday's date>`, then the lines

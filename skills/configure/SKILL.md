@@ -81,14 +81,14 @@ every section the parts returned: About you, Todo list, Labels, Planning,
 Shopping, Notifications, the style body. `ntm:settings` tells them to install it
 and open a new chat. Add that the first thing to run there is `/ntm:self-test`:
 it starts with `ready-check` and exercises the operations the jobs use, on a
-throwaway ticket. Until it's installed, every scheduled run ends with "not
+throwaway task. Until it's installed, every scheduled run ends with "not
 configured".
 
 ## Configured
 
 One line of state per part, from what loads: About you (name, timezone); todo
 list (backend, todo list name, price watch project or off); notifications
-(channel); style (`ntm-user:style` loads, or not); schedule (which tasks exist,
+(channel); style (`ntm-user:style` loads, or not); schedule (which jobs exist,
 from `ntm:configure-schedule`'s listing). Ask which to change and hand off to
 that part; it shows its current state and asks what to change. About you is
 handled here the same way. Then package as Packaging says, with what it

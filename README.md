@@ -95,8 +95,7 @@ it; so can you.
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
   estimate, split).
-- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
-  stale planned dates.
+- `/ntm:fix-todo-list`: clears stale planned dates.
 
 ### Price watch
 

@@ -242,10 +242,9 @@ project, parent id, completed at, updated at. It also lists every project with
 its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
-- **For planning and reminders:** `fetch open`, which includes blocked tasks so
-  parents and ancestors are fully visible. Keep excluded tasks in the results;
-  Excluded tasks, below, says who skips them. Before planning a candidate,
-  `read task` on it and its parent chain to see blockers.
+- **For planning and reminders:** `fetch open`, which includes blocked tasks.
+  Keep excluded tasks in the results; Excluded tasks, below, says who skips
+  them.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
@@ -254,10 +253,9 @@ summary when a skill asks for it.
 
 Excluded labels from automatic scheduling, in Planning in your settings, lists
 the labels planners never pick; by default $no-autoschedule and
-$pending-shipment. A task is excluded when it, or any ancestor (project, or
-parent, parent's parent, and so on), carries one of them. A task in the blocked
-status, or under an ancestor in it, is always excluded too; that isn't a
-setting.
+$pending-shipment. A task is excluded when it carries one of them, itself or
+through its project (see Project labels). A task in the blocked status is always
+excluded too; that isn't a setting.
 
 Planners skip excluded tasks: they never pick or date them. Reminders don't: any
 open task the user has dated gets reminded about, excluded or not.

@@ -63,13 +63,12 @@ If any step fails, stop and return `Plan FAILED: <what failed>`.
 A candidate is an open task with a plannable status, and either no planned date
 or a stale one, and not excluded as the conventions' Excluded tasks says (by
 default anything carrying the $no-autoschedule or $pending-shipment label, by
-their real names from Labels, or in the blocked status, itself or through an
-ancestor). Shortlist the likeliest picks from what the fetch already returns
-(status, project, labels, titles, planned dates) before reading any task in
-full; then read only the shortlist and its ancestors with the guide's
-`read task`, for descriptions and relations. Blocked-by relations follow the
-conventions' Blocks and blocked by rule; the picks made in this run count as
-planned days, so a chain can fill the week in order.
+their real names from Labels, or in the blocked status). Shortlist the likeliest
+picks from what the fetch already returns (status, project, labels, titles,
+planned dates) before reading any task in full; then read only the shortlist
+with the guide's `read task`, for descriptions and relations. Blocked-by
+relations follow the conventions' Blocks and blocked by rule; the picks made in
+this run count as planned days, so a chain can fill the week in order.
 
 Pick as many candidates per day as Defaults says (one, unless told otherwise),
 using judgement; in chat, give each pick a one-line reason. Weigh, roughly in

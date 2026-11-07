@@ -59,25 +59,12 @@ run), or their own backend, which they describe.
 
 Read the chosen backend's guide (`references/linear.md` or
 `references/claude-docs.md` under `ntm:conventions`) now, since the settings
-don't name it yet, and follow its Setup section in order; a part named for a
-step below waits for that step. Before its first call, confirm the connector:
-ToolSearch for the tool the guide's `ping` names (for their own backend, the
-tool they name). If it isn't there, ask them to connect it on the Connectors tab
-and come back, and stop with
+don't name it yet, and follow its Setup section in order; a part the guide ties
+to a step below waits for that step. Before its first call, confirm the
+connector: ToolSearch for the tool the guide's `ping` names (for their own
+backend, the tool they name). If it isn't there, ask them to connect it on the
+Connectors tab and come back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
-
-### Claude Docs
-
-Say first that this guide is untested. Backend is `claude-docs`.
-
-The todo list is one Claude Doc that Claude reads and edits itself. There are no
-todo lists to list. If they already have a todo list doc, List id is the
-trailing part of the link they paste and List name the doc's title. Otherwise
-propose a title, create the doc with `create todo-list` once Statuses, Labels
-and Notes are settled (it's built from them), and record the id it mints. Task
-prefix is whatever they want on their ids. The price watch project is a row in
-the doc's projects table: an existing one, a new one made with `create project`,
-or none.
 
 ### Your own
 
@@ -118,10 +105,6 @@ suggests the class; the user confirms. If the todo list has a status that means
 "can't move right now", that's blocked. If not, leave blocked blank and say the
 $pending-shipment label and blocked-by links cover the same ground.
 
-A new Claude Doc has no statuses to list: propose the names (for example
-Backlog, Todo, In Progress as started, Done, Canceled, Duplicate; blocked only
-if they want one) and `create todo-list` makes them.
-
 ## Labels
 
 Show the defaults in one table, task labels and project labels, with the
@@ -134,7 +117,7 @@ Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
 meaning as the description. Project labels are their own set where the backend
 keeps one: $price-watch and $no-autoschedule as project labels, so projects can
-carry them. On Claude Docs labels are free text and nothing is created.
+carry them.
 
 Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
@@ -160,12 +143,6 @@ already exists under another title (record that title) or create it with
   Blocked start empty.
 - **Amazon alert steps:** find only. `ntm:sync-price-watch-to-amazon` writes it
   the first time it learns the steps.
-
-A new Claude Doc doesn't exist yet at this point: settle the titles only, then
-`create todo-list`, which makes a section per note (the message history's
-`Keep:` line included). Then `create project` for the price watch project if one
-was chosen, and finish the pauses, task review log and price watch stores notes
-with `write note`.
 
 ## Planning
 

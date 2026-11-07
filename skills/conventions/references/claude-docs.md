@@ -258,6 +258,44 @@ When the note is missing, create it as `create note` does, with the content
 given as its content (not only a `Keep:` line; the content for the message
 history note already starts with its `Keep:` line).
 
+## Setup
+
+Used by `ntm:configure-todo-list`, in order, except that The statuses, The
+labels and The notes run at its Statuses, Labels and Notes steps.
+
+### The backend
+
+Say first that this guide is untested. Backend is `claude-docs`.
+
+### The todo list
+
+The todo list is one Claude Doc that Claude reads and edits itself. There are no
+todo lists to list. If they already have a todo list doc, List id is the
+trailing part of the link they paste and List name the doc's title. Otherwise
+propose a title, create the doc with `create todo-list` once Statuses, Labels
+and Notes are settled (it's built from them), and record the id it mints. Task
+prefix is whatever they want on their ids. The price watch project is a row in
+the doc's projects table: an existing one, a new one made with `create project`,
+or none.
+
+### The statuses
+
+A new Claude Doc has no statuses to list: propose the names (for example
+Backlog, Todo, In Progress as started, Done, Canceled, Duplicate; blocked only
+if they want one) and `create todo-list` makes them.
+
+### The labels
+
+Labels are free text and nothing is created.
+
+### The notes
+
+A new Claude Doc doesn't exist yet at this point: settle the titles only, then
+`create todo-list`, which makes a section per note (the message history's
+`Keep:` line included). Then `create project` for the price watch project if one
+was chosen, and finish the pauses, task review log and price watch stores notes
+with `write note`.
+
 ## Setup operations
 
 Used by `ntm:configure-todo-list`.

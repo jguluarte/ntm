@@ -148,12 +148,10 @@ in the last twenty messages" is the default when they don't say.
 ### Examples
 
 One per level, in the level's name, and one for "nothing open" (the evening when
-everything closed: a win for the day, not the year). Task ids use the user's
-Task prefix from Todo list in `ntm-user:settings`, or the prefix settled earlier
-in this conversation, or `ABC-12` style when neither exists yet. The tasks in
-them are ordinary household ones. They show how each level lands, how long it
-runs, and how a motif ties to the subject. The procedure borrows their energy
-and never their sentences.
+everything closed: a win for the day, not the year). Task ids are generic, like
+`ABC-12`. The tasks in them are ordinary household ones. They show how each
+level lands, how long it runs, and how a motif ties to the subject. The
+procedure borrows their energy and never their sentences.
 
 ## A plain example
 

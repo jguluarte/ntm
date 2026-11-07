@@ -2,11 +2,11 @@
 name: configure-todo-list
 description: >-
     The user's todo list, with them in chat. On a first run, where it lives and
-    the agreements ntm works by on it (the backend, the list, the status names
-    for each class, the labels, the notes, how planning and shopping work),
-    returned as settings. Once configured, a change to those settings. Run from
-    ntm:configure, or when the user says "set up my todo list", "connect
-    Linear", "rename my labels" or "change how my week is planned".
+    the agreements ntm works by on it (the backend, the list, the labels, the
+    notes, how planning and shopping work), returned as settings. Once
+    configured, a change to those settings. Run from ntm:configure, or when the
+    user says "set up my todo list", "connect Linear", "rename my labels" or
+    "change how my week is planned".
 ---
 
 # ntm:configure-todo-list
@@ -86,30 +86,23 @@ note's title, as the contract's Notes section says; tell them.
 What you settle goes under Todo list as prose, in their words, below its lines
 (see Returning the sections): one short paragraph per contract heading.
 Statuses, Labels and Notes below then go through the setup operations as they
-described them.
-
-## Your tasks
-
-Ask once, plainly: does anyone else use this list? If not, Your tasks is the
-default, every task on the list. If so, ask how to tell theirs apart (for
-example, assigned to them) and record it in their words.
+described them; the status mapping they gave is the Status classes paragraph.
 
 ## Statuses
 
-`list statuses` on the todo list. Propose a mapping from the names you see:
-usually a backlog, a to-do and an in-progress status as plannable, the
-in-progress one as started; then done, canceled and duplicate. The status `type`
-suggests the class; the user confirms. If the todo list has a status that means
-"can't move right now", that's blocked. If not, leave blocked blank and say the
-$pending-shipment label and blocked-by links cover the same ground.
+Nothing to store: each status's class is read from the backend at run time, as
+the conventions' Status classes says. `list statuses` on the todo list and show
+in one short list which class each status falls in (the guide says how). Blocked
+is the status named Blocked. For their own backend, the mapping they gave goes
+in its guide's Status classes paragraph, above. If there's no blocked status,
+say the $pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
 
-Show the defaults in one table, task labels and project labels, with the
-one-line meaning of each from the conventions' System labels: task labels
-$no-autoschedule, $pending-shipment, $has-amazon-alert, $amazon-unavailable;
-project labels $price-watch, $no-autoschedule. A plain "ok" keeps every name;
-record any rename.
+Show the defaults in one table, with the one-line meaning of each from the
+conventions' System labels: $no-autoschedule, $pending-shipment,
+$has-amazon-alert, $amazon-unavailable, $price-watch. A plain "ok" keeps every
+name; record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
@@ -133,7 +126,7 @@ under another title (record that title) or create it with `create note`:
 - **message history:** its first content is the line
   `Keep: 60 entries or 8 weeks`.
 - **task review log:** `## How you work` and `## Estimates`, both empty.
-- **price watch stores:** only when a price watch project is named; created in
+- **price watch stores:** only when a price watch project was chosen; created in
   that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
   a few seed stores by category to put under Seed, with their domains, or leave
   Seed empty and say the first price watch run will report it. Vouched and
@@ -201,16 +194,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Task prefix: <e.g. HOME for HOME-12>
-- Your tasks: <default every task on the list; or how to tell theirs apart>
-- Statuses — the list's real names for each class:
-  - plannable: <one or more names>
-  - started: <one of the plannable names>
-  - blocked: <blank if the todo list has none>
-  - done: <name>
-  - canceled: <name>
-  - duplicate: <name>
-- Price watch project: <project name; blank = price watch off>
 - Notes — the title of each note the system keeps:
   - pauses: <title; default Pauses>
   - message history: <title; default Message history>
@@ -224,14 +207,11 @@ words>
 
 The real name on your todo list for each label the system uses.
 
-- Task labels:
-  - no-autoschedule: <real name; default no-autoschedule>
-  - pending-shipment: <real name; default pending-shipment>
-  - has-amazon-alert: <real name; default has-amazon-alert>
-  - amazon-unavailable: <real name; default amazon-unavailable>
-- Project labels (tasks inherit them):
-  - price-watch: <real name; default price-watch>
-  - no-autoschedule: <real name; default no-autoschedule>
+- no-autoschedule: <real name; default no-autoschedule>
+- pending-shipment: <real name; default pending-shipment>
+- has-amazon-alert: <real name; default has-amazon-alert>
+- amazon-unavailable: <real name; default amazon-unavailable>
+- price-watch: <real name; default price-watch>
 
 ## Planning
 

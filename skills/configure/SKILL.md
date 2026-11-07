@@ -44,14 +44,14 @@ Say two lines first:
 
 ### About you
 
-This skill owns About you. Ask:
+This skill owns About you. Fill both lines from what you already know about the
+user and the session, and ask them only to confirm or correct:
 
-- Name: how a message title addresses you.
-- Timezone: an IANA name; confirm the city when they give one instead. Every
-  date in the system is computed in it.
+- Timezone: an IANA name (`America/Chicago`). Every date in the system is
+  computed in it. If you can't tell, ask for their city.
 - Country and currency, for price watch (`US, USD`).
 
-Write them as the About you section, one line each: `- Name:`, `- Timezone:`,
+Write them as the About you section, one line each: `- Timezone:`,
 `- Country and currency:`.
 
 ### The parts
@@ -67,7 +67,7 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you, the price watch project from Todo list and
+   it the timezone from About you, whether a price watch project was chosen, and
    Planning days from Planning, as settled above. Creates the scheduled tasks
    itself; returns nothing to package.
 
@@ -94,14 +94,13 @@ configured".
 
 ## Configured
 
-One line of state per part, from what loads: About you (name, timezone); todo
-list (backend, todo list name, price watch project or off); notifications
-(channel); style (`ntm-user:style` loads, or not); schedule (which jobs exist,
-from `ntm:configure-schedule`'s listing). Ask which to change and hand off to
-that part; it shows its current state and asks what to change. About you is
-handled here the same way. Then package as Packaging says, with what it
-returned. A schedule change alone changes nothing in `ntm-user`, so there's
-nothing to package after it.
+One line of state per part, from what loads: About you (timezone); todo list
+(backend, todo list name); notifications (channel); style (`ntm-user:style`
+loads, or not); schedule (which jobs exist, from `ntm:configure-schedule`'s
+listing). Ask which to change and hand off to that part; it shows its current
+state and asks what to change. About you is handled here the same way. Then
+package as Packaging says, with what it returned. A schedule change alone
+changes nothing in `ntm-user`, so there's nothing to package after it.
 
 ## `configure <part>`
 

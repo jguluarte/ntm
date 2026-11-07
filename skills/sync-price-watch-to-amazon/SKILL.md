@@ -47,10 +47,6 @@ An open watched item **needs an alert** when it has neither label.
 Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with
-`Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
-
 Use the browser the user names for this run, or else the one Amazon interface
 under Shopping in your settings names; if you still don't know, ask them. If
 Amazon interface is off and they named none, end with
@@ -67,10 +63,10 @@ otherwise.
 ## 2: The work
 
 1. **Open items:** fetch every open task the way "Every open task" in
-   `ntm:conventions` says, and keep the ones with the $price-watch project
-   label, counting labels inherited from their project (the conventions'
-   "Project labels"). Split them: those with neither label need an alert; those
-   with $has-amazon-alert are set; those with $amazon-unavailable need nothing.
+   `ntm:conventions` says, and keep the ones with the $price-watch label,
+   counting labels inherited from their project (the conventions' "Project
+   labels"). Split them: those with neither label need an alert; those with
+   $has-amazon-alert are set; those with $amazon-unavailable need nothing.
 2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
    canceled and duplicate included, with the standard fields.
 

@@ -162,7 +162,7 @@ plannable status, and `set planned date` when one is given.
 
 `replace` only the cells the skill changes: Title (col 1), Estimate (col 8),
 Project (col 5; empty paragraph for none), Parent (col 6), or Blocked by (col 7,
-the current ids plus the new one). The description is the first Notes line:
+the current ids plus the new one). The description is the first Comments line:
 `replace` its first paragraph as `update comment` does. Nothing else changes.
 
 ## Notes

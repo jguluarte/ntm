@@ -1,7 +1,7 @@
 ---
 name: planner
 description: |-
-  The role that keeps the user's todo list moving: what is planned, what got done, and is today ready? It answers four requests from the reminder skills (make today ready; what's still open; how did today go; close out the week and plan the next) by running the list skills (todo-list, pause, plan, completed, fix-todo-list) and returning the facts as lines the messenger reads. Asked by the reminder skills, in a job or by hand in chat.
+  The role that keeps the user's todo list moving: what is planned, what got done, and is today ready? It answers four requests from the reminder skills (make today ready; what's still open; how did today go; close out the week and plan the next) by running the list skills (today, pause, plan, show-completed, fix-todo-list) and returning the facts as lines the messenger reads. Asked by the reminder skills, in a job or by hand in chat.
 
   <example>
   Context: The Morning reminder's ready check has passed and neurodivergent-task-manager:morning-reminder is at its planning step.

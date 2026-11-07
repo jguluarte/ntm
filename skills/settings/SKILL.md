@@ -27,12 +27,11 @@ Load `ntm-user:settings` by name. If it won't load, say in one line that nothing
 is configured yet and that `/ntm:configure` is the start, and stop.
 
 Show it section by section, as written, with the Pushover keys shortened to
-their last four characters. Then say what can change here: a line (a name, a
-timezone, a label's real name, an excluded label), a whole section, and
-Deviations (anything they do differently from `ntm:conventions`). Add that
-`/ntm:configure <part>` is the guided version for a whole part, and that a
-different trigger word than `ntm` means a renamed fork of ntm, as the README
-says.
+their last four characters. Then say what can change here: a line (a timezone, a
+label's real name, an excluded label), a whole section, and Deviations (anything
+they do differently from `ntm:conventions`). Add that `/ntm:configure <part>` is
+the guided version for a whole part, and that a different trigger word than
+`ntm` means a renamed fork of ntm, as the README says.
 
 ## With words
 

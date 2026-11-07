@@ -99,7 +99,8 @@ it; so can you.
 
 ### Price watch
 
-On when your settings name a price watch project.
+On when a project carries the $price-watch label and the Price watch job is
+scheduled.
 
 - `/ntm:price-watch`: the daily price check on the tasks in that project.
 - `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
@@ -186,11 +187,6 @@ the estimator, through `/ntm:review-todo-list`.
 
 Stores you've vouched for or blocked in replies to a price alert; the shopper
 reads it. Written by `/ntm:price-watch`.
-
-### Amazon alert steps note
-
-How to set an alert on Amazon, learned once. Written by
-`/ntm:sync-price-watch-to-amazon`.
 
 ## What you can customize
 

@@ -14,31 +14,36 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 ## Todo list
 
 - **Team:** List name from Todo list (List id is the team id, used wherever a
-  call below takes `teamId`). Task ids use Task prefix from Todo list.
+  call below takes `teamId`).
 - **Project labels:** labels on a project are Linear project labels, a separate
   set from issue labels (`list_project_labels` / `save_project_label`).
-  Inheritance matches them to issue labels by name, so a system label a project
-  should carry needs a project label of the same name (the project labels under
-  Labels).
+  Inheritance matches them to issue labels by name, so a label a project carries
+  needs a project label with the same name.
 - **Automations:** Linear can close a parent when its sub-issues are all done
   (Parent auto-close, in the team's settings under Workflow).
 - **Estimates:** `estimate` holds the team's points, on the team's estimate
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
   team can extend its scale or allow zero. Times can't be stored. The connector
-  doesn't say which type a team uses; the user does. When Planning has an
-  Estimate mapping, convert through it: the user's estimate to its point when
-  writing, a point back to their estimate when reading.
+  doesn't say which type a team uses; the user does. When Planning's Estimate
+  pattern gives a point for each estimate, convert through it: the user's
+  estimate to its point when writing, a point back to their estimate when
+  reading.
 
 ## Status classes
 
-Todo list in your settings maps each class to the status names. `list_issues`
-filters by `state` with a status name; results carry `status` (the name) and
-`statusType` (Linear's own type: `backlog`, `unstarted`, `started`, `completed`,
-`canceled`, `duplicate`). Use the names from Todo list to filter and to write;
-use `statusType` to tell closed from open when a result mixes states. A task's
-status class is the class whose line in Todo list lists its `status` name;
-`statusType` alone doesn't give it.
+A task's class comes from `statusType`, Linear's own type for its status:
+
+- `backlog` and `unstarted`: plannable.
+- `started`: plannable and started.
+- `completed`: done.
+- `canceled`: canceled.
+- `duplicate`: duplicate.
+
+One exception: a status named Blocked is the blocked class, whatever its type
+(Deviations can name another). Results carry `status` (the name) and
+`statusType`. `list_issues` and `save_issue` take either a type or a name in
+`state`.
 
 ## Operations
 
@@ -50,13 +55,11 @@ found: wrong account. Anything else: backend error.
 
 ### `fetch open`
 
-One `list_issues` call per open status name: every plannable status, plus the
-blocked status (skip the blocked call when Todo list's blocked line is blank).
-Each call has `team: "<List name>"`, `assignee: "me"` only when Your tasks in
-Todo list says the user's tasks are the ones assigned to them, `limit: 250`, and
-`fields`: `title`, `url`, `status`, `statusType`, `priority`, `estimate`,
-`dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Merge
-the results.
+One `list_issues` call per open type: `state` set to `backlog`, `unstarted` and
+`started`. A Blocked status has one of these types, so it comes back too. Each
+call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
+`status`, `statusType`, `priority`, `estimate`, `dueDate`, `labels`, `project`,
+`parentId`, `completedAt`, `updatedAt`. Merge the results.
 
 Also list every project once with `list_projects` (`team: "<List name>"`,
 `fields` `name` and `labels`, plus `summary` when a skill asks for the project's
@@ -69,10 +72,10 @@ task's link; always ask for it in `fields`. `priority` is `0` when none is set;
 
 ### `fetch closed`
 
-`list_issues` as above with `state` set to the done status name; add a call each
-for the canceled and duplicate names only when asked. For a span, pass
-`completedAt` as the span's start and then keep issues whose `completedAt` falls
-in it, in the timezone from About you. When a skill asks for one label, add
+`list_issues` as above with `state` set to `completed`; add a call each for
+`canceled` and `duplicate` only when asked. For a span, pass `completedAt` as
+the span's start and then keep issues whose `completedAt` falls in it, in the
+timezone from About you. When a skill asks for one label, add
 `label: "<label name>"` to each call.
 
 ### `read task`
@@ -97,7 +100,10 @@ Change nothing else on the issue.
 
 ### `set status`
 
-`save_issue` with `id` and `state: "<status name from Todo list>"`.
+`save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
+type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked` (or
+the name Deviations gives). For a plannable status, pass its name from
+`list statuses`.
 
 ### `add labels` / `remove labels`
 
@@ -107,8 +113,7 @@ first time.
 
 ### `mark duplicate of`
 
-`save_issue` with `id`, `duplicateOf: "<original id>"` and
-`state: "<duplicate status name from Todo list>"`.
+`save_issue` with `id`, `duplicateOf: "<original id>"` and `state: "duplicate"`.
 
 ### `create task`
 
@@ -125,11 +130,11 @@ and `blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
 ### Notes
 
 Notes are Linear documents in the team, titled as Notes under Todo list says. A
-note kept inside a project (the price watch stores note, in the price watch
-project from Todo list) lives in that project's documents instead. Search with
-`projectId` instead of `teamId` (the project's id, from `list_projects` with
-`team: "<List name>"` and `query: "<project name>"`), and create with
-`project: "<project name>"` instead of `team`.
+note kept inside a project (the price watch stores note, in the project that
+carries the $price-watch label) lives in that project's documents instead.
+Search with `projectId` instead of `teamId` (the project's id, from
+`list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
+create with `project: "<project name>"` instead of `team`.
 
 - **`read note`:** `list_documents` with `query: "<note title>"` and
   `teamId: "<List id>"`, then `get_document` with the id of the result whose
@@ -160,7 +165,7 @@ and wait for "done" before The connector below:
    issues.
 2. The new workspace comes with one team; that team is the todo list. Its key
    (the few capital letters Linear asks for when naming it, `HOME` for
-   `HOME-12`) becomes Task prefix, so pick one they'll be happy reading in
+   `HOME-12`) starts every task's id, so pick one they'll be happy reading in
    reminders.
 3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
    Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
@@ -179,8 +184,7 @@ in to their workspace, then come back here and say so.
 
 ### The todo list
 
-`list todo-lists`; propose the team. List name is its name, List id its id, Task
-prefix its issue key.
+`list todo-lists`; propose the team. List name is its name, List id its id.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
@@ -189,8 +193,9 @@ all done.
 ### The price watch project
 
 `list projects`; ask which project holds purchases waiting for a good price, or
-none (none turns price watch off). If they want one that doesn't exist yet,
-settle its name now; it's created in Labels, once the project labels exist.
+none (no price watch; the $price-watch label on a project later turns it on). If
+they want one that doesn't exist yet, settle its name now; it's created in
+Labels, once the project labels exist.
 
 ### Planning
 
@@ -199,7 +204,7 @@ T-shirt sizes (Estimates, under Todo list above, has each one's points). If
 they're unsure, it's in Linear under the team's settings, Estimates. If they
 still don't know, run `sample estimates` and suggest the type that fits. When
 their scale isn't the team's, agree with them which of the team's points each
-estimate on their scale becomes, and record it as Estimate mapping.
+estimate on their scale becomes, and add that to Estimate pattern.
 
 ## Setup operations
 
@@ -207,7 +212,7 @@ Used by `ntm:configure-todo-list`.
 
 ### `list todo-lists`
 
-`list_teams`. Each comes back with its name, id and issue key (the task prefix).
+`list_teams`. Each comes back with its name and id.
 
 ### `create todo-list`
 
@@ -215,10 +220,8 @@ Not needed; Linear has teams to list.
 
 ### `list statuses`
 
-`list_issue_statuses` with `team`. Each comes back with its name and `type`,
-which suggests the class (`backlog`, `unstarted` and `started` are plannable,
-`started` the started one; `completed` done; `canceled` canceled; `duplicate`
-duplicate); the user confirms the mapping.
+`list_issue_statuses` with `team`. Each comes back with its name and `type`;
+Status classes above gives each one's class.
 
 ### `sample estimates`
 

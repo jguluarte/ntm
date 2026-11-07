@@ -48,8 +48,8 @@ states only what differs for its user.
 ## Setup
 
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
-   user wants their todo list planned: the estimate scale, the excluded labels,
-   and anything else they wrote there.
+   user wants their todo list planned: the estimate pattern, the excluded
+   labels, and anything else they wrote there.
 2. Compute `TODAY` as the conventions' Dates section says.
 3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
 
@@ -95,7 +95,7 @@ one more.
 
 ## A task's time
 
-When the run picks tasks, ask the estimator agent's Time tasks once, with the
+When the run picks tasks, ask the estimator's Estimate for a time once, with the
 shortlist. Its times judge fit, and go on the lines of the tasks this run picks
 so the user can see what the day asks of them; other lines carry no time. When
 the agent isn't loaded, follow its file as the conventions' "Chat, jobs and

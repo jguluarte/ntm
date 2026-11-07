@@ -205,7 +205,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Task prefix: <e.g. HOME for HOME-12>
 - Your tasks: <default every task on the list; or how to tell theirs apart>
 - Statuses — the list's real names for each class:
   - plannable: <one or more names>

@@ -14,7 +14,7 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
 ## Todo list
 
 - **Team:** List name from Todo list (List id is the team id, used wherever a
-  call below takes `teamId`). Task ids use Task prefix from Todo list.
+  call below takes `teamId`).
 - **Project labels:** labels on a project are Linear project labels, a separate
   set from issue labels (`list_project_labels` / `save_project_label`).
   Inheritance matches them to issue labels by name, so a system label a project
@@ -161,7 +161,7 @@ and wait for "done" before The connector below:
    issues.
 2. The new workspace comes with one team; that team is the todo list. Its key
    (the few capital letters Linear asks for when naming it, `HOME` for
-   `HOME-12`) becomes Task prefix, so pick one they'll be happy reading in
+   `HOME-12`) starts every task's id, so pick one they'll be happy reading in
    reminders.
 3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
    Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
@@ -180,8 +180,7 @@ in to their workspace, then come back here and say so.
 
 ### The todo list
 
-`list todo-lists`; propose the team. List name is its name, List id its id, Task
-prefix its issue key.
+`list todo-lists`; propose the team. List name is its name, List id its id.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
@@ -208,7 +207,7 @@ Used by `ntm:configure-todo-list`.
 
 ### `list todo-lists`
 
-`list_teams`. Each comes back with its name, id and issue key (the task prefix).
+`list_teams`. Each comes back with its name and id.
 
 ### `create todo-list`
 

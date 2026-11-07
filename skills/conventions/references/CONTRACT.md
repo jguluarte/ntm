@@ -43,9 +43,8 @@ skills work around them:
 Name the todo list (List name in Todo list), what id it needs (List id), and
 which automations the backend runs on parent/sub-task closing, if any. If the
 backend has no unit above projects, the todo list is the whole account (List
-name is what the backend calls it, List id blank). If ids carry no prefix, Task
-prefix is blank and ids are the backend's own; `(ABC-12)` in the conventions
-then means the bare id.
+name is what the backend calls it, List id blank). `(ABC-12)` in the conventions
+stands for the backend's own task id, whatever its shape.
 
 ## Status classes
 

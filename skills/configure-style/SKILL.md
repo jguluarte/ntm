@@ -97,12 +97,10 @@ the builder's questions:
   the list gives. They add, cut and replace.
 - **Off limits:** the fixed sentence, plus whatever the theme must never joke
   about.
-- **Examples:** one per level and one for nothing open. Task ids use Task prefix
-  from Todo list in `ntm-user:settings`, or the prefix settled earlier in this
-  conversation, or `ABC-12` style when that isn't configured yet. The tasks in
-  them are ordinary household ones. Write them, read them back, revise: if they
-  chose humor, until they laugh at least once; otherwise until each reads like
-  something they'd open.
+- **Examples:** one per level and one for nothing open. Task ids are generic,
+  like `ABC-12`. The tasks in them are ordinary household ones. Write them, read
+  them back, revise: if they chose humor, until they laugh at least once;
+  otherwise until each reads like something they'd open.
 
 Take the theme as they describe it. Don't propose a named character, show,
 person or brand. If they want directions, offer kinds of character in a line

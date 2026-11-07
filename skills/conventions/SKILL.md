@@ -71,8 +71,8 @@ the tie-breaker.
   or the user's own description under Todo list (see Loading).
 - **Task:** one thing on the todo list. Each backend shows a task its own way: a
   [Linear issue](https://linear.app/docs/conceptual-model), a row in a Claude
-  Doc's table, a reminder, a todo. Ids look like `<task prefix>-<number>` where
-  the backend has a prefix.
+  Doc's table, a reminder, a todo. Its id is whatever the backend gives it, such
+  as `ABC-12`.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
 - **Parent task:** a task with open sub-tasks.
@@ -96,7 +96,7 @@ the tie-breaker.
 ## Workspace
 
 - **Todo list:** List name from Todo list in your settings, with List id where
-  the backend needs it. Task ids use Task prefix.
+  the backend needs it.
 - **Task URLs:** use the task's own `url` field, one of the standard fields.
 - **Whose tasks:** Your tasks under Todo list in your settings says which tasks
   on the list are the user's; by default, every task, regardless of assignee.

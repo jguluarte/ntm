@@ -53,7 +53,7 @@ End with one result line, after the notification if there is one:
   didn't load
 - Fail: `Ready-check FAILED: <failure> — <fix>`
 
-Each failure's fix:
+The `<failure>` and `<fix>` for each:
 
 - **Dependency missing**: The ntm:conventions skill couldn't be loaded. Check
   the ntm plugin is installed and enabled.

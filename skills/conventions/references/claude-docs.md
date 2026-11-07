@@ -17,9 +17,26 @@ tracker would. That's fine for a few dozen tasks.
 Values below that name a settings section (Todo list, Labels, About you) come
 from `ntm-user:settings`, read as the conventions' Loading step says.
 
+Any call written over several lines here is laid out for reading: send each call
+compact (one line, same keys and values), and write any JSON you store on the
+todo list compact.
+
 Notation below: `C` = `{"kind":"project","id":"<List id>"}`, carried as
-`container` on every call inside the doc. Every `update` on a tab is
-`update( ref = {"object":"node","id":"<tab body id>"}, engine = "prose", container = C, payload = {"ops":[…]} )`.
+`container` on every call inside the doc. Every `update` on a tab is:
+
+```
+update(
+    ref = {
+        "object": "node",
+        "id": "<tab body id>"
+    },
+    engine = "prose",
+    container = C,
+    payload = {
+        "ops": […]
+    }
+)
+```
 
 ## Todo list
 
@@ -75,8 +92,23 @@ else: backend error.
 ### `fetch open`
 
 Read the task table in full:
-`read( ref = {"object":"node","id":"<tab 1 body id>"}, engine = "prose", container = C, payload = {"kind":"view","parentId":"<task table id>"} )`;
-repeat with `next`'s keys while `complete` is false. Keep the read's `rev` and
+
+```
+read(
+    ref = {
+        "object": "node",
+        "id": "<tab 1 body id>"
+    },
+    engine = "prose",
+    container = C,
+    payload = {
+        "kind": "view",
+        "parentId": "<task table id>"
+    }
+)
+```
+
+Repeat with `next`'s keys while `complete` is false. Keep the read's `rev` and
 each row's position (header is row 0) for the writes below. Keep every row whose
 status is a plannable or blocked name. Standard fields from the columns: id,
 title, url (the doc's link, `frame.url` of the doc read, the same for every
@@ -113,15 +145,43 @@ The Comments cell's paragraphs after the first (the first is the description),
 dated lines. `write comment`: `insert` after the cell's last paragraph id
 (`"side":"after"`, `"as":"markdown"`, content `<TODAY>: <text>`); on an empty
 cell, `replace` the cell instead. `update comment`: `replace` the line's words,
-`{"kind":"find","text":"<the line as read>","within":{"kind":"cell","table":"<task table id>","row":<n>,"col":10}}`,
-`"as":"text"`.
+with `"as":"text"`, at:
+
+```
+{
+    "kind": "find",
+    "text": "<the line as read>",
+    "within": {
+        "kind": "cell",
+        "table": "<task table id>",
+        "row": <n>,
+        "col": 10
+    }
+}
+```
 
 ### `set planned date` / `clear planned date`
 
 `replace` the Planned date cell
 (`{"kind":"cell","table":"<task table id>","row":<n>,"col":3}`,
 `"ifRev":<rev of the read>`) with a date chip:
-`"with":{"as":"markdown","blocks":{"d":{"type":"date","value":"YYYY-MM-DD"}},"from":{"kind":"inline","content":"<?claude block d?>"}}`.
+
+```
+"with": {
+    "as": "markdown",
+    "blocks": {
+        "d": {
+            "type": "date",
+            "value": "YYYY-MM-DD"
+        }
+    },
+    "from": {
+        "kind": "inline",
+        "content": "<?claude block d?>"
+    }
+}
+```
+
 Clear with an empty paragraph: `"blocks":{"empty":{"type":"paragraph"}}` and
 content `<?claude block empty?>` (a replace with empty content is refused).
 Nothing else in the row changes.
@@ -129,7 +189,17 @@ Nothing else in the row changes.
 ### `set status`
 
 `replace` the Status cell (col 2) with
-`"blocks":{"st":{"type":"dropdown","enum":"<enum id>","index":<option position>}}`
+
+```
+"blocks": {
+    "st": {
+        "type": "dropdown",
+        "enum": "<enum id>",
+        "index": <option position>
+    }
+}
+```
+
 and content `<?claude block st?>`. In the same call, set Done on (col 9) to
 today's date chip when the new status is the done, canceled or duplicate name,
 and clear it when the new status is plannable or blocked.
@@ -189,20 +259,52 @@ Used by `ntm:configure-todo-list`.
 - **`list todo-lists`:** none; the user pastes the doc's link, or
   `ntm:configure-todo-list` runs `create todo-list`.
 - **`create todo-list`:** one `batch` with
-  `container = {"kind":"project","create":{"name":"<List name>","doc":{"markdown":"# Todo list"}}}`
-  and members, in order: the Status enum
-  (`{"$lid":"s","verb":"create","object":"enum","payload":{"value":{"name":"Status","options":[{"name":"<status>"},…]}}}`,
-  the statuses from Todo list in the order under Status classes); an `update` on
-  `$lid:n` inserting at `{"kind":"root"}` `"side":"end"` the markdown
-  `## Tasks`, the header-only task table, `## Projects` and the header-only
-  projects table (the enum can't be referenced from the birth's own
-  `doc.markdown`, hence the separate member); a file
-  `{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with parent
-  `$lid:f2` and content `# <note title>` for each note under Todo list (with the
-  message history note's `Keep:` line under its heading), the `update` pointing
-  `f2` at `n2`; and the project patch placing `$lid:f` as "Todo list" (`order`
-  `a0`) and `$lid:f2` as "Notes" (`a1`). The ack's `created.minted` is the doc
-  id: List id. Give the user its link.
+
+    ```
+    container = {
+        "kind": "project",
+        "create": {
+            "name": "<List name>",
+            "doc": {
+                "markdown": "# Todo list"
+            }
+        }
+    }
+    ```
+
+    and members, in order: the Status enum (the statuses from Todo list in the
+    order under Status classes):
+
+    ```
+    {
+        "$lid": "s",
+        "verb": "create",
+        "object": "enum",
+        "payload": {
+            "value": {
+                "name": "Status",
+                "options": [
+                    {
+                        "name": "<status>"
+                    },
+                    …
+                ]
+            }
+        }
+    }
+    ```
+
+    then an `update` on `$lid:n` inserting at `{"kind":"root"}` `"side":"end"`
+    the markdown `## Tasks`, the header-only task table, `## Projects` and the
+    header-only projects table (the enum can't be referenced from the birth's
+    own `doc.markdown`, hence the separate member); a file
+    `{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with
+    parent `$lid:f2` and content `# <note title>` for each note under Todo list
+    (with the message history note's `Keep:` line under its heading), the
+    `update` pointing `f2` at `n2`; and the project patch placing `$lid:f` as
+    "Todo list" (`order` `a0`) and `$lid:f2` as "Notes" (`a1`). The ack's
+    `created.minted` is the doc id: List id. Give the user its link.
+
 - **`list statuses`:** the enum read under Status classes (enum id from any
   Status cell, or the birth ack's `lids.s`).
 - **`list labels`:** the distinct names across the Labels columns of both

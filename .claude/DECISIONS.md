@@ -166,7 +166,7 @@ The text rules in `CLAUDE.md` apply; these add to them.
   user. Such names are written bare, not in backticks. Plugin and skill names
   never take a `$`.
 
-## Repo tooling
+## The repo
 
 - devbox provides Node, and direnv turns it on in the repo. The Makefile is the
   way in: `make lint` and `make fix` run the npm scripts, and install the
@@ -175,6 +175,17 @@ The text rules in `CLAUDE.md` apply; these add to them.
   `package-lock.json` `linguist-generated=true`, so GitHub collapses them in
   diffs. Justin's rule for all his repos: a new kind of lock file gets a line
   there.
+- History was rewritten on 2026-11-07 to take a leaked address out of commit
+  metadata. A clone from before then is stale; re-clone. GitHub Support has a
+  ticket to purge the old pull request refs; nothing to do unless they ask.
+- The branch `plugin-history-2026-11-06` keeps the history from before the 0.3
+  squash.
+
+## Justin's installed copy
+
+ntm 0.3.0 and its ntm-user, five jobs on Opus. Its settings use old names
+(Ticket prefix, Week ahead, grooming log), so the next release needs a fresh
+setup.
 
 ## 0.4: decided
 
@@ -237,6 +248,8 @@ Not handled by the plugin yet.
 
 ## Deferred and open
 
+- Next: the questions in `NAMES.md`, one at a time; then the rest of this
+  section, as Justin picks.
 - Tasks that keep slipping never get a harder reminder: the style's history
   doesn't record task ids (review finding #3). Justin decides where this goes.
   Idea, big enough to wait for 0.4: planning owns a mention history note where
@@ -288,8 +301,8 @@ Not handled by the plugin yet.
   connects through the Connectors tab first, and a bundled server would be a
   second Linear. Decide which wins.
 - Before 0.4: install main on Justin's account with a fresh setup and use it for
-  a few days. His installed copy is 0.3.0 with old setting names. His call, and
-  only with his go-ahead.
+  a few days (see Justin's installed copy). His call, and only with his
+  go-ahead.
 - Small PR, in flight as #21: line-length checking inside fenced blocks in the
   lint (no current file breaks it).
 - Revising the `/domain-first-design` skill and Justin's design agents, his

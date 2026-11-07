@@ -1,8 +1,7 @@
 # ntm: working rules
 
-Read `.claude/HANDOFF.md` first for where things are and what's next, then
-`.claude/DECISIONS.md` for what's decided, and `.claude/NAMES.md` for every name
-and whether Justin approved it.
+Read `.claude/NAMES.md` for every name and whether Justin approved it, and
+`.claude/DECISIONS.md` for what's decided and what's next.
 
 ## The repo
 

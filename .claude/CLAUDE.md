@@ -24,6 +24,10 @@ and words.
 - Small PRs against main, one concern each, one Opus agent per PR, briefed with
   `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
   agents; the orchestrator does any fan-out.
+- The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
+  worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
+- Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
+- Fable runs only when he says so.
 - His PR comments go to the PR's author agent, which replies on the thread and
   pushes a new commit. Agents post under his account, and every reply ends with
   `<!-- ntm-agent -->`. The orchestrator resolves finished threads; author

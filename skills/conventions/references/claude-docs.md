@@ -241,82 +241,107 @@ entry), headed `# <note title>` and running to the next level-1 heading or the
 end of the tab. The note's own `##` headings nest under it unchanged. A project
 is ignored: a note "kept in a project" lives on tab 2 like the rest.
 
-- **`read note`:** read tab 2 in full (`payload = {"kind":"view"}`), find the
-  `heading='1'` block whose text is the note's title, and return the blocks
-  after it up to the next `heading='1'`. No such heading means the note is
-  missing.
-- **`write note`:** in one `update`, `delete` the section's current blocks
-  (`{"kind":"blocks","ids":[…]}` with `"ifRev":<rev of the read>`), then
-  `insert` the new content with `"side":"end"` on the heading's id
-  (`"as":"markdown"`). When the note is missing, create it as `create note`
-  does, with the content given as its content (not only a `Keep:` line; the
-  content for the message history note already starts with its `Keep:` line).
+### `read note`
+
+Read tab 2 in full (`payload = {"kind":"view"}`), find the `heading='1'` block
+whose text is the note's title, and return the blocks after it up to the next
+`heading='1'`. No such heading means the note is missing.
+
+### `write note`
+
+In one `update`, `delete` the section's current blocks
+(`{"kind":"blocks","ids":[…]}` with `"ifRev":<rev of the read>`), then `insert`
+the new content with `"side":"end"` on the heading's id (`"as":"markdown"`).
+When the note is missing, create it as `create note` does, with the content
+given as its content (not only a `Keep:` line; the content for the message
+history note already starts with its `Keep:` line).
 
 ## Setup operations
 
 Used by `ntm:configure-todo-list`.
 
-- **`list todo-lists`:** none; the user pastes the doc's link, or
-  `ntm:configure-todo-list` runs `create todo-list`.
-- **`create todo-list`:** one `batch` with
+### `list todo-lists`
 
-    ```
-    container = {
-        "kind": "project",
-        "create": {
-            "name": "<List name>",
-            "doc": {
-                "markdown": "# Todo list"
-            }
+None; the user pastes the doc's link, or `ntm:configure-todo-list` runs
+`create todo-list`.
+
+### `create todo-list`
+
+One `batch` with
+
+```
+container = {
+    "kind": "project",
+    "create": {
+        "name": "<List name>",
+        "doc": {
+            "markdown": "# Todo list"
         }
     }
-    ```
+}
+```
 
-    and members, in order: the Status enum (the statuses from Todo list in the
-    order under Status classes):
+and members, in order: the Status enum (the statuses from Todo list in the order
+under Status classes):
 
-    ```
-    {
-        "$lid": "s",
-        "verb": "create",
-        "object": "enum",
-        "payload": {
-            "value": {
-                "name": "Status",
-                "options": [
-                    {
-                        "name": "<status>"
-                    },
-                    …
-                ]
-            }
+```
+{
+    "$lid": "s",
+    "verb": "create",
+    "object": "enum",
+    "payload": {
+        "value": {
+            "name": "Status",
+            "options": [
+                {
+                    "name": "<status>"
+                },
+                …
+            ]
         }
     }
-    ```
+}
+```
 
-    then an `update` on `$lid:n` inserting at `{"kind":"root"}` `"side":"end"`
-    the markdown `## Tasks`, the header-only task table, `## Projects` and the
-    header-only projects table (the enum can't be referenced from the birth's
-    own `doc.markdown`, hence the separate member); a file
-    `{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with
-    parent `$lid:f2` and content `# <note title>` for each note under Todo list
-    (with the message history note's `Keep:` line under its heading), the
-    `update` pointing `f2` at `n2`; and the project patch placing `$lid:f` as
-    "Todo list" (`order` `a0`) and `$lid:f2` as "Notes" (`a1`). The ack's
-    `created.minted` is the doc id: List id. Give the user its link.
+then an `update` on `$lid:n` inserting at `{"kind":"root"}` `"side":"end"` the
+markdown `## Tasks`, the header-only task table, `## Projects` and the
+header-only projects table (the enum can't be referenced from the birth's own
+`doc.markdown`, hence the separate member); a file
+`{"$lid":"f2",…"birthName":"Notes.ldoc"}`, a prose node `$lid:n2` with parent
+`$lid:f2` and content `# <note title>` for each note under Todo list (with the
+message history note's `Keep:` line under its heading), the `update` pointing
+`f2` at `n2`; and the project patch placing `$lid:f` as "Todo list" (`order`
+`a0`) and `$lid:f2` as "Notes" (`a1`). The ack's `created.minted` is the doc id:
+List id. Give the user its link.
 
-- **`list statuses`:** the enum read under Status classes (enum id from any
-  Status cell, or the birth ack's `lids.s`).
-- **`list labels`:** the distinct names across the Labels columns of both
-  tables; one set serves as task and project labels.
-- **`create label`:** nothing to create; labels are free text.
-- **`list projects`:** the projects table, read as in `fetch open`; a project's
-  id is its name.
-- **`create project`:** append a row to the projects table (`insert`
-  `"as":"blocks"` as in `create task`, three cells: Name, Labels, Summary).
-- **`create note`:** `read note` first; one that exists is left alone. Otherwise
-  `insert` `# <note title>` plus its first content at `{"kind":"root"}` on tab
-  2, `"side":"end"` (`"as":"markdown"`).
+### `list statuses`
+
+The enum read under Status classes (enum id from any Status cell, or the birth
+ack's `lids.s`).
+
+### `list labels`
+
+The distinct names across the Labels columns of both tables; one set serves as
+task and project labels.
+
+### `create label`
+
+Nothing to create; labels are free text.
+
+### `list projects`
+
+The projects table, read as in `fetch open`; a project's id is its name.
+
+### `create project`
+
+Append a row to the projects table (`insert` `"as":"blocks"` as in
+`create task`, three cells: Name, Labels, Summary).
+
+### `create note`
+
+`read note` first; one that exists is left alone. Otherwise `insert`
+`# <note title>` plus its first content at `{"kind":"root"}` on tab 2,
+`"side":"end"` (`"as":"markdown"`).
 
 ## Writing
 

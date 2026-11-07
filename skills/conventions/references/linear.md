@@ -20,9 +20,9 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   Inheritance matches them to issue labels by name, so a system label a project
   should carry needs a project label of the same name (the project labels under
   Labels).
-- **Automations:** a parent auto-closes when its last sub-issue closes, and
-  sub-issues auto-close when their parent closes, if the todo list has Linear's
-  default workflow automations on. `ntm:fix-todo-list` handles either case.
+- **Automations:** Linear can close a parent when its sub-issues are all done
+  (Parent auto-close, in the team's settings under Workflow). Either way,
+  `ntm:fix-todo-list` closes any finished parent still open.
 - **Estimates:** `estimate` holds the team's points, on the team's estimate
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
@@ -53,7 +53,8 @@ expired. Not found: wrong account. Anything else: backend error.
 
 One `list_issues` call per open status name: every plannable status, plus the
 blocked status (skip the blocked call when Todo list's blocked line is blank).
-Each call has `team: "<List name>"`, no assignee filter, `limit: 250`, and
+Each call has `team: "<List name>"`, `assignee: "me"` only when Your tasks in
+Todo list says the user's tasks are the ones assigned to them, `limit: 250`, and
 `fields`: `title`, `url`, `status`, `statusType`, `priority`, `estimate`,
 `dueDate`, `labels`, `project`, `parentId`, `completedAt`, `updatedAt`. Paginate
 with `cursor` while `hasNextPage` is true. Merge the results.
@@ -142,7 +143,10 @@ project from Todo list) lives in that project's documents instead. Search with
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`.
+Used by `ntm:configure-todo-list`. Once the team is chosen, suggest the user
+turn on Parent auto-close in the team's settings under Workflow, so a parent
+closes as soon as its sub-tasks are all done. Off, the weekly planning closes
+those parents instead.
 
 - **`list todo-lists`:** `list_teams`. Each comes back with its name, id and
   issue key (the task prefix).

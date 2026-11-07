@@ -43,10 +43,11 @@ Say two lines first:
 
 ### About you
 
-This skill owns About you. Ask:
+This skill owns About you. Fill both lines from what you already know about the
+user and the session, and ask them only to confirm or correct:
 
-- Timezone: an IANA name; confirm the city when they give one instead. Every
-  date in the system is computed in it.
+- Timezone: an IANA name (`America/Chicago`). Every date in the system is
+  computed in it. If you can't tell, ask for their city.
 - Country and currency, for price watch (`US, USD`).
 
 Write them as the About you section, one line each: `- Timezone:`,

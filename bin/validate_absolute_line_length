@@ -1,0 +1,25 @@
+#!/bin/sh
+# Lists every tracked line longer than ABSOLUTE_MAXIMUM_LINE_LENGTH, as
+# file:line: length, and fails if there are any. Skips the paths in
+# EXCLUDE_MAXIMUM_LINE_LENGTH_CHECK. Both come from .env.
+#
+# awk counts bytes (LC_ALL=C), so it drops UTF-8 continuation bytes
+# first, leaving one per character: an en dash is one column.
+
+set -eu
+
+set -f
+set --
+IFS=,
+for path in $EXCLUDE_MAXIMUM_LINE_LENGTH_CHECK; do
+    set -- "$@" ":!:$path"
+done
+unset IFS
+set +f
+
+git ls-files -z -- "$@" |
+    xargs -0 env LC_ALL=C awk -v max="$ABSOLUTE_MAXIMUM_LINE_LENGTH" '
+        { s = $0; gsub(/[\200-\277]/, "", s) }
+        length(s) > max { print FILENAME ":" FNR ": " length(s); n++ }
+        END { exit n > 0 }
+    '

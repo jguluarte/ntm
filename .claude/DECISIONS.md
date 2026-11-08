@@ -288,8 +288,24 @@ generated one, which 0.4 names `ntm`.
   word.
 - Every job and every command the user types starts in the user plugin, setup
   included, so a user with an alias never types the base's name.
-- `setup` and `update` are ways into `configure`, which absorbs showing and
-  changing settings, and upgrades. The base has no `settings` skill.
+- The base's entry point is `setup`, a wizard that walks the whole flow (see
+  0.4: setup). The `configure` skills go away. `update` is a tiny skill whose
+  body loads `setup`, there so someone already set up finds it; run before any
+  setup, it asks "It doesn't look like you've run setup before, do you want to?"
+  and otherwise carries on as normal. The base has no `settings` skill.
+- `update` reads per-version reference files of what changed, picked by the user
+  plugin's `major.minor`, and offers what's new, new features included.
+- The user plugin's `major.minor` mirrors the base's; its patch is its own, a
+  count of the user's rebuilds. Its generation time is a field in its
+  `plugin.json`. A base patch release never needs `update` or a rebuild.
+- Settings that can change live in the backend (a Linear document, or a file),
+  so changing one never rebuilds the plugin. The user plugin is tailored, not
+  thin: it carries only what this user needs (their backend's guide, the skills
+  for the features they picked), so no run loads text meant for someone else.
+  Procedure lives in the plugin; values that change live in the backend.
+- Pushover keys: working default, the user key and default app token in the
+  settings document, and a job's own app token in that job's prompt. Not
+  strongly held.
 - Contracts in the user plugin: `todo-list` (the backend guide), `ready-check`
   (only in the user plugin) and `self-test`. Both self-tests keep the name
   `self-test`.
@@ -306,6 +322,69 @@ generated one, which 0.4 names `ntm`.
   name check for `neurodivergent-task-manager`; the published release is
   identifiable. How the published release is identified is open.
 
+## 0.4: setup
+
+Walked through with Justin on 2026-11-08. A new user ends with the same shape
+and function as his setup, built from their own choices: a connected todo list,
+a persona, the features they picked running as jobs, reminders on their phone,
+and a passing self-test.
+
+Setup asks one question at a time, conversationally, never a list to answer. It
+front-loads the back-and-forth so the build runs without stopping. In order:
+
+1. **Intro.** One short text: what ntm is and where it came from, what it does,
+   why the persona matters, and that setup takes 20 to 60 minutes and then
+   mostly runs itself. Draft: `.claude/drafts/setup-intro.md`; ntm says "I", and
+   Justin is "my creator". It ends by confirming the timezone.
+2. **The todo list.** Suggest a free Linear account, and help create it and
+   connect it; the connector is checked right then. Someone who doesn't want
+   Linear hears it'll take longer to find something, and that you're happy to:
+   the agent reads the backend contract and searches with them until they're
+   content, always offering to build the list inside Claude (an artifact or a
+   Claude Doc that holds the data) or to find an existing tool.
+3. **The persona.** Right after the list. Someone who doesn't want one gets
+   pushed a little: without it, ntm is no different from Apple or Google
+   reminders. Setup helps build one from generic parts, with no show or IP
+   named, and with repetition guarded against. A good opener: "think about the
+   formula of a show you enjoy, where they can snap back at you when you need
+   it, or celebrate you when you've earned it". The parts, from Justin's own
+   persona: `.claude/drafts/persona-breakdown.md` (not yet reviewed by him).
+4. **Features.** A numbered list to pick from, everything or a subset: day to
+   day task management (things you want or need to do), and price watch (things
+   you want to buy, without buying on impulse). New functionality joins this
+   list, and `update` offers it to existing users.
+5. **Each picked feature, in turn.**
+    - Task management: the schedule, suggesting Monday to Friday for doing
+      things and Sunday for cleanup and planning the week ahead; then its
+      labels, $pending-shipment included even without price watch (a task that
+      can't happen until something arrives isn't scheduled automatically).
+    - Price watch: country and currency; the schedule, Justin's as the default;
+      its labels; then whether to set up Amazon sync, explaining that cloud
+      agents can't reach Amazon, so this works around it. A no skips the Amazon
+      labels too.
+    - The schedules go into settings as they're settled.
+6. **The jobs' model.** Suggest a lighter model than the one running setup,
+   worded so any AI provider works; never only Claude models.
+7. **Notifications.** For a separate app on their phone or computer, strongly
+   suggest Pushover, which their phone's focus settings can treat differently;
+   otherwise the AI app's own push. A job's own Pushover app (its own sound)
+   isn't asked; it goes in the Pushover reference.
+8. **Databases.** Confirm the names of the ones their features need. On Linear,
+   say they live at Linear's base location and which document holds which
+   database. Elsewhere, the agent works it out.
+9. **The build.** Say what's about to happen and wait for a green light, leaving
+   room for anything else they want to say. Then narrate each step: create their
+   plugin, install it, run the self-test. The self-test runs in a subagent
+   first, since a new plugin may only load in a fresh session; if that fails,
+   ask them to run it in a new chat, and offer to drive their browser only when
+   their agent has browser access. A passing self-test checks the schedules in
+   settings and creates any missing jobs.
+10. **The end.** A success message in their persona, said in chat and sent as
+    their first real push. The self-test's own push can be fun too. Making
+    people smile is good.
+
+Estimating isn't part of setup: it's asked the first time they review.
+
 ## Test-drive findings
 
 Not handled by the plugin yet.
@@ -321,32 +400,12 @@ Not handled by the plugin yet.
 ### Start here (2026-11-08)
 
 Fable reviewed the plugin on 2026-11-07, after the 0.3 fixes:
-`.claude/reviews/2026-11-07-fable.md`. It covers where things stand, 10 problems
-(each marked for the simplification pass, 0.4 or Justin's decision), a trace of
-the new-user flow, and four 0.4 recommendations. In order:
-
-1. The flow-by-flow simplification, with Justin, starting from the review's
-   new-user flow trace.
-2. The 0.4 talks, starting from the review's four questions.
-
-### Onboarding walkthrough, with Justin
-
-The new-user setup flow, walked through with him. Held for it:
-
-- Jobs are created before `ntm-user` is installed: whether that holds is open.
-- Price watch and the Amazon labels only when the user asks: rework then.
-- Linear's two estimate questions (team estimate type, how they estimate).
-- Checking the backend connector before the parts start.
-- Databases: each is described in the skill that uses it, not in a generic setup
-  list.
-- The Amazon alerts question moves up into `configure`, asked with the Amazon
-  labels, so a no skips both (from #58).
+`.claude/reviews/2026-11-07-fable.md`. The new-user flow is walked through and
+recorded in 0.4: setup. Next: the rest of the 0.4 talks, from the review's four
+questions; its first (where settings live) is decided.
 
 ### Open
 
-- An option, not decided: settings can live in a file in the user's backend (a
-  Linear doc, for example), and the `settings` skill then only says where to
-  find them. Some databases' own settings could live there too.
 - A price watch talk, later: its default pattern makes too much busywork, and
   setup needs better guidelines.
 - Slipping tasks, a 0.4 idea: move the counting out of the style. Planning owns
@@ -375,7 +434,6 @@ The new-user setup flow, walked through with him. Held for it:
       rename
     - the job-run block (ready check, FINAL REPLY, error handling, agent
       fallback) repeats across about 8 skills
-    - `configure-todo-list` re-walks setup when reconfiguring
     - the `ntm-user` package layout isn't spelled out
 - 0.4, open: the generated user plugin bundles the connector (decided above),
   but first-run setup needs Linear before the user plugin exists, so the user

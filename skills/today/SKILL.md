@@ -28,8 +28,7 @@ This skill only reads the todo list. It never changes a task.
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch every open task with the guide's `fetch open`, keeping excluded tasks,
+2. Fetch every open task with the guide's `fetch open`, keeping excluded tasks,
    and keep the ones with a planned date in range.
 
 If any step fails, stop and return `Today FAILED: <what failed>`.
@@ -49,7 +48,7 @@ Typed in chat, present the result as the conventions' "Talking to the user about
 tasks" says (natural words, the id in parentheses); the raw lines are for skills
 and jobs.
 
-- With nothing after `/ntm:today`: `Planned by <TODAY> (<count>):` then the
+- With nothing after `/ntm:today`: `Planned by <today> (<count>):` then the
   tasks, or `Nothing planned for today.`
 - With words: `Planned <first day> to <last day> (<count>):`, plus the scope
   when it's narrowed, then the tasks, or

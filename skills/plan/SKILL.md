@@ -50,8 +50,7 @@ states only what differs for its user.
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
    user wants their todo list planned: the estimate pattern, the excluded
    labels, and anything else they wrote there.
-2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
+2. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 
@@ -115,27 +114,27 @@ conventions; Result says how to list any that still fail.
 
 ## --auto day
 
-1. **Carry over.** Every task planned before `TODAY` is stale. Move the ones in
-   the plannable class to `TODAY` with `set planned date`, whatever their labels
+1. **Carry over.** Every task planned before today is stale. Move the ones in
+   the plannable class to today with `set planned date`, whatever their labels
    and even when one blocks another: the user dated them, so they should just
    work (the conventions' Blocks rule is for picking work; carrying a date isn't
    picking). A stale task in the blocked class keeps its date. Carry over on a
    paused day too.
-2. **Today.** If nothing is planned for `TODAY` after the moves, check today as
+2. **Today.** If nothing is planned for today after the moves, check today as
    Paused days says. Paused: return `paused` and stop. Otherwise pick for today
    as Choosing a task says, and date the pick today.
 3. Return today's plan as Result says.
 
 ## --auto <range>
 
-Work out from the range which days to plan, counting from `TODAY`, and read the
+Work out from the range which days to plan, counting from today, and read the
 words the way a person would; it doesn't need to be exact. Days the range names
 (`mon-fri`, `weekends`, `all weekdays`) are the planning days; otherwise they're
 the days in Defaults. `week` alone is the rest of this week, or the coming week
 when run on a weekend. If the words give no days at all, stop and return
 `Plan FAILED: can't tell which days "<range>" means`.
 
-1. The span is from `TODAY` to the range's last day; only its planning days get
+1. The span is from today to the range's last day; only its planning days get
    picks. Check it for paused days, as Paused days says.
 2. Give each remaining planning day that doesn't already have a task its picks.
    If no candidate is left, plan nothing.
@@ -174,7 +173,7 @@ decides what reaches the user. The reminders hand these lines to the messenger
 as they are, so each task in them is a task line, as the messenger agent's "What
 you're given" says. The estimate goes only on a task this run picked.
 
-- `--auto day`: one `today:` line per task planned for `TODAY`, with `was` the
+- `--auto day`: one `today:` line per task planned for today, with `was` the
   date it had on a task carried over, and `started` when its status is the
   started one. When nothing is planned and nothing qualified, the single line
   `today: none`. A stale task left where it was: `kept: <id> (blocked)`. How

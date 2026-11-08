@@ -150,7 +150,7 @@ the label is the only record that an alert is still live.
 ## 6: The report
 
 Writes follow the conventions' "Writing to the todo list" (retry once, then
-report). Dates are `TODAY`, computed as the conventions' Dates section says.
+report). Dates are today's.
 
 End with one short line on the outcome, then one line per item, worded the way
 the conventions' "Talking to the user about tasks" says:

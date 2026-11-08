@@ -41,13 +41,12 @@ Notify below). `--notify` starts with
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says, and work out the span
-   as Usage says: it ends today.
+2. Work out the span as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's
    `fetch open`, keeping excluded tasks, only when it asks for open tasks.
-4. Keep the tasks completed in the span, in the timezone from About you in your
-   settings. Done tasks of any kind count, price watch buys included.
+4. Keep the tasks completed in the span. Done tasks of any kind count, price
+   watch buys included.
 5. When the description narrows the scope, keep only the tasks that match it, by
    project, parent, label or title.
 

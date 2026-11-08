@@ -260,13 +260,8 @@ reminders.
 
 ## Dates
 
-The session's clock is UTC, and the user lives in the timezone in About you.
-Always compute dates in that timezone; a bare `date` in the evening can return
-tomorrow:
-
-```bash
-TODAY=$(TZ=<timezone from About you in your settings> date +%Y-%m-%d)
-```
+Today is the user's local date: the run knows the local time, a scheduled job's
+prompt states the timezone, and Timezone in About you is the fallback.
 
 Compare planned dates as `YYYY-MM-DD` strings.
 
@@ -274,8 +269,7 @@ Compare planned dates as `YYYY-MM-DD` strings.
 
 Planners set, move and clear planned dates freely.
 
-A date is **stale** when it's earlier than today (`planned date < TODAY`) and
-the task is still open.
+A date is **stale** when it's earlier than today and the task is still open.
 
 ## Relationships
 

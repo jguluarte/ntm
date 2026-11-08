@@ -31,8 +31,8 @@ currency from Country and currency under About you in your settings.
 # 1: Todo list rules
 
 Load `ntm:conventions` before anything else: it holds the list's rules and your
-settings, and every later step follows them. Compute `TODAY` as the conventions'
-Dates section says, unless whoever loaded this skill gave a date.
+settings, and every later step follows them. If whoever loaded this skill gave a
+date, that is today.
 
 # 2: Ready check
 
@@ -70,9 +70,9 @@ Change nothing; FINAL REPLY reports it.
 # 4: The checks
 
 Ask the shopper agent once per watched task, all at once, giving each its task
-id and `TODAY` and nothing else. Each returns its RESULT lines (listed under
-"Your result" in `agents/shopper.md`): RESULT, then DEAL and COMPARE for a deal,
-OTHER VERIFIED, CHECKED and NOTES.
+id and today's date and nothing else. Each returns its RESULT lines (listed
+under "Your result" in `agents/shopper.md`): RESULT, then DEAL and COMPARE for a
+deal, OTHER VERIFIED, CHECKED and NOTES.
 
 A check that fails, returns `Shopper FAILED`, or returns no RESULT line means
 that item is unknown today; keep going. Otherwise use its result lines and
@@ -109,7 +109,7 @@ If the push fails, say so in the final reply; the details are there either way.
 
 The user may reply in this thread after the run, possibly on a later day. If the
 alert had more than one item and they don't say which, ask before changing
-anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
+anything. Dates below are today's, at reply time.
 
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and
   change nothing. Otherwise add a comment to that task right away (the guide's

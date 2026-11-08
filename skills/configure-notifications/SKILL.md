@@ -104,3 +104,7 @@ the text you hand on carries the full keys. Then:
   once at the end.
 - Run directly: load `ntm:settings` and follow its Regenerating
   `ntm-user.plugin` section with the section text you produced.
+
+Either way, when a job's own app token was given and that job exists, load
+`ntm:configure-schedule` to write the token into its prompt. When the job
+doesn't exist yet, say the token is written when that job is created.

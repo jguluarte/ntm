@@ -102,11 +102,22 @@ instead. The user adjusts the order however they like, then you start.
 
 ## 3. Task by task
 
-Each estimate comes from the estimator agent: ask its Estimate request for a
-size. Send the task as it stands now (after a split, the reduced scope), any
-blocker end state you're assuming, and anything the user said this session that
-bears on size. When the agent isn't available, follow its file as the
-conventions' "Chat, jobs and agents" says.
+One estimator agent proposes every estimate in this review. Start it once, at
+the first task, and hand it what it needs then: the Estimate pattern from your
+settings, and the log's `## How you work` and recent `## Estimates` entries,
+which Setup already read. It sees nothing of this chat, only what you hand it,
+so this hand-off is what lets it load nothing itself. When the agent isn't
+available, follow its file as the conventions' "Chat, jobs and agents" says.
+
+Ask its Estimate request for a size for the first task alone, so the first
+proposal comes fast. Then keep it one or two tasks ahead of the user in the
+agreed order, so the next estimate is ready when they finish, and no further, so
+it's free when the user wants to talk the current task over. With each task,
+send it as it stands now, any blocker end state you're assuming, and anything
+the user said this session that bears on size.
+
+Its answers wait until their task comes up. Never interrupt the user with them,
+or mention them early.
 
 One item per message, in the agreed order:
 
@@ -128,14 +139,15 @@ do that. "Skip" leaves the task unreviewed for another day.
 
 If it splits, the estimate is for what's left of the original.
 
-If the split came after your guess, re-propose for what's left, asking the
-estimator again, and log that as `guess`.
+After a task is broken up, or the user corrects an estimate, ask the estimator
+again for what's left, and drop any early answer the change makes stale. When
+the task was broken up after your guess, log the new proposal as `guess`.
 
 Once a task is settled, in the same turn that presents the next one (or ends the
 session): write it with the guide's `update task` (the estimate, plus any
 approved title, description or blocked-by link), add its `## Estimates` entry to
-the log, then ask the estimator about the next task, so writes never make the
-user wait.
+the log, and pass the settled estimate to the estimator with its next ask, so
+writes never make the user wait.
 
 ## Splits
 

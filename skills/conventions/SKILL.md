@@ -193,8 +193,8 @@ Deviations. Read and write them with the guide's `read database` /
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
   much history to keep; the user changes it there.
-- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it; the
-  estimator reads it.
+- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
+  hands the estimator what it needs from it.
 - **price watch stores** (`Price watch stores`): stored in the project that
   carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
   from the user's vouch and block replies; the shopper reads it.

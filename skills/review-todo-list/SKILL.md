@@ -34,8 +34,8 @@ lighter option:
   Stop the moment the user wants to, and never push for more.
 - **You bring proposals; the user reacts.** Never make them fill in fields, and
   never hit them with a list of questions.
-- **Good enough is complete.** A task can be rough, or just a checklist,
-  as long as the user says it's adequate.
+- **Good enough is complete.** A task can be rough, or just a checklist, as long
+  as the user says it's adequate.
 - **The user drives the wording.** Your unvetted wording tends toward filler, so
   propose enough, keep it short, and never expand their descriptions unless they
   ask.

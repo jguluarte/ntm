@@ -20,14 +20,8 @@ Without it, the review proposes one.
 
 ## Before you start
 
-What you learn goes in the task review log, so reviewing gets better over time.
-
 Load `ntm:conventions` first: it holds your settings and the list's rules, and
-names the guide that carries out each list operation below. Each estimate comes
-from the estimator agent's Estimate request, asked for a size. Send the task as
-it stands now: after a split, the reduced scope; when you're assuming a
-blocker's end state, that end state too. When the agent isn't available, follow
-its file as the conventions' "Chat, jobs and agents" says.
+names the guide that carries out each list operation below.
 
 ## Why review exists
 
@@ -109,15 +103,19 @@ instead. The user adjusts the order however they like, then you start.
 
 ## 3. Task by task
 
+Each estimate comes from the estimator agent: ask its Estimate request for a
+size, with any blocker end state you're assuming. When the agent isn't
+available, follow its file as the conventions' "Chat, jobs and agents" says.
+
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
 2. Your proposed **estimate**, in the user's own terms (their Estimate pattern),
-   with a few words on why, from the estimator's Estimate. If the task already
-   has one, say what it is.
-3. If Estimate says it doesn't fit a sitting, one line on whether it looks like
-   it splits. Some things can't, and that's fine. Pieces come up in the talk
-   that follows (see Splits).
+   with a few words on why, from the estimator. If the task already has one, say
+   what it is.
+3. If the estimator says it doesn't fit a sitting, one line on whether it looks
+   like it splits. Some things can't, and that's fine. Pieces come up in the
+   talk that follows (see Splits).
 4. Usually no edits. Suggest one or two at most, only where the task would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
@@ -129,14 +127,13 @@ do that. "Skip" leaves the task unreviewed for another day.
 
 If it splits, the estimate is for what's left of the original.
 
-If the split came after your guess, re-propose for what's left, asking Estimate
-again, and log that as `guess`.
+If the split came after your guess, re-propose for what's left, asking the
+estimator again, and log that as `guess`.
 
-Once a task is settled, write it with the guide's `update task` (estimate, and
-any approved title, description or blocked-by link) and add its entry to
-`## Estimates` in the log. Then ask Estimate about the next task, so it sees
-that entry. Do all of it in the same turn that presents the next task (or ends
-the session), so writes never make the user wait.
+Once a task is settled, in the same turn that presents the next one (or ends the
+session): write it with the guide's `update task` (the estimate, plus any
+approved title, description or blocked-by link), add its `## Estimates` entry to
+the log, then ask the estimator about the next task.
 
 ## Splits
 

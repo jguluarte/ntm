@@ -6,8 +6,8 @@ description: >-
     work to today, plans today if it's empty); --auto with a range in words
     (week, week mon-fri, all weekdays this month) plans the days it covers;
     anything else plans with the user in chat. Run by the morning reminder and
-    the weekly planning, or by the user ("plan my week", "plan Thursday around
-    the garage").
+    the bulk planning, or by the user ("plan my week", "plan Thursday around the
+    garage").
 ---
 
 # ntm:plan
@@ -25,7 +25,7 @@ description: >-
   by the morning reminder.
 - `--auto <range>`: plan a span, unattended. The range is in words, such as
   `week`, `week mon-fri` or `all weekdays this month`. Fills each planning day
-  in the range around whatever is already planned. Run by the weekly planning.
+  in the range around whatever is already planned. Run by the bulk planning.
 - Anything else: plan with the user in chat, following what they say ("plan the
   week around the garage", "give Thursday something small", "reset today"), and
   asking only if it's still ambiguous. Bare `/ntm:plan` is the week as the span.

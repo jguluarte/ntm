@@ -2,8 +2,8 @@
 name: fix-todo-list
 description: >-
     Tidies the user's todo list by clearing stale planned dates, then returns
-    what it changed. Run by the weekly planning job, or by the user ("fix my
-    todo list", "tidy my todo list").
+    what it changed. Run by the bulk planning job, or by the user ("fix my todo
+    list", "tidy my todo list").
 ---
 
 # ntm:fix-todo-list

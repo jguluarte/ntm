@@ -2,8 +2,8 @@
 name: afternoon-reminder
 description: >-
     The afternoon reminder for the user's todo list: a tap on the shoulder about
-    what's still open today, with started work marked; never a dig. Run by the
-    "Afternoon reminder" job, or by hand ("run the afternoon reminder now").
+    what's still open today, with started work marked; never a dig. Run by a
+    job, or by hand ("run the afternoon reminder now").
 ---
 
 # ntm:afternoon-reminder
@@ -17,7 +17,7 @@ yourself.
 
 # 1: Ready check
 
-Run `/ntm:ready-check --notify-failure "Afternoon reminder"`.
+Run `/ntm:ready-check --notify-failure afternoon-reminder`.
 
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
@@ -41,7 +41,7 @@ Ask the messenger agent, with the reminder, the job and the facts:
 
 ```
 reminder: afternoon
-job: Afternoon reminder
+job: afternoon-reminder
 <the facts>
 ```
 

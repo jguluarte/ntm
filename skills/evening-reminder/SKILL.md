@@ -3,8 +3,7 @@ name: evening-reminder
 description: >-
     The evening reminder for the user's todo list: a friend asking how the day
     went. What closed, what's still open, and the evening message in the user's
-    style. Run by the "Evening reminder" job, or by hand ("run the evening
-    reminder now").
+    style. Run by a job, or by hand ("run the evening reminder now").
 ---
 
 # ntm:evening-reminder
@@ -17,7 +16,7 @@ agents" says: read its file from the installed plugin and follow it yourself.
 
 # 1: Ready check
 
-Run `/ntm:ready-check --notify-failure "Evening reminder"`.
+Run `/ntm:ready-check --notify-failure evening-reminder`.
 
 **If it returns `Ready-check FAILED`, STOP: end the run with what it returned
 and nothing more.**
@@ -40,7 +39,7 @@ Ask the messenger agent, with the reminder, the job and the facts:
 
 ```
 reminder: evening
-job: Evening reminder
+job: evening-reminder
 <the facts>
 ```
 

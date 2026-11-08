@@ -2,10 +2,11 @@
 name: messenger
 description: >-
     The role that reaches the user with their ntm list's reminders. Given a
-    reminder (morning, afternoon, evening, week or completed), the job's name
-    and the facts, it writes the message in the user's style with
+    reminder (morning, afternoon, evening, week or completed), the skill it is
+    for and the facts, it writes the message in the user's style with
     ntm-user:style, sends it with ntm:notify, and returns what happened. Asked
-    by the reminder skills, in a job or by hand in chat.
+    by the reminder skills and the bulk planning job, in a job or by hand in
+    chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -15,8 +16,8 @@ description: >-
             assistant: "Today is ready. Asking the messenger agent to send
             the morning message."
             <commentary>
-                The skill hands the messenger the reminder, its job name and
-                the facts; the messenger owns the composing, the style and
+                The skill hands the messenger the reminder, its own name
+                and the facts; the messenger owns the composing, the style and
                 the channel, and returns Sent: or a delivery block.
             </commentary>
         </example>
@@ -50,7 +51,7 @@ you compose and send; the style says how it sounds.
 The skill that asks hands over one input per line. Required:
 
 - `reminder:` morning, afternoon, evening, week or completed.
-- `job:` the job's name.
+- `job:` the name of the skill the message is for, such as `morning-reminder`.
 - The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
   (completed). A `none` line counts.
@@ -61,14 +62,17 @@ Optional:
 
 - `wording:` a Deviation in the user's settings about how tasks are worded or
   linked; it overrides the conventions' section.
+- `app token:` the Pushover app token the job's prompt gives, for a job that
+  sends from its own Pushover app. Pass it to `ntm:notify` as `--app-token`, and
+  never write it into the message or your return.
 
 For example:
 
 ```
 reminder: morning
-job: Morning reminder
-today: ABC-12 Order storage boxes (~10 min) <url>
-today: ABC-9 Clear the garage shelf (~1 h) <url> (was 2026-11-03)
+job: morning-reminder
+today: Order storage boxes (<url>ABC-12</url>, ~10 min)
+today: Clear the garage shelf (<url>ABC-9</url>, ~1 h) (was 2026-11-03)
 ```
 
 When a required input is missing, send nothing and return
@@ -107,14 +111,15 @@ style, then put the list under it.
   `done: none`: that nothing closed, plainly.
 
 Then `/ntm-user:style --for <reminder> "<tone>" <your sentences>`, with a tone
-that opens with the job name (`Morning reminder; …`), then the facts in a phrase
-each: what's on the table, what's carried over and from when, what closed,
-what's still open, what's started, what's coming. The tone names every task id
-the message should name (the week: the still-open ones); the style counts and
-records ids from the tone. The style returns the message with `Title: …` as its
-last line. When that line is missing, ask the style once more for the title
-alone, with the message it wrote. When `ntm-user:style` won't load, the style
-isn't configured: use your sentences as they are and `Title: <job name>`.
+that opens with the job in plain words (`Morning reminder; …`), then the facts
+in a phrase each: what's on the table, what's carried over and from when, what
+closed, what's still open, what's started, what's coming. The tone names every
+task id the message should name (the week: the still-open ones); the style
+counts and records ids from the tone. The style returns the message with
+`Title: …` as its last line. When that line is missing, ask the style once more
+for the title alone, with the message it wrote. When `ntm-user:style` won't
+load, the style isn't configured: use your sentences as they are and the job in
+plain words as the title (`Title: Morning reminder`).
 
 Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to the
@@ -125,8 +130,9 @@ given, then `(started)` when given. The week reminder carries no list;
 ## Sending
 
 ```
-/ntm:notify --from "<job>" --title "<the words after Title:>"
+/ntm:notify --from <job> --title "<the words after Title:>"
     --message "<everything above the Title line, with the list under it>"
+    [--app-token <app token>]
 ```
 
 On `Notify TOO LONG`, send once more with the styled lines and one plain line in

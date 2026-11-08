@@ -1,6 +1,3 @@
-# The agents Justin expects: one file agents/<name>.md per line.
-# Only Justin edits this file. See README.md in this folder.
-
 estimator
 messenger
 shopper

@@ -11,9 +11,9 @@ description: >-
 
 # ntm:configure-notifications
 
-Settles Notifications in `ntm-user:settings` with the user and returns its text.
-A short chat: the channel, the keys if Pushover, one test push, one question.
-This skill never writes a file.
+Settles Notifications in `ntm-user:settings` with the user and returns the
+section's text: the channel, the keys and one test push if Pushover, then one
+open question. This skill never writes a file.
 
 ## Usage
 
@@ -24,36 +24,40 @@ This skill never writes a file.
 ## Before you start
 
 Load `ntm-user:settings` by name and read Notifications. If it won't load,
-nothing is configured yet; carry on. If its Channel line is filled, this is a
-re-run: show the current channel, whether the two keys are present (never print
-a key in full; the last four characters are enough), and anything written under
-the section. Then ask what to change and settle only that.
+nothing is configured yet; carry on.
+
+If the Channel line is filled, this is a re-run. Show the channel, whether each
+key is there, and anything written under the section, then ask what to change
+and settle only that. Wherever you show a key, mask it to its last four
+characters.
 
 ## The channel
 
-Two channels; offer both in a line each:
+Offer both, a line each:
 
 - **`pushover`:** a push to their phone from inside the run, through the
-  Pushover app. Needs a Pushover app token and user key, which are written into
-  `ntm-user`. Say plainly that the plugin must then stay private. The reliable
-  channel, and the only one a chat request ("ping me") can use.
-- **`claude-push`:** the scheduled task's own completion push carries the
-  reminder. Nothing to set up here; `/ntm:configure-schedule` turns it on per
-  job when it creates them. Best effort: it fires when a run finishes, and a
-  chat request can't use it.
+  Pushover app. Reliable, and the only channel a chat request ("ping me") can
+  use. The keys are written into `ntm-user`, so say plainly that the plugin must
+  then stay private.
+- **`claude-push`:** the scheduled task's own push when a run finishes carries
+  the reminder. Best effort, and a chat request can't use it. Nothing to set up
+  here: `/ntm:configure-schedule` turns it on for each job it creates.
 
-Record the channel.
+Record their pick. With `claude-push`, skip to How you want to be notified.
 
 ## Pushover keys
 
-With `claude-push`, skip to How you want to be notified.
+Ask for both:
 
-Ask for the two: the user key is on the Pushover dashboard after signing in; the
-app token comes from an application they register there (any name, "ntm" works).
-Don't echo either back in chat once given.
+- User key: on the Pushover dashboard, after signing in.
+- App token: from an application they register there (any name; "ntm" works).
 
-Then one test push, with the keys for this call only, so the test doesn't depend
-on anything being installed yet. Load `ntm:notify` and run:
+Don't repeat either back in chat.
+
+### Test push
+
+Load `ntm:notify` and send one test with the keys passed in, so it works before
+anything is installed:
 
 ```
 /ntm:notify --title "ntm test"
@@ -61,29 +65,26 @@ on anything being installed yet. Load `ntm:notify` and run:
     --app-token <app token> --user-key <user key>
 ```
 
-- `Sent: ntm test`: ask them to say "got it" when it arrives, and wait. If
-  nothing arrives, the keys were accepted and the push is on Pushover's side:
-  have them check the app is installed and signed in with the same account as
-  the user key, then send once more.
-- `Notify FAILED: <why>`: show the why (an invalid token or user key is named in
-  it), ask for the corrected key, and run the test again.
+On `Sent: ntm test`, ask them to say "got it" when it arrives, and wait; their
+"got it" settles the keys. If it doesn't arrive, Pushover accepted the keys:
+have them check the app is installed and signed in to the same account as the
+user key, then send once more.
 
-The keys are settled once they've said "got it".
+On `Notify FAILED: <why>`, show the why (it names a bad token or user key), ask
+for the corrected key, and test again.
 
 ## How you want to be notified
 
-Ask: "anything about how you want to be notified?" Give the kind of thing that
-fits in one breath: quiet hours, a different app token per reminder (named by
-the kind's default title, whatever the job is called: "Morning reminder uses
-token …", "Weekly planning uses token …"), a priority for a certain reminder.
-Capture their answer as written, under the section. `ntm:notify` follows it word
-for word. "Nothing" leaves it blank.
+Ask: "anything about how you want to be notified?" Give examples that fit in one
+breath: quiet hours, a priority for one reminder, a different app token for one
+reminder. Name a reminder by its kind's default title, whatever the job is
+called ("Morning reminder uses token …"). Write their answer under the section
+as they said it; `ntm:notify` follows it as written. "Nothing" leaves it blank.
 
 ## Returning the section
 
-Write Notifications in exactly these line shapes, the ones `ntm-user:settings`
-uses. The two key lines are left blank with `claude-push`; the free text follows
-the lines, as they said it:
+Use the line shapes `ntm-user:settings` uses. With `claude-push` the key lines
+are blank; their answer goes below the lines:
 
 ```
 ## Notifications
@@ -95,10 +96,10 @@ the lines, as they said it:
 <anything about how you want to be notified, as written; or nothing>
 ```
 
-Show it with the keys masked to their last four characters and let them react;
-the text you hand on carries the full keys. Then:
+Show it with the keys masked and let them react; the text you hand on has the
+full keys. Then:
 
-- Run from `ntm:configure`: return the section to the caller, which packages
-  once at the end.
+- Run from `ntm:configure`: return the section; the wizard packages once at the
+  end.
 - Run directly: load `ntm:settings` and follow its Regenerating
-  `ntm-user.plugin` section with the section text you produced.
+  `ntm-user.plugin` section with this section.

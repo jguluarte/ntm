@@ -106,9 +106,11 @@ implies `--stay-fresh`; the tone is freeform. It must:
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.
 
-For plain or a theme, it carries the Profile `ntm:configure-style` wrote; for a
-persona, the persona's body as handed in, under the `## For ntm` section
-`configure-style` wrote. When nothing changed, the current one goes in as it is.
+For plain or a theme, it carries the Profile `ntm:configure-style` wrote, and
+its procedure is written fresh from the list above every time; for a persona,
+the persona's body as handed in, under the `## For ntm` section
+`configure-style` wrote. When nothing changed, the current Profile, or persona
+and section, goes in as it is.
 
 ### 4: Zip
 

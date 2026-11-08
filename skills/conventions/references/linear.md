@@ -74,8 +74,8 @@ task's link; always ask for it in `fields`. `priority` is `0` when none is set;
 
 `list_issues` as above with `state` set to `completed`; add a call each for
 `canceled` and `duplicate` only when asked. For a span, pass `completedAt` as
-its first day. When a skill asks for one label, add
-`label: "<label name>"` to each call.
+its first day. When a skill asks for one label, add `label: "<label name>"` to
+each call.
 
 ### `read task`
 

@@ -80,8 +80,8 @@ visible; there is no confirmation round-trip before saving.
 If a job calls this without `--check`, change nothing and say this needs a chat
 with the user.
 
-1. Read the database. Drop every pause that ended before today and every
-   invalid line, and tell the user which ones went.
+1. Read the database. Drop every pause that ended before today and every invalid
+   line, and tell the user which ones went.
 2. Show the user the remaining pauses, then make the changes they ask for, if
    any, without an approval round-trip: they said what they want. When a day
    they pause holds planned work, clear those dates and load `ntm:plan` to

@@ -3,5 +3,4 @@
 # file out of make lint's hard line length check; plugin.json's
 # description is one JSON string that can't wrap.
 *.lock linguist-generated=true skip-absolute-line-length
-package-lock.json linguist-generated=true skip-absolute-line-length
 .claude-plugin/plugin.json skip-absolute-line-length

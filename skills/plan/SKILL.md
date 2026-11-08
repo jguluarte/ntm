@@ -146,11 +146,11 @@ Only in chat, with the user. The span is what they name, or a week when they
 name none (next week when a day or less of this one is left), or today when they
 say "today". A day they name gets planned even when Defaults or Deviations would
 leave it out, such as a weekend; say in one line that it goes against their
-usual plan. Scope words ("the garage") match by project, parent, label or title;
-when the words aren't enough to plan from, ask. The rules above are your
-defaults, not their limits: the user has the final say. Advise them when
-something looks like a problem, such as a blocked chain that can't finish in the
-span, then do what they decide.
+usual plan. Scope words ("the garage") match by project, label or title; when
+the words aren't enough to plan from, ask. The rules above are your defaults,
+not their limits: the user has the final say. Advise them when something looks
+like a problem, such as a blocked chain that can't finish in the span, then do
+what they decide.
 
 1. Show the span as it stands: each day's tasks, and which days are paused.
 2. Go on what they said. If it isn't enough to plan from, ask what they want the

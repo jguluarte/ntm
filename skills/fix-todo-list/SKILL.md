@@ -8,8 +8,8 @@ description: >-
 
 # ntm:fix-todo-list
 
-Clears planned dates that have gone stale, and returns what it changed. It never
-notifies anyone: whoever called it decides what to tell the user.
+Clears stale planned dates and returns what it changed. It never notifies
+anyone; the caller decides what to tell the user.
 
 ## Usage
 
@@ -17,44 +17,31 @@ notifies anyone: whoever called it decides what to tell the user.
 /ntm:fix-todo-list [--dry-run]
 ```
 
-`--dry-run`: report what would be cleared and write nothing.
+`--dry-run` reports what would be cleared and writes nothing.
 
-## Setup
+## Steps
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` once, as the conventions' Dates section says, and use it for
-   the whole run, even if the run crosses midnight.
-3. Fetch every open task with the guide's `fetch open`, and keep every result,
-   including excluded tasks. Skip the blocker reads, and skip listing the
-   projects with their labels: this skill checks no labels.
-
-## Clear stale dates
-
-```
-tasks where status is open
-  and planned date is not null
-  and planned date < TODAY
-→ clear planned date
-```
-
-Clear each match with the guide's `clear planned date` and change nothing else.
-
-### Failures and dry runs
-
-Retry a failed fetch once. If it still fails, stop and return
-`Fix-todo-list FAILED: <what failed>`. Writes follow the conventions; list any
-that still fail under `Couldn't write:`.
-
-With `--dry-run`, make no writes. In the result, write `Dry run <TODAY>:` in
-place of `Fixed <TODAY>:`, and `Would clear` in place of `Cleared`.
+2. Compute `TODAY` once, as its Dates section says, and use it for the whole
+   run.
+3. Fetch every open task with the guide's `fetch open`, excluded tasks included.
+   Skip the blocker reads and the project list: this skill checks no labels. If
+   the fetch fails, retry once; if it fails again, stop and return
+   `Fix-todo-list FAILED: <what failed>`.
+4. For each task planned before `TODAY`, clear the date with the guide's
+   `clear planned date` and change nothing else. Failed writes follow the
+   conventions' Writing to the todo list section.
 
 ## Result
 
 Return plain text:
 
-- `Fixed <TODAY>:` then one line per change:
-  `Cleared <id> <title> <url> (was <date>)`
-- `Nothing to fix.` when nothing matched, or `Dry run <TODAY>: nothing to fix.`
-  in a dry run. If writes were attempted but all failed, give the header with no
-  change lines.
-- `Couldn't write:` with any failed writes, only when there are some.
+- `Fixed <TODAY>:`, then one line per change:
+  `Cleared <id> <title> <url> (was <date>)`. If every write failed, the header
+  alone.
+- `Nothing to fix.` when nothing matched.
+- `Couldn't write:` with the writes that still failed, only when there are some.
+
+A dry run returns `Dry run <TODAY>:` in place of `Fixed <TODAY>:`, `Would clear`
+in place of `Cleared`, and `Dry run <TODAY>: nothing to fix.` in place of
+`Nothing to fix.`

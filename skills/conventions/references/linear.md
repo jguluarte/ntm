@@ -79,13 +79,8 @@ each call.
 
 ### `read task`
 
-`get_issue` with the id, `includeRelations: true` for parent and blocked-by
-relations. Descriptions come with it; sub-issues don't.
-
-### `list sub-tasks`
-
-`list_issues` with `parentId: "<id>"` and no `state`, same `fields` as
-`fetch open`.
+`get_issue` with the id, `includeRelations: true` for blocked-by relations.
+Descriptions come with it.
 
 ### `read comments` / `write comment` / `update comment`
 
@@ -123,8 +118,8 @@ Check for an existing match with `list_issues` (`query`) first.
 ### `update task`
 
 `save_issue` with `id` and only the fields the skill changes: `title`,
-`description`, `estimate`, `project` (`project: null` to remove it), `parentId`,
-and `blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
+`description`, `estimate`, `project` (`project: null` to remove it), and
+`blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
 
 ### Databases
 

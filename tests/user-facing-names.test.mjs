@@ -21,13 +21,17 @@ const skills = new NamesCheck(plugin.skills, expected.skills);
 const agents = new NamesCheck(plugin.agents, expected.agents);
 const pluginJson = new PluginJsonCheck(plugin.pluginJson, expected.pluginJson);
 
-describe("skills: one folder under skills/ per skill", () => {
+describe("skills: one folder skills/<name>/ with a SKILL.md per skill", () => {
     test("no skill exists that Justin didn't expect", () => {
         skills.assertNoneUnexpected();
     });
 
     test("every skill Justin expects exists", () => {
         skills.assertNoneMissing();
+    });
+
+    test("every SKILL.md's name: line matches its folder", () => {
+        skills.assertNamesMatchFiles();
     });
 });
 
@@ -38,6 +42,10 @@ describe("agents: one file agents/<name>.md per agent", () => {
 
     test("every agent Justin expects exists", () => {
         agents.assertNoneMissing();
+    });
+
+    test("every agent's name: line matches its file name", () => {
+        agents.assertNamesMatchFiles();
     });
 });
 

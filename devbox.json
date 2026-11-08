@@ -1,10 +1,16 @@
 {
     "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.5/.schema/devbox.schema.json",
-    "packages": ["nodejs@22", "bats@1.14.0", "jq@1.8.2"],
+    "packages": [
+        "prettier@3.9.10",
+        "markdownlint-cli2@0.24.0",
+        "direnv@2.38.2",
+        "bats@1.14.0",
+        "jq@1.8.2"
+    ],
     "shell": {
         "scripts": {
             "lint": "make lint",
-            "fix": "make fix",
+            "lint-fix": "make lint-fix",
             "test": "make test"
         }
     }

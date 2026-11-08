@@ -245,12 +245,14 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## The repo
 
-- devbox provides Node, and direnv turns it on in the repo. The Makefile is the
-  way in: `make lint` and `make fix` run the npm scripts, and install the
-  linters only when `package-lock.json` changes. `make test` runs bats on
-  `tests/`: the user-facing name tests, against `tests/expected/`. bats and jq
-  come from devbox, not node. CI runs lint through npm directly, and `make test`
-  through `devbox run test` in `test.yml`.
+- devbox provides prettier, markdownlint-cli2, direnv, bats and jq. `make lint`,
+  `make lint-fix` and `make test` are the way in, locally and in CI.
+- `make test` runs the bats tests in `tests/`: the user-facing name tests,
+  against `tests/expected/`, which only Justin edits.
+- `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
+  (145, exported in `.envrc`), on every tracked file except those
+  `.gitattributes` marks `skip-absolute-line-length`, and prints the files that
+  break it.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.

@@ -59,7 +59,7 @@ Write them as the About you section, one line each: `- Timezone:`,
 In order, each by loading its skill and saying it runs from `ntm:configure`:
 
 1. `ntm:configure-todo-list`: which backend, which todo list, statuses, labels,
-   notes, and the agreements planning and the shopper work by. Returns Todo
+   databases, and the agreements planning and the shopper work by. Returns Todo
    list, Labels, Planning and Shopping (Shopping only when a price watch project
    was chosen).
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns
@@ -67,20 +67,19 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you, whether a price watch project was chosen, and
-   Planning days from Planning, as settled above. Creates the scheduled tasks
-   itself; returns nothing to package.
+   it the timezone from About you and whether a price watch project was chosen,
+   as settled above. Creates the scheduled tasks itself; returns nothing to
+   package.
 
 Keep the returned text; write nothing.
 
 The sections and what reads them, in case they ask: About you is read by
-everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
-how far ahead the week plans, the estimate pattern, what's never picked, what
-the weekly message includes) by `ntm:plan` and the weekly planning, and its
-Estimate pattern by the estimator; Shopping (condition, delivery, what counts as
-a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
-`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
-since each default is about the same todo list.
+everything; Todo list and Labels by `ntm:conventions`; Planning (the estimate
+pattern, the excluded labels) by `ntm:plan`, and its Estimate pattern by the
+estimator; Shopping (condition, delivery, what counts as a deal) by the shopper
+and `ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-todo-list`
+settles Planning and Shopping alongside Todo list, since each default is about
+the same todo list.
 
 ### Packaging
 

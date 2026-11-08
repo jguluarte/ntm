@@ -16,26 +16,26 @@ use `--check`, and read its answer as whether each day is paused.
 
 ## Where pauses live
 
-The pauses note, titled as Notes under Todo list in your settings says, holds
-one line per pause under its `## Pauses` heading, sorted by start date. Each
-line is bare, with no list marker: `YYYY-MM-DD: <why>` for a single day, or
+The `Pauses` database (see Databases in `ntm:conventions`) holds one line per
+pause under its `## Pauses` heading, sorted by start date. Each line is bare,
+with no list marker: `YYYY-MM-DD: <why>` for a single day, or
 `YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when
 there are none.
 
-Read it with the guide's `read note`. A missing note, or one with no pause
-lines, means there are no pauses. If the read itself fails, stop and return
-`Pause FAILED: <why>`, so a caller never takes an unreadable note for "not
-paused".
+Read it with the guide's `read database`. A missing database, or one with no
+pause lines, means there are no pauses. If the read itself fails, stop and
+return `Pause FAILED: <why>`, so a caller never takes an unreadable database for
+"not paused".
 
-A line whose dates have no year is invalid. Whenever the note is read, for any
-reason, ignore those lines and remove them on the next save.
+A line whose dates have no year is invalid. Whenever the database is read, for
+any reason, ignore those lines and remove them on the next save.
 
-To save, use the guide's `write note` with the whole note, only the lines under
-`## Pauses` changed (`None.` if nothing is left); when the note is missing, the
-content is the `## Pauses` heading and the lines. Pauses never overlap: before
-saving, merge any that overlap into one line covering all their days, with their
-reasons joined by `; ` in start-date order. When the note is missing,
-`write note` creates it, with the `## Pauses` heading.
+To save, use the guide's `write database` with the whole content, only the lines
+under `## Pauses` changed (`None.` if nothing is left); when the database is
+missing, the content is the `## Pauses` heading and the lines. Pauses never
+overlap: before saving, merge any that overlap into one line covering all their
+days, with their reasons joined by `; ` in start-date order. When the database
+is missing, `write database` creates it, with the `## Pauses` heading.
 
 ## Usage
 
@@ -71,7 +71,7 @@ confirmation round-trip before saving.
 
 ## With `--check`
 
-1. Read the note. If any pause ended before `TODAY`, or any line is invalid,
+1. Read the database. If any pause ended before `TODAY`, or any line is invalid,
    remove those lines and save.
 2. Return one line per day from the first day to the `--until` day, in order,
    and nothing else, as Result says.
@@ -81,8 +81,8 @@ confirmation round-trip before saving.
 If a job calls this without `--check`, change nothing and say this needs a chat
 with the user.
 
-1. Read the note. Drop every pause that ended before `TODAY` and every invalid
-   line, and tell the user which ones went.
+1. Read the database. Drop every pause that ended before `TODAY` and every
+   invalid line, and tell the user which ones went.
 2. Show the user the remaining pauses, then make the changes they ask for, if
    any, without an approval round-trip: they said what they want. When a day
    they pause holds planned work, clear those dates and load `ntm:plan` to
@@ -103,5 +103,5 @@ Plain text for whoever called the skill.
   `YYYY-MM-DD: true` when that day is paused, or `YYYY-MM-DD: false` when it
   isn't, so it can be planned automatically.
 - Bare, or with words: the pauses as saved, shown to the user.
-- `Pause FAILED: <why>` when the note can't be read. A missing note isn't a
-  failure: it means there are no pauses.
+- `Pause FAILED: <why>` when the database can't be read. A missing database
+  isn't a failure: it means there are no pauses.

@@ -166,8 +166,8 @@ soon as they approve it.
 ### 2. Order of operations
 
 Read the unreviewed tasks in this review, plus any reviewed ones the user named,
-and their parent chains, with the guide's `read task`. For a blocked task with
-no blocked-by link, check its comments (`read comments`) for what it waits on.
+with the guide's `read task`. For a blocked task with no blocked-by link, check
+its comments (`read comments`) for what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside this review:
@@ -226,14 +226,14 @@ any approved title, description or blocked-by link) and add its entry to
 
 ### The task review log
 
-The task review log note, titled as Notes under Todo list in your settings says.
-It's yours: it's how you learn to work better with the user over time. Read it
-with the guide's `read note`. When it's missing, `write note` creates it with
-the two sections below. Save it with `write note` whenever you change it,
+The `Task review log` database (see Databases in `ntm:conventions`). It's yours:
+it's how you learn to work better with the user over time. Read it with the
+guide's `read database`. When it's missing, `write database` creates it with the
+two sections below. Save it with `write database` whenever you change it,
 leaving the rest as it was.
 
-**`## How you work`:** short bullets about the user, written to them (it's their
-note too), on whatever would help you do better with them next time: how they
+**`## How you work`:** short bullets about the user, written to them (it's
+theirs too), on whatever would help you do better with them next time: how they
 like tasks written and split, how they like sessions to go, whether they're new
 to estimating, and what they keep correcting. Learn from what they change, push
 back on or say. When something would apply again, fold it in: rewrite and merge

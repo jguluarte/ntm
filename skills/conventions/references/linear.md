@@ -20,8 +20,7 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   Inheritance matches them to issue labels by name, so a label a project carries
   needs a project label with the same name.
 - **Automations:** Linear can close a parent when its sub-issues are all done
-  (Parent auto-close, in the team's settings under Workflow). Either way,
-  `ntm:fix-todo-list` closes any finished parent still open.
+  (Parent auto-close, in the team's settings under Workflow).
 - **Estimates:** `estimate` holds the team's points, on the team's estimate
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
@@ -128,23 +127,23 @@ Check for an existing match with `list_issues` (`query`) first.
 `description`, `estimate`, `project` (`project: null` to remove it), `parentId`,
 and `blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
 
-### Notes
+### Databases
 
-Notes are Linear documents in the team, titled as Notes under Todo list says. A
-note kept inside a project (the price watch stores note, in the project that
-carries the $price-watch label) lives in that project's documents instead.
-Search with `projectId` instead of `teamId` (the project's id, from
+Databases are Linear documents in the team, under the titles the conventions
+give. A database kept inside a project (the price watch stores database, in the
+project that carries the $price-watch label) lives in that project's documents
+instead. Search with `projectId` instead of `teamId` (the project's id, from
 `list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
 create with `project: "<project name>"` instead of `team`.
 
-- **`read note`:** `list_documents` with `query: "<note title>"` and
+- **`read database`:** `list_documents` with `query: "<database title>"` and
   `teamId: "<List id>"`, then `get_document` with the id of the result whose
-  `title` is the note's title. No match means the note is missing.
-- **`write note`:** `save_document` with the note's `id` and the new `content`,
-  changing only what the skill says to change. When the note is missing, create
-  it the way `create note` does, but with the whole content given, not only a
-  `Keep:` line (the content for the message history note already starts with its
-  `Keep:` line).
+  `title` is the database's title. No match means the database is missing.
+- **`write database`:** `save_document` with the database's `id` and the new
+  `content`, changing only what the skill says to change. When the database is
+  missing, create it the way `create database` does, but with the whole content
+  given, not only its frontmatter (the content for the message history database
+  already starts with its frontmatter).
 
 ## Setup
 
@@ -174,8 +173,8 @@ and wait for "done" before The connector below:
    settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
 
-Labels, the price watch project and the notes don't need to be made by hand:
-Labels and Notes in `ntm:configure-todo-list` create them.
+Labels, the price watch project and the databases don't need to be made by hand:
+Labels and Databases in `ntm:configure-todo-list` create them.
 
 ### The connector
 
@@ -189,7 +188,7 @@ in to their workspace, then come back here and say so.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
-all done. If it stays off, the weekly planning closes those parents instead.
+all done.
 
 ### The price watch project
 
@@ -254,13 +253,12 @@ Create the project labels it should carry first (`create label`), then
 `save_project` with `name`, `addTeams` naming the todo list, and `labels`. When
 updating an existing project, pass its current labels plus the missing ones.
 
-### `create note`
+### `create database`
 
-`read note` first; one that exists is left alone. Otherwise `save_document`
+`read database` first; one that exists is left alone. Otherwise `save_document`
 without `id`, with `team: "<List name>"` (or `project: "<project name>"` for a
-note kept in a project), `title` set to the note's title from Todo list, and
-`content` set to its first content (for the message history note, the `Keep:`
-line).
+database kept in a project), `title` set to the database's title, and `content`
+set to its first content (for the message history database, its frontmatter).
 
 ## Writing
 

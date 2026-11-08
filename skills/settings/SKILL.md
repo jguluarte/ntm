@@ -27,12 +27,11 @@ Load `ntm-user:settings` by name. If it won't load, say in one line that nothing
 is configured yet and that `/ntm:configure` is the start, and stop.
 
 Show it section by section, as written, with the Pushover keys shortened to
-their last four characters. Then say what can change here: a line (a name, a
-timezone, a label's real name, the planning rhythm), a whole section, and
-Deviations (anything they do differently from `ntm:conventions`). Add that
-`/ntm:configure <part>` is the guided version for a whole part, and that a
-different trigger word than `ntm` means a renamed fork of ntm, as the README
-says.
+their last four characters. Then say what can change here: a line (a timezone, a
+label's real name, an excluded label), a whole section, and Deviations (anything
+they do differently from `ntm:conventions`). Add that `/ntm:configure <part>` is
+the guided version for a whole part, and that a different trigger word than
+`ntm` means a renamed fork of ntm, as the README says.
 
 ## With words
 
@@ -95,9 +94,9 @@ implies `--stay-fresh`; the tone is freeform. It must:
 - rewrite the message in the user's register, from their Profile
   (`references/builder.md` in `ntm:configure-style` says what each section
   means);
-- with `--stay-fresh`, keep lines fresh: read the message history note (titled
-  under Notes in Todo list) through `ntm:conventions`, avoid what recent entries
-  used, and add the new line, pruned to the note's `Keep:` line;
+- with `--stay-fresh`, keep lines fresh: read the message history database
+  through `ntm:conventions`, avoid what recent entries used, and add the new
+  line, pruned to the `Keep:` line in the database's frontmatter;
 - with `--for`, end with a `Title:` line that says what the message is about in
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.

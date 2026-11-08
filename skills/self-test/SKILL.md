@@ -1,20 +1,20 @@
 ---
 name: self-test
 description: >-
-    Exercises the whole ntm loop on a throwaway task and a throwaway note, one
-    line per step, and ends with Self-test OK or the first step that failed. The
-    first thing to run after installing ntm and ntm-user ("test ntm", "run the
-    self test", "is everything wired up?"), and the smoke test for a backend the
-    user described themselves.
+    Exercises the whole ntm loop on a throwaway task and a throwaway database,
+    one line per step, and ends with Self-test OK or the first step that failed.
+    The first thing to run after installing ntm and ntm-user ("test ntm", "run
+    the self test", "is everything wired up?"), and the smoke test for a backend
+    the user described themselves.
 ---
 
 # ntm:self-test
 
 Runs every skill a job uses, and every backend operation they need, once, on a
-task and a note made for the purpose and canceled and emptied at the end. Run it
-in chat, in a new chat after installing `ntm-user`: it's the first thing to run
-after install, and the thing to run again after changing Todo list in your
-settings.
+task and a database made for the purpose and canceled and emptied at the end.
+Run it in chat, in a new chat after installing `ntm-user`: it's the first thing
+to run after install, and the thing to run again after changing Todo list in
+your settings.
 
 ## Usage
 
@@ -28,11 +28,11 @@ settings.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
   label by its real name from Labels in your settings, in no project. Keep its
   id once created; `ABC-12` below stands for it.
-- One throwaway note, titled `ntm self-test`, at list level. It's not under
-  Notes in Todo list; only this skill knows it.
+- One throwaway database, titled `ntm self-test`, at list level. It's not one of
+  the databases in `ntm:conventions`; only this skill knows it.
 - If an earlier run left either behind (`fetch open` shows a task with that
-  title; `read note` finds the note), remove them first, as Cleanup says, so
-  this run starts clean.
+  title; `read database` finds the database), remove them first, as Cleanup
+  says, so this run starts clean.
 
 ## Steps
 
@@ -91,8 +91,7 @@ returns its delivery block instead of sending. Show the block and pass as
 
 ### 7: close
 
-`set status` to the done status from Todo list. Pass when `read task` shows it
-closed.
+`set status` to done. Pass when `read task` shows it closed.
 
 ### 8: completed
 
@@ -107,24 +106,23 @@ closed.
 
 `/ntm:pause --check`. Pass on one `<TODAY>: true` or `<TODAY>: false` line.
 
-### 11: note
+### 11: database
 
-`write note` on the throwaway note with the content `self-test <TODAY>`, then
-`read note` returns the same content. Pass when it does.
+`write database` on the throwaway database with the content `self-test <TODAY>`,
+then `read database` returns the same content. Pass when it does.
 
 ## Cleanup
 
 Always, whether the steps passed or stopped, and in this order; one line each,
 `cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
 
-- **The task:** if it was created, `set status` to the canceled status from Todo
-  list, so it never counts as work done (leave it done when Todo list's canceled
-  line is blank). Where the backend keeps notes in tasks, cancel the note's task
-  the same way.
-- **The note:** if it was written, `write note` it empty.
+- **The task:** if it was created, `set status` to canceled, so it never counts
+  as work done (leave it done when the todo list has no canceled status). Where
+  the backend keeps databases in tasks, cancel the database's task the same way.
+- **The database:** if it was written, `write database` it empty.
 
 Nothing else on the todo list is touched: the test dates, closes and cancels its
-own task and empties its own note only, plus the one history entry the style
+own task and empties its own database only, plus the one history entry the style
 writes in step 5, which ages out.
 
 ## Result

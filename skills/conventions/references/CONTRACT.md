@@ -120,8 +120,8 @@ labels, and says how to check for an existing match first.
 
 ### `update task`
 
-Changes a task's title, description, estimate or project (or none), or adds a
-blocked-by link; nothing else changes.
+Changes a task's title, description, estimate or project (or removes the
+project), or adds a blocked-by link; nothing else changes.
 
 ### `read database` / `write database`
 

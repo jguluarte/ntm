@@ -22,7 +22,7 @@ entry.
 - `configure` is setup; `settings` is seeing or changing values after setup.
 - A skill that hands work to an agent does the work itself when the agent isn't
   loaded, by reading `agents/<name>.md` from the installed plugin. Chat ignores
-  agents, and whether they load in scheduled runs is unconfirmed.
+  agents. Scheduled runs load them and can start them.
 - No hidden skills (`user-invocable: false`): as far as the docs say, they work
   only in Claude Code.
 - Skill descriptions never contain angle brackets; the uploader rejects them.
@@ -302,8 +302,6 @@ generated one, which 0.4 names `ntm`.
 
 Not handled by the plugin yet.
 
-- Whether agents load in scheduled runs is unconfirmed. The read-the-file
-  fallback covers it until then.
 - An imported persona may carry its own history instructions and double-write
   the message history database. Watch real runs.
 - The accept card for `ntm-user.plugin` in chat is untested.

@@ -15,16 +15,17 @@ description: >-
 /ntm:review-todo-list [<what to review, in words>]
 ```
 
-Name a project, part of one, or a few tasks. With nothing, the review proposes
-one.
+Name a project, part of one, a few tasks, or something already reviewed to look
+at again; the estimator's "What to review" says more. If you name nothing, the
+review proposes a project.
 
 ## Running the review
 
-The estimator agent owns the review procedure. The review needs the user's
-answers, and an agent can't talk with them, so it runs here in the chat.
+The review procedure lives in the estimator agent's file. An agent can't talk
+with the user, so this skill runs the procedure here in the chat instead.
 
 1. Load `ntm:conventions`.
 2. Read the estimator's file, `agents/estimator.md`, found as the conventions'
    "Chat, jobs and agents" says.
-3. Follow its Review section with the user, starting at Setup. Pass on what to
-   review, if the user named it.
+3. Follow the section headed Review with the user, starting at its Setup
+   subsection. Pass on what to review, if the user named it.

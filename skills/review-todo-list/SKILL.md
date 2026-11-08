@@ -47,8 +47,7 @@ lighter option:
    Fetching says. Add each project's summary to the project fields, as the guide
    says.
 
-A task is **unreviewed** when it's open, has no estimate, and isn't a parent
-with open sub-tasks.
+A task is **unreviewed** when it's open and has no estimate.
 
 ## What to review
 
@@ -146,9 +145,8 @@ user wait.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
   write only that: the original with the guide's `update task`, the new tasks as
-  the next bullet says. New tasks get the original's project and parent. When
-  the order matters, the later task is blocked by the earlier one. Don't default
-  to sub-tasks.
+  the next bullet says. New tasks get the original's project. When the order
+  matters, the later task is blocked by the earlier one.
 - Write new tasks with the guide's `create task`, the way the conventions'
   "Creating tasks when the user asks" section says. They join the end of the
   review order un-estimated, unless the user asks to do them next.

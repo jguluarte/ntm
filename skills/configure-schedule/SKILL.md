@@ -71,9 +71,9 @@ reply and error handling are this job's.
 The span is in words, as the user wants it: `the last 7 days` for a weekly one,
 `last month` for a monthly one.
 
-On the `pushover` channel, a job can send from its own Pushover app, such as one
-with its own sound or icon. Don't ask; when the user wants it, take that app's
-token in chat, never repeat it back, and add this after the timezone line:
+On the `pushover` channel, a job can send from its own Pushover app;
+`ntm:configure-notifications` offers it. Don't ask here. When the user has given
+a token for a job, never repeat it back, and add this after the timezone line:
 
 ```
 Pushover app token for this job: <token>. Hand it to every

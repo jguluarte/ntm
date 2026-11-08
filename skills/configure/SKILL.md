@@ -67,9 +67,9 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you and whether a price watch project was chosen,
-   as settled above. Creates the scheduled tasks itself; returns nothing to
-   package.
+   it the timezone from About you, whether a price watch project was chosen, and
+   any job's own Pushover app token from notifications, as settled above.
+   Creates the scheduled tasks itself; returns nothing to package.
 
 Keep the returned text; write nothing.
 

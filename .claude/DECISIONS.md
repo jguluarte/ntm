@@ -103,7 +103,8 @@ entry.
   The Claude channel has no cap.
 - `Pushover user key` lives in settings. `Pushover app token` in settings is the
   default, for one generic app; a job can carry its own app token in its prompt,
-  which overrides it and is handed to `notify`.
+  which overrides it and is handed to `notify`. `configure-notifications` offers
+  a job's own app; `configure-schedule` writes the token into the job's prompt.
 
 ## Backends
 

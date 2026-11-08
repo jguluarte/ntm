@@ -22,7 +22,7 @@ Which path runs is a matter of context:
 - `ntm-user:settings` won't load, or `ntm:configure` is running this: the setup
   walk, which returns the Todo list, Labels, Planning and Shopping sections.
 - Configured: the re-run path (Before you start, step 2), which changes those
-  settings: a backend, a label name, the planning rhythm, what counts as a deal.
+  settings: a backend, a label name, an excluded label, what counts as a deal.
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
 project", "estimate the garage work") is `/ntm:review-todo-list`; when the words
@@ -138,18 +138,15 @@ How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a plain "ok" keeps them all,
 and they change any line in their own words:
 
-- **Rhythm:** one task per weekday. What each planning day gets.
-- **Planning days:** weekdays. The days that get a task automatically.
-- **Plans ahead:** one week (Monday to Friday). How far the weekly planning
-  plans; could be two weeks, or the month.
 - **Estimate pattern:** asked on its own, below.
-- **A day's worth:** about an hour. What a day's picks aim for.
-- **Never picks:** $no-autoschedule, $pending-shipment, blocked status. The
-  exclusions, each checked on the task and its ancestors; name the labels by the
-  names settled above.
-- **Parents:** plan the open sub-tasks, never the parent.
-- **Weekly message:** what got done, what's still open, the week ahead. The
-  halves the weekly planning message carries.
+- **Excluded labels from automatic scheduling:** $no-autoschedule,
+  $pending-shipment. Labels planning never picks, each checked on the task and
+  its project; name the labels by the names settled above.
+
+Which days get planned, how many tasks each gets, how big they should be and
+what the weekly message covers aren't settings: each job's prompt says what
+differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
+with the user.
 
 Estimate pattern gets its own question, one high-level question: how would they
 like to estimate their tasks? Only if they want more detail, ask the estimator
@@ -215,18 +212,13 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan` and the weekly planning;
+How your todo list is planned. Read by `ntm:plan` and the conventions;
 Estimate pattern by the estimator agent.
 
-- Rhythm: <default one task per weekday>
-- Planning days: <default weekdays>
-- Plans ahead: <default one week>
 - Estimate pattern: <how they size their tasks and what to do with that, in
   their words; with the list's point for each estimate when the list needs one>
-- A day's worth: <default about an hour>
-- Never picks: <default no-autoschedule, pending-shipment, blocked status>
-- Parents: <default plan the open sub-tasks, never the parent>
-- Weekly message: <default what got done, what's still open, the week ahead>
+- Excluded labels from automatic scheduling: <default no-autoschedule,
+  pending-shipment>
 
 <anything else about how they want planning done, as written; or nothing>
 

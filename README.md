@@ -95,8 +95,7 @@ it; so can you.
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
   estimate, split).
-- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
-  stale planned dates.
+- `/ntm:fix-todo-list`: clears stale planned dates.
 
 ### Price watch
 
@@ -193,10 +192,9 @@ reads it. Written by `/ntm:price-watch`.
 
 - **The style.** Plain, a theme you describe, or a persona skill you already
   have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels and note titles, the planning rhythm and
-  days, what the weekly message includes, how the shopper judges a deal.
-  `/ntm:configure-todo-list` proposes a default for each and records your
-  answer.
+- **The todo list agreements.** Labels and note titles, the labels planning
+  skips, how the shopper judges a deal. `/ntm:configure-todo-list` proposes a
+  default for each and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called:
   `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in

@@ -235,21 +235,20 @@ project, parent id, completed at, updated at. It also lists every project with
 its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
-- **For planning and reminders:** `fetch open`, which includes blocked tasks so
-  parents and ancestors are fully visible. A task is a parent when an open task
-  in the results names it as parent id. Keep excluded tasks in the results;
-  Never picks says who skips them. Before planning a candidate, `read task` on
-  it and its parent chain to see blockers.
+- **For planning and reminders:** `fetch open`, which includes blocked tasks.
+  Keep excluded tasks in the results; Excluded tasks, below, says who skips
+  them.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
 
-### Never picks
+### Excluded tasks
 
-Never picks in Planning in your settings lists what planners never pick; the
-default is: a task that, itself or through any ancestor (project, or parent,
-parent's parent, and so on), has the $no-autoschedule label, the
-$pending-shipment label or the blocked status.
+Excluded labels from automatic scheduling, in Planning in your settings, lists
+the labels planners never pick; by default $no-autoschedule and
+$pending-shipment. A task is excluded when it carries one of them, itself or
+through its project (see Project labels). A task in the blocked status is always
+excluded too; that isn't a setting.
 
 Planners skip excluded tasks: they never pick or date them. Reminders don't: any
 open task the user has dated gets reminded about, excluded or not.
@@ -282,20 +281,14 @@ the task is still open.
 How each relation affects planning. Planning in your settings can say otherwise;
 these are the defaults.
 
-### Parent and sub-tasks
-
-- **A task with no open sub-tasks** is an ordinary task.
-- **A task with open sub-tasks is a parent.** Plan its open sub-tasks, never the
-  parent.
-
 ### Blocks and blocked by
 
-A task blocked by open linked tasks, directly or through its parent chain, can
-be planned for any day after the planned days of all those blockers. Never the
-same day, but not necessarily the next either: any later day works. A blocker's
-planned day is its planned date. A blocker with no planned date, or a stale one,
-has no planned day, and the tasks it blocks wait. A planner can date a blocker
-and then the task it blocks in the same run.
+A task blocked by open linked tasks can be planned for any day after the planned
+days of all those blockers. Never the same day, but not necessarily the next
+either: any later day works. A blocker's planned day is its planned date. A
+blocker with no planned date, or a stale one, has no planned day, and the tasks
+it blocks wait. A planner can date a blocker and then the task it blocks in the
+same run.
 
 For example, if task `two` is blocked by task `one`, then `two` can be planned
 for Wednesday only if `one` is planned for Tuesday or earlier. If `one` has no

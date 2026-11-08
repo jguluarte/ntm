@@ -9,12 +9,9 @@ description: >-
 
 # ntm:morning-reminder
 
-The morning reminder: what's on the table today, said the way the user reads.
-`ntm:plan` makes today ready and returns the facts; the messenger agent writes
-and sends the message. This skill names the steps, the handoff and what ends the
-run. When the messenger agent isn't available in this session, do what the
-conventions' "Chat, jobs and agents" says: read its file from the installed
-plugin and follow it yourself.
+What's on the table today. `ntm:plan` makes today ready and gives the facts; the
+messenger agent writes and sends the message. If the messenger isn't available
+in this session, follow the conventions' "Chat, jobs and agents".
 
 # 1: Ready check
 
@@ -26,19 +23,17 @@ and nothing more.**
 # 2: The facts
 
 Load `ntm:plan` and run `/ntm:plan --auto day`. It carries stale work to today,
-plans today if it's empty, and returns the facts as lines.
+plans today if it's empty, and returns lines:
 
-Read what comes back:
-
-- `paused`: the user has paused today. STOP and send nothing.
-- `today:` lines, or `today: none`: the facts for the message. Leave `kept:` and
-  `couldn't move:` lines out of what you hand the messenger; they're for the
-  final reply.
-- Any `… FAILED` line: ERROR HANDLING.
+- `paused`: today is paused. STOP and send nothing.
+- `today:` lines, or `today: none`: the facts for the message.
+- `kept:` and `couldn't move:` lines: keep these for the final reply; don't hand
+  them to the messenger.
+- Any `… FAILED` line: go to ERROR HANDLING.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent:
 
 ```
 reminder: morning
@@ -46,23 +41,23 @@ job: Morning reminder
 <the facts>
 ```
 
-It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
-carry the list), a delivery block, or a `… FAILED` line.
+It returns `Sent: <title>`, followed by `List:` lines when the push couldn't
+carry the list; a delivery block; or a `… FAILED` line.
 
 # FINAL REPLY
 
-When the messenger returned a delivery block, the final reply is the title line
-and the message, verbatim, then any `kept:` and `couldn't move:` lines from plan
-as they came, and nothing else. Otherwise, unless reporting an error, end the
-run with one short line saying what happened, such as "Sent the morning
-reminder." or "Paused today; nothing sent.", then any `kept:` and
-`couldn't move:` lines. That line is for the Pushover case; when the messenger
-returned lines after `Sent:` (the list the push couldn't carry), they follow it.
+Start with one of these:
+
+- Delivery block: the title line and the message, verbatim.
+- `Sent:`: one short line, such as "Sent the morning reminder.", then any
+  `List:` lines the messenger returned.
+- Paused today: one short line, such as "Paused today; nothing sent."
+
+Then add any `kept:` and `couldn't move:` lines from plan as they came, and
+nothing else.
 
 # ERROR HANDLING
 
-If step 1 fails, end with what the ready check returned, and nothing more; that
-is what reaches the user. For any later error, including a `… FAILED` line from
-plan or the messenger, never use `/ntm:notify`. End the run with the error
-stated plainly in your final reply; the scheduled task's own completion push
-carries it.
+After step 1, never use `/ntm:notify` for an error, including a `… FAILED` line
+from plan or the messenger. End the run with the error stated plainly in your
+final reply; the scheduled task's own completion push carries it.

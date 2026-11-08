@@ -202,10 +202,11 @@ entry.
   entirely when the user doesn't want Amazon.
 - `sync-price-watch-to-amazon` carries the Amazon alert steps itself, and is
   updated when Amazon changes.
-- With Amazon alerts on, the shopper leaves Amazon to them. With them off
-  (`Amazon interface` off, or no Shopping section), it tries Amazon like any
-  other store, reading the setting itself. When it can't read Amazon's page, it
-  drops Amazon silently: never a problem, a failure or a mention to the user.
+- Unless `Amazon interface` is off (a browser or blank means Amazon alerts are
+  kept), the shopper leaves Amazon to them. With it off, or no Shopping section,
+  it tries Amazon like any other store, reading the setting itself. When it
+  can't read Amazon's page, it drops Amazon silently: never a problem, a failure
+  or a mention to the user.
 
 ## Estimates and review
 

@@ -320,6 +320,22 @@ Not handled by the plugin yet.
 
 ## Deferred and open
 
+### Start here (2026-11-08)
+
+Fable reviewed the plugin on 2026-11-07, after the 0.3 fixes:
+`.claude/reviews/2026-11-07-fable.md`. It covers where things stand, 10 problems
+(each marked for the simplification pass, 0.4 or Justin's decision), a trace of
+the new-user flow, and four 0.4 recommendations. In order:
+
+1. Merge #33 (the names contract test).
+2. The flow-by-flow simplification, with Justin, starting from the review's
+   new-user flow trace.
+3. The 0.4 talks, starting from the review's four questions.
+
+Justin's install is ntm 0.3.2 and a rebuilt ntm-user, and his five jobs are
+re-synced (ready-check OK). Much of the "To build" list below landed on
+2026-11-07 in #17 to #49; check it against main before using it.
+
 ### To build, from the names pass
 
 Each is decided (see its topic above). Justin places each in 0.3 or 0.4; only

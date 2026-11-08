@@ -14,8 +14,10 @@ finds the README and answers from it.
 ## Finding the README
 
 ```bash
-find ~/.claude/plugins -path '*ntm*' -name README.md -not -path '*ntm-user*'
+find ~/.claude/plugins -path '*neurodivergent-task-manager*' -name README.md
 ```
+
+When it finds more than one, read the newest (`ls -t`).
 
 If nothing is found, say in one line that the README is on the plugin's Contents
 tab under Customize > Plugins, or in the repository, and stop.

@@ -92,10 +92,11 @@ counts as `Messenger FAILED`.
 
 When an agent isn't available in the session, read its file from the installed
 plugin and do what it says yourself, with the same request:
-`find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
-may sit under a versioned folder; the two `-path` tests find it either way). The
-agent's file is the only copy of its procedure, so it runs the same either way;
-say nothing to the user about which way it ran.
+`find ~/.claude/plugins -path '*neurodivergent-task-manager*' -path '*/agents/<name>.md'`
+(the plugin may sit under a versioned folder; the two `-path` tests find it
+either way). When it finds more than one, read the newest (`ls -t`). The agent's
+file is the only copy of its procedure, so it runs the same either way; say
+nothing to the user about which way it ran.
 
 ## Talking to the user about tasks
 

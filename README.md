@@ -17,11 +17,11 @@ becomes the easy option.
 
 ## Two plugins
 
-- **ntm** is the behaviour: the skills below, three agents (messenger, shopper,
-  estimator) that own the procedures, and the prompts for the jobs. It holds
-  nothing of yours, so it installs from a marketplace or a zip and updates like
-  any plugin.
-- **ntm-user** is yours. `/ntm:configure` builds it with you, and it holds your
+- **neurodivergent-task-manager** is the behaviour: the skills below, three
+  agents (messenger, shopper, estimator) that own the procedures, and the
+  prompts for the jobs. It holds nothing of yours, so it installs from a
+  marketplace or a zip and updates like any plugin.
+- **ntm** is yours. `/ntm:configure` builds it with you, and it holds your
   unique settings and style: `ntm-user:settings` (every value you agreed to:
   where your todo list is, your label names, how planning and shopping work, how
   reminders reach you, anything you do differently) and `ntm-user:style` (how

@@ -1,5 +1,5 @@
 
-.PHONY: lint lint-absolute-line-length lint-fix
+.PHONY: lint lint-absolute-line-length lint-fix test
 
 LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 
@@ -17,3 +17,6 @@ lint-absolute-line-length:
 lint-fix:
 	prettier --write .
 	markdownlint-cli2 --fix
+
+test:
+	bats tests

@@ -3,9 +3,10 @@
 What's decided and in force on main, by topic. A line marked "decided, to build"
 is decided but main doesn't match it yet; the work is listed under Deferred and
 open. After the topics: what's decided for 0.4, test-drive findings the plugin
-doesn't handle yet, and what's deferred or still open. Names are in `NAMES.md`;
-the working rules are in `CLAUDE.md`. When something changes, edit its line
-here; don't add a dated entry.
+doesn't handle yet, and what's deferred or still open. User-facing names are
+held by `tests/expected/` (see `tests/README.md`); the working rules are in
+`CLAUDE.md`. When something changes, edit its line here; don't add a dated
+entry.
 
 ## Plugin shape
 
@@ -244,8 +245,10 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## The repo
 
-- devbox provides prettier, markdownlint-cli2 and direnv. `make lint` and
-  `make lint-fix` are the way in, locally and in CI.
+- devbox provides prettier, markdownlint-cli2, direnv, bats and jq. `make lint`,
+  `make lint-fix` and `make test` are the way in, locally and in CI.
+- `make test` runs the bats tests in `tests/`: the user-facing name tests,
+  against `tests/expected/`, which only Justin edits.
 - `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
   (145, exported in `.envrc`), on every tracked file except those
   `.gitattributes` marks `skip-absolute-line-length`, and prints the files that

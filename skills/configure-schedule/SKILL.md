@@ -35,7 +35,7 @@ chosen, as `configure` hands them to you.
 | Afternoon reminder | `ntm:afternoon-reminder` | Planning days, 14:30                             |
 | Evening reminder   | `ntm:evening-reminder`   | Planning days, 19:30                             |
 | Weekly planning    | `ntm:weekly-planning`    | Sunday, 22:00                                    |
-| Price watch        | `ntm:price-watch`        | Every day, 07:00, ignore pause                   |
+| Price watch        | `ntm:price-watch`        | Every day, 07:00, paused days too                |
 | Completed          | `ntm:show-completed`     | Weekly, Sunday 20:00; or monthly, the 1st, 20:00 |
 
 - Planning days come from Planning in your settings; weekdays by default.
@@ -67,15 +67,16 @@ Notify section's final reply and error handling are this job's.
 
 The prompt only loads the skill, so a plugin update reaches the jobs without
 touching them. Keep the last line: without it, a job whose plugin didn't load
-ends without a word. Titles and prompt text are the user's: offer the defaults
-and take what they say.
+ends without a word. Titles and prompt text are the user's: offer the defaults,
+take what they say, and lock nothing.
 
 ## Walking the kinds
 
 Go through the kinds in order. For each, ask whether they want it, which days,
-what time and what title; for Completed, also weekly or monthly. Offer the
-defaults and move on when they take them. A title is only a label: notifications
-and tokens still match on the kind's default title.
+what time and what title; for Completed, also weekly or monthly, which sets its
+title, span and cron form. Offer the defaults and move on when they take them. A
+title is only a label: notifications and tokens still match on the kind's
+default title.
 
 Ask once, for all the jobs, which model they run on. A new job inherits the
 model of the chat that creates it, which can be the heaviest one. Suggest a
@@ -89,8 +90,8 @@ want it to say something else. Then take these steps.
 ### 1. Pick the time
 
 Start from the default, or the time they name. Never land on :00 or :30: move
-such a time 1 to 29 minutes earlier (the letters in the title, spaces not
-counted, modulo 29, plus 1), and say so.
+such a time 1 to 29 minutes earlier, rolling back the hour if needed (the
+letters in the job's title, spaces not counted, modulo 29, plus 1), and say so.
 
 Runs that start between 06:00 and 09:00 Pacific time can be delayed. If the
 job's time, converted to Pacific, falls in that window, say so and keep it
@@ -102,28 +103,31 @@ unless they'd rather move it.
 
 - `name`: the title.
 - `prompt`: the prompt.
-- `cron_expression`: see below.
-- `notifications`: `{push: true}`.
+- `cron_expression`: one of the forms below.
+- `notifications`: `{push: true}`. See the note below.
 - `initiation`: `human_request`.
-- No `permission_mode`.
+- Leave `permission_mode` unset.
 
-The cron expression, with the days as they chose (`1-5` weekdays, `0` Sunday,
-`*` every day), and the second form for a monthly Completed job:
+The cron forms, with the days as they chose (`1-5` weekdays, `0` Sunday, `*`
+every day):
 
 ```
+# any days
 CRON_TZ=<timezone> <minute> <hour> * * <days>
+# monthly Completed, the 1st
 CRON_TZ=<timezone> <minute> <hour> 1 * *
 ```
 
-Push carries the run's completion summary. On the `claude-push` channel that's
-the reminder itself. On `pushover` it's a second, shorter push: tell the user,
-and that the scheduled task's settings can turn it off.
+Note: push carries the run's completion summary. On the `claude-push` channel
+that's the reminder itself. On `pushover` it's a second, shorter push: tell the
+user, and that the scheduled task's settings can turn it off.
 
 ### 3. Set the model
 
-`update_trigger` with the new job's id and `model: <the id>`. The user chose it
-in the walk; it isn't this skill's choice. If the id is rejected, say so, leave
-the job on the model it inherited, and carry on.
+`update_trigger` with the `trigger_id` from the create result and
+`model: <model id>`. The user chose it in the walk; it isn't this skill's
+choice. If the model id is rejected, say so, leave the job on the model it
+inherited, and carry on.
 
 ### 4. Report the model and approval
 
@@ -181,8 +185,8 @@ delete and recreate a job to change its prompt.
 ## Changing a time, days or title
 
 `update_trigger` with `trigger_id` and a new `name`, or a new `cron_expression`
-built as in steps 1 and 2, keeping what they didn't ask to change. Confirm the
-new schedule in words, and say if step 1 moved the minute.
+built as in Creating a job, steps 1 and 2, keeping what they didn't ask to
+change. Confirm the new schedule in words, and say if Pick the time moved it.
 
 ## Changing the model
 

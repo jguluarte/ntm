@@ -359,8 +359,10 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
       agents: add the steps or narrow the claim?
     - Does showing a key's last four characters count as printing it? Are keys
       OK in the curl command in run transcripts?
-- An idea, later: `fix-todo-list` could keep the task review log's
-  `## How you work` tidy (fold and rewrite its entries).
+- An idea, later: the estimator takes the task review log over from
+  `ntm:review-todo-list` as its own database and keeps its `## How you work`
+  tidy (folds and rewrites entries); `fix-todo-list` asks the estimator to do
+  that and never edits the log itself.
 - Not discussed yet: `fix-todo-list` fetches the whole closed history every
   week, a cost that grows. Proposed: only recent completions.
 - 0.4 inputs, held for the 0.4 talks:

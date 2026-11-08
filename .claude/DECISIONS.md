@@ -71,9 +71,11 @@ entry.
 - Agents own their procedures. The reminder skills gather facts and hand them
   off.
 - An agent can't start another agent, so the planner is merged into `plan`.
-- The estimator owns estimates, time guesses, explaining the ways to estimate,
-  and review with the task review log. It never plans. Planning and other
-  callers engage it; several callers is right.
+- The estimator owns estimates, time guesses and explaining the ways to
+  estimate. It never plans. Planning and other callers engage it; several
+  callers is right.
+- Review and the task review log belong to `ntm:review-todo-list`; the estimator
+  answers its Estimate requests.
 - The estimator has one `Estimate` request, for one or many tasks, size or time.
 - With no estimate field, the estimate goes in the task description.
 - The messenger never reads settings; the skill that asks hands it the reminder,
@@ -362,7 +364,6 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
       rename
     - the job-run block (ready check, FINAL REPLY, error handling, agent
       fallback) repeats across about 8 skills
-    - the estimator's Review procedure could move into `review-todo-list`
     - `configure-todo-list` re-walks setup when reconfiguring
     - the `ntm-user` package layout isn't spelled out
 - 0.4, open: the generated user plugin bundles the connector (decided above),

@@ -200,9 +200,9 @@ job on the model it inherited, and carry on.
 
 ### Check its connectors
 
-When the result lists the job's connectors (`mcp_connections`), check that the
-backend connector named by Todo list is among them. Keep any job that lacks it
-for the sentence below.
+If the backend uses a connector and the result lists the job's connectors
+(`mcp_connections`), check that the backend connector is among them. Keep any
+job that lacks it for the sentence below.
 
 ### Once all are created
 

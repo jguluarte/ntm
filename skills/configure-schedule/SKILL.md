@@ -88,8 +88,8 @@ ask.
 
 ### Bulk planning
 
-Plans a range of days at once, after closing out the span just past. Weekly is
-the suggested cadence; the user can pick another. Work out with them:
+Plans a range of days at once, after closing out the span just past. Its
+defaults, shown with the schedule (Walking the schedule); the user changes any:
 
 - how often it runs: weekly by default;
 - the range it plans, in words: `week mon-fri` by default, or `next two weeks`,
@@ -135,26 +135,27 @@ If a skill can't be loaded, end the run with this line:
 
 ## Walking the schedule
 
-1. Ask what they want reminding of and when. Offer the table in What a job can
-   run as a starting point; they keep, drop or add jobs.
-2. For each job: the days, the time, the title, and for bulk planning what The
-   prompt's Bulk planning lists. The title is theirs: suggest a plain one
-   ("Morning reminder") and take what they say. For `show-completed`, weekly or
-   monthly, and the span follows.
-3. For bulk planning and `morning-reminder`, ask what should differ from
-   `ntm:plan`'s defaults: the planning days (weekdays), tasks a day (one), task
-   size (about an hour or less). Write only what differs into those two jobs'
-   prompts, as one line after the timezone line, such as
+1. Propose a schedule as one short table, one row per job: job, days, time,
+   title. Start from What a job can run, with a plain title for each ("Morning
+   reminder"), and each time set by the jitter rule: a job never starts on :00
+   or :30, so move such a time a few minutes earlier, a different number for
+   each job. Under the table, one line each:
+    - planning, for bulk planning and `morning-reminder`: weekdays, one task a
+      day, about an hour or less (`ntm:plan`'s defaults);
+    - bulk planning: the defaults in The prompt's Bulk planning;
+    - `show-completed`: weekly, for the last 7 days.
+2. A plain "ok" takes it all. They keep, drop, add or change anything in their
+   own words; the titles are theirs. Revise until they approve. Create nothing
+   before that.
+3. Write only what differs from `ntm:plan`'s defaults into the prompts of bulk
+   planning and `morning-reminder`, as one line after the timezone line, such as
    `Planning: two tasks a day, weekends too.`; when nothing differs, add none.
 4. Ask once, for all the jobs: which model should they run on? A new job
    inherits the model of the chat that creates it, and that can be the heaviest
    one. Suggest a lighter model, such as Opus or Sonnet, then use the one they
    choose; it's the model every job gets.
-5. Apply the jitter rule to each time: a job never starts on :00 or :30. Move
-   such a time a few minutes earlier, a different number for each job.
-6. Show what you plan to set up as a short table, one row per job: job, days,
-   time, title. Say which times the jitter rule moved. They approve or change
-   it; revise until they approve. Create nothing before that.
+
+The table in step 1, for example:
 
 | Job                | Days     | Time  | Title            |
 | ------------------ | -------- | ----- | ---------------- |

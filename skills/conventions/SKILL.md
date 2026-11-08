@@ -159,7 +159,7 @@ carries it too (see Project labels).
   arrived, so the user can't start it.
 - **$has-amazon-alert:** an Amazon price alert is set for this task.
   `ntm:sync-price-watch-to-amazon` sets and clears it.
-- **$amazon-unavailable:** the item isn't sold on Amazon in a condition the task
+- **$amazon-unavailable:** the item isn't sold on Amazon in a condition the user
   allows, so no alert is set.
 - **$price-watch:** usually on a project: its tasks are purchases waiting for a
   good price. The watched tasks are the open tasks carrying this label. Price

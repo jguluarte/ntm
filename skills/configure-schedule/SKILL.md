@@ -119,10 +119,10 @@ Timezone: <Timezone under About you in your settings>.
        reminder: week
        job: plan
        weekly message: <what the message covers>
-   then one `done: <id> <title> <url>` line per Done task from
-   step 2, or `done: none`; one `open: <id> <title> <url>` line per
-   Still open task, with ` (was <date>)` when its date is before
-   today, or `open: none`; and plan's `planned:` lines.
+   then one `done:` line per Done task from step 2, or `done: none`;
+   one `open:` line per Still open task, with `was` its date when
+   that's before today, or `open: none`; each a task line as the
+   messenger's "What you're given" says; and plan's `planned:` lines.
 Final reply: when the messenger returned a delivery block, the title
 and message under its marker line, verbatim; otherwise one short
 line on what happened. Then fix-todo-list's lines and plan's

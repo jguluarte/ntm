@@ -77,14 +77,14 @@ and jobs.
 
 With `--notify`, after the result, ask the messenger agent, with the reminder
 `completed`, the job `show-completed`, a `span:` line (the result's first line)
-and one `done:` line per Done task (`done: <id> <title> <url>`), or
-`done: none`:
+and one `done:` line per Done task, a task line as the messenger agent's "What
+you're given" says, with no estimate; or `done: none`:
 
 ```
 reminder: completed
 job: show-completed
 span: 2026-10-31 to 2026-11-06
-done: ABC-12 Order storage boxes <url>
+done: Order storage boxes ([ABC-12](<url>))
 ```
 
 When the messenger agent isn't available in this session, do what the

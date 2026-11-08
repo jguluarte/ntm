@@ -171,20 +171,17 @@ span, then do what they decide.
 
 Return plain text for whoever called the skill; the job or skill that called it
 decides what reaches the user. The reminders hand these lines to the messenger
-as they are.
+as they are, so each task in them is a task line, as the messenger agent's "What
+you're given" says. The estimate goes only on a task this run picked.
 
-A ` (~<time>)` in a line below appears only on a task this run picked.
-
-- `--auto day`: one `today:` line per task planned for `TODAY`:
-  `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a task carried
-  over, the date it had, then ` (started)` when its status is the started one.
-  When nothing is planned and nothing qualified, the single line `today: none`.
-  A stale task left where it was: `kept: <id> (blocked)`. How many days a task
-  has slipped is the style's to count, from the message history; don't compute
-  it here.
+- `--auto day`: one `today:` line per task planned for `TODAY`, with `was` the
+  date it had on a task carried over, and `started` when its status is the
+  started one. When nothing is planned and nothing qualified, the single line
+  `today: none`. A stale task left where it was: `kept: <id> (blocked)`. How
+  many days a task has slipped is the style's to count, from the message
+  history; don't compute it here.
 - `--auto <range>`: one `planned:` line per task planned in the range, days the
-  user had already dated included, in day order
-  (`planned: <date>: <id> <title> (~<time>) <url>`), or the single line
+  user had already dated included, in day order, or the single line
   `planned: none`.
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
 - In chat: the saved plan, presented as the conventions' "Talking to the user

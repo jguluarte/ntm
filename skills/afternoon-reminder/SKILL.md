@@ -26,11 +26,11 @@ and nothing more.**
 
 Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
-- Tasks listed: the facts are one `open:` line per task,
-  `open: <id> <title> <url>`, then ` (was <date>)` when its planned date is
-  before today, then ` (started)` when today marked it so. Remind about
-  everything listed, whatever its labels or status, even on a paused day: the
-  user dated it.
+- Tasks listed: the facts are one `open:` line per task, a task line as the
+  messenger agent's "What you're given" says, with no estimate, `was` its
+  planned date when that's before today, and `started` when today marked it so.
+  Remind about everything listed, whatever its labels or status, even on a
+  paused day: the user dated it.
 - Nothing listed: run `/ntm:pause --check`. Paused (its line for today ends
   `true`): STOP and send nothing. Otherwise the facts are `open: none`.
 - Any `… FAILED` line: ERROR HANDLING.

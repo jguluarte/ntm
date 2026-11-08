@@ -249,7 +249,7 @@ The text rules in `CLAUDE.md` apply; these add to them.
   linters only when `package-lock.json` changes. `make test` runs bats on
   `tests/`: the user-facing name tests, against `tests/expected/`. bats and jq
   come from devbox, not node. CI runs lint through npm directly, and `make test`
-  through devbox and direnv in `test.yml`.
+  through `devbox run test` in `test.yml`.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.

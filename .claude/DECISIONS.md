@@ -22,7 +22,7 @@ entry.
 - `configure` is setup; `settings` is seeing or changing values after setup.
 - A skill that hands work to an agent does the work itself when the agent isn't
   loaded, by reading `agents/<name>.md` from the installed plugin. Chat ignores
-  agents, and whether they load in scheduled runs is unconfirmed.
+  agents. Scheduled runs load them and can start them.
 - No hidden skills (`user-invocable: false`): as far as the docs say, they work
   only in Claude Code.
 - Skill descriptions never contain angle brackets; the uploader rejects them.
@@ -169,6 +169,9 @@ entry.
   step, ending `Self-test OK` or `Self-test FAILED at <step>`. Once the user
   starts it, it runs without asking; never run it unasked, since it sends a push
   and writes a task.
+- `self-test` also writes and updates a comment, adds and removes a label, and
+  asks the estimator for a time guess, which only reads. With no agent loaded it
+  follows `agents/estimator.md` itself and says so.
 - The price watch job runs daily; pause days (from `pause`) don't skip it.
 
 ## The style
@@ -199,6 +202,11 @@ entry.
   entirely when the user doesn't want Amazon.
 - `sync-price-watch-to-amazon` carries the Amazon alert steps itself, and is
   updated when Amazon changes.
+- Unless `Amazon interface` is off (a browser or blank means Amazon alerts are
+  kept), the shopper leaves Amazon to them. With it off, or no Shopping section,
+  it tries Amazon like any other store, reading the setting itself. When it
+  can't read Amazon's page, it drops Amazon silently: never a problem, a failure
+  or a mention to the user.
 
 ## Estimates and review
 
@@ -294,8 +302,6 @@ generated one, which 0.4 names `ntm`.
 
 Not handled by the plugin yet.
 
-- Whether agents load in scheduled runs is unconfirmed. The read-the-file
-  fallback covers it until then.
 - An imported persona may carry its own history instructions and double-write
   the message history database. Watch real runs.
 - The accept card for `ntm-user.plugin` in chat is untested.
@@ -342,12 +348,6 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
 - A reading-comprehension pass: writers simplify, human comprehension first ("if
   a human can comprehend, so can a model"). Includes the estimator's "Good
   enough reminders complete." Justin decides where this goes.
-- Waiting for Justin, from the 2026-11-07 review:
-    - Should the shopper price Amazon when Amazon alerts are off?
-    - `self-test` claims every backend operation but skips comments, labels and
-      agents: add the steps or narrow the claim?
-    - Does showing a key's last four characters count as printing it? Are keys
-      OK in the curl command in run transcripts?
 - An idea, later: the estimator takes the task review log over from
   `ntm:review-todo-list` as its own database and keeps its `## How you work`
   tidy (folds and rewrites entries); `fix-todo-list` asks the estimator to do

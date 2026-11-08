@@ -160,8 +160,8 @@ this line out when nothing needs syncing.
 Say whether it's a deal today and, for a DEAL, the price, store and product link
 with the DEAL line's conditions; otherwise the best verified price and where, or
 that nothing could be verified, or why it's not actionable. Then its CHECKED
-line and any NOTES that aren't "none". Leave out the per-item form above. Add
-that Amazon isn't checked here.
+line and any NOTES that aren't "none". Leave out the per-item form above. Unless
+Amazon interface under Shopping is off, add that Amazon isn't checked here.
 
 # ERROR HANDLING
 

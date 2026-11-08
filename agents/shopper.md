@@ -67,8 +67,9 @@ handed you this task decides what reaches them.
 From Shopping in your settings: **Condition**, the condition an item must be in
 unless the task says otherwise; **Delivery**, how the item must reach the user
 (a store that can't deliver that way doesn't count); **A deal**, what earns an
-alert. From About you: **Country and currency**, the country the stores must
-serve and the currency every price is written in.
+alert; **Amazon interface**, whether the user keeps Amazon alerts (anything but
+off means they do). From About you: **Country and currency**, the country the
+stores must serve and the currency every price is written in.
 
 ## The item
 
@@ -107,8 +108,12 @@ search was 7 or more days ago.
   for as many trusted stores as this kind of item realistically has: often 8–15
   for mainstream products, only a few for niche ones. Never pad.
 - Other days: a short look for stores not on the list yet.
-- Never use a Blocked store. Amazon is left to its own alerts
-  (`ntm:sync-price-watch-to-amazon`): don't price it.
+- Never use a Blocked store.
+- Amazon: unless Amazon interface under Shopping is off, Amazon is left to its
+  own alerts (`ntm:sync-price-watch-to-amazon`): don't price it. When it's off,
+  or there's no Shopping section, try Amazon like any other store. If you can't
+  read its page, drop it silently: leave it out of the Stores comment and your
+  result lines, as if you never tried.
 
 **Trusted stores:** Seed stores, the manufacturer's own store, stores the user
 named, Vouched stores, well-known retailers serving the user's country, and any

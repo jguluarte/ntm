@@ -77,7 +77,9 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
 - Never the word "voice", in any form.
 - Nothing that ties the plugin to a particular person: no names, no board name,
   no Drag Race words, no ADHD.
-- Keys are never printed. 24-hour time.
+- A key is never shown in full in anything the user reads. Its last four
+  characters are fine, and so is the curl command in `notify`.
+- 24-hour time.
 - Terse, plain, imperative. No AI filler phrasing.
 - Write for the typical flow, not edge cases. State the trust basis and give the
   agent an escape hatch where a step depends on something it can't verify.

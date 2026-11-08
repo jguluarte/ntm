@@ -106,7 +106,7 @@ the tie-breaker.
 
 A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,
 in a job or in chat alike; an agent can't start another agent. The reminder
-skills, `show-completed --notify` and the weekly planning job ask the messenger,
+skills, `show-completed --notify` and the bulk planning job ask the messenger,
 and the price watch the shopper. The estimator is for planning: `ntm:plan` asks
 it how long the tasks it picks take, reviewing follows its Review in the chat,
 and setting up the todo list asks it to explain the ways to estimate. Each says
@@ -320,7 +320,7 @@ message or title to fit the cap it names and call it once more. A second
 
 A job's final reply is one line on what happened. When `ntm:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as
-its first line and the message under it, nothing else. The weekly planning job
+its first line and the message under it, nothing else. The bulk planning job
 adds fix-todo-list's result and its `couldn't move:` lines after the message,
 the morning reminder its `kept:` and `couldn't move:` lines, and the price watch
 its per-item report.

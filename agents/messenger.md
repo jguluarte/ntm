@@ -5,7 +5,7 @@ description: >-
     reminder (morning, afternoon, evening, week or completed), the skill it is
     for and the facts, it writes the message in the user's style with
     ntm-user:style, sends it with ntm:notify, and returns what happened. Asked
-    by the reminder skills and the weekly planning job, in a job or by hand in
+    by the reminder skills and the bulk planning job, in a job or by hand in
     chat.
 
         <example>

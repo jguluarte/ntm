@@ -147,8 +147,8 @@ How reminders talk to you, and the message history. Written by
 ### Jobs
 
 The scheduled tasks that run the skills on your schedule, under titles you
-choose: the reminders, a weekly planning, what you got done, the price watch.
-Built with you by `/ntm:configure-schedule`.
+choose: the reminders, bulk planning (weekly, say), what you got done, the price
+watch. Built with you by `/ntm:configure-schedule`.
 
 ### The messenger
 

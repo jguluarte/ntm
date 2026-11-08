@@ -30,7 +30,7 @@ and whether a price watch project was chosen.
 
 ## What a job can run
 
-There are no fixed jobs. Each job runs one skill, or the weekly planning below,
+There are no fixed jobs. Each job runs one skill, or the bulk planning below,
 and the user decides which they want, when, and what each is called. The times
 here are only suggestions:
 
@@ -39,7 +39,7 @@ here are only suggestions:
 | `morning-reminder`   | What's on the table today           | Weekdays, 09:00                   |
 | `afternoon-reminder` | What's still open today             | Weekdays, 14:30                   |
 | `evening-reminder`   | How the day went                    | Weekdays, 19:30                   |
-| Weekly planning      | Closes out the week, plans the next | Sunday, 22:00                     |
+| Bulk planning        | Plans a range of days at once       | Weekly, Sunday 22:00              |
 | `show-completed`     | What got done over a span, sent     | Sunday 20:00, for the last 7 days |
 | `price-watch`        | Which watched items are a good deal | Every day, 07:00                  |
 
@@ -86,11 +86,12 @@ touching them. Keep the last line: without it, a job whose plugin didn't load
 ends without a word. The prompt is the user's: change it with them when they
 ask.
 
-### Weekly planning
+### Bulk planning
 
-Closes out the week and plans the next, on the user's cadence. Work out with
-them:
+Plans a range of days at once, after closing out the span just past. Weekly is
+the suggested cadence; the user can pick another. Work out with them:
 
+- how often it runs: weekly by default;
 - the range it plans, in words: `week mon-fri` by default, or `next two weeks`,
   `all weekdays this month`;
 - the span it looks back on, as long, ending today: `the last 7 days` for one
@@ -136,11 +137,11 @@ If a skill can't be loaded, end the run with this line:
 
 1. Ask what they want reminding of and when. Offer the table in What a job can
    run as a starting point; they keep, drop or add jobs.
-2. For each job: the days, the time, the title, and for weekly planning what The
-   prompt's Weekly planning lists. The title is theirs: suggest a plain one
+2. For each job: the days, the time, the title, and for bulk planning what The
+   prompt's Bulk planning lists. The title is theirs: suggest a plain one
    ("Morning reminder") and take what they say. For `show-completed`, weekly or
    monthly, and the span follows.
-3. For weekly planning and `morning-reminder`, ask what should differ from
+3. For bulk planning and `morning-reminder`, ask what should differ from
    `ntm:plan`'s defaults: the planning days (weekdays), tasks a day (one), task
    size (about an hour or less). Write only what differs into those two jobs'
    prompts, as one line after the timezone line, such as
@@ -164,7 +165,7 @@ If a skill can't be loaded, end the run with this line:
 | Job                | Days     | Time  | Title            |
 | ------------------ | -------- | ----- | ---------------- |
 | `morning-reminder` | Weekdays | 08:44 | Morning reminder |
-| Weekly planning    | Sunday   | 21:50 | Week ahead       |
+| Bulk planning      | Sunday   | 21:50 | Week ahead       |
 
 Then, for each job:
 
@@ -216,7 +217,7 @@ When jobs exist, list them and ask what to change, instead of walking the
 schedule again. `list_triggers`, recurring only. Tell the user's jobs by the
 skill their stored prompt loads (`derived_state.prompt`, when the
 `list_triggers` entry carries it; when it doesn't, ask the user which job it
-is), never by title: weekly planning is the one that runs `ntm:plan`. Show each
+is), never by title: bulk planning is the one that runs `ntm:plan`. Show each
 as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron
 expression), on or off, and the last run's status in a word (succeeded, failed)
 and its time. Omit `trigger_id`s unless asked, and never show an app token. Then

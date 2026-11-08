@@ -42,10 +42,12 @@ skills work around them:
 ## Todo list
 
 Name the todo list (List name in Todo list), what id it needs (List id), and
-which automations the backend runs on parent/sub-task closing, if any. If the
+whether the backend can close a parent once its sub-tasks are all done. If the
 backend has no unit above projects, the todo list is the whole account (List
 name is what the backend calls it, List id blank). `(ABC-12)` in the conventions
 stands for the backend's own task id, whatever its shape.
+
+When the backend can, ask the user whether they want parents closed that way.
 
 ## Status classes
 
@@ -142,7 +144,7 @@ optional project, for a database kept in a project.
 If the backend has documents, use them, found by title. If it doesn't, keep each
 database in the description of a task titled with the database's title, labeled
 with the $no-autoschedule label (its real name from Labels) and left open in a
-plannable status. `ntm:fix-todo-list` never touches it (no sub-tasks, no date)
+plannable status. `ntm:fix-todo-list` never touches it (it has no planned date)
 and planners skip it for its label. `read database` is then a title search that
 reads that task's description; `write database` replaces the description,
 creating the task when there is none. A database kept in a project is a task

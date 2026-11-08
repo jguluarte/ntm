@@ -166,8 +166,8 @@ soon as they approve it.
 ### 2. Order of operations
 
 Read the unreviewed tasks in this review, plus any reviewed ones the user named,
-and their parent chains, with the guide's `read task`. For a blocked task with
-no blocked-by link, check its comments (`read comments`) for what it waits on.
+with the guide's `read task`. For a blocked task with no blocked-by link, check
+its comments (`read comments`) for what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside this review:

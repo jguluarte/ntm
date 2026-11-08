@@ -88,10 +88,10 @@ and report it as a failed check.
 Use `/ntm:notify --from price-watch` for a short overview of the DEAL results.
 Title: "Good price: <item> <price>", or "Price watch: N deals" for more than
 one. Message: one short line per item with the item, price and store, adding the
-condition when it isn't the one from Condition under Shopping, and
-"(membership)" or "(coupon)" when the price needs one, then "Details in the
-run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing
-was sent yet; FINAL REPLY says what the final reply carries.
+condition when it isn't new, and "(membership)" or "(coupon)" when the price
+needs one, then "Details in the run." Keep it brief. If `/ntm:notify` returns
+`NOTIFY VIA FINAL REPLY`, nothing was sent yet; FINAL REPLY says what the final
+reply carries.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the
 job's completion push carries: One section per item, starting with a few words

@@ -28,7 +28,7 @@ list each goes by the real name its key maps to.
 - **$has-amazon-alert:** an Amazon alert is set for this item. While it's on a
   closed task, the alert is still live and needs removing.
 - **$amazon-unavailable:** the item isn't sold on Amazon in the condition the
-  watch wants, so no alert is set.
+  task allows, so no alert is set.
 
 An open watched item **needs an alert** when it has neither label.
 
@@ -58,9 +58,8 @@ by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
 your own browser, then run this again.
 
 Amazon's store for this user is the one serving the country in Country and
-currency under About you in your settings; prices are in that currency. The
-condition an item must be in is Condition under Shopping, unless the task says
-otherwise.
+currency under About you in your settings; prices are in that currency. An item
+must be new, unless the task's description says another condition is fine.
 
 ## 2: The work
 
@@ -114,8 +113,8 @@ For each open item that needs an alert:
    number. Open the best match and read the title, model number, variant, ASIN,
    current price and who sells it.
 3. **Make sure it's the product.** It's a match only when the model number and
-   variant match the task exactly and it's sold in the condition the watch
-   wants. If anything is uncertain (no model number on the page, several close
+   variant match the task exactly and it's sold in a condition the task allows.
+   If anything is uncertain (no model number on the page, several close
    variants, a bundle, an unfamiliar third-party seller only), ask the user:
    show the candidates' titles, prices and ASINs, plus "Not on Amazon". Never
    set an alert on a guess.

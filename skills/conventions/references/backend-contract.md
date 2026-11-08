@@ -202,7 +202,7 @@ message history database's first content is its frontmatter, which holds its
 Say how a write reports success, so the conventions' retry rule (retry once,
 then report) can be applied.
 
-## Walking it with the user
+## Setting something up with the user
 
 How `ntm:configure-todo-list` writes the description with the user. Walk this
 contract with them, heading by heading, in its order. For each operation, name

@@ -65,8 +65,9 @@ below). If it isn't there, ask them to connect it on the Connectors tab and come
 back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
-When they picked a backend other than Linear, read this skill's
-`references/own-backend.md` now and walk it with them before Statuses.
+For their own backend, follow this skill's `references/own-backend.md` before
+Statuses; Statuses, Labels and Databases then use the setup operations as they
+described them.
 
 ## Statuses
 
@@ -74,9 +75,9 @@ Nothing to store: each status's class is read from the backend at run time, as
 the conventions' Status classes says. `list statuses` on the todo list and show
 in one short list which class each status falls in (the guide says how). Blocked
 is the status named Blocked. For their own backend, the mapping they gave goes
-in its guide's Status classes paragraph (see this skill's
-`references/own-backend.md`). If there's no blocked status, say the
-$pending-shipment label and blocked-by links cover the same ground.
+in the Status classes paragraph under Todo list (see Returning the sections). If
+there's no blocked status, say the $pending-shipment label and blocked-by links
+cover the same ground.
 
 ## Labels
 
@@ -180,7 +181,7 @@ react.
 - List id: <blank if the backend needs none>
 
 <for their own backend: how each operation in the contract is done, in their
-words>
+words, one short paragraph per contract heading>
 
 ## Labels
 

@@ -13,8 +13,8 @@ fix: $(INSTALLED)
 	@npm run fix
 
 # User-facing names match what Justin expects (tests/expected/). Node's
-# own test runner, so nothing to install; spec output, because CI isn't
-# a terminal and would get TAP otherwise.
+# own test runner, so nothing to install. The reporter flag keeps the
+# output readable in CI, where Node otherwise prints its machine format.
 test:
 	@node --test --test-reporter=spec 'tests/*.test.mjs'
 

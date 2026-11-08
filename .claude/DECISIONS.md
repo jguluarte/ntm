@@ -246,9 +246,10 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 - devbox provides Node, and direnv turns it on in the repo. The Makefile is the
   way in: `make lint` and `make fix` run the npm scripts, and install the
-  linters only when `package-lock.json` changes. CI runs npm directly.
-  `make test` runs Node's built-in test runner on `tests/`: the user-facing name
-  tests, against `tests/expected/`. CI runs it in `test.yml`.
+  linters only when `package-lock.json` changes. `make test` runs Node's
+  built-in test runner on `tests/`: the user-facing name tests, against
+  `tests/expected/`. CI runs lint through npm directly, and `make test` in
+  `test.yml`.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.

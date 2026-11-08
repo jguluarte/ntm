@@ -1,18 +1,19 @@
-# Lint and autofix for the plugin's markdown and JSON (see package.json).
-# devbox provides node through direnv; npm installs the linters from
-# package-lock.json, again only when the lock file changes.
 
-INSTALLED := node_modules/.package-lock.json
+.PHONY: lint lint-absolute-line-length lint-fix
 
-.PHONY: lint fix node_modules
+LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 
-lint: $(INSTALLED)
-	@npm run lint
+TOO_LONG = length > $(ABSOLUTE_MAXIMUM_LINE_LENGTH)
+REPORT = { print FILENAME; bad = 1; nextfile } END { exit bad }
 
-fix: $(INSTALLED)
-	@npm run fix
+lint:
+	prettier --check .
+	markdownlint-cli2
+	$(MAKE) lint-absolute-line-length
 
-node_modules: $(INSTALLED)
+lint-absolute-line-length:
+	@awk '$(TOO_LONG) $(REPORT)' $(LINT_FILES)
 
-$(INSTALLED): package-lock.json
-	npm ci
+lint-fix:
+	prettier --write .
+	markdownlint-cli2 --fix

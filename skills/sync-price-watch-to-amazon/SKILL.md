@@ -53,7 +53,9 @@ Amazon interface is off and they named none, end with
 `Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.`
 Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow
 it. If that browser can't be reached, end with
-`Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
+`Sync-price-watch-to-amazon FAILED: needs a browser.` followed on the same line
+by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
+your own browser, then run this again.
 
 Amazon's store for this user is the one serving the country in Country and
 currency under About you in your settings; prices are in that currency. The

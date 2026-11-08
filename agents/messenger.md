@@ -71,8 +71,8 @@ For example:
 ```
 reminder: morning
 job: morning-reminder
-today: ABC-12 Order storage boxes (~10 min) <url>
-today: ABC-9 Clear the garage shelf (~1 h) <url> (was 2026-11-03)
+today: Order storage boxes (<url>ABC-12</url>, ~10 min)
+today: Clear the garage shelf (<url>ABC-9</url>, ~1 h) (was 2026-11-03)
 ```
 
 When a required input is missing, send nothing and return

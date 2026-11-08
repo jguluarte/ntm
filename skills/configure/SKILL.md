@@ -47,8 +47,8 @@ Say two lines first:
 This skill owns About you. Fill both lines from what you already know about the
 user and the session, and ask them only to confirm or correct:
 
-- Timezone: an IANA name (`America/Chicago`). Jobs run in it. If you can't tell,
-  ask for their city.
+- Timezone: an IANA name (`America/Los_Angeles`). Jobs run in it. If you can't
+  tell, ask for their city.
 - Country and currency, for price watch (`US, USD`).
 
 Write them as the About you section, one line each: `- Timezone:`,

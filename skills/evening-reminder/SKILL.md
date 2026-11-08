@@ -27,10 +27,10 @@ Load `ntm:show-completed` and run
 `/ntm:show-completed today, and what's still open, planned today or earlier`.
 
 - Nothing done and nothing still open: assume a day off. STOP and send nothing.
-- Otherwise the facts are one `done:` line per Done task
-  (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per Still
-  open task (`open: <id> <title> <url>`, then ` (was <date>)` when its planned
-  date is before today), or `open: none`.
+- Otherwise the facts are one `done:` line per Done task, or `done: none`; then
+  one `open:` line per Still open task, with `was` its planned date when that's
+  before today, or `open: none`. Each task is a task line, as the messenger
+  agent's "What you're given" says, with no estimate.
 - `Show-completed FAILED`: ERROR HANDLING.
 
 # 3: The message

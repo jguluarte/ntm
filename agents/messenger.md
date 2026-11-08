@@ -58,6 +58,13 @@ The skill that asks hands over one input per line. Required:
 - `weekly message:` (week): what the weekly message covers, from the job's
   prompt, or `ntm:plan`'s default.
 
+Each task in the facts is a task line: its key, then the title, then the id
+linked to the task's url, `<title> ([<id>](<url>), ~<time>)`, with `, ~<time>`
+only when there's an estimate. Then ` (was <date>)` when it was carried over
+from that date, and ` (started)` when work on it has begun. A `planned:` line
+puts its day between the key and the task: `planned: <date>: <title> (…)`.
+Skills that hand you facts write them this way.
+
 Optional:
 
 - `wording:` a Deviation in the user's settings about how tasks are worded or
@@ -71,8 +78,8 @@ For example:
 ```
 reminder: morning
 job: morning-reminder
-today: Order storage boxes (<url>ABC-12</url>, ~10 min)
-today: Clear the garage shelf (<url>ABC-9</url>, ~1 h) (was 2026-11-03)
+today: Order storage boxes ([ABC-12](<url>), ~10 min)
+today: Clear the garage shelf ([ABC-9](<url>), ~1 h) (was 2026-11-03)
 ```
 
 When a required input is missing, send nothing and return

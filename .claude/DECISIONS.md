@@ -211,8 +211,7 @@ entry.
 - One key, `Estimate pattern`, says how the user sizes things and what to do
   with it, any mapping included. There's no `Estimate help`: what the user has
   been told belongs in the agent's memory, not in settings.
-- "Estimate" is the plain word; no "sizing", no "groomed size".
-- "Breaking up a task" is the plain phrase; no "splits" as a term.
+- The plain words are "estimate" and "breaking up a task".
 - Review runs in chat only, never in a job.
 
 ## Words

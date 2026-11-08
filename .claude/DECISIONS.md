@@ -244,9 +244,14 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## The repo
 
-- devbox provides Node, and direnv turns it on in the repo. The Makefile is the
-  way in: `make lint` and `make fix` run the npm scripts, and install the
-  linters only when `package-lock.json` changes. CI runs npm directly.
+- devbox is the package manager: it provides prettier and markdownlint-cli2, and
+  direnv turns them on in the repo. No node, npm or package.json. The Makefile
+  is the way in: `make lint` and `make lint-fix`. CI loads the same environment
+  through devbox and direnv.
+- `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
+  (145, exported in `.envrc`), on every tracked file except those
+  `.gitattributes` marks `skip-absolute-line-length`, and prints the files that
+  break it.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.

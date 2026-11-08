@@ -4,7 +4,7 @@
     "shell": {
         "scripts": {
             "lint": "make lint",
-            "fix": "make fix"
+            "lint-fix": "make lint-fix"
         }
     }
 }

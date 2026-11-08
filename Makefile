@@ -1,18 +1,19 @@
-# Lint and autofix for the plugin's markdown and JSON. devbox provides
-# prettier and markdownlint-cli2 through direnv.
 
-# The hard cap: no line over ABSOLUTE_MAXIMUM_LINE_LENGTH (from .envrc),
-# even ones lint exempts (tables, code spans, URLs). It skips files
-# .gitattributes marks skip-absolute-line-length.
-LINE_CAP_FILES := git ls-files -z -- ':(attr:!skip-absolute-line-length)'
+.PHONY: lint lint-absolute-line-length lint-fix
 
-.PHONY: lint fix
+LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
+
+TOO_LONG = length > $(ABSOLUTE_MAXIMUM_LINE_LENGTH)
+REPORT = { print FILENAME; bad = 1; nextfile } END { exit bad }
 
 lint:
-	@prettier --check .
-	@markdownlint-cli2
-	@$(LINE_CAP_FILES) | xargs -0 bin/validate_absolute_line_length
+	prettier --check .
+	markdownlint-cli2
+	$(MAKE) lint-absolute-line-length
 
-fix:
-	@prettier --write .
-	@markdownlint-cli2 --fix
+lint-absolute-line-length:
+	@awk '$(TOO_LONG) $(REPORT)' $(LINT_FILES)
+
+lint-fix:
+	prettier --write .
+	markdownlint-cli2 --fix

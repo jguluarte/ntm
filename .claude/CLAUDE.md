@@ -59,8 +59,8 @@ and says go.
 `tools/reflow.py` stays outside the repo. Tables and unbreakable text (a URL, a
 code span) are exempt. Every line has a hard cap of 145 columns, tables and
 unbreakable text included, checked by `make lint`. A long `description:` is a
-`>-` folded block. Run `make fix`, then `make lint`, which must pass (devbox
-provides the linters through direnv); CI runs the same lint on every PR.
+`>-` folded block. Run `make lint-fix`, then `make lint`, which must pass
+(devbox provides the linters through direnv); CI runs the same lint on every PR.
 Prettier wraps prose; markdownlint holds fenced code blocks to 80 columns, and
 tables are exempt.
 

@@ -21,8 +21,8 @@ Work only there. Never touch another worktree or the main checkout.
 
 ## Lint
 
-In your worktree, run `direnv allow` once. Before each commit, run `make fix`,
-then `make lint`, which must pass.
+In your worktree, run `direnv allow` once. Before each commit, run
+`make lint-fix`, then `make lint`, which must pass.
 
 ## Shell and git
 

@@ -5,10 +5,9 @@
 INSTALLED := node_modules/.package-lock.json
 
 # The hard cap: no line over ABSOLUTE_MAXIMUM_LINE_LENGTH (from .envrc),
-# even ones lint exempts (tables, code spans, URLs). The files it skips
-# are listed in .ignore_absolute_line_length.
-LINE_CAP_IGNORED := $(shell cat .ignore_absolute_line_length)
-LINE_CAP_FILES := git ls-files -z -- $(LINE_CAP_IGNORED:%=':!:%')
+# even ones lint exempts (tables, code spans, URLs). It skips files
+# .gitattributes marks skip-absolute-line-length.
+LINE_CAP_FILES := git ls-files -z -- ':(attr:!skip-absolute-line-length)'
 
 .PHONY: lint fix node_modules
 

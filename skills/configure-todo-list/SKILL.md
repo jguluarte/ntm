@@ -60,8 +60,9 @@ Read the chosen backend's guide (`references/linear.md` under `ntm:conventions`)
 now, since the settings don't name it yet, and follow its Setup section in
 order; a part the guide ties to a step below waits for that step. Before its
 first call, confirm the connector: ToolSearch for the tool the guide's `ping`
-names (for their own backend, the tool they name). If it isn't there, ask them
-to connect it on the Connectors tab and come back, and stop with
+names (for their own backend, the tool they name for `ping`, during the walk
+below). If it isn't there, ask them to connect it on the Connectors tab and come
+back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
 When they picked a backend other than Linear, read this skill's

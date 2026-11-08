@@ -88,11 +88,11 @@ Read the task with `read task` and its comments with `read comments`, and note:
 ## The stores note
 
 The price watch stores note, titled as Notes under Todo list in your settings
-says, kept in the price watch project (`read note`, with that project). It
-applies to every item and has three lists under the headings `## Seed`,
-`## Vouched` and `## Blocked`, each store with its domain; Seed stores are
-starting points by category. If it comes back missing, go on with empty lists
-and say so under Problems; don't create it.
+says, kept in the project that carries the $price-watch label (`read note`, with
+that project). It applies to every item and has three lists under the headings
+`## Seed`, `## Vouched` and `## Blocked`, each store with its domain; Seed
+stores are starting points by category. If it comes back missing, go on with
+empty lists and say so under Problems; don't create it.
 
 ## The stores
 

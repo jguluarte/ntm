@@ -90,12 +90,12 @@ runs it; so can you.
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
   estimate, split).
-- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
-  stale planned dates.
+- `/ntm:fix-todo-list`: clears stale planned dates.
 
 ### Price watch
 
-On when your settings name a price watch project.
+On when a project carries the $price-watch label and the Price watch job is
+scheduled.
 
 - `/ntm:price-watch`: the daily price check on the tasks in that project.
 - `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
@@ -183,19 +183,13 @@ the estimator, through `/ntm:review-todo-list`.
 Stores you've vouched for or blocked in replies to a price alert; the shopper
 reads it. Written by `/ntm:price-watch`.
 
-### Amazon alert steps note
-
-How to set an alert on Amazon, learned once. Written by
-`/ntm:sync-price-watch-to-amazon`.
-
 ## What you can customize
 
 - **The style.** Plain, a theme you describe, or a persona skill you already
   have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels and note titles, the planning rhythm and
-  days, what the weekly message includes, how the shopper judges a deal.
-  `/ntm:configure-todo-list` proposes a default for each and records your
-  answer.
+- **The todo list agreements.** Labels and note titles, the labels planning
+  skips, how the shopper judges a deal. `/ntm:configure-todo-list` proposes a
+  default for each and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called:
   `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in

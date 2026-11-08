@@ -4,7 +4,8 @@
     "shell": {
         "scripts": {
             "lint": "make lint",
-            "fix": "make fix"
+            "fix": "make fix",
+            "test": "make test"
         }
     }
 }

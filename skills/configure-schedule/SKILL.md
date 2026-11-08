@@ -181,8 +181,7 @@ else, change it with them; it's theirs.
   three fields.
 - `notifications`: `{push: true}`. Push carries the run's completion summary,
   which is the reminder itself on the `claude-push` channel. On the `pushover`
-  channel it's a second, shorter push; say so, and that the scheduled task's
-  settings can turn it off.
+  channel it's a second, shorter push.
 - `initiation`: `human_request`.
 - Leave `permission_mode` unset.
 
@@ -198,22 +197,27 @@ CRON_TZ=Europe/Berlin 44 8 * * 1-5
 request from the walk, not the skill's. If the id is rejected, say so, leave the
 job on the model it inherited, and carry on.
 
-### Say how it runs
-
-Tell the user, in one sentence, which model the job runs on and which approval
-setting it got, and that automatic approval can be turned on in the scheduled
-task's settings if the organization allows it. The setting is
-`derived_state.permission_mode` in the result: `auto` means runs go ahead on
-their own; absent means a run stops when an action needs approval, and nobody is
-there to approve a scheduled run.
-
 ### Check its connectors
 
 When the result lists the job's connectors (`mcp_connections`), check that the
-backend connector named by Todo list is among them; if it isn't, say so: attach
-the connector to this session and create the job again, or every run will fail
-its ready check. Either way, the proof is a run, once `ntm-user` is installed:
-offer `fire_trigger` (Running a job now) then, and read its ready check.
+backend connector named by Todo list is among them. Keep any job that lacks it
+for the sentence below.
+
+### Once all are created
+
+Tell the user in one sentence, for all the jobs: the model they run on; whether
+runs go ahead on their own or stop when an action needs approval, and that
+automatic approval can be turned on in a scheduled task's settings if the
+organization allows it; on the `pushover` channel, that each run also sends a
+second, shorter push its settings can turn off. The approval setting is
+`derived_state.permission_mode` in each result: `auto` means runs go ahead on
+their own; absent means a run stops when an action needs approval, and nobody is
+there to approve a scheduled run.
+
+Say more only for a job that lacks the backend connector: attach the connector
+to this session and create the job again, or every run will fail its ready
+check. Either way, the proof is a run, once `ntm-user` is installed: offer
+`fire_trigger` (Running a job now) then, and read its ready check.
 
 ## Connectors
 

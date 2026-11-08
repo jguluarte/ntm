@@ -66,9 +66,10 @@ names. If it isn't there, ask them to connect it on the Connectors tab and come
 back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
-For their own backend, walk the contract with them as its Setting something up
-with the user section says, before Statuses; Statuses, Labels and Databases then
-use the setup operations as they described them.
+For their own backend, go through the contract with them before Statuses. Its
+section Setting something up with the user says how. After that, Statuses,
+Labels and Databases do their steps with the tools they named for the setup
+operations.
 
 ## Statuses
 

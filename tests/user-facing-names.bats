@@ -1,10 +1,11 @@
 #!/usr/bin/env bats
 # The user-facing names are a contract: the skills, the agents, and the
-# plugin.json fields in tests/expected/plugin.json. tests/expected/ holds it.
-# A test fails when the plugin no longer matches the contract, to tell
+# plugin.json settings in tests/expected/plugin.json. tests/expected/ holds
+# it. A test fails when the plugin no longer matches the contract, to tell
 # whoever changed it that the change needs their user's explicit involvement.
 
-# Paths are from the repo root.
+# bats sets BATS_TEST_DIRNAME to this file's folder. Paths are from the repo
+# root.
 setup() {
     cd "$BATS_TEST_DIRNAME/.."
 }
@@ -31,20 +32,15 @@ not_in() {
     grep -vxF -f "$1"
 }
 
-# The value of field $1 in the JSON file $2, as JSON. A missing field is null.
-field() {
-    jq --arg name "$1" '.[$name]' "$2"
+# Each plugin.json setting the contract fixes, one "<key> <value>" per line.
+# Values are JSON, so a string keeps its quotes.
+expected_plugin_settings() {
+    jq -r 'to_entries[] | "\(.key) \(.value|tojson)"' tests/expected/plugin.json
 }
 
-# Each field in the contract's plugin.json whose value in the plugin's
-# plugin.json differs, one per line.
-changed_plugin_fields() {
-    local name expected actual
-    for name in $(jq -r 'keys[]' tests/expected/plugin.json); do
-        expected=$(field "$name" tests/expected/plugin.json)
-        actual=$(field "$name" .claude-plugin/plugin.json)
-        [ "$actual" = "$expected" ] || echo "$name: was $expected, now $actual"
-    done
+# The plugin's value for setting $1, as JSON. A missing setting is null.
+get_plugin_setting() {
+    jq -c --arg key "$1" '.[$key]' .claude-plugin/plugin.json
 }
 
 # Reads lines from the pipe. Passes when there are none. Otherwise prints
@@ -52,7 +48,9 @@ changed_plugin_fields() {
 expect_none() {
     local found
     found=$(cat)
+
     [ -z "$found" ] && return 0
+
     echo "$1:"
     echo "$found"
     contract_changed
@@ -60,9 +58,9 @@ expect_none() {
 
 # Says what a contract change needs, and fails.
 contract_changed() {
-    echo "That changes the user-facing names contract in tests/expected/,"
-    echo "which needs your user's explicit involvement. Put it back, or stop"
-    echo "and get their approval. Don't edit tests/expected/ yourself."
+    echo "ERROR: agent changed a contract without user consent."
+    echo "Put it back, or get your user's explicit approval for the change."
+    echo "Don't edit tests/expected/ yourself."
     return 1
 }
 
@@ -82,6 +80,11 @@ contract_changed() {
     contract_names agents | not_in <(find_agents) | expect_none "Agents removed"
 }
 
-@test "names contract: no plugin.json field changed" {
-    changed_plugin_fields | expect_none "plugin.json fields changed"
+@test "names contract: no plugin.json setting changed" {
+    local key expected actual
+
+    while read -r key expected; do
+        actual=$(get_plugin_setting "$key")
+        [ "$actual" = "$expected" ] || echo "$key: was $expected, now $actual"
+    done < <(expected_plugin_settings) | expect_none "plugin.json changed"
 }

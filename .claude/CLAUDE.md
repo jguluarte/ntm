@@ -1,7 +1,6 @@
 # ntm: working rules
 
-Read `.claude/NAMES.md` for every name and whether Justin approved it, and
-`.claude/DECISIONS.md` for what's decided and what's next.
+Read `.claude/DECISIONS.md` for what's decided and what's next.
 
 ## The repo
 
@@ -17,14 +16,13 @@ and says go.
 
 - Nothing lands unless he asked for it or approved it. Don't run ahead.
 - Decisions go to him one at a time. User-facing names are his. A rename lands
-  only after his explicit yes; silence is not approval. His yes goes in
-  `NAMES.md`. Plugin-internal names (status, delivery and result lines) don't
-  need it.
-- `make test` holds the skill and agent names (folders, files and their `name:`
-  lines) and plugin.json's name and displayName to `tests/expected/`, which
-  follows `NAMES.md`, and fails on any difference. Only Justin edits
-  `tests/expected/`; a hook in his own Claude Code settings blocks every Claude
-  session from it. A failing name test means: put the name back, or ask him.
+  only after his explicit yes; silence is not approval. Plugin-internal names
+  (status, delivery and result lines) don't need it.
+- `make test` holds the skill and agent names and plugin.json's name and
+  displayName to `tests/expected/`, and fails on any difference. Only Justin
+  edits `tests/expected/`; a hook in his own Claude Code settings blocks every
+  Claude session from it. A failing name test means: put the name back, or ask
+  him.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 

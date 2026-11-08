@@ -3,9 +3,10 @@
 What's decided and in force on main, by topic. A line marked "decided, to build"
 is decided but main doesn't match it yet; the work is listed under Deferred and
 open. After the topics: what's decided for 0.4, test-drive findings the plugin
-doesn't handle yet, and what's deferred or still open. Names are in `NAMES.md`;
-the working rules are in `CLAUDE.md`. When something changes, edit its line
-here; don't add a dated entry.
+doesn't handle yet, and what's deferred or still open. User-facing names are
+held by `tests/expected/` (see `tests/README.md`); the working rules are in
+`CLAUDE.md`. When something changes, edit its line here; don't add a dated
+entry.
 
 ## Plugin shape
 

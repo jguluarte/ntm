@@ -76,7 +76,8 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
   only the label names the user configures.
 - Never the word "voice", in any form.
 - Nothing that ties the plugin to a particular person: no names, no board name,
-  no Drag Race words, no ADHD.
+  no Drag Race words, no ADHD. The exception is the setup intro's origin story,
+  which names its creator as an autistic ADHD person, never by name.
 - A key is never shown in full in anything the user reads. Its last four
   characters are fine, and so is the curl command in `notify`.
 - 24-hour time.

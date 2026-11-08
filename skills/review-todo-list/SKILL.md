@@ -174,12 +174,13 @@ guide's `read database`. When it's missing, `write database` creates it with the
 two sections below. Save it with `write database` whenever you change it,
 leaving the rest as it was.
 
-**`## How you work`:** short bullets about the user, written to them (it's
-theirs too), on whatever would help you do better with them next time: how they
-like tasks written and split, how they like sessions to go, whether they're new
-to estimating, and what they keep correcting. Learn from what they change, push
-back on or say. When something would apply again, fold it in: rewrite and merge
-bullets rather than appending, and keep the section to about 20 bullets.
+**`## How you work`:** how the user estimates and breaks up tasks, learned so
+that review can come to propose most of their list the way they would. Short
+bullets, written to them (it's theirs too), grouped by topic: how they estimate,
+how they like tasks written and broken up, how they like sessions to go, whether
+they're new to estimating, and what they keep correcting. Learn from what they
+change, push back on or say. Keep it tidy, not short: fold related bullets
+together and rewrite rather than append, and let it run as long as it needs.
 
 **`## Estimates`:** a `jsonl` code block, newest first, one object per approved
 estimate:

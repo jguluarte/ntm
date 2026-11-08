@@ -7,7 +7,7 @@ description: >-
     "review the kitchen project", "estimate the garage work").
 ---
 
-# ntm:review-todo-list
+# neurodivergent-task-manager:review-todo-list
 
 ## Usage
 
@@ -20,8 +20,9 @@ Without it, the review proposes one.
 
 ## Before you start
 
-Load `ntm:conventions` first: it holds your settings and the list's rules, and
-names the guide that carries out each list operation below.
+Load `neurodivergent-task-manager:conventions` first: it holds your settings and
+the list's rules, and names the guide that carries out each list operation
+below.
 
 ## Why review exists
 
@@ -173,11 +174,11 @@ user just wants to tease things apart so they can do it in smaller pieces.
 
 ## The task review log
 
-The `Task review log` database (see Databases in `ntm:conventions`): it's how
-reviewing learns to work better with the user over time. Read it with the
-guide's `read database`. When it's missing, `write database` creates it with the
-two sections below. Save it with `write database` whenever you change it,
-leaving the rest as it was.
+The `Task review log` database (see Databases in
+`neurodivergent-task-manager:conventions`): it's how reviewing learns to work
+better with the user over time. Read it with the guide's `read database`. When
+it's missing, `write database` creates it with the two sections below. Save it
+with `write database` whenever you change it, leaving the rest as it was.
 
 **`## How you work`:** how the user estimates and breaks up tasks, learned so
 that review can come to propose most of their list the way they would. Short

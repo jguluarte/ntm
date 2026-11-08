@@ -8,7 +8,7 @@ description: >-
     when the price watch says a sync is due.
 ---
 
-# ntm:sync-price-watch-to-amazon
+# neurodivergent-task-manager:sync-price-watch-to-amazon
 
 This skill needs a browser Claude can drive: Amazon interface under Shopping in
 your settings names it. It can be interactive: when you're not sure you have the
@@ -44,8 +44,9 @@ An open watched item **needs an alert** when it has neither label.
 
 ## 1: The rules and the browser
 
-Load `ntm:conventions` (the list's rules and your settings), then run
-`/ntm:ready-check`. If it fails, stop and give the user its result line.
+Load `neurodivergent-task-manager:conventions` (the list's rules and your
+settings), then run `/ntm:ready-check`. If it fails, stop and give the user its
+result line.
 
 Amazon alerts are on when Amazon interface under Shopping in your settings names
 a browser or is blank; they're off when the line is missing or says off, or
@@ -66,10 +67,11 @@ must be new, unless the task or Shopping in your settings says otherwise.
 ## 2: The work
 
 1. **Open items:** fetch every open task the way "Every open task" in
-   `ntm:conventions` says, and keep the ones with the $price-watch label,
-   counting labels inherited from their project (the conventions' "Project
-   labels"). Split them: those with neither label need an alert; those with
-   $has-amazon-alert are set; those with $amazon-unavailable need nothing.
+   `neurodivergent-task-manager:conventions` says, and keep the ones with the
+   $price-watch label, counting labels inherited from their project (the
+   conventions' "Project labels"). Split them: those with neither label need an
+   alert; those with $has-amazon-alert are set; those with $amazon-unavailable
+   need nothing.
 2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
    canceled and duplicate included, with the standard fields.
 

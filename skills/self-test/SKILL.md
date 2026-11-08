@@ -25,12 +25,13 @@ settings.
 
 ## What it uses
 
-- Load `ntm:conventions`.
+- Load `neurodivergent-task-manager:conventions`.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
   label by its real name from Labels in your settings, in no project. Keep its
   id once created; `ABC-12` below stands for it.
 - One throwaway database, titled `ntm self-test`, at list level. It's not one of
-  the databases in `ntm:conventions`; only this skill knows it.
+  the databases in `neurodivergent-task-manager:conventions`; only this skill
+  knows it.
 - If an earlier run left either behind (`fetch open` shows a task with that
   title; `read database` finds the database), remove them first, as Cleanup
   says, so this run starts clean.
@@ -57,15 +58,16 @@ back with an id. If the backend rejects the label, the why is
 
 ### 3: plan
 
-`/ntm:plan put ABC-12 on today and move nothing else`. The user asked for this
-test, so that is their approval. Take the plan it proposes as approved when it
-dates only that task, paused day or not; otherwise answer that only ABC-12
-moves, and approve that. The $no-autoschedule label doesn't stop it; in chat the
-user has the final say. Pass when `read task` shows the planned date as today.
+`/neurodivergent-task-manager:plan put ABC-12 on today and move nothing else`.
+The user asked for this test, so that is their approval. Take the plan it
+proposes as approved when it dates only that task, paused day or not; otherwise
+answer that only ABC-12 moves, and approve that. The $no-autoschedule label
+doesn't stop it; in chat the user has the final say. Pass when `read task` shows
+the planned date as today.
 
 ### 4: today
 
-`/ntm:today`. Pass when a line starts with `ABC-12`.
+`/neurodivergent-task-manager:today`. Pass when a line starts with `ABC-12`.
 
 ### 5: style
 
@@ -96,16 +98,19 @@ returns its delivery block instead of sending. Show the block and pass as
 
 ### 8: completed
 
-`/ntm:show-completed today`. Pass when `ABC-12` is listed under `Done`.
+`/neurodivergent-task-manager:show-completed today`. Pass when `ABC-12` is
+listed under `Done`.
 
 ### 9: fix-todo-list
 
-`/ntm:fix-todo-list --dry-run`. Pass on `Dry run <today>:` with any lines, or
-`Dry run <today>: nothing to fix.`; `Fix-todo-list FAILED` is the why.
+`/neurodivergent-task-manager:fix-todo-list --dry-run`. Pass on
+`Dry run <today>:` with any lines, or `Dry run <today>: nothing to fix.`;
+`Fix-todo-list FAILED` is the why.
 
 ### 10: pause --check
 
-`/ntm:pause --check`. Pass on one `<today>: true` or `<today>: false` line.
+`/neurodivergent-task-manager:pause --check`. Pass on one `<today>: true` or
+`<today>: false` line.
 
 ### 11: database
 

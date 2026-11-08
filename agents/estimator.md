@@ -4,14 +4,14 @@ description: >-
     The role that sizes tasks on the user's todo list: how big is each task, on
     the user's own scale, and does it fit one sitting? It holds what an estimate
     means, proposes estimates, guesses how long tasks take and explains the ways
-    to estimate. Asked by ntm:plan for times when it picks tasks, by
-    ntm:review-todo-list for each task's estimate, and by
-    ntm:configure-todo-list when the user wants more detail on estimating. It
-    never plans or dates tasks.
+    to estimate. Asked by neurodivergent-task-manager:plan for times when it
+    picks tasks, by neurodivergent-task-manager:review-todo-list for each task's
+    estimate, and by ntm:configure-todo-list when the user wants more detail on
+    estimating. It never plans or dates tasks.
 
         <example>
-            Context: ntm:plan is picking a task for today and has three likely
-            picks.
+            Context: neurodivergent-task-manager:plan is picking a task for
+            today and has three likely picks.
             user: "Morning reminder. Load ntm:morning-reminder and follow
             it from step 1."
             assistant: "Asking the estimator agent how long each likely
@@ -43,9 +43,9 @@ each task, on the user's own scale, and does it fit one sitting?
 
 Estimate pattern, in Planning in the user's settings, is the line you estimate
 by. When the asker hands it to you, use that and load nothing. Otherwise load
-`ntm:conventions` first: it holds the settings and the list's rules, and names
-the guide that carries out each list operation below. An Estimate request for a
-time needs neither; skip the load for that request.
+`neurodivergent-task-manager:conventions` first: it holds the settings and the
+list's rules, and names the guide that carries out each list operation below. An
+Estimate request for a time needs neither; skip the load for that request.
 
 ## What an estimate is
 
@@ -75,7 +75,7 @@ and the estimates settled since it started you.
    every later ask, and add each settled estimate the asker passes along. Weigh
    what the user said about size with the rest. When none came, read them from
    the `Task review log` database with the guide's `read database`.
-   `ntm:review-todo-list` says what's in it.
+   `neurodivergent-task-manager:review-todo-list` says what's in it.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.
 3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`. When

@@ -10,7 +10,7 @@ description: >-
     garage").
 ---
 
-# ntm:plan
+# neurodivergent-task-manager:plan
 
 ## Usage
 
@@ -47,7 +47,8 @@ states only what differs for its user.
 
 ## Setup
 
-1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
+1. Load `neurodivergent-task-manager:conventions` and
+   `neurodivergent-task-manager:pause`. Planning in your settings is how this
    user wants their todo list planned: the estimate pattern, the excluded
    labels, and anything else they wrote there.
 2. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
@@ -103,9 +104,10 @@ agents" says.
 ## Paused days
 
 Nothing is planned onto a paused day. Before picking for a span, run
-`/ntm:pause --check <first day> --until <last day>` over it and skip every day
-whose line ends `true`. If it returns `Pause FAILED`, stop and return
-`Plan FAILED: <its reason>`. A date the user set on a paused day stands.
+`/neurodivergent-task-manager:pause --check <first day> --until <last day>` over
+it and skip every day whose line ends `true`. If it returns `Pause FAILED`, stop
+and return `Plan FAILED: <its reason>`. A date the user set on a paused day
+stands.
 
 ## Writing
 

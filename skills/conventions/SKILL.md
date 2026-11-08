@@ -6,7 +6,7 @@ description: >-
     query, and before creating or editing a task for the user.
 ---
 
-# ntm:conventions
+# neurodivergent-task-manager:conventions
 
 The rules every ntm skill and agent follows to read and write the user's todo
 list. Load them before any list query, and before creating or editing a task.
@@ -52,7 +52,7 @@ these rules without that weight.
   carry labels their tasks inherit.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
-  `ntm:plan`.
+  `neurodivergent-task-manager:plan`.
 - **Started:** a plannable status that means work has begun (see Status
   classes). Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
@@ -80,10 +80,11 @@ these rules without that weight.
 A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,
 in a job or in chat alike; an agent can't start another agent. The reminder
 skills, `show-completed --notify` and the bulk planning job ask the messenger,
-and the price watch the shopper. The estimator is for planning: `ntm:plan` asks
-it how long the tasks it picks take, reviewing asks it for each task's estimate,
-and setting up the todo list asks it to explain the ways to estimate only when
-the user wants that. Each says what it hands over.
+and the price watch the shopper. The estimator is for planning:
+`neurodivergent-task-manager:plan` asks it how long the tasks it picks take,
+reviewing asks it for each task's estimate, and setting up the todo list asks it
+to explain the ways to estimate only when the user wants that. Each says what it
+hands over.
 
 A skill asking the messenger also hands it a `wording:` line for any Deviation
 about how tasks are worded or linked. When the messenger returns
@@ -114,8 +115,9 @@ reads like a report, not a person talking. Instead, say "you already finished
 the kitchen tap (ABC-15)". The example is only an illustration; there's no need
 to look it up. Where the backend has no ids, use the words alone.
 
-Lines another skill parses (like `/ntm:today`'s result lines) keep their format,
-but when you pass them on to the user, word them this way too.
+Lines another skill parses (like `/neurodivergent-task-manager:today`'s result
+lines) keep their format, but when you pass them on to the user, word them this
+way too.
 
 A linked task is `[<words> (<id>)](<url>)`: the words as this section says, the
 id in parentheses inside the link text, the url the task's own `url` field.
@@ -163,7 +165,7 @@ carries it too (see Project labels).
 - **$pending-shipment:** something has been ordered for this task and hasn't
   arrived, so the user can't start it.
 - **$has-amazon-alert:** an Amazon price alert is set for this task.
-  `ntm:sync-price-watch-to-amazon` sets and clears it.
+  `neurodivergent-task-manager:sync-price-watch-to-amazon` sets and clears it.
 - **$amazon-unavailable:** the item isn't sold on Amazon in a condition the user
   allows, so no alert is set.
 - **$price-watch:** usually on a project: its tasks are purchases waiting for a
@@ -195,16 +197,18 @@ fixed title in parentheses below. A user who renamed one says so under
 Deviations. Read and write them with the guide's `read database` /
 `write database`. Each database has one writer; everything else only reads it.
 
-- **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
-  keeps it.
+- **pauses** (`Pauses`): the pause schedule, under `## Pauses`.
+  `neurodivergent-task-manager:pause` keeps it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
   much history to keep; the user changes it there.
-- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
-  hands the estimator what it needs from it.
+- **task review log** (`Task review log`):
+  `neurodivergent-task-manager:review-todo-list` keeps it, and hands the
+  estimator what it needs from it.
 - **price watch stores** (`Price watch stores`): stored in the project that
-  carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
-  from the user's vouch and block replies; the shopper reads it.
+  carries the $price-watch label, not at list level.
+  `neurodivergent-task-manager:price-watch` keeps it, from the user's vouch and
+  block replies; the shopper reads it.
 
 Where the backend has no documents, the guide keeps each database in the
 description of an open task titled with the database's title and labeled
@@ -236,9 +240,9 @@ excluded too; that isn't a setting.
 Planners skip excluded tasks: they never pick or date them. Reminders don't: any
 open task the user has dated gets reminded about, excluded or not.
 
-Planners also never plan onto a paused day (`/ntm:pause --check` over the span
-says which days are). A date the user set on a paused day stands, and gets its
-reminders.
+Planners also never plan onto a paused day
+(`/neurodivergent-task-manager:pause --check` over the span says which days
+are). A date the user set on a paused day stands, and gets its reminders.
 
 ## Dates
 

@@ -7,14 +7,14 @@ description: >-
     morning reminder now").
 ---
 
-# ntm:morning-reminder
+# neurodivergent-task-manager:morning-reminder
 
 The morning reminder: what's on the table today, said the way the user reads.
-`ntm:plan` makes today ready and returns the facts; the messenger agent writes
-and sends the message. This skill names the steps, the handoff and what ends the
-run. When the messenger agent isn't available in this session, do what the
-conventions' "Chat, jobs and agents" says: read its file from the installed
-plugin and follow it yourself.
+`neurodivergent-task-manager:plan` makes today ready and returns the facts; the
+messenger agent writes and sends the message. This skill names the steps, the
+handoff and what ends the run. When the messenger agent isn't available in this
+session, do what the conventions' "Chat, jobs and agents" says: read its file
+from the installed plugin and follow it yourself.
 
 # 1: Ready check
 
@@ -25,7 +25,8 @@ and nothing more.**
 
 # 2: The facts
 
-Load `ntm:plan` and run `/ntm:plan --auto day`. It carries stale work to today,
+Load `neurodivergent-task-manager:plan` and run
+`/neurodivergent-task-manager:plan --auto day`. It carries stale work to today,
 plans today if it's empty, and returns the facts as lines.
 
 Read what comes back:

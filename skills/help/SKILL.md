@@ -6,7 +6,7 @@ description: >-
     to get started, what a skill is for, or for help with ntm.
 ---
 
-# ntm:help
+# neurodivergent-task-manager:help
 
 The plugin's README is the one text about ntm. This skill holds none of it: it
 finds the README and answers from it.

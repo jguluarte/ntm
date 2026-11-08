@@ -6,13 +6,14 @@ description: >-
     style. Run by a job, or by hand ("run the evening reminder now").
 ---
 
-# ntm:evening-reminder
+# neurodivergent-task-manager:evening-reminder
 
-The evening reminder: a friend asking how the day went. `ntm:show-completed`
-gives the facts; the messenger agent writes and sends the message. This skill
-names the steps, the handoff and what ends the run. When the messenger agent
-isn't available in this session, do what the conventions' "Chat, jobs and
-agents" says: read its file from the installed plugin and follow it yourself.
+The evening reminder: a friend asking how the day went.
+`neurodivergent-task-manager:show-completed` gives the facts; the messenger
+agent writes and sends the message. This skill names the steps, the handoff and
+what ends the run. When the messenger agent isn't available in this session, do
+what the conventions' "Chat, jobs and agents" says: read its file from the
+installed plugin and follow it yourself.
 
 # 1: Ready check
 
@@ -23,8 +24,8 @@ and nothing more.**
 
 # 2: The facts
 
-Load `ntm:show-completed` and run
-`/ntm:show-completed today, and what's still open, planned today or earlier`.
+Load `neurodivergent-task-manager:show-completed` and run
+`/neurodivergent-task-manager:show-completed today, and what's still open, planned today or earlier`.
 
 - Nothing done and nothing still open: assume a day off. STOP and send nothing.
 - Otherwise the facts are one `done:` line per Done task, or `done: none`; then

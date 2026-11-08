@@ -6,7 +6,7 @@ description: >-
     list", "tidy my todo list").
 ---
 
-# ntm:fix-todo-list
+# neurodivergent-task-manager:fix-todo-list
 
 Clears planned dates that have gone stale, and returns what it changed. It never
 notifies anyone: whoever called it decides what to tell the user.
@@ -21,7 +21,7 @@ notifies anyone: whoever called it decides what to tell the user.
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Fetch every open task with the guide's `fetch open`, and keep every result,
    including excluded tasks. Skip the blocker reads, and skip listing the
    projects with their labels: this skill checks no labels.

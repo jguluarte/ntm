@@ -8,7 +8,7 @@ description: >-
     backup battery a good price today?").
 ---
 
-# ntm:price-watch
+# neurodivergent-task-manager:price-watch
 
 The price watch: which watched items are a good deal today? One shopper per item
 does the checking; this skill finds the watched tasks, hands each to a shopper,
@@ -25,14 +25,15 @@ nobody works around a block.
 
 Run the same way by the job and by hand. The job runs every day, paused days
 included: a good deal is worth hearing about on a paused day, so don't check
-`ntm:pause`. Write plainly; don't use `ntm-user:style`. Prices are in the
-currency from Country and currency under About you in your settings.
+`neurodivergent-task-manager:pause`. Write plainly; don't use `ntm-user:style`.
+Prices are in the currency from Country and currency under About you in your
+settings.
 
 # 1: Todo list rules
 
-Load `ntm:conventions` before anything else: it holds the list's rules and your
-settings, and every later step follows them. If whoever loaded this skill gave a
-date, that is today.
+Load `neurodivergent-task-manager:conventions` before anything else: it holds
+the list's rules and your settings, and every later step follows them. If
+whoever loaded this skill gave a date, that is today.
 
 # 2: Ready check
 
@@ -43,11 +44,12 @@ a plain `/ntm:ready-check`.
 
 # 3: The watch
 
-Fetch every open task the way "Every open task" in `ntm:conventions` says, and
-keep the ones with the $price-watch label (its real name from Labels in your
-settings), counting labels inherited from their project (the conventions'
-"Project labels"). Note each one's id, title and `url`. If none are being
-watched, send nothing and go straight to FINAL REPLY.
+Fetch every open task the way "Every open task" in
+`neurodivergent-task-manager:conventions` says, and keep the ones with the
+$price-watch label (its real name from Labels in your settings), counting labels
+inherited from their project (the conventions' "Project labels"). Note each
+one's id, title and `url`. If none are being watched, send nothing and go
+straight to FINAL REPLY.
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price
 today?"): the watch is that one task, found by its id or by its words among the
@@ -127,14 +129,15 @@ anything. Dates below are today's, at reply time.
   $has-amazon-alert label, add that its Amazon alert gets removed the next time
   they run `/ntm:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the `Price watch stores` database
-  (see Databases in `ntm:conventions`), kept in the project that carries the
-  $price-watch label (the guide's `read database` and `write database`, with
-  that project; when it's missing, `write database` creates it with the headings
-  `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list
-  (Vouched or Blocked) if it's there; leave the Seed list alone unless they say
-  otherwise. Record its domain as they give it, or from that database or the
-  item's "Stores:" comment, and ask them only if neither has it. Add the date
-  and their reason if they gave one. Confirm in one line.
+  (see Databases in `neurodivergent-task-manager:conventions`), kept in the
+  project that carries the $price-watch label (the guide's `read database` and
+  `write database`, with that project; when it's missing, `write database`
+  creates it with the headings `## Seed`, `## Vouched`, `## Blocked`). Move the
+  store off the other list (Vouched or Blocked) if it's there; leave the Seed
+  list alone unless they say otherwise. Record its domain as they give it, or
+  from that database or the item's "Stores:" comment, and ask them only if
+  neither has it. Add the date and their reason if they gave one. Confirm in one
+  line.
 
 # FINAL REPLY
 

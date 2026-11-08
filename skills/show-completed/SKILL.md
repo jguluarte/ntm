@@ -4,11 +4,11 @@ description: >-
     Reports what the user got done on their todo list over a span of time they
     or a job describes ("what did I finish last week", "what got done this
     month"), and, when asked, what's still open from it; --notify sends it as a
-    message in the user's style. Run by the evening reminder, by ntm:plan, by a
-    job, or by the user.
+    message in the user's style. Run by the evening reminder, by
+    neurodivergent-task-manager:plan, by a job, or by the user.
 ---
 
-# ntm:show-completed
+# neurodivergent-task-manager:show-completed
 
 ## Usage
 
@@ -40,7 +40,7 @@ Notify below). `--notify` starts with
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Work out the span as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's

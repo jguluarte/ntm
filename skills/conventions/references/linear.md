@@ -1,8 +1,9 @@
 # Linear guide
 
 The backend guide for Linear, and a tested one: how each operation the
-conventions name is carried out with the Linear connector. `ntm:conventions`
-reads it when Backend is `linear`; `ntm:configure-todo-list` reads it for Setup.
+conventions name is carried out with the Linear connector.
+`neurodivergent-task-manager:conventions` reads it when Backend is `linear`;
+`ntm:configure-todo-list` reads it for Setup.
 
 Use the tools of the Linear connector that's signed in. Its own instructions and
 tool descriptions are the authority on how to call them. This guide says which

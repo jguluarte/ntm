@@ -7,7 +7,7 @@ description: >-
     by the user.
 ---
 
-# ntm:today
+# neurodivergent-task-manager:today
 
 ## Usage
 
@@ -26,7 +26,7 @@ This skill only reads the todo list. It never changes a task.
 
 ## Setup
 
-1. Load `ntm:conventions`.
+1. Load `neurodivergent-task-manager:conventions`.
 2. Fetch every open task with the guide's `fetch open`, keeping excluded tasks,
    and keep the ones with a planned date in range.
 

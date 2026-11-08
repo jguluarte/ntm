@@ -12,12 +12,13 @@ description: >-
 # ntm:configure-style
 
 `ntm-user:style` is the user's own skill; the messenger runs it for every
-reminder. It holds a Profile, what the user told you, and the procedure that
-writes a message from it. Build it with the user in short rounds: you propose,
-they react. Never hand them a form.
+reminder. It has two halves: the Profile, which holds what the user told you,
+and the procedure, which writes each message from the Profile. You write the
+Profile; `ntm:settings` builds the skill around it (see Result). Build it with
+the user in short rounds: you propose, they react. Never hand them a form.
 
 Read `references/builder.md` first: the Profile's shape, what each section means
-and what to ask, and a plain example.
+and what to ask, how the day's reminders follow an episode, and a plain example.
 
 Ship no persona and name no show, person or brand. The theme, the reminders, the
 levels and their names are the user's, in their words.
@@ -33,9 +34,6 @@ or a Profile from an earlier ntm-user. See User-defined persona.
 
 ## Before you start
 
-`ntm:configure` says so when it runs this skill; the result then goes back to
-it.
-
 Load `ntm-user:style` by name. If it won't load, this is a new style: go to
 Opening.
 
@@ -48,6 +46,9 @@ at the section that owns the change:
 
 Leave sections they don't name as they are. Edit a persona as they say, word for
 word otherwise.
+
+If `ntm:configure` started this skill, it tells you; return the result to it
+(see Result).
 
 ## Opening
 
@@ -67,31 +68,41 @@ game-show host), none of them named.
 ## User-defined persona
 
 The user's persona skill, or a Profile from an earlier ntm-user, becomes
-`ntm-user:style` as it is: the body stays word for word, task ids included. Drop
-a pasted skill's own frontmatter; everything under it is the body.
+`ntm-user:style` as it is: the body stays word for word, even the task ids in
+its examples. Drop a pasted skill's own frontmatter; everything under it is the
+body.
 
-Above the body, write a short `## For ntm` section that maps the messenger's
-call (the one `ntm:settings` names) onto the persona's own words. Read the body
-for what it calls these things, such as a `--reminder` flag, a `Subject:` line
-or its own history note. One line each:
+The messenger calls the style the way `ntm:settings` defines:
+
+```
+/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
+```
+
+It returns the message; with `--for`, a `Title:` line comes last.
+
+Above the body, write a short `## For ntm` section that maps this call onto the
+persona's own words. Read the body for what it calls these things, such as a
+`--reminder` flag, a `Subject:` line, or its own note of past messages. One line
+each:
 
 - what `--for <reminder>` means to it
-- that `Title:` is its last line, in place of whatever it calls it. If it has no
-  subject line, give it the Title line rule from `ntm:settings`, so the title is
-  written with the message, in its theme.
+- that `Title:` is its last line under `--for`, in place of whatever it calls it
+    - If it has no subject line: give it the Title line rule from
+      `ntm:settings`, so the title is written with the message, in its theme.
 - that `--stay-fresh` is its freshness mechanism
 - that its message history note is the one titled under Notes in
-  `ntm-user:settings`. If the persona names its own note, the settings' title
-  should be that one.
+  `ntm-user:settings`
+    - If the persona names its own note: the title in settings should be that
+      one.
 
 Show them the section; they confirm. Add nothing else: the persona's own levels,
 profanity and motifs stand.
 
 ## Result
 
-For plain or a theme, the Profile in the builder's shape. For a persona, the
-`## For ntm` section above the unchanged body. Show it and take one round of
-corrections.
+For plain or a theme, the Profile, in the shape `builder.md` gives. For a
+persona, the `## For ntm` section above the unchanged body. Show it and take one
+round of corrections.
 
 Then:
 

@@ -1,9 +1,10 @@
 # The style profile
 
-The Profile is the half of `ntm-user:style` that holds what the user said; the
-procedure that writes each message reads it. `ntm:configure-style` builds it
-with the user from this page, for plain or a theme. A persona skill keeps its
-own rules, and none of this is asked of it.
+The Profile is what the user told you about how their reminders should talk,
+written down in a fixed shape. It is one half of `ntm-user:style`; the other
+half, the procedure, reads it each time it writes a message.
+`ntm:configure-style` builds it with the user from this page, for plain or a
+theme. A persona skill keeps its own rules, and none of this is asked of it.
 
 Write the `Profanity:` line and the headings exactly as shown, in this order,
 even when a section stays empty: an empty section means its default. Everything
@@ -92,7 +93,7 @@ For a theme, propose what each of the five is in the theme's world, one line
 each; they rename or cut. Ask what they like (a show, a genre, a game) and take
 the arc from that, in their words. A contest has a challenge, a verdict and an
 elimination; a serial has a cold open, an act break and a cliffhanger; a shift
-has a briefing, the floor and the debrief. Name no show or game of your own.
+has a briefing, the floor and the debrief.
 
 ### When something keeps slipping
 
@@ -113,14 +114,15 @@ menu: talk it through.
 One level is a complete answer. For more, write their levels in order, each with
 its name and after how many earlier days it starts. The first level is the
 everyday one, for fresh work and work already planned for today; it carries no
-number. Write the number on every level after it. Then write the climb rule in
-one line, such as "harder each day a task carries over, back to the first level
-once it closes".
+number. Write the number on every level after it. Levels written without numbers
+count as 0, 1, 2… in order.
 
 A task's level is the last one whose number its count of earlier days has
-reached; a count of 0 is always the first level. Levels written without numbers
-get 0, 1, 2… in order. The morning and evening reminders follow this section;
-the afternoon never climbs.
+reached; a count of 0 is always the first level.
+
+Then write the climb rule in one line, such as "harder each day a task carries
+over, back to the first level once it closes". The morning and evening reminders
+follow this section; the afternoon never climbs.
 
 ### Motifs
 
@@ -147,11 +149,13 @@ back sooner.
 
 ### Examples
 
-One per level, under the level's name, and one for "nothing open" (the evening
-when everything closed: a win for the day, not the year). Task ids are generic,
-like `ABC-12`, and the tasks are ordinary household ones. They show how each
-level lands, how long it runs, how a motif ties to the subject, and what gets
-them to read at work. The procedure borrows their energy, never their sentences.
+One per level, under the level's name, and one for "nothing open": the evening
+when everything closed, a win for the day, not the year. Use generic task ids,
+like `ABC-12`, and ordinary household tasks.
+
+Each example shows how its level lands and how long it runs. Together they show
+how a motif ties to the subject, and what gets the user to read at work. The
+procedure borrows their energy, never their sentences.
 
 For a theme, write them, read them back and revise: with humor, until they laugh
 at least once; otherwise until each reads like something they'd open.

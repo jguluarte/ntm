@@ -48,7 +48,7 @@ Notify below). `--notify` starts with
 4. Keep the tasks completed in the span. Done tasks of any kind count, price
    watch buys included.
 5. When the description narrows the scope, keep only the tasks that match it, by
-   project, label or title.
+   project, parent, label or title.
 
 If any step fails, stop and return `Show-completed FAILED: <what failed>`.
 
@@ -60,8 +60,8 @@ decides what to tell the user and how. Write each task as
 Done, the planned date for Still open.
 
 - `<first day> to <last day>`, plus the scope when it's narrowed.
-- `Done (<count>):` the tasks completed in the span, oldest first; or
-  `Done: none`.
+- `Done (<count>):` the tasks completed in the span, oldest first, with
+  sub-tasks indented under their parent when it's listed too; or `Done: none`.
 - Canceled and duplicate tasks, when asked for, in their own
   `Canceled (<count>):` and `Duplicate (<count>):` sections, written the same
   way.

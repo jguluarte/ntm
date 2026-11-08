@@ -77,7 +77,7 @@ Read the task with `read task` and its comments with `read comments`, and note:
 
 - The exact item, including model number and variant. A different variant is a
   different item.
-- The target price, from the task's description or, failing that, a comment.
+- The target price from the task's description (or a comment thereof).
 - Any stores the task or the user's comments name as places to buy.
 - Every comment that starts with "Skip:". Each records a sale the user chose to
   pass on.
@@ -145,9 +145,9 @@ status, and any marketplace seller. Count a price only when:
 - it's on the store's own domain (or a subdomain of it), fetched today;
 - the quote is the page's own text, not a paraphrase or hedge, and not a "from",
   "starting at" or range figure;
-- it's the item and variant, in a condition the user allows (a page with no
-  open-box, refurbished or used marker is a new item; an add-to-cart button with
-  no out-of-stock text counts as in stock);
+- it's the item and variant, in an approved condition (a page with no open-box,
+  refurbished or used marker is a new item; an add-to-cart button with no
+  out-of-stock text counts as in stock);
 - it doesn't need a trade-in, activation, financing or a bundle, unless the task
   allows it.
 
@@ -172,8 +172,9 @@ in-stock price, weighing shipping where it's known.
 
 Judge that price against what counts as a deal for this item (see The item),
 using the task's target and the usual price you found. Judgment, not strict
-math. With no target, the usual or list price alone is the measure. A store's
-own crossed-out price alone isn't the usual price.
+math. With no target, the usual or list price alone is the measure, and say in
+NOTES that the task has no target price. A store's own crossed-out price alone
+isn't the usual price.
 
 Before returning a DEAL, ask WebFetch about the same URL again in different
 words, covering price, variant, condition, stock and seller. Count the DEAL only

@@ -225,7 +225,7 @@ offer `fire_trigger` (Running a job now) then, and read its ready check.
 A job inherits the connectors attached to the session that creates it. A browser
 is never attached to a job.
 
-## Already set up
+## When the schedule is already established
 
 When jobs exist, list them and ask what to change, instead of walking the
 schedule again. `list_triggers`, recurring only. Tell the user's jobs by the
@@ -248,13 +248,14 @@ morning reminder now").
 ## Re-syncing a prompt
 
 A stored prompt only goes stale when a prompt in The prompt changes. When that
-happens: `list_triggers`, tell each job as Already set up says, fill in the
-prompt again, and `update_trigger` with `trigger_id` and the new `prompt`. Keep
-anything the user added to the prompt, and its app token line (the stored prompt
-is `derived_state.prompt`, when the entry carries it; when it doesn't, tell the
-user the new prompt replaces theirs and to re-add anything they had put in);
-change only what came from The prompt. Nothing else changes; the job keeps its
-schedule and run history. Never delete and recreate a job to change its prompt.
+happens: `list_triggers`, tell each job as When the schedule is already
+established says, fill in the prompt again, and `update_trigger` with
+`trigger_id` and the new `prompt`. Keep anything the user added to the prompt,
+and its app token line (the stored prompt is `derived_state.prompt`, when the
+entry carries it; when it doesn't, tell the user the new prompt replaces theirs
+and to re-add anything they had put in); change only what came from The prompt.
+Nothing else changes; the job keeps its schedule and run history. Never delete
+and recreate a job to change its prompt.
 
 ## Changing a time, days or title
 

@@ -9,11 +9,9 @@ description: >-
 
 # ntm:evening-reminder
 
-The evening reminder: a friend asking how the day went. `ntm:show-completed`
-gives the facts; the messenger agent writes and sends the message. This skill
-names the steps, the handoff and what ends the run. When the messenger agent
-isn't available in this session, do what the conventions' "Chat, jobs and
-agents" says: read its file from the installed plugin and follow it yourself.
+A friend asking how the day went. `ntm:show-completed` gives the facts; the
+messenger agent writes and sends the message. If the messenger agent isn't
+available in this session, follow the conventions' "Chat, jobs and agents".
 
 # 1: Ready check
 
@@ -24,19 +22,23 @@ and nothing more.**
 
 # 2: The facts
 
-Load `ntm:show-completed` and run
-`/ntm:show-completed today, and what's still open, planned today or earlier`.
+Load `ntm:show-completed` and run:
 
-- Nothing done and nothing still open: assume a day off. STOP and send nothing.
-- Otherwise the facts are one `done:` line per Done task
-  (`done: <id> <title> <url>`), or `done: none`; then one `open:` line per Still
-  open task (`open: <id> <title> <url>`, then ` (was <date>)` when its planned
-  date is before today), or `open: none`.
-- `Show-completed FAILED`: ERROR HANDLING.
+```
+/ntm:show-completed today, and what's still open, planned today or earlier
+```
+
+Nothing done and nothing still open: assume a day off. STOP and send nothing.
+
+Otherwise the facts are:
+
+- one `done: <id> <title> <url>` line per Done task, or `done: none`
+- one `open: <id> <title> <url>` line per Still open task, with ` (was <date>)`
+  added when its planned date is before today; or `open: none`
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent:
 
 ```
 reminder: evening
@@ -49,17 +51,13 @@ carry the list), a delivery block, or a `… FAILED` line.
 
 # FINAL REPLY
 
-When the messenger returned a delivery block, the final reply is the title line
-and the message, verbatim, and nothing else, as the conventions' Results say.
-Otherwise, unless reporting an error, end the run with one short line saying
-what happened, such as "Sent the evening reminder." That line is for the
-Pushover case; when the messenger returned lines after `Sent:` (the list the
-push couldn't carry), they follow it.
+A delivery block is the final reply: the title line and the message, verbatim,
+and nothing else. Otherwise end with one short line on what happened, such as
+"Sent the evening reminder.", then any lines the messenger returned after
+`Sent:`.
 
 # ERROR HANDLING
 
-If step 1 fails, end with what the ready check returned, and nothing more; that
-is what reaches the user. For any later error, including a `… FAILED` line from
-show-completed or the messenger, never use `/ntm:notify`. End the run with the
-error stated plainly in your final reply; the scheduled task's own completion
-push carries it.
+For any error after step 1, including a `… FAILED` line from show-completed or
+the messenger, never use `/ntm:notify`. End the run with the error stated
+plainly; the scheduled task's own completion push carries it.

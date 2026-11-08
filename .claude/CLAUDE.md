@@ -72,7 +72,8 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
 ## Text rules for the plugin
 
 - The plugin's word for an item is "task", never "ticket". The process is
-  "review", never "groom". `$` marks only the label names the user configures.
+  "review", never "groom". The list is the "todo list", never "board". `$` marks
+  only the label names the user configures.
 - Never the word "voice", in any form.
 - Nothing that ties the plugin to a particular person: no names, no board name,
   no Drag Race words, no ADHD.

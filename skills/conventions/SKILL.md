@@ -50,8 +50,6 @@ these rules without that weight.
   as `ABC-12`.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
-- **Parent task:** a task with open sub-tasks.
-- **Sub-task:** a task under a parent task, where the backend has that relation.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
   `ntm:plan`.
@@ -175,11 +173,11 @@ description on the todo list says what it's for.
 ### Project labels
 
 Projects carry labels too. Any label on a project, system label or ordinary
-category, counts as a label on every task in that project and on their
-sub-tasks. Wherever a rule checks a task's labels, it checks the ones inherited
-from its project too. This holds for labels added later as well, with no change
-to these rules. Where the backend can't put labels on groups, the guide says so
-and the user puts the labels on tasks directly.
+category, counts as a label on every task in that project. Wherever a rule
+checks a task's labels, it checks the ones inherited from its project too. This
+holds for labels added later as well, with no change to these rules. Where the
+backend can't put labels on groups, the guide says so and the user puts the
+labels on tasks directly.
 
 ## Databases
 

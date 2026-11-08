@@ -11,7 +11,8 @@ description: >-
 
 A friend asking how the day went. `ntm:show-completed` gives the facts; the
 messenger agent writes and sends the message. If the messenger agent isn't
-available in this session, follow the conventions' "Chat, jobs and agents".
+available in this session, read its file from the installed plugin and follow it
+yourself, as the conventions' "Chat, jobs and agents" says.
 
 # 1: Ready check
 
@@ -30,11 +31,13 @@ Load `ntm:show-completed` and run:
 
 Nothing done and nothing still open: assume a day off. STOP and send nothing.
 
+`Show-completed FAILED`: see ERROR HANDLING.
+
 Otherwise the facts are:
 
-- one `done: <id> <title> <url>` line per Done task, or `done: none`
-- one `open: <id> <title> <url>` line per Still open task, with ` (was <date>)`
-  added when its planned date is before today; or `open: none`
+- one `done: <id> <title> <url>` line per task under Done, or `done: none`
+- one `open: <id> <title> <url>` line per task under Still open, or
+  `open: none`; add ` (was <date>)` when its planned date is before today
 
 # 3: The message
 
@@ -47,14 +50,18 @@ job: Evening reminder
 ```
 
 It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
-carry the list), a delivery block, or a `… FAILED` line.
+carry the list), a delivery block (a title line and the message text), or a
+`… FAILED` line.
 
 # FINAL REPLY
 
-A delivery block is the final reply: the title line and the message, verbatim,
-and nothing else. Otherwise end with one short line on what happened, such as
-"Sent the evening reminder.", then any lines the messenger returned after
-`Sent:`.
+On an error, see ERROR HANDLING. Otherwise:
+
+- Delivery block: the title line and the message, verbatim, and nothing else, as
+  the conventions' Results say.
+- `Sent:`: one short line, such as "Sent the evening reminder.", then any
+  `List:` lines the messenger returned.
+- Day off: one short line, such as "Day off; nothing sent."
 
 # ERROR HANDLING
 

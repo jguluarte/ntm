@@ -161,10 +161,10 @@ Is this item a good deal today? One per watched task. Ships with ntm.
 
 ### The estimator
 
-How big is each task, on your own scale, and is it ready to plan? Proposes each
-task's estimate when `/ntm:review-todo-list` reviews the todo list with you,
-guesses how long each task takes when tasks are planned, and explains the ways
-to estimate when you want to know. Ships with ntm.
+How big is each task, on your own scale, and does it fit one sitting? Proposes
+each task's estimate when `/ntm:review-todo-list` reviews the todo list with
+you, guesses how long each task takes when tasks are planned, and explains the
+ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses database
 

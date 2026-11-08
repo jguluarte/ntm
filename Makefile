@@ -12,11 +12,10 @@ lint: $(INSTALLED)
 fix: $(INSTALLED)
 	@npm run fix
 
-# User-facing names match what Justin expects (tests/expected/). Node's
-# own test runner, so nothing to install. The reporter flag keeps the
-# output readable in CI, where Node otherwise prints its machine format.
+# User-facing names match what Justin expects (tests/expected/). bats
+# and jq come from devbox.
 test:
-	@node --test --test-reporter=spec 'tests/*.test.mjs'
+	@bats tests
 
 node_modules: $(INSTALLED)
 

@@ -12,8 +12,7 @@ ToolSearch result rather than guessing: which date field is the planned date,
 how results paginate, whether labels add or replace, whether a comment can be
 edited in place. Where a choice is theirs (which date field, which grouping is a
 project), propose one and let them react. Try a read by hand where it's cheap.
-The setup operations run in Statuses, Labels and Databases as described; every
-other write waits for `/ntm:self-test`.
+Writes other than the setup operations wait for `/ntm:self-test`.
 
 The contract names the survivable gaps (no estimate field, no blocked-by
 relation, no labels on groups, no documents) and the two fatal ones (no date

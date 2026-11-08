@@ -73,14 +73,6 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 
 Keep the returned text; write nothing.
 
-The sections and what reads them, in case they ask: About you is read by
-everything; Todo list and Labels by `ntm:conventions`; Planning (the estimate
-pattern, the excluded labels) by `ntm:plan`, and its Estimate pattern by
-`ntm:review-todo-list`; Shopping (condition, delivery, what counts as a deal) by
-the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
-`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
-since each default is about the same todo list.
-
 ### Packaging
 
 Load `ntm:settings` and follow its "Regenerating `ntm-user.plugin`" section with

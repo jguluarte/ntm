@@ -317,8 +317,7 @@ the new-user flow, and four 0.4 recommendations. In order:
 2. The 0.4 talks, starting from the review's four questions.
 
 Justin's install is ntm 0.3.2 and a rebuilt ntm-user, and his five jobs are
-re-synced (ready-check OK). Much of the "To build" list below landed on
-2026-11-07 in #17 to #49; check it against main before using it.
+re-synced (ready-check OK).
 
 ### To build, from the names pass
 
@@ -347,8 +346,7 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
   the last scheduled run".
 - A reading-comprehension pass: writers simplify, human comprehension first ("if
   a human can comprehend, so can a model"). Includes the estimator's "Good
-  enough reminders complete." and `weekly-planning`'s parenthetical about
-  `fix-todo-list`'s result. Justin decides where this goes.
+  enough reminders complete." Justin decides where this goes.
 - Waiting for Justin, from the 2026-11-07 review:
     - Should the shopper price Amazon when Amazon alerts are off?
     - `self-test` claims every backend operation but skips comments, labels and

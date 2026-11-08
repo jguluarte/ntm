@@ -12,9 +12,7 @@ description: >-
 
 # ntm:notify
 
-Sends a notification to the user's phone. Any job or workflow can use it to
-reach them. This is the only skill in the system that sends anything; every
-other skill returns text and the job decides what goes out.
+Sends a notification to the user's phone.
 
 ## Usage
 
@@ -23,50 +21,48 @@ other skill returns text and the job decides what goes out.
     [--priority n] [--from "<job name>"] [--app-token <t> --user-key <u>]
 ```
 
-- `title` and `message` are the notification.
-- `url`: optional link attached below the message, usually a task's `url` field.
-- `priority`: optional; see the optional-fields table. Default 0.
-- `from`: the job this notification is for (the calling skill passes its job
-  name); a per-reminder token written in Notifications is chosen by it.
-- `app-token` and `user-key`: a Pushover app token and user key for this one
-  call, in place of the ones in your settings (`/ntm:configure-notifications`
-  uses them for its test push).
+- `url`: a link shown below the message, usually a task's `url` field.
+- `priority`: see Optional fields. Default 0.
+- `from`: the calling job's name, which picks that job's Pushover app token.
+- `app-token` and `user-key`: Pushover keys for this one call, in place of the
+  ones in settings. `/ntm:configure-notifications` uses them for its test push.
 
 ## Channel
 
-Load `ntm-user:settings` by name and read Notifications. Its Channel line says
-which section below applies: `pushover` or `claude-push`. Anything else written
-there is how the user wants to be notified (quiet hours, priorities, a different
-app token per reminder, …): follow it as written. A per-reminder token is a line
-`Pushover app token for <job>: …` in Notifications, chosen by `--from`; without
-`--from`, or with no such line, the default token. With `--app-token` and
-`--user-key`, the channel is Pushover with those keys, whatever Notifications
-says, and `ntm-user:settings` not loading is no failure (the test push runs
-before it exists). With neither a channel nor those two, return
-`Notify FAILED: no channel configured; run /ntm:configure-notifications`.
+Load `ntm-user:settings` by name and read Notifications. Its Channel line picks
+the section below: `pushover` or `claude-push`. Follow anything else written
+there as written (quiet hours, priorities, a token per reminder).
 
-A linked task arrives in `message` as the conventions' "Talking to the user
-about tasks" says (`[<words> (<id>)](<url>)`); each channel below converts it as
-that section says.
+A line `Pushover app token for <job>: …` is the token when `--from` names that
+job. Otherwise use the default token.
+
+With `--app-token` and `--user-key`, use Pushover with those keys whatever
+Notifications says. Settings that don't load are no failure then: the test push
+runs before they exist.
+
+With no channel and no keys, return:
+
+```
+Notify FAILED: no channel configured; run /ntm:configure-notifications
+```
+
+A linked task arrives in `message` in the form the conventions' "Talking to the
+user about tasks" gives: `[<words> (<id>)](<url>)`. Pushover turns it into
+`<a href="<url>"><words> (<id>)</a>`; Claude push keeps the markdown.
 
 ## Pushover
 
-Sends through the [Pushover API](https://pushover.net/api).
-
-### Credentials
-
-The Pushover app token and Pushover user key from Notifications in your
-settings, or the ones `--app-token` and `--user-key` give.
+Send through the [Pushover API](https://pushover.net/api), with the app token
+and user key from Notifications, or from `--app-token` and `--user-key`.
 
 ### Sending
 
-Always send in a single Bash call using this exact pattern, with the two keys in
-place of `<app token>` and `<user key>`:
+Send in one Bash call, in exactly this pattern:
 
 ```bash
 TITLE='Morning reminder'
 MSG=$(cat <<'EOF'
-Tonight's pick is a quick one, ~5 min from the couch.
+Today's pick is a quick one, ~5 min from the couch.
 
 <a href="https://tracker.example/ABC-12">the storage boxes (ABC-12)</a>
 EOF
@@ -80,72 +76,54 @@ curl -sS --max-time 20 \
   https://api.pushover.net/1/messages.json
 ```
 
-Rules, each of which prevents a real failure:
+- Use `--form-string`, never `-F`. With `-F`, curl reads a value starting with
+  `<` or `@` as a file, so a message opening with `<a href=...>` breaks.
+- Build the message with a quoted heredoc (`<<'EOF'`), so quotes, `$` and
+  backticks stay literal.
+- Put the title in single quotes, or in a heredoc if it contains one.
+- Keep it to one call: shell variables don't carry between calls.
 
-- **Use `--form-string`, never `-F`.** With `-F`, curl treats a value starting
-  with `<` as "read this file" and one starting with `@` as "upload this file".
-  An HTML message that opens with `<a href=...>` would fail or send the wrong
-  content.
-- **Build the message with a quoted heredoc (`<<'EOF'`).** It keeps quotes, `$`
-  and backticks in the text literal, with no shell escaping to get wrong.
-- **Put the title in single quotes.** If the title contains a single quote, use
-  a heredoc for it too.
-- **Keep it to one Bash call.** Shell variables don't persist between calls.
+### HTML
+
+`html=1` allows `<a href>`, `<b>`, `<i>`, `<u>` and `<font color>`, and keeps
+newlines. In plain text you insert, such as task titles, escape `&`, `<` and `>`
+as `&amp;`, `&lt;` and `&gt;`, or a title like "Tubing & fittings" breaks the
+markup.
 
 ### Optional fields
 
-Add these as extra `--form-string` lines when they're useful:
+Add these as extra `--form-string` lines when useful:
 
 | Field       | Purpose                                                                 |
 | ----------- | ----------------------------------------------------------------------- |
-| `url`       | A link attached below the message, e.g. a task. Tappable.               |
+| `url`       | A tappable link below the message, e.g. a task.                         |
 | `url_title` | Label for `url` instead of the raw link, e.g. `Open task`.              |
 | `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
 | `sound`     | Notification sound; `pushover` is the default.                          |
 
-- **Priority 1** bypasses quiet hours. Use it sparingly.
-- **Priority 2** repeats until acknowledged and requires `retry` (seconds, 30 or
-  more) and `expire` (seconds, at most 10800). Reserve it for genuine
-  emergencies.
-
-### HTML mode
-
-`html=1` is on by default in the pattern above. Supported tags: `<a href>`,
-`<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked task
-`[<words> (<id>)](<url>)` in the message becomes
-`<a href="<url>"><words> (<id>)</a>`, as the conventions' "Talking to the user
-about tasks" says.
-
-Escape `&`, `<` and `>` in plain text you insert, such as task titles, as
-`&amp;`, `&lt;` and `&gt;`. Otherwise a title like "Tubing & fittings" breaks
-the markup.
+- Priority 1 bypasses quiet hours. Use it sparingly.
+- Priority 2 repeats until acknowledged and needs `retry` (30 seconds or more)
+  and `expire` (at most 10800 seconds). Emergencies only.
 
 ### Limits
 
-- The message can be at most 1,024 characters as sent (links converted) and the
-  title at most 250. Pushover rejects anything longer. When either is over,
-  don't trim it and don't send: return
-  `Notify TOO LONG: <the cap and why>; this was <n>`, the cap in plain words
-  (for the message: Pushover takes at most 1,024 characters as sent, links
-  included; for the title: at most 250 characters), and the caller shortens it.
-- The rate limit is 10,000 messages per month per app, well beyond what the jobs
-  use.
+Pushover takes at most 1,024 characters for the message as sent (links
+converted) and 250 for the title. If either is over, don't trim it and don't
+send. Return `Notify TOO LONG: <the cap and why>; this was <n>`, with the cap in
+plain words: "Pushover takes at most 1,024 characters as sent, links included"
+for the message, "at most 250 characters" for the title.
 
 ### Checking the result
 
-Success returns `{"status":1,"request":"..."}`. Anything else is a failure:
-
-- Print the full response body. Its `errors` array says what went wrong, e.g. an
-  invalid token or a message that's too long.
-- Report the failure in the run's output. Don't claim the notification was sent.
-- If curl itself fails (a network error or timeout), retry once. Never retry
-  after a `"status":1` response, because that would send a duplicate.
+Success is `{"status":1,"request":"..."}`. Anything else is a failure: print the
+full response body (its `errors` say what went wrong), report the failure, and
+don't claim it was sent. If curl itself fails (a network error or timeout),
+retry once. Never retry after `"status":1`: that sends a duplicate.
 
 ## Claude push
 
-Nothing is sent mid-run. The scheduled task's own completion push carries the
-message instead, so this skill only hands it back to the job as a delivery
-block:
+Send nothing. The scheduled task's own completion push carries the message, so
+return it to the job as a delivery block, linked tasks left as markdown:
 
 ```
 NOTIFY VIA FINAL REPLY
@@ -153,23 +131,15 @@ NOTIFY VIA FINAL REPLY
 <message>
 ```
 
-Return the title on the line after the marker and the message under it, with
-linked tasks kept as the markdown they arrived in, as the conventions' "Talking
-to the user about tasks" says. The job's final reply is then everything after
-the marker line, verbatim, and nothing else, as the conventions' Results say.
-The completion push shows that reply. `url` and `priority` have no effect on
-this channel.
-
-In chat the block is returned the same way; the reply that shows it is the
-delivery.
+The job's final reply is then the title and message, verbatim, as the
+conventions' Results say. `url` and `priority` do nothing here. In chat, return
+the block the same way; the reply that shows it is the delivery.
 
 ## Result
 
 - `Sent: <title>` when Pushover answered `"status":1`.
-- The delivery block above on the `claude-push` channel, which has no length
-  cap.
-- `Notify TOO LONG: <the cap and why>; this was <n>` on Pushover when the
-  message or title is over its cap (see Limits); nothing was sent. Shorten it
-  and call once more.
+- The delivery block, on Claude push. It has no length cap.
+- `Notify TOO LONG: <the cap and why>; this was <n>` when over a Pushover cap.
+  Nothing was sent; the caller shortens it and calls once more.
 - `Notify FAILED: <why>` otherwise, with the response's `errors` or curl's error
   as the why.

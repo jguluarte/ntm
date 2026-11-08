@@ -152,12 +152,8 @@ If a skill can't be loaded, end the run with this line:
    choose; it's the model every job gets.
 5. On the `pushover` channel, ask once whether any job should send from its own
    Pushover app; take each token as The prompt says.
-6. Apply the jitter rule to each time: never land on :00 or :30. When a time
-   would land on the hour or half hour, move it 1–29 minutes earlier (the number
-   of letters in the title, spaces not counted, modulo 29, plus 1). Runs that
-   start between 06:00 and 09:00 Pacific time can be delayed: convert the job's
-   time to Pacific, and if it falls in that window, say so and keep it unless
-   they'd rather move it.
+6. Apply the jitter rule to each time: a job never starts on :00 or :30. Move
+   such a time a few minutes earlier, a different number for each job.
 7. Show what you plan to set up as a short table, one row per job: job, days,
    time, title. Say which times the jitter rule moved. They approve or change
    it; revise until they approve. Create nothing before that.

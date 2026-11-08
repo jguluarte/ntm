@@ -167,44 +167,58 @@ If a skill can't be loaded, end the run with this line:
 | `morning-reminder` | Weekdays | 08:44 | Morning reminder |
 | Bulk planning      | Sunday   | 21:50 | Week ahead       |
 
-Then, for each job:
+Then create each job, in the order below.
 
-1. Fill in its prompt from The prompt. If they want the prompt to say something
-   else, change it with them; it's theirs.
-2. `create_trigger` with:
-    - `name`: the title.
-    - `prompt`: the prompt.
-    - `cron_expression`: the timezone from the prompt, then minute, hour, day of
-      the month, month and days of the week, with the days as they chose (`1-5`
-      weekdays, `0` Sunday, `*` every day); for a monthly job, `1 * *` as the
-      last three fields. For example, weekdays at 08:44:
+### Fill in its prompt
 
-        ```
-        CRON_TZ=Europe/Berlin 44 8 * * 1-5
-        ```
+Fill in its prompt from The prompt. If they want the prompt to say something
+else, change it with them; it's theirs.
 
-    - `notifications`: `{push: true}`. Push carries the run's completion
-      summary, which is the reminder itself on the `claude-push` channel. On the
-      `pushover` channel it's a second, shorter push; say so, and that the
-      scheduled task's settings can turn it off.
-    - `initiation`: `human_request`.
-    - Leave `permission_mode` unset.
-3. Set the model they chose: `update_trigger` with the new job's id and
-   `model: <the id>`. This is their request from the walk, not the skill's. If
-   the id is rejected, say so, leave the job on the model it inherited, and
-   carry on.
-4. Tell the user, in one sentence, which model the job runs on and which
-   approval setting it got, and that automatic approval can be turned on in the
-   scheduled task's settings if the organization allows it. The setting is
-   `derived_state.permission_mode` in the result: `auto` means runs go ahead on
-   their own; absent means a run stops when an action needs approval, and nobody
-   is there to approve a scheduled run.
-5. When the result lists the job's connectors (`mcp_connections`), check that
-   the backend connector named by Todo list is among them; if it isn't, say so:
-   attach the connector to this session and create the job again, or every run
-   will fail its ready check. Either way, the proof is a run, once `ntm-user` is
-   installed: offer `fire_trigger` (Running a job now) then, and read its ready
-   check.
+### Create it
+
+`create_trigger` with:
+
+- `name`: the title.
+- `prompt`: the prompt.
+- `cron_expression`: the timezone from the prompt, then minute, hour, day of the
+  month, month and days of the week, with the days as they chose (`1-5`
+  weekdays, `0` Sunday, `*` every day); for a monthly job, `1 * *` as the last
+  three fields.
+- `notifications`: `{push: true}`. Push carries the run's completion summary,
+  which is the reminder itself on the `claude-push` channel. On the `pushover`
+  channel it's a second, shorter push; say so, and that the scheduled task's
+  settings can turn it off.
+- `initiation`: `human_request`.
+- Leave `permission_mode` unset.
+
+For example, the `cron_expression` for weekdays at 08:44:
+
+```
+CRON_TZ=Europe/Berlin 44 8 * * 1-5
+```
+
+### Set the model
+
+`update_trigger` with the new job's id and `model: <the id>`. This is their
+request from the walk, not the skill's. If the id is rejected, say so, leave the
+job on the model it inherited, and carry on.
+
+### Say how it runs
+
+Tell the user, in one sentence, which model the job runs on and which approval
+setting it got, and that automatic approval can be turned on in the scheduled
+task's settings if the organization allows it. The setting is
+`derived_state.permission_mode` in the result: `auto` means runs go ahead on
+their own; absent means a run stops when an action needs approval, and nobody is
+there to approve a scheduled run.
+
+### Check its connectors
+
+When the result lists the job's connectors (`mcp_connections`), check that the
+backend connector named by Todo list is among them; if it isn't, say so: attach
+the connector to this session and create the job again, or every run will fail
+its ready check. Either way, the proof is a run, once `ntm-user` is installed:
+offer `fire_trigger` (Running a job now) then, and read its ready check.
 
 ## Connectors
 

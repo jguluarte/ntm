@@ -28,7 +28,7 @@ list each goes by the real name its key maps to.
 - **$has-amazon-alert:** an Amazon alert is set for this item. While it's on a
   closed task, the alert is still live and needs removing.
 - **$amazon-unavailable:** the item isn't sold on Amazon in the condition the
-  watch wants, so no alert is set.
+  user allows, so no alert is set.
 
 An open watched item **needs an alert** when it has neither label.
 
@@ -47,20 +47,21 @@ An open watched item **needs an alert** when it has neither label.
 Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Use the browser the user names for this run, or else the one Amazon interface
-under Shopping in your settings names; if you still don't know, ask them. If
-Amazon interface is off and they named none, end with
-`Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.`
-Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow
-it. If that browser can't be reached, end with
+Amazon alerts are on when Amazon interface under Shopping in your settings names
+a browser or is blank; they're off when the line is missing or says off, or
+there's no Shopping section. Use the browser the user names for this run. If
+they named none and Amazon alerts are off, end with
+`Sync-price-watch-to-amazon: off; your settings have no Amazon alerts.`
+Otherwise use the one Amazon interface names; if it's blank, ask them. Load that
+browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If that
+browser can't be reached, end with
 `Sync-price-watch-to-amazon FAILED: needs a browser.` followed on the same line
 by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
 your own browser, then run this again.
 
 Amazon's store for this user is the one serving the country in Country and
-currency under About you in your settings; prices are in that currency. The
-condition an item must be in is Condition under Shopping, unless the task says
-otherwise.
+currency under About you in your settings; prices are in that currency. An item
+must be new, unless the task or Shopping in your settings says otherwise.
 
 ## 2: The work
 
@@ -114,8 +115,8 @@ For each open item that needs an alert:
    number. Open the best match and read the title, model number, variant, ASIN,
    current price and who sells it.
 3. **Make sure it's the product.** It's a match only when the model number and
-   variant match the task exactly and it's sold in the condition the watch
-   wants. If anything is uncertain (no model number on the page, several close
+   variant match the task exactly and it's sold in a condition the user allows.
+   If anything is uncertain (no model number on the page, several close
    variants, a bundle, an unfamiliar third-party seller only), ask the user:
    show the candidates' titles, prices and ASINs, plus "Not on Amazon". Never
    set an alert on a guess.

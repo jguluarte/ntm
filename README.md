@@ -102,6 +102,12 @@ scheduled.
 - `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
   with the watched items. Needs a browser Claude can drive.
 
+Each watched task names the exact item, with its model and variant. Its
+description gives the target price and anything that differs from the defaults:
+the condition (new), how it reaches you (ordered online and delivered), and what
+counts as a deal (at or near the target, or well below the usual price). For
+example: "Target 80. Refurbished is fine."
+
 ### Setup and settings
 
 | Skill                          | What it does                                                                        |
@@ -189,9 +195,9 @@ reads it. Written by `/ntm:price-watch`.
 
 - **The style.** Plain, a theme you describe, or a persona skill you already
   have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels, the labels planning skips, how the
-  shopper judges a deal. `/ntm:configure-todo-list` proposes a default for each
-  and records your answer.
+- **The todo list agreements.** Labels, the labels planning skips, whether you
+  want Amazon price alerts. `/ntm:configure-todo-list` proposes a default for
+  each and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called:
   `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in

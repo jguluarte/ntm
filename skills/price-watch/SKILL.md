@@ -56,9 +56,11 @@ word the answer.
 
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
 `/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it
-only notices when a sync is due; when Amazon interface under Shopping in your
-settings is off, skip this check. With the $has-amazon-alert and
-$amazon-unavailable labels by their real names from Labels, note:
+only notices when a sync is due. Amazon alerts are on when Amazon interface
+under Shopping in your settings names a browser or is blank; they're off when
+the line is missing or says off, or there's no Shopping section. When they're
+off, skip this check. With the $has-amazon-alert and $amazon-unavailable labels
+by their real names from Labels, note:
 
 - each open watched task with neither label (it needs an alert);
 - each closed task that still has the $has-amazon-alert label (its alert needs
@@ -88,10 +90,10 @@ and report it as a failed check.
 Use `/ntm:notify --from price-watch` for a short overview of the DEAL results.
 Title: "Good price: <item> <price>", or "Price watch: N deals" for more than
 one. Message: one short line per item with the item, price and store, adding the
-condition when it isn't the one from Condition under Shopping, and
-"(membership)" or "(coupon)" when the price needs one, then "Details in the
-run." Keep it brief. If `/ntm:notify` returns `NOTIFY VIA FINAL REPLY`, nothing
-was sent yet; FINAL REPLY says what the final reply carries.
+condition when it isn't new, and "(membership)" or "(coupon)" when the price
+needs one, then "Details in the run." Keep it brief. If `/ntm:notify` returns
+`NOTIFY VIA FINAL REPLY`, nothing was sent yet; FINAL REPLY says what the final
+reply carries.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the
 job's completion push carries: One section per item, starting with a few words
@@ -160,8 +162,8 @@ this line out when nothing needs syncing.
 Say whether it's a deal today and, for a DEAL, the price, store and product link
 with the DEAL line's conditions; otherwise the best verified price and where, or
 that nothing could be verified, or why it's not actionable. Then its CHECKED
-line and any NOTES that aren't "none". Leave out the per-item form above. Unless
-Amazon interface under Shopping is off, add that Amazon isn't checked here.
+line and any NOTES that aren't "none". Leave out the per-item form above. When
+Amazon alerts are on, add that Amazon isn't checked here.
 
 # ERROR HANDLING
 

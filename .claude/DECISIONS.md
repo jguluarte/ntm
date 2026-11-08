@@ -312,8 +312,9 @@ generated one, which 0.4 names `ntm`.
 - The base is a guide the user's agent follows. Only contract names and call
   shapes are fixed.
 - The user plugin's `notify` carries the user's Pushover-or-chat choice.
-- The generated user plugin bundles the connector for the user's backend. Which
-  Linear wins at first run is open (see Deferred and open).
+- The generated user plugin bundles the connector when the user is on Linear.
+  Setup has already connected it and tested it at the todo list step, before the
+  plugin is built.
 - Plugin and file renames stay separate from content renames.
 - No migration from 0.3; installs start fresh. The base and the user plugin
   update together.
@@ -435,10 +436,6 @@ questions; its first (where settings live) is decided.
     - the job-run block (ready check, FINAL REPLY, error handling, agent
       fallback) repeats across about 8 skills
     - the `ntm-user` package layout isn't spelled out
-- 0.4, open: the generated user plugin bundles the connector (decided above),
-  but first-run setup needs Linear before the user plugin exists, so the user
-  connects through the Connectors tab first, and a bundled server would be a
-  second Linear. Decide which wins.
 - Before 0.4: install main on Justin's account with a fresh setup and use it for
   a few days (see Justin's installed copy). His call, and only with his
   go-ahead.

@@ -8,9 +8,10 @@ description: >-
 
 # ntm:afternoon-reminder
 
-A tap on the shoulder about what's still open today. `ntm:today` gives the
-facts; the messenger agent writes and sends the message. If the messenger isn't
-available in this session, follow the conventions' "Chat, jobs and agents".
+`ntm:today` gives the facts; the messenger agent writes the message in the
+user's style and sends it. If the messenger isn't available in this session,
+read its file from the installed plugin and follow it yourself (see "Chat, jobs
+and agents" in `ntm:conventions`).
 
 # 1: Ready check
 
@@ -30,11 +31,14 @@ open: <id> <title> <url>
 ```
 
 Add ` (was <date>)` when the planned date is before today, then ` (started)`
-when `ntm:today` marked the task started. Remind about everything listed,
-whatever its labels or status, even on a paused day: the user dated it.
+when the `/ntm:today` output marks the task started.
 
-When it lists nothing, run `/ntm:pause --check`. If today is paused (its line
-ends `true`), STOP and send nothing. Otherwise the facts are `open: none`.
+Remind about everything listed, whatever its labels or status, even on a paused
+day: the user dated it.
+
+When it lists nothing, run `/ntm:pause --check`. If it reports today as paused
+(the line for today ends `true`), STOP and send nothing. Otherwise the facts are
+`open: none`.
 
 On any `… FAILED` line, go to ERROR HANDLING.
 
@@ -48,15 +52,21 @@ job: Afternoon reminder
 <the facts>
 ```
 
-It returns `Sent: <title>`, followed by `List:` lines when the push couldn't
-carry the list; a delivery block; or a `… FAILED` line.
+It returns one of:
+
+- `Sent: <title>`, followed by a `List:` line and the list when the push
+  couldn't carry it.
+- A delivery block: `NOTIFY VIA FINAL REPLY`, then the title and the message.
+- A `… FAILED` line: go to ERROR HANDLING.
 
 # FINAL REPLY
 
+Unless reporting an error:
+
 - Delivery block: the title line and the message, verbatim, and nothing else, as
-  the conventions' Results say.
-- `Sent:`: one short line, such as "Sent the afternoon reminder.", then any
-  `List:` lines the messenger returned.
+  Results in `ntm:conventions` says.
+- `Sent:`: one short line, such as "Sent the afternoon reminder.", then the
+  `List:` line and the list, verbatim, if the messenger returned them.
 - Paused today: one short line, such as "Paused today; nothing sent."
 
 # ERROR HANDLING

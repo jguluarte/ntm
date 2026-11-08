@@ -139,8 +139,10 @@ entry.
   `all weekdays this month`) and works out the days; it needn't be perfect.
 - `Excluded labels from automatic scheduling` is labels only. Never planning a
   blocked task is a fixed rule in `conventions`.
-- Planning has no rules for parents or deadlines. `fix-todo-list` only clears
-  stale planned dates, or with `--dry-run` reports what it would clear.
+- Planning has no rules for parents or deadlines: it treats every open task the
+  same, and closing finished parents is the backend's job (Parent auto-close,
+  above). `fix-todo-list` only clears stale planned dates, or with `--dry-run`
+  reports what it would clear.
 - Job prompts state the timezone. Skills carry no long "today" or timezone
   definitions, and the Linear queries no timezone math.
 
@@ -269,7 +271,7 @@ generated one, which 0.4 names `ntm`.
 - The base is `neurodivergent-task-manager` (published; commands autofill, so
   the length costs nothing). The user plugin is `ntm`, a fixed name so the base
   can always reach the contracts. An optional alias plugin's name is the user's
-  word; there is no setting for it.
+  word.
 - Every job and every command the user types starts in the user plugin, setup
   included, so a user with an alias never types the base's name.
 - `setup` and `update` are ways into `configure`, which absorbs showing and

@@ -64,8 +64,8 @@ names (for their own backend, the tool they name). If it isn't there, ask them
 to connect it on the Connectors tab and come back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
-When they picked a backend other than linear, read `references/own-backend.md`
-now and walk it with them before Statuses.
+When they picked a backend other than Linear, read this skill's
+`references/own-backend.md` now and walk it with them before Statuses.
 
 ## Statuses
 
@@ -73,9 +73,9 @@ Nothing to store: each status's class is read from the backend at run time, as
 the conventions' Status classes says. `list statuses` on the todo list and show
 in one short list which class each status falls in (the guide says how). Blocked
 is the status named Blocked. For their own backend, the mapping they gave goes
-in its guide's Status classes paragraph (see `references/own-backend.md`). If
-there's no blocked status, say the $pending-shipment label and blocked-by links
-cover the same ground.
+in its guide's Status classes paragraph (see this skill's
+`references/own-backend.md`). If there's no blocked status, say the
+$pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
 

@@ -94,12 +94,14 @@ implies `--stay-fresh`; the tone is freeform. It must:
 - rewrite the message in the user's register, from their Profile
   (`references/builder.md` in `ntm:configure-style` says what each section
   means);
-- with `--stay-fresh`, keep lines fresh: read the message history database
-  through `ntm:conventions`, avoid what recent entries used, and add the new
-  line with the task ids the tone names, pruned to the `Keep:` line in the
-  database's frontmatter;
-- with `--stay-fresh`, a task's earlier days are the days before today whose
-  history entries name its id; they set its level;
+- with `--stay-fresh`, use the message history database, read through
+  `ntm:conventions`. Keep lines fresh: avoid what recent entries used. Let a
+  slipping task climb: a carried-over task's earlier days are the days before
+  today whose entries name its id, and its level is the one the Profile's When
+  something keeps slipping section gives for that count (for a persona, its own
+  levels); any other task is on the first level. Then add one entry, with
+  today's date, the new line and the task ids the tone names, pruned to the
+  `Keep:` line in the database's frontmatter;
 - with `--for`, end with a `Title:` line that says what the message is about in
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.

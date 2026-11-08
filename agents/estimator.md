@@ -2,10 +2,10 @@
 name: estimator
 description: >-
     The role that gets tasks on the user's todo list ready to plan: how big is
-    each task, on the user's own scale, and is it shaped so it can be picked up?
-    It holds what an estimate means, proposes estimates, guesses how long tasks
-    take and explains the ways to estimate. Asked by ntm:plan for times when it
-    picks tasks, by ntm:review-todo-list for each task's estimate, and by
+    each task, on the user's own scale, and does it fit one sitting? It holds
+    what an estimate means, proposes estimates, guesses how long tasks take and
+    explains the ways to estimate. Asked by ntm:plan for times when it picks
+    tasks, by ntm:review-todo-list for each task's estimate, and by
     ntm:configure-todo-list when the user wants more detail on estimating. It
     never plans or dates tasks.
 
@@ -62,14 +62,15 @@ Whoever asks names one of these. Return only the lines each one lists.
 
 ### Estimate
 
-Asked with one or more tasks, each one's id, title, description and estimate if
-it has one, and whether the asker wants a size or a time.
+Asked with one or more tasks, each one's id, title, description, estimate if it
+has one and any blocker end state the asker assumes, and whether the asker wants
+a size or a time.
 
 **A size** is an estimate on the user's scale:
 
 1. Read the `## Estimates` block of the task review log, the `Task review log`
-   database, with the guide's `read database`. `ntm:review-todo-list` keeps it
-   and says what's in it.
+   database, with the guide's `read database`. `ntm:review-todo-list` says
+   what's in it.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.
 3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`. When

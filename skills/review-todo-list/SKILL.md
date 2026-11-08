@@ -18,18 +18,16 @@ description: >-
 What to review is a project, part of one, or a few tasks; see What to review.
 Without it, the review proposes one.
 
-## Running the review
+## Before you start
 
-Reviewing the todo list with the user: closing obsolete or duplicate tasks, then
-estimating and splitting unreviewed ones, with their approval. It needs the
-user's answers, so it runs here in the chat. What you learn goes in the task
-review log, so reviewing gets better over time.
+What you learn goes in the task review log, so reviewing gets better over time.
 
 Load `ntm:conventions` first: it holds your settings and the list's rules, and
 names the guide that carries out each list operation below. Each estimate comes
-from the estimator agent's Estimate request, asked for a size; when the agent
-isn't available, follow its file as the conventions' "Chat, jobs and agents"
-says.
+from the estimator agent's Estimate request, asked for a size. Send the task as
+it stands now: after a split, the reduced scope; when you're assuming a
+blocker's end state, that end state too. When the agent isn't available, follow
+its file as the conventions' "Chat, jobs and agents" says.
 
 ## Why review exists
 
@@ -136,8 +134,9 @@ again, and log that as `guess`.
 
 Once a task is settled, write it with the guide's `update task` (estimate, and
 any approved title, description or blocked-by link) and add its entry to
-`## Estimates` in the log. Do both in the same turn that presents the next task
-(or ends the session), so writes never make the user wait.
+`## Estimates` in the log. Then ask Estimate about the next task, so it sees
+that entry. Do all of it in the same turn that presents the next task (or ends
+the session), so writes never make the user wait.
 
 ## Splits
 
@@ -156,11 +155,11 @@ any approved title, description or blocked-by link) and add its entry to
 
 ## The task review log
 
-The `Task review log` database (see Databases in `ntm:conventions`). This skill
-keeps it, and the estimator reads it: it's how reviewing learns to work better
-with the user over time. Read it with the guide's `read database`. When it's
-missing, `write database` creates it with the two sections below. Save it with
-`write database` whenever you change it, leaving the rest as it was.
+The `Task review log` database (see Databases in `ntm:conventions`): it's how
+reviewing learns to work better with the user over time. Read it with the
+guide's `read database`. When it's missing, `write database` creates it with the
+two sections below. Save it with `write database` whenever you change it,
+leaving the rest as it was.
 
 **`## How you work`:** short bullets about the user, written to them (it's
 theirs too), on whatever would help you do better with them next time: how they

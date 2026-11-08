@@ -197,9 +197,14 @@ entry.
   label, which tasks inherit from the project. Price watch is off when nothing
   carries it or the job isn't scheduled.
 - Deal details go in the run's final reply, not in a separate post.
-- Decided, to build: `Condition`, `Delivery` and `A deal` leave Shopping; they
-  belong to each item, on its task. `Amazon interface` stays, and is left out
-  entirely when the user doesn't want Amazon.
+- Each watched task's description says its condition, how it reaches the user
+  and what counts as a deal, in the user's words. The shopper's defaults fill
+  what it doesn't say: new; ordered online and delivered to the user's country;
+  at or near the target, or well below the usual price. The $price-watch label
+  in `conventions` says how to write one.
+- Shopping holds `Amazon interface` and anything else about how the user shops.
+  The line is left out when the user doesn't want Amazon alerts, and the section
+  when nothing is left in it.
 - No Amazon alert steps database. `sync-price-watch-to-amazon` carries the steps
   itself, and is updated when Amazon changes.
 
@@ -325,20 +330,13 @@ the new-user flow, and four 0.4 recommendations. In order:
    new-user flow trace.
 2. The 0.4 talks, starting from the review's four questions.
 
-### To build, from the names pass
-
-Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
-
-- Release: blank. `Condition`, `Delivery` and `A deal` move from Shopping to
-  each task; `Amazon interface` left out when the user doesn't want Amazon.
-
 ### Open
 
 - An option, not decided: settings can live in a file in the user's backend (a
   Linear doc, for example), and the `settings` skill then only says where to
   find them. Some databases' own settings could live there too.
-- A price watch talk, later: its default pattern makes too much busywork, the
-  per-item details belong on the task, and setup needs better guidelines.
+- A price watch talk, later: its default pattern makes too much busywork, and
+  setup needs better guidelines.
 - Slipping tasks, a 0.4 idea: move the counting out of the style. Planning owns
   a mention history database where each reminder records the date for every task
   it names; the caller passes each task's count through the messenger to the

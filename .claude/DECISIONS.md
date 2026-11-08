@@ -252,9 +252,9 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## Justin's installed copy
 
-ntm 0.3.0 and its ntm-user, five jobs on Opus. Its settings use old names
-(Ticket prefix, Week ahead, grooming log), so the next release needs a fresh
-setup.
+ntm 0.3.2 and a rebuilt ntm-user, five jobs on Opus, re-synced 2026-11-08. Once
+he installs a release with the style history ids (#51), his persona style needs
+`/ntm:configure-style` again.
 
 His jobs, for that setup: the weekly planning plans weekdays; the morning plans
 today if it's empty and not paused. Both aim for an hour or less where they can,
@@ -317,9 +317,6 @@ the new-user flow, and four 0.4 recommendations. In order:
 1. The flow-by-flow simplification, with Justin, starting from the review's
    new-user flow trace.
 2. The 0.4 talks, starting from the review's four questions.
-
-Justin's install is ntm 0.3.2 and a rebuilt ntm-user, and his five jobs are
-re-synced (ready-check OK).
 
 ### To build, from the names pass
 

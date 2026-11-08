@@ -98,9 +98,8 @@ register, leave the section empty: the defaults are the plain versions above.
 
 ### When something keeps slipping
 
-What happens when the same task shows up day after day. An earlier day is a day
-before today on which a reminder mentioned the task; the procedure counts them
-from the message history.
+What happens when the same task shows up day after day. Earlier days are counted
+as `ntm:settings` says for `ntm-user:style`.
 
 Write the user's levels in order, each with the name they give it and after how
 many earlier days it starts. The first level is the everyday one, for fresh work

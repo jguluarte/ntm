@@ -188,6 +188,8 @@ entry.
 - Justin's own persona skill never ships.
 - The profile's headings stay as on main. The profile has no `Off limits`, and
   the builder never asks about it, in Justin's style too.
+- The style records, in the message history, the task ids each message names; a
+  carried-over task's level comes from counting the earlier days that name it.
 
 ## Price watch
 
@@ -253,13 +255,16 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## Justin's installed copy
 
-ntm 0.3.0 and its ntm-user, five jobs on Opus. Its settings use old names
-(Ticket prefix, Week ahead, grooming log), so the next release needs a fresh
-setup.
+- **Current Installed Version**: ntm 0.3.2
+- **Last rebuilt on**: 2026-11-08 (bcf91a9)
+- **Jobs**: five, on Opus, re-synced 2026-11-08
+- **Next install**: once it includes #51, rerun `/ntm:configure-style` for his
+  persona style
 
-His jobs, for that setup: the weekly planning plans weekdays; the morning plans
-today if it's empty and not paused. Both aim for an hour or less where they can,
-without ruling out bigger tasks; a bigger task is the signal to break it up.
+His jobs, for the next fresh setup: the weekly planning plans weekdays; the
+morning plans today if it's empty and not paused. Both aim for an hour or less
+where they can, without ruling out bigger tasks; a bigger task is the signal to
+break it up.
 
 ## 0.4: decided
 
@@ -319,9 +324,6 @@ the new-user flow, and four 0.4 recommendations. In order:
    new-user flow trace.
 2. The 0.4 talks, starting from the review's four questions.
 
-Justin's install is ntm 0.3.2 and a rebuilt ntm-user, and his five jobs are
-re-synced (ready-check OK).
-
 ### To build, from the names pass
 
 Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
@@ -336,14 +338,13 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
   find them. Some databases' own settings could live there too.
 - A price watch talk, later: its default pattern makes too much busywork, the
   per-item details belong on the task, and setup needs better guidelines.
-- Tasks that keep slipping never get a harder reminder: the style's history
-  doesn't record task ids (review finding #3). Justin decides where this goes.
-  Idea, big enough to wait for 0.4: planning owns a mention history database
-  where each reminder records the date for every task it names; the caller
-  passes each task's count through the messenger to the style, which only maps a
-  count to a level; the weekly `fix-todo-list` keeps only ids still open, so any
-  closed state drops out. JSON in a database is fine; a sqlite file would be the
-  same thing, so revisit storage only if needed.
+- Slipping tasks, a 0.4 idea: move the counting out of the style. Planning owns
+  a mention history database where each reminder records the date for every task
+  it names; the caller passes each task's count through the messenger to the
+  style, which only maps a count to a level; the weekly `fix-todo-list` keeps
+  only ids still open, so any closed state drops out. JSON in a database is
+  fine; a sqlite file would be the same thing, so revisit storage only if
+  needed.
 - Date-math edges in report spans ("last month" on the 1st): not worth fixing,
   since reports are for the typical flow. Someday, maybe: phrase spans as "since
   the last scheduled run".

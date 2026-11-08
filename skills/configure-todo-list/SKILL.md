@@ -216,7 +216,7 @@ The real name on your todo list for each label the system uses.
 ## Planning
 
 How your todo list is planned. Read by `ntm:plan` and the conventions;
-Estimate pattern by the estimator agent.
+Estimate pattern by the estimator agent and `ntm:review-todo-list`.
 
 - Estimate pattern: <how they size their tasks and what to do with that, in
   their words; with the list's point for each estimate when the list needs one>

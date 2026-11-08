@@ -104,8 +104,10 @@ instead. The user adjusts the order however they like, then you start.
 ## 3. Task by task
 
 Each estimate comes from the estimator agent: ask its Estimate request for a
-size, with any blocker end state you're assuming. When the agent isn't
-available, follow its file as the conventions' "Chat, jobs and agents" says.
+size. Send the task as it stands now (after a split, the reduced scope), any
+blocker end state you're assuming, and anything the user said this session that
+bears on size. When the agent isn't available, follow its file as the
+conventions' "Chat, jobs and agents" says.
 
 One item per message, in the agreed order:
 
@@ -133,7 +135,8 @@ estimator again, and log that as `guess`.
 Once a task is settled, in the same turn that presents the next one (or ends the
 session): write it with the guide's `update task` (the estimate, plus any
 approved title, description or blocked-by link), add its `## Estimates` entry to
-the log, then ask the estimator about the next task.
+the log, then ask the estimator about the next task, so writes never make the
+user wait.
 
 ## Splits
 

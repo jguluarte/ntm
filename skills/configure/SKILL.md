@@ -76,10 +76,10 @@ Keep the returned text; write nothing.
 The sections and what reads them, in case they ask: About you is read by
 everything; Todo list and Labels by `ntm:conventions`; Planning (the estimate
 pattern, the excluded labels) by `ntm:plan`, and its Estimate pattern by the
-estimator; Shopping (condition, delivery, what counts as a deal) by the shopper
-and `ntm:price-watch`; Notifications by `ntm:notify`. `ntm:configure-todo-list`
-settles Planning and Shopping alongside Todo list, since each default is about
-the same todo list.
+estimator and `ntm:review-todo-list`; Shopping (condition, delivery, what counts
+as a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
+`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
+since each default is about the same todo list.
 
 ### Packaging
 

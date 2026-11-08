@@ -82,7 +82,8 @@ Read the task with `read task` and its comments with `read comments`, and note:
   stores and their domains, "Not used" entries, and last full search date.
 
 The description also says, in the user's words, what this item allows. Where it
-says nothing, use the default:
+says nothing, use what Shopping in your settings says, and otherwise the
+default:
 
 - **Condition:** new, unless it says used, refurbished or open-box is fine.
 - **Delivery:** ordered online and delivered to the user's country, unless it

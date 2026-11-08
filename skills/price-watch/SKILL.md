@@ -57,9 +57,9 @@ word the answer.
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
 `/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it
 only notices when a sync is due; when Shopping in your settings has no Amazon
-interface line, the user doesn't want Amazon alerts: skip this check. With the
-$has-amazon-alert and $amazon-unavailable labels by their real names from
-Labels, note:
+interface line, or it says off, the user doesn't want Amazon alerts: skip this
+check. With the $has-amazon-alert and $amazon-unavailable labels by their real
+names from Labels, note:
 
 - each open watched task with neither label (it needs an alert);
 - each closed task that still has the $has-amazon-alert label (its alert needs

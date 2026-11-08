@@ -48,7 +48,7 @@ Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
 Use the browser the user names for this run. If they named none and Shopping in
-your settings has no Amazon interface line, end with
+your settings has no Amazon interface line (or it says off), end with
 `Sync-price-watch-to-amazon: off; your settings have no Amazon alerts.`
 Otherwise use the one Amazon interface names; if it's blank, ask them. Load that
 browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If that

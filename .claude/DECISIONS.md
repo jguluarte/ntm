@@ -68,8 +68,9 @@ entry.
 
 ## Agents
 
-- Agents own their procedures. The reminder skills gather facts and hand them
-  off.
+- Agents own the procedures that run without the user; a procedure that needs
+  the user's answers lives in the chat skill that runs it (review). The reminder
+  skills gather facts and hand them off.
 - An agent can't start another agent, so the planner is merged into `plan`.
 - The estimator owns estimates, time guesses and explaining the ways to
   estimate. It never plans. Planning and other callers engage it; several

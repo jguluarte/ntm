@@ -169,6 +169,9 @@ entry.
   step, ending `Self-test OK` or `Self-test FAILED at <step>`. Once the user
   starts it, it runs without asking; never run it unasked, since it sends a push
   and writes a task.
+- `self-test` also writes and updates a comment, adds and removes a label, and
+  asks the estimator for a time guess, which only reads. With no agent loaded it
+  follows `agents/estimator.md` itself and says so.
 - The price watch job runs daily; pause days (from `pause`) don't skip it.
 
 ## The style
@@ -199,6 +202,10 @@ entry.
   entirely when the user doesn't want Amazon.
 - `sync-price-watch-to-amazon` carries the Amazon alert steps itself, and is
   updated when Amazon changes.
+- With Amazon alerts on, the shopper leaves Amazon to them. With them off
+  (`Amazon interface` off, or no Shopping section), it tries Amazon like any
+  other store, reading the setting itself. When it can't read Amazon's page, it
+  drops Amazon silently: never a problem, a failure or a mention to the user.
 
 ## Estimates and review
 
@@ -342,12 +349,6 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
 - A reading-comprehension pass: writers simplify, human comprehension first ("if
   a human can comprehend, so can a model"). Includes the estimator's "Good
   enough reminders complete." Justin decides where this goes.
-- Waiting for Justin, from the 2026-11-07 review:
-    - Should the shopper price Amazon when Amazon alerts are off?
-    - `self-test` claims every backend operation but skips comments, labels and
-      agents: add the steps or narrow the claim?
-    - Does showing a key's last four characters count as printing it? Are keys
-      OK in the curl command in run transcripts?
 - An idea, later: the estimator takes the task review log over from
   `ntm:review-todo-list` as its own database and keeps its `## How you work`
   tidy (folds and rewrites entries); `fix-todo-list` asks the estimator to do

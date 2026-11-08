@@ -115,16 +115,16 @@ What the messenger needs from it is only the call `ntm:settings` names:
 `/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
 returning the message with `Title: …` as its last line under `--for`. Read the
 body for how it names these things (a `--reminder` flag, a `Subject:` line, its
-own history note) and write a short section, `## For ntm`, that goes above the
-body and says, in a line each, how the messenger's call maps onto the persona's
-own words: what `--for <reminder>` means to it, that `Title:` is its last line
-(in place of whatever it calls it; when the persona has no subject line of its
-own, the section gives it the Title line rule from `ntm:settings`, so the title
-is written with the message as part of its theme), that `--stay-fresh` is its
-freshness mechanism, and that the message history note is the one titled under
-Notes in `ntm-user:settings` (when the persona names its own note, the settings'
-title should be that one). Show them the section; they confirm. Nothing else is
-added or filled in: the persona's own levels, profanity and motifs stand.
+own history) and write a short section, `## For ntm`, that goes above the body
+and says, in a line each, how the messenger's call maps onto the persona's own
+words: what `--for <reminder>` means to it, that `Title:` is its last line (in
+place of whatever it calls it; when the persona has no subject line of its own,
+the section gives it the Title line rule from `ntm:settings`, so the title is
+written with the message as part of its theme), that `--stay-fresh` is its
+freshness mechanism, and that its history is the message history database (see
+Databases in `ntm:conventions`; when the persona names a history of its own, the
+section says to use that one). Show them the section; they confirm. Nothing else
+is added or filled in: the persona's own levels, profanity and motifs stand.
 
 ## Result
 

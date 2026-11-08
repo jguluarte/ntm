@@ -124,13 +124,13 @@ anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
   blocks, where the work lives. Confirm in one line. If the task has the
   $has-amazon-alert label, add that its Amazon alert gets removed the next time
   they run `/ntm:sync-price-watch-to-amazon`.
-- **Vouching for or blocking a store:** update the price watch stores note,
-  titled as Notes under Todo list in your settings says and kept in the project
-  that carries the $price-watch label (the guide's `read note` and `write note`,
-  with that project; when it's missing, `write note` creates it with the
-  headings `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other
-  list (Vouched or Blocked) if it's there; leave the Seed list alone unless they
-  say otherwise. Record its domain as they give it, or from that note or the
+- **Vouching for or blocking a store:** update the `Price watch stores` database
+  (see Databases in `ntm:conventions`), kept in the project that carries the
+  $price-watch label (the guide's `read database` and `write database`, with
+  that project; when it's missing, `write database` creates it with the headings
+  `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list
+  (Vouched or Blocked) if it's there; leave the Seed list alone unless they say
+  otherwise. Record its domain as they give it, or from that database or the
   item's "Stores:" comment, and ask them only if neither has it. Add the date
   and their reason if they gave one. Confirm in one line.
 

@@ -29,7 +29,7 @@ the rules name the value, the settings hold it.
    described each operation under Todo list in their own words, and that
    description is the guide; `references/CONTRACT.md` lists the operations it
    covers. Skills name operations (`fetch open`, `set planned date`,
-   `read note`); the guide says how each one is done.
+   `read database`); the guide says how each one is done.
 3. Read Deviations last; see Deviations at the end.
 
 ## What this todo list is
@@ -83,10 +83,10 @@ the tie-breaker.
 - **Started:** a plannable status that means work has begun (see Status
   classes). Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
-  user dated themselves still gets its reminders. Kept in the pauses note.
-- **Note:** a text the system keeps on the todo list, found by title (see
-  Notes). A task titled with a note's title is a note, not work; every skill
-  ignores it.
+  user dated themselves still gets its reminders. Kept in the pauses database.
+- **Database:** a document the system keeps its own records in, on the todo
+  list, found by its title (see Databases). A task titled with a database's
+  title is a database, not work; every skill ignores it.
 - **Label:** a tag on a task or project.
 - **Estimate:** how big a task is; the estimator agent (`agents/estimator.md`)
   says what it means.
@@ -206,27 +206,27 @@ from its project too. This holds for labels added later as well, with no change
 to these rules. Where the backend can't put labels on groups, the guide says so
 and the user puts the labels on tasks directly.
 
-## Notes
+## Databases
 
-Each note's title is set under Notes in Todo list in your settings; the default
-titles are in parentheses below. Read and write notes with the guide's
-`read note` / `write note`. Each note has one writer; everything else only reads
-it.
+The system keeps its own records in databases on the todo list, each under the
+fixed title in parentheses below. A user who renamed one says so under
+Deviations. Read and write them with the guide's `read database` /
+`write database`. Each database has one writer; everything else only reads it.
 
 - **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
   keeps it.
 - **message history** (`Message history`): what reminders have said.
-  `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
-  history to keep.
+  `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
+  much history to keep; the user changes it there.
 - **task review log** (`Task review log`): the estimator keeps it, in its
   Review.
 - **price watch stores** (`Price watch stores`): stored in the project that
   carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
   from the user's vouch and block replies; the shopper reads it.
 
-Where the backend has no documents, the guide keeps each note in the description
-of an open task titled with the note's title and labeled $no-autoschedule; see
-Notes in `references/CONTRACT.md`.
+Where the backend has no documents, the guide keeps each database in the
+description of an open task titled with the database's title and labeled
+$no-autoschedule; see Databases in `references/CONTRACT.md`.
 
 ## Fetching
 

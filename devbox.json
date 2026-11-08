@@ -1,10 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.5/.schema/devbox.schema.json",
-    "packages": ["nodejs@22"],
+    "packages": [
+        "prettier@3.9.10",
+        "markdownlint-cli2@0.24.0",
+        "direnv@2.38.2"
+    ],
     "shell": {
         "scripts": {
             "lint": "make lint",
-            "fix": "make fix"
+            "lint-fix": "make lint-fix"
         }
     }
 }

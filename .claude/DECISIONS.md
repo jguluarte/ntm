@@ -326,6 +326,17 @@ the new-user flow, and four 0.4 recommendations. In order:
    new-user flow trace.
 2. The 0.4 talks, starting from the review's four questions.
 
+### Onboarding walkthrough, with Justin
+
+The new-user setup flow, walked through with him. Held for it, from #59:
+
+- Jobs are created before `ntm-user` is installed: whether that holds is open.
+- Price watch and the Amazon labels only when the user asks: rework then.
+- Linear's two estimate questions (team estimate type, how they estimate).
+- Checking the backend connector before the parts start.
+- Databases: each is described in the skill that uses it, not in a generic setup
+  list.
+
 ### To build, from the names pass
 
 Each is decided (see its topic above). Justin places each in 0.3 or 0.4.

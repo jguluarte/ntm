@@ -108,7 +108,7 @@ A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,
 in a job or in chat alike; an agent can't start another agent. The reminder
 skills, `show-completed --notify` and the bulk planning job ask the messenger,
 and the price watch the shopper. The estimator is for planning: `ntm:plan` asks
-it how long the tasks it picks take, reviewing follows its Review in the chat,
+it how long the tasks it picks take, reviewing asks it for each task's estimate,
 and setting up the todo list asks it to explain the ways to estimate. Each says
 what it hands over.
 
@@ -218,8 +218,8 @@ Deviations. Read and write them with the guide's `read database` /
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
   much history to keep; the user changes it there.
-- **task review log** (`Task review log`): the estimator keeps it, in its
-  Review.
+- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it; the
+  estimator reads it.
 - **price watch stores** (`Price watch stores`): stored in the project that
   carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
   from the user's vouch and block replies; the shopper reads it.

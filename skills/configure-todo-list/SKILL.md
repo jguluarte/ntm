@@ -74,12 +74,12 @@ operations.
 ## Statuses
 
 Nothing to store: each status's class is read from the backend at run time, as
-the conventions' Status classes says. `list statuses` on the todo list and show
-in one short list which class each status falls in (the guide says how). Blocked
-is the status named Blocked. For their own backend, the mapping they gave goes
-in the Status classes paragraph under Todo list (see Returning the sections). If
-there's no blocked status, say the $pending-shipment label and blocked-by links
-cover the same ground.
+the conventions' Status classes says. `list statuses` on the todo list and check
+that each falls in a class (the guide says how); Blocked is the status named
+Blocked. When they all do, say nothing. When one doesn't, name it, and say that
+what it counts as goes under Deviations with `/ntm:settings`. For their own
+backend, the mapping they gave goes in the Status classes paragraph under Todo
+list (see Returning the sections).
 
 ## Labels
 

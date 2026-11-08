@@ -107,8 +107,12 @@ search was 7 or more days ago.
   for as many trusted stores as this kind of item realistically has: often 8–15
   for mainstream products, only a few for niche ones. Never pad.
 - Other days: a short look for stores not on the list yet.
-- Never use a Blocked store. Amazon is left to its own alerts
-  (`ntm:sync-price-watch-to-amazon`): don't price it.
+- Never use a Blocked store.
+- Amazon: when Amazon interface under Shopping is on, Amazon is left to its own
+  alerts (`ntm:sync-price-watch-to-amazon`): don't price it. When it's off, or
+  there's no Shopping section, try Amazon like any other store. If you can't
+  read its page, drop it silently: leave it out of the Stores comment and your
+  result lines, as if you never tried.
 
 **Trusted stores:** Seed stores, the manufacturer's own store, stores the user
 named, Vouched stores, well-known retailers serving the user's country, and any

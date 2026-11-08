@@ -89,7 +89,8 @@ ask.
 ### Bulk planning
 
 Plans a range of days at once, after closing out the span just past. Its
-defaults, shown with the schedule (Walking the schedule); the user changes any:
+defaults go under the schedule table (Walking the schedule, step 1), and the
+user can change any of them:
 
 - how often it runs: weekly by default;
 - the range it plans, in words: `week mon-fri` by default, or `next two weeks`,
@@ -216,7 +217,9 @@ there to approve a scheduled run.
 
 Say more only for a job that lacks the backend connector: attach the connector
 to this session and create the job again, or every run will fail its ready
-check. Either way, the proof is a run, once `ntm-user` is installed: offer
+check.
+
+For every job, the proof is a run once `ntm-user` is installed: offer
 `fire_trigger` (Running a job now) then, and read its ready check.
 
 ## Connectors

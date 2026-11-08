@@ -106,15 +106,18 @@ One estimator agent proposes every estimate in this review. Start it once, at
 the first task, and hand it what it needs then: the Estimate pattern from your
 settings, and the log's `## How you work` and recent `## Estimates` entries,
 which Setup already read. It sees nothing of this chat, only what you hand it,
-so this hand-off is what lets it load nothing itself. When the agent isn't
-available, follow its file as the conventions' "Chat, jobs and agents" says.
+so this hand-off is what lets it load nothing itself. Start it in the
+background, and send every later ask to that same agent; don't start a new one.
+When the agent isn't available, follow its file as the conventions' "Chat, jobs
+and agents" says.
 
 Ask its Estimate request for a size for the first task alone, so the first
-proposal comes fast. Then keep it one or two tasks ahead of the user in the
-agreed order, so the next estimate is ready when they finish, and no further, so
-it's free when the user wants to talk the current task over. With each task,
-send it as it stands now, any blocker end state you're assuming, and anything
-the user said this session that bears on size.
+proposal comes fast. Wait for that answer only; never wait on an ask ahead
+before presenting the current task. Then keep it one or two tasks ahead of the
+user in the agreed order, so the next estimate is ready when they finish, and no
+further, so it's free when the user wants to talk the current task over. With
+each task, send it as it stands now, any blocker end state you're assuming, and
+anything the user said this session that bears on size.
 
 Its answers wait until their task comes up. Never interrupt the user with them,
 or mention them early.
@@ -139,8 +142,9 @@ do that. "Skip" leaves the task unreviewed for another day.
 
 If it's broken up, the estimate is for what's left of the original.
 
-After a task is broken up, or the user corrects an estimate, ask the estimator
-again for what's left, and drop any early answer the change makes stale. When
+After a task is broken up, ask the estimator again for what's left of the
+original. After the user corrects an estimate, pass the correction along, ask
+again for any task it already answered ahead, and drop those early answers. When
 the task was broken up after your guess, log the new proposal as `guess`.
 
 Once a task is settled, in the same turn that presents the next one (or ends the

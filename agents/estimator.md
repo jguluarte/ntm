@@ -65,15 +65,17 @@ Whoever asks names one of these. Return only the lines each one lists.
 
 Asked with one or more tasks, each one's id, title, description, estimate if it
 has one and any blocker end state the asker assumes, and whether the asker wants
-a size or a time.
+a size or a time. It may also bring anything the user said that bears on size,
+and the estimates settled since it started you.
 
 **A size** is an estimate on the user's scale:
 
 1. Use the `## Estimates` and `## How you work` entries from the task review log
    that the asker handed you, once, when it started you; keep using them for
-   every later ask. When none came, read them from the `Task review log`
-   database with the guide's `read database`. `ntm:review-todo-list` says what's
-   in it.
+   every later ask, and add each settled estimate the asker passes along. Weigh
+   what the user said about size with the rest. When none came, read them from
+   the `Task review log` database with the guide's `read database`.
+   `ntm:review-todo-list` says what's in it.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.
 3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`. When

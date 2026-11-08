@@ -205,8 +205,9 @@ entry.
 
 ## Estimates and review
 
-- Setup asks how the user estimates tasks and offers to explain. On Linear,
-  their scale maps onto the team's points.
+- Setup asks how the user estimates tasks; it explains the ways to estimate only
+  when the user asks for more. On Linear, their scale maps onto the team's
+  points.
 - One key, `Estimate pattern`, says how the user sizes things and what to do
   with it, any mapping included. There's no `Estimate help`: what the user has
   been told belongs in the agent's memory, not in settings.
@@ -358,6 +359,8 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
       agents: add the steps or narrow the claim?
     - Does showing a key's last four characters count as printing it? Are keys
       OK in the curl command in run transcripts?
+- An idea, later: `fix-todo-list` could keep the task review log's
+  `## How you work` tidy (fold and rewrite its entries).
 - Not discussed yet: `fix-todo-list` fetches the whole closed history every
   week, a cost that grows. Proposed: only recent completions.
 - 0.4 inputs, held for the 0.4 talks:

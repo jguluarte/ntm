@@ -34,13 +34,13 @@ the section below: `pushover` or `claude-push`. Follow anything else written
 there as written (quiet hours, priorities, a token per reminder).
 
 A line `Pushover app token for <job>: …` is the token when `--from` names that
-job. Otherwise use the default token.
+job. Otherwise use the app token from Notifications' Pushover settings.
 
 With `--app-token` and `--user-key`, use Pushover with those keys whatever
-Notifications says. Settings that don't load are no failure then: the test push
-runs before they exist.
+Notifications says. If `ntm-user:settings` can't be loaded, carry on; the test
+push runs before it exists.
 
-With no channel and no keys, return:
+With no channel and not both `--app-token` and `--user-key`, return:
 
 ```
 Notify FAILED: no channel configured; run /ntm:configure-notifications
@@ -57,7 +57,8 @@ and user key from Notifications, or from `--app-token` and `--user-key`.
 
 ### Sending
 
-Send in one Bash call, in exactly this pattern:
+Send in exactly this pattern. Replace `<app token>` and `<user key>` with the
+two keys; change nothing else.
 
 ```bash
 TITLE='Morning reminder'
@@ -80,8 +81,9 @@ curl -sS --max-time 20 \
   `<` or `@` as a file, so a message opening with `<a href=...>` breaks.
 - Build the message with a quoted heredoc (`<<'EOF'`), so quotes, `$` and
   backticks stay literal.
-- Put the title in single quotes, or in a heredoc if it contains one.
-- Keep it to one call: shell variables don't carry between calls.
+- Put the title in single quotes. If the title itself contains a single quote,
+  build it with a heredoc like the message.
+- Keep it to one Bash call: shell variables don't carry between calls.
 
 ### HTML
 
@@ -109,16 +111,23 @@ Add these as extra `--form-string` lines when useful:
 
 Pushover takes at most 1,024 characters for the message as sent (links
 converted) and 250 for the title. If either is over, don't trim it and don't
-send. Return `Notify TOO LONG: <the cap and why>; this was <n>`, with the cap in
-plain words: "Pushover takes at most 1,024 characters as sent, links included"
-for the message, "at most 250 characters" for the title.
+send. Return:
+
+```
+Notify TOO LONG: <the cap and why>; this was <n>
+```
+
+Give the cap in plain words: "Pushover takes at most 1,024 characters as sent,
+links included" for the message, "at most 250 characters" for the title.
 
 ### Checking the result
 
-Success is `{"status":1,"request":"..."}`. Anything else is a failure: print the
-full response body (its `errors` say what went wrong), report the failure, and
-don't claim it was sent. If curl itself fails (a network error or timeout),
-retry once. Never retry after `"status":1`: that sends a duplicate.
+Success is `{"status":1,"request":"..."}`. Anything else is a failure:
+
+- Print the full response body. Its `errors` say what went wrong.
+- Report the failure. Don't claim it was sent.
+- If curl itself fails (a network error or timeout), retry once.
+- Never retry after `"status":1`: that sends a duplicate.
 
 ## Claude push
 
@@ -131,15 +140,16 @@ NOTIFY VIA FINAL REPLY
 <message>
 ```
 
-The job's final reply is then the title and message, verbatim, as the
-conventions' Results say. `url` and `priority` do nothing here. In chat, return
-the block the same way; the reply that shows it is the delivery.
+The job's final reply is then everything after the marker line, verbatim, and
+nothing else, as the conventions' Results say. The completion push shows that
+reply. `url` and `priority` do nothing here. In chat, return the block the same
+way; the reply that shows it is the delivery.
 
 ## Result
 
 - `Sent: <title>` when Pushover answered `"status":1`.
 - The delivery block, on Claude push. It has no length cap.
-- `Notify TOO LONG: <the cap and why>; this was <n>` when over a Pushover cap.
-  Nothing was sent; the caller shortens it and calls once more.
+- `Notify TOO LONG` when over a Pushover cap (see Limits). Nothing was sent; the
+  caller shortens it and calls once more.
 - `Notify FAILED: <why>` otherwise, with the response's `errors` or curl's error
   as the why.

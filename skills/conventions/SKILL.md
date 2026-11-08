@@ -15,6 +15,10 @@ the jobs put the todo list right as they run. Every value these rules depend on
 is one the user agreed to during setup and can change in `ntm-user:settings`:
 the rules name the value, the settings hold it.
 
+The todo list is one person's, not a team's: priority is mostly unused, and a
+fixed deadline is rare. The words here come from tools built for companies; read
+these rules without that weight.
+
 ## Loading
 
 1. Load `ntm-user:settings` by name and read it by heading: About you, Todo
@@ -31,35 +35,6 @@ the rules name the value, the settings hold it.
    operations it covers. Skills name operations (`fetch open`,
    `set planned date`, `read database`); the guide says how each one is done.
 3. Read Deviations last; see Deviations at the end.
-
-## What this todo list is
-
-The todo list is the user's personal task system: home projects, chores,
-hobbies, errands, things to buy when the price is right, whatever they want to
-keep moving or not forget. It's the backbone of a system built around the points
-where things get stuck: starting tasks, keeping multi-day work moving, noticing
-when things have quietly gone stale, and buying on a good price instead of on
-impulse.
-
-It is one person's system, not a team's. The words here come from tools built
-for companies, but they carry none of that weight: there are no sprints or
-stakeholders, priority is mostly unused, a hard due date is rare and the user
-plans it by hand, and the evening reminder is a friend asking how the day went.
-Read every rule below at that scale, and keep that scale when writing to the
-user.
-
-Skills built on this todo list do three things:
-
-- **Plan.** They give each planning day one planned task, by setting that task's
-  planned date to the day. The user can add more to a day themselves, and a day
-  they have already dated counts as planned.
-- **Remind.** Jobs push the user reminders about the day's tasks.
-- **Keep the todo list honest.** They clear stale dates, and reviewing the list
-  with the user estimates and splits oversized work.
-
-Every rule below exists so that those skills, and any agent working on the todo
-list, read it the same way. When a rule seems arbitrary, the purpose above is
-the tie-breaker.
 
 ## Vocabulary
 

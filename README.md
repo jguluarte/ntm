@@ -90,7 +90,7 @@ runs it; so can you.
 ### Planning and tidying
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
-  estimate, split).
+  estimate, break up).
 - `/ntm:fix-todo-list`: clears stale planned dates.
 
 ### Price watch
@@ -161,9 +161,9 @@ Is this item a good deal today? One per watched task. Ships with ntm.
 
 ### The estimator
 
-How big is each task, on your own scale, and is it ready to plan? Reviews the
-todo list with you through `/ntm:review-todo-list`, estimating and splitting
-tasks, guesses how long each task takes when tasks are planned, and explains the
+How big is each task, on your own scale, and does it fit one sitting? Proposes
+each task's estimate when `/ntm:review-todo-list` reviews the todo list with
+you, guesses how long each task takes when tasks are planned, and explains the
 ways to estimate when you want to know. Ships with ntm.
 
 ### Pauses database
@@ -178,7 +178,7 @@ What reminders have said, so they don't repeat themselves. Written by
 ### Task review log database
 
 How you like tasks written and estimated, learned while reviewing. Written by
-the estimator, through `/ntm:review-todo-list`.
+`/ntm:review-todo-list`.
 
 ### Price watch stores database
 

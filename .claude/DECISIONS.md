@@ -68,12 +68,15 @@ entry.
 
 ## Agents
 
-- Agents own their procedures. The reminder skills gather facts and hand them
-  off.
+- Agents own the procedures that run without the user; a procedure that needs
+  the user's answers lives in the chat skill that runs it (review). The reminder
+  skills gather facts and hand them off.
 - An agent can't start another agent, so the planner is merged into `plan`.
-- The estimator owns estimates, time guesses, explaining the ways to estimate,
-  and review with the task review log. It never plans. Planning and other
-  callers engage it; several callers is right.
+- The estimator owns estimates, time guesses and explaining the ways to
+  estimate. It never plans. Planning and other callers engage it; several
+  callers is right.
+- Review and the task review log belong to `ntm:review-todo-list`; the estimator
+  answers its Estimate requests.
 - The estimator has one `Estimate` request, for one or many tasks, size or time.
 - With no estimate field, the estimate goes in the task description.
 - The messenger never reads settings; the skill that asks hands it the reminder,
@@ -202,12 +205,13 @@ entry.
 
 ## Estimates and review
 
-- Setup asks how the user estimates tasks and offers to explain. On Linear,
-  their scale maps onto the team's points.
+- Setup asks how the user estimates tasks; it explains the ways to estimate only
+  when the user asks for more. On Linear, their scale maps onto the team's
+  points.
 - One key, `Estimate pattern`, says how the user sizes things and what to do
   with it, any mapping included. There's no `Estimate help`: what the user has
   been told belongs in the agent's memory, not in settings.
-- "Estimate" is the plain word; no "sizing", no "groomed size".
+- The plain words are "estimate" and "breaking up a task".
 - Review runs in chat only, never in a job.
 
 ## Words
@@ -354,6 +358,10 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
       agents: add the steps or narrow the claim?
     - Does showing a key's last four characters count as printing it? Are keys
       OK in the curl command in run transcripts?
+- An idea, later: the estimator takes the task review log over from
+  `ntm:review-todo-list` as its own database and keeps its `## How you work`
+  tidy (folds and rewrites entries); `fix-todo-list` asks the estimator to do
+  that and never edits the log itself.
 - Not discussed yet: `fix-todo-list` fetches the whole closed history every
   week, a cost that grows. Proposed: only recent completions.
 - 0.4 inputs, held for the 0.4 talks:
@@ -363,7 +371,6 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
       rename
     - the job-run block (ready check, FINAL REPLY, error handling, agent
       fallback) repeats across about 8 skills
-    - the estimator's Review procedure could move into `review-todo-list`
     - `configure-todo-list` re-walks setup when reconfiguring
     - the `ntm-user` package layout isn't spelled out
 - 0.4, open: the generated user plugin bundles the connector (decided above),

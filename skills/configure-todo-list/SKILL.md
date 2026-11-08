@@ -139,10 +139,11 @@ differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
 
 Estimate pattern gets its own question, one high-level question: how would they
-like to estimate their tasks? Only if they want more detail, ask the estimator
-agent's Explain estimating request and pass its ways on; when the agent isn't
-available, follow its file as the conventions' "Chat, jobs and agents" says.
-Record their answer as Estimate pattern, in their words.
+like to estimate their tasks? The question stands on its own, and most people
+just answer it. Only when they ask for more on the ways to estimate, ask the
+estimator agent's Explain estimating request and pass its ways on; when the
+agent isn't available, follow its file as the conventions' "Chat, jobs and
+agents" says. Record their answer as Estimate pattern, in their words.
 
 Then ask, once: anything else about how they want planning done? Capture it as
 written below the lines ("nothing heavy on Fridays", "garage work only on
@@ -197,8 +198,8 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan` and the conventions;
-Estimate pattern by the estimator agent.
+How your todo list is planned. Read by `ntm:plan`, `ntm:review-todo-list` and
+the conventions.
 
 - Estimate pattern: <how they size their tasks and what to do with that, in
   their words; with the list's point for each estimate when the list needs one>

@@ -6,8 +6,8 @@ description: >-
     work to today, plans today if it's empty); --auto with a range in words
     (week, week mon-fri, all weekdays this month) plans the days it covers;
     anything else plans with the user in chat. Run by the morning reminder and
-    the weekly planning, or by the user ("plan my week", "plan Thursday around
-    the garage").
+    the bulk planning, or by the user ("plan my week", "plan Thursday around the
+    garage").
 ---
 
 # ntm:plan
@@ -25,7 +25,7 @@ description: >-
   by the morning reminder.
 - `--auto <range>`: plan a span, unattended. The range is in words, such as
   `week`, `week mon-fri` or `all weekdays this month`. Fills each planning day
-  in the range around whatever is already planned. Run by the weekly planning.
+  in the range around whatever is already planned. Run by the bulk planning.
 - Anything else: plan with the user in chat, following what they say ("plan the
   week around the garage", "give Thursday something small", "reset today"), and
   asking only if it's still ambiguous. Bare `/ntm:plan` is the week as the span.
@@ -50,8 +50,7 @@ states only what differs for its user.
 1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
    user wants their todo list planned: the estimate pattern, the excluded
    labels, and anything else they wrote there.
-2. Compute `TODAY` as the conventions' Dates section says.
-3. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
+2. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
 
 If any step fails, stop and return `Plan FAILED: <what failed>`.
 
@@ -115,27 +114,27 @@ conventions; Result says how to list any that still fail.
 
 ## --auto day
 
-1. **Carry over.** Every task planned before `TODAY` is stale. Move the ones in
-   the plannable class to `TODAY` with `set planned date`, whatever their labels
+1. **Carry over.** Every task planned before today is stale. Move the ones in
+   the plannable class to today with `set planned date`, whatever their labels
    and even when one blocks another: the user dated them, so they should just
    work (the conventions' Blocks rule is for picking work; carrying a date isn't
    picking). A stale task in the blocked class keeps its date. Carry over on a
    paused day too.
-2. **Today.** If nothing is planned for `TODAY` after the moves, check today as
+2. **Today.** If nothing is planned for today after the moves, check today as
    Paused days says. Paused: return `paused` and stop. Otherwise pick for today
    as Choosing a task says, and date the pick today.
 3. Return today's plan as Result says.
 
 ## --auto <range>
 
-Work out from the range which days to plan, counting from `TODAY`, and read the
+Work out from the range which days to plan, counting from today, and read the
 words the way a person would; it doesn't need to be exact. Days the range names
 (`mon-fri`, `weekends`, `all weekdays`) are the planning days; otherwise they're
 the days in Defaults. `week` alone is the rest of this week, or the coming week
 when run on a weekend. If the words give no days at all, stop and return
 `Plan FAILED: can't tell which days "<range>" means`.
 
-1. The span is from `TODAY` to the range's last day; only its planning days get
+1. The span is from today to the range's last day; only its planning days get
    picks. Check it for paused days, as Paused days says.
 2. Give each remaining planning day that doesn't already have a task its picks.
    If no candidate is left, plan nothing.
@@ -175,7 +174,7 @@ as they are.
 
 A ` (~<time>)` in a line below appears only on a task this run picked.
 
-- `--auto day`: one `today:` line per task planned for `TODAY`:
+- `--auto day`: one `today:` line per task planned for today:
   `today: <id> <title> (~<time>) <url>`, then ` (was <date>)` on a task carried
   over, the date it had, then ` (started)` when its status is the started one.
   When nothing is planned and nothing qualified, the single line `today: none`.

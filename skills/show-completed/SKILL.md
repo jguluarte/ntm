@@ -4,8 +4,8 @@ description: >-
     Reports what the user got done on their todo list over a span of time they
     or a job describes ("what did I finish last week", "what got done this
     month"), and, when asked, what's still open from it; --notify sends it as a
-    message in the user's style. Run by the evening reminder, by ntm:plan, by
-    the "Completed this week" job, or by the user.
+    message in the user's style. Run by the evening reminder, by ntm:plan, by a
+    job, or by the user.
 ---
 
 # ntm:show-completed
@@ -34,24 +34,19 @@ project". Take whatever scope it describes; never ask for one.
 Without a span, ask the user what span they want. Never assume one.
 
 `--notify`: also send the result as a message, through the messenger agent (see
-Notify below). The job name is `Completed this week` for a span of a week,
-`Completed this month` for a month, else `Completed`; read it off the words
-given. `--notify` starts with `/ntm:ready-check --notify-failure "<job name>"`,
-before Setup; `Ready-check FAILED` ends the run with what it returned. The
-"Completed this week" and "Completed this month" jobs run
-`/ntm:show-completed the last 7 days --notify` and
-`/ntm:show-completed last month --notify`.
+Notify below). `--notify` starts with
+`/ntm:ready-check --notify-failure show-completed`, before Setup;
+`Ready-check FAILED` ends the run with what it returned.
 
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` as the conventions' Dates section says, and work out the span
-   as Usage says: it ends today.
+2. Work out the span as Usage says: it ends today.
 3. Fetch with the guide's `fetch closed`: done tasks, adding canceled and
    duplicate ones only when the request asks for them. Add the guide's
    `fetch open`, keeping excluded tasks, only when it asks for open tasks.
-4. Keep the tasks completed in the span, in the timezone from About you in your
-   settings. Done tasks of any kind count, price watch buys included.
+4. Keep the tasks completed in the span. Done tasks of any kind count, price
+   watch buys included.
 5. When the description narrows the scope, keep only the tasks that match it, by
    project, parent, label or title.
 
@@ -80,12 +75,13 @@ and jobs.
 ## Notify
 
 With `--notify`, after the result, ask the messenger agent, with the reminder
-`completed`, the job name, a `span:` line (the result's first line) and one
-`done:` line per Done task (`done: <id> <title> <url>`), or `done: none`:
+`completed`, the job `show-completed`, a `span:` line (the result's first line)
+and one `done:` line per Done task (`done: <id> <title> <url>`), or
+`done: none`:
 
 ```
 reminder: completed
-job: Completed this week
+job: show-completed
 span: 2026-10-31 to 2026-11-06
 done: ABC-12 Order storage boxes <url>
 ```

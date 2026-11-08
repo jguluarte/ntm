@@ -2,8 +2,8 @@
 name: fix-todo-list
 description: >-
     Tidies the user's todo list by clearing stale planned dates, then returns
-    what it changed. Run by the weekly planning job, or by the user ("fix my
-    todo list", "tidy my todo list").
+    what it changed. Run by the bulk planning job, or by the user ("fix my todo
+    list", "tidy my todo list").
 ---
 
 # ntm:fix-todo-list
@@ -22,9 +22,7 @@ notifies anyone: whoever called it decides what to tell the user.
 ## Setup
 
 1. Load `ntm:conventions`.
-2. Compute `TODAY` once, as the conventions' Dates section says, and use it for
-   the whole run, even if the run crosses midnight.
-3. Fetch every open task with the guide's `fetch open`, and keep every result,
+2. Fetch every open task with the guide's `fetch open`, and keep every result,
    including excluded tasks. Skip the blocker reads, and skip listing the
    projects with their labels: this skill checks no labels.
 
@@ -33,7 +31,7 @@ notifies anyone: whoever called it decides what to tell the user.
 ```
 tasks where status is open
   and planned date is not null
-  and planned date < TODAY
+  and planned date < today
 → clear planned date
 ```
 
@@ -45,16 +43,16 @@ Retry a failed fetch once. If it still fails, stop and return
 `Fix-todo-list FAILED: <what failed>`. Writes follow the conventions; list any
 that still fail under `Couldn't write:`.
 
-With `--dry-run`, make no writes. In the result, write `Dry run <TODAY>:` in
-place of `Fixed <TODAY>:`, and `Would clear` in place of `Cleared`.
+With `--dry-run`, make no writes. In the result, write `Dry run <today>:` in
+place of `Fixed <today>:`, and `Would clear` in place of `Cleared`.
 
 ## Result
 
 Return plain text:
 
-- `Fixed <TODAY>:` then one line per change:
+- `Fixed <today>:` then one line per change:
   `Cleared <id> <title> <url> (was <date>)`
-- `Nothing to fix.` when nothing matched, or `Dry run <TODAY>: nothing to fix.`
+- `Nothing to fix.` when nothing matched, or `Dry run <today>: nothing to fix.`
   in a dry run. If writes were attempted but all failed, give the header with no
   change lines.
 - `Couldn't write:` with any failed writes, only when there are some.

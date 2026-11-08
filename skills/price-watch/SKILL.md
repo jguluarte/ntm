@@ -3,9 +3,9 @@ name: price-watch
 description: >-
     The price watch for the user's todo list, which watched items are a good
     deal today? Finds every watched task, asks the shopper agent about each one,
-    sends one alert for the deals, posts the details and reports. Run by the
-    "Price watch" job, or by hand in chat ("/ntm:price-watch", "check my watch
-    list", "is the backup battery a good price today?").
+    sends one alert for the deals, posts the details and reports. Run by a job,
+    or by hand in chat ("/ntm:price-watch", "check my watch list", "is the
+    backup battery a good price today?").
 ---
 
 # ntm:price-watch
@@ -31,13 +31,13 @@ currency from Country and currency under About you in your settings.
 # 1: Todo list rules
 
 Load `ntm:conventions` before anything else: it holds the list's rules and your
-settings, and every later step follows them. Compute `TODAY` as the conventions'
-Dates section says, unless whoever loaded this skill gave a date.
+settings, and every later step follows them. If whoever loaded this skill gave a
+date, that is today.
 
 # 2: Ready check
 
-Run by the job: `/ntm:ready-check --notify-failure "Price watch"`. Typed in
-chat: a plain `/ntm:ready-check`.
+Run by the job: `/ntm:ready-check --notify-failure price-watch`. Typed in chat:
+a plain `/ntm:ready-check`.
 
 **If it fails, STOP: end with what it returned and nothing more.**
 
@@ -70,9 +70,9 @@ Change nothing; FINAL REPLY reports it.
 # 4: The checks
 
 Ask the shopper agent once per watched task, all at once, giving each its task
-id and `TODAY` and nothing else. Each returns its RESULT lines (listed under
-"Your result" in `agents/shopper.md`): RESULT, then DEAL and COMPARE for a deal,
-OTHER VERIFIED, CHECKED and NOTES.
+id and today's date and nothing else. Each returns its RESULT lines (listed
+under "Your result" in `agents/shopper.md`): RESULT, then DEAL and COMPARE for a
+deal, OTHER VERIFIED, CHECKED and NOTES.
 
 A check that fails, returns `Shopper FAILED`, or returns no RESULT line means
 that item is unknown today; keep going. Otherwise use its result lines and
@@ -85,7 +85,7 @@ If no result is DEAL, send nothing and go straight to FINAL REPLY. A DEAL whose
 DEAL line lacks a price, store or product link isn't usable: don't alert on it,
 and report it as a failed check.
 
-Use `/ntm:notify --from "Price watch"` for a short overview of the DEAL results.
+Use `/ntm:notify --from price-watch` for a short overview of the DEAL results.
 Title: "Good price: <item> <price>", or "Price watch: N deals" for more than
 one. Message: one short line per item with the item, price and store, adding the
 condition when it isn't the one from Condition under Shopping, and
@@ -109,7 +109,7 @@ If the push fails, say so in the final reply; the details are there either way.
 
 The user may reply in this thread after the run, possibly on a later day. If the
 alert had more than one item and they don't say which, ask before changing
-anything. Dates below are `TODAY` per `ntm:conventions`, computed at reply time.
+anything. Dates below are today's, at reply time.
 
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and
   change nothing. Otherwise add a comment to that task right away (the guide's

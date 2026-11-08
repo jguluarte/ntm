@@ -40,8 +40,10 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 1. Load `ntm:conventions`. On a first run its first step says "not configured;
    run `/ntm:configure`". That's expected: carry on with the values you settle
-   here. Its `references/backend-contract.md` is the contract every backend
-   meets; `references/linear.md` is the guide it ships.
+   here. There is a predefined guide for linear.app, as well as the contract
+   required to use a different backend.
+    - If using Linear: `references/linear.md`
+    - Otherwise use `references/backend-contract.md`
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else

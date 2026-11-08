@@ -96,10 +96,10 @@ implies `--stay-fresh`; the tone is freeform. It must:
   means);
 - with `--stay-fresh`, keep lines fresh: read the message history database
   through `ntm:conventions`, avoid what recent entries used, and add the new
-  line and the task ids the tone names, pruned to the `Keep:` line in the
+  line with the task ids the tone names, pruned to the `Keep:` line in the
   database's frontmatter;
-- count a task's earlier days, which set its level, as the days before today
-  whose history entries name its id;
+- with `--stay-fresh`, a task's earlier days are the days before today whose
+  history entries name its id; they set its level;
 - with `--for`, end with a `Title:` line that says what the message is about in
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.

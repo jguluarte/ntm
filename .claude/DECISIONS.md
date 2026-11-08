@@ -375,6 +375,8 @@ the first is placed.
 - Release: blank. One `Estimate` request to the estimator.
 - Release: blank. Remove `Off limits` from the style profile and the builder.
 - Release: blank. The `configure` part `todo list` becomes `todo-list`.
+- Release: blank. The style records the task ids the tone names in the message
+  history; run `/ntm:configure-style` again to rebuild an existing style.
 
 ### Open
 
@@ -383,14 +385,13 @@ the first is placed.
   find them. Some databases' own settings could live there too.
 - A price watch talk, later: its default pattern makes too much busywork, the
   per-item details belong on the task, and setup needs better guidelines.
-- Tasks that keep slipping never get a harder reminder: the style's history
-  doesn't record task ids (review finding #3). Justin decides where this goes.
-  Idea, big enough to wait for 0.4: planning owns a mention history database
-  where each reminder records the date for every task it names; the caller
-  passes each task's count through the messenger to the style, which only maps a
-  count to a level; the weekly `fix-todo-list` keeps only ids still open, so any
-  closed state drops out. JSON in a database is fine; a sqlite file would be the
-  same thing, so revisit storage only if needed.
+- Tasks that keep slipping (review finding #3), an idea big enough to wait for
+  0.4: planning owns a mention history database where each reminder records the
+  date for every task it names; the caller passes each task's count through the
+  messenger to the style, which only maps a count to a level; the weekly
+  `fix-todo-list` keeps only ids still open, so any closed state drops out. JSON
+  in a database is fine; a sqlite file would be the same thing, so revisit
+  storage only if needed.
 - Date-math edges in report spans ("last month" on the 1st): not worth fixing,
   since reports are for the typical flow. Someday, maybe: phrase spans as "since
   the last scheduled run".

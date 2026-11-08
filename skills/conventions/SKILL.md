@@ -50,8 +50,6 @@ these rules without that weight.
   as `ABC-12`.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
-- **Parent task:** a task with open sub-tasks.
-- **Sub-task:** a task under a parent task, where the backend has that relation.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
   `ntm:plan`.

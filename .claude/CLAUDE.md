@@ -72,11 +72,14 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
 ## Text rules for the plugin
 
 - The plugin's word for an item is "task", never "ticket". The process is
-  "review", never "groom". `$` marks only the label names the user configures.
+  "review", never "groom". The list is the "todo list", never "board". `$` marks
+  only the label names the user configures.
 - Never the word "voice", in any form.
 - Nothing that ties the plugin to a particular person: no names, no board name,
   no Drag Race words, no ADHD.
-- Keys are never printed. 24-hour time.
+- A key is never shown in full in anything the user reads. Its last four
+  characters are fine, and so is the curl command in `notify`.
+- 24-hour time.
 - Terse, plain, imperative. No AI filler phrasing.
 - Write for the typical flow, not edge cases. State the trust basis and give the
   agent an escape hatch where a step depends on something it can't verify.

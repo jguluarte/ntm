@@ -56,10 +56,11 @@ word the answer.
 
 **Amazon alerts.** Amazon is covered by Amazon's own price alerts, which
 `/ntm:sync-price-watch-to-amazon` keeps in step. This run can't set them, so it
-only notices when a sync is due; when Shopping in your settings has no Amazon
-interface line, or it says off, the user doesn't want Amazon alerts: skip this
-check. With the $has-amazon-alert and $amazon-unavailable labels by their real
-names from Labels, note:
+only notices when a sync is due. Amazon alerts are on when Amazon interface
+under Shopping in your settings names a browser or is blank; they're off when
+the line is missing or says off, or there's no Shopping section. When they're
+off, skip this check. With the $has-amazon-alert and $amazon-unavailable labels
+by their real names from Labels, note:
 
 - each open watched task with neither label (it needs an alert);
 - each closed task that still has the $has-amazon-alert label (its alert needs
@@ -161,8 +162,8 @@ this line out when nothing needs syncing.
 Say whether it's a deal today and, for a DEAL, the price, store and product link
 with the DEAL line's conditions; otherwise the best verified price and where, or
 that nothing could be verified, or why it's not actionable. Then its CHECKED
-line and any NOTES that aren't "none". Leave out the per-item form above. Add
-that Amazon isn't checked here.
+line and any NOTES that aren't "none". Leave out the per-item form above. When
+Amazon alerts are on, add that Amazon isn't checked here.
 
 # ERROR HANDLING
 

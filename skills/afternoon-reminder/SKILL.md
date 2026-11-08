@@ -8,12 +8,9 @@ description: >-
 
 # ntm:afternoon-reminder
 
-The afternoon reminder: a tap on the shoulder about what's still open.
-`ntm:today` gives the facts; the messenger agent writes and sends the message.
-This skill names the steps, the handoff and what ends the run. When the
-messenger agent isn't available in this session, do what the conventions' "Chat,
-jobs and agents" says: read its file from the installed plugin and follow it
-yourself.
+A tap on the shoulder about what's still open today. `ntm:today` gives the
+facts; the messenger agent writes and sends the message. If the messenger isn't
+available in this session, follow the conventions' "Chat, jobs and agents".
 
 # 1: Ready check
 
@@ -26,18 +23,24 @@ and nothing more.**
 
 Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
-- Tasks listed: the facts are one `open:` line per task,
-  `open: <id> <title> <url>`, then ` (was <date>)` when its planned date is
-  before today, then ` (started)` when today marked it so. Remind about
-  everything listed, whatever its labels or status, even on a paused day: the
-  user dated it.
-- Nothing listed: run `/ntm:pause --check`. Paused (its line for today ends
-  `true`): STOP and send nothing. Otherwise the facts are `open: none`.
-- Any `… FAILED` line: ERROR HANDLING.
+When it lists tasks, the facts are one line per task:
+
+```
+open: <id> <title> <url>
+```
+
+Add ` (was <date>)` when the planned date is before today, then ` (started)`
+when `ntm:today` marked the task started. Remind about everything listed,
+whatever its labels or status, even on a paused day: the user dated it.
+
+When it lists nothing, run `/ntm:pause --check`. If today is paused (its line
+ends `true`), STOP and send nothing. Otherwise the facts are `open: none`.
+
+On any `… FAILED` line, go to ERROR HANDLING.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent:
 
 ```
 reminder: afternoon
@@ -45,22 +48,19 @@ job: Afternoon reminder
 <the facts>
 ```
 
-It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
-carry the list), a delivery block, or a `… FAILED` line.
+It returns `Sent: <title>`, followed by `List:` lines when the push couldn't
+carry the list; a delivery block; or a `… FAILED` line.
 
 # FINAL REPLY
 
-When the messenger returned a delivery block, the final reply is the title line
-and the message, verbatim, and nothing else, as the conventions' Results say.
-Otherwise, unless reporting an error, end the run with one short line saying
-what happened, such as "Sent the afternoon reminder." or "Paused today; nothing
-sent." That line is for the Pushover case; when the messenger returned lines
-after `Sent:` (the list the push couldn't carry), they follow it.
+- Delivery block: the title line and the message, verbatim, and nothing else, as
+  the conventions' Results say.
+- `Sent:`: one short line, such as "Sent the afternoon reminder.", then any
+  `List:` lines the messenger returned.
+- Paused today: one short line, such as "Paused today; nothing sent."
 
 # ERROR HANDLING
 
-If step 1 fails, end with what the ready check returned, and nothing more; that
-is what reaches the user. For any later error, including a `… FAILED` line from
-a skill or the messenger, never use `/ntm:notify`. End the run with the error
-stated plainly in your final reply; the scheduled task's own completion push
-carries it.
+After step 1, never use `/ntm:notify` for an error, including a `… FAILED` line
+from a skill or the messenger. End the run with the error stated plainly in your
+final reply; the scheduled task's own completion push carries it.

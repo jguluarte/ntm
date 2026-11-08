@@ -1,6 +1,7 @@
 # ntm: working rules
 
-Read `.claude/DECISIONS.md` for what's decided and what's next.
+Read `.claude/NAMES.md` for every name and whether Justin approved it, and
+`.claude/DECISIONS.md` for what's decided and what's next.
 
 ## The repo
 
@@ -16,14 +17,9 @@ and says go.
 
 - Nothing lands unless he asked for it or approved it. Don't run ahead.
 - Decisions go to him one at a time. User-facing names are his. A rename lands
-  only after his explicit yes; silence is not approval.
-- The plugin's name and displayName and the skill and agent names live in
-  `names.txt`. `make lint` fails when the repo and that list disagree. Only
-  Justin changes `names.txt`; a local hook blocks every Claude session from
-  editing it. Other names a user reads (the user plugin's names, settings keys,
-  database titles, default labels, skill arguments) need his yes too.
-  Plugin-internal names (status, delivery and result lines, settings headings)
-  don't.
+  only after his explicit yes; silence is not approval. His yes goes in
+  `NAMES.md`. Plugin-internal names (status, delivery and result lines) don't
+  need it.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 

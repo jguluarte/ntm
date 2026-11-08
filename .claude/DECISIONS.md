@@ -3,9 +3,9 @@
 What's decided and in force on main, by topic. A line marked "decided, to build"
 is decided but main doesn't match it yet; the work is listed under Deferred and
 open. After the topics: what's decided for 0.4, test-drive findings the plugin
-doesn't handle yet, and what's deferred or still open. User-facing names are in
-`names.txt`; the working rules are in `CLAUDE.md`. When something changes, edit
-its line here; don't add a dated entry.
+doesn't handle yet, and what's deferred or still open. Names are in `NAMES.md`;
+the working rules are in `CLAUDE.md`. When something changes, edit its line
+here; don't add a dated entry.
 
 ## Plugin shape
 
@@ -246,8 +246,7 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 - devbox provides Node, and direnv turns it on in the repo. The Makefile is the
   way in: `make lint` and `make fix` run the npm scripts, and install the
-  linters only when `package-lock.json` changes. `make lint` also runs the names
-  check, in shell, against `names.txt`. CI runs `make lint`.
+  linters only when `package-lock.json` changes. CI runs npm directly.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.
@@ -288,10 +287,7 @@ generated one, which 0.4 names `ntm`.
 - Contracts in the user plugin: `todo-list` (the backend guide), `ready-check`
   (only in the user plugin) and `self-test`. Both self-tests keep the name
   `self-test`. The old design page also lists `settings` and `style` as
-  contracts, a `Version:` line in the user's settings, and the files
-  `configure/references/generator.md` and
-  `configure/references/versions/<version>.md`; none of that is credited to
-  Justin.
+  contracts; that isn't credited to Justin.
 - The base is a guide the user's agent follows. Only contract names and call
   shapes are fixed.
 - The user plugin's `notify` carries the user's Pushover-or-chat choice.

@@ -68,9 +68,9 @@ a size or a time.
 
 **A size** is an estimate on the user's scale:
 
-1. Read the `## Estimates` block of the task review log, the `Task review log`
-   database, with the guide's `read database`. `ntm:review-todo-list` says
-   what's in it.
+1. Read `## Estimates` and `## How you work` in the task review log, the
+   `Task review log` database, with the guide's `read database`.
+   `ntm:review-todo-list` says what's in it.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.
 3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`. When

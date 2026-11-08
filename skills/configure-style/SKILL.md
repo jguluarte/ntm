@@ -123,8 +123,10 @@ the section gives it the Title line rule from `ntm:settings`, so the title is
 written with the message as part of its theme), that `--stay-fresh` is its
 freshness mechanism, and that its history is the message history database (see
 Databases in `ntm:conventions`; when the persona names a history of its own, the
-section says to use that one). Show them the section; they confirm. Nothing else
-is added or filled in: the persona's own levels, profanity and motifs stand.
+section says to use that one), and that each entry it adds there names the task
+ids the tone names, so a carried-over task climbs the persona's own levels as
+`ntm:settings` says. Show them the section; they confirm. Nothing else is added
+or filled in: the persona's own levels, profanity and motifs stand.
 
 ## Result
 

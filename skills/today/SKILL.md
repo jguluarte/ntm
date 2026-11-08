@@ -16,8 +16,7 @@ description: >-
 ```
 
 With nothing after it, list every open task with a planned date of today or
-earlier. A planned date is all it takes: labels, status and sub-tasks don't
-matter.
+earlier. A planned date is all it takes: labels and status don't matter.
 
 With words, list the open tasks planned within the span they describe, such as
 "tomorrow" or "this week". Narrow to any scope they name, such as "the garage".

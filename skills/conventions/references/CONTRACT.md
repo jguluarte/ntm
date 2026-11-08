@@ -28,8 +28,8 @@ Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
 
 - **No estimate field:** keep each task's estimate in its description, on a line
-  `Estimate: <estimate>`. The guide says how `fetch open` and `list sub-tasks`
-  read it there and how `update task` writes it.
+  `Estimate: <estimate>`. The guide says how `fetch open` reads it there and how
+  `update task` writes it.
 - **No blocked-by relation:** reviewing and planning work from titles and
   descriptions instead.
 - **No labels on groups:** the conventions' project-label inheritance doesn't
@@ -87,12 +87,7 @@ completion time, and says how to limit them to a span and to one label.
 
 ### `read task`
 
-Reads one task with its description, parent and blocked-by relations.
-
-### `list sub-tasks`
-
-Lists a task's sub-tasks, open and closed, with the standard fields (see
-`fetch open`).
+Reads one task with its description and blocked-by relations.
 
 ### `read comments` / `write comment` / `update comment`
 
@@ -125,8 +120,8 @@ labels, and says how to check for an existing match first.
 
 ### `update task`
 
-Changes a task's title, description, estimate, project (or none) or parent, or
-adds a blocked-by link; nothing else changes.
+Changes a task's title, description, estimate or project (or removes the
+project), or adds a blocked-by link; nothing else changes.
 
 ### `read database` / `write database`
 

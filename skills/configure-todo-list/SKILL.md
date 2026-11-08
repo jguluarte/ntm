@@ -152,21 +152,24 @@ weekends"). "Nothing" leaves it blank.
 ## Shopping
 
 Only when a price watch project was chosen; otherwise skip and return no
-Shopping section. How the shopper judges a deal. The same way as Planning, one
-line each:
+Shopping section.
 
-- **Condition:** new, unless a task says otherwise.
-- **Delivery:** online only, to their country (from About you).
-- **A deal:** at or near the task's target, or well below the usual price. What
-  gets them an alert.
-- **Amazon interface:** how `/ntm:sync-price-watch-to-amazon` reaches Amazon:
-  Claude's built-in browser, their own browser through the Claude extension, or
-  off (no Amazon alerts). Blank means it asks.
+Say in one line that each watched task's description says what differs from the
+defaults: the condition (new), how it reaches them (ordered online and
+delivered), and what counts as a deal (at or near the target, or well below the
+usual price).
+
+Ask whether they want Amazon's own price alerts on watched items, kept in step
+by `/ntm:sync-price-watch-to-amazon`. If yes, ask how it reaches Amazon:
+Claude's built-in browser, or their own browser through the Claude extension.
+Record it as Amazon interface; blank means it asks each time. If no, leave the
+Amazon interface line out.
 
 Then ask, once: anything else about how they shop? Stores they always or never
 use go in the price watch stores database (Seed above), not here; this is for
-what counts beyond that. Capture it as written below the lines; "nothing" leaves
-it blank.
+anything that holds for every item. Capture it as written below the lines;
+"nothing" leaves it blank. With no Amazon interface line and nothing else,
+return no Shopping section.
 
 ## Returning the sections
 
@@ -210,13 +213,12 @@ the conventions.
 
 ## Shopping
 
-How the price watch judges a deal. Read by `ntm:price-watch` and the shopper
-agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
+How the price watch shops. Read by the shopper agent; Amazon interface by
+`ntm:price-watch` and `ntm:sync-price-watch-to-amazon`.
 
-- Condition: <default new>
-- Delivery: <default online only, to your country>
-- A deal: <default at or near the task's target, or well below the usual price>
-- Amazon interface: <default blank>
+- Amazon interface: <Claude's built-in browser, or your own browser through the
+  Claude extension; blank asks each time; the line left out for no Amazon
+  alerts>
 
 <anything else about how they shop, as written; or nothing>
 ```

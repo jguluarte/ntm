@@ -47,12 +47,12 @@ An open watched item **needs an alert** when it has neither label.
 Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Use the browser the user names for this run, or else the one Amazon interface
-under Shopping in your settings names; if you still don't know, ask them. If
-Amazon interface is off and they named none, end with
-`Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.`
-Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow
-it. If that browser can't be reached, end with
+Use the browser the user names for this run. If they named none and Shopping in
+your settings has no Amazon interface line, end with
+`Sync-price-watch-to-amazon: off; your settings have no Amazon alerts.`
+Otherwise use the one Amazon interface names; if it's blank, ask them. Load that
+browser's skill (`built-in-browser` or `chrome-browser`) and follow it. If that
+browser can't be reached, end with
 `Sync-price-watch-to-amazon FAILED: needs a browser.` followed on the same line
 by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
 your own browser, then run this again.

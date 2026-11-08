@@ -32,8 +32,8 @@ entry.
   "fork and rename with your agent". `configure` doesn't ask.
 - `help` reads the installed README. The README is the one text, with the origin
   story and price watch as the bridge for the impulse to buy.
-- Decided, to build: the displayName and the README's title are
-  `Neurodivergent Task Manager`, without "(ntm)".
+- The displayName is `Neurodivergent Task Manager`, without "(ntm)". The
+  README's title keeps "(ntm)", which defines it.
 - Publishing to the directory waits for the test-drives. Keep `ntm` ready: a
   README of 40+ words, LICENSE, icon, author, homepage, repository, no
   credentials, no brand names. The name similarity check happens only at
@@ -53,22 +53,18 @@ entry.
 - Whether the style exists is the switch for styled messages; there is no on/off
   setting.
 - `conventions` has no `Version:` or `Template source:` line; nothing read them.
-- On main, whose tasks count is a setting (`Your tasks`). Decided, to build:
-  every task on the list is the user's; a shared list goes in Deviations.
-- Decided, to build: About you drops `Name`. Setup fills `Timezone` and
-  `Country and currency` from the current timezone and asks the user to confirm.
-- Decided, to build: one `Labels` list for tasks and projects. Linear passes a
-  project's label to its tasks by name, so the guide says a project label needs
-  the same name.
+- Every task on the list is the user's; a shared list goes in Deviations.
+- About you has no `Name`. Setup fills `Timezone` and `Country and currency`
+  from the current timezone and asks the user to confirm.
+- One `Labels` list for tasks and projects. Linear passes a project's label to
+  its tasks by name, so the guide says a project label needs the same name.
 - A database is a document in the backend; where the backend has no documents, a
   task's description. Titles carry no prefix. The pause schedule is the pauses
-  database. The shopper's comment on a task isn't a database. Main's plugin text
-  calls databases "notes"; decided, to build: "database" everywhere (read
-  database, write database).
-- On main, each database's title is a setting (`Notes`) and how much message
-  history to keep is that database's `Keep:` line. Decided, to build: the plugin
-  fixes the titles and a rename goes in Deviations; `Keep:` moves into the
-  message history database's frontmatter.
+  database. The shopper's comment on a task isn't a database. "Database"
+  everywhere (read database, write database), never "notes".
+- The plugin fixes each database's title, and a rename goes in Deviations. How
+  much message history to keep is the `Keep:` line in the message history
+  database's frontmatter.
 
 ## Agents
 
@@ -78,8 +74,7 @@ entry.
 - The estimator owns estimates, time guesses, explaining the ways to estimate,
   and review with the task review log. It never plans. Planning and other
   callers engage it; several callers is right.
-- Decided, to build: the estimator's `Estimate a task` and `Time tasks` become
-  one `Estimate` request, for one or many tasks, size or time.
+- The estimator has one `Estimate` request, for one or many tasks, size or time.
 - With no estimate field, the estimate goes in the task description.
 - The messenger never reads settings; the skill that asks hands it the reminder,
   the job, the facts and any setting it needs. Its inputs are a contract
@@ -103,9 +98,9 @@ entry.
   Pushover, a message or title over the cap isn't trimmed or sent: `notify`
   returns `Notify TOO LONG` with the cap and why, and the caller shortens once.
   The Claude channel has no cap.
-- `Pushover user key` lives in settings. Decided, to build: `Pushover app token`
-  in settings is the default, for one generic app; a job can carry its own app
-  token in its prompt, which overrides it and is handed to `notify`.
+- `Pushover user key` lives in settings. `Pushover app token` in settings is the
+  default, for one generic app; a job can carry its own app token in its prompt,
+  which overrides it and is handed to `notify`.
 
 ## Backends
 
@@ -121,14 +116,13 @@ entry.
 - `configure-todo-list` picks the backend, collects what it needs, and checks or
   creates statuses, labels and databases. No `--test`: checks belong to
   `ready-check` and `self-test`.
-- Todo list keeps `Backend`, `List name` and `List id`. On main it also has
-  `Task prefix` and `Statuses`. Decided, to build: both go. Style examples use a
-  generic `ABC-12`. Status classes are read from the backend's status types;
-  blocked is a status named Blocked by default, and anything else goes in
-  Deviations.
-- Decided, to build: parent auto-close lives in `configure-todo-list`'s backend
-  reference. The Linear guide suggests turning on Linear's Parent auto-close; a
-  backend built on the contract asks the user.
+- Todo list has only `Backend`, `List name` and `List id`: no `Task prefix`, no
+  `Statuses`. Style examples use a generic `ABC-12`. Status classes are read
+  from the backend's status types; blocked is a status named Blocked by default,
+  and anything else goes in Deviations.
+- Parent auto-close lives in the backend guide's setup. The Linear guide
+  suggests turning on Linear's Parent auto-close; a backend built on the
+  contract asks the user.
 
 ## Planning and reports
 
@@ -137,38 +131,32 @@ entry.
   the rest of the week with the user.
 - A report span is a number of days ending today. "Last month" is as many days
   as the previous calendar month had.
-- Decided, to build: `Rhythm`, `Planning days`, `Plans ahead` and
-  `A day's worth` leave settings for the job prompts, which `configure-schedule`
-  writes with the user. `plan` keeps defaults for chat.
-- Decided, to build: `plan --auto` takes the range in words (`week mon-fri`,
+- `Rhythm`, `Planning days`, `Plans ahead` and `A day's worth` aren't settings:
+  the job prompts carry them, and `configure-schedule` writes those with the
+  user. `plan` keeps defaults for chat.
+- `plan --auto` takes the range in words (`week mon-fri`,
   `all weekdays this month`) and works out the days; it needn't be perfect.
-- Decided, to build: `Never picks` becomes
-  `Excluded labels from automatic scheduling`, labels only. Never planning a
+- `Excluded labels from automatic scheduling` is labels only. Never planning a
   blocked task is a fixed rule in `conventions`.
-- Decided, to build: nothing about parents or deadlines. No `Parents` key, no
-  "plan the sub-tasks, never the parent", no "a parent's own date means
-  nothing". `fix-todo-list` stops closing finished parents and only clears stale
-  planned dates, or with `--dry-run` reports what it would clear.
-- Decided, to build: the long "today" and timezone definitions across skills are
-  cut, the Linear queries do no timezone math, and job prompts state the
-  timezone.
+- Nothing about parents or deadlines. No `Parents` key, no "plan the sub-tasks,
+  never the parent", no "a parent's own date means nothing". `fix-todo-list`
+  doesn't close finished parents; it only clears stale planned dates, or with
+  `--dry-run` reports what it would clear.
+- No long "today" and timezone definitions across skills, no timezone math in
+  the Linear queries; job prompts state the timezone.
 
 ## Jobs and scheduling
 
-- A job is a three-line prompt that only loads a skill, written once in
-  `configure-schedule`. Decided, to build: the prompt also carries the job's own
-  settings (its planning, the weekly message, the timezone, and optionally a
-  Pushover app token).
-- On main, `configure-schedule` walks fixed job kinds (want it? days? time?
-  title?) with defaults: morning weekdays 09:00, afternoon 14:30, evening 19:30,
-  weekly planning Sunday 22:00, price watch daily 07:00 only if it's on,
-  completed off. Main matches notifications and tokens on the default titles.
-- Decided, to build: no fixed job kinds and no `Completed` kind.
-  `configure-schedule` works out with each user what schedule they want and
-  builds jobs from the skills. Before creating anything it shows a short table
-  (job, days, time, title) for the user to approve or change. Titles are chosen
-  live; internal matching keys off skill names, never titles.
-- Decided, to build: no `weekly-planning` skill. The suggested weekly pattern is
+- A job is a short prompt that only loads skills, written once in
+  `configure-schedule`. The prompt also carries the job's own settings (its
+  planning, the weekly message, the timezone, and optionally a Pushover app
+  token).
+- No fixed job kinds and no `Completed` kind. `configure-schedule` works out
+  with each user what schedule they want and builds jobs from the skills. Before
+  creating anything it shows a short table (job, days, time, title) for the user
+  to approve or change. Titles are chosen live; internal matching keys off skill
+  names, never titles.
+- No `weekly-planning` skill. The suggested weekly pattern is
   `show-completed <range>`, then `fix-todo-list`, then `plan --auto <range>`.
 - Jobs are turned off and on, never "paused".
 - A new job takes the creating chat's model, which can be the heaviest one, so
@@ -176,7 +164,7 @@ entry.
   one such as Opus or Sonnet, and sets the user's choice with `update_trigger`.
 - `configure` order: About you, todo list, notifications, style, schedule.
   `configure` writes nothing itself and ends by suggesting `/ntm:self-test` in a
-  new chat. Decided, to build: the part name `todo list` becomes `todo-list`.
+  new chat. The part names are one word each: `todo-list`, not `todo list`.
 - `self-test`: `ready-check`, then a throwaway task and database, one line per
   step, ending `Self-test OK` or `Self-test FAILED at <step>`. Once the user
   starts it, it runs without asking; never run it unasked, since it sends a push
@@ -195,34 +183,28 @@ entry.
   credits.
 - A title is part of the message's theme, never the reminder's name.
 - Justin's own persona skill never ships.
-- The profile's headings stay as on main. Decided, to build: `Off limits` is
-  removed from the profile and the builder never asks about it, in Justin's
-  style too.
+- The profile's headings stay as on main. The profile has no `Off limits`, and
+  the builder never asks about it, in Justin's style too.
 
 ## Price watch
 
-- On main, price watch is on exactly when Todo list names a project, and the
-  watch uses the project label only. Decided, to build: `Price watch project`
-  goes; watched items are found by the $price-watch label, which tasks inherit
-  from the project. Price watch is off when nothing carries it or the job isn't
-  scheduled.
+- No `Price watch project` setting: watched items are found by the $price-watch
+  label, which tasks inherit from the project. Price watch is off when nothing
+  carries it or the job isn't scheduled.
 - Deal details go in the run's final reply, not in a separate post.
 - Decided, to build: `Condition`, `Delivery` and `A deal` leave Shopping; they
   belong to each item, on its task. `Amazon interface` stays, and is left out
   entirely when the user doesn't want Amazon.
-- Decided, to build, as a 0.3 bug fix: no Amazon alert steps database.
-  `sync-price-watch-to-amazon` carries the steps itself, and is updated when
-  Amazon changes. The steps already learned, in that database on Justin's
-  Linear, are copied into the skill.
+- No Amazon alert steps database. `sync-price-watch-to-amazon` carries the steps
+  itself, and is updated when Amazon changes.
 
 ## Estimates and review
 
 - Setup asks how the user estimates tasks and offers to explain. On Linear,
   their scale maps onto the team's points.
-- Decided, to build: one key, `Estimate pattern`, says how the user sizes things
-  and what to do with it, any mapping included. It replaces `Estimate scale` and
-  `Estimate mapping`. `Estimate help` goes: what the user has been told belongs
-  in the agent's memory, not in settings.
+- One key, `Estimate pattern`, says how the user sizes things and what to do
+  with it, any mapping included. There's no `Estimate help`: what the user has
+  been told belongs in the agent's memory, not in settings.
 - "Estimate" is the plain word; no "sizing", no "groomed size".
 - Review runs in chat only, never in a job.
 
@@ -340,41 +322,10 @@ re-synced (ready-check OK). Much of the "To build" list below landed on
 
 ### To build, from the names pass
 
-Each is decided (see its topic above). Justin places each in 0.3 or 0.4; only
-the first is placed.
+Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
 
-- 0.3, a bug fix: remove the Amazon alert steps database and copy the learned
-  steps into `sync-price-watch-to-amazon`.
-- Release: blank. The displayName and README title without "(ntm)", and every
-  abbreviation defined at first use.
-- Release: blank. Settings: drop `Name`, `Task prefix`, `Your tasks`,
-  `Statuses`, `Price watch project`, `Notes`, `Parents` and `Estimate help`; one
-  `Labels` list; `Estimate pattern`;
-  `Excluded labels from automatic scheduling`; setup fills `Timezone` and
-  `Country and currency` and confirms.
-- Release: blank. Status classes from the backend's status types; blocked as a
-  fixed rule in `conventions`.
-- Release: blank. Job prompts carry the planning, the weekly message, the
-  timezone and an optional app token; `notify` takes a job's app token.
-- Release: blank. `configure-schedule` builds jobs from the skills with each
-  user: no fixed kinds or titles, a table to approve first, matching on skill
-  names.
-- Release: blank. Remove `weekly-planning`; the weekly job chains
-  `show-completed`, `fix-todo-list` and `plan --auto`.
-- Release: blank. `plan --auto` takes a range in words.
-- Release: blank. Purge parents and deadlines; `fix-todo-list` only clears stale
-  planned dates; parent auto-close moves to `configure-todo-list`'s backend
-  reference.
-- Release: blank. Cut the long "today" and timezone definitions; no timezone
-  math in the Linear queries.
-- Release: blank. Price watch finds items by the $price-watch label alone;
-  `Condition`, `Delivery` and `A deal` move to each task; `Amazon interface`
-  left out when the user doesn't want Amazon.
-- Release: blank. Call the notes databases everywhere; fixed titles; `Keep:`
-  into the message history database's frontmatter.
-- Release: blank. One `Estimate` request to the estimator.
-- Release: blank. Remove `Off limits` from the style profile and the builder.
-- Release: blank. The `configure` part `todo list` becomes `todo-list`.
+- Release: blank. `Condition`, `Delivery` and `A deal` move from Shopping to
+  each task; `Amazon interface` left out when the user doesn't want Amazon.
 
 ### Open
 

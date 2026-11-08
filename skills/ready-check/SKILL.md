@@ -29,15 +29,15 @@ Stop at the first failure.
    guide, Todo list in your settings does. If it isn't loaded, search for it
    with ToolSearch. Still missing: **Connector not attached**.
 3. **Ping the todo list** as the guide's `ping` says. It passes when the todo
-   list named by List name in Todo list comes back. A different todo list:
-   **Wrong account**.
+   list named by List name under Todo list in your settings comes back. A
+   different todo list: **Wrong account**. If the call errors, go to step 4.
 4. **If the call errors,** classify it as the guide's `ping` says:
     - Authentication or authorization (unauthorized, forbidden, invalid or
       expired token): **Sign-in expired**.
     - Todo list not found: **Wrong account**.
     - Anything else (a timeout, a server error): retry once. If a todo list
-      comes back, judge it as in step 3. Another error is classified as above,
-      except that anything else is now **Backend error**.
+      comes back, judge it as in step 3. If the retry errors, classify auth and
+      not-found as above; any other error is **Backend error**.
 5. **Load `ntm-user:style`.** It's optional: if it won't load, the check still
    passes, as `(no style)`.
 
@@ -45,7 +45,8 @@ Stop at the first failure.
 
 End with one result line, after the notification if there is one:
 
-- Pass: `Ready-check OK`, or `Ready-check OK (no style)`
+- Pass: `Ready-check OK`, or `Ready-check OK (no style)` when `ntm-user:style`
+  didn't load
 - Fail: `Ready-check FAILED: <failure> — <fix>`
 
 The fix for each failure:
@@ -77,6 +78,6 @@ If `ntm:notify` can't be loaded or the send fails, append
 
 With the `claude-push` channel, `ntm:notify` sends nothing and returns
 `NOTIFY VIA FINAL REPLY` with the title and message. That's not a failure:
-return the result line, then the title and the message (not the marker line).
-The job ends its run with that, so the failure shows once, as the completion
+return the result line, then the title and the message (not the marker line). A
+job that ends its run with this output shows the failure once, as the completion
 push.

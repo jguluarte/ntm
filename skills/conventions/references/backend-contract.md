@@ -77,9 +77,8 @@ has one) with the standard fields, paginated, plus every project with its name
 and labels, and its summary when a skill asks for it.
 
 The standard fields are id, title, url (the task's link), status, status class,
-priority, estimate, planned date, labels, project, parent id, completed at and
-updated at. For priority, the entry says which value is highest and which means
-none.
+priority, estimate, planned date, labels, project, completed at and updated at.
+For priority, the entry says which value is highest and which means none.
 
 ### `fetch closed`
 

@@ -205,9 +205,9 @@ $no-autoschedule; see Databases in `references/backend-contract.md`.
 
 The guide's `fetch open` returns every open task with the standard fields: id,
 title, url, status, status class, priority, estimate, planned date, labels,
-project, parent id, completed at, updated at. It also lists every project with
-its name and labels, so inherited labels count (see Project labels), and its
-summary when a skill asks for it.
+project, completed at, updated at. It also lists every project with its name and
+labels, so inherited labels count (see Project labels), and its summary when a
+skill asks for it.
 
 - **For planning and reminders:** `fetch open`, which includes blocked tasks.
   Keep excluded tasks in the results; Excluded tasks, below, says who skips

@@ -59,7 +59,7 @@ One `list_issues` call per open type: `state` set to `backlog`, `unstarted` and
 `started`. A Blocked status has one of these types, so it comes back too. Each
 call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
 `status`, `statusType`, `priority`, `estimate`, `dueDate`, `labels`, `project`,
-`parentId`, `completedAt`, `updatedAt`. Merge the results.
+`completedAt`, `updatedAt`. Merge the results.
 
 Also list every project once with `list_projects` (`team: "<List name>"`,
 `fields` `name` and `labels`, plus `summary` when a skill asks for the project's

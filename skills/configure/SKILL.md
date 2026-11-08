@@ -11,9 +11,9 @@ description: >-
 
 # ntm:configure
 
-Everything happens in chat, in short rounds: you bring proposals, they react.
-Never hand them a form. This skill writes nothing itself: each part returns its
-section text, and `ntm:settings` packages everything once at the end.
+Work in chat, in short rounds: bring proposals, let the user react, never hand
+them a form. This skill writes nothing: each part returns its section text, and
+`ntm:settings` packages it all once, at the end.
 
 ## Usage
 
@@ -24,87 +24,92 @@ section text, and `ntm:settings` packages everything once at the end.
 
 Parts: `about-you`, `todo-list`, `notifications`, `style`, `schedule`.
 
-## Before you start
+With a part, go straight to it, with no state lines: `about-you` to About you
+below, the others to their skill. Then Packaging.
 
-Load `ntm-user:settings` by name.
-
-- **Won't load:** nothing is configured. Follow First run.
-- **Loads:** follow Configured.
+Without one, load `ntm-user:settings` by name. If it won't load, nothing is
+configured: follow First run. If it loads, follow Configured.
 
 ## First run
 
-Say two lines first:
+Open with two lines:
 
 1. Neurodivergent Task Manager (ntm) keeps your settings and style in a small
    plugin of your own, `ntm-user`; this builds it with you and hands it back to
    install at the end.
 2. The steps: about you, your todo list (and how planning and shopping work on
    it), how reminders reach you, how they talk to you, and the schedule. Each is
-   a short conversation, and your own plugin is written once, at the end.
+   a short conversation.
 
-### About you
+Then About you, the parts in order, and Packaging.
 
-This skill owns About you. Fill both lines from what you already know about the
-user and the session, and ask them only to confirm or correct:
+## About you
 
-- Timezone: an IANA name (`America/Chicago`). Every date in the system is
-  computed in it. If you can't tell, ask for their city.
-- Country and currency, for price watch (`US, USD`).
+This skill owns About you. Fill both lines from what you already know of the
+user and the session, and ask only to confirm or correct:
 
-Write them as the About you section, one line each: `- Timezone:`,
-`- Country and currency:`.
+- Timezone: an IANA name. Every date ntm computes uses it. If you can't tell,
+  ask for their city.
+- Country and currency, for price watch.
 
-### The parts
+The section is one line each:
 
-In order, each by loading its skill and saying it runs from `ntm:configure`:
+```markdown
+- Timezone: America/Chicago
+- Country and currency: US, USD
+```
 
-1. `ntm:configure-todo-list`: which backend, which todo list, statuses, labels,
-   notes, and the agreements planning and the shopper work by. Returns Todo
-   list, Labels, Planning and Shopping (Shopping only when a price watch project
-   was chosen).
+## The parts
+
+Load each part's skill in order, saying it runs from `ntm:configure`, and keep
+the text it returns:
+
+1. `ntm:configure-todo-list`: backend, todo list, statuses, labels, notes, and
+   how planning and shopping work. Returns Todo list, Labels, Planning, and
+   Shopping when a price watch project was chosen.
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns
    Notifications.
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
    the `ntm-user:style` body.
-4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
-   it the timezone from About you, whether a price watch project was chosen, and
-   Planning days from Planning, as settled above. Creates the scheduled tasks
-   itself; returns nothing to package.
+4. `ntm:configure-schedule`: which jobs, on which days, at what time, under what
+   title. Hand it the timezone, whether a price watch project was chosen, and
+   the Planning days. It creates the scheduled tasks itself and returns nothing.
 
-Keep the returned text; write nothing.
-
-The sections and what reads them, in case they ask: About you is read by
-everything; Todo list and Labels by `ntm:conventions`; Planning (rhythm, days,
-how far ahead the week plans, the estimate pattern, what's never picked, what
-the weekly message includes) by `ntm:plan` and the weekly planning, and its
-Estimate pattern by the estimator; Shopping (condition, delivery, what counts as
-a deal) by the shopper and `ntm:price-watch`; Notifications by `ntm:notify`.
-`ntm:configure-todo-list` settles Planning and Shopping alongside Todo list,
-since each default is about the same todo list.
-
-### Packaging
+## Packaging
 
 Load `ntm:settings` and follow its "Regenerating `ntm-user.plugin`" section with
-every section the parts returned: About you, Todo list, Labels, Planning,
-Shopping, Notifications, the style body. `ntm:settings` tells them to install it
-and open a new chat. Add that the first thing to run there is `/ntm:self-test`:
-it starts with `ready-check` and exercises the operations the jobs use, on a
-throwaway task. Until it's installed, every scheduled run ends with "not
-configured".
+what the parts returned. On a first run that's every section: About you, Todo
+list, Labels, Planning, Shopping, Notifications, the style body.
+
+`ntm:settings` tells them to install it and open a new chat. Add that the first
+thing to run there is `/ntm:self-test`: it starts with `ready-check` and tries
+the operations the jobs use, on a throwaway task. Until it's installed, every
+scheduled run ends with "not configured".
+
+A schedule change alone changes nothing in `ntm-user`: skip Packaging after it.
 
 ## Configured
 
-One line of state per part, from what loads: About you (timezone); todo list
-(backend, todo list name); notifications (channel); style (`ntm-user:style`
-loads, or not); schedule (which jobs exist, from `ntm:configure-schedule`'s
-listing). Ask which to change and hand off to that part; it shows its current
-state and asks what to change. About you is handled here the same way. Then
-package as Packaging says, with what it returned. A schedule change alone
-changes nothing in `ntm-user`, so there's nothing to package after it.
+Show one line of state per part, from what loads:
 
-## `configure <part>`
+- About you: timezone
+- Todo list: backend and todo list name
+- Notifications: channel
+- Style: whether `ntm-user:style` loads
+- Schedule: which jobs exist, from `ntm:configure-schedule`'s listing
 
-Straight to that part, no state lines: `about-you` to About you above; the other
-four to their skill. Then Packaging for `about-you`, `todo-list`,
-`notifications` and `style`. `schedule` packages nothing: a schedule change
-changes nothing in `ntm-user`.
+Ask which to change and hand off to that part, About you included; it shows its
+current state and asks what to change. Then Packaging.
+
+## What reads each section
+
+In case they ask:
+
+- About you: everything.
+- Todo list and Labels: `ntm:conventions`.
+- Planning (rhythm, days, how far ahead the week plans, the estimate pattern,
+  what's never picked, what the weekly message includes): `ntm:plan` and the
+  weekly planning; the estimator reads its Estimate pattern.
+- Shopping (condition, delivery, what counts as a deal): the shopper and
+  `ntm:price-watch`.
+- Notifications: `ntm:notify`.

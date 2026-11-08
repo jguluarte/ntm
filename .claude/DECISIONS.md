@@ -185,6 +185,8 @@ entry.
 - Justin's own persona skill never ships.
 - The profile's headings stay as on main. The profile has no `Off limits`, and
   the builder never asks about it, in Justin's style too.
+- The style records, in the message history, the task ids each message names; a
+  carried-over task's level comes from counting the earlier days that name it.
 
 ## Price watch
 
@@ -333,14 +335,13 @@ Each is decided (see its topic above). Justin places each in 0.3 or 0.4.
   find them. Some databases' own settings could live there too.
 - A price watch talk, later: its default pattern makes too much busywork, the
   per-item details belong on the task, and setup needs better guidelines.
-- Tasks that keep slipping never get a harder reminder: the style's history
-  doesn't record task ids (review finding #3). Justin decides where this goes.
-  Idea, big enough to wait for 0.4: planning owns a mention history database
-  where each reminder records the date for every task it names; the caller
-  passes each task's count through the messenger to the style, which only maps a
-  count to a level; the weekly `fix-todo-list` keeps only ids still open, so any
-  closed state drops out. JSON in a database is fine; a sqlite file would be the
-  same thing, so revisit storage only if needed.
+- Slipping tasks, a 0.4 idea: move the counting out of the style. Planning owns
+  a mention history database where each reminder records the date for every task
+  it names; the caller passes each task's count through the messenger to the
+  style, which only maps a count to a level; the weekly `fix-todo-list` keeps
+  only ids still open, so any closed state drops out. JSON in a database is
+  fine; a sqlite file would be the same thing, so revisit storage only if
+  needed.
 - Date-math edges in report spans ("last month" on the 1st): not worth fixing,
   since reports are for the typical flow. Someday, maybe: phrase spans as "since
   the last scheduled run".

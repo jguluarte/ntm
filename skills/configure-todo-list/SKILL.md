@@ -11,22 +11,23 @@ description: >-
 
 # ntm:configure-todo-list
 
-Settles Todo list, Labels, Planning and Shopping in `ntm-user:settings` with the
-user and returns their text. Everything here is an agreement with a proposed
-default: show the default in one line, take their answer, record it. Everything
-happens in chat, in short rounds: you bring proposals, they react. Never hand
-them a form. This skill never writes a file.
+Settles the Todo list, Labels, Planning and Shopping sections of
+`ntm-user:settings` with the user and returns their text. Most items are an
+agreement with a default: show the default in one line, take their answer,
+record it. Work in short chat rounds where you propose and they react; never
+hand them a form. This skill writes no files.
 
-Which path runs is a matter of context:
+Two paths:
 
-- `ntm-user:settings` won't load, or `ntm:configure` is running this: the setup
-  walk, which returns the Todo list, Labels, Planning and Shopping sections.
-- Configured: the re-run path (Before you start, step 2), which changes those
-  settings: a backend, a label name, an excluded label, what counts as a deal.
+- **Setup:** `ntm-user:settings` won't load, or `ntm:configure` is running this
+  (even when the settings load). Walk every section below in order.
+- **Change:** run any other way, with settings whose Todo list names a backend.
+  Changes one agreement, for example a backend, a label name, an excluded label
+  or what counts as a deal (Before you start, step 2).
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
-project", "estimate the garage work") is `/ntm:review-todo-list`; when the words
-are about that, load it and follow it instead.
+project", "estimate the garage work") is `/ntm:review-todo-list`: load it and
+follow it instead.
 
 ## Usage
 
@@ -38,139 +39,144 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 ## Before you start
 
-1. Load `ntm:conventions`. On a first run its first step says "not configured;
-   run `/ntm:configure`". That's expected: carry on with the values you settle
-   here. Its `references/CONTRACT.md` is the contract every backend meets;
-   `references/linear.md` is the guide it ships.
-2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
-   re-run. Show the current Todo list, Labels, Planning and Shopping sections,
-   ask what to change, and go to the step below that owns it; everything else
-   stays as it is.
-3. Keep a running list of what you've settled. Produce the sections at the end,
-   not as you go, so a change of mind costs nothing.
+1. Load `ntm:conventions`. On a first run it reports "not configured; run
+   `/ntm:configure`". That's expected: carry on with the values you settle here.
+   Its `references/CONTRACT.md` is the contract every backend meets, and
+   `references/linear.md` is the guide ntm ships.
+2. On the Change path, show the current Todo list, Labels, Planning and Shopping
+   sections, ask what to change, and go to the section that owns it. Everything
+   else stays as it is.
+3. Keep a running list of what you settle, and write the sections only at the
+   end, so a change of mind costs nothing.
 
 ## The backend
 
-Ask what they keep tasks in today. If they're undecided, offer the two choices
-in one line: Linear (free for individuals; the guide ntm ships) or their own
-backend, which they describe. With no tracker at all, a table in a Claude Doc is
-an easy one to build on.
+Ask what they keep tasks in today. If they're undecided, offer two choices in
+one line: Linear (free for individuals; ntm ships its guide) or a backend of
+their own, which they describe. With no tracker at all, a table in a Claude Doc
+is an easy one to build on.
 
 Read the chosen backend's guide (`references/linear.md` under `ntm:conventions`)
 now, since the settings don't name it yet, and follow its Setup section in
-order; a part the guide ties to a step below waits for that step. Before its
-first call, confirm the connector: ToolSearch for the tool the guide's `ping`
-names (for their own backend, the tool they name). If it isn't there, ask them
-to connect it on the Connectors tab and come back, and stop with
-`Configure-todo-list FAILED: <backend> connector not attached`.
+order. A part the guide ties to a section below waits for that section.
+
+Before the guide's first call, check the connector: ToolSearch for the tool the
+guide's `ping` names (for their own backend, the tool they name). If it's
+missing, ask them to connect it on the Connectors tab and come back, and stop
+with:
+
+```
+Configure-todo-list FAILED: <backend> connector not attached
+```
 
 ### Your own
 
-Backend is the name they give. Walk the contract with them in order: What the
-backend needs to have, Todo list, Status classes, each operation under
-Operations, Databases, Setup operations, Writing. For each operation, name the
-tool and the parameters that carry it out. Read the tool's schema from the
-ToolSearch result rather than guessing: which date field is the planned date,
-how results paginate, whether labels add or replace, whether a comment can be
-edited in place. Where a choice is theirs (which date field, which grouping is a
-project), propose one and let them react. Try a read by hand where it's cheap.
-The setup operations run below as described; every other write waits for
-`/ntm:self-test`.
+Backend is the name they give. Walk every heading of `CONTRACT.md` with them in
+order, including each operation under Operations.
 
-The contract names the survivable gaps (no estimate field, no blocked-by
-relation, no labels on groups, no documents) and the two fatal ones (no date
-field, no way to tell open from closed). Say which the backend has. A fatal one
-ends here: `Configure-todo-list FAILED: <backend> has no <thing>`. With no
-documents, each database lives in the description of an open task titled with
-the database's title, as the contract's Databases section says; tell them.
+For each operation, name the tool and the parameters that do it. Read them from
+the tool's schema in the ToolSearch result rather than guessing: which date
+field is the planned date, how results paginate, whether labels add or replace,
+whether a comment can be edited in place. Where the choice is theirs (which date
+field, which grouping is a project), propose one and let them react. Try a read
+by hand where it's cheap. The setup operations run in the sections below; every
+other write waits for `/ntm:self-test`.
 
-What you settle goes under Todo list as prose, in their words, below its lines
-(see Returning the sections): one short paragraph per contract heading.
-Statuses, Labels and Databases below then go through the setup operations as
-they described them; the status mapping they gave is the Status classes
-paragraph.
+The contract's What the backend needs to have lists the gaps a backend can live
+with (no estimate field, no blocked-by relation, no labels on groups, no
+documents) and the two it can't (no date field, no way to tell open from
+closed). Tell them which their backend has. A fatal gap ends the run:
+
+```
+Configure-todo-list FAILED: <backend> has no <thing>
+```
+
+With no documents, each database lives in the description of an open task titled
+with the database's title, as the contract's Databases section says; tell them.
+
+Record what you settle as prose under the Todo list lines, in their words, one
+short paragraph per contract heading. Their status mapping is the Status classes
+paragraph. Statuses, Labels and Databases below then use the setup operations as
+they described them.
 
 ## Statuses
 
 Nothing to store: each status's class is read from the backend at run time, as
-the conventions' Status classes says. `list statuses` on the todo list and show
-in one short list which class each status falls in (the guide says how). Blocked
-is the status named Blocked. For their own backend, the mapping they gave goes
-in its guide's Status classes paragraph, above. If there's no blocked status,
-say the $pending-shipment label and blocked-by links cover the same ground.
+the conventions' Status classes says. Run `list statuses` on the todo list and
+show, in one short list, which class each status falls in; the guide says how.
+Blocked means a status literally named Blocked. If there's none, say the
+$pending-shipment label and blocked-by links cover the same ground.
 
 ## Labels
 
-Show the defaults in one table, with the one-line meaning of each from the
+Show the defaults in one table, each with its one-line meaning from the
 conventions' System labels: $no-autoschedule, $pending-shipment,
 $has-amazon-alert, $amazon-unavailable, $price-watch. A plain "ok" keeps every
 name; record any rename.
 
-Then `list labels`, task and project sets. For each label the todo list lacks,
-offer to create it with `create label` under its settled name, with its one-line
-meaning as the description. Project labels are their own set where the backend
-keeps one: $price-watch and $no-autoschedule as project labels, so projects can
-carry them.
+Then `list labels`, task and project sets. Offer to create each missing label
+with `create label`, under its settled name, with its one-line meaning as the
+description. Where the backend keeps project labels as their own set,
+$price-watch and $no-autoschedule are project labels too, so projects can carry
+them.
 
-Then the price watch project, when one was chosen: create it now with
-`create project`, carrying both project labels. If it already exists, make sure
-it carries both; the guide says whether `labels` replaces the set.
+If a price watch project was chosen, create it now with `create project`,
+carrying both project labels. If it already exists, make sure it carries both;
+the guide says whether `labels` replaces the set.
 
 ## Databases
 
 The system keeps its own records in four databases on the todo list, each under
-a fixed title: Pauses, Message history, Task review log, Price watch stores. For
-each, `read database` by its title. Found: keep it. Missing: ask whether they
-already keep it under another title. If so, say to add that title under
+a fixed title: Pauses, Message history, Task review log, Price watch stores.
+`read database` each by its title. Found: keep it. Missing: ask whether they
+already keep it under another title. If so, tell them to add that title under
 Deviations with `/ntm:settings`; if not, create it with `create database`:
 
-- **pauses:** `## Pauses` with `None.` under it.
-- **message history:** its first content is this frontmatter:
-
-    ```
-    ---
-    Keep: 60 entries or 8 weeks
-    ---
-    ```
-
+- **pauses:** `## Pauses`, with `None.` under it.
+- **message history:** starts with the frontmatter below.
 - **task review log:** `## How you work` and `## Estimates`, both empty.
-- **price watch stores:** only when a price watch project was chosen; created in
-  that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
-  a few seed stores by category to put under Seed, with their domains, or leave
-  Seed empty and say the first price watch run will report it. Vouched and
-  Blocked start empty.
+- **price watch stores:** only with a price watch project, and created in it.
+  Headings `## Seed`, `## Vouched` and `## Blocked`.
+
+```
+---
+Keep: 60 entries or 8 weeks
+---
+```
+
+For Seed, ask for a few stores by category, with their domains, or leave it
+empty and say the first price watch run will report it. Vouched and Blocked
+start empty.
 
 ## Planning
 
-How `ntm:plan` works the todo list. Show the defaults as one short list, one
-line each, and say what each is for in a few words; a plain "ok" keeps them all,
-and they change any line in their own words:
+How `ntm:plan` works the todo list. Show the excluded labels default in one
+line, with what it's for; a plain "ok" keeps it, and they change it in their own
+words:
 
-- **Estimate pattern:** asked on its own, below.
 - **Excluded labels from automatic scheduling:** $no-autoschedule,
-  $pending-shipment. Labels planning never picks, each checked on the task and
-  its project; name the labels by the names settled above.
+  $pending-shipment, by the names settled above. Labels planning never picks,
+  each checked on the task and its project.
+
+Estimate pattern is a question, not a default: how would they like to estimate
+their tasks? Only if they want more detail, send the estimator agent its Explain
+estimating request and pass its ways on; if the agent isn't available, follow
+its file as the conventions' "Chat, jobs and agents" says. Their answer, in
+their words, is Estimate pattern.
 
 Which days get planned, how many tasks each gets, how big they should be and
-what the weekly message covers aren't settings: each job's prompt says what
+what the weekly message covers aren't settings. Each job's prompt says what
 differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
 
-Estimate pattern gets its own question, one high-level question: how would they
-like to estimate their tasks? Only if they want more detail, ask the estimator
-agent's Explain estimating request and pass its ways on; when the agent isn't
-available, follow its file as the conventions' "Chat, jobs and agents" says.
-Record their answer as Estimate pattern, in their words.
-
-Then ask, once: anything else about how they want planning done? Capture it as
-written below the lines ("nothing heavy on Fridays", "garage work only on
-weekends"). "Nothing" leaves it blank.
+Then ask once: anything else about how they want planning done ("nothing heavy
+on Fridays", "garage work only on weekends")? It goes below the lines as
+written; "nothing" leaves it blank.
 
 ## Shopping
 
-Only when a price watch project was chosen; otherwise skip and return no
-Shopping section. How the shopper judges a deal. The same way as Planning, one
-line each:
+Only with a price watch project; otherwise skip it and return no Shopping
+section. How the shopper judges a deal, settled the same way as Planning:
 
 - **Condition:** new, unless a task says otherwise.
 - **Delivery:** online only, to their country (from About you).
@@ -180,18 +186,16 @@ line each:
   Claude's built-in browser, their own browser through the Claude extension, or
   off (no Amazon alerts). Blank means it asks.
 
-Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores database (Seed above), not here; this is for
-what counts beyond that. Capture it as written below the lines; "nothing" leaves
-it blank.
+Then ask once: anything else about how they shop? Stores they always or never
+use go in the price watch stores database (Seed above), not here. It goes below
+the lines as written; "nothing" leaves it blank.
 
 ## Returning the sections
 
-Write the sections in exactly these line shapes, the ones `ntm-user:settings`
-uses, filled with what you settled. A line may be left blank where the shape
-says so. Fill the defaults in where they kept them. For a backend of their own,
-the operations prose follows the Todo list lines. Show the sections and let them
-react.
+Fill these shapes, the ones `ntm-user:settings` uses, with what you settled,
+defaults included where they kept them. Leave a line blank only where its shape
+allows it. For their own backend, the operations prose follows the Todo list
+lines. Show the sections and let them react.
 
 ```
 ## Todo list
@@ -240,13 +244,12 @@ agent; Amazon interface by `ntm:sync-price-watch-to-amazon`.
 
 Then:
 
-- Run from `ntm:configure`: return the sections to the caller, which packages
-  once at the end.
+- From `ntm:configure`: return the sections to it; it packages once at the end.
 - Run directly: load `ntm:settings` and follow its Regenerating
-  `ntm-user.plugin` section with the section text you produced.
+  `ntm-user.plugin` section with these sections.
 
-One more line, for every backend: once `ntm-user` is installed, run
-`/ntm:self-test` in a new chat. It starts with `ready-check` and exercises the
+Last, for every backend: once `ntm-user` is installed, the user runs
+`/ntm:self-test` in a new chat. It starts with `ready-check`, exercises the
 operations the jobs use on a throwaway task, and is the smoke test for the
-guide. Say it now when run directly. When run from `ntm:configure`, return it
-with the sections so `configure` says it at its end.
+guide. Run directly, tell them now. From `ntm:configure`, return that line with
+the sections so `configure` says it at its end.

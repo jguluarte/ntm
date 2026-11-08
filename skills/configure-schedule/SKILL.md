@@ -72,8 +72,8 @@ The span is in words, as the user wants it: `the last 7 days` for a weekly one,
 `last month` for a monthly one.
 
 On the `pushover` channel, a job can send from its own Pushover app, such as one
-with its own sound or icon. Take that app's token in chat, never repeat it back,
-and add this after the timezone line:
+with its own sound or icon. Don't ask; when the user wants it, take that app's
+token in chat, never repeat it back, and add this after the timezone line:
 
 ```
 Pushover app token for this job: <token>. Hand it to every
@@ -150,11 +150,9 @@ If a skill can't be loaded, end the run with this line:
    inherits the model of the chat that creates it, and that can be the heaviest
    one. Suggest a lighter model, such as Opus or Sonnet, then use the one they
    choose; it's the model every job gets.
-5. On the `pushover` channel, ask once whether any job should send from its own
-   Pushover app; take each token as The prompt says.
-6. Apply the jitter rule to each time: a job never starts on :00 or :30. Move
+5. Apply the jitter rule to each time: a job never starts on :00 or :30. Move
    such a time a few minutes earlier, a different number for each job.
-7. Show what you plan to set up as a short table, one row per job: job, days,
+6. Show what you plan to set up as a short table, one row per job: job, days,
    time, title. Say which times the jitter rule moved. They approve or change
    it; revise until they approve. Create nothing before that.
 

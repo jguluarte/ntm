@@ -84,16 +84,11 @@ Read the task with `read task` and its comments with `read comments`, and note:
 - The comment that starts with "Stores:", if there is one: its id, trusted
   stores and their domains, "Not used" entries, and last full search date.
 
-The description also says, in the user's words, what this item allows. Where it
-says nothing, use what Shopping in your settings says, and otherwise the
-default:
+Assume the item is new and bought online, delivered to the user's country,
+unless the task or Shopping in your settings says otherwise.
 
-- **Condition:** new, unless it says used, refurbished or open-box is fine.
-- **Delivery:** ordered online and delivered to the user's country, unless it
-  says otherwise (pickup at a store nearby, say). A store that can't get the
-  item to them that way doesn't count.
-- **A deal:** at or near the target, or well below the usual price, unless it
-  says what counts. This is what earns an alert.
+A deal, which earns an alert, is a price at or near the target, or well below
+the usual price, unless the task says what counts.
 
 ## The stores database
 

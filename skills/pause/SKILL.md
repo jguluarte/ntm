@@ -11,32 +11,6 @@ description: >-
 A pause is a day or a date range when nothing new gets planned automatically.
 Work the user dated themselves for a paused day still gets its reminders.
 
-"Pause Friday" or "unpause next week" means adding or ending a pause. Jobs only
-use `--check`, and read its answer as whether each day is paused.
-
-## Where pauses live
-
-The `Pauses` database (see Databases in `ntm:conventions`) holds one line per
-pause under its `## Pauses` heading, sorted by start date. Each line is bare,
-with no list marker: `YYYY-MM-DD: <why>` for a single day, or
-`YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when
-there are none.
-
-Read it with the guide's `read database`. A missing database, or one with no
-pause lines, means there are no pauses. If the read itself fails, stop and
-return `Pause FAILED: <why>`, so a caller never takes an unreadable database for
-"not paused".
-
-A line whose dates have no year is invalid. Whenever the database is read, for
-any reason, ignore those lines and remove them on the next save.
-
-To save, use the guide's `write database` with the whole content, only the lines
-under `## Pauses` changed (`None.` if nothing is left); when the database is
-missing, the content is the `## Pauses` heading and the lines. Pauses never
-overlap: before saving, merge any that overlap into one line covering all their
-days, with their reasons joined by `; ` in start-date order. When the database
-is missing, `write database` creates it, with the `## Pauses` heading.
-
 ## Usage
 
 ```
@@ -45,63 +19,90 @@ is missing, `write database` creates it, with the `## Pauses` heading.
 /ntm:pause --check [<day>] [--until <day>]
 ```
 
-- Bare: ask the user whether they want to see the pause schedule or change it,
-  then do that with them.
-- Words ("Friday", "next week", "remove the 12th", "show my pauses"): follow
-  them; see or change the pauses with the user.
-- `--check`: are these days paused? It checks the first day through the
-  `--until` day, both included. The first day defaults to `TODAY`, and the
-  `--until` day defaults to the first. So `--check` alone checks today,
-  `--check --until 2026-10-15` checks today through the 15th, and
-  `--check 2026-10-14 --until 2026-10-15` checks just those two days.
+- Bare: ask whether the user wants to see the pauses or change them, then do
+  that with them.
+- Words ("Friday", "next week", "remove the 12th", "show my pauses"): see or
+  change the pauses as they say, with the user.
+- `--check`: are these days paused?
 
-Dates passed to `--check` can be in any form a person would write (`2026-10-15`,
-`Oct 15`, `Friday`); interpret them as the Dates section says. The output always
-uses `YYYY-MM-DD`.
+`--check` covers the first day through the `--until` day, both included. The
+first day defaults to `TODAY`, and the `--until` day defaults to the first day:
+
+- `--check` alone checks today.
+- `--check --until 2026-10-15` checks today through the 15th.
+- `--check 2026-10-14 --until 2026-10-15` checks just those two days.
 
 ## Dates
 
-Load `ntm:conventions` and compute `TODAY` as its Dates section says. A range
-covers both its start and end days. A weekday name means the next one, today
-included when today is that day (the example below was typed on a Thursday);
-"next <weekday>" means that weekday of next week (weeks start on Monday); a date
-without a year is the next one. Show the resolved date in the reply
-(`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no
-confirmation round-trip before saving.
+Load `ntm:conventions` and compute `TODAY` as its Dates section says. Read dates
+in any form a person would write (`2026-10-15`, `Oct 15`, `Friday`):
+
+- A weekday name is the next one, today included: on a Thursday, "Friday" is
+  tomorrow; on a Friday, it's today.
+- "Next <weekday>" is that weekday of next week. Weeks start on Monday.
+- A date without a year is the next one.
+- A range includes its start and end days.
+
+Show the resolved date in the reply, such as `Paused 2026-11-13 (Friday).`, so a
+wrong guess is visible. Don't ask for confirmation before saving.
+
+## Where pauses live
+
+The `Pauses` database (see Databases in `ntm:conventions`) holds one bare line
+per pause under its `## Pauses` heading, with no list marker, sorted by start
+date. A single day, then a range:
+
+```
+YYYY-MM-DD: <why>
+YYYY-MM-DD to YYYY-MM-DD: <why>
+```
+
+With no pauses, it holds the single line `None.`
+
+Read it with the guide's `read database`. A missing database, or one with no
+pause lines, means there are no pauses. If the read fails, stop and return
+`Pause FAILED: <why>`, so no caller takes an unreadable database for "not
+paused".
+
+A line whose dates have no year is invalid. Ignore it whenever the database is
+read, and remove it on the next save.
+
+Save with the guide's `write database`, passing the whole content with only the
+lines under `## Pauses` changed (`None.` if none are left). If the database is
+missing, pass the `## Pauses` heading and the lines; `write database` creates
+it. Pauses never overlap: before saving, merge any that do into one line
+covering all their days, with their reasons joined by `; ` in start-date order.
 
 ## With `--check`
 
 1. Read the database. If any pause ended before `TODAY`, or any line is invalid,
-   remove those lines and save.
-2. Return one line per day from the first day to the `--until` day, in order,
-   and nothing else, as Result says.
+   remove those lines and save. If that save fails, answer anyway.
+2. Return one line per day, as Result says.
 
 ## Bare, or with words
 
-If a job calls this without `--check`, change nothing and say this needs a chat
+If a job runs this without `--check`, change nothing and say this needs a chat
 with the user.
 
 1. Read the database. Drop every pause that ended before `TODAY` and every
    invalid line, and tell the user which ones went.
-2. Show the user the remaining pauses, then make the changes they ask for, if
-   any, without an approval round-trip: they said what they want. When a day
-   they pause holds planned work, clear those dates and load `ntm:plan` to
-   replan the rest of the week with them, in chat. A new pause gets a short
-   reason in the user's words, or `paused` if they give none. To end a range
-   early, set its end to the last paused day; if that's before `TODAY` (as with
-   ending it today), remove the line.
-3. If anything changed, step 1 included, save and show the user the saved list.
+2. Show the remaining pauses, then make the changes the user asks for. Don't ask
+   for approval first: they said what they want.
+    - A new pause gets a short reason in the user's words, or `paused` if they
+      give none.
+    - To end a range early, set its end to the last paused day. If that's before
+      `TODAY` (as when ending it today), remove the line.
+    - If a day they pause holds planned work, clear those dates.
+    - Then load `ntm:plan` and replan the rest of the week with them, in chat.
+3. If anything changed, step 1 included, save and show the saved list.
 
 ## Result
 
-A save `--check` makes while tidying ended or invalid lines doesn't change the
-answer; if it fails, answer anyway.
-
 Plain text for whoever called the skill.
 
-- With `--check`: one line per day, in order, and nothing else:
-  `YYYY-MM-DD: true` when that day is paused, or `YYYY-MM-DD: false` when it
-  isn't, so it can be planned automatically.
+- With `--check`: one line per day, in order, and nothing else.
+  `YYYY-MM-DD: true` when the day is paused, `YYYY-MM-DD: false` when it isn't
+  and can be planned automatically.
 - Bare, or with words: the pauses as saved, shown to the user.
 - `Pause FAILED: <why>` when the database can't be read. A missing database
-  isn't a failure: it means there are no pauses.
+  isn't a failure.

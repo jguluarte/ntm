@@ -15,9 +15,9 @@ the jobs put the todo list right as they run. Every value these rules depend on
 is one the user agreed to during setup and can change in `ntm-user:settings`:
 the rules name the value, the settings hold it.
 
-The todo list is one person's system, not a team's: no team process, priority
-mostly unused, and a hard deadline is rare and only the user sets one. Read
-these rules, and write to the user, at that scale.
+The todo list is one person's, not a team's: priority is mostly unused, and a
+fixed deadline is rare. The words here come from tools built for companies; read
+these rules without that weight.
 
 ## Loading
 

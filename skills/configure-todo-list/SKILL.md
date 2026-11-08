@@ -40,8 +40,10 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 1. Load `ntm:conventions`. On a first run its first step says "not configured;
    run `/ntm:configure`". That's expected: carry on with the values you settle
-   here. Its `references/CONTRACT.md` is the contract every backend meets;
-   `references/linear.md` is the guide it ships.
+   here. There is a predefined guide for linear.app, as well as the contract
+   required to use a different backend.
+    - If using Linear: `references/linear.md`
+    - Otherwise use `references/backend-contract.md`
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
@@ -60,35 +62,14 @@ Read the chosen backend's guide (`references/linear.md` under `ntm:conventions`)
 now, since the settings don't name it yet, and follow its Setup section in
 order; a part the guide ties to a step below waits for that step. Before its
 first call, confirm the connector: ToolSearch for the tool the guide's `ping`
-names (for their own backend, the tool they name). If it isn't there, ask them
-to connect it on the Connectors tab and come back, and stop with
+names. If it isn't there, ask them to connect it on the Connectors tab and come
+back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
-### Your own
-
-Backend is the name they give. Walk the contract with them in order: What the
-backend needs to have, Todo list, Status classes, each operation under
-Operations, Databases, Setup operations, Writing. For each operation, name the
-tool and the parameters that carry it out. Read the tool's schema from the
-ToolSearch result rather than guessing: which date field is the planned date,
-how results paginate, whether labels add or replace, whether a comment can be
-edited in place. Where a choice is theirs (which date field, which grouping is a
-project), propose one and let them react. Try a read by hand where it's cheap.
-The setup operations run below as described; every other write waits for
-`/ntm:self-test`.
-
-The contract names the survivable gaps (no estimate field, no blocked-by
-relation, no labels on groups, no documents) and the two fatal ones (no date
-field, no way to tell open from closed). Say which the backend has. A fatal one
-ends here: `Configure-todo-list FAILED: <backend> has no <thing>`. With no
-documents, each database lives in the description of an open task titled with
-the database's title, as the contract's Databases section says; tell them.
-
-What you settle goes under Todo list as prose, in their words, below its lines
-(see Returning the sections): one short paragraph per contract heading.
-Statuses, Labels and Databases below then go through the setup operations as
-they described them; the status mapping they gave is the Status classes
-paragraph.
+For their own backend, go through the contract with them before Statuses. Its
+section Setting something up with the user says how. After that, Statuses,
+Labels and Databases do their steps with the tools they named for the setup
+operations.
 
 ## Statuses
 
@@ -96,8 +77,9 @@ Nothing to store: each status's class is read from the backend at run time, as
 the conventions' Status classes says. `list statuses` on the todo list and show
 in one short list which class each status falls in (the guide says how). Blocked
 is the status named Blocked. For their own backend, the mapping they gave goes
-in its guide's Status classes paragraph, above. If there's no blocked status,
-say the $pending-shipment label and blocked-by links cover the same ground.
+in the Status classes paragraph under Todo list (see Returning the sections). If
+there's no blocked status, say the $pending-shipment label and blocked-by links
+cover the same ground.
 
 ## Labels
 
@@ -201,7 +183,7 @@ react.
 - List id: <blank if the backend needs none>
 
 <for their own backend: how each operation in the contract is done, in their
-words>
+words, one short paragraph per contract heading>
 
 ## Labels
 

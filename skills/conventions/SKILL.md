@@ -27,9 +27,9 @@ the rules name the value, the settings hold it.
 2. Read the backend guide for the backend named in Todo list:
    `references/linear.md` for `linear`. For any other backend, the user
    described each operation under Todo list in their own words, and that
-   description is the guide; `references/CONTRACT.md` lists the operations it
-   covers. Skills name operations (`fetch open`, `set planned date`,
-   `read database`); the guide says how each one is done.
+   description is the guide; `references/backend-contract.md` lists the
+   operations it covers. Skills name operations (`fetch open`,
+   `set planned date`, `read database`); the guide says how each one is done.
 3. Read Deviations last; see Deviations at the end.
 
 ## What this todo list is
@@ -226,7 +226,7 @@ Deviations. Read and write them with the guide's `read database` /
 
 Where the backend has no documents, the guide keeps each database in the
 description of an open task titled with the database's title and labeled
-$no-autoschedule; see Databases in `references/CONTRACT.md`.
+$no-autoschedule; see Databases in `references/backend-contract.md`.
 
 ## Fetching
 

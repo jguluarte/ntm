@@ -21,8 +21,9 @@ skills can find what they need.
   labels.
 - A connector for Claude that can list, read and write the above.
 
-Two gaps are fatal: a backend with no date field to use as the planned date, or
-no way to tell open tasks from closed, can't run this system.
+Two gaps must be covered before ntm can run: a date field to use as the planned
+date, and a way to tell open tasks from closed. Where the backend lacks one,
+work it out with the user during setup (see Setting something up with the user).
 
 Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
@@ -201,3 +202,22 @@ message history database's first content is its frontmatter, which holds its
 
 Say how a write reports success, so the conventions' retry rule (retry once,
 then report) can be applied.
+
+## Setting something up with the user
+
+How `ntm:configure-todo-list` writes the description with the user. Walk this
+contract with them, heading by heading, in its order. For each operation, name
+the tool and the parameters that carry it out. Once they name the tool for
+`ping`, confirm the connector as the skill says. Read the tool's schema from the
+ToolSearch result rather than guessing: which date field is the planned date,
+how results paginate, whether labels add or replace, whether a comment can be
+edited in place. Where a choice is theirs (which date field, which grouping is a
+project), propose one and let them react. Try a read by hand where it's cheap.
+Writes other than the setup operations wait for `/ntm:self-test`.
+
+Say which of the gaps under What the backend needs to have the backend has. For
+no date field, or no way to tell open from closed, look with them for something
+that covers it: a field or status they can repurpose, a label, or a different
+place to keep the list, such as a table in a Claude Doc. Carry on once it's
+covered. With no documents, each database lives in the description of an open
+task titled with the database's title, as Databases says; tell them.

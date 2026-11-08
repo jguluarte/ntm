@@ -201,3 +201,20 @@ message history database's first content is its frontmatter, which holds its
 
 Say how a write reports success, so the conventions' retry rule (retry once,
 then report) can be applied.
+
+## Walking it with the user
+
+How `ntm:configure-todo-list` writes the description with the user. Walk this
+contract with them, heading by heading, in its order. For each operation, name
+the tool and the parameters that carry it out. Once they name the tool for
+`ping`, confirm the connector as the skill says. Read the tool's schema from the
+ToolSearch result rather than guessing: which date field is the planned date,
+how results paginate, whether labels add or replace, whether a comment can be
+edited in place. Where a choice is theirs (which date field, which grouping is a
+project), propose one and let them react. Try a read by hand where it's cheap.
+Writes other than the setup operations wait for `/ntm:self-test`.
+
+Say which of the gaps under What the backend needs to have the backend has. A
+fatal one ends the walk: `Configure-todo-list FAILED: <backend> has no <thing>`.
+With no documents, each database lives in the description of an open task titled
+with the database's title, as Databases says; tell them.

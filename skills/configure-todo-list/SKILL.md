@@ -40,8 +40,8 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 1. Load `ntm:conventions`. On a first run its first step says "not configured;
    run `/ntm:configure`". That's expected: carry on with the values you settle
-   here. Its `references/CONTRACT.md` is the contract every backend meets;
-   `references/linear.md` is the guide it ships.
+   here. Its `references/backend-contract.md` is the contract every backend
+   meets; `references/linear.md` is the guide it ships.
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
@@ -64,9 +64,9 @@ names. If it isn't there, ask them to connect it on the Connectors tab and come
 back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
-For their own backend, follow this skill's `references/own-backend.md` before
-Statuses; Statuses, Labels and Databases then use the setup operations as they
-described them.
+For their own backend, walk the contract with them as its Walking it with the
+user section says, before Statuses; Statuses, Labels and Databases then use the
+setup operations as they described them.
 
 ## Statuses
 

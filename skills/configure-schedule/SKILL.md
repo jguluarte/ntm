@@ -71,9 +71,9 @@ reply and error handling are this job's.
 The span is in words, as the user wants it: `the last 7 days` for a weekly one,
 `last month` for a monthly one.
 
-On the `pushover` channel, a job can send from its own Pushover app, such as one
-with its own sound or icon. Take that app's token in chat, never repeat it back,
-and add this after the timezone line:
+On the `pushover` channel, a job can send from its own Pushover app;
+`ntm:configure-notifications` offers it. Don't ask here. When the user has given
+a token for a job, never repeat it back, and add this after the timezone line:
 
 ```
 Pushover app token for this job: <token>. Hand it to every
@@ -88,8 +88,9 @@ ask.
 
 ### Bulk planning
 
-Plans a range of days at once, after closing out the span just past. Weekly is
-the suggested cadence; the user can pick another. Work out with them:
+Plans a range of days at once, after closing out the span just past. Its
+defaults go under the schedule table (Walking the schedule, step 1), and the
+user can change any of them:
 
 - how often it runs: weekly by default;
 - the range it plans, in words: `week mon-fri` by default, or `next two weeks`,
@@ -135,32 +136,27 @@ If a skill can't be loaded, end the run with this line:
 
 ## Walking the schedule
 
-1. Ask what they want reminding of and when. Offer the table in What a job can
-   run as a starting point; they keep, drop or add jobs.
-2. For each job: the days, the time, the title, and for bulk planning what The
-   prompt's Bulk planning lists. The title is theirs: suggest a plain one
-   ("Morning reminder") and take what they say. For `show-completed`, weekly or
-   monthly, and the span follows.
-3. For bulk planning and `morning-reminder`, ask what should differ from
-   `ntm:plan`'s defaults: the planning days (weekdays), tasks a day (one), task
-   size (about an hour or less). Write only what differs into those two jobs'
-   prompts, as one line after the timezone line, such as
+1. Propose a schedule as one short table, one row per job: job, days, time,
+   title. Start from What a job can run, with a plain title for each ("Morning
+   reminder"), and each time set by the jitter rule: a job never starts on :00
+   or :30, so move such a time a few minutes earlier, a different number for
+   each job. Under the table, one line each:
+    - planning, for bulk planning and `morning-reminder`: weekdays, one task a
+      day, about an hour or less (`ntm:plan`'s defaults);
+    - bulk planning: the defaults in The prompt's Bulk planning;
+    - `show-completed`: weekly, for the last 7 days.
+2. A plain "ok" takes it all. They keep, drop, add or change anything in their
+   own words; the titles are theirs. Revise until they approve. Create nothing
+   before that.
+3. Write only what differs from `ntm:plan`'s defaults into the prompts of bulk
+   planning and `morning-reminder`, as one line after the timezone line, such as
    `Planning: two tasks a day, weekends too.`; when nothing differs, add none.
 4. Ask once, for all the jobs: which model should they run on? A new job
    inherits the model of the chat that creates it, and that can be the heaviest
    one. Suggest a lighter model, such as Opus or Sonnet, then use the one they
    choose; it's the model every job gets.
-5. On the `pushover` channel, ask once whether any job should send from its own
-   Pushover app; take each token as The prompt says.
-6. Apply the jitter rule to each time: never land on :00 or :30. When a time
-   would land on the hour or half hour, move it 1–29 minutes earlier (the number
-   of letters in the title, spaces not counted, modulo 29, plus 1). Runs that
-   start between 06:00 and 09:00 Pacific time can be delayed: convert the job's
-   time to Pacific, and if it falls in that window, say so and keep it unless
-   they'd rather move it.
-7. Show what you plan to set up as a short table, one row per job: job, days,
-   time, title. Say which times the jitter rule moved. They approve or change
-   it; revise until they approve. Create nothing before that.
+
+The table in step 1, for example:
 
 | Job                | Days     | Time  | Title            |
 | ------------------ | -------- | ----- | ---------------- |
@@ -186,8 +182,7 @@ else, change it with them; it's theirs.
   three fields.
 - `notifications`: `{push: true}`. Push carries the run's completion summary,
   which is the reminder itself on the `claude-push` channel. On the `pushover`
-  channel it's a second, shorter push; say so, and that the scheduled task's
-  settings can turn it off.
+  channel it's a second, shorter push.
 - `initiation`: `human_request`.
 - Leave `permission_mode` unset.
 
@@ -203,22 +198,29 @@ CRON_TZ=Europe/Berlin 44 8 * * 1-5
 request from the walk, not the skill's. If the id is rejected, say so, leave the
 job on the model it inherited, and carry on.
 
-### Say how it runs
+### Check its connectors
 
-Tell the user, in one sentence, which model the job runs on and which approval
-setting it got, and that automatic approval can be turned on in the scheduled
-task's settings if the organization allows it. The setting is
-`derived_state.permission_mode` in the result: `auto` means runs go ahead on
+If the backend uses a connector and the result lists the job's connectors
+(`mcp_connections`), check that the backend connector is among them. Keep any
+job that lacks it for the sentence below.
+
+### Once all are created
+
+Tell the user in one sentence, for all the jobs: the model they run on; whether
+runs go ahead on their own or stop when an action needs approval, and that
+automatic approval can be turned on in a scheduled task's settings if the
+organization allows it; on the `pushover` channel, that each run also sends a
+second, shorter push its settings can turn off. The approval setting is
+`derived_state.permission_mode` in each result: `auto` means runs go ahead on
 their own; absent means a run stops when an action needs approval, and nobody is
 there to approve a scheduled run.
 
-### Check its connectors
+Say more only for a job that lacks the backend connector: attach the connector
+to this session and create the job again, or every run will fail its ready
+check.
 
-When the result lists the job's connectors (`mcp_connections`), check that the
-backend connector named by Todo list is among them; if it isn't, say so: attach
-the connector to this session and create the job again, or every run will fail
-its ready check. Either way, the proof is a run, once `ntm-user` is installed:
-offer `fire_trigger` (Running a job now) then, and read its ready check.
+For every job, the proof is a run once `ntm-user` is installed: offer
+`fire_trigger` (Running a job now) then, and read its ready check.
 
 ## Connectors
 

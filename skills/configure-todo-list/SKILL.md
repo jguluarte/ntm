@@ -74,12 +74,12 @@ operations.
 ## Statuses
 
 Nothing to store: each status's class is read from the backend at run time, as
-the conventions' Status classes says. `list statuses` on the todo list and show
-in one short list which class each status falls in (the guide says how). Blocked
-is the status named Blocked. For their own backend, the mapping they gave goes
-in the Status classes paragraph under Todo list (see Returning the sections). If
-there's no blocked status, say the $pending-shipment label and blocked-by links
-cover the same ground.
+the conventions' Status classes says. `list statuses` on the todo list and check
+that each falls in a class (the guide says how); Blocked is the status named
+Blocked. When they all do, say nothing. When one doesn't, name it, and say that
+what it counts as goes under Deviations with `/ntm:settings`. For their own
+backend, the mapping they gave goes in the Status classes paragraph under Todo
+list (see Returning the sections).
 
 ## Labels
 
@@ -102,9 +102,10 @@ it carries both; the guide says whether `labels` replaces the set.
 
 The system keeps its own records in four databases on the todo list, each under
 a fixed title: Pauses, Message history, Task review log, Price watch stores. For
-each, `read database` by its title. Found: keep it. Missing: ask whether they
-already keep it under another title. If so, say to add that title under
-Deviations with `/ntm:settings`; if not, create it with `create database`:
+each, `read database` by its title; one that's found is kept. If they already
+keep one under another title, say to add that title under Deviations with
+`/ntm:settings`. Name the missing ones in one line, and on a plain "ok" create
+each with `create database` and this first content:
 
 - **pauses:** `## Pauses` with `None.` under it.
 - **message history:** its first content is this frontmatter:
@@ -117,10 +118,10 @@ Deviations with `/ntm:settings`; if not, create it with `create database`:
 
 - **task review log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project was chosen; created in
-  that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
-  a few seed stores by category to put under Seed, with their domains, or leave
-  Seed empty and say the first price watch run will report it. Vouched and
-  Blocked start empty.
+  that project, with the headings `## Seed`, `## Vouched`, `## Blocked`, all
+  empty; the first price watch run reports an empty Seed. In the same line, say
+  they can name a few stores they trust, by category with their domains, to put
+  under Seed.
 
 ## Planning
 
@@ -144,10 +145,6 @@ just answer it. Only when they ask for more on the ways to estimate, ask the
 estimator agent's Explain estimating request and pass its ways on; when the
 agent isn't available, follow its file as the conventions' "Chat, jobs and
 agents" says. Record their answer as Estimate pattern, in their words.
-
-Then ask, once: anything else about how they want planning done? Capture it as
-written below the lines ("nothing heavy on Fridays", "garage work only on
-weekends"). "Nothing" leaves it blank.
 
 ## Shopping
 

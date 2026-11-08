@@ -101,7 +101,8 @@ entry.
   The Claude channel has no cap.
 - `Pushover user key` lives in settings. `Pushover app token` in settings is the
   default, for one generic app; a job can carry its own app token in its prompt,
-  which overrides it and is handed to `notify`.
+  which overrides it and is handed to `notify`. `configure-notifications` offers
+  a job's own app; `configure-schedule` writes the token into the job's prompt.
 
 ## Backends
 
@@ -320,6 +321,19 @@ the new-user flow, and four 0.4 recommendations. In order:
 1. The flow-by-flow simplification, with Justin, starting from the review's
    new-user flow trace.
 2. The 0.4 talks, starting from the review's four questions.
+
+### Onboarding walkthrough, with Justin
+
+The new-user setup flow, walked through with him. Held for it:
+
+- Jobs are created before `ntm-user` is installed: whether that holds is open.
+- Price watch and the Amazon labels only when the user asks: rework then.
+- Linear's two estimate questions (team estimate type, how they estimate).
+- Checking the backend connector before the parts start.
+- Databases: each is described in the skill that uses it, not in a generic setup
+  list.
+- The Amazon alerts question moves up into `configure`, asked with the Amazon
+  labels, so a no skips both (from #58).
 
 ### To build
 

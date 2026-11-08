@@ -35,8 +35,9 @@ skills work around them:
 - **No labels on groups:** the conventions' project-label inheritance doesn't
   apply, and the user puts system labels on tasks directly.
 - **No priority, or no updated-at:** skills do without them.
-- **No documents:** notes are kept in tasks (see Notes).
-- **No way to keep a note inside a project:** every note is at list level.
+- **No documents:** databases are kept in tasks (see Databases).
+- **No way to keep a database inside a project:** every database is at list
+  level.
 
 ## Todo list
 
@@ -127,27 +128,28 @@ labels, and says how to check for an existing match first.
 Changes a task's title, description, estimate, project (or none) or parent, or
 adds a blocked-by link; nothing else changes.
 
-### `read note` / `write note`
+### `read database` / `write database`
 
-Reads or writes a note, as Notes says. `write note` creates a missing note with
-the content given.
+Reads or writes a database, as Databases says. `write database` creates a
+missing database with the content given.
 
-## Notes
+## Databases
 
-Notes are the texts the system keeps on the todo list, titled as Notes under
-Todo list says. `read note <title>` returns the note's content, or says it's
-missing. `write note <title>` replaces the content, and creates a missing note
-with the content given. Both take an optional project, for a note kept in a
-project.
+Databases are the documents the system keeps its own records in, on the todo
+list, each under the title the conventions give it. `read database <title>`
+returns its content, or says it's missing. `write database <title>` replaces the
+content, and creates a missing database with the content given. Both take an
+optional project, for a database kept in a project.
 
 If the backend has documents, use them, found by title. If it doesn't, keep each
-note in the description of a task titled with the note's title, labeled with the
-$no-autoschedule label (its real name from Labels) and left open in a plannable
-status. `ntm:fix-todo-list` never touches it (it has no planned date) and
-planners skip it for its label. `read note` is then a title search that reads
-that task's description; `write note` replaces the description, creating the
-task when there is none. A note kept in a project is a task created in that
-project. The conventions say every skill ignores such a task as work.
+database in the description of a task titled with the database's title, labeled
+with the $no-autoschedule label (its real name from Labels) and left open in a
+plannable status. `ntm:fix-todo-list` never touches it (it has no planned date)
+and planners skip it for its label. `read database` is then a title search that
+reads that task's description; `write database` replaces the description,
+creating the task when there is none. A database kept in a project is a task
+created in that project. The conventions say every skill ignores such a task as
+work.
 
 ## Setup operations
 
@@ -163,7 +165,7 @@ has no todo lists to list, says so (the user names or pastes theirs, or
 ### `create todo-list`
 
 Only where the backend has no todo lists to list: makes one with the statuses,
-labels and notes settled so far, and returns its id.
+labels and databases settled so far, and returns its id.
 
 ### `list statuses`
 
@@ -193,11 +195,12 @@ Lists every project with its name, id and labels.
 
 Creates a project by name, with the project labels it should carry.
 
-### `create note`
+### `create database`
 
-Creates a note with a given title and first content, at list level or in a
-project, without touching one that already exists (`read note` first). The
-message history note's first content is its `Keep:` line.
+Creates a database with a given title and first content, at list level or in a
+project, without touching one that already exists (`read database` first). The
+message history database's first content is its frontmatter, which holds its
+`Keep:` line.
 
 ## Writing
 

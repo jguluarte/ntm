@@ -3,7 +3,7 @@ name: configure-todo-list
 description: >-
     The user's todo list, with them in chat. On a first run, where it lives and
     the agreements ntm works by on it (the backend, the list, the labels, the
-    notes, how planning and shopping work), returned as settings. Once
+    databases, how planning and shopping work), returned as settings. Once
     configured, a change to those settings. Run from ntm:configure, or when the
     user says "set up my todo list", "connect Linear", "rename my labels" or
     "change how my week is planned".
@@ -68,25 +68,27 @@ to connect it on the Connectors tab and come back, and stop with
 
 Backend is the name they give. Walk the contract with them in order: What the
 backend needs to have, Todo list, Status classes, each operation under
-Operations, Notes, Setup operations, Writing. For each operation, name the tool
-and the parameters that carry it out. Read the tool's schema from the ToolSearch
-result rather than guessing: which date field is the planned date, how results
-paginate, whether labels add or replace, whether a comment can be edited in
-place. Where a choice is theirs (which date field, which grouping is a project),
-propose one and let them react. Try a read by hand where it's cheap. The setup
-operations run below as described; every other write waits for `/ntm:self-test`.
+Operations, Databases, Setup operations, Writing. For each operation, name the
+tool and the parameters that carry it out. Read the tool's schema from the
+ToolSearch result rather than guessing: which date field is the planned date,
+how results paginate, whether labels add or replace, whether a comment can be
+edited in place. Where a choice is theirs (which date field, which grouping is a
+project), propose one and let them react. Try a read by hand where it's cheap.
+The setup operations run below as described; every other write waits for
+`/ntm:self-test`.
 
 The contract names the survivable gaps (no estimate field, no blocked-by
 relation, no labels on groups, no documents) and the two fatal ones (no date
 field, no way to tell open from closed). Say which the backend has. A fatal one
 ends here: `Configure-todo-list FAILED: <backend> has no <thing>`. With no
-documents, each note lives in the description of an open task titled with the
-note's title, as the contract's Notes section says; tell them.
+documents, each database lives in the description of an open task titled with
+the database's title, as the contract's Databases section says; tell them.
 
 What you settle goes under Todo list as prose, in their words, below its lines
 (see Returning the sections): one short paragraph per contract heading.
-Statuses, Labels and Notes below then go through the setup operations as they
-described them; the status mapping they gave is the Status classes paragraph.
+Statuses, Labels and Databases below then go through the setup operations as
+they described them; the status mapping they gave is the Status classes
+paragraph.
 
 ## Statuses
 
@@ -114,17 +116,23 @@ Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
 it carries both; the guide says whether `labels` replaces the set.
 
-## Notes
+## Databases
 
-Each database under Todo list has a title. Show the four databases in one line
-(Pauses, Message history, Task review log, Price watch stores); a plain "ok"
-keeps those titles, and they rename any. Then, for each, `read note` by its
-settled title. Found: keep it. Missing: ask whether the database already exists
-under another title (record that title) or create it with `create note`:
+The system keeps its own records in four databases on the todo list, each under
+a fixed title: Pauses, Message history, Task review log, Price watch stores. For
+each, `read database` by its title. Found: keep it. Missing: ask whether they
+already keep it under another title. If so, say to add that title under
+Deviations with `/ntm:settings`; if not, create it with `create database`:
 
 - **pauses:** `## Pauses` with `None.` under it.
-- **message history:** its first content is the line
-  `Keep: 60 entries or 8 weeks`.
+- **message history:** its first content is this frontmatter:
+
+    ```
+    ---
+    Keep: 60 entries or 8 weeks
+    ---
+    ```
+
 - **task review log:** `## How you work` and `## Estimates`, both empty.
 - **price watch stores:** only when a price watch project was chosen; created in
   that project, with the headings `## Seed`, `## Vouched`, `## Blocked`. Ask for
@@ -173,9 +181,9 @@ line each:
   off (no Amazon alerts). Blank means it asks.
 
 Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores note (Seed above), not here; this is for what
-counts beyond that. Capture it as written below the lines; "nothing" leaves it
-blank.
+use go in the price watch stores database (Seed above), not here; this is for
+what counts beyond that. Capture it as written below the lines; "nothing" leaves
+it blank.
 
 ## Returning the sections
 
@@ -191,11 +199,6 @@ react.
 - Backend: <linear | the name they gave>
 - List name: <as the backend names it>
 - List id: <blank if the backend needs none>
-- Notes — the title of each note the system keeps:
-  - pauses: <title; default Pauses>
-  - message history: <title; default Message history>
-  - task review log: <title; default Task review log>
-  - price watch stores: <title; default Price watch stores>
 
 <for their own backend: how each operation in the contract is done, in their
 words>

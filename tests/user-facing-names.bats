@@ -1,8 +1,8 @@
 #!/usr/bin/env bats
-# The user-facing names are a contract: the skills, the agents, and
-# plugin.json's name and displayName. tests/expected/ holds the contract.
-# These tests fail when the plugin no longer matches it, to tell whoever made
-# the change that it needs their user's explicit involvement.
+# The user-facing names are a contract: the skills, the agents, and the
+# plugin.json fields in tests/expected/plugin.json. tests/expected/ holds it.
+# A test fails when the plugin no longer matches the contract, to tell
+# whoever changed it that the change needs their user's explicit involvement.
 
 # Paths are from the repo root.
 setup() {
@@ -19,59 +19,69 @@ find_agents() {
     basename -s .md agents/*.md
 }
 
-# The contract lists one name per line, with # comments.
-expected_skills() { grep '^[^#]' tests/expected/skills.txt; }
-expected_agents() { grep '^[^#]' tests/expected/agents.txt; }
+# The contract's names for $1 (skills or agents): one per line, and #
+# starts a comment.
+contract_names() {
+    grep '^[^#]' "tests/expected/$1.txt"
+}
 
-# The lines coming in that aren't lines of the file $1.
+# Prints the lines from the pipe that aren't a whole line of the file $1.
+# The tests pass a command's output as that file with <(command).
 not_in() {
     grep -vxF -f "$1"
 }
 
-# Passes when no names come in. Otherwise the contract changed: names them.
+# The value of field $1 in the JSON file $2, as JSON. A missing field is null.
+field() {
+    jq --arg name "$1" '.[$name]' "$2"
+}
+
+# Each field in the contract's plugin.json whose value in the plugin's
+# plugin.json differs, one per line.
+changed_plugin_fields() {
+    local name expected actual
+    for name in $(jq -r 'keys[]' tests/expected/plugin.json); do
+        expected=$(field "$name" tests/expected/plugin.json)
+        actual=$(field "$name" .claude-plugin/plugin.json)
+        [ "$actual" = "$expected" ] || echo "$name: was $expected, now $actual"
+    done
+}
+
+# Reads lines from the pipe. Passes when there are none. Otherwise prints
+# $1 and the lines, and fails: the contract changed.
 expect_none() {
-    local names
-    names=$(paste -s -d ' ' -)
-    [ -z "$names" ] && return 0
-    contract_changed "$1: $names."
+    local found
+    found=$(cat)
+    [ -z "$found" ] && return 0
+    echo "$1:"
+    echo "$found"
+    contract_changed
 }
 
-expect_plugin_field() {
-    local expected actual
-    expected=$(jq -r ".$1" tests/expected/plugin.json)
-    actual=$(jq -r ".$1" .claude-plugin/plugin.json)
-    [ "$actual" = "$expected" ] && return 0
-    contract_changed "plugin.json $1 changed from \"$expected\" to \"$actual\"."
-}
-
-# Says what differs and what to do, and fails.
+# Says what a contract change needs, and fails.
 contract_changed() {
-    echo "$1"
-    echo "That changes the user-facing names contract in tests/expected/."
-    echo "Put it back, or get your user's explicit approval for the change."
+    echo "That changes the user-facing names contract in tests/expected/,"
+    echo "which needs your user's explicit involvement. Put it back, or stop"
+    echo "and get their approval. Don't edit tests/expected/ yourself."
     return 1
 }
 
-@test "user-facing names: no skill added" {
-    find_skills | not_in <(expected_skills) | expect_none "Skills added"
+@test "names contract: no skill added" {
+    find_skills | not_in <(contract_names skills) | expect_none "Skills added"
 }
 
-@test "user-facing names: no skill removed" {
-    expected_skills | not_in <(find_skills) | expect_none "Skills removed"
+@test "names contract: no skill removed" {
+    contract_names skills | not_in <(find_skills) | expect_none "Skills removed"
 }
 
-@test "user-facing names: no agent added" {
-    find_agents | not_in <(expected_agents) | expect_none "Agents added"
+@test "names contract: no agent added" {
+    find_agents | not_in <(contract_names agents) | expect_none "Agents added"
 }
 
-@test "user-facing names: no agent removed" {
-    expected_agents | not_in <(find_agents) | expect_none "Agents removed"
+@test "names contract: no agent removed" {
+    contract_names agents | not_in <(find_agents) | expect_none "Agents removed"
 }
 
-@test "user-facing names: plugin.json name unchanged" {
-    expect_plugin_field name
-}
-
-@test "user-facing names: plugin.json displayName unchanged" {
-    expect_plugin_field displayName
+@test "names contract: no plugin.json field changed" {
+    changed_plugin_fields | expect_none "plugin.json fields changed"
 }

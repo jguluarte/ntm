@@ -244,8 +244,6 @@ The text rules in `CLAUDE.md` apply; these add to them.
   `package-lock.json` `linguist-generated=true`, so GitHub collapses them in
   diffs. Justin's rule for all his repos: a new kind of lock file gets a line
   there.
-- History was rewritten on 2026-11-07. A clone from before then is stale;
-  re-clone.
 - The branch `plugin-history-2026-11-06` keeps the history from before the 0.3
   squash.
 

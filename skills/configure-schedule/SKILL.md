@@ -23,9 +23,9 @@ run scheduled tasks. If there are none, scheduled tasks aren't available from
 here; say so and stop.
 
 Load `ntm:conventions`: Timezone under About you in your settings is the
-timezone every job runs in, and Todo list says whether price watch is on. On a
-first run from `ntm:configure`, `ntm-user:settings` doesn't exist yet: use the
-timezone, the price watch project and the Planning days `configure` hands you.
+timezone every job runs in. On a first run from `ntm:configure`,
+`ntm-user:settings` doesn't exist yet: use the timezone, whether a price watch
+project was chosen, and the Planning days `configure` hands you.
 
 ## The kinds
 
@@ -78,8 +78,8 @@ time: Sunday, 22:00. Always offered.
 ### Price watch
 
 Runs `ntm:price-watch`. Default title: Price watch. Default days and time: every
-day, 07:00, paused days included. Offered only when Todo list in your settings
-names a price watch project.
+day, 07:00, ignore pause. Always offered, except on a first run when no price
+watch project was chosen. It watches the tasks carrying the $price-watch label.
 
 ### Completed
 
@@ -97,8 +97,8 @@ heaviest one. Suggest a lighter model, such as Opus or Sonnet, then use the one
 they choose; it's the model every job gets. A title is only a label; the kind's
 default title stays the name notifications and tokens are matched by. Offer the
 defaults and move on when they take them. For completed, also weekly or monthly,
-and the span in the prompt follows. Skip price watch when Todo list names no
-price watch project.
+and the span in the prompt follows. Skip price watch on a first run when no
+price watch project was chosen.
 
 Then, for each job they want:
 

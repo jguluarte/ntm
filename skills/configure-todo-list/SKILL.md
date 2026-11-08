@@ -146,10 +146,6 @@ estimator agent's Explain estimating request and pass its ways on; when the
 agent isn't available, follow its file as the conventions' "Chat, jobs and
 agents" says. Record their answer as Estimate pattern, in their words.
 
-Don't ask for anything else about planning. When they bring something up
-("nothing heavy on Fridays", "garage work only on weekends"), capture it as
-written below the lines; otherwise it stays blank.
-
 ## Shopping
 
 Only when a price watch project was chosen; otherwise skip and return no

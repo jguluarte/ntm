@@ -211,6 +211,7 @@ entry.
   with it, any mapping included. There's no `Estimate help`: what the user has
   been told belongs in the agent's memory, not in settings.
 - "Estimate" is the plain word; no "sizing", no "groomed size".
+- "Breaking up a task" is the plain phrase; no "splits" as a term.
 - Review runs in chat only, never in a job.
 
 ## Words

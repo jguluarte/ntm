@@ -2,9 +2,9 @@
 name: review-todo-list
 description: >-
     Reviews the user's todo list with them in chat: closes obsolete or duplicate
-    tasks, then estimates and splits unreviewed ones with their approval. Run by
-    the user in chat, never by a job ("let's review my list", "review the
-    kitchen project", "estimate the garage work").
+    tasks, then estimates unreviewed ones and breaks up big ones, with their
+    approval. Run by the user in chat, never by a job ("let's review my list",
+    "review the kitchen project", "estimate the garage work").
 ---
 
 # ntm:review-todo-list
@@ -125,9 +125,9 @@ One item per message, in the agreed order:
 2. Your proposed **estimate**, in the user's own terms (their Estimate pattern),
    with a few words on why, from the estimator. If the task already has one, say
    what it is.
-3. If the estimator says it doesn't fit a sitting, one line on whether it looks
-   like it splits. Some things can't, and that's fine. Pieces come up in the
-   talk that follows (see Splits).
+3. If the estimator says it doesn't fit a sitting, one line on whether it could
+   be broken up. Some things can't, and that's fine. Pieces come up in the talk
+   that follows (see Breaking up tasks).
 4. Usually no edits. Suggest one or two at most, only where the task would
    otherwise be hard to start: a title that doesn't say what it is, or a blocker
    that isn't linked. Show the exact new text, and write only what the user saw.
@@ -137,7 +137,7 @@ Make it one proposal: a plain "ok" approves all of it, and the user changes any
 part in their own words. They'll very likely want to talk most tasks through, so
 do that. "Skip" leaves the task unreviewed for another day.
 
-If it splits, the estimate is for what's left of the original.
+If it's broken up, the estimate is for what's left of the original.
 
 After a task is broken up, or the user corrects an estimate, ask the estimator
 again for what's left, and drop any early answer the change makes stale. When
@@ -149,11 +149,14 @@ approved title, description or blocked-by link), add its `## Estimates` entry to
 the log, and pass the settled estimate to the estimator with its next ask, so
 writes never make the user wait.
 
-## Splits
+## Breaking up tasks
 
-- The user usually brings their own ideas for how to split a task. When they do,
-  use their pieces, and only point out a piece they seem to have left out. When
-  they don't, propose the pieces yourself.
+Sometimes a single task is too big to do all at the same time. Or sometimes the
+user just wants to tease things apart so they can do it in smaller pieces.
+
+- The user may bring their own ideas for how to split a task. When they do, use
+  their pieces, and only point out a piece they seem to have left out. When they
+  don't, propose the pieces yourself.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
   write only that: the original with the guide's `update task`, the new tasks as
@@ -195,4 +198,4 @@ the guess right. Keep the newest 150 entries.
 
 When the user stops, or this review is done, fold anything you learned into
 `## How you work` and save the log, then sum up in a line or two: how many items
-were reviewed, closed and split, and what's still unreviewed in it.
+were reviewed, closed and broken up, and what's still unreviewed in it.

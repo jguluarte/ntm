@@ -1,430 +1,409 @@
-# Naming decisions (owner, 2026-11-05) — apply in one rename pass before packaging
+# ntm decisions in force
 
-| Built as                                   | Final                                                                     | Status            |
-| ------------------------------------------ | ------------------------------------------------------------------------- | ----------------- |
-| `nudge:board`                              | `nudge:conventions`                                                       | settled 14:50     |
-| `nudge:due`                                | `nudge:todo-list` (no args = today; words = scope)                        | settled 14:50     |
-| `nudge:voice`                              | `nudge:style-message`                                                     | settled 14:50     |
-| `nudge:messenger` (profile skill)          | `nudge:communication-style`; note "…: communication style"                | settled 13:59     |
-| config `voice on`, `messenger name`        | removed; the note's existence is the switch, its `Name:` line is the name | settled 13:59     |
-| `Send FAILED:`                             | `Messenger FAILED:`                                                       | internal, decided |
-| `Subject:` line from the voice             | `Title:`                                                                  | internal, decided |
-| profile heading `## What gets you to read` | keep                                                                      | decided           |
-| `nudge:ping`                               | `nudge:ready-check`                                                       | settled 14:53     |
-| plugin name `nudge`                        | open                                                                      |                   |
-| other skill names, job titles, tones       | open (owner drives next round)                                            |                   |
+What's decided and in force on main, by topic. A line marked "decided, to build"
+is decided but main doesn't match it yet; the work is listed under Deferred and
+open. After the topics: what's decided for 0.4, test-drive findings the plugin
+doesn't handle yet, and what's deferred or still open. Names are in `NAMES.md`;
+the working rules are in `CLAUDE.md`. When something changes, edit its line
+here; don't add a dated entry.
 
-## 15:25 batch
+## Plugin shape
 
-| Built as                                              | Final                                                                                                                                                                                        | Status                         |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `nudge:notify`                                        | `nudge:notify`                                                                                                                                                                               | settled                        |
-| `nudge:recap`                                         | proposed `nudge:history`                                                                                                                                                                     | open (owner leaning `history`) |
-| `nudge:plan --weekly/--daily/--replan`                | `nudge:plan --auto day` / `--auto week` (unattended; jobs use these); `nudge:plan <context>` plans with the user in chat, asks only if ambiguous                                             | settled                        |
-| `nudge:setup`                                         | `nudge:configure`                                                                                                                                                                            | settled                        |
-| `nudge:jobs`                                          | `nudge:configure-schedule`                                                                                                                                                                   | settled                        |
-| agent `price-checker`                                 | `shopper`                                                                                                                                                                                    | settled                        |
-| agents `planner`, `messenger`                         | keep                                                                                                                                                                                         | settled                        |
-| job skills morning/afternoon/evening/week/price-watch | if kept: `run-` prefix; owner questions whether they should be skills at all (prefers the sequence to live in the scheduled task's prompt, defaults from configure-schedule, user-refinable) | open — discuss in chat         |
+- The plugin targets Cowork and chat, not Claude Code. No Code-only paths.
+- No `userConfig`: its prompts work only in Claude Code, and chat and Cowork
+  have no plugin settings layer. Settings live in the plugin's own files.
+- `ntm-user` is a plugin with two skills, `ntm-user:settings` and
+  `ntm-user:style`. Secrets live in it, so it stays private.
+- `ntm-user` is built from a guide the user's agent follows, not from templates.
+  Its version is `1.<YYYYMMDD>.<HHMM>`.
+- Only `settings` builds `ntm-user.plugin`. `configure` and the `configure-*`
+  skills return their section text to it.
+- `configure` is setup; `settings` is seeing or changing values after setup.
+- A skill that hands work to an agent does the work itself when the agent isn't
+  loaded, by reading `agents/<name>.md` from the installed plugin. Chat ignores
+  agents, and whether they load in scheduled runs is unconfirmed.
+- No hidden skills (`user-invocable: false`): as far as the docs say, they work
+  only in Claude Code.
+- Skill descriptions never contain angle brackets; the uploader rejects them.
+- Backend guides are plain reference files, never skills. No skill per service,
+  no plugin per backend.
+- Renaming ntm to the user's own word: one sentence in the README and `help`,
+  "fork and rename with your agent". `configure` doesn't ask.
+- `help` reads the installed README. The README is the one text, with the origin
+  story and price watch as the bridge for the impulse to buy.
+- Decided, to build: the displayName and the README's title are
+  `Neurodivergent Task Manager`, without "(ntm)".
+- Publishing to the directory waits for the test-drives. Keep `ntm` ready: a
+  README of 40+ words, LICENSE, icon, author, homepage, repository, no
+  credentials, no brand names. The name similarity check happens only at
+  submission.
 
-## 15:33
+## Settings and databases
 
-| Built as                                  | Final                                                                                                                     | Status  |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `nudge:price-watch`                       | `nudge:run-price-watch`                                                                                                   | settled |
-| `nudge:amazon-alerts`                     | `nudge:run-price-watch-amazon`                                                                                            | settled |
-| `nudge:morning` / `afternoon` / `evening` | `nudge:morning-reminder` / `afternoon-reminder` / `evening-reminder`                                                      | settled |
-| `nudge:week`                              | no skill; default sequence becomes the scheduled task's prompt, owned by `configure-schedule` as a user-refinable default | settled |
+- What the user writes goes in `ntm-user`. What jobs write at run time goes in
+  databases on the todo list.
+- Rules live in `conventions`, values in settings, tool calls in the backend
+  guides.
+- Settings are free text under fixed headings, read by heading. A missing
+  section means its defaults. Deviations hold anything the user does
+  differently; read last, they override. The headings are internal.
+- Notifications holds the channel, the keys, and free-text policy that `notify`
+  follows.
+- Whether the style exists is the switch for styled messages; there is no on/off
+  setting.
+- `conventions` has no `Version:` or `Template source:` line; nothing read them.
+- On main, whose tasks count is a setting (`Your tasks`). Decided, to build:
+  every task on the list is the user's; a shared list goes in Deviations.
+- Decided, to build: About you drops `Name`. Setup fills `Timezone` and
+  `Country and currency` from the current timezone and asks the user to confirm.
+- Decided, to build: one `Labels` list for tasks and projects. Linear passes a
+  project's label to its tasks by name, so the guide says a project label needs
+  the same name.
+- A database is a document in the backend; where the backend has no documents, a
+  task's description. Titles carry no prefix. The pause schedule is the pauses
+  database. The shopper's comment on a task isn't a database. Main's plugin text
+  calls databases "notes"; decided, to build: "database" everywhere (read
+  database, write database).
+- On main, each database's title is a setting (`Notes`) and how much message
+  history to keep is that database's `Keep:` line. Decided, to build: the plugin
+  fixes the titles and a rename goes in Deviations; `Keep:` moves into the
+  message history database's frontmatter.
 
-## 15:49 batch
+## Agents
 
-| Built as                                      | Final                                                                                                                                                                                     | Status             |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `nudge:groom`                                 | `nudge:review-todo-list`                                                                                                                                                                  | settled            |
-| `nudge:cleanup`                               | `nudge:fix-todo-list`                                                                                                                                                                     | settled            |
-| `nudge:recap`                                 | proposed `nudge:show-completed` (owner's idea; prefers "completed")                                                                                                                       | open, yes to close |
-| `nudge:days-off`                              | proposed `nudge:time-off` (bare = show; dates = take off; `--check` for jobs)                                                                                                             | open, yes to close |
-| tone ladder light/escalated/harsh/affirmation | not plugin-defined: the communication-style note defines its own levels; the "harder each day" policy climbs whatever levels the note has; the four names survive only as an illustration | settled            |
-| scheduled-task titles                         | fine for now; revisit while working on configure-schedule                                                                                                                                 | parked             |
+- Agents own their procedures. The reminder skills gather facts and hand them
+  off.
+- An agent can't start another agent, so the planner is merged into `plan`.
+- The estimator owns estimates, time guesses, explaining the ways to estimate,
+  and review with the task review log. It never plans. Planning and other
+  callers engage it; several callers is right.
+- Decided, to build: the estimator's `Estimate a task` and `Time tasks` become
+  one `Estimate` request, for one or many tasks, size or time.
+- With no estimate field, the estimate goes in the task description.
+- The messenger never reads settings; the skill that asks hands it the reminder,
+  the job, the facts and any setting it needs. Its inputs are a contract
+  (required and optional), and a missing required one comes back as
+  `Messenger NEEDS`. Wording Deviations reach it only when a caller hands them
+  in. It reads only the task-wording section of `conventions`, loads
+  `ntm-user:style`, and sends through `notify`. When the style returns no title,
+  it asks the style once more.
+- The shopper owns its brief. It gets a task id and today's date only.
 
-## 16:01
+## Notifications
 
-| Built as         | Final                                                                                                                                                                                                                                              | Status  |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `nudge:recap`    | `nudge:show-completed`                                                                                                                                                                                                                             | settled |
-| `nudge:days-off` | `nudge:pause` — bare: ask whether to see or change the pause schedule; with words: follow them; `--check` for jobs. `configure-schedule` says enable/disable for jobs, never pause. The note stays "…: days off"? → use "…: pauses" (owner's word) | settled |
+- No skill but `notify` sends anything; the messenger sends through it.
+- `configure-notifications`: the channel, the keys, one test push with explicit
+  keys, then an open question about notification policy. A re-run shows and
+  asks.
+- On the Claude channel, jobs are created with push on, and the run's summary is
+  the reminder. Reminders run from chat get no special case. The channel value
+  stays `claude-push`.
+- Channel caps live in `notify`, and the messenger carries no channel rules. On
+  Pushover, a message or title over the cap isn't trimmed or sent: `notify`
+  returns `Notify TOO LONG` with the cap and why, and the caller shortens once.
+  The Claude channel has no cap.
+- `Pushover user key` lives in settings. Decided, to build: `Pushover app token`
+  in settings is the default, for one generic app; a job can carry its own app
+  token in its prompt, which overrides it and is handed to `notify`.
 
-## 2026-11-05 — configuration skills (no settings layer on chat/Cowork)
+## Backends
 
-Research: chat/Cowork have no plugin settings layer. `userConfig` prompts are
-Claude Code only (chat ignores `${user_config.*}` MCP refs; Cowork doesn't
-prompt; cloud Code sessions can't supply it either). Agents and hooks are
-ignored in chat, load in Cowork/Code. `${CLAUDE_PLUGIN_DATA}` is Code-only.
-Scheduled tasks run remotely as Cowork sessions with skills + plugins; agent
-loading there = test-drive item 1.
+- Shipped backend guides live in `conventions/references/<backend>.md`. Any
+  other backend is described by the user under Todo list and smoke-tested
+  against the contract; it can be built on anything, a Claude Doc for example.
+- ntm bundles no Linear server. Setup has the user add Linear from the
+  Connectors tab in Claude's settings.
+- Backend guides leave how to call a tool to the connector's own instructions; a
+  guide says which tool does each operation and which values go where.
+- Backend guides own their setup.
+- Setup asks the Linear team's estimate type; the connector can't read it.
+- `configure-todo-list` picks the backend, collects what it needs, and checks or
+  creates statuses, labels and databases. No `--test`: checks belong to
+  `ready-check` and `self-test`.
+- Todo list keeps `Backend`, `List name` and `List id`. On main it also has
+  `Task prefix` and `Statuses`. Decided, to build: both go. Style examples use a
+  generic `ABC-12`. Status classes are read from the backend's status types;
+  blocked is a status named Blocked by default, and anything else goes in
+  Deviations.
+- Decided, to build: parent auto-close lives in `configure-todo-list`'s backend
+  reference. The Linear guide suggests turning on Linear's Parent auto-close; a
+  backend built on the contract asks the user.
 
-Consequences:
+## Planning and reports
 
-- Config stays in the plugin's own files (template → personalized copy). Do NOT
-  add `userConfig`.
-- Secrets (Pushover keys) stay in the personalized copy's config note.
-- New SPEC rule: every skill that delegates to an agent must do the work inline
-  when the agent isn't loaded.
+- Planning in chat asks only when the request is ambiguous.
+- Pausing a day that already holds planned work clears those dates and replans
+  the rest of the week with the user.
+- A report span is a number of days ending today. "Last month" is as many days
+  as the previous calendar month had.
+- Decided, to build: `Rhythm`, `Planning days`, `Plans ahead` and
+  `A day's worth` leave settings for the job prompts, which `configure-schedule`
+  writes with the user. `plan` keeps defaults for chat.
+- Decided, to build: `plan --auto` takes the range in words (`week mon-fri`,
+  `all weekdays this month`) and works out the days; it needn't be perfect.
+- Decided, to build: `Never picks` becomes
+  `Excluded labels from automatic scheduling`, labels only. Never planning a
+  blocked task is a fixed rule in `conventions`.
+- Decided, to build: nothing about parents or deadlines. No `Parents` key, no
+  "plan the sub-tasks, never the parent", no "a parent's own date means
+  nothing". `fix-todo-list` stops closing finished parents and only clears stale
+  planned dates, or with `--dry-run` reports what it would clear.
+- Decided, to build: the long "today" and timezone definitions across skills are
+  cut, the Linear queries do no timezone math, and job prompts state the
+  timezone.
 
-Names (Justin, 2026-11-05):
+## Jobs and scheduling
 
-- `configure` → `settings`
-- new `configure-notifications` (channel choice, credentials, test push)
-- `adapter` → `configure-integration` (SETTLED 2026-11-05). One skill;
-  per-service guides are plain files under
-  `skills/configure-integration/references/` (`linear.md`, `claude-docs.md`,
-  `CONTRACT.md`) — never skills, so contributors add a file without adding a `/`
-  entry. Per-service skills (`configure-linear`) rejected; hidden skills not
-  used; plugin-per-backend rejected.
-- new `help` — renders README
-- `communication-style`, `configure-schedule` unchanged
-- Hidden skills (`user-invocable: false`) are Code-only as far as docs say; not
-  used.
-- `run-price-watch-amazon` → `sync-price-watch-with-amazon` (Justin, in the
-  names doc, 16:43)
-- Later: decide what belongs under `settings` vs the `configure-*` skills
-  (parked).
-- `settings` = see/change user-facing settings after setup. New `setup` = first
-  run only: prefix, then the configure-* skills in order; produces the
-  personalized copy (Justin, doc comment 16:41).
-- `communication-style` → `configure-communication-style` (Justin, doc comment
-  16:41). Note title unchanged.
-- Plugin name: proposed `name: ntm`,
-  `displayName: "Neurodivergent Task Manager"`. `setup` must offer changing the
-  prefix (rewrites `name` in plugin.json and the note-title prefix in
-  conventions config). Pending Justin's yes.
-- `setup` → `configure` (Justin 16:52): bare = first-run walkthrough (prefix,
-  then each configure-_in order) or pick one part to redo; parent of the
-  configure-_ family. `settings` unchanged.
-- Plugin name SETTLED (Justin 16:55): `name: ntm`,
-  `displayName: "Neurodivergent Task Manager"`. Expected to possibly fail the
-  directory similarity check — revisit only at submission time. All names now
-  settled; rename pass unblocked.
+- A job is a three-line prompt that only loads a skill, written once in
+  `configure-schedule`. Decided, to build: the prompt also carries the job's own
+  settings (its planning, the weekly message, the timezone, and optionally a
+  Pushover app token).
+- On main, `configure-schedule` walks fixed job kinds (want it? days? time?
+  title?) with defaults: morning weekdays 09:00, afternoon 14:30, evening 19:30,
+  weekly planning Sunday 22:00, price watch daily 07:00 only if it's on,
+  completed off. Main matches notifications and tokens on the default titles.
+- Decided, to build: no fixed job kinds and no `Completed` kind.
+  `configure-schedule` works out with each user what schedule they want and
+  builds jobs from the skills. Before creating anything it shows a short table
+  (job, days, time, title) for the user to approve or change. Titles are chosen
+  live; internal matching keys off skill names, never titles.
+- Decided, to build: no `weekly-planning` skill. The suggested weekly pattern is
+  `show-completed <range>`, then `fix-todo-list`, then `plan --auto <range>`.
+- Jobs are turned off and on, never "paused".
+- A new job takes the creating chat's model, which can be the heaviest one, so
+  `configure-schedule` asks once which model the jobs run on, suggests a lighter
+  one such as Opus or Sonnet, and sets the user's choice with `update_trigger`.
+- `configure` order: About you, todo list, notifications, style, schedule.
+  `configure` writes nothing itself and ends by suggesting `/ntm:self-test` in a
+  new chat. Decided, to build: the part name `todo list` becomes `todo-list`.
+- `self-test`: `ready-check`, then a throwaway task and database, one line per
+  step, ending `Self-test OK` or `Self-test FAILED at <step>`. Once the user
+  starts it, it runs without asking; never run it unasked, since it sends a push
+  and writes a task.
+- The price watch job runs daily; pause days (from `pause`) don't skip it.
 
-## 2026-11-05 17:43 — settings store (Justin)
+## The style
 
-- Target surfaces: Cowork and chat. Claude Code is NOT a target; drop Code-only
-  paths from SPEC/README.
-- Settings store = an account skill named `ntm-settings` (one SKILL.md,
-  key/value table; description says it's loaded by `ntm:conventions` and changed
-  with `/ntm:settings`). `conventions` loads it by name. `settings` writes it
-  via the skill save card (propose_skills; user taps save). Scheduled runs read
-  only.
-- Test-drive item: confirm the save card fires from a plugin skill on mobile
-  chat and in Cowork.
-- Banned word: "voice" — nowhere in the plugin. `voice history` →
-  `message history`; history length lives in the message-history note itself,
-  not in settings.
-- Not yet decided: what goes in `ntm-settings` vs plugin files (item 3); whether
-  the template gets personalized at all and the prefix question are the
-  user's/their agent's call — the plugin must work either way (same settings
-  skill, or values baked in by customization).
-- Settings store skill name: `ntm-user-settings` (Justin 17:48;
-  underscores/leading markers aren't legal in skill names). Bare invocation:
-  show the values and say they belong to ntm, change via `/ntm:settings`. The
-  template refers to it by literal name; a prefix customization renames both.
+- No shipped personas. `configure-style` is a builder; "just remind me" means
+  plain.
+- A user's own persona goes in word for word under a `## For ntm` shim.
+- The plugin defines no tone ladder; the user's style sets its own levels, and
+  the harder-each-day rule climbs whatever levels the style has.
+- Motifs rest for 20 messages by default.
+- A day of reminders follows an episode arc: setup, middle, resolution, recap,
+  credits.
+- A title is part of the message's theme, never the reminder's name.
+- Justin's own persona skill never ships.
+- The profile's headings stay as on main. Decided, to build: `Off limits` is
+  removed from the profile and the builder never asks about it, in Justin's
+  style too.
 
-## 2026-11-05 17:55 — what goes in `ntm-user-settings` (Justin)
+## Price watch
 
-Freeform under fixed headings; defaults pre-filled by `configure`; `conventions`
-reads by heading.
+- On main, price watch is on exactly when Todo list names a project, and the
+  watch uses the project label only. Decided, to build: `Price watch project`
+  goes; watched items are found by the $price-watch label, which tasks inherit
+  from the project. Price watch is off when nothing carries it or the job isn't
+  scheduled.
+- Deal details go in the run's final reply, not in a separate post.
+- Decided, to build: `Condition`, `Delivery` and `A deal` leave Shopping; they
+  belong to each item, on its task. `Amazon interface` stays, and is left out
+  entirely when the user doesn't want Amazon.
+- Decided, to build, as a 0.3 bug fix: no Amazon alert steps database.
+  `sync-price-watch-to-amazon` carries the steps itself, and is updated when
+  Amazon changes. The steps already learned, in that database on Justin's
+  Linear, are copied into the skill.
 
-- Labels — issue labels (live, corrected): `no-autoschedule`,
-  `pending-shipment`, `deadline`, `has-amazon-price-watch`,
-  `amazon-unavailable`. Project labels: `price-watch`, `no-autoschedule`
-  (inherited). `price-watch` issue label is RETIRED (2026-10-17). Plugin's
-  `amazon-alert` is wrong → `has-amazon-price-watch`.
-- Deviations — anything the user does differently from the plugin's default
-  conventions.
-- Board — everything specific to their ticket backend (tracker, board/team, ids,
-  status names).
-- Notifications — channel + credentials + freeform policy (e.g. a different
-  Pushover app token per reminder); `notify` reads this section and follows it.
+## Estimates and review
 
-## 2026-11-05 17:57 — `ntm-user` is a plugin, not a skill (Justin)
+- Setup asks how the user estimates tasks and offers to explain. On Linear,
+  their scale maps onto the team's points.
+- Decided, to build: one key, `Estimate pattern`, says how the user sizes things
+  and what to do with it, any mapping included. It replaces `Estimate scale` and
+  `Estimate mapping`. `Estimate help` goes: what the user has been told belongs
+  in the agent's memory, not in settings.
+- "Estimate" is the plain word; no "sizing", no "groomed size".
+- Review runs in chat only, never in a job.
 
-Rule: user-authored → `ntm-user`; runtime-written by jobs → notes on the board.
+## Words
 
-- `ntm-user:settings` — as defined above (replaces `ntm-user-settings` skill
-  name).
-- `ntm-user:style` — the communication-style profile;
-  `configure-communication-style` writes it; `style-message` loads it by name.
-  Import path: Justin's existing persona skill becomes `ntm-user:style` as-is.
-  `messenger note` key removed.
-- Board notes stay: message history, pauses, grooming log, price-watch stores,
-  Amazon alert flow.
-- Delivery: `configure` packages `ntm-user.plugin` for the user to accept
-  (Cowork accept card); `settings` regenerates it.
-- Pause schedule = a document in the backend (Linear doc / Claude doc / whatever
-  the backend offers). (Justin 18:00)
-- Shipped backend guides live in `conventions/references/<backend>.md` (linear,
-  claude-docs), not under `configure-integration`. Any other backend is
-  described by the user under Board in `ntm-user:settings`;
-  `configure-integration` helps write that section and smoke-tests it against
-  the contract `conventions` states.
+The text rules in `CLAUDE.md` apply; these add to them.
 
-## 2026-11-05 18:04 — configure-integration (Justin)
+- "Todo list", never "board".
+- The product is "ntm" in prose. A file that abbreviates defines it at first
+  use, "Neurodivergent Task Manager (ntm)", then ntm. No undefined abbreviations
+  in docs.
+- "Job" is defined in the vocabulary, and its definition avoids "task".
+- Never say "trigger", "routine" or "cron job" to the user.
+- In plugin text, `$` in front of a label (`$no-autoschedule`) marks a name the
+  user configures: use its real name from Labels, and never show the `$` to the
+  user. Such names are written bare, not in backticks. Plugin and skill names
+  never take a `$`.
+- Internal lines (status, delivery, result) never reach the user as they are;
+  anything a user reads is plain words. Their names don't need Justin's yes.
 
-- Bare: pick backend (linear / claude-docs / other), collect what that backend
-  needs, check statuses/labels/notes (offer to create missing), write Board +
-  Labels of `ntm-user:settings`. With a backend named: skip the first question.
-- Already configured: show current Board + Labels and ask whether to change
-  anything. No `--test`; checks are `ready-check`'s job.
+## The repo
 
-## 2026-11-05 18:13 — configure-notifications / configure-communication-style (Justin)
+- devbox provides prettier, markdownlint-cli2 and direnv. `make lint` and
+  `make lint-fix` are the way in, locally and in CI.
+- `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
+  (145, exported in `.envrc`), on every tracked file except those
+  `.gitattributes` marks `skip-absolute-line-length`, and prints the files that
+  break it.
+- Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
+  columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
+  declined `stern` and any change to the prose limit.
+- Lock files are generated: `.gitattributes` marks `*.lock` and
+  `package-lock.json` `linguist-generated=true`, so GitHub collapses them in
+  diffs. Justin's rule for all his repos: a new kind of lock file gets a line
+  there.
+- History was rewritten on 2026-11-07 to take a leaked address out of commit
+  metadata. A clone from before then is stale; re-clone. GitHub Support has a
+  ticket to purge the old pull request refs; nothing to do unless they ask.
+- The branch `plugin-history-2026-11-06` keeps the history from before the 0.3
+  squash.
 
-- configure-notifications: channel (pushover | claude); pushover → tokens + one
-  test push; open question for any policy in the user's words (e.g. per-reminder
-  app tokens). Writes Notifications of `ntm-user:settings`. Re-run: show + ask.
-  With the claude channel, configure-schedule creates tasks with "notify when
-  finished" + push on; the reminder is the run's summary. No special-casing of
-  chat-triggered reminders.
-- configure-communication-style: NO shipped personas. A persona BUILDER:
-  sections = register, the hook, escalation (user-named levels + climb rule),
-  signature moves (+ repeat limit → message history), what stays untouched
-  (task/date/ticket), examples (one per level). User supplies any theme; builder
-  derives sections with them. "Just remind me" → plain answers for every
-  section. Import path: an existing profile/skill handed in → written as
-  `ntm-user:style` unchanged. Re-run: show + ask. His persona skill never ships
-  in the template.
+## Justin's installed copy
 
-## 2026-11-05 19:47 — configure-schedule (Justin)
+ntm 0.3.0 and its ntm-user, five jobs on Opus. Its settings use old names
+(Ticket prefix, Week ahead, grooming log), so the next release needs a fresh
+setup.
 
-Walks through the kinds of jobs; for each: want it? which days? what time?
-Creates/updates the scheduled tasks (push notification on). Re-run: list
-existing, ask what to change. Enable/disable, never pause. Kinds + offered
-defaults: morning reminder (weekdays 09:00), afternoon reminder (weekdays
-14:30), evening reminder (weekdays 19:30), weekly planning (Sun 22:00: plan
---auto week, fix-todo-list), price watch (daily 07:00, only if on), overview
-(show-completed weekly/monthly, off by default). Titles and prompt text are per
-user, asked during setup, created in their schedule — nothing locked by the
-plugin.
+His jobs, for that setup: the weekly planning plans weekdays; the morning plans
+today if it's empty and not paused. Both aim for an hour or less where they can,
+without ruling out bigger tasks; a bigger task is the signal to break it up.
 
-## 2026-11-05 19:50 — configure (wizard) + trigger-word rename (Justin)
+## 0.4: decided
 
-- configure bare, nothing set: two-line intro, then configure-integration →
-  notifications → communication-style → schedule, skipping done ones; packages
-  `ntm-user.plugin` for the accept card; runs ready-check once installed.
-  Already configured: one line of state per part, ask which to change, hand off.
-  `configure <part>` → straight there. configure writes nothing itself.
-- Trigger-word rename: offered in `configure` AND `settings`; mentioned in
-  `help` as customizable. The renamed copy differs from the template only by
-  `name` in plugin.json + literal `ntm-user` references (keep it that way). If
-  renamed: ask whether the weekly job should watch upstream for changes; if yes,
-  weekly job compares versions and offers to regenerate (re-fetch template,
-  re-apply the substitution, hand back a .plugin). Tell them to uninstall the
-  original after installing the renamed copy.
+The v0.4 branch and git history keep the raw material, including the old 0.4
+design page. Here "the base" is the published plugin and "the user plugin" the
+generated one, which 0.4 names `ntm`.
 
-## 2026-11-05 20:12 — self-test + publishing (Justin)
+- The base is `neurodivergent-task-manager` (published; commands autofill, so
+  the length costs nothing). The user plugin is `ntm`, a fixed name so the base
+  can always reach the contracts. An optional alias plugin's name is the user's
+  word; there is no setting for it.
+- Every job and every command the user types starts in the user plugin, setup
+  included, so a user with an alias never types the base's name.
+- `setup` and `update` are ways into `configure`, which absorbs showing and
+  changing settings, and upgrades. The base has no `settings` skill.
+- Contracts in the user plugin: `todo-list` (the backend guide), `ready-check`
+  (only in the user plugin) and `self-test`. Both self-tests keep the name
+  `self-test`. The old design page also lists `settings` and `style` as
+  contracts; that isn't credited to Justin.
+- The base is a guide the user's agent follows. Only contract names and call
+  shapes are fixed.
+- The user plugin's `notify` carries the user's Pushover-or-chat choice.
+- The generated user plugin bundles the connector for the user's backend. Which
+  Linear wins at first run is open (see Deferred and open).
+- Plugin and file renames stay separate from content renames.
+- No migration from 0.3; installs start fresh. The base and the user plugin
+  update together.
+- Publishing adds: the base self-test passes with no user plugin installed;
+  `configure` never sends or creates without being asked; a privacy page; the
+  name check for `neurodivergent-task-manager`; the published release is
+  identifiable. The old wording, "`Template source:` points at a release", named
+  a line #19 removed from `conventions`, so how the release is identified is
+  open.
 
-- The plugin must be able to test itself. Proposed `ntm:self-test` (name pending
-  Justin): ready-check, then on a throwaway ticket + note: create → plan →
-  todo-list → style-message (no send) → notify test push (ask first) → close →
-  show-completed → fix-todo-list dry run → pause --check → remove throwaway. One
-  line per step; `Self-test OK` / `Self-test FAILED at <step>: <why>`.
-  configure-integration's smoke test = self-test. help lists it.
-- Justin intends to publish to the directory after his friend's test-drive: keep
-  `ntm` submission-clean (README 40+ words, LICENSE, icon,
-  author/homepage/repository, no credentials, no brand names).
+## Test-drive findings
 
-## 2026-11-05 21:35 — v0.2.0 packaged
+Not handled by the plugin yet.
 
-Built to SPEC v2.2 (+ amendments logged in reviews/). Review rounds: SPEC ×3 +
-verify; keystone; groups B–F2; integration (6 run traces); dry runs on
-Opus/Sonnet/Haiku + confirmation on Haiku/Sonnet; prose tightening + diff check.
-Validator passes; leak grep 0. Delivered ntm.plugin + HANDOFF.md. Live skills
-and tasks untouched. Open for the test-drive: agents in scheduled runs; accept
-card on chat; Claude Docs guide untested; directory name check; Template source
-none yet.
+- Whether agents load in scheduled runs is unconfirmed. The read-the-file
+  fallback covers it until then.
+- An imported persona may carry its own history instructions and double-write
+  the message history database. Watch real runs.
+- The accept card for `ntm-user.plugin` in chat is untested.
+- Installing through Chrome: `file_upload` rejects `/mnt/user-data/outputs/`; a
+  path under the working directory works.
 
-- 21:40 Upload fixes: (1) ntm-user template files renamed `plugin.json.template`
-  / `SKILL.md.template` (uploader saw a second plugin.json); (2) two skill
-  descriptions had `<name>`/`<part>` placeholders — uploader rejects angle
-  brackets in descriptions. Installed on Justin's account via the browser: 23
-  skills, 3 agents, Linear connector.
+## Deferred and open
 
-## 21:52 Migration run (Justin's own account)
+### To build, from the names pass
 
-- Schedule swap done: five `<Kind> (ntm)` tasks on (suffix per Justin, not
-  prefix), five original tasks off. Weekly recap was already off.
-- `the message history note` wiped to `Keep: 60 entries or 8 weeks` + empty
-  jsonl block; title kept, settings point at it.
-- `ntm-user` 1.20261106.550 generated through ntm:settings' Regenerating steps
-  and installed via Chrome `file_upload`.
-- Finding: `file_upload` rejects `/mnt/user-data/outputs/` ("only files this
-  session is allowed to read"); a path under the working directory works.
-  Regenerating step 7's outputs copy is for the card, not the upload.
-- Finding: Handed in keeps a body verbatim, so the persona skill's theme list
-  (under its own `--stay-fresh` section) isn't under `## Motifs`; style-message
-  sees no motifs. Decision pending with Justin: leave verbatim, or give Handed
-  in a rule to carry a themes list into Motifs.
-- Open: the imported body still carries the persona skill's own Linear history
-  instructions and its own command usage; style-message's own history handling
-  is more specific and should win. Watch the first scheduled runs for
-  double-writes to the history note.
-- Finding: create_trigger inherits the creating chat's model; Justin's five jobs
-  came out on Fable and were switched to claude-opus-5-5 by hand.
-  configure-schedule should set the model (Opus) with update_trigger right after
-  each create, and say which model the jobs run on.
-- Finding: self-test step 6 (notify) is interactive ("send one test push now?" /
-  "got it"), so a fresh-agent run skips it. Make it unattended: send the push
-  and report "sent; confirm it arrived", or take a flag.
+Each is decided (see its topic above). Justin places each in 0.3 or 0.4; only
+the first is placed.
 
-## 2026-11-06 00:00–01:00 — 0.3 restructure (Justin asleep; PR review of 38 comments)
+- 0.3, a bug fix: remove the Amazon alert steps database and copy the learned
+  steps into `sync-price-watch-to-amazon`.
+- Release: blank. The displayName and README title without "(ntm)", and every
+  abbreviation defined at first use.
+- Release: blank. Settings: drop `Name`, `Task prefix`, `Your tasks`,
+  `Statuses`, `Price watch project`, `Notes`, `Parents` and `Estimate help`; one
+  `Labels` list; `Estimate pattern`;
+  `Excluded labels from automatic scheduling`; setup fills `Timezone` and
+  `Country and currency` and confirms.
+- Release: blank. Status classes from the backend's status types; blocked as a
+  fixed rule in `conventions`.
+- Release: blank. Job prompts carry the planning, the weekly message, the
+  timezone and an optional app token; `notify` takes a job's app token.
+- Release: blank. `configure-schedule` builds jobs from the skills with each
+  user: no fixed kinds or titles, a table to approve first, matching on skill
+  names.
+- Release: blank. Remove `weekly-planning`; the weekly job chains
+  `show-completed`, `fix-todo-list` and `plan --auto`.
+- Release: blank. `plan --auto` takes a range in words.
+- Release: blank. Purge parents and deadlines; `fix-todo-list` only clears stale
+  planned dates; parent auto-close moves to `configure-todo-list`'s backend
+  reference.
+- Release: blank. Cut the long "today" and timezone definitions; no timezone
+  math in the Linear queries.
+- Release: blank. Price watch finds items by the $price-watch label alone;
+  `Condition`, `Delivery` and `A deal` move to each task; `Amazon interface`
+  left out when the user doesn't want Amazon.
+- Release: blank. Call the notes databases everywhere; fixed titles; `Keep:`
+  into the message history database's frontmatter.
+- Release: blank. One `Estimate` request to the estimator.
+- Release: blank. Remove `Off limits` from the style profile and the builder.
+- Release: blank. The `configure` part `todo list` becomes `todo-list`.
 
-Justin's review of PR #1 (github.com/jguluarte/ntm) turned the cleanup into a
-restructure. His comments, read as principles and applied everywhere they fit:
+### Open
 
-- Agents own their procedures (messenger composes+styles+sends; planner answers
-  four named requests; shopper owns the brief). Reminder skills gather facts and
-  hand off; fallback when an agent isn't loaded: read `agents/<name>.md` from
-  the installed plugin (verified readable at
-  ~/.claude/plugins/synced/<id>/ntm/agents/).
-- Rules in conventions, values in ntm-user:settings (new Planning and Shopping
-  sections), tool calls in guides. Labels, note titles (no NTM: prefix),
-  exclusions, parent rule, estimate scale, rhythm are agreed defaults in
-  configure-board.
-- deadline label removed everywhere.
-- ntm:style-message → ntm-user:style (one skill: Usage + Profile + procedure; a
-  handed-in persona goes in verbatim under a `## For ntm` shim). ntm-user has
-  two skills: settings, style.
-- Jobs are three-line wrappers; weekly-planning and completed --notify are
-  skills. Job files named after titles, header boilerplate gone.
-- Names: price-watch, amazon-alerts, completed, configure-board, configure-style
-  (table posted on the PR; applied in its own commit "Names judged at the call
-  site" so it can be dropped).
-- Trigger word: one sentence in README/help ("fork and rename with your agent");
-  the settings procedure removed; configure no longer asks.
-- help reads the installed README; README is the one text, with the origin story
-  and price watch as the impulse bridge.
-- builder: beats modeled on an episode arc, abstracted (setup / middle /
-  resolution / recap / credits).
-- Review loops per Justin's 00:06 instruction: Fable reviewers only (architect,
-  naming critic, comprehension dry run), then Haiku/Sonnet/Opus comprehension at
-  the end.
-- DESIGN-0.3.md is the brief every author and reviewer worked from. validate.sh
-  is the packaging gate.
-- Justin's ntm-user for 0.3 built as nudge-work/ntm-user-0.3.plugin (his persona
-  skill verbatim as ntm-user:style). NOT installed; his live 0.2.0 + jobs
-  untouched overnight.
-
-## 2026-11-06 08:00–08:45 — 0.3.0 shipped to Justin's account
-
-- Overnight stall: three reviewer subagents sat on unanswered Bash approval
-  prompts (a `cd` into /tmp counts). Rule from now: reviewer and dry-run agents
-  get Read/Glob/Grep/Write only, never Bash.
-- Haiku 18 / Sonnet 17 / Opus 6 points → 23 clarity edits, plus Justin's
-  answers: motif window 20 (default and his his persona skill copy); spans are
-  days ending today, last month = previous calendar month's length; plan in chat
-  asks; pausing a day with planned work replans the week; deal details in the
-  run's final reply (no thread post), push overflow summarized not trimmed;
-  "board" → "todo list"; todo-list → today; configure-board + review-todo-list →
-  configure-todo-list.
-- Rename table (all renames since the first) posted on PR #1 for sign-off.
-- Installed on Justin's account 08:39: ntm 0.3.0 and ntm-user 1.20261106.1634.
-  Weekly planning (ntm) prompt re-synced to the wrapper. Self-test launched
-  08:41.
-- validate.sh is the gate; DESIGN-0.3.md the brief; reviews in reviews/0.3/.
-- 08:56 Justin: history squashed per his ask (renames first, then content
-  commits); old history on plugin-history-2026-11-06.
-- QUEUED (after this review pass): lint — wrap prose at <= 80 columns, never
-  mid-word; tables and code blocks exempt; add the check to validate.sh; one
-  reflow commit.
-
-## 2026-11-06 afternoon and evening (Opus orchestrating)
-
-- PR #1 merged as ntm 0.3.2 (#1): one commit per version (nudge 0.1.0, ntm
-  0.2.0, 0.2.1, 0.3.0), the review commits, 0.3.1, the reflow, 0.3.2. A markdown
-  linter comes in its own PR; tools/reflow.py stays outside the repo.
-- Rule: a rename lands only after Justin's explicit yes; silence is not approval
-  (the 11-06 "unanswered rows stay" table is how names drifted).
-- Names audit (doc "ntm names: what drifted"), Justin's answers: keep
-  `price-watch`, `configure-style`, `weekly-planning` (tentatively; weekly is a
-  sane default cadence), `has-amazon-alert`, `Message history`, `help`; restore
-  `review-todo-list` as its own skill; the grooming log note is
-  `Task review log`.
-- 0.4 names: base `neurodivergent-task-manager` (published), user plugin `ntm`
-  (fixed), optional alias plugin with the user's word; `setup` and `update` are
-  entry points to `configure`; base has no `settings`; `ready-check` is an `ntm`
-  contract; contract for the backend guide stays `todo-list`; both self-tests
-  keep `self-test`.
-- Terminology: the plugin's word is "task" (not "ticket"); Vocabulary defines it
-  once with how each tracker represents it. `$` marks only values the user
-  configures, by their default name: the labels ($no-autoschedule,
-  $pending-shipment, $price-watch, $has-amazon-alert, $amazon-unavailable). No
-  `$` on Vocabulary words. "Groom"/"grooming" go: the process is review
-  (`review-todo-list`). Estimate is a plain word, not "groomed size". Job stays
-  defined; its definition avoids "task".
-- Titles: written with the message as part of its theme, never the reminder's
-  name; in v0.4 (style template, configure-style's For ntm rule, messenger
-  re-asks).
-- Fable runs only when Justin says so (weekly budget).
-- Product in prose stays "ntm" (it's also the user's plugin, what they type);
-  the base's displayName is "Neurodivergent Task Manager", without "(ntm)"
-  (Justin, 19:37).
-
-## 2026-11-06 night (Opus orchestrating)
-
-- The single 0.4 branch was the wrong shape: too much at once, out of Justin's
-  control. Work is now split as a human team would: small PRs to main, one
-  concern each, an agent per PR. The v0.4 branch is raw material.
-- Most of the 0.4 branch was 0.3 patch work. Merged to main as squash merges: #3
-  bug fixes (titles, completed, three slips), #4 review-todo-list (grooming was
-  meant to be one skill; a bug), #5 wording (task, review, $ on configured
-  labels only, vocabulary), #6 lint (Prettier and markdownlint, 80 columns,
-  4-space indent, frontmatter included, CI on PRs; .nvmrc dropped for engines),
-  #8 estimates (setup asks how the user sizes tasks and offers to explain;
-  Linear maps their scale onto the team's points; settings keep Estimate mapping
-  and Estimate help).
-- No patch version bumps for these.
-- Follow-ups agreed: readable tool calls; conventions (scope into settings,
-  automations into backend guides, no parent planned date); job prompts as one
-  pattern; tables that should be sections; a writer pass before 0.4.
-- 0.4 rethink (open): the generator is too prescriptive; the base should be a
-  guide for the user's agent, with only contract names and call shapes fixed.
-  Plugin and file renames belong to 0.4, separate from content renames.
-
-## 2026-11-06 late night and 2026-11-07 morning
-
-- Follow-ups before 0.4, all merged: author in plugin.json (#9); setup asks the
-  Linear team's estimate type, since the connector can't read it (#10); job
-  prompts written once in configure-schedule (#11); backend guides lay out calls
-  for reading, own their own setup, and the Claude Docs guide is dropped: the
-  contract says a backend can be built on anything, a Claude Doc for example
-  (#12); whose tasks count is a setting, parent auto-close lives in the backend
-  guides, a parent's own date means nothing is gone (#13); tables kept only
-  where they read well (notify, ready-check, setup skills), the rest as
-  contract-style sections (#14); the ntm-user template replaced by a guide the
-  user's agent follows (#16).
-- #15: estimating stated once, in estimate wording ("sizing" is jargon; the key
-  is Estimate scale). A new estimator agent owns what an estimate is, estimating
-  a task, time guesses, explaining ways to estimate, and reviewing the todo list
-  with the user, keeping the task review log. The planner agent is merged into
-  ntm:plan, because an agent can't start another agent; only plan asks the
-  estimator, and nothing everyday does. With no estimate field, the estimate
-  goes in the task's description.
-- Watcher runs whenever PRs are open; pseudo-markup in agent files is indented.
-- Commit email leak: commits carried his private Claude address and spammers
-  harvested it. Commits now use the GitHub noreply address; Justin's other agent
-  rewrites this repo's history after #15.
-
-## 2026-11-07 midday (Claude Code on Justin's laptop)
-
-- History rewrite done: every branch force-pushed with commit identities on his
-  GitHub noreply address. Actions runs that showed the old address are deleted,
-  so Actions history starts fresh. GitHub Support is asked to purge the old pull
-  request refs (#1 to #16).
-- New commits take their identity from git config (the noreply address); no
-  `-c user.email` in commands.
-- PR #2 closed unmerged; `v0.4` stays as raw material. Updating it meant
-  resolving 40 conflicting files against a design already left behind.
-- The PR watcher script is dropped.
-- Orchestration moves from the Cowork container to Claude Code on Justin's
-  laptop: GraphQL works there (`gh pr create`), the remote is `jguluarte`, and
-  worktrees are siblings under `~/code/.claude-worktrees/ntm/`. Lasting rules
-  move into `.claude/CLAUDE.md`; HANDOFF keeps only state and next steps.
+- An option, not decided: settings can live in a file in the user's backend (a
+  Linear doc, for example), and the `settings` skill then only says where to
+  find them. Some databases' own settings could live there too.
+- A price watch talk, later: its default pattern makes too much busywork, the
+  per-item details belong on the task, and setup needs better guidelines.
+- Tasks that keep slipping never get a harder reminder: the style's history
+  doesn't record task ids (review finding #3). Justin decides where this goes.
+  Idea, big enough to wait for 0.4: planning owns a mention history database
+  where each reminder records the date for every task it names; the caller
+  passes each task's count through the messenger to the style, which only maps a
+  count to a level; the weekly `fix-todo-list` keeps only ids still open, so any
+  closed state drops out. JSON in a database is fine; a sqlite file would be the
+  same thing, so revisit storage only if needed.
+- Date-math edges in report spans ("last month" on the 1st): not worth fixing,
+  since reports are for the typical flow. Someday, maybe: phrase spans as "since
+  the last scheduled run".
+- A reading-comprehension pass: writers simplify, human comprehension first ("if
+  a human can comprehend, so can a model"). Includes the estimator's "Good
+  enough reminders complete." and `weekly-planning`'s parenthetical about
+  `fix-todo-list`'s result. Justin decides where this goes.
+- Waiting for Justin, from the 2026-11-07 review:
+    - Should the shopper price Amazon when Amazon alerts are off?
+    - `self-test` claims every backend operation but skips comments, labels and
+      agents: add the steps or narrow the claim?
+    - Does showing a key's last four characters count as printing it? Are keys
+      OK in the curl command in run transcripts?
+- Not discussed yet: `fix-todo-list` fetches the whole closed history every
+  week, a cost that grows. Proposed: only recent completions.
+- 0.4 inputs, held for the 0.4 talks:
+    - one home for the style's call contract (now inside settings' Regenerating)
+    - each database's format created by the skill that owns it, not by setup
+    - the plugin-locator globs in `help` and `conventions` break under the
+      rename
+    - the job-run block (ready check, FINAL REPLY, error handling, agent
+      fallback) repeats across about 8 skills
+    - the estimator's Review procedure could move into `review-todo-list`
+    - `configure-todo-list` re-walks setup when reconfiguring
+    - the `ntm-user` package layout isn't spelled out
+- 0.4, open: the generated user plugin bundles the connector (decided above),
+  but first-run setup needs Linear before the user plugin exists, so the user
+  connects through the Connectors tab first, and a bundled server would be a
+  second Linear. Decide which wins.
+- Before 0.4: install main on Justin's account with a fresh setup and use it for
+  a few days (see Justin's installed copy). His call, and only with his
+  go-ahead.
+- Revising the `/domain-first-design` skill and Justin's design agents, his
+  tooling outside ntm: parked, tracked on his own list as GULU-314.

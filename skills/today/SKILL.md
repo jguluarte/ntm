@@ -41,8 +41,8 @@ date first; same date: started first, then by id. Each line is
 `<id> <title> <url> <planned date> <status> <estimate or -> [label, label]`,
 with `(started)` after the status when it's the started one. The brackets hold
 the task's labels, inherited ones included, and stay empty (`[]`) when it has
-none. When the task's status is the one Todo list in your settings names as
-started, add `(started)` after the status, before the labels.
+none. When the task's status is in the started class, add `(started)` after the
+status, before the labels.
 
 Typed in chat, present the result as the conventions' "Talking to the user about
 tasks" says (natural words, the id in parentheses); the raw lines are for skills

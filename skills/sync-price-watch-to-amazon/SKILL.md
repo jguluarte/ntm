@@ -47,17 +47,15 @@ An open watched item **needs an alert** when it has neither label.
 Load `ntm:conventions` (the list's rules and your settings), then run
 `/ntm:ready-check`. If it fails, stop and give the user its result line.
 
-Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with
-`Sync-price-watch-to-amazon: price watch is off; Todo list in your settings names no price watch project. Name one with /ntm:settings.`
-
 Use the browser the user names for this run, or else the one Amazon interface
 under Shopping in your settings names; if you still don't know, ask them. If
 Amazon interface is off and they named none, end with
 `Sync-price-watch-to-amazon: off; Amazon interface in your settings is off.`
 Load that browser's skill (`built-in-browser` or `chrome-browser`) and follow
 it. If that browser can't be reached, end with
-`Sync-price-watch-to-amazon FAILED: needs a browser. Sign in to Amazon in Claude's built-in browser, or connect Claude to your own browser, then run this again.`
+`Sync-price-watch-to-amazon FAILED: needs a browser.` followed on the same line
+by the fix: sign in to Amazon in Claude's built-in browser, or connect Claude to
+your own browser, then run this again.
 
 Amazon's store for this user is the one serving the country in Country and
 currency under About you in your settings; prices are in that currency. The
@@ -67,10 +65,10 @@ otherwise.
 ## 2: The work
 
 1. **Open items:** fetch every open task the way "Every open task" in
-   `ntm:conventions` says, and keep the ones with the $price-watch project
-   label, counting labels inherited from their project (the conventions'
-   "Project labels"). Split them: those with neither label need an alert; those
-   with $has-amazon-alert are set; those with $amazon-unavailable need nothing.
+   `ntm:conventions` says, and keep the ones with the $price-watch label,
+   counting labels inherited from their project (the conventions' "Project
+   labels"). Split them: those with neither label need an alert; those with
+   $has-amazon-alert are set; those with $amazon-unavailable need nothing.
 2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
    canceled and duplicate included, with the standard fields.
 
@@ -82,18 +80,28 @@ Tell the user in one short message what you're about to do, for example:
 
 ## 3: The alert steps
 
-Amazon's price-alert steps are recorded in the Amazon alert steps note, titled
-as Notes under Todo list in your settings says. Read it with the guide's
-`read note` and follow it for setting, checking, listing and removing alerts.
+Amazon sets, checks and removes price alerts through a chat panel on the product
+page. These are the steps that work on Amazon's site today; when Amazon changes
+them, this skill is updated.
 
-If that note is missing, or the steps no longer work as it describes, learn them
-again: on the first item's product page (step 4), find how Amazon's site sets a
-price alert and where it lists your existing alerts, show the user what you
-found, and set that first alert with them watching. If Amazon's site no longer
-has a way to set a price alert from the website, stop: don't switch to another
-tracker on your own. Tell the user what you saw and ask how they want to go on.
-Once the steps work again, save them with `write note`, so the next run can
-follow them.
+- **Open the panel:** on the product page, click "Price history" next to the
+  price. The "Alexa for shopping" panel opens on the left, with a box to type a
+  question in.
+- **Set an alert:** type "Set a price alert for", then the alert price from step
+  4, in that box. Don't click the panel's "Set a price alert" button: it saves
+  the alert at once at Amazon's own price, 5% under today's, without asking for
+  one.
+- **Check an alert:** on the product page, ask the panel "Do I have a price
+  alert on this item? What's its target?"
+- **List every alert:** ask the panel "Manage price alerts", or click the button
+  with that name. It lists each active alert with its price.
+- **Remove an alert:** on the product page, ask the panel to delete the price
+  alert for this item, then check it's gone from the list.
+- Never click the auto-buy buttons the panel offers once an alert is saved.
+
+If a step doesn't work as written, stop: don't work out new steps, and don't
+switch to another price tracker. Tell the user what you saw, and that this skill
+needs updating for Amazon's site.
 
 ## 4: Missing alerts
 

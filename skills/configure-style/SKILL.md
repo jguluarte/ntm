@@ -13,10 +13,10 @@ description: >-
 
 `ntm-user:style` is the user's own skill: the messenger runs it for every
 reminder. It has two halves: a Profile (who talks, what gets them to read, the
-reminders of the day, the levels when something keeps slipping, motifs, off
-limits, examples) and the procedure that writes a line from facts. This skill
-writes it with the user in short rounds: you bring proposals, they react. Never
-hand them a form.
+reminders of the day, the levels when something keeps slipping, motifs and
+examples) and the procedure that writes a line from facts. This skill writes it
+with the user in short rounds: you bring proposals, they react. Never hand them
+a form.
 
 Read `references/builder.md` once before starting: it holds the Profile's shape,
 the questions for each section, the episode arc the reminders follow, and one
@@ -70,7 +70,6 @@ Every section answered plainly, no persona:
   level after the first.
 - **Motifs:** empty, or a few things from their own life, each a short name.
   Repeat limit: the default unless they say otherwise.
-- **Off limits:** the fixed sentence; add anything they name.
 - **Examples:** one per level and one for nothing open, showing the mechanism
   from What gets you to read at work.
 
@@ -95,14 +94,10 @@ the builder's questions:
   Motifs section says: ask what they like and use it as the analogy, prefer
   motifs that can be built on, and set the repeat limit from how much variety
   the list gives. They add, cut and replace.
-- **Off limits:** the fixed sentence, plus whatever the theme must never joke
-  about.
-- **Examples:** one per level and one for nothing open. Task ids use Task prefix
-  from Todo list in `ntm-user:settings`, or the prefix settled earlier in this
-  conversation, or `ABC-12` style when that isn't configured yet. The tasks in
-  them are ordinary household ones. Write them, read them back, revise: if they
-  chose humor, until they laugh at least once; otherwise until each reads like
-  something they'd open.
+- **Examples:** one per level and one for nothing open. Task ids are generic,
+  like `ABC-12`. The tasks in them are ordinary household ones. Write them, read
+  them back, revise: if they chose humor, until they laugh at least once;
+  otherwise until each reads like something they'd open.
 
 Take the theme as they describe it. Don't propose a named character, show,
 person or brand. If they want directions, offer kinds of character in a line
@@ -120,16 +115,16 @@ What the messenger needs from it is only the call `ntm:settings` names:
 `/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
 returning the message with `Title: …` as its last line under `--for`. Read the
 body for how it names these things (a `--reminder` flag, a `Subject:` line, its
-own history note) and write a short section, `## For ntm`, that goes above the
-body and says, in a line each, how the messenger's call maps onto the persona's
-own words: what `--for <reminder>` means to it, that `Title:` is its last line
-(in place of whatever it calls it; when the persona has no subject line of its
-own, the section gives it the Title line rule from `ntm:settings`, so the title
-is written with the message as part of its theme), that `--stay-fresh` is its
-freshness mechanism, and that the message history note is the one titled under
-Notes in `ntm-user:settings` (when the persona names its own note, the settings'
-title should be that one). Show them the section; they confirm. Nothing else is
-added or filled in: the persona's own levels, profanity and motifs stand.
+own history) and write a short section, `## For ntm`, that goes above the body
+and says, in a line each, how the messenger's call maps onto the persona's own
+words: what `--for <reminder>` means to it, that `Title:` is its last line (in
+place of whatever it calls it; when the persona has no subject line of its own,
+the section gives it the Title line rule from `ntm:settings`, so the title is
+written with the message as part of its theme), that `--stay-fresh` is its
+freshness mechanism, and that its history is the message history database (see
+Databases in `ntm:conventions`; when the persona names a history of its own, the
+section says to use that one). Show them the section; they confirm. Nothing else
+is added or filled in: the persona's own levels, profanity and motifs stand.
 
 ## Result
 

@@ -3,9 +3,9 @@ name: price-watch
 description: >-
     The price watch for the user's todo list, which watched items are a good
     deal today? Finds every watched task, asks the shopper agent about each one,
-    sends one alert for the deals, posts the details and reports. Run by the
-    "Price watch" job, or by hand in chat ("/ntm:price-watch", "check my watch
-    list", "is the backup battery a good price today?").
+    sends one alert for the deals, posts the details and reports. Run by a job,
+    or by hand in chat ("/ntm:price-watch", "check my watch list", "is the
+    backup battery a good price today?").
 ---
 
 # ntm:price-watch
@@ -36,22 +36,16 @@ date, that is today.
 
 # 2: Ready check
 
-Run by the job: `/ntm:ready-check --notify-failure "Price watch"`. Typed in
-chat: a plain `/ntm:ready-check`.
+Run by the job: `/ntm:ready-check --notify-failure price-watch`. Typed in chat:
+a plain `/ntm:ready-check`.
 
 **If it fails, STOP: end with what it returned and nothing more.**
 
 # 3: The watch
 
-Price watch is on when Todo list in your settings names a price watch project.
-If it names none, end with one line: `Price-watch: price watch is off;`, then
-that Todo list in your settings names no price watch project, and to name one
-with `/ntm:settings` or turn off the Price watch job with
-`/ntm:configure-schedule`.
-
 Fetch every open task the way "Every open task" in `ntm:conventions` says, and
-keep the ones with the $price-watch project label (its real name from Labels in
-your settings), counting labels inherited from their project (the conventions'
+keep the ones with the $price-watch label (its real name from Labels in your
+settings), counting labels inherited from their project (the conventions'
 "Project labels"). Note each one's id, title and `url`. If none are being
 watched, send nothing and go straight to FINAL REPLY.
 
@@ -91,7 +85,7 @@ If no result is DEAL, send nothing and go straight to FINAL REPLY. A DEAL whose
 DEAL line lacks a price, store or product link isn't usable: don't alert on it,
 and report it as a failed check.
 
-Use `/ntm:notify --from "Price watch"` for a short overview of the DEAL results.
+Use `/ntm:notify --from price-watch` for a short overview of the DEAL results.
 Title: "Good price: <item> <price>", or "Price watch: N deals" for more than
 one. Message: one short line per item with the item, price and store, adding the
 condition when it isn't the one from Condition under Shopping, and
@@ -130,15 +124,15 @@ anything. Dates below are today's, at reply time.
   blocks, where the work lives. Confirm in one line. If the task has the
   $has-amazon-alert label, add that its Amazon alert gets removed the next time
   they run `/ntm:sync-price-watch-to-amazon`.
-- **Vouching for or blocking a store:** update the price watch stores note,
-  titled as Notes under Todo list in your settings says and kept in the price
-  watch project (the guide's `read note` and `write note`, with that project;
-  when it's missing, `write note` creates it with the headings `## Seed`,
-  `## Vouched`, `## Blocked`). Move the store off the other list (Vouched or
-  Blocked) if it's there; leave the Seed list alone unless they say otherwise.
-  Record its domain as they give it, or from that note or the item's "Stores:"
-  comment, and ask them only if neither has it. Add the date and their reason if
-  they gave one. Confirm in one line.
+- **Vouching for or blocking a store:** update the `Price watch stores` database
+  (see Databases in `ntm:conventions`), kept in the project that carries the
+  $price-watch label (the guide's `read database` and `write database`, with
+  that project; when it's missing, `write database` creates it with the headings
+  `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list
+  (Vouched or Blocked) if it's there; leave the Seed list alone unless they say
+  otherwise. Record its domain as they give it, or from that database or the
+  item's "Stores:" comment, and ask them only if neither has it. Add the date
+  and their reason if they gave one. Confirm in one line.
 
 # FINAL REPLY
 

@@ -29,7 +29,7 @@ the rules name the value, the settings hold it.
    described each operation under Todo list in their own words, and that
    description is the guide; `references/CONTRACT.md` lists the operations it
    covers. Skills name operations (`fetch open`, `set planned date`,
-   `read note`); the guide says how each one is done.
+   `read database`); the guide says how each one is done.
 3. Read Deviations last; see Deviations at the end.
 
 ## What this todo list is
@@ -71,8 +71,8 @@ the tie-breaker.
   or the user's own description under Todo list (see Loading).
 - **Task:** one thing on the todo list. Each backend shows a task its own way: a
   [Linear issue](https://linear.app/docs/conceptual-model), a row in a Claude
-  Doc's table, a reminder, a todo. Ids look like `<task prefix>-<number>` where
-  the backend has a prefix.
+  Doc's table, a reminder, a todo. Its id is whatever the backend gives it, such
+  as `ABC-12`.
 - **Project:** a named group of tasks, whatever the backend calls it. Projects
   carry labels their tasks inherit.
 - **Parent task:** a task with open sub-tasks.
@@ -80,13 +80,13 @@ the tie-breaker.
 - **Planned date:** the task's one date field, the day the work is planned for.
 - **Planner:** a skill that picks tasks and sets their planned dates, such as
   `ntm:plan`.
-- **Started:** the one plannable status (see Status classes) that means work has
-  begun. Jobs give credit for it.
+- **Started:** a plannable status that means work has begun (see Status
+  classes). Jobs give credit for it.
 - **Pause:** a day or range when nothing gets planned automatically. Work the
-  user dated themselves still gets its reminders. Kept in the pauses note.
-- **Note:** a text the system keeps on the todo list, found by title (see
-  Notes). A task titled with a note's title is a note, not work; every skill
-  ignores it.
+  user dated themselves still gets its reminders. Kept in the pauses database.
+- **Database:** a document the system keeps its own records in, on the todo
+  list, found by its title (see Databases). A task titled with a database's
+  title is a database, not work; every skill ignores it.
 - **Label:** a tag on a task or project.
 - **Estimate:** how big a task is; the estimator agent (`agents/estimator.md`)
   says what it means.
@@ -96,20 +96,21 @@ the tie-breaker.
 ## Workspace
 
 - **Todo list:** List name from Todo list in your settings, with List id where
-  the backend needs it. Task ids use Task prefix.
+  the backend needs it.
 - **Task URLs:** use the task's own `url` field, one of the standard fields.
-- **Whose tasks:** Your tasks under Todo list in your settings says which tasks
-  on the list are the user's; by default, every task, regardless of assignee.
-  Consider only those, and filter no further unless explicitly asked.
+- **Whose tasks:** every task on the list is the user's; don't filter by
+  assignee unless asked. If they share the list with someone, Deviations in your
+  settings says how to tell theirs apart.
 
 ## Chat, jobs and agents
 
 A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,
 in a job or in chat alike; an agent can't start another agent. The reminder
-skills and `show-completed --notify` ask the messenger, and the price watch the
-shopper. The estimator is for planning: `ntm:plan` asks it how long the tasks it
-picks take, reviewing follows its Review in the chat, and setting up the todo
-list asks it to explain the ways to estimate. Each says what it hands over.
+skills, `show-completed --notify` and the bulk planning job ask the messenger,
+and the price watch the shopper. The estimator is for planning: `ntm:plan` asks
+it how long the tasks it picks take, reviewing follows its Review in the chat,
+and setting up the todo list asks it to explain the ways to estimate. Each says
+what it hands over.
 
 A skill asking the messenger also hands it a `wording:` line for any Deviation
 about how tasks are worded or linked. When the messenger returns
@@ -145,24 +146,23 @@ id in parentheses inside the link text, the url the task's own `url` field.
 
 ## Statuses and labels
 
-Todo list in your settings maps each status class to the list's real status
-names, and Labels gives the real name of each label the system uses. Don't
-assume other statuses exist. The defaults below are what
-`/ntm:configure-todo-list` proposes; the user's todo list may use other names,
-and the settings are what count.
+Every status on the todo list falls into one of the classes below, read from the
+backend as the guide says; nothing about statuses is stored in your settings.
+Labels in your settings gives the real name of each label the system uses. The
+label names below are the defaults `/ntm:configure-todo-list` proposes; the
+user's todo list may use other names, and the settings are what count.
 
 ### Status classes
 
-- **plannable**: open work. Todo list in your settings lists the plannable
-  statuses (usually a backlog, a to-do and an in-progress status); the one it
-  names as **started** means work has begun.
-- **blocked**: the user has put the task in the blocked status (its name is on
-  the blocked line in Todo list in your settings) because they can't move it
+- **plannable**: open work, usually a backlog, a to-do and an in-progress
+  status. The in-progress kind is **started**: work has begun.
+- **blocked**: the user has put the task in the blocked status (by default the
+  status named Blocked; Deviations can name another) because they can't move it
   forward right now. What's in the way is an open blocking task linked to it, a
   reason described in its comments, or both. Waiting on an order usually gets
   the $pending-shipment label instead. A blocked-by relation alone doesn't make
-  a task blocked; see Blocks and blocked by. The blocked line is blank when the
-  todo list has no such status.
+  a task blocked; see Blocks and blocked by. The class is empty when the todo
+  list has no such status.
 - **done**: finished.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.
@@ -176,8 +176,8 @@ Each label below has a line in Labels in your settings that gives its real name
 on the todo list; the names shown here are the defaults. A label written with a
 `$` in front, like $no-autoschedule, is one the user configures, written by its
 default name: use its real name from Labels, and never show the `$` to the user.
-
-Task labels:
+Any of them can sit on a task or on a project; on a project, every task in it
+carries it too (see Project labels).
 
 - **$no-autoschedule:** the user has opted this task out of automatic planning.
   Planners never pick it, but once the user dates it themselves, it's reminded
@@ -188,14 +188,10 @@ Task labels:
   `ntm:sync-price-watch-to-amazon` sets and clears it.
 - **$amazon-unavailable:** the item isn't sold new on Amazon, so no alert is
   set.
-
-Labels set on a project (its tasks inherit them; see Project labels):
-
-- **$price-watch:** the project's tasks are purchases waiting for a good price.
-  There is no $price-watch task label. Price watch is on when Todo list names a
-  price watch project; the watched tasks are the open tasks carrying this label.
-  There is no separate switch.
-- **$no-autoschedule:** as the task label, for every task in the project.
+- **$price-watch:** usually on a project: its tasks are purchases waiting for a
+  good price. The watched tasks are the open tasks carrying this label. Price
+  watch is off when nothing carries it or the Price watch job isn't scheduled;
+  there is no separate switch.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -210,29 +206,27 @@ from its project too. This holds for labels added later as well, with no change
 to these rules. Where the backend can't put labels on groups, the guide says so
 and the user puts the labels on tasks directly.
 
-## Notes
+## Databases
 
-Each note's title is set under Notes in Todo list in your settings; the default
-titles are in parentheses below. Read and write notes with the guide's
-`read note` / `write note`. Each note has one writer; everything else only reads
-it.
+The system keeps its own records in databases on the todo list, each under the
+fixed title in parentheses below. A user who renamed one says so under
+Deviations. Read and write them with the guide's `read database` /
+`write database`. Each database has one writer; everything else only reads it.
 
 - **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
   keeps it.
 - **message history** (`Message history`): what reminders have said.
-  `ntm-user:style` keeps it. Its first line is a `Keep:` line saying how much
-  history to keep.
+  `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
+  much history to keep; the user changes it there.
 - **task review log** (`Task review log`): the estimator keeps it, in its
   Review.
-- **price watch stores** (`Price watch stores`): stored in the price watch
-  project, not at list level. `ntm:price-watch` keeps it, from the user's vouch
-  and block replies; the shopper reads it.
-- **Amazon alert steps** (`Amazon alert steps`):
-  `ntm:sync-price-watch-to-amazon` keeps it.
+- **price watch stores** (`Price watch stores`): stored in the project that
+  carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
+  from the user's vouch and block replies; the shopper reads it.
 
-Where the backend has no documents, the guide keeps each note in the description
-of an open task titled with the note's title and labeled $no-autoschedule; see
-Notes in `references/CONTRACT.md`.
+Where the backend has no documents, the guide keeps each database in the
+description of an open task titled with the database's title and labeled
+$no-autoschedule; see Databases in `references/CONTRACT.md`.
 
 ## Fetching
 
@@ -242,21 +236,20 @@ project, parent id, completed at, updated at. It also lists every project with
 its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
-- **For planning and reminders:** `fetch open`, which includes blocked tasks so
-  parents and ancestors are fully visible. A task is a parent when an open task
-  in the results names it as parent id. Keep excluded tasks in the results;
-  Never picks says who skips them. Before planning a candidate, `read task` on
-  it and its parent chain to see blockers.
+- **For planning and reminders:** `fetch open`, which includes blocked tasks.
+  Keep excluded tasks in the results; Excluded tasks, below, says who skips
+  them.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
 
-### Never picks
+### Excluded tasks
 
-Never picks in Planning in your settings lists what planners never pick; the
-default is: a task that, itself or through any ancestor (project, or parent,
-parent's parent, and so on), has the $no-autoschedule label, the
-$pending-shipment label or the blocked status.
+Excluded labels from automatic scheduling, in Planning in your settings, lists
+the labels planners never pick; by default $no-autoschedule and
+$pending-shipment. A task is excluded when it carries one of them, itself or
+through its project (see Project labels). A task in the blocked status is always
+excluded too; that isn't a setting.
 
 Planners skip excluded tasks: they never pick or date them. Reminders don't: any
 open task the user has dated gets reminded about, excluded or not.
@@ -283,20 +276,14 @@ A date is **stale** when it's earlier than today and the task is still open.
 How each relation affects planning. Planning in your settings can say otherwise;
 these are the defaults.
 
-### Parent and sub-tasks
-
-- **A task with no open sub-tasks** is an ordinary task.
-- **A task with open sub-tasks is a parent.** Plan its open sub-tasks, never the
-  parent.
-
 ### Blocks and blocked by
 
-A task blocked by open linked tasks, directly or through its parent chain, can
-be planned for any day after the planned days of all those blockers. Never the
-same day, but not necessarily the next either: any later day works. A blocker's
-planned day is its planned date. A blocker with no planned date, or a stale one,
-has no planned day, and the tasks it blocks wait. A planner can date a blocker
-and then the task it blocks in the same run.
+A task blocked by open linked tasks can be planned for any day after the planned
+days of all those blockers. Never the same day, but not necessarily the next
+either: any later day works. A blocker's planned day is its planned date. A
+blocker with no planned date, or a stale one, has no planned day, and the tasks
+it blocks wait. A planner can date a blocker and then the task it blocks in the
+same run.
 
 For example, if task `two` is blocked by task `one`, then `two` can be planned
 for Wednesday only if `one` is planned for Tuesday or earlier. If `one` has no
@@ -327,10 +314,10 @@ message or title to fit the cap it names and call it once more. A second
 
 A job's final reply is one line on what happened. When `ntm:notify` returned
 `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's title as
-its first line and the message under it, nothing else. The weekly planning adds
-fix-todo-list's result and its `couldn't move:` lines after the message, the
-morning reminder its `kept:` and `couldn't move:` lines, and the price watch its
-per-item report.
+its first line and the message under it, nothing else. The bulk planning job
+adds fix-todo-list's result and its `couldn't move:` lines after the message,
+the morning reminder its `kept:` and `couldn't move:` lines, and the price watch
+its per-item report.
 
 ## Creating tasks when the user asks
 

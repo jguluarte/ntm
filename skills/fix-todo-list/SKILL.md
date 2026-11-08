@@ -1,16 +1,15 @@
 ---
 name: fix-todo-list
 description: >-
-    Tidies the user's todo list by closing parents whose sub-tasks are all
-    closed and clearing stale planned dates, then returns what it changed. Run
-    by the weekly planning job, or by the user ("fix my todo list", "tidy my
-    todo list").
+    Tidies the user's todo list by clearing stale planned dates, then returns
+    what it changed. Run by the bulk planning job, or by the user ("fix my todo
+    list", "tidy my todo list").
 ---
 
 # ntm:fix-todo-list
 
-Fixes todo list state that's always safe to fix, and returns what it changed. It
-never notifies anyone: whoever called it decides what to tell the user.
+Clears planned dates that have gone stale, and returns what it changed. It never
+notifies anyone: whoever called it decides what to tell the user.
 
 ## Usage
 
@@ -18,45 +17,16 @@ never notifies anyone: whoever called it decides what to tell the user.
 /ntm:fix-todo-list [--dry-run]
 ```
 
-`--dry-run`: report what would change and write nothing; see Failures and dry
-runs.
+`--dry-run`: report what would be cleared and write nothing.
 
 ## Setup
 
 1. Load `ntm:conventions`.
 2. Fetch every open task with the guide's `fetch open`, and keep every result,
-   including excluded tasks and parents. Skip the parent and blocker reads, and
-   skip listing the projects with their labels: these rules check no labels.
+   including excluded tasks. Skip the blocker reads, and skip listing the
+   projects with their labels: this skill checks no labels.
 
-## Rules
-
-Apply the rules in order, so a task rule 1 closes isn't also cleared by rule 2.
-
-### 1. Close finished parents
-
-```
-tasks where status is open
-  and it has sub-tasks
-  and every sub-task is closed (done, canceled or duplicate)
-→ set status to done
-```
-
-Fetch the closed tasks that have a parent (the guide's `fetch closed`, with the
-canceled and duplicate statuses as well as done, keeping those with a parent
-id). Check each distinct parent that's among the open tasks: read it with
-`read task`, and if it's still open, list its sub-tasks with the guide's
-`list sub-tasks`. If every one is closed, set the parent to done with
-`set status` and change nothing else.
-
-Whenever you close a parent, check its own parent the same way, even if you
-already checked it this run, so a chain closes in one run. The list's automation
-may close that parent as soon as you close its last sub-task; the guide says
-whether the backend does that. If `read task` shows it's already closed, don't
-write it, report it as `Closed` like your own closes, and carry on up the chain
-from it. Any other parent found already closed is skipped without a report, and
-a parent whose close failed counts as still open.
-
-### 2. Clear stale dates
+## Clear stale dates
 
 ```
 tasks where status is open
@@ -65,30 +35,23 @@ tasks where status is open
 → clear planned date
 ```
 
-Of the open tasks, keep those that match, leaving out any that rule 1 closed or
-found already closed. Clear each with the guide's `clear planned date` and
-change nothing else.
+Clear each match with the guide's `clear planned date` and change nothing else.
 
 ### Failures and dry runs
 
-Retry a failed read (a Setup fetch or a read in rule 1) once. If it still fails,
-stop and return `Fix-todo-list FAILED: <what failed>`. Only if anything was
-changed or failed to write before it, add the result as below (never
-`Nothing to fix.`). Writes follow the conventions; list any that still fail
-under `Couldn't write:`.
+Retry a failed fetch once. If it still fails, stop and return
+`Fix-todo-list FAILED: <what failed>`. Writes follow the conventions; list any
+that still fail under `Couldn't write:`.
 
-With `--dry-run`, make no writes, and treat every parent that would be closed as
-closed, both when checking its own parent and in rule 2. In the result, write
-`Dry run <today>:` in place of `Fixed <today>:`, and `Would close` and
-`Would clear` in place of `Closed` and `Cleared`.
+With `--dry-run`, make no writes. In the result, write `Dry run <today>:` in
+place of `Fixed <today>:`, and `Would clear` in place of `Cleared`.
 
 ## Result
 
 Return plain text:
 
 - `Fixed <today>:` then one line per change:
-    - `Closed <id> <title> <url>`
-    - `Cleared <id> <title> <url> (was <date>)`
+  `Cleared <id> <title> <url> (was <date>)`
 - `Nothing to fix.` when nothing matched, or `Dry run <today>: nothing to fix.`
   in a dry run. If writes were attempted but all failed, give the header with no
   change lines.

@@ -41,7 +41,8 @@ from that copy.
    notifications, style and schedule, creates your scheduled tasks, and hands
    you `ntm-user.plugin` to install.
 3. Install it, open a new chat, and run `/ntm:self-test`. It runs the whole loop
-   once on a throwaway task, then cancels the task and empties its note.
+   once on a throwaway task, then cancels the task and empties its test
+   database.
 
 ## Skills
 
@@ -86,21 +87,16 @@ The afternoon reminder: what's still open today. A job runs it; so can you.
 The evening reminder: how the day went, what closed and what's still open. A job
 runs it; so can you.
 
-#### `/ntm:weekly-planning`
-
-The weekly planning: closes out the week and plans the week ahead. A job runs
-it; so can you.
-
 ### Planning and tidying
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
   estimate, split).
-- `/ntm:fix-todo-list`: closes parents whose sub-tasks are all closed and clears
-  stale planned dates.
+- `/ntm:fix-todo-list`: clears stale planned dates.
 
 ### Price watch
 
-On when your settings name a price watch project.
+On when a project carries the $price-watch label and the Price watch job is
+scheduled.
 
 - `/ntm:price-watch`: the daily price check on the tasks in that project.
 - `/ntm:sync-price-watch-to-amazon`: keeps Amazon's own price alerts in step
@@ -124,12 +120,13 @@ On when your settings name a price watch project.
 ## What's what
 
 Rules live in `ntm:conventions` and name the values they depend on by key; the
-values live in `ntm-user:settings`, agreed during setup. Jobs carry no logic:
-each is three sentences naming the skill it runs. The reminder skills gather
-facts and hand them to an agent; agents own the procedures. In the skills, a
-name with a `$` in front, like $no-autoschedule, is a label you configure,
-written by its default name. The notes live on your todo list, under the titles
-in your settings.
+values live in `ntm-user:settings`, agreed during setup. Jobs carry little
+logic: most just name the skill they run. The reminder skills gather facts and
+hand them to an agent; agents own the procedures. In the skills, a name with a
+`$` in front, like $no-autoschedule, is a label you configure, written by its
+default name. ntm keeps its own records in databases on your todo list, each
+under a fixed title (Pauses, Message history and the others below). If you
+rename one, say so under Deviations in your settings.
 
 ### `ntm:conventions`
 
@@ -149,9 +146,9 @@ How reminders talk to you, and the message history. Written by
 
 ### Jobs
 
-The scheduled tasks: Morning, Afternoon and Evening reminders, Weekly planning,
-Completed (weekly or monthly), Price watch. Each runs one skill. Written by
-`/ntm:configure-schedule`.
+The scheduled tasks that run the skills on your schedule, under titles you
+choose: the reminders, bulk planning (weekly, say), what you got done, the price
+watch. Built with you by `/ntm:configure-schedule`.
 
 ### The messenger
 
@@ -169,38 +166,32 @@ todo list with you through `/ntm:review-todo-list`, estimating and splitting
 tasks, guesses how long each task takes when tasks are planned, and explains the
 ways to estimate when you want to know. Ships with ntm.
 
-### Pauses note
+### Pauses database
 
 The days when nothing gets planned automatically. Written by `/ntm:pause`.
 
-### Message history note
+### Message history database
 
 What reminders have said, so they don't repeat themselves. Written by
 `ntm-user:style`.
 
-### Task review log note
+### Task review log database
 
 How you like tasks written and estimated, learned while reviewing. Written by
 the estimator, through `/ntm:review-todo-list`.
 
-### Price watch stores note
+### Price watch stores database
 
 Stores you've vouched for or blocked in replies to a price alert; the shopper
 reads it. Written by `/ntm:price-watch`.
-
-### Amazon alert steps note
-
-How to set an alert on Amazon, learned once. Written by
-`/ntm:sync-price-watch-to-amazon`.
 
 ## What you can customize
 
 - **The style.** Plain, a theme you describe, or a persona skill you already
   have: `/ntm:configure-style`.
-- **The todo list agreements.** Labels and note titles, the planning rhythm and
-  days, what the weekly message includes, how the shopper judges a deal.
-  `/ntm:configure-todo-list` proposes a default for each and records your
-  answer.
+- **The todo list agreements.** Labels, the labels planning skips, how the
+  shopper judges a deal. `/ntm:configure-todo-list` proposes a default for each
+  and records your answer.
 - **The schedule.** Which jobs run, which days, what time, what they're called:
   `/ntm:configure-schedule`.
 - **Deviations.** Anything you do differently from the conventions, written in
@@ -212,12 +203,12 @@ All of them in `ntm-user`: `ntm-user:settings` (About you, Todo list, Labels,
 Planning, Shopping, Notifications, Deviations) and `ntm-user:style`. ntm has no
 settings file and no placeholders. Changing a value means a new
 `ntm-user.plugin` from `/ntm:settings`, installed in place of the old one. What
-the jobs write (the notes above) lives on your todo list.
+the jobs write (the databases above) lives on your todo list.
 
 ## What the plugin sends where
 
 - **Your todo list** (Linear, or your own): tasks, planned dates, labels and the
-  notes above.
+  databases above.
 - **Pushover**, when it's your channel: each reminder's title and message, with
   your app token and user key, over HTTPS from the run. With the claude-push
   channel nothing is sent; the scheduled task's own completion push carries the

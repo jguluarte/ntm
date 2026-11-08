@@ -164,8 +164,9 @@ user just wants to tease things apart so they can do it in smaller pieces.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
   write only that: the original with the guide's `update task`, the new tasks as
-  the next bullet says. New tasks get the original's project. When the order
-  matters, the later task is blocked by the earlier one.
+  the next bullet says. New tasks get the original's project and parent. When
+  the order matters, the later task is blocked by the earlier one. Don't default
+  to sub-tasks.
 - Write new tasks with the guide's `create task`, the way the conventions'
   "Creating tasks when the user asks" section says. They join the end of the
   review order un-estimated, unless the user asks to do them next.

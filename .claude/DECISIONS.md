@@ -311,9 +311,10 @@ user plugin" the generated one, which 0.4 names `ntm`.
   `self-test`. `style` and `self-test` are entry skills. Both self-tests keep
   the name `self-test`.
 - The user plugin keeps `ntm:settings`: it shows the user their settings on
-  request and points the agent to the right place for a change. Changes can also
-  go through `update` or `setup`, or the user's agent edits the Settings
-  document or a scheduled task directly.
+  request and points the agent to the right place for a change; for a job,
+  `neurodivergent-task-manager:schedules`. Changes can also go through `update`
+  or `setup`, or the user's agent edits the Settings document or a scheduled
+  task directly.
 - The persona's Profile lives in the `Style` document on the backend. The style
   procedure is a base skill, `style`, with `ntm:style` its entry skill
   (tentative: one extra document read per message; the fallback is copying the
@@ -325,12 +326,15 @@ user plugin" the generated one, which 0.4 names `ntm`.
   the user wants. The suggested weekly job: `show-completed` for the span just
   past, `fix-todo-list`, `plan --auto` for the next span, then one message. Each
   step is a base skill, so fixes reach everyone.
-- Schedules in the Settings document are only a staging area. A passing
-  self-test creates the staged jobs, then deletes those lines; from then on the
-  scheduled tasks are the source of truth. A new feature from `update` stages
-  its schedule the same way. A change to a job edits its scheduled task
-  directly. Nothing in Settings marks a job off, and nothing compares the jobs
-  against Settings.
+- `schedules` manages the jobs. It's a base skill only, with no entry skill in
+  the user plugin. It checks which scheduled tasks exist and belong to ntm. With
+  none, it walks the user through setting them up. With
+  `--setup "<their schedules>"`, it creates the jobs from that text. The
+  scheduled tasks are the source of truth, and a change to a job edits its
+  scheduled task directly.
+- The Settings document holds no schedules. The schedules and the jobs' model go
+  in setup's handoff prompt (0.4: setup, step 9). Nothing in Settings marks a
+  job off, and nothing compares the jobs against Settings.
 - Each database is created by the skill that owns it, the first time it writes.
   Setup creates only Settings and Style, and confirms the names of the rest. The
   pauses database is its own document, titled `Paused dates`, with a line
@@ -402,10 +406,11 @@ would rather save each piece. In order:
       its labels; then whether to set up Amazon sync, explaining that cloud
       agents can't reach Amazon, so this works around it. A no skips the Amazon
       labels too.
-    - Saving each feature's area stages its schedules under Schedules in the
-      Settings document, with its labels and other values.
+    - Saving each feature's area saves its labels and other values to the
+      Settings document. Its schedules go in the handoff prompt (step 9).
 6. **The jobs' model.** Suggest a lighter model than the one running setup,
-   worded so any AI provider works; never only Claude models.
+   worded so any AI provider works; never only Claude models. It goes in the
+   handoff prompt with the schedules.
 7. **Notifications.** For a separate app on their phone or computer, strongly
    suggest Pushover, which their phone's focus settings can treat differently;
    otherwise the AI app's own push. A job's own Pushover app (its own sound)
@@ -416,15 +421,17 @@ would rather save each piece. In order:
    Style; each other database is created by its owner skill on its first write.
 9. **The build.** Say what's about to happen and wait for a green light, leaving
    room for anything else they want to say. Then narrate each step: create their
-   plugin, install it, run the self-test. The self-test runs in a subagent
-   first, since a new plugin may only load in a fresh session; if that fails,
-   ask them to run it in a new chat, and offer to drive their browser only when
-   their agent has browser access. A passing self-test creates the staged jobs
-   and deletes those lines from Settings.
-10. **The end.** The first passing self-test that creates the staged jobs ends
-    with a success message in their persona, said in chat and sent as their
-    first real push. The self-test's own push can be fun too. Making people
-    smile is good.
+   plugin, install it, hand off. Setup ends with one handoff prompt, the same
+   text whether a subagent gets it or the user pastes it into a new chat: "I
+   just set up ntm and need you to run tests and finish the setup. Run
+   `/ntm:self-test`. If it passes, set up the schedules:
+   `/neurodivergent-task-manager:schedules --setup "<their schedules and job model>"`".
+   Setup gives it to a subagent first, since a new plugin may only load in a
+   fresh session. If that fails, the user pastes it into a new chat, or setup
+   drives their browser, but only when it has browser access.
+10. **The end.** A passing self-test sends a success message in their persona,
+    said in chat and sent as a push. Then `schedules --setup` creates the jobs.
+    The self-test's own push can be fun too. Making people smile is good.
 
 Estimating isn't part of setup: it's asked the first time they review.
 
@@ -446,13 +453,30 @@ The 0.4 build plan: `.claude/plans/0.4-build-plan.md`. Justin answered its open
 decisions on 2026-11-08; they're in 0.4: decided and 0.4: setup. Next: its PR
 sequence on `release-0.4`, wave 1 first.
 
+### Future work
+
+After the planned 0.4 work, as 0.4 patch releases:
+
+- Evening reminder: if everything was done by the afternoon reminder and nothing
+  changed since (the same tasks done, nothing new, nothing open), skip the push.
+- Weekend reminders that work differently: no automatic planning, only tasks
+  planned for that day. With nothing planned, the day counts as paused and
+  nothing is sent. A task added for that day still gets reminders: the afternoon
+  reminds, the evening reports.
+
+Likely 1.1:
+
+- Recurring reminders at an interval (pet care, medicine, anything). Not planned
+  automatically; the next date follows from when it was last done, so a missed
+  day shifts the interval. Needs the weekend reminders.
+
+Release: when 0.4 is complete on `release-0.4`, it merges into main and the
+version is tagged on main.
+
 ### Open
 
-- 0.4: `jobs` as the base skill's name.
 - 0.4: the wording of the one-line description on base skills that have an entry
   skill.
-- 0.4: whether a job a new feature adds through `update` ends with the success
-  message, as the plan has it, or passes silently.
 - A price watch talk, later: its default pattern makes too much busywork, and
   setup needs better guidelines.
 - Slipping tasks, a 0.4 idea: move the counting out of the style. Planning owns

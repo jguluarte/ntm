@@ -41,15 +41,18 @@ Notify below). `--notify` starts with
 ## Setup
 
 1. Work out the span as Usage says: it ends today.
-2. Ask `ntm-user:backend` for items done in the span, adding canceled and
-   duplicate ones only when the request asks for them. Done tasks of any kind
-   count.
-3. Only when the request asks for open tasks, ask `ntm-user:backend` for open
-   items planned in the span, or in the range the request names for them.
+2. Find the done tasks, adding canceled and duplicate ones only when the request
+   asks for them. Done tasks of any kind count.
+   `/ntm-user:backend find items done <span>[, canceled and duplicate included].`
+3. Only when the request asks for open tasks, find the open ones planned in the
+   span, or in the range the request names for them.
+   `/ntm-user:backend find open items planned <span or range>.`
 4. When the description narrows the scope, keep only the tasks that match it, by
    project, parent, label or title.
 
-If any step fails, stop and return `Show-completed FAILED: <what failed>`.
+If any step fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop
+and explain what happened to the user. Run by a job, end with
+`Show-completed FAILED: <what failed>`.
 
 ## Result
 
@@ -67,9 +70,8 @@ Done, the planned date for Still open.
 - `Still open (<count>):` when asked for: open tasks planned in the span, or in
   the range the request names for them ("planned today or earlier").
 
-Typed in chat, present the result as `ntm-user:backend` says for how to word a
-task (natural words, the id in parentheses); the raw lines are for skills and
-jobs.
+Typed in chat, word each task as `ntm-user:backend` says to talk to the user
+about tasks; the raw lines are for skills and jobs.
 
 ## Notify
 

@@ -3,7 +3,6 @@ evening-reminder
 fix-todo-list
 help
 morning-reminder
-notify
 pause
 plan
 price-watch

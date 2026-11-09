@@ -42,25 +42,9 @@ lighter option:
 
 ## Setup
 
-1. Read the task review log (see The task review log).
-2. Find every open task, and each project with its summary.
+Find every open task, and each project with its summary.
 
 A task is **unreviewed** when it's open and has no estimate.
-
-When `## How you work` doesn't say how the user estimates, ask the estimate
-question before going on.
-
-## The estimate question
-
-Say their estimates are in hours, and offer another way only if they want one
-(points, T-shirt sizes, their team's scale). Most people keep hours. Only when
-they ask for more on the ways to estimate, ask the estimator agent's Explain
-estimating request and pass its ways on; when the agent isn't available, read
-`agents/estimator.md` from the newest installed `ntm` and follow it.
-
-When `ntm-user:backend` says how to fit their estimates to the list's own scale,
-work that out with them. Then write how they estimate, in their words with any
-mapping you agreed, under `## How you work` in the log, and save it.
 
 ## What to review
 
@@ -113,13 +97,15 @@ instead. The user adjusts the order however they like, then you start.
 
 ## 3. Task by task
 
-One estimator agent proposes every estimate in this review. Start it once, at
-the first task, and hand it what it needs then: the log's `## How you work` and
-recent `## Estimates` entries, which Setup already read. It sees nothing of this
-chat, only what you hand it, so this hand-off is what lets it load nothing
-itself. Start it in the background, and send every later ask to that same agent;
-don't start a new one. When the agent isn't available, read
+One estimator agent proposes every estimate in this review and keeps the task
+review log. Start it once, at the first task, in the background, and send every
+later ask to that same agent; don't start a new one. It sees nothing of this
+chat, only what you hand it. When the agent isn't available, read
 `agents/estimator.md` from the newest installed `ntm` and follow it.
+
+When it returns an `ask:` line, put the question to the user as it is and send
+their answer back. When they ask what the ways to estimate are, ask its Explain
+estimating request and pass its ways on.
 
 Ask its Estimate request for a size for the first task alone, so the first
 proposal comes fast. Wait for that answer only; never wait on an ask ahead
@@ -153,13 +139,13 @@ If it's broken up, the estimate is for what's left of the original.
 
 After a task is broken up, ask the estimator again for what's left of the
 original. After the user corrects an estimate, pass the correction along, ask
-again for any task it already answered ahead, and drop those early answers. When
-the task was broken up after your guess, log the new proposal as `guess`.
+again for any task it already answered ahead, and drop those early answers.
 
 Once a task is settled, in the same turn that presents the next one (or ends the
 session): write the settled estimate (and any approved title, description or
-blocked-by link), add its `## Estimates` entry to the log, and pass the settled
-estimate to the estimator with its next ask, so writes never make the user wait.
+blocked-by link), and send the estimator its Log request with its next ask: the
+settled estimate, and what the user said or changed. Writes never make the user
+wait.
 
 ## Breaking up tasks
 
@@ -178,39 +164,8 @@ user just wants to tease things apart so they can do it in smaller pieces.
   They join the end of the review order un-estimated, unless the user asks to do
   them next.
 
-## The task review log
-
-The `Task review log` database: it's how reviewing learns to work better with
-the user over time, and the estimator's long-term context. Read and write it
-where `ntm-user:backend` keeps it. When it's missing, the first write creates it
-with the two sections below. Save it whenever you change it, leaving the rest as
-it was.
-
-**`## How you work`:** how the user estimates and breaks up tasks, learned so
-that review can come to propose most of their list the way they would. Short
-bullets, written to them (it's theirs too), grouped by topic: how they estimate
-(hours unless they chose another way, what to do with that, and any mapping to
-the list's own points), how they like tasks written and broken up, how they like
-sessions to go, whether they're new to estimating, and what they keep
-correcting. Learn from what they change, push back on or say. Keep it tidy, not
-short: fold related bullets together and rewrite rather than append, and let it
-run as long as it needs.
-
-**`## Estimates`:** a `jsonl` code block, newest first, one object per approved
-estimate:
-
-<!-- prettier-ignore -->
-```jsonl
-{"date":"YYYY-MM-DD","id":"ABC-12","guess":2,"final":3,"why":"wiring was slow"}
-```
-
-`date` is today. `guess` is what you proposed and `final` what the user
-approved, each written the way the user estimates (`"2 h"`, `3`, `"M"`). Keep
-`why` to a few words: what made them change it, or what made the guess right.
-Keep the newest 150 entries.
-
 ## Ending
 
-When the user stops, or this review is done, fold anything you learned into
-`## How you work` and save the log, then sum up in a line or two: how many items
-were reviewed, closed and broken up, and what's still unreviewed in it.
+When the user stops, or this review is done, send the estimator its Log request
+with anything not yet logged, then sum up in a line or two: how many items were
+reviewed, closed and broken up, and what's still unreviewed in it.

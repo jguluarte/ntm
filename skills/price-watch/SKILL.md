@@ -30,9 +30,9 @@ currency from Country and currency under About you in your settings.
 
 # 1: Todo list rules
 
-Load `ntm:conventions` before anything else: it holds the list's rules and your
-settings, and every later step follows them. If whoever loaded this skill gave a
-date, that is today.
+Load `ntm-user:backend` to read the user's conventions, then read About you,
+Labels and Shopping from the Settings document: "your settings" below means
+those. If whoever loaded this skill gave a date, that is today.
 
 # 2: Ready check
 
@@ -43,11 +43,9 @@ a plain `/ntm:ready-check`.
 
 # 3: The watch
 
-Fetch every open task the way "Every open task" in `ntm:conventions` says, and
-keep the ones with the $price-watch label (its real name from Labels in your
-settings), counting labels inherited from their project (the conventions'
-"Project labels"). Note each one's id, title and `url`. If none are being
-watched, send nothing and go straight to FINAL REPLY.
+Find the watched tasks: the open tasks with the $price-watch label (its real
+name from Labels), on the task or its project. Note each one's id, title and
+`url`. If none are being watched, send nothing and go straight to FINAL REPLY.
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price
 today?"): the watch is that one task, found by its id or by its words among the
@@ -127,7 +125,7 @@ anything. Dates below are today's, at reply time.
   $has-amazon-alert label, add that its Amazon alert gets removed the next time
   they run `/ntm:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the `Price watch stores` database
-  (see Databases in `ntm:conventions`), kept in the project that carries the
+  (see Databases in the conventions), kept in the project that carries the
   $price-watch label (the guide's `read database` and `write database`, with
   that project; when it's missing, `write database` creates it with the headings
   `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list

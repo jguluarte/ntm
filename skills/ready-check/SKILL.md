@@ -28,13 +28,13 @@ If it can't be loaded: **Not configured**.
 
 ### 2: Ping the todo list
 
-Ask `ntm-user:backend` to ping, and make the call it gives. If that call's tool
-isn't loaded, search for it with ToolSearch. If it still isn't there:
-**Connector not attached**.
+Ask `ntm-user:backend` to ping. If it answers `Backend CAN'T: <why>` and the why
+is a backend error, ask once more. A second `Backend CAN'T: <why>`, or any other
+why, fails the check as `<why>`.
 
-If the ping answers `Backend CAN'T: <why>` and the why is a backend error, ask
-once more. A second `Backend CAN'T: <why>`, or any other why, fails the check as
-`<why>`.
+When it gives back a call instead, make it. If that call's tool isn't loaded,
+search for it with ToolSearch. If it still isn't there: **Connector not
+attached**.
 
 ### 3: Load `ntm-user:style`
 

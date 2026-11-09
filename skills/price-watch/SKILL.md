@@ -14,8 +14,9 @@ The price watch: which watched items are a good deal today? One shopper per item
 does the checking; this skill finds the watched tasks, hands each to a shopper,
 alerts on the deals and handles the user's replies. The shopper's procedure is
 `agents/shopper.md`; nothing here restates it. When the shopper agent isn't
-available in this session, read `agents/shopper.md` from the newest installed
-`ntm` and follow it yourself, one task at a time, with the same two values.
+available in this session, do what the conventions' "Chat, jobs and agents"
+says: read that file from the installed plugin and follow it yourself, one task
+at a time, with the same two values.
 
 The user vets what goes on the watch: every watched task is a real item they
 want, and the stores they name are ones they trust. So the shopper's results are
@@ -27,12 +28,11 @@ included: a good deal is worth hearing about on a paused day, so don't check
 `ntm:pause`. Write plainly; don't use `ntm-user:style`. Prices are in the
 currency from Country and currency under About you in your settings.
 
-# 1: The todo list
+# 1: Todo list rules
 
-Load `ntm-user:backend` before anything else. Read About you and Shopping from
-the Settings document as it says; "your settings" below means those. Do every
-read and write on the todo list below as it says. If whoever loaded this skill
-gave a date, that is today.
+Load `ntm-user:backend` to read the user's conventions, then read About you and
+Shopping from the Settings document: "your settings" below means those. If
+whoever loaded this skill gave a date, that is today.
 
 # 2: Ready check
 
@@ -43,16 +43,9 @@ a plain `/ntm:ready-check`.
 
 # 3: The watch
 
-```
-/ntm-user:backend find the watched items.
-```
-
-If that fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, explain
-what happened to the user. Run by a job, end with
-`Price-watch FAILED: <what failed>`.
-
-Note each watched item's id, title and `url`. If none are being watched, send
-nothing and go straight to FINAL REPLY.
+Find the watched tasks: the open tasks with the $price-watch label (its real
+name from Labels), on the task or its project. Note each one's id, title and
+`url`. If none are being watched, send nothing and go straight to FINAL REPLY.
 
 **One item asked for in chat** ("is the backup battery (ABC-24) a good price
 today?"): the watch is that one task, found by its id or by its words among the
@@ -64,12 +57,13 @@ word the answer.
 only notices when a sync is due. Amazon alerts are on when Amazon interface
 under Shopping in your settings names a browser or is blank; they're off when
 the line is missing or says off, or there's no Shopping section. When they're
-off, skip this check. With the $has-amazon-alert and $amazon-unavailable labels,
-note:
+off, skip this check. With the $has-amazon-alert and $amazon-unavailable labels
+by their real names from Labels, note:
 
 - each open watched task with neither label (it needs an alert);
-- each closed task, canceled and duplicate included, that still has the
-  $has-amazon-alert label (its alert needs removing).
+- each closed task that still has the $has-amazon-alert label (its alert needs
+  removing). Find these with the guide's `fetch closed` for that label, canceled
+  and duplicate included.
 
 Change nothing; FINAL REPLY reports it.
 
@@ -101,13 +95,13 @@ reply carries.
 
 Then the full details, from the DEAL results, go in the FINAL REPLY, which the
 job's completion push carries: One section per item, starting with a few words
-for the item and its task id in parentheses, linked to its `url` (as
-`ntm-user:backend` says to talk to the user about tasks): the price and store
-with the product link, the marketplace seller if there is one, its condition,
-how it compares to the target and the usual price, any shipping, membership or
-coupon note, the sale end date, the other verified prices, and its CHECKED line.
-End with: Reply 'skip this sale' to pass on one of these, or say if a store
-should be vouched for or blocked.
+for the item and its task id in parentheses, linked to its `url` (the
+conventions' "Talking to the user about tasks"): the price and store with the
+product link, the marketplace seller if there is one, its condition, how it
+compares to the target and the usual price, any shipping, membership or coupon
+note, the sale end date, the other verified prices, and its CHECKED line. End
+with: Reply 'skip this sale' to pass on one of these, or say if a store should
+be vouched for or blocked.
 
 If the push fails, say so in the final reply; the details are there either way.
 
@@ -118,25 +112,27 @@ alert had more than one item and they don't say which, ask before changing
 anything. Dates below are today's, at reply time.
 
 - **"Skip this sale"** (or similar): if this run sent no alert, say so and
-  change nothing. Otherwise add a comment to that task right away (as
-  `ntm-user:backend` says), using the store, price and sale end date from this
-  run's alert: "Skip: <price> at <store>, sale ends <date or unknown>, skipped
+  change nothing. Otherwise add a comment to that task right away (the guide's
+  `write comment`), using the store, price and sale end date from this run's
+  alert: "Skip: <price> at <store>, sale ends <date or unknown>, skipped
   YYYY-MM-DD. Reason: <their reason, in their words, or "none given">." Confirm
   in one line. If they didn't say why, ask why in the same message; if they
   answer, update that comment with their reason.
 - **They bought it:** a watched task is the purchase itself, so set its status
-  to done as `ntm-user:backend` says (if it's already closed, say so). Then add
-  the $pending-shipment label to any open task it blocks, where the work lives.
-  Confirm in one line. If the task has the $has-amazon-alert label, add that its
-  Amazon alert gets removed the next time they run
-  `/ntm:sync-price-watch-to-amazon`.
+  to done (the guide's `set status`; if it's already closed, say so). Then add
+  the $pending-shipment label (its real name from Labels) to any open task it
+  blocks, where the work lives. Confirm in one line. If the task has the
+  $has-amazon-alert label, add that its Amazon alert gets removed the next time
+  they run `/ntm:sync-price-watch-to-amazon`.
 - **Vouching for or blocking a store:** update the `Price watch stores` database
-  as `ntm-user:backend` says; when it's missing, the first write creates it with
-  the headings `## Seed`, `## Vouched`, `## Blocked`. Move the store off the
-  other list (Vouched or Blocked) if it's there; leave the Seed list alone
-  unless they say otherwise. Record its domain as they give it, or from that
-  database or the item's "Stores:" comment, and ask them only if neither has it.
-  Add the date and their reason if they gave one. Confirm in one line.
+  (see Databases in the conventions), kept in the project that carries the
+  $price-watch label (the guide's `read database` and `write database`, with
+  that project; when it's missing, `write database` creates it with the headings
+  `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list
+  (Vouched or Blocked) if it's there; leave the Seed list alone unless they say
+  otherwise. Record its domain as they give it, or from that database or the
+  item's "Stores:" comment, and ask them only if neither has it. Add the date
+  and their reason if they gave one. Confirm in one line.
 
 # FINAL REPLY
 

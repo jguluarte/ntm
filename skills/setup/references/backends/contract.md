@@ -37,12 +37,10 @@ parent once its sub-tasks are all done, and if so whether the user wants it to.
 
 ## Status classes
 
-Ask the user how their statuses map to the classes in the conventions
-(plannable, started, blocked, done, canceled, duplicate), and record it here in
-their words. Say how to filter by class and how to write a status, and how to
-tell open from closed in results. A backend with no status names, only open and
-closed, maps open to plannable and closed to done, and has no started, blocked,
-canceled or duplicate status; `set status` to done closes the task.
+Which of the user's statuses fall in each class (plannable, started, blocked,
+done, canceled, duplicate), in their words, and how to filter by class, write a
+status and tell open from closed in results. With only open and closed, open is
+plannable, closed is done, and `set status` to done closes the task.
 
 ## Operations
 

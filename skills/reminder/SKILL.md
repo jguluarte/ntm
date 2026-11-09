@@ -44,7 +44,7 @@ says, with no estimate. Add `(was <date>)` on a task planned before today, and
 Ask the messenger agent:
 
 ```
-kind: <type>
+reminder: <type>
 job: <the --job key>
 <the facts>
 ```

@@ -203,7 +203,7 @@ rules' "Talking to the user about tasks".
 
 ### `ping` (request)
 
-Proves the todo list answers. Uses `ping`. Returns that it answered, or
+Proves the backend answers. Uses `ping`. Returns that it answered, or
 `Backend CAN'T: <why>` naming sign-in expired, wrong account or backend error,
 with how to fix it.
 

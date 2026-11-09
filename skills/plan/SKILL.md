@@ -47,15 +47,20 @@ states only what differs for its user.
 
 ## Setup
 
-1. Load `ntm-user:backend` and `ntm:pause`. Ask `ntm-user:backend` to read the
-   Planning section of the Settings document: how this user wants their todo
-   list planned, the estimate pattern, the excluded labels, and anything else
-   they wrote there.
-2. Ask `ntm-user:backend` for every open item. It keeps excluded and blocked
-   tasks, which the carry-over and the days already planned need.
+1. Load `ntm-user:backend` and `ntm:pause`. Read Planning from the Settings
+   document as `ntm-user:backend` says: how this user wants their todo list
+   planned, the estimate pattern, the excluded labels, and anything else they
+   wrote there.
+2. Find the open tasks. The carry-over and the days already planned need the
+   excluded and blocked ones too.
+
+    ```
+    /ntm-user:backend find every open item, excluded and blocked ones included.
+    ```
 
 If any step fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop
-and return `Plan FAILED: <what failed>`.
+and explain what happened to the user. Run by a job, end with
+`Plan FAILED: <what failed>`.
 
 ## Choosing a task
 
@@ -64,9 +69,9 @@ or a stale one, and not excluded as Excluded tasks in `ntm-user:backend` says
 (by default anything carrying the $no-autoschedule or $pending-shipment label,
 or in the blocked status). Shortlist the likeliest picks from what the fetch
 already returns (status, project, labels, titles, planned dates) before reading
-any task in full; then ask `ntm-user:backend` for each task on the shortlist,
-for descriptions and relations. Blocked-by relations follow the Blocks and
-blocked by rule in `ntm-user:backend`; the picks made in this run count as
+any task in full; then read each task on the shortlist with its description and
+relations, as `ntm-user:backend` says. Blocked-by relations follow the Blocks
+and blocked by rule in `ntm-user:backend`; the picks made in this run count as
 planned days, so a chain can fill the week in order.
 
 Pick as many candidates per day as Defaults says (one, unless told otherwise),
@@ -112,13 +117,13 @@ whose line ends `true`. If it returns `Pause FAILED`, stop and return
 
 ## Writing
 
-Date each pick by asking `ntm-user:backend` to change the task's planned date.
-Writes follow its rules; Result says how to list any that still fail.
+Set each pick's planned date as `ntm-user:backend` says. Writes follow its
+rules; Result says how to list any that still fail.
 
 ## --auto day
 
 1. **Carry over.** Every task planned before today is stale. Move the ones in
-   the plannable class to today, through `ntm-user:backend`, whatever their
+   the plannable class to today, as `ntm-user:backend` says, whatever their
    labels and even when one blocks another: the user dated them, so they should
    just work (the Blocks rule is for picking work; carrying a date isn't
    picking). A stale task in the blocked class keeps its date. Carry over on a
@@ -165,8 +170,8 @@ span, then do what they decide.
    gets its date cleared, unless the user asks to move it to a later day. Days
    they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears,
-   including dates they set themselves. When they approve, write them through
-   `ntm-user:backend`. Show the saved plan as Result says.
+   including dates they set themselves. When they approve, write them as
+   `ntm-user:backend` says. Show the saved plan as Result says.
 
 ## Result
 
@@ -185,8 +190,8 @@ you're given" says. The estimate goes only on a task this run picked.
   user had already dated included, in day order, or the single line
   `planned: none`.
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
-- In chat: the saved plan, worded as `ntm-user:backend`'s how to word a task
-  says: each day in order with its tasks, the time and reason for each task this
-  run picked, and which days are paused, left open or had nothing to plan. Name
-  any write that failed.
+- In chat: the saved plan, worded as `ntm-user:backend` says to talk to the user
+  about tasks: each day in order with its tasks, the time and reason for each
+  task this run picked, and which days are paused, left open or had nothing to
+  plan. Name any write that failed.
 - `Plan FAILED: <what failed>` when Setup or the pause check fails.

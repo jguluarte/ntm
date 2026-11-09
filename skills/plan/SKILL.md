@@ -183,8 +183,8 @@ you're given" says. The estimate goes only on a task this run picked.
   user had already dated included, in day order, or the single line
   `planned: none`.
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
-- In chat: the saved plan, worded as `ntm-user:backend` says to talk to the user
-  about tasks: each day in order with its tasks, the time and reason for each
-  task this run picked, and which days are paused, left open or had nothing to
-  plan. Name any write that failed.
+- In chat: the saved plan, worded by the "Talking to the user about tasks" rules
+  in `ntm-user:backend`: each day in order with its tasks, the time and reason
+  for each task this run picked, and which days are paused, left open or had
+  nothing to plan. Name any write that failed.
 - `Plan FAILED: <what failed>` when Setup or the pause check fails.

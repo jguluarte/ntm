@@ -158,7 +158,7 @@ with the standard fields.
 
 Every open task, blocked ones included, and the list's projects. Uses
 `fetch open`. Returns the tasks with the standard fields, and each project with
-its name and labels.
+its name and labels, and its summary when asked.
 
 ### `items done <span>`
 
@@ -178,16 +178,16 @@ blocked-by relations and comments.
 
 ### `create a task`
 
-A new task with a title, description, labels and parent. Uses `create task`.
-Returns the new task's id and url, as Writing says.
+A new task with a title, description, labels, project, parent and blocked-by
+links. Uses `create task`. Returns the new task's id and url, as Writing says.
 
 ### `change a task`
 
 Any of a task's planned date, status, labels, estimate, comments, duplicate of,
-title or description, and nothing else. Uses `set planned date`,
-`clear planned date`, `set status`, `add labels`, `remove labels`,
-`write comment`, `update comment`, `mark duplicate of` and `update task`.
-Returns success or failure, as Writing says.
+title, description, project or blocked-by links, and nothing else. Uses
+`set planned date`, `clear planned date`, `set status`, `add labels`,
+`remove labels`, `write comment`, `update comment`, `mark duplicate of` and
+`update task`. Returns success or failure, as Writing says.
 
 ### `read or write <database>`
 

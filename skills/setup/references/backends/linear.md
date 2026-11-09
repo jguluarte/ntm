@@ -22,25 +22,17 @@ tool does each operation and which of the user's values goes where.
   needs a project label with the same name.
 - **Automations:** Linear can close a parent when its sub-issues are all done
   (Parent auto-close, in the team's settings under Workflow).
-- **Estimates:** `estimate` holds the team's points, on the team's estimate
-  type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
-  3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
-  team can extend its scale or allow zero. Times can't be stored. The connector
-  doesn't say which type a team uses; the user does. When `## How you work`, in
-  the task review log, gives a point for each of the user's estimates, convert
-  through it: the user's estimate to its point when writing, a point back to
-  their estimate when reading.
+- **Estimates:** `estimate` holds a whole number, and an estimate is that many
+  hours: 2 is two hours. When `## How you work`, in the task review log, gives a
+  point for each of the user's estimates, convert through it: the user's
+  estimate to its point when writing, a point back to their estimate when
+  reading.
 
-Setup doesn't ask about estimates; the user's first review does. When they need
-help there, guide them: ask which estimate type their team uses (each one's
-points are above). If they're unsure, it's in Linear under the team's settings,
-Estimates. If they still don't know, look at estimates already set:
-`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
-`estimate`, and suggest the type whose points fit (a 4 rules out Fibonacci and
-T-shirt, a 5 rules out exponential; Fibonacci and T-shirt store the same points,
-so ask which they see in Linear). When their scale isn't the team's, agree with
-them which of the team's points each of their estimates becomes, and write that
-in the task review log under `## How you work`.
+Setup doesn't ask about estimates; the user's first review does. Guide them to
+set the team's estimate scale to Linear (1, 2, 3, ...) in the team's settings in
+Linear, under Estimates. When they want points or another scale instead, they
+pick it there, and the estimator works out with them which point each of their
+estimates becomes.
 
 ## Status classes
 

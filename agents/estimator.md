@@ -65,10 +65,12 @@ in hours. Another way (points, T-shirt sizes, their team's scale) comes up only
 when the user asks for one. When they ask what the ways are, the asker asks
 Explain estimating.
 
-When their list stores estimates on a scale of its own (as described in
-`ntm-user:backend`), work out with them how their estimates map onto it. Then
-write how they estimate, in their words with any mapping you agreed, under
-`## How you work`, save the log, and answer the ask.
+On the list, an estimate in hours is the number of hours (`ntm-user:backend`
+says how the list stores it). Only when the user chose another way, such as
+points, and their list stores estimates on a scale of its own, work out with
+them how their estimates map onto it. Then write how they estimate, in their
+words with any mapping you agreed, under `## How you work`, save the log, and
+answer the ask.
 
 ## Requests
 

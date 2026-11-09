@@ -2,16 +2,15 @@
 name: today
 description: >-
     Lists what's planned on the user's todo list, by default every open task
-    planned for today, optionally whatever scope the user or a job describes
-    ("what's due today", "what's on tap?", "tasks today"). Read-only. Run
-    manually, and from scheduled jobs.
+    planned for today, or any scope the user describes ("what's due today",
+    "what's on tap?", "tasks today"). Read-only. Run by the user.
 ---
 
 # ntm:today
 
 ## Setup
 
-Load `/ntm-user:backend` to read the user's conventions
+Load `ntm-user:backend` to read the user's conventions.
 
 ## Usage
 
@@ -22,20 +21,22 @@ Load `/ntm-user:backend` to read the user's conventions
 With nothing after it, list every open task with a planned date of "today" in
 the user's timezone.
 
-If the user provides scope, limit the results based on their request. IE: if the
-user says `/ntm:today errands`, look for things assigned today that have to do
-with errands.
+If the user provides scope, limit the results based on their request. For
+example, if the user says `/ntm:today errands`, look for things planned for
+today that have to do with errands.
 
 ## Result
 
 Conversationally return information to the user describing the data you found,
 or lack thereof.
 
+If the todo list can't be read, say what went wrong instead.
+
 ### example: nothing found
 
 #### without scope
 
-> No open tasks found
+> No open tasks for today.
 
 #### with scope "errands"
 
@@ -52,6 +53,6 @@ or lack thereof.
 
 #### with scope "errands"
 
-> Found two tasks for today, one is an errand:
+> One of today's two tasks is an errand:
 >
 > - Drop off package at UPS (ABC-123)

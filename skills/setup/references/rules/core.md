@@ -82,7 +82,7 @@ in a job or in chat alike; an agent can't start another agent. The reminder
 skills, `show-completed --notify` and the bulk planning job ask the messenger,
 and the price watch the shopper. The estimator is for planning: `ntm:plan` asks
 it how long the tasks it picks take, reviewing asks it for each task's estimate,
-and setting up the todo list asks it to explain the ways to estimate only when
+and the user's first review asks it to explain the ways to estimate only when
 the user wants that. Each says what it hands over.
 
 A skill asking the messenger also hands it a `wording:` line for any Deviation

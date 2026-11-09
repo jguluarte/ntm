@@ -14,5 +14,6 @@ self-test
 settings
 setup
 show-completed
+style
 sync-price-watch-to-amazon
 today

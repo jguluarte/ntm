@@ -111,7 +111,7 @@ becomes `ntm-user:style` as it is: the body stays unchanged, word for word, task
 ids included. A pasted skill's own frontmatter is dropped; everything under it
 is the body.
 
-What the messenger needs from it is only the call `ntm:settings` names:
+What the messenger needs from it is only the call `ntm:style` names:
 `/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
 returning the message with `Title: …` as its last line under `--for`. Read the
 body for how it names these things (a `--reminder` flag, a `Subject:` line, its

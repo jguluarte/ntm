@@ -29,13 +29,11 @@ names the ones its backend has, and skills work around them:
 
 ## Todo list
 
-Name the todo list (List name in Todo list), what id it needs (List id), and
-whether the backend can close a parent once its sub-tasks are all done. If the
-backend has no unit above projects, the todo list is the whole account (List
-name is what the backend calls it, List id blank). `(ABC-12)` in the conventions
-stands for the backend's own task id, whatever its shape.
-
-When the backend can, ask the user whether they want parents closed that way.
+The todo list's name (List name) and the id calls take (List id). With no unit
+above projects, the todo list is the whole account: List name is what the
+backend calls it, List id is blank. Task ids are the backend's own, whatever
+their shape (`(ABC-12)` in the conventions). Say whether the backend can close a
+parent once its sub-tasks are all done, and if so whether the user wants it to.
 
 ## Status classes
 

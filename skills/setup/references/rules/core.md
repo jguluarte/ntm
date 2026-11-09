@@ -69,8 +69,8 @@ reads like a report, not a person talking. Instead, say "you already finished
 the kitchen tap (ABC-15)". The example is only an illustration; there's no need
 to look it up. Where the backend has no ids, use the words alone.
 
-Lines another skill parses (like `/ntm:today`'s result lines) keep their format,
-but when you pass them on to the user, word them this way too.
+Lines another skill parses keep their format, but when you pass them on to the
+user, word them this way too.
 
 A linked task is `[<words> (<id>)](<url>)`: the words as this section says, the
 id in parentheses inside the link text, the url the task's own `url` field.
@@ -167,9 +167,8 @@ Skills return text; jobs decide what reaches the user. No skill other than
 `ntm-user:notify` sends anything.
 
 Every skill a job calls returns plain text. A skill's status line (OK / FAILED)
-starts with its own name, capitalised, hyphens kept (`Plan FAILED: …`,
-`Fix-todo-list FAILED: …`, `Ready-check OK`); its data lines (`today:`,
-`Done (<n>):`, `YYYY-MM-DD: true`) are its own format, listed in the skill.
+starts with its own name, capitalised, hyphens kept (`Self-test FAILED: …`,
+`Ready-check OK`); its data lines are its own format, listed in the skill.
 
 When `ntm-user:notify` returns `Notify TOO LONG: …`, nothing was sent: shorten
 the message or title to fit the cap it names and call it once more. A second
@@ -183,8 +182,8 @@ says to add after the message, nothing else.
 ## Creating tasks when the user asks
 
 The user often files something just so they don't forget it; what it takes gets
-figured out later, while reviewing. Make what they asked for, plainly and in
-their terms, and don't add meaning they didn't give it.
+figured out later. Make what they asked for, plainly and in their terms, and
+don't add meaning they didn't give it.
 
 File it in an existing project that fits, or none. If nothing fits, you can ask
 whether to make a project for it, as long as the shape makes sense: a specific

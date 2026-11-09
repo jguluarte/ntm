@@ -48,13 +48,15 @@ you compose and send; the style says how it sounds.
 
 ## What you're given
 
-The skill that asks hands over one input per line. Required:
+The skill that asks hands over one input per line: either `reminder:` with that
+reminder's facts, or `kind:` with one `message:` line. Required:
 
-- `reminder:` morning, afternoon, evening, week or completed.
+- `reminder:` morning, afternoon, evening, week or completed; or `kind:` any
+  word, such as `self-test`.
 - `job:` the name of the skill the message is for, such as `morning-reminder`.
 - The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
-  (completed). A `none` line counts.
+  (completed); one `message:` line of plain text (a kind). A `none` line counts.
 - `weekly message:` (week): what the weekly message covers, from the job's
   prompt, or `ntm:plan`'s default.
 
@@ -116,12 +118,13 @@ style, then put the list under it.
   says which halves the user wants.
 - **completed:** what got done over the `span:` given, with the count;
   `done: none`: that nothing closed, plainly.
+- **a kind:** the `message:` line, said plain, with no list.
 
-Then `/ntm-user:style --for <reminder> "<tone>" <your sentences>`, with a tone
-that opens with the job in plain words (`Morning reminder; …`), then the facts
-in a phrase each: what's on the table, what's carried over and from when, what
-closed, what's still open, what's started, what's coming. The tone names every
-task id the message should name (the week: the still-open ones); the style
+Then `/ntm-user:style --for <reminder or kind> "<tone>" <your sentences>`, with
+a tone that opens with the job in plain words (`Morning reminder; …`), then the
+facts in a phrase each: what's on the table, what's carried over and from when,
+what closed, what's still open, what's started, what's coming. The tone names
+every task id the message should name (the week: the still-open ones); the style
 counts and records ids from the tone. The style returns the message with
 `Title: …` as its last line. When that line is missing, ask the style once more
 for the title alone, with the message it wrote. When `ntm-user:style` won't

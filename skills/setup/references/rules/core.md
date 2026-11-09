@@ -157,18 +157,6 @@ carries it too (see Project labels).
   about like any other dated task.
 - **$pending-shipment:** something has been ordered for this task and hasn't
   arrived, so the user can't start it.
-- **$has-amazon-alert:** an Amazon price alert is set for this task.
-  `ntm:sync-price-watch-to-amazon` sets and clears it.
-- **$amazon-unavailable:** the item isn't sold on Amazon in a condition the user
-  allows, so no alert is set.
-- **$price-watch:** usually on a project: its tasks are purchases waiting for a
-  good price. The watched tasks are the open tasks carrying this label. Price
-  watch is off when nothing carries it or the Price watch job isn't scheduled;
-  there is no separate switch. A watched task's description names the exact item
-  (model and variant) and its target price, and says, in the user's words,
-  anything that differs from the defaults: the condition (new), how it reaches
-  them (ordered online and delivered), and what counts as a deal (at or near the
-  target, or well below the usual price). The shopper reads them there.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -197,9 +185,6 @@ Deviations. Read and write them with the guide's `read database` /
   much history to keep; the user changes it there.
 - **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
   hands the estimator what it needs from it.
-- **price watch stores** (`Price watch stores`): stored in the project that
-  carries the $price-watch label, not at list level. `ntm:price-watch` keeps it,
-  from the user's vouch and block replies; the shopper reads it.
 
 Where the backend has no documents, the guide keeps each database in the
 description of an open task titled with the database's title and labeled

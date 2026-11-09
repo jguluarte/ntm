@@ -292,10 +292,10 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
   prompt loads `ntm:<skill>`. Base skills keep their full descriptions.
 - `ntm-user:backend` is the one place that teaches how to work with this user's
   list: their backend's calls, their labels and statuses, what counts as open,
-  their databases. It is the list rules and the backend guide, tailored to this
-  user only. It takes a request in plain words ("today's open items",
-  "everything done last week", "watched items") and gives the call to make; the
-  agent makes it.
+  where every document lives (Settings, Style, each database). It is the list
+  rules and the backend guide, tailored to this user only. It takes a request in
+  plain words ("today's open items", "everything done last week", "watched
+  items") and gives the call to make; the agent makes it.
 - Base skills say WHAT to do and ask `ntm-user:backend` for the data:
   `ntm:today` is "get today's open items from `ntm-user:backend`, then present
   them". Planning, the reminders and the price watch all go through it. Future
@@ -307,29 +307,35 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
 - The hard rule: no day-to-day run loads text about a path the user isn't set up
   for (another backend, a feature they didn't pick). Text a base skill needs for
   one feature lives in a reference that only that feature's runs load.
-- The user plugin holds `backend`, `notify` (only their channel), `ready-check`
-  (names no backend; a sign-in failure comes from `backend`'s ping) and
-  `settings`, plus the Linear connector for Linear users. It has no `style` and
-  no `self-test`: the base's `style` and `self-test` serve everyone.
+- The user plugin holds exactly two skills: `backend`, everything about this
+  user's list, including where every document lives; and `notify`, their
+  channel, plus the Pushover keys when they use Pushover. Linear users also get
+  the Linear connector. It has no `settings`, `ready-check`, `style` or
+  `self-test`: the base's serve everyone.
+- `settings` and `ready-check` are base skills. `ntm:settings` asks
+  `ntm-user:backend` for the Settings document, then shows it or points the
+  agent to the right place for a change: the Settings document, a scheduled task
+  through `ntm:schedules`, the Style document through `ntm:style`, or a built-in
+  value through `update`. It never rebuilds. It loads the whole backend skill, a
+  cost Justin accepted. `ntm:ready-check` is the same for everyone and names no
+  backend; its one tailored step asks `ntm-user:backend` to ping, and it relays
+  `Backend CAN'T: <why>` as `Ready-check FAILED: <why>`.
 - The base's entry points are `setup`, a wizard that walks the whole flow (see
   0.4: setup), and a tiny `update` whose body loads `setup`, there so someone
   already set up finds it; run before any setup, it asks "It doesn't look like
   you've run setup before, do you want to?" The `configure` skills go away, and
-  so do the base's `conventions`, `settings`, `notify` and `ready-check`, their
-  text moved under setup as the build's source.
+  so do the base's `conventions` and `notify`, their text moved under setup as
+  the build's source.
 - `update` reads per-version reference files of what changed, picked by the user
   plugin's `major.minor`, and offers what's new, new features included.
 - The user plugin's `major.minor` mirrors the base's; its patch is its own, a
   count of the user's rebuilds. Its generation time is a field in its
   `plugin.json`, and `ntm-user:backend` opens with a Built line naming the
   versions, backend, channel and features.
-- Values setup collects live in the backend, in the `Settings` document. About
-  you, Planning, Shopping and Notifications are read live; Labels and Deviations
-  are built into `ntm-user:backend`, so changing one means `update` rebuilds.
-- `ntm-user:settings` shows the user their settings on request and points the
-  agent to the right place for a change: the Settings document, a scheduled task
-  through `ntm:schedules`, the Style document through `ntm:style`, or a built-in
-  value through `update`. It never rebuilds.
+- Values setup collects live in the backend, in the `Settings` document, except
+  the Pushover keys (below). About you, Planning, Shopping and Notifications are
+  read live; Labels and Deviations are built into `ntm-user:backend`, so
+  changing one means `update` rebuilds.
 - The persona's Profile lives in the `Style` document on the backend. The style
   procedure is the base skill `ntm:style`, which reads it (tentative: one extra
   document read per message; the fallback is copying the persona into the user
@@ -353,9 +359,9 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
   Setup creates only Settings and Style, and confirms the names of the rest. The
   pauses database is its own document, titled `Paused dates`, with a line
   explaining what it holds.
-- Pushover keys: working default, the user key and default app token in the
-  Settings document, and a job's own app token in that job's prompt. Not
-  strongly held.
+- Pushover keys: the user key and default app token are built into
+  `ntm-user:notify`, so changing one means `update` rebuilds; a job's own app
+  token goes in that job's prompt.
 - The base is a guide the user's agent follows. Only contract names and call
   shapes are fixed.
 - The generated user plugin bundles the connector when the user is on Linear.

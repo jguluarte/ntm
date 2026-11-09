@@ -10,12 +10,11 @@ description: >-
 
 # ntm:self-test
 
-Runs every skill a job uses, the backend operations they need on tasks,
-comments, labels and databases, and one of the plugin's agents, once, on a task
-and a database made for the purpose and canceled and emptied at the end. Run it
-in chat, in a new chat after installing `ntm-user`: it's the first thing to run
-after install, and the thing to run again after changing Todo list in your
-settings.
+Runs every skill a job uses, the requests to `ntm-user:backend` they need on
+tasks, comments, labels and databases, and one of the plugin's agents, once, on
+a task and a database made for the purpose and canceled and emptied at the end.
+Run it in chat, in a new chat after installing `ntm-user`: it's the first thing
+to run after install, and the thing to run again after `ntm-user` is rebuilt.
 
 ## Usage
 
@@ -25,14 +24,15 @@ settings.
 
 ## What it uses
 
-- Load `ntm:conventions`.
+- `ntm-user:backend`, asked in plain words for what each step needs.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
-  label by its real name from Labels in your settings, in no project. Keep its
-  id once created; `ABC-12` below stands for it.
+  label by the name `ntm-user:backend` gives it, in no project. Keep its id once
+  created; `ABC-12` below stands for it.
 - One throwaway database, titled `ntm self-test`, at list level. It's not one of
-  the databases in `ntm:conventions`; only this skill knows it.
-- If an earlier run left either behind (`fetch open` shows a task with that
-  title; `read database` finds the database), remove them first, as Cleanup
+  the user's databases; only this skill knows it, and its first write creates
+  it.
+- If an earlier run left either behind (every open item includes a task with
+  that title; reading the database finds it), remove them first, as Cleanup
   says, so this run starts clean.
 
 ## Steps
@@ -40,7 +40,8 @@ settings.
 Run in order. Each ends with one line, `<n>. <step>: pass` or
 `<n>. <step>: FAIL: <why>`. Stop at the first failure and go to Cleanup. A call
 that fails for a backend reason (a timeout, a server error) gets one retry, as
-the conventions say; a second failure is the step's failure.
+`ntm-user:backend` says; a second failure is the step's failure. An answer of
+`Backend CAN'T: <why>` fails the step with that why.
 
 ### 1: ready-check
 
@@ -49,11 +50,11 @@ text after `Ready-check FAILED:` is the why.
 
 ### 2: create task
 
-The guide's `create task` with the title, a one-line description
+Ask `ntm-user:backend` to create a task with the title, a one-line description
 (`ntm self-test, <today>; safe to remove`), the label, and nothing else. Create
 it new; a canceled one from an earlier run is not a match. Pass when it comes
 back with an id. If the backend rejects the label, the why is
-`no-autoschedule label missing; run /ntm:configure-todo-list`.
+`no-autoschedule label missing; run /ntm:setup`.
 
 ### 3: plan
 
@@ -61,7 +62,8 @@ back with an id. If the backend rejects the label, the why is
 test, so that is their approval. Take the plan it proposes as approved when it
 dates only that task, paused day or not; otherwise answer that only ABC-12
 moves, and approve that. The $no-autoschedule label doesn't stop it; in chat the
-user has the final say. Pass when `read task` shows the planned date as today.
+user has the final say. Pass when task ABC-12, asked of `ntm-user:backend`,
+shows the planned date as today.
 
 ### 4: today
 
@@ -92,7 +94,8 @@ returns its delivery block instead of sending. Show the block and pass as
 
 ### 7: close
 
-`set status` to done. Pass when `read task` shows it closed.
+Ask `ntm-user:backend` to change ABC-12's status to done. Pass when task ABC-12
+shows it closed.
 
 ### 8: completed
 
@@ -109,50 +112,52 @@ returns its delivery block instead of sending. Show the block and pass as
 
 ### 11: database
 
-`write database` on the throwaway database with the content `self-test <today>`,
-then `read database` returns the same content. Pass when it does.
+Ask `ntm-user:backend` to write the throwaway database with the content
+`self-test <today>`, then to read it. Pass when the read returns the same
+content.
 
 ### 12: write comment
 
-`write comment` on ABC-12 with `ntm self-test comment, <today>`. Pass when
-`read comments` shows it; keep its id.
+Ask `ntm-user:backend` to add the comment `ntm self-test comment, <today>` to
+ABC-12. Pass when task ABC-12 shows it; keep its id.
 
 ### 13: update comment
 
-`update comment` on that comment, by its id, with
-`ntm self-test comment, <today>, updated`. Pass when `read comments` shows the
-new text.
+Ask `ntm-user:backend` to change that comment, by its id, to
+`ntm self-test comment, <today>, updated`. Pass when task ABC-12 shows the new
+text.
 
 ### 14: add label
 
-`add labels` on ABC-12 with the $pending-shipment label, by its real name from
-Labels. Pass when `read task` shows it. If the backend rejects the label, the
-why is `pending-shipment label missing; run /ntm:configure-todo-list`.
+Ask `ntm-user:backend` to add the $pending-shipment label to ABC-12. Pass when
+task ABC-12 shows it. If the backend rejects the label, the why is
+`pending-shipment label missing; run /ntm:setup`.
 
 ### 15: remove label
 
-`remove labels` on ABC-12 with the same label. Pass when `read task` no longer
-shows it and still shows the $no-autoschedule label.
+Ask `ntm-user:backend` to remove the same label from ABC-12. Pass when task
+ABC-12 no longer shows it and still shows the $no-autoschedule label.
 
 ### 16: agent
 
 Ask the estimator agent for an Estimate, a time, for ABC-12, with its id, title
 and description. Pass on a `time: ABC-12 ~<time>` line. When the estimator agent
-isn't available in this session, read `agents/estimator.md` from the installed
-plugin and follow it yourself, as the conventions' "Chat, jobs and agents" says,
-and end the line `(no agent here; followed agents/estimator.md)`.
+isn't available in this session, read `agents/estimator.md` from the newest
+installed `ntm` and follow it yourself, and end the line
+`(no agent here; followed agents/estimator.md)`.
 
 ## Cleanup
 
 Always, whether the steps passed or stopped, and in this order; one line each,
 `cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
 
-- **The task:** if it was created, `set status` to canceled, so it never counts
-  as work done (leave it done when the todo list has no canceled status). Where
-  the backend keeps databases in tasks, cancel the database's task the same way.
-- **The database:** if it was written, `write database` it empty.
-- **The label:** if step 14 added it and step 15 didn't remove it,
-  `remove labels` it.
+- **The task:** if it was created, ask `ntm-user:backend` to change its status
+  to canceled, so it never counts as work done (leave it done when the todo list
+  has no canceled status). When `ntm-user:backend` keeps databases in tasks,
+  cancel the database's task the same way.
+- **The database:** if it was written, ask `ntm-user:backend` to write it empty.
+- **The label:** if step 14 added it and step 15 didn't remove it, ask
+  `ntm-user:backend` to remove it.
 
 Nothing else on the todo list is touched: the test dates, comments on, labels,
 closes and cancels its own task and empties its own database only, plus the one
@@ -168,7 +173,6 @@ After the cleanup lines, one line:
   Steps.
 
 On a failure, add one line with the fix when it's plain: a `ready-check` failure
-carries its own fix; a missing label is `/ntm:configure-todo-list`; a notify
-failure is `/ntm:configure-notifications`; a backend operation that errored on a
-backend of your own means the operation's description under Todo list needs
-correcting, with `/ntm:configure-todo-list`.
+carries its own fix; a missing label is `/ntm:setup`; a notify failure is
+`/ntm:configure-notifications`; a request that errored on a backend of your own
+means its calls in `ntm-user:backend` need correcting, with `/ntm:setup`.

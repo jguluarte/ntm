@@ -23,9 +23,9 @@ Load `ntm-user:backend` to read the user's conventions.
 The `Paused dates` database opens with the line
 `The days when nothing gets planned automatically.` Under its `## Paused dates`
 heading it holds one line per pause, sorted by start date. Each line is bare,
-with no list marker:
-`YYYY-MM-DD: <why>` for a single day, or `YYYY-MM-DD to YYYY-MM-DD: <why>` for a
-range; the single line `None.` when there are none.
+with no list marker: `YYYY-MM-DD: <why>` for a single day, or
+`YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when
+there are none.
 
 A missing database, or one with no pause lines, means there are no pauses. If
 the read itself fails, stop and return `Pause FAILED: <why>`, so a caller never
@@ -34,11 +34,11 @@ takes an unreadable database for "not paused".
 A line whose dates have no year is invalid. Whenever the database is read, for
 any reason, ignore those lines and remove them on the next save.
 
-To save, write the whole content, only the lines under `## Paused dates`
-changed (`None.` if nothing is left); when the database is missing, the content
-is the opening line, the `## Paused dates` heading and the lines. Pauses never
-overlap: before saving, merge any that overlap into one line covering all their
-days, with their reasons joined by `; ` in start-date order.
+To save, write the whole content, only the lines under `## Paused dates` changed
+(`None.` if nothing is left); when the database is missing, the content is the
+opening line, the `## Paused dates` heading and the lines. Pauses never overlap:
+before saving, merge any that overlap into one line covering all their days,
+with their reasons joined by `; ` in start-date order.
 
 ## Usage
 

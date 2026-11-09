@@ -16,9 +16,9 @@ A Style document has one of two shapes:
 
 ## A Profile
 
-The `Profanity:` line first, then the headings below, exactly as written and in
-this order. Everything under a heading is the user's, in their words. Setup
-writes every heading, even when its section stays empty.
+The headings below, exactly as written and in this order. Everything under a
+heading is the user's, in their words. Setup writes every heading, even when its
+section stays empty.
 
 ### Required
 
@@ -27,23 +27,31 @@ snap back when something slides, how they celebrate a win, and what they would
 never say. Two or three sentences; for plain, `Plain.` and one sentence on
 manner. Without it, `ntm:style` writes the message plain.
 
+Plain is the last resort: a plain reminder is easy to swipe away. Push for a
+format the user already enjoys, such as a reality competition's judges, a
+cooking contest host, a drill sergeant, a coach at halftime or a nature
+documentary narrator. How hard it goes is the user's call: swearing, shade,
+roasting, whatever they want.
+
 ### Optional
 
 An empty or missing part means its default.
 
-- `Profanity: <yes or no>`: whether swearing is fine. Default: no.
 - `### What gets you to read`: what gets a reminder opened (brevity, humor, a
   running bit) and how long a message runs. Default: one or two plain sentences.
 - `### The reminders`: what the morning, afternoon, evening, week and completed
   are in the theme's terms. Default: morning is the setup, afternoon the nudge,
   evening how the day ended, week the recap and what's coming, completed the
   credits.
-- `### When something keeps slipping`: the levels in order, each with its name
-  and after how many earlier days it starts, then the climb rule. Default: one
-  level, the same every day.
+- `### Responding to procrastination`: do you want the messages to respond
+  differently when you're procrastinating certain tasks? How do you want that?
+  Do you want escalating levels of shade? The levels in order, each with its
+  name and after how many earlier days it starts, then the climb rule. Default:
+  one level, the same every day.
 - `### Motifs`: recurring bits from the theme's world or the user's life, a
-  short name each, then a `Repeat limit:` line. Default: no motifs, and a motif
-  rests for 20 messages.
+  short name each, then a `Repeat limit:` line. Push for a few weeks' worth of
+  variety. Default: no motifs, and a motif rests until most of the others have
+  had a turn.
 - `### Examples`: one per level and one for nothing open, with household tasks
   and ids like `ABC-12`. Default: none; the Register alone sets the energy.
 
@@ -70,4 +78,3 @@ These hold for every Style document, so none states them:
 - A title is written with its message, in its theme, never the reminder's name.
 - No joke shape, pun or opening from a line in `Message history`.
 - Examples lend energy, never sentences.
-- The afternoon never climbs.

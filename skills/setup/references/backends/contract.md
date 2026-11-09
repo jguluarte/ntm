@@ -67,8 +67,8 @@ here. Skills call operations by these names; keep them exactly.
 ### `ping`
 
 Makes one read that proves the connector works and sees the todo list named in
-Todo list. Says how to tell sign-in expired from wrong account from backend
-error (the names `ntm:ready-check` reports).
+Todo list. Says how to tell sign-in expired, wrong account and backend error
+apart, with the fix for each; `ntm:ready-check` reports them.
 
 ### `fetch open`
 
@@ -129,83 +129,72 @@ project), or adds a blocked-by link; nothing else changes.
 Reads or writes a database, as Databases says. `write database` creates a
 missing database with the content given.
 
-## Requests
+## What base skills do with it
 
-Base skills ask `ntm-user:backend` for what they need in plain words, one
-request at a time. `ntm-user:backend` answers each request with the calls to
-make, built from the operations it names below, and the shape of what comes
-back. A backend that covers every operation covers every request. A request it
-can't place returns `Backend CAN'T: <why>`. A new feature adds its requests here
-and its operations above.
+Base skills load `ntm-user:backend` and name what they need in the domain's
+words (`/ntm-user:backend find open items planned for today.`). The agent then
+does it with the calls `ntm-user:backend` teaches. Each need below names the
+operations it uses, so a backend that covers every operation covers every need.
+When the backend has no way to do one, `ntm-user:backend` teaches the agent to
+say `Backend CAN'T: <why>`. A new feature adds its needs here and its operations
+above.
 
 ### `today's open items`
 
-Open tasks planned today or earlier. Uses `fetch open`. Returns those tasks with
-the standard fields.
+Open tasks planned today or earlier, with the standard fields. Uses
+`fetch open`.
 
 ### `open items planned <span>`
 
-Open tasks planned in the span. Uses `fetch open`. Returns those tasks with the
-standard fields.
-
-### `open items to plan`
-
-Open tasks with no planned date or one before today, not blocked, and not
-excluded (see the rules' Excluded tasks). Uses `fetch open`. Returns those tasks
-with the standard fields.
+Open tasks planned in the span, with the standard fields. Uses `fetch open`.
 
 ### `every open item`
 
-Every open task, blocked ones included, and the list's projects. Uses
-`fetch open`. Returns the tasks with the standard fields, and each project with
-its name and labels.
+Every open task, blocked ones included, with the standard fields, and the list's
+projects, each with its name and labels, and its summary when the skill names
+it. Uses `fetch open`.
 
 ### `items done <span>`
 
-Tasks closed in the span: done, plus canceled and duplicate on request. Uses
-`fetch closed`. Returns those tasks with their completion time.
+Tasks closed in the span, with their completion time: done, plus canceled and
+duplicate when the skill names them. Uses `fetch closed`.
 
 ### `watched items`
 
 For price watch users only: the open tasks carrying the $price-watch label,
-themselves or through their project. Uses `fetch open`. Returns those tasks with
-the standard fields.
+themselves or through their project, with the standard fields. Uses
+`fetch open`.
+
+### `closed items with an Amazon alert`
+
+For price watch users only: closed tasks, canceled and duplicate included, that
+still carry the $has-amazon-alert label, with the standard fields and their
+completion time. Uses `fetch closed`.
 
 ### `task <id>`
 
-One task. Uses `read task` and `read comments`. Returns its description,
-blocked-by relations and comments.
+One task, with its description, blocked-by relations and comments. Uses
+`read task` and `read comments`.
 
 ### `create a task`
 
-A new task with a title, description, labels and parent. Uses `create task`.
-Returns the new task's id and url, as Writing says.
+A new task with a title, description, labels, project, parent and blocked-by
+links, ending with its id and url, as Writing says. Uses `create task`.
 
 ### `change a task`
 
 Any of a task's planned date, status, labels, estimate, comments, duplicate of,
-title or description, and nothing else. Uses `set planned date`,
+title, description, project or blocked-by links, and nothing else, ending with
+success or failure, as Writing says. Uses `set planned date`,
 `clear planned date`, `set status`, `add labels`, `remove labels`,
 `write comment`, `update comment`, `mark duplicate of` and `update task`.
-Returns success or failure, as Writing says.
 
 ### `read or write <database>`
 
 The Settings document or one of its sections, or a database under Databases.
 Uses `read database` and `write database`; a first write creates a missing
-database, such as self-test's throwaway one. A read returns the content or says
-it's missing; a write returns success or failure, as Writing says.
-
-### `how to word a task`
-
-How to name a task in anything the user reads. Uses no operation. Returns the
-rules' "Talking to the user about tasks".
-
-### `ping` (request)
-
-Proves the backend answers. Uses `ping`. Returns that it answered, or
-`Backend CAN'T: <why>` naming sign-in expired, wrong account or backend error,
-with how to fix it.
+database, such as self-test's throwaway one. A read ends with the content, or
+that it's missing; a write with success or failure, as Writing says.
 
 ## Databases
 
@@ -249,7 +238,8 @@ Lists a todo list's status names, so each class can be matched to real names.
 
 Only where the backend stores estimates on a scale of its own: reads the
 estimates already set on some of the list's tasks, so the backend's scale can be
-suggested when the user doesn't know it.
+suggested when the user doesn't know it. The first review uses it too, when it
+asks the estimate question.
 
 ### `list labels`
 

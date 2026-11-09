@@ -2,15 +2,15 @@
 
 _What each reminder's message says. The messenger agent creates this database
 from ntm's template and reads it on every run; change it to change what your
-messages say. Delete a subsection to go back to ntm's default. How they sound is
-the style's job, not this database's._
+messages say. Delete a reminder's rule to go back to ntm's default. How they
+sound is the style's job, not this database's._
 
 ## Per reminder
 
-_One subsection per reminder, titled with the reminder: the facts the messenger
-is given, what the sentences say and what the list under them holds. The Fact
-table is what ntm hands the messenger; leave it as it is. Change the sentences
-and the list._
+_One rule per reminder, titled with its name: the facts the messenger is given,
+what the sentences say and what the list under them holds. The Fact table is
+what ntm hands the messenger; leave it as it is. Change the sentences and the
+list._
 
 ### Morning
 

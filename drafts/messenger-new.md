@@ -58,7 +58,7 @@ One input per line.
 | `reminder:`  | morning, afternoon, evening, week or completed                                                | this or `kind:`               |
 | `kind:`      | any other word, such as `self-test`                                                           | this or `reminder:`           |
 | `job:`       | the job's name, such as `morning-reminder`                                                    | yes                           |
-| the facts    | for a reminder, the lines its Message rules entry names                                       | for a reminder; `none` counts |
+| the facts    | for a reminder, the lines its message rule names                                              | for a reminder; `none` counts |
 | `message:`   | for a kind, its one fact: a line of plain text                                                | for a kind                    |
 | `wording:`   | the user's own rule for wording or linking tasks, from settings; it wins over the conventions | no                            |
 | `app token:` | a Pushover app token, for a job that sends from its own Pushover app                          | no                            |
@@ -97,13 +97,13 @@ Read the user's `Message rules` database with `read database`. If it's missing,
 create it with `write database` from `references/databases/message-rules.md` in
 the newest installed `ntm`, notes included, then use it.
 
-For a reminder, follow its entry under `## Per reminder`: the facts, what the
-sentences say and what the list holds. If the entry is missing, use the
-template's. A kind has no entry.
+For a reminder, find its message rule there, such as the `morning` rule, and
+follow it: the facts, what the sentences say and what the list holds. If the
+rule is missing, use the template's. A kind has no rule.
 
 ### 3. Write the sentences
 
-Write one or two plain sentences, as the entry says. For a kind, say the
+Write one or two plain sentences, as the message rule says. For a kind, say the
 `message:` line plainly.
 
 The facts are everything the message may say; add none of your own. Carry task
@@ -120,8 +120,8 @@ or as `wording:` says. Never use its full title.
 The tone opens with the job in plain words (`Morning reminder; …`), then the
 facts in a phrase each: what's on the table, what's carried over and from when,
 what closed, what's still open, what's started, what's coming. It names every
-task id the message should name, unless the entry says fewer; the style counts
-and records ids from the tone.
+task id the message should name, unless the message rule says fewer; the style
+counts and records ids from the tone.
 
 The style is the user's own. Follow it as written. It returns the message with
 `Title: …` as its last line.
@@ -134,8 +134,8 @@ titled with the job in plain words (`Title: Morning reminder`).
 
 ### 5. Add the list
 
-When the entry has a list, put it under the styled lines after a blank line. One
-task per line, no bullet: the task linked as the conventions say, then
+When the message rule has a list, put it under the styled lines after a blank
+line. One task per line, no bullet: the task linked as the conventions say, then
 `(~<time>)`, `(was <date>)` and `(started)`, each only when given. A kind has no
 list.
 

@@ -134,8 +134,8 @@ user's todo list may use other names, and the settings are what count.
   forward right now. What's in the way is an open blocking task linked to it, a
   reason described in its comments, or both. Waiting on an order usually gets
   the $pending-shipment label instead. A blocked-by relation alone doesn't make
-  a task blocked; see Blocks and blocked by. The class is empty when the todo
-  list has no such status.
+  a task blocked; see Blocks and blocked by in the task management rules. The
+  class is empty when the todo list has no such status.
 - **done**: finished.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.
@@ -151,12 +151,6 @@ on the todo list; the names shown here are the defaults. A label written with a
 default name: use its real name from Labels, and never show the `$` to the user.
 Any of them can sit on a task or on a project; on a project, every task in it
 carries it too (see Project labels).
-
-- **$no-autoschedule:** the user has opted this task out of automatic planning.
-  Planners never pick it, but once the user dates it themselves, it's reminded
-  about like any other dated task.
-- **$pending-shipment:** something has been ordered for this task and hasn't
-  arrived, so the user can't start it.
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -178,13 +172,9 @@ fixed title in parentheses below. A user who renamed one says so under
 Deviations. Read and write them with the guide's `read database` /
 `write database`. Each database has one writer; everything else only reads it.
 
-- **pauses** (`Pauses`): the pause schedule, under `## Pauses`. `ntm:pause`
-  keeps it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
   much history to keep; the user changes it there.
-- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
-  hands the estimator what it needs from it.
 
 Where the backend has no documents, the guide keeps each database in the
 description of an open task titled with the database's title and labeled
@@ -199,26 +189,11 @@ its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
 - **For planning and reminders:** `fetch open`, which includes blocked tasks.
-  Keep excluded tasks in the results; Excluded tasks, below, says who skips
-  them.
+  Keep excluded tasks in the results; Excluded tasks, in the task management
+  rules, says who skips them.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.
-
-### Excluded tasks
-
-Excluded labels from automatic scheduling, in Planning in your settings, lists
-the labels planners never pick; by default $no-autoschedule and
-$pending-shipment. A task is excluded when it carries one of them, itself or
-through its project (see Project labels). A task in the blocked status is always
-excluded too; that isn't a setting.
-
-Planners skip excluded tasks: they never pick or date them. Reminders don't: any
-open task the user has dated gets reminded about, excluded or not.
-
-Planners also never plan onto a paused day (`/ntm:pause --check` over the span
-says which days are). A date the user set on a paused day stands, and gets its
-reminders.
 
 ## Dates
 
@@ -226,33 +201,6 @@ Today is the user's local date: the run knows the local time, a scheduled job's
 prompt states the timezone, and Timezone in About you is the fallback.
 
 Compare planned dates as `YYYY-MM-DD` strings.
-
-## Planned dates
-
-Planners set, move and clear planned dates freely.
-
-A date is **stale** when it's earlier than today and the task is still open.
-
-## Relationships
-
-How each relation affects planning. Planning in your settings can say otherwise;
-these are the defaults.
-
-### Blocks and blocked by
-
-A task blocked by open linked tasks can be planned for any day after the planned
-days of all those blockers. Never the same day, but not necessarily the next
-either: any later day works. A blocker's planned day is its planned date. A
-blocker with no planned date, or a stale one, has no planned day, and the tasks
-it blocks wait. A planner can date a blocker and then the task it blocks in the
-same run.
-
-For example, if task `two` is blocked by task `one`, then `two` can be planned
-for Wednesday only if `one` is planned for Tuesday or earlier. If `one` has no
-planned day, `two` can't be planned yet.
-
-The user also uses blocked-by loosely, to push one thing behind another; that's
-fine, and nothing to question them about.
 
 ## Writing to the todo list
 

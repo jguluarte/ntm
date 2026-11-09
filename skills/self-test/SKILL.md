@@ -1,13 +1,14 @@
 ---
 name: self-test
 description: >-
-    Checks that the user's task list can do what every backend must: create,
+    A test that the user's task list can do what every backend must: create,
     read, find, plan, label, comment on, estimate, change and close a throwaway
     task, give it a sub-task and mark that a duplicate, and write and read a
-    throwaway database, then cleans up and sends a success message. Reports each
-    step as it passes or fails. The first thing to run after installing ntm and
-    ntm-user ("test ntm", "run the self test", "is everything wired up?"), and
-    the smoke test for a backend the user described themselves.
+    throwaway database, then clean up and have the messenger agent send a
+    success message. Each step's result is shown as it passes or fails. The
+    first thing to run after installing ntm and ntm-user ("test ntm", "run the
+    self test", "is everything wired up?"), and the smoke test for a backend the
+    user described themselves.
 ---
 
 # ntm:self-test
@@ -15,8 +16,8 @@ description: >-
 A test that this user's task list can do the core interactions every backend
 must support, on a task and a database made for the purpose. Run it in a new
 chat after installing `ntm-user`, and again after `ntm-user` is rebuilt. Never
-run it unasked: a run writes to the task list and sends a push. Once the user
-starts it, run it without asking.
+run it unasked: a run writes to the task list, and the messenger agent sends a
+push. Once the user starts it, run it without asking.
 
 ## Usage
 
@@ -38,7 +39,7 @@ first failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
-Follow `/ntm:ready-check`; it passes when you reach `Ready-check OK`.
+Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 
 ### 2. Create a task
 
@@ -126,14 +127,15 @@ behind didn't pass.
 
 ### 14. Send the success message
 
-Only when every step before it passed. Ask the messenger agent to write a short
-success message in the user's style and send it: ntm is ready. Make them smile.
-It passes when the messenger returns `Sent:`, or a delivery block, which you
-show the user.
+Only when every step before it passed. Ask the messenger agent with
+`job: self-test` and the message to send: ntm is ready, a short success message
+that makes them smile. It passes when the messenger returns `Sent:`, or a
+delivery block, which you show the user. A `Messenger NEEDS` answer fails the
+step.
 
 ## Result
 
 One line: `Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a
-failure, add the fix when it's plain: a ready-check failure carries its own; a
-missing label, or an operation that errored on a backend the user described
-themselves, is `/ntm:setup`.
+failure, add the fix when it's plain: for a ready-check failure, the fix in its
+failure line; for a missing label, or an operation that errored on a backend the
+user described themselves, `/ntm:setup`.

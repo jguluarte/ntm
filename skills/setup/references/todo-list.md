@@ -143,7 +143,7 @@ Deviations with `/ntm:settings`. Name the missing ones in one line, and on a
 plain "ok" create each with `create database` and this first content:
 
 - **pauses:** the line `The days when nothing gets planned automatically.`, then
-  `## Pauses` with `None.` under it.
+  `## Paused dates` with `None.` under it.
 - **message history:** its first content is this frontmatter:
 
     ```

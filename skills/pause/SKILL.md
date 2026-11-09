@@ -18,8 +18,8 @@ use `--check`, and read its answer as whether each day is paused.
 
 The `Paused dates` database, kept where `ntm-user:backend` says, opens with the
 line `The days when nothing gets planned automatically.`, so anyone who opens it
-knows what it holds. Under its `## Pauses` heading it holds one line per pause,
-sorted by start date. Each line is bare, with no list marker:
+knows what it holds. Under its `## Paused dates` heading it holds one line per
+pause, sorted by start date. Each line is bare, with no list marker:
 `YYYY-MM-DD: <why>` for a single day, or `YYYY-MM-DD to YYYY-MM-DD: <why>` for a
 range; the single line `None.` when there are none.
 
@@ -32,11 +32,12 @@ A line whose dates have no year is invalid. Whenever the database is read, for
 any reason, ignore those lines and remove them on the next save.
 
 To save, write the database as `ntm-user:backend` says, with the whole content,
-only the lines under `## Pauses` changed (`None.` if nothing is left); when the
-database is missing, the content is the opening line, the `## Pauses` heading
-and the lines. Pauses never overlap: before saving, merge any that overlap into
-one line covering all their days, with their reasons joined by `; ` in
-start-date order. When the database is missing, the first write creates it.
+only the lines under `## Paused dates` changed (`None.` if nothing is left);
+when the database is missing, the content is the opening line, the
+`## Paused dates` heading and the lines. Pauses never overlap: before saving,
+merge any that overlap into one line covering all their days, with their reasons
+joined by `; ` in start-date order. When the database is missing, the first
+write creates it.
 
 ## Usage
 

@@ -11,7 +11,7 @@
 ## Databases
 
 - **pauses** (`Paused dates`): the days when nothing gets planned automatically,
-  under `## Pauses`. `ntm:pause` keeps it.
+  under `## Paused dates`. `ntm:pause` keeps it.
 - **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
   hands the estimator what it needs from it.
 

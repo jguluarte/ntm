@@ -68,8 +68,7 @@ here. Skills call operations by these names; keep them exactly.
 
 Makes one read that proves the connector works and sees the todo list named in
 Todo list. Says how to tell sign-in expired from wrong account from backend
-error, the names the `ping` request returns in `Backend CAN'T: <why>`, which
-`ntm:ready-check` relays.
+error (the names `ntm:ready-check` reports).
 
 ### `fetch open`
 

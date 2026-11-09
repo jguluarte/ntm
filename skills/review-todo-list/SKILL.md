@@ -20,9 +20,9 @@ Without it, the review proposes one.
 
 ## Before you start
 
-Load `ntm-user:backend` first: it holds the list's rules, and every read and
-write below is a request to it in plain words. It gives the call to make, and
-you make it.
+Load `ntm-user:backend` first: it teaches this list's rules and calls; do every
+read and write below as it says. If it won't load, or says the list can't do
+something, explain what happened to the user.
 
 ## Why review exists
 
@@ -45,7 +45,7 @@ lighter option:
 
 1. Read the task review log (see The task review log), and the Estimate pattern
    from the Planning section of the Settings document.
-2. Ask `ntm-user:backend` for every open item, with each project's summary.
+2. Find every open item, with each project's summary.
 
 A task is **unreviewed** when it's open and has no estimate.
 
@@ -80,13 +80,13 @@ Propose, as one numbered list, one short line each, only for tasks you'd change:
 
 A plain "ok" approves the whole list; the user can strike items by number. If
 nothing stands out, say so in one line and move on. Write what they approve as
-soon as they approve it, asking `ntm-user:backend` to change each task.
+soon as they approve it.
 
 ## 2. Order of operations
 
-Ask `ntm-user:backend` for each unreviewed task in this review, plus any
-reviewed ones the user named; each comes with its blocked-by links and comments.
-For a blocked task with no blocked-by link, its comments say what it waits on.
+Read each unreviewed task in this review, plus any reviewed ones the user named,
+with its blocked-by links and comments. For a blocked task with no blocked-by
+link, its comments say what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside this review:
@@ -146,10 +146,9 @@ again for any task it already answered ahead, and drop those early answers. When
 the task was broken up after your guess, log the new proposal as `guess`.
 
 Once a task is settled, in the same turn that presents the next one (or ends the
-session): ask `ntm-user:backend` to change the task (the estimate, plus any
-approved title, description or blocked-by link), add its `## Estimates` entry to
-the log, and pass the settled estimate to the estimator with its next ask, so
-writes never make the user wait.
+session): write the settled estimate (and any approved title, description or
+blocked-by link), add its `## Estimates` entry to the log, and pass the settled
+estimate to the estimator with its next ask, so writes never make the user wait.
 
 ## Breaking up tasks
 
@@ -161,20 +160,19 @@ user just wants to tease things apart so they can do it in smaller pieces.
   don't, propose the pieces yourself.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
-  write only that: the original as a change to the task, the new tasks as the
-  next bullet says. New tasks get the original's project and parent. When the
-  order matters, the later task is blocked by the earlier one. Don't default to
-  sub-tasks.
-- Ask `ntm-user:backend` to create each new task, the way its rules for creating
-  tasks say. They join the end of the review order un-estimated, unless the user
-  asks to do them next.
+  write only that: the original, then the new tasks as the next bullet says. New
+  tasks get the original's project and parent. When the order matters, the later
+  task is blocked by the earlier one. Don't default to sub-tasks.
+- Create each new task as `ntm-user:backend`'s rules for creating tasks say.
+  They join the end of the review order un-estimated, unless the user asks to do
+  them next.
 
 ## The task review log
 
 The `Task review log` database: it's how reviewing learns to work better with
-the user over time. Read and write it through `ntm-user:backend`, which knows
-where it lives. When it's missing, the first write creates it with the two
-sections below. Save it whenever you change it, leaving the rest as it was.
+the user over time. Read and write it where `ntm-user:backend` keeps it. When
+it's missing, the first write creates it with the two sections below. Save it
+whenever you change it, leaving the rest as it was.
 
 **`## How you work`:** how the user estimates and breaks up tasks, learned so
 that review can come to propose most of their list the way they would. Short

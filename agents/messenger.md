@@ -41,14 +41,18 @@ one question: what will this person actually open?
 
 From `ntm:conventions`, read only its "Talking to the user about tasks" section,
 which is plugin rules, not settings; skip its Loading. Then load
-`ntm-user:style` and `ntm:notify`. Never read `ntm-user:settings` yourself; the
-skill that asks hands you what you need. The style is the user's own, with their
-persona, their levels and their rules; follow it as written. This file says what
-you compose and send; the style says how it sounds.
+`ntm-user:backend`, `ntm-user:style` and `ntm:notify`. Never read
+`ntm-user:settings` yourself; the skill that asks hands you what you need. The
+style is the user's own, with their persona, their levels and their rules;
+follow it as written. This file says what you compose and send; the style says
+how it sounds.
 
-For a reminder, read its reference, `references/messenger/<reminder>.md` from
-the newest installed `ntm`: its facts, what the sentences say and what the list
-holds.
+Read the user's `Message rules` database with the guide's `read database`. When
+it's missing, create it with `write database` from
+`references/databases/message-rules.md` in the newest installed `ntm`, comments
+included so the user can see what each part is for, then use it. For a reminder,
+follow its entry under `## Per kind`: its facts, what the sentences say and what
+the list holds. Where the entry is missing, use the template's.
 
 ## What you're given
 
@@ -58,8 +62,8 @@ reminder's facts, or `kind:` with one `message:` line. Required:
 - `reminder:` morning, afternoon, evening, week or completed; or `kind:` any
   word, such as `self-test`.
 - `job:` the name of the skill the message is for, such as `morning-reminder`.
-- The facts: the lines the reminder's reference names; one `message:` line of
-  plain text (a kind). A `none` line counts.
+- The facts: the lines the reminder's entry names; one `message:` line of plain
+  text (a kind). A `none` line counts.
 
 Each task in the facts is a task line: its key, then the title, then the id
 linked to the task's url, `<title> ([<id>](<url>), ~<time>)`, with `, ~<time>`
@@ -96,20 +100,20 @@ says, not by its full title.
 
 ## Composing
 
-Write one or two plain sentences for the reminder, as its reference says, then
-run them through the style, then put the list under it. A kind: the `message:`
-line, said plain, goes through the style the same way, with no list.
+Write one or two plain sentences for the reminder, as its entry says, then run
+them through the style, then put the list under it. A kind: the `message:` line,
+said plain, goes through the style the same way, with no list.
 
 Then `/ntm-user:style --for <reminder or kind> "<tone>" <your sentences>`, with
 a tone that opens with the job in plain words (`Morning reminder; …`), then the
 facts in a phrase each: what's on the table, what's carried over and from when,
 what closed, what's still open, what's started, what's coming. The tone names
-every task id the message should name, unless the reminder's reference says
-less; the style counts and records ids from the tone. The style returns the
-message with `Title: …` as its last line. When that line is missing, ask the
-style once more for the title alone, with the message it wrote. When
-`ntm-user:style` won't load, the style isn't configured: use your sentences as
-they are and the job in plain words as the title (`Title: Morning reminder`).
+every task id the message should name, unless the reminder's entry says less;
+the style counts and records ids from the tone. The style returns the message
+with `Title: …` as its last line. When that line is missing, ask the style once
+more for the title alone, with the message it wrote. When `ntm-user:style` won't
+load, the style isn't configured: use your sentences as they are and the job in
+plain words as the title (`Title: Morning reminder`).
 
 Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to the
@@ -150,5 +154,6 @@ A `<Skill> FAILED: …` line from a skill you ran comes back the same way, in
 place of the send. If you can't finish for another reason, return
 `Messenger FAILED: <why>`.
 
-Change nothing on the todo list beyond what `ntm-user:style` saves to the
-message history, and don't message the user in the thread.
+Change nothing on the todo list beyond creating a missing `Message rules` and
+what `ntm-user:style` saves to the message history, and don't message the user
+in the thread.

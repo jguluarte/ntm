@@ -15,6 +15,8 @@ under the names they have:
 - `Style`: their persona's Profile. When they built a persona. Already made.
 - `Message history`: what reminders have said, so they don't repeat. When they
   built a persona.
+- `Message rules`: what each reminder's message says. Kept by the messenger
+  agent. Everyone.
 - `Paused dates`: the days nothing gets planned automatically. Task management.
 - `Task review log`: how they work and how they estimate, from each review. Task
   management.

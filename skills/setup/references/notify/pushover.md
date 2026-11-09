@@ -1,25 +1,13 @@
----
-name: notify
-description: >-
-    Sends a notification to the user's phone through the channel chosen in their
-    settings, Pushover or the scheduled task's own push. Use whenever a skill,
-    job or workflow needs to deliver a notification, alert or reminder to the
-    user, even if the channel isn't named. Trigger on phrases like "notify me",
-    "send me a push", "remind me on my phone", "alert me", "ping me", or any
-    context where the output is a mobile notification rather than a file or
-    message in another app.
----
+# ntm-user:notify
 
-# ntm:notify
-
-Sends a notification to the user's phone. Any job or workflow can use it to
-reach them. This is the only skill in the system that sends anything; every
-other skill returns text and the job decides what goes out.
+Sends a notification to the user's phone through Pushover. Any job or workflow
+can use it to reach them. This is the only skill in the system that sends
+anything; every other skill returns text and the job decides what goes out.
 
 ## Usage
 
 ```
-/ntm:notify --title "<title>" --message "<message>" [--url <link>]
+/ntm-user:notify --title "<title>" --message "<message>" [--url <link>]
     [--priority n] [--from <skill>] [--app-token <t>] [--user-key <u>]
 ```
 
@@ -35,21 +23,10 @@ other skill returns text and the job decides what goes out.
 - `user-key`: with `app-token`, a user key for this one call
   (`/ntm:configure-notifications` uses both for its test push).
 
-## Channel
+## Notifications
 
-Load `ntm-user:settings` by name and read Notifications. Its Channel line says
-which section below applies: `pushover` or `claude-push`. Anything else written
-there is how the user wants to be notified (quiet hours, priorities, …): follow
-it as written. `--app-token` alone replaces only the app token; the channel and
-the user key still come from Notifications. With `--app-token` and `--user-key`,
-the channel is Pushover with those keys, whatever Notifications says, and
-`ntm-user:settings` not loading is no failure (the test push runs before it
-exists). With neither a channel nor those two, return
-`Notify FAILED: no channel configured; run /ntm:configure-notifications`.
-
-A linked task arrives in `message` as the conventions' "Talking to the user
-about tasks" says (`[<words> (<id>)](<url>)`); each channel below converts it as
-that section says.
+Load `ntm-user:settings` by name and read Notifications: how the user wants to
+be notified (quiet hours, priorities, …). Follow it as written.
 
 ## Pushover
 
@@ -58,7 +35,10 @@ Sends through the [Pushover API](https://pushover.net/api).
 ### Credentials
 
 The Pushover app token and Pushover user key from Notifications in your
-settings, or the ones `--app-token` and `--user-key` give.
+settings, or the ones `--app-token` and `--user-key` give. `--app-token` alone
+replaces only the app token; the user key still comes from Notifications. With
+both, `ntm-user:settings` not loading is no failure (the test push runs before
+it exists).
 
 ### Sending
 
@@ -143,35 +123,10 @@ Success returns `{"status":1,"request":"..."}`. Anything else is a failure:
 - If curl itself fails (a network error or timeout), retry once. Never retry
   after a `"status":1` response, because that would send a duplicate.
 
-## Claude push
-
-Nothing is sent mid-run. The scheduled task's own completion push carries the
-message instead, so this skill only hands it back to the job as a delivery
-block:
-
-```
-NOTIFY VIA FINAL REPLY
-<title>
-<message>
-```
-
-Return the title on the line after the marker and the message under it, with
-linked tasks kept as the markdown they arrived in, as the conventions' "Talking
-to the user about tasks" says. The job's final reply is then everything after
-the marker line, verbatim, and nothing else, as the conventions' Results say.
-The completion push shows that reply. `url` and `priority` have no effect on
-this channel.
-
-In chat the block is returned the same way; the reply that shows it is the
-delivery.
-
 ## Result
 
 - `Sent: <title>` when Pushover answered `"status":1`.
-- The delivery block above on the `claude-push` channel, which has no length
-  cap.
-- `Notify TOO LONG: <the cap and why>; this was <n>` on Pushover when the
-  message or title is over its cap (see Limits); nothing was sent. Shorten it
-  and call once more.
+- `Notify TOO LONG: <the cap and why>; this was <n>` when the message or title
+  is over its cap (see Limits); nothing was sent. Shorten it and call once more.
 - `Notify FAILED: <why>` otherwise, with the response's `errors` or curl's error
   as the why.

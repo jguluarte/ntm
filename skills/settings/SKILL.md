@@ -1,18 +1,17 @@
 ---
 name: settings
 description: >-
-    Shows the user's ntm settings (ntm-user:settings) and changes them: a line,
-    a section, or Deviations. The one place ntm-user.plugin is regenerated;
-    every configure skill ends here. Run when the user says "show my settings",
-    "change my timezone", "add a deviation", or asks where a value lives.
+    Shows the user's ntm settings, the Settings document on their todo list, and
+    changes them, or says where a change goes: a scheduled task, the Style
+    document, or a rebuild. Run when the user says "show my settings", "change
+    my timezone", "rename a label", or asks where a value lives.
 ---
 
 # ntm:settings
 
-`ntm-user:settings` holds every value the user agreed to: About you, Todo list,
-Labels, Planning, Shopping, Notifications, Deviations. It lives in the
-`ntm-user` plugin, which only this skill produces. Changing a value means a new
-`ntm-user.plugin` the user installs in place of the old one.
+The Settings document on the user's todo list holds the values they agreed to in
+setup, under fixed headings: About you, Labels, Planning, Shopping,
+Notifications. A missing section means its defaults.
 
 ## Usage
 
@@ -21,41 +20,40 @@ Labels, Planning, Shopping, Notifications, Deviations. It lives in the
 /ntm:settings <words>
 ```
 
+## Setup
+
+Load `ntm-user:backend` to read the user's conventions. If it won't load, say in
+one line that nothing is set up yet and that `/ntm:setup` is the start, and
+stop.
+
+If the Settings document can't be read or written, say what went wrong and stop.
+
+## Where a change goes
+
+- **About you, Planning, Shopping, Notifications:** that section of the Settings
+  document; the next run uses it.
+- **Labels:** the Labels section, then `/ntm:update` rebuilds.
+- **Their jobs** (what runs, on which days, at what time, the model): their
+  scheduled tasks, through `ntm:schedules`.
+- **How reminders talk to them:** the Style document, through `ntm:style`.
+- **Built-in choices** (their backend, todo list, notification channel, Pushover
+  keys, features): `/ntm:update`.
+- **The trigger word `ntm`:** a renamed fork of ntm, as the README says.
+
 ## Bare
 
-Load `ntm-user:settings` by name. If it won't load, say in one line that nothing
-is configured yet and that `/ntm:configure` is the start, and stop.
-
-Show it section by section, as written, with the Pushover keys shortened to
-their last four characters. Then say what can change here: a line (a timezone, a
-label's real name, an excluded label), a whole section, and Deviations (anything
-they do differently from `ntm:conventions`). Add that `/ntm:configure <part>` is
-the guided version for a whole part, and that a different trigger word than
-`ntm` means a renamed fork of ntm, as the README says.
+Read the Settings document and show it section by section, as written. Then say
+in a line or two where a change goes, as the list above gives it.
 
 ## With words
 
-Load `ntm-user:settings` by name. If it won't load, say `/ntm:configure` is the
-start and stop.
-
-Make that change:
-
-- **A line:** find it by section and label and write the new value in the same
-  style. Ask once if the words leave the line unclear.
-- **A section:** the text they give replaces the section under its heading. A
-  `configure-<part>` arriving here brings its sections the same way.
-- **Deviations:** write what they say under `## Deviations`, as they say it;
-  `ntm:conventions` reads it last and lets it override. To drop one, remove its
-  lines.
-
-Then regenerate, as the next section says. When the words only ask to see
-something, show it and stop.
+When the words only ask to see the Settings document, show it and stop. For a
+change to a section of it, find the line by section and label, and write the new
+value in the same style; ask once if the words leave the line unclear. For their
+jobs or the Style document, load the skill the list names and follow it with
+their words. For anything else, say where it goes, and stop.
 
 ## Regenerating `ntm-user.plugin`
-
-The only place this happens. Every `configure-<part>` and `ntm:configure` ends
-by loading this skill and following this section with the section text it
-produced.
 
 You build `ntm-user` yourself from this guide, in a fresh folder,
 `/tmp/ntm-user`; it says what the plugin must hold, not its text. First load
@@ -101,7 +99,9 @@ implies `--stay-fresh`; the tone is freeform. It must:
   something keeps slipping section gives for that count (for a persona, its own
   levels); any other task is on the first level. Then add one entry, with
   today's date, the new line and the task ids the tone names, pruned to the
-  `Keep:` line in the database's frontmatter;
+  `Keep:` line in the database's frontmatter. When the database is missing,
+  `write database` creates it with the frontmatter
+  `Keep: 60 entries or 8 weeks`;
 - with `--for`, end with a `Title:` line that says what the message is about in
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.

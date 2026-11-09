@@ -14,28 +14,29 @@ Work the user dated themselves for a paused day still gets its reminders.
 "Pause Friday" or "unpause next week" means adding or ending a pause. Jobs only
 use `--check`, and read its answer as whether each day is paused.
 
+## Setup
+
+Load `ntm-user:backend` to read the user's conventions.
+
 ## Where pauses live
 
-The `Pauses` database (see Databases in `ntm:conventions`) holds one line per
-pause under its `## Pauses` heading, sorted by start date. Each line is bare,
-with no list marker: `YYYY-MM-DD: <why>` for a single day, or
-`YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when
-there are none.
+The `Pauses` database holds one line per pause under its `## Pauses` heading,
+sorted by start date. Each line is bare, with no list marker:
+`YYYY-MM-DD: <why>` for a single day, or `YYYY-MM-DD to YYYY-MM-DD: <why>` for a
+range; the single line `None.` when there are none.
 
-Read it with the guide's `read database`. A missing database, or one with no
-pause lines, means there are no pauses. If the read itself fails, stop and
-return `Pause FAILED: <why>`, so a caller never takes an unreadable database for
-"not paused".
+A missing database, or one with no pause lines, means there are no pauses. If
+the read itself fails, stop and return `Pause FAILED: <why>`, so a caller never
+takes an unreadable database for "not paused".
 
 A line whose dates have no year is invalid. Whenever the database is read, for
 any reason, ignore those lines and remove them on the next save.
 
-To save, use the guide's `write database` with the whole content, only the lines
-under `## Pauses` changed (`None.` if nothing is left); when the database is
-missing, the content is the `## Pauses` heading and the lines. Pauses never
-overlap: before saving, merge any that overlap into one line covering all their
-days, with their reasons joined by `; ` in start-date order. When the database
-is missing, `write database` creates it, with the `## Pauses` heading.
+To save, write the whole content, only the lines under `## Pauses` changed
+(`None.` if nothing is left); when the database is missing, the content is the
+`## Pauses` heading and the lines. Pauses never overlap: before saving, merge
+any that overlap into one line covering all their days, with their reasons
+joined by `; ` in start-date order.
 
 ## Usage
 
@@ -61,12 +62,12 @@ uses `YYYY-MM-DD`.
 
 ## Dates
 
-Load `ntm:conventions`. A range covers both its start and end days. A weekday
-name means the next one, today included when today is that day (the example
-below was typed on a Thursday); "next <weekday>" means that weekday of next week
-(weeks start on Monday); a date without a year is the next one. Show the
-resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is
-visible; there is no confirmation round-trip before saving.
+A range covers both its start and end days. A weekday name means the next one,
+today included when today is that day (the example below was typed on a
+Thursday); "next <weekday>" means that weekday of next week (weeks start on
+Monday); a date without a year is the next one. Show the resolved date in the
+reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no
+confirmation round-trip before saving.
 
 ## With `--check`
 

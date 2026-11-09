@@ -4,18 +4,19 @@ description: >-
     Sets up and maintains the user's ntm jobs, the scheduled tasks that send
     their reminders: works out with them which skills run on which days, at what
     time, under what title, and builds the jobs from that. Creates and updates
-    the jobs, lists them, runs one now, turns one off or on, deletes. Run from
-    /ntm:configure, or when the user asks about their reminders' schedule ("set
-    up my reminders", "change the morning time", "turn off the evening
-    reminder").
+    the jobs, lists them, runs one now, turns one off or on, deletes. Run with
+    --setup from setup's handoff, or when the user asks about their reminders'
+    schedule ("set up my reminders", "change the morning time", "turn off the
+    evening reminder").
 ---
 
 # ntm:configure-schedule
 
 The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
 never trigger, routine or cron job. This is a chat conversation: short rounds,
-the user's answers win. It changes nothing in `ntm-user:settings` and writes no
-file: the jobs it creates are the result.
+the user's answers win. The scheduled tasks are the only record of the jobs:
+nothing in the Settings document holds them, so a change edits the scheduled
+task itself, and this skill writes no file.
 
 ## Tools
 
@@ -23,10 +24,17 @@ Use the scheduling tools this session has: they list, create, update, delete and
 run scheduled tasks. If there are none, scheduled tasks aren't available from
 here; say so and stop.
 
-Load `ntm:conventions`: Timezone under About you in your settings is the
-timezone every job runs in. On a first run from `ntm:configure`,
-`ntm-user:settings` doesn't exist yet: use the timezone `configure` hands you,
-and whether a price watch project was chosen.
+Ask `ntm-user:backend` for Timezone under About you in the Settings document:
+it's the timezone every job runs in.
+
+## Finding the user's jobs
+
+With `--setup "<schedules and model>"`, go to Setting up from setup's handoff.
+Otherwise, `list_triggers`, recurring only. A job is ntm's when its stored
+prompt (`derived_state.prompt`) loads an `ntm:` skill; when the entry doesn't
+carry the prompt, ask the user which jobs are theirs. With none, walk the user
+through setting them up (Walking the schedule). With some, go to When the
+schedule is already established.
 
 ## What a job can run
 
@@ -43,8 +51,8 @@ times here are only suggestions:
 | `completed`   | What got done over a span, sent     | Sunday 20:00, for the last 7 days |
 | `price-watch` | Which watched items are a good deal | Every day, 07:00                  |
 
-Offer `price-watch` on every later run. On a first run, offer it only when
-`configure` says a price watch project was chosen. It runs on paused days too.
+Offer `price-watch` only when the Built line in `ntm-user:backend` names price
+watch. It runs on paused days too.
 
 ## The prompt
 
@@ -113,6 +121,16 @@ covers, even when it's the default. Its key is `week`, and its steps:
 4. Load `ntm:reminder` and run
    `/ntm:reminder --type week --span "<span>"`.
 ```
+
+## Setting up from setup's handoff
+
+`--setup "<schedules and model>"` comes from the end of `ntm:setup`, where the
+user already agreed which jobs they want, on which days, at what time, under
+what title, and the model they run on. Don't walk the schedule or ask again.
+Read the text as the approved table of Walking the schedule, step 2, and its
+model as the answer to step 4; follow step 3 and create each job as that walk
+does. When the text leaves a job's time or title out, use What a job can run's
+suggestion and a plain title.
 
 ## Walking the schedule
 
@@ -218,7 +236,9 @@ as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron
 expression), on or off, and the last run's status in a word (succeeded, failed)
 and its time. Omit `trigger_id`s unless asked, and never show an app token. Then
 ask what to change: a time, the days, a title, the prompt, the model, on or off,
-delete, or a new job (walk that one as above).
+delete, or a new job (walk that one as above). Every change edits that scheduled
+task with `update_trigger`, as the sections below say; a prompt the user changes
+goes in as its new `prompt`, never by deleting and recreating the job.
 
 ## Running a job now
 
@@ -268,6 +288,5 @@ history, turn it off instead.
 
 ## Finishing
 
-End with one line per job: title, schedule in words, on or off. Run from
-`ntm:configure`, that list goes back to it; nothing here needs `ntm-user.plugin`
-regenerated.
+End with one line per job: title, schedule in words, on or off. Run from setup's
+handoff, that list is the reply; nothing here needs the user plugin rebuilt.

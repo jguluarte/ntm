@@ -46,10 +46,12 @@ or lack thereof.
 #### no scope
 
 > Found two tasks for today:
+>
 > - Drop off package at UPS (ABC-123)
 > - Do the laundry (ABC-90)
 
 #### with scope "errands"
 
 > Found two tasks for today, one is an errand:
+>
 > - Drop off package at UPS (ABC-123)

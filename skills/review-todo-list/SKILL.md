@@ -61,9 +61,10 @@ the agent isn't available, read `agents/estimator.md` from the newest installed
 `ntm` and follow it.
 
 When `ntm-user:backend` says how to fit their estimates to the list's own scale,
-work that out with them as it says. Then ask `ntm-user:backend` to write their
-answer, in their words with any mapping you agreed, as the Estimate pattern line
-under Planning in the Settings document, and use it for the rest of this review.
+work that out with them as it says. Then write their answer, in their words with
+any mapping you agreed, as the Estimate pattern line under Planning in the
+Settings document, as `ntm-user:backend` says. Use it for the rest of this
+review.
 
 ## What to review
 

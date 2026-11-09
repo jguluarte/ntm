@@ -4,7 +4,8 @@ description: >-
     Reviews the user's task list with them in chat: closes obsolete or duplicate
     tasks, then estimates unreviewed ones and breaks up big ones, with their
     approval. Run by the user in chat, never by a job ("let's review my list",
-    "review the kitchen project", "estimate the garage work").
+    "review my todo list", "review the kitchen project", "estimate the garage
+    work").
 ---
 
 # ntm:review-todo-list
@@ -64,9 +65,8 @@ quickly. Keep it alive in case the user has more questions.
 
 Send it an Estimate request for a size, with the task as it stands, any end
 state you assumed, and anything the user said about size. Hold its answers until
-their task comes up. If it returns an `ask:` line, put the question to the user
-and send their answer back. If they ask what the ways to estimate are, send it
-an Explain estimating request and pass its answer on.
+their task comes up. If the user asks what the ways to estimate are, send it an
+Explain estimating request and pass its answer on.
 
 Present one task per message:
 
@@ -87,7 +87,7 @@ line of its description (`Estimate: 2 hours`), replacing any earlier one. Send
 the estimator a Log request with the settled estimate and what the user said or
 changed, in the same turn you present the next task.
 
-#### Break up big tasks
+#### Breaking up big tasks
 
 When the estimator says a task doesn't fit a sitting, or the user says it's too
 big, help the user break it up: suggest a few ways to split it. Not every task

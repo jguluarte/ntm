@@ -173,19 +173,16 @@ then report) can be applied.
 
 ## Setting something up with the user
 
-How `ntm:configure-todo-list` writes the description with the user. Walk this
-contract with them, heading by heading, in its order. For each operation, name
-the tool and the parameters that carry it out. Once they name the tool for
-`ping`, confirm the connector as the skill says. Read the tool's schema from the
-ToolSearch result rather than guessing: which date field is the planned date,
-how results paginate, whether labels add or replace, whether a comment can be
-edited in place. Where a choice is theirs (which date field, which grouping is a
-project), propose one and let them react. Try a read by hand where it's cheap.
-Writes other than the setup operations wait for `/ntm:self-test`.
+How `ntm:configure-todo-list` writes the guide with the user: walk this file
+with them, heading by heading, naming the tool and parameters for each
+operation. Once they name the tool for `ping`, confirm the connector as the
+skill says. Read each tool's schema from ToolSearch rather than guessing: the
+date field, pagination, whether labels add or replace, whether a comment edits
+in place. Where a choice is theirs (which date field, which grouping is a
+project), propose one and let them react. Try a read by hand where it's cheap;
+writes other than the setup operations wait for `/ntm:self-test`.
 
-Say which of the gaps under What the backend needs to have the backend has. For
-no date field, or no way to tell open from closed, look with them for something
-that covers it: a field or status they can repurpose, a label, or a different
-place to keep the list, such as a table in a Claude Doc. Carry on once it's
-covered. With no documents, each database lives in the description of an open
-task titled with the database's title, as Databases says; tell them.
+Name the gaps their backend has. For a fatal one, look with them for a cover: a
+field or status to repurpose, a label, or another place for the list, such as a
+table in a Claude Doc. With no documents, tell them databases live in tasks (see
+Databases).

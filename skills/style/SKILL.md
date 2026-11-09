@@ -19,11 +19,12 @@ the message plain.
 ## Usage
 
 ```
-/ntm:style [--stay-fresh] [--for <kind>] ["<tone>"] <message>
+/ntm:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
 ```
 
-`<kind>` is any kind the messenger sends, such as `morning` or `self-test`, and
-implies `--stay-fresh`. The tone is freeform.
+`<reminder>` is `morning`, `afternoon`, `evening`, `week` or `completed`, or any
+kind the messenger sends, such as `self-test`, and implies `--stay-fresh`. The
+tone is freeform.
 
 ## Writing
 

@@ -1,8 +1,5 @@
-afternoon-reminder
-evening-reminder
 fix-todo-list
 help
-morning-reminder
 pause
 plan
 price-watch

@@ -30,9 +30,9 @@ currency from Country and currency under About you in your settings.
 
 # 1: Todo list rules
 
-Load `ntm-user:backend` to read the user's conventions, then read About you and
-Shopping from the Settings document: "your settings" below means those. If
-whoever loaded this skill gave a date, that is today.
+Load `ntm-user:backend` to read the user's conventions, then read About you,
+Labels and Shopping from the Settings document: "your settings" below means
+those. If whoever loaded this skill gave a date, that is today.
 
 # 2: Ready check
 

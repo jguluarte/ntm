@@ -42,8 +42,7 @@ You were given a task id and today's date, and nothing else. Load
 `ntm-user:backend` first to read the user's conventions: the list's rules, and
 how each list operation named below (`read task`, `read comments`,
 `read database`, `write comment`, `update comment`) is carried out. Then read
-About you and Shopping from the Settings document: "your settings" below means
-those. If no date came, use today.
+Your settings, below, from the Settings document. If no date came, use today.
 
 The user vets what goes on the watch: the task names a real item they want to
 buy, and the stores they name are ones they trust. Expect an ordinary job: find

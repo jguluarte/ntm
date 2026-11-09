@@ -26,10 +26,11 @@ This skill only reads the todo list. It never changes a task.
 
 ## Setup
 
-1. Ask `ntm-user:backend` for today's open items. With words, ask it for the
-   open items planned in their span instead, then keep the ones in their scope.
+Ask `ntm-user:backend` for today's open items. With words, ask it instead for
+the open items planned in the span the words describe, then keep the ones in any
+scope they name.
 
-If a step fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop and
+If that fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop and
 return `Today FAILED: <what failed>`.
 
 ## Result

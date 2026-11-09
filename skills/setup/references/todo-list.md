@@ -55,9 +55,8 @@ and come back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
 For their own backend, go through the contract with them before Statuses. Its
-section Setting something up with the user says how. After that, Statuses,
-Labels and Databases do their steps with the tools they named for the setup
-operations.
+section Setting something up with the user says how. After that, Statuses and
+Labels do their steps with the tools they named for the setup operations.
 
 ## Linear
 
@@ -82,8 +81,8 @@ connector below:
    settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
 
-Labels, the price watch project and the databases don't need to be made by hand:
-Labels and Databases below create them.
+Labels and the price watch project don't need to be made by hand: Labels below
+creates them.
 
 ### The connector
 
@@ -132,31 +131,6 @@ carry them.
 Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
 it carries both; `create project` says whether `labels` replaces the set.
-
-## Databases
-
-The system keeps its own records in four databases on the todo list, each under
-a fixed title: Pauses, Message history, Task review log, Price watch stores. For
-each, `read database` by its title; one that's found is kept. If they already
-keep one under another title, say to add that title under Deviations with
-`/ntm:settings`. Name the missing ones in one line, and on a plain "ok" create
-each with `create database` and this first content:
-
-- **pauses:** `## Pauses` with `None.` under it.
-- **message history:** its first content is this frontmatter:
-
-    ```
-    ---
-    Keep: 60 entries or 8 weeks
-    ---
-    ```
-
-- **task review log:** `## How you work` and `## Estimates`, both empty.
-- **price watch stores:** only when a price watch project was chosen; created in
-  that project, with the headings `## Seed`, `## Vouched`, `## Blocked`, all
-  empty; the first price watch run reports an empty Seed. In the same line, say
-  they can name a few stores they trust, by category with their domains, to put
-  under Seed.
 
 ## Planning
 

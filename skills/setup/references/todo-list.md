@@ -1,15 +1,4 @@
----
-name: configure-todo-list
-description: >-
-    The user's todo list, with them in chat. On a first run, where it lives and
-    the agreements ntm works by on it (the backend, the list, the labels, the
-    databases, how planning and shopping work), returned as settings. Once
-    configured, a change to those settings. Run from ntm:configure, or when the
-    user says "set up my todo list", "connect Linear", "rename my labels" or
-    "change how my week is planned".
----
-
-# ntm:configure-todo-list
+# Todo list setup
 
 Settles Todo list, Labels, Planning and Shopping in `ntm-user:settings` with the
 user and returns their text. Everything here is an agreement with a proposed
@@ -58,18 +47,64 @@ in one line: Linear (free for individuals; the guide ntm ships) or their own
 backend, which they describe. With no tracker at all, a table in a Claude Doc is
 an easy one to build on.
 
-Read the chosen backend's guide (`references/linear.md` under `ntm:conventions`)
-now, since the settings don't name it yet, and follow its Setup section in
-order; a part the guide ties to a step below waits for that step. Before its
-first call, confirm the connector: ToolSearch for the tool the guide's `ping`
-names. If it isn't there, ask them to connect it on the Connectors tab and come
-back, and stop with
+For Linear, read the guide, `backends/linear.md`, for its operations, and follow
+Linear below in order; a part tied to a step below waits for that step. Before
+its first call, confirm the connector: ToolSearch for the tool the guide's
+`ping` names. If it isn't there, ask them to connect it on the Connectors tab
+and come back, and stop with
 `Configure-todo-list FAILED: <backend> connector not attached`.
 
 For their own backend, go through the contract with them before Statuses. Its
 section Setting something up with the user says how. After that, Statuses,
 Labels and Databases do their steps with the tools they named for the setup
 operations.
+
+## Linear
+
+Backend is `linear`. Walk the parts below with the user, in order. The calls are
+the guide's operations and Linear setup operations, at the end.
+
+### Starting from nothing
+
+Only when the user doesn't have Linear yet. These happen outside the chat, on
+the user's side; walk them through in order and wait for "done" before The
+connector below:
+
+1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
+   issues.
+2. The new workspace comes with one team; that team is the todo list. Its key
+   (the few capital letters Linear asks for when naming it, `HOME` for
+   `HOME-12`) starts every task's id, so pick one they'll be happy reading in
+   reminders.
+3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
+   Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
+   right now" status, they add one named Blocked in the team's workflow
+   settings; otherwise the $pending-shipment label and blocked-by links cover
+   that ground.
+
+Labels, the price watch project and the databases don't need to be made by hand:
+Labels and Databases below create them.
+
+### The connector
+
+Check that a signed-in Linear connector is present. If it isn't there, walk the
+user through it: in Claude's settings, the Connectors tab, add Linear and sign
+in to their workspace, then come back here and say so.
+
+### The todo list
+
+`list todo-lists`; propose the team. List name is its name, List id its id.
+
+Once the team is chosen, suggest the user turn on Parent auto-close in the
+team's settings under Workflow, so a parent closes as soon as its sub-tasks are
+all done.
+
+### The price watch project
+
+`list projects`; ask which project holds purchases waiting for a good price, or
+none (no price watch; the $price-watch label on a project later turns it on). If
+they want one that doesn't exist yet, settle its name now; it's created in
+Labels, once the project labels exist.
 
 ## Statuses
 
@@ -96,7 +131,7 @@ carry them.
 
 Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
-it carries both; the guide says whether `labels` replaces the set.
+it carries both; `create project` says whether `labels` replaces the set.
 
 ## Databases
 
@@ -232,3 +267,40 @@ One more line, for every backend: once `ntm-user` is installed, run
 operations the jobs use on a throwaway task, and is the smoke test for the
 guide. Say it now when run directly. When run from `ntm:configure`, return it
 with the sections so `configure` says it at its end.
+
+## Linear setup operations
+
+### `list todo-lists`
+
+`list_teams`. Each comes back with its name and id.
+
+### `create todo-list`
+
+Not needed; Linear has teams to list.
+
+### `list statuses`
+
+`list_issue_statuses` with `team`. Each comes back with its name and `type`; the
+guide's Status classes gives each one's class.
+
+### `list labels`
+
+`list_issue_labels` with `team` for issue labels; `list_project_labels` with
+`team` for project labels, a separate set.
+
+### `create label`
+
+`save_issue_label` with `name`, `teamId: "<List id>"` and `description` for an
+issue label; `save_project_label` with `name`, `teamId` and `description` for a
+project label.
+
+### `list projects`
+
+`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`. Each
+comes back with its id.
+
+### `create project`
+
+Create the project labels it should carry first (`create label`), then
+`save_project` with `name`, `addTeams` naming the todo list, and `labels`. When
+updating an existing project, pass its current labels plus the missing ones.

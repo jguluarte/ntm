@@ -20,15 +20,14 @@ other skill returns text and the job decides what goes out.
 
 ```
 /ntm:notify --title "<title>" --message "<message>" [--url <link>]
-    [--priority n] [--from <skill>] [--app-token <t>] [--user-key <u>]
+    [--priority n] [--from <job>] [--app-token <t>] [--user-key <u>]
 ```
 
 - `title` and `message` are the notification.
 - `url`: optional link attached below the message, usually a task's `url` field.
 - `priority`: optional; see the optional-fields table. Default 0.
-- `from`: the skill this notification is for, by name, such as
-  `morning-reminder`; anything Notifications says about one reminder is matched
-  by it.
+- `from`: the job's key, such as `morning` or `price-watch`; anything
+  Notifications says about one reminder is matched by it.
 - `app-token`: a Pushover app token for this one call, in place of the default
   in your settings. A job that sends from its own Pushover app carries the token
   in its prompt, and the caller hands it here.

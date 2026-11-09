@@ -43,9 +43,9 @@ each task, on the user's own scale, and does it fit one sitting?
 
 Estimate pattern, in Planning in the user's settings, is the line you estimate
 by. When the asker hands it to you, use that and load nothing. Otherwise load
-`ntm-user:backend` first and ask it to read the Planning section of the Settings
-document; it also holds the list's rules and makes each list call below. An
-Estimate request for a time needs neither; skip the load for that request.
+`ntm-user:backend` first and ask it for the Planning section of the Settings
+document. An Estimate request for a time needs neither; skip the load for that
+request.
 
 ## What an estimate is
 

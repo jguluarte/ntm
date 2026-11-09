@@ -1,12 +1,24 @@
 # Task management rules
 
+## Vocabulary
+
+- **Planner:** a skill that picks tasks and sets their planned dates, such as
+  `ntm:plan`.
+- **Started:** a plannable status that means work has begun (see Status
+  classes). Jobs give credit for it.
+- **Pause:** a day or range when nothing gets planned automatically. Work the
+  user dated themselves still gets its reminders. Kept in the pauses database.
+- **Estimate:** how big a task is; the estimator agent (`agents/estimator.md`)
+  says what it means.
+
 ## System labels
 
 - **$no-autoschedule:** the user has opted this task out of automatic planning.
   Planners never pick it, but once the user dates it themselves, it's reminded
   about like any other dated task.
 - **$pending-shipment:** something has been ordered for this task and hasn't
-  arrived, so the user can't start it.
+  arrived, so the user can't start it. Waiting on an order usually gets this
+  label instead of the blocked status.
 
 ## Databases
 
@@ -17,11 +29,14 @@
 
 ## Excluded tasks
 
-Excluded labels from automatic scheduling, in Planning in your settings, lists
-the labels planners never pick; by default $no-autoschedule and
+Excluded labels from automatic scheduling, in Planning in the Settings document,
+lists the labels planners never pick; by default $no-autoschedule and
 $pending-shipment. A task is excluded when it carries one of them, itself or
 through its project (see Project labels). A task in the blocked status is always
 excluded too; that isn't a setting.
+
+Planning and reminders use `fetch open`, which includes blocked tasks, and keep
+excluded tasks in the results.
 
 Planners skip excluded tasks: they never pick or date them. Reminders don't: any
 open task the user has dated gets reminded about, excluded or not.
@@ -38,8 +53,8 @@ A date is **stale** when it's earlier than today and the task is still open.
 
 ## Relationships
 
-How each relation affects planning. Planning in your settings can say otherwise;
-these are the defaults.
+How each relation affects planning. Planning in the Settings document can say
+otherwise; these are the defaults.
 
 ### Blocks and blocked by
 

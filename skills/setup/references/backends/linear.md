@@ -52,10 +52,9 @@ A task's class comes from `statusType`, Linear's own type for its status:
 - `canceled`: canceled.
 - `duplicate`: duplicate.
 
-One exception: a status named Blocked is the blocked class, whatever its type
-(Deviations can name another). Results carry `status` (the name) and
-`statusType`. `list_issues` and `save_issue` take either a type or a name in
-`state`.
+One exception: a status named Blocked is the blocked class, whatever its type.
+Results carry `status` (the name) and `statusType`. `list_issues` and
+`save_issue` take either a type or a name in `state`.
 
 ## Operations
 
@@ -116,9 +115,8 @@ Change nothing else on the issue.
 ### `set status`
 
 `save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
-type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked` (or
-the name Deviations gives). For a plannable status, pass its name;
-`list_issue_statuses` with `team` lists them.
+type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked`. For a
+plannable status, pass its name; `list_issue_statuses` with `team` lists them.
 
 ### `add labels` / `remove labels`
 

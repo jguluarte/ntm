@@ -129,6 +129,89 @@ project), or adds a blocked-by link; nothing else changes.
 Reads or writes a database, as Databases says. `write database` creates a
 missing database with the content given.
 
+## Requests
+
+Base skills ask `ntm-user:backend` for what they need in plain words, one
+request at a time. `ntm-user:backend` answers each request with the calls to
+make, built from the operations it names below, and the shape of what comes
+back. A backend that covers every operation covers every request. A request it
+can't place returns `Backend CAN'T: <why>`. A new feature adds its requests here
+and its operations above.
+
+### `today's open items`
+
+Open tasks planned today or earlier. Uses `fetch open`. Returns those tasks with
+the standard fields.
+
+### `open items planned <span>`
+
+Open tasks planned in the span. Uses `fetch open`. Returns those tasks with the
+standard fields.
+
+### `open items to plan`
+
+Open tasks with no planned date or one before today, not blocked, and not
+excluded (see the rules' Excluded tasks). Uses `fetch open`. Returns those tasks
+with the standard fields.
+
+### `every open item`
+
+Every open task, blocked ones included, and the list's projects. Uses
+`fetch open`. Returns the tasks with the standard fields, and each project with
+its name and labels.
+
+### `items done <span>`
+
+Tasks closed in the span: done, plus canceled and duplicate on request. Uses
+`fetch closed`. Returns those tasks with their completion time.
+
+### `watched items`
+
+For price watch users only: the open tasks carrying the $price-watch label,
+themselves or through their project. Uses `fetch open`. Returns those tasks with
+the standard fields.
+
+### `parents ready to close`
+
+Open tasks whose sub-tasks are all closed. Uses `fetch open` and `fetch closed`.
+Returns those parents with the standard fields.
+
+### `task <id>`
+
+One task. Uses `read task` and `read comments`. Returns its description,
+blocked-by relations and comments.
+
+### `create a task`
+
+A new task with a title, description, labels and parent. Uses `create task`.
+Returns the new task's id and url, as Writing says.
+
+### `change a task`
+
+Any of a task's planned date, status, labels, estimate, comments, duplicate of,
+title or description, and nothing else. Uses `set planned date`,
+`clear planned date`, `set status`, `add labels`, `remove labels`,
+`write comment`, `update comment`, `mark duplicate of` and `update task`.
+Returns success or failure, as Writing says.
+
+### `read or write <database>`
+
+The Settings document or one of its sections, or a database under Databases.
+Uses `read database` and `write database`; a first write creates a missing
+database, such as self-test's throwaway one. A read returns the content or says
+it's missing; a write returns success or failure, as Writing says.
+
+### `how to word a task`
+
+How to name a task in anything the user reads. Uses no operation. Returns the
+rules' "Talking to the user about tasks".
+
+### `ping` (request)
+
+Proves the todo list answers. Uses `ping`. Returns that it answered, or
+`Backend CAN'T: <why>` naming sign-in expired, wrong account or backend error,
+with how to fix it.
+
 ## Databases
 
 Databases are the documents the system keeps its own records in, on the todo

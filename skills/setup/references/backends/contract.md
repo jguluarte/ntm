@@ -44,34 +44,31 @@ plannable, closed is done, and `set status` to done closes the task.
 
 ## Operations
 
-Cover every operation: the guide's entry for each says what's under its heading
-here. Skills call operations by these names; keep them exactly.
+Skills call these by name; keep the names exactly. For each, the guide gives the
+call, what goes in and what comes back.
 
 ### `ping`
 
-Makes one read that proves the connector works and sees the todo list named in
-Todo list. Says how to tell sign-in expired from wrong account from backend
-error (the names `ntm:ready-check` reports).
+One read that proves the connector works and sees the todo list. Returns pass,
+or which of the failures `ntm:ready-check` reports: sign-in expired, wrong
+account or backend error.
 
 ### `fetch open`
 
-Gets every open task (every plannable status, plus blocked where the todo list
-has one) with the standard fields, paginated, plus every project with its name
-and labels, and its summary when a skill asks for it.
-
-The standard fields are id, title, url (the task's link), status, status class,
-priority, estimate, planned date, labels, project, parent id, completed at and
-updated at. For priority, the entry says which value is highest and which means
-none.
+Every open task (plannable, plus blocked where the list has it), paginated, with
+the standard fields: id, title, url, status, status class, priority (which value
+is highest, which is none), estimate, planned date, labels, project, parent id,
+completed at and updated at. Also every project with its name and labels, and
+its summary on request.
 
 ### `fetch closed`
 
-Gets closed tasks (done; canceled and duplicate on request) with their
-completion time, and says how to limit them to a span and to one label.
+Closed tasks (done; canceled and duplicate on request) with their completion
+time, limited on request to a span and to one label.
 
 ### `read task`
 
-Reads one task with its description and blocked-by relations.
+One task by id, with its description and blocked-by relations.
 
 ### `read comments` / `write comment` / `update comment`
 

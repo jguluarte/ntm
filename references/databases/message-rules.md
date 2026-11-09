@@ -1,17 +1,22 @@
 # Message rules
 
-_What each reminder's message says. These rules are ntm's suggested defaults,
-kept in a database of your own so you can change them: edit a rule to change
-what that message says. The messenger agent creates this database from ntm's
-template and reads it on every run. Delete a reminder's rule to go back to ntm's
-default. How they sound is the style's job, not this database's._
+<!--
+Messenger: this is ntm's template for the user's Message rules database. Write
+the database without these comments: they are for you, never for the user.
+Each reminder has one rule, titled with its name: the facts you are given, what
+the sentences say and what the list under them holds. How the message sounds is
+the style's job, not this database's.
+-->
+
+What each reminder's message says. Edit a rule to change its message, or delete
+it to go back to ntm's default.
 
 ## Per reminder
 
-_One rule per reminder, titled with its name: the facts the messenger is given,
-what the sentences say and what the list under them holds. The Fact table is
-what ntm hands the messenger; leave it as it is. Change the sentences and the
-list._
+<!--
+The Fact table is what ntm hands you: keep it as it is. The user changes the
+sentences and the list.
+-->
 
 ### Morning
 

@@ -49,11 +49,11 @@ you compose and send; the style says how it sounds.
 
 Read the user's `Message rules` database with `read database`. When it's
 missing, create it with `write database` from
-`references/databases/message-rules.md` in the newest installed `ntm`, notes
-included so the user can see what each part is for, then use it. For a reminder,
-find its message rule there, such as the `morning` rule, and follow it: its
-facts, what the sentences say and what the list holds. Where the rule is
-missing, use the template's.
+`references/databases/message-rules.md` in the newest installed `ntm`, then use
+it. Leave out the template's `<!-- -->` comments: they are instructions to you,
+never part of the user's database. For a reminder, find its message rule there,
+such as the `morning` rule, and follow it: its facts, what the sentences say and
+what the list holds. Where the rule is missing, use the template's.
 
 ## What you're given
 

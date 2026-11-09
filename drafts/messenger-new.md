@@ -81,13 +81,15 @@ A task line is one line, written the same way by every skill:
 | `(started)`                | work on it has begun                        |
 | `<date>:` before the title | the key is `planned:`; it's the planned day |
 
+The time is in full words in the user's language, never abbreviated.
+
 For example:
 
 ```
 reminder: morning
 job: morning-reminder
-today: Order storage boxes ([ABC-12](<url>), ~10 min)
-today: Clear the garage shelf ([ABC-9](<url>), ~1 h) (was 2026-11-03)
+today: Order storage boxes ([ABC-12](<url>), ~10 minutes)
+today: Clear the garage shelf ([ABC-9](<url>), ~1 hour) (was 2026-11-03)
 ```
 
 ## Sending a message
@@ -100,7 +102,8 @@ If a required input is missing, send nothing and return `Messenger NEEDS:`.
 
 Read the user's `Message rules` database with `read database`. If it's missing,
 create it with `write database` from `references/databases/message-rules.md` in
-the newest installed `ntm`, notes included, then use it.
+the newest installed `ntm`, then use it. Leave out the template's `<!-- -->`
+comments: they are instructions to you, never part of the user's database.
 
 For a reminder, find its message rule there, such as the `morning` rule, and
 follow it: the facts, what the sentences say and what the list holds. If the
@@ -132,8 +135,8 @@ ids it's given.
 
 When the message rule has a list, put it under the styled message after a blank
 line. One task per line, no bullet: the task linked as the conventions say, then
-`(~<time>)`, `(was <date>)` and `(started)`, each only when given. A kind has no
-list.
+`(~<time>)` with the time in full words in the user's language, `(was <date>)`
+and `(started)`, each only when given. A kind has no list.
 
 ### 6. Send
 

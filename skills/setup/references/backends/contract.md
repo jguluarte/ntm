@@ -122,54 +122,49 @@ description, creating the task if needed.
 
 ## Setup operations
 
-Used by `ntm:configure-todo-list`. For each, say which call does it and what's
-under its heading here.
+Used by `ntm:configure-todo-list`, in the same form as Operations.
 
 ### `list todo-lists`
 
-Lists the todo lists the connector can see, by name and id. Where the backend
-has no todo lists to list, says so (the user names or pastes theirs, or
-`ntm:configure-todo-list` runs `create todo-list`).
+The todo lists the connector sees, by name and id, or that the backend has none
+to list (the user names theirs, or setup runs `create todo-list`).
 
 ### `create todo-list`
 
-Only where the backend has no todo lists to list: makes one with the statuses,
-labels and databases settled so far, and returns its id.
+Only where there are none to list: makes one with the statuses, labels and
+databases settled so far, and returns its id.
 
 ### `list statuses`
 
-Lists a todo list's status names, so each class can be matched to real names.
+A todo list's status names, to match each class to.
 
 ### `sample estimates`
 
-Only where the backend stores estimates on a scale of its own: reads the
-estimates already set on some of the list's tasks, so the backend's scale can be
-suggested when the user doesn't know it.
+Only where estimates use a scale of the backend's own: estimates already set on
+some tasks, to suggest the scale when the user doesn't know it.
 
 ### `list labels`
 
-Lists the todo list's task labels, and its project labels when those are a
-separate set.
+The task labels, and the project labels when those are a separate set.
 
 ### `create label`
 
-Creates a task label by name, with a description, and a project label by name
-when those are a separate set.
+Takes a name and description; makes a task label, and a project label too when
+those are a separate set.
 
 ### `list projects`
 
-Lists every project with its name, id and labels.
+Every project with its name, id and labels.
 
 ### `create project`
 
-Creates a project by name, with the project labels it should carry.
+Takes a name and the project labels it carries; makes the project.
 
 ### `create database`
 
-Creates a database with a given title and first content, at list level or in a
-project, without touching one that already exists (`read database` first). The
-message history database's first content is its frontmatter, which holds its
-`Keep:` line.
+Takes a title, first content and optional project; makes the database, leaving
+one that exists alone (`read database` first). The message history database's
+first content is its frontmatter, which holds its `Keep:` line.
 
 ## Writing
 

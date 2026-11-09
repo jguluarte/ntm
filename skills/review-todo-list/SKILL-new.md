@@ -82,8 +82,8 @@ likely approves it all, asking to skip leaves it for another day, and anything
 else the user says changes it. When they correct an estimate, tell the estimator
 and ask again for the tasks it answered ahead.
 
-When a task is settled, save its estimate and any approved edits to the task. If
-the estimator returned a `points:` line, save the estimate as its point. Send
+When a task is settled, save any approved edits and its estimate, as the last
+line of its description (`Estimate: 2 hours`), replacing any earlier one. Send
 the estimator a Log request with the settled estimate and what the user said or
 changed, in the same turn you present the next task.
 

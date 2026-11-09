@@ -22,17 +22,10 @@ tool does each operation and which of the user's values goes where.
   needs a project label with the same name.
 - **Automations:** Linear can close a parent when its sub-issues are all done
   (Parent auto-close, in the team's settings under Workflow).
-- **Estimates:** `estimate` holds a whole number, and an estimate is that many
-  hours: 2 is two hours. When `## How you work`, in the task review log, gives a
-  point for each of the user's estimates, convert through it: the user's
-  estimate to its point when writing, a point back to their estimate when
-  reading.
-
-Setup doesn't ask about estimates; the user's first review does. Guide them to
-set the team's estimate scale to Linear (1, 2, 3, ...) in the team's settings in
-Linear, under Estimates. When they want points or another scale instead, they
-pick it there, and the estimator works out with them which point each of their
-estimates becomes.
+- **Estimates:** ntm doesn't use Linear's estimate field. An estimate is the
+  `Estimate:` line at the end of the issue's description, such as
+  `Estimate: 2 hours`. `fetch open` reads it from `description`, and
+  `update task` writes it there. Nothing to set up.
 
 ## Status classes
 
@@ -70,8 +63,8 @@ address to `complete_authentication`. In a job, no one can sign in: the how is
 One `list_issues` call per open type: `state` set to `backlog`, `unstarted` and
 `started`. A Blocked status has one of these types, so it comes back too. Each
 call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
-`status`, `statusType`, `priority`, `estimate`, `dueDate`, `labels`, `project`,
-`parentId`, `completedAt`, `updatedAt`. Merge the results.
+`status`, `statusType`, `priority`, `description`, `dueDate`, `labels`,
+`project`, `parentId`, `completedAt`, `updatedAt`. Merge the results.
 
 Also list every project once with `list_projects` (`team: "<List name>"`,
 `fields` `name` and `labels`, plus `summary` when a skill asks for the project's
@@ -129,7 +122,7 @@ Check for an existing match with `list_issues` (`query`) first.
 ### `update task`
 
 `save_issue` with `id` and only the fields the skill changes: `title`,
-`description`, `estimate`, `project` (`project: null` to remove it), and
+`description`, `project` (`project: null` to remove it), and
 `blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
 
 ### Databases

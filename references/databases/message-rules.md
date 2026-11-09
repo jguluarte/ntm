@@ -1,9 +1,10 @@
 # Message rules
 
-_What each reminder's message says. The messenger agent creates this database
-from ntm's template and reads it on every run; change it to change what your
-messages say. Delete a reminder's rule to go back to ntm's default. How they
-sound is the style's job, not this database's._
+_What each reminder's message says. These rules are ntm's suggested defaults,
+kept in a database of your own so you can change them: edit a rule to change
+what that message says. The messenger agent creates this database from ntm's
+template and reads it on every run. Delete a reminder's rule to go back to ntm's
+default. How they sound is the style's job, not this database's._
 
 ## Per reminder
 

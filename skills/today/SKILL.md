@@ -38,11 +38,10 @@ return `Today FAILED: <what failed>`.
 Return plain text for whoever called the skill; the job or skill that called it
 decides what to tell the user and how. Write one task per line, oldest planned
 date first; same date: started first, then by id. Each line is
-`<id> <title> <url> <planned date> <status> <estimate or -> [label, label]`,
-with `(started)` after the status when it's the started one. The brackets hold
-the task's labels, inherited ones included, and stay empty (`[]`) when it has
-none. When the task's status is in the started class, add `(started)` after the
-status, before the labels.
+`<id> <title> <url> <planned date> <status> <estimate or -> [label, label]`.
+When the task's status is in the started class, add `(started)` after the
+status. The brackets hold the task's labels, inherited ones included, and stay
+empty (`[]`) when it has none.
 
 Typed in chat, ask `ntm-user:backend` how to word a task, and present the result
 that way; the raw lines are for skills and jobs.

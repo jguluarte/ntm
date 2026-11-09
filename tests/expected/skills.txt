@@ -1,5 +1,4 @@
 afternoon-reminder
-conventions
 evening-reminder
 fix-todo-list
 help

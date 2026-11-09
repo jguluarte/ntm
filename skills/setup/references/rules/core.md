@@ -128,9 +128,11 @@ else only reads it.
 
 - **settings** (`Settings`): the values the user set up, under fixed headings,
   read by heading. Setup creates it.
-- **message history** (`Message history`): what reminders have said.
-  `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
-  much history to keep; the user changes it there.
+- **message history** (`Message history`): what reminders have said. `ntm:style`
+  keeps it. Its frontmatter holds a `Keep:` line saying how much history to
+  keep; the user changes it there.
+- **message rules** (`Message rules`): what each reminder's message says. Setup
+  creates it from ntm's template; the user changes it there.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title.

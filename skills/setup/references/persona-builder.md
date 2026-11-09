@@ -1,23 +1,19 @@
 # The style profile
 
-How to build the Profile, the half of `ntm-user:style` that holds what the user
-said; the other half is the procedure that reads it. `ntm:configure-style` reads
-this page before it starts and writes the Profile with the user from it.
+How to build the Profile, the Style document setup's persona step writes with
+the user, to the persona contract. The step reads this page before it starts.
 
-This page is for a profile built from scratch (plain or a theme). A persona
-skill keeps its own rules for all of this; none of the sections below are asked
-of it (see User-defined persona in `ntm:configure-style`).
+This page is for a profile built from scratch (plain or a theme). A persona the
+user already has keeps its own rules for all of this; none of the sections below
+are asked of it (see A persona they already have in `persona.md`).
 
-Write the `Profanity:` line and the headings exactly as shown, in this order;
-everything else is the user's, in their words. Write every heading, even when
-its section stays empty; an empty section means its default, as the procedure
-reads it.
+Write the headings exactly as shown, in this order; everything else is the
+user's, in their words. Write every heading, even when its section stays empty;
+an empty section means its default, as the contract says.
 
 ## The shape
 
 ```
-Profanity: <yes or no>
-
 ### Register
 <two or three sentences, or "Plain." and one sentence on manner>
 
@@ -28,14 +24,14 @@ Profanity: <yes or no>
 <morning, afternoon, evening, week, completed: what each is in the theme's
 terms, one line each; or empty for the defaults>
 
-### When something keeps slipping
+### Responding to procrastination
 - <level 1 name> (the everyday one): <what it sounds like>
 - <level 2 name> (after <n> earlier days): <what it sounds like>
 <the climb rule, one line>
 
 ### Motifs
 - <one recurring bit per line, each a short name>
-Repeat limit: <not in the last twenty messages, unless the user says otherwise>
+Repeat limit: <until most of the others have had a turn, or their own rule>
 
 ### Examples
 - <level 1 name>: "<example>"
@@ -47,14 +43,12 @@ The quotes only mark where each example starts and ends.
 
 ## The sections, and what to ask
 
-### Profanity
-
-Whether swearing is fine: `yes` or `no`. Asked once, with the Register.
-
 ### Register
 
-Who is talking, what they sound like, what they never do; two or three
-sentences. For plain: `Plain.` and one sentence on manner (warm, dry, brisk). A
+Who is talking and how they talk to the user: how they snap back when something
+slides, how they celebrate a win, what they would never say; two or three
+sentences. How hard it goes is their call: swearing, shade, roasting, whatever
+they want. For plain: `Plain.` and one sentence on manner (warm, dry, brisk). A
 plain register has no character: the message speaks as itself, and What gets you
 to read carries the line.
 
@@ -81,7 +75,7 @@ what each moment is in its own world. Propose the five in the theme's terms, one
 line each, and let them rename or cut:
 
 - **morning** is the setup: the preview of what's ahead, and a look back only
-  when something slipped into today (a recap that exists only when there's
+  when something carried into today (a recap that exists only when there's
   something to recap).
 - **afternoon** is the middle: the task in progress, the nudge. Never the
   judgement.
@@ -96,10 +90,11 @@ debrief. Ask what they like (a show, a genre, a game) and take the arc from
 that, in their words; this page names no show or game of its own. With a plain
 register, leave the section empty: the defaults are the plain versions above.
 
-### When something keeps slipping
+### Responding to procrastination
 
-What happens when the same task shows up day after day. Earlier days are counted
-as `ntm:settings` says for `ntm-user:style`.
+Ask: do you want the messages to respond differently when you're procrastinating
+certain tasks? How do you want that? Do you want escalating levels of shade?
+Earlier days are counted as `ntm:style` counts them.
 
 Write the user's levels in order, each with the name they give it and after how
 many earlier days it starts. The first level is the everyday one, for fresh work
@@ -126,9 +121,9 @@ follow this section; the afternoon never climbs.
 
 Recurring bits a line can be built from, one per line: from the theme's world,
 or, with a plain register, from their own life (the pets, the house, the hobby,
-the commute). Propose a list; they add, cut and replace. Each is a short name
-the message history records exactly. With brevity, fewer is fine: each is a word
-the line can carry. Empty is fine too.
+the commute). Propose a list, a few weeks' worth of variety; they add, cut and
+replace. Each is a short name the message history records exactly. With brevity,
+fewer is fine: each is a word the line can carry. Empty is fine too.
 
 Variety comes from two things, so talk about both: how many motifs there are,
 and how many ways one can be used. A motif that is only a reference wears out in
@@ -139,10 +134,9 @@ sport, and use it as the analogy for how its recurring bits work: what comes
 back every episode, how a running gag gets a new turn, what the stock moments
 are. Tailor the list to that, in the user's words.
 
-The repeat limit says how long a motif rests before it comes back. Set it with
-them, from the list's size and how far each motif stretches: a short list of
-one-use references needs a long rest; a few rich ones can come back sooner. "Not
-in the last twenty messages" is the default when they don't say.
+The repeat limit says how long a motif rests before it comes back, relative to
+how many there are. The default, when they don't say: until most of the others
+have had a turn. A few rich ones can come back sooner.
 
 ### Examples
 
@@ -150,7 +144,9 @@ One per level, in the level's name, and one for "nothing open" (the evening when
 everything closed: a win for the day, not the year). Task ids are generic, like
 `ABC-12`. The tasks in them are ordinary household ones. They show how each
 level lands, how long it runs, and how a motif ties to the subject. The
-procedure borrows their energy and never their sentences.
+procedure borrows their energy and never their sentences. Read them back and
+revise: with humor, until they laugh at least once; otherwise until each reads
+like something they'd open.
 
 ## A plain example
 
@@ -159,8 +155,6 @@ levels. The ids are the `ABC-12` style; nothing here goes into a user's profile
 as is.
 
 ```
-Profanity: no
-
 ### Register
 
 Plain. Brisk and friendly; says the thing and stops.
@@ -171,7 +165,7 @@ Brevity. One line, and the task is the first thing in it.
 
 ### The reminders
 
-### When something keeps slipping
+### Responding to procrastination
 
 - Everyday (the everyday one): the task, nothing else.
 - Second ask (after 1 earlier day): the task, how many days it has carried, and
@@ -185,7 +179,7 @@ Back to Everyday once the task closes.
 - the cat
 - the garden
 - the long walk
-Repeat limit: not in the last twenty messages.
+Repeat limit: until most of the others have had a turn.
 
 ### Examples
 

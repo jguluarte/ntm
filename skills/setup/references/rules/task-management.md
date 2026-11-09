@@ -53,8 +53,8 @@ A date is **stale** when it's earlier than today and the task is still open.
 
 ## Relationships
 
-How each relation affects planning. Planning in the Settings document can say
-otherwise; these are the defaults.
+How linked tasks limit when a task can be planned. These are the defaults; the
+user's Planning settings can change them.
 
 ### Blocks and blocked by
 

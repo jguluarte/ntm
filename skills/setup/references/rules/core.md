@@ -170,14 +170,13 @@ Every skill a job calls returns plain text. A skill's status line (OK / FAILED)
 starts with its own name, capitalised, hyphens kept (`Self-test FAILED: …`,
 `Ready-check OK`); its data lines are its own format, listed in the skill.
 
-When `ntm-user:notify` returns `Notify TOO LONG: …`, nothing was sent: shorten
-the message or title to fit the cap it names and call it once more. A second
-`Notify TOO LONG` counts as `Notify FAILED`.
+Before sending, keep the message and title within the cap `ntm-user:notify`
+gives for the user's channel.
 
-A job's final reply is one line on what happened. When `ntm-user:notify`
-returned `NOTIFY VIA FINAL REPLY`, the final reply is instead the notification's
-title as its first line and the message under it, then any lines the job's skill
-says to add after the message, nothing else.
+A job's final reply is one line on what happened. On a channel where the job's
+own push is the notification (as `ntm-user:notify` says), the final reply is
+instead the notification: its title as the first line, the message under it,
+then any lines the job adds, nothing else.
 
 ## Creating tasks when the user asks
 

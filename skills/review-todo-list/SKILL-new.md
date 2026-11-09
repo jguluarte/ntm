@@ -61,7 +61,7 @@ ask in this review. It sees nothing of this chat. If it isn't available, read
 `agents/estimator.md` from the newest installed `ntm` and follow it. **Use one
 estimator for this entire run, so they persist context**. When the estimator
 finishes the first one, give it the next two so they're ready for the user
-quickly.
+quickly. Keep it alive in case the user has more questions.
 
 Send it an Estimate request in hours, with the task as it stands, any end state
 you assumed, and anything the user said about size. Hold its answers until their

@@ -146,6 +146,12 @@ isn't available in this session, read `agents/estimator.md` from the newest
 installed `ntm` and follow it yourself, and end the line
 `(no agent here; followed agents/estimator.md)`.
 
+### 17 and on: price watch
+
+Only when the Built line at the top of `ntm-user:backend` names price watch:
+read `references/price-watch.md` and run its steps. Otherwise skip this, with no
+line.
+
 ## Cleanup
 
 Always, whether the steps passed or stopped, and in this order; one line each,
@@ -158,6 +164,7 @@ Always, whether the steps passed or stopped, and in this order; one line each,
   to write it empty when it can't remove it.
 - **The label:** if step 14 added it and step 15 didn't remove it, ask
   `ntm-user:backend` to remove it.
+- **Price watch:** if its steps ran, the Cleanup in `references/price-watch.md`.
 
 Nothing else on the todo list is touched: the test dates, comments on, labels,
 closes and cancels its own task and removes or empties its own database only,

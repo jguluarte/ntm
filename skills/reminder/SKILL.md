@@ -15,7 +15,7 @@ description: >-
 /ntm:reminder --type <morning|afternoon|evening|week> --job <key>
 ```
 
-`--job` is the key of the job that ran it, such as `morning-reminder` or `week`.
+`--job` is the key of the job that ran it, such as `morning-reminder` or `plan`.
 
 ## The facts
 
@@ -37,10 +37,9 @@ conventions, then find the type's tasks. If the todo list can't be read, stop
 with `Reminder FAILED: <why>`.
 
 For week, the tasks are in the show-completed result the job handed: its Done
-and Still open sections. When it handed `Show-completed FAILED`, the lines are
-`done: unavailable` and `open: none`; when it handed no show-completed result,
-leave out `done:` and `open:`. The `planned:` lines come from what plan
-returned, as they are.
+and Still open sections. When it handed `Show-completed FAILED` or no
+show-completed result, the lines are `done: unavailable` and `open: none`. The
+`planned:` lines come from what plan returned, as they are.
 
 Write each task as a task line, as the messenger agent's "What you're given"
 says, with no estimate. Add `(was <date>)` on a task planned before today, and

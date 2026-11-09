@@ -105,7 +105,7 @@ The suggested prompt:
 ```
 <title>.
 Timezone: <Timezone under About you in your settings>.
-1. Run `/ntm:ready-check --notify-failure week`. On
+1. Run `/ntm:ready-check --notify-failure plan`. On
    `Ready-check FAILED`, end the run with what it returned and
    nothing more.
 2. Load `ntm:show-completed` and run
@@ -114,7 +114,7 @@ Timezone: <Timezone under About you in your settings>.
 3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
    `Fix-todo-list FAILED`, carry on.
 4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-5. Load `ntm:reminder` and run `/ntm:reminder --type week --job week`,
+5. Load `ntm:reminder` and run `/ntm:reminder --type week --job plan`,
    handing it what show-completed and plan returned and
    `weekly message: <what the message covers>`.
 Final reply: when the reminder returned a delivery block, the title

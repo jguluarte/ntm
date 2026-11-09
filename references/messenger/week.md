@@ -8,12 +8,12 @@
 | `weekly message:` | optional: which halves the user wants; without it, both |
 
 The sentences: two halves, a sentence or so each. Last week: what got done, as a
-count and a theme, naming what's still open from it by id. With `done: none` and
-open tasks, say nothing closed and what's still open. The week ahead: what's
-coming, as a count and a theme; with `planned: none`, say so. With
-`done: unavailable`, the week ahead only.
+count and a theme, and what's still open. With `done: none` and open tasks, say
+nothing closed and what's still open. The week ahead: what's coming, as a count
+and a theme; with `planned: none`, say so. With `done: unavailable`, the week
+ahead only.
 
-Two sentences can't carry every id: the tone names only the still-open ids, and
-the sentences write them plain (`(HOME-3)`), with no links.
+The tone names only the still-open ids; the sentences write them plain
+(`(HOME-3)`), no links.
 
 No list.

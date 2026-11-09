@@ -47,8 +47,8 @@ persona, their levels and their rules; follow it as written. This file says what
 you compose and send; the style says how it sounds.
 
 For `morning`, `afternoon`, `evening`, `week` and `completed`, read the kind's
-reference, `agents/messenger/references/<kind>.md` from the newest installed
-`ntm`: its facts, what the sentences say and what the list holds.
+reference, `references/messenger/<kind>.md` from the newest installed `ntm`: its
+facts, what the sentences say and what the list holds.
 
 ## What you're given
 
@@ -95,8 +95,8 @@ says, not by its full title.
 ## Composing
 
 Write one or two plain sentences for the kind, then run them through the style,
-then put the list under it. The kind's reference says what the sentences say.
-Any other kind: the `message:` line, said plain; it carries no list.
+then put the list under it. Any other kind: the `message:` line, said plain; it
+carries no list.
 
 Then `/ntm-user:style --for <kind> "<tone>" <your sentences>`, with a tone that
 opens with the job in plain words (`Morning reminder; …`), then the facts in a
@@ -112,8 +112,7 @@ plain words as the title (`Title: Morning reminder`).
 Under the styled lines, a blank line, then the list: one line per task, no
 bullet, the task as a linked task exactly as the conventions' "Talking to the
 user about tasks" says, then `(~<time>)` when given, then `(was <date>)` when
-given, then `(started)` when given. The kind's reference says which tasks the
-list holds.
+given, then `(started)` when given.
 
 ## Sending
 

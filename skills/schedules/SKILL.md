@@ -32,9 +32,9 @@ it's the timezone every job runs in.
 With `--setup "<schedules and model>"`, go to Setting up from setup's handoff.
 Otherwise, `list_triggers`, recurring only. A job is ntm's when its stored
 prompt (`derived_state.prompt`) loads an `ntm:` skill; when the entry doesn't
-carry the prompt, ask the user which jobs are theirs. With none, walk the user
-through setting them up (Walking the schedule). With some, go to When the
-schedule is already established.
+carry the prompt, ask the user which jobs are theirs and which is which. With
+none, walk the user through setting them up (Walking the schedule). With some,
+go to When the schedule is already established.
 
 ## What a job can run
 
@@ -130,7 +130,7 @@ what title, and the model they run on. Don't walk the schedule or ask again.
 Read the text as the approved table of Walking the schedule, step 2, and its
 model as the answer to step 4; follow step 3 and create each job as that walk
 does. When the text leaves a job's time or title out, use What a job can run's
-suggestion and a plain title.
+suggestion and a plain title, and set every time by step 1's jitter rule.
 
 ## Walking the schedule
 
@@ -227,18 +227,16 @@ is never attached to a job.
 
 ## When the schedule is already established
 
-When jobs exist, list them and ask what to change, instead of walking the
-schedule again. `list_triggers`, recurring only. Tell the user's jobs by the
-last step of their stored prompt (`derived_state.prompt`, when the
-`list_triggers` entry carries it; when it doesn't, ask the user which job it
-is), never by title: that step's call is its key, as The prompt says. Show each
-as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron
+When jobs exist, show them and ask what to change, instead of walking the
+schedule again. Tell the user's jobs by the last step of their stored prompt,
+never by title: that step's call is its key, as The prompt says. Show each as:
+title, schedule in words in the user's timezone (from its `CRON_TZ` cron
 expression), on or off, and the last run's status in a word (succeeded, failed)
 and its time. Omit `trigger_id`s unless asked, and never show an app token. Then
 ask what to change: a time, the days, a title, the prompt, the model, on or off,
-delete, or a new job (walk that one as above). Every change edits that scheduled
-task with `update_trigger`, as the sections below say; a prompt the user changes
-goes in as its new `prompt`, never by deleting and recreating the job.
+delete, or a new job (walk that one as above). A prompt the user changes goes in
+with `update_trigger` as its new `prompt`, never by deleting and recreating the
+job.
 
 ## Running a job now
 

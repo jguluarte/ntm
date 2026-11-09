@@ -42,17 +42,13 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 ## The backend
 
-Ask what they keep tasks in today. If they're undecided, offer the two choices
-in one line: Linear (free for individuals; the guide ntm ships) or their own
-backend, which they describe. With no tracker at all, a table in a Claude Doc is
-an easy one to build on.
+Suggest Linear: a free account is enough, ntm ships a guide for it, and you'll
+help create it and connect it now. On a yes, read the guide,
+`backends/linear.md`, for its operations, and follow Linear below in order; a
+part tied to a step below waits for that step.
 
-For Linear, read the guide, `backends/linear.md`, for its operations, and follow
-Linear below in order; a part tied to a step below waits for that step. Before
-its first call, confirm the connector: ToolSearch for the tool the guide's
-`ping` names. If it isn't there, ask them to connect it on the Connectors tab
-and come back, and stop with
-`Configure-todo-list FAILED: <backend> connector not attached`.
+Someone who doesn't want Linear hears that finding something else takes longer,
+and that you're happy to. Then their own backend, below.
 
 For their own backend, go through the contract with them before Statuses. Its
 section Setting something up with the user says how. After that, Statuses,
@@ -87,13 +83,19 @@ Labels and Databases below create them.
 
 ### The connector
 
-Check that a signed-in Linear connector is present. If it isn't there, walk the
-user through it: in Claude's settings, the Connectors tab, add Linear and sign
-in to their workspace, then come back here and say so.
+Connect it now, before the todo list below. ToolSearch for the tool the guide's
+`ping` names. If it isn't there, walk the user through it: in Claude's settings,
+the Connectors tab, add Linear and sign in to their workspace, then come back
+here and say so. Search again before going on.
 
 ### The todo list
 
 `list todo-lists`; propose the team. List name is its name, List id its id.
+
+Then `ping` that team, right away. A pass: say in a line that the list answers.
+Anything else: say what failed, as the guide's `ping` words it, and fix it with
+them (sign in again, or the other account). Don't go on until it passes; if it
+won't, say so and stop, since every later step needs the list.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are

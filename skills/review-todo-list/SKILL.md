@@ -20,8 +20,8 @@ Without it, the review proposes one.
 
 ## Before you start
 
-Load `ntm:conventions` first: it holds your settings and the list's rules, and
-names the guide that carries out each list operation below.
+Load `ntm-user:backend` to read the user's conventions. If the todo list can't
+be read or written, say what went wrong.
 
 ## Why review exists
 
@@ -42,10 +42,9 @@ lighter option:
 
 ## Setup
 
-1. Read the task review log (see The task review log).
-2. Fetch every open task and list the projects, both as the conventions'
-   Fetching says. Add each project's summary to the project fields, as the guide
-   says.
+1. Read the task review log (see The task review log), and the Estimate pattern
+   from the Planning section of the Settings document.
+2. Find every open task, and each project with its summary.
 
 A task is **unreviewed** when it's open and has no estimate.
 
@@ -71,14 +70,12 @@ for tasks logged twice or filed in the wrong place.
 
 Propose, as one numbered list, one short line each, only for tasks you'd change:
 
-- **Close as obsolete:** canceled, or done if it looks like it already happened,
-  with the guide's `set status`.
+- **Close as obsolete:** canceled, or done if it looks like it already happened.
 - **Duplicates:** identify all of the tasks that are ultimately duplicated, and
   quote anything that appears only on a specific one. You can propose what to
-  do, but the user has the final say. On approval, do what they say and close
-  the other(s) with the guide's `mark duplicate of`.
-- **Move:** to the project it belongs in, or to none, with the guide's
-  `update task`.
+  do, but the user has the final say. On approval, do what they say and mark the
+  other(s) as duplicates of the one kept.
+- **Move:** to the project it belongs in, or to none.
 
 A plain "ok" approves the whole list; the user can strike items by number. If
 nothing stands out, say so in one line and move on. Write what they approve as
@@ -86,9 +83,9 @@ soon as they approve it.
 
 ## 2. Order of operations
 
-Read the unreviewed tasks in this review, plus any reviewed ones the user named,
-with the guide's `read task`. For a blocked task with no blocked-by link, check
-its comments (`read comments`) for what it waits on.
+Read each unreviewed task in this review, plus any reviewed ones the user named,
+with its blocked-by links. For a blocked task with no blocked-by link, check its
+comments for what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside this review:
@@ -103,13 +100,13 @@ instead. The user adjusts the order however they like, then you start.
 ## 3. Task by task
 
 One estimator agent proposes every estimate in this review. Start it once, at
-the first task, and hand it what it needs then: the Estimate pattern from your
-settings, and the log's `## How you work` and recent `## Estimates` entries,
-which Setup already read. It sees nothing of this chat, only what you hand it,
-so this hand-off is what lets it load nothing itself. Start it in the
-background, and send every later ask to that same agent; don't start a new one.
-When the agent isn't available, follow its file as the conventions' "Chat, jobs
-and agents" says.
+the first task, and hand it what it needs then: the Estimate pattern, and the
+log's `## How you work` and recent `## Estimates` entries, which Setup already
+read. It sees nothing of this chat, only what you hand it, so this hand-off is
+what lets it load nothing itself. Start it in the background, and send every
+later ask to that same agent; don't start a new one. When the agent isn't
+available, read `agents/estimator.md` from the newest installed `ntm` and follow
+it.
 
 Ask its Estimate request for a size for the first task alone, so the first
 proposal comes fast. Wait for that answer only; never wait on an ask ahead
@@ -148,10 +145,9 @@ again for any task it already answered ahead, and drop those early answers. When
 the task was broken up after your guess, log the new proposal as `guess`.
 
 Once a task is settled, in the same turn that presents the next one (or ends the
-session): write it with the guide's `update task` (the estimate, plus any
-approved title, description or blocked-by link), add its `## Estimates` entry to
-the log, and pass the settled estimate to the estimator with its next ask, so
-writes never make the user wait.
+session): write the settled estimate (and any approved title, description or
+blocked-by link), add its `## Estimates` entry to the log, and pass the settled
+estimate to the estimator with its next ask, so writes never make the user wait.
 
 ## Breaking up tasks
 
@@ -163,21 +159,19 @@ user just wants to tease things apart so they can do it in smaller pieces.
   don't, propose the pieces yourself.
 - Split pieces off as new tasks, and leave the original with its reduced scope.
   Show the exact text for the original's reduced scope and each new title, and
-  write only that: the original with the guide's `update task`, the new tasks as
-  the next bullet says. New tasks get the original's project and parent. When
-  the order matters, the later task is blocked by the earlier one. Don't default
-  to sub-tasks.
-- Write new tasks with the guide's `create task`, the way the conventions'
-  "Creating tasks when the user asks" section says. They join the end of the
-  review order un-estimated, unless the user asks to do them next.
+  write only that: the original, then the new tasks as the next bullet says. New
+  tasks get the original's project and parent. When the order matters, the later
+  task is blocked by the earlier one. Don't default to sub-tasks.
+- Create each new task as `ntm-user:backend`'s rules for creating tasks say.
+  They join the end of the review order un-estimated, unless the user asks to do
+  them next.
 
 ## The task review log
 
-The `Task review log` database (see Databases in `ntm:conventions`): it's how
-reviewing learns to work better with the user over time. Read it with the
-guide's `read database`. When it's missing, `write database` creates it with the
-two sections below. Save it with `write database` whenever you change it,
-leaving the rest as it was.
+The `Task review log` database: it's how reviewing learns to work better with
+the user over time. Read and write it where `ntm-user:backend` keeps it. When
+it's missing, the first write creates it with the two sections below. Save it
+whenever you change it, leaving the rest as it was.
 
 **`## How you work`:** how the user estimates and breaks up tasks, learned so
 that review can come to propose most of their list the way they would. Short

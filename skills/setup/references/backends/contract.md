@@ -171,12 +171,6 @@ For price watch users only: the open tasks carrying the $price-watch label,
 themselves or through their project. Uses `fetch open`. Returns those tasks with
 the standard fields.
 
-### `closed items with an Amazon alert`
-
-For price watch users only: closed tasks, canceled and duplicate included, that
-still carry the $has-amazon-alert label. Uses `fetch closed`. Returns those
-tasks with the standard fields and their completion time.
-
 ### `task <id>`
 
 One task. Uses `read task` and `read comments`. Returns its description,

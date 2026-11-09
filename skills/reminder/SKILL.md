@@ -2,10 +2,10 @@
 name: reminder
 description: >-
     Sends one of the user's daily reminders, morning, afternoon or evening: gets
-    the day's tasks from ntm-user:backend, sends nothing when there's nothing to
-    remind about, and otherwise hands them to the messenger agent, which writes
-    the message in the user's style and sends it. Run by a job, as /ntm:reminder
-    --type morning, afternoon or evening.
+    the day's tasks from ntm:today and ntm:show-completed, sends nothing when
+    there's nothing to remind about, and otherwise hands them to the messenger
+    agent, which writes the message in the user's style and sends it. Run by a
+    job, as /ntm:reminder --type morning, afternoon or evening.
 ---
 
 # ntm:reminder
@@ -22,15 +22,14 @@ first; no other type loads it.
 
 ## The facts
 
-Ask `ntm-user:backend` for today's open items. For the evening, also ask it for
-the items done today. If a request fails, or `ntm-user:backend` answers
-`Backend CAN'T: <why>`, stop and return `Reminder FAILED: <what failed>`.
+Run `/ntm:today` for the open tasks. For the evening, also run
+`/ntm:show-completed today` for the tasks done today. If either fails, stop and
+end with `Reminder FAILED: <what failed>`.
 
 Write each task as a task line, as the messenger agent's "What you're given"
 says, with no estimate. On an open task, add `(was <date>)` when its planned
-date is before today, and `(started)` when its status is in the started class.
-Remind about every open task, whatever its labels or status, even on a paused
-day: the user dated it.
+date is before today, and `(started)` when today's line marks it started. Remind
+about every open task today lists, even on a paused day: the user dated it.
 
 - afternoon: one `open:` line per open task, or `open: none`.
 - evening: one `done:` line per task done today, or `done: none`; then one
@@ -47,10 +46,9 @@ Send nothing, and end the run with the line given, when:
 
 Otherwise send: an empty morning or afternoon still gets its message.
 
-Check the pause only when a morning or afternoon has no open tasks: ask
-`ntm-user:backend` to read the `Paused dates` database. Today is paused when a
-line's day or range covers it; a missing database means no pauses. If the read
-fails, return `Reminder FAILED: <why>`; an unreadable database never counts as
+Check the pause only when a morning or afternoon has no open tasks: run
+`/ntm:pause --check`. Today is paused when it answers `<today>: true`. If it
+fails, end with `Reminder FAILED: <what failed>`; a failed check never counts as
 not paused.
 
 ## The message

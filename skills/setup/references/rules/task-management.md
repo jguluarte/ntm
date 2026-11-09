@@ -24,8 +24,8 @@
 
 - **pauses** (`Paused dates`): the days when nothing gets planned automatically,
   under `## Paused dates`. `ntm:pause` keeps it.
-- **task review log** (`Task review log`): `ntm:review-todo-list` keeps it, and
-  hands the estimator what it needs from it.
+- **task review log** (`Task review log`): the estimator agent keeps it, from
+  what `ntm:review-todo-list` hands it.
 
 ## Excluded tasks
 

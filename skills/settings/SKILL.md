@@ -25,9 +25,10 @@ rebuild.
 
 ## Setup
 
-Load `ntm-user:backend` and ask it for the Settings document. If it won't load,
-say in one line that nothing is set up yet and that `/ntm:setup` is the start,
-and stop. If it answers `Backend CAN'T: <why>`, say why and stop.
+Load `ntm-user:backend` and read the Settings document as it says. If it won't
+load, say in one line that nothing is set up yet and that `/ntm:setup` is the
+start, and stop. If the read fails, or `ntm-user:backend` answers
+`Backend CAN'T: <why>`, explain what happened to the user and stop.
 
 ## Where a change goes
 
@@ -53,9 +54,9 @@ jobs, load `ntm:schedules` and list them: the scheduled tasks are the source,
 and the Settings document holds no schedules.
 
 For a change to a section of the Settings document, find the line by section and
-label, write the new value in the same style, and ask `ntm-user:backend` to
-write that section. Ask once if the words leave the line unclear. For Labels,
-add that their runs use the change once `/ntm:update` rebuilds.
+label, write the new value in the same style, and write that section as
+`ntm-user:backend` says. Ask once if the words leave the line unclear. For
+Labels, add that their runs use the change once `/ntm:update` rebuilds.
 
 For their jobs or the Style document, load the skill the list names and follow
 it with their words. For anything else, say where it goes, and stop.

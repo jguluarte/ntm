@@ -128,10 +128,9 @@ behind didn't pass.
 ### 14. Send the success message
 
 Only when every step before it passed. Ask the messenger agent with
-`kind: self-test`, `job: self-test` and a `message:` line: ntm is ready, a short
-success message that makes them smile. It passes when the messenger returns
-`Sent:`, or a delivery block, which you show the user. A `Messenger NEEDS`
-answer fails the step.
+`kind: self-test`, `job: self-test` and
+`message: ntm is ready; the self-test passed`. It passes when the messenger
+returns `Sent:`, or a delivery block, which you show the user.
 
 ## Result
 

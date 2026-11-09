@@ -2,19 +2,16 @@
 name: settings
 description: >-
     Shows the user's ntm settings, the Settings document on their todo list, and
-    says where a change goes: a section of that document, a scheduled task, the
-    Style document, or a rebuild. Run when the user says "show my settings",
-    "change my timezone", "rename a label", or asks where a value lives.
+    changes them, or says where a change goes: a scheduled task, the Style
+    document, or a rebuild. Run when the user says "show my settings", "change
+    my timezone", "rename a label", or asks where a value lives.
 ---
 
 # ntm:settings
 
 The Settings document on the user's todo list holds the values they agreed to in
 setup, under fixed headings: About you, Labels, Planning, Shopping,
-Notifications. A missing section means its defaults. Runs read About you,
-Planning, Shopping and Notifications live, so a change there takes effect on the
-next run. Labels are built into `ntm-user:backend`, so a change there needs a
-rebuild.
+Notifications. A missing section means its defaults.
 
 ## Usage
 
@@ -29,12 +26,12 @@ Load `ntm-user:backend` to read the user's conventions. If it won't load, say in
 one line that nothing is set up yet and that `/ntm:setup` is the start, and
 stop.
 
-If the Settings document can't be read, say what went wrong and stop.
+If the Settings document can't be read or written, say what went wrong and stop.
 
 ## Where a change goes
 
 - **About you, Planning, Shopping, Notifications:** that section of the Settings
-  document.
+  document; the next run uses it.
 - **Labels:** the Labels section, then `/ntm:update` rebuilds.
 - **Their jobs** (what runs, on which days, at what time, the model): their
   scheduled tasks, through `ntm:schedules`.
@@ -50,23 +47,13 @@ in a line or two where a change goes, as the list above gives it.
 
 ## With words
 
-When the words only ask to see something, show it and stop. Asked about their
-jobs, load `ntm:schedules` and list them: the scheduled tasks are the source,
-and the Settings document holds no schedules.
-
-For a change to a section of the Settings document, find the line by section and
-label, and write the new value in the same style. Ask once if the words leave
-the line unclear. For Labels, add that their runs use the change once
-`/ntm:update` rebuilds.
-
-For their jobs or the Style document, load the skill the list names and follow
-it with their words. For anything else, say where it goes, and stop.
+When the words only ask to see the Settings document, show it and stop. For a
+change to a section of it, find the line by section and label, and write the new
+value in the same style; ask once if the words leave the line unclear. For their
+jobs or the Style document, load the skill the list names and follow it with
+their words. For anything else, say where it goes, and stop.
 
 ## Regenerating `ntm-user.plugin`
-
-The only place this happens. Every `configure-<part>` and `ntm:configure` ends
-by loading this skill and following this section with the section text it
-produced.
 
 You build `ntm-user` yourself from this guide, in a fresh folder,
 `/tmp/ntm-user`; it says what the plugin must hold, not its text. First load

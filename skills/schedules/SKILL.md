@@ -88,9 +88,9 @@ ask.
 
 ### Bulk planning
 
-Plans a range of days at once, after closing out the span just past. Its
-defaults go under the schedule table (Walking the schedule, step 1), and the
-user can change any of them:
+Plans a range of days at once and, when the user wants it, looks back on the
+span just past. Its defaults go under the schedule table (Walking the schedule,
+step 1), and the user can change any of them:
 
 - how often it runs: weekly by default;
 - the range it plans, in words: `week mon-fri` by default, or `next two weeks`,
@@ -105,26 +105,22 @@ The suggested prompt:
 ```
 <title>.
 Timezone: <Timezone under About you in your settings>.
-1. Run `/ntm:ready-check --notify-failure plan`. On
+1. Run `/ntm:ready-check --notify-failure week`. On
    `Ready-check FAILED`, end the run with what it returned and
    nothing more.
-2. Load `ntm:show-completed` and run
+2. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
+   `Fix-todo-list FAILED`, carry on.
+3. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
+4. Load `ntm:show-completed` and run
    `/ntm:show-completed <span> and what's still open`.
    On `Show-completed FAILED`, carry on with `done: unavailable`.
-3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
-   `Fix-todo-list FAILED`, carry on.
-4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-5. Ask the messenger agent, or follow `agents/messenger.md` from the
-   installed plugin when it isn't available. Hand it these lines,
-   plus `wording:` as the conventions' "Chat, jobs and agents" says:
-       kind: week
-       job: plan
-       weekly message: <what the message covers>
-   then one `done:` line per Done task from step 2, or `done: none`;
-   one `open:` line per Still open task, with `was` its date when
-   that's before today, or `open: none`; each a task line as the
-   messenger's "What you're given" says; and plan's `planned:` lines.
-Final reply: when the messenger returned a delivery block, the title
+5. Load `ntm:reminder` and run `/ntm:reminder --type week --job week`.
+   Hand it plan's `planned:` lines; one `done:` line per Done task
+   from step 4, or `done: none`; one `open:` line per Still open
+   task, with `was` its date when that's before today, or
+   `open: none`; each a task line as the messenger agent's "What
+   you're given" says; and `weekly message: <what the message covers>`.
+Final reply: when the reminder returned a delivery block, the title
 and message under its marker line, verbatim; otherwise one short
 line on what happened. Then fix-todo-list's lines and plan's
 `couldn't move:` lines. For any error after step 1, including a
@@ -133,6 +129,9 @@ stated plainly.
 If a skill can't be loaded, end the run with this line:
 `<title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
 ```
+
+When the message covers only the week ahead, leave out step 4 and its `done:`
+and `open:` lines, and number the reminder step 4.
 
 ## Walking the schedule
 

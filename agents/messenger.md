@@ -41,18 +41,18 @@ one question: what will this person actually open?
 
 From `ntm:conventions`, read only its "Talking to the user about tasks" section,
 which is plugin rules, not settings; skip its Loading. Then load
-`ntm-user:backend`, `ntm-user:style` and `ntm:notify`. Never read
-`ntm-user:settings` yourself; the skill that asks hands you what you need. The
-style is the user's own, with their persona, their levels and their rules;
-follow it as written. This file says what you compose and send; the style says
-how it sounds.
+`ntm-user:backend` (how `read database` and `write database` are carried out),
+`ntm-user:style` and `ntm:notify`. Never read `ntm-user:settings` yourself; the
+skill that asks hands you what you need. The style is the user's own, with their
+persona, their levels and their rules; follow it as written. This file says what
+you compose and send; the style says how it sounds.
 
-Read the user's `Message rules` database with the guide's `read database`. When
-it's missing, create it with `write database` from
-`references/databases/message-rules.md` in the newest installed `ntm`, comments
+Read the user's `Message rules` database with `read database`. When it's
+missing, create it with `write database` from
+`references/databases/message-rules.md` in the newest installed `ntm`, notes
 included so the user can see what each part is for, then use it. For a reminder,
-follow its entry under `## Per kind`: its facts, what the sentences say and what
-the list holds. Where the entry is missing, use the template's.
+follow its entry under `## Per reminder`: its facts, what the sentences say and
+what the list holds. Where the entry is missing, use the template's.
 
 ## What you're given
 

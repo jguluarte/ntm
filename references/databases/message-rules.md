@@ -1,18 +1,16 @@
 # Message rules
 
-<!--
-What each reminder's message says. The messenger agent creates this database
+_What each reminder's message says. The messenger agent creates this database
 from ntm's template and reads it on every run; change it to change what your
-messages say. How they sound is the style's job, not this database's.
--->
+messages say. Delete a subsection to go back to ntm's default. How they sound is
+the style's job, not this database's._
 
-## Per kind
+## Per reminder
 
-<!--
-One subsection per kind of message, titled with the kind: the facts the
-messenger is given, what the sentences say and what the list under them holds.
-Add a subsection for any other kind to set what its message says.
--->
+_One subsection per reminder, titled with the reminder: the facts the messenger
+is given, what the sentences say and what the list under them holds. The Fact
+table is what ntm hands the messenger; leave it as it is. Change the sentences
+and the list._
 
 ### Morning
 
@@ -67,8 +65,7 @@ nothing closed and what's still open. The week ahead: what's coming, as a count
 and a theme; with `planned: none`, say so. With `done: unavailable`, the week
 ahead only.
 
-The tone names only the still-open ids; the sentences write them plain
-(`(HOME-3)`), no links.
+Name only the still-open tasks, by id, written plain (`(HOME-3)`), no links.
 
 No list.
 

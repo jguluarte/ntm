@@ -1,7 +1,7 @@
 # The style profile
 
 How to build the Profile, the Style document setup's persona step writes with
-the user, to the persona contract. The step reads this page before it starts.
+the user, to the persona contract.
 
 This page is for a profile built from scratch (plain or a theme). A persona the
 user already has keeps its own rules for all of this; none of the sections below
@@ -143,10 +143,9 @@ have had a turn. A few rich ones can come back sooner.
 One per level, in the level's name, and one for "nothing open" (the evening when
 everything closed: a win for the day, not the year). Task ids are generic, like
 `ABC-12`. The tasks in them are ordinary household ones. They show how each
-level lands, how long it runs, and how a motif ties to the subject. The
-procedure borrows their energy and never their sentences. Read them back and
-revise: with humor, until they laugh at least once; otherwise until each reads
-like something they'd open.
+level lands, how long it runs, and how a motif ties to the subject. Read them
+back and revise: with humor, until they laugh at least once; otherwise until
+each reads like something they'd open.
 
 ## A plain example
 

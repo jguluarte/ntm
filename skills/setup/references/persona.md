@@ -17,7 +17,7 @@ plain.
 
 Plain, or "just remind me", gets one push: without a persona, ntm is no
 different from Apple or Google reminders, and a plain reminder is easy to swipe
-away. If they still want plain, build it plainly.
+away.
 
 ## A theme
 
@@ -32,11 +32,9 @@ The same headings, answered plainly; the builder says what plain means for each.
 
 ## A persona they already have
 
-Pasted or attached. Their text goes in as it is, word for word, task ids
-included; a pasted skill's frontmatter is dropped. Read it for how it names the
-call's parts (a reminder flag, a subject line, its own history) and write the
-`## For ntm` section the contract describes, above the text. Show it; they
-confirm. Nothing else is added: its own levels and motifs stand.
+Pasted or attached. Read it for how it names the call's parts (a reminder flag,
+a subject line, its own history) and write the `## For ntm` section the contract
+describes, above their text. Show it; they confirm.
 
 ## Saving the area
 

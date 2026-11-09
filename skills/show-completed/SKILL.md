@@ -43,9 +43,9 @@ Notify below). `--notify` starts with
 Load `ntm-user:backend` to read the user's conventions.
 
 1. Work out the span as Usage says: it ends today.
-2. Find the done tasks completed in the span, adding canceled and duplicate ones
-   only when the request asks for them. Done tasks of any kind count, price
-   watch buys included.
+2. Find the tasks done in the span, adding canceled and duplicate ones only when
+   the request asks for them. Done tasks of any kind count, price watch buys
+   included.
 3. Only when the request asks for open tasks, find the open ones planned in the
    span, or in the range the request names for them.
 4. When the description narrows the scope, keep only the tasks that match it, by
@@ -70,9 +70,8 @@ Done, the planned date for Still open.
 - `Still open (<count>):` when asked for: open tasks planned in the span, or in
   the range the request names for them ("planned today or earlier").
 
-Typed in chat, present the result as the conventions' "Talking to the user about
-tasks" says (natural words, the id in parentheses); the raw lines are for skills
-and jobs.
+Typed in chat, word each task as the user's conventions say (natural words, the
+id in parentheses); the raw lines are for skills and jobs.
 
 ## Notify
 
@@ -88,10 +87,10 @@ span: 2026-10-31 to 2026-11-06
 done: Order storage boxes ([ABC-12](<url>))
 ```
 
-When the messenger agent isn't available in this session, do what the
-conventions' "Chat, jobs and agents" says: read `agents/messenger.md` from the
-installed plugin and follow it yourself. It returns `Sent: <title>`, a delivery
-block, or a `… FAILED` line. A delivery block is the final reply, verbatim, and
-nothing else; otherwise one short line on what happened, then any lines the
-messenger returned after `Sent:` (the list the push couldn't carry). A
-`… FAILED` line: never use `/ntm:notify`; end with the error stated plainly.
+When the messenger agent isn't available in this session, read
+`agents/messenger.md` from the installed plugin and follow it yourself. It
+returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery
+block is the final reply, verbatim, and nothing else; otherwise one short line
+on what happened, then any lines the messenger returned after `Sent:` (the list
+the push couldn't carry). A `… FAILED` line: never use `/ntm:notify`; end with
+the error stated plainly.

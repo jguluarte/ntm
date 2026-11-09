@@ -22,18 +22,18 @@ with no list marker: `YYYY-MM-DD: <why>` for a single day, or
 `YYYY-MM-DD to YYYY-MM-DD: <why>` for a range; the single line `None.` when
 there are none.
 
-Read it by asking `ntm-user:backend` to read the `Pauses` database. A missing
-database, or one with no pause lines, means there are no pauses. If the read
-itself fails, stop and return `Pause FAILED: <why>`, so a caller never takes an
-unreadable database for "not paused".
+Load `ntm-user:backend`, and read the database as it says. A missing database,
+or one with no pause lines, means there are no pauses. If the read itself fails,
+stop and return `Pause FAILED: <why>`, so a caller never takes an unreadable
+database for "not paused".
 
 A line whose dates have no year is invalid. Whenever the database is read, for
 any reason, ignore those lines and remove them on the next save.
 
-To save, ask `ntm-user:backend` to write the `Pauses` database with the whole
-content, only the lines under `## Pauses` changed (`None.` if nothing is left);
-when the database is missing, the content is the `## Pauses` heading and the
-lines. Pauses never overlap: before saving, merge any that overlap into one line
+To save, write the database as `ntm-user:backend` says, with the whole content,
+only the lines under `## Pauses` changed (`None.` if nothing is left); when the
+database is missing, the content is the `## Pauses` heading and the lines.
+Pauses never overlap: before saving, merge any that overlap into one line
 covering all their days, with their reasons joined by `; ` in start-date order.
 When the database is missing, the first write creates it.
 
@@ -85,12 +85,12 @@ with the user.
    line, and tell the user which ones went.
 2. Show the user the remaining pauses, then make the changes they ask for, if
    any, without an approval round-trip: they said what they want. When a day
-   they pause holds planned work, ask `ntm-user:backend` for the open items
-   planned on those days, clear their planned dates through it, and load
-   `ntm:plan` to replan the rest of the week with them, in chat. A new pause
-   gets a short reason in the user's words, or `paused` if they give none. To
-   end a range early, set its end to the last paused day; if that's before today
-   (as with ending it today), remove the line.
+   they pause holds planned work, find the open tasks planned on those days and
+   clear their planned dates, as `ntm-user:backend` says, then load `ntm:plan`
+   to replan the rest of the week with them, in chat. A new pause gets a short
+   reason in the user's words, or `paused` if they give none. To end a range
+   early, set its end to the last paused day; if that's before today (as with
+   ending it today), remove the line.
 3. If anything changed, step 1 included, save and show the user the saved list.
 
 ## Result

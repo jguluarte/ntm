@@ -60,11 +60,10 @@ one from the list. Whether the user is new to estimating is kept there too.
 
 ## The estimate question
 
-The first time you're asked for a size and `## How you work` doesn't say how the
-user estimates, return only `ask: <question>`. The asker puts it to the user and
-sends you their answer. Say their estimates are in hours, and offer another way
-only if they want one (points, T-shirt sizes, their team's scale). Most people
-keep hours. When they ask what the ways are, the asker asks Explain estimating.
+When `## How you work` doesn't say how the user estimates, their estimates are
+in hours. Another way (points, T-shirt sizes, their team's scale) comes up only
+when the user asks for one. When they ask what the ways are, the asker asks
+Explain estimating.
 
 When their list stores estimates on a scale of its own (as described in
 `ntm-user:backend`), work out with them how their estimates map onto it. Then

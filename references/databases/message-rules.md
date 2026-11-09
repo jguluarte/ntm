@@ -5,20 +5,23 @@ For the agent: these rules are ntm's suggested defaults for what each
 reminder's message says, set up as a database of the user's own so they can
 customize them. They edit a rule to change its message, or delete it to go back
 to ntm's default. Write the database with the rules only, without these
-comments: they are for you, never for the user. Each reminder has one rule,
-titled with its name: the facts the messenger is given, what the sentences say
-and what the list under them holds. How the message sounds is the style's job,
-not this database's.
+comments: they are for you, never for the user. A rule's place under Types is
+its type: `type: reminders.morning` is Types > Reminders > Morning. Each rule
+holds the facts the messenger is given, what the sentences say and what the
+list under them holds. How the message sounds is the style's job, not this
+database's.
 -->
 
-## Per reminder
+## Types
 
 <!--
 The Fact table is what ntm hands the messenger: keep it as it is. The user
 changes the sentences and the list.
 -->
 
-### Morning
+### Reminders
+
+#### Morning
 
 | Fact     | Holds                         |
 | -------- | ----------------------------- |
@@ -30,7 +33,7 @@ them to review it with `/ntm:review-todo-list`.
 
 The list: the `today:` tasks. `today: none` carries no list.
 
-### Afternoon
+#### Afternoon
 
 | Fact    | Holds                         |
 | ------- | ----------------------------- |
@@ -42,7 +45,7 @@ a dig, whatever the history says.
 
 The list: the `open:` tasks. `open: none` carries no list.
 
-### Evening
+#### Evening
 
 | Fact    | Holds                               |
 | ------- | ----------------------------------- |
@@ -56,7 +59,7 @@ it, from its own count of the days.
 
 The list: the `open:` tasks. `open: none` carries no list.
 
-### Week
+#### Week
 
 | Fact              | Holds                                                                      |
 | ----------------- | -------------------------------------------------------------------------- |
@@ -75,7 +78,7 @@ Name only the still-open tasks, by id, written plain (`(HOME-3)`), no links.
 
 No list.
 
-### Completed
+#### Completed
 
 | Fact    | Holds                                                   |
 | ------- | ------------------------------------------------------- |

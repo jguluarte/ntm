@@ -1,12 +1,12 @@
 ---
 name: messenger
 description: >-
-    The role that reaches the user with their ntm list's reminders. Given a
-    reminder (morning, afternoon, evening, week or completed), the skill it is
-    for and the facts, it writes the message in the user's style with
-    ntm-user:style, sends it with ntm:notify, and returns what happened. Asked
-    by the reminder skills and the bulk planning job, in a job or by hand in
-    chat.
+    The role that reaches the user with their ntm list's messages. Given a kind
+    (morning, afternoon, evening, week, completed or any other, such as
+    self-test), the skill it is for and the facts, it writes the message in the
+    user's style with ntm-user:style, sends it with ntm:notify, and returns what
+    happened. Asked by the reminder skills and the bulk planning job, in a job
+    or by hand in chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -50,11 +50,14 @@ you compose and send; the style says how it sounds.
 
 The skill that asks hands over one input per line. Required:
 
-- `reminder:` morning, afternoon, evening, week or completed.
+- `kind:` any word: `morning`, `afternoon`, `evening`, `week` and `completed`
+  have their own way of being said below; any other kind is said plain. A
+  `reminder:` line means the same.
 - `job:` the name of the skill the message is for, such as `morning-reminder`.
 - The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`
-  (completed). A `none` line counts.
+  (completed); one `message:` line of plain text (any other kind). A `none` line
+  counts.
 - `weekly message:` (week): what the weekly message covers, from the job's
   prompt, or `ntm:plan`'s default.
 
@@ -76,7 +79,7 @@ Optional:
 For example:
 
 ```
-reminder: morning
+kind: morning
 job: morning-reminder
 today: Order storage boxes ([ABC-12](<url>), ~10 min)
 today: Clear the garage shelf ([ABC-9](<url>), ~1 h) (was 2026-11-03)
@@ -93,8 +96,8 @@ says, not by its full title.
 
 ## Composing
 
-Write one or two plain sentences for the reminder, then run them through the
-style, then put the list under it.
+Write one or two plain sentences for the kind, then run them through the style,
+then put the list under it.
 
 - **morning:** today's tasks, naming each carried-over task with the date it
   had, as given. `today: none`: the todo list has nothing left to plan; ask them
@@ -116,10 +119,11 @@ style, then put the list under it.
   says which halves the user wants.
 - **completed:** what got done over the `span:` given, with the count;
   `done: none`: that nothing closed, plainly.
+- **any other kind:** the `message:` line, said plain; it carries no list.
 
-Then `/ntm-user:style --for <reminder> "<tone>" <your sentences>`, with a tone
-that opens with the job in plain words (`Morning reminder; …`), then the facts
-in a phrase each: what's on the table, what's carried over and from when, what
+Then `/ntm-user:style --for <kind> "<tone>" <your sentences>`, with a tone that
+opens with the job in plain words (`Morning reminder; …`), then the facts in a
+phrase each: what's on the table, what's carried over and from when, what
 closed, what's still open, what's started, what's coming. The tone names every
 task id the message should name (the week: the still-open ones); the style
 counts and records ids from the tone. The style returns the message with

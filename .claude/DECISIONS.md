@@ -278,50 +278,108 @@ break it up.
 
 ## 0.4: decided
 
-The v0.4 branch and git history keep the raw material, including the old 0.4
-design page. Here "the base" is the published plugin and "the user plugin" the
-generated one, which 0.4 names `ntm`.
+The build plan is `.claude/plans/0.4-build-plan.md`; the v0.4 branch and git
+history keep the raw material. Here "the base" is the published plugin and "the
+user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
 
-- The base is `neurodivergent-task-manager` (published; commands autofill, so
-  the length costs nothing). The user plugin is `ntm`, a fixed name so the base
-  can always reach the contracts. An optional alias plugin's name is the user's
-  word.
-- Every job and every command the user types starts in the user plugin, setup
-  included, so a user with an alias never types the base's name.
-- The base's entry point is `setup`, a wizard that walks the whole flow (see
-  0.4: setup). The `configure` skills go away. `update` is a tiny skill whose
-  body loads `setup`, there so someone already set up finds it; run before any
-  setup, it asks "It doesn't look like you've run setup before, do you want to?"
-  and otherwise carries on as normal. The base has no `settings` skill.
+- No rename. The base stays `ntm` and the user plugin stays `ntm-user`, the one
+  setup generates, holding only what's tailored to this user. No alias plugin.
+- Day-to-day commands are base skills, called directly: `/ntm:today`,
+  `/ntm:plan`, `/ntm:pause`, and so on. There are no entry skills anywhere.
+  Users rarely type commands; their jobs do most of the calling, and a job's
+  prompt loads `ntm:<skill>`. Base skills keep their full descriptions.
+- `ntm-user:backend` is the one place that teaches how to work with this user's
+  list: their backend's calls, their labels and statuses, what counts as open,
+  where every document lives (Settings, Style, each database). It is the list
+  rules and the backend guide, tailored to this user only. It takes a request in
+  plain words ("today's open items", "everything done last week", "watched
+  items") and gives the call to make; the agent makes it.
+- Base skills say WHAT to do and ask `ntm-user:backend` for the data:
+  `ntm:today` is "get today's open items from `ntm-user:backend`, then present
+  them". Planning, the reminders and the price watch all go through it. Future
+  recurring items show up in "today's open items" the same way.
+- There is no base conventions skill. The generic text (the list rules, every
+  backend guide, each feature's rules) stays in the base only as setup reference
+  files that the build reads to write `ntm-user:backend`. A rule fix reaches
+  users through `update` and a rebuild, not a base patch. Tokens matter most.
+- The hard rule: no day-to-day run loads text about a path the user isn't set up
+  for (another backend, a feature they didn't pick). Text a base skill needs for
+  one feature lives in a reference that only that feature's runs load.
+- The user plugin holds exactly two skills: `backend`, everything about this
+  user's list, including where every document lives; and `notify`, their
+  channel, plus the Pushover keys when they use Pushover. Linear users also get
+  the Linear connector. It has no `settings`, `ready-check`, `style` or
+  `self-test`: the base's serve everyone.
+- `settings` and `ready-check` are base skills. `ntm:settings` asks
+  `ntm-user:backend` for the Settings document, then shows it or points the
+  agent to the right place for a change: the Settings document, a scheduled task
+  through `ntm:schedules`, the Style document through `ntm:style`, or a built-in
+  value through `update`. It never rebuilds. It loads the whole backend skill, a
+  cost Justin accepted. `ntm:ready-check` is the same for everyone and names no
+  backend; its one tailored step asks `ntm-user:backend` to ping, and it relays
+  `Backend CAN'T: <why>` as `Ready-check FAILED: <why>`.
+- The base's entry points are `setup`, a wizard that walks the whole flow (see
+  0.4: setup), and a tiny `update` whose body loads `setup`, there so someone
+  already set up finds it; run before any setup, it asks "It doesn't look like
+  you've run setup before, do you want to?" The `configure` skills go away, and
+  so do the base's `conventions` and `notify`, their text moved under setup as
+  the build's source.
 - `update` reads per-version reference files of what changed, picked by the user
   plugin's `major.minor`, and offers what's new, new features included.
 - The user plugin's `major.minor` mirrors the base's; its patch is its own, a
   count of the user's rebuilds. Its generation time is a field in its
-  `plugin.json`. A base patch release never needs `update` or a rebuild.
-- Settings that can change live in the backend (a Linear document, or a file),
-  so changing one never rebuilds the plugin. The user plugin is tailored, not
-  thin: it carries only what this user needs (their backend's guide, the skills
-  for the features they picked), so no run loads text meant for someone else.
-  Procedure lives in the plugin; values that change live in the backend.
-- Pushover keys: working default, the user key and default app token in the
-  settings document, and a job's own app token in that job's prompt. Not
-  strongly held.
-- Contracts in the user plugin: `todo-list` (the backend guide), `ready-check`
-  (only in the user plugin) and `self-test`. Both self-tests keep the name
-  `self-test`.
+  `plugin.json`, and `ntm-user:backend` opens with a Built line naming the
+  versions, backend, channel and features.
+- Values setup collects live in the backend, in the `Settings` document, except
+  the Pushover keys (below). About you, Planning, Shopping and Notifications are
+  read live; Labels are built into `ntm-user:backend`, so changing one means
+  `update` rebuilds. 0.4 has no Deviations: a value is defined, or the backend
+  is updated.
+- The persona's Profile lives in the `Style` document on the backend. The style
+  procedure is the base skill `ntm:style`, which reads it (tentative: one extra
+  document read per message; the fallback is copying the persona into the user
+  plugin at build). The base reference `style/references/persona-contract.md`
+  gives the Style document's required and optional sections, settled from
+  `.claude/drafts/persona-breakdown.md`; Justin reviews it on its PR.
+- No skill for any job, under any name. Jobs are composed from skills however
+  the user wants. The suggested weekly job: `show-completed` for the span just
+  past, `fix-todo-list`, `plan --auto` for the next span, then one message. Each
+  step is a base skill, so fixes reach everyone.
+- `schedules` manages the jobs, a base skill called as `/ntm:schedules`. It
+  checks which scheduled tasks exist and belong to ntm. With none, it walks the
+  user through setting them up. With `--setup "<their schedules>"`, it creates
+  the jobs from that text. Each job's prompt carries the job run block (ready
+  check, final reply, error handling). The scheduled tasks are the source of
+  truth, and a change to a job edits its scheduled task directly.
+- The Settings document holds no schedules. The schedules and the jobs' model go
+  in setup's handoff prompt (0.4: setup, step 9). Nothing in Settings marks a
+  job off, and nothing compares the jobs against Settings.
+- Each database is created by the skill that owns it, the first time it writes.
+  Setup creates only Settings and Style, and confirms the names of the rest. The
+  pauses database is its own document, titled `Paused dates`, with a line
+  explaining what it holds.
+- Pushover keys: the user key and default app token are built into
+  `ntm-user:notify`, so changing one means `update` rebuilds; a job's own app
+  token goes in that job's prompt.
 - The base is a guide the user's agent follows. Only contract names and call
   shapes are fixed.
-- The user plugin's `notify` carries the user's Pushover-or-chat choice.
 - The generated user plugin bundles the connector when the user is on Linear.
   Setup has already connected it and tested it at the todo list step, before the
-  plugin is built.
-- Plugin and file renames stay separate from content renames.
+  plugin is built. A duplicate Linear connection isn't designed for; the agent
+  that hits one handles it.
+- Parents and sub-tasks are the backend's task hierarchy, and their words stay.
+- Plugin and file renames stay separate from content changes.
 - No migration from 0.3; installs start fresh. The base and the user plugin
   update together.
+- 0.4 is built on the integration branch `release-0.4`, which has main's
+  required checks. 0.4 PRs target it; main stays installable as 0.3.
+- Every 0.4 PR is intentional, targeted, human-knowable and maintainable, with
+  one concern a person would name as a change, never a technical slice: mostly
+  under about 100 changed lines, in 1 to 5 files.
 - Publishing adds: the base self-test passes with no user plugin installed;
-  `configure` never sends or creates without being asked; a privacy page; the
-  name check for `neurodivergent-task-manager`; the published release is
-  identifiable. How the published release is identified is open.
+  `setup` never sends or creates without being asked; a privacy page; the
+  published release is identifiable. How the published release is identified is
+  open.
 
 ## 0.4: setup
 
@@ -331,7 +389,10 @@ a persona, the features they picked running as jobs, reminders on their phone,
 and a passing self-test.
 
 Setup asks one question at a time, conversationally, never a list to answer. It
-front-loads the back-and-forth so the build runs without stopping. In order:
+front-loads the back-and-forth so the build runs without stopping. It saves at
+the end of each area (the todo list, the persona, task management, price watch,
+notifications), values and assets together, without asking, unless the user
+would rather save each piece. In order:
 
 1. **Intro.** One short text: what ntm is and where it came from, what it does,
    why the persona matters, and that setup takes 20 to 60 minutes and then
@@ -342,7 +403,8 @@ front-loads the back-and-forth so the build runs without stopping. In order:
    Linear hears it'll take longer to find something, and that you're happy to:
    the agent reads the backend contract and searches with them until they're
    content, always offering to build the list inside Claude (an artifact or a
-   Claude Doc that holds the data) or to find an existing tool.
+   Claude Doc that holds the data) or to find an existing tool. Saving this area
+   creates the Settings document.
 3. **The persona.** Right after the list. Someone who doesn't want one gets
    pushed a little: without it, ntm is no different from Apple or Google
    reminders. Setup helps build one from generic parts, with no show or IP
@@ -350,6 +412,8 @@ front-loads the back-and-forth so the build runs without stopping. In order:
    formula of a show you enjoy, where they can snap back at you when you need
    it, or celebrate you when you've earned it". The parts, from Justin's own
    persona: `.claude/drafts/persona-breakdown.md` (not yet reviewed by him).
+   Saving this area writes the Style document, in the sections the persona
+   contract requires.
 4. **Features.** A numbered list to pick from, everything or a subset: day to
    day task management (things you want or need to do), and price watch (things
    you want to buy, without buying on impulse). New functionality joins this
@@ -363,26 +427,32 @@ front-loads the back-and-forth so the build runs without stopping. In order:
       its labels; then whether to set up Amazon sync, explaining that cloud
       agents can't reach Amazon, so this works around it. A no skips the Amazon
       labels too.
-    - The schedules go into settings as they're settled.
+    - Saving each feature's area saves its labels and other values to the
+      Settings document. Its schedules go in the handoff prompt (step 9).
 6. **The jobs' model.** Suggest a lighter model than the one running setup,
-   worded so any AI provider works; never only Claude models.
+   worded so any AI provider works; never only Claude models. It goes in the
+   handoff prompt with the schedules.
 7. **Notifications.** For a separate app on their phone or computer, strongly
    suggest Pushover, which their phone's focus settings can treat differently;
    otherwise the AI app's own push. A job's own Pushover app (its own sound)
    isn't asked; it goes in the Pushover reference.
 8. **Databases.** Confirm the names of the ones their features need. On Linear,
    say they live at Linear's base location and which document holds which
-   database. Elsewhere, the agent works it out.
+   database. Elsewhere, the agent works it out. Setup creates only Settings and
+   Style; each other database is created by its owner skill on its first write.
 9. **The build.** Say what's about to happen and wait for a green light, leaving
    room for anything else they want to say. Then narrate each step: create their
-   plugin, install it, run the self-test. The self-test runs in a subagent
-   first, since a new plugin may only load in a fresh session; if that fails,
-   ask them to run it in a new chat, and offer to drive their browser only when
-   their agent has browser access. A passing self-test checks the schedules in
-   settings and creates any missing jobs.
-10. **The end.** A success message in their persona, said in chat and sent as
-    their first real push. The self-test's own push can be fun too. Making
-    people smile is good.
+   plugin, install it, hand off. Setup ends with one handoff prompt, the same
+   text whether a subagent gets it or the user pastes it into a new chat: "I
+   just set up ntm and need you to run tests and finish the setup. Run
+   `/ntm:self-test`. If it passes, set up the schedules:
+   `/ntm:schedules --setup "<schedules and model>"`". Setup gives it to a
+   subagent first, since a new plugin may only load in a fresh session. If that
+   fails, the user pastes it into a new chat, or setup drives their browser, but
+   only when it has browser access.
+10. **The end.** A passing self-test sends a success message in their persona,
+    said in chat and sent as a push. Then `schedules --setup` creates the jobs.
+    The self-test's own push can be fun too. Making people smile is good.
 
 Estimating isn't part of setup: it's asked the first time they review.
 
@@ -400,10 +470,31 @@ Not handled by the plugin yet.
 
 ### Start here (2026-11-08)
 
-Fable reviewed the plugin on 2026-11-07, after the 0.3 fixes:
-`.claude/reviews/2026-11-07-fable.md`. The new-user flow is walked through and
-recorded in 0.4: setup. Next: the rest of the 0.4 talks, from the review's four
-questions; its first (where settings live) is decided.
+The 0.4 build plan: `.claude/plans/0.4-build-plan.md`, reshaped on 2026-11-08:
+no rename, no entry skills, no base conventions skill, and `ntm-user:backend` as
+the one place that knows the user's list (0.4: decided). Next: Justin reads the
+plan's "For the owner" choices, then its PR sequence on `release-0.4`, wave 1
+first.
+
+### Future work
+
+After the planned 0.4 work, as 0.4 patch releases:
+
+- Evening reminder: if everything was done by the afternoon reminder and nothing
+  changed since (the same tasks done, nothing new, nothing open), skip the push.
+- Weekend reminders that work differently: no automatic planning, only tasks
+  planned for that day. With nothing planned, the day counts as paused and
+  nothing is sent. A task added for that day still gets reminders: the afternoon
+  reminds, the evening reports.
+
+Likely 1.1:
+
+- Recurring reminders at an interval (pet care, medicine, anything). Not planned
+  automatically; the next date follows from when it was last done, so a missed
+  day shifts the interval. Needs the weekend reminders.
+
+Release: when 0.4 is complete on `release-0.4`, it merges into main and the
+version is tagged on main.
 
 ### Open
 
@@ -428,11 +519,9 @@ questions; its first (where settings live) is decided.
   that and never edits the log itself.
 - Not discussed yet: `fix-todo-list` fetches the whole closed history every
   week, a cost that grows. Proposed: only recent completions.
-- 0.4 inputs, held for the 0.4 talks:
+- 0.4 inputs; the build plan places each:
     - one home for the style's call contract (now inside settings' Regenerating)
-    - each database's format created by the skill that owns it, not by setup
-    - the plugin-locator globs in `help` and `conventions` break under the
-      rename
+    - `help` finds the newest installed copy when several sit side by side
     - the job-run block (ready check, FINAL REPLY, error handling, agent
       fallback) repeats across about 8 skills
     - the `ntm-user` package layout isn't spelled out

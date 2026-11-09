@@ -108,21 +108,17 @@ See Databases.
 
 ## Databases
 
-Databases are the documents the system keeps its own records in, on the todo
-list, each under the title the conventions give it. `read database <title>`
-returns its content, or says it's missing. `write database <title>` replaces the
-content, and creates a missing database with the content given. Both take an
-optional project, for a database kept in a project.
+The system's own records, each a document on the todo list under the title the
+conventions give it. `read database <title>` returns its content or says it's
+missing; `write database <title>` replaces the content, creating the database if
+it's missing. Both take an optional project, for one kept in a project.
 
-If the backend has documents, use them, found by title. If it doesn't, keep each
-database in the description of a task titled with the database's title, labeled
-with the $no-autoschedule label (its real name from Labels) and left open in a
-plannable status. `ntm:fix-todo-list` never touches it (it has no planned date)
-and planners skip it for its label. `read database` is then a title search that
-reads that task's description; `write database` replaces the description,
-creating the task when there is none. A database kept in a project is a task
-created in that project. The conventions say every skill ignores such a task as
-work.
+With no documents, each database is the description of an open task in a
+plannable status, titled with the database's title, labeled $no-autoschedule
+(its real name from Labels), and in its project if it has one. With no planned
+date, `ntm:fix-todo-list` leaves it alone; planners skip it for its label, and
+skills don't treat it as work. A read finds it by title; a write replaces its
+description, creating the task if needed.
 
 ## Setup operations
 

@@ -20,9 +20,8 @@ Without it, the review proposes one.
 
 ## Before you start
 
-Load `ntm-user:backend` first: it teaches this list's rules and calls; do every
-read and write below as it says. If it won't load, or says the list can't do
-something, explain what happened to the user.
+Load `ntm-user:backend` to read the user's conventions. If the todo list can't
+be read or written, say what went wrong.
 
 ## Why review exists
 
@@ -45,7 +44,7 @@ lighter option:
 
 1. Read the task review log (see The task review log), and the Estimate pattern
    from the Planning section of the Settings document.
-2. Find every open item, with each project's summary.
+2. Find every open task, and each project with its summary.
 
 A task is **unreviewed** when it's open and has no estimate.
 
@@ -85,8 +84,8 @@ soon as they approve it.
 ## 2. Order of operations
 
 Read each unreviewed task in this review, plus any reviewed ones the user named,
-with its blocked-by links and comments. For a blocked task with no blocked-by
-link, its comments say what it waits on.
+with its blocked-by links. For a blocked task with no blocked-by link, check its
+comments for what it waits on.
 
 Propose an order to review them in, as a short list of ids and titles. Blockers
 come before what they block. When a task waits on something outside this review:

@@ -31,6 +31,17 @@ tool does each operation and which of the user's values goes where.
   convert through it: the user's estimate to its point when writing, a point
   back to their estimate when reading.
 
+Setup doesn't ask about estimates; the user's first review does. When they need
+help there, guide them: ask which estimate type their team uses (each one's
+points are above). If they're unsure, it's in Linear under the team's settings,
+Estimates. If they still don't know, look at estimates already set:
+`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
+`estimate`, and suggest the type whose points fit (a 4 rules out Fibonacci and
+T-shirt, a 5 rules out exponential; Fibonacci and T-shirt store the same points,
+so ask which they see in Linear). When their scale isn't the team's, agree with
+them which of the team's points each of their estimates becomes, and add that to
+Estimate pattern.
+
 ## Status classes
 
 A task's class comes from `statusType`, Linear's own type for its status:

@@ -61,9 +61,8 @@ operations.
 
 ## Linear
 
-Backend is `linear`. Walk the parts below with the user, in order; Estimate type
-waits for the Planning step. The calls are the guide's operations and Linear
-setup operations, at the end.
+Backend is `linear`. Walk the parts below with the user, in order. The calls are
+the guide's operations and Linear setup operations, at the end.
 
 ### Starting from nothing
 
@@ -106,15 +105,6 @@ all done.
 none (no price watch; the $price-watch label on a project later turns it on). If
 they want one that doesn't exist yet, settle its name now; it's created in
 Labels, once the project labels exist.
-
-### Estimate type
-
-Ask which estimate type their team uses: linear, exponential, Fibonacci or
-T-shirt sizes (the guide's Estimates, under Todo list, has each one's points).
-If they're unsure, it's in Linear under the team's settings, Estimates. If they
-still don't know, run `sample estimates` and suggest the type that fits. When
-their scale isn't the team's, agree with them which of the team's points each
-estimate on their scale becomes, and add that to Estimate pattern.
 
 ## Statuses
 
@@ -292,14 +282,6 @@ Not needed; Linear has teams to list.
 
 `list_issue_statuses` with `team`. Each comes back with its name and `type`; the
 guide's Status classes gives each one's class.
-
-### `sample estimates`
-
-`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
-`estimate`. Suggest the estimate type (the guide's Estimates) whose points fit
-the ones already set: a 4 rules out Fibonacci and T-shirt, a 5 rules out
-exponential. Fibonacci and T-shirt store the same points; ask which they see on
-their tasks in Linear. No estimates set means no suggestion.
 
 ### `list labels`
 

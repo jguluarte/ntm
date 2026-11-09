@@ -47,10 +47,10 @@ states only what differs for its user.
 
 ## Setup
 
-1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`. Read
-   Planning from the Settings document: how this user wants their todo list
+1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`.
+2. Read Planning from the Settings document: how this user wants their todo list
    planned, with the excluded labels and anything else they wrote there.
-2. Find every open task, excluded and blocked ones included.
+3. Find every open task, excluded and blocked ones included.
 
 If any step fails, stop and say what went wrong. Run by a job, end with
 `Plan FAILED: <what failed>`.

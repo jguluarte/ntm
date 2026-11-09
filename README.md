@@ -184,7 +184,7 @@ What reminders have said, so they don't repeat themselves. Written by
 ### Task review log database
 
 How you like tasks written and estimated, learned while reviewing. Written by
-the estimator agent during `/ntm:review-todo-list`.
+the estimator agent during reviews.
 
 ### Price watch stores database
 

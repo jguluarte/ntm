@@ -1,10 +1,10 @@
 # Linear guide
 
 The backend guide for Linear, and a tested one: how each operation the backend
-contract names is carried out with the Linear connector. The build copies it
-into `ntm-user:backend` as written, with `<List name>` and `<List id>` filled
-in. Setting Linear up with the user is part of setup's todo list step,
-`todo-list.md`.
+contract names is carried out with the Linear connector. The build copies
+everything below this paragraph into `ntm-user:backend` as written, with
+`<List name>` and `<List id>` filled in. Setting Linear up with the user is part
+of setup's todo list step, `todo-list.md`.
 
 Use the tools of the Linear connector that's signed in. Its own instructions and
 tool descriptions are the authority on how to call them. This guide says which
@@ -48,8 +48,8 @@ One exception: a status named Blocked is the blocked class, whatever its type
 
 ### `ping`
 
-`get_team` (`query: "<List id>"`). The team named in List name comes back: pass.
-A different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
+`get_team` (`query: "<List id>"`). Team `<List name>` comes back: pass. A
+different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
 found: wrong account. Anything else: backend error.
 
 ### `fetch open`

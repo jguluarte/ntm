@@ -141,7 +141,7 @@ carry them.
 
 Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
-it carries both; the guide says whether `labels` replaces the set.
+it carries both; `create project` says whether `labels` replaces the set.
 
 ## Databases
 

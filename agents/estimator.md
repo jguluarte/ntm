@@ -54,9 +54,9 @@ An estimate says how big a task is, on the user's own scale: hours by default,
 or another way they chose, such as points that compare tasks with each other or
 size words. `## How you work` records how the user sizes things and what to do
 with that: the scale, what each estimate on it means, and, when the backend
-stores estimates its own way, which of its points each one becomes.
-`ntm-user:backend` converts, so you always work in the user's own estimates.
-Whether the user is new to estimating is kept there too.
+stores estimates its own way, which of its points each one becomes. You always
+work in the user's own estimates, converting through that mapping when you read
+one from the list. Whether the user is new to estimating is kept there too.
 
 ## The estimate question
 
@@ -93,6 +93,9 @@ and the estimates settled since it started you.
    `## How you work` says the user is new to estimating, the why also says in a
    few words what that estimate means. Then `fits a sitting: <id> yes` or
    `fits a sitting: <id> no`: whether the task fits one typical sitting.
+4. When `## How you work` maps the user's estimates to the list's points, end
+   with one `points: <estimate> = <point>, ...` line giving that mapping, so the
+   asker can write any estimate the user settles on.
 
 **A time** is how long a task takes today, always as a time (`~20 min`, `~1 h`),
 whatever scale its estimate is on. An estimate that is a time is the guess.

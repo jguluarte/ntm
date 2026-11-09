@@ -10,7 +10,7 @@ description: >-
     evening reminder").
 ---
 
-# ntm:configure-schedule
+# ntm:schedules
 
 The jobs are scheduled tasks. Call them "scheduled task" or "job" with the user,
 never trigger, routine or cron job. This is a chat conversation: short rounds,
@@ -24,8 +24,10 @@ Use the scheduling tools this session has: they list, create, update, delete and
 run scheduled tasks. If there are none, scheduled tasks aren't available from
 here; say so and stop.
 
-Ask `ntm-user:backend` for Timezone under About you in the Settings document:
-it's the timezone every job runs in.
+Load `ntm-user:backend` and read Timezone under About you from the Settings
+document, as it says: it's the timezone every job runs in. If that fails, or
+`ntm-user:backend` answers `Backend CAN'T: <why>`, explain what happened to the
+user.
 
 ## Finding the user's jobs
 

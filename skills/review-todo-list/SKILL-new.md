@@ -1,7 +1,7 @@
 ---
 name: review-todo-list
 description: >-
-    Reviews the user's todo list with them in chat: closes obsolete or duplicate
+    Reviews the user's task list with them in chat: closes obsolete or duplicate
     tasks, then estimates unreviewed ones and breaks up big ones, with their
     approval. Run by the user in chat, never by a job ("let's review my list",
     "review the kitchen project", "estimate the garage work").
@@ -15,7 +15,7 @@ good one, you bring proposals and they react, and their wording wins over yours.
 
 ## Setup
 
-Load `ntm-user:backend` to read the user's conventions. If the todo list can't
+Load `ntm-user:backend` to read the user's conventions. If the task list can't
 be read or written, say what went wrong.
 
 ## Usage

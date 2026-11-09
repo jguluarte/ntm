@@ -21,8 +21,8 @@ notifies anyone: whoever called it decides what to tell the user.
 
 ## Setup
 
-1. Load `ntm-user:backend` to read the user's conventions.
-2. Fetch every open task, and keep every result, including excluded tasks.
+Load `ntm-user:backend` to read the user's conventions, then fetch every open
+task, excluded ones included.
 
 ## Clear stale dates
 

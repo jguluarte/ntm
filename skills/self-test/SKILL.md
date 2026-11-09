@@ -130,7 +130,8 @@ behind didn't pass.
 Only when every step before it passed. Ask the messenger agent with
 `kind: self-test`, `job: self-test` and
 `message: ntm is ready; the self-test passed`. It passes when the messenger
-returns `Sent:`, or a delivery block, which you show the user.
+returns `Sent:`, or a delivery block, which you show the user. A
+`Messenger NEEDS` answer fails the step.
 
 ## Result
 

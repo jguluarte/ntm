@@ -56,7 +56,7 @@ found: wrong account. Anything else: backend error.
 
 The Linear connector bundled with `ntm-user` needs its own sign-in. Until it has
 one, it shows only an `authenticate` tool (and `complete_authentication`), none
-of the tools above. Then the ping returns
+of the tools above. When no Linear connector is signed in, the ping returns
 `Backend CAN'T: Linear needs sign-in — <how>`. How, in a chat: call
 `authenticate` and give the user the link it returns; once they've signed in,
 the tools appear. When the page the link lands on doesn't load, pass that page's

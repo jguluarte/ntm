@@ -51,9 +51,9 @@ part tied to a step below waits for that step.
 Someone who doesn't want Linear hears that finding something else takes longer,
 and that you're happy to. Then their own backend, below.
 
-For their own backend, go through the contract with them before Statuses. Its
-section Setting something up with the user says how. After that, Statuses and
-Labels do their steps with the tools they named for the setup operations.
+For their own backend, follow `backends/own-backend.md` before Statuses. After
+that, Statuses and Labels do their steps with the tools they named for the setup
+operations.
 
 ## Linear
 

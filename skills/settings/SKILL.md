@@ -14,7 +14,7 @@ setup, under fixed headings: About you, Labels, Planning, Shopping,
 Notifications. A missing section means its defaults. Runs read About you,
 Planning, Shopping and Notifications live, so a change there takes effect on the
 next run. Labels are built into `ntm-user:backend`, so a change there needs a
-rebuild. This skill never rebuilds.
+rebuild.
 
 ## Usage
 

@@ -1,11 +1,10 @@
 ---
 name: reminder
 description: >-
-    Sends one of the user's daily reminders, morning, afternoon or evening:
-    finds the day's tasks on the todo list, sends nothing when there's nothing
-    to remind about, and otherwise hands them to the messenger agent, which
-    writes the message in the user's style and sends it. Run by a job, as
-    /ntm:reminder --type morning, afternoon or evening.
+    Gathers the facts for one of the user's reminders, morning, afternoon,
+    evening or week, and hands them to the messenger agent, which decides
+    whether and how the message goes. Run by a job, as /ntm:reminder --type
+    morning, afternoon, evening or week.
 ---
 
 # ntm:reminder
@@ -13,10 +12,8 @@ description: >-
 ## Usage
 
 ```
-/ntm:reminder --type <morning|afternoon|evening>
+/ntm:reminder --type <morning|afternoon|evening|week>
 ```
-
-The type picks the facts and the message.
 
 ## Setup
 
@@ -24,34 +21,29 @@ Load `ntm-user:backend` to read the user's conventions.
 
 ## The facts
 
-Find all open and completed (non-cancelled) tasks with today's date. If the task
-list can't be read, terminate with `Reminder FAILED: <error msg>`.
+| Type      | Lines                                                                       |
+| --------- | --------------------------------------------------------------------------- |
+| morning   | `today:` per open task planned today or earlier                             |
+| afternoon | `open:` per open task planned today                                         |
+| evening   | `done:` per task done today, then `open:` per open task planned today       |
+| week      | the `done:`, `open:`, `planned:` and `weekly message:` lines the job handed |
+
+A line with no tasks is written once, as `none` (`today: none`).
+
+## Steps
+
+### 1. Gather
+
+For week, take the job's lines as they came and go to step 2.
+
+Find the type's tasks. If the todo list can't be read, stop with
+`Reminder FAILED: <why>`.
 
 Write each task as a task line, as the messenger agent's "What you're given"
-says, with no estimate, and `(started)` on an open task when work on it has
-begun.
+says, with no estimate. Add `(was <date>)` on a morning task planned before
+today, and `(started)` on an open task when work on it has begun.
 
-- morning: one `today:` line per open task, or `today: none`.
-- afternoon: one `open:` line per open task, or `open: none`.
-- evening: one `done:` line per task done today, or `done: none`; then one
-  `open:` line per open task, or `open: none`.
-
-## When to send nothing
-
-Send nothing, and end the run with the line given, when:
-
-- morning or afternoon, no open tasks, and today is paused:
-  `Nothing sent: today is paused.`
-- evening, nothing done and nothing open, a day off:
-  `Nothing sent: nothing done or open today.`
-
-Otherwise send: an empty morning or afternoon still gets its message.
-
-To check the pause, run `/ntm:pause --check`; today is paused when its line for
-today ends `true`. If it fails, end with `Reminder FAILED: <what went wrong>`; a
-failed check never counts as not paused.
-
-## The message
+### 2. Hand over
 
 Ask the messenger agent:
 
@@ -60,9 +52,6 @@ kind: <type>
 job: <type>
 <the facts>
 ```
-
-When the messenger agent isn't available in this session, read
-`agents/messenger.md` from the newest installed `ntm` and follow it yourself.
 
 ## Result
 

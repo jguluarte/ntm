@@ -1,5 +1,5 @@
 ---
-name: configure-schedule
+name: schedules
 description: >-
     Sets up and maintains the user's ntm jobs, the scheduled tasks that send
     their reminders: works out with them which skills run on which days, at what

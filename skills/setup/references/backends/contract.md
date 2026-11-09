@@ -4,10 +4,11 @@ What a backend has to have, and what its guide has to say, for ntm to run on it.
 A backend guide maps each operation the conventions name onto one backend's
 connector; `linear.md` is the complete, tested one. Any other backend has no
 guide file: the user's own description under Todo list in `ntm-user:settings` is
-its guide. `/ntm:configure-todo-list` writes that description with the user by
-walking this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
-it. A backend can be built on anything the user's agent can reach, for example a
-table in a Claude Doc (the Claude Docs connector's own guide gives its calls).
+its guide. Setup writes that description with the user by walking this contract,
+as `own-backend.md` says, and once `ntm-user` is installed, `/ntm:self-test`
+checks it. A backend can be built on anything the user's agent can reach, for
+example a table in a Claude Doc (the Claude Docs connector's own guide gives its
+calls).
 
 Write a guide as a list of operations, each saying which tool calls carry it out
 and which fields map to the conventions' names. Keep the headings below so
@@ -23,7 +24,7 @@ skills can find what they need.
 
 Two gaps must be covered before ntm can run: a date field to use as the planned
 date, and a way to tell open tasks from closed. Where the backend lacks one,
-work it out with the user during setup (see Setting something up with the user).
+work it out with the user during setup (see `own-backend.md`).
 
 Other gaps are survivable. The guide says which the backend lacks, and the
 skills work around them:
@@ -280,22 +281,3 @@ message history database's first content is its frontmatter, which holds its
 
 Say how a write reports success, so the conventions' retry rule (retry once,
 then report) can be applied.
-
-## Setting something up with the user
-
-How `ntm:configure-todo-list` writes the description with the user. Walk this
-contract with them, heading by heading, in its order. For each operation, name
-the tool and the parameters that carry it out. Once they name the tool for
-`ping`, confirm the connector as the skill says. Read the tool's schema from the
-ToolSearch result rather than guessing: which date field is the planned date,
-how results paginate, whether labels add or replace, whether a comment can be
-edited in place. Where a choice is theirs (which date field, which grouping is a
-project), propose one and let them react. Try a read by hand where it's cheap.
-Writes other than the setup operations wait for `/ntm:self-test`.
-
-Say which of the gaps under What the backend needs to have the backend has. For
-no date field, or no way to tell open from closed, look with them for something
-that covers it: a field or status they can repurpose, a label, or a different
-place to keep the list, such as a table in a Claude Doc. Carry on once it's
-covered. With no documents, each database lives in the description of an open
-task titled with the database's title, as Databases says; tell them.

@@ -101,7 +101,9 @@ implies `--stay-fresh`; the tone is freeform. It must:
   something keeps slipping section gives for that count (for a persona, its own
   levels); any other task is on the first level. Then add one entry, with
   today's date, the new line and the task ids the tone names, pruned to the
-  `Keep:` line in the database's frontmatter;
+  `Keep:` line in the database's frontmatter. When the database is missing,
+  `write database` creates it with the frontmatter
+  `Keep: 60 entries or 8 weeks`;
 - with `--for`, end with a `Title:` line that says what the message is about in
   the same style, never just the reminder's name;
 - output only the message, plain text, and that `Title:` line.

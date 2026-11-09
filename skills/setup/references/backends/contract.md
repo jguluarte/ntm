@@ -72,42 +72,39 @@ One task by id, with its description and blocked-by relations.
 
 ### `read comments` / `write comment` / `update comment`
 
-Reads, writes and updates a task's comments. If the backend can't update a
-comment in place, `update comment` says to delete and re-add, or to append.
+A task's comments, read, added or edited. With no edit in place,
+`update comment` deletes and re-adds, or appends.
 
 ### `set planned date` / `clear planned date`
 
-Sets or clears a task's planned date. Names the date field used; nothing else
-changes.
+Sets or clears the planned date field, and nothing else.
 
 ### `set status`
 
-Sets a task's status to one in a given class, as Status classes says.
+Sets a status in a given class (see Status classes).
 
 ### `add labels` / `remove labels`
 
-Adds or removes labels without dropping the others.
+Adds or removes labels, keeping the others.
 
 ### `mark duplicate of`
 
-Marks a task as a duplicate of another with the backend's duplicate relation.
-With no such relation, closes it with the duplicate status and a comment naming
-the original.
+Links a task as a duplicate of another. With no such relation, closes it in the
+duplicate status with a comment naming the original.
 
 ### `create task`
 
-Creates a task with a title, description, project, parent, blocked-by and
-labels, and says how to check for an existing match first.
+Takes a title, description, project, parent, blocked-by and labels; returns the
+new task's id and url. Says how to check for an existing match first.
 
 ### `update task`
 
-Changes a task's title, description, estimate or project (or removes the
-project), or adds a blocked-by link; nothing else changes.
+Changes the title, description, estimate or project (or removes the project), or
+adds a blocked-by link, and nothing else.
 
 ### `read database` / `write database`
 
-Reads or writes a database, as Databases says. `write database` creates a
-missing database with the content given.
+See Databases.
 
 ## Databases
 

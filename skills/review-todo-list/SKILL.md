@@ -144,8 +144,9 @@ again for any task it already answered ahead, and drop those early answers.
 Once a task is settled, in the same turn that presents the next one (or ends the
 session): write the settled estimate (and any approved title, description or
 blocked-by link), and send the estimator its Log request with its next ask: the
-settled estimate, and what the user said or changed. Writes never make the user
-wait.
+settled estimate, and what the user said or changed. When the estimator gave a
+`points:` line, write the settled estimate as its point. Writes never make the
+user wait.
 
 ## Breaking up tasks
 
@@ -167,5 +168,6 @@ user just wants to tease things apart so they can do it in smaller pieces.
 ## Ending
 
 When the user stops, or this review is done, send the estimator its Log request
-with anything not yet logged, then sum up in a line or two: how many items were
-reviewed, closed and broken up, and what's still unreviewed in it.
+with anything not yet logged, and wait for its `logged:` lines so the log is
+saved before the session can close. Then sum up in a line or two: how many items
+were reviewed, closed and broken up, and what's still unreviewed in it.

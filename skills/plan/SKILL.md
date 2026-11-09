@@ -49,8 +49,7 @@ states only what differs for its user.
 
 1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`. Read
    Planning from the Settings document: how this user wants their todo list
-   planned, with the estimate pattern, the excluded labels and anything else
-   they wrote there.
+   planned, with the excluded labels and anything else they wrote there.
 2. Find every open task, excluded and blocked ones included.
 
 If any step fails, stop and say what went wrong. Run by a job, end with

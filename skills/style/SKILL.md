@@ -42,7 +42,7 @@ create it with this first content:
 
 ```
 ---
-Keep: 60 entries or 8 weeks
+Keep: 8 weeks
 ---
 ```
 

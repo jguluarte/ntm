@@ -81,38 +81,7 @@ skill returned, which says what it holds; every other section is carried over
 unchanged. A section nobody has set is its heading alone, which means its
 defaults.
 
-### 3: `ntm-user:style`
-
-Its description says it writes ntm's reminders in the user's style, run by the
-messenger, changed with `/ntm:configure-style`. The messenger calls it as
-`/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`:
-`<reminder>` is `morning`, `afternoon`, `evening`, `week` or `completed` and
-implies `--stay-fresh`; the tone is freeform. It must:
-
-- rewrite the message in the user's register, from their Profile
-  (`references/builder.md` in `ntm:configure-style` says what each section
-  means);
-- with `--stay-fresh`, use the message history database, read through
-  `ntm:conventions`. Keep lines fresh: avoid what recent entries used. Let a
-  slipping task climb: a carried-over task's earlier days are the days before
-  today whose entries name its id, and its level is the one the Profile's When
-  something keeps slipping section gives for that count (for a persona, its own
-  levels); any other task is on the first level. Then add one entry, with
-  today's date, the new line and the task ids the tone names, pruned to the
-  `Keep:` line in the database's frontmatter. When the database is missing,
-  `write database` creates it with the frontmatter
-  `Keep: 60 entries or 8 weeks`;
-- with `--for`, end with a `Title:` line that says what the message is about in
-  the same style, never just the reminder's name;
-- output only the message, plain text, and that `Title:` line.
-
-For plain or a theme, it carries the Profile `ntm:configure-style` wrote, and
-its procedure is written fresh from the list above every time; for a persona,
-the persona's body as handed in, under the `## For ntm` section
-`configure-style` wrote. When nothing changed, the current Profile, or persona
-and section, goes in as it is.
-
-### 4: Zip
+### 3: Zip
 
 ```
 cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin &&
@@ -122,14 +91,14 @@ cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin &&
 Without `zip`, the last command is
 `python3 -m zipfile -c /tmp/ntm-user.plugin .`.
 
-### 5: Present
+### 4: Present
 
 Copy it to the session's outputs folder, the folder the session's instructions
 name for files to hand back (`/mnt/user-data/outputs/` on chat). That copy is
 what shows the accept card in Cowork; say where it is. Where a SendUserFile tool
 exists, send it with that as well.
 
-### 6: Then say
+### 5: Then say
 
 Install it in place of the old one (from Customize > Plugins if no card
 appears), open a new chat, and run `/ntm:self-test`.

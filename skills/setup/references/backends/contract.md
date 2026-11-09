@@ -129,73 +129,6 @@ project), or adds a blocked-by link; nothing else changes.
 Reads or writes a database, as Databases says. `write database` creates a
 missing database with the content given.
 
-## What base skills do with it
-
-Base skills load `ntm-user:backend` and name what they need in the domain's
-words (`/ntm-user:backend find open items planned for today.`). The agent then
-does it with the calls `ntm-user:backend` teaches. Each need below names the
-operations it uses, so a backend that covers every operation covers every need.
-When the backend has no way to do one, `ntm-user:backend` teaches the agent to
-say `Backend CAN'T: <why>`. A new feature adds its needs here and its operations
-above.
-
-### `today's open items`
-
-Open tasks planned today or earlier, with the standard fields. Uses
-`fetch open`.
-
-### `open items planned <span>`
-
-Open tasks planned in the span, with the standard fields. Uses `fetch open`.
-
-### `every open item`
-
-Every open task, blocked ones included, with the standard fields, and the list's
-projects, each with its name and labels, and its summary when the skill names
-it. Uses `fetch open`.
-
-### `items done <span>`
-
-Tasks closed in the span, with their completion time: done, plus canceled and
-duplicate when the skill names them. Uses `fetch closed`.
-
-### `watched items`
-
-For price watch users only: the open tasks carrying the $price-watch label,
-themselves or through their project, with the standard fields. Uses
-`fetch open`.
-
-### `closed items with an Amazon alert`
-
-For price watch users only: closed tasks, canceled and duplicate included, that
-still carry the $has-amazon-alert label, with the standard fields and their
-completion time. Uses `fetch closed`.
-
-### `task <id>`
-
-One task, with its description, blocked-by relations and comments. Uses
-`read task` and `read comments`.
-
-### `create a task`
-
-A new task with a title, description, labels, project, parent and blocked-by
-links, ending with its id and url, as Writing says. Uses `create task`.
-
-### `change a task`
-
-Any of a task's planned date, status, labels, estimate, comments, duplicate of,
-title, description, project or blocked-by links, and nothing else, ending with
-success or failure, as Writing says. Uses `set planned date`,
-`clear planned date`, `set status`, `add labels`, `remove labels`,
-`write comment`, `update comment`, `mark duplicate of` and `update task`.
-
-### `read or write <database>`
-
-The Settings document or one of its sections, or a database under Databases.
-Uses `read database` and `write database`; a first write creates a missing
-database, such as self-test's throwaway one. A read ends with the content, or
-that it's missing; a write with success or failure, as Writing says.
-
 ## Databases
 
 Databases are the documents the system keeps its own records in, on the todo
@@ -238,8 +171,7 @@ Lists a todo list's status names, so each class can be matched to real names.
 
 Only where the backend stores estimates on a scale of its own: reads the
 estimates already set on some of the list's tasks, so the backend's scale can be
-suggested when the user doesn't know it. The first review uses it too, when it
-asks the estimate question.
+suggested when the user doesn't know it.
 
 ### `list labels`
 

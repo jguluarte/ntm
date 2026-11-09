@@ -292,13 +292,12 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
 - `ntm-user:backend` is the one place that teaches how to work with this user's
   list: their backend's calls, their labels and statuses, what counts as open,
   where every document lives (Settings, Style, each database). It is the list
-  rules and the backend guide, tailored to this user only. It is a skill the
-  agent loads, not another agent it asks: a base skill names what it needs in
+  rules and the backend guide, tailored to this user only. It takes a request in
   plain words ("today's open items", "everything done last week", "watched
-  items"), and the agent makes the calls the skill teaches.
-- Base skills say WHAT to do, load `ntm-user:backend` and do it: `ntm:today` is
-  "load `ntm-user:backend`, find today's open items, then present them".
-  Planning, the reminders and the price watch all go through it. Future
+  items") and gives the call to make; the agent makes it.
+- Base skills say WHAT to do and ask `ntm-user:backend` for the data:
+  `ntm:today` is "get today's open items from `ntm-user:backend`, then present
+  them". Planning, the reminders and the price watch all go through it. Future
   recurring items show up in "today's open items" the same way.
 - There is no base conventions skill. The generic text (the list rules, every
   backend guide, each feature's rules) stays in the base only as setup reference
@@ -312,14 +311,14 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
   channel, plus the Pushover keys when they use Pushover. Linear users also get
   the Linear connector. It has no `settings`, `ready-check`, `style` or
   `self-test`: the base's serve everyone.
-- `settings` and `ready-check` are base skills. `ntm:settings` loads
-  `ntm-user:backend`, reads the Settings document, then shows it or points the
+- `settings` and `ready-check` are base skills. `ntm:settings` asks
+  `ntm-user:backend` for the Settings document, then shows it or points the
   agent to the right place for a change: the Settings document, a scheduled task
   through `ntm:schedules`, the Style document through `ntm:style`, or a built-in
   value through `update`. It never rebuilds. It loads the whole backend skill, a
   cost Justin accepted. `ntm:ready-check` is the same for everyone and names no
-  backend; its one tailored step loads `ntm-user:backend` and pings, and a
-  failure becomes `Ready-check FAILED: <why>`.
+  backend; its one tailored step asks `ntm-user:backend` to ping, and it relays
+  `Backend CAN'T: <why>` as `Ready-check FAILED: <why>`.
 - The base's entry points are `setup`, a wizard that walks the whole flow (see
   0.4: setup), and a tiny `update` whose body loads `setup`, there so someone
   already set up finds it; run before any setup, it asks "It doesn't look like

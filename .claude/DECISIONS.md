@@ -248,7 +248,8 @@ The text rules in `CLAUDE.md` apply; these add to them.
 - devbox provides prettier, markdownlint-cli2, direnv, bats and jq. `make lint`,
   `make lint-fix` and `make test` are the way in, locally and in CI.
 - `make test` runs the bats tests in `tests/`: the user-facing name tests,
-  against `tests/expected/`, which only Justin edits.
+  against `tests/expected/`, which a PR that renames updates, so the rename
+  shows in its diff.
 - `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
   (145, exported in `.envrc`), on every tracked file except those
   `.gitattributes` marks `skip-absolute-line-length`, and prints the files that

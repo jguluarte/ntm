@@ -47,19 +47,13 @@ states only what differs for its user.
 
 ## Setup
 
-1. Load `ntm-user:backend` and `ntm:pause`. Read Planning from the Settings
-   document as `ntm-user:backend` says: how this user wants their todo list
-   planned, the estimate pattern, the excluded labels, and anything else they
+1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`.
+   Planning in the Settings document is how this user wants their todo list
+   planned: the estimate pattern, the excluded labels, and anything else they
    wrote there.
-2. Find the open tasks. The carry-over and the days already planned need the
-   excluded and blocked ones too.
+2. Find every open task, excluded and blocked ones included.
 
-    ```
-    /ntm-user:backend find every open item, excluded and blocked ones included.
-    ```
-
-If any step fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop
-and explain what happened to the user. Run by a job, end with
+If any step fails, stop and say what went wrong. Run by a job, end with
 `Plan FAILED: <what failed>`.
 
 ## Choosing a task
@@ -67,12 +61,12 @@ and explain what happened to the user. Run by a job, end with
 A candidate is an open task with a plannable status, and either no planned date
 or a stale one, and not excluded as Excluded tasks in `ntm-user:backend` says
 (by default anything carrying the $no-autoschedule or $pending-shipment label,
-or in the blocked status). Shortlist the likeliest picks from what the fetch
-already returns (status, project, labels, titles, planned dates) before reading
-any task in full; then read each task on the shortlist with its description and
-relations, as `ntm-user:backend` says. Blocked-by relations follow the Blocks
-and blocked by rule in `ntm-user:backend`; the picks made in this run count as
-planned days, so a chain can fill the week in order.
+by their real names from Labels, or in the blocked status). Shortlist the
+likeliest picks from what Setup found (status, project, labels, titles, planned
+dates) before reading any task in full; then read only the shortlist, for
+descriptions and relations. Blocked-by relations follow Blocks and blocked by in
+`ntm-user:backend`; the picks made in this run count as planned days, so a chain
+can fill the week in order.
 
 Pick as many candidates per day as Defaults says (one, unless told otherwise),
 using judgement; in chat, give each pick a one-line reason. Weigh, roughly in
@@ -105,8 +99,8 @@ one more.
 When the run picks tasks, ask the estimator's Estimate for a time once, with the
 shortlist. Its times judge fit, and go on the lines of the tasks this run picks
 so the user can see what the day asks of them; other lines carry no time. When
-the estimator agent isn't loaded, read `agents/estimator.md` from the newest
-installed `ntm` and follow it.
+the agent isn't loaded, read `agents/estimator.md` from the newest installed
+`ntm` and follow it.
 
 ## Paused days
 
@@ -117,17 +111,16 @@ whose line ends `true`. If it returns `Pause FAILED`, stop and return
 
 ## Writing
 
-Set each pick's planned date as `ntm-user:backend` says. Writes follow its
-rules; Result says how to list any that still fail.
+Set each pick's planned date. Writes follow `ntm-user:backend`; Result says how
+to list any that still fail.
 
 ## --auto day
 
 1. **Carry over.** Every task planned before today is stale. Move the ones in
-   the plannable class to today, as `ntm-user:backend` says, whatever their
-   labels and even when one blocks another: the user dated them, so they should
-   just work (the Blocks rule is for picking work; carrying a date isn't
-   picking). A stale task in the blocked class keeps its date. Carry over on a
-   paused day too.
+   the plannable class to today, whatever their labels and even when one blocks
+   another: the user dated them, so they should just work (the Blocks rule is
+   for picking work; carrying a date isn't picking). A stale task in the blocked
+   class keeps its date. Carry over on a paused day too.
 2. **Today.** If nothing is planned for today after the moves, check today as
    Paused days says. Paused: return `paused` and stop. Otherwise pick for today
    as Choosing a task says, and date the pick today.
@@ -170,8 +163,8 @@ span, then do what they decide.
    gets its date cleared, unless the user asks to move it to a later day. Days
    they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears,
-   including dates they set themselves. When they approve, write them as
-   `ntm-user:backend` says. Show the saved plan as Result says.
+   including dates they set themselves. When they approve, write them. Show the
+   saved plan as Result says.
 
 ## Result
 

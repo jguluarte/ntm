@@ -9,30 +9,23 @@ can reach, such as a table in a Claude Doc. Keep the headings: skills cite them.
 
 ## What the backend needs to have
 
-- Tasks with: an id, a title, a description, a status, labels, a single date
-  field usable as the planned date, a parent/sub-task relation, and a web url.
-- Some way to group tasks (projects, folders, epics), ideally one that can carry
-  labels.
-- A connector for Claude that can list, read and write the above.
+A connector the agent can use to list, read and write tasks. Each task has an
+id, title, description, status, labels, a parent, a web url, and one date field
+to use as the planned date. Tasks group into projects (or folders, epics),
+ideally ones that carry labels.
 
-Two gaps must be covered before ntm can run: a date field to use as the planned
-date, and a way to tell open tasks from closed. Where the backend lacks one,
-work it out with the user during setup (see Setting something up with the user).
+Two gaps are fatal until setup covers them with the user: no planned date field,
+and no way to tell open tasks from closed. The rest are survivable; the guide
+names the ones its backend has, and skills work around them:
 
-Other gaps are survivable. The guide says which the backend lacks, and the
-skills work around them:
-
-- **No estimate field:** keep each task's estimate in its description, on a line
-  `Estimate: <estimate>`. The guide says how `fetch open` reads it there and how
-  `update task` writes it.
-- **No blocked-by relation:** reviewing and planning work from titles and
-  descriptions instead.
-- **No labels on groups:** the conventions' project-label inheritance doesn't
-  apply, and the user puts system labels on tasks directly.
-- **No priority, or no updated-at:** skills do without them.
-- **No documents:** databases are kept in tasks (see Databases).
-- **No way to keep a database inside a project:** every database is at list
-  level.
+- **No estimate field:** the estimate goes in the description, on a line
+  `Estimate: <estimate>`; `fetch open` reads it there, `update task` writes it.
+- **No blocked-by relation:** review and planning go by titles and descriptions.
+- **No labels on groups:** no project-label inheritance; system labels go on
+  tasks.
+- **No priority or updated-at:** skills do without.
+- **No documents:** databases live in tasks (see Databases).
+- **No databases inside a project:** every database is at list level.
 
 ## Todo list
 

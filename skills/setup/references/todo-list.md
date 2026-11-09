@@ -23,7 +23,8 @@ are about that, load it and follow it instead.
 /ntm:configure-todo-list [linear|<name>]
 ```
 
-The backend to use on a first run. Without one, ask (see The backend).
+The backend to use on a first run. Without one, suggest Linear (see The
+backend).
 
 ## Before you start
 
@@ -94,8 +95,9 @@ here and say so. Search again before going on.
 
 Then `ping` that team, right away. A pass: say in a line that the list answers.
 Anything else: say what failed, as the guide's `ping` words it, and fix it with
-them (sign in again, or the other account). Don't go on until it passes; if it
-won't, say so and stop, since every later step needs the list.
+them (sign in again, or sign in with the account that holds this team). Don't go
+on until it passes; if it won't, say so and stop, since every later step needs
+the list.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are

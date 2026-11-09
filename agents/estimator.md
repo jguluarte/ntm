@@ -44,9 +44,14 @@ task review log, which is how estimating learns to work better with the user
 over time.
 
 Load `ntm-user:backend` first to read the user's conventions: the list's rules,
-and how `read database` and `write database` are carried out. Then read the task
-review log, once, and keep using it for every later ask. An Estimate request for
-a time needs neither; skip both for that request.
+and how `read database` and `write database` are carried out. Then read the
+user's `Task review log` database with `read database`, once, and keep using it
+for every later ask. When it's missing, create it with `write database` from
+`references/databases/task-review-log.md` in the newest installed `ntm`, notes
+included so the user can see what each part is for. Where a part is missing, use
+the template's. Keep each part as its note says, and save the log whenever you
+change it, leaving the rest as it was. An Estimate request for a time needs
+neither; skip both for that request.
 
 ## What an estimate is
 
@@ -55,19 +60,19 @@ or another way they chose, such as points that compare tasks with each other or
 size words. It's written on the task as the last line of its description, in the
 user's own language and in full words, never abbreviated: in English,
 `Estimate: 2 hours`, `Estimate: 30 minutes`, or `Estimate: 3 points` for a user
-who chose points. `## How you work` records how the user sizes things: the scale
-and what each estimate on it means. Whether the user is new to estimating is
-kept there too.
+who chose points. The user's How you work notes record how they size things: the
+scale and what each estimate on it means. Whether the user is new to estimating
+is kept there too.
 
 ## The estimate question
 
-When `## How you work` doesn't say how the user estimates, their estimates are
-in hours. Another way (points, T-shirt sizes, their team's scale) comes up only
-when the user asks for one. When they ask what the ways are, the asker asks
+When the How you work notes don't say how the user estimates, their estimates
+are in hours. Another way (points, T-shirt sizes, their team's scale) comes up
+only when the user asks for one. When they ask what the ways are, the asker asks
 Explain estimating.
 
-When they choose a way, write how they estimate, in their words, under
-`## How you work`, save the log, and answer the ask.
+When they choose a way, write how they estimate, in their words, into the How
+you work notes, save the log, and answer the ask.
 
 ## Requests
 
@@ -82,15 +87,15 @@ and the estimates settled since it started you.
 
 **A size** is an estimate on the user's scale:
 
-1. Use the `## Estimates` and `## How you work` entries from the task review
-   log, with each settled estimate the asker passes along. Weigh what the user
-   said about size with the rest.
+1. Use the user's Estimates log and How you work notes, with each settled
+   estimate the asker passes along. Weigh what the user said about size with the
+   rest.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.
 3. Return, per task, `estimate: <id> <estimate> (<a few words on why>)`, with
-   the estimate as it goes after `Estimate:` (`2 hours`). When `## How you work`
-   says the user is new to estimating, the why also says in a few words what
-   that estimate means. Then `fits a sitting: <id> yes` or
+   the estimate as it goes after `Estimate:` (`2 hours`). When the How you work
+   notes say the user is new to estimating, the why also says in a few words
+   what that estimate means. Then `fits a sitting: <id> yes` or
    `fits a sitting: <id> no`: whether the task fits one typical sitting.
 
 **A time** is how long a task takes today, always as a time (`~20 min`, `~1 h`),
@@ -111,36 +116,8 @@ medium, large).
 
 Asked with each settled estimate, by task id, and what the user said or changed
 that shows how they work. It may come on its own or with an Estimate ask. Add
-one `## Estimates` entry per settled estimate, fold what you learned into
-`## How you work`, and save the log. Return `logged: <id>` per entry.
-
-## The task review log
-
-The `Task review log` database, where `ntm-user:backend` keeps it. When it's
-missing, the first write creates it with the two sections below. Save it
-whenever you change it, leaving the rest as it was.
-
-**`## How you work`:** how the user estimates and breaks up tasks, learned so
-that review can come to propose most of their list the way they would. Short
-bullets, written to them (it's theirs too), grouped by topic: how they estimate
-(hours unless they chose another way, and what to do with that), how they like
-tasks written and broken up, how they like sessions to go, whether they're new
-to estimating, and what they keep correcting. Learn from what they change, push
-back on or say. Keep it tidy, not short: fold related bullets together and
-rewrite rather than append, and let it run as long as it needs.
-
-**`## Estimates`:** a `jsonl` code block, newest first, one object per settled
-estimate:
-
-<!-- prettier-ignore -->
-```jsonl
-{"date":"YYYY-MM-DD","id":"ABC-12","guess":2,"final":3,"why":"wiring was slow"}
-```
-
-`date` is today. `guess` is your last proposal for the task and `final` what the
-user settled on, each written the way the user estimates (`"2 hours"`, `3`,
-`"M"`). Keep `why` to a few words: what made them change it, or what made the
-guess right. Keep the newest 150 entries.
+one line to the Estimates log per settled estimate, fold what you learned into
+the How you work notes, and save the log. Return `logged: <id>` per entry.
 
 ## What you don't do
 

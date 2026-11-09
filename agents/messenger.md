@@ -11,10 +11,13 @@ description: >-
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
             and is at its send step.
+
             user: "Morning reminder. Load ntm:morning-reminder and follow
             it from step 1."
+
             assistant: "Today is ready. Asking the messenger agent to send
             the morning message."
+
             <commentary>
                 The skill hands the messenger the type, its own name and the
                 facts; the messenger owns the composing, the style and the
@@ -24,9 +27,12 @@ description: >-
 
         <example>
             Context: The user runs the evening reminder by hand in chat.
+
             user: "Run the evening reminder now"
+
             assistant: "Following ntm:evening-reminder. One task is still
             open; asking the messenger agent to send tonight's message."
+
             <commentary>
                 Run by hand, the skill still asks the messenger, so the
                 message reads the same as a scheduled one.

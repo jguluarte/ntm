@@ -175,7 +175,7 @@ the standard fields.
 
 For price watch users only: closed tasks, canceled and duplicate included, that
 still carry the $has-amazon-alert label. Uses `fetch closed`. Returns those
-tasks with their completion time.
+tasks with the standard fields and their completion time.
 
 ### `task <id>`
 

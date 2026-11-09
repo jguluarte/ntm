@@ -136,13 +136,14 @@ it carries both; `create project` says whether `labels` replaces the set.
 ## Databases
 
 The system keeps its own records in four databases on the todo list, each under
-a fixed title: Pauses, Message history, Task review log, Price watch stores. For
-each, `read database` by its title; one that's found is kept. If they already
-keep one under another title, say to add that title under Deviations with
-`/ntm:settings`. Name the missing ones in one line, and on a plain "ok" create
-each with `create database` and this first content:
+a fixed title: Paused dates, Message history, Task review log, Price watch
+stores. For each, `read database` by its title; one that's found is kept. If
+they already keep one under another title, say to add that title under
+Deviations with `/ntm:settings`. Name the missing ones in one line, and on a
+plain "ok" create each with `create database` and this first content:
 
-- **pauses:** `## Pauses` with `None.` under it.
+- **pauses:** the line `The days when nothing gets planned automatically.`, then
+  `## Pauses` with `None.` under it.
 - **message history:** its first content is this frontmatter:
 
     ```

@@ -21,7 +21,7 @@ description: >-
 
 | Type      | Lines                                                                                                     |
 | --------- | --------------------------------------------------------------------------------------------------------- |
-| morning   | the `today:` lines the job handed                                                                         |
+| morning   | `today:` per open task planned today or earlier                                                           |
 | afternoon | `open:` per open task planned today or earlier                                                            |
 | evening   | `done:` per task done today, then `open:` per open task planned today or earlier                          |
 | week      | `done:` per Done task, `open:` per Still open task, then the job's `planned:` and `weekly message:` lines |
@@ -32,7 +32,7 @@ A key with no tasks gets the single line `<key>: none`.
 
 ### 1. Gather
 
-For afternoon and evening, load `ntm-user:backend` to read the user's
+For morning, afternoon and evening, load `ntm-user:backend` to read the user's
 conventions, then find the type's tasks. If the todo list can't be read, stop
 with `Reminder FAILED: <why>`.
 

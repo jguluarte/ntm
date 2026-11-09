@@ -36,9 +36,9 @@ entries used. Let a slipping task climb: a carried-over task's earlier days are
 the days before today whose entries name its id, and its level is the one the
 Profile's Responding to procrastination section gives for that count (for a
 persona, its own levels); any other task is on the first level. Then add one
-entry, with today's date, the new line and the task ids the tone names, pruned
-to the `Keep:` line in the database's frontmatter. When Message history is
-missing, create it with this first content:
+entry, with today's date, the new line and the task ids it names, pruned to the
+`Keep:` line in the database's frontmatter. When Message history is missing,
+create it with this first content:
 
 ```
 ---

@@ -4,13 +4,12 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 
 ## The repo
 
-A Claude plugin: markdown skills and agents, and a few JSON files. On main the
-base plugin is `ntm` and the user's generated plugin is `ntm-user`; 0.4 renames
-them (base `neurodivergent-task-manager`, user `ntm`). Use main's names, paths
-and words. Main is the source: don't author from the `v0.4` branch, the old 0.4
-design page, or his installed 0.3.0 copy. The 0.4 decisions in `DECISIONS.md`
-set direction only; author nothing for 0.4 until Justin has talked it through
-and says go.
+A Claude plugin: markdown skills and agents, and a few JSON files. The base
+plugin is `ntm` and the user's generated plugin is `ntm-user`, on main and in
+0.4 alike. Use main's names, paths and words. Main is the source: don't author
+from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0 copy.
+The 0.4 decisions in `DECISIONS.md` set direction only; author nothing for 0.4
+until Justin has talked it through and says go.
 
 ## Justin owns the plugin
 

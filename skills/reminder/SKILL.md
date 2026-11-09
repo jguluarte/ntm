@@ -16,8 +16,7 @@ description: >-
 /ntm:reminder --type <morning|afternoon|evening>
 ```
 
-The type picks the facts and the message. It is also the job's key, which the
-messenger gets as `job:`.
+The type picks the facts and the message.
 
 ## Setup
 
@@ -31,7 +30,8 @@ the user dated it. If the todo list can't be read, stop and end with
 `Reminder FAILED: <what went wrong>`.
 
 Write each task as a task line, as the messenger agent's "What you're given"
-says, with no estimate, and `(started)` when work on it has begun.
+says, with no estimate, and `(started)` on an open task when work on it has
+begun.
 
 - morning: one `today:` line per open task, or `today: none`.
 - afternoon: one `open:` line per open task, or `open: none`.
@@ -49,14 +49,13 @@ Send nothing, and end the run with the line given, when:
 
 Otherwise send: an empty morning or afternoon still gets its message.
 
-Check the pause only when a morning or afternoon has no open tasks: run
-`/ntm:pause --check`. Today is paused when its line for today ends `true`. If it
-fails, end with `Reminder FAILED: <what went wrong>`; a failed check never
-counts as not paused.
+To check the pause, run `/ntm:pause --check`; today is paused when its line for
+today ends `true`. If it fails, end with `Reminder FAILED: <what went wrong>`; a
+failed check never counts as not paused.
 
 ## The message
 
-Ask the messenger agent, with the type, the job's key and the facts:
+Ask the messenger agent:
 
 ```
 reminder: <type>
@@ -69,6 +68,4 @@ When the messenger agent isn't available in this session, read
 
 ## Result
 
-Return what the messenger returned, as it came: `Sent: <title>` (with its
-`List:` lines when the push couldn't carry the list), the delivery block, or its
-`… FAILED` or `Messenger NEEDS` line.
+Return what the messenger returned, as it came.

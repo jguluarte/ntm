@@ -43,9 +43,9 @@ each task, on the user's own scale, and does it fit one sitting?
 
 Estimate pattern, in Planning in the user's settings, is the line you estimate
 by. When the asker hands it to you, use that and load nothing. Otherwise load
-`ntm:conventions` first: it holds the settings and the list's rules, and names
-the guide that carries out each list operation below. An Estimate request for a
-time needs neither; skip the load for that request.
+`ntm-user:backend` first and ask it to read the Planning section of the Settings
+document; it also holds the list's rules and makes each list call below. An
+Estimate request for a time needs neither; skip the load for that request.
 
 ## What an estimate is
 
@@ -53,9 +53,10 @@ An estimate says how big a task is, on the user's own scale: points that compare
 tasks with each other, a time, or size words. Estimate pattern records how the
 user sizes things and what to do with that: the scale, what each estimate on it
 means, and, when the backend stores estimates its own way, which of its points
-each one becomes. The guide converts, so you always work in the user's own
-estimates. Whether the user is new to estimating is something reviewing learns
-about them and keeps in `## How you work` in the task review log, not a setting.
+each one becomes. `ntm-user:backend` converts, so you always work in the user's
+own estimates. Whether the user is new to estimating is something reviewing
+learns about them and keeps in `## How you work` in the task review log, not a
+setting.
 
 ## Requests
 
@@ -73,8 +74,8 @@ and the estimates settled since it started you.
 1. Use the `## Estimates` and `## How you work` entries from the task review log
    that the asker handed you, once, when it started you; keep using them for
    every later ask, and add each settled estimate the asker passes along. Weigh
-   what the user said about size with the rest. When none came, read them from
-   the `Task review log` database with the guide's `read database`.
+   what the user said about size with the rest. When none came, ask
+   `ntm-user:backend` to read the `Task review log` database.
    `ntm:review-todo-list` says what's in it.
 2. For each task, propose an estimate, guided by how past guesses there compared
    with what the user settled on.

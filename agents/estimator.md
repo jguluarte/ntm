@@ -66,10 +66,10 @@ sends you their answer. Say their estimates are in hours, and offer another way
 only if they want one (points, T-shirt sizes, their team's scale). Most people
 keep hours. When they ask what the ways are, the asker asks Explain estimating.
 
-When `ntm-user:backend` says how to fit their estimates to the list's own scale,
-work that out with them the same way. Then write how they estimate, in their
-words with any mapping you agreed, under `## How you work`, save the log, and
-answer the ask.
+When their list stores estimates on a scale of its own (as described in
+`ntm-user:backend`), work out with them how their estimates map onto it. Then
+write how they estimate, in their words with any mapping you agreed, under
+`## How you work`, save the log, and answer the ask.
 
 ## Requests
 

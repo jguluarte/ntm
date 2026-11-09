@@ -33,7 +33,7 @@ time.
 ## Review
 
 Start by telling the user they can stop whenever they like, even mid-task: they
-just say so, and you save what's settled.
+just say so, and you save what's been decided.
 
 ### 1. Health check. Merge duplicates, close obsolete tasks
 
@@ -61,19 +61,18 @@ ask in this review. It sees nothing of this chat. If it isn't available, read
 `agents/estimator.md` from the newest installed `ntm` and follow it. **Use one
 estimator for this entire run, so they persist context**. When the estimator
 finishes the first one, give it the next two so they're ready for the user
-quickly. Keep it alive in case the user has more questions.
+quickly.
 
-Send it an Estimate request for a size, with the task as it stands, any end
-state you assumed, and anything the user said about size. Hold its answers until
-their task comes up. If the user asks what the ways to estimate are, send it an
-Explain estimating request and pass its answer on.
+Send it an Estimate request in hours, with the task as it stands, any end state
+you assumed, and anything the user said about size. Hold its answers until their
+task comes up.
 
 Present one task per message:
 
 - its id, linked to its URL, and its title
-- the proposed estimate, with the estimator's few words on why
+- the proposed estimate
 - the estimate already on the task, if any
-- a line on breaking it up, when the estimator says it doesn't fit a sitting
+- a line on breaking it up, when the estimator says it isn't doable after work
 - the description as written
 
 Rarely, when the task as written would be hard to start, propose up to two edits
@@ -82,20 +81,20 @@ likely approves it all, asking to skip leaves it for another day, and anything
 else the user says changes it. When they correct an estimate, tell the estimator
 and ask again for the tasks it answered ahead.
 
-When a task is settled, save any approved edits and its estimate, as the last
-line of its description (`Estimate: 2 hours`), replacing any earlier one. Send
-the estimator a Log request with the settled estimate and what the user said or
-changed, in the same turn you present the next task.
+When the user agrees to a task, save any approved edits and its estimate, as the
+last line of its description (`Estimate: 2 hours`), replacing any earlier one.
+Send the estimator a Log request with the final estimate and what the user said
+or changed, in the same turn you present the next task.
 
 #### Breaking up big tasks
 
-When the estimator says a task doesn't fit a sitting, or the user says it's too
-big, help the user break it up: suggest a few ways to split it. Not every task
-splits, but try. Use the user's pieces when they have them. Show the exact new
-titles and the original's reduced scope, and write only that. New tasks get the
-original's project and parent, and the later one is blocked by the earlier when
-order matters. They go to the end of the review order. Ask the estimator again
-for what's left of the original.
+When the estimator says a task isn't doable after work, or the user says it's
+too big, help the user break it up: suggest a few ways to split it. Not every
+task splits, but try. Use the user's pieces when they have them. Show the exact
+new titles and the original's reduced scope, and write only that. New tasks get
+the original's project and parent, and the later one is blocked by the earlier
+when order matters. They go to the end of the review order. Ask the estimator
+again for what's left of the original.
 
 ### 4. End
 

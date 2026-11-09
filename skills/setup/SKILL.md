@@ -1,5 +1,5 @@
 ---
-name: configure
+name: setup
 description: >-
     The ntm wizard. Walks the user through everything ntm needs in one chat
     (about you, todo list, notifications, style, schedule), hands each part to

@@ -287,7 +287,8 @@ user plugin" the generated one, which 0.4 names `ntm`.
   fixed name so the base can always reach the contracts. An optional alias
   plugin, named with the user's word, waits until after 0.4.0.
 - Every job and every command the user types starts in the user plugin, setup
-  included, so a user with an alias never types the base's name.
+  included, so a user with an alias never types the base's name. The handoff
+  prompt's `schedules` call names the base, since it's pasted, not typed.
 - The base's entry point is `setup`, a wizard that walks the whole flow (see
   0.4: setup). The `configure` skills go away. `update` is a tiny skill whose
   body loads `setup`, there so someone already set up finds it; run before any
@@ -425,7 +426,7 @@ would rather save each piece. In order:
    text whether a subagent gets it or the user pastes it into a new chat: "I
    just set up ntm and need you to run tests and finish the setup. Run
    `/ntm:self-test`. If it passes, set up the schedules:
-   `/neurodivergent-task-manager:schedules --setup "<their schedules and job model>"`".
+   `/neurodivergent-task-manager:schedules --setup "<schedules and model>"`".
    Setup gives it to a subagent first, since a new plugin may only load in a
    fresh session. If that fails, the user pastes it into a new chat, or setup
    drives their browser, but only when it has browser access.

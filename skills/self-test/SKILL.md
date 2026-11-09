@@ -2,12 +2,12 @@
 name: self-test
 description: >-
     Checks that the user's task list can do what every backend must: create,
-    read, find, plan, label, comment on, change and close a throwaway task, and
-    write and read a throwaway database, then cleans up and sends a success
-    message. Reports each step as it passes or fails. The first thing to run
-    after installing ntm and ntm-user ("test ntm", "run the self test", "is
-    everything wired up?"), and the smoke test for a backend the user described
-    themselves.
+    read, find, plan, label, comment on, estimate, change and close a throwaway
+    task, give it a sub-task and mark that a duplicate, and write and read a
+    throwaway database, then cleans up and sends a success message. Reports each
+    step as it passes or fails. The first thing to run after installing ntm and
+    ntm-user ("test ntm", "run the self test", "is everything wired up?"), and
+    the smoke test for a backend the user described themselves.
 ---
 
 # ntm:self-test
@@ -34,7 +34,7 @@ Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like
 `2. Create a task: the task list takes a new task. Pass.` A call that fails for
 a backend reason gets one retry, as `ntm-user:backend` says. At the first
-failure, say why and skip to step 11.
+failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
@@ -78,10 +78,27 @@ the new text.
 
 ### 8. Change it
 
-`update task` with the description
-`This is a changed test, it can safely be removed`, and `read task` shows it.
+`update task` with an estimate on the user's scale and the description
+`This is a changed test, it can safely be removed`, and `read task` shows both.
 
-### 9. Store data
+### 9. Add a sub-task
+
+Use `create task` to make the below task. It should return an id, and
+`read task` shows the test task as its parent.
+
+| Field       | Value                                    |
+| ----------- | ---------------------------------------- |
+| Title       | ntm self-test sub-task, <timestamp>      |
+| Description | This is a test, it can safely be removed |
+| Label       | $no-autoschedule, by its real name       |
+| Parent      | the test task from step 2                |
+
+### 10. Mark it a duplicate
+
+`mark duplicate of` the sub-task as a duplicate of the test task, and
+`fetch closed` for today, duplicate included, lists it.
+
+### 11. Store data
 
 Use `write database` to make the below database, and `read database` returns its
 contents.
@@ -92,22 +109,23 @@ contents.
 | Level    | list                       |
 | Contents | ntm self-test, <timestamp> |
 
-### 10. Close it
+### 12. Close it
 
 `set status` to canceled, or done when the task list has no canceled status, and
-`fetch closed` for today lists it.
+`fetch closed` for today, canceled included, lists it.
 
-### 11. Clean up
+### 13. Clean up
 
-Runs after a failure too. Cancel the task if it's still open, remove the added
-label if it's still on, and write the database empty; when `ntm-user:backend`
-keeps databases in tasks, cancel that task too. Cancel any open task an earlier
-self-test left behind. Touch nothing else on the task list.
+Runs after a failure too. Cancel the task and the sub-task if they're still
+open, remove the added label if it's still on, and write the database empty;
+when `ntm-user:backend` keeps databases in tasks, cancel that task too. Cancel
+any open task an earlier self-test left behind. Touch nothing else on the task
+list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
-### 12. Send the success message
+### 14. Send the success message
 
 Only when every step before it passed. Load `ntm-user:style` and write a short
 success message with it: ntm is ready. Make them smile. When there's no style

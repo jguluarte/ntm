@@ -17,8 +17,7 @@ name added, a name removed, or a changed value.
 
 A rename fails twice: once as a name added, once as a name removed.
 
-A failing test means a change modified the contract, and that needs the explicit
-involvement of the user. Put the name back, or get the user's explicit approval.
-On a yes, the user updates `expected/` and commits it as "Approve <what>", for
-example "Approve skill rename: today to whats-planned".
-`git log tests/expected/` is the record of every approved name.
+A failing test means a change modified the contract. When the change is meant,
+update `expected/` in the same PR and say so in its description: the user sees
+the rename in the diff and can push back before merging. When it isn't, put the
+name back. `git log tests/expected/` is the record of every name change.

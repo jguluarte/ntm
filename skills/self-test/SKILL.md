@@ -65,7 +65,7 @@ user has the final say. Pass when `read task` shows the planned date as today.
 
 ### 4: today
 
-`/ntm:today`. Pass when a line starts with `ABC-12`.
+`/ntm:today`. Pass when the answer names `ABC-12`.
 
 ### 5: style
 

@@ -9,7 +9,10 @@ jobs:
         steps:
             - uses: actions/checkout@v7
             - name: Install bats, version from devbox.json
-              run: >
-                  npm install --global $(jq -r '.packages[] |
-                  select(test("^bats@"))' devbox.json)
+              run: |
+                  version=$(jq -r '.packages[] | select(test("^bats@"))
+                      | sub("^bats@"; "")' devbox.json)
+                  git clone --quiet --depth 1 --branch "v$version" \
+                      https://github.com/bats-core/bats-core /tmp/bats-core
+                  sudo /tmp/bats-core/install.sh /usr/local
             - run: set -a && . ./.env && set +a && make test

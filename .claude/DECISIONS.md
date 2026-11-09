@@ -283,9 +283,7 @@ history keep the raw material. Here "the base" is the published plugin and "the
 user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
 
 - No rename. The base stays `ntm` and the user plugin stays `ntm-user`, the one
-  setup generates, holding only what's tailored to this user. An alias plugin
-  isn't planned: with no entry skills it has nothing to alias (the plan
-  recommends dropping it; his call).
+  setup generates, holding only what's tailored to this user. No alias plugin.
 - Day-to-day commands are base skills, called directly: `/ntm:today`,
   `/ntm:plan`, `/ntm:pause`, and so on. There are no entry skills anywhere.
   Users rarely type commands; their jobs do most of the calling, and a job's
@@ -334,8 +332,9 @@ user plugin" the generated one. Justin reshaped 0.4 on 2026-11-08.
   versions, backend, channel and features.
 - Values setup collects live in the backend, in the `Settings` document, except
   the Pushover keys (below). About you, Planning, Shopping and Notifications are
-  read live; Labels and Deviations are built into `ntm-user:backend`, so
-  changing one means `update` rebuilds.
+  read live; Labels are built into `ntm-user:backend`, so changing one means
+  `update` rebuilds. 0.4 has no Deviations: a value is defined, or the backend
+  is updated.
 - The persona's Profile lives in the `Style` document on the backend. The style
   procedure is the base skill `ntm:style`, which reads it (tentative: one extra
   document read per message; the fallback is copying the persona into the user

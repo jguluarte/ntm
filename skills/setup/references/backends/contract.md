@@ -171,11 +171,6 @@ For price watch users only: the open tasks carrying the $price-watch label,
 themselves or through their project. Uses `fetch open`. Returns those tasks with
 the standard fields.
 
-### `parents ready to close`
-
-Open tasks whose sub-tasks are all closed. Uses `fetch open` and `fetch closed`.
-Returns those parents with the standard fields.
-
 ### `task <id>`
 
 One task. Uses `read task` and `read comments`. Returns its description,

@@ -62,13 +62,12 @@ frontmatter is dropped. Its own rules, levels and motifs stand, and none of the
 Profile's parts are asked of it.
 
 Required: above the text, a `## For ntm` section that says, a line each, how
-`ntm:style`'s call maps onto the persona's own words: what `--for <reminder>`
-means to it, that `Title:` is its last line, that `--stay-fresh` is its
-freshness rule, and that its history is `Message history`, each entry naming the
-task ids its message names. Without it, the whole text still stands as the
-persona, its levels and motifs included. `ntm:style` uses the Profile's defaults
-only where the text has no words, such as the `Title:` line and the history
-entries.
+`ntm:style`'s call maps onto the persona's own words: what `--for <kind>` means
+to it, that `Title:` is its last line, that `--stay-fresh` is its freshness
+rule, and that its history is `Message history`, each entry naming the task ids
+its message names. Without it, the whole text still stands as the persona, its
+levels and motifs included. `ntm:style` uses the Profile's defaults only where
+the text has no words, such as the `Title:` line and the history entries.
 
 ## What `ntm:style` brings
 

@@ -112,14 +112,14 @@ ids included. A pasted skill's own frontmatter is dropped; everything under it
 is the body.
 
 What the messenger needs from it is only the call `ntm:style` names:
-`/ntm-user:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>`,
-returning the message with `Title: …` as its last line under `--for`. Read the
-body for how it names these things (a `--reminder` flag, a `Subject:` line, its
-own history) and write a short section, `## For ntm`, that goes above the body
-and says, in a line each, how the messenger's call maps onto the persona's own
-words: what `--for <reminder>` means to it, that `Title:` is its last line (in
-place of whatever it calls it; when the persona has no subject line of its own,
-the section gives it the Title line rule from `ntm:settings`, so the title is
+`/ntm-user:style [--stay-fresh] [--for <kind>] ["<tone>"] <message>`, returning
+the message with `Title: …` as its last line under `--for`. Read the body for
+how it names these things (a `--reminder` flag, a `Subject:` line, its own
+history) and write a short section, `## For ntm`, that goes above the body and
+says, in a line each, how the messenger's call maps onto the persona's own
+words: what `--for <kind>` means to it, that `Title:` is its last line (in place
+of whatever it calls it; when the persona has no subject line of its own, the
+section gives it the Title line rule from `ntm:settings`, so the title is
 written with the message as part of its theme), that `--stay-fresh` is its
 freshness mechanism, and that its history is the message history database (see
 Databases in `ntm:conventions`; when the persona names a history of its own, the

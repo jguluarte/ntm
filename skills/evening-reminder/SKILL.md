@@ -35,10 +35,10 @@ Load `ntm:show-completed` and run
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent, with the kind, the job and the facts:
 
 ```
-reminder: evening
+kind: evening
 job: evening-reminder
 <the facts>
 ```

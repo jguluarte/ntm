@@ -117,7 +117,7 @@ Timezone: <Timezone under About you in your settings>.
 5. Ask the messenger agent, or follow `agents/messenger.md` from the
    installed plugin when it isn't available. Hand it these lines,
    plus `wording:` as the conventions' "Chat, jobs and agents" says:
-       reminder: week
+       kind: week
        job: plan
        weekly message: <what the message covers>
    then one `done:` line per Done task from step 2, or `done: none`;

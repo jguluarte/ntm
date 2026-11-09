@@ -75,13 +75,13 @@ id in parentheses); the raw lines are for skills and jobs.
 
 ## Notify
 
-With `--notify`, after the result, ask the messenger agent, with the reminder
+With `--notify`, after the result, ask the messenger agent, with the kind
 `completed`, the job `show-completed`, a `span:` line (the result's first line)
 and one `done:` line per Done task, a task line as the messenger agent's "What
 you're given" says, with no estimate; or `done: none`:
 
 ```
-reminder: completed
+kind: completed
 job: show-completed
 span: 2026-10-31 to 2026-11-06
 done: Order storage boxes ([ABC-12](<url>))

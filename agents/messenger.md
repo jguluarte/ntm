@@ -5,8 +5,8 @@ description: >-
     (morning, afternoon, evening, week, completed or any other, such as
     self-test), the skill it is for and the facts, it writes the message in the
     user's style with ntm-user:style, sends it with ntm:notify, and returns what
-    happened. Asked by the reminder skills and the bulk planning job, in a job
-    or by hand in chat.
+    happened. Asked by any ntm skill that messages the user, in a job or by hand
+    in chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -16,7 +16,7 @@ description: >-
             assistant: "Today is ready. Asking the messenger agent to send
             the morning message."
             <commentary>
-                The skill hands the messenger the reminder, its own name
+                The skill hands the messenger the kind, its own name
                 and the facts; the messenger owns the composing, the style and
                 the channel, and returns Sent: or a delivery block.
             </commentary>
@@ -50,9 +50,7 @@ you compose and send; the style says how it sounds.
 
 The skill that asks hands over one input per line. Required:
 
-- `kind:` any word: `morning`, `afternoon`, `evening`, `week` and `completed`
-  have their own way of being said below; any other kind is said plain. A
-  `reminder:` line means the same.
+- `kind:` any word, such as `morning` or `self-test`.
 - `job:` the name of the skill the message is for, such as `morning-reminder`.
 - The facts: `today:` (morning); `open:` (afternoon); `done:` and `open:`
   (evening); `done:`, `open:` and `planned:` (week); `span:` and `done:`

@@ -38,10 +38,10 @@ Read what comes back:
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent, with the kind, the job and the facts:
 
 ```
-reminder: morning
+kind: morning
 job: morning-reminder
 <the facts>
 ```

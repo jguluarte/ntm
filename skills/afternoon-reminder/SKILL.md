@@ -37,10 +37,10 @@ Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent, with the kind, the job and the facts:
 
 ```
-reminder: afternoon
+kind: afternoon
 job: afternoon-reminder
 <the facts>
 ```

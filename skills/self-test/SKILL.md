@@ -12,11 +12,11 @@ description: >-
 
 # ntm:self-test
 
-Proves this user's task list can do the core interactions every backend must
-support, on a task and a database made for the purpose. Run it in a new chat
-after installing `ntm-user`, and again after `ntm-user` is rebuilt. Never run it
-unasked: it writes to the task list and sends a push. Once the user starts it,
-it runs without asking.
+A test that this user's task list can do the core interactions every backend
+must support, on a task and a database made for the purpose. Run it in a new
+chat after installing `ntm-user`, and again after `ntm-user` is rebuilt. Never
+run it unasked: a run writes to the task list and sends a push. Once the user
+starts it, run it without asking.
 
 ## Usage
 
@@ -26,19 +26,19 @@ it runs without asking.
 
 ## Test execution steps
 
-Load `ntm-user:backend` and do each step with the operations it describes.
+Load `ntm-user:backend`, and do each step with the operations described in it.
 `<timestamp>` is the date and time the run starts, to the second, in the user's
 timezone, like `2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like
 `2. Create a task: the task list takes a new task. Pass.` A call that fails for
-a backend reason gets one retry, as `ntm-user:backend` says. At the first
-failure, say why and skip to step 13.
+a backend reason gets one retry, as described in `ntm-user:backend`. At the
+first failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
-`/ntm:ready-check` returns `Ready-check OK`.
+Follow `/ntm:ready-check`; it passes when you reach `Ready-check OK`.
 
 ### 2. Create a task
 
@@ -118,20 +118,18 @@ contents.
 
 Runs after a failure too. Cancel the task and the sub-task if they're still
 open, remove the added label if it's still on, and write the database empty;
-when `ntm-user:backend` keeps databases in tasks, cancel that task too. Cancel
-any open task an earlier self-test left behind. Touch nothing else on the task
-list.
+when the database lives in a task, cancel that task too. Cancel any open task an
+earlier self-test left behind. Touch nothing else on the task list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
 ### 14. Send the success message
 
-Only when every step before it passed. Load `ntm-user:style` and write a short
-success message with it: ntm is ready. Make them smile. When there's no style
-yet, say it plainly. Say it in chat, and send it with `ntm-user:notify`; when
-that returns a delivery block instead, show the block. It passes once the
-message is sent or shown.
+Only when every step before it passed. Ask the messenger agent to write a short
+success message in the user's style and send it: ntm is ready. Make them smile.
+It passes when the messenger returns `Sent:`, or a delivery block, which you
+show the user.
 
 ## Result
 

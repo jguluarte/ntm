@@ -21,10 +21,9 @@ notifies anyone: whoever called it decides what to tell the user.
 
 ## Setup
 
-1. Load `ntm:conventions`.
-2. Fetch every open task with the guide's `fetch open`, and keep every result,
-   including excluded tasks. Skip the blocker reads, and skip listing the
-   projects with their labels: this skill checks no labels.
+Ask `ntm-user:backend` for every open item, and keep every result, including
+excluded tasks. The answer also lists the projects; this skill checks no labels,
+so ignore them.
 
 ## Clear stale dates
 
@@ -35,12 +34,13 @@ tasks where status is open
 → clear planned date
 ```
 
-Clear each match with the guide's `clear planned date` and change nothing else.
+Ask `ntm-user:backend` to clear each match's planned date, and change nothing
+else.
 
 ### Failures and dry runs
 
 Retry a failed fetch once. If it still fails, stop and return
-`Fix-todo-list FAILED: <what failed>`. Writes follow the conventions; list any
+`Fix-todo-list FAILED: <what failed>`. Retry a failed write once, and list any
 that still fail under `Couldn't write:`.
 
 With `--dry-run`, make no writes. In the result, write `Dry run <today>:` in

@@ -1,11 +1,12 @@
 ---
 name: reminder
 description: >-
-    Sends one of the user's daily reminders, morning, afternoon or evening: gets
-    the day's tasks from ntm-user:backend, sends nothing when there's nothing to
-    remind about, and otherwise hands them to the messenger agent, which writes
-    the message in the user's style and sends it. Run by a job, as /ntm:reminder
-    --type morning, afternoon or evening.
+    Sends one of the user's reminders, morning, afternoon or evening, the week
+    in review and ahead, or what got done over a span: gets the tasks from
+    ntm-user:backend, sends nothing when there's nothing to remind about, and
+    otherwise hands them to the messenger agent, which writes the message in the
+    user's style and sends it. Run by a job, as /ntm:reminder --type morning,
+    afternoon, evening, week or completed.
 ---
 
 # ntm:reminder
@@ -14,11 +15,17 @@ description: >-
 
 ```
 /ntm:reminder --type <morning|afternoon|evening>
+/ntm:reminder --type <week|completed> --span <span in words>
 ```
 
 The type picks the facts and the message. It is also the job's key, which the
 messenger gets as `job:`. With `--type morning`, read `references/morning.md`
-first; no other type loads it.
+first; with `--type week`, `references/week.md`; with `--type completed`,
+`references/completed.md`. No other type loads them.
+
+`--span`: the days a week or completed reminder looks back on, ending today,
+today included: "the last 7 days" is 7; "since Oct 1" counts from that day.
+Without one, return `Reminder FAILED: no --span given`.
 
 ## The facts
 

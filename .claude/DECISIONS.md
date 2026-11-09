@@ -249,7 +249,7 @@ The text rules in `CLAUDE.md` apply; these add to them.
   installs only the tools its job needs, at devbox.json's versions, and sources
   `.env`. `make lint`, `make lint-fix` and `make test` are the way in, locally
   and in CI.
-- Settings the tooling needs live in `.env`; devbox loads it (`env_from`).
+- Settings the tooling needs live in `.env`; `.envrc` loads it (`dotenv`).
 - `make test` runs the bats tests in `tests/`: the user-facing name tests,
   against `tests/expected/`, which a PR that renames updates, so the rename
   shows in its diff.

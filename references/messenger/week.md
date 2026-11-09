@@ -1,11 +1,11 @@
 # Week
 
-| Fact              | Holds                                                   |
-| ----------------- | ------------------------------------------------------- |
-| `done:`           | one task done last week each, `none` or `unavailable`   |
-| `open:`           | one task still open from last week each, or `none`      |
-| `planned:`        | one task planned for the week ahead each, or `none`     |
-| `weekly message:` | optional: which halves the user wants; without it, both |
+| Fact              | Holds                                                                      |
+| ----------------- | -------------------------------------------------------------------------- |
+| `done:`           | one task done last week each, `none` or `unavailable`                      |
+| `open:`           | one task still open from last week each, or `none`                         |
+| `planned:`        | one task planned for the week ahead each, or `none`                        |
+| `weekly message:` | which halves the user wants, from the job's prompt or `ntm:plan`'s default |
 
 The sentences: two halves, a sentence or so each. Last week: what got done, as a
 count and a theme, and what's still open. With `done: none` and open tasks, say

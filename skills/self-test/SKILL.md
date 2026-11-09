@@ -24,7 +24,8 @@ after install, and the thing to run again after `ntm-user` is rebuilt.
 
 ## What it uses
 
-- Load `ntm-user:backend`, and do each backend operation below as it says.
+- Load `ntm-user:backend` to read the user's conventions, and do each backend
+  operation below as it says.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
   label by its real name in `ntm-user:backend`, in no project. Keep its id once
   created; `ABC-12` below stands for it.
@@ -39,9 +40,7 @@ after install, and the thing to run again after `ntm-user` is rebuilt.
 Run in order. Each ends with one line, `<n>. <step>: pass` or
 `<n>. <step>: FAIL: <why>`. Stop at the first failure and go to Cleanup. A call
 that fails for a backend reason (a timeout, a server error) gets one retry, as
-`ntm-user:backend` says; a second failure is the step's failure. When
-`ntm-user:backend` has no way to do an operation, it says
-`Backend CAN'T: <why>`, and the step fails with that why.
+`ntm-user:backend` says; a second failure is the step's failure.
 
 ### 1: ready-check
 

@@ -31,9 +31,9 @@ to run after install, and the thing to run again after `ntm-user` is rebuilt.
 - One throwaway database, titled `ntm self-test`, at list level. It's not one of
   the user's databases; only this skill knows it, and its first write creates
   it.
-- If an earlier run left either behind (every open item includes a task with
-  that title; reading the database finds it), remove them first, as Cleanup
-  says, so this run starts clean.
+- If an earlier run left either behind (asking `ntm-user:backend` for every open
+  item shows a task with that title; reading the throwaway database finds it),
+  remove them first, as Cleanup says, so this run starts clean.
 
 ## Steps
 
@@ -153,16 +153,16 @@ Always, whether the steps passed or stopped, and in this order; one line each,
 
 - **The task:** if it was created, ask `ntm-user:backend` to change its status
   to canceled, so it never counts as work done (leave it done when the todo list
-  has no canceled status). When `ntm-user:backend` keeps databases in tasks,
-  cancel the database's task the same way.
-- **The database:** if it was written, ask `ntm-user:backend` to write it empty.
+  has no canceled status).
+- **The database:** if it was written, ask `ntm-user:backend` to remove it, or
+  to write it empty when it can't remove it.
 - **The label:** if step 14 added it and step 15 didn't remove it, ask
   `ntm-user:backend` to remove it.
 
 Nothing else on the todo list is touched: the test dates, comments on, labels,
-closes and cancels its own task and empties its own database only, plus the one
-history entry the style writes in step 5, which ages out. The estimator only
-answers; it writes nothing.
+closes and cancels its own task and removes or empties its own database only,
+plus the one history entry the style writes in step 5, which ages out. The
+estimator only answers; it writes nothing.
 
 ## Result
 

@@ -1,12 +1,11 @@
 ---
 name: configure-style
 description: >-
-    Builds or revises ntm-user:style, the skill that writes every reminder in
-    the user's own register, with them in chat: plain, a theme they describe, or
-    a persona skill they already have. Run when the user says "set up the
-    style", "change how reminders talk to me", "make it meaner", "make it
-    softer", "make it shorter", "the reminders aren't landing" or "use my own
-    persona"; ntm:configure runs it as one of its parts.
+    Builds ntm-user:style, the skill that writes every reminder in the user's
+    own register, with them in chat: plain, a theme they describe, or a persona
+    skill they already have. Run when the user says "set up the style";
+    ntm:configure runs it as one of its parts. Changes to an existing style are
+    ntm:style's.
 ---
 
 # ntm:configure-style
@@ -40,12 +39,7 @@ persona.
 Load `ntm-user:style` by name.
 
 - **Won't load:** a new style. Open with the three choices below.
-- **Loads:** a re-run. Show the Profile section by section, ask what to change,
-  and go to the section that owns it: "meaner" or "softer" is Register and the
-  Examples for the levels it touches; "shorter" is What gets you to read and the
-  Examples; "not landing" starts at What gets you to read, then When something
-  keeps slipping. Sections they don't name stay as they are. A persona is edited
-  as they say, verbatim otherwise.
+- **Loads:** a re-run. Revise it as the Revising section of `ntm:style` says.
 
 When `ntm:configure` is running this skill, it says so; the result goes back to
 it (see Result).

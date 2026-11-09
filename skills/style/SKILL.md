@@ -23,6 +23,7 @@ the message plain.
 
 ```
 /ntm:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
+/ntm:style revise ["<request>"]
 ```
 
 `<reminder>` is `morning`, `afternoon`, `evening`, `week` or `completed`, and
@@ -54,19 +55,20 @@ the same style, never just the reminder's name.
 
 ## Revising
 
-When the user asks to change their style, revise the Style document with them in
-chat, to the persona contract. Show the part their request touches, propose the
-change, and write it once they agree. Parts they don't name stay as they are.
+A request about the style itself, not a message to write, is a revision: revise
+the Style document with the user in chat, to the persona contract. Show the part
+their request touches, propose the change, and write it once they agree. Parts
+they don't name stay as they are.
 
 - "Meaner" or "softer": the Register, and the Examples it touches.
 - "Shorter": What gets you to read, and the Examples.
 - "Not landing": What gets you to read, then Responding to procrastination.
 - "Use my own persona": their text replaces the Profile, with a `## For ntm`
-  section above it, as the contract's A persona says. Show them that section.
+  section above it, as "A persona" in the persona contract says. Show them that
+  section.
 
-A persona is edited as they say and kept word for word otherwise. How hard it
-goes is their call. When a request heads toward plain, offer a livelier register
-first: plain is the last resort.
+A persona is edited as they say and kept word for word otherwise. When a request
+heads toward plain, offer a livelier register first.
 
 ## Result
 

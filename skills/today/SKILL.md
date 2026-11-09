@@ -31,8 +31,8 @@ This skill only reads the todo list. It never changes a task.
 [<include scope from the user>]
 ```
 
-If that fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, explain
-what happened to the user. Run by a job, end with `Today FAILED: <what failed>`.
+If the lookup fails, explain what happened to the user. Run by a job, end with
+`Today FAILED: <what failed>`.
 
 ## Result
 
@@ -45,8 +45,8 @@ the task's labels, inherited ones included, and stay empty (`[]`) when it has
 none. When the task's status is in the started class, add `(started)` after the
 status, before the labels.
 
-Typed in chat, word each task as `ntm-user:backend` says to talk to the user
-about tasks; the raw lines are for skills and jobs.
+Typed in chat, word each task by the "Talking to the user about tasks" rules in
+`ntm-user:backend`; the raw lines are for skills and jobs.
 
 - With nothing after `/ntm:today`: `Planned by <today> (<count>):` then the
   tasks, or `Nothing planned for today.`

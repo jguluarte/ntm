@@ -49,6 +49,22 @@ lighter option:
 
 A task is **unreviewed** when it's open and has no estimate.
 
+When Estimate pattern is blank, ask the estimate question before going on.
+
+## The estimate question
+
+Estimate pattern stays blank until the user's first review. Ask one high-level
+question: how would they like to estimate their tasks? It stands on its own, and
+most people just answer it. Only when they ask for more on the ways to estimate,
+ask the estimator agent's Explain estimating request and pass its ways on; when
+the agent isn't available, read `agents/estimator.md` from the newest installed
+`ntm` and follow it.
+
+When `ntm-user:backend` says how to fit their estimates to the list's own scale,
+work that out with them as it says. Then ask `ntm-user:backend` to write their
+answer, in their words with any mapping you agreed, as the Estimate pattern line
+under Planning in the Settings document, and use it for the rest of this review.
+
 ## What to review
 
 The user names what to review however they like: a project, part of one, a few

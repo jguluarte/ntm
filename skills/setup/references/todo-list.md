@@ -164,7 +164,7 @@ How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a plain "ok" keeps them all,
 and they change any line in their own words:
 
-- **Estimate pattern:** asked on its own, below.
+- **Estimate pattern:** left blank; the user's first review asks it.
 - **Excluded labels from automatic scheduling:** $no-autoschedule,
   $pending-shipment. Labels planning never picks, each checked on the task and
   its project; name the labels by the names settled above.
@@ -173,13 +173,6 @@ Which days get planned, how many tasks each gets, how big they should be and
 what the weekly message covers aren't settings: each job's prompt says what
 differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
-
-Estimate pattern gets its own question, one high-level question: how would they
-like to estimate their tasks? The question stands on its own, and most people
-just answer it. Only when they ask for more on the ways to estimate, ask the
-estimator agent's Explain estimating request and pass its ways on; when the
-agent isn't available, follow its file as the conventions' "Chat, jobs and
-agents" says. Record their answer as Estimate pattern, in their words.
 
 ## Shopping
 
@@ -236,8 +229,7 @@ The real name on your todo list for each label the system uses.
 How your todo list is planned. Read by `ntm:plan`, `ntm:review-todo-list` and
 the conventions.
 
-- Estimate pattern: <how they size their tasks and what to do with that, in
-  their words; with the list's point for each estimate when the list needs one>
+- Estimate pattern: <blank; the first review fills it>
 - Excluded labels from automatic scheduling: <default no-autoschedule,
   pending-shipment>
 

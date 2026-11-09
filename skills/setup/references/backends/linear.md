@@ -3,8 +3,10 @@
 The backend guide for Linear, and a tested one: how each operation the backend
 contract names is carried out with the Linear connector. The build copies
 everything below this paragraph into `ntm-user:backend` as written, with
-`<List name>` and `<List id>` filled in. Setting Linear up with the user is part
-of setup's todo list step, `todo-list.md`.
+`<List name>` and `<List id>` filled in. It also copies `linear-mcp.json`,
+beside this guide, as written into `ntm-user`'s `.mcp.json`, so the connector
+comes bundled. Setting Linear up with the user is part of setup's todo list
+step, `todo-list.md`.
 
 Use the tools of the Linear connector that's signed in. Its own instructions and
 tool descriptions are the authority on how to call them. This guide says which
@@ -51,6 +53,15 @@ One exception: a status named Blocked is the blocked class, whatever its type
 `get_team` (`query: "<List id>"`). Team `<List name>` comes back: pass. A
 different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
 found: wrong account. Anything else: backend error.
+
+The Linear connector bundled with `ntm-user` needs its own sign-in. Until it has
+one, it shows only an `authenticate` tool (and `complete_authentication`), none
+of the tools above. Then the ping returns
+`Backend CAN'T: Linear needs sign-in — <how>`. How, in a chat: call
+`authenticate` and give the user the link it returns; once they've signed in,
+the tools appear. When the page the link lands on doesn't load, pass that page's
+address to `complete_authentication`. In a job, no one can sign in: the how is
+"open a chat and run /ntm:self-test".
 
 ### `fetch open`
 

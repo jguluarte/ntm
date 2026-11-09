@@ -44,8 +44,7 @@ plannable, closed is done, and `set status` to done closes the task.
 
 ## Operations
 
-Skills call these by name; keep the names exactly. For each, the guide gives the
-call, what goes in and what comes back.
+What base skills call, by these names.
 
 ### `ping`
 
@@ -114,10 +113,10 @@ missing; `write database <title>` replaces the content, creating the database if
 it's missing. Both take an optional project, for one kept in a project.
 
 With no documents, each database is the description of an open task in a
-plannable status, titled with the database's title, labeled $no-autoschedule
-(its real name from Labels), and in its project if it has one. With no planned
-date, `ntm:fix-todo-list` leaves it alone; planners skip it for its label, and
-skills don't treat it as work. A read finds it by title; a write replaces its
+plannable status with no planned date, titled with the database's title, labeled
+$no-autoschedule (its real name from Labels), and in its project if it has one.
+`ntm:fix-todo-list` leaves it alone; planners skip it for its label, and skills
+don't treat it as work. A read finds it by title; a write replaces its
 description, creating the task if needed.
 
 ## Setup operations
@@ -149,8 +148,8 @@ The task labels, and the project labels when those are a separate set.
 
 ### `create label`
 
-Takes a name and description; makes a task label, and a project label too when
-those are a separate set.
+Takes a name, a description and which set; makes a task label, or a project
+label where those are a separate set.
 
 ### `list projects`
 

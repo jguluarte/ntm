@@ -35,16 +35,18 @@ time.
 
 Read the titles of every open task in the review, and of projects that overlap
 it. Propose, as one numbered list, only the tasks to close as obsolete or done,
-merge as duplicates (quoting anything only one of them says), or move to another
-project. "Ok" approves the list; the user can strike items by number. Write what
-they approve right away.
+mark duplicates of the one the user keeps (quoting anything only one of them
+says), or move to another project or to none. "Ok" approves the list; the user
+can strike items by number. Write what they approve right away.
 
 ### 2. Set the order
 
 Propose an order for the tasks with no estimate, plus any the user named:
-blockers before what they block. When a blocker is outside the review and has an
-obvious end state, assume it and say so; otherwise ask when you reach it. The
-user adjusts the order, then you start.
+blockers before what they block. Read each one's blocked-by links, and the
+comments of a blocked task with none. When a blocker is outside the review and
+has an obvious end state, assume it and say so; otherwise ask when you reach it.
+If much of it waits on another project, offer to start there. The user adjusts
+the order, then you start.
 
 ### 3. Estimate task by task
 
@@ -60,15 +62,16 @@ their answer back. If they ask what the ways to estimate are, ask its Explain
 estimating request and pass its answer on.
 
 Present one task per message: its id linked to its URL and its title, the
-estimate with the estimator's few words on why, a line on breaking it up if it
-doesn't fit a sitting, at most two edits that would make it easier to start, and
-the description as written. "Ok" approves it all, "skip" leaves it for another
-day, and anything else the user says changes it. When they correct an estimate,
-tell the estimator and ask again for the tasks it answered ahead.
+estimate, and the current one if it has one, with the estimator's few words on
+why, a line on breaking it up if it doesn't fit a sitting, and the description
+as written. Rarely, add up to two edits where it would be hard to start, shown
+as the exact new text. "Ok" approves it all, "skip" leaves it for another day,
+and anything else the user says changes it. When they correct an estimate, tell
+the estimator and ask again for the tasks it answered ahead.
 
-When a task is settled, write it and send the estimator a Log request with the
-settled estimate and what the user said or changed, in the same turn you present
-the next task.
+When a task is settled, write what they saw and send the estimator a Log request
+with the settled estimate and what the user said or changed, in the same turn
+you present the next task.
 
 ### 4. Break up big tasks
 

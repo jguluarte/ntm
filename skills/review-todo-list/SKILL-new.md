@@ -31,15 +31,19 @@ time.
 
 ## Review
 
-### 1. Clear out
+Start by telling the user they can stop whenever they like, even mid-task: they
+just say so, and you save what's settled.
+
+### 1. Health check. Merge duplicates, close obsolete tasks
 
 Read the titles of every open task in the review, and of projects that overlap
 it. Propose, as one numbered list, only the tasks to close as obsolete or done,
 mark duplicates of the one the user keeps (quoting anything only one of them
-says), or move to another project or to none. "Ok" approves the list; the user
-can strike items by number. Write what they approve right away.
+says), or move to another project or to none. A simple affirmation likely
+approves the list; the user can strike items by number. Save these changes
+before proceeding.
 
-### 2. Set the order
+### 2. Decide what to review
 
 Propose an order for the tasks with no estimate, plus any the user named:
 blockers before what they block. Read each one's blocked-by links, and the
@@ -48,41 +52,46 @@ has an obvious end state, assume it and say so; otherwise ask when you reach it.
 If much of it waits on another project, offer to start there. The user adjusts
 the order, then you start.
 
-### 3. Estimate task by task
+### 3. Estimate one task at a time
 
-Start one estimator agent in the background at the first task, and send it every
+Start an estimator agent in the background at the first task, and send it every
 ask in this review. It sees nothing of this chat. If it isn't available, read
-`agents/estimator.md` from the newest installed `ntm` and follow it.
+`agents/estimator.md` from the newest installed `ntm` and follow it. **Use one
+estimator for this entire run, so they persist context**. When the estimator
+finishes the first one, give it the next two so they're ready for the user
+quickly. Keep it alive in case the user has more questions.
 
 Ask its Estimate request for a size, with the task as it stands, any end state
-you assumed, and anything the user said about size. Ask for the first task
-alone, then keep it one or two tasks ahead; hold its answers until their task
-comes up. If it returns an `ask:` line, put the question to the user and send
-their answer back. If they ask what the ways to estimate are, ask its Explain
-estimating request and pass its answer on.
+you assumed, and anything the user said about size. Hold its answers until their
+task comes up. If it returns an `ask:` line, put the question to the user and
+send their answer back. If they ask what the ways to estimate are, ask its
+Explain estimating request and pass its answer on.
 
 Present one task per message: its id linked to its URL and its title, the
 estimate, and the current one if it has one, with the estimator's few words on
 why, a line on breaking it up if it doesn't fit a sitting, and the description
 as written. Rarely, add up to two edits where it would be hard to start, shown
-as the exact new text. "Ok" approves it all, "skip" leaves it for another day,
-and anything else the user says changes it. When they correct an estimate, tell
-the estimator and ask again for the tasks it answered ahead.
+as the exact new text. A simple affirmation likely approves it all, asking to
+skip leaves it for another day, and anything else the user says changes it. When
+they correct an estimate, tell the estimator and ask again for the tasks it
+answered ahead.
 
 When a task is settled, write what they saw and send the estimator a Log request
 with the settled estimate and what the user said or changed, in the same turn
 you present the next task.
 
-### 4. Break up big tasks
+#### Break up big tasks
 
-Use the user's pieces when they have them; otherwise propose some. Show the
-exact new titles and the original's reduced scope, and write only that. New
-tasks get the original's project and parent, and the later one is blocked by the
-earlier when order matters. They go to the end of the review order. Ask the
-estimator again for what's left of the original.
+When a task looks too big for one sitting, such as an evening, help the user
+break it up: suggest a few ways to split it. Not every task splits, but try. Use
+the user's pieces when they have them. Show the exact new titles and the
+original's reduced scope, and write only that. New tasks get the original's
+project and parent, and the later one is blocked by the earlier when order
+matters. They go to the end of the review order. Ask the estimator again for
+what's left of the original.
 
-### 5. End
+### 4. End
 
-When the user stops or the review is done, send the estimator a Log request for
-anything not yet logged. Sum up in a line or two: how many tasks were reviewed,
-closed and broken up, and what's left without an estimate.
+When the user stops, however abruptly, or the review is done, send the estimator
+a Log request for anything not yet logged. Sum up in a line or two: how many
+tasks were reviewed, closed and broken up, and what's left without an estimate.

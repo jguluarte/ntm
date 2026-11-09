@@ -151,6 +151,10 @@ what the weekly message covers aren't settings: each job's prompt says what
 differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
 
+Estimates aren't a setting either. They're in hours, which anyone can read. A
+user who wants another way says so in a review, and the estimator agent works it
+out with them.
+
 ## Shopping
 
 Only when a price watch project was chosen; otherwise skip and return no

@@ -32,10 +32,8 @@ Load `ntm-user:backend` to read the user's conventions.
 
 ## The facts
 
-Find the open tasks planned for today and, for the evening, the tasks done
-today. Remind about every open task, whatever its labels, even on a paused day:
-the user dated it. If the todo list can't be read, stop and end with
-`Reminder FAILED: <what went wrong>`.
+Find all open and completed (non-cancelled) tasks with today's date. If the task
+list can't be read, terminate with `Reminder FAILED: <error msg>`.
 
 Write each task as a task line, as the messenger agent's "What you're given"
 says, with no estimate, and `(started)` on an open task when work on it has

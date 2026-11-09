@@ -62,12 +62,12 @@ uses `YYYY-MM-DD`.
 
 ## Dates
 
-Today is the user's local date. A range covers both its start and end days. A
-weekday name means the next one, today included when today is that day (the
-example below was typed on a Thursday); "next <weekday>" means that weekday of
-next week (weeks start on Monday); a date without a year is the next one. Show
-the resolved date in the reply (`Paused 2026-11-13 (Friday).`) so a wrong guess
-is visible; there is no confirmation round-trip before saving.
+A range covers both its start and end days. A weekday name means the next one,
+today included when today is that day (the example below was typed on a
+Thursday); "next <weekday>" means that weekday of next week (weeks start on
+Monday); a date without a year is the next one. Show the resolved date in the
+reply (`Paused 2026-11-13 (Friday).`) so a wrong guess is visible; there is no
+confirmation round-trip before saving.
 
 ## With `--check`
 

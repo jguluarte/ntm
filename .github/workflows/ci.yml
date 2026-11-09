@@ -9,11 +9,11 @@ jobs:
         steps:
             - uses: actions/checkout@v7
             - uses: ./.github/actions/setup
-            - run: make lint
+            - run: . ./.env && make lint
 
     test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
             - uses: ./.github/actions/setup
-            - run: make test
+            - run: . ./.env && make test

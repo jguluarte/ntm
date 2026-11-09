@@ -18,6 +18,3 @@ runs:
               git clone --quiet --depth 1 --branch "v$version" \
                   https://github.com/bats-core/bats-core /tmp/bats-core
               sudo /tmp/bats-core/install.sh /usr/local
-        - name: Load .env
-          shell: bash
-          run: grep -v '^#' .env >> "$GITHUB_ENV"

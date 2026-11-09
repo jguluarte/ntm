@@ -2,8 +2,7 @@
 
 How setup's todo list step finds a backend with someone who doesn't want Linear,
 and describes it with them against the backend contract. Only this path reads
-this file. The description it produces is the backend's guide: the build writes
-it into `ntm-user:backend` as that user's calls.
+this file. The description it produces is the backend's guide.
 
 ## Finding one
 
@@ -35,7 +34,8 @@ which grouping is a project), propose one and let them react.
 
 Once they name the tool for `ping`, run it right away. A pass: say in a line
 that the list answers. Anything else: fix it with them, and don't go on until it
-passes. Try other reads by hand where it's cheap. Writes other than the setup
+passes. If it won't pass, say so and stop, since every later step needs the
+list. Try other reads by hand where it's cheap. Writes other than the setup
 operations wait for `/ntm:self-test`.
 
 Say which of the gaps under What the backend needs to have the backend has. For

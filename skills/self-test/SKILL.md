@@ -32,10 +32,9 @@ Load `ntm-user:backend`, and do each step with the operations described in it.
 timezone, like `2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it
-tested and whether it passed, like
-`2. Create a task: the task list takes a new task. Pass.` A call that fails for
-a backend reason gets one retry, as described in `ntm-user:backend`. At the
-first failure, say why and skip to step 13.
+tested and whether it passed, like "2. Create a task: the task list takes a new
+task. Pass." A call that fails for a backend reason gets one retry, as described
+in `ntm-user:backend`. At the first failure, say why and skip to step 13.
 
 ### 1. Connectivity
 

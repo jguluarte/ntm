@@ -9,8 +9,7 @@ description: >-
     chat.
 
         <example>
-            Context: ntm:reminder has today's tasks from ntm:plan and is
-            at its send step.
+            Context: ntm:reminder has today's tasks and is at its send step.
             user: "Morning reminder. Load ntm:reminder and run
             /ntm:reminder --type morning."
             assistant: "Today is ready. Asking the messenger agent to send

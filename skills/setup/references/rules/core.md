@@ -134,8 +134,8 @@ user's todo list may use other names, and the settings are what count.
   forward right now. What's in the way is an open blocking task linked to it, a
   reason described in its comments, or both. Waiting on an order usually gets
   the $pending-shipment label instead. A blocked-by relation alone doesn't make
-  a task blocked; see Blocks and blocked by. The class is empty when the todo
-  list has no such status.
+  a task blocked; see Blocks and blocked by in the task management rules. The
+  class is empty when the todo list has no such status.
 - **done**: finished.
 - **canceled**: closed without being done.
 - **duplicate**: ignore it everywhere; the original task is what counts.
@@ -189,8 +189,8 @@ its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
 - **For planning and reminders:** `fetch open`, which includes blocked tasks.
-  Keep excluded tasks in the results; Excluded tasks, below, says who skips
-  them.
+  Keep excluded tasks in the results; Excluded tasks, in the task management
+  rules, says who skips them.
 - **Every open task** (reviewing, and anything else that needs the whole open
   todo list): the same fetch, with nothing dropped.
 - **Looking back:** the guide's `fetch closed`.

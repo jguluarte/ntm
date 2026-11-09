@@ -33,22 +33,15 @@ Load `ntm-user:settings` by name.
 
 ## First run
 
-Say two lines first:
-
-1. Neurodivergent Task Manager (ntm) keeps your settings and style in a small
-   plugin of your own, `ntm-user`; this builds it with you and hands it back to
-   install at the end.
-2. The steps: about you, your todo list (and how planning and shopping work on
-   it), how reminders reach you, how they talk to you, and the schedule. Each is
-   a short conversation, and your own plugin is written once, at the end.
+Open with `references/intro.md`: what ntm is, ending by confirming the timezone.
 
 ### About you
 
 This skill owns About you. Fill both lines from what you already know about the
 user and the session, and ask them only to confirm or correct:
 
-- Timezone: an IANA name (`America/Los_Angeles`). Jobs run in it. If you can't
-  tell, ask for their city.
+- Timezone: an IANA name (`America/Los_Angeles`), confirmed by the intro. Jobs
+  run in it.
 - Country and currency, for price watch (`US, USD`).
 
 Write them as the About you section, one line each: `- Timezone:`,

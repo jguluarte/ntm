@@ -1,17 +1,11 @@
 # Backend contract
 
-What a backend has to have, and what its guide has to say, for ntm to run on it.
-A backend guide maps each operation the conventions name onto one backend's
-connector; `linear.md` is the complete, tested one. Any other backend has no
-guide file: the user's own description under Todo list in `ntm-user:settings` is
-its guide. `/ntm:configure-todo-list` writes that description with the user by
-walking this contract, and once `ntm-user` is installed, `/ntm:self-test` checks
-it. A backend can be built on anything the user's agent can reach, for example a
-table in a Claude Doc (the Claude Docs connector's own guide gives its calls).
-
-Write a guide as a list of operations, each saying which tool calls carry it out
-and which fields map to the conventions' names. Keep the headings below so
-skills can find what they need.
+How an agent queries the user's todo list, whatever backend holds it. Their
+`ntm-user:backend` is written against this file: for each piece below, the tool
+call that does it, what goes in and what comes back. `linear.md` is the tested
+guide for Linear. For any other backend, setup writes one with the user from
+this file, and `/ntm:self-test` checks it. A backend can be anything the agent
+can reach, such as a table in a Claude Doc. Keep the headings: skills cite them.
 
 ## What the backend needs to have
 

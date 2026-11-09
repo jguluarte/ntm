@@ -30,42 +30,45 @@ and whether a price watch project was chosen.
 
 ## What a job can run
 
-There are no fixed jobs. Each job runs one skill, or the bulk planning below,
-and the user decides which they want, when, and what each is called. The times
-here are only suggestions:
+There are no fixed jobs. Each job runs a few skills in order, as The prompt
+lists, and the user decides which they want, when, and what each is called. The
+times here are only suggestions:
 
-| Job                  | What it does                        | Suggested                         |
-| -------------------- | ----------------------------------- | --------------------------------- |
-| `morning-reminder`   | What's on the table today           | Weekdays, 09:00                   |
-| `afternoon-reminder` | What's still open today             | Weekdays, 14:30                   |
-| `evening-reminder`   | How the day went                    | Weekdays, 19:30                   |
-| Bulk planning        | Plans a range of days at once       | Weekly, Sunday 22:00              |
-| `show-completed`     | What got done over a span, sent     | Sunday 20:00, for the last 7 days |
-| `price-watch`        | Which watched items are a good deal | Every day, 07:00                  |
+| Job           | What it does                        | Suggested                         |
+| ------------- | ----------------------------------- | --------------------------------- |
+| `morning`     | What's on the table today           | Weekdays, 09:00                   |
+| `afternoon`   | What's still open today             | Weekdays, 14:30                   |
+| `evening`     | How the day went                    | Weekdays, 19:30                   |
+| Bulk planning | Plans a range of days at once       | Weekly, Sunday 22:00              |
+| `completed`   | What got done over a span, sent     | Sunday 20:00, for the last 7 days |
+| `price-watch` | Which watched items are a good deal | Every day, 07:00                  |
 
 Offer `price-watch` on every later run. On a first run, offer it only when
 `configure` says a price watch project was chosen. It runs on paused days too.
 
 ## The prompt
 
-Every prompt opens with the job's title and the user's timezone. A job that runs
-one skill:
+Every prompt is the frame in `references/job-run.md`, filled in with the job's
+key and its steps. The key is the first word of each job below; bulk planning's
+is `week`. The steps, from step 2:
 
 ```
-<title>.
-Timezone: <Timezone under About you in your settings>.
-Load `ntm:<skill>` and follow it from step 1. Its FINAL REPLY and
-ERROR HANDLING are this job's.
-If `ntm:<skill>` can't be loaded, end the run with this line:
-`<title> FAILED: ntm:<skill> couldn't be loaded; check ntm is enabled.`
-```
+morning
+2. Load `ntm:plan` and run `/ntm:plan --auto day`.
+3. Load `ntm:reminder` and run `/ntm:reminder --type morning`.
 
-For `show-completed`, the sentence that loads the skill is instead:
+afternoon
+2. Load `ntm:reminder` and run `/ntm:reminder --type afternoon`.
 
-```
-Load `ntm:show-completed` and run
-`/ntm:show-completed <span> --notify`. Its Notify section's final
-reply and error handling are this job's.
+evening
+2. Load `ntm:reminder` and run `/ntm:reminder --type evening`.
+
+completed
+2. Load `ntm:reminder` and run
+   `/ntm:reminder --type completed --span "<span>"`.
+
+price-watch
+2. Load `ntm:price-watch` and run `/ntm:price-watch`.
 ```
 
 The span is in words, as the user wants it: `the last 7 days` for a weekly one,
@@ -100,38 +103,15 @@ user can change any of them:
 - what the message covers: what got done, what's still open, the week ahead, by
   default.
 
-The suggested prompt:
+Its prompt always has the `Weekly message:` line, saying what the message
+covers, even when it's the default. Its key is `week`, and its steps:
 
 ```
-<title>.
-Timezone: <Timezone under About you in your settings>.
-1. Run `/ntm:ready-check --notify-failure plan`. On
-   `Ready-check FAILED`, end the run with what it returned and
-   nothing more.
-2. Load `ntm:show-completed` and run
-   `/ntm:show-completed <span> and what's still open`.
-   On `Show-completed FAILED`, carry on with `done: unavailable`.
-3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
-   `Fix-todo-list FAILED`, carry on.
-4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-5. Ask the messenger agent, or follow `agents/messenger.md` from the
-   installed plugin when it isn't available. Hand it these lines,
-   plus `wording:` as the conventions' "Chat, jobs and agents" says:
-       reminder: week
-       job: plan
-       weekly message: <what the message covers>
-   then one `done:` line per Done task from step 2, or `done: none`;
-   one `open:` line per Still open task, with `was` its date when
-   that's before today, or `open: none`; each a task line as the
-   messenger's "What you're given" says; and plan's `planned:` lines.
-Final reply: when the messenger returned a delivery block, the title
-and message under its marker line, verbatim; otherwise one short
-line on what happened. Then fix-todo-list's lines and plan's
-`couldn't move:` lines. For any error after step 1, including a
-`… FAILED` line, never use `ntm:notify`: end the run with the error
-stated plainly.
-If a skill can't be loaded, end the run with this line:
-`<title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
+2. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`.
+   On `Fix-todo-list FAILED`, carry on.
+3. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
+4. Load `ntm:reminder` and run
+   `/ntm:reminder --type week --span "<span>"`.
 ```
 
 ## Walking the schedule
@@ -141,15 +121,15 @@ If a skill can't be loaded, end the run with this line:
    reminder"), and each time set by the jitter rule: a job never starts on :00
    or :30, so move such a time a few minutes earlier, a different number for
    each job. Under the table, one line each:
-    - planning, for bulk planning and `morning-reminder`: weekdays, one task a
-      day, about an hour or less (`ntm:plan`'s defaults);
+    - planning, for bulk planning and `morning`: weekdays, one task a day, about
+      an hour or less (`ntm:plan`'s defaults);
     - bulk planning: the defaults in The prompt's Bulk planning;
-    - `show-completed`: weekly, for the last 7 days.
+    - `completed`: weekly, for the last 7 days.
 2. A plain "ok" takes it all. They keep, drop, add or change anything in their
    own words; the titles are theirs. Revise until they approve. Create nothing
    before that.
 3. Write only what differs from `ntm:plan`'s defaults into the prompts of bulk
-   planning and `morning-reminder`, as one line after the timezone line, such as
+   planning and `morning`, as one line after the timezone line, such as
    `Planning: two tasks a day, weekends too.`; when nothing differs, add none.
 4. Ask once, for all the jobs: which model should they run on? A new job
    inherits the model of the chat that creates it, and that can be the heaviest
@@ -158,10 +138,10 @@ If a skill can't be loaded, end the run with this line:
 
 The table in step 1, for example:
 
-| Job                | Days     | Time  | Title            |
-| ------------------ | -------- | ----- | ---------------- |
-| `morning-reminder` | Weekdays | 08:44 | Morning reminder |
-| Bulk planning      | Sunday   | 21:50 | Week ahead       |
+| Job           | Days     | Time  | Title            |
+| ------------- | -------- | ----- | ---------------- |
+| `morning`     | Weekdays | 08:44 | Morning reminder |
+| Bulk planning | Sunday   | 21:50 | Week ahead       |
 
 Then create each job, in the order below.
 
@@ -231,9 +211,9 @@ is never attached to a job.
 
 When jobs exist, list them and ask what to change, instead of walking the
 schedule again. `list_triggers`, recurring only. Tell the user's jobs by the
-skill their stored prompt loads (`derived_state.prompt`, when the
+last step of their stored prompt (`derived_state.prompt`, when the
 `list_triggers` entry carries it; when it doesn't, ask the user which job it
-is), never by title: bulk planning is the one that runs `ntm:plan`. Show each
+is), never by title: that step's call is its key, as The prompt says. Show each
 as: title, schedule in words in the user's timezone (from its `CRON_TZ` cron
 expression), on or off, and the last run's status in a word (succeeded, failed)
 and its time. Omit `trigger_id`s unless asked, and never show an app token. Then
@@ -243,13 +223,13 @@ delete, or a new job (walk that one as above).
 ## Running a job now
 
 `fire_trigger` with `trigger_id` starts a run outside its schedule, with the
-job's own prompt and connectors; that's the way to check a new job. To do a
-job's work in chat instead, load its skill and follow it from step 1 ("run the
-morning reminder now").
+job's own prompt and connectors; that's the way to check a new job, and what
+"run the morning reminder now" means. To do a job's work in chat instead, follow
+its stored prompt from step 1.
 
 ## Re-syncing a prompt
 
-A stored prompt only goes stale when a prompt in The prompt changes. When that
+A stored prompt only goes stale when The prompt or its frame changes. When that
 happens: `list_triggers`, tell each job as When the schedule is already
 established says, fill in the prompt again, and `update_trigger` with
 `trigger_id` and the new `prompt`. Keep anything the user added to the prompt,

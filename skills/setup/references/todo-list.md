@@ -142,7 +142,6 @@ How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a plain "ok" keeps them all,
 and they change any line in their own words:
 
-- **Estimate pattern:** left blank; the user's first review asks it.
 - **Excluded labels from automatic scheduling:** $no-autoschedule,
   $pending-shipment. Labels planning never picks, each checked on the task and
   its project; name the labels by the names settled above.
@@ -204,10 +203,8 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan`, `ntm:review-todo-list` and
-the conventions.
+How your todo list is planned. Read by `ntm:plan` and the conventions.
 
-- Estimate pattern: <blank; the first review fills it>
 - Excluded labels from automatic scheduling: <default no-autoschedule,
   pending-shipment>
 

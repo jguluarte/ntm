@@ -42,26 +42,25 @@ lighter option:
 
 ## Setup
 
-1. Read the task review log (see The task review log), and the Estimate pattern
-   from the Planning section of the Settings document.
+1. Read the task review log (see The task review log).
 2. Find every open task, and each project with its summary.
 
 A task is **unreviewed** when it's open and has no estimate.
 
-When Estimate pattern is blank, ask the estimate question before going on.
+When `## How you work` doesn't say how the user estimates, ask the estimate
+question before going on.
 
 ## The estimate question
 
-Ask one high-level question: how would they like to estimate their tasks? Most
-people just answer it. Only when they ask for more on the ways to estimate, ask
-the estimator agent's Explain estimating request and pass its ways on; when the
-agent isn't available, read `agents/estimator.md` from the newest installed
-`ntm` and follow it.
+Say their estimates are in hours, and offer another way only if they want one
+(points, T-shirt sizes, their team's scale). Most people keep hours. Only when
+they ask for more on the ways to estimate, ask the estimator agent's Explain
+estimating request and pass its ways on; when the agent isn't available, read
+`agents/estimator.md` from the newest installed `ntm` and follow it.
 
 When `ntm-user:backend` says how to fit their estimates to the list's own scale,
-work that out with them. Then write their answer, in their words with any
-mapping you agreed, as the Estimate pattern line under Planning in the Settings
-document. Use it for the rest of this review.
+work that out with them. Then write how they estimate, in their words with any
+mapping you agreed, under `## How you work` in the log, and save it.
 
 ## What to review
 
@@ -115,13 +114,12 @@ instead. The user adjusts the order however they like, then you start.
 ## 3. Task by task
 
 One estimator agent proposes every estimate in this review. Start it once, at
-the first task, and hand it what it needs then: the Estimate pattern, and the
-log's `## How you work` and recent `## Estimates` entries, which Setup already
-read. It sees nothing of this chat, only what you hand it, so this hand-off is
-what lets it load nothing itself. Start it in the background, and send every
-later ask to that same agent; don't start a new one. When the agent isn't
-available, read `agents/estimator.md` from the newest installed `ntm` and follow
-it.
+the first task, and hand it what it needs then: the log's `## How you work` and
+recent `## Estimates` entries, which Setup already read. It sees nothing of this
+chat, only what you hand it, so this hand-off is what lets it load nothing
+itself. Start it in the background, and send every later ask to that same agent;
+don't start a new one. When the agent isn't available, read
+`agents/estimator.md` from the newest installed `ntm` and follow it.
 
 Ask its Estimate request for a size for the first task alone, so the first
 proposal comes fast. Wait for that answer only; never wait on an ask ahead
@@ -137,9 +135,8 @@ or mention them early.
 One item per message, in the agreed order:
 
 1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, in the user's own terms (their Estimate pattern),
-   with a few words on why, from the estimator. If the task already has one, say
-   what it is.
+2. Your proposed **estimate**, in the user's own terms, with a few words on why,
+   from the estimator. If the task already has one, say what it is.
 3. If the estimator says it doesn't fit a sitting, one line on whether it could
    be broken up. Some things can't, and that's fine. Pieces come up in the talk
    that follows (see Breaking up tasks).
@@ -184,17 +181,20 @@ user just wants to tease things apart so they can do it in smaller pieces.
 ## The task review log
 
 The `Task review log` database: it's how reviewing learns to work better with
-the user over time. Read and write it where `ntm-user:backend` keeps it. When
-it's missing, the first write creates it with the two sections below. Save it
-whenever you change it, leaving the rest as it was.
+the user over time, and the estimator's long-term context. Read and write it
+where `ntm-user:backend` keeps it. When it's missing, the first write creates it
+with the two sections below. Save it whenever you change it, leaving the rest as
+it was.
 
 **`## How you work`:** how the user estimates and breaks up tasks, learned so
 that review can come to propose most of their list the way they would. Short
-bullets, written to them (it's theirs too), grouped by topic: how they estimate,
-how they like tasks written and broken up, how they like sessions to go, whether
-they're new to estimating, and what they keep correcting. Learn from what they
-change, push back on or say. Keep it tidy, not short: fold related bullets
-together and rewrite rather than append, and let it run as long as it needs.
+bullets, written to them (it's theirs too), grouped by topic: how they estimate
+(hours unless they chose another way, what to do with that, and any mapping to
+the list's own points), how they like tasks written and broken up, how they like
+sessions to go, whether they're new to estimating, and what they keep
+correcting. Learn from what they change, push back on or say. Keep it tidy, not
+short: fold related bullets together and rewrite rather than append, and let it
+run as long as it needs.
 
 **`## Estimates`:** a `jsonl` code block, newest first, one object per approved
 estimate:
@@ -205,9 +205,9 @@ estimate:
 ```
 
 `date` is today. `guess` is what you proposed and `final` what the user
-approved, each written the way the Estimate pattern writes it (`3`, `"2 h"`,
-`"weekend"`). Keep `why` to a few words: what made them change it, or what made
-the guess right. Keep the newest 150 entries.
+approved, each written the way the user estimates (`"2 h"`, `3`, `"M"`). Keep
+`why` to a few words: what made them change it, or what made the guess right.
+Keep the newest 150 entries.
 
 ## Ending
 

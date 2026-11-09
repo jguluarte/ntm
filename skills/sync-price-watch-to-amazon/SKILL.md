@@ -22,8 +22,8 @@ not on Amazon, and every closed one has its alert removed.
 
 ## Labels
 
-The labels below are named by their keys in Labels in your settings; on the todo
-list each goes by the real name its key maps to.
+The labels below are named by their keys; `ntm-user:backend` gives each one's
+real name on the todo list.
 
 - **$has-amazon-alert:** an Amazon alert is set for this item. While it's on a
   closed task, the alert is still live and needs removing.
@@ -44,8 +44,10 @@ An open watched item **needs an alert** when it has neither label.
 
 ## 1: The rules and the browser
 
-Load `ntm:conventions` (the list's rules and your settings), then run
-`/ntm:ready-check`. If it fails, stop and give the user its result line.
+Load `ntm-user:backend`: every step below that reads or writes the todo list is
+a request to it, in plain words. Ask it to read About you and Shopping from the
+Settings document; "your settings" means those. Then run `/ntm:ready-check`. If
+it fails, stop and give the user its result line.
 
 Amazon alerts are on when Amazon interface under Shopping in your settings names
 a browser or is blank; they're off when the line is missing or says off, or
@@ -65,13 +67,11 @@ must be new, unless the task or Shopping in your settings says otherwise.
 
 ## 2: The work
 
-1. **Open items:** fetch every open task the way "Every open task" in
-   `ntm:conventions` says, and keep the ones with the $price-watch label,
-   counting labels inherited from their project (the conventions' "Project
-   labels"). Split them: those with neither label need an alert; those with
-   $has-amazon-alert are set; those with $amazon-unavailable need nothing.
-2. **Closed items:** the guide's `fetch closed` for the $has-amazon-alert label,
-   canceled and duplicate included, with the standard fields.
+1. **Open items:** ask `ntm-user:backend` for the watched items. Split them:
+   those with neither label need an alert; those with $has-amazon-alert are set;
+   those with $amazon-unavailable need nothing.
+2. **Closed items:** ask `ntm-user:backend` for the closed items with an Amazon
+   alert.
 
 If there's nothing to set and nothing to remove, say "Amazon alerts are in sync;
 nothing to do." and stop.
@@ -108,9 +108,9 @@ needs updating for Amazon's site.
 
 For each open item that needs an alert:
 
-1. **Read it.** The guide's `read task` and `read comments`: the exact item
-   (model number and variant; a different variant is a different item), the
-   condition, the quantity, the target price and any acceptable price.
+1. **Read it.** The task, with its comments: the exact item (model number and
+   variant; a different variant is a different item), the condition, the
+   quantity, the target price and any acceptable price.
 2. **Find it on Amazon.** Search Amazon's site in the browser for the model
    number. Open the best match and read the title, model number, variant, ASIN,
    current price and who sells it.
@@ -121,8 +121,7 @@ For each open item that needs an alert:
    show the candidates' titles, prices and ASINs, plus "Not on Amazon". Never
    set an alert on a guess.
 4. **Not on Amazon:** if it isn't sold in that condition on Amazon's site, or
-   the user says so, add the $amazon-unavailable label (the guide's
-   `add labels`) and comment (`write comment`):
+   the user says so, add the $amazon-unavailable label and comment:
    `Amazon alert: not on Amazon, checked YYYY-MM-DD. <one line on what you found>`.
 5. **Set the alert.** Alert price, per unit: the task's acceptable price if it
    names one; otherwise the target plus about 10–15%, rounded to a sensible
@@ -141,8 +140,8 @@ For each closed item with the $has-amazon-alert label:
 
 1. Find its alert using the ASIN in the latest comment starting `Amazon alert:`,
    and remove it. Check it's gone from Amazon's list of alerts.
-2. Remove the $has-amazon-alert label (the guide's `remove labels`, keeping the
-   task's other labels) and comment: `Amazon alert: alert removed YYYY-MM-DD.`
+2. Remove the $has-amazon-alert label (keeping the task's other labels) and
+   comment: `Amazon alert: alert removed YYYY-MM-DD.`
 
 If the alert is already gone, just remove the label and say so in the comment.
 If you can't find the ASIN or the alert, ask the user before removing the label:
@@ -150,11 +149,10 @@ the label is the only record that an alert is still live.
 
 ## 6: The report
 
-Writes follow the conventions' "Writing to the todo list" (retry once, then
-report). Dates are today's.
+A write that fails is retried once, then reported. Dates are today's.
 
 End with one short line on the outcome, then one line per item, worded the way
-the conventions' "Talking to the user about tasks" says:
+`ntm-user:backend` says to word a task:
 
 - `<item> (ABC-12): alert set at <price>` / `not on Amazon` / `alert removed` /
   `skipped: <reason>`

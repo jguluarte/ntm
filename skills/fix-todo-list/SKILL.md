@@ -21,9 +21,9 @@ notifies anyone: whoever called it decides what to tell the user.
 
 ## Setup
 
-Ask `ntm-user:backend` for every open item, and keep every result, including
-excluded tasks. The answer also lists the projects; this skill checks no labels,
-so ignore them.
+```
+/ntm-user:backend find every open item, excluded ones included.
+```
 
 ## Clear stale dates
 
@@ -34,14 +34,14 @@ tasks where status is open
 → clear planned date
 ```
 
-Ask `ntm-user:backend` to clear each match's planned date, and change nothing
+Clear each match's planned date as `ntm-user:backend` says, and change nothing
 else.
 
 ### Failures and dry runs
 
-Retry a failed fetch once. If it still fails, stop and return
-`Fix-todo-list FAILED: <what failed>`. Retry a failed write once, and list any
-that still fail under `Couldn't write:`.
+Retry a failed fetch once. If it still fails, or `ntm-user:backend` says
+`Backend CAN'T: <why>`, stop and return `Fix-todo-list FAILED: <what failed>`.
+Retry a failed write once, and list any that still fail under `Couldn't write:`.
 
 With `--dry-run`, make no writes. In the result, write `Dry run <today>:` in
 place of `Fixed <today>:`, and `Would clear` in place of `Cleared`.

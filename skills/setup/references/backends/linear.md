@@ -1,20 +1,19 @@
 # Linear guide
 
-The backend guide for Linear, and a tested one: how each operation the
-conventions name is carried out with the Linear connector. `ntm:conventions`
-reads it when Backend is `linear`; `ntm:configure-todo-list` reads it for Setup.
+The backend guide for Linear, and a tested one: how each operation the backend
+contract names is carried out with the Linear connector. The build copies
+everything below this paragraph into `ntm-user:backend` as written, with
+`<List name>` and `<List id>` filled in. Setting Linear up with the user is part
+of setup's todo list step, `todo-list.md`.
 
 Use the tools of the Linear connector that's signed in. Its own instructions and
 tool descriptions are the authority on how to call them. This guide says which
 tool does each operation and which of the user's values goes where.
 
-Values below that name a settings section (Todo list, Labels, Planning, About
-you) come from `ntm-user:settings`, read as the conventions' Loading step says.
-
 ## Todo list
 
-- **Team:** List name from Todo list (List id is the team id, used wherever a
-  call below takes `teamId`).
+- **Team:** `<List name>`, the team's name; `<List id>` is its id, used wherever
+  a call below takes `teamId`.
 - **Project labels:** labels on a project are Linear project labels, a separate
   set from issue labels (`list_project_labels` / `save_project_label`).
   Inheritance matches them to issue labels by name, so a label a project carries
@@ -25,10 +24,21 @@ you) come from `ntm-user:settings`, read as the conventions' Loading step says.
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
   team can extend its scale or allow zero. Times can't be stored. The connector
-  doesn't say which type a team uses; the user does. When Planning's Estimate
-  pattern gives a point for each estimate, convert through it: the user's
-  estimate to its point when writing, a point back to their estimate when
-  reading.
+  doesn't say which type a team uses; the user does. When Estimate pattern,
+  under Planning in the Settings document, gives a point for each estimate,
+  convert through it: the user's estimate to its point when writing, a point
+  back to their estimate when reading.
+
+Setup doesn't ask about estimates; the user's first review does. When they need
+help there, guide them: ask which estimate type their team uses (each one's
+points are above). If they're unsure, it's in Linear under the team's settings,
+Estimates. If they still don't know, look at estimates already set:
+`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
+`estimate`, and suggest the type whose points fit (a 4 rules out Fibonacci and
+T-shirt, a 5 rules out exponential; Fibonacci and T-shirt store the same points,
+so ask which they see in Linear). When their scale isn't the team's, agree with
+them which of the team's points each of their estimates becomes, and add that to
+Estimate pattern.
 
 ## Status classes
 
@@ -49,8 +59,8 @@ One exception: a status named Blocked is the blocked class, whatever its type
 
 ### `ping`
 
-`get_team` (`query: "<List id>"`). The team named in List name comes back: pass.
-A different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
+`get_team` (`query: "<List id>"`). Team `<List name>` comes back: pass. A
+different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
 found: wrong account. Anything else: backend error.
 
 ### `fetch open`
@@ -96,8 +106,8 @@ Change nothing else on the issue.
 
 `save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
 type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked` (or
-the name Deviations gives). For a plannable status, pass its name from
-`list statuses`.
+the name Deviations gives). For a plannable status, pass its name;
+`list_issue_statuses` with `team` lists them.
 
 ### `add labels` / `remove labels`
 
@@ -123,7 +133,7 @@ Check for an existing match with `list_issues` (`query`) first.
 
 ### Databases
 
-Databases are Linear documents in the team, under the titles the conventions
+Databases are Linear documents in the team, under the titles the core rules
 give. A database kept inside a project (the price watch stores database, in the
 project that carries the $price-watch label) lives in that project's documents
 instead. Search with `projectId` instead of `teamId` (the project's id, from
@@ -138,123 +148,13 @@ create with `project: "<project name>"` instead of `team`.
   missing, create it the way `create database` does, but with the whole content
   given, not only its frontmatter (the content for the message history database
   already starts with its frontmatter).
-
-## Setup
-
-The walkthrough `ntm:configure-todo-list` follows with the user, part by part in
-order; a part named for one of its steps (Planning) waits for that step. The
-calls it uses are under Setup operations.
-
-### The backend
-
-Backend is `linear`. If the user doesn't have Linear yet, do Starting from
-nothing first.
-
-### Starting from nothing
-
-These happen outside the chat, on the user's side; walk them through in order
-and wait for "done" before The connector below:
-
-1. Sign up at linear.app. The free plan is enough: one workspace, unlimited
-   issues.
-2. The new workspace comes with one team; that team is the todo list. Its key
-   (the few capital letters Linear asks for when naming it, `HOME` for
-   `HOME-12`) starts every task's id, so pick one they'll be happy reading in
-   reminders.
-3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
-   Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
-   right now" status, they add one named Blocked in the team's workflow
-   settings; otherwise the $pending-shipment label and blocked-by links cover
-   that ground.
-
-Labels, the price watch project and the databases don't need to be made by hand:
-Labels and Databases in `ntm:configure-todo-list` create them.
-
-### The connector
-
-Check that a signed-in Linear connector is present. If it isn't there, walk the
-user through it: in Claude's settings, the Connectors tab, add Linear and sign
-in to their workspace, then come back here and say so.
-
-### The todo list
-
-`list todo-lists`; propose the team. List name is its name, List id its id.
-
-Once the team is chosen, suggest the user turn on Parent auto-close in the
-team's settings under Workflow, so a parent closes as soon as its sub-tasks are
-all done.
-
-### The price watch project
-
-`list projects`; ask which project holds purchases waiting for a good price, or
-none (no price watch; the $price-watch label on a project later turns it on). If
-they want one that doesn't exist yet, settle its name now; it's created in
-Labels, once the project labels exist.
-
-### Planning
-
-Ask which estimate type their team uses: linear, exponential, Fibonacci or
-T-shirt sizes (Estimates, under Todo list above, has each one's points). If
-they're unsure, it's in Linear under the team's settings, Estimates. If they
-still don't know, run `sample estimates` and suggest the type that fits. When
-their scale isn't the team's, agree with them which of the team's points each
-estimate on their scale becomes, and add that to Estimate pattern.
-
-## Setup operations
-
-Used by `ntm:configure-todo-list`.
-
-### `list todo-lists`
-
-`list_teams`. Each comes back with its name and id.
-
-### `create todo-list`
-
-Not needed; Linear has teams to list.
-
-### `list statuses`
-
-`list_issue_statuses` with `team`. Each comes back with its name and `type`;
-Status classes above gives each one's class.
-
-### `sample estimates`
-
-`list_issues` with `team: "<List name>"`, `limit: 50` and `fields` `title` and
-`estimate`. Suggest the estimate type (Estimates, above) whose points fit the
-ones already set: a 4 rules out Fibonacci and T-shirt, a 5 rules out
-exponential. Fibonacci and T-shirt store the same points; ask which they see on
-their tasks in Linear. No estimates set means no suggestion.
-
-### `list labels`
-
-`list_issue_labels` with `team` for issue labels; `list_project_labels` with
-`team` for project labels, a separate set.
-
-### `create label`
-
-`save_issue_label` with `name`, `teamId: "<List id>"` and `description` for an
-issue label; `save_project_label` with `name`, `teamId` and `description` for a
-project label.
-
-### `list projects`
-
-`list_projects` with `team: "<List name>"`, `fields` `name` and `labels`. Each
-comes back with its id.
-
-### `create project`
-
-Create the project labels it should carry first (`create label`), then
-`save_project` with `name`, `addTeams` naming the todo list, and `labels`. When
-updating an existing project, pass its current labels plus the missing ones.
-
-### `create database`
-
-`read database` first; one that exists is left alone. Otherwise `save_document`
-without `id`, with `team: "<List name>"` (or `project: "<project name>"` for a
-database kept in a project), `title` set to the database's title, and `content`
-set to its first content (for the message history database, its frontmatter).
+- **`create database`:** `read database` first; one that exists is left alone.
+  Otherwise `save_document` without `id`, with `team: "<List name>"` (or
+  `project: "<project name>"` for a database kept in a project), `title` set to
+  the database's title, and `content` set to its first content (for the message
+  history database, its frontmatter).
 
 ## Writing
 
-The response says whether the write succeeded; the conventions' retry rule
+The response says whether the write succeeded; the core rules' retry rule
 applies.

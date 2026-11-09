@@ -32,8 +32,8 @@ Load `ntm-user:backend` to read the user's conventions. If it can't be loaded:
 
 The ping in `ntm-user:backend` names the tool it uses. If that tool isn't
 loaded, search for it with ToolSearch. If it still isn't there: **Connector not
-attached**, or **Sign-in expired** when `ntm-user:backend` says the connector is
-waiting on a sign-in.
+attached**, or **Sign-in expired** when the connector looks the way
+`ntm-user:backend` describes one waiting on a sign-in.
 
 ### 3: Ping the todo list
 
@@ -97,5 +97,6 @@ the send fails, append `(notification not sent: <reason>)` to the result line.
 
 When `ntm-user:notify` puts the notification in the final reply instead of
 sending it, that's not a failure: end with the result line, then the title and
-the message. A job that ends its run with what this check returned then shows
-the failure once, as the completion push.
+the message, without the `NOTIFY VIA FINAL REPLY` line. A job that ends its run
+with what this check returned then shows the failure once, as the completion
+push.

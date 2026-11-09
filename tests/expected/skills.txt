@@ -1,10 +1,4 @@
 afternoon-reminder
-configure
-configure-notifications
-configure-schedule
-configure-style
-configure-todo-list
-conventions
 evening-reminder
 fix-todo-list
 help
@@ -15,8 +9,10 @@ plan
 price-watch
 ready-check
 review-todo-list
+schedules
 self-test
 settings
+setup
 show-completed
 sync-price-watch-to-amazon
 today

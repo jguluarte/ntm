@@ -19,12 +19,11 @@ the message plain.
 ## Usage
 
 ```
-/ntm:style [--stay-fresh] [--for <reminder>] ["<tone>"] <message>
+/ntm:style [--stay-fresh] [--for <type>] ["<tone>"] <message>
 ```
 
-`<reminder>` is `morning`, `afternoon`, `evening`, `week` or `completed`, or any
-kind the messenger sends, such as `self-test`, and implies `--stay-fresh`. The
-tone is freeform.
+`<type>` is the messenger's type: `freeform`, or a path into the Message rules
+such as `reminders.morning`. It implies `--stay-fresh`. The tone is freeform.
 
 ## Writing
 
@@ -48,7 +47,7 @@ Keep: 8 weeks
 ```
 
 With `--for`, end with a `Title:` line that says what the message is about in
-the same style, never just the reminder's name.
+the same style, never just the type's name.
 
 ## Result
 

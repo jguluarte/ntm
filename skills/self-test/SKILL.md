@@ -24,11 +24,9 @@ after install, and the thing to run again after `ntm-user` is rebuilt.
 
 ## With no user plugin
 
-First, load `ntm-user:backend`. When it won't load, `ntm-user` isn't installed
-or enabled, so nothing is set up yet and there's nothing to exercise. Run no
-step and no cleanup, and reply with the one line
-`Self-test OK (base only): nothing is set up; run /ntm:setup`. The base alone
-passes this way.
+First, load `ntm-user:backend`. When it won't load, nothing is set up yet, so
+there's nothing to test. Run no step and no cleanup, and reply with the one line
+`Self-test OK (base only): nothing is set up; run /ntm:setup`.
 
 ## What it uses
 

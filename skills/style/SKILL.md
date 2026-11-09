@@ -4,6 +4,9 @@ description: >-
     Writes a message in the user's style, from the Style document on their todo
     list, and keeps Message history. Loaded by the messenger agent for every
     reminder, and run in chat when the user asks for a message in their style.
+    Also revises the Style document with the user when they ask: "make it
+    meaner", "softer", "shorter", "the reminders aren't landing" or "use my own
+    persona".
 ---
 
 # ntm:style
@@ -49,6 +52,23 @@ Keep: 60 entries or 8 weeks
 With `--for`, end with a `Title:` line that says what the message is about in
 the same style, never just the reminder's name.
 
+## Revising
+
+When the user asks to change their style, revise the Style document with them in
+chat, to the persona contract. Show the part their request touches, propose the
+change, and write it once they agree. Parts they don't name stay as they are.
+
+- "Meaner" or "softer": the Register, and the Examples it touches.
+- "Shorter": What gets you to read, and the Examples.
+- "Not landing": What gets you to read, then Responding to procrastination.
+- "Use my own persona": their text replaces the Profile, with a `## For ntm`
+  section above it, as the contract's A persona says. Show them that section.
+
+A persona is edited as they say and kept word for word otherwise. How hard it
+goes is their call. When a request heads toward plain, offer a livelier register
+first: plain is the last resort.
+
 ## Result
 
-Only the message, plain text, and that `Title:` line.
+Only the message, plain text, and that `Title:` line. After a revision, say in a
+line what changed.

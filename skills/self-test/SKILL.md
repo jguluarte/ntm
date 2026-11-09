@@ -29,8 +29,8 @@ after install, and the thing to run again after `ntm-user` is rebuilt.
 - One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
   label by its real name in `ntm-user:backend`, in no project. Keep its id once
   created; `ABC-12` below stands for it.
-- One throwaway database, titled `ntm self-test`, at list level. It's not one of
-  the user's databases; only this skill knows it.
+- One throwaway database, titled `ntm self-test database`, at list level. It's
+  not one of the user's databases; only this skill knows it.
 - If an earlier run left either behind (`fetch open` shows a task with that
   title; `read database` finds the database), remove them first, as Cleanup
   says, so this run starts clean.
@@ -149,7 +149,8 @@ Always, whether the steps passed or stopped, and in this order; one line each,
 
 - **The task:** if it was created, `set status` to canceled, so it never counts
   as work done (leave it done when the todo list has no canceled status).
-- **The database:** if it was written, `write database` it empty.
+- **The database:** if it was written, `write database` it empty; if
+  `ntm-user:backend` keeps it in a task, cancel that task too.
 - **The label:** if step 14 added it and step 15 didn't remove it,
   `remove labels` it.
 

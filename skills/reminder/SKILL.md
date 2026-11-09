@@ -15,25 +15,32 @@ description: >-
 /ntm:reminder --type <morning|afternoon|evening|week> --job <key>
 ```
 
-`--job` is the key of the job that ran it, such as `morning-reminder` or `plan`.
+`--job` is the key of the job that ran it, such as `morning-reminder` or `week`.
 
 ## The facts
 
-| Type      | Lines                                                                            |
-| --------- | -------------------------------------------------------------------------------- |
-| morning   | the `today:` lines the job handed                                                |
-| afternoon | `open:` per open task planned today or earlier                                   |
-| evening   | `done:` per task done today, then `open:` per open task planned today or earlier |
-| week      | the `done:`, `open:`, `planned:` and `weekly message:` lines the job handed      |
+| Type      | Lines                                                                                                     |
+| --------- | --------------------------------------------------------------------------------------------------------- |
+| morning   | the `today:` lines the job handed                                                                         |
+| afternoon | `open:` per open task planned today or earlier                                                            |
+| evening   | `done:` per task done today, then `open:` per open task planned today or earlier                          |
+| week      | `done:` per Done task, `open:` per Still open task, then the job's `planned:` and `weekly message:` lines |
 
 A key with no tasks gets the single line `<key>: none`.
 
 ## Steps
 
-### 1. Gather, for afternoon and evening
+### 1. Gather
 
-Load `ntm-user:backend` to read the user's conventions, then find the type's
-tasks. If the todo list can't be read, stop with `Reminder FAILED: <why>`.
+For afternoon and evening, load `ntm-user:backend` to read the user's
+conventions, then find the type's tasks. If the todo list can't be read, stop
+with `Reminder FAILED: <why>`.
+
+For week, the tasks are in the show-completed result the job handed: its Done
+and Still open sections. When it handed `Show-completed FAILED`, the lines are
+`done: unavailable` and `open: none`; when it handed no show-completed result,
+leave out `done:` and `open:`. The `planned:` lines come from what plan
+returned, as they are.
 
 Write each task as a task line, as the messenger agent's "What you're given"
 says, with no estimate. Add `(was <date>)` on a task planned before today, and
@@ -48,6 +55,9 @@ kind: <type>
 job: <the --job key>
 <the facts>
 ```
+
+When the job gives a Pushover app token, add `app token: <token>` as the last
+line.
 
 ## Result
 

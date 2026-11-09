@@ -77,7 +77,7 @@ a token for a job, never repeat it back, and add this after the timezone line:
 
 ```
 Pushover app token for this job: <token>. Hand it to every
-`ntm:notify` call as `--app-token`, and to the messenger agent as
+`ntm:notify` call as `--app-token`, and to `ntm:reminder` as
 `app token:`.
 ```
 
@@ -108,18 +108,15 @@ Timezone: <Timezone under About you in your settings>.
 1. Run `/ntm:ready-check --notify-failure week`. On
    `Ready-check FAILED`, end the run with what it returned and
    nothing more.
-2. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
-   `Fix-todo-list FAILED`, carry on.
-3. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-4. Load `ntm:show-completed` and run
+2. Load `ntm:show-completed` and run
    `/ntm:show-completed <span> and what's still open`.
-   On `Show-completed FAILED`, carry on with `done: unavailable`.
-5. Load `ntm:reminder` and run `/ntm:reminder --type week --job week`.
-   Hand it plan's `planned:` lines; one `done:` line per Done task
-   from step 4, or `done: none`; one `open:` line per Still open
-   task, with `was` its date when that's before today, or
-   `open: none`; each a task line as the messenger agent's "What
-   you're given" says; and `weekly message: <what the message covers>`.
+   On `Show-completed FAILED`, carry on.
+3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
+   `Fix-todo-list FAILED`, carry on.
+4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
+5. Load `ntm:reminder` and run `/ntm:reminder --type week --job week`,
+   handing it what show-completed and plan returned and
+   `weekly message: <what the message covers>`.
 Final reply: when the reminder returned a delivery block, the title
 and message under its marker line, verbatim; otherwise one short
 line on what happened. Then fix-todo-list's lines and plan's
@@ -130,8 +127,9 @@ If a skill can't be loaded, end the run with this line:
 `<title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
 ```
 
-When the message covers only the week ahead, leave out step 4 and its `done:`
-and `open:` lines, and number the reminder step 4.
+Show-completed runs before fix-todo-list and plan, which clear and move the
+dates it reads open tasks by. When the message covers only the week ahead, leave
+out step 2 and number the steps after it 2 to 4.
 
 ## Walking the schedule
 

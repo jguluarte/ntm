@@ -8,6 +8,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
-            - uses: jetify-com/devbox-install-action@v0.15.0
-            - run: devbox run -- direnv allow .
-            - run: devbox run -- direnv exec . make test
+            - name: Install bats, version from devbox.json
+              run: >
+                  npm install --global $(jq -r '.packages[] |
+                  select(test("^bats@"))' devbox.json)
+            - run: set -a && . ./.env && set +a && make test

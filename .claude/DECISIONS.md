@@ -245,15 +245,17 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## The repo
 
-- devbox provides prettier, markdownlint-cli2, direnv, bats and jq. `make lint`,
-  `make lint-fix` and `make test` are the way in, locally and in CI.
+- devbox provides prettier, markdownlint-cli2, direnv, bats and jq locally. CI
+  installs only the tools its job needs, at devbox.json's versions, and sources
+  `.env`. `make lint`, `make lint-fix` and `make test` are the way in, locally
+  and in CI.
+- Settings the tooling needs live in `.env`; devbox loads it (`env_from`).
 - `make test` runs the bats tests in `tests/`: the user-facing name tests,
   against `tests/expected/`, which a PR that renames updates, so the rename
   shows in its diff.
 - `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
-  (145, exported in `.envrc`), on every tracked file except those
-  `.gitattributes` marks `skip-absolute-line-length`, and prints the files that
-  break it.
+  (145, in `.env`), on every tracked file except those `.gitattributes` marks
+  `skip-absolute-line-length`, and prints the files that break it.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.

@@ -8,6 +8,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
-            - uses: jetify-com/devbox-install-action@v0.15.0
-            - run: devbox run -- direnv allow .
-            - run: devbox run -- direnv exec . make lint
+            - name: Install prettier and markdownlint, versions from devbox.json
+              run: >
+                  npm install --global $(jq -r '.packages[] |
+                  select(test("^(prettier|markdownlint-cli2)@"))' devbox.json)
+            - run: set -a && . ./.env && set +a && make lint

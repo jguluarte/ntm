@@ -4,9 +4,9 @@ description: >-
     The role that reaches the user with their ntm list's messages. Given a kind
     (morning, afternoon, evening, week, completed or any other, such as
     self-test), the skill it is for and the facts, it writes the message in the
-    user's style with ntm-user:style, sends it with ntm:notify, and returns what
-    happened. Asked by any ntm skill that messages the user, in a job or by hand
-    in chat.
+    user's style with ntm-user:style, sends it with ntm:notify unless the user's
+    Message rules skip it, and returns what happened. Asked by any ntm skill
+    that messages the user, in a job or by hand in chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -50,6 +50,27 @@ For `morning`, `afternoon`, `evening`, `week` and `completed`, read the kind's
 reference, `references/messenger/<kind>.md` from the newest installed `ntm`: its
 facts, what the sentences say and what the list holds.
 
+## The user's message rules
+
+On every run, load `ntm-user:backend` and read the `Message rules` document: the
+user's rules for how and when each message goes. Missing or unreadable, it holds
+no rules. Each section is optional:
+
+| Section          | Holds                                                    |
+| ---------------- | -------------------------------------------------------- |
+| `## Per kind`    | one line per kind: send or skip when empty, what to name |
+| `## Weekdays`    | rules that hold Monday to Friday                         |
+| `## Weekends`    | rules for Saturday and Sunday (skip, shorten, no list)   |
+| `## Paused days` | skip, or what a paused day's message says                |
+
+A missing section means: send every kind, no weekend difference, and a paused
+day with no open tasks sends nothing. Where a rule differs from this file or the
+kind's reference, the rule wins.
+
+You keep this document. Given `rule:` lines, save each under its section first,
+writing the whole document; when it's missing, create it with only the sections
+that hold rules. With no `kind:`, that's the whole run: return `Rules saved.`
+
 ## What you're given
 
 The skill that asks hands over one input per line. Required:
@@ -73,6 +94,7 @@ Optional:
 - `app token:` the Pushover app token the job's prompt gives, for a job that
   sends from its own Pushover app. Pass it to `ntm:notify` as `--app-token`, and
   never write it into the message or your return.
+- `rule:` a rule the user stated for their messages, in their words.
 
 For example:
 
@@ -91,6 +113,22 @@ titles, dates, counts and names are carried as given: never altered or joked
 about when used. A task is still worded as the conventions' "Talking to the user
 about tasks" says (a few natural words, the id in parentheses), or as `wording:`
 says, not by its full title.
+
+## Whether to send
+
+Today's section is `## Weekends` on Saturday and Sunday, `## Weekdays`
+otherwise. When the facts hold tasks, run `/ntm:pause --check`; today is paused
+when its line ends `true`.
+
+Send nothing, and return `Nothing sent: <why>`, when:
+
+- the kind's `## Per kind` line, or today's section, says to skip it today;
+- today is paused, and `## Paused days` says skip, or says nothing and no task
+  is open (`today: none` or `open: none`);
+- the kind is `evening`, with `done: none` and `open: none`.
+
+Otherwise send, with what the rules say about the message: shorter, no list,
+what to name.
 
 ## Composing
 
@@ -141,6 +179,8 @@ what reaches the user beyond the push:
   run with.
 - `Notify FAILED: <why>`, `ntm:notify`'s own line. Never claim a message was
   sent.
+- `Nothing sent: <why>` when the rules or the facts skip the message.
+- `Rules saved.` after `rule:` lines with no `kind:`.
 - `Messenger NEEDS: <what's missing and why>` when a required input is missing;
   nothing was sent.
 

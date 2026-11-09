@@ -128,11 +128,21 @@ ids the tone names, so a carried-over task climbs the persona's own levels as
 `ntm:settings` says. Show them the section; they confirm. Nothing else is added
 or filled in: the persona's own levels, profanity and motifs stand.
 
+## Message rules
+
+Whether and when a message goes isn't style: skip weekends, shorter on a Friday,
+nothing on a paused day, no afternoon when it's empty. When the user says
+something like that, take it in their words, under the section it belongs to:
+`## Per kind`, `## Weekdays`, `## Weekends` or `## Paused days`. Don't ask for
+rules; take them as they come up.
+
 ## Result
 
 For plain and a theme: the Profile, in the builder's shape, headings as given.
-For a persona: the `## For ntm` section and the unchanged body. Show it and take
-one round of corrections: they say what's off, you fix it.
+For a persona: the `## For ntm` section and the unchanged body. Show it, and any
+rules they stated, and take one round of corrections: they say what's off, you
+fix it. With rules, create the `Message rules` document with only the sections
+that hold them.
 
 Then:
 
@@ -140,4 +150,4 @@ Then:
 - Run on its own: load `ntm:settings` and follow its "Regenerating
   `ntm-user.plugin`" section with it as the changed part.
 
-Nothing is written anywhere else; the style lives only in `ntm-user`.
+Beyond `Message rules`, nothing is written; the style lives only in `ntm-user`.

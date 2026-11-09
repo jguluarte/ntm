@@ -1,5 +1,4 @@
 afternoon-reminder
-configure-schedule
 conventions
 evening-reminder
 fix-todo-list
@@ -11,6 +10,7 @@ plan
 price-watch
 ready-check
 review-todo-list
+schedules
 self-test
 settings
 setup

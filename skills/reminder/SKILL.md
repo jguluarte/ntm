@@ -56,7 +56,7 @@ failed check never counts as not paused.
 Ask the messenger agent:
 
 ```
-kind: <type>
+reminder: <type>
 job: <type>
 <the facts>
 ```

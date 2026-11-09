@@ -5,8 +5,9 @@ description: >-
     (morning, afternoon, evening, week, completed or any other, such as
     self-test), the skill it is for and the facts, it writes the message in the
     user's style with ntm-user:style, sends it with ntm:notify unless the user's
-    Message rules skip it, and returns what happened. Asked by any ntm skill
-    that messages the user, in a job or by hand in chat.
+    Message rules skip it, and returns what happened. Given rules the user
+    stated for their messages, it saves them to Message rules. Asked by any ntm
+    skill that messages the user, in a job or by hand in chat.
 
         <example>
             Context: ntm:morning-reminder has today's tasks from ntm:plan
@@ -67,9 +68,13 @@ A missing section means: send every kind, no weekend difference, and a paused
 day with no open tasks sends nothing. Where a rule differs from this file or the
 kind's reference, the rule wins.
 
-You keep this document. Given `rule:` lines, save each under its section first,
-writing the whole document; when it's missing, create it with only the sections
-that hold rules. With no `kind:`, that's the whole run: return `Rules saved.`
+## Saving rules
+
+You keep the `Message rules` document. A `rule:` line is a rule the user stated
+for their messages, in their words. Given `rule:` lines, save each under its
+section first, writing the whole document; when it's missing, create it with
+only the sections that hold rules. Given only `rule:` lines, with no `kind:`,
+that's the whole run: return `Rules saved.`
 
 ## What you're given
 
@@ -94,7 +99,6 @@ Optional:
 - `app token:` the Pushover app token the job's prompt gives, for a job that
   sends from its own Pushover app. Pass it to `ntm:notify` as `--app-token`, and
   never write it into the message or your return.
-- `rule:` a rule the user stated for their messages, in their words.
 
 For example:
 
@@ -116,9 +120,11 @@ says, not by its full title.
 
 ## Whether to send
 
-Today's section is `## Weekends` on Saturday and Sunday, `## Weekdays`
-otherwise. When the facts hold tasks, run `/ntm:pause --check`; today is paused
-when its line ends `true`.
+Unless the facts are a `message:` line, run `/ntm:pause --check`. Its line,
+`YYYY-MM-DD: true` or `false`, gives today's date: today's section is
+`## Weekends` when that date is a Saturday or Sunday, `## Weekdays` otherwise,
+and today is paused when the line ends `true`. A `message:` kind skips the
+check, so only its `## Per kind` line applies.
 
 Send nothing, and return `Nothing sent: <why>`, when:
 
@@ -188,5 +194,6 @@ A `<Skill> FAILED: …` line from a skill you ran comes back the same way, in
 place of the send. If you can't finish for another reason, return
 `Messenger FAILED: <why>`.
 
-Change nothing on the todo list beyond what `ntm-user:style` saves to the
-message history, and don't message the user in the thread.
+Change nothing on the todo list beyond saving `rule:` lines to Message rules and
+what `ntm-user:style` saves to the message history, and don't message the user
+in the thread.

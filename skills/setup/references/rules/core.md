@@ -131,6 +131,8 @@ else only reads it.
 - **message history** (`Message history`): what reminders have said.
   `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
   much history to keep; the user changes it there.
+- **message rules** (`Message rules`): how and when each message goes, by kind,
+  weekdays, weekends and paused days. The messenger agent keeps it.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title.

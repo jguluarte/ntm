@@ -141,13 +141,14 @@ rules; take them as they come up.
 For plain and a theme: the Profile, in the builder's shape, headings as given.
 For a persona: the `## For ntm` section and the unchanged body. Show it, and any
 rules they stated, and take one round of corrections: they say what's off, you
-fix it. With rules, create the `Message rules` document with only the sections
-that hold them.
+fix it. The rules go with it as `rule:` lines, one per rule, in their words.
 
 Then:
 
-- Run by `ntm:configure`: return it to `configure`; it packages once at the end.
+- Run by `ntm:configure`: return it and the `rule:` lines to `configure`; it
+  packages once at the end.
 - Run on its own: load `ntm:settings` and follow its "Regenerating
-  `ntm-user.plugin`" section with it as the changed part.
+  `ntm-user.plugin`" section with it as the changed part. With rules, ask the
+  messenger agent with the `rule:` lines alone; it keeps `Message rules`.
 
-Beyond `Message rules`, nothing is written; the style lives only in `ntm-user`.
+Nothing is written anywhere else; the style lives only in `ntm-user`.

@@ -58,7 +58,7 @@ In order, each by loading its skill and saying it runs from `ntm:configure`:
 2. `ntm:configure-notifications`: the channel, the keys and a test push. Returns
    Notifications.
 3. `ntm:configure-style`: plain, a theme, or a persona skill they have. Returns
-   the `ntm-user:style` body.
+   the `ntm-user:style` body, and `rule:` lines when they stated message rules.
 4. `ntm:configure-schedule`: which jobs, which days, what time, what title. Hand
    it the timezone from About you, whether a price watch project was chosen, and
    any job's own Pushover app token from notifications, as settled above.
@@ -75,6 +75,10 @@ and open a new chat. Add that the first thing to run there is `/ntm:self-test`:
 it starts with `ready-check` and exercises the operations the jobs use, on a
 throwaway task. Until it's installed, every scheduled run ends with "not
 configured".
+
+With `rule:` lines from the style part, show them last and tell the user to
+paste them into that new chat once the self-test passes; that chat asks the
+messenger agent with them, which saves their message rules.
 
 ## Configured
 

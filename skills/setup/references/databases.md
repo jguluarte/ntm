@@ -3,7 +3,7 @@
 Setup's databases step. Confirms the names of the databases the user's features
 need, and says where each lives. It creates none: Settings was created when the
 todo list was saved, and Style when the persona was. Every other database is
-created by the skill that keeps it, the first time it writes.
+created by the one that keeps it, the first time it writes.
 
 ## The names
 
@@ -16,8 +16,7 @@ under the names they have:
 - `Message history`: what reminders have said, so they don't repeat. When they
   built a persona.
 - `Message rules`: how and when each message goes: per kind, weekdays, weekends,
-  paused days. Everyone. Already made when they stated rules in the persona
-  step; otherwise the messenger makes it the first time it saves one.
+  paused days. Everyone.
 - `Paused dates`: the days nothing gets planned automatically. Task management.
 - `Task review log`: how they work and how they estimate, from each review. Task
   management.

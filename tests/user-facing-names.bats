@@ -45,8 +45,8 @@ expect_none() {
 }
 
 contract_changed() {
-    echo "ERROR: agent changed a contract without user consent."
-    echo "Revert it, or ask your user. Never edit tests/expected/ to pass."
+    echo "ERROR: a user-facing name changed."
+    echo "Meant: update tests/expected/ in this PR and say so. Not: put it back."
     return 1
 }
 

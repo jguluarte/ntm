@@ -22,6 +22,14 @@ to run after install, and the thing to run again after `ntm-user` is rebuilt.
 /ntm:self-test
 ```
 
+## With no user plugin
+
+First, load `ntm-user:backend`. When it won't load, `ntm-user` isn't installed
+or enabled, so nothing is set up yet and there's nothing to exercise. Run no
+step and no cleanup, and reply with the one line
+`Self-test OK (base only): nothing is set up; run /ntm:setup`. The base alone
+passes this way.
+
 ## What it uses
 
 - `ntm-user:backend`, asked in plain words for what each step needs.
@@ -176,6 +184,8 @@ estimator only answers; it writes nothing.
 After the cleanup lines, one line:
 
 - `Self-test OK`
+- `Self-test OK (base only): nothing is set up; run /ntm:setup`, from With no
+  user plugin, with no step or cleanup lines before it
 - `Self-test FAILED at <step>: <why>`, the step being the number and name from
   Steps.
 

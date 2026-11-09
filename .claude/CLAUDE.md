@@ -18,10 +18,10 @@ until Justin has talked it through and says go.
   only after his explicit yes; silence is not approval. Plugin-internal names
   (status, delivery and result lines) don't need it.
 - `make test` holds the skill and agent names and plugin.json's name and
-  displayName to `tests/expected/`, and fails on any difference. Only Justin
-  edits `tests/expected/`; a hook in his own Claude Code settings blocks every
-  Claude session from it. A failing name test means: put the name back, or ask
-  him.
+  displayName to `tests/expected/`, and fails on any difference. A PR that
+  changes a name updates `tests/expected/` in the same PR and says so in its
+  description; that diff is how Justin sees the rename and pushes back. A name
+  test failing for a change nobody meant means: put the name back.
 - Never touch his installed copy, his scheduled tasks or his live skills
   unasked.
 

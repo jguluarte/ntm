@@ -37,9 +37,10 @@ attached**, or **Sign-in expired** when the connector looks the way
 
 ### 3: Ping the todo list
 
-Ping the todo list as `ntm-user:backend` says. If it fails, sort the failure the
-way it says: **Sign-in expired**, **Wrong account** or **Backend error**. On a
-backend error, ping once more, and sort a second failure the same way.
+Ping the todo list the way `ntm-user:backend` describes. If it fails, sort the
+failure the way it describes: **Sign-in expired**, **Wrong account** or
+**Backend error**. On a backend error, ping once more, and sort a second failure
+the same way.
 
 ### 4: Load `ntm-user:style`
 

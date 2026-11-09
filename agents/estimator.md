@@ -12,8 +12,8 @@ description: >-
         <example>
             Context: ntm:plan is picking a task for today and has three likely
             picks.
-            user: "Morning reminder. Load ntm:morning-reminder and follow
-            it from step 1."
+            user: "Morning reminder. Load ntm:plan and run
+            /ntm:plan --auto day."
             assistant: "Asking the estimator agent how long each likely
             pick takes."
             <commentary>

@@ -9,10 +9,10 @@ description: >-
     chat.
 
         <example>
-            Context: ntm:morning-reminder has today's tasks from ntm:plan
-            and is at its send step.
-            user: "Morning reminder. Load ntm:morning-reminder and follow
-            it from step 1."
+            Context: ntm:reminder has today's tasks from ntm:plan and is
+            at its send step.
+            user: "Morning reminder. Load ntm:reminder and run
+            /ntm:reminder --type morning."
             assistant: "Today is ready. Asking the messenger agent to send
             the morning message."
             <commentary>
@@ -25,7 +25,7 @@ description: >-
         <example>
             Context: The user runs the evening reminder by hand in chat.
             user: "Run the evening reminder now"
-            assistant: "Following ntm:evening-reminder. One task is still
+            assistant: "Following ntm:reminder. One task is still
             open; asking the messenger agent to send tonight's message."
             <commentary>
                 Run by hand, the skill still asks the messenger, so the

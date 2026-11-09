@@ -73,19 +73,12 @@ Puts a message in your style.
 
 Sends a notification through your channel.
 
-#### `/ntm:morning-reminder`
+#### `/ntm:reminder`
 
-The morning reminder: what's on the table today. A job runs it; so can you ("run
-the morning reminder now").
-
-#### `/ntm:afternoon-reminder`
-
-The afternoon reminder: what's still open today. A job runs it; so can you.
-
-#### `/ntm:evening-reminder`
-
-The evening reminder: how the day went, what closed and what's still open. A job
-runs it; so can you.
+Sends one reminder, by type: morning (what's on the table today), afternoon
+(what's still open today), evening (how the day went, what closed and what's
+still open), week (the week in review and ahead) or completed (what got done
+over a span). Your jobs run it.
 
 ### Planning and tidying
 
@@ -127,8 +120,8 @@ example: "Target 80. Refurbished is fine."
 
 Rules live in `ntm:conventions` and name the values they depend on by key; the
 values live in `ntm-user:settings`, agreed during setup. Jobs carry little
-logic: most just name the skill they run. The reminder skills gather facts and
-hand them to an agent; agents own the procedures. In the skills, a name with a
+logic: most just name the skill they run. The reminder skill gathers facts and
+hands them to an agent; agents own the procedures. In the skills, a name with a
 `$` in front, like $no-autoschedule, is a label you configure, written by its
 default name. ntm keeps its own records in databases on your todo list, each
 under a fixed title (Pauses, Message history and the others below). If you

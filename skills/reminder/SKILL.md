@@ -12,36 +12,32 @@ description: >-
 ## Usage
 
 ```
-/ntm:reminder --type <morning|afternoon|evening|week>
+/ntm:reminder --type <morning|afternoon|evening|week> --job <key>
 ```
 
-## Setup
-
-Load `ntm-user:backend` to read the user's conventions.
+`--job` is the key of the job that ran it, such as `morning-reminder` or `plan`.
 
 ## The facts
 
-| Type      | Lines                                                                       |
-| --------- | --------------------------------------------------------------------------- |
-| morning   | `today:` per open task planned today or earlier                             |
-| afternoon | `open:` per open task planned today                                         |
-| evening   | `done:` per task done today, then `open:` per open task planned today       |
-| week      | the `done:`, `open:`, `planned:` and `weekly message:` lines the job handed |
+| Type      | Lines                                                                            |
+| --------- | -------------------------------------------------------------------------------- |
+| morning   | the `today:` lines the job handed                                                |
+| afternoon | `open:` per open task planned today or earlier                                   |
+| evening   | `done:` per task done today, then `open:` per open task planned today or earlier |
+| week      | the `done:`, `open:`, `planned:` and `weekly message:` lines the job handed      |
 
-A line with no tasks is written once, as `none` (`today: none`).
+A key with no tasks gets the single line `<key>: none`.
 
 ## Steps
 
-### 1. Gather
+### 1. Gather, for afternoon and evening
 
-For week, take the job's lines as they came and go to step 2.
-
-Find the type's tasks. If the todo list can't be read, stop with
-`Reminder FAILED: <why>`.
+Load `ntm-user:backend` to read the user's conventions, then find the type's
+tasks. If the todo list can't be read, stop with `Reminder FAILED: <why>`.
 
 Write each task as a task line, as the messenger agent's "What you're given"
-says, with no estimate. Add `(was <date>)` on a morning task planned before
-today, and `(started)` on an open task when work on it has begun.
+says, with no estimate. Add `(was <date>)` on a task planned before today, and
+`(started)` on an open task when work on it has begun.
 
 ### 2. Hand over
 
@@ -49,7 +45,7 @@ Ask the messenger agent:
 
 ```
 kind: <type>
-job: <type>
+job: <the --job key>
 <the facts>
 ```
 

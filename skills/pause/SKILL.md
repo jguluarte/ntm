@@ -12,9 +12,9 @@ A pause is a day or a date range when nothing new gets planned automatically.
 Work the user dated themselves for a paused day stays; the messenger agent
 decides that day's messages from the user's Message rules.
 
-"Pause Friday" or "unpause next week" means adding or ending a pause. `ntm:plan`
-and the messenger agent only use `--check`, and read its answer as whether each
-day is paused.
+"Pause Friday" or "unpause next week" means adding or ending a pause. Outside a
+chat with the user (`ntm:plan`, the messenger agent), callers use only `--check`
+and read its answer as whether each day is paused.
 
 ## Setup
 

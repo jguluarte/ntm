@@ -277,8 +277,8 @@ carries it (`derived_state.model`).
 `update_trigger` with `trigger_id` and `enabled: false` to turn a job off,
 `enabled: true` to turn it on. A job that's off stays stored and never fires.
 Say "off" and "on", never "paused": this is for stretches when the user wants no
-reminders at all. For a day or a range, `/ntm:pause` is the lighter tool, since
-work they dated themselves still gets its reminders.
+reminders at all. For a day or a range, `/ntm:pause` is the lighter tool: the
+messenger agent decides a paused day's messages from the user's Message rules.
 
 ## Deleting
 

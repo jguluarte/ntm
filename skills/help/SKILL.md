@@ -23,8 +23,8 @@ find ~/.claude/plugins -path '*ntm*/.claude-plugin/plugin.json' \
     -not -path '*ntm-user*' -exec grep -H '"version"' {} +
 ```
 
-Use the copy with the highest version. Its README sits two folders up from its
-`plugin.json`.
+Use the copy with the highest version. Its README sits beside the
+`.claude-plugin` folder that holds that `plugin.json`.
 
 If nothing is found, say in one line that the README is on the plugin's Contents
 tab under Customize > Plugins, or in the repository, and stop.
@@ -47,6 +47,6 @@ find ~/.claude/plugins -path '*ntm-user*/skills/backend/SKILL.md' \
     -exec grep -H '^Built:' {} +
 ```
 
-Give the line's ntm-user version, the ntm version it was built from, and its
-date. If no Built line is found, say ntm-user isn't set up yet and `/ntm:setup`
-builds it.
+Use the line with the highest ntm-user version. Give the line's ntm-user
+version, the ntm version it was built from, and its date. If no Built line is
+found, say ntm-user isn't set up yet and `/ntm:setup` builds it.

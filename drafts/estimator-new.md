@@ -52,12 +52,13 @@ user's own, review after review.
 
 Load `ntm-user:backend`, then read the user's `Task review log` database once
 and keep it for the whole run. If it's missing, create it from
-`references/databases/task-review-log.md` in the newest installed `ntm`, notes
-included; a part the user deleted goes back to the template's.
+`references/databases/task-review-log.md` in the newest installed `ntm`, without
+its `<!-- -->` comments: they're instructions to you, never part of the user's
+database. A part the user deleted goes back to the template's.
 
-Each part's note says how it's kept. Follow it, and save the log whenever you
-change it, leaving the rest as it was. An Estimate request for a time needs none
-of this.
+The template's comment on each part says how it's kept. Follow it, and save the
+log whenever you change it, leaving the rest as it was. An Estimate request for
+a time needs none of this.
 
 ## What an estimate is
 

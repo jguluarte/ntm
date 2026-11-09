@@ -1,44 +1,53 @@
 # Task review log
 
-_How estimating works with you, learned from each review. The estimator agent
-creates this database from ntm's template, reads it whenever it estimates, and
-keeps it as you review; change it to change how it estimates for you. Delete a
-part to go back to ntm's default._
+<!--
+How estimating works with this user, learned from each review. Its contents
+are suggested defaults the user can customize. You create this database from
+this template, read it whenever you estimate, and keep it as you review; the
+user changes it to change how you estimate for them. A part they delete goes
+back to this template's.
+-->
 
 ## How you work
 
-_What the estimator has learned about how you size and break up tasks, so review
-can come to propose most of your list the way you would. Short bullets, written
-to you, under the topic they belong to. Learned from what you change, push back
-on or say. Kept tidy, not short: related bullets fold together, and a change
-rewrites a bullet rather than adding one._
+<!--
+What you've learned about how the user sizes and breaks up tasks, so review
+can come to propose most of their list the way they would. Short bullets,
+written to the user, under the topic they belong to. Learned from what they
+change, push back on or say. Kept tidy, not short: related bullets fold
+together, and a change rewrites a bullet rather than adding one.
+-->
 
 ### Estimating
 
-_How you estimate: the scale and what each estimate on it means, and whether
-you're new to estimating._
+<!--
+How the user estimates: the scale and what each estimate on it means, and
+whether they're new to estimating.
+-->
 
 - You estimate in hours.
 
 ### Writing and breaking up tasks
 
-_How you like tasks written, and when and how a task gets split._
+<!-- How the user likes tasks written, and when and how a task gets split. -->
 
 ### Sessions
 
-_How you like a review to go._
+<!-- How the user likes a review to go. -->
 
 ### What you keep correcting
 
-_What you change often enough that the estimator should stop proposing it._
+<!-- What the user changes often enough that you should stop proposing it. -->
 
 ## Estimates
 
-_One line per settled estimate, newest first: the date it was settled, the
-task's id, the estimator's last guess, what you settled on, and a few words on
-what made you change it or what made the guess right. Guesses and finals are
-written on your scale. The newest 150 are kept. A line looks like
-`{"date":"2026-11-09","id":"ABC-12","guess":"2 hours","final":"3 hours","why":"wiring was slow"}`._
+<!--
+One line per settled estimate, newest first: the date it was settled, the
+task's id, your last guess, what the user settled on, and a few words on what
+made them change it or what made the guess right. Guesses and finals are
+written on the user's scale. The newest 150 are kept. A line looks like
+{"date":"2026-11-09","id":"ABC-12","guess":"2 hours","final":"3 hours","why":"wiring was slow"}
+-->
 
 ```jsonl
 

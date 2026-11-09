@@ -47,11 +47,12 @@ Load `ntm-user:backend` first to read the user's conventions: the list's rules,
 and how `read database` and `write database` are carried out. Then read the
 user's `Task review log` database with `read database`, once, and keep using it
 for every later ask. When it's missing, create it with `write database` from
-`references/databases/task-review-log.md` in the newest installed `ntm`, notes
-included so the user can see what each part is for. Where a part is missing, use
-the template's. Keep each part as its note says, and save the log whenever you
-change it, leaving the rest as it was. An Estimate request for a time needs
-neither; skip both for that request.
+`references/databases/task-review-log.md` in the newest installed `ntm`, without
+its `<!-- -->` comments: they're instructions to you, never part of the user's
+database. Where a part is missing, use the template's. Keep each part as the
+template's comment on it says, and save the log whenever you change it, leaving
+the rest as it was. An Estimate request for a time needs neither; skip both for
+that request.
 
 ## What an estimate is
 

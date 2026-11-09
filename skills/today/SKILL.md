@@ -18,20 +18,21 @@ description: >-
 With nothing after it, list every open task with a planned date of today or
 earlier. A planned date is all it takes: labels and status don't matter.
 
-With words, list the open tasks planned within the span they describe, such as
-"tomorrow" or "this week". Narrow to any scope they name, such as "the garage".
-Take whatever they describe; never ask.
+With words, list the open tasks planned within the span they describe. Narrow to
+any scope they name, such as "the garage". Take whatever they describe; never
+ask.
 
 This skill only reads the todo list. It never changes a task.
 
 ## Setup
 
-Ask `ntm-user:backend` for today's open items. With words, ask it instead for
-the open items planned in the span the words describe, then keep the ones in any
-scope they name.
+```
+/ntm-user:backend find open items planned for today.
+[<include scope from the user>]
+```
 
-If that fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, stop and
-return `Today FAILED: <what failed>`.
+If that fails, or `ntm-user:backend` answers `Backend CAN'T: <why>`, explain
+what happened to the user. Run by a job, end with `Today FAILED: <what failed>`.
 
 ## Result
 
@@ -43,8 +44,8 @@ When the task's status is in the started class, add `(started)` after the
 status. The brackets hold the task's labels, inherited ones included, and stay
 empty (`[]`) when it has none.
 
-Typed in chat, ask `ntm-user:backend` how to word a task, and present the result
-that way; the raw lines are for skills and jobs.
+Typed in chat, word each task as `ntm-user:backend` says to talk to the user
+about tasks; the raw lines are for skills and jobs.
 
 - With nothing after `/ntm:today`: `Planned by <today> (<count>):` then the
   tasks, or `Nothing planned for today.`

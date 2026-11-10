@@ -22,6 +22,8 @@ Read `README.md` in the newest installed `ntm`.
 ```
 
 With nothing after it, give the README's opening paragraph and its First steps.
+For this usage, treat this skill similarly to a man page. Help the user learn
+about ntm.
 
 ## Answering
 

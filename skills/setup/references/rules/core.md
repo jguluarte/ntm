@@ -104,10 +104,12 @@ and the user puts the labels on tasks directly.
 
 ## Databases
 
-The system keeps its own records in databases on the todo list, each under the
-fixed title in parentheses below. Read and write them with the guide's
-`read database` / `write database`. Each database has one writer; everything
-else only reads it.
+The system keeps its own records in databases on the todo list. A database
+written with a `%` in front, such as %Message-history, is named by its default
+title, in parentheses below, with hyphens for spaces. Its real title on the todo
+list is the one `ntm-user:backend` records; use that, and never show the `%` to
+the user. Read and write them with the guide's `read database` /
+`write database`. Each database has one writer; everything else only reads it.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title. That task is a database, not work; every

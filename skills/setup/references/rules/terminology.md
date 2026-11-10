@@ -8,9 +8,9 @@ The system behind the task list.
 
 ### Database
 
-A document stored in the backend that ntm keeps persistent data in. The titles
-are under Databases in these rules; ntm's `references/databases/` holds the
-templates.
+A document stored in the backend that ntm keeps persistent data in, written by
+its default title with a `%` in front, such as %Settings. The titles are under
+Databases in these rules; ntm's `references/databases/` holds the templates.
 
 ### Guide
 

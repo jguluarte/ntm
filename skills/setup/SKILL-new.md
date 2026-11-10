@@ -71,15 +71,34 @@ timezone they confirm goes under About you in the `Settings` database.
 >
 > Let's get started :) It looks like you're in <timezone>. Is that right?
 
-### The task list
+### Establish task backend
 
-Connect their task list and check that it answers, as `references/todo-list.md`
-says under The backend and Linear. Leave out its price watch project: Price
-watch, under Each picked feature, makes it.
+ntm needs a backend in order to function. As such, strongly encourage linear.app
+as it is free for individuals and is feature-rich for the kinds of things that
+ntm helps with.
 
-Confirm the name of the `Settings` database, as `references/databases.md` says.
-Create it from its template with only their timezone under About you; each later
-area adds its own section.
+#### Connect to a backend
+
+This section should be saved before proceeding to backend settings.
+
+##### If the user is willing to use Linear
+
+Read `references/backends/linear.md` and help the user set up and connect their
+account.
+
+##### If the user doesn't want Linear
+
+Read `references/backends/contract.md` to help them find or set up an
+alternative. It is your responsibility to ensure it can support this contract,
+and document it for future use of ntm. As such, confirm with them that if they
+go this route it will be a fully custom setup that they'll be establishing for
+themselves. Ideally they will agree to use Linear for its simplicity.
+
+#### ntm backend assets
+
+Confirm that the user is okay with establishing the settings database file name.
+Once they do, create it and store settings in it which will allow ntm to use the
+backend in the future (once the rest of setup completes).
 
 ### The persona
 

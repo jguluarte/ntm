@@ -180,8 +180,16 @@ place of the placeholders, and `Message history` from its own.
 
 ### Notifications
 
-How reminders reach them, with one test push, as `references/notifications.md`
-says.
+How reminders reach them, as a conversation. Suggest Pushover: reminders arrive
+in their own app, which a phone's focus settings can treat differently from
+everything else. Say that it needs an inexpensive license they buy for
+themselves. Otherwise, fall back to the AI app's own push, which chats at them
+when each job finishes.
+
+With Pushover, they give their user key and an app token, and you send one test
+push; `references/notifications.md` says how. Then ask if there's anything about
+how they want to be notified, and save it under Notifications in the `Settings`
+database.
 
 ### The build
 

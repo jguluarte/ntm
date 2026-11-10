@@ -80,7 +80,8 @@ Inputs:
     job:        the name of the skill the message is for, such as
                 morning-reminder
     message:    for freeform, its one fact: a line of plain text
-    <fact>:     for a rule, each line its Fact table names; none counts
+    <fact>:     for a rule, each line its Fact table names; a fact given
+                as none still counts as given
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
@@ -113,7 +114,8 @@ today: Clear the garage shelf ([ABC-9](<url>), ~1 hour) (was 2026-11-03)
 
 ### 1. Check what you were given
 
-If a required input is missing, send nothing and return `Messenger NEEDS:`.
+If `type`, `job` or, for freeform, `message` is missing, send nothing and return
+`Messenger NEEDS:`.
 
 ### 2. Read the Message rules
 
@@ -121,7 +123,8 @@ Read the user's `Message rules` database with `read database`. Find the rule at
 your `type`'s path under Types, such as Types > Reminders > Morning for
 `reminders.morning`, and follow it: the facts, what the sentences say and what
 the list holds. If the rule is missing, use the template's, at the same path in
-`references/databases/message-rules.md` in the newest installed `ntm`.
+`references/databases/message-rules.md` in the newest installed `ntm`. If a fact
+its Fact table names is missing, send nothing and return `Messenger NEEDS:`.
 
 `freeform` has no rule: its core message is the `message:` line, and it has no
 list.
@@ -136,12 +139,12 @@ your caller why with `Not sent:`.
 ### 4. Draft the core message
 
 Describe in plain English what to send, as the message rule says. If the `type`
-has additional context in the user's database, include that as required.
+has additional context in `Message rules`, include that as required.
 
 Stick to facts and context, the next step is to rephrase things to ensure the
-user will see the appropriate words. Carry task ids, titles, dates, counts and
-names as given. Word a task as the conventions say, in a few natural words with
-the id in parentheses. Never use its full title.
+user will see the appropriate words. Carry task ids, dates, counts and names as
+given. Word each task briefly, as the conventions say: a few natural words with
+the id in parentheses, never the task's full title.
 
 ### 5. Put it in the user's style
 
@@ -155,9 +158,9 @@ same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer, because the style tracks tasks by the
 ids it's given.
 
-Follow any and all additional guidelines in the user's message database for this
-message type. It may have suggestions on relational styling from adjacent
-messages, or tone suggestions.
+Follow any and all additional guidelines in `Message rules` for this message
+type. It may have suggestions on relational styling from adjacent messages, or
+tone suggestions.
 
 ### 6. Add the list
 
@@ -193,8 +196,9 @@ what else reaches the user.
 | `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |
 | `Messenger FAILED: <why>`                   | you couldn't finish for any other reason                      |
 
-When the push carried no list, `Sent:` is followed by `List:` on the next line,
-then the full list, one task per line as the list would have read.
+After step 7's too-long fallback, and only then, `Sent:` is followed by `List:`
+on the next line, then the full list, one task per line as the list would have
+read.
 
 The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the full
 message with its list. Pass it on word for word.

@@ -219,14 +219,12 @@ Justin said no to each of these. Don't propose them again.
 
 ### Persona
 
-- Shipped personas, Justin's own included.
-- A tone ladder defined by the plugin.
+Shipped personas, Justin's own included.
 
 ### Estimates
 
-- A backend's estimate field, story points, or a mapping onto points, unless the
-  user asks.
-- Explaining ways to estimate.
+A backend's estimate field, story points, or a mapping onto points, unless the
+user asks.
 
 ### Planning
 
@@ -242,14 +240,6 @@ backend's task hierarchy, and their words stay.
 ### Price watch
 
 An Amazon alert steps database.
-
-### Coming from 0.3
-
-A migration from 0.3, and a design for a duplicate Linear connection.
-
-### Lint
-
-The `stern` lint preset, and any change to the 80-column prose limit.
 
 ## Test-drive findings
 

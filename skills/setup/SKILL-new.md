@@ -2,9 +2,10 @@
 name: setup
 description: >-
     The ntm wizard. Takes a new user from a fresh install to a connected task
-    list, a persona, the features they pick and reminders on their phone, then
-    builds their ntm-user plugin. Run when the user says "set up ntm", "get
-    started" or "set up my todo list", or installs ntm for the first time.
+    list, a persona, the features they pick and reminders on their phone,
+    building their ntm-user plugin as it goes. Run when the user says "set up
+    ntm", "get started" or "set up my todo list", or installs ntm for the first
+    time.
 ---
 
 # ntm:setup
@@ -16,6 +17,10 @@ The setup process will go through one section at a time: you'll collect all of
 the information you need and then save it before moving on to the next section.
 Optionally offer to do the saving with a subagent so you can begin the next
 section with the user.
+
+Saving a section also adds its part to their user plugin, `ntm-user`, which you
+build up as you go, as `references/build.md` says. The end is then only its
+install and a self-test.
 
 ## Pre-requisites
 
@@ -100,6 +105,8 @@ Confirm that the user is okay with establishing the settings database file name.
 Once they do, create it and store settings in it which will allow ntm to use the
 backend in the future (once the rest of setup completes).
 
+Then start their user plugin with `ntm-user:backend`, from the backend's guide.
+
 ### ntm features
 
 Offer these as a numbered list. They pick everything or a subset; the default is
@@ -160,7 +167,8 @@ on: the default is the one running this chat, unless they want another.
 Create the labels on the task list, with $price-watch on its project, then each
 database above from its template, and say in a line where each one lives. Write
 the settings and label names into the `Settings` database. Then create the jobs
-on their model, as `ntm:schedules` says.
+on their model, as `ntm:schedules` says. Add the picked features' rules and
+their label names to `ntm-user:backend`.
 
 ### The persona
 
@@ -189,14 +197,13 @@ when each job finishes.
 With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how. Then ask if there's anything about
 how they want to be notified, and save it under Notifications in the `Settings`
-database.
+database. Then add `ntm-user:notify` to their user plugin, from their channel's
+file in `references/notify/`, with any keys.
 
-### The build
+### Install and self-test
 
-Say in a few lines what's about to happen, and wait for their go-ahead.
-
-Then narrate as you go: build their plugin as `references/build.md` says,
-install it, and hand off with one prompt for a new chat:
+Package their user plugin and have them install it. Then hand off with one
+prompt for a new chat:
 
 ```
 Run /ntm:self-test.

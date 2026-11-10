@@ -22,11 +22,16 @@ Load `ntm-user:backend` to read the user's conventions.
 /ntm:reminder --type <morning|afternoon|evening>
 ```
 
+The morning job hands over the `today:` lines `/ntm:plan --auto day` returned.
+
 ## Steps
 
 ### 1. Gather the facts
 
-Find the type's tasks. If the task list can't be read, return
+When the job hands over `today:` lines, they're the facts, as written,
+`(was <date>)` and `(started)` included.
+
+Otherwise, find the type's tasks. If the task list can't be read, return
 `Reminder FAILED: <why>`.
 
 | Type      | Fact     | One line per                |

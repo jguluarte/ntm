@@ -87,10 +87,8 @@ span: 2026-10-31 to 2026-11-06
 done: Order storage boxes ([ABC-12](<url>))
 ```
 
-When the messenger agent isn't available in this session, read
-`agents/messenger.md` from the installed plugin and follow it yourself. It
-returns `Sent: <title>`, a delivery block, `Not sent: <why>`, or a `… FAILED`
-line. A delivery block is the final reply, verbatim, and nothing else; otherwise
-one short line on what happened, then any lines the messenger returned after
-`Sent:` (the list the push couldn't carry). A `… FAILED` line: never use
-`/ntm:notify`; end with the error stated plainly.
+The messenger returns `Sent: <title>`, a delivery block, `Not sent: <why>`, or a
+`… FAILED` line. A delivery block is the final reply, verbatim, and nothing
+else; otherwise one short line on what happened, then any lines the messenger
+returned after `Sent:` (the list the push couldn't carry). A `… FAILED` line:
+never use `/ntm:notify`; end with the error stated plainly.

@@ -114,8 +114,7 @@ Timezone: <Timezone under About you in your settings>.
 3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
    `Fix-todo-list FAILED`, carry on.
 4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-5. Ask the messenger agent, or follow `agents/messenger.md` from the
-   installed plugin when it isn't available. Hand it these lines:
+5. Ask the messenger agent. Hand it these lines:
        type: reminders.week
        job: plan
        weekly message: <what the message covers>

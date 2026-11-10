@@ -1,24 +1,26 @@
 # Databases
 
 Setup's databases step. Confirms the names of the databases the user's features
-need, and says where each lives. It creates none: Settings was created when the
-todo list was saved, and Style when the persona was. Every other database is
-created by the skill that keeps it, the first time it writes.
+need, and says where each lives. It creates none: Settings and the databases
+with a template were created when the task list was saved, and Style when the
+persona was. Every other database is created by the skill that keeps it, the
+first time it writes.
 
 ## The names
 
 Show the names in one short list, each with what it holds in a few words. Only
-the ones they need. Settings and Style are already made, so show them as done,
-under the names they have:
+the ones they need. Show the ones already made as done, under the names they
+have:
 
 - `Settings`: their settings. Everyone. Already made.
 - `Style`: their persona's Profile. When they built a persona. Already made.
 - `Message history`: what reminders have said, so they don't repeat. When they
   built a persona.
 - `Message rules`: what each reminder's message says; yours to change. Everyone.
+  Already made.
 - `Paused dates`: the days nothing gets planned automatically. Task management.
 - `Task review log`: how they work and how they estimate, from each review. Task
-  management.
+  management. Already made.
 - `Price watch stores`: the stores they vouched for or blocked. Price watch. In
   the same line, say they can name a few stores they trust, by category with
   their domains; record them for the build, as the Seed list for the database's

@@ -177,6 +177,15 @@ Seed), not here; this is for anything that holds for every item. Capture it as
 written below the lines; "nothing" leaves it blank. With no Amazon interface
 line and nothing else, return no Shopping section.
 
+## Databases
+
+With `create database`, create each database below from its template in
+`references/databases/`, in the newest installed `ntm`. Leave out the template's
+`<!-- -->` comments: they're for agents, never for the user.
+
+- `Message rules`: everyone.
+- `Task review log`: task management.
+
 ## Returning the sections
 
 Write the sections in exactly these line shapes, the ones `ntm-user:settings`

@@ -23,6 +23,14 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
 
+### `/ntm:setup`
+
+Sets ntm up for you in one conversation, a question at a time. It connects to
+your task list, asks which features you want, helps you create the style your
+reminders are written in, and works out how they reach you. At the end you
+install your own ntm plugin, which holds everything you chose, and a quick test
+checks that it all works.
+
 ### `/ntm:today`
 
 Lists what's planned on your task list: every open task planned for today. Add a

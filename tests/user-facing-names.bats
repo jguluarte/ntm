@@ -10,8 +10,7 @@ find_skills() {
 }
 
 find_agents() {
-    # Exclude agents/README.md: it's the folder's documentation, not an agent.
-    basename -s .md agents/*.md | grep -vx README
+    basename -s .md agents/*.md
 }
 
 load_file() {

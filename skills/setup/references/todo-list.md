@@ -181,7 +181,7 @@ line and nothing else, return no Shopping section.
 
 With `create database`, create each database below from its template in
 `references/databases/`, in the newest installed `ntm`. Leave out the template's
-`<!-- -->` comments: they're for agents, never for the user.
+`<!-- -->` comments: they're for you to build their databases.
 
 - `Message rules`: everyone.
 - `Task review log`: task management.

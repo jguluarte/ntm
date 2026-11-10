@@ -53,12 +53,12 @@ A bigger task can still be planned; its size is the signal to break it up.
 
 ## Choosing tasks
 
-A candidate is an open task in a plannable status, with no planned date or a
-stale one, that isn't excluded, as Excluded tasks in the conventions says.
-Shortlist the likeliest picks from what the fetch shows, then read only those in
-full, for their descriptions and blocked-by links. A task blocked by another
-goes on a later day than its blocker, as Blocks and blocked by in the
-conventions says.
+A planned date before today is stale. A candidate is an open task in a plannable
+status, with no planned date or a stale one, that isn't excluded, as Excluded
+tasks in the conventions says. Shortlist the likeliest picks from what the fetch
+shows, then read only those in full, for their descriptions and blocked-by
+links. A task blocked by another goes on a later day than its blocker, as Blocks
+and blocked by in the conventions says.
 
 Give each day as many picks as Defaults says, weighing, roughly in this order:
 
@@ -81,18 +81,18 @@ none. The estimates judge how well a task fits a day.
 
 ## Paused days
 
-Nothing gets planned onto a paused day. Check a span with
-`/ntm:pause --check <first day> --until <last day>`: a day whose line ends
-`true` is paused. A date the user set on a paused day stands.
+Nothing gets planned onto a paused day. Read the `Paused dates` database, as
+`ntm:pause` says pauses are kept: a day inside a pause line is paused. A date
+the user set on a paused day stands.
 
 ## --auto day
 
 ### 1. Carry over
 
-Every open task planned before today is stale. Move each one in a plannable
-status to today, whatever its labels and even when another task blocks it: the
-user dated it, and carrying a date isn't picking. A stale task in the blocked
-status keeps its date. Carry over on a paused day too.
+Move each stale task in a plannable status to today, whatever its labels and
+even when another task blocks it: the user dated it, and carrying a date isn't
+picking. A stale task in the blocked status keeps its date. Carry over on a
+paused day too.
 
 ### 2. Plan today
 
@@ -106,8 +106,7 @@ plan them for today.
 
 Read the range the way a person would, counting from today. The days it names
 (`mon-fri`, `weekends`, `all weekdays`) are the planning days; otherwise they're
-the days in Defaults. `week` is the rest of this week, or the coming week on a
-weekend.
+the days in Defaults.
 
 ### 2. Plan the open days
 
@@ -116,10 +115,9 @@ holds no task its picks, in day order.
 
 ## With the user in chat
 
-The span is what the user names, or a week when they name none (next week when a
-day or less of this one is left). A day they name gets planned even when it's
-outside their usual days, such as a weekend; say so in one line. Words like "the
-garage" match a project, parent, label or title.
+The span is what the user names, or a week when they name none. A day they name
+gets planned even when it's outside their usual days, such as a weekend; say so
+in one line. Words like "the garage" match a project, parent, label or title.
 
 Defaults and the rules here are where you start, not the user's limits: they
 have the final say. When something looks like a problem, such as a blocked chain
@@ -137,11 +135,7 @@ the span to be about: a project, a goal, a mood, or a fresh start.
 ### 3. Propose a plan
 
 Lean toward what they asked for, give each pick a one-line reason, and revise
-until they approve. Any open task can move, even one already dated later in the
-span; say which day it leaves empty. A task the plan bumps off a day has its
-date cleared, unless they move it to a later day. Days they want empty stay
-empty, a paused day gets planned when they want it, and a day that's already
-planned gets more when they ask.
+until they approve.
 
 Before they approve, list every date the plan sets and every date it clears,
 including dates they set themselves.
@@ -176,6 +170,5 @@ days are paused or empty. Name any date that didn't save.
 
 ### Failures
 
-`couldn't move: <id> (write failed)` for each date that still didn't save after
-its retry. `Plan FAILED: <what failed>` when the task list or the pauses can't
-be read.
+`couldn't move: <id> (write failed)` for each date that didn't save.
+`Plan FAILED: <what failed>` when the task list or the pauses can't be read.

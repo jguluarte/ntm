@@ -73,8 +73,9 @@ entry.
 - The estimator owns estimates, time guesses and explaining the ways to
   estimate. It never plans. Planning and other callers engage it; several
   callers is right.
-- Review and the task review log belong to `ntm:review-todo-list`; the estimator
-  answers its Estimate requests.
+- Review belongs to `ntm:review-todo-list`. The estimator owns the task review
+  log and the first-review estimate question; review hands it the facts (PR
+  #97).
 - The estimator has one `Estimate` request, for one or many tasks, size or time.
 - With no estimate field, the estimate goes in the task description.
 - The messenger never reads settings; the skill that asks hands it the reminder,
@@ -245,15 +246,18 @@ The text rules in `CLAUDE.md` apply; these add to them.
 
 ## The repo
 
-- devbox provides prettier, markdownlint-cli2, direnv, bats and jq. `make lint`,
-  `make lint-fix` and `make test` are the way in, locally and in CI.
+- devbox provides prettier, markdownlint-cli2, direnv, bats and jq locally. CI
+  installs only the tools its job needs, at devbox.json's versions, and sources
+  `.env`. `make lint`, `make lint-fix` and `make test` are the way in, locally
+  and in CI.
+- Settings the tooling needs live in `.env` as `export` lines; `.envrc` and CI
+  source it.
 - `make test` runs the bats tests in `tests/`: the user-facing name tests,
   against `tests/expected/`, which a PR that renames updates, so the rename
   shows in its diff.
 - `make lint` also enforces the hard line cap, ABSOLUTE_MAXIMUM_LINE_LENGTH
-  (145, exported in `.envrc`), on every tracked file except those
-  `.gitattributes` marks `skip-absolute-line-length`, and prints the files that
-  break it.
+  (145, in `.env`), on every tracked file except those `.gitattributes` marks
+  `skip-absolute-line-length`, and prints the files that break it.
 - Line length: Prettier wraps prose, markdownlint holds fenced code blocks to 80
   columns, and tables are exempt (the rule is in `CLAUDE.md`'s Lint). Justin
   declined `stern` and any change to the prose limit.
@@ -514,10 +518,8 @@ version is tagged on main.
 - A reading-comprehension pass: writers simplify, human comprehension first ("if
   a human can comprehend, so can a model"). Includes the estimator's "Good
   enough reminders complete." Justin decides where this goes.
-- An idea, later: the estimator takes the task review log over from
-  `ntm:review-todo-list` as its own database and keeps its `## How you work`
-  tidy (folds and rewrites entries); `fix-todo-list` asks the estimator to do
-  that and never edits the log itself.
+- An idea, later: `fix-todo-list` asks the estimator to keep the task review
+  log's `## How you work` tidy and never edits the log itself.
 - Not discussed yet: `fix-todo-list` fetches the whole closed history every
   week, a cost that grows. Proposed: only recent completions.
 - 0.4 inputs; the build plan places each:

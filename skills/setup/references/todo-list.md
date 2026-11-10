@@ -23,7 +23,8 @@ are about that, load it and follow it instead.
 /ntm:configure-todo-list [linear|<name>]
 ```
 
-The backend to use on a first run. Without one, ask (see The backend).
+The backend to use on a first run. Without one, suggest Linear (see The
+backend).
 
 ## Before you start
 
@@ -31,8 +32,8 @@ The backend to use on a first run. Without one, ask (see The backend).
    run `/ntm:configure`". That's expected: carry on with the values you settle
    here. There is a predefined guide for linear.app, as well as the contract
    required to use a different backend.
-    - If using Linear: `references/linear.md`
-    - Otherwise use `references/backend-contract.md`
+    - If using Linear: `backends/linear.md`
+    - Otherwise use `backends/contract.md`
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
@@ -42,21 +43,16 @@ The backend to use on a first run. Without one, ask (see The backend).
 
 ## The backend
 
-Ask what they keep tasks in today. If they're undecided, offer the two choices
-in one line: Linear (free for individuals; the guide ntm ships) or their own
-backend, which they describe. With no tracker at all, a table in a Claude Doc is
-an easy one to build on.
+Suggest Linear: a free account is enough, ntm ships a guide for it, and you'll
+help create it and connect it now. On a yes, read the guide,
+`backends/linear.md`, for its operations, and follow Linear below in order; a
+part tied to a step below waits for that step.
 
-For Linear, read the guide, `backends/linear.md`, for its operations, and follow
-Linear below in order; a part tied to a step below waits for that step. Before
-its first call, confirm the connector: ToolSearch for the tool the guide's
-`ping` names. If it isn't there, ask them to connect it on the Connectors tab
-and come back, and stop with
-`Configure-todo-list FAILED: <backend> connector not attached`.
+Someone who doesn't want Linear hears that finding something else takes longer,
+and that you're happy to. Then their own backend, below.
 
-For their own backend, go through the contract with them before Statuses. Its
-section Setting something up with the user says how. After that, Statuses,
-Labels and Databases do their steps with the tools they named for the setup
+For their own backend, follow `backends/own-backend.md` before Statuses. After
+that, Statuses and Labels do their steps with the tools they named for the setup
 operations.
 
 ## Linear
@@ -82,18 +78,25 @@ connector below:
    settings; otherwise the $pending-shipment label and blocked-by links cover
    that ground.
 
-Labels, the price watch project and the databases don't need to be made by hand:
-Labels and Databases below create them.
+Labels and the price watch project don't need to be made by hand: Labels below
+creates them.
 
 ### The connector
 
-Check that a signed-in Linear connector is present. If it isn't there, walk the
-user through it: in Claude's settings, the Connectors tab, add Linear and sign
-in to their workspace, then come back here and say so.
+Connect it now, before the todo list below. ToolSearch for the tool the guide's
+`ping` names. If it isn't there, walk the user through it: in Claude's settings,
+the Connectors tab, add Linear and sign in to their workspace, then come back
+here and say so. Search again before going on.
 
 ### The todo list
 
 `list todo-lists`; propose the team. List name is its name, List id its id.
+
+Then `ping` that team, right away. A pass: say in a line that the list answers.
+Anything else: say what failed, as the guide's `ping` words it, and fix it with
+them (sign in again, or sign in with the account that holds this team). Don't go
+on until it passes; if it won't, say so and stop, since every later step needs
+the list.
 
 Once the team is chosen, suggest the user turn on Parent auto-close in the
 team's settings under Workflow, so a parent closes as soon as its sub-tasks are
@@ -120,8 +123,8 @@ list (see Returning the sections).
 
 Show the defaults in one table, with the one-line meaning of each from the
 conventions' System labels: $no-autoschedule, $pending-shipment,
-$has-amazon-alert, $amazon-unavailable, $price-watch. A plain "ok" keeps every
-name; record any rename.
+$has-amazon-alert, $amazon-unavailable, $price-watch. A simple affirmation keeps
+every name; record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
@@ -133,38 +136,12 @@ Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
 it carries both; `create project` says whether `labels` replaces the set.
 
-## Databases
-
-The system keeps its own records in four databases on the todo list, each under
-a fixed title: Pauses, Message history, Task review log, Price watch stores. For
-each, `read database` by its title; one that's found is kept. If they already
-keep one under another title, say to add that title under Deviations with
-`/ntm:settings`. Name the missing ones in one line, and on a plain "ok" create
-each with `create database` and this first content:
-
-- **pauses:** `## Pauses` with `None.` under it.
-- **message history:** its first content is this frontmatter:
-
-    ```
-    ---
-    Keep: 60 entries or 8 weeks
-    ---
-    ```
-
-- **task review log:** `## How you work` and `## Estimates`, both empty.
-- **price watch stores:** only when a price watch project was chosen; created in
-  that project, with the headings `## Seed`, `## Vouched`, `## Blocked`, all
-  empty; the first price watch run reports an empty Seed. In the same line, say
-  they can name a few stores they trust, by category with their domains, to put
-  under Seed.
-
 ## Planning
 
 How `ntm:plan` works the todo list. Show the defaults as one short list, one
-line each, and say what each is for in a few words; a plain "ok" keeps them all,
-and they change any line in their own words:
+line each, and say what each is for in a few words; a simple affirmation keeps
+them all, and they change any line in their own words:
 
-- **Estimate pattern:** asked on its own, below.
 - **Excluded labels from automatic scheduling:** $no-autoschedule,
   $pending-shipment. Labels planning never picks, each checked on the task and
   its project; name the labels by the names settled above.
@@ -174,12 +151,9 @@ what the weekly message covers aren't settings: each job's prompt says what
 differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
 
-Estimate pattern gets its own question, one high-level question: how would they
-like to estimate their tasks? The question stands on its own, and most people
-just answer it. Only when they ask for more on the ways to estimate, ask the
-estimator agent's Explain estimating request and pass its ways on; when the
-agent isn't available, follow its file as the conventions' "Chat, jobs and
-agents" says. Record their answer as Estimate pattern, in their words.
+Estimates aren't a setting either. They're in hours, which anyone can read. A
+user who wants another way says so in a review, and the estimator agent works it
+out with them.
 
 ## Shopping
 
@@ -198,10 +172,10 @@ Record it as Amazon interface; blank means it asks each time. If no, leave the
 Amazon interface line out.
 
 Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores database (Seed above), not here; this is for
-anything that holds for every item. Capture it as written below the lines;
-"nothing" leaves it blank. With no Amazon interface line and nothing else,
-return no Shopping section.
+use go in the price watch stores database (setup's databases step offers its
+Seed), not here; this is for anything that holds for every item. Capture it as
+written below the lines; "nothing" leaves it blank. With no Amazon interface
+line and nothing else, return no Shopping section.
 
 ## Returning the sections
 
@@ -233,11 +207,8 @@ The real name on your todo list for each label the system uses.
 
 ## Planning
 
-How your todo list is planned. Read by `ntm:plan`, `ntm:review-todo-list` and
-the conventions.
+How your todo list is planned. Read by `ntm:plan` and `ntm-user:backend`.
 
-- Estimate pattern: <how they size their tasks and what to do with that, in
-  their words; with the list's point for each estimate when the list needs one>
 - Excluded labels from automatic scheduling: <default no-autoschedule,
   pending-shipment>
 

@@ -172,6 +172,11 @@ No formula and no fixed opener; the same shape every day stops getting read.
 
 Say "decided" or "agreed", never "settled".
 
+#### Sections, not dense lists
+
+A list holds brief items. Anything longer is a named section with whitespace,
+never `- **title**: paragraph`.
+
 #### Steps, fields and inputs
 
 Steps are numbered `###` subsections. Fields and values go in a table, a long

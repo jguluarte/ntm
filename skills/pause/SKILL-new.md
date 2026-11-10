@@ -4,7 +4,7 @@ description: >-
     The days when nothing gets planned automatically on the user's todo list.
     See or change them with the user in chat ("pause Friday", "unpause next
     week", "show my pauses"), or check whether days are paused. Run by the user,
-    and with --check by ntm:plan and ntm:reminder.
+    and with --check by ntm:plan.
 ---
 
 # ntm:pause
@@ -57,8 +57,8 @@ is visible, such as:
 ### 3. Replan around a new pause
 
 If a day the user just paused has tasks planned on it, those tasks need new
-days: load `ntm:plan` and replan them with the user, as its In chat section
-says.
+days: load `ntm:plan` and replan them with the user, as its With the user in
+chat section says.
 
 ## Checking days
 

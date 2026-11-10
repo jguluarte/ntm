@@ -100,6 +100,68 @@ Confirm that the user is okay with establishing the settings database file name.
 Once they do, create it and store settings in it which will allow ntm to use the
 backend in the future (once the rest of setup completes).
 
+### ntm features
+
+Offer these as a numbered list. They pick everything or a subset; the default is
+everything.
+
+| Feature         | What it is                                              |
+| --------------- | ------------------------------------------------------- |
+| Task management | A small task planned each weekday, with reminders       |
+| Price watch     | What they want to buy, watched until the price is right |
+
+Then collect what the picked features need, in the order below. A value more
+than one of them uses is confirmed once, for all of them. When the user wants
+more on any of it, the feature's rules, the database templates and the skills
+named here say more.
+
+#### Settings
+
+| Setting                                | Feature         | For                                                                 |
+| -------------------------------------- | --------------- | ------------------------------------------------------------------- |
+| Country and currency                   | Price watch     | Where it shops, and the prices it looks for                         |
+| Amazon interface                       | Price watch     | How `/ntm:sync-price-watch-to-amazon` reaches Amazon                |
+| Labels to exclude from auto-scheduling | Task management | Labels planning never picks: $no-autoschedule and $pending-shipment |
+
+#### Databases
+
+Confirm the name of each database the picked features keep on their task list.
+For `Price watch stores`, ask for any stores they already trust, for its Seed.
+
+| Database             | Feature         |
+| -------------------- | --------------- |
+| `Message rules`      | Task management |
+| `Paused dates`       | Task management |
+| `Task review log`    | Task management |
+| `Price watch stores` | Price watch     |
+
+#### Labels
+
+Confirm the name on their task list for each label the picked features use;
+ntm's own name is the default. $price-watch goes on the project that holds what
+they want to buy: ask which project, or what to call a new one.
+
+| Label                 | Feature         |
+| --------------------- | --------------- |
+| `$no-autoschedule`    | Task management |
+| `$pending-shipment`   | Task management |
+| `$price-watch`        | Price watch     |
+| `$has-amazon-alert`   | Price watch     |
+| `$amazon-unavailable` | Price watch     |
+
+#### Schedules
+
+Propose jobs for the picked features from the table under What a job can run in
+`ntm:schedules`, and agree a time for each. Then ask which model the jobs run
+on: the default is the one running this chat, unless they want another.
+
+#### Saving the features
+
+Create the labels on the task list, with $price-watch on its project, then each
+database above from its template, and say in a line where each one lives. Write
+the settings and label names into the `Settings` database. Then create the jobs
+on their model, as `ntm:schedules` says.
+
 ### The persona
 
 The persona is the character who writes every reminder, so the reminders get
@@ -114,67 +176,12 @@ the `Style` template.
 
 Confirm the names of the `Style` and `Message history` databases. Then save the
 persona: create the `Style` database from its template, with their persona in
-place of the placeholders.
-
-### Features
-
-Offer these as a numbered list. They pick everything or a subset.
-
-| Feature         | What it is                                              |
-| --------------- | ------------------------------------------------------- |
-| Task management | A small task planned each weekday, with reminders       |
-| Price watch     | What they want to buy, watched until the price is right |
-
-### Each picked feature
-
-#### Task management
-
-Read `references/rules/task-management.md`.
-
-Propose its jobs from the table under What a job can run in `ntm:schedules`.
-Agree a time for each, and keep the schedule for the handoff.
-
-Then its labels, $no-autoschedule and $pending-shipment, as
-`references/todo-list.md` says under Labels.
-
-Confirm the names of the `Message rules`, `Paused dates` and `Task review log`
-databases. Save its two label names in Settings, under Labels and as the labels
-to exclude under Planning.
-
-#### Price watch
-
-Read `references/rules/price-watch.md`.
-
-Ask their country and currency, for where it shops and the prices it looks for.
-Agree a daily time for it, kept for the handoff.
-
-Then the project that holds what they want to buy, and its labels, $price-watch,
-$has-amazon-alert and $amazon-unavailable, as `references/todo-list.md` says
-under The price watch project and Labels.
-
-Then Amazon sync, the way around cloud agents not reaching Amazon: Amazon's own
-price alerts watch each item, kept in step from a browser on their computer by
-`/ntm:sync-price-watch-to-amazon`. Agree how it reaches Amazon, as
-`references/todo-list.md` says under Shopping.
-
-Confirm the name of the `Price watch stores` database, with any stores they
-name, as `references/databases.md` says. Save their country and currency under
-About you, its rows of the Labels section and the Shopping section in Settings.
-
-### The jobs' model
-
-Suggest a lighter model for the jobs than the one running this chat, from the
-ones this app offers. Keep their choice for the handoff.
+place of the placeholders, and `Message history` from its own.
 
 ### Notifications
 
 How reminders reach them, with one test push, as `references/notifications.md`
 says.
-
-### Databases
-
-Create each database confirmed above that doesn't exist yet, from its template.
-Then say in a line where each database lives.
 
 ### The build
 
@@ -184,12 +191,8 @@ Then narrate as you go: build their plugin as `references/build.md` says,
 install it, and hand off with one prompt for a new chat:
 
 ```
-Run /ntm:self-test. If it passes, run
-/ntm:schedules --setup "<schedules and model>"
+Run /ntm:self-test.
 ```
-
-`<schedules and model>` holds the schedule of each feature picked in this run
-and the jobs' model, in their words.
 
 Tell them, in a line meant to make them smile, that a passing self-test sends a
 success message in their persona, in chat and on their phone.

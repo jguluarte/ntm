@@ -48,5 +48,4 @@ find ~/.claude/plugins -path '*ntm-user*/skills/backend/SKILL.md' \
 ```
 
 Use the line with the highest ntm-user version. Give the line's ntm-user
-version, the ntm version it was built from, and its date. If no Built line is
-found, say ntm-user isn't set up yet and `/ntm:setup` builds it.
+version, the ntm version it was built from, and its date.

@@ -35,21 +35,24 @@ out.
 
 ## The steps
 
-### 1. Intro
+These steps are sequential, however numbers are omitted as to make it easier to
+change in the future.
+
+### Intro
 
 Send `references/intro.md`. It ends by confirming their timezone.
 
-### 2. The task list
+### The task list
 
 Connect their task list and check that it answers, as `references/todo-list.md`
-says under The backend and Linear. Leave out its price watch project: step 5
-makes that project when they pick price watch.
+says under The backend and Linear. Leave out its price watch project: Price
+watch, under Each picked feature, makes it.
 
 Confirm the name of the `Settings` database, as `references/databases.md` says.
 Create it from its template with only their timezone under About you; each later
 area adds its own section.
 
-### 3. The persona
+### The persona
 
 The persona is the character who writes every reminder, so the reminders get
 read. Push a little when they decline: without one, ntm is no different from
@@ -65,7 +68,7 @@ Confirm the names of the `Style` and `Message history` databases. Then save the
 persona: create the `Style` database from its template, with their persona in
 place of the placeholders.
 
-### 4. Features
+### Features
 
 Offer these as a numbered list. They pick everything or a subset.
 
@@ -74,7 +77,7 @@ Offer these as a numbered list. They pick everything or a subset.
 | Task management | A small task planned each weekday, with reminders       |
 | Price watch     | What they want to buy, watched until the price is right |
 
-### 5. Each picked feature
+### Each picked feature
 
 #### Task management
 
@@ -110,22 +113,22 @@ Confirm the name of the `Price watch stores` database, with any stores they
 name, as `references/databases.md` says. Save their country and currency under
 About you, its rows of the Labels section and the Shopping section in Settings.
 
-### 6. The jobs' model
+### The jobs' model
 
 Suggest a lighter model for the jobs than the one running this chat, from the
 ones this app offers. Keep their choice for the handoff.
 
-### 7. Notifications
+### Notifications
 
 How reminders reach them, with one test push, as `references/notifications.md`
 says.
 
-### 8. Databases
+### Databases
 
 Create each database confirmed above that doesn't exist yet, from its template.
 Then say in a line where each database lives.
 
-### 9. The build
+### The build
 
 Say in a few lines what's about to happen, and wait for their go-ahead.
 

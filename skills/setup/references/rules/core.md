@@ -50,13 +50,6 @@ which agent it asks and what it hands over.
 When the messenger returns `Messenger NEEDS: …`, supply what it names and ask
 once more; a second one counts as `Messenger FAILED`.
 
-When an agent isn't available in the session, read its file from the installed
-plugin and do what it says yourself, with the same request:
-`find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
-may sit under a versioned folder; the two `-path` tests find it either way). The
-agent's file is the only copy of its procedure, so it runs the same either way;
-say nothing to the user about which way it ran.
-
 ## Talking to the user about tasks
 
 The user doesn't know what a task means by number alone. When you mention a task
@@ -128,11 +121,11 @@ else only reads it.
 
 - **settings** (`Settings`): the values the user set up, under fixed headings,
   read by heading. Setup creates it.
-- **message history** (`Message history`): what reminders have said.
-  `ntm-user:style` keeps it. Its frontmatter holds a `Keep:` line saying how
-  much history to keep; the user changes it there.
-- **message rules** (`Message rules`): what each reminder's message says. The
-  messenger agent creates it from ntm's template; the user changes it there.
+- **message history** (`Message history`): what reminders have said. `ntm:style`
+  keeps it. Its frontmatter holds a `Keep:` line saying how much history to
+  keep; the user changes it there.
+- **message rules** (`Message rules`): what each reminder's message says. Setup
+  creates it from ntm's template; the user changes it there.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title.

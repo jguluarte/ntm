@@ -61,16 +61,6 @@ A tag on a task or project.
 A scheduled run, what the Claude app calls a scheduled task. Never "trigger",
 "routine" or "cron job" when talking to the user.
 
-## Workspace
-
-### Task URLs
-
-Use the task's own `url` field, one of the standard fields.
-
-### Whose tasks
-
-Every task on the list is the user's; don't filter by assignee unless asked.
-
 ## Chat, jobs and agents
 
 A skill typed in chat runs in the chat. Skills hand work to the plugin's agents,

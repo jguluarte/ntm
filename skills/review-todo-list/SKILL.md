@@ -57,13 +57,13 @@ order, then you start.
 ### 3. Estimate one task at a time
 
 Start an estimator agent in the background at the first task, and send it every
-request. It sees nothing of this chat. **Use one estimator for this entire run,
-so they persist context**. When the estimator finishes the first one, give it
-the next two so they're ready for the user quickly. Keep it alive in case the
-user has more questions.
+ask in this review. It sees nothing of this chat. **Use one estimator for this
+entire run, so they persist context**. When the estimator finishes the first
+one, give it the next two so they're ready for the user quickly. Keep it alive
+in case the user has more questions.
 
-Send it an Estimate request, with the task as it stands, any end state you
-assumed, and anything the user said about size. Hold its answers until their
+Send it an Estimate request in hours, with the task as it stands, any end state
+you assumed, and anything the user said about size. Hold its answers until their
 task comes up.
 
 Present one task per message:
@@ -77,8 +77,8 @@ Present one task per message:
 Rarely, when the task as written would be hard to start, propose up to two edits
 to its title or description, shown as the exact new text. A simple affirmation
 likely approves it all, asking to skip leaves it for another day, and anything
-else the user says changes it. When they correct an estimate, send the estimator
-an Estimate request for the tasks it answered ahead, with what the user said.
+else the user says changes it. When they correct an estimate, tell the estimator
+and ask again for the tasks it answered ahead.
 
 When the user agrees to a task, save any approved edits and its estimate, as the
 last line of its description (`Estimate: 2 hours`), replacing any earlier one.
@@ -92,8 +92,8 @@ too big, help the user break it up: suggest a few ways to split it. Not every
 task splits, but try. Use the user's pieces when they have them. Show the exact
 new titles and the original's reduced scope, and write only that. New tasks get
 the original's project and parent, and the later one is blocked by the earlier
-when order matters. They go to the end of the review order. Send the estimator
-an Estimate request for what's left of the original.
+when order matters. They go to the end of the review order. Ask the estimator
+again for what's left of the original.
 
 ### 4. End
 

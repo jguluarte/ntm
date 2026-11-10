@@ -10,9 +10,7 @@ description: >-
 
 The evening reminder: a friend asking how the day went. `ntm:show-completed`
 gives the facts; the messenger agent writes and sends the message. This skill
-names the steps, the handoff and what ends the run. When the messenger agent
-isn't available in this session, do what the conventions' "Chat, jobs and
-agents" says: read its file from the installed plugin and follow it yourself.
+names the steps, the handoff and what ends the run.
 
 # 1: Ready check
 

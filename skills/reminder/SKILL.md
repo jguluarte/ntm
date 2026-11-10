@@ -61,9 +61,6 @@ job: <type>
 <the facts>
 ```
 
-When the messenger agent isn't available in this session, read
-`agents/messenger.md` from the newest installed `ntm` and follow it yourself.
-
 ## Result
 
 Return what the messenger returned, as it came.

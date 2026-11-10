@@ -69,8 +69,8 @@ summary.
 - Setup creates every database from its template during onboarding.
 - Agents and skills refer to a database's parts by name ("the `morning` message
   rule"), never by heading structure.
-- A template lands with the rewrite of the skill or agent that owns the
-  database, never in a batch.
+- A template lands in its own PR, never in a batch, before setup's rewrite
+  creates databases from it. It may still change then.
 
 ### Configuration is guaranteed
 

@@ -10,7 +10,7 @@ find_skills() {
 }
 
 find_agents() {
-    basename -s .md agents/*.md
+    basename -s .md agents/*.md | grep -vx README
 }
 
 load_file() {

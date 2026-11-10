@@ -1,31 +1,30 @@
 # Task management rules
 
-## Vocabulary
-
-- **Planner:** a skill that picks tasks and sets their planned dates, such as
-  `ntm:plan`.
-- **Started:** a plannable status that means work has begun (see Status
-  classes). Jobs give credit for it.
-- **Pause:** a day or range when nothing gets planned automatically. Work the
-  user dated themselves still gets its reminders. Kept in the pauses database.
-- **Estimate:** how big a task is; the estimator agent (`agents/estimator.md`)
-  says what it means.
-
 ## System labels
 
-- **$no-autoschedule:** the user has opted this task out of automatic planning.
-  Planners never pick it, but once the user dates it themselves, it's reminded
-  about like any other dated task.
-- **$pending-shipment:** something has been ordered for this task and hasn't
-  arrived, so the user can't start it. Waiting on an order usually gets this
-  label instead of the blocked status.
+### $no-autoschedule
+
+The user has opted this task out of automatic planning. Planners never pick it,
+but once the user dates it themselves, it's reminded about like any other dated
+task.
+
+### $pending-shipment
+
+Something has been ordered for this task and hasn't arrived, so the user can't
+start it. Waiting on an order usually gets this label instead of the blocked
+status.
 
 ## Databases
 
-- **pauses** (`Paused dates`): the days when nothing gets planned automatically,
-  under `## Paused dates`. `ntm:pause` keeps it.
-- **task review log** (`Task review log`): the estimator agent keeps it, from
-  what `ntm:review-todo-list` hands it.
+### Pauses (`Paused dates`)
+
+The days when nothing gets planned automatically, under `## Paused dates`.
+`ntm:pause` keeps it.
+
+### Task review log (`Task review log`)
+
+The estimator agent keeps it, from what `ntm:review-todo-list` hands it. Setup
+creates it from ntm's template.
 
 ## Excluded tasks
 

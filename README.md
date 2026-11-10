@@ -28,3 +28,8 @@ like an actual assistant.
 Lists what's planned on your task list: every open task planned for today. Add a
 few words to narrow it down, such as `/ntm:today errands` for today's errands
 only.
+
+### `/ntm:fix-task-list`
+
+Clears planned dates that have already passed, so old plans don't pile up on
+your task list. A weekly job runs it, or you can.

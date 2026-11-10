@@ -8,7 +8,7 @@ plan
 price-watch
 ready-check
 reminder
-review-todo-list
+review-task-list
 schedules
 self-test
 settings

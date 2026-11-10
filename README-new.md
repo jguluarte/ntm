@@ -20,7 +20,8 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 
 ## Skills
 
-A skill is something you run by name in a chat.
+These are different components of ntm that work in concert to make your AI act
+like an actual assistant.
 
 ### `/ntm:today`
 

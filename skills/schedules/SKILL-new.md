@@ -42,47 +42,52 @@ management.
 
 | Job           | What it does                                        | Suggested        |
 | ------------- | --------------------------------------------------- | ---------------- |
-| `morning`     | Makes today ready, then sends what's on today       | Weekdays, 09:00  |
-| `afternoon`   | What's still open today                             | Weekdays, 14:30  |
-| `evening`     | How the day went                                    | Weekdays, 19:30  |
-| `week`        | Plans the week ahead and looks back on the last one | Sunday, 22:00    |
-| `price-watch` | Which watched items are a good deal                 | Every day, 07:00 |
+| `morning`     | Makes today ready, then sends what's on today       | Weekdays, 08:44  |
+| `afternoon`   | What's still open today                             | Weekdays, 14:26  |
+| `evening`     | How the day went                                    | Weekdays, 19:23  |
+| `week`        | Plans the week ahead and looks back on the last one | Sunday, 21:50    |
+| `price-watch` | Which watched items are a good deal                 | Every day, 06:57 |
 
-Each job's steps, after the ready check:
+A job never starts on :00 or :30: scheduled tasks everywhere start on those
+marks, so a job off them doesn't run in the rush. Move such a time a few minutes
+earlier, by a different number of minutes for each job.
 
-```
-morning
-2. Load `ntm:plan` and run `/ntm:plan --auto day`.
-3. Load `ntm:reminder` and run `/ntm:reminder --type morning`, with
-   what step 2 returned.
+After the ready check, a job runs the skills below in order, one step each that
+loads the skill and runs it. A job can run any other ntm skill the user asks
+for, the same way.
 
-afternoon
-2. Load `ntm:reminder` and run `/ntm:reminder --type afternoon`.
+### morning
 
-evening
-2. Load `ntm:reminder` and run `/ntm:reminder --type evening`.
+`/ntm:plan --auto day`, then `/ntm:reminder --type morning` with what plan
+returned. The final reply adds plan's `couldn't move:` lines.
 
-week
-2. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`.
-   On `Fix-todo-list FAILED`, carry on.
-3. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-4. Load `ntm:show-completed` and run
-   `/ntm:show-completed <span> and what's still open`.
-   On `Show-completed FAILED`, carry on with `done: unavailable`
-   and `open: unavailable`.
-5. Load `ntm:reminder` and run `/ntm:reminder --type week`, with
-   what the steps before it returned; step 4's Still open tasks
-   go as `open:`.
+### afternoon
 
-price-watch
-2. Load `ntm:price-watch` and run `/ntm:price-watch`.
-```
+`/ntm:reminder --type afternoon`.
 
-The week job's range is the days it plans, in words: `week mon-fri` by default.
-Its span is how far it looks back, ending today: `the last 7 days`. Step 4 is
-there only when its message looks back on what got done.
+### evening
 
-A job can run any other ntm skill the user asks for, the same way.
+`/ntm:reminder --type evening`.
+
+### week
+
+`/ntm:fix-todo-list`; on `Fix-todo-list FAILED`, carry on. Then
+`/ntm:plan --auto <range>`, the range being the days it plans, in words:
+`week mon-fri` by default.
+
+When the week message looks back on what got done, it then runs
+`/ntm:show-completed <span> and what's still open`, the span being how far it
+looks back, ending today: `the last 7 days`. On `Show-completed FAILED`, carry
+on with `done: unavailable` and `open: unavailable`.
+
+Last, `/ntm:reminder --type week` with what the steps before it returned,
+show-completed's Still open tasks going as `open:`. The final reply adds
+fix-todo-list's lines, what it cleared and what it couldn't write, and plan's
+`couldn't move:` lines.
+
+### price-watch
+
+`/ntm:price-watch`.
 
 ## The prompt
 
@@ -97,12 +102,7 @@ Timezone: <Timezone>.
    On `Ready-check FAILED`, end the run with what it returned.
 <the job's steps>
 Final reply: what the last step returned, as the Results rules in
-`ntm-user:backend` say, then any `couldn't move:` lines and
-fix-todo-list's lines, what it cleared and what it couldn't write.
-Any other `FAILED` line ends the run with that line, unless its step
-says to carry on; never send it through `ntm-user:notify`. If a
-skill can't be loaded, end the run with:
-`<Title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
+`ntm-user:backend` say.
 ```
 
 `<job>` is the job's name in The jobs, such as `morning`, or a short name for a
@@ -133,9 +133,7 @@ as `app token:`.
 ### 1. Propose a schedule
 
 Show one short table, one row per job: job, days, time and title. Start from The
-jobs, with a plain title for each, such as "Morning reminder". A job never
-starts on :00 or :30: move such a time a few minutes earlier, by a different
-number of minutes for each job.
+jobs, with a plain title for each, such as "Morning reminder".
 
 Under the table, one line each:
 
@@ -178,7 +176,9 @@ task:
 | `notifications`   | `{push: true}`                                                      |
 | `initiation`      | `human_request`                                                     |
 | `permission_mode` | left unset                                                          |
-| `model`           | the id this app gives the model they chose, set once it exists      |
+
+Once it's created, update the job's `model` to the id this app gives the model
+they chose.
 
 The push carries the run's final reply: on the `claude-push` channel that's the
 reminder itself, and on the `pushover` channel a second, shorter push. A job has
@@ -187,29 +187,18 @@ the connectors of the chat that creates it, and never a browser, so
 
 ### 5. Say how they run
 
-Tell the user, in a sentence or two for all the jobs:
-
-- the model they run on
-- whether runs go ahead on their own or stop when an action needs approval, and
-  that automatic approval can be turned on in a scheduled task's settings if
-  their organization allows it
-- on the `pushover` channel, that each run's second push can be turned off in
-  its settings
-
-Each created job's permission mode says which: `auto` goes ahead on its own;
-none means a run stops at an action that needs approval, with nobody there to
-approve it.
-
-Then offer to run one now: its ready check proves the job can reach their task
-list.
+Tell the user the model the jobs run on, whether their runs go ahead on their
+own or stop at an action that needs approval (each job's permission mode says),
+and on the `pushover` channel that the second push can be turned off in a job's
+settings. Then offer to run one now: its ready check proves the job can reach
+their task list.
 
 ## From setup's handoff
 
 `--setup "<schedules and model>"` carries what the user agreed at the end of
 setup: the jobs, their days and times, and the model. Don't ask again. Take it
 as the approved schedule and the model they chose, give each job a plain title
-unless the text names one, move times off :00 and :30 as step 1 says, and go on
-from step 4.
+unless the text names one, and go on from step 4.
 
 ## Changing the jobs
 
@@ -219,9 +208,8 @@ their steps, never by title. Never show an app token. Then ask what to change.
 
 ### A time, the days or a title
 
-Update the job, keeping what they didn't ask to change, and move a new time off
-:00 and :30 as step 1 says. Confirm the new schedule in words, and say when a
-time moved.
+Update the job, keeping what they didn't ask to change. Confirm the new schedule
+in words, and say when a time moved.
 
 ### The prompt
 

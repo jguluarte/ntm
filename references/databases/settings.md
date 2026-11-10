@@ -13,12 +13,13 @@ name; the user can edit, delete or add them.
 
 <!--
 Timezone is an IANA name: jobs run in it, and it gives today's date when
-nothing else does. Country and currency is where the price watch shops and the
+nothing else does. Country is where the price watch shops, and Currency the
 currency it prices in.
 -->
 
 - Timezone: America/Los_Angeles
-- Country and currency: US, USD
+- Country: US
+- Currency: USD
 
 ## Labels
 
@@ -30,24 +31,27 @@ build writes these names into `ntm-user:backend`, so a change here means a
 rebuild with `/ntm:update`.
 -->
 
-| Label              | Name on your task list |
-| ------------------ | ---------------------- |
-| no-autoschedule    | no-autoschedule        |
-| pending-shipment   | pending-shipment       |
-| price-watch        | price-watch            |
-| has-amazon-alert   | has-amazon-alert       |
-| amazon-unavailable | amazon-unavailable     |
+| Label                 | Name on your task list |
+| --------------------- | ---------------------- |
+| `$no-autoschedule`    | no-autoschedule        |
+| `$pending-shipment`   | pending-shipment       |
+| `$price-watch`        | price-watch            |
+| `$has-amazon-alert`   | has-amazon-alert       |
+| `$amazon-unavailable` | amazon-unavailable     |
 
 ## Planning
 
 <!--
 How the user wants their task list planned, read by `ntm:plan`. Task
-management only. The excluded labels are the ones planning never picks, by
-their names on the task list. Anything else the user says about planning goes
-under the line, in their words.
+management only. Labels to exclude from auto-scheduling are the ones planning
+never picks, by their names on the task list. Anything else the user says about
+planning goes in its own subsection, in their words.
 -->
 
-- Excluded labels from automatic scheduling: no-autoschedule, pending-shipment
+### Labels to exclude from auto-scheduling
+
+- no-autoschedule
+- pending-shipment
 
 ## Shopping
 
@@ -57,11 +61,13 @@ otherwise. Price watch only. Amazon interface is how
 `ntm:sync-price-watch-to-amazon` reaches Amazon to keep its price alerts:
 Claude's built-in browser, or the user's own browser through the Claude
 extension; off when they want no Amazon alerts. Anything else the user says
-about how they shop goes under the line, in their words. Stores they trust or
-block go in the `Price watch stores` database instead.
+about how they shop goes in its own subsection, in their words. Stores they
+trust or block go in the `Price watch stores` database instead.
 -->
 
-- Amazon interface: Claude's built-in browser
+### Amazon interface
+
+Claude's built-in browser
 
 ## Notifications
 

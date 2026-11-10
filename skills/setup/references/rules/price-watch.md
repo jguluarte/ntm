@@ -27,7 +27,7 @@ usual price). The shopper reads them there.
 
 ## Databases
 
-### Price watch stores (`Price watch stores`)
+### Price watch stores (`%Price-watch-stores`)
 
 Stored in the project that carries the $price-watch label, not at list level.
 `ntm:price-watch` keeps it, from the user's vouch and block replies; the shopper

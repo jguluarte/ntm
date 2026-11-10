@@ -16,20 +16,20 @@ status.
 
 ## Databases
 
-### Pauses (`Paused dates`)
+### Pauses (`%Paused-dates`)
 
 The days when nothing gets planned automatically, under `## Paused dates`.
 `ntm:pause` keeps it.
 
-### Task review log (`Task review log`)
+### Task review log (`%Task-review-log`)
 
 The estimator agent keeps it, from what `ntm:review-todo-list` hands it. Setup
 creates it from ntm's template.
 
 ## Excluded tasks
 
-Excluded labels from automatic scheduling, in Planning in the Settings document,
-lists the labels planners never pick; by default $no-autoschedule and
+Excluded labels from automatic scheduling, in Planning in the %Settings
+document, lists the labels planners never pick; by default $no-autoschedule and
 $pending-shipment. A task is excluded when it carries one of them, itself or
 through its project (see Project labels). A task in the blocked status is always
 excluded too; that isn't a setting.

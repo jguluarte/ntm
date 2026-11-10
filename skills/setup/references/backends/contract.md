@@ -192,7 +192,7 @@ Returns success or failure, as Writing says.
 
 ### `read or write <database>`
 
-The Settings document or one of its sections, or a database under Databases.
+The %Settings document or one of its sections, or a database under Databases.
 Uses `read database` and `write database`; a first write creates a missing
 database, such as self-test's throwaway one. A read returns the content or says
 it's missing; a write returns success or failure, as Writing says.
@@ -273,9 +273,9 @@ Creates a project by name, with the project labels it should carry.
 ### `create database`
 
 Creates a database with a given title and first content, at list level or in a
-project, without touching one that already exists (`read database` first). The
-message history database's first content is its frontmatter, which holds its
-`Keep:` line.
+project, without touching one that already exists (`read database` first).
+%Message-history's first content is its frontmatter, which holds its `Keep:`
+line.
 
 ## Writing
 

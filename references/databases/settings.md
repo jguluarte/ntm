@@ -62,7 +62,7 @@ otherwise. Price watch only. Amazon interface is how
 Claude's built-in browser, or the user's own browser through the Claude
 extension; off when they want no Amazon alerts. Anything else the user says
 about how they shop goes in its own subsection, in their words. Stores they
-trust or block go in the `Price watch stores` database instead.
+trust or block go in the `%Price-watch-stores` database instead.
 -->
 
 ### Amazon interface

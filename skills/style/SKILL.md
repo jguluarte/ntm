@@ -1,8 +1,8 @@
 ---
 name: style
 description: >-
-    Writes a message in the user's style, from the Style document on their todo
-    list, and keeps Message history. Loaded by the messenger agent for every
+    Writes a message in the user's style, from the %Style document on their todo
+    list, and keeps %Message-history. Loaded by the messenger agent for every
     reminder, and run in chat when the user asks for a message in their style.
 ---
 
@@ -10,11 +10,11 @@ description: >-
 
 ## Setup
 
-Load `ntm-user:backend` to read the user's conventions: where the Style document
-and Message history live, and how to read and write them. Read the Style
-document, and `references/persona-contract.md` for what each part of it means
-and its default when it's missing. If the Style document can't be read, write
-the message plain.
+Load `ntm-user:backend` to read the user's conventions: where the %Style
+document and %Message-history live, and how to read and write them. Read the
+%Style document, and `references/persona-contract.md` for what each part of it
+means and its default when it's missing. If the %Style document can't be read,
+write the message plain.
 
 ## Usage
 
@@ -22,22 +22,22 @@ the message plain.
 /ntm:style [--stay-fresh] [--for <type>] ["<tone>"] <message>
 ```
 
-`<type>` is the messenger's type: `freeform`, or a path into the Message rules
-such as `reminders.morning`. It implies `--stay-fresh`. The tone is freeform.
+`<type>` is the messenger's type: `freeform`, or a path into %Message-rules such
+as `reminders.morning`. It implies `--stay-fresh`. The tone is freeform.
 
 ## Writing
 
-Rewrite the message in the user's register, from their Style document. For a
+Rewrite the message in the user's register, from their %Style document. For a
 persona, its text is the style, and its `## For ntm` section maps this call onto
 its own words. Hold to what the contract says `ntm:style` brings.
 
-With `--stay-fresh`, read Message history. Keep lines fresh: avoid what recent
+With `--stay-fresh`, read %Message-history. Keep lines fresh: avoid what recent
 entries used. Let a slipping task climb: a carried-over task's earlier days are
 the days before today whose entries name its id, and its level is the one the
 Profile's Responding to procrastination section gives for that count (for a
 persona, its own levels); any other task is on the first level. Then add one
 entry, with today's date, the new line and the task ids it names, pruned to the
-`Keep:` line in the database's frontmatter. When Message history is missing,
+`Keep:` line in the database's frontmatter. When %Message-history is missing,
 create it with this first content:
 
 ```

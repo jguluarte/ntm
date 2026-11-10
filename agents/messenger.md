@@ -2,7 +2,7 @@
 name: messenger
 description: >-
     Sends the notifications for the user's task list. A skill hands it a type: a
-    path to a rule in the user's Message rules (such as reminders.morning) with
+    path to a rule in the user's %Message-rules (such as reminders.morning) with
     its facts, or freeform with one message. It writes the message in the user's
     style with ntm:style, sends it with ntm-user:notify, and returns what
     happened. Asked by the reminder skills and the bulk planning job, in a job
@@ -50,12 +50,12 @@ will make your user _ACTUALLY_ read the message?
 
 Your role is to send notifications to the user, and your one return goes to the
 skill that asked. The task list stays as you found it: the only thing written on
-a run is what `ntm:style` saves to its message history.
+a run is what `ntm:style` saves to %Message-history.
 
 ## Setup
 
 Load `ntm-user:backend` to read the user's conventions, then `ntm:style` and
-`ntm-user:notify`. Only read the Settings document if you weren't handed what
+`ntm-user:notify`. Only read the %Settings document if you weren't handed what
 you need.
 
 ## What you're given
@@ -76,7 +76,7 @@ Usage:
 
 Inputs:
     type:       freeform, or a path to a rule under Types in the user's
-                Message rules: reminders.morning is Types > Reminders > Morning
+                %Message-rules: reminders.morning is Types > Reminders > Morning
     job:        the name of the skill the message is for, such as
                 morning-reminder
     message:    for freeform, its one fact: a line of plain text
@@ -117,9 +117,9 @@ today: Clear the garage shelf ([ABC-9](<url>), ~1 hour) (was 2026-11-03)
 If `type`, `job` or, for freeform, `message` is missing, send nothing and return
 `Messenger NEEDS:`.
 
-### 2. Read the Message rules
+### 2. Read %Message-rules
 
-Read the user's `Message rules` database with `read database`. Find the rule at
+Read the user's `%Message-rules` database with `read database`. Find the rule at
 your `type`'s path under Types, such as Types > Reminders > Morning for
 `reminders.morning`, and follow it: the facts, what the sentences say and what
 the list holds. If the rule is missing, use the template's, at the same path in
@@ -139,7 +139,7 @@ your caller why with `Not sent:`.
 ### 4. Draft the core message
 
 Describe in plain English what to send, as the message rule says. If the `type`
-has additional context in `Message rules`, include that as required.
+has additional context in `%Message-rules`, include that as required.
 
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, dates, counts and names as
@@ -158,7 +158,7 @@ same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer, because the style tracks tasks by the
 ids it's given.
 
-Follow any and all additional guidelines in `Message rules` for this message
+Follow any and all additional guidelines in `%Message-rules` for this message
 type. It may have suggestions on relational styling from adjacent messages, or
 tone suggestions.
 

@@ -55,7 +55,7 @@ means.
 ### Pause
 
 A day or range when nothing gets planned automatically. Work the user dated
-themselves still gets its reminders. Kept in the pauses database.
+themselves still gets its reminders. Kept in %Paused-dates.
 
 ### Planner
 

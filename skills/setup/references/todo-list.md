@@ -172,10 +172,10 @@ Record it as Amazon interface; blank means it asks each time. If no, leave the
 Amazon interface line out.
 
 Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores database (setup's databases step offers its
-Seed), not here; this is for anything that holds for every item. Capture it as
-written below the lines; "nothing" leaves it blank. With no Amazon interface
-line and nothing else, return no Shopping section.
+use go in %Price-watch-stores (setup's databases step offers its Seed), not
+here; this is for anything that holds for every item. Capture it as written
+below the lines; "nothing" leaves it blank. With no Amazon interface line and
+nothing else, return no Shopping section.
 
 ## Databases
 
@@ -183,8 +183,8 @@ With `create database`, create each database below from its template in
 `references/databases/`, in the newest installed `ntm`. Leave out the template's
 `<!-- -->` comments: they're for you to build their databases.
 
-- `Message rules`: everyone.
-- `Task review log`: task management.
+- `%Message-rules`: everyone.
+- `%Task-review-log`: task management.
 
 ## Returning the sections
 

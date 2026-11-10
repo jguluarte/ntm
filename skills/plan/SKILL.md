@@ -48,8 +48,8 @@ states only what differs for its user.
 ## Setup
 
 1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`.
-2. Read Planning from the Settings document: how this user wants their todo list
-   planned, with the excluded labels and anything else they wrote there.
+2. Read Planning from the %Settings document: how this user wants their todo
+   list planned, with the excluded labels and anything else they wrote there.
 3. Find every open task, excluded and blocked ones included.
 
 If any step fails, stop and say what went wrong. Run by a job, end with
@@ -175,8 +175,8 @@ you're given" says. The estimate goes only on a task this run picked.
   date it had on a task carried over, and `started` when its status is the
   started one. When nothing is planned and nothing qualified, the single line
   `today: none`. A stale task left where it was: `kept: <id> (blocked)`. How
-  many days a task has slipped is the style's to count, from the message
-  history; don't compute it here.
+  many days a task has slipped is the style's to count, from %Message-history;
+  don't compute it here.
 - `--auto <range>`: one `planned:` line per task planned in the range, days the
   user had already dated included, in day order, or the single line
   `planned: none`.

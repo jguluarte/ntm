@@ -20,7 +20,7 @@ Load `ntm-user:backend` to read the user's conventions.
 
 ## Where pauses live
 
-The `Paused dates` database opens with the line
+The `%Paused-dates` database opens with the line
 `The days when nothing gets planned automatically.` Under its `## Paused dates`
 heading it holds one line per pause, sorted by start date. Each line is bare,
 with no list marker: `YYYY-MM-DD: <why>` for a single day, or

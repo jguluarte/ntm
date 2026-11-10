@@ -1,16 +1,16 @@
 ---
 name: settings
 description: >-
-    Shows the user's ntm settings, the Settings document on their todo list, and
-    changes them, or says where a change goes: a scheduled task, the Style
+    Shows the user's ntm settings, the %Settings document on their todo list,
+    and changes them, or says where a change goes: a scheduled task, the %Style
     document, or a rebuild. Run when the user says "show my settings", "change
     my timezone", "rename a label", or asks where a value lives.
 ---
 
 # ntm:settings
 
-The Settings document on the user's todo list holds the values they agreed to in
-setup, under fixed headings: About you, Labels, Planning, Shopping,
+The %Settings document on the user's todo list holds the values they agreed to
+in setup, under fixed headings: About you, Labels, Planning, Shopping,
 Notifications. A missing section means its defaults.
 
 ## Usage
@@ -26,31 +26,32 @@ Load `ntm-user:backend` to read the user's conventions. If it won't load, say in
 one line that nothing is set up yet and that `/ntm:setup` is the start, and
 stop.
 
-If the Settings document can't be read or written, say what went wrong and stop.
+If the %Settings document can't be read or written, say what went wrong and
+stop.
 
 ## Where a change goes
 
-- **About you, Planning, Shopping, Notifications:** that section of the Settings
-  document; the next run uses it.
+- **About you, Planning, Shopping, Notifications:** that section of the
+  %Settings document; the next run uses it.
 - **Labels:** the Labels section, then `/ntm:update` rebuilds.
 - **Their jobs** (what runs, on which days, at what time, the model): their
   scheduled tasks, through `ntm:schedules`.
-- **How reminders talk to them:** the Style document, through `ntm:style`.
+- **How reminders talk to them:** the %Style document, through `ntm:style`.
 - **Built-in choices** (their backend, todo list, notification channel, Pushover
   keys, features): `/ntm:update`.
 - **The trigger word `ntm`:** a renamed fork of ntm, as the README says.
 
 ## Bare
 
-Read the Settings document and show it section by section, as written. Then say
+Read the %Settings document and show it section by section, as written. Then say
 in a line or two where a change goes, as the list above gives it.
 
 ## With words
 
-When the words only ask to see the Settings document, show it and stop. For a
+When the words only ask to see the %Settings document, show it and stop. For a
 change to a section of it, find the line by section and label, and write the new
 value in the same style; ask once if the words leave the line unclear. For their
-jobs or the Style document, load the skill the list names and follow it with
+jobs or the %Style document, load the skill the list names and follow it with
 their words. For anything else, say where it goes, and stop.
 
 ## Regenerating `ntm-user.plugin`

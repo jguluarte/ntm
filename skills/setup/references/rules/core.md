@@ -5,13 +5,13 @@ picked. The build copies `terminology.md` into it first, with `<List name>` and
 `<List id>` filled in, leaving out its Task management terms when the user
 didn't pick that feature. Then it copies everything below this paragraph as
 written, with `<Labels>` replaced by one line per system label of the user's
-features: its default name and its real name, from Labels in the Settings
+features: its default name and its real name, from Labels in the %Settings
 document.
 
 The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
 and the jobs put the todo list right as they run. A value these rules name under
-a heading of the Settings document (see Databases) is read from that document
+a heading of the %Settings document (see Databases) is read from that document
 when it's needed; a missing heading or line means its default.
 
 The todo list is one person's, not a team's: priority is mostly unused, and a
@@ -115,22 +115,22 @@ Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title. That task is a database, not work; every
 skill ignores it.
 
-### Settings (`Settings`)
+### Settings (`%Settings`)
 
 The values the user set up, under fixed headings, read by heading. Setup creates
 it.
 
-### Message history (`Message history`)
+### Message history (`%Message-history`)
 
 What reminders have said. `ntm:style` keeps it. Its frontmatter holds a `Keep:`
 line saying how much history to keep; the user changes it there.
 
-### Message rules (`Message rules`)
+### Message rules (`%Message-rules`)
 
 What each reminder's message says. Setup creates it from ntm's template; the
 user changes it there.
 
-### Style (`Style`)
+### Style (`%Style`)
 
 The user's persona, which `ntm:style` reads before each message. `ntm:style`
 keeps it. Setup creates it from ntm's template.
@@ -155,7 +155,7 @@ The guide's `fetch closed`.
 ## Dates
 
 Today is the user's local date: the run knows the local time, a scheduled job's
-prompt states the timezone, and Timezone, under About you in the Settings
+prompt states the timezone, and Timezone, under About you in the %Settings
 document, is the fallback.
 
 Compare planned dates as `YYYY-MM-DD` strings.

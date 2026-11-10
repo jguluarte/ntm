@@ -151,8 +151,8 @@ If a skill can't be loaded, end the run with this line:
    `Planning: two tasks a day, weekends too.`; when nothing differs, add none.
 4. Ask once, for all the jobs: which model should they run on? A new job
    inherits the model of the chat that creates it, and that can be the heaviest
-   one. Suggest a lighter model, such as Opus or Sonnet, then use the one they
-   choose; it's the model every job gets.
+   one. Suggest a lighter model than the one running this chat, from the ones
+   this app offers, then use the one they choose; it's the model every job gets.
 
 The table in step 1, for example:
 
@@ -192,9 +192,9 @@ CRON_TZ=Europe/Berlin 44 8 * * 1-5
 
 ### Set the model
 
-`update_trigger` with the new job's id and `model: <the id>`. This is their
-request from the walk, not the skill's. If the id is rejected, say so, leave the
-job on the model it inherited, and carry on.
+`update_trigger` with the new job's id and `model`: the id this app gives the
+model they chose. This is their request from the walk, not the skill's. If the
+id is rejected, say so, leave the job on the model it inherited, and carry on.
 
 ### Check its connectors
 

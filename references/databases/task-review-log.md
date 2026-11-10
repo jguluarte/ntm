@@ -3,8 +3,8 @@
 <!--
 How estimating works with this user, learned from each review. Its contents
 are suggested defaults the user can customize. Setup creates this database from
-this template; you read it whenever you estimate and keep it as you review. The
-user changes it to change how you estimate for them.
+this template; you read it whenever you estimate and keep it as the user
+estimates tasks.
 -->
 
 ## How you work

@@ -91,6 +91,68 @@ values and assets together, without asking.
 10. **The end.** A passing self-test sends a success message in their persona,
     said in chat and pushed. Making people smile is good.
 
+## Patterns every rewritten file follows
+
+From Justin's reviews of #116, #117 and #120. His words there win over this
+summary.
+
+### Databases
+
+- Each user database has a template in `references/databases/`: its real shape,
+  with default or dummy values.
+- A `<!-- -->` comment in a template is an instruction to agents, including the
+  agent another user runs during setup. It says what a part is for and how to
+  keep it, and it is never written into the user's database.
+- A template's parts are composable: the user edits, deletes or adds them.
+- Setup creates every database from its template during onboarding.
+- Agents and skills refer to a database's parts by name ("the `morning` message
+  rule"), never by heading structure.
+- A template lands with the rewrite of the skill or agent that owns the
+  database, never in a batch.
+
+### Configuration is guaranteed
+
+Setup and self-test guarantee the user's configuration. Agents and skills are
+written for a configured user and the typical flow: every database, part and
+setting they name is there.
+
+### The messenger
+
+- It takes one `type:` input: `freeform` with a `message:` line, or a path into
+  the user's Message rules, such as `reminders.morning`, with that rule's facts.
+- The user's rule for a type says what the message holds, and may say when no
+  notification is needed. The messenger follows it.
+- It drafts the core message in plain words first, then puts it in the user's
+  style. The tone is its read of today's facts.
+
+### Estimates
+
+- An estimate is an `Estimate: 2 hours` line at the end of the task's
+  description, on every backend.
+- Estimates are in hours unless the user's Settings say otherwise. Anyone can
+  estimate in hours.
+- Estimates and times are written in full words, in the user's language:
+  `2 hours`, `~20 minutes`.
+
+### Writing
+
+- Trust the agent. Describe the outcome; an agent that has loaded a skill knows
+  what to do with it, so steps never read like shell commands piped together.
+- Say what something is, in the section that introduces it.
+- Write for any user. An approval is worded so anyone's simple yes works.
+- Messages have no formula and no fixed opener; the same shape every day stops
+  getting read.
+- Say "decided" or "agreed", never "settled".
+- Steps are numbered `###` subsections. Fields and values go in a table, a long
+  list of inputs in a usage block like a man page, and prose never in a code
+  block.
+- Prose says "task list". A description also says "todo list" where a user would
+  say it, so their words find the skill.
+- In an agent's description, each `<example>` has a blank line between its
+  Context, user, assistant and `<commentary>` parts.
+- In a test, cleaning up and delivering the result are steps; failing either
+  fails the run.
+
 ## Declined
 
 Justin said no to each of these. Don't propose them again.

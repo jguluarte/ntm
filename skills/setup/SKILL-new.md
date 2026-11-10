@@ -4,8 +4,7 @@ description: >-
     The ntm wizard. Takes a new user from a fresh install to a connected task
     list, a persona, the features they pick and reminders on their phone, then
     builds their ntm-user plugin. Run when the user says "set up ntm", "get
-    started" or "set up my todo list", or installs ntm for the first time;
-    /ntm:update loads it to offer what's new and rebuild.
+    started" or "set up my todo list", or installs ntm for the first time.
 ---
 
 # ntm:setup
@@ -20,20 +19,17 @@ creates `Settings` and step 3 `Style`, each as its area ends; step 8 creates the
 other databases. What goes into their plugin (the backend, the channel, any
 keys) is kept for the build.
 
-## Usage
+## Pre-requisites
 
-```
-/ntm:setup [<what to change, in words>]
-```
+### Already set up
 
-Bare for a new user. Once they're set up, the words say what to change.
+If `ntm-user:backend` loads, the user is already set up. Say in a line that
+`/ntm:update` is how they change their setup, and stop.
 
-## Before you start
+### Load references
 
-Load `ntm-user:backend`. When it loads, the user is set up: follow Already set
-up. Otherwise read `references/rules/terminology.md` and
-`references/rules/core.md`, the words and rules every step uses, then follow the
-steps in order.
+Load all files under this skill's `references/rules` folder. They document
+patterns and expectations ntm uses and depends on.
 
 The database templates are in ntm's `references/databases/`. Their `<!-- -->`
 comments are for you, never the user: a database created from one leaves them
@@ -148,21 +144,3 @@ and the jobs' model, in their words.
 
 Tell them, in a line meant to make them smile, that a passing self-test sends a
 success message in their persona, in chat and on their phone.
-
-## Already set up
-
-Say in a line what the Built line in `ntm-user:backend` names: the versions,
-backend, channel and features. Offer each feature they haven't picked, then ask
-what else to change. Walk the step for each change, then steps 8 and 9.
-
-| Change                           | Step                       |
-| -------------------------------- | -------------------------- |
-| A feature they pick              | 5 for that feature, then 6 |
-| The task list                    | 2                          |
-| A label's name                   | 5, its feature's labels    |
-| The channel or the Pushover keys | 7                          |
-
-With no feature picked, step 9 hands off with `Run /ntm:self-test.` alone.
-
-Their persona, settings and jobs change without a build, with `/ntm:style`,
-`/ntm:settings` and `/ntm:schedules`.

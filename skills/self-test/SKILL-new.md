@@ -115,9 +115,8 @@ Cancel the test task: it's among the tasks closed today, canceled ones included.
 ### 13. Clean up
 
 Runs after a failure too. Cancel the test task and sub-task if they're still
-open, and any open task an earlier self-test left behind. Take the added label
-off if it's still on. Empty the test database, and cancel its task too when
-databases live in tasks. Touch nothing else on the task list.
+open. Take the added label off if it's still on. Remove the test database. Touch
+nothing else on the task list.
 
 The step fails when anything can't be cleaned up: a run that leaves its test
 data behind didn't pass.

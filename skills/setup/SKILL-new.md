@@ -10,17 +10,15 @@ description: >-
 
 # ntm:setup
 
-Setup ends with a connected task list, a persona, the features the user picked
-ready to run as jobs, reminders on their phone, and their own plugin,
-`ntm-user`, built and installed.
-
-It's a conversation, one question at a time, never a form. Speak as ntm, in the
-first person, as the intro does. Do all the talking first, so the build runs
+Setup is a conversation, one question at a time, never a form. Speak as ntm, in
+the first person, as the intro does. Do all the talking first, so the build runs
 without stopping.
 
 Each area ends by saving what the user agreed to, with no separate ask: what it
-makes on the task list, and its values in the `Settings` database. What goes
-into their plugin (the backend, the channel, any keys) is kept for the build.
+makes on the task list, and its values in the `Settings` database. Step 2
+creates `Settings` and step 3 `Style`, each as its area ends; step 8 creates the
+other databases. What goes into their plugin (the backend, the channel, any
+keys) is kept for the build.
 
 ## Usage
 
@@ -50,8 +48,8 @@ Send `references/intro.md`. It ends by confirming their timezone.
 ### 2. The task list
 
 Connect their task list and check that it answers, as `references/todo-list.md`
-says under The backend and Linear. The price watch project there waits for price
-watch.
+says under The backend and Linear. Leave out its price watch project: step 5
+makes that project when they pick price watch.
 
 Confirm the name of the `Settings` database, as `references/databases.md` says.
 Create it from its template with only their timezone under About you; each later
@@ -64,9 +62,10 @@ read. Push a little when they decline: without one, ntm is no different from
 Apple or Google reminders.
 
 Open with: "think about the formula of a show you enjoy, where they can snap
-back at you when you need it, or celebrate you when you've earned it". Build it
-with them from generic parts, naming no show, character or brand, as
-`references/persona.md` says, in the parts of the `Style` template.
+back at you when you need it, or celebrate you when you've earned it".
+
+Build it with them as `references/persona.md` says. Its parts are the ones in
+the `Style` template.
 
 Confirm the names of the `Style` and `Message history` databases. Then save the
 persona: create the `Style` database from its template, with their persona in
@@ -81,25 +80,21 @@ Offer these as a numbered list. They pick everything or a subset.
 | Task management | A small task planned each weekday, with reminders       |
 | Price watch     | What they want to buy, watched until the price is right |
 
-New features join this list.
-
 ### 5. Each picked feature
 
 #### Task management
 
 Read `references/rules/task-management.md`.
 
-Agree the schedule: Monday to Friday for doing, with a morning, afternoon and
-evening reminder, and Sunday for cleanup and planning, when the week just past
-is wrapped up and the next one planned. Agree a time for each, and keep the
-schedule for the handoff.
+Propose its jobs from the table under What a job can run in `ntm:schedules`.
+Agree a time for each, and keep the schedule for the handoff.
 
 Then its labels, $no-autoschedule and $pending-shipment, as
 `references/todo-list.md` says under Labels.
 
 Confirm the names of the `Message rules`, `Paused dates` and `Task review log`
-databases. Save its rows of the Labels section and the Planning section in
-Settings.
+databases. Save its two label names in Settings, under Labels and as the labels
+to exclude under Planning.
 
 #### Price watch
 
@@ -134,8 +129,7 @@ says.
 ### 8. Databases
 
 Create each database confirmed above that doesn't exist yet, from its template.
-`Price watch stores` gets the stores they named. Then say in a line where each
-database lives.
+Then say in a line where each database lives.
 
 ### 9. The build
 
@@ -152,17 +146,22 @@ Run /ntm:self-test. If it passes, run
 `<schedules and model>` holds the schedule of each feature picked in this run
 and the jobs' model, in their words.
 
-### 10. The end
-
-A passing self-test sends a success message in their persona, in chat and on
-their phone. Tell them so, in a line meant to make them smile.
+Tell them, in a line meant to make them smile, that a passing self-test sends a
+success message in their persona, in chat and on their phone.
 
 ## Already set up
 
 Say in a line what the Built line in `ntm-user:backend` names: the versions,
 backend, channel and features. Offer each feature they haven't picked, then ask
-what else to change: the task list, a label's name, the channel or the Pushover
-keys. Walk those steps, step 6 too when they pick a feature, then steps 8 and 9.
+what else to change. Walk the step for each change, then steps 8 and 9.
+
+| Change                           | Step                       |
+| -------------------------------- | -------------------------- |
+| A feature they pick              | 5 for that feature, then 6 |
+| The task list                    | 2                          |
+| A label's name                   | 5, its feature's labels    |
+| The channel or the Pushover keys | 7                          |
+
 With no feature picked, step 9 hands off with `Run /ntm:self-test.` alone.
 
 Their persona, settings and jobs change without a build, with `/ntm:style`,

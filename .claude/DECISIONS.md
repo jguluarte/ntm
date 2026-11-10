@@ -221,7 +221,6 @@ Justin said no to each of these. Don't propose them again.
 
 - Shipped personas, Justin's own included.
 - A tone ladder defined by the plugin.
-- An `Off limits` part in the Profile.
 
 ### Estimates
 

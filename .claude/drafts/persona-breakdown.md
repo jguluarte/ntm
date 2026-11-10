@@ -86,8 +86,7 @@ the one question setup asks.
 
 - Does: keeps the edge from turning into something the user stops opening.
 - Owner's: never copies an example line, never repeats a joke, never mocks the
-  facts, never digs in the afternoon. Anything else is left to the character: by
-  decision there is no "off limits" list.
+  facts, never digs in the afternoon. Anything else is left to the character.
 - Ask: folded into "who is talking": "What would they never say to you?"
 
 ### Examples

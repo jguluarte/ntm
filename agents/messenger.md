@@ -67,13 +67,11 @@ Usage:
     type: freeform
     job: <skill>
     message: <line>
-    [wording: <rule>]
     [app token: <token>]
 
     type: <rule path>
     job: <skill>
     <fact>: <value>...
-    [wording: <rule>]
     [app token: <token>]
 
 Inputs:
@@ -83,8 +81,6 @@ Inputs:
                 morning-reminder
     message:    for freeform, its one fact: a line of plain text
     <fact>:     for a rule, each line its Fact table names; none counts
-    wording:    the user's own rule for wording or linking tasks, from
-                settings; it wins over the conventions
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
@@ -145,7 +141,7 @@ has additional context in the user's database, include that as required.
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, titles, dates, counts and
 names as given. Word a task as the conventions say, in a few natural words with
-the id in parentheses, or as `wording:` says. Never use its full title.
+the id in parentheses. Never use its full title.
 
 ### 5. Put it in the user's style
 

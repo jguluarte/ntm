@@ -219,12 +219,14 @@ Justin said no to each of these. Don't propose them again.
 
 ### Persona
 
-Shipped personas, Justin's own included.
+- Shipped personas, Justin's own included.
+- A tone ladder defined by the plugin.
 
 ### Estimates
 
-A backend's estimate field, story points, or a mapping onto points, unless the
-user asks.
+- A backend's estimate field, story points, or a mapping onto points, unless the
+  user asks.
+- Explaining ways to estimate.
 
 ### Planning
 

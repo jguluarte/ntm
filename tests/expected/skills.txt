@@ -1,6 +1,6 @@
 afternoon-reminder
 evening-reminder
-fix-todo-list
+fix-task-list
 help
 morning-reminder
 pause

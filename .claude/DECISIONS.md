@@ -56,7 +56,7 @@ Jobs are composed from base skills however the user wants. `ntm:schedules`
 creates and changes them, and the scheduled tasks are the source of truth.
 
 The suggested weekly job: `show-completed` for the span just past,
-`fix-todo-list`, `plan --auto` for the next span, then one message.
+`fix-task-list`, `plan --auto` for the next span, then one message.
 
 ### Setup and update
 

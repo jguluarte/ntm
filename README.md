@@ -91,7 +91,7 @@ runs it; so can you.
 
 - `/ntm:review-todo-list`: reviews the todo list with you in chat (close,
   estimate, break up).
-- `/ntm:fix-todo-list`: clears stale planned dates.
+- `/ntm:fix-task-list`: clears stale planned dates.
 
 ### Price watch
 

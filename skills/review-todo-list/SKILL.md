@@ -62,8 +62,8 @@ so they persist context**. When the estimator finishes the first one, give it
 the next two so they're ready for the user quickly. Keep it alive in case the
 user has more questions.
 
-Send it an Estimate request in hours, with the task as it stands, any end state
-you assumed, and anything the user said about size. Hold its answers until their
+Send it an Estimate request, with the task as it stands, any end state you
+assumed, and anything the user said about size. Hold its answers until their
 task comes up.
 
 Present one task per message:

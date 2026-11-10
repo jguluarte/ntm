@@ -95,10 +95,10 @@ one more.
 
 ## A task's estimate
 
-When the run picks tasks, send the estimator an Estimate request in hours once,
-with the shortlist. Its estimates judge fit, and go on the lines of the tasks
-this run picks so the user can see what the day asks of them; other lines carry
-no estimate.
+When the run picks tasks, send the estimator an Estimate request once, with the
+shortlist. Its estimates judge fit, and go on the lines of the tasks this run
+picks so the user can see what the day asks of them; other lines carry no
+estimate.
 
 ## Paused days
 

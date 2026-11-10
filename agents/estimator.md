@@ -62,18 +62,15 @@ Estimate: 3 points
 
 The skill names one. Return only that request's lines.
 
-| Request            | Sent with                               | Returns                                                |
-| ------------------ | --------------------------------------- | ------------------------------------------------------ |
-| Estimate, in hours | tasks, and what bears on their size     | `task:`, `estimate:` and `doable after work:` per task |
-| Log                | final estimates, and what the user said | `logged:` per estimate                                 |
+| Request  | Sent with                               | Returns                                                |
+| -------- | --------------------------------------- | ------------------------------------------------------ |
+| Estimate | tasks, and what bears on their size     | `task:`, `estimate:` and `doable after work:` per task |
+| Log      | final estimates, and what the user said | `logged:` per estimate                                 |
 
 A Log request may come with an Estimate request. Each task comes with its id,
 title, description, and estimate if it has one.
 
-## Estimate, in hours
-
-The request is named for the default; estimate on the scale in the user's
-Settings.
+## Estimate
 
 Besides the tasks, the skill may send:
 

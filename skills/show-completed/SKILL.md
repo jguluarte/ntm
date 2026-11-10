@@ -75,13 +75,13 @@ id in parentheses); the raw lines are for skills and jobs.
 
 ## Notify
 
-With `--notify`, after the result, ask the messenger agent, with the reminder
-`completed`, the job `show-completed`, a `span:` line (the result's first line)
-and one `done:` line per Done task, a task line as the messenger agent's "What
-you're given" says, with no estimate; or `done: none`:
+With `--notify`, after the result, ask the messenger agent, with the type
+`reminders.completed`, the job `show-completed`, a `span:` line (the result's
+first line) and one `done:` line per Done task, a task line as the messenger
+agent's "What you're given" says, with no estimate; or `done: none`:
 
 ```
-reminder: completed
+type: reminders.completed
 job: show-completed
 span: 2026-10-31 to 2026-11-06
 done: Order storage boxes ([ABC-12](<url>))
@@ -89,8 +89,8 @@ done: Order storage boxes ([ABC-12](<url>))
 
 When the messenger agent isn't available in this session, read
 `agents/messenger.md` from the installed plugin and follow it yourself. It
-returns `Sent: <title>`, a delivery block, or a `… FAILED` line. A delivery
-block is the final reply, verbatim, and nothing else; otherwise one short line
-on what happened, then any lines the messenger returned after `Sent:` (the list
-the push couldn't carry). A `… FAILED` line: never use `/ntm:notify`; end with
-the error stated plainly.
+returns `Sent: <title>`, a delivery block, `Not sent: <why>`, or a `… FAILED`
+line. A delivery block is the final reply, verbatim, and nothing else; otherwise
+one short line on what happened, then any lines the messenger returned after
+`Sent:` (the list the push couldn't carry). A `… FAILED` line: never use
+`/ntm:notify`; end with the error stated plainly.

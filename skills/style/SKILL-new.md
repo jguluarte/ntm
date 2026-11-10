@@ -25,20 +25,24 @@ whenever you save either one.
 
 When the Style is a persona, the user's own text in place of a Profile, that
 text is the style, its levels and motifs included. Its `## For ntm` section maps
-this skill's call onto its words.
+this skill's call onto its words. This skill's `references/persona-contract.md`
+says what a Profile and a persona each hold.
 
 ## Usage
 
 ```
 Usage:
-    /ntm:style --for <type> ["<tone>"] <message>
+    type: <type>
+    [tone: <tone>]
+    message: <message>
+
     /ntm:style [<what to change>]
 
 Inputs:
-    --for <type>      the messenger's type: freeform, or a path into the user's
+    type:             the messenger's type: freeform, or a path into the user's
                       Message rules, such as reminders.morning
-    <tone>            how the message should feel today, in a few words
-    <message>         the core message, in plain words
+    tone:             how the message should feel today, in a few words
+    message:          the core message, in plain words
     <what to change>  in the user's words, such as "make it meaner"
 ```
 
@@ -49,15 +53,16 @@ change.
 
 ### 1. Find each task's level
 
-A task the message names climbs as it keeps slipping. Its earlier days are the
-days before today with a Message history entry that names its id, and its level
-is the one the Responding to procrastination part gives for that count.
+A task the message names climbs as it keeps slipping. Count the earlier days
+Message history names the task; the Style's Responding to procrastination part
+gives the level for that count.
 
 ### 2. Write it
 
-Rewrite the message the way the Style says, in the tone given. When the type has
-a part in The reminders, that part says what this message is in the theme's
-terms: `reminders.morning` is Morning.
+Rewrite the message the way the Style says, in the tone given. The Style's The
+reminders part says what each reminder is in the theme's terms; when the type
+has a part there, write the message as that part says: `reminders.morning` is
+Morning.
 
 Keep every fact as given: task ids, dates, counts and names, nothing added. Keep
 it fresh: no opening, joke shape or pun from a line in Message history, and a
@@ -73,7 +78,7 @@ never just the type's name.
 Add one entry to Message history for this message: today's date, the task ids it
 names, and the message as written.
 
-## Result
+### Result
 
 The message in plain text, then the `Title:` line.
 

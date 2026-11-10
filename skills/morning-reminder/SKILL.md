@@ -12,9 +12,7 @@ description: >-
 The morning reminder: what's on the table today, said the way the user reads.
 `ntm:plan` makes today ready and returns the facts; the messenger agent writes
 and sends the message. This skill names the steps, the handoff and what ends the
-run. When the messenger agent isn't available in this session, do what the
-conventions' "Chat, jobs and agents" says: read its file from the installed
-plugin and follow it yourself.
+run.
 
 # 1: Ready check
 

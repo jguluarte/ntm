@@ -13,10 +13,7 @@ description: >-
 The price watch: which watched items are a good deal today? One shopper per item
 does the checking; this skill finds the watched tasks, hands each to a shopper,
 alerts on the deals and handles the user's replies. The shopper's procedure is
-`agents/shopper.md`; nothing here restates it. When the shopper agent isn't
-available in this session, do what the conventions' "Chat, jobs and agents"
-says: read that file from the installed plugin and follow it yourself, one task
-at a time, with the same two values.
+`agents/shopper.md`; nothing here restates it.
 
 The user vets what goes on the watch: every watched task is a real item they
 want, and the stores they name are ones they trust. So the shopper's results are

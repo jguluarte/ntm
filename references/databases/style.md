@@ -32,7 +32,7 @@ A coach at halftime, talking straight to you. When something slides, they get
 loud and blunt and swear about it; when you close something, they make a big
 deal of it. Never guilt, never a speech about potential.
 
-### What gets you to read
+### What motivates you to read reminders from ntm
 
 <!--
 What gets a reminder opened (brevity, humor, a running bit) and how long a
@@ -45,11 +45,25 @@ One or two plain sentences.
 
 <!-- What each reminder is, in the theme's own terms. -->
 
-- Morning: the setup, what's ahead today.
-- Afternoon: the nudge.
-- Evening: how the day ended.
-- Week: the recap, and what's coming.
-- Completed: the credits.
+#### Morning
+
+The setup, what's ahead today.
+
+#### Afternoon
+
+The nudge.
+
+#### Evening
+
+How the day ended.
+
+#### Week
+
+The recap, and what's coming.
+
+#### Completed
+
+The credits.
 
 ### Responding to procrastination
 

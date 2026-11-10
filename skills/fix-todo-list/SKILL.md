@@ -21,10 +21,8 @@ notifies anyone: whoever called it decides what to tell the user.
 
 ## Setup
 
-1. Load `ntm:conventions`.
-2. Fetch every open task with the guide's `fetch open`, and keep every result,
-   including excluded tasks. Skip the blocker reads, and skip listing the
-   projects with their labels: this skill checks no labels.
+Load `ntm-user:backend` to read the user's conventions, then fetch every open
+task, excluded ones included.
 
 ## Clear stale dates
 
@@ -35,7 +33,7 @@ tasks where status is open
 → clear planned date
 ```
 
-Clear each match with the guide's `clear planned date` and change nothing else.
+Clear each match's planned date and change nothing else.
 
 ### Failures and dry runs
 

@@ -47,24 +47,25 @@ states only what differs for its user.
 
 ## Setup
 
-1. Load `ntm:conventions` and `ntm:pause`. Planning in your settings is how this
-   user wants their todo list planned: the estimate pattern, the excluded
-   labels, and anything else they wrote there.
-2. Fetch the todo list with the guide's `fetch open`, keeping excluded tasks.
+1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`.
+2. Read Planning from the Settings document: how this user wants their todo list
+   planned, with the excluded labels and anything else they wrote there.
+3. Find every open task, excluded and blocked ones included.
 
-If any step fails, stop and return `Plan FAILED: <what failed>`.
+If any step fails, stop and say what went wrong. Run by a job, end with
+`Plan FAILED: <what failed>`.
 
 ## Choosing a task
 
 A candidate is an open task with a plannable status, and either no planned date
-or a stale one, and not excluded as the conventions' Excluded tasks says (by
-default anything carrying the $no-autoschedule or $pending-shipment label, by
-their real names from Labels, or in the blocked status). Shortlist the likeliest
-picks from what the fetch already returns (status, project, labels, titles,
-planned dates) before reading any task in full; then read only the shortlist
-with the guide's `read task`, for descriptions and relations. Blocked-by
-relations follow the conventions' Blocks and blocked by rule; the picks made in
-this run count as planned days, so a chain can fill the week in order.
+or a stale one, and not excluded as Excluded tasks in `ntm-user:backend` says
+(by default anything carrying the $no-autoschedule or $pending-shipment label,
+by their real names from Labels, or in the blocked status). Shortlist the
+likeliest picks from what Setup found (status, project, labels, titles, planned
+dates) before reading any task in full; then read only the shortlist, for
+descriptions and relations. Blocked-by relations follow Blocks and blocked by in
+`ntm-user:backend`; the picks made in this run count as planned days, so a chain
+can fill the week in order.
 
 Pick as many candidates per day as Defaults says (one, unless told otherwise),
 using judgement; in chat, give each pick a one-line reason. Weigh, roughly in
@@ -74,9 +75,9 @@ this order:
   prefer picks that build on it: the next pieces of the same chain or project,
   so the week reads as one theme rather than scattered tasks.
 - **Small and concrete.** Prefer tasks that fit the size in Defaults (about an
-  hour or less), judging by the time the estimator gives (see A task's time).
-  Sometimes something bigger needs scheduling, and that's fine: the user can do
-  it on momentum from recent days, or break it up themselves.
+  hour or less), judging by the estimate the estimator gives (see A task's
+  estimate). Sometimes something bigger needs scheduling, and that's fine: the
+  user can do it on momentum from recent days, or break it up themselves.
 - **Unblocking.** Prefer work that frees up other open work.
 - **Priority, when set.** A priority the user set counts, where the backend has
   one. A missing one means nothing.
@@ -92,13 +93,13 @@ Unattended, consider that day planned, however many tasks it holds. In chat, it
 counts as planned only until the user asks for something more on it; then add
 one more.
 
-## A task's time
+## A task's estimate
 
-When the run picks tasks, ask the estimator's Estimate for a time once, with the
-shortlist. Its times judge fit, and go on the lines of the tasks this run picks
-so the user can see what the day asks of them; other lines carry no time. When
-the agent isn't loaded, follow its file as the conventions' "Chat, jobs and
-agents" says.
+When the run picks tasks, send the estimator an Estimate request in hours once,
+with the shortlist. Its estimates judge fit, and go on the lines of the tasks
+this run picks so the user can see what the day asks of them; other lines carry
+no estimate. When the agent isn't loaded, read `agents/estimator.md` from the
+newest installed `ntm` and follow it.
 
 ## Paused days
 
@@ -109,17 +110,16 @@ whose line ends `true`. If it returns `Pause FAILED`, stop and return
 
 ## Writing
 
-Date each pick with the guide's `set planned date`. Writes follow the
-conventions; Result says how to list any that still fail.
+Set each pick's planned date. Writes follow `ntm-user:backend`; Result says how
+to list any that still fail.
 
 ## --auto day
 
 1. **Carry over.** Every task planned before today is stale. Move the ones in
-   the plannable class to today with `set planned date`, whatever their labels
-   and even when one blocks another: the user dated them, so they should just
-   work (the conventions' Blocks rule is for picking work; carrying a date isn't
-   picking). A stale task in the blocked class keeps its date. Carry over on a
-   paused day too.
+   the plannable class to today, whatever their labels and even when one blocks
+   another: the user dated them, so they should just work (the Blocks rule is
+   for picking work; carrying a date isn't picking). A stale task in the blocked
+   class keeps its date. Carry over on a paused day too.
 2. **Today.** If nothing is planned for today after the moves, check today as
    Paused days says. Paused: return `paused` and stop. Otherwise pick for today
    as Choosing a task says, and date the pick today.
@@ -162,9 +162,8 @@ span, then do what they decide.
    gets its date cleared, unless the user asks to move it to a later day. Days
    they want empty stay empty, and paused days get planned if they want.
 4. Before writing, list every date the plan sets and every date it clears,
-   including dates they set themselves. When they approve, write them, with
-   `set planned date` and `clear planned date`. Show the saved plan as Result
-   says.
+   including dates they set themselves. When they approve, write them. Show the
+   saved plan as Result says.
 
 ## Result
 
@@ -183,8 +182,8 @@ you're given" says. The estimate goes only on a task this run picked.
   user had already dated included, in day order, or the single line
   `planned: none`.
 - Both: `couldn't move: <id> (write failed)` for each write that still failed.
-- In chat: the saved plan, presented as the conventions' "Talking to the user
-  about tasks" says: each day in order with its tasks, the time and reason for
-  each task this run picked, and which days are paused, left open or had nothing
-  to plan. Name any write that failed.
+- In chat: the saved plan, worded by the "Talking to the user about tasks" rules
+  in `ntm-user:backend`: each day in order with its tasks, the time and reason
+  for each task this run picked, and which days are paused, left open or had
+  nothing to plan. Name any write that failed.
 - `Plan FAILED: <what failed>` when Setup or the pause check fails.

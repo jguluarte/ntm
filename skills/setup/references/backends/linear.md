@@ -26,10 +26,10 @@ tool does each operation and which of the user's values goes where.
   type: linear (1, 2, 3, 4, 5), exponential (1, 2, 4, 8, 16), Fibonacci (1, 2,
   3, 5, 8) or T-shirt sizes, stored as points (XS 1, S 2, M 3, L 5, XL 8). A
   team can extend its scale or allow zero. Times can't be stored. The connector
-  doesn't say which type a team uses; the user does. When Estimate pattern,
-  under Planning in the Settings document, gives a point for each estimate,
-  convert through it: the user's estimate to its point when writing, a point
-  back to their estimate when reading.
+  doesn't say which type a team uses; the user does. When `## How you work`, in
+  the task review log, gives a point for each of the user's estimates, convert
+  through it: the user's estimate to its point when writing, a point back to
+  their estimate when reading.
 
 Setup doesn't ask about estimates; the user's first review does. When they need
 help there, guide them: ask which estimate type their team uses (each one's
@@ -39,8 +39,8 @@ Estimates. If they still don't know, look at estimates already set:
 `estimate`, and suggest the type whose points fit (a 4 rules out Fibonacci and
 T-shirt, a 5 rules out exponential; Fibonacci and T-shirt store the same points,
 so ask which they see in Linear). When their scale isn't the team's, agree with
-them which of the team's points each of their estimates becomes, and add that to
-Estimate pattern.
+them which of the team's points each of their estimates becomes, and write that
+in the task review log under `## How you work`.
 
 ## Status classes
 
@@ -52,10 +52,9 @@ A task's class comes from `statusType`, Linear's own type for its status:
 - `canceled`: canceled.
 - `duplicate`: duplicate.
 
-One exception: a status named Blocked is the blocked class, whatever its type
-(Deviations can name another). Results carry `status` (the name) and
-`statusType`. `list_issues` and `save_issue` take either a type or a name in
-`state`.
+One exception: a status named Blocked is the blocked class, whatever its type.
+Results carry `status` (the name) and `statusType`. `list_issues` and
+`save_issue` take either a type or a name in `state`.
 
 ## Operations
 
@@ -116,9 +115,8 @@ Change nothing else on the issue.
 ### `set status`
 
 `save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
-type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked` (or
-the name Deviations gives). For a plannable status, pass its name;
-`list_issue_statuses` with `team` lists them.
+type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked`. For a
+plannable status, pass its name; `list_issue_statuses` with `team` lists them.
 
 ### `add labels` / `remove labels`
 

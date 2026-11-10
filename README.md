@@ -131,7 +131,7 @@ logic: most just name the skill they run. The reminder skills gather facts and
 hand them to an agent; agents own the procedures. In the skills, a name with a
 `$` in front, like $no-autoschedule, is a label you configure, written by its
 default name. ntm keeps its own records in databases on your todo list, each
-under a fixed title (Pauses, Message history and the others below). If you
+under a fixed title (Paused dates, Message history and the others below). If you
 rename one, say so under Deviations in your settings.
 
 ### `ntm:conventions`
@@ -172,7 +172,7 @@ each task's estimate when `/ntm:review-todo-list` reviews the todo list with
 you, guesses how long each task takes when tasks are planned, and explains the
 ways to estimate when you want to know. Ships with ntm.
 
-### Pauses database
+### Paused dates database
 
 The days when nothing gets planned automatically. Written by `/ntm:pause`.
 
@@ -184,7 +184,7 @@ What reminders have said, so they don't repeat themselves. Written by
 ### Task review log database
 
 How you like tasks written and estimated, learned while reviewing. Written by
-`/ntm:review-todo-list`.
+the estimator agent during reviews.
 
 ### Price watch stores database
 

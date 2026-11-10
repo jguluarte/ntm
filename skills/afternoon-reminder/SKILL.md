@@ -37,16 +37,16 @@ Load `ntm:today` and `ntm:pause`, and run `/ntm:today`.
 
 # 3: The message
 
-Ask the messenger agent, with the reminder, the job and the facts:
+Ask the messenger agent, with the type, the job and the facts:
 
 ```
-reminder: afternoon
+type: reminders.afternoon
 job: afternoon-reminder
 <the facts>
 ```
 
 It returns `Sent: <title>` (followed by `List:` lines when the push couldn't
-carry the list), a delivery block, or a `… FAILED` line.
+carry the list), a delivery block, `Not sent: <why>`, or a `… FAILED` line.
 
 # FINAL REPLY
 

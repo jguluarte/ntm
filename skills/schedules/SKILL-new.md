@@ -24,13 +24,15 @@ About you in the Settings document: every job runs in it.
 ## Usage
 
 ```
-/ntm:schedules [--setup "<schedules and model>"]
+/ntm:schedules [--setup "<schedules and model>"] [<what to change, in words>]
 ```
 
 With `--setup`, create the jobs the user agreed in setup, as From setup's
 handoff says. Otherwise, find their jobs among the scheduled tasks: the ones
 whose prompt loads an `ntm:` skill. With none, set them up with the user. With
 some, show them and ask what to change.
+
+With words, go straight to that change under Changing the jobs.
 
 ## The jobs
 
@@ -64,10 +66,13 @@ week
 2. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`.
    On `Fix-todo-list FAILED`, carry on.
 3. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
-4. Load `ntm:show-completed` and run `/ntm:show-completed <span>`.
-   On `Show-completed FAILED`, carry on with `done: unavailable`.
+4. Load `ntm:show-completed` and run
+   `/ntm:show-completed <span> and what's still open`.
+   On `Show-completed FAILED`, carry on with `done: unavailable`
+   and `open: unavailable`.
 5. Load `ntm:reminder` and run `/ntm:reminder --type week`, with
-   what the steps before it returned.
+   what the steps before it returned; step 4's Still open tasks
+   go as `open:`.
 
 price-watch
 2. Load `ntm:price-watch` and run `/ntm:price-watch`.
@@ -92,10 +97,11 @@ Timezone: <Timezone>.
    On `Ready-check FAILED`, end the run with what it returned.
 <the job's steps>
 Final reply: what the last step returned, as the Results rules in
-`ntm-user:backend` say, then any `couldn't move:` lines and what
-fix-todo-list cleared. Any other `FAILED` line ends the run with
-that line, unless its step says to carry on; never send it through
-`ntm-user:notify`. If a skill can't be loaded, end the run with:
+`ntm-user:backend` say, then any `couldn't move:` lines and
+fix-todo-list's lines, what it cleared and what it couldn't write.
+Any other `FAILED` line ends the run with that line, unless its step
+says to carry on; never send it through `ntm-user:notify`. If a
+skill can't be loaded, end the run with:
 `<Title> FAILED: <skill> couldn't be loaded; check ntm is enabled.`
 ```
 

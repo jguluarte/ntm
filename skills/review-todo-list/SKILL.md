@@ -1,13 +1,23 @@
 ---
 name: review-todo-list
 description: >-
-    Reviews the user's todo list with them in chat: closes obsolete or duplicate
+    Reviews the user's task list with them in chat: closes obsolete or duplicate
     tasks, then estimates unreviewed ones and breaks up big ones, with their
     approval. Run by the user in chat, never by a job ("let's review my list",
-    "review the kitchen project", "estimate the garage work").
+    "review my todo list", "review the kitchen project", "estimate the garage
+    work").
 ---
 
 # ntm:review-todo-list
+
+Reminders only help when they point at something the user could pick up. Review
+gets tasks there. Keep it light so the user keeps doing it: a short session is a
+good one, you bring proposals and they react, and their wording wins over yours.
+
+## Setup
+
+Load `ntm-user:backend` to read the user's conventions. If the task list can't
+be read or written, say what went wrong.
 
 ## Usage
 
@@ -15,159 +25,79 @@ description: >-
 /ntm:review-todo-list [<what to review, in words>]
 ```
 
-What to review is a project, part of one, or a few tasks; see What to review.
-Without it, the review proposes one.
+The user names a project, part of one, or a few tasks. Without one, propose one
+project with a one-line reason, such as how much of it has no estimate, and go
+once they agree. Tasks with no project are reviewed a group of similar ones at a
+time.
 
-## Before you start
+## Review
 
-Load `ntm-user:backend` to read the user's conventions. If the todo list can't
-be read or written, say what went wrong.
+Start by telling the user they can stop whenever they like, even mid-task: they
+just say so, and you save what's been decided.
 
-## Why review exists
+### 1. Health check. Merge duplicates, close obsolete tasks
 
-Daily reminders only help when they point at something the user could pick up.
-Reviewing gets tasks there, and it has to stay cheap enough that the user keeps
-doing it: if it turns into a process, they'll stop. When in doubt, take the
-lighter option:
+Read the titles of every open task in the review, and of projects that overlap
+it. Propose, as one numbered list, only the tasks to close as obsolete or done,
+to merge into a duplicate the user keeps (quoting anything only one of them
+says), or to move to another project or to none. A simple affirmation likely
+approves the list; the user can strike items by number. Save these changes
+before proceeding.
 
-- **A short session is a good session.** One project, or three items, is fine.
-  Stop the moment the user wants to, and never push for more.
-- **You bring proposals; the user reacts.** Never make them fill in fields, and
-  never hit them with a list of questions.
-- **Good enough is complete.** A task can be rough, or just a checklist, as long
-  as the user says it's adequate.
-- **The user drives the wording.** Your unvetted wording tends toward filler, so
-  propose enough, keep it short, and never expand their descriptions unless they
-  ask.
+### 2. Decide what to review
 
-## Setup
+Propose an order for the tasks with no estimate, plus any the user named:
+blockers before what they block. Read each one's blocked-by links. For a task in
+a blocked status with no blocked-by link, read its comments to find what it
+waits on. When a blocker is outside the review and has an obvious end state,
+assume it and say so; otherwise ask when you reach it. If many of these tasks
+wait on another project, offer to review that one first. The user adjusts the
+order, then you start.
 
-Find every open task, and each project with its summary.
+### 3. Estimate one task at a time
 
-A task is **unreviewed** when it's open and has no estimate.
+Start an estimator agent in the background at the first task, and send it every
+ask in this review. It sees nothing of this chat. If it isn't available, read
+`agents/estimator.md` from the newest installed `ntm` and follow it. **Use one
+estimator for this entire run, so they persist context**. When the estimator
+finishes the first one, give it the next two so they're ready for the user
+quickly. Keep it alive in case the user has more questions.
 
-## What to review
+Send it an Estimate request in hours, with the task as it stands, any end state
+you assumed, and anything the user said about size. Hold its answers until their
+task comes up.
 
-The user names what to review however they like: a project, part of one, a few
-tasks, or something already reviewed that they want to look at again. Take what
-they say.
+Present one task per message:
 
-If they don't name one, use what Setup fetched to propose one project, with a
-one-line reason such as how much is left unreviewed. Go once they agree.
+- its id, linked to its URL, and its title
+- the proposed estimate
+- the estimate already on the task, if any
+- a line on breaking it up, when the estimator says it isn't doable after work
+- the description as written
 
-Tasks with no project get grouped by likeness and reviewed a group at a time. A
-group can also be a reason to propose a project to file it under, even a new
-one.
+Rarely, when the task as written would be hard to start, propose up to two edits
+to its title or description, shown as the exact new text. A simple affirmation
+likely approves it all, asking to skip leaves it for another day, and anything
+else the user says changes it. When they correct an estimate, tell the estimator
+and ask again for the tasks it answered ahead.
 
-## 1. Overview
+When the user agrees to a task, save any approved edits and its estimate, as the
+last line of its description (`Estimate: 2 hours`), replacing any earlier one.
+Send the estimator a Log request with the final estimate and what the user said
+or changed, in the same turn you present the next task.
 
-Clear out what doesn't belong before looking at details. Look over every open
-task in this review by title, reading a description only where the title isn't
-enough. Also skim the titles in projects whose names or topics overlap with it,
-for tasks logged twice or filed in the wrong place.
+#### Breaking up big tasks
 
-Propose, as one numbered list, one short line each, only for tasks you'd change:
+When the estimator says a task isn't doable after work, or the user says it's
+too big, help the user break it up: suggest a few ways to split it. Not every
+task splits, but try. Use the user's pieces when they have them. Show the exact
+new titles and the original's reduced scope, and write only that. New tasks get
+the original's project and parent, and the later one is blocked by the earlier
+when order matters. They go to the end of the review order. Ask the estimator
+again for what's left of the original.
 
-- **Close as obsolete:** canceled, or done if it looks like it already happened.
-- **Duplicates:** identify all of the tasks that are ultimately duplicated, and
-  quote anything that appears only on a specific one. You can propose what to
-  do, but the user has the final say. On approval, do what they say and mark the
-  other(s) as duplicates of the one kept.
-- **Move:** to the project it belongs in, or to none.
+### 4. End
 
-A plain "ok" approves the whole list; the user can strike items by number. If
-nothing stands out, say so in one line and move on. Write what they approve as
-soon as they approve it.
-
-## 2. Order of operations
-
-Read each unreviewed task in this review, plus any reviewed ones the user named,
-with its blocked-by links. For a blocked task with no blocked-by link, check its
-comments for what it waits on.
-
-Propose an order to review them in, as a short list of ids and titles. Blockers
-come before what they block. When a task waits on something outside this review:
-
-- If the blocker has an obvious end state ("the desk is clear"), review the task
-  anyway, assuming that end state, and mention that when you present it.
-- Otherwise ask the user about it when you reach it.
-
-If much of this review waits on another project, say so and offer to start there
-instead. The user adjusts the order however they like, then you start.
-
-## 3. Task by task
-
-One estimator agent proposes every estimate in this review and keeps the task
-review log. Start it once, at the first task, in the background, and send every
-later ask to that same agent; don't start a new one. It sees nothing of this
-chat, only what you hand it. When the agent isn't available, read
-`agents/estimator.md` from the newest installed `ntm` and follow it.
-
-When it returns an `ask:` line, put the question to the user as it is and send
-their answer back. When they ask what the ways to estimate are, ask its Explain
-estimating request and pass its ways on.
-
-Ask its Estimate request for a size for the first task alone, so the first
-proposal comes fast. Wait for that answer only; never wait on an ask ahead
-before presenting the current task. Then keep it one or two tasks ahead of the
-user in the agreed order, so the next estimate is ready when they finish, and no
-further, so it's free when the user wants to talk the current task over. With
-each task, send it as it stands now, any blocker end state you're assuming, and
-anything the user said this session that bears on size.
-
-Its answers wait until their task comes up. Never interrupt the user with them,
-or mention them early.
-
-One item per message, in the agreed order:
-
-1. The id linked to its URL, and the title.
-2. Your proposed **estimate**, in the user's own terms, with a few words on why,
-   from the estimator. If the task already has one, say what it is.
-3. If the estimator says it doesn't fit a sitting, one line on whether it could
-   be broken up. Some things can't, and that's fine. Pieces come up in the talk
-   that follows (see Breaking up tasks).
-4. Usually no edits. Suggest one or two at most, only where the task would
-   otherwise be hard to start: a title that doesn't say what it is, or a blocker
-   that isn't linked. Show the exact new text, and write only what the user saw.
-5. The description, exactly as written.
-
-Make it one proposal: a plain "ok" approves all of it, and the user changes any
-part in their own words. They'll very likely want to talk most tasks through, so
-do that. "Skip" leaves the task unreviewed for another day.
-
-If it's broken up, the estimate is for what's left of the original.
-
-After a task is broken up, ask the estimator again for what's left of the
-original. After the user corrects an estimate, pass the correction along, ask
-again for any task it already answered ahead, and drop those early answers.
-
-Once a task is settled, in the same turn that presents the next one (or ends the
-session): write the settled estimate (and any approved title, description or
-blocked-by link), and send the estimator its Log request with its next ask: the
-settled estimate, and what the user said or changed. When the estimator gave a
-`points:` line, write the settled estimate as its point. Writes never make the
-user wait.
-
-## Breaking up tasks
-
-Sometimes a single task is too big to do all at the same time. Or sometimes the
-user just wants to tease things apart so they can do it in smaller pieces.
-
-- The user may bring their own ideas for how to split a task. When they do, use
-  their pieces, and only point out a piece they seem to have left out. When they
-  don't, propose the pieces yourself.
-- Split pieces off as new tasks, and leave the original with its reduced scope.
-  Show the exact text for the original's reduced scope and each new title, and
-  write only that: the original, then the new tasks as the next bullet says. New
-  tasks get the original's project and parent. When the order matters, the later
-  task is blocked by the earlier one. Don't default to sub-tasks.
-- Create each new task as `ntm-user:backend`'s rules for creating tasks say.
-  They join the end of the review order un-estimated, unless the user asks to do
-  them next.
-
-## Ending
-
-When the user stops, or this review is done, send the estimator its Log request
-with anything not yet logged, and wait for its `logged:` lines so the log is
-saved before the session can close. Then sum up in a line or two: how many items
-were reviewed, closed and broken up, and what's still unreviewed in it.
+When the user stops, however abruptly, or the review is done, send the estimator
+a Log request for anything not yet logged. Sum up in a line or two: how many
+tasks were reviewed, closed and broken up, and what's left without an estimate.

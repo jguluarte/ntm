@@ -31,5 +31,4 @@ only.
 
 ### `/ntm:fix-task-list`
 
-Clears planned dates that have already passed, so old plans don't pile up on
-your task list. A weekly job runs it, or you can.
+Clears dates on previously planned tasks that didn't finish.

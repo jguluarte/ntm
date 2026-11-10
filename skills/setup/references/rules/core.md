@@ -20,7 +20,8 @@ these rules without that weight.
 
 ### Task list
 
-The place that holds every task: `<List name>`.
+The place that holds every task: `<List name>`, with `<List id>` where the
+backend needs it.
 
 ### Backend
 
@@ -61,10 +62,6 @@ A scheduled run, what the Claude app calls a scheduled task. Never "trigger",
 "routine" or "cron job" when talking to the user.
 
 ## Workspace
-
-### Todo list
-
-`<List name>`, with `<List id>` where the backend needs it.
 
 ### Task URLs
 

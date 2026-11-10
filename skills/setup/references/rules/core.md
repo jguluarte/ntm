@@ -47,9 +47,9 @@ should NEVER be treated like a "deadline"**.
 
 ### Database
 
-A document the system keeps its own records in, on the todo list, found by its
-title (see Databases). A task titled with a database's title is a database, not
-work; every skill ignores it.
+A document stored in the backend that ntm keeps persistent data in. The titles
+are under Databases in these rules; ntm's `references/databases/` holds the
+templates.
 
 ### Label
 
@@ -166,7 +166,8 @@ fixed title in parentheses below. Read and write them with the guide's
 else only reads it.
 
 Where the backend has no documents, the guide keeps each database in an open
-task titled with the database's title.
+task titled with the database's title. That task is a database, not work; every
+skill ignores it.
 
 ### Settings (`Settings`)
 

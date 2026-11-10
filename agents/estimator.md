@@ -78,7 +78,6 @@ Besides the tasks, the skill may send:
 | ------------------ | --------------------------------------------------------------- |
 | blocker end state  | per task, how the skill assumes the thing it waits on turns out |
 | what the user said | anything they said that bears on size                           |
-| final estimates    | the estimates the user decided since the skill started you      |
 
 ### 1. Propose an estimate for each task
 

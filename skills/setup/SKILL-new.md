@@ -29,15 +29,6 @@ install and a self-test.
 If `ntm-user:backend` loads, the user is already set up. Say in a line that
 `/ntm:update` is how they change their setup, and stop.
 
-### Load references
-
-Load all files under this skill's `references/rules` folder. They document
-patterns and expectations ntm uses and depends on.
-
-The database templates are in ntm's `references/databases/`. Their `<!-- -->`
-comments are for you, never the user: a database created from one leaves them
-out.
-
 ## The steps
 
 These steps are sequential, however numbers are omitted as to make it easier to

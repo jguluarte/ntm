@@ -1,10 +1,12 @@
 # Core rules
 
 The rules every user's `ntm-user:backend` carries, whatever features they
-picked. The build copies everything below this paragraph into it as written,
-with `<List name>` and `<List id>` filled in, and `<Labels>` replaced by one
-line per system label of the user's features: its default name and its real
-name, from Labels in the Settings document.
+picked. The build copies `terminology.md` into it first, with `<List name>` and
+`<List id>` filled in, leaving out its Task management terms when the user
+didn't pick that feature. Then it copies everything below this paragraph as
+written, with `<Labels>` replaced by one line per system label of the user's
+features: its default name and its real name, from Labels in the Settings
+document.
 
 The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
@@ -15,31 +17,6 @@ when it's needed; a missing heading or line means its default.
 The todo list is one person's, not a team's: priority is mostly unused, and a
 fixed deadline is rare. The words here come from tools built for companies; read
 these rules without that weight.
-
-## Vocabulary
-
-- **Todo list:** the place that holds every task: `<List name>`.
-- **Backend:** the system behind the todo list.
-- **Guide:** how each operation is done on this backend: the calls
-  `ntm-user:backend` gives with these rules.
-- **Task:** one thing on the todo list, shown the backend's own way. Its id is
-  whatever the backend gives it, such as `ABC-12`.
-- **Project:** a named group of tasks, whatever the backend calls it. Projects
-  carry labels their tasks inherit.
-- **Planned date:** the task's one date field, the day the work is planned for.
-- **Database:** a document the system keeps its own records in, on the todo
-  list, found by its title (see Databases). A task titled with a database's
-  title is a database, not work; every skill ignores it.
-- **Label:** a tag on a task or project.
-- **Job:** a scheduled run, what the Claude app calls a scheduled task. Never
-  "trigger", "routine" or "cron job" when talking to the user.
-
-## Workspace
-
-- **Todo list:** `<List name>`, with `<List id>` where the backend needs it.
-- **Task URLs:** use the task's own `url` field, one of the standard fields.
-- **Whose tasks:** every task on the list is the user's; don't filter by
-  assignee unless asked.
 
 ## Chat, jobs and agents
 
@@ -76,19 +53,32 @@ backend as the guide says.
 
 ### Status classes
 
-- **plannable**: open work, usually a backlog, a to-do and an in-progress
-  status. The in-progress kind is **started**: work has begun.
-- **blocked**: the user has put the task in the blocked status because they
-  can't move it forward right now. What's in the way is an open blocking task
-  linked to it, a reason described in its comments, or both. A blocked-by
-  relation alone doesn't make a task blocked. The class is empty when the todo
-  list has no such status.
-- **done**: finished.
-- **canceled**: closed without being done.
-- **duplicate**: ignore it everywhere; the original task is what counts.
-
 Nothing outside the plannable class is ever planned. An open task is any task
 that isn't done, canceled or duplicate, so a blocked task is still open.
+
+#### Plannable
+
+Open work, usually a backlog, a to-do and an in-progress status. The in-progress
+kind is **started**: work has begun.
+
+#### Blocked
+
+The user has put the task in the blocked status because they can't move it
+forward right now. What's in the way is an open blocking task linked to it, a
+reason described in its comments, or both. A blocked-by relation alone doesn't
+make a task blocked. The class is empty when the todo list has no such status.
+
+#### Done
+
+Finished.
+
+#### Canceled
+
+Closed without being done.
+
+#### Duplicate
+
+Ignore it everywhere; the original task is what counts.
 
 ### System labels
 
@@ -119,16 +109,29 @@ fixed title in parentheses below. Read and write them with the guide's
 `read database` / `write database`. Each database has one writer; everything
 else only reads it.
 
-- **settings** (`Settings`): the values the user set up, under fixed headings,
-  read by heading. Setup creates it.
-- **message history** (`Message history`): what reminders have said. `ntm:style`
-  keeps it. Its frontmatter holds a `Keep:` line saying how much history to
-  keep; the user changes it there.
-- **message rules** (`Message rules`): what each reminder's message says. Setup
-  creates it from ntm's template; the user changes it there.
-
 Where the backend has no documents, the guide keeps each database in an open
-task titled with the database's title.
+task titled with the database's title. That task is a database, not work; every
+skill ignores it.
+
+### Settings (`Settings`)
+
+The values the user set up, under fixed headings, read by heading. Setup creates
+it.
+
+### Message history (`Message history`)
+
+What reminders have said. `ntm:style` keeps it. Its frontmatter holds a `Keep:`
+line saying how much history to keep; the user changes it there.
+
+### Message rules (`Message rules`)
+
+What each reminder's message says. Setup creates it from ntm's template; the
+user changes it there.
+
+### Style (`Style`)
+
+The user's persona, which `ntm:style` reads before each message. `ntm:style`
+keeps it. Setup creates it from ntm's template.
 
 ## Fetching
 
@@ -138,9 +141,14 @@ project, parent id, completed at, updated at. It also lists every project with
 its name and labels, so inherited labels count (see Project labels), and its
 summary when a skill asks for it.
 
-- **Every open task** (anything that needs the whole open todo list):
-  `fetch open`, which includes blocked tasks, with nothing dropped.
-- **Looking back:** the guide's `fetch closed`.
+### Every open task
+
+For anything that needs the whole open todo list: `fetch open`, which includes
+blocked tasks, with nothing dropped.
+
+### Looking back
+
+The guide's `fetch closed`.
 
 ## Dates
 

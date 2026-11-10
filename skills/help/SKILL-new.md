@@ -9,8 +9,7 @@ description: >-
 
 # ntm:help
 
-Answers the user's questions about ntm from its README, the one text about what
-ntm is and how to use it.
+Answers the user's questions about ntm from its README.
 
 ## Setup
 
@@ -27,7 +26,7 @@ With nothing after it, give the README's opening paragraph and its First steps.
 ## Answering
 
 Answer from the part of the README that covers the question, in a few sentences
-of prose, never the whole file.
+of prose.
 
 When the README doesn't answer it, say so, and name the skill in its Skills list
-that covers it.
+that covers it, if one does.

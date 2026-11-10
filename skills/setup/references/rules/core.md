@@ -128,6 +128,11 @@ line saying how much history to keep; the user changes it there.
 What each reminder's message says. Setup creates it from ntm's template; the
 user changes it there.
 
+### Style (`Style`)
+
+The user's persona, which `ntm:style` reads before each message. `ntm:style`
+keeps it. Setup creates it from ntm's template.
+
 ## Fetching
 
 The guide's `fetch open` returns every open task with the standard fields: id,

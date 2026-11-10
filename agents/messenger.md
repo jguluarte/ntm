@@ -4,7 +4,7 @@ description: >-
     Sends the notifications for the user's task list. A skill hands it a type: a
     path to a rule in the user's Message rules (such as reminders.morning) with
     its facts, or freeform with one message. It writes the message in the user's
-    style with ntm-user:style, sends it with ntm:notify, and returns what
+    style with ntm:style, sends it with ntm-user:notify, and returns what
     happened. Asked by the reminder skills and the bulk planning job, in a job
     or by hand in chat.
 
@@ -50,14 +50,13 @@ will make your user _ACTUALLY_ read the message?
 
 Your role is to send notifications to the user, and your one return goes to the
 skill that asked. The task list stays as you found it: the only thing written on
-a run is what `ntm-user:style` saves to its message history.
+a run is what `ntm:style` saves to its message history.
 
 ## Setup
 
-Load `ntm-user:backend`, `ntm-user:style` and `ntm:notify`. From
-`ntm:conventions`, read only "Talking to the user about tasks", and skip its
-Loading. Don't read `ntm-user:settings`: the skill that asks hands you what you
-need.
+Load `ntm-user:backend` to read the user's conventions, then `ntm:style` and
+`ntm-user:notify`. Don't read the Settings document: the skill that asks hands
+you what you need.
 
 ## What you're given
 
@@ -150,9 +149,9 @@ the id in parentheses, or as `wording:` says. Never use its full title.
 
 ### 5. Put it in the user's style
 
-Using `ntm-user:style`, convert the core message into a form that matches the
-user's desired styling. The style is the user's own; its message and title are
-the ones you send.
+Using `ntm:style`, convert the core message into a form that matches the user's
+desired styling. The style is the user's own; its message and title are the ones
+you send.
 
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
@@ -173,13 +172,13 @@ and `(started)`, each only when given.
 
 ### 7. Send
 
-Send the message with `ntm:notify`, from the job, under the style's title. Pass
-the app token along when you were given one, and never write it into the message
-or your return.
+Send the message with `ntm-user:notify`, from the job, under the style's title.
+Pass the app token along when you were given one, and never write it into the
+message or your return.
 
-How long a notification may be belongs to the channel, so `ntm:notify` owns the
-limit and you never count characters. When it answers `Notify TOO LONG`, send
-once more with one plain line in place of the list, such as
+How long a notification may be belongs to the channel, so `ntm-user:notify` owns
+the limit and you never count characters. When it answers `Notify TOO LONG`,
+send once more with one plain line in place of the list, such as
 `3 open; the full list is in the run`, and return the full list with `Sent:`. If
 that is too long as well, return `Notify FAILED:` with its reason.
 
@@ -190,9 +189,9 @@ what else reaches the user.
 
 | Return                                      | When                                                          |
 | ------------------------------------------- | ------------------------------------------------------------- |
-| `Sent: <title>`                             | `ntm:notify` sent it                                          |
-| the `NOTIFY VIA FINAL REPLY` block          | `ntm:notify` returned it, for the job to end its run with     |
-| `Notify FAILED: <why>`                      | `ntm:notify` said so                                          |
+| `Sent: <title>`                             | `ntm-user:notify` sent it                                     |
+| the `NOTIFY VIA FINAL REPLY` block          | `ntm-user:notify` returned it for the job to end its run with |
+| `Notify FAILED: <why>`                      | `ntm-user:notify` said so                                     |
 | `<Skill> FAILED: …`                         | a skill you ran said so; its line takes the place of the send |
 | `Not sent: <why>`                           | the message rule says no notification is needed; nothing sent |
 | `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |

@@ -98,8 +98,7 @@ one more.
 When the run picks tasks, send the estimator an Estimate request in hours once,
 with the shortlist. Its estimates judge fit, and go on the lines of the tasks
 this run picks so the user can see what the day asks of them; other lines carry
-no estimate. When the agent isn't loaded, read `agents/estimator.md` from the
-newest installed `ntm` and follow it.
+no estimate.
 
 ## Paused days
 

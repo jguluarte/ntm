@@ -4,7 +4,7 @@ description: >-
     Sends the notifications for the user's task list. A skill hands it a type: a
     path to a rule in the user's Message rules (such as reminders.morning) with
     its facts, or freeform with one message. It writes the message in the user's
-    style with ntm-user:style, sends it with ntm:notify, and returns what
+    style with ntm:style, sends it with ntm-user:notify, and returns what
     happened. Asked by the reminder skills and the bulk planning job, in a job
     or by hand in chat.
 
@@ -50,14 +50,13 @@ will make your user _ACTUALLY_ read the message?
 
 Your role is to send notifications to the user, and your one return goes to the
 skill that asked. The task list stays as you found it: the only thing written on
-a run is what `ntm-user:style` saves to its message history.
+a run is what `ntm:style` saves to its message history.
 
 ## Setup
 
-Load `ntm-user:backend`, `ntm-user:style` and `ntm:notify`. From
-`ntm:conventions`, read only "Talking to the user about tasks", and skip its
-Loading. Don't read `ntm-user:settings`: the skill that asks hands you what you
-need.
+Load `ntm-user:backend` to read the user's conventions, then `ntm:style` and
+`ntm-user:notify`. Only read the Settings document if you weren't handed what
+you need.
 
 ## What you're given
 
@@ -68,13 +67,11 @@ Usage:
     type: freeform
     job: <skill>
     message: <line>
-    [wording: <rule>]
     [app token: <token>]
 
     type: <rule path>
     job: <skill>
     <fact>: <value>...
-    [wording: <rule>]
     [app token: <token>]
 
 Inputs:
@@ -83,9 +80,8 @@ Inputs:
     job:        the name of the skill the message is for, such as
                 morning-reminder
     message:    for freeform, its one fact: a line of plain text
-    <fact>:     for a rule, each line its Fact table names; none counts
-    wording:    the user's own rule for wording or linking tasks, from
-                settings; it wins over the conventions
+    <fact>:     for a rule, each line its Fact table names; a fact given
+                as none still counts as given
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
@@ -118,7 +114,8 @@ today: Clear the garage shelf ([ABC-9](<url>), ~1 hour) (was 2026-11-03)
 
 ### 1. Check what you were given
 
-If a required input is missing, send nothing and return `Messenger NEEDS:`.
+If `type`, `job` or, for freeform, `message` is missing, send nothing and return
+`Messenger NEEDS:`.
 
 ### 2. Read the Message rules
 
@@ -126,7 +123,8 @@ Read the user's `Message rules` database with `read database`. Find the rule at
 your `type`'s path under Types, such as Types > Reminders > Morning for
 `reminders.morning`, and follow it: the facts, what the sentences say and what
 the list holds. If the rule is missing, use the template's, at the same path in
-`references/databases/message-rules.md` in the newest installed `ntm`.
+`references/databases/message-rules.md` in the newest installed `ntm`. If a fact
+its Fact table names is missing, send nothing and return `Messenger NEEDS:`.
 
 `freeform` has no rule: its core message is the `message:` line, and it has no
 list.
@@ -141,18 +139,18 @@ your caller why with `Not sent:`.
 ### 4. Draft the core message
 
 Describe in plain English what to send, as the message rule says. If the `type`
-has additional context in the user's database, include that as required.
+has additional context in `Message rules`, include that as required.
 
 Stick to facts and context, the next step is to rephrase things to ensure the
-user will see the appropriate words. Carry task ids, titles, dates, counts and
-names as given. Word a task as the conventions say, in a few natural words with
-the id in parentheses, or as `wording:` says. Never use its full title.
+user will see the appropriate words. Carry task ids, dates, counts and names as
+given. Word each task briefly, as the conventions say: a few natural words with
+the id in parentheses, never the task's full title.
 
 ### 5. Put it in the user's style
 
-Using `ntm-user:style`, convert the core message into a form that matches the
-user's desired styling. The style is the user's own; its message and title are
-the ones you send.
+Using `ntm:style`, convert the core message into a form that matches the user's
+desired styling. The style is the user's own; its message and title are the ones
+you send.
 
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
@@ -160,9 +158,9 @@ same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer, because the style tracks tasks by the
 ids it's given.
 
-Follow any and all additional guidelines in the user's message database for this
-message type. It may have suggestions on relational styling from adjacent
-messages, or tone suggestions.
+Follow any and all additional guidelines in `Message rules` for this message
+type. It may have suggestions on relational styling from adjacent messages, or
+tone suggestions.
 
 ### 6. Add the list
 
@@ -173,13 +171,13 @@ and `(started)`, each only when given.
 
 ### 7. Send
 
-Send the message with `ntm:notify`, from the job, under the style's title. Pass
-the app token along when you were given one, and never write it into the message
-or your return.
+Send the message with `ntm-user:notify`, from the job, under the style's title.
+Pass the app token along when you were given one, and never write it into the
+message or your return.
 
-How long a notification may be belongs to the channel, so `ntm:notify` owns the
-limit and you never count characters. When it answers `Notify TOO LONG`, send
-once more with one plain line in place of the list, such as
+How long a notification may be belongs to the channel, so `ntm-user:notify` owns
+the limit and you never count characters. When it answers `Notify TOO LONG`,
+send once more with one plain line in place of the list, such as
 `3 open; the full list is in the run`, and return the full list with `Sent:`. If
 that is too long as well, return `Notify FAILED:` with its reason.
 
@@ -190,16 +188,17 @@ what else reaches the user.
 
 | Return                                      | When                                                          |
 | ------------------------------------------- | ------------------------------------------------------------- |
-| `Sent: <title>`                             | `ntm:notify` sent it                                          |
-| the `NOTIFY VIA FINAL REPLY` block          | `ntm:notify` returned it, for the job to end its run with     |
-| `Notify FAILED: <why>`                      | `ntm:notify` said so                                          |
+| `Sent: <title>`                             | `ntm-user:notify` sent it                                     |
+| the `NOTIFY VIA FINAL REPLY` block          | `ntm-user:notify` returned it for the job to end its run with |
+| `Notify FAILED: <why>`                      | `ntm-user:notify` said so                                     |
 | `<Skill> FAILED: …`                         | a skill you ran said so; its line takes the place of the send |
 | `Not sent: <why>`                           | the message rule says no notification is needed; nothing sent |
 | `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |
 | `Messenger FAILED: <why>`                   | you couldn't finish for any other reason                      |
 
-When the push carried no list, `Sent:` is followed by `List:` on the next line,
-then the full list, one task per line as the list would have read.
+After step 7's "too-long fallback" (and only then), `Sent:` is followed by
+`List:` on the next line, then the full list, one task per line as the list
+would have read.
 
 The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the full
 message with its list. Pass it on word for word.

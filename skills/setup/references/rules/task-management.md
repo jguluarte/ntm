@@ -1,26 +1,5 @@
 # Task management rules
 
-## Vocabulary
-
-### Planner
-
-A skill that picks tasks and sets their planned dates, such as `ntm:plan`.
-
-### Started
-
-A plannable status that means work has begun (see Status classes). Jobs give
-credit for it.
-
-### Pause
-
-A day or range when nothing gets planned automatically. Work the user dated
-themselves still gets its reminders. Kept in the pauses database.
-
-### Estimate
-
-How big a task is; the estimator agent (`agents/estimator.md`) says what it
-means.
-
 ## System labels
 
 ### $no-autoschedule

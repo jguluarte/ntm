@@ -1,10 +1,12 @@
 # Core rules
 
 The rules every user's `ntm-user:backend` carries, whatever features they
-picked. The build copies everything below this paragraph into it as written,
-with `<List name>` and `<List id>` filled in, and `<Labels>` replaced by one
-line per system label of the user's features: its default name and its real
-name, from Labels in the Settings document.
+picked. The build copies `terminology.md` into it first, with `<List name>` and
+`<List id>` filled in, leaving out its Task management terms when the user
+didn't pick that feature. Then it copies everything below this paragraph as
+written, with `<Labels>` replaced by one line per system label of the user's
+features: its default name and its real name, from Labels in the Settings
+document.
 
 The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
@@ -15,51 +17,6 @@ when it's needed; a missing heading or line means its default.
 The todo list is one person's, not a team's: priority is mostly unused, and a
 fixed deadline is rare. The words here come from tools built for companies; read
 these rules without that weight.
-
-## Vocabulary
-
-### Backend
-
-The system behind the task list.
-
-### Database
-
-A document stored in the backend that ntm keeps persistent data in. The titles
-are under Databases in these rules; ntm's `references/databases/` holds the
-templates.
-
-### Guide
-
-How each operation is done on this backend: the calls `ntm-user:backend` gives
-with these rules.
-
-### Job
-
-A scheduled run, what the Claude app calls a scheduled task. Never "trigger",
-"routine" or "cron job" when talking to the user.
-
-### Label
-
-A tag on a task or project.
-
-### Planned date
-
-The task's one date field, the day the work is planned for. **A planned date
-should NEVER be treated like a "deadline"**.
-
-### Project
-
-A collection of tasks. Projects can have labels which also apply to its tasks.
-
-### Task
-
-One thing on the todo list, shown the backend's own way. Its id is whatever the
-backend gives it, such as `ABC-12`.
-
-### Task list
-
-The place that holds every task: `<List name>`, with `<List id>` where the
-backend needs it.
 
 ## Chat, jobs and agents
 

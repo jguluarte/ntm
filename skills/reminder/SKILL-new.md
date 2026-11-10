@@ -22,14 +22,13 @@ Load `ntm-user:backend` to read the user's conventions.
 /ntm:reminder --type <morning|afternoon|evening>
 ```
 
-The morning job hands over the `today:` lines `/ntm:plan --auto day` returned.
-
 ## Steps
 
 ### 1. Gather the facts
 
-When the job hands over `today:` lines, they're the facts, as written,
-`(was <date>)` and `(started)` included.
+When the morning job hands over the `today:` lines `/ntm:plan --auto day`
+returned, they're the facts, as written, `(was <date>)` and `(started)`
+included.
 
 Otherwise, find the type's tasks. If the task list can't be read, return
 `Reminder FAILED: <why>`.
@@ -41,9 +40,14 @@ Otherwise, find the type's tasks. If the task list can't be read, return
 | evening   | `done:`  | task done today             |
 | evening   | `open:`  | open task planned for today |
 
-Write each task as a task line, as the messenger agent's "What you're given"
-says, without its estimate. A fact with no tasks is the single line
-`<fact>: none`, such as `open: none`.
+Write each task as one line, with `(started)` when work on it has begun:
+
+```
+<fact>: <title> ([<id>](<url>)) (started)
+```
+
+A fact with no tasks is the single line `<fact>: none`, such as `open: none`. No
+line carries an estimate: drop the `, ~<time>` from a handed-over one.
 
 ### 2. Hand them to the messenger
 

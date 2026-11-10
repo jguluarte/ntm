@@ -16,12 +16,11 @@ Load `ntm-user:backend` to read the user's conventions.
 ## Usage
 
 ```
-/ntm:show-completed <span in words> [<what else, in words>] [--notify]
+/ntm:show-completed [<span in words>] [<what else, in words>] [--notify]
 ```
 
-The span is a run of days ending today, today included: `today` is one day,
-`last week` is seven, and `last month` is as many as last month had.
-`since Oct 1` starts on that day. Without a span, ask the user for one.
+The span is a run of days ending today, read the way a person would, such as
+`today`, `last week` or `since Oct 1`. Without one, it's `last week`.
 
 The words can ask for more:
 
@@ -38,28 +37,33 @@ The words can ask for more:
 
 ### 1. Find the tasks
 
-Find every task done in the span, price watch buys included, and whatever else
-the words ask for. If the task list can't be read, return
-`Show-completed FAILED: <what went wrong>`.
+Find every task done in the span, and whatever else the words ask for. If the
+task list can't be read, return `Show-completed FAILED: <what went wrong>`.
 
 ### 2. Return the result
 
-Return plain text, one task per line as `<id> <title> <url> <date>`: the day it
-closed, or for a still open task, its planned date.
+In chat, tell the user what got done, and whatever else the words asked for, in
+plain words, as the conventions' "Talking to the user about tasks" says.
 
-| Line                                          | Holds                                                                                     |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `<first day> to <last day>`                   | the span, then the scope when the words narrow it                                         |
-| `Done (<count>):`                             | the done tasks, oldest first, a sub-task indented under its parent when that's listed too |
-| `Canceled (<count>):`, `Duplicate (<count>):` | when asked for, written like Done                                                         |
-| `Still open (<count>):`                       | when asked for                                                                            |
+For a job, return the span, with the scope after it when the words narrow it,
+then a task line per task, oldest first, as the messenger agent's "What you're
+given" says, with no estimate. A still open task planned before today gets
+`(was <date>)`.
 
-A section with no tasks is one line, such as `Done: none`.
+```
+span: 2026-11-04 to 2026-11-10, the garage
+done: Order storage boxes ([ABC-12](<url>))
+canceled: none
+duplicate: Buy shelf brackets ([ABC-14](<url>))
+open: Clear the garage shelf ([ABC-9](<url>)) (was 2026-11-06)
+```
+
+`done:` lines always come, the others only when the words ask for them. A key
+with no tasks is one line, such as `canceled: none`.
 
 ### 3. Send it, with --notify
 
-Ask the messenger agent, with the span and one `done:` line per done task,
-written like the one below, or `done: none`:
+Ask the messenger agent, with the result's `span:` and `done:` lines:
 
 ```
 type: reminders.completed

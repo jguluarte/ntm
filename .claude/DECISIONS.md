@@ -258,7 +258,6 @@ Not handled by the plugin yet.
 
 - An imported persona may carry its own history instructions and double-write
   the message history database. Watch real runs.
-- The accept card for `ntm-user.plugin` in chat is untested.
 - Installing through Chrome: `file_upload` rejects `/mnt/user-data/outputs/`; a
   path under the working directory works.
 

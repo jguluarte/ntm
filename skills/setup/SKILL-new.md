@@ -149,8 +149,8 @@ Run /ntm:self-test. If it passes, run
 /ntm:schedules --setup "<schedules and model>"
 ```
 
-`<schedules and model>` holds each picked feature's schedule and the jobs'
-model, in their words.
+`<schedules and model>` holds the schedule of each feature picked in this run
+and the jobs' model, in their words.
 
 ### 10. The end
 
@@ -162,7 +162,8 @@ their phone. Tell them so, in a line meant to make them smile.
 Say in a line what the Built line in `ntm-user:backend` names: the versions,
 backend, channel and features. Offer each feature they haven't picked, then ask
 what else to change: the task list, a label's name, the channel or the Pushover
-keys. Walk those steps, then steps 8 and 9.
+keys. Walk those steps, step 6 too when they pick a feature, then steps 8 and 9.
+With no feature picked, step 9 hands off with `Run /ntm:self-test.` alone.
 
 Their persona, settings and jobs change without a build, with `/ntm:style`,
 `/ntm:settings` and `/ntm:schedules`.

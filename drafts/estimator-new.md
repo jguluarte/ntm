@@ -44,7 +44,7 @@ leaving the rest as it was. An Estimate request for a time needs none of this.
 
 ## What an estimate is
 
-How big a task is, in hours (unless otherwise noted in user settings). When the
+How big a task is, in hours (unless the user's Settings say otherwise). When the
 user chooses a way, record it in their words in the log's Estimating notes
 before you answer.
 

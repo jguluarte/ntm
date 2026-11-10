@@ -4,7 +4,7 @@ description: >-
     The days when nothing gets planned automatically on the user's todo list.
     See or change them with the user in chat ("pause Friday", "unpause next
     week", "show my pauses"), or check whether days are paused. Run by the user,
-    and with --check by ntm:plan.
+    and loaded by ntm:plan.
 ---
 
 # ntm:pause
@@ -24,14 +24,10 @@ its pauses are written and kept. Follow them whenever you save it.
 ```
 Usage:
     /ntm:pause [<what to see or change>]
-    /ntm:pause --check [<first day>] [--until <last day>]
 
 Inputs:
     <what to see or change>  in the user's words, such as "pause Friday",
                              "unpause next week" or "show my pauses"
-    <first day>              the first day to check; today by default
-    --until <last day>       the last day to check; the first day by
-                             default
 ```
 
 With nothing after it, show the user their pauses and ask what they'd like to
@@ -62,19 +58,10 @@ chat section says.
 
 ## Checking days
 
-With `--check`, find whether a pause covers each day from the first day to the
-last, both included. A check only reads the database.
+A day is paused when a pause in the database covers it, a range covering both
+its first and last days. A check only reads the database.
 
 ## Result
 
-With `--check`, one line per day, in order, and nothing else: `true` when the
-day is paused, `false` when it can be planned automatically.
-
-```
-2026-11-13: true
-2026-11-14: false
-```
-
-Otherwise, the pauses, shown to the user.
-
-If the `Paused dates` database can't be read, return `Pause FAILED: <why>`.
+The pauses, shown to the user. If the `Paused dates` database can't be read, say
+what went wrong instead.

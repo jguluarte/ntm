@@ -18,13 +18,13 @@ these rules without that weight.
 
 ## Vocabulary
 
-### Todo list
+### Task list
 
 The place that holds every task: `<List name>`.
 
 ### Backend
 
-The system behind the todo list.
+The system behind the task list.
 
 ### Guide
 
@@ -38,12 +38,12 @@ backend gives it, such as `ABC-12`.
 
 ### Project
 
-A named group of tasks, whatever the backend calls it. Projects carry labels
-their tasks inherit.
+A collection of tasks. Projects can have labels which also apply to its tasks.
 
 ### Planned date
 
-The task's one date field, the day the work is planned for.
+The task's one date field, the day the work is planned for. **A planned date
+should NEVER be treated like a "deadline"**.
 
 ### Database
 

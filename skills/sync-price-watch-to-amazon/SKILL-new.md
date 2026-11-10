@@ -47,7 +47,7 @@ on a product page. These steps work on Amazon's site today:
 | To               | Do                                                                                   |
 | ---------------- | ------------------------------------------------------------------------------------ |
 | open the panel   | click "Price history" next to the price; the panel opens on the left with a text box |
-| set an alert     | type `Set a price alert for <price>` in the box, with step 3's price                 |
+| set an alert     | type `Set a price alert for <price>` in the box, with the alert price                |
 | check an alert   | ask "Do I have a price alert on this item? What's its target?"                       |
 | list every alert | ask "Manage price alerts", or click the button with that name                        |
 | remove an alert  | ask the panel to delete the price alert for this item                                |
@@ -64,14 +64,15 @@ switch to another price tracker.
 
 ### 1. Find what's out of step
 
-Find every watched task, and every closed task with the $has-amazon-alert label,
-canceled and duplicate included.
+The watched tasks are the open tasks with the $price-watch label. Find every
+one, and every closed task with the $has-amazon-alert label, canceled and
+duplicate included.
 
-| Task                               | Needs                                       |
-| ---------------------------------- | ------------------------------------------- |
-| watched, with neither Amazon label | an alert (steps 2 and 3)                    |
-| watched, with either Amazon label  | nothing                                     |
-| closed, with $has-amazon-alert     | its alert removed (step 4); it's still live |
+| Task                                                            | Needs                                       |
+| --------------------------------------------------------------- | ------------------------------------------- |
+| watched, with neither $has-amazon-alert nor $amazon-unavailable | an alert (steps 2 and 3)                    |
+| watched, with $has-amazon-alert or $amazon-unavailable          | nothing                                     |
+| closed, with $has-amazon-alert                                  | its alert removed (step 4); it's still live |
 
 Tell the user in one short message what you're about to do, such as "Setting
 Amazon alerts for 3 items, removing 1." With nothing to do, say "Amazon alerts
@@ -95,22 +96,20 @@ When it isn't on Amazon in that condition, or the user says so, add the
 $amazon-unavailable label and comment, then go to the next task:
 
 ```
-Amazon alert: not on Amazon, checked YYYY-MM-DD. <a line on what you found>
+Amazon alert: not on Amazon, checked <today>. <a line on what you found>
 ```
 
 ### 3. Set the alert
 
 The alert price, per unit, is the task's acceptable price when it names one;
-otherwise the target price plus about 10 to 15%, rounded to a sensible figure.
-Set the alert, and check it shows in Amazon's list of alerts. Then add the
-$has-amazon-alert label and comment:
+otherwise the target price plus 10%. Set the alert, and check it shows in
+Amazon's list of alerts. Then add the $has-amazon-alert label and comment:
 
 ```
-Amazon alert: alert at <price>, set YYYY-MM-DD. ASIN <asin>, <product link>.
+Amazon alert: alert at <price>, set <today>. ASIN <asin>, <product link>.
 ```
 
-When an alert can't be set for a reason the user could fix, leave the task as it
-is and give the reason in the result.
+When an alert can't be set, leave the task and report it as skipped.
 
 ### 4. Remove the closed tasks' alerts
 
@@ -119,10 +118,8 @@ ASIN in the task's latest `Amazon alert:` comment, remove it, and check it's
 gone from Amazon's list. Then remove the label and comment:
 
 ```
-Amazon alert: alert removed YYYY-MM-DD.
+Amazon alert: alert removed <today>.
 ```
-
-When the alert was already gone, remove the label and say so in the comment.
 
 ## Result
 

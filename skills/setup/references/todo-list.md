@@ -32,8 +32,8 @@ backend).
    run `/ntm:configure`". That's expected: carry on with the values you settle
    here. There is a predefined guide for linear.app, as well as the contract
    required to use a different backend.
-    - If using Linear: `references/linear.md`
-    - Otherwise use `references/backend-contract.md`
+    - If using Linear: `backends/linear.md`
+    - Otherwise use `backends/contract.md`
 2. If `ntm-user:settings` loaded and its Todo list names a backend, this is a
    re-run. Show the current Todo list, Labels, Planning and Shopping sections,
    ask what to change, and go to the step below that owns it; everything else
@@ -123,8 +123,8 @@ list (see Returning the sections).
 
 Show the defaults in one table, with the one-line meaning of each from the
 conventions' System labels: $no-autoschedule, $pending-shipment,
-$has-amazon-alert, $amazon-unavailable, $price-watch. A plain "ok" keeps every
-name; record any rename.
+$has-amazon-alert, $amazon-unavailable, $price-watch. A simple affirmation keeps
+every name; record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
@@ -139,8 +139,8 @@ it carries both; `create project` says whether `labels` replaces the set.
 ## Planning
 
 How `ntm:plan` works the todo list. Show the defaults as one short list, one
-line each, and say what each is for in a few words; a plain "ok" keeps them all,
-and they change any line in their own words:
+line each, and say what each is for in a few words; a simple affirmation keeps
+them all, and they change any line in their own words:
 
 - **Excluded labels from automatic scheduling:** $no-autoschedule,
   $pending-shipment. Labels planning never picks, each checked on the task and
@@ -150,6 +150,10 @@ Which days get planned, how many tasks each gets, how big they should be and
 what the weekly message covers aren't settings: each job's prompt says what
 differs from the defaults in `ntm:plan`, and `/ntm:configure-schedule` writes it
 with the user.
+
+Estimates aren't a setting either. They're in hours, which anyone can read. A
+user who wants another way says so in a review, and the estimator agent works it
+out with them.
 
 ## Shopping
 

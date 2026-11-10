@@ -72,6 +72,9 @@ title, description, and estimate if it has one.
 
 ## Estimate, in hours
 
+The request is named for the default; estimate on the scale in the user's
+Settings.
+
 Besides the tasks, the skill may send:
 
 | Input              | Holds                                                           |

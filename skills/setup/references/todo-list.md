@@ -14,7 +14,7 @@ Which path runs is a matter of context:
   settings: a backend, a label name, an excluded label, what counts as a deal.
 
 Reviewing the tasks themselves ("let's review my list", "review the kitchen
-project", "estimate the garage work") is `/ntm:review-todo-list`; when the words
+project", "estimate the garage work") is `/ntm:review-task-list`; when the words
 are about that, load it and follow it instead.
 
 ## Usage

@@ -5,7 +5,7 @@ description: >-
     user's own scale, and is it doable after work? A skill sends it a request to
     propose estimates or log what the user decided. It keeps the task review
     log. Asked by ntm:plan for estimates when it picks tasks, and by
-    ntm:review-todo-list for each task's estimate.
+    ntm:review-task-list for each task's estimate.
 
         <example>
             Context: ntm:plan is picking a task for today and has three likely

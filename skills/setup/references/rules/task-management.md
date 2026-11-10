@@ -23,7 +23,7 @@ The days when nothing gets planned automatically, under `## Paused dates`.
 
 ### Task review log (`Task review log`)
 
-The estimator agent keeps it, from what `ntm:review-todo-list` hands it. Setup
+The estimator agent keeps it, from what `ntm:review-task-list` hands it. Setup
 creates it from ntm's template.
 
 ## Excluded tasks

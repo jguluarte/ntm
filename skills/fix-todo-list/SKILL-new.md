@@ -8,8 +8,8 @@ description: >-
 
 # ntm:fix-todo-list
 
-Clears every stale planned date, one before today on a task that's still open,
-and returns what it changed.
+Clears every stale planned date, and returns what it changed. A planned date is
+stale when it's before today and its task is still open.
 
 ## Setup
 
@@ -21,31 +21,23 @@ Load `ntm-user:backend` to read the user's conventions.
 /ntm:fix-todo-list [--dry-run]
 ```
 
-`--dry-run`: report what would be cleared, and write nothing.
+With `--dry-run`, write nothing and say what would be cleared, under
+`Dry run <today>:`.
 
 ## Fix
 
-### 1. Find the stale dates
-
-Find every open task with a stale planned date, blocked and excluded tasks
-included.
-
-### 2. Clear them
-
-Clear each one's planned date, and change nothing else. With `--dry-run`, skip
-this step.
+Clear every stale planned date, blocked and excluded tasks included, and change
+nothing else.
 
 ## Result
 
-Return plain text:
+For a job, return these lines, with one `Cleared` line per date cleared:
 
-| Lines                                                                             | When                         |
-| --------------------------------------------------------------------------------- | ---------------------------- |
-| `Fixed <today>:`, then `Cleared <id> <title> <url> (was <date>)` per date cleared | there were stale dates       |
-| `Couldn't write:`, then `<id> <title> <url> (was <date>)` per date not cleared    | after those, when any failed |
-| `Nothing to fix.`                                                                 | there were none              |
-| `Fix-todo-list FAILED: <what went wrong>`                                         | the task list can't be read  |
+```
+Fixed <today>:
+Cleared <id> <title> <url> (was <date>)
+```
 
-In a dry run, `Dry run <today>:` takes the place of `Fixed <today>:`,
-`Would clear` of `Cleared`, and `Dry run <today>: nothing to fix.` of
-`Nothing to fix.`
+When there were none, return `Nothing to fix.`; when the task list can't be
+read, `Fix-todo-list FAILED: <what went wrong>`. In chat, tell the user the same
+in plain words.

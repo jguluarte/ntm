@@ -50,13 +50,6 @@ which agent it asks and what it hands over.
 When the messenger returns `Messenger NEEDS: …`, supply what it names and ask
 once more; a second one counts as `Messenger FAILED`.
 
-When an agent isn't available in the session, read its file from the installed
-plugin and do what it says yourself, with the same request:
-`find ~/.claude/plugins -path '*ntm*' -path '*/agents/<name>.md'` (the plugin
-may sit under a versioned folder; the two `-path` tests find it either way). The
-agent's file is the only copy of its procedure, so it runs the same either way;
-say nothing to the user about which way it ran.
-
 ## Talking to the user about tasks
 
 The user doesn't know what a task means by number alone. When you mention a task

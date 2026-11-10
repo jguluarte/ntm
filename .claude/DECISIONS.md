@@ -50,46 +50,8 @@ and which holds only what's tailored to this user.
 
 ## Setup, as a new user meets it
 
-A new user ends with the same shape as Justin's own setup, built from their
-choices: a connected task list, a persona, the features they picked running as
-jobs, reminders on their phone, and a passing self-test.
-
-Setup asks one question at a time, in conversation, never a form. It front-loads
-the talk so the build runs without stopping, and saves at the end of each area,
-values and assets together, without asking.
-
-1. **Intro.** What ntm is, where it came from, why the persona matters, and that
-   setup takes 20 to 60 minutes. ntm says "I", and Justin is "my creator". Ends
-   by confirming the timezone.
-2. **The task list.** Suggest a free Linear account, help connect it and check
-   it right then. Someone who doesn't want Linear hears it takes longer, and
-   that you're happy to: search with them against the backend contract, offering
-   to build the list inside Claude or find an existing tool.
-3. **The persona.** Push a little when they decline: without one, ntm is no
-   different from Apple or Google reminders. Build it from generic parts, with
-   no show or IP named. The opener: "think about the formula of a show you
-   enjoy, where they can snap back at you when you need it, or celebrate you
-   when you've earned it".
-4. **Features.** A numbered list, everything or a subset: day to day task
-   management, and price watch. New features join it, and `update` offers them.
-5. **Each picked feature.** Task management: the schedule (Monday to Friday for
-   doing, Sunday for cleanup and planning), then its labels, $pending-shipment
-   included. Price watch: country and currency, a daily schedule, its labels,
-   then Amazon sync, explained as the way around cloud agents not reaching
-   Amazon.
-6. **The jobs' model.** A lighter one than the model running setup, worded so
-   any AI provider fits.
-7. **Notifications.** For a separate app, strongly suggest Pushover, which a
-   phone's focus settings can treat differently; otherwise the AI app's own
-   push. One test push.
-8. **Databases.** Create every database their features need from its template,
-   and say where each lives.
-9. **The build.** Say what's about to happen and wait for a green light. Then
-   narrate: write their plugin, install it, hand off with one prompt, the same
-   text for a subagent or a new chat: run `/ntm:self-test`, and if it passes,
-   `/ntm:schedules --setup "<schedules and model>"`.
-10. **The end.** A passing self-test sends a success message in their persona,
-    said in chat and pushed. Making people smile is good.
+Setup's flow, step by step, is in `.claude/plans/0.4-setup-flow.md` until the
+`setup` skill encodes it.
 
 ## Patterns every rewritten file follows
 

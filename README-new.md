@@ -1,16 +1,22 @@
 # Neurodivergent Task Manager (ntm)
 
-ntm runs a personal task system on your own task list, with a few scheduled jobs
-that keep it moving. It plans your days and weeks, reminds you in a style you
-choose, asks in the evening how the day went, tidies what has gone stale, and
-watches prices on things you want to buy.
+Ntm runs a personal task system on your own task list, with a few scheduled jobs
+that keep it moving. It helps you remember things you want or need to do, using
+a customized messaging style of your creation so the reminders don't turn into
+noise you just ignore. It plans things for you on whatever schedule you like,
+that way you can make small meaningful steps to both starting AND finishing
+projects you just haven't been making time for.
 
-It was built by one person for the places that got in their way: starting
-things, keeping multi-day work moving, noticing when things have quietly gone
-stale, not forgetting things, and buying on a good price instead of on impulse.
-It stays low-process. If it starts bogging you down, turn pieces off.
+Also, to help prevent impulse purchasing things "so you won't forget", it has
+price watch capabilities built into it. Then you won't forget about that thing,
+but you also don't have to get it right now. This also means you have time to
+change your mind later, and stop watching something that you didn't really need
+to begin with.
 
-More is added here as each part of ntm is rebuilt.
+It was built by a neurodivergent human that had a lot of cool ideas, but lacked
+the initiative to get started (or worse, just forgot to finish after losing
+steam). This system helps them remember the things that they want to do, and
+says so in a way that they don't ignore. Hopefully it'll help you too!
 
 ## Skills
 

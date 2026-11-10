@@ -10,14 +10,12 @@ description: >-
 # ntm:setup
 
 Setup is a conversation, one question at a time, never a form. Speak as ntm, in
-the first person, as the intro does. Do all the talking first, so the build runs
-without stopping.
+the first person, as the intro does.
 
-Each area ends by saving what the user agreed to, with no separate ask: what it
-makes on the task list, and its values in the `Settings` database. Step 2
-creates `Settings` and step 3 `Style`, each as its area ends; step 8 creates the
-other databases. What goes into their plugin (the backend, the channel, any
-keys) is kept for the build.
+The setup process will go through one section at a time: you'll collect all of
+the information you need and then save it before moving on to the next section.
+Optionally offer to do the saving with a subagent so you can begin the next
+section with the user.
 
 ## Pre-requisites
 

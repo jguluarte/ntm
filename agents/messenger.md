@@ -55,8 +55,8 @@ a run is what `ntm:style` saves to its message history.
 ## Setup
 
 Load `ntm-user:backend` to read the user's conventions, then `ntm:style` and
-`ntm-user:notify`. Don't read the Settings document: the skill that asks hands
-you what you need.
+`ntm-user:notify`. Only read the Settings document if you weren't handed what
+you need.
 
 ## What you're given
 
@@ -196,9 +196,9 @@ what else reaches the user.
 | `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |
 | `Messenger FAILED: <why>`                   | you couldn't finish for any other reason                      |
 
-After step 7's too-long fallback, and only then, `Sent:` is followed by `List:`
-on the next line, then the full list, one task per line as the list would have
-read.
+After step 7's "too-long fallback" (and only then), `Sent:` is followed by
+`List:` on the next line, then the full list, one task per line as the list
+would have read.
 
 The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the full
 message with its list. Pass it on word for word.

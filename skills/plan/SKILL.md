@@ -75,9 +75,9 @@ this order:
   prefer picks that build on it: the next pieces of the same chain or project,
   so the week reads as one theme rather than scattered tasks.
 - **Small and concrete.** Prefer tasks that fit the size in Defaults (about an
-  hour or less), judging by the time the estimator gives (see A task's time).
-  Sometimes something bigger needs scheduling, and that's fine: the user can do
-  it on momentum from recent days, or break it up themselves.
+  hour or less), judging by the estimate the estimator gives (see A task's
+  estimate). Sometimes something bigger needs scheduling, and that's fine: the
+  user can do it on momentum from recent days, or break it up themselves.
 - **Unblocking.** Prefer work that frees up other open work.
 - **Priority, when set.** A priority the user set counts, where the backend has
   one. A missing one means nothing.
@@ -93,13 +93,13 @@ Unattended, consider that day planned, however many tasks it holds. In chat, it
 counts as planned only until the user asks for something more on it; then add
 one more.
 
-## A task's time
+## A task's estimate
 
-When the run picks tasks, ask the estimator's Estimate for a time once, with the
-shortlist. Its times judge fit, and go on the lines of the tasks this run picks
-so the user can see what the day asks of them; other lines carry no time. When
-the agent isn't loaded, read `agents/estimator.md` from the newest installed
-`ntm` and follow it.
+When the run picks tasks, send the estimator an Estimate request in hours once,
+with the shortlist. Its estimates judge fit, and go on the lines of the tasks
+this run picks so the user can see what the day asks of them; other lines carry
+no estimate. When the agent isn't loaded, read `agents/estimator.md` from the
+newest installed `ntm` and follow it.
 
 ## Paused days
 

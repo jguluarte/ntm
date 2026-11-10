@@ -48,14 +48,15 @@ Create the task below. It comes back with an id.
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test, <timestamp>               |
 | Description | This is a test, it can safely be removed |
-| Label       | $no-autoschedule                         |
 | Project     | none                                     |
 
-The label keeps planners from picking it.
+When the Built line in `ntm-user:backend` names task management, label it
+$no-autoschedule, which keeps planners from picking it. Otherwise it gets no
+label.
 
 ### 3. Read it back
 
-Reading it shows the title, description and label from step 2.
+Reading it shows the title, description and any label from step 2.
 
 ### 4. Find it
 
@@ -68,8 +69,8 @@ planned date: reading it shows none.
 
 ### 6. Label it
 
-Add another of the user's labels: reading it shows both. Then remove that label:
-only $no-autoschedule is left.
+Add one of the user's labels it doesn't have: reading it shows it. Then remove
+that label: the labels from step 2 are left.
 
 ### 7. Comment on it
 
@@ -89,7 +90,7 @@ task as its parent.
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test sub-task, <timestamp>      |
 | Description | This is a test, it can safely be removed |
-| Label       | $no-autoschedule                         |
+| Label       | as in step 2                             |
 | Parent      | the test task                            |
 
 ### 10. Mark it a duplicate

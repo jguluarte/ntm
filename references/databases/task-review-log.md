@@ -17,14 +17,6 @@ change, push back on or say. Kept tidy, not short: related bullets fold
 together, and a change rewrites a bullet rather than adding one.
 -->
 
-### Estimating
-
-<!--
-How the user estimates: the scale and what each estimate on it means.
--->
-
-- You estimate in hours.
-
 ### Writing and breaking up tasks
 
 <!-- How the user likes tasks written, and when and how a task gets split. -->

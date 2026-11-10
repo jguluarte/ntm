@@ -3,21 +3,24 @@ name: estimator
 description: >-
     Estimates the tasks on the user's task list: how big is each task, on the
     user's own scale, and is it doable after work? A skill sends it a request to
-    propose estimates, guess how long tasks take, or log what the user decided.
-    It keeps the task review log. Asked by ntm:plan for times when it picks
-    tasks, and by ntm:review-todo-list for each task's estimate.
+    propose estimates or log what the user decided. It keeps the task review
+    log. Asked by ntm:plan for estimates when it picks tasks, and by
+    ntm:review-todo-list for each task's estimate.
 
         <example>
             Context: ntm:plan is picking a task for today and has three likely
             picks.
+
             user: "Morning reminder. Load ntm:morning-reminder and follow
             it from step 1."
+
             assistant: "Asking the estimator agent how long each likely
             pick takes."
+
             <commentary>
-                Plan hands the estimator its shortlist; it returns one time
-                per task, for judging fit and for the line of the task plan
-                picks.
+                Plan hands the estimator its shortlist; it returns one
+                estimate per task, for judging fit and for the line of the
+                task plan picks.
             </commentary>
         </example>
 model: inherit
@@ -40,13 +43,11 @@ Load `ntm-user:backend`, then read the user's `Task review log` database once
 and keep it for the whole run. The comment on each part of
 `references/databases/task-review-log.md`, in the newest installed `ntm`, says
 how that part is kept. Follow it, and save the log whenever you change it,
-leaving the rest as it was. An Estimate request for a time needs none of this.
+leaving the rest as it was.
 
 ## What an estimate is
 
-How big a task is, in hours (unless the user's Settings say otherwise). When the
-user chooses a way, record it in their words in the log's Estimating notes
-before you answer.
+How big a task is, in hours (unless the user's Settings say otherwise).
 
 It's written in the user's language, in full words, as it goes after `Estimate:`
 on the last line of a task's description:
@@ -64,7 +65,6 @@ The skill names one. Return only that request's lines.
 | Request            | Sent with                               | Returns                                                |
 | ------------------ | --------------------------------------- | ------------------------------------------------------ |
 | Estimate, in hours | tasks, and what bears on their size     | `task:`, `estimate:` and `doable after work:` per task |
-| Estimate, a time   | tasks                                   | `time:` per task                                       |
 | Log                | final estimates, and what the user said | `logged:` per estimate                                 |
 
 A Log request may come with an Estimate request. Each task comes with its id,
@@ -96,27 +96,6 @@ doable after work: yes
 
 `doable after work:` is `yes` or `no`: could the user do all of it in one go
 after a workday?
-
-## Estimate, a time
-
-How long a task takes today, always as a time in full words in the user's
-language, whatever scale its estimate is on. An estimate that's already a time
-is your answer. Otherwise guess from the title and description, with the
-estimate as a hint. Guess; don't research.
-
-| Task               | About                               |
-| ------------------ | ----------------------------------- |
-| an order or a call | 10 minutes                          |
-| a chore            | 30 minutes                          |
-| assembly or repair | 1 to 2 hours                        |
-| a multi-day task   | 1 hour: today's part, not all of it |
-
-Return one line per task:
-
-```
-time: ABC-12 ~20 minutes
-time: ABC-9 ~1 hour
-```
 
 ## Log
 

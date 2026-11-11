@@ -28,9 +28,9 @@ copy.
 
 ## How work runs
 
-- Small PRs against main, one concern each, one Opus agent per PR, briefed with
-  `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
-  agents; the orchestrator does any fan-out.
+- Small PRs against `release-0.4`, one concern each, one Opus agent per PR,
+  briefed with `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents
+  can't start agents; the orchestrator does any fan-out.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
 - Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
@@ -42,8 +42,8 @@ copy.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
 - A squash merge gets a written message: one short paragraph on the net change,
   not GitHub's default list of every commit.
-- Once he's reviewing a PR: no amend, rebase or force-push. Bring main in with a
-  merge commit.
+- Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.4`
+  in with a merge commit.
 - Versions are set at merge; PR branches don't change them. He doesn't want
   patch version bumps.
 

@@ -25,11 +25,7 @@ like an actual assistant.
 
 ### `/ntm:setup`
 
-Sets ntm up for you in one conversation, a question at a time. It connects to
-your task list, asks which features you want, helps you create the style your
-reminders are written in, and works out how they reach you. At the end you
-install your own ntm plugin, which holds everything you chose, and a quick test
-checks that it all works.
+This acts as a setup wizard to make sure you have everything needed to run ntm.
 
 ### `/ntm:today`
 

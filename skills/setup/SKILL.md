@@ -340,10 +340,10 @@ your user from your memories about them.
 > a demon to stalk you? The world is your oyster - make it so!
 
 Then build the theme with them as `references/persona.md` says: from the
-`%Style` template's parts, or from a theme they already have.
+`%Theme` template's parts, or from a theme they already have.
 
-Confirm the names of the `%Style` and `%Message-history` databases. Then save
-the theme: create the `%Style` database from its template, with their theme in
+Confirm the names of the `%Theme` and `%Message-history` databases. Then save
+the theme: create the `%Theme` database from its template, with their theme in
 place of the placeholders, and `%Message-history` from its own. Add where each
 one lives to `ntm-user:backend`.
 

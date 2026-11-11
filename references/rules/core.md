@@ -61,9 +61,9 @@ ntm keeps its own records in databases on the task list. A `%` name, such as
 title and where it lives.
 
 Find each part of a database by its name, and save it back whole with only your
-change. Setup creates each one from its template in `references/databases/`.
+change.
 
-Every user has the three below; each feature's rules name its own.
+Every user has the three below.
 
 ### `%Settings`
 
@@ -72,8 +72,8 @@ names and how they want to be notified. Skills read the part they need.
 
 ### `%Theme`
 
-What the user's messages are written in. `ntm:style` reads it before each
-message, and changes it with the user when they ask.
+The style ntm's messages to the user are written in. `ntm:style` reads it before
+each message, and changes it with the user when they ask.
 
 ### `%Message-history`
 
@@ -85,11 +85,11 @@ keeps it.
 A skill returns text; the job or chat that ran it decides what reaches the user.
 Only `ntm-user:notify` sends anything.
 
-When a skill fails, it returns one line that starts with its own name,
-capitalized, hyphens kept: `Fix-task-list FAILED: <what went wrong>`. Its other
-lines are its own, as the skill says. In chat, tell the user the same in plain
-words, naming tasks as Talking to the user about tasks says.
+When a skill fails, it returns one line that starts with its own name:
+`Fix-task-list FAILED: <what went wrong>`. In chat, tell the user the same in
+plain words, naming tasks as Talking to the user about tasks says.
 
-A job's final reply is one line on what its steps returned. When a step returned
-a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything after
-that line, as written, and nothing else: the scheduled task's own push shows it.
+A job's final reply is what its last step returned, in one line. When a step
+returned a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything
+after that line, as written, and nothing else: the scheduled task's own push
+shows it.

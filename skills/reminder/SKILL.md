@@ -37,9 +37,10 @@ Ask the messenger agent for the reminder, with the `type:` for its rule:
 For `morning`, `afternoon` and `evening`, the messenger loads today's tasks
 itself, as their message rules say.
 
-The `weekly` message rule expects last week and the week ahead in hand. The
-weekly job has already found what got done over the last 7 days and planned the
-week ahead: hand the messenger both, as this run found them.
+The `weekly` message rule expects last week and the week ahead in hand. Earlier
+in the weekly job, `show-completed` reported last week, done and still open, and
+`plan --auto week` planned the week ahead: hand the messenger both, as they
+came.
 
 ## Result
 

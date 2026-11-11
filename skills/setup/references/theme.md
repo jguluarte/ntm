@@ -2,7 +2,7 @@
 
 The theme is what ntm writes every reminder in, so the user keeps reading them.
 Build it with them one part at a time, from what they picked. Each section below
-is a part of their `%Theme` database.
+is a part of their `%Theme` database, under the same heading.
 
 A theme should be something with enough breadth and material to pull from that
 it can create sufficient variation, so it won't become repetitive. A show is a
@@ -66,12 +66,13 @@ when it starts.
 ## Motifs
 
 Recurring bits from the theme's world or their own life, each with a short name:
-a catchphrase, a stock moment, a character who keeps turning up. Push for a few
-weeks' worth of variety. That comes from how many motifs there are and how many
-ways each one can be used: a running scene that moves forward, or a catchphrase
-that bends to the task, stretches across many reminders. Talk that through with
-them, then agree how long a motif rests before it comes back, given how many
-there are.
+a catchphrase, a stock moment, a character who keeps turning up.
+`%Message-history` records the names exactly. Push for a few weeks' worth of
+variety. That comes from how many motifs there are and how many ways each one
+can be used: a running scene that moves forward, or a catchphrase that bends to
+the task, stretches across many reminders. Talk that through with them, then
+agree how long a motif rests before it comes back, given how many there are, and
+write it as the `Repeat limit:` line after the motifs.
 
 ## Examples
 

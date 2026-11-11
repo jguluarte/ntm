@@ -298,16 +298,16 @@ your user from your memories about them.
 > motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
 > a demon to stalk you? The world is your oyster - make it so!
 
-Then build the theme with them as `references/theme.md` says: from the `%Theme`
-template's parts, or from a theme they already have.
+Then build the theme with them as `references/theme.md` says: from the parts it
+describes, or from a theme they already have.
 
 Ask how long they like a reminder to run, and save it under About you in the
 `%Settings` database.
 
 Confirm the names of the `%Theme` and `%Message-history` databases. Then save
-the theme: create the `%Theme` database from its template, with their theme in
-place of the placeholders, and `%Message-history` from its own. Add where each
-one lives to `ntm-user:backend`.
+the theme: create the `%Theme` database with their theme in the parts
+`references/theme.md` describes, and `%Message-history` from its template. Add
+where each one lives to `ntm-user:backend`.
 
 ### Notifications
 

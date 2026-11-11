@@ -1,10 +1,10 @@
 # Theme
 
 <!--
-For the agent: the user's theme, which `ntm:style` reads before it writes each
-message, so reminders sound like something the user enjoys instead of turning
-into noise. A theme is like a show, not a single character: a cast, a format
-and episodes, with each reminder a moment in it.
+The user's theme, which `ntm:style` reads before it writes each message, so
+reminders sound like something the user enjoys instead of turning into noise.
+A theme is like a show, not a single character: a cast, a format and episodes,
+with each reminder a moment in it.
 
 Everything outside these comments is a placeholder theme. Setup builds the
 user's theme with them and writes it in its place. Write the database without
@@ -21,9 +21,8 @@ hard it goes is the user's call: swearing, roasting, whatever they want.
 -->
 
 A cooking competition, with you as the chef. The host is warm and quick, and
-hypes every dish that reaches the table; the head judge is blunt and swears when
-a station sits idle. Nobody guilt-trips, and nobody gives a speech about
-potential.
+hypes every dish that reaches the table; the head judge is blunt when a station
+sits idle. Nobody guilt-trips, and nobody gives a speech about potential.
 
 ## What motivates you to read reminders from ntm
 
@@ -32,12 +31,12 @@ What gets a reminder opened (brevity, humor, a running bit) and how long a
 message runs.
 -->
 
-Humor, and a running bit that picks up where yesterday's left off. One or two
+Humor, and a running bit that keeps coming back. Messages run one or two
 sentences.
 
 ## The reminders
 
-<!-- What each reminder is in the show's terms, a part each. -->
+<!-- What each reminder is in the show's terms, one subsection per reminder. -->
 
 ### Week
 
@@ -62,13 +61,16 @@ what's still on the stove.
 
 <!--
 How messages change as a task keeps slipping: the levels in order, each with
-its name, after how many days slipped it starts, and how it sounds; then the
-climb rule in a line. One level is fine: the same every day.
+its name, how many days a task has slipped when it starts, and how it sounds;
+then one line on how a task moves between them. One level is fine: the same
+every day.
 -->
 
 - Service, the everyday one: the host keeps it light.
-- Heat lamp, after two days slipped: the head judge notices, out loud.
-- Chopping block, after four days slipped: the whole panel, and they swear.
+- Heat lamp, after a task has slipped two days: the head judge notices, out
+  loud.
+- Chopping block, after a task has slipped four days: the whole panel, and they
+  swear.
 
 Harder each day a task slips, back to Service once it closes.
 

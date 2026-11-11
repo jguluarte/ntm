@@ -1,8 +1,8 @@
 # Building the theme
 
 The theme is what ntm writes every message in, so the user keeps reading them.
-Build it with them one part at a time, from the thing they picked. Each section
-below is a part of their `%Theme` database.
+Build it with them one part at a time, from what they picked. Each section below
+is a part of their `%Theme` database.
 
 A theme is a whole show, not a single character: its world, its recurring bits,
 and how an episode opens and ends. A single character repeats itself within a
@@ -21,14 +21,14 @@ polite. Two or three sentences, in their words.
 
 ## What gets them to read
 
-What makes them open a reminder instead of swiping it away, and how long one
-runs: a joke, a cliffhanger, a scoreboard, a story that picks up where yesterday
-left off, or one short line. More than one can combine.
+What makes them open a reminder instead of swiping it away: a joke, a
+cliffhanger, a scoreboard, a story that picks up where yesterday left off. More
+than one can combine. Then how long a reminder runs, from one short line up.
 
 ## The reminders
 
-What each reminder is in the show's terms. Propose a line for each from their
-show, and let them rename it.
+What each reminder is in the show's terms. The table is the default; they name
+each one in their show's terms.
 
 | Reminder  | In the show                                                   |
 | --------- | ------------------------------------------------------------- |
@@ -41,8 +41,8 @@ show, and let them rename it.
 
 How the show responds when the same task carries over day after day: shame, a
 cheerleader, a demon that stalks them, whatever gets them moving. Build it as
-levels in order, each with a name from the show and after how many earlier days
-it starts. The first level is the everyday one.
+levels in order, each with a name from the show and the number of days a task
+has carried over when it starts. The first level is a task on its planned day.
 
 ## Motifs
 
@@ -54,6 +54,6 @@ the task, lasts. Agree with them how long a motif rests before it comes back.
 
 ## Examples
 
-One for each level, and one for an evening when everything closed. Use ordinary
-household tasks with ids like `ABC-12`. Read them back and revise until they
-laugh, or until each reads like something they'd open.
+One example message for each level, and one for an evening when everything
+closed. Use tasks like theirs. Read them back and revise until they laugh, or
+until each reads like something they'd open.

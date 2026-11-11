@@ -2,9 +2,10 @@
 
 <!--
 What each reminder's message says, for the messenger agent. A skill asks the
-messenger for a type such as `reminders.morning`, and the type is the path to
-its rule: Reminders > Morning. Rules are found by those names, so keep them. How
-a message sounds, and how and when it escalates, is `%Theme`'s job.
+messenger for a type such as `reminders.morning` or `weekly`, and the type is
+the path to its rule: Reminders > Morning, or Weekly. Rules are found by those
+names, so keep them. How a message sounds, and how and when it escalates, is
+`%Theme`'s job.
 
 Setup creates this database from this template. The user edits a rule, adds to
 it, or deletes it to go back to this template's. These comments are for the
@@ -42,7 +43,7 @@ This is ntm's last time to send reminders to the user.
 
 Note changes as necessary, and what is outstanding.
 
-### Week
+## Weekly
 
 The weekly reminder is a combination of describing what happened last week, and
 what is scheduled for the upcoming week. By the time you're reading this, you

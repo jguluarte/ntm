@@ -35,9 +35,9 @@ When ntm picks tasks to plan, it asks the estimator how long each one takes. In
 a review of the task list with you, the estimator proposes each task's estimate
 and records the one you decide on.
 
-### `%Task-review-log`
+### `%Estimator-log`
 
-Your `%Task-review-log` database is how the estimator's guesses get closer to
+Your `%Estimator-log` database is how the estimator's guesses get closer to
 yours, review after review. It holds what it has learned about how you work: how
 you like tasks written and broken up, how you like a review to go, and what you
 keep correcting. It also holds each estimate you decided, beside its guess.

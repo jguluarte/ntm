@@ -22,7 +22,7 @@ yours can be anything.
 | `%Message-rules`      | `Message rules`      |
 | `%Message-history`    | `Message history`    |
 | `%Paused-dates`       | `Paused dates`       |
-| `%Task-review-log`    | `Task review log`    |
+| `%Estimator-log`      | `Estimator log`      |
 | `%Theme`              | `Theme`              |
 
 These are the names the plugin's author uses; the marks keep the plugin's files
@@ -109,8 +109,10 @@ ntm keeps its records in databases, such as `%Settings` and `%Message-rules`. A
 database is a page of text, found by its title, that ntm reads whole and saves
 back with its changes.
 
-Ours are Linear documents, so everything ntm knows sits beside the tasks. Most
-live in the team; a database can belong to a project, kept in its documents.
+Our databases are files: Linear documents. That's fine for every one of them,
+`%Estimator-log` included, and it keeps everything ntm knows beside the tasks.
+Most live in the team; a database can belong to a project, kept in its
+documents.
 
 ## Connecting Linear
 

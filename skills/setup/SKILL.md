@@ -27,7 +27,15 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live          |
 | `ntm-user:notify`  | How they receive notifications: their channel, and the Pushover keys when they use it |
 
-`ntm-user:backend` always says where `%Settings` lives.
+After its frontmatter, `ntm-user:backend` opens with one Built line: its
+version, the ntm version it was built from, and the date, such as
+`Built: ntm-user 0.4.0 from ntm 0.4.0, 2026-11-11`. `ntm:help` reads it to name
+both versions. It always says where `%Settings` lives.
+
+The plugin also bundles the connector for their backend, so their task list is
+reachable wherever ntm runs. For Linear, that's
+`references/backends/linear-mcp.json`, copied as written. For another backend,
+it's the connector they set up in Connect to a backend, in the same shape.
 
 Everything else they set up lives in their databases and their jobs. The end is
 then only creating their jobs, packaging and installing their user plugin, and a
@@ -42,6 +50,7 @@ Write it as you go, in a fresh folder, `/tmp/ntm-user`:
 | `.claude-plugin/plugin.json` | Its `name`, `ntm-user`; a `description`; a `version` |
 | `skills/backend/SKILL.md`    | `ntm-user:backend`                                   |
 | `skills/notify/SKILL.md`     | `ntm-user:notify`                                    |
+| `.mcp.json`                  | The connector for their backend                      |
 
 The description is one sentence: the user's own ntm setup, kept private because
 it can hold notification keys. The version is this `ntm`'s major and minor, then
@@ -148,7 +157,7 @@ set to the timezone they confirmed in the intro.
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Task list through Writing, filled in with their task list,
 and where `%Settings` lives. The backend guide is the file you read in Connect
-to a backend.
+to a backend. Bundle their connector, `.mcp.json`, at the same time.
 
 ### ntm features
 

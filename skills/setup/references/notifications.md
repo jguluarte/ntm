@@ -8,6 +8,10 @@ They need the Pushover app on their phone, signed in. Their user key is on their
 Pushover dashboard once they sign in at pushover.net. The app token comes from
 an application they create there; any name works, such as ntm.
 
+A job can send from its own Pushover app, so its reminders arrive under that
+app's name and icon. When they want that for a job, they create an app for it
+and give you its token; keep it for Create the jobs.
+
 When you repeat a key back to them, show only its last four characters.
 
 ### The test push

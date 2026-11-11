@@ -12,12 +12,10 @@ user's database.
 
 <!--
 Timezone is an IANA name. It decides what today is for the user, and their jobs
-run in it. Reminder length is how long they like a reminder to run, in their
-words.
+run in it.
 -->
 
 - Timezone: America/Los_Angeles
-- Reminder length: one or two sentences
 
 ## Labels
 
@@ -73,5 +71,8 @@ Claude's built-in browser
 
 <!--
 How the user wants to be notified, in their words, such as quiet hours. Their
-channel and any keys live in `ntm-user:notify`.
+channel and any keys live in `ntm-user:notify`. Reminder length is how long they
+like a reminder to run, in their words.
 -->
+
+- Reminder length: one or two sentences

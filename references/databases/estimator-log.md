@@ -35,11 +35,14 @@ rewrites a bullet rather than adding one.
 ## Estimates
 
 <!--
-One row per decided estimate, newest first: the date the user decided it, the
-task's id, the estimator's last guess, the estimate the user decided, and a few
-words on why it changed or why the guess was right. Guess and Decided are
+One JSON line per decided estimate, newest first: the date the user decided it,
+the task's id, the estimator's last guess, the estimate the user decided, and a
+few words on why it changed or why the guess was right. `guess` and `final` are
 written as they go after `Estimate:`, such as `2 hours`. Keep the newest 150.
+A line looks like
+{"date":"2026-11-09","id":"ABC-12","guess":"2 hours","final":"3 hours","why":"wiring was slow"}
 -->
 
-| Date | Task | Guess | Decided | Why |
-| ---- | ---- | ----- | ------- | --- |
+```jsonl
+
+```

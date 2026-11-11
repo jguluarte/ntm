@@ -20,9 +20,8 @@ directly (`/ntm:today`), and a job's prompt loads `ntm:<skill>`.
 ### The user plugin
 
 It holds two skills. `backend` teaches how to work with this user's task list:
-its calls, labels and statuses, what counts as open, and where every document
-lives. `notify` is their channel, with the Pushover keys when they use Pushover.
-Linear users also get the Linear connector bundled.
+its calls and statuses, what counts as open, and where each database lives.
+`notify` is their channel. Linear users also get the Linear connector bundled.
 
 ### Skills do their own work
 
@@ -43,13 +42,18 @@ backend, a feature they didn't pick).
 
 ### Where values live
 
-The values setup collects live in the `Settings` document on the task list; a
-value is defined there, or the backend skill is updated. The persona's Profile
-lives in the `Style` document, which `ntm:style` reads.
+The values setup collects live in the `%Settings` database, label names
+included, and skills load them from there. Changing a setting is an edit to
+`%Settings`, with no rebuild.
 
-Labels are built into `ntm-user:backend` and the Pushover keys into
-`ntm-user:notify`, so changing one means `update` rebuilds. A job's own app
-token goes in that job's prompt.
+`ntm-user:backend` holds only what has to be built in: how to work with the task
+list, and where each database lives, `%Settings` included.
+
+The Pushover keys live in `%Settings`, and changing them needs no rebuild. A
+job's own app token goes in that job's prompt.
+
+The theme lives in the `%Theme` database, in the parts
+`skills/setup/references/theme.md` describes.
 
 ### Jobs
 

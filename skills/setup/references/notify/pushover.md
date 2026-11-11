@@ -38,7 +38,7 @@ Otherwise, post it to Pushover's messages API with these fields:
 | `message` | `--message`, each markdown link as `<a href>` |
 | `html`    | `1`                                           |
 
-Add `priority` or `sound` when Notifications calls for one.
+Add `priority` or `sound` when their Notifications in `%Settings` calls for one.
 
 ## Result
 

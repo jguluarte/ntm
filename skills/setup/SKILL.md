@@ -109,14 +109,17 @@ everything.
 | Task management | A small task planned each weekday, with reminders       |
 | Price watch     | What they want to buy, watched until the price is right |
 
-Note which features they're installing. Then confirm what those features need,
-for all of them at once, in this order: every label, then every setting, then
-every database, then every job. Show only what the picked features need, with
-the defaults below. A label's default name is ntm's, without the `$`. A
-database's is its `%` name in words, such as Paused dates. With the jobs, ask
-which model they run on: the default is the one running this chat. Then save, as
-Saving the features says. When the user wants more on any of it, the feature's
-rules and the database templates say more.
+Note which features they're installing. Then confirm what those features need in
+four rounds, each covering every picked feature together: labels, then settings,
+then databases, then jobs. Price watch's Amazon labels depend on whether they
+want Amazon price alerts, so ask that question at the start of the labels round.
+
+Show only what the picked features need, with the defaults below. A label's
+default name is ntm's, without the `$`. A database's is its `%` name in words,
+such as Paused dates. With the jobs, ask which model they run on: the default is
+the one running this chat. Then save, as Saving the features says. When the user
+wants more on any of it, the feature's rules and the database templates say
+more.
 
 #### Task management
 
@@ -161,7 +164,8 @@ rules and the database templates say more.
 | `$amazon-unavailable` | An item not on Amazon in a condition they allow |
 
 `$price-watch` goes on the project that holds what they want to buy: ask which
-project, or what to call a new one.
+project, or what to call a new one. The two Amazon labels are only for Amazon
+price alerts, as Amazon interface below says.
 
 ##### Settings
 
@@ -169,13 +173,20 @@ project, or what to call a new one.
 | ---------------- | ---------------------------- |
 | Country          | From the session, such as US |
 | Currency         | The country's, such as USD   |
-| Amazon interface | Claude's built-in browser    |
+| Amazon interface | Asked; see below             |
 
-Jobs can't reach Amazon, so `/ntm:sync-price-watch-to-amazon` keeps its price
-alerts from a browser in chat. Amazon interface is which one: Claude's built-in
-browser, their own browser through the Claude extension, or off. Make sure to
-ask the user if they would like to set up Amazon syncing, and if so then ask
-them about the two associated labels.
+The price watch can't read Amazon, so Amazon deals reach the user through
+Amazon's own price alerts. Jobs can't reach Amazon either, so
+`/ntm:sync-price-watch-to-amazon` sets and removes those alerts from a browser
+in chat. Ask whether they want Amazon price alerts at the start of the labels
+round; there is no default.
+
+If they do, Amazon interface is the browser the sync uses: Claude's built-in
+browser by default, or their own browser through the Claude extension.
+`$has-amazon-alert` and `$amazon-unavailable` join the labels they confirm.
+
+If they don't, write `off` under Amazon interface. The two Amazon labels are not
+shown, created or saved.
 
 ##### Jobs
 

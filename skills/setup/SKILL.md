@@ -204,12 +204,12 @@ For example:
 
 What each job runs, in order, for Create the jobs:
 
-| Job                | Runs                                                                          |
-| ------------------ | ----------------------------------------------------------------------------- |
-| Weekly setup       | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` |
-| Morning reminder   | `plan --auto day`, `reminder --type morning`                                  |
-| Afternoon reminder | `reminder --type afternoon`                                                   |
-| Evening reminder   | `reminder --type evening`                                                     |
+| Job                | Runs                                                                            |
+| ------------------ | ------------------------------------------------------------------------------- |
+| Weekly setup       | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type weekly` |
+| Morning reminder   | `plan --auto day`, `reminder --type morning`                                    |
+| Afternoon reminder | `reminder --type afternoon`                                                     |
+| Evening reminder   | `reminder --type evening`                                                       |
 
 In the weekly setup, `show-completed` runs with
 `the last 7 days and what's still open`. It runs first, before `fix-task-list`

@@ -1,283 +1,185 @@
 # Backend contract
 
-What a backend has to have, and what its guide has to say, for ntm to run on it.
-A backend guide maps each operation the conventions name onto one backend's
-connector; `linear.md` is the complete, tested one. Any other backend has no
-guide file: the user's own description under Todo list in `ntm-user:settings` is
-its guide. Setup writes that description with the user by walking this contract,
-as `own-backend.md` says, and once `ntm-user` is installed, `/ntm:self-test`
-checks it. A backend can be built on anything the user's agent can reach, for
-example a table in a Claude Doc (the Claude Docs connector's own guide gives its
-calls).
+What ntm needs from the backend that holds the user's task list, and how a
+backend other than Linear qualifies. Skills call the operations below by these
+names, and a backend's guide says how each one is done on it: `linear.md`,
+beside this file, is Linear's. Any backend works that can do every operation, as
+long as how is written down or discoverable from its connector.
 
-Write a guide as a list of operations, each saying which tool calls carry it out
-and which fields map to the conventions' names. Keep the headings below so
-skills can find what they need.
+## What a backend needs
 
-## What the backend needs to have
+- Tasks with an id, a title, a description, a status, labels, a date field to
+  use as the planned date, sub-tasks, and a web link.
+- A way to group tasks, such as projects or folders.
+- A connector Claude can use to read and write them.
 
-- Tasks with: an id, a title, a description, a status, labels, a single date
-  field usable as the planned date, a parent/sub-task relation, and a web url.
-- Some way to group tasks (projects, folders, epics), ideally one that can carry
-  labels.
-- A connector for Claude that can list, read and write the above.
+A backend can't go without a planned date or a way to tell open tasks from
+closed. It can go without anything else; the guide says what's missing, and
+skills do without it:
 
-Two gaps must be covered before ntm can run: a date field to use as the planned
-date, and a way to tell open tasks from closed. Where the backend lacks one,
-work it out with the user during setup (see `own-backend.md`).
+- No blocked-by relation: planning and reviews work from titles and
+  descriptions.
+- No labels on groups: the user puts labels on tasks directly.
+- No documents: each database is kept in a task, as Databases says.
 
-Other gaps are survivable. The guide says which the backend lacks, and the
-skills work around them:
+## Task list
 
-- **No estimate field:** keep each task's estimate in its description, on a line
-  `Estimate: <estimate>`. The guide says how `fetch open` reads it there and how
-  `update task` writes it.
-- **No blocked-by relation:** reviewing and planning work from titles and
-  descriptions instead.
-- **No labels on groups:** the conventions' project-label inheritance doesn't
-  apply, and the user puts system labels on tasks directly.
-- **No priority, or no updated-at:** skills do without them.
-- **No documents:** databases are kept in tasks (see Databases).
-- **No way to keep a database inside a project:** every database is at list
-  level.
+The guide names the user's list, `<List name>`, and the id calls take,
+`<List id>`, blank when they take none. Where the backend has no lists, the
+whole account is the task list. The guide also says how projects carry labels.
 
-## Todo list
-
-Name the todo list (List name in Todo list), what id it needs (List id), and
-whether the backend can close a parent once its sub-tasks are all done. If the
-backend has no unit above projects, the todo list is the whole account (List
-name is what the backend calls it, List id blank). `(ABC-12)` in the conventions
-stands for the backend's own task id, whatever its shape.
-
-When the backend can, ask the user whether they want parents closed that way.
+An estimate is never a backend field: it's the `Estimate:` line at the end of
+the task's description, on every backend.
 
 ## Status classes
 
-Ask the user how their statuses map to the classes in the conventions
-(plannable, started, blocked, done, canceled, duplicate), and record it here in
-their words. Say how to filter by class and how to write a status, and how to
-tell open from closed in results. A backend with no status names, only open and
-closed, maps open to plannable and closed to done, and has no started, blocked,
-canceled or duplicate status; `set status` to done closes the task.
+How each status maps to the rules' classes: plannable (with started), blocked,
+done, canceled and duplicate. The guide says how to read a task's class, filter
+by it, and set a status in it. A backend with only open and closed maps open to
+plannable and closed to done.
 
 ## Operations
 
-Cover every operation: the guide's entry for each says what's under its heading
-here. Skills call operations by these names; keep them exactly.
-
 ### `ping`
 
-Makes one read that proves the connector works and sees the todo list named in
-Todo list. Says how to tell sign-in expired from wrong account from backend
-error (the names `ntm:ready-check` reports).
+One read that proves the connector works and sees the task list. The guide says
+how to tell apart the failures `ntm:ready-check` reports (sign-in expired, wrong
+account and backend error) and what a connector waiting on a sign-in looks like.
 
 ### `fetch open`
 
-Gets every open task (every plannable status, plus blocked where the todo list
-has one) with the standard fields, paginated, plus every project with its name
-and labels, and its summary when a skill asks for it.
-
-The standard fields are id, title, url (the task's link), status, status class,
-priority, estimate, planned date, labels, project, parent id, completed at and
-updated at. For priority, the entry says which value is highest and which means
-none.
+Every open task, blocked ones included, with the standard fields: id, title,
+link, status, status class, priority, estimate, planned date, labels, project,
+parent id, completed at and updated at. Also every project with its name and
+labels, and its summary when a skill asks. The guide says which priority is
+highest and which means none.
 
 ### `fetch closed`
 
-Gets closed tasks (done; canceled and duplicate on request) with their
-completion time, and says how to limit them to a span and to one label.
+Closed tasks with when each closed: done, plus canceled and duplicate when
+asked. The guide says how to limit them to a span and to one label.
 
 ### `read task`
 
-Reads one task with its description and blocked-by relations.
+One task with its description and blocked-by relations.
 
 ### `read comments` / `write comment` / `update comment`
 
-Reads, writes and updates a task's comments. If the backend can't update a
-comment in place, `update comment` says to delete and re-add, or to append.
+Reads a task's comments, adds one, and changes one in place. A backend that
+can't change a comment deletes it and adds the new text.
 
 ### `set planned date` / `clear planned date`
 
-Sets or clears a task's planned date. Names the date field used; nothing else
-changes.
+Sets or clears a task's planned date, and nothing else.
 
 ### `set status`
 
-Sets a task's status to one in a given class, as Status classes says.
+Moves a task to a status in a given class.
 
 ### `add labels` / `remove labels`
 
-Adds or removes labels without dropping the others.
+Adds or removes labels, keeping the others.
 
 ### `mark duplicate of`
 
-Marks a task as a duplicate of another with the backend's duplicate relation.
-With no such relation, closes it with the duplicate status and a comment naming
-the original.
+Marks a task a duplicate of another. Without a duplicate relation, it sets the
+duplicate status and comments with the original's id.
 
 ### `create task`
 
-Creates a task with a title, description, project, parent, blocked-by and
-labels, and says how to check for an existing match first.
+A new task with a title, description, project, parent, blocked-by and labels,
+after checking that no matching task exists.
 
 ### `update task`
 
-Changes a task's title, description, estimate or project (or removes the
-project), or adds a blocked-by link; nothing else changes.
-
-### `read database` / `write database`
-
-Reads or writes a database, as Databases says. `write database` creates a
-missing database with the content given.
-
-## Requests
-
-Base skills ask `ntm-user:backend` for what they need in plain words, one
-request at a time. `ntm-user:backend` answers each request with the calls to
-make, built from the operations it names below, and the shape of what comes
-back. A backend that covers every operation covers every request. A request it
-can't place returns `Backend CAN'T: <why>`. A new feature adds its requests here
-and its operations above.
-
-### `today's open items`
-
-Open tasks planned today or earlier. Uses `fetch open`. Returns those tasks with
-the standard fields.
-
-### `open items planned <span>`
-
-Open tasks planned in the span. Uses `fetch open`. Returns those tasks with the
-standard fields.
-
-### `open items to plan`
-
-Open tasks with no planned date or one before today, not blocked, and not
-excluded (see the rules' Excluded tasks). Uses `fetch open`. Returns those tasks
-with the standard fields.
-
-### `every open item`
-
-Every open task, blocked ones included, and the list's projects. Uses
-`fetch open`. Returns the tasks with the standard fields, and each project with
-its name and labels.
-
-### `items done <span>`
-
-Tasks closed in the span: done, plus canceled and duplicate on request. Uses
-`fetch closed`. Returns those tasks with their completion time.
-
-### `watched items`
-
-For price watch users only: the open tasks carrying the `$price-watch` label,
-themselves or through their project. Uses `fetch open`. Returns those tasks with
-the standard fields.
-
-### `task <id>`
-
-One task. Uses `read task` and `read comments`. Returns its description,
-blocked-by relations and comments.
-
-### `create a task`
-
-A new task with a title, description, labels and parent. Uses `create task`.
-Returns the new task's id and url, as Writing says.
-
-### `change a task`
-
-Any of a task's planned date, status, labels, estimate, comments, duplicate of,
-title or description, and nothing else. Uses `set planned date`,
-`clear planned date`, `set status`, `add labels`, `remove labels`,
-`write comment`, `update comment`, `mark duplicate of` and `update task`.
-Returns success or failure, as Writing says.
-
-### `read or write <database>`
-
-The `%Settings` document or one of its sections, or a database under Databases.
-Uses `read database` and `write database`; a first write creates a missing
-database, such as self-test's throwaway one. A read returns the content or says
-it's missing; a write returns success or failure, as Writing says.
-
-### `how to word a task`
-
-How to name a task in anything the user reads. Uses no operation. Returns the
-rules' "Talking to the user about tasks".
-
-### `ping` (request)
-
-Proves the backend answers. Uses `ping`. Returns that it answered, or
-`Backend CAN'T: <why>` naming sign-in expired, wrong account or backend error,
-with how to fix it.
+Changes a task's title, description, estimate or project, removes its project,
+or adds a blocked-by link, and nothing else.
 
 ## Databases
 
-Databases are the documents the system keeps its own records in, on the todo
-list, each under the title the conventions give it. `read database <title>`
-returns its content, or says it's missing. `write database <title>` replaces the
-content, and creates a missing database with the content given. Both take an
-optional project, for a database kept in a project.
+The documents ntm keeps its records in, on the task list, each found by its
+title. Each operation takes an optional project, for a database kept in one.
 
-If the backend has documents, use them, found by title. If it doesn't, keep each
-database in the description of a task titled with the database's title, labeled
-with the `$no-autoschedule` label (its real name from Labels) and left open in a
-plannable status. `ntm:fix-task-list` never touches it (it has no planned date)
-and planners skip it for its label. `read database` is then a title search that
-reads that task's description; `write database` replaces the description,
-creating the task when there is none. A database kept in a project is a task
-created in that project. The conventions say every skill ignores such a task as
-work.
+### `read database`
 
-## Setup operations
+Returns its content, or says it's missing.
 
-Used by `ntm:configure-todo-list`. For each, say which call does it and what's
-under its heading here.
+### `write database`
 
-### `list todo-lists`
-
-Lists the todo lists the connector can see, by name and id. Where the backend
-has no todo lists to list, says so (the user names or pastes theirs, or
-`ntm:configure-todo-list` runs `create todo-list`).
-
-### `create todo-list`
-
-Only where the backend has no todo lists to list: makes one with the statuses,
-labels and databases settled so far, and returns its id.
-
-### `list statuses`
-
-Lists a todo list's status names, so each class can be matched to real names.
-
-### `sample estimates`
-
-Only where the backend stores estimates on a scale of its own: reads the
-estimates already set on some of the list's tasks, so the backend's scale can be
-suggested when the user doesn't know it.
-
-### `list labels`
-
-Lists the todo list's task labels, and its project labels when those are a
-separate set.
-
-### `create label`
-
-Creates a task label by name, with a description, and a project label by name
-when those are a separate set.
-
-### `list projects`
-
-Lists every project with its name, id and labels.
-
-### `create project`
-
-Creates a project by name, with the project labels it should carry.
+Replaces its content, creating it when it's missing.
 
 ### `create database`
 
-Creates a database with a given title and first content, at list level or in a
-project, without touching one that already exists (`read database` first).
-`%Message-history`'s first content is its frontmatter, which holds its `Keep:`
-line.
+Creates it with its first content, leaving one that exists alone.
+
+A backend with no documents keeps each database in the description of an open
+task titled with the database's title, with the `$no-autoschedule` label and no
+planned date, so planning never picks it.
 
 ## Writing
 
-Say how a write reports success, so the conventions' retry rule (retry once,
-then report) can be applied.
+How the backend says whether a write succeeded, so the rules' retry rule
+applies.
+
+## Setup operations
+
+Setup uses these to connect the backend and save the features.
+
+### `list todo-lists`
+
+The lists the connector can see, by name and id.
+
+### `list projects`
+
+Every project with its name, id and labels.
+
+### `create label`
+
+A label by name, with a description, for tasks and, where projects keep their
+own set, for projects; one that exists is left alone.
+
+### `create project`
+
+A project by name carrying the given labels, or those labels added to an
+existing one.
+
+## Your own backend
+
+For a user who doesn't want Linear. Their backend has no guide file: the guide
+you write with them here is its guide.
+
+### 1. Find one
+
+Ask what they keep tasks in today, or would like to. Two ways always work: a
+list built inside Claude, such as a Claude Doc made with them here, or an app
+they use, reached through a Claude connector. Search with them: ToolSearch for
+connectors already attached, and the web for a tool's connector and what it can
+do. Hold each option up to What a backend needs, in a line or two, until they're
+content with one. If it isn't connected yet, they add it on the Connectors tab
+in Claude's settings; ToolSearch again before going on.
+
+### 2. Define each operation
+
+Walk this file with them, heading by heading. For each operation, name the tool
+and the values that do it, read from the tool's schema, never guessed: which
+date field is the planned date, how results page, whether labels add or replace.
+Where the connector's own tool descriptions make an operation plain, naming the
+tool is enough. Where a choice is theirs, such as which grouping is a project,
+propose one and let them react.
+
+A missing planned date, or no way to tell open from closed, gets covered before
+going on: a field, status or label they can repurpose, or a list built inside
+Claude instead.
+
+### 3. Ping it
+
+Once `ping` is defined, run it. Fix what fails with them; if it won't pass, say
+so and stop, since every later step needs the list. The other operations wait
+for `/ntm:self-test`.
+
+### 4. Record it
+
+Write the guide in the shape of `linear.md` from Task list on, each operation's
+tool and values under its name, in their words where they gave them. It goes
+into `ntm-user:backend` in place of Linear's, where every later run reads it.
+Once `ntm-user` is installed, `/ntm:self-test` proves it.

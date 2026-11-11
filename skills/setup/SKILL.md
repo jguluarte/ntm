@@ -343,8 +343,6 @@ order.
 <Title>.
 Timezone: <Timezone>.
 1. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
-Final reply: what the last step returned, as Results in ntm's
-`references/rules/core.md` says.
 ```
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its

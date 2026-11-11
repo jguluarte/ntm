@@ -22,10 +22,10 @@ section with the user.
 Saving a section also adds its part to their user plugin, `ntm-user`, which you
 build up as you go. It holds two skills:
 
-| Skill              | What it holds                                                                         |
-| ------------------ | ------------------------------------------------------------------------------------- |
-| `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live          |
-| `ntm-user:notify`  | How they receive notifications: their channel, and the Pushover keys when they use it |
+| Skill              | What it holds                                                                |
+| ------------------ | ---------------------------------------------------------------------------- |
+| `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
+| `ntm-user:notify`  | How they receive notifications: their channel, and any keys it needs         |
 
 After its frontmatter, `ntm-user:backend` opens with one Built line: its
 version, the ntm version it was built from, and the date, such as

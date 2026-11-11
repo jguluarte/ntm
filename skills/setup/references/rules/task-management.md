@@ -2,13 +2,13 @@
 
 ## System labels
 
-### $no-autoschedule
+### `$no-autoschedule`
 
 The user has opted this task out of automatic planning. Planners never pick it,
 but once the user dates it themselves, it's reminded about like any other dated
 task.
 
-### $pending-shipment
+### `$pending-shipment`
 
 Something has been ordered for this task and hasn't arrived, so the user can't
 start it. Waiting on an order usually gets this label instead of the blocked
@@ -16,23 +16,22 @@ status.
 
 ## Databases
 
-### Pauses (`Paused dates`)
+### `%Paused-dates`: days the user doesn't want to autoschedule
 
-The days when nothing gets planned automatically, under `## Paused dates`.
-`ntm:pause` keeps it.
+The days sit under `## Paused dates`. `ntm:pause` keeps it.
 
-### Task review log (`Task review log`)
+### `%Task-review-log`: what the estimator learns in reviews
 
 The estimator agent keeps it, from what `ntm:review-todo-list` hands it. Setup
 creates it from ntm's template.
 
 ## Excluded tasks
 
-Excluded labels from automatic scheduling, in Planning in the Settings document,
-lists the labels planners never pick; by default $no-autoschedule and
-$pending-shipment. A task is excluded when it carries one of them, itself or
-through its project (see Project labels). A task in the blocked status is always
-excluded too; that isn't a setting.
+Excluded labels from automatic scheduling, in Planning in the `%Settings`
+document, lists the labels planners never pick; by default `$no-autoschedule`
+and `$pending-shipment`. A task is excluded when it carries one of them, itself
+or through its project (see Project labels). A task in the blocked status is
+always excluded too; that isn't a setting.
 
 Planning and reminders use `fetch open`, which includes blocked tasks, and keep
 excluded tasks in the results.

@@ -14,7 +14,7 @@ record any other name they give, such as a document they already keep under
 another title, for the build, which writes where each document lives into
 `ntm-user:backend`.
 
-### `Price watch stores`
+### `%Price-watch-stores`
 
 In the same line, say they can name a few stores they trust, by category with
 their domains; record them for the build, as the Seed list for the database's

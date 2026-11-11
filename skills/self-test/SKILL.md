@@ -48,7 +48,7 @@ Use `create task` to make the below task. It should return an id.
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test, <timestamp>               |
 | Description | This is a test, it can safely be removed |
-| Label       | $no-autoschedule, by its real name       |
+| Label       | `$no-autoschedule`, by its real name     |
 | Project     | none                                     |
 
 The label keeps anything from planning it.
@@ -69,7 +69,7 @@ The label keeps anything from planning it.
 ### 6. Label it
 
 `add labels` with another of the user's labels, and `read task` shows both. Then
-`remove labels` with it, and only $no-autoschedule is left.
+`remove labels` with it, and only `$no-autoschedule` is left.
 
 ### 7. Comment on it
 
@@ -90,7 +90,7 @@ Use `create task` to make the below task. It should return an id, and
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test sub-task, <timestamp>      |
 | Description | This is a test, it can safely be removed |
-| Label       | $no-autoschedule, by its real name       |
+| Label       | `$no-autoschedule`, by its real name     |
 | Parent      | the test task from step 2                |
 
 ### 10. Mark it a duplicate

@@ -168,7 +168,7 @@ Tasks closed in the span: done, plus canceled and duplicate on request. Uses
 
 ### `watched items`
 
-For price watch users only: the open tasks carrying the $price-watch label,
+For price watch users only: the open tasks carrying the `$price-watch` label,
 themselves or through their project. Uses `fetch open`. Returns those tasks with
 the standard fields.
 
@@ -192,7 +192,7 @@ Returns success or failure, as Writing says.
 
 ### `read or write <database>`
 
-The Settings document or one of its sections, or a database under Databases.
+The `%Settings` document or one of its sections, or a database under Databases.
 Uses `read database` and `write database`; a first write creates a missing
 database, such as self-test's throwaway one. A read returns the content or says
 it's missing; a write returns success or failure, as Writing says.
@@ -218,7 +218,7 @@ optional project, for a database kept in a project.
 
 If the backend has documents, use them, found by title. If it doesn't, keep each
 database in the description of a task titled with the database's title, labeled
-with the $no-autoschedule label (its real name from Labels) and left open in a
+with the `$no-autoschedule` label (its real name from Labels) and left open in a
 plannable status. `ntm:fix-task-list` never touches it (it has no planned date)
 and planners skip it for its label. `read database` is then a title search that
 reads that task's description; `write database` replaces the description,
@@ -273,9 +273,9 @@ Creates a project by name, with the project labels it should carry.
 ### `create database`
 
 Creates a database with a given title and first content, at list level or in a
-project, without touching one that already exists (`read database` first). The
-message history database's first content is its frontmatter, which holds its
-`Keep:` line.
+project, without touching one that already exists (`read database` first).
+`%Message-history`'s first content is its frontmatter, which holds its `Keep:`
+line.
 
 ## Writing
 

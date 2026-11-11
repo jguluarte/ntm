@@ -11,7 +11,7 @@ the database without these comments: they are for you, never for the user.
 
 Parts are found by their headings. The user can edit, delete or add them: a
 deleted part goes back to its default, and one they add is part of the style.
-Message history is its own database, not part of this one.
+`%Message-history` is its own database, not part of this one.
 
 A user who brings a persona of their own keeps it word for word, in place of the
 Profile, under a `## For ntm` section, as the contract's A persona section says.
@@ -83,7 +83,7 @@ One level, Steady: the same every day.
 
 <!--
 Recurring bits from the theme's world or the user's life, a short name each,
-then the `Repeat limit:` line. Message history records the names exactly. Push
+then the `Repeat limit:` line. `%Message-history` records the names exactly. Push
 for a few weeks' worth of variety. With none, the section stays empty.
 -->
 

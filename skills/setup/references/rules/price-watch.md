@@ -2,17 +2,17 @@
 
 ## System labels
 
-### $has-amazon-alert
+### `$has-amazon-alert`
 
 An Amazon price alert is set for this task. `ntm:sync-price-watch-to-amazon`
 sets and clears it.
 
-### $amazon-unavailable
+### `$amazon-unavailable`
 
 The item isn't sold on Amazon in a condition the user allows, so no alert is
 set.
 
-### $price-watch
+### `$price-watch`
 
 Usually on a project: its tasks are purchases waiting for a good price. The
 watched tasks are the open tasks carrying this label. Price watch is off when
@@ -27,8 +27,8 @@ usual price). The shopper reads them there.
 
 ## Databases
 
-### Price watch stores (`Price watch stores`)
+### Price watch stores (`%Price-watch-stores`)
 
-Stored in the project that carries the $price-watch label, not at list level.
+Stored in the project that carries the `$price-watch` label, not at list level.
 `ntm:price-watch` keeps it, from the user's vouch and block replies; the shopper
 reads it.

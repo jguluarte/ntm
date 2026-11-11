@@ -1,15 +1,15 @@
 # Persona contract
 
-The Style document holds the user's persona: what `ntm:style` reads before it
+The `%Style` document holds the user's persona: what `ntm:style` reads before it
 writes a message. Setup's persona step writes it, and `ntm:style` revises it
 with the user on request. This page says what the document must hold, what it
-may hold, and what `ntm:style` does when a part is missing. `Message history` is
-a database of its own, not part of the Style document.
+may hold, and what `ntm:style` does when a part is missing. `%Message-history`
+is a database of its own, not part of the `%Style` document.
 
 Required means setup and every revision write it. A run never stops over a
 missing part: `ntm:style` falls back as each part says.
 
-A Style document has one of two shapes:
+A `%Style` document has one of two shapes:
 
 - **A Profile:** built with the user in setup, plain or from a theme.
 - **A persona:** one the user already had, under a `## For ntm` section.
@@ -64,16 +64,16 @@ Profile's parts are asked of it.
 Required: above the text, a `## For ntm` section that says, a line each, how
 `ntm:style`'s call maps onto the persona's own words: what `--for <type>` means
 to it, that `Title:` is its last line, that `--stay-fresh` is its freshness
-rule, and that its history is `Message history`, each entry naming the task ids
+rule, and that its history is `%Message-history`, each entry naming the task ids
 its message names. Without it, the whole text still stands as the persona, its
 levels and motifs included. `ntm:style` uses the Profile's defaults only where
 the text has no words, such as the `Title:` line and the history entries.
 
 ## What `ntm:style` brings
 
-These hold for every Style document, so none states them:
+These hold for every `%Style` document, so none states them:
 
 - Facts stay exact: ids, titles, dates and counts as given, nothing added.
 - A title is written with its message, in its theme, never the reminder's name.
-- No joke shape, pun or opening from a line in `Message history`.
+- No joke shape, pun or opening from a line in `%Message-history`.
 - Examples lend energy, never sentences.

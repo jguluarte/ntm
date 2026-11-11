@@ -28,7 +28,7 @@ currency from Country and currency under About you in your settings.
 # 1: Todo list rules
 
 Load `ntm-user:backend` to read the user's conventions, then read About you,
-Labels and Shopping from the Settings document: "your settings" below means
+Labels and Shopping from the `%Settings` document: "your settings" below means
 those. If whoever loaded this skill gave a date, that is today.
 
 # 2: Ready check
@@ -40,7 +40,7 @@ a plain `/ntm:ready-check`.
 
 # 3: The watch
 
-Find the watched tasks: the open tasks with the $price-watch label (its real
+Find the watched tasks: the open tasks with the `$price-watch` label (its real
 name from Labels), on the task or its project. Note each one's id, title and
 `url`. If none are being watched, send nothing and go straight to FINAL REPLY.
 
@@ -54,11 +54,11 @@ word the answer.
 only notices when a sync is due. Amazon alerts are on when Amazon interface
 under Shopping in your settings names a browser or is blank; they're off when
 the line is missing or says off, or there's no Shopping section. When they're
-off, skip this check. With the $has-amazon-alert and $amazon-unavailable labels
-by their real names from Labels, note:
+off, skip this check. With the `$has-amazon-alert` and `$amazon-unavailable`
+labels by their real names from Labels, note:
 
 - each open watched task with neither label (it needs an alert);
-- each closed task that still has the $has-amazon-alert label (its alert needs
+- each closed task that still has the `$has-amazon-alert` label (its alert needs
   removing). Find these with the guide's `fetch closed` for that label, canceled
   and duplicate included.
 
@@ -117,17 +117,17 @@ anything. Dates below are today's, at reply time.
   answer, update that comment with their reason.
 - **They bought it:** a watched task is the purchase itself, so set its status
   to done (the guide's `set status`; if it's already closed, say so). Then add
-  the $pending-shipment label (its real name from Labels) to any open task it
+  the `$pending-shipment` label (its real name from Labels) to any open task it
   blocks, where the work lives. Confirm in one line. If the task has the
-  $has-amazon-alert label, add that its Amazon alert gets removed the next time
-  they run `/ntm:sync-price-watch-to-amazon`.
-- **Vouching for or blocking a store:** update the `Price watch stores` database
-  (see Databases in the conventions), kept in the project that carries the
-  $price-watch label (the guide's `read database` and `write database`, with
-  that project; when it's missing, `write database` creates it with the headings
-  `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other list
-  (Vouched or Blocked) if it's there; leave the Seed list alone unless they say
-  otherwise. Record its domain as they give it, or from that database or the
+  `$has-amazon-alert` label, add that its Amazon alert gets removed the next
+  time they run `/ntm:sync-price-watch-to-amazon`.
+- **Vouching for or blocking a store:** update the `%Price-watch-stores`
+  database (see Databases in the conventions), kept in the project that carries
+  the `$price-watch` label (the guide's `read database` and `write database`,
+  with that project; when it's missing, `write database` creates it with the
+  headings `## Seed`, `## Vouched`, `## Blocked`). Move the store off the other
+  list (Vouched or Blocked) if it's there; leave the Seed list alone unless they
+  say otherwise. Record its domain as they give it, or from that database or the
   item's "Stores:" comment, and ask them only if neither has it. Add the date
   and their reason if they gave one. Confirm in one line.
 

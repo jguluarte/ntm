@@ -75,7 +75,7 @@ connector below:
 3. A new team's statuses already match the classes: Backlog, Todo, In Progress,
    Done, Canceled and Duplicate. Nothing to change. If they want a "can't move
    right now" status, they add one named Blocked in the team's workflow
-   settings; otherwise the $pending-shipment label and blocked-by links cover
+   settings; otherwise the `$pending-shipment` label and blocked-by links cover
    that ground.
 
 Labels and the price watch project don't need to be made by hand: Labels below
@@ -105,8 +105,8 @@ all done.
 ### The price watch project
 
 `list projects`; ask which project holds purchases waiting for a good price, or
-none (no price watch; the $price-watch label on a project later turns it on). If
-they want one that doesn't exist yet, settle its name now; it's created in
+none (no price watch; the `$price-watch` label on a project later turns it on).
+If they want one that doesn't exist yet, settle its name now; it's created in
 Labels, once the project labels exist.
 
 ## Statuses
@@ -122,15 +122,15 @@ list (see Returning the sections).
 ## Labels
 
 Show the defaults in one table, with the one-line meaning of each from the
-conventions' System labels: $no-autoschedule, $pending-shipment,
-$has-amazon-alert, $amazon-unavailable, $price-watch. A simple affirmation keeps
-every name; record any rename.
+conventions' System labels: `$no-autoschedule`, `$pending-shipment`,
+`$has-amazon-alert`, `$amazon-unavailable`, `$price-watch`. A simple affirmation
+keeps every name; record any rename.
 
 Then `list labels`, task and project sets. For each label the todo list lacks,
 offer to create it with `create label` under its settled name, with its one-line
 meaning as the description. Project labels are their own set where the backend
-keeps one: $price-watch and $no-autoschedule as project labels, so projects can
-carry them.
+keeps one: `$price-watch` and `$no-autoschedule` as project labels, so projects
+can carry them.
 
 Then the price watch project, when one was chosen: create it now with
 `create project`, carrying both project labels. If it already exists, make sure
@@ -142,8 +142,8 @@ How `ntm:plan` works the todo list. Show the defaults as one short list, one
 line each, and say what each is for in a few words; a simple affirmation keeps
 them all, and they change any line in their own words:
 
-- **Excluded labels from automatic scheduling:** $no-autoschedule,
-  $pending-shipment. Labels planning never picks, each checked on the task and
+- **Excluded labels from automatic scheduling:** `$no-autoschedule`,
+  `$pending-shipment`. Labels planning never picks, each checked on the task and
   its project; name the labels by the names settled above.
 
 Which days get planned, how many tasks each gets, how big they should be and
@@ -172,10 +172,10 @@ Record it as Amazon interface; blank means it asks each time. If no, leave the
 Amazon interface line out.
 
 Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores database (setup's databases step offers its
-Seed), not here; this is for anything that holds for every item. Capture it as
-written below the lines; "nothing" leaves it blank. With no Amazon interface
-line and nothing else, return no Shopping section.
+use go in `%Price-watch-stores` (setup's databases step offers its Seed), not
+here; this is for anything that holds for every item. Capture it as written
+below the lines; "nothing" leaves it blank. With no Amazon interface line and
+nothing else, return no Shopping section.
 
 ## Databases
 
@@ -183,8 +183,8 @@ With `create database`, create each database below from its template in
 `references/databases/`, in the newest installed `ntm`. Leave out the template's
 `<!-- -->` comments: they're for you to build their databases.
 
-- `Message rules`: everyone.
-- `Task review log`: task management.
+- `%Message-rules`: everyone.
+- `%Task-review-log`: task management.
 
 ## Returning the sections
 
@@ -208,18 +208,18 @@ words, one short paragraph per contract heading>
 
 The real name on your todo list for each label the system uses.
 
-- no-autoschedule: <real name; default no-autoschedule>
-- pending-shipment: <real name; default pending-shipment>
-- has-amazon-alert: <real name; default has-amazon-alert>
-- amazon-unavailable: <real name; default amazon-unavailable>
-- price-watch: <real name; default price-watch>
+- `$no-autoschedule`: <real name; default `no-autoschedule`>
+- `$pending-shipment`: <real name; default `pending-shipment`>
+- `$has-amazon-alert`: <real name; default `has-amazon-alert`>
+- `$amazon-unavailable`: <real name; default `amazon-unavailable`>
+- `$price-watch`: <real name; default `price-watch`>
 
 ## Planning
 
 How your todo list is planned. Read by `ntm:plan` and `ntm-user:backend`.
 
-- Excluded labels from automatic scheduling: <default no-autoschedule,
-  pending-shipment>
+- Excluded labels from automatic scheduling: <default `$no-autoschedule`,
+  `$pending-shipment`>
 
 <anything else about how they want planning done, as written; or nothing>
 

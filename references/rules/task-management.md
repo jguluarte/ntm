@@ -1,35 +1,29 @@
 # Task management rules
 
-How ntm plans the user's task list when they use task management: which tasks
-planning picks, the order it plans them in, and the labels and databases the
-feature uses.
-
 ## Labels
 
 ### `$no-autoschedule`
 
-The user keeps this task out of automatic planning. Planning never picks it, but
-a date the user sets on it themselves gets reminders like any other.
+The user keeps this task out of automatic planning.
 
 ### `$pending-shipment`
 
 Something ordered for this task hasn't arrived, so the user can't start it yet.
-Planning leaves it alone until the label comes off.
-
-### Labels to exclude from auto-scheduling
-
-Planning never picks a task carrying one of these labels. They're listed under
-Planning in the `%Settings` database: by default `$no-autoschedule` and
-`$pending-shipment`, and the user can add their own. A label on a project counts
-on every task in it.
 
 ## Planning
 
+### Labels to exclude from auto-scheduling
+
+A task carrying one of these labels is excluded. They're listed under Planning
+in the `%Settings` database: by default `$no-autoschedule` and
+`$pending-shipment`, and the user can add their own. A label on a project counts
+on every task in it.
+
 ### Plannable tasks
 
-Planning picks only plannable tasks: open, not blocked, and not excluded by a
-label. Reminders cover every open task planned for the day, whatever its labels
-or status.
+Planning picks only plannable tasks: open, not in the blocked status, and not
+excluded by a label. Reminders cover every open task planned for the day,
+blocked or excluded included.
 
 ### Planned dates
 
@@ -38,16 +32,15 @@ moves and clears it freely. **A planned date is NEVER a deadline.**
 
 ### Blocking order
 
-When one task blocks another, the waiting task is planned for a day after every
-one of its open blockers: any later day, never the same one. Until each blocker
-has a planned date, today or later, the waiting task isn't planned. Planning can
-date a blocker and the task it blocks in the same run.
+A task waiting on open blockers is planned for a day after all of them. It waits
+until each blocker has a planned date. Planning can date a blocker and the task
+it blocks in the same run.
 
 For example, if `one` blocks `two` and `one` is planned for Tuesday, `two` can
 go on Wednesday or any day after.
 
-The user also uses blocking to put one thing after another. That's fine, and
-nothing to ask them about.
+The user sometimes blocks a task only to order it behind another. That's fine,
+and nothing to ask them about.
 
 ## Databases
 
@@ -59,8 +52,7 @@ changes it.
 ### `%Paused-dates`
 
 The days when nothing gets planned automatically. `ntm:pause` keeps it. Planning
-never dates a task on a paused day, but a date the user sets there stands and
-gets its reminders.
+never dates a task on a paused day, but a date the user sets there stands.
 
 ### `%Task-review-log`
 

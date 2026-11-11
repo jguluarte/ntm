@@ -26,9 +26,9 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live          |
 | `ntm-user:notify`  | How they receive notifications: their channel, and the Pushover keys when they use it |
 
-Everything else they set up lives in their databases. The rules stay in ntm,
-where every skill reads them. The end is then only packaging and installing
-their user plugin, and a self-test.
+Everything else they set up lives in their databases and their jobs. The rules
+stay in ntm, where every skill reads them. The end is then only creating their
+jobs, packaging and installing their user plugin, and a self-test.
 
 ## Pre-requisites
 
@@ -127,10 +127,13 @@ want Amazon price alerts, so ask that question at the start of the labels round.
 
 Show only what the picked features need, with the defaults below. A label's
 default name is ntm's, without the `$`. A database's is its `%` name in words,
-such as Paused dates. With the jobs, ask which model they run on: the default is
-the one running this chat. Then save, as Saving the features says. When the user
+such as Paused dates. Then save, as Saving the features says. When the user
 wants more on any of it, the feature's rules and the database templates say
 more.
+
+In the jobs round, ask which model the jobs run on: the default is the one
+running this chat. A job never starts on :00 or :30, where every scheduled task
+piles up, so move such a time a few minutes earlier.
 
 #### Task management
 
@@ -157,12 +160,20 @@ more.
 
 ##### Jobs
 
-| Job         | What it does                                        | Default         |
-| ----------- | --------------------------------------------------- | --------------- |
-| `morning`   | Makes today ready, then sends what's on today       | Weekdays, 08:44 |
-| `afternoon` | What's still open today                             | Weekdays, 14:26 |
-| `evening`   | How the day went                                    | Weekdays, 19:23 |
-| `week`      | Plans the week ahead and looks back on the last one | Sunday, 21:50   |
+| Job         | Runs                                                                          | Default         |
+| ----------- | ----------------------------------------------------------------------------- | --------------- |
+| `morning`   | `plan --auto day`, `reminder --type morning`                                  | Weekdays, 08:44 |
+| `afternoon` | `reminder --type afternoon`                                                   | Weekdays, 14:26 |
+| `evening`   | `reminder --type evening`                                                     | Weekdays, 19:23 |
+| `week`      | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` | Sunday, 21:50   |
+
+On a paused day with nothing planned, the morning sends nothing, as the morning
+rule in `%Message-rules` says.
+
+The week runs `show-completed the last 7 days and what's still open` first,
+before `fix-task-list` clears the planned dates that say what's still open.
+
+There's no separate completed job: the week's look-back covers it.
 
 #### Price watch
 
@@ -201,9 +212,9 @@ shown, created or saved.
 
 ##### Jobs
 
-| Job           | What it does                        | Default          |
-| ------------- | ----------------------------------- | ---------------- |
-| `price-watch` | Which watched items are a good deal | Every day, 06:57 |
+| Job           | Runs          | Default          |
+| ------------- | ------------- | ---------------- |
+| `price-watch` | `price-watch` | Every day, 06:57 |
 
 #### Saving the features
 
@@ -211,8 +222,8 @@ Create the labels on the task list, with `$price-watch` on its project (the
 guide's `create label` and `create project`), then each database above from its
 template, and say in a line where each one lives. Add where each one lives to
 `ntm-user:backend`. Write the settings into the `%Settings` database, and the
-labels' real names under its Labels. Then create the jobs on their model, as
-`ntm:schedules` says.
+labels' real names under its Labels. Keep the jobs and their model for Create
+the jobs, after Notifications.
 
 ### Create a persona
 
@@ -259,6 +270,41 @@ push; `references/notifications.md` says how. Then ask if there's anything about
 how they want to be notified, and save it under Notifications in the `%Settings`
 database. Then add `ntm-user:notify` to their user plugin, from their channel's
 file in `references/notify/`, with any keys.
+
+### Create the jobs
+
+Create each job they confirmed as a scheduled task, with a plain title such as
+Morning reminder.
+
+Its prompt is this frame, with step 2 once for each skill in its Runs, in order.
+`<job>` is its name in the Jobs table, such as `morning`.
+
+```
+<Title>.
+Timezone: <Timezone>.
+1. Load `ntm:ready-check` and run
+   `/ntm:ready-check --notify-failure <job>`.
+   On `Ready-check FAILED`, end the run with what it returned.
+2. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
+Final reply: what the last step returned, as the Results rules in
+`ntm-user:backend` say.
+```
+
+| Setting           | Value                                                               |
+| ----------------- | ------------------------------------------------------------------- |
+| `name`            | the title                                                           |
+| `prompt`          | the filled-in prompt                                                |
+| `cron_expression` | weekdays at 08:44 in Berlin is `CRON_TZ=Europe/Berlin 44 8 * * 1-5` |
+| `notifications`   | `{push: true}`                                                      |
+| `initiation`      | `human_request`                                                     |
+| `permission_mode` | left unset                                                          |
+
+Once it's created, set its `model` to the id this app gives the model they
+confirmed.
+
+Then tell them which model the jobs run on, and whether a run goes ahead on its
+own or stops at an action that needs approval, as each job's permission mode
+says.
 
 ### Install and self-test
 

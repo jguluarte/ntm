@@ -1,59 +1,55 @@
 # Building the theme
 
-The theme is what ntm writes every message in, so the user keeps reading them.
+The theme is what ntm writes every reminder in, so the user keeps reading them.
 Build it with them one part at a time, from what they picked. Each section below
 is a part of their `%Theme` database.
 
-A theme is a whole show, not a single character: its world, its recurring bits,
-and how an episode opens and ends. A single character repeats itself within a
-week; a show has a cast and a formula to vary. If they picked a book, a game or
-a sport, find the show in it.
-
-For each part, bring a proposal built from their show and let them react. Their
-words win over yours.
+A theme should be something with enough breadth and material to pull from that
+it can create sufficient variation, so it won't become repetitive. A show is a
+good option, as you can pull from its entire canon. While you could use a single
+character, it will take more effort to ensure an adequate dataset to avoid
+repetition.
 
 ## Register
 
-How the show talks to them: who's speaking, what they sound like, how they snap
-back when something slides and how they celebrate a win. Ask how hard it goes:
-swearing, roasting and shade are all fine if they want them. Push for vivid over
-polite. Two or three sentences, in their words.
+Where the user sits in the theme's world, who talks to them and how: how they
+snap back when the user needs it, and how they celebrate when it's earned. Ask
+how hard it goes: swearing, roasting and shade are all welcome when they want
+them. Push for vivid.
 
 ## What motivates you to read reminders from ntm
 
-What makes them open a reminder instead of swiping it away: a joke, a
-cliffhanger, a scoreboard, a story that picks up where yesterday left off. More
-than one can combine. Then how long a reminder runs, from one short line up.
+What makes them open a reminder: a joke, shade, a running bit, a story that
+picks up where yesterday left off. Several can combine. Then how long a reminder
+runs.
 
 ## The reminders
 
-What each reminder is in the show's terms. The table is the default; they name
-each one in their show's terms.
-
-| Reminder  | In the show                                                   |
-| --------- | ------------------------------------------------------------- |
-| Week      | The season preview: what's coming this week                   |
-| Morning   | The preview of today, sometimes a quick synopsis of yesterday |
-| Afternoon | The first half of the episode                                 |
-| Evening   | How the episode ends                                          |
+What the week, morning, afternoon and evening reminders are in the theme. Take
+the arc from what they picked: a contest has a challenge and a verdict, a serial
+has a cold open and a cliffhanger. For a show, the week is the season preview,
+the morning previews today's episode, the afternoon is its first half and the
+evening is how it ends.
 
 ## Responding to procrastination
 
-How the show responds when the same task carries over day after day: shame, a
-cheerleader, a demon that stalks them, whatever gets them moving. Build it as
-levels in order, each with a name from the show and the number of days a task
-has carried over when it starts. The first level is a task on its planned day.
+How the theme responds when the same task keeps getting put off: shame, a
+cheerleader, a demon that stalks them, escalating shade, whatever gets them
+moving. Build it as levels in order, starting with the everyday one, each with a
+name from the theme, how it sounds and how many days a task has carried over
+when it starts.
 
 ## Motifs
 
-Recurring bits from the show's world, each with a short name: a catchphrase, a
-stock moment, a character who keeps turning up. Push for a few weeks' worth of
-variety. A bit that's only a reference wears out in a week; one that can be
-built on, like a running scene that moves forward or a catchphrase that bends to
-the task, lasts. Agree with them how long a motif rests before it comes back.
+Recurring bits from the theme's world or their own life, each with a short name:
+a catchphrase, a stock moment, a character who keeps turning up. Push for a few
+weeks' worth of variety. That comes from how many motifs there are and how many
+ways each one can be used: a running scene that moves forward, or a catchphrase
+that bends to the task, stretches across many reminders. Talk that through with
+them, then agree how long a motif rests before it comes back, given how many
+there are.
 
 ## Examples
 
-One example message for each level, and one for an evening when everything
-closed. Use tasks like theirs. Read them back and revise until they laugh, or
-until each reads like something they'd open.
+One example reminder for each level, and one for an evening when everything
+closed, with tasks like theirs. Read them back and revise until they smile.

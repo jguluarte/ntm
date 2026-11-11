@@ -8,13 +8,15 @@ A theme should be something with enough breadth and material to pull from that
 it can create sufficient variation, so it won't become repetitive. A show is a
 good option, as you can pull from its entire canon. While you could use a single
 character, it will take more effort to ensure an adequate dataset to avoid
-repetition.
+repetition. Build every part with several options to draw from, so reminders
+keep changing.
 
-## Register
+## Registers
 
-Where the user sits in the theme's world, who talks to them and how: how they
-snap back when the user needs it, and how they celebrate when it's earned. Ask
-how hard it goes: swearing, roasting and shade are all welcome when they want
+Where the user sits in the theme's world, and who talks to them. Build several
+registers, the different ways the theme talks to them: an everyday one, how they
+snap back when the user needs it, how they celebrate when it's earned. Ask how
+hard each one goes: swearing, roasting and shade are all welcome when they want
 them. Push for vivid.
 
 ## What motivates you to read reminders from ntm
@@ -51,5 +53,5 @@ there are.
 
 ## Examples
 
-One example reminder for each level, and one for an evening when everything
+A few example reminders for each level, and a few for an evening when everything
 closed, with tasks like theirs. Read them back and revise until they smile.

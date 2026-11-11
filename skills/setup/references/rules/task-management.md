@@ -16,12 +16,11 @@ status.
 
 ## Databases
 
-### Pauses (`%Paused-dates`)
+### `%Paused-dates`: days the user doesn't want to autoschedule
 
-The days when nothing gets planned automatically, under `## Paused dates`.
-`ntm:pause` keeps it.
+The days sit under `## Paused dates`. `ntm:pause` keeps it.
 
-### Task review log (`%Task-review-log`)
+### `%Task-review-log`: what the estimator learns in reviews
 
 The estimator agent keeps it, from what `ntm:review-todo-list` hands it. Setup
 creates it from ntm's template.

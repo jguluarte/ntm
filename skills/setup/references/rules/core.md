@@ -107,7 +107,7 @@ and the user puts the labels on tasks directly.
 
 The system keeps its own records in databases on the todo list. A database
 written in backticks with a `%` in front, such as `%Message-history`, is named
-by its default title, in parentheses below, with hyphens for spaces. Its real
+by its default title, as each heading shows, with hyphens for spaces. Its real
 title on the todo list is the one `ntm-user:backend` records; use that, and
 never show the `%` in a message to the user (the plugin's docs may show it).
 Read and write them with the guide's `read database` / `write database`. Each
@@ -117,25 +117,23 @@ Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title. That task is a database, not work; every
 skill ignores it.
 
-### Settings (`%Settings`)
+### `%Settings`: the user's configured settings
 
-The values the user set up, under fixed headings, read by heading. Setup creates
-it.
+Skills read it by its fixed headings. Setup creates it.
 
-### Message history (`%Message-history`)
+### `%Message-history`: what reminders have said
 
-What reminders have said. `ntm:style` keeps it. Its frontmatter holds a `Keep:`
-line saying how much history to keep; the user changes it there.
+`ntm:style` keeps it. Its frontmatter holds a `Keep:` line saying how much
+history to keep; the user changes it there.
 
-### Message rules (`%Message-rules`)
+### `%Message-rules`: what each reminder's message says
 
-What each reminder's message says. Setup creates it from ntm's template; the
-user changes it there.
+Setup creates it from ntm's template; the user changes it there.
 
-### Style (`%Style`)
+### `%Style`: the user's persona
 
-The user's persona, which `ntm:style` reads before each message. `ntm:style`
-keeps it. Setup creates it from ntm's template.
+`ntm:style` reads it before each message, and keeps it. Setup creates it from
+ntm's template.
 
 ## Fetching
 

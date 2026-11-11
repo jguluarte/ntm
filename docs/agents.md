@@ -16,7 +16,7 @@ every day stops getting read.
 Every reminder goes through it, whether a job sends it on schedule or you run it
 by hand.
 
-### Database: `%Message-rules`
+### `%Message-rules`
 
 Your `%Message-rules` database says, for each reminder, what its message holds
 and what list goes under it: the evening rule, for example, covers what's still
@@ -35,7 +35,7 @@ When ntm picks tasks to plan, it asks the estimator how long each one takes. In
 a review of the task list with you, the estimator proposes each task's estimate
 and records the one you decide on.
 
-### Database: `%Task-review-log`
+### `%Task-review-log`
 
 Your `%Task-review-log` database is how the estimator's guesses get closer to
 yours, review after review. It holds what it has learned about how you work: how

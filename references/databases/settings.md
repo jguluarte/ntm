@@ -26,7 +26,8 @@ currency it prices in.
 <!--
 The name on the user's task list for each label ntm uses, by ntm's name for it.
 Only the labels of the features the user picked: `$no-autoschedule` and
-`$pending-shipment` for task management, the other three for price watch. The
+`$pending-shipment` for task management, `$price-watch` for price watch, and
+the two Amazon labels only when Amazon interface isn't `off`. The
 build writes these names into `ntm-user:backend`, so a change here means a
 rebuild with `/ntm:update`.
 -->
@@ -61,9 +62,10 @@ How the price watch shops, for every watched item unless the task says
 otherwise. Price watch only. Amazon interface is how
 `ntm:sync-price-watch-to-amazon` reaches Amazon to keep its price alerts:
 Claude's built-in browser, or the user's own browser through the Claude
-extension; off when they want no Amazon alerts. Anything else the user says
-about how they shop goes in its own subsection, in their words. Stores they
-trust or block go in the `%Price-watch-stores` database instead.
+extension. `off` means no Amazon alerts. Its subsection is always written: it
+has no default to fall back on when missing. Anything else the user says about
+how they shop goes in its own subsection, in their words. Stores they trust or
+block go in the `%Price-watch-stores` database instead.
 -->
 
 ### Amazon interface

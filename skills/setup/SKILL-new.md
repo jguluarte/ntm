@@ -161,7 +161,9 @@ the feature's rules and the database templates say more.
 
 Jobs can't reach Amazon, so `/ntm:sync-price-watch-to-amazon` keeps its price
 alerts from a browser in chat. Amazon interface is which one: Claude's built-in
-browser, their own browser through the Claude extension, or off.
+browser, their own browser through the Claude extension, or off. Make sure to
+ask the user if they would like to set up Amazon syncing, and if so then ask
+them about the two associated labels.
 
 ##### Labels
 

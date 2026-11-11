@@ -31,9 +31,10 @@ itself. Only agents are handed work and send something back.
 
 ### Generic text lives in the base
 
-The list rules, every backend guide and each feature's rules live in the base as
-setup reference files that the build reads. A rule fix reaches users through
-`update` and a rebuild. Tokens matter most.
+The rules live in ntm's `references/rules/`, and runs read them there. The
+backend guides and database templates are setup's, in
+`skills/setup/references/`. A rule fix reaches users with the next version of
+the base. Tokens matter most.
 
 ### Runs load only the user's paths
 

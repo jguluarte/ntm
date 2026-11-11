@@ -16,11 +16,12 @@ Keep: 8 weeks
 ## Entries
 
 <!--
-One row per message sent, newest first: the date it went out, the ids of the
-tasks it names, and the message as sent, without the task list under it. The
-ids are how `ntm:style` counts the days a task has slipped. A row looks like
-| 2026-11-09 | ABC-12 | The gutters (ABC-12), day three. Still waiting. |
+One JSON line per message sent, newest first: the date it went out, the ids of
+the tasks it names, and the message as sent, without the task list under it. The
+ids are how `ntm:style` counts the days a task has slipped. A line looks like
+{"date":"2026-11-09","ids":["ABC-12"],"line":"The gutters (ABC-12), day three. Still waiting."}
 -->
 
-| Date | Tasks | Message |
-| ---- | ----- | ------- |
+```jsonl
+
+```

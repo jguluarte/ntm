@@ -16,6 +16,10 @@ status.
 
 ## Databases
 
+### `%Message-rules`: what each reminder's message says
+
+Setup creates it from ntm's template; the user changes it there.
+
 ### `%Paused-dates`: days the user doesn't want to autoschedule
 
 The days sit under `## Paused dates`. `ntm:pause` keeps it.

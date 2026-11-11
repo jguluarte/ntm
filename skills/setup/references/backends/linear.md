@@ -128,8 +128,7 @@ Check for an existing match with `list_issues` (`query`) first.
 ### Databases
 
 Databases are Linear documents in the team, under the titles the core rules
-give. A database kept inside a project (the price watch stores database, in the
-project that carries the $price-watch label) lives in that project's documents
+give. A database kept inside a project lives in that project's documents
 instead. Search with `projectId` instead of `teamId` (the project's id, from
 `list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
 create with `project: "<project name>"` instead of `team`.

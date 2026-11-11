@@ -37,8 +37,9 @@ roasting, whatever they want.
 
 An empty or missing part means its default.
 
-- `### What gets you to read`: what gets a reminder opened (brevity, humor, a
-  running bit) and how long a message runs. Default: one or two plain sentences.
+- `### What motivates you to read reminders from ntm`: what gets a reminder
+  opened (brevity, humor, a running bit) and how long a message runs. Default:
+  one or two plain sentences.
 - `### The reminders`: what the morning, afternoon, evening, week and completed
   are in the theme's terms. Default: morning is the setup, afternoon the nudge,
   evening how the day ended, week the recap and what's coming, completed the

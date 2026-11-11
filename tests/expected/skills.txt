@@ -1,17 +1,12 @@
-afternoon-reminder
-evening-reminder
 fix-task-list
 help
-morning-reminder
 pause
 plan
 price-watch
 ready-check
 reminder
 review-todo-list
-schedules
 self-test
-settings
 setup
 show-completed
 style

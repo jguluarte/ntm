@@ -60,9 +60,10 @@ ntm's overall objective.
 
 How the theme responds when the same task keeps getting put off: shame, a
 cheerleader, a demon that stalks them, escalating shade, whatever gets them
-moving. Build it as levels in order, starting with the everyday one, each with a
-name from the theme, how it sounds and how many days a task has carried over
-when it starts.
+moving. Talk through with them what they want as a task keeps slipping, then
+decide what fits their theme: how many levels, and which registers each one
+draws on. Each level has a name from the theme, how it sounds and how many days
+a task has carried over when it starts.
 
 ## Motifs
 

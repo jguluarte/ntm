@@ -41,9 +41,6 @@ linked tasks kept as the markdown they arrived in. The job's final reply is then
 everything after the marker line, verbatim, and nothing else. The completion
 push shows that reply.
 
-In chat the block is returned the same way; the reply that shows it is the
-delivery.
-
 ## Result
 
 The delivery block above, which has no length cap.

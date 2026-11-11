@@ -74,17 +74,14 @@ Rules, each of which prevents a real failure:
 
 Add these as extra `--form-string` lines when they're useful:
 
-| Field       | Purpose                                                                 |
-| ----------- | ----------------------------------------------------------------------- |
-| `url`       | A link attached below the message, e.g. a task. Tappable.               |
-| `url_title` | Label for `url` instead of the raw link, e.g. `Open task`.              |
-| `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high, `2` emergency. |
-| `sound`     | Notification sound; `pushover` is the default.                          |
+| Field       | Purpose                                                    |
+| ----------- | ---------------------------------------------------------- |
+| `url`       | A link attached below the message, e.g. a task. Tappable.  |
+| `url_title` | Label for `url` instead of the raw link, e.g. `Open task`. |
+| `priority`  | `-2` silent, `-1` quiet, `0` normal (default), `1` high.   |
+| `sound`     | Notification sound; `pushover` is the default.             |
 
-- **Priority 1** bypasses quiet hours. Use it sparingly.
-- **Priority 2** repeats until acknowledged and requires `retry` (seconds, 30 or
-  more) and `expire` (seconds, at most 10800). Reserve it for genuine
-  emergencies.
+Priority 1 bypasses quiet hours. Use it sparingly.
 
 ### HTML mode
 
@@ -99,14 +96,12 @@ the markup.
 
 ### Limits
 
-- The message can be at most 1,024 characters as sent (links converted) and the
-  title at most 250. Pushover rejects anything longer. When either is over,
-  don't trim it and don't send: return
-  `Notify TOO LONG: <the cap and why>; this was <n>`, the cap in plain words
-  (for the message: Pushover takes at most 1,024 characters as sent, links
-  included; for the title: at most 250 characters), and the caller shortens it.
-- The rate limit is 10,000 messages per month per app, well beyond what the jobs
-  use.
+The message can be at most 1,024 characters as sent (links converted) and the
+title at most 250. Pushover rejects anything longer. When either is over, don't
+trim it and don't send: return
+`Notify TOO LONG: <the cap and why>; this was <n>`, the cap in plain words (for
+the message: Pushover takes at most 1,024 characters as sent, links included;
+for the title: at most 250 characters), and the caller shortens it.
 
 ### Checking the result
 

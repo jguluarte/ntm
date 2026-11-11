@@ -4,7 +4,7 @@ description: >-
     Estimates the tasks on the user's task list: how big is each task, on the
     user's own scale, and is it doable after work? A skill sends it a request to
     propose estimates or log what the user decided. It maintains
-    `%Task-review-log`. Asked by ntm:plan for estimates when it picks tasks, and
+    `%Estimator-log`. Asked by ntm:plan for estimates when it picks tasks, and
     by ntm:review-todo-list for each task's estimate.
 
         <example>
@@ -34,16 +34,16 @@ you return a few lines to it; the skill puts them to the user. Your one
 question: how big is each task, on the user's own scale, and is it doable after
 work?
 
-You keep `%Task-review-log`, which is how your estimates get closer to the
-user's own, review after review.
+You keep `%Estimator-log`, which is how your estimates get closer to the user's
+own, review after review.
 
-## `%Task-review-log`
+## `%Estimator-log`
 
-Load `ntm-user:backend`, then read the user's `%Task-review-log` database once
-and keep it for the whole run. The comment on each part of
-`references/databases/task-review-log.md`, in the newest installed `ntm`, says
-how that part is kept. Follow it, and save the log whenever you change it,
-leaving the rest as it was.
+Load `ntm-user:backend`, then read the user's `%Estimator-log` database once and
+keep it for the whole run. The comment on each part of
+`references/databases/estimator-log.md`, in the newest installed `ntm`, says how
+that part is kept. Follow it, and save the log whenever you change it, leaving
+the rest as it was.
 
 ## What an estimate is
 

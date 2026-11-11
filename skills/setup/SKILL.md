@@ -306,8 +306,11 @@ Ask how long they like a reminder to run, and save it under About you in the
 
 Confirm the names of the `%Theme` and `%Message-history` databases. Then save
 the theme: create the `%Theme` database with their theme in the parts
-`references/theme.md` describes, and `%Message-history` from its template. Add
-where each one lives to `ntm-user:backend`.
+`references/theme.md` describes, and `%Message-history` from its template. Each
+`%Theme` part holds what you built with them, never the reference's own text:
+How to connect this theme to ntm's flow holds what their week, morning,
+afternoon and evening are in their theme. Add where each one lives to
+`ntm-user:backend`.
 
 ### Notifications
 

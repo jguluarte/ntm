@@ -19,10 +19,10 @@ yours can be anything.
 | `$has-amazon-alert`   | `has-amazon-alert`   |
 | `$amazon-unavailable` | `amazon-unavailable` |
 | `%Settings`           | `Settings`           |
-| `%Message-rules`      | `Message-rules`      |
-| `%Message-history`    | `Message-history`    |
-| `%Paused-dates`       | `Paused-dates`       |
-| `%Task-review-log`    | `Task-review-log`    |
+| `%Message-rules`      | `Message rules`      |
+| `%Message-history`    | `Message history`    |
+| `%Paused-dates`       | `Paused dates`       |
+| `%Task-review-log`    | `Task review log`    |
 | `%Theme`              | `Theme`              |
 
 These are the names the plugin's author uses; the marks keep the plugin's files

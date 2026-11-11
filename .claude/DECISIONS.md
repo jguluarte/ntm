@@ -20,9 +20,9 @@ directly (`/ntm:today`), and a job's prompt loads `ntm:<skill>`.
 ### The user plugin
 
 It holds two skills. `backend` teaches how to work with this user's task list:
-its calls, labels and statuses, what counts as open, and where every document
-lives. `notify` is their channel, with the Pushover keys when they use Pushover.
-Linear users also get the Linear connector bundled.
+its calls and statuses, what counts as open, and where each database lives.
+`notify` is their channel, with the Pushover keys when they use Pushover. Linear
+users also get the Linear connector bundled.
 
 ### Skills do their own work
 

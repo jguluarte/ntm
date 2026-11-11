@@ -1,113 +1,139 @@
 # Linear guide
 
-The backend guide for Linear, and a tested one: how each operation the backend
-contract names is carried out with the Linear connector. The build copies
-everything below this paragraph into `ntm-user:backend` as written, with
-`<List name>` and `<List id>` filled in. It also copies `linear-mcp.json`,
-beside this guide, as written into `ntm-user`'s `.mcp.json`, so the connector
-comes bundled. Setting Linear up with the user is part of setup's todo list
-step, `todo-list.md`.
+How ntm runs on Linear: setting it up with the user, then how each operation in
+`contract.md` is done with the Linear connector. The connector's own
+instructions and tool descriptions are the authority on how to call its tools;
+this guide says which tool does each operation and which of the user's values
+goes where.
 
-Use the tools of the Linear connector that's signed in. Its own instructions and
-tool descriptions are the authority on how to call them. This guide says which
-tool does each operation and which of the user's values goes where.
+The build copies Task list through Writing into `ntm-user:backend` as written,
+with `<List name>` and `<List id>` filled in. It also copies `linear-mcp.json`,
+beside this guide, into `ntm-user`'s `.mcp.json`, so the connector comes
+bundled.
 
-## Todo list
+## Setting up Linear
 
-- **Team:** `<List name>`, the team's name; `<List id>` is its id, used wherever
-  a call below takes `teamId`.
-- **Project labels:** labels on a project are Linear project labels, a separate
-  set from issue labels (`list_project_labels` / `save_project_label`).
-  Inheritance matches them to issue labels by name, so a label a project carries
-  needs a project label with the same name.
-- **Automations:** Linear can close a parent when its sub-issues are all done
-  (Parent auto-close, in the team's settings under Workflow).
-- **Estimates:** ntm doesn't use Linear's estimate field. An estimate is the
-  `Estimate:` line at the end of the issue's description, such as
-  `Estimate: 2 hours`. `fetch open` reads it from `description`, and
-  `update task` writes it there. Nothing to set up.
+### 1. A Linear account
+
+Only when the user doesn't have Linear yet. They sign up at linear.app; the free
+plan is enough. The new workspace comes with one team, and that team is their
+task list. Its key, the capital letters that start every task's id (`HOME` in
+`HOME-12`), shows up in their reminders, so they pick one they like reading.
+
+The team's statuses already fit ntm. A user who wants one for tasks they can't
+move right now adds a status named Blocked in the team's workflow settings.
+
+Wait for them to say they're done.
+
+### 2. The connector
+
+ToolSearch for `get_team`. When it isn't there, the user adds Linear on the
+Connectors tab in Claude's settings, signs in to their workspace, and says so.
+Search again before going on.
+
+### 3. The team
+
+`list todo-lists`, and propose a team. Its name is the List name and its id the
+List id.
+
+`ping` it right away. A pass: say in a line that the list answers. Anything
+else: say what failed, as `ping` words it, and fix it with them, such as signing
+in again with the account that holds the team. If it won't pass, say so and
+stop: every later step needs the list.
+
+Suggest turning on Parent auto-close, in the team's settings under Workflow, so
+a parent closes once its sub-tasks are all done.
+
+## Task list
+
+The task list is the Linear team `<List name>`. `<List id>` is its id, used
+wherever a call takes `teamId`.
+
+Projects carry Linear project labels, a separate set from issue labels. A
+project's label counts by name, so each system label has a project label of the
+same name.
+
+ntm doesn't use Linear's estimate field. An estimate is the `Estimate:` line at
+the end of the issue's description, such as `Estimate: 2 hours`.
 
 ## Status classes
 
-A task's class comes from `statusType`, Linear's own type for its status:
+A status's class comes from its `statusType`:
 
-- `backlog` and `unstarted`: plannable.
-- `started`: plannable and started.
-- `completed`: done.
-- `canceled`: canceled.
-- `duplicate`: duplicate.
+| `statusType`           | Class                 |
+| ---------------------- | --------------------- |
+| `backlog`, `unstarted` | plannable             |
+| `started`              | plannable and started |
+| `completed`            | done                  |
+| `canceled`             | canceled              |
+| `duplicate`            | duplicate             |
 
-One exception: a status named Blocked is the blocked class, whatever its type.
-Results carry `status` (the name) and `statusType`. `list_issues` and
-`save_issue` take either a type or a name in `state`.
+A status named Blocked is the blocked class, whatever its type. Results carry
+`status`, the name, and `statusType`; `list_issues` and `save_issue` take either
+in `state`.
 
 ## Operations
 
 ### `ping`
 
-`get_team` (`query: "<List id>"`). Team `<List name>` comes back: pass. A
-different team: wrong account. Unauthorized or forbidden: sign-in expired. Not
-found: wrong account. Anything else: backend error.
+`get_team` with `query: "<List id>"`. Team `<List name>` comes back: pass.
+Another team, or not found: wrong account. Unauthorized or forbidden: sign-in
+expired. Anything else: backend error.
 
-The Linear connector bundled with `ntm-user` needs its own sign-in. Until it has
-one, it shows only an `authenticate` tool (and `complete_authentication`), none
-of the tools above. When no Linear connector is signed in, the ping returns
-`Backend CAN'T: Linear needs sign-in — <how>`. How, in a chat: call
-`authenticate` and give the user the link it returns; once they've signed in,
-the tools appear. When the page the link lands on doesn't load, pass that page's
-address to `complete_authentication`. In a job, no one can sign in: the how is
-"open a chat and run /ntm:self-test".
+The connector bundled with `ntm-user` needs its own sign-in. Until it has one,
+it shows only `authenticate` and `complete_authentication`, which is sign-in
+expired. The fix, in a chat: call `authenticate` and give the user the link it
+returns; when the page it lands on doesn't load, pass that page's address to
+`complete_authentication`. In a job no one can sign in, so the fix is "open a
+chat and run /ntm:self-test".
 
 ### `fetch open`
 
-One `list_issues` call per open type: `state` set to `backlog`, `unstarted` and
-`started`. A Blocked status has one of these types, so it comes back too. Each
-call has `team: "<List name>"`, `limit: 250`, and `fields`: `title`, `url`,
-`status`, `statusType`, `priority`, `description`, `dueDate`, `labels`,
-`project`, `parentId`, `completedAt`, `updatedAt`. Merge the results.
+`list_issues` once for each open type, with `state` set to `backlog`,
+`unstarted` and `started`, and merge the results. A Blocked status has one of
+these types, so it comes back too. Each call takes `team: "<List name>"`,
+`limit: 250` and `fields`: `title`, `url`, `status`, `statusType`, `priority`,
+`description`, `dueDate`, `labels`, `project`, `parentId`, `completedAt` and
+`updatedAt`.
 
-Also list every project once with `list_projects` (`team: "<List name>"`,
-`fields` `name` and `labels`, plus `summary` when a skill asks for the project's
-summary). Match each issue's `project` against them by name, so inherited labels
-count.
+Then `list_projects` once, with `team: "<List name>"` and `fields` `name` and
+`labels`, plus `summary` when a skill asks for it. Match each issue's `project`
+to them by name, so its project's labels count.
 
-`dueDate` holds the planned date: the day the work is planned for. `url` is the
-task's link; always ask for it in `fields`. `priority` is `0` when none is set;
-`1` is the highest.
+`dueDate` is the planned date and `url` the task's link. The estimate is read
+from `description`. `priority` is `0` for none and `1` for the highest.
 
 ### `fetch closed`
 
-`list_issues` as above with `state` set to `completed`; add a call each for
-`canceled` and `duplicate` only when asked. For a span, pass `completedAt` as
-its first day. When a skill asks for one label, add `label: "<label name>"` to
-each call.
+`list_issues` as in `fetch open`, with `state: "completed"`, plus a call each
+for `canceled` and `duplicate` only when asked. For a span, pass its first day
+as `completedAt`. For one label, add `label: "<label name>"` to each call.
 
 ### `read task`
 
-`get_issue` with the id, `includeRelations: true` for blocked-by relations.
-Descriptions come with it.
+`get_issue` with the id and `includeRelations: true`, for the description and
+blocked-by relations.
 
 ### `read comments` / `write comment` / `update comment`
 
-`list_comments` with the issue id. `save_comment` with `issueId` and `body`
-creates; with `id` it updates in place.
+`list_comments` with the issue id. `save_comment` with `issueId` and `body` adds
+one; with `id` as well, it changes that one in place.
 
 ### `set planned date` / `clear planned date`
 
-`save_issue` with `id` and `dueDate: "YYYY-MM-DD"`; clear with `dueDate: null`.
-Change nothing else on the issue.
+`save_issue` with `id` and `dueDate: "YYYY-MM-DD"`, or `dueDate: null` to clear
+it.
 
 ### `set status`
 
-`save_issue` with `id` and `state`. For done, canceled and duplicate, pass the
-type: `completed`, `canceled` or `duplicate`. For blocked, pass `Blocked`. For a
-plannable status, pass its name; `list_issue_statuses` with `team` lists them.
+`save_issue` with `id` and `state`: `completed`, `canceled` or `duplicate` for
+those classes, `Blocked` for blocked, and a status's name for plannable;
+`list_issue_statuses` with `team` lists them.
 
 ### `add labels` / `remove labels`
 
-`save_issue` with `id` and `addLabels` or `removeLabels` (lists of label names).
-Check a label exists with `list_issue_labels` (`team`) before adding one for the
-first time.
+`save_issue` with `id` and `addLabels` or `removeLabels`, each a list of label
+names.
 
 ### `mark duplicate of`
 
@@ -115,39 +141,65 @@ first time.
 
 ### `create task`
 
-`save_issue` without `id`: `team`, `title`, `description`, optional `project`,
-`parentId`, `dueDate`, `labels`. Blocked-by relations: `blockedBy: ["<id>"]`.
-Check for an existing match with `list_issues` (`query`) first.
+`list_issues` with `query` first, to check for a match. Then `save_issue`
+without `id`: `team`, `title`, `description`, and any of `project`, `parentId`,
+`dueDate`, `labels` and `blockedBy: ["<id>"]`.
 
 ### `update task`
 
-`save_issue` with `id` and only the fields the skill changes: `title`,
-`description`, `project` (`project: null` to remove it), and
-`blockedBy: ["<id>"]` to add a blocked-by link. Nothing else changes.
+`save_issue` with `id` and only the fields that change: `title`, `description`
+(where the estimate is written), `project` (`null` removes it), or
+`blockedBy: ["<id>"]` to add a blocked-by link.
 
-### Databases
+## Databases
 
-Databases are Linear documents in the team, under the titles the core rules
-give. A database kept inside a project lives in that project's documents
-instead. Search with `projectId` instead of `teamId` (the project's id, from
-`list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
-create with `project: "<project name>"` instead of `team`.
+Databases are Linear documents in the team, under the titles the rules give. One
+kept in a project lives in that project's documents instead: search with
+`projectId`, the project's id from `list_projects`, in place of `teamId`, and
+create with `project: "<project name>"` in place of `team`.
 
-- **`read database`:** `list_documents` with `query: "<database title>"` and
-  `teamId: "<List id>"`, then `get_document` with the id of the result whose
-  `title` is the database's title. No match means the database is missing.
-- **`write database`:** `save_document` with the database's `id` and the new
-  `content`, changing only what the skill says to change. When the database is
-  missing, create it the way `create database` does, but with the whole content
-  given, not only its frontmatter (the content for `%Message-history` already
-  starts with its frontmatter).
-- **`create database`:** `read database` first; one that exists is left alone.
-  Otherwise `save_document` without `id`, with `team: "<List name>"` (or
-  `project: "<project name>"` for a database kept in a project), `title` set to
-  the database's title, and `content` set to its first content (for
-  `%Message-history`, its frontmatter).
+### `read database`
+
+`list_documents` with `query: "<database title>"` and `teamId: "<List id>"`,
+then `get_document` with the id of the result whose `title` is the database's
+title. No match: the database is missing.
+
+### `write database`
+
+`save_document` with the database's `id` and the new `content`, changing only
+what the skill changes. When it's missing, create it as `create database` does,
+with the whole content.
+
+### `create database`
+
+`read database` first, and leave one that exists alone. Otherwise
+`save_document` with `team: "<List name>"`, `title` set to the database's title,
+and `content` set to its first content.
 
 ## Writing
 
-The response says whether the write succeeded; the core rules' retry rule
-applies.
+The response says whether the write succeeded; the rules' retry rule applies.
+
+## Setup operations
+
+### `list todo-lists`
+
+`list_teams`. Each team comes back with its name and id.
+
+### `list projects`
+
+`list_projects` with `team: "<List name>"` and `fields` `name` and `labels`.
+Each comes back with its id.
+
+### `create label`
+
+Each label is made as both an issue label and a project label, under the same
+name. `list_issue_labels` and `list_project_labels` with `team`; for each set
+without the name, `save_issue_label` or `save_project_label` with `name`,
+`teamId: "<List id>"` and `description`.
+
+### `create project`
+
+`save_project` with `name`, `addTeams: ["<List name>"]` and `labels`. For an
+existing project, pass its `id` and its current labels plus the new ones, since
+`labels` replaces the set.

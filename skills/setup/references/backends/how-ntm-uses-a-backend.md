@@ -5,13 +5,19 @@ agent can reach. This file describes, in plain ideas rather than calls, what ntm
 does with it. Setup reads it to connect a backend, and writes how each idea is
 done there into `ntm-user:backend`, which every skill loads.
 
+A `$` or `%` in front of a name, as in `$price-watch` or `%Settings`, is ntm's
+way of writing a label or a database. It isn't part of the real name; setup
+records each real name.
+
 ## Tasks and their states
 
 ntm works on one task list: the place that holds all of the user's tasks,
 whatever the backend calls it. Each task has an id the user can read, such as
 `ABC-12`, a title, a description, a link that opens it, and a status. ntm
 usually reads every open task at once; for reports, it reads the tasks closed
-over a span of days, with when each one closed.
+over a span of days, with when each one closed. It also creates tasks, edits
+their title and description, and moves them between the groups below, including
+closing them.
 
 ntm never cares what a status is called, only which group it's in:
 
@@ -43,10 +49,9 @@ Projects group tasks, such as a kitchen remodel, or a catch-all for errands.
 
 Labels mark tasks for ntm. A label written with a `$`, such as
 `$no-autoschedule`, is one ntm acts on: that one keeps a task out of planning.
-Each feature's rules name the labels it uses, and setup records each one's real
-name on the task list. A label on a project counts on every task in it, so
-`$price-watch` on a project watches everything in it. Any other label is the
-user's own category.
+Each feature's rules name the labels it uses. A label on a project counts on
+every task in it, so `$price-watch` on a project watches everything in it. Any
+other label is the user's own category.
 
 A parent task holds sub-tasks; a review splits a big task into smaller ones
 under it. One task can block another: the blocked one is planned for a day after
@@ -65,20 +70,20 @@ the backend has of its own.
 
 ## ntm's own records
 
-ntm keeps its records in databases: documents written with a `%`, such as
-`%Settings` and `%Message-rules`, each found by its title. ntm reads one and
-saves it back with its changes. Ideally the backend holds them beside the tasks,
-so everything ntm knows lives in one place. A database can belong to a project,
+ntm keeps its records in databases, such as `%Settings` and `%Message-rules`. A
+database is a page of text, found by its title, that ntm reads whole and saves
+back with its changes. Ideally the backend holds them beside the tasks, so
+everything ntm knows lives in one place. A database can belong to a project,
 kept in its documents. `ntm-user:backend` records where each one is.
 
 ## Connecting another backend
 
 The agent running setup reads this file and the user's own tools for their
 backend. It maps each idea above onto those tools with the user, and writes how
-into `ntm-user:backend`: which statuses are in which group, which date field is
-the planned date, what counts as a project, where the databases live. Where the
-choice is the user's, it proposes one and lets them decide. Nothing lists every
-call: the tools' own descriptions say how to make them.
+into `ntm-user:backend`, such as which statuses are in which group, which date
+field is the planned date, what counts as a project and where the databases
+live. Where the choice is the user's, it proposes one and lets them decide.
+Nothing lists every call: the tools' own descriptions say how to make them.
 
 ntm needs at least a date to plan with and a way to tell open tasks from closed.
 It also needs one quick read that proves the task list answers, which

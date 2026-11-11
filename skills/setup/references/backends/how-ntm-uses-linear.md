@@ -11,6 +11,23 @@ database's with a `%`, such as `%Settings`. The mark isn't part of the name.
 Setup records the real names in `ntm-user:backend`, which every skill loads, so
 yours can be anything.
 
+| In ntm                | Our name in Linear   |
+| --------------------- | -------------------- |
+| `$no-autoschedule`    | `no-autoschedule`    |
+| `$pending-shipment`   | `pending-shipment`   |
+| `$price-watch`        | `price-watch`        |
+| `$has-amazon-alert`   | `has-amazon-alert`   |
+| `$amazon-unavailable` | `amazon-unavailable` |
+| `%Settings`           | `Settings`           |
+| `%Message-rules`      | `Message-rules`      |
+| `%Message-history`    | `Message-history`    |
+| `%Paused-dates`       | `Paused-dates`       |
+| `%Task-review-log`    | `Task-review-log`    |
+| `%Theme`              | `Theme`              |
+
+These are the names the plugin's author uses; the marks keep the plugin's files
+consistent and still leave you free to name yours differently.
+
 ## The task list
 
 ntm needs one place that holds every task. Each task has an id you can read, a
@@ -43,14 +60,16 @@ from canceled tasks.
 
 ## The planned date
 
-ntm plans with one date on each task: the day the work is planned for, never a
-deadline. Planning sets it, moves it and clears it freely, and reminders read it
-to say what's on today.
+ntm plans with one date on each task: the day the work is planned for. Planning
+sets it, moves it and clears it freely, and reminders read it to say what's on
+today.
+
+**NEVER treat a planned date as a deadline.**
 
 We plan with Linear's due date. To us it means the day we mean to do the work,
 so a day that passes costs nothing.
 
-A planned date before today, on a task that's still open, is stale. ntm either
+A planned date before today, on a task that's still open, is "stale". ntm either
 carries the work to today or clears the date.
 
 ## Projects and labels

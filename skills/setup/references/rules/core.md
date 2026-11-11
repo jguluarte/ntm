@@ -82,9 +82,10 @@ Ignore it everywhere; the original task is what counts.
 
 ### System labels
 
-A label written with a `$` in front is a system label, written by its default
-name. Its real name on the todo list is the one below; use that, and never show
-the `$` to the user. Any of them can sit on a task or on a project; on a
+A label written in backticks with a `$` in front, such as `$price-watch`, is a
+system label, written by its default name. Its real name on the todo list is the
+one below; use that, and never show the `$` in a message to the user (the
+plugin's docs may show it). Any of them can sit on a task or on a project; on a
 project, every task in it carries it too (see Project labels).
 
 `<Labels>`
@@ -105,11 +106,12 @@ and the user puts the labels on tasks directly.
 ## Databases
 
 The system keeps its own records in databases on the todo list. A database
-written with a `%` in front, such as %Message-history, is named by its default
-title, in parentheses below, with hyphens for spaces. Its real title on the todo
-list is the one `ntm-user:backend` records; use that, and never show the `%` to
-the user. Read and write them with the guide's `read database` /
-`write database`. Each database has one writer; everything else only reads it.
+written in backticks with a `%` in front, such as `%Message-history`, is named
+by its default title, in parentheses below, with hyphens for spaces. Its real
+title on the todo list is the one `ntm-user:backend` records; use that, and
+never show the `%` in a message to the user (the plugin's docs may show it).
+Read and write them with the guide's `read database` / `write database`. Each
+database has one writer; everything else only reads it.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title. That task is a database, not work; every

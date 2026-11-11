@@ -74,7 +74,9 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
   "review", never "groom". The list is the "task list" in prose, never "board";
   skill names such as `/ntm:review-todo-list` keep "todo-list" until they are
   renamed. `$` marks only the label names the user configures. `%` marks a user
-  database by its default title.
+  database by its default title. These plugin variables always sit in backticks,
+  `$price-watch` and `%Settings`, and so does a configured label's name written
+  without the `$`.
 - Never the word "voice", in any form.
 - Nothing that ties the plugin to a particular person: no names, no board name,
   no Drag Race words, no ADHD. The exception is the setup intro's origin story,

@@ -1,143 +1,90 @@
----
-name: configure-style
-description: >-
-    Builds or revises ntm-user:style, the skill that writes every reminder in
-    the user's own register, with them in chat: plain, a theme they describe, or
-    a persona skill they already have. Run when the user says "set up the
-    style", "change how reminders talk to me", "make it meaner", "make it
-    softer", "make it shorter", "the reminders aren't landing" or "use my own
-    persona"; ntm:configure runs it as one of its parts.
----
+# Building a persona
 
-# ntm:configure-style
+The persona is the character behind the user's reminders. It lives in their
+`%Style` database, built from ntm's template, `references/databases/style.md`,
+and `ntm:style` reads it before every message.
 
-`ntm-user:style` is the user's own skill: the messenger runs it for every
-reminder. It has two halves: a Profile (who talks, what gets them to read, the
-reminders of the day, the levels when something keeps slipping, motifs and
-examples) and the procedure that writes a line from facts. This skill writes it
-with the user in short rounds: you bring proposals, they react. Never hand them
-a form.
+Push for a character they enjoy: a plain reminder is easy to swipe away. You
+propose each part in the character's terms, they react, and you rewrite until it
+sounds like the character.
 
-Read `references/builder.md` once before starting: it holds the Profile's shape,
-the questions for each section, the episode arc the reminders follow, and one
-plain example. `ntm:settings` builds the skill around it (see Result).
+## A new persona
 
-This skill ships no persona and names no show, person or brand. The theme, the
-reminders, the levels and their names are the user's, in their words.
+Build each part under the template's heading, in its order, with the headings
+exactly as written. Everything under a heading is the user's, in their words.
 
-## Usage
+### Register
 
-```
-/ntm:configure-style [<persona skill text>]
-```
+Who is talking, and how they talk to the user. Take the character they picked
+and ask how it reacts when something slides, how it celebrates a win, and what
+it would never say. Ask how hard it goes: swearing, shade, roasting, whatever
+they want. Write it in two or three sentences.
 
-Text after the name is a persona skill the user already has, pasted or attached
-(or a Profile in the builder's shape from an earlier ntm-user); see User-defined
-persona.
+### What motivates you to read reminders from ntm
 
-## Before you start
+What gets them to open a reminder instead of swiping it away, and how long a
+message runs. Offer a few; more than one can combine:
 
-Load `ntm-user:style` by name.
+- humor: the joke is what gets it read
+- brevity: one line, the task first
+- a running bit that continues from one day to the next
+- a scoreboard of what's done this week
+- surprise: a different form each day
 
-- **Won't load:** a new style. Open with the three choices below.
-- **Loads:** a re-run. Show the Profile section by section, ask what to change,
-  and go to the section that owns it: "meaner" or "softer" is Register and the
-  Examples for the levels it touches; "shorter" is What gets you to read and the
-  Examples; "not landing" starts at What gets you to read, then When something
-  keeps slipping. Sections they don't name stay as they are. A persona is edited
-  as they say, verbatim otherwise.
+### The reminders
 
-When `ntm:configure` is running this skill, it says so; the result goes back to
-it (see Result).
+A day of reminders follows an episode, and a week follows a season. Propose what
+each reminder is in the character's world, one line under each subsection, and
+let them rename or cut:
 
-## Opening
+- Morning: the preview of what's ahead, with a quick recap when something
+  carried over from yesterday.
+- Afternoon: the first half of the episode, the nudge.
+- Evening: how the episode ends.
+- Week: the season preview, with last week in a breath.
+- Completed: the credits, what got done.
 
-One line, three choices, none favoured: plain; describe a theme; or hand me a
-persona you already have. "Just remind me", or anything like it, is plain.
+Take the arc from what they picked: a contest has a challenge and a verdict, a
+serial has a cold open and a cliffhanger.
 
-## Plain
+### Responding to procrastination
 
-Every section answered plainly, no persona:
+How the messages change when a task keeps carrying over. Start from what they
+said they need when they're slacking off: shame, a cheerleader, a demon to stalk
+them. Build the levels from it in the character's words, each with its name and
+after how many earlier days it starts, then the climb rule in a line. One level,
+the same every day, is a complete answer.
 
-- **Register:** `Plain.` and one sentence on manner (warm, dry, brisk), in their
-  words, and whether swearing is fine (`Profanity: yes` or `no`).
-- **What gets you to read:** offer the builder's list; write their answer in
-  their words.
-- **The reminders:** the defaults; nothing to ask.
-- **When something keeps slipping:** offer the builder's list. One level is a
-  complete answer ("same every day"). If they want a climb, they name each level
-  and say after how many earlier days it starts. Write that number on every
-  level after the first.
-- **Motifs:** empty, or a few things from their own life, each a short name.
-  Repeat limit: the default unless they say otherwise.
-- **Examples:** one per level and one for nothing open, showing the mechanism
-  from What gets you to read at work.
+### Motifs
 
-## A theme
+Recurring bits a line can be built from: from the character's world, or from the
+user's life (the pets, the house, the commute). Each gets a short name, which
+`%Message-history` records exactly.
 
-The user describes who is talking. Derive each section with them, in order, with
-the builder's questions:
+Push for a few weeks' worth of variety. A motif that is only a reference wears
+out in a week; one that can be built on lasts: a running scene that advances, a
+catchphrase that bends to the subject, a recurring character who reacts to the
+day. Ask what comes back every episode in what they picked, and propose a list
+from it; they add, cut and replace. Set the `Repeat limit:` line from how far
+the list stretches.
 
-- **Register:** who is talking, what they sound like, what they never do; two or
-  three sentences, and whether swearing is fine (`Profanity: yes` or `no`).
-- **What gets you to read:** the builder's list; more than one can combine; with
-  what it needs (what a serial is about).
-- **The reminders:** what each of the five is in the theme's terms (the
-  builder's The reminders section), using the thing they named as the analogy:
-  what the morning is in that world, what the afternoon is, the evening, the
-  week, the credits. Propose each as one line; they rename or cut.
-- **When something keeps slipping:** their levels, in order, each with the name
-  they give it and after how many earlier days it starts; then the climb rule in
-  one line.
-- **Motifs:** recurring bits from the theme's world, one per line, each a short
-  name `%Message-history` records exactly, built with them as the builder's
-  Motifs section says: ask what they like and use it as the analogy, prefer
-  motifs that can be built on, and set the repeat limit from how much variety
-  the list gives. They add, cut and replace.
-- **Examples:** one per level and one for nothing open. Task ids are generic,
-  like `ABC-12`. The tasks in them are ordinary household ones. Write them, read
-  them back, revise: if they chose humor, until they laugh at least once;
-  otherwise until each reads like something they'd open.
+### Examples
 
-Take the theme as they describe it. Don't propose a named character, show,
-person or brand. If they want directions, offer kinds of character in a line
-each (a stern coach, a dry narrator, a game-show host), none of them named.
+One per level and one for nothing open, with ordinary household tasks and ids
+like `ABC-12`. Write them, read them back, and revise until each is one they'd
+open; with humor, until they laugh.
 
-## User-defined persona
+## Their own persona
 
-The user has a persona skill already (or a Profile from an earlier ntm-user):
-text that says who talks, with rules, maybe recurring bits and example lines. It
-becomes `ntm-user:style` as it is: the body stays unchanged, word for word, task
-ids included. A pasted skill's own frontmatter is dropped; everything under it
-is the body.
+A user who already has a persona (a skill, a prompt, a page of notes) keeps it
+word for word, task ids included, in place of the template's Profile. A pasted
+skill's frontmatter is dropped.
 
-What the messenger needs from it is only the call `ntm:style` names:
-`/ntm-user:style [--stay-fresh] [--for <type>] ["<tone>"] <message>`, returning
-the message with `Title: …` as its last line under `--for`. Read the body for
-how it names these things (a `--reminder` flag, a `Subject:` line, its own
-history) and write a short section, `## For ntm`, that goes above the body and
-says, in a line each, how the messenger's call maps onto the persona's own
-words: what `--for <type>` means to it, that `Title:` is its last line (in place
-of whatever it calls it; when the persona has no subject line of its own, the
-section gives it the Title line rule from `ntm:settings`, so the title is
-written with the message as part of its theme), that `--stay-fresh` is its
-freshness mechanism, and that its history is `%Message-history` (see Databases
-in `ntm:conventions`; when the persona names a history of its own, the section
-says to use that one), and that each entry it adds there names the task ids the
-tone names, so a carried-over task climbs the persona's own levels as
-`ntm:settings` says. Show them the section; they confirm. Nothing else is added
-or filled in: the persona's own levels, profanity and motifs stand.
+Above it, write a `## For ntm` section from how the persona names things, as the
+A persona section of `ntm:style`'s `references/persona-contract.md` says. Show
+them the section; they confirm. Nothing else is added: the persona's own levels
+and motifs stand.
 
-## Result
+## Before saving
 
-For plain and a theme: the Profile, in the builder's shape, headings as given.
-For a persona: the `## For ntm` section and the unchanged body. Show it and take
-one round of corrections: they say what's off, you fix it.
-
-Then:
-
-- Run by `ntm:configure`: return it to `configure`; it packages once at the end.
-- Run on its own: load `ntm:settings` and follow its "Regenerating
-  `ntm-user.plugin`" section with it as the changed part.
-
-Nothing is written anywhere else; the style lives only in `ntm-user`.
+Show them the whole persona and take one round of corrections.

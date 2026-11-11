@@ -117,8 +117,9 @@ timezone they confirmed in the intro.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and
-where `%Settings` lives. The backend guide is the file you read in Connect to a
-backend. Bundle their connector at the same time.
+where `%Settings` lives. Label names stay out of it; they live in `%Settings`.
+The backend guide is the file you read in Connect to a backend. Bundle their
+connector at the same time.
 
 ### ntm features
 

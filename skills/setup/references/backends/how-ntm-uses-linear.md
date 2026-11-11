@@ -8,8 +8,8 @@ how we did it in Linear. It's our setup, told so yours can differ.
 
 ntm writes a label's name with a `$` in front, such as `$price-watch`, and a
 database's with a `%`, such as `%Settings`. The mark isn't part of the name.
-Setup records the real names in `ntm-user:backend`, which every skill loads, so
-yours can be anything.
+Setup records your labels' real names in `%Settings` and your databases' in
+`ntm-user:backend`, so yours can be anything.
 
 | In ntm                | Our name in Linear   |
 | --------------------- | -------------------- |

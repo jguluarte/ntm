@@ -43,13 +43,18 @@ backend, a feature they didn't pick).
 
 ### Where values live
 
-The values setup collects live in the `Settings` document on the task list; a
-value is defined there, or the backend skill is updated. The persona's Profile
-lives in the `Style` document, which `ntm:style` reads.
+The values setup collects live in the `%Settings` database, label names
+included, and skills load them from there. Changing a setting is an edit to
+`%Settings`, with no rebuild.
 
-Labels are built into `ntm-user:backend` and the Pushover keys into
-`ntm-user:notify`, so changing one means `update` rebuilds. A job's own app
-token goes in that job's prompt.
+`ntm-user:backend` holds only what has to be built in: how to work with the task
+list, and where each database lives, `%Settings` included. The Pushover keys are
+built into `ntm-user:notify`, so changing them means `update` rebuilds. A job's
+own app token goes in that job's prompt, and `ntm-user:notify` sends with it in
+place of the built-in one.
+
+The theme lives in the `%Theme` database, in the parts
+`skills/setup/references/theme.md` describes.
 
 ### Jobs
 

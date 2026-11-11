@@ -1,13 +1,14 @@
-# Price watch rules
+# Price watch conventions
 
 The price watch checks the things the user wants to buy, and tells them when one
-is a good deal. Each item is a task on their task list.
+is a good deal. Each item is represented as a task on their task list.
 
 ## `$price-watch`
 
 Marks what the user wants to buy. On a task, it watches that task; on a project,
 every task in the project. The watched tasks are the open ones it covers. Each
-is the purchase itself, and closes once the user buys it.
+is the purchase itself, and closes once the user buys it (or they change their
+mind).
 
 ## The watched item
 

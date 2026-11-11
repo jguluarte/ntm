@@ -36,9 +36,10 @@ change in the future.
 
 ### Intro
 
-Send this text as written, in one message, with their timezone filled in as an
-IANA name (`America/Los_Angeles`), from what you know of the session. The
-timezone they confirm goes under About you in the `Settings` database.
+Send this text as written, in one message, replacing `<timezone>` with the
+user's timezone (IE: `America/Los_Angeles`), from what you know of the session.
+
+You'll save the timezone later, so keep it.
 
 > Hi! I'm Neurodivergent Task Manager (ntm for short).
 >

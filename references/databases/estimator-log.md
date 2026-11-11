@@ -1,9 +1,7 @@
 # Estimator log
 
 <!--
-How estimating works with this user. The estimator agent keeps it: it reads the
-log whenever it estimates, and writes to it when the user decides an estimate,
-so its guesses come closer to the user's own, review after review. Setup creates
+How estimating works with this user. The estimator agent keeps it. Setup creates
 this database from this template, with every part empty. The user can edit,
 delete or add any part. These comments are for agents, and are never written
 into the user's database.
@@ -12,15 +10,15 @@ into the user's database.
 ## How you work
 
 <!--
-What the estimator has learned about how the user works, so it proposes what
-they would. Short bullets, written to the user, under the part they belong to.
-They come from what the user changes, pushes back on or says. Related bullets
-fold together, and a change rewrites a bullet rather than adding one.
+What the estimator has learned about how the user works. Short bullets, written
+to the user, under the part they belong to. They come from what the user
+changes, pushes back on or says. Related bullets fold together, and a change
+rewrites a bullet rather than adding one.
 -->
 
 ### Estimating
 
-<!-- How the user sizes a task, and which kinds of task the guesses miss. -->
+<!-- How the user sizes a task. -->
 
 ### Writing and breaking up tasks
 

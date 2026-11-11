@@ -3,81 +3,64 @@
 <!--
 What each reminder's message says, for the messenger agent. A skill asks the
 messenger for a type such as `reminders.morning`, and the type is the path to
-its rule under Types: Types > Reminders > Morning. Rules are found by those
-names, so keep them. How a message sounds is `%Theme`'s job, not this
-database's.
+its rule: Reminders > Morning. Rules are found by those names, so keep them. How
+a message sounds is `%Theme`'s job, not this database's.
 
 Setup creates this database from this template. The user edits a rule, adds to
 it, or deletes it to go back to this template's. These comments are for the
 agent, and are never written into the user's database.
 -->
 
-## Types
+## Reminders
 
 <!--
-Each rule opens with its Fact table, the facts its skill hands the messenger:
-keep it as it is, since the skill sends exactly those. The rest of a rule is
-the user's to change: what the message says, the list under it, and when no
+What every reminder shares. Each reminder's own part below adds to it, and wins
+where they differ. A reminder's facts are the ones its skill hands the
+messenger: keep them as they are, since the skill sends exactly those. The rest
+is the user's to change: what the message says, the list under it, and when no
 notification is needed.
 -->
 
-### Reminders
-
-#### Morning
-
 | Fact      | Holds                                           |
 | --------- | ----------------------------------------------- |
-| `today:`  | the open tasks planned for today                |
+| `open:`   | the open tasks planned for today                |
+| `done:`   | the tasks done today                            |
 | `paused:` | `yes` when today is in `%Paused-dates`, or `no` |
+
+List: the `open:` tasks.
+
+No notification: when every fact that holds tasks is `none`, unless
+`paused: no`.
+
+### Morning
+
+Facts: `today:` in place of `open:`, and `paused:`.
 
 Message: what's planned for today, naming each carried-over task with the date
 it was carried over from. With `today: none`, nothing plannable is left on the
 task list: suggest a review with `/ntm:review-todo-list`.
 
-List: the `today:` tasks.
+### Afternoon
 
-No notification: when `paused: yes` and `today: none`.
-
-#### Afternoon
-
-| Fact      | Holds                                           |
-| --------- | ----------------------------------------------- |
-| `open:`   | the open tasks planned for today                |
-| `paused:` | `yes` when today is in `%Paused-dates`, or `no` |
+Facts: `open:` and `paused:`.
 
 Message: a tap on the shoulder about what's still open, naming each started task
 as started. Never a dig. With `open: none`, quick props, nothing more.
 
-List: the `open:` tasks.
+### Evening
 
-No notification: when `paused: yes` and `open: none`.
-
-#### Evening
-
-| Fact    | Holds                            |
-| ------- | -------------------------------- |
-| `done:` | the tasks done today             |
-| `open:` | the open tasks planned for today |
+Facts: `done:` and `open:`.
 
 Message: how the day went. A final push on what's still open, with what got done
 in a clause; with `open: none`, a celebration of what got done.
 
-List: the `open:` tasks.
+### Week
 
-No notification: when `done: none` and `open: none`.
-
-#### Week
-
-| Fact       | Holds                                             |
-| ---------- | ------------------------------------------------- |
-| `done:`    | the tasks done in the past week                   |
-| `open:`    | the tasks planned in the past week and still open |
-| `planned:` | the tasks planned for the week ahead              |
+Facts: `done:` and `open:` over the past week instead of today, and `planned:`,
+the tasks planned for the week ahead.
 
 Message: the past week, then the week ahead, a sentence or so each. The past
 week: what got done, as a count and a theme, and what's still open. The week
 ahead: what's planned, as a count and a theme. Name only the still-open tasks.
 
 List: none.
-
-No notification: when `done:`, `open:` and `planned:` are all `none`.

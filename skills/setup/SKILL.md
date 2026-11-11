@@ -28,9 +28,12 @@ build up as you go. It holds two skills:
 | `ntm-user:notify`  | How they receive notifications: their channel, and any keys it needs         |
 
 After its frontmatter, `ntm-user:backend` opens with one Built line: its
-version, the ntm version it was built from, and the date, such as
-`Built: ntm-user 0.4.0 from ntm 0.4.0, 2026-11-11`. `ntm:help` reads it to name
-both versions. It always says where `%Settings` lives.
+version, the ntm version it was built from, and the date, in this shape:
+`Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`. Read
+`<ntm's version>` from the `version` in the installed `ntm`'s
+`.claude-plugin/plugin.json`, two folders up from this skill's folder.
+`ntm:help` reads the Built line to name both versions. `ntm-user:backend` always
+says where `%Settings` lives.
 
 The plugin also bundles the connector for their backend, so their task list is
 reachable wherever ntm runs. For Linear, that's
@@ -53,8 +56,9 @@ Write it as you go, in a fresh folder, `/tmp/ntm-user`:
 | `.mcp.json`                  | The connector for their backend                      |
 
 The description is one sentence: the user's own ntm setup, kept private because
-it can hold notification keys. The version is this `ntm`'s major and minor, then
-the number of rebuilds, such as `0.4.0` for a first build on ntm 0.4.
+it can hold notification keys. The version is the major and minor of
+`<ntm's version>`, then the number of rebuilds: `<major>.<minor>.0` on a first
+build.
 
 Each `SKILL.md` opens with frontmatter: its `name`, `backend` or `notify`, and a
 `description` that says what it holds. Keep angle brackets out of every

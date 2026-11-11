@@ -39,7 +39,6 @@ stop.
 - **How reminders talk to them:** the `%Style` document, through `ntm:style`.
 - **Built-in choices** (their backend, todo list, notification channel, Pushover
   keys, features): `/ntm:update`.
-- **The trigger word `ntm`:** a renamed fork of ntm, as the README says.
 
 ## Bare
 

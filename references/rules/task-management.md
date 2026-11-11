@@ -48,4 +48,4 @@ never dates a task on a paused day, but a date the user sets there stands.
 ### `%Estimator-log`
 
 What reviews have taught about how the user sizes and breaks up tasks. The
-estimator agent keeps it, from what `ntm:review-todo-list` sends it.
+estimator agent keeps it, from what `ntm:review-task-list` sends it.

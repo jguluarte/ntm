@@ -96,17 +96,17 @@ Finish connecting before ntm backend assets.
 
 ##### If the user is willing to use Linear
 
-Read `references/backends/linear.md` and walk its Setting up Linear with the
-user to set up and connect their account.
+Read `references/backends/how-ntm-uses-linear.md` and walk its Connecting Linear
+with the user to set up and connect their account.
 
 ##### If the user doesn't want Linear
 
-Read `references/backends/contract.md` and follow its Your own backend to help
-them find or set up an alternative. It is your responsibility to ensure it can
-support this contract, and document it for future use of ntm. As such, confirm
-with them that if they go this route it will be a fully custom setup that
-they'll be establishing for themselves. Ideally they will agree to use Linear
-for its simplicity.
+Read `references/backends/how-ntm-uses-linear.md` and follow its Making your own
+to help them find or set up an alternative. It is your responsibility to ensure
+it can play every part that file describes, and document it for future use of
+ntm. As such, confirm with them that if they go this route it will be a fully
+custom setup that they'll be establishing for themselves. Ideally they will
+agree to use Linear for its simplicity.
 
 #### ntm backend assets
 
@@ -115,9 +115,9 @@ name. Once they do, create it from its template, with Timezone under About you
 set to the timezone they confirmed in the intro.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
-the backend guide's Task list through Writing, filled in with their task list,
-and where `%Settings` lives. The backend guide is the file you read in Connect
-to a backend. Bundle their connector at the same time.
+the backend guide's Names through Databases, filled in with their task list, and
+where `%Settings` lives. The backend guide is the file you read in Connect to a
+backend. Bundle their connector at the same time.
 
 ### ntm features
 
@@ -137,7 +137,8 @@ want Amazon price alerts, so ask that question at the start of the labels round.
 Show only what the picked features need, with the defaults below. A label's
 default name is ntm's, without the `$`. A database's is its `%` name in words,
 such as Paused dates. When the user wants more on any of it, the feature's rules
-and the database templates say more.
+in ntm's `references/rules/` and the database templates in its
+`references/databases/` say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one
 running this chat. A job never starts on :00 or :30, where every scheduled task
@@ -162,11 +163,11 @@ Then save, as Saving the features says.
 
 ##### Databases
 
-| Database           | For                                |
-| ------------------ | ---------------------------------- |
-| `%Message-rules`   | What each reminder's message says  |
-| `%Paused-dates`    | The days when nothing gets planned |
-| `%Task-review-log` | How estimating works with them     |
+| Database         | For                                |
+| ---------------- | ---------------------------------- |
+| `%Message-rules` | What each reminder's message says  |
+| `%Paused-dates`  | The days when nothing gets planned |
+| `%Estimator-log` | How estimating works with them     |
 
 ##### Jobs
 
@@ -267,12 +268,12 @@ What it runs, for Create the jobs:
 
 #### Saving the features
 
-Create the labels on the task list, with `$price-watch` on its project (the
-backend guide's `create label` and `create project`), then each database above
-from its template, and say in a line where each one lives. Add where each one
-lives to `ntm-user:backend`. Write the settings into the `%Settings` database,
-and the labels' real names under its Labels. Keep the jobs and their model for
-Create the jobs, after Notifications.
+Create the labels on the task list, with `$price-watch` on its project (as the
+backend guide's Projects and labels says), then each database above from its
+template, and say in a line where each one lives. Add where each one lives to
+`ntm-user:backend`. Write the settings into the `%Settings` database, and the
+labels' real names under its Labels. Keep the jobs and their model for Create
+the jobs, after Notifications.
 
 ### Create a theme
 
@@ -298,8 +299,8 @@ your user from your memories about them.
 > motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
 > a demon to stalk you? The world is your oyster - make it so!
 
-Then build the theme with them as `references/persona.md` says: from the
-`%Theme` template's parts, or from a theme they already have.
+Then build the theme with them as `references/theme.md` says: from the `%Theme`
+template's parts, or from a theme they already have.
 
 Confirm the names of the `%Theme` and `%Message-history` databases. Then save
 the theme: create the `%Theme` database from its template, with their theme in
@@ -335,8 +336,8 @@ order.
 <Title>.
 Timezone: <Timezone>.
 1. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
-Final reply: what the last step returned, as the Results rules in
-`ntm-user:backend` say.
+Final reply: what the last step returned, as Results in ntm's
+`references/rules/core.md` says.
 ```
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its

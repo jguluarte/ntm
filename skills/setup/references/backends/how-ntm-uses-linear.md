@@ -22,7 +22,7 @@ yours can be anything.
 | `%Message-rules`      | `Message rules`      |
 | `%Message-history`    | `Message history`    |
 | `%Paused-dates`       | `Paused dates`       |
-| `%Task-review-log`    | `Task review log`    |
+| `%Estimator-log`      | `Estimator log`      |
 | `%Theme`              | `Theme`              |
 
 These are the names the plugin's author uses; the marks keep the plugin's files

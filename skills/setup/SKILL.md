@@ -92,9 +92,6 @@ If `ntm-user:backend` loads, the user is already set up. Say in a line that
 
 ## The steps
 
-These steps are sequential, however numbers are omitted as to make it easier to
-change in the future.
-
 ### Intro
 
 Send this text as written, in one message, replacing `<timezone>` with the

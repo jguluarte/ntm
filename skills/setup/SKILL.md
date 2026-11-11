@@ -80,16 +80,17 @@ This section should be saved before proceeding to backend settings.
 
 ##### If the user is willing to use Linear
 
-Read `references/backends/linear.md` and help the user set up and connect their
-account.
+Read `references/backends/linear.md` and walk its Setting up Linear with the
+user to set up and connect their account.
 
 ##### If the user doesn't want Linear
 
-Read `references/backends/contract.md` to help them find or set up an
-alternative. It is your responsibility to ensure it can support this contract,
-and document it for future use of ntm. As such, confirm with them that if they
-go this route it will be a fully custom setup that they'll be establishing for
-themselves. Ideally they will agree to use Linear for its simplicity.
+Read `references/backends/contract.md` and follow its Your own backend to help
+them find or set up an alternative. It is your responsibility to ensure it can
+support this contract, and document it for future use of ntm. As such, confirm
+with them that if they go this route it will be a fully custom setup that
+they'll be establishing for themselves. Ideally they will agree to use Linear
+for its simplicity.
 
 #### ntm backend assets
 
@@ -196,11 +197,12 @@ shown, created or saved.
 
 #### Saving the features
 
-Create the labels on the task list, with `$price-watch` on its project, then
-each database above from its template, and say in a line where each one lives.
-Write the settings and label names into the `%Settings` database. Then create
-the jobs on their model, as `ntm:schedules` says. Add the picked features' rules
-and their label names to `ntm-user:backend`.
+Create the labels on the task list, with `$price-watch` on its project (the
+guide's `create label` and `create project`), then each database above from its
+template, and say in a line where each one lives. Write the settings and label
+names into the `%Settings` database. Then create the jobs on their model, as
+`ntm:schedules` says. Add the picked features' rules and their label names to
+`ntm-user:backend`.
 
 ### Create a persona
 

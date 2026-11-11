@@ -29,9 +29,9 @@ build up as you go. It holds two skills:
 
 `ntm-user:backend` always says where `%Settings` lives.
 
-Everything else they set up lives in their databases and their jobs. The rules
-stay in ntm, where every skill reads them. The end is then only creating their
-jobs, packaging and installing their user plugin, and a self-test.
+Everything else they set up lives in their databases and their jobs. The end is
+then only creating their jobs, packaging and installing their user plugin, and a
+self-test.
 
 ### The files
 
@@ -85,7 +85,7 @@ change in the future.
 ### Intro
 
 Send this text as written, in one message, replacing `<timezone>` with the
-user's timezone (IE: `America/Los_Angeles`), from what you know of the session.
+user's timezone (e.g. `America/Los_Angeles`), from what you know of the session.
 
 You'll save the timezone later, so keep it.
 
@@ -123,7 +123,7 @@ ntm helps with.
 
 #### Connect to a backend
 
-This section should be saved before proceeding to ntm backend assets.
+Finish connecting before ntm backend assets.
 
 ##### If the user is willing to use Linear
 
@@ -147,7 +147,8 @@ set to the timezone they confirmed in the intro.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Task list through Writing, filled in with their task list,
-and where `%Settings` lives.
+and where `%Settings` lives. The backend guide is the file you read in Connect
+to a backend.
 
 ### ntm features
 
@@ -166,13 +167,14 @@ want Amazon price alerts, so ask that question at the start of the labels round.
 
 Show only what the picked features need, with the defaults below. A label's
 default name is ntm's, without the `$`. A database's is its `%` name in words,
-such as Paused dates. Then save, as Saving the features says. When the user
-wants more on any of it, the feature's rules and the database templates say
-more.
+such as Paused dates. When the user wants more on any of it, the feature's rules
+and the database templates say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one
 running this chat. A job never starts on :00 or :30, where every scheduled task
 piles up, so move such a time a few minutes earlier.
+
+Then save, as Saving the features says.
 
 #### Task management
 
@@ -289,6 +291,10 @@ browser by default, or their own browser through the Claude extension.
 If they don't, write `off` under Amazon interface. The two Amazon labels are not
 shown, created or saved.
 
+##### Databases
+
+No databases of its own.
+
 ##### Jobs
 
 Present the price watch as one daily job, early each morning. For example:
@@ -305,11 +311,11 @@ The `price-watch` job checks which watched items are a good deal today. It runs
 #### Saving the features
 
 Create the labels on the task list, with `$price-watch` on its project (the
-guide's `create label` and `create project`), then each database above from its
-template, and say in a line where each one lives. Add where each one lives to
-`ntm-user:backend`. Write the settings into the `%Settings` database, and the
-labels' real names under its Labels. Keep the jobs and their model for Create
-the jobs, after Notifications.
+backend guide's `create label` and `create project`), then each database above
+from its template, and say in a line where each one lives. Add where each one
+lives to `ntm-user:backend`. Write the settings into the `%Settings` database,
+and the labels' real names under its Labels. Keep the jobs and their model for
+Create the jobs, after Notifications.
 
 ### Create a theme
 
@@ -352,10 +358,12 @@ themselves. Otherwise, fall back to the AI app's own push, which chats at them
 when each job finishes.
 
 With Pushover, they give their user key and an app token, and you send one test
-push; `references/notifications.md` says how. Then ask if there's anything about
-how they want to be notified, and save it under Notifications in the `%Settings`
-database. Then add `ntm-user:notify` to their user plugin, as The user plugin
-says, from their channel's file in `references/notify/`, with any keys.
+push; `references/notifications.md` says how.
+
+For either channel, ask if there's anything about how they want to be notified,
+and save it under Notifications in the `%Settings` database. Then add
+`ntm-user:notify` to their user plugin, as The user plugin says, from their
+channel's file in `references/notify/`, with any keys.
 
 ### Create the jobs
 
@@ -376,21 +384,21 @@ Final reply: what the last step returned, as the Results rules in
 `ntm-user:backend` say.
 ```
 
-| Setting           | Value                                                               |
-| ----------------- | ------------------------------------------------------------------- |
-| `name`            | the title                                                           |
-| `prompt`          | the filled-in prompt                                                |
-| `cron_expression` | weekdays at 08:45 in Berlin is `CRON_TZ=Europe/Berlin 45 8 * * 1-5` |
-| `notifications`   | `{push: true}`                                                      |
-| `initiation`      | `human_request`                                                     |
-| `permission_mode` | left unset                                                          |
+| Setting           | Value                                                                                         |
+| ----------------- | --------------------------------------------------------------------------------------------- |
+| `name`            | the title                                                                                     |
+| `prompt`          | the filled-in prompt                                                                          |
+| `cron_expression` | `CRON_TZ=<Timezone>`, then the job's time and days, e.g. `CRON_TZ=Europe/Berlin 45 8 * * 1-5` |
+| `notifications`   | `{push: true}`                                                                                |
+| `initiation`      | `human_request`                                                                               |
+| `permission_mode` | left unset                                                                                    |
 
-Once it's created, set its `model` to the id this app gives the model they
-confirmed.
+A new job starts on the model running this chat, so once it's created, set its
+`model` to the id this app gives the model they confirmed.
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its
 own or stops at an action that needs approval, as each job's permission mode
-says.
+says; left unset, that's their app's default.
 
 ### Install and self-test
 

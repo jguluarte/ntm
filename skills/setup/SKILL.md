@@ -111,8 +111,9 @@ agree to use Linear for its simplicity.
 #### ntm backend assets
 
 Confirm that the user is okay with establishing the `%Settings` database file
-name. Once they do, create it from its template, with Timezone under About you
-set to the timezone they confirmed in the intro.
+name. Once they do, create it from its template, ntm's
+`references/databases/settings.md`, with Timezone under About you set to the
+timezone they confirmed in the intro.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and

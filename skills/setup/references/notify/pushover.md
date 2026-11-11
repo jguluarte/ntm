@@ -8,7 +8,7 @@ anything; every other skill returns text and the job decides what goes out.
 
 ```
 /ntm-user:notify --title "<title>" --message "<message>" [--url <link>]
-    [--priority n] [--from <skill>] [--app-token <t>] [--user-key <u>]
+    [--priority n] [--from <skill>] [--app-token <t>]
 ```
 
 - `title` and `message` are the notification.
@@ -17,33 +17,29 @@ anything; every other skill returns text and the job decides what goes out.
 - `from`: the skill this notification is for, by name, such as
   `morning-reminder`; anything Notifications says about one reminder is matched
   by it.
-- `app-token`: a Pushover app token for this one call, in place of the default
-  in your settings. A job that sends from its own Pushover app carries the token
-  in its prompt, and the caller hands it here.
-- `user-key`: with `app-token`, a user key for this one call
-  (`/ntm:configure-notifications` uses both for its test push).
+- `app-token`: a Pushover app token for this one call, in place of the user's. A
+  job that sends from its own Pushover app carries the token in its prompt, and
+  the caller hands it here.
 
 ## Notifications
 
-Load `ntm-user:settings` by name and read Notifications: how the user wants to
-be notified (quiet hours, priorities, …). Follow it as written.
+Load `ntm-user:backend`, then read Notifications in the user's `%Settings`
+database: how they want to be notified (quiet hours, priorities, …). Follow it
+as written.
 
 ## Pushover
 
 Sends through the [Pushover API](https://pushover.net/api).
 
-### Credentials
+### Keys
 
-The Pushover app token and Pushover user key from Notifications in your
-settings, or the ones `--app-token` and `--user-key` give. `--app-token` alone
-replaces only the app token; the user key still comes from Notifications. With
-both, `ntm-user:settings` not loading is no failure (the test push runs before
-it exists).
+The user's Pushover app token and user key are on the `token=` and `user=` lines
+of the pattern below, where setup writes them. `--app-token` replaces the app
+token for its one call.
 
 ### Sending
 
-Always send in a single Bash call using this exact pattern, with the two keys in
-place of `<app token>` and `<user key>`:
+Always send in a single Bash call using this exact pattern:
 
 ```bash
 TITLE='Morning reminder'
@@ -54,8 +50,8 @@ Tonight's pick is a quick one, ~5 min from the couch.
 EOF
 )
 curl -sS --max-time 20 \
-  --form-string "token=<app token>" \
-  --form-string "user=<user key>" \
+  --form-string "token=<PUSHOVER_APP_TOKEN>" \
+  --form-string "user=<PUSHOVER_USER_KEY>" \
   --form-string "html=1" \
   --form-string "title=$TITLE" \
   --form-string "message=$MSG" \
@@ -95,8 +91,7 @@ Add these as extra `--form-string` lines when they're useful:
 `html=1` is on by default in the pattern above. Supported tags: `<a href>`,
 `<b>`, `<i>`, `<u>`, `<font color>`. Newlines are kept. A linked task
 `[<words> (<id>)](<url>)` in the message becomes
-`<a href="<url>"><words> (<id>)</a>`, as the conventions' "Talking to the user
-about tasks" says.
+`<a href="<url>"><words> (<id>)</a>`.
 
 Escape `&`, `<` and `>` in plain text you insert, such as task titles, as
 `&amp;`, `&lt;` and `&gt;`. Otherwise a title like "Tubing & fittings" breaks

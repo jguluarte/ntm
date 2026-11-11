@@ -9,19 +9,20 @@ what goes out.
 
 ```
 /ntm-user:notify --title "<title>" --message "<message>" [--url <link>]
-    [--priority n] [--from <skill>] [--app-token <t>] [--user-key <u>]
+    [--priority n] [--from <skill>] [--app-token <t>]
 ```
 
 - `title` and `message` are the notification.
 - `from`: the skill this notification is for, by name, such as
   `morning-reminder`; anything Notifications says about one reminder is matched
   by it.
-- `url`, `priority`, `app-token` and `user-key` have no effect on this channel.
+- `url`, `priority` and `app-token` have no effect on this channel.
 
 ## Notifications
 
-Load `ntm-user:settings` by name and read Notifications: how the user wants to
-be notified (quiet hours, priorities, …). Follow it as written.
+Load `ntm-user:backend`, then read Notifications in the user's `%Settings`
+database: how they want to be notified (quiet hours, priorities, …). Follow it
+as written.
 
 ## Claude push
 
@@ -36,10 +37,9 @@ NOTIFY VIA FINAL REPLY
 ```
 
 Return the title on the line after the marker and the message under it, with
-linked tasks kept as the markdown they arrived in, as the conventions' "Talking
-to the user about tasks" says. The job's final reply is then everything after
-the marker line, verbatim, and nothing else, as the conventions' Results say.
-The completion push shows that reply.
+linked tasks kept as the markdown they arrived in. The job's final reply is then
+everything after the marker line, verbatim, and nothing else. The completion
+push shows that reply.
 
 In chat the block is returned the same way; the reply that shows it is the
 delivery.

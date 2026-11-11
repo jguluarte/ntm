@@ -24,13 +24,36 @@ them. Push for vivid.
 What makes them open a reminder: a joke, shade, a running bit, a story that
 picks up where yesterday left off. Several can combine.
 
-## The reminders
+## How to connect this theme to ntm's flow
 
-What the week, morning, afternoon and evening reminders are in the theme. Take
-the arc from what they picked: a contest has a challenge and a verdict, a serial
-has a cold open and a cliffhanger. For a show, the week is the season preview,
-the morning previews today's episode, the afternoon is its first half and the
-evening is how it ends.
+This example is going to describe the flow from the perspective of a reality tv
+competition show. You will need to adapt things accordingly based on the theme
+created by the user. This also assumes a weekly flow.
+
+Consider a week from start to end, consider treating it like "a season" of a
+show. When setting up the week, think about it like a season preview - what
+should you expect? Twists? Turns? Shocks? Excitement? Horror? Lean into their
+theme!
+
+The next morning is like the episode preview (you know, the thing before the
+opening sequence plays). Sometimes there's a brief recap from yesterday (if
+something carried over).
+
+The afternoon might be a mini challenge, or the reward challenge. What happens
+in the early part of the show in the user's theme?
+
+The evening can reference whatever the big event was from the episode. Is there
+a cliffhanger (IE - did they do the thing they planned for the day)? Was there a
+twist (IE - are the planned or closed tasks different than they were earlier in
+the day)? If the user wants shade, throw some.
+
+Lean into what the user needs from these reminders. If you have a show like
+this, you can spread the themes/motifs over more time, as each day can pull on
+the same sort of theme, evolving on itself over the course of the day. And with
+a show, you can sort of declare a grouped theme for the week - but keeping
+things fresh is of the utmost importance. If the reminder messages you send
+don't change enough, they won't see them and then you're failing to live up to
+ntm's overall objective.
 
 ## Responding to procrastination
 

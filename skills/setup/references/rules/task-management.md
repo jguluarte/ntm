@@ -27,11 +27,11 @@ creates it from ntm's template.
 
 ## Excluded tasks
 
-Excluded labels from automatic scheduling, in Planning in the `%Settings`
-document, lists the labels planners never pick; by default `$no-autoschedule`
-and `$pending-shipment`. A task is excluded when it carries one of them, itself
-or through its project (see Project labels). A task in the blocked status is
-always excluded too; that isn't a setting.
+Labels to exclude from auto-scheduling, in Planning in the `%Settings` document,
+lists the labels planners never pick; by default `$no-autoschedule` and
+`$pending-shipment`. A task is excluded when it carries one of them, itself or
+through its project (see Project labels). A task in the blocked status is always
+excluded too; that isn't a setting.
 
 Planning and reminders use `fetch open`, which includes blocked tasks, and keep
 excluded tasks in the results.

@@ -2,7 +2,8 @@
 
 The theme is what ntm writes every reminder in, so the user keeps reading them.
 Build it with them one part at a time, from what they picked. Each section below
-is a part of their `%Theme` database, under the same heading.
+is a part of their `%Theme` database, under the same heading. For a theme they
+already have, sort it into these parts and build what's missing with them.
 
 A theme should be something with enough breadth and material to pull from that
 it can create sufficient variation, so it won't become repetitive. A show is a

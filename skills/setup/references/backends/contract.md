@@ -219,7 +219,7 @@ optional project, for a database kept in a project.
 If the backend has documents, use them, found by title. If it doesn't, keep each
 database in the description of a task titled with the database's title, labeled
 with the $no-autoschedule label (its real name from Labels) and left open in a
-plannable status. `ntm:fix-todo-list` never touches it (it has no planned date)
+plannable status. `ntm:fix-task-list` never touches it (it has no planned date)
 and planners skip it for its label. `read database` is then a title search that
 reads that task's description; `write database` replaces the description,
 creating the task when there is none. A database kept in a project is a task

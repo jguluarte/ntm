@@ -72,7 +72,7 @@ In agent files, pseudo-markup like `<example>` is indented like nested markup.
 
 - The plugin's word for an item is "task", never "ticket". The process is
   "review", never "groom". The list is the "task list" in prose, never "board";
-  skill names such as `/ntm:fix-todo-list` keep "todo-list" until they are
+  skill names such as `/ntm:review-todo-list` keep "todo-list" until they are
   renamed. `$` marks only the label names the user configures. `%` marks a user
   database by its default title.
 - Never the word "voice", in any form.

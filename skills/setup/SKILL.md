@@ -34,8 +34,9 @@ installed `ntm` it was built from, and the date, in this shape:
 says where `%Settings` lives.
 
 The plugin also bundles the connector for their backend, so their task list is
-reachable wherever ntm runs. Generate its connector file from the connector they
-set up in Connect to a backend, Linear included.
+reachable wherever ntm runs. Write the plugin's `.mcp.json` with that
+connector's name and address, as they added it in Connect to a backend, Linear
+included.
 
 Keys go only in the plugin, never into chat.
 

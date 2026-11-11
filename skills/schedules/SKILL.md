@@ -111,8 +111,8 @@ Timezone: <Timezone under About you in your settings>.
 2. Load `ntm:show-completed` and run
    `/ntm:show-completed <span> and what's still open`.
    On `Show-completed FAILED`, carry on with `done: unavailable`.
-3. Load `ntm:fix-todo-list` and run `/ntm:fix-todo-list`. On
-   `Fix-todo-list FAILED`, carry on.
+3. Load `ntm:fix-task-list` and run `/ntm:fix-task-list`. On
+   `Fix-task-list FAILED`, carry on.
 4. Load `ntm:plan` and run `/ntm:plan --auto <range>`.
 5. Ask the messenger agent. Hand it these lines:
        type: reminders.week
@@ -124,7 +124,7 @@ Timezone: <Timezone under About you in your settings>.
    messenger's "What you're given" says; and plan's `planned:` lines.
 Final reply: when the messenger returned a delivery block, the title
 and message under its marker line, verbatim; otherwise one short
-line on what happened. Then fix-todo-list's lines and plan's
+line on what happened. Then fix-task-list's lines and plan's
 `couldn't move:` lines. For any error after step 1, including a
 `… FAILED` line, never use `ntm:notify`: end the run with the error
 stated plainly.

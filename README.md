@@ -36,3 +36,7 @@ checks that it all works.
 Lists what's planned on your task list: every open task planned for today. Add a
 few words to narrow it down, such as `/ntm:today errands` for today's errands
 only.
+
+### `/ntm:fix-task-list`
+
+Clears dates on previously planned tasks that didn't finish.

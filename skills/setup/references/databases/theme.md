@@ -3,8 +3,9 @@
 <!--
 The user's theme, which `ntm:style` reads before it writes each message, so
 reminders sound like something the user enjoys instead of turning into noise.
-A theme is like a show, not a single character: a cast, a format and episodes,
-with each reminder a moment in it.
+A theme is something with enough breadth and material to vary, so reminders
+stay fresh. A show is a good option, with its whole canon to pull from. Each
+reminder is a moment in the theme.
 
 Everything outside these comments is a placeholder theme. Setup builds the
 user's theme with them and writes it in its place. Write the database without
@@ -15,7 +16,7 @@ names, and the user can edit, delete or add them.
 ## Register
 
 <!--
-Who is in the show and how they talk to the user: how they snap back when
+Who is in the theme and how they talk to the user: how they snap back when
 something slides, how they celebrate a win, and what they would never say. How
 hard it goes is the user's call: swearing, roasting, whatever they want.
 -->
@@ -36,7 +37,7 @@ sentences.
 
 ## The reminders
 
-<!-- What each reminder is in the show's terms, one subsection per reminder. -->
+<!-- What each reminder is in the theme's terms, one subsection per reminder. -->
 
 ### Week
 
@@ -77,7 +78,7 @@ Harder each day a task slips, back to Service once it closes.
 ## Motifs
 
 <!--
-Recurring bits from the show's world or the user's life, a short name each,
+Recurring bits from the theme's world or the user's life, a short name each,
 then the `Repeat limit:` line. `%Message-history` records the names exactly.
 Push for a few weeks' worth of variety.
 -->

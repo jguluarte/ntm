@@ -321,8 +321,7 @@ With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how.
 
 For either channel, ask if there's anything about how they want to be notified,
-and save it under Notifications in the `%Settings` database. Ask how long they
-like a reminder to run, and save that under Notifications too. Then add
+and save it under Notifications in the `%Settings` database. Then add
 `ntm-user:notify` to their user plugin, as The user plugin says, from their
 channel's file in `references/notify/`, with any keys.
 

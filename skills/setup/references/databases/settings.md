@@ -71,8 +71,5 @@ Claude's built-in browser
 
 <!--
 How the user wants to be notified, in their words, such as quiet hours. Their
-channel and any keys live in `ntm-user:notify`. Reminder length is how long they
-like a reminder to run, in their words.
+channel and any keys live in `ntm-user:notify`.
 -->
-
-- Reminder length: one or two sentences

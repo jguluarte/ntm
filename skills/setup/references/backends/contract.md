@@ -166,7 +166,7 @@ for `/ntm:self-test`.
 
 ### 4. Record it
 
-Write the guide in the shape of `linear.md` from Task list on, each operation's
-tool and values under its name, in their words where they gave them. It goes
-into `ntm-user:backend` in place of Linear's, where every later run reads it.
-Once `ntm-user` is installed, `/ntm:self-test` proves it.
+Write the guide in the shape of `linear.md` from Task list through Writing, each
+operation's tool and values under its name, in their words where they gave them.
+It goes into `ntm-user:backend` in place of Linear's, where every later run
+reads it. Once `ntm-user` is installed, `/ntm:self-test` proves it.

@@ -8,7 +8,8 @@ how we did it in Linear. It's our setup, told so yours can differ.
 
 ntm writes a label's name with a `$` in front, such as `$price-watch`, and a
 database's with a `%`, such as `%Settings`. The mark isn't part of the name.
-Setup records the real names, so yours can be anything.
+Setup records the real names in `ntm-user:backend`, which every skill loads, so
+yours can be anything.
 
 ## The task list
 
@@ -24,21 +25,21 @@ Our task list is a Linear team. The team's key starts every task's id, `HOME` in
 
 ntm never cares what a status is called, only which group it's in. Linear
 already sorts every status into a type, so we read the type and ignore the name,
-except one: a status we named Blocked.
+except one: a status we added and named Blocked.
 
 | Group     | The task is                                   | In Linear                          |
 | --------- | --------------------------------------------- | ---------------------------------- |
-| Plannable | open and not started                          | backlog or unstarted               |
-| Started   | open, and work on it has begun                | started                            |
+| Plannable | open work, started or not                     | backlog, unstarted or started      |
+| Started   | plannable, and work on it has begun           | started                            |
 | Blocked   | open, but you can't move it right now         | the status named Blocked, any type |
 | Done      | finished                                      | completed                          |
 | Canceled  | closed without being done                     | canceled                           |
 | Duplicate | the same as another; only the original counts | duplicate                          |
 
-Planning picks plannable and started tasks, reminders cover every open task
-planned for the day, and reports count what's done. Duplicate is a group of its
-own: review merges a duplicate into the task it copies, and reports list
-duplicates apart from canceled tasks.
+Planning picks plannable tasks, reminders cover every open task planned for the
+day, and reports count what's done. Duplicate is a group of its own: review
+merges a duplicate into the task it copies, and reports list duplicates apart
+from canceled tasks.
 
 ## The planned date
 
@@ -90,8 +91,8 @@ database is a page of text, found by its title, that ntm reads whole and saves
 back with its changes.
 
 Ours are Linear documents, so everything ntm knows sits beside the tasks. Most
-live in the team; one that belongs to a project lives in that project's
-documents.
+live in the team; `%Price-watch-stores` lives in the documents of the project
+that carries `$price-watch`.
 
 ## Connecting Linear
 
@@ -108,5 +109,5 @@ read before every job.
 None of this is required. It's what worked for us in Linear. If your tasks live
 somewhere else, or you'd arrange Linear differently, work out with your agent
 what plays each part: the list, the groups, the planned date, the labels, the
-databases. Setup records your answers, and `/ntm:self-test` shows whether they
-hold. The choices are yours.
+databases. Setup records your answers in `ntm-user:backend`, and
+`/ntm:self-test` shows whether they hold. The choices are yours.

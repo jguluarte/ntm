@@ -1,4 +1,4 @@
-# Task management rules
+# Task management conventions
 
 ## Labels
 

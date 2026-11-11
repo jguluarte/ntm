@@ -111,7 +111,7 @@ agree to use Linear for its simplicity.
 #### ntm backend assets
 
 Confirm that the user is okay with establishing the `%Settings` database file
-name. Once they do, create it from its template, ntm's
+name. Once they do, create it from its template,
 `references/databases/settings.md`, with Timezone under About you set to the
 timezone they confirmed in the intro.
 
@@ -138,7 +138,7 @@ want Amazon price alerts, so ask that question at the start of the labels round.
 Show only what the picked features need, with the defaults below. A label's
 default name is ntm's, without the `$`. A database's is its `%` name in words,
 such as Paused dates. When the user wants more on any of it, the feature's rules
-in ntm's `references/rules/` and the database templates in its
+in ntm's `references/rules/` and the database templates in
 `references/databases/` say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one

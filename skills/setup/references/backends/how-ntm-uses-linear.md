@@ -29,7 +29,7 @@ except one: a status we added and named Blocked.
 
 | Group     | The task is                                   | In Linear                          |
 | --------- | --------------------------------------------- | ---------------------------------- |
-| Plannable | open work, started or not                     | backlog, unstarted or started      |
+| Plannable | open, not blocked, not excluded by a label    | backlog, unstarted or started      |
 | Started   | plannable, and work on it has begun           | started                            |
 | Blocked   | open, but you can't move it right now         | the status named Blocked, any type |
 | Done      | finished                                      | completed                          |
@@ -57,9 +57,9 @@ carries the work to today or clears the date.
 
 Projects group tasks, such as a kitchen remodel or a catch-all for errands.
 Labels mark tasks for ntm: `$no-autoschedule` keeps a task out of planning, and
-each feature's rules name the labels it uses. Any other label is your own. A
-label on a project counts on every task in it, so `$price-watch` on a project
-watches everything in it.
+so does any label you choose to exclude. Each feature's rules name the labels it
+uses. Any other label is your own. A label on a project counts on every task in
+it, so `$price-watch` on a project watches everything in it.
 
 We use Linear's projects and issue labels. Linear keeps a project's labels as a
 separate set, so we match the two by name: for `$price-watch` to count on a
@@ -68,7 +68,7 @@ project, the project carries a project label with the same name.
 ## Sub-tasks and blocking
 
 A task can hold sub-tasks; a review splits a big task into smaller ones under
-it. One task can block another, and the blocked one is planned for a day after
+it. One task can block another, and the waiting one is planned for a day after
 all of its blockers.
 
 In Linear these are sub-issues and blocked-by links. A blocked-by link isn't the

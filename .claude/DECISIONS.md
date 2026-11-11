@@ -52,8 +52,9 @@ token goes in that job's prompt.
 
 ### Jobs
 
-Jobs are composed from base skills however the user wants. `ntm:schedules`
-creates and changes them, and the scheduled tasks are the source of truth.
+Jobs are composed from base skills however the user wants. Setup creates them
+from the prompt frame and job steps it carries, `/ntm:settings` changes them,
+and the scheduled tasks are the source of truth.
 
 The suggested weekly job: `show-completed` for the span just past,
 `fix-task-list`, `plan --auto` for the next span, then one message.

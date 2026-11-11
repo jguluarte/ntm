@@ -297,8 +297,8 @@ No databases of its own.
 Present the price watch as one daily job, early each morning. For example:
 
 > The price watch is a daily job, suggested early each morning, at 06:57. It
-> looks over all of your tasks tagged with the `$price-watch` label. Is this
-> okay for you?
+> looks over all of your tasks tagged with the label you chose for price watch.
+> Is this okay for you?
 
 Its name and what it runs, for Create the jobs:
 

@@ -160,28 +160,57 @@ piles up, so move such a time a few minutes earlier.
 
 ##### Jobs
 
+Present these in two parts: the weekly setup, then the day to day. Say what each
+part does for them and when it's suggested, then confirm all four in one table.
+For example:
+
+> For task management, there are two parts to the schedule.
+>
+> There's a weekly setup, suggested on Sunday evening at 20:45. It cleans up
+> what you didn't finish and plans your week ahead for you. It could run monthly
+> instead, but week over week flexibility will likely be better for you.
+>
+> Then there's the day to day, three reminders, at these suggested times:
+>
+> - Morning, about 08:45
+> - Afternoon, about 14:45
+> - Evening, about 20:45
+>
+> These remind you of what's planned for you that day, so you see it a few
+> times. The evening is a final push to help you finish, or a celebration that
+> you did, if you want.
+>
+> Does this schedule work for you?
+>
+> | Job                | Day      | Time  |
+> | ------------------ | -------- | ----- |
+> | Weekly setup       | Sunday   | 20:45 |
+> | Morning reminder   | Weekdays | 08:45 |
+> | Afternoon reminder | Weekdays | 14:45 |
+> | Evening reminder   | Weekdays | 20:45 |
+
 ###### Morning reminder
 
 The `morning` job makes today ready, then sends what's on today. It runs
-`plan --auto day`, then `reminder --type morning`, on weekdays at 08:44 by
+`plan --auto day`, then `reminder --type morning`, on weekdays at 08:45 by
 default. On a paused day with nothing planned, it sends nothing, as the morning
 rule in `%Message-rules` says.
 
 ###### Afternoon reminder
 
 The `afternoon` job sends what's still open today. It runs
-`reminder --type afternoon`, on weekdays at 14:26 by default.
+`reminder --type afternoon`, on weekdays at 14:45 by default.
 
 ###### Evening reminder
 
 The `evening` job asks how the day went. It runs `reminder --type evening`, on
-weekdays at 19:23 by default.
+weekdays at 20:45 by default.
 
 ###### Weekly setup
 
 The `week` job looks back on the last week and plans the week ahead. It runs
 `show-completed the last 7 days and what's still open`, `fix-task-list`,
-`plan --auto week`, then `reminder --type week`, on Sunday at 21:50 by default.
+`plan --auto week`, then `reminder --type week`, on Sunday at 20:45 by default.
 The look-back runs first, before `fix-task-list` clears the planned dates that
 say what's still open. There's no separate completed job: the week's look-back
 covers it.
@@ -222,6 +251,12 @@ If they don't, write `off` under Amazon interface. The two Amazon labels are not
 shown, created or saved.
 
 ##### Jobs
+
+Present the price watch as one daily job, early each morning. For example:
+
+> The price watch is a daily job, suggested early each morning, at 06:57. It
+> looks over all of your tasks tagged with the `$price-watch` label. Is this
+> okay for you?
 
 ###### Price watch
 
@@ -306,7 +341,7 @@ Final reply: what the last step returned, as the Results rules in
 | ----------------- | ------------------------------------------------------------------- |
 | `name`            | the title                                                           |
 | `prompt`          | the filled-in prompt                                                |
-| `cron_expression` | weekdays at 08:44 in Berlin is `CRON_TZ=Europe/Berlin 44 8 * * 1-5` |
+| `cron_expression` | weekdays at 08:45 in Berlin is `CRON_TZ=Europe/Berlin 45 8 * * 1-5` |
 | `notifications`   | `{push: true}`                                                      |
 | `initiation`      | `human_request`                                                     |
 | `permission_mode` | left unset                                                          |

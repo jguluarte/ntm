@@ -21,8 +21,7 @@ directly (`/ntm:today`), and a job's prompt loads `ntm:<skill>`.
 
 It holds two skills. `backend` teaches how to work with this user's task list:
 its calls and statuses, what counts as open, and where each database lives.
-`notify` is their channel, with the Pushover keys when they use Pushover. Linear
-users also get the Linear connector bundled.
+`notify` is their channel. Linear users also get the Linear connector bundled.
 
 ### Skills do their own work
 
@@ -48,10 +47,10 @@ included, and skills load them from there. Changing a setting is an edit to
 `%Settings`, with no rebuild.
 
 `ntm-user:backend` holds only what has to be built in: how to work with the task
-list, and where each database lives, `%Settings` included. The Pushover keys are
-built into `ntm-user:notify`, so changing them means `update` rebuilds. A job's
-own app token goes in that job's prompt, and `ntm-user:notify` sends with it in
-place of the built-in one.
+list, and where each database lives, `%Settings` included.
+
+The Pushover keys live in `%Settings`, and changing them needs no rebuild. A
+job's own app token goes in that job's prompt.
 
 The theme lives in the `%Theme` database, in the parts
 `skills/setup/references/theme.md` describes.

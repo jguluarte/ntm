@@ -13,15 +13,6 @@ long as how is written down or discoverable from its connector.
 - A way to group tasks, such as projects or folders.
 - A connector Claude can use to read and write them.
 
-A backend can't go without a planned date or a way to tell open tasks from
-closed. It can go without anything else; the guide says what's missing, and
-skills do without it:
-
-- No blocked-by relation: planning and reviews work from titles and
-  descriptions.
-- No labels on groups: the user puts labels on tasks directly.
-- No documents: each database is kept in a task, as Databases says.
-
 ## Task list
 
 The guide names the user's list, `<List name>`, and the id calls take,
@@ -111,10 +102,6 @@ Replaces its content, creating it when it's missing.
 ### `create database`
 
 Creates it with its first content, leaving one that exists alone.
-
-A backend with no documents keeps each database in the description of an open
-task titled with the database's title, with the `$no-autoschedule` label and no
-planned date, so planning never picks it.
 
 ## Writing
 

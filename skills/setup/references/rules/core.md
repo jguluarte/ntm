@@ -4,7 +4,7 @@ The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
 and the jobs put the todo list right as they run. A value these rules name under
 a heading of the `%Settings` document (see Databases) is read from that document
-when it's needed; a missing heading or line means its default.
+when it's needed.
 
 The todo list is one person's, not a team's: priority is mostly unused, and a
 fixed deadline is rare. The words here come from tools built for companies; read
@@ -29,7 +29,7 @@ For example, take ABC-15, titled "Replace the kitchen tap". Telling the user
 "you already finished ABC-15" means nothing to them, and quoting the full title
 reads like a report, not a person talking. Instead, say "you already finished
 the kitchen tap (ABC-15)". The example is only an illustration; there's no need
-to look it up. Where the backend has no ids, use the words alone.
+to look it up.
 
 Lines another skill parses keep their format, but when you pass them on to the
 user, word them this way too.
@@ -91,8 +91,7 @@ Projects carry labels too. Any label on a project, system label or ordinary
 category, counts as a label on every task in that project and on their
 sub-tasks. Wherever a rule checks a task's labels, it checks the ones inherited
 from its project too. This holds for labels added later as well, with no change
-to these rules. Where the backend can't put labels on groups, the guide says so
-and the user puts the labels on tasks directly.
+to these rules.
 
 ## Databases
 
@@ -103,10 +102,6 @@ by its default title, as each heading shows, with hyphens for spaces.
 and never show the `%` in a message to the user (the plugin's docs may show it).
 Read and write them with the guide's `read database` / `write database`. Each
 database has one writer; everything else only reads it.
-
-Where the backend has no documents, the guide keeps each database in an open
-task titled with the database's title. That task is a database, not work; every
-skill ignores it.
 
 ### `%Settings`: the user's configured settings
 

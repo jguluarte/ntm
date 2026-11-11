@@ -54,7 +54,7 @@ changes it.
 The days when nothing gets planned automatically. `ntm:pause` keeps it. Planning
 never dates a task on a paused day, but a date the user sets there stands.
 
-### `%Task-review-log`
+### `%Estimator-log`
 
 What reviews have taught about how the user sizes and breaks up tasks. The
 estimator agent keeps it, from what `ntm:review-todo-list` sends it.

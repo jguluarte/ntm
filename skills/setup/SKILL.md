@@ -301,6 +301,9 @@ your user from your memories about them.
 Then build the theme with them as `references/theme.md` says: from the `%Theme`
 template's parts, or from a theme they already have.
 
+Ask how long they like a reminder to run, and save it under About you in the
+`%Settings` database.
+
 Confirm the names of the `%Theme` and `%Message-history` databases. Then save
 the theme: create the `%Theme` database from its template, with their theme in
 place of the placeholders, and `%Message-history` from its own. Add where each

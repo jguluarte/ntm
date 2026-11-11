@@ -22,8 +22,7 @@ them. Push for vivid.
 ## What motivates you to read reminders from ntm
 
 What makes them open a reminder: a joke, shade, a running bit, a story that
-picks up where yesterday left off. Several can combine. Then how long a reminder
-runs.
+picks up where yesterday left off. Several can combine.
 
 ## The reminders
 

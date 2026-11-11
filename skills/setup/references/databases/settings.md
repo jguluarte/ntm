@@ -12,10 +12,12 @@ user's database.
 
 <!--
 Timezone is an IANA name. It decides what today is for the user, and their jobs
-run in it.
+run in it. Reminder length is how long they like a reminder to run, in their
+words.
 -->
 
 - Timezone: America/Los_Angeles
+- Reminder length: one or two sentences
 
 ## Labels
 

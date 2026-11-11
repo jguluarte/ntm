@@ -240,31 +240,18 @@ For example:
 > | Afternoon reminder | Weekdays | 14:45 |
 > | Evening reminder   | Weekdays | 20:45 |
 
-###### Morning reminder
+Each job's name and what it runs, in order, for Create the jobs:
 
-The `morning` job makes today ready, then sends what's on today. It runs
-`plan --auto day`, then `reminder --type morning`, on weekdays at 08:45 by
-default. On a paused day with nothing planned, it sends nothing, as the morning
-rule in `%Message-rules` says.
+| Job                | Name        | Runs                                                                          |
+| ------------------ | ----------- | ----------------------------------------------------------------------------- |
+| Weekly setup       | `week`      | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` |
+| Morning reminder   | `morning`   | `plan --auto day`, `reminder --type morning`                                  |
+| Afternoon reminder | `afternoon` | `reminder --type afternoon`                                                   |
+| Evening reminder   | `evening`   | `reminder --type evening`                                                     |
 
-###### Afternoon reminder
-
-The `afternoon` job sends what's still open today. It runs
-`reminder --type afternoon`, on weekdays at 14:45 by default.
-
-###### Evening reminder
-
-The `evening` job asks how the day went. It runs `reminder --type evening`, on
-weekdays at 20:45 by default.
-
-###### Weekly setup
-
-The `week` job looks back on the last week and plans the week ahead. It runs
-`show-completed the last 7 days and what's still open`, `fix-task-list`,
-`plan --auto week`, then `reminder --type week`, on Sunday at 20:45 by default.
-The look-back runs first, before `fix-task-list` clears the planned dates that
-say what's still open. There's no separate completed job: the week's look-back
-covers it.
+In the weekly setup, `show-completed` runs with
+`the last 7 days and what's still open`. It runs first, before `fix-task-list`
+clears the planned dates that say what's still open.
 
 #### Price watch
 
@@ -313,10 +300,11 @@ Present the price watch as one daily job, early each morning. For example:
 > looks over all of your tasks tagged with the `$price-watch` label. Is this
 > okay for you?
 
-###### Price watch
+Its name and what it runs, for Create the jobs:
 
-The `price-watch` job checks which watched items are a good deal today. It runs
-`price-watch`, every day at 06:57 by default.
+| Job         | Name          | Runs          |
+| ----------- | ------------- | ------------- |
+| Price watch | `price-watch` | `price-watch` |
 
 #### Saving the features
 
@@ -377,8 +365,8 @@ channel's file in `references/notify/`, with any keys.
 
 ### Create the jobs
 
-Create each job they confirmed as a scheduled task. Its title is its heading
-under Jobs, such as Morning reminder.
+Create each job they confirmed as a scheduled task. Its title is the one Jobs
+gives it, such as Morning reminder.
 
 Its prompt is this frame, with step 2 once for each skill the job runs, in
 order. `<job>` is the job's name, such as `morning`.

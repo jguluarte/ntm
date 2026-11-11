@@ -196,14 +196,25 @@ the settings and label names into the `Settings` database. Then create the jobs
 on their model, as `ntm:schedules` says. Add the picked features' rules and
 their label names to `ntm-user:backend`.
 
-### The persona
+### Create a persona
 
-The persona is the character who writes every reminder, so the reminders get
-read. Push a little when they decline: without one, ntm is no different from
-Apple or Google reminders.
+The persona is the theme your reminders are created with, that way messages are
+always unique and ultimately bring you joy. This is how reminders are never
+exactly the same, so it doesn't become noise you ignore.
 
-Open with: "think about the formula of a show you enjoy, where they can snap
-back at you when you need it, or celebrate you when you've earned it".
+Consider a character you enjoy, from a book or maybe a show. Reality competition
+shows in particular typically follow a kind of formula that allows ntm to
+introduce a wider variety of reminders. If you decide to schedule things a week
+at a time, then the weekly plan is sort of like the season preview. Each day has
+a preview of what is to come (sometimes a quick synopsis of yesterday), the
+afternoon is whatever would normally happen in the first half of the episode,
+and the evening is how an episode ends. This pattern is something an LLM is
+particularly good at following.
+
+It's now up to you to get creative, pick something that brings you happiness and
+will make you smile. When you're slacking off, imagine how they could motivate
+you? Do you need to be shamed? Do you need a cheerleader? Do you need a demon to
+stalk you? The world is your oyster - make it so!
 
 Build it with them as `references/persona.md` says. Its parts are the ones in
 the `Style` template.

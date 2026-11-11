@@ -17,10 +17,9 @@ Sends one notification to the user through Pushover, and says whether it went.
 
 ## Keys
 
-| Key       | Value         |
-| --------- | ------------- |
-| App token | `<app token>` |
-| User key  | `<user key>`  |
+Read the app token and user key from Pushover keys under Notifications in
+`%Settings` each time you send. When `--app-token` is given, send with it in
+place of the app token there.
 
 ## Send
 

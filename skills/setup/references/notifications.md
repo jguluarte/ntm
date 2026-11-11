@@ -8,6 +8,8 @@ They need the Pushover app on their phone, signed in. Their user key is on their
 Pushover dashboard once they sign in at pushover.net. The app token comes from
 an application they create there; any name works, such as ntm.
 
+When you repeat a key back to them, show only its last four characters.
+
 ### The test push
 
 Send one push as Send and Result in `notify/pushover.md` say, with the keys they

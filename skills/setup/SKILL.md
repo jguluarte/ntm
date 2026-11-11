@@ -25,7 +25,7 @@ build up as you go. It holds two skills:
 | Skill              | What it holds                                                                |
 | ------------------ | ---------------------------------------------------------------------------- |
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
-| `ntm-user:notify`  | How they receive notifications: their channel, and any keys it needs         |
+| `ntm-user:notify`  | How they receive notifications: their channel                                |
 
 `ntm-user:backend` opens with one Built line: its version, the version of the
 installed `ntm` it was built from, and the date, in this shape:
@@ -37,8 +37,6 @@ The plugin also bundles the connector for their backend, so their task list is
 reachable wherever ntm runs. Write the plugin's `.mcp.json` with that
 connector's name and address, as they added it in Connect to a backend, Linear
 included.
-
-Keys go only in the plugin, never into chat.
 
 Everything else they set up lives in their databases and their jobs.
 
@@ -324,13 +322,13 @@ With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how.
 
 For either channel, ask if there's anything about how they want to be notified,
-and save it under Notifications in the `%Settings` database. Then add
-`ntm-user:notify` to their user plugin, as The user plugin says; near its top,
-it follows their Notifications in `%Settings`. For Pushover, build it from
-`references/notify/pushover.md`, with their keys. For the AI app's own push,
-build it from the same file without Keys or `--app-token`. In place of Send and
-Result, it returns `NOTIFY VIA FINAL REPLY`, then the title, then the message,
-for the job to end its run with.
+and save it under Notifications in the `%Settings` database. For Pushover, save
+their keys there too, in Pushover keys. Then add `ntm-user:notify` to their user
+plugin, as The user plugin says; near its top, it follows their Notifications in
+`%Settings`. For Pushover, build it from `references/notify/pushover.md`. For
+the AI app's own push, build it from the same file without Keys or
+`--app-token`. In place of Send and Result, it returns `NOTIFY VIA FINAL REPLY`,
+then the title, then the message, for the job to end its run with.
 
 ### Create the jobs
 

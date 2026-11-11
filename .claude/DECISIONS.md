@@ -98,8 +98,9 @@ summary.
 
 #### A template per database
 
-Each user database has a template in `references/databases/`: its real shape,
-with default or dummy values.
+Each user database has a template in `skills/setup/references/databases/`: its
+real shape, with default or dummy values. Only setup reads a template, to create
+the user's database from it. Agents read the user's own database.
 
 #### Comments are for agents
 

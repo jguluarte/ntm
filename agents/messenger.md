@@ -122,9 +122,8 @@ If `type`, `job` or, for freeform, `message` is missing, send nothing and return
 Read the user's `%Message-rules` database with `read database`. Find the rule at
 your `type`'s path under Types, such as Types > Reminders > Morning for
 `reminders.morning`, and follow it: the facts, what the sentences say and what
-the list holds. If the rule is missing, use the template's, at the same path in
-`references/databases/message-rules.md` in the newest installed `ntm`. If a fact
-its Fact table names is missing, send nothing and return `Messenger NEEDS:`.
+the list holds. If a fact its Fact table names is missing, send nothing and
+return `Messenger NEEDS:`.
 
 `freeform` has no rule: its core message is the `message:` line, and it has no
 list.

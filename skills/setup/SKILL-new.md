@@ -110,7 +110,7 @@ everything.
 | Price watch     | What they want to buy, watched until the price is right |
 
 Note which features they're installing. Then confirm what those features need,
-for all of them at once, in this order: every setting, then every label, then
+for all of them at once, in this order: every label, then every setting, then
 every database, then every job. Show only what the picked features need, with
 the defaults below. A label's default name is ntm's, without the `$`. With the
 jobs, ask which model they run on: the default is the one running this chat.
@@ -119,18 +119,18 @@ the feature's rules and the database templates say more.
 
 #### Task management
 
-##### Settings
-
-| Setting                                | Default                                 |
-| -------------------------------------- | --------------------------------------- |
-| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
-
 ##### Labels
 
 | Label               | For                                   |
 | ------------------- | ------------------------------------- |
 | `$no-autoschedule`  | A task kept out of automatic planning |
 | `$pending-shipment` | A task waiting on an order to arrive  |
+
+##### Settings
+
+| Setting                                | Default                                 |
+| -------------------------------------- | --------------------------------------- |
+| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
 
 ##### Databases
 
@@ -151,6 +151,17 @@ the feature's rules and the database templates say more.
 
 #### Price watch
 
+##### Labels
+
+| Label                 | For                                             |
+| --------------------- | ----------------------------------------------- |
+| `$price-watch`        | What they want to buy                           |
+| `$has-amazon-alert`   | An item with an Amazon price alert              |
+| `$amazon-unavailable` | An item not on Amazon in a condition they allow |
+
+$price-watch goes on the project that holds what they want to buy: ask which
+project, or what to call a new one.
+
 ##### Settings
 
 | Setting          | Default                      |
@@ -164,17 +175,6 @@ alerts from a browser in chat. Amazon interface is which one: Claude's built-in
 browser, their own browser through the Claude extension, or off. Make sure to
 ask the user if they would like to set up Amazon syncing, and if so then ask
 them about the two associated labels.
-
-##### Labels
-
-| Label                 | For                                             |
-| --------------------- | ----------------------------------------------- |
-| `$price-watch`        | What they want to buy                           |
-| `$has-amazon-alert`   | An item with an Amazon price alert              |
-| `$amazon-unavailable` | An item not on Amazon in a condition they allow |
-
-$price-watch goes on the project that holds what they want to buy: ask which
-project, or what to call a new one.
 
 ##### Databases
 

@@ -93,9 +93,9 @@ themselves. Ideally they will agree to use Linear for its simplicity.
 
 #### ntm backend assets
 
-Confirm that the user is okay with establishing the settings database file name.
-Once they do, create it and store settings in it which will allow ntm to use the
-backend in the future (once the rest of setup completes).
+Confirm that the user is okay with establishing the `%Settings` database file
+name. Once they do, create it and store settings in it which will allow ntm to
+use the backend in the future (once the rest of setup completes).
 
 Then start their user plugin with `ntm-user:backend`, from the backend's guide.
 
@@ -112,10 +112,11 @@ everything.
 Note which features they're installing. Then confirm what those features need,
 for all of them at once, in this order: every label, then every setting, then
 every database, then every job. Show only what the picked features need, with
-the defaults below. A label's default name is ntm's, without the `$`. With the
-jobs, ask which model they run on: the default is the one running this chat.
-Then save, as Saving the features says. When the user wants more on any of it,
-the feature's rules and the database templates say more.
+the defaults below. A label's default name is ntm's, without the `$`. A
+database's is its `%` name in words, such as Paused dates. With the jobs, ask
+which model they run on: the default is the one running this chat. Then save, as
+Saving the features says. When the user wants more on any of it, the feature's
+rules and the database templates say more.
 
 #### Task management
 
@@ -134,11 +135,11 @@ the feature's rules and the database templates say more.
 
 ##### Databases
 
-| Database          | For                                |
-| ----------------- | ---------------------------------- |
-| `Message rules`   | What each reminder's message says  |
-| `Paused dates`    | The days when nothing gets planned |
-| `Task review log` | How estimating works with them     |
+| Database           | For                                |
+| ------------------ | ---------------------------------- |
+| `%Message-rules`   | What each reminder's message says  |
+| `%Paused-dates`    | The days when nothing gets planned |
+| `%Task-review-log` | How estimating works with them     |
 
 ##### Jobs
 
@@ -159,7 +160,7 @@ the feature's rules and the database templates say more.
 | `$has-amazon-alert`   | An item with an Amazon price alert              |
 | `$amazon-unavailable` | An item not on Amazon in a condition they allow |
 
-$price-watch goes on the project that holds what they want to buy: ask which
+`$price-watch` goes on the project that holds what they want to buy: ask which
 project, or what to call a new one.
 
 ##### Settings
@@ -184,11 +185,11 @@ them about the two associated labels.
 
 #### Saving the features
 
-Create the labels on the task list, with $price-watch on its project, then each
-database above from its template, and say in a line where each one lives. Write
-the settings and label names into the `Settings` database. Then create the jobs
-on their model, as `ntm:schedules` says. Add the picked features' rules and
-their label names to `ntm-user:backend`.
+Create the labels on the task list, with `$price-watch` on its project, then
+each database above from its template, and say in a line where each one lives.
+Write the settings and label names into the `%Settings` database. Then create
+the jobs on their model, as `ntm:schedules` says. Add the picked features' rules
+and their label names to `ntm-user:backend`.
 
 ### Create a persona
 
@@ -211,11 +212,11 @@ you? Do you need to be shamed? Do you need a cheerleader? Do you need a demon to
 stalk you? The world is your oyster - make it so!
 
 Build it with them as `references/persona.md` says. Its parts are the ones in
-the `Style` template.
+the `%Style` template.
 
-Confirm the names of the `Style` and `Message history` databases. Then save the
-persona: create the `Style` database from its template, with their persona in
-place of the placeholders, and `Message history` from its own.
+Confirm the names of the `%Style` and `%Message-history` databases. Then save
+the persona: create the `%Style` database from its template, with their persona
+in place of the placeholders, and `%Message-history` from its own.
 
 ### Notifications
 
@@ -227,7 +228,7 @@ when each job finishes.
 
 With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how. Then ask if there's anything about
-how they want to be notified, and save it under Notifications in the `Settings`
+how they want to be notified, and save it under Notifications in the `%Settings`
 database. Then add `ntm-user:notify` to their user plugin, from their channel's
 file in `references/notify/`, with any keys.
 

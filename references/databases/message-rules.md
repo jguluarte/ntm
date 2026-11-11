@@ -36,7 +36,7 @@ task list: suggest a review with `/ntm:review-todo-list`.
 
 List: the `today:` tasks.
 
-No notification: when today is paused and `today: none`.
+No notification: when `paused: yes` and `today: none`.
 
 #### Afternoon
 
@@ -50,7 +50,7 @@ as started. Never a dig. With `open: none`, quick props, nothing more.
 
 List: the `open:` tasks.
 
-No notification: when today is paused and `open: none`.
+No notification: when `paused: yes` and `open: none`.
 
 #### Evening
 
@@ -64,7 +64,7 @@ in a clause; with `open: none`, a celebration of what got done.
 
 List: the `open:` tasks.
 
-No notification: when `done: none` and `open: none`, a day off.
+No notification: when `done: none` and `open: none`.
 
 #### Week
 
@@ -76,8 +76,7 @@ No notification: when `done: none` and `open: none`, a day off.
 
 Message: the past week, then the week ahead, a sentence or so each. The past
 week: what got done, as a count and a theme, and what's still open. The week
-ahead: what's planned, as a count and a theme. Only the still-open tasks are
-named.
+ahead: what's planned, as a count and a theme. Name only the still-open tasks.
 
 List: none.
 

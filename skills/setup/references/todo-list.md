@@ -218,8 +218,8 @@ The real name on your todo list for each label the system uses.
 
 How your todo list is planned. Read by `ntm:plan` and `ntm-user:backend`.
 
-- Excluded labels from automatic scheduling: <default `no-autoschedule`,
-  `pending-shipment`>
+- Excluded labels from automatic scheduling: <default `$no-autoschedule`,
+  `$pending-shipment`>
 
 <anything else about how they want planning done, as written; or nothing>
 

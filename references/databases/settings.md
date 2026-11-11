@@ -44,14 +44,15 @@ rebuild with `/ntm:update`.
 <!--
 How the user wants their task list planned, read by `ntm:plan`. Task
 management only. Labels to exclude from auto-scheduling are the ones planning
-never picks, by their names on the task list. Anything else the user says about
-planning goes in its own subsection, in their words.
+never picks. By default they are `$no-autoschedule` and `$pending-shipment`,
+which mean the user's own names for those labels, in Labels. Anything else the
+user says about planning goes in its own subsection, in their words.
 -->
 
 ### Labels to exclude from auto-scheduling
 
-- `no-autoschedule`
-- `pending-shipment`
+- `$no-autoschedule`
+- `$pending-shipment`
 
 ## Shopping
 

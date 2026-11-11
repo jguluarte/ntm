@@ -19,7 +19,7 @@ back when something slides and how they celebrate a win. Ask how hard it goes:
 swearing, roasting and shade are all fine if they want them. Push for vivid over
 polite. Two or three sentences, in their words.
 
-## What gets them to read
+## What motivates you to read reminders from ntm
 
 What makes them open a reminder instead of swiping it away: a joke, a
 cliffhanger, a scoreboard, a story that picks up where yesterday left off. More
@@ -37,7 +37,7 @@ each one in their show's terms.
 | Afternoon | The first half of the episode                                 |
 | Evening   | How the episode ends                                          |
 
-## When a task keeps slipping
+## Responding to procrastination
 
 How the show responds when the same task carries over day after day: shame, a
 cheerleader, a demon that stalks them, whatever gets them moving. Build it as

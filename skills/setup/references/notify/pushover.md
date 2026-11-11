@@ -5,13 +5,12 @@ Sends one notification to the user through Pushover, and says whether it went.
 ## Usage
 
 ```
-/ntm-user:notify --from <skill> --title "<title>" --message "<message>"
+/ntm-user:notify --title "<title>" --message "<message>"
     [--app-token <token>]
 ```
 
 | Input         | What it is                                                  |
 | ------------- | ----------------------------------------------------------- |
-| `--from`      | The skill the message is for, such as `price-watch`         |
 | `--title`     | The notification's title                                    |
 | `--message`   | The message, with task links in markdown                    |
 | `--app-token` | A job's own Pushover app token, in place of the one in Keys |
@@ -27,7 +26,7 @@ Sends one notification to the user through Pushover, and says whether it went.
 
 `ntm-user:backend` says where the user's `%Settings` database lives. Read its
 Notifications: how they want to be notified, in their words. Follow it for this
-message. What it says about one skill applies when `--from` names that skill.
+message.
 
 ## Send
 

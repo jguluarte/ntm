@@ -15,7 +15,11 @@ another branch's work. Conflicts between them are resolved at merge.
 The orchestrator names your branch. Make your worktree a sibling of the repo,
 starting at main:
 
-`git -C /Users/jguluarte/code/ntm worktree add /Users/jguluarte/code/.claude-worktrees/ntm/<branch> -b <branch> jguluarte/main`
+```sh
+git -C /Users/jguluarte/code/ntm worktree add \
+    /Users/jguluarte/code/.claude-worktrees/ntm/<branch> \
+    -b <branch> jguluarte/main
+```
 
 Work only there. Never touch another worktree or the main checkout.
 

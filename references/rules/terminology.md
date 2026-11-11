@@ -1,7 +1,6 @@
 # Terminology
 
-The words ntm's skills and agents share, defined once so each means the same
-thing everywhere. How ntm uses Linear, in
+The words ntm's skills and agents share. How ntm uses Linear, in
 `skills/setup/references/backends/how-ntm-uses-linear.md`, shows most of them on
 a real task list.
 
@@ -28,14 +27,14 @@ real one. Any other label is the user's own.
 
 ## Planned date
 
-The one date on a task: the day its work is planned for. Planning sets, moves
-and clears it freely. **NEVER treat a planned date as a deadline.** A planned
-date before today, on a task that's still open, is "stale".
+The day a task's work is planned for. Planning sets, moves and clears it freely.
+**NEVER treat a planned date as a deadline.** A planned date before today, on a
+task that's still open, is "stale".
 
 ## Status groups
 
-Each status on the task list belongs to one group, and ntm goes by the group,
-not the status's name. A task is open until it's done, canceled or a duplicate.
+Each status on the task list belongs to one group, and ntm goes by the group. A
+task is open until it's done, canceled or a duplicate.
 
 | Group     | The task is                                   |
 | --------- | --------------------------------------------- |
@@ -52,8 +51,7 @@ A task is excluded when it carries a label `%Settings` keeps out of planning:
 ## Estimate
 
 How big a task is, in hours unless `%Settings` says otherwise, in full words on
-the last line of its description: `Estimate: 2 hours`. The estimator agent
-proposes it.
+the last line of its description: `Estimate: 2 hours`.
 
 ## Database
 
@@ -69,12 +67,10 @@ in the chat while it runs.
 
 ## The user plugin
 
-`ntm-user`, the plugin setup builds for one user. `ntm-user:backend` says how to
-work with their task list and where their databases live, and `ntm-user:notify`
-sends them notifications on the channel they chose.
+`ntm-user`, the plugin setup builds for one user: `ntm-user:backend` and
+`ntm-user:notify`.
 
 ## Theme
 
-What the user's reminders are created with: something they enjoy, such as a
-show, so no two messages read alike and none turns into noise. It lives in
-`%Theme`.
+What the user's reminders are written in: something they enjoy, such as a show.
+It lives in `%Theme`.

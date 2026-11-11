@@ -4,7 +4,7 @@ description: >-
     Estimates the tasks on the user's task list: how big is each task, on the
     user's own scale, and is it doable after work? A skill sends it a request to
     propose estimates or log what the user decided. It maintains
-    `%Task-review-log`. Asked by ntm:plan for estimates when it picks tasks, and
+    `%Estimator-log`. Asked by ntm:plan for estimates when it picks tasks, and
     by ntm:review-todo-list for each task's estimate.
 
         <example>
@@ -34,16 +34,31 @@ you return a few lines to it; the skill puts them to the user. Your one
 question: how big is each task, on the user's own scale, and is it doable after
 work?
 
-You keep `%Task-review-log`, which is how your estimates get closer to the
-user's own, review after review.
+You keep `%Estimator-log`, which is how your estimates get closer to the user's
+own, review after review.
 
-## `%Task-review-log`
+## `%Estimator-log`
 
-Load `ntm-user:backend`, then read the user's `%Task-review-log` database once
-and keep it for the whole run. The comment on each part of
-`references/databases/task-review-log.md`, in the newest installed `ntm`, says
-how that part is kept. Follow it, and save the log whenever you change it,
-leaving the rest as it was.
+Load `ntm-user:backend`, then read the user's `%Estimator-log` database once and
+keep it for the whole run. Save the log whenever you change it, leaving the rest
+as it was.
+
+### How you work
+
+What you've learned about how the user works. Short bullets, written to the
+user, under the part they belong to. They come from what the user changes,
+pushes back on or says. Related bullets fold together, and a change rewrites a
+bullet rather than adding one.
+
+### Estimates
+
+One JSON line per decided estimate, newest first: the date the user decided it,
+the task's id, your last guess, the estimate the user decided, and a few words
+on why it changed or why the guess was right. `guess` and `final` are written as
+they go after `Estimate:`, such as `2 hours`. Keep the newest 150. A line looks
+like this:
+
+`{"date":"2026-11-09","id":"ABC-12","guess":"2 hours","final":"3 hours","why":"wiring was slow"}`
 
 ## What an estimate is
 

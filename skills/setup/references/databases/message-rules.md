@@ -4,7 +4,7 @@
 What each reminder's message says, for the messenger agent. A skill asks the
 messenger for a type such as `reminders.morning`, and the type is the path to
 its rule: Reminders > Morning. Rules are found by those names, so keep them. How
-a message sounds is `%Theme`'s job.
+a message sounds, and how and when it escalates, is `%Theme`'s job.
 
 Setup creates this database from this template. The user edits a rule, adds to
 it, or deletes it to go back to this template's. These comments are for the
@@ -15,55 +15,35 @@ agent, and are never written into the user's database.
 
 <!--
 What every reminder shares. Each reminder's own part below adds to it, and wins
-where they differ. A reminder's facts are the ones its skill hands the
-messenger: keep them as they are, since the skill sends exactly those. The rest
-is the user's to change: what the message says, the list under it, and when no
-notification is needed.
+where they differ.
 -->
 
-| Fact      | Holds                                           |
-| --------- | ----------------------------------------------- |
-| `open:`   | the open tasks planned for today                |
-| `done:`   | the tasks done today                            |
-| `paused:` | `yes` when today is in `%Paused-dates`, or `no` |
+- Load all tasks with today's date
+- Load the message history
 
-List: the `open:` tasks.
-
-No notification: when `paused: yes` and `open: none`.
+If there are no tasks, you can exit with nothing to send.
 
 ### Morning
 
-Facts: `today:` in place of `open:`, and `paused:`.
-
-Message: what's planned for today, naming each carried-over task with the date
-it was carried over from. With `today: none`, nothing plannable is left on the
-task list: suggest a review with `/ntm:review-todo-list`.
+Morning is responsible to let the user know what's on the docket for today.
+Include relevant details if any tasks have carried over (check recent history to
+determine if this is a pattern, or how many times it has been missed). That
+information could influence how the `%Theme` is applied to the message content.
 
 ### Afternoon
 
-Facts: `open:` and `paused:`.
-
-Message: a tap on the shoulder about what's still open, naming each started task
-as started. Never a dig. With `open: none`, quick props, nothing more.
+The afternoon is similar to the morning. If the set of tasks differs from what
+they were this morning, note that a change happened but focus on the planned
+tasks.
 
 ### Evening
 
-Facts: `done:` and `open:`.
+This is ntm's last time to send reminders to the user.
 
-Message: how the day went. A final push on what's still open, with what got done
-in a clause; with `open: none`, a celebration of what got done.
-
-No notification: when `done:` and `open:` are both `none`.
+Note changes as necessary, and what is outstanding.
 
 ### Week
 
-Facts: `done:` and `open:` over the past week instead of today, and `planned:`,
-the tasks planned for the week ahead.
-
-Message: the past week, then the week ahead, a sentence or so each. The past
-week: what got done, as a count and a theme, and what's still open. The week
-ahead: what's planned, as a count and a theme. Name only the still-open tasks.
-
-List: none.
-
-No notification: when `done:`, `open:` and `planned:` are all `none`.
+The weekly reminder is a combination of describing what happened last week, and
+what is scheduled for the upcoming week. By the time you're reading this, you
+should have all of that information in your context.

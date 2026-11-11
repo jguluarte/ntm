@@ -4,8 +4,8 @@
 The values the user chose in setup, for the skills that need them. Setup writes
 this database from this template, with the user's answers, for the features
 they picked. The user can edit, delete or add any part; anything they add goes
-in its own subsection, in their words. These comments are for you, and are
-never written into the user's database.
+in its own subsection, in their words. These comments are for the agent, and
+are never written into the user's database.
 -->
 
 ## About you
@@ -50,10 +50,10 @@ user's own name for that label, from Labels.
 
 <!--
 How the price watch shops. Country is where the stores must deliver, and
-Currency the one every price is in. Amazon interface is the browser ntm uses to
-keep the user's Amazon price alerts: Claude's built-in browser, or their own
-browser through the Claude extension. It's `off` when they want no Amazon price
-alerts, and never blank.
+Currency is the one every price is in. Amazon interface is the browser ntm uses
+to keep the user's Amazon price alerts: Claude's built-in browser, or their own
+browser through the Claude extension. Always written: `off` when they want no
+Amazon price alerts.
 -->
 
 ### Country

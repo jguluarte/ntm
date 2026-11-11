@@ -194,7 +194,8 @@ and their label names to `ntm-user:backend`.
 ### Create a persona
 
 Send this text as written, in one message. Then add anything else you think is
-important for them to know before they pick one.
+important for them to know before they pick one, based on what you know about
+your user from your memories about them.
 
 > The persona is the theme your reminders are created with, that way messages
 > are always unique and ultimately bring you joy. This is how reminders are

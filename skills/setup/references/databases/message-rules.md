@@ -4,7 +4,7 @@
 What each reminder's message says, for the messenger agent. A skill asks the
 messenger for a type such as `reminders.morning`, and the type is the path to
 its rule: Reminders > Morning. Rules are found by those names, so keep them. How
-a message sounds is `%Theme`'s job, not this database's.
+a message sounds is `%Theme`'s job.
 
 Setup creates this database from this template. The user edits a rule, adds to
 it, or deletes it to go back to this template's. These comments are for the
@@ -29,8 +29,7 @@ notification is needed.
 
 List: the `open:` tasks.
 
-No notification: when every fact that holds tasks is `none`, unless
-`paused: no`.
+No notification: when `paused: yes` and `open: none`.
 
 ### Morning
 
@@ -54,6 +53,8 @@ Facts: `done:` and `open:`.
 Message: how the day went. A final push on what's still open, with what got done
 in a clause; with `open: none`, a celebration of what got done.
 
+No notification: when `done:` and `open:` are both `none`.
+
 ### Week
 
 Facts: `done:` and `open:` over the past week instead of today, and `planned:`,
@@ -64,3 +65,5 @@ week: what got done, as a count and a theme, and what's still open. The week
 ahead: what's planned, as a count and a theme. Name only the still-open tasks.
 
 List: none.
+
+No notification: when `done:`, `open:` and `planned:` are all `none`.

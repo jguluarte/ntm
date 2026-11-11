@@ -6,8 +6,8 @@ instructions and tool descriptions are the authority on how to call its tools;
 this guide says which tool does each operation and which of the user's values
 goes where.
 
-The build copies Task list through Writing into `ntm-user:backend` as written,
-with `<List name>` and `<List id>` filled in. It also copies `linear-mcp.json`,
+Setup copies Task list through Writing into `ntm-user:backend` as written, with
+`<List name>` and `<List id>` filled in. It also copies `linear-mcp.json`,
 beside this guide, into `ntm-user`'s `.mcp.json`, so the connector comes
 bundled.
 

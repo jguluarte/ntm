@@ -27,9 +27,8 @@ currency it prices in.
 The name on the user's task list for each label ntm uses, by ntm's name for it.
 Only the labels of the features the user picked: `$no-autoschedule` and
 `$pending-shipment` for task management, `$price-watch` for price watch, and
-the two Amazon labels only when Amazon interface isn't `off`. The
-build writes these names into `ntm-user:backend`, so a change here means a
-rebuild with `/ntm:update`.
+the two Amazon labels only when Amazon interface isn't `off`. Skills read each
+label's name here.
 -->
 
 | Label                 | Name on your task list |

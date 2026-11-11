@@ -19,8 +19,16 @@ Optionally offer to do the saving with a subagent so you can begin the next
 section with the user.
 
 Saving a section also adds its part to their user plugin, `ntm-user`, which you
-build up as you go, as `references/build.md` says. The end is then only its
-install and a self-test.
+build up as you go. It holds two skills:
+
+| Skill              | What it holds                                                                |
+| ------------------ | ---------------------------------------------------------------------------- |
+| `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
+| `ntm-user:notify`  | How they receive notifications                                               |
+
+Everything else they set up lives in their databases. The rules stay in ntm,
+where every skill reads them. The end is then only packaging and installing
+their user plugin, and a self-test.
 
 ## Pre-requisites
 
@@ -76,7 +84,7 @@ ntm helps with.
 
 #### Connect to a backend
 
-This section should be saved before proceeding to backend settings.
+This section should be saved before proceeding to ntm backend assets.
 
 ##### If the user is willing to use Linear
 
@@ -95,10 +103,12 @@ for its simplicity.
 #### ntm backend assets
 
 Confirm that the user is okay with establishing the `%Settings` database file
-name. Once they do, create it and store settings in it which will allow ntm to
-use the backend in the future (once the rest of setup completes).
+name. Once they do, create it from its template, with Timezone under About you
+set to the timezone they confirmed in the intro.
 
-Then start their user plugin with `ntm-user:backend`, from the backend's guide.
+Then start their user plugin with `ntm-user:backend`: the backend guide's Task
+list through Writing, filled in with their task list, and where `%Settings`
+lives.
 
 ### ntm features
 
@@ -199,10 +209,10 @@ shown, created or saved.
 
 Create the labels on the task list, with `$price-watch` on its project (the
 guide's `create label` and `create project`), then each database above from its
-template, and say in a line where each one lives. Write the settings and label
-names into the `%Settings` database. Then create the jobs on their model, as
-`ntm:schedules` says. Add the picked features' rules and their label names to
-`ntm-user:backend`.
+template, and say in a line where each one lives. Add where each one lives to
+`ntm-user:backend`. Write the settings into the `%Settings` database, and the
+labels' real names under its Labels. Then create the jobs on their model, as
+`ntm:schedules` says.
 
 ### Create a persona
 
@@ -233,7 +243,8 @@ Then build the persona with them as `references/persona.md` says: from the
 
 Confirm the names of the `%Style` and `%Message-history` databases. Then save
 the persona: create the `%Style` database from its template, with their persona
-in place of the placeholders, and `%Message-history` from its own.
+in place of the placeholders, and `%Message-history` from its own. Add where
+each one lives to `ntm-user:backend`.
 
 ### Notifications
 

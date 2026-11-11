@@ -7,18 +7,18 @@ apply to you. Read it in your worktree first.
 
 Keep your change small and exactly in scope: no redesign, no improvements
 outside it. If something needs a decision, stop and report it; don't decide it.
-Don't change versions. Several branches may run in parallel off main; don't do
-another branch's work. Conflicts between them are resolved at merge.
+Don't change versions. Several branches may run in parallel off `release-0.4`;
+don't do another branch's work. Conflicts between them are resolved at merge.
 
 ## Your worktree
 
 The orchestrator names your branch. Make your worktree a sibling of the repo,
-starting at main:
+starting at `release-0.4`:
 
 ```sh
 git -C /Users/jguluarte/code/ntm worktree add \
     /Users/jguluarte/code/.claude-worktrees/ntm/<branch> \
-    -b <branch> jguluarte/main
+    -b <branch> jguluarte/release-0.4
 ```
 
 Work only there. Never touch another worktree or the main checkout.

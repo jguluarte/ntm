@@ -24,11 +24,3 @@ target price, and says, in the user's words, anything that differs from the
 defaults: the condition (new), how it reaches them (ordered online and
 delivered), and what counts as a deal (at or near the target, or well below the
 usual price). The shopper reads them there.
-
-## Databases
-
-### Price watch stores (`Price watch stores`)
-
-Stored in the project that carries the $price-watch label, not at list level.
-`ntm:price-watch` keeps it, from the user's vouch and block replies; the shopper
-reads it.

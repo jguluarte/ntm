@@ -176,15 +176,6 @@ browser, their own browser through the Claude extension, or off. Make sure to
 ask the user if they would like to set up Amazon syncing, and if so then ask
 them about the two associated labels.
 
-##### Databases
-
-| Database             | For                        |
-| -------------------- | -------------------------- |
-| `Price watch stores` | Stores they trust or block |
-
-It lives in the $price-watch project. Ask for any stores they already trust, for
-its Seed.
-
 ##### Jobs
 
 | Job           | What it does                        | Default          |

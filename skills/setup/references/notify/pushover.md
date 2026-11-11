@@ -11,7 +11,7 @@ Sends one notification to the user through Pushover, and says whether it went.
 
 | Input         | What it is                                                  |
 | ------------- | ----------------------------------------------------------- |
-| `--from`      | The skill the message is for, such as `morning-reminder`    |
+| `--from`      | The skill the message is for, such as `price-watch`         |
 | `--title`     | The notification's title                                    |
 | `--message`   | The message, with task links in markdown                    |
 | `--app-token` | A job's own Pushover app token, in place of the one in Keys |
@@ -25,10 +25,9 @@ Sends one notification to the user through Pushover, and says whether it went.
 
 ## Notifications
 
-Load `ntm-user:backend` to read the user's conventions, then read Notifications
-in their `%Settings` database: how they want to be notified, in their words.
-Follow it for this message. What it says about one skill applies when `--from`
-names that skill.
+`ntm-user:backend` says where the user's `%Settings` database lives. Read its
+Notifications: how they want to be notified, in their words. Follow it for this
+message. What it says about one skill applies when `--from` names that skill.
 
 ## Send
 

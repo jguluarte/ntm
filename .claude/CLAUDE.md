@@ -28,9 +28,11 @@ copy.
 
 ## How work runs
 
-- Small PRs against `release-0.4`, one concern each, one Opus agent per PR,
-  briefed with `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents
-  can't start agents; the orchestrator does any fan-out.
+- Each PR is a chunk of work a person can review and know in one sitting. Each
+  thing in it lands with the work that first needs it.
+- Small PRs against `release-0.4`, one Opus agent per PR, briefed with
+  `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
+  agents; the orchestrator does any fan-out.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
 - Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
@@ -51,9 +53,9 @@ copy.
 
 - Identity comes from git config: his GitHub noreply address. Never set
   `user.email`, and never use an address at his personal domain, anywhere.
-- One concern per commit. The subject says in plain words what changed, with no
-  design shorthand; a short body wrapped at 72; then the session's
-  `Co-Authored-By` line.
+- Each commit is a step a person can review and know on its own. The subject
+  says in plain words what changed, with no design shorthand; a short body
+  wrapped at 72; then the session's `Co-Authored-By` line.
 - Stage files by name, never `git add -A` or `git add .`.
 
 ## Lint

@@ -228,8 +228,8 @@ your user from your memories about them.
 > motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
 > a demon to stalk you? The world is your oyster - make it so!
 
-Build it with them as `references/persona.md` says. Its parts are the ones in
-the `%Style` template.
+Then build the persona with them as `references/persona.md` says: from the
+`%Style` template's parts, or from a persona they already have.
 
 Confirm the names of the `%Style` and `%Message-history` databases. Then save
 the persona: create the `%Style` database from its template, with their persona

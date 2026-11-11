@@ -27,11 +27,9 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
 | `ntm-user:notify`  | How they receive notifications: their channel, and any keys it needs         |
 
-After its frontmatter, `ntm-user:backend` opens with one Built line: its
-version, the ntm version it was built from, and the date, in this shape:
-`Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`. Read
-`<ntm's version>` from the `version` in the installed `ntm`'s
-`.claude-plugin/plugin.json`, two folders up from this skill's folder.
+`ntm-user:backend` opens with one Built line: its version, the version of the
+installed `ntm` it was built from, and the date, in this shape:
+`Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`.
 `ntm:help` reads the Built line to name both versions. `ntm-user:backend` always
 says where `%Settings` lives.
 
@@ -40,48 +38,9 @@ reachable wherever ntm runs. For Linear, that's
 `references/backends/linear-mcp.json`, copied as written. For another backend,
 it's the connector they set up in Connect to a backend, in the same shape.
 
-Everything else they set up lives in their databases and their jobs. The end is
-then only creating their jobs, packaging and installing their user plugin, and a
-self-test.
+Keys go only in the plugin, never into chat.
 
-### The files
-
-Write it as you go, in a fresh folder, `/tmp/ntm-user`:
-
-| File                         | What it holds                                        |
-| ---------------------------- | ---------------------------------------------------- |
-| `.claude-plugin/plugin.json` | Its `name`, `ntm-user`; a `description`; a `version` |
-| `skills/backend/SKILL.md`    | `ntm-user:backend`                                   |
-| `skills/notify/SKILL.md`     | `ntm-user:notify`                                    |
-| `.mcp.json`                  | The connector for their backend                      |
-
-The description is one sentence: the user's own ntm setup, kept private because
-it can hold notification keys. The version is the major and minor of
-`<ntm's version>`, then the number of rebuilds: `<major>.<minor>.0` on a first
-build.
-
-Each `SKILL.md` opens with frontmatter: its `name`, `backend` or `notify`, and a
-`description` that says what it holds. Keep angle brackets out of every
-description.
-
-Keys go only in the file, never into chat.
-
-### Packaging and installing
-
-At the end, zip the folder into `ntm-user.plugin`:
-
-```
-cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin &&
-    zip -r /tmp/ntm-user.plugin .
-```
-
-Without `zip`, the last command is
-`python3 -m zipfile -c /tmp/ntm-user.plugin .`.
-
-Copy it to the folder the session's instructions name for files to hand back,
-and say where it is; where a SendUserFile tool exists, send it with that as
-well. They install it from the card that appears, or from Customize > Plugins if
-none does.
+Everything else they set up lives in their databases and their jobs.
 
 ## Pre-requisites
 
@@ -158,7 +117,7 @@ set to the timezone they confirmed in the intro.
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Task list through Writing, filled in with their task list,
 and where `%Settings` lives. The backend guide is the file you read in Connect
-to a backend. Bundle their connector, `.mcp.json`, at the same time.
+to a backend. Bundle their connector at the same time.
 
 ### ntm features
 
@@ -400,8 +359,8 @@ says; left unset, that's their app's default.
 
 ### Install and self-test
 
-Package their user plugin and have them install it, as The user plugin says.
-Then hand off with one prompt for a new chat:
+Package their user plugin and have them install it. Then hand off with one
+prompt for a new chat:
 
 ```
 Run /ntm:self-test.

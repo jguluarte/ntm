@@ -117,9 +117,9 @@ documents.
 ## Connecting Linear
 
 In Claude's settings, on the Connectors tab, we added Linear and signed in to
-the workspace that holds the team. `ntm-user` bundles the same connector, from
-`linear-mcp.json` beside this file, and asks for its own sign-in the first time.
-From there, the connector's own tool descriptions say how to make each call.
+the workspace that holds the team. `ntm-user` bundles the same connector, and
+asks for its own sign-in the first time. From there, the connector's own tool
+descriptions say how to make each call.
 
 One read of the team proves the connection works. `ntm:ready-check` makes that
 read before every job.

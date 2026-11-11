@@ -17,6 +17,8 @@ the information you need and then save it before moving on to the next section.
 Optionally offer to do the saving with a subagent so you can begin the next
 section with the user.
 
+## The user plugin
+
 Saving a section also adds its part to their user plugin, `ntm-user`, which you
 build up as you go. It holds two skills:
 
@@ -25,9 +27,48 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live          |
 | `ntm-user:notify`  | How they receive notifications: their channel, and the Pushover keys when they use it |
 
+`ntm-user:backend` always says where `%Settings` lives.
+
 Everything else they set up lives in their databases and their jobs. The rules
 stay in ntm, where every skill reads them. The end is then only creating their
 jobs, packaging and installing their user plugin, and a self-test.
+
+### The files
+
+Write it as you go, in a fresh folder, `/tmp/ntm-user`:
+
+| File                         | What it holds                                        |
+| ---------------------------- | ---------------------------------------------------- |
+| `.claude-plugin/plugin.json` | Its `name`, `ntm-user`; a `description`; a `version` |
+| `skills/backend/SKILL.md`    | `ntm-user:backend`                                   |
+| `skills/notify/SKILL.md`     | `ntm-user:notify`                                    |
+
+The description is one sentence: the user's own ntm setup, kept private because
+it can hold notification keys. The version is this `ntm`'s major and minor, then
+the number of rebuilds, such as `0.4.0` for a first build on ntm 0.4.
+
+Each `SKILL.md` opens with frontmatter: its `name`, `backend` or `notify`, and a
+`description` that says what it holds. Keep angle brackets out of every
+description.
+
+Keys go only in the file, never into chat.
+
+### Packaging and installing
+
+At the end, zip the folder into `ntm-user.plugin`:
+
+```
+cd /tmp/ntm-user && rm -f /tmp/ntm-user.plugin &&
+    zip -r /tmp/ntm-user.plugin .
+```
+
+Without `zip`, the last command is
+`python3 -m zipfile -c /tmp/ntm-user.plugin .`.
+
+Copy it to the folder the session's instructions name for files to hand back,
+and say where it is; where a SendUserFile tool exists, send it with that as
+well. They install it from the card that appears, or from Customize > Plugins if
+none does.
 
 ## Pre-requisites
 
@@ -104,9 +145,9 @@ Confirm that the user is okay with establishing the `%Settings` database file
 name. Once they do, create it from its template, with Timezone under About you
 set to the timezone they confirmed in the intro.
 
-Then start their user plugin with `ntm-user:backend`: the backend guide's Task
-list through Writing, filled in with their task list, and where `%Settings`
-lives.
+Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
+the backend guide's Task list through Writing, filled in with their task list,
+and where `%Settings` lives.
 
 ### ntm features
 
@@ -313,8 +354,8 @@ when each job finishes.
 With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how. Then ask if there's anything about
 how they want to be notified, and save it under Notifications in the `%Settings`
-database. Then add `ntm-user:notify` to their user plugin, from their channel's
-file in `references/notify/`, with any keys.
+database. Then add `ntm-user:notify` to their user plugin, as The user plugin
+says, from their channel's file in `references/notify/`, with any keys.
 
 ### Create the jobs
 
@@ -353,8 +394,8 @@ says.
 
 ### Install and self-test
 
-Package their user plugin and have them install it. Then hand off with one
-prompt for a new chat:
+Package their user plugin and have them install it, as The user plugin says.
+Then hand off with one prompt for a new chat:
 
 ```
 Run /ntm:self-test.

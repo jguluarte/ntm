@@ -25,33 +25,34 @@ currency it prices in.
 
 <!--
 The name on the user's task list for each label ntm uses, by ntm's name for it.
-Only the labels of the features the user picked: $no-autoschedule and
-$pending-shipment for task management, the other three for price watch. The
+Only the labels of the features the user picked: `$no-autoschedule` and
+`$pending-shipment` for task management, the other three for price watch. The
 build writes these names into `ntm-user:backend`, so a change here means a
 rebuild with `/ntm:update`.
 -->
 
 | Label                 | Name on your task list |
 | --------------------- | ---------------------- |
-| `$no-autoschedule`    | no-autoschedule        |
-| `$pending-shipment`   | pending-shipment       |
-| `$price-watch`        | price-watch            |
-| `$has-amazon-alert`   | has-amazon-alert       |
-| `$amazon-unavailable` | amazon-unavailable     |
+| `$no-autoschedule`    | `no-autoschedule`      |
+| `$pending-shipment`   | `pending-shipment`     |
+| `$price-watch`        | `price-watch`          |
+| `$has-amazon-alert`   | `has-amazon-alert`     |
+| `$amazon-unavailable` | `amazon-unavailable`   |
 
 ## Planning
 
 <!--
 How the user wants their task list planned, read by `ntm:plan`. Task
 management only. Labels to exclude from auto-scheduling are the ones planning
-never picks, by their names on the task list. Anything else the user says about
-planning goes in its own subsection, in their words.
+never picks. By default they are `$no-autoschedule` and `$pending-shipment`,
+which mean the user's own names for those labels, in Labels. Anything else the
+user says about planning goes in its own subsection, in their words.
 -->
 
 ### Labels to exclude from auto-scheduling
 
-- no-autoschedule
-- pending-shipment
+- `$no-autoschedule`
+- `$pending-shipment`
 
 ## Shopping
 
@@ -62,7 +63,7 @@ otherwise. Price watch only. Amazon interface is how
 Claude's built-in browser, or the user's own browser through the Claude
 extension; off when they want no Amazon alerts. Anything else the user says
 about how they shop goes in its own subsection, in their words. Stores they
-trust or block go in the `Price watch stores` database instead.
+trust or block go in the `%Price-watch-stores` database instead.
 -->
 
 ### Amazon interface

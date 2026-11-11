@@ -5,13 +5,13 @@ picked. The build copies `terminology.md` into it first, with `<List name>` and
 `<List id>` filled in, leaving out its Task management terms when the user
 didn't pick that feature. Then it copies everything below this paragraph as
 written, with `<Labels>` replaced by one line per system label of the user's
-features: its default name and its real name, from Labels in the Settings
+features: its default name and its real name, from Labels in the `%Settings`
 document.
 
 The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
 and the jobs put the todo list right as they run. A value these rules name under
-a heading of the Settings document (see Databases) is read from that document
+a heading of the `%Settings` document (see Databases) is read from that document
 when it's needed; a missing heading or line means its default.
 
 The todo list is one person's, not a team's: priority is mostly unused, and a
@@ -82,9 +82,10 @@ Ignore it everywhere; the original task is what counts.
 
 ### System labels
 
-A label written with a `$` in front is a system label, written by its default
-name. Its real name on the todo list is the one below; use that, and never show
-the `$` to the user. Any of them can sit on a task or on a project; on a
+A label written in backticks with a `$` in front, such as `$price-watch`, is a
+system label, written by its default name. Its real name on the todo list is the
+one below; use that, and never show the `$` in a message to the user (the
+plugin's docs may show it). Any of them can sit on a task or on a project; on a
 project, every task in it carries it too (see Project labels).
 
 `<Labels>`
@@ -104,34 +105,35 @@ and the user puts the labels on tasks directly.
 
 ## Databases
 
-The system keeps its own records in databases on the todo list, each under the
-fixed title in parentheses below. Read and write them with the guide's
-`read database` / `write database`. Each database has one writer; everything
-else only reads it.
+The system keeps its own records in databases on the todo list. A database
+written in backticks with a `%` in front, such as `%Message-history`, is named
+by its default title, as each heading shows, with hyphens for spaces. Its real
+title on the todo list is the one `ntm-user:backend` records; use that, and
+never show the `%` in a message to the user (the plugin's docs may show it).
+Read and write them with the guide's `read database` / `write database`. Each
+database has one writer; everything else only reads it.
 
 Where the backend has no documents, the guide keeps each database in an open
 task titled with the database's title. That task is a database, not work; every
 skill ignores it.
 
-### Settings (`Settings`)
+### `%Settings`: the user's configured settings
 
-The values the user set up, under fixed headings, read by heading. Setup creates
-it.
+Skills read it by its fixed headings. Setup creates it.
 
-### Message history (`Message history`)
+### `%Message-history`: what reminders have said
 
-What reminders have said. `ntm:style` keeps it. Its frontmatter holds a `Keep:`
-line saying how much history to keep; the user changes it there.
+`ntm:style` keeps it. Its frontmatter holds a `Keep:` line saying how much
+history to keep; the user changes it there.
 
-### Message rules (`Message rules`)
+### `%Message-rules`: what each reminder's message says
 
-What each reminder's message says. Setup creates it from ntm's template; the
-user changes it there.
+Setup creates it from ntm's template; the user changes it there.
 
-### Style (`Style`)
+### `%Style`: the user's persona
 
-The user's persona, which `ntm:style` reads before each message. `ntm:style`
-keeps it. Setup creates it from ntm's template.
+`ntm:style` reads it before each message, and keeps it. Setup creates it from
+ntm's template.
 
 ## Fetching
 
@@ -153,7 +155,7 @@ The guide's `fetch closed`.
 ## Dates
 
 Today is the user's local date: the run knows the local time, a scheduled job's
-prompt states the timezone, and Timezone, under About you in the Settings
+prompt states the timezone, and Timezone, under About you in the `%Settings`
 document, is the fallback.
 
 Compare planned dates as `YYYY-MM-DD` strings.

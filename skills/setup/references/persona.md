@@ -90,7 +90,7 @@ the builder's questions:
   they give it and after how many earlier days it starts; then the climb rule in
   one line.
 - **Motifs:** recurring bits from the theme's world, one per line, each a short
-  name the message history records exactly, built with them as the builder's
+  name `%Message-history` records exactly, built with them as the builder's
   Motifs section says: ask what they like and use it as the analogy, prefer
   motifs that can be built on, and set the repeat limit from how much variety
   the list gives. They add, cut and replace.
@@ -121,10 +121,10 @@ words: what `--for <type>` means to it, that `Title:` is its last line (in place
 of whatever it calls it; when the persona has no subject line of its own, the
 section gives it the Title line rule from `ntm:settings`, so the title is
 written with the message as part of its theme), that `--stay-fresh` is its
-freshness mechanism, and that its history is the message history database (see
-Databases in `ntm:conventions`; when the persona names a history of its own, the
-section says to use that one), and that each entry it adds there names the task
-ids the tone names, so a carried-over task climbs the persona's own levels as
+freshness mechanism, and that its history is `%Message-history` (see Databases
+in `ntm:conventions`; when the persona names a history of its own, the section
+says to use that one), and that each entry it adds there names the task ids the
+tone names, so a carried-over task climbs the persona's own levels as
 `ntm:settings` says. Show them the section; they confirm. Nothing else is added
 or filled in: the persona's own levels, profanity and motifs stand.
 

@@ -31,27 +31,41 @@ stop.
 
 ## Where a change goes
 
-- **About you, Planning, Shopping, Notifications:** that section of the
-  `%Settings` document; the next run uses it.
-- **Labels:** the Labels section, then `/ntm:update` rebuilds.
-- **Their jobs** (what runs, on which days, at what time, the model): their
-  scheduled tasks, through `ntm:schedules`.
-- **How reminders talk to them:** the `%Style` document, through `ntm:style`.
-- **Built-in choices** (their backend, todo list, notification channel, Pushover
-  keys, features): `/ntm:update`.
+### About you, Planning, Shopping, Notifications
+
+That section of the `%Settings` document; the next run uses it.
+
+### Labels
+
+The Labels section, then `/ntm:update` rebuilds.
+
+### Their jobs
+
+What runs, on which days, at what time, and the model: their scheduled tasks,
+through `ntm:schedules`.
+
+### How reminders talk to them
+
+The `%Style` document, through `ntm:style`.
+
+### Built-in choices
+
+Their backend, todo list, notification channel, Pushover keys and features:
+`/ntm:update`.
 
 ## Bare
 
 Read the `%Settings` document and show it section by section, as written. Then
-say in a line or two where a change goes, as the list above gives it.
+say in a line or two where a change goes, as Where a change goes gives it.
 
 ## With words
 
 When the words only ask to see the `%Settings` document, show it and stop. For a
 change to a section of it, find the line by section and label, and write the new
 value in the same style; ask once if the words leave the line unclear. For their
-jobs or the `%Style` document, load the skill the list names and follow it with
-their words. For anything else, say where it goes, and stop.
+jobs or the `%Style` document, load the skill that Where a change goes names for
+it, and follow it with their words. For anything else, say where it goes, and
+stop.
 
 ## Regenerating `ntm-user.plugin`
 

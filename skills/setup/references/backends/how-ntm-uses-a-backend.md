@@ -68,9 +68,8 @@ the backend has of its own.
 ntm keeps its records in databases: documents written with a `%`, such as
 `%Settings` and `%Message-rules`, each found by its title. ntm reads one and
 saves it back with its changes. Ideally the backend holds them beside the tasks,
-so everything ntm knows lives in one place. A database can belong to a project:
-`%Price-watch-stores` sits in the price watch project. `ntm-user:backend`
-records where each one is.
+so everything ntm knows lives in one place. A database can belong to a project,
+kept in its documents. `ntm-user:backend` records where each one is.
 
 ## Connecting another backend
 

@@ -6,8 +6,8 @@ is a good deal. Each item is a task on their task list.
 ## `$price-watch`
 
 Marks what the user wants to buy. On a task, it watches that task; on a project,
-every task in the project. The watched tasks are the open ones carrying it. Each
-is the purchase itself, done once the user buys it.
+every task in the project. The watched tasks are the open ones it covers. Each
+is the purchase itself, and closes once the user buys it.
 
 ## The watched item
 
@@ -25,15 +25,15 @@ their words:
 | A deal    | A price at or near the target, or well below the usual price |
 
 The stores for an item are on its task too: the ones the user trusts or blocks
-for it, and the ones the shopper agent has found.
+for it.
 
 ## Amazon price alerts
 
 Only when the Amazon interface setting, in `%Settings`, isn't `off`.
 
-The price watch can't read Amazon, so Amazon's own price alerts cover it.
-`/ntm:sync-price-watch-to-amazon` sets and removes them from a browser, and
-keeps these labels:
+The price watch can't read Amazon, so Amazon's own price alerts cover Amazon.
+`/ntm:sync-price-watch-to-amazon` sets and removes them in a browser, and keeps
+these labels:
 
 | Label                 | The task's item                                     |
 | --------------------- | --------------------------------------------------- |

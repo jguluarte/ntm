@@ -13,14 +13,14 @@ into the user's database.
 
 <!--
 What the estimator has learned about how the user works, so it proposes what
-they would. Short bullets, written to the user, under the part they belong to,
-learned from what the user changes, pushes back on or says. Related bullets
+they would. Short bullets, written to the user, under the part they belong to.
+They come from what the user changes, pushes back on or says. Related bullets
 fold together, and a change rewrites a bullet rather than adding one.
 -->
 
 ### Estimating
 
-<!-- How the user sizes a task, and which kinds the guesses miss. -->
+<!-- How the user sizes a task, and which kinds of task the guesses miss. -->
 
 ### Writing and breaking up tasks
 

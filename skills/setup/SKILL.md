@@ -324,8 +324,10 @@ push; `references/notifications.md` says how.
 
 For either channel, ask if there's anything about how they want to be notified,
 and save it under Notifications in the `%Settings` database. Then add
-`ntm-user:notify` to their user plugin, as The user plugin says, from their
-channel's file in `references/notify/`, with any keys.
+`ntm-user:notify` to their user plugin, as The user plugin says. For Pushover,
+build it from `references/notify/pushover.md`, with their keys. For the AI app's
+own push, it returns the message as a `NOTIFY VIA FINAL REPLY` block, and the
+job ends its run with it.
 
 ### Create the jobs
 

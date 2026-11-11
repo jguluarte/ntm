@@ -104,9 +104,9 @@ the user's database from it. Agents read the user's own database.
 
 #### Comments are for agents
 
-A `<!-- -->` comment in a template is an instruction to agents, including the
-agent another user runs during setup. It says what a part is for and how to keep
-it, and it is never written into the user's database.
+A `<!-- -->` comment in a template tells setup how to fill in its part, and it
+is never written into the user's database. Each agent or skill that keeps a
+database carries its own rules for keeping it.
 
 #### Parts are composable
 

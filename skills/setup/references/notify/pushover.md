@@ -5,13 +5,12 @@ Sends one notification to the user through Pushover, and says whether it went.
 ## Usage
 
 ```
-/ntm-user:notify --from <skill> --title "<title>" --message "<message>"
+/ntm-user:notify --title "<title>" --message "<message>"
     [--app-token <token>]
 ```
 
 | Input         | What it is                                                  |
 | ------------- | ----------------------------------------------------------- |
-| `--from`      | The skill the message is for, such as `morning-reminder`    |
 | `--title`     | The notification's title                                    |
 | `--message`   | The message, with task links in markdown                    |
 | `--app-token` | A job's own Pushover app token, in place of the one in Keys |
@@ -22,13 +21,6 @@ Sends one notification to the user through Pushover, and says whether it went.
 | --------- | ------------- |
 | App token | `<app token>` |
 | User key  | `<user key>`  |
-
-## Notifications
-
-Load `ntm-user:backend` to read the user's conventions, then read Notifications
-in their `%Settings` database: how they want to be notified, in their words.
-Follow it for this message. What it says about one skill applies when `--from`
-names that skill.
 
 ## Send
 
@@ -46,7 +38,7 @@ Otherwise, post it to Pushover's messages API with these fields:
 | `message` | `--message`, each markdown link as `<a href>` |
 | `html`    | `1`                                           |
 
-Add `priority` or `sound` when Notifications calls for one.
+Add `priority` or `sound` when their Notifications in `%Settings` calls for one.
 
 ## Result
 

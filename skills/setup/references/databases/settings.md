@@ -21,8 +21,6 @@ run in it.
 
 <!--
 Each label ntm uses, by ntm's name, with its name on the user's task list.
-`ntm-user:backend` holds a copy of these names, so a change here needs
-`/ntm:update`.
 -->
 
 | Label                 | Name on your task list |

@@ -171,9 +171,9 @@ Claude's built-in browser, or their own browser through the Claude extension.
 Record it as Amazon interface; blank means it asks each time. If no, leave the
 Amazon interface line out.
 
-Then ask, once: anything else about how they shop? Stores they always or never
-use go in the price watch stores database, not here; this is for anything that
-holds for every item. Capture it as written below the lines; "nothing" leaves it
+Then ask, once: anything else about how they shop? Stores they trust or block
+for one item go on that item's task, not here; this is for anything that holds
+for every item. Capture it as written below the lines; "nothing" leaves it
 blank. With no Amazon interface line and nothing else, return no Shopping
 section.
 

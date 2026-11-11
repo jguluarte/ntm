@@ -27,8 +27,8 @@ Sends one notification to the user through Pushover, and says whether it went.
 
 Load `ntm-user:backend` to read the user's conventions, then read Notifications
 in their `%Settings` database: how they want to be notified, in their words.
-Follow it for this message, and match anything it says about one skill by
-`--from`.
+Follow it for this message. What it says about one skill applies when `--from`
+names that skill.
 
 ## Send
 

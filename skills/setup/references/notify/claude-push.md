@@ -20,8 +20,8 @@ final reply to their phone.
 
 Load `ntm-user:backend` to read the user's conventions, then read Notifications
 in their `%Settings` database: how they want to be notified, in their words.
-Follow it for this message, and match anything it says about one skill by
-`--from`.
+Follow it for this message. What it says about one skill applies when `--from`
+names that skill.
 
 ## Deliver
 
@@ -33,9 +33,4 @@ NOTIFY VIA FINAL REPLY
 <message>
 ```
 
-Run by hand in chat, nothing is pushed: the reply that shows the title and
-message is the delivery.
-
-## Result
-
-The block above. It has no length cap.
+It has no length cap.

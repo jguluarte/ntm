@@ -22,12 +22,6 @@ Sends one notification to the user through Pushover, and says whether it went.
 | App token | `<app token>` |
 | User key  | `<user key>`  |
 
-## Notifications
-
-`ntm-user:backend` says where the user's `%Settings` database lives. Read its
-Notifications: how they want to be notified, in their words. Follow it for this
-message.
-
 ## Send
 
 Pushover takes a title of up to 250 characters and a message of up to 1,024 as

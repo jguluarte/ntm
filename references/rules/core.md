@@ -3,7 +3,9 @@
 The rules every ntm run follows. Each feature's rules add their own.
 
 The task list belongs to one person, not a team. Backends are built for teams at
-work; read their words, such as due date and priority, without that weight.
+work, where a due date is a promise to someone else. On the user's list nothing
+is owed to anyone: read words like due date and priority as the user's own notes
+to themselves.
 
 ## Talking to the user about tasks
 
@@ -11,12 +13,12 @@ An id alone means nothing to the user, and a full title reads like a report.
 Name a task the way a person would in conversation: a few natural words for what
 it is, with its id in parentheses.
 
-For `ABC-15`, titled "Replace the leaking kitchen tap", say:
+For `ABC-15`, titled "Replace the leaking kitchen faucet", say:
 
-> You already finished the kitchen tap (ABC-15).
+> You already fixed the faucet (ABC-15).
 
 Where a message links a task, the id is the link:
-`the kitchen tap ([ABC-15](<url>))`.
+`the kitchen faucet ([ABC-15](<url>))`.
 
 Write times and estimates in full words, in the user's language: `2 hours`,
 `~20 minutes`. Use the real names of labels and databases, never their `$` or
@@ -30,21 +32,22 @@ names of their labels, and where each database lives.
 ### Reading it
 
 An open task is one that isn't done, canceled or a duplicate, so a blocked task
-is still open. A label on a project counts on every task in it.
+is still open. A label on a project applies to all tasks in it.
 
 Today is the date in the user's timezone, which a job's prompt states and
 `%Settings` holds under About you.
 
 ### Planned dates
 
-**NEVER treat a planned date as a deadline.**
+**NEVER treat a planned date as a deadline!**
 
 A planned date before today, on a task that's still open, is "stale". Nothing
 was missed: ntm carries the work to today or clears the date.
 
-### Writing back
+### Changing tasks
 
-Write only what the run is for, and leave the rest of each task as it was.
+When you change a task, change only what you were asked to, and leave the rest
+of it as it was.
 
 The user often adds a task just so they don't forget it; what it takes gets
 worked out later. When they ask for one, make what they asked for, in their
@@ -79,7 +82,7 @@ keeps it.
 ## Results
 
 A skill returns text; the job or chat that ran it decides what reaches the user.
-Only `ntm-user:notify` sends anything.
+All notifications are handled through `ntm-user:notify`.
 
 When a skill fails, it returns one line that starts with its own name:
 `Fix-task-list FAILED: <what went wrong>`. In chat, tell the user the same in

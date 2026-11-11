@@ -325,7 +325,8 @@ channel's file in `references/notify/`, with any keys.
 ### Create the jobs
 
 Create each job they confirmed as a scheduled task. Its title is the one Jobs
-gives it, such as Morning reminder.
+gives it, such as Morning reminder. It runs at its days and time in their
+timezone, on the model they confirmed, with push notifications on.
 
 Its prompt is this frame, with one numbered step for each skill the job runs, in
 order.
@@ -338,21 +339,8 @@ Final reply: what the last step returned, as the Results rules in
 `ntm-user:backend` say.
 ```
 
-| Setting           | Value                                                                                         |
-| ----------------- | --------------------------------------------------------------------------------------------- |
-| `name`            | the title                                                                                     |
-| `prompt`          | the filled-in prompt                                                                          |
-| `cron_expression` | `CRON_TZ=<Timezone>`, then the job's time and days, e.g. `CRON_TZ=Europe/Berlin 45 8 * * 1-5` |
-| `notifications`   | `{push: true}`                                                                                |
-| `initiation`      | `human_request`                                                                               |
-| `permission_mode` | left unset                                                                                    |
-
-A new job starts on the model running this chat, so once it's created, set its
-`model` to the id this app gives the model they confirmed.
-
 Then tell them which model the jobs run on, and whether a run goes ahead on its
-own or stops at an action that needs approval, as each job's permission mode
-says; left unset, that's their app's default.
+own or stops at an action that needs approval.
 
 ### Install and self-test
 

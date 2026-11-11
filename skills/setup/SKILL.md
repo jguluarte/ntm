@@ -300,7 +300,7 @@ your user from your memories about them.
 > a demon to stalk you? The world is your oyster - make it so!
 
 Then build the theme with them as `references/theme.md` says: from the `%Theme`
-template's parts, or from a theme they already have.
+template's parts.
 
 Confirm the names of the `%Theme` and `%Message-history` databases. Then save
 the theme: create the `%Theme` database from its template, with their theme in

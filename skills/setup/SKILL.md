@@ -199,14 +199,14 @@ For example:
 > | Afternoon reminder | Weekdays | 14:45 |
 > | Evening reminder   | Weekdays | 20:45 |
 
-Each job's name and what it runs, in order, for Create the jobs:
+What each job runs, in order, for Create the jobs:
 
-| Job                | Name        | Runs                                                                          |
-| ------------------ | ----------- | ----------------------------------------------------------------------------- |
-| Weekly setup       | `week`      | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` |
-| Morning reminder   | `morning`   | `plan --auto day`, `reminder --type morning`                                  |
-| Afternoon reminder | `afternoon` | `reminder --type afternoon`                                                   |
-| Evening reminder   | `evening`   | `reminder --type evening`                                                     |
+| Job                | Runs                                                                          |
+| ------------------ | ----------------------------------------------------------------------------- |
+| Weekly setup       | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` |
+| Morning reminder   | `plan --auto day`, `reminder --type morning`                                  |
+| Afternoon reminder | `reminder --type afternoon`                                                   |
+| Evening reminder   | `reminder --type evening`                                                     |
 
 In the weekly setup, `show-completed` runs with
 `the last 7 days and what's still open`. It runs first, before `fix-task-list`
@@ -259,11 +259,11 @@ Present the price watch as one daily job, early each morning. For example:
 > looks over all of your tasks tagged with the label you chose for price watch.
 > Is this okay for you?
 
-Its name and what it runs, for Create the jobs:
+What it runs, for Create the jobs:
 
-| Job         | Name          | Runs          |
-| ----------- | ------------- | ------------- |
-| Price watch | `price-watch` | `price-watch` |
+| Job         | Runs          |
+| ----------- | ------------- |
+| Price watch | `price-watch` |
 
 #### Saving the features
 
@@ -327,16 +327,13 @@ channel's file in `references/notify/`, with any keys.
 Create each job they confirmed as a scheduled task. Its title is the one Jobs
 gives it, such as Morning reminder.
 
-Its prompt is this frame, with step 2 once for each skill the job runs, in
-order. `<job>` is the job's name, such as `morning`.
+Its prompt is this frame, with one numbered step for each skill the job runs, in
+order.
 
 ```
 <Title>.
 Timezone: <Timezone>.
-1. Load `ntm:ready-check` and run
-   `/ntm:ready-check --notify-failure <job>`.
-   On `Ready-check FAILED`, end the run with what it returned.
-2. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
+1. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
 Final reply: what the last step returned, as the Results rules in
 `ntm-user:backend` say.
 ```

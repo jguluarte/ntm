@@ -5,7 +5,7 @@ plan
 price-watch
 ready-check
 reminder
-review-todo-list
+review-task-list
 self-test
 setup
 show-completed

@@ -1,111 +1,112 @@
-# How ntm uses a backend
+# How ntm uses Linear
 
-The backend is the system that holds the user's tasks: Linear, or any tool their
-agent can reach. This file describes, in plain ideas rather than calls, what ntm
-does with it. Setup reads it to connect a backend, and writes how each idea is
-done there into `ntm-user:backend`, which every skill loads.
+ntm works on a task list: it reads your tasks, creates new ones, edits them and
+closes them. We keep ours in Linear. Each part below says what ntm needs, then
+how we did it in Linear. It's our setup, told so yours can differ.
 
-A `$` or `%` in front of a name, as in `$price-watch` or `%Settings`, is ntm's
-way of writing a label or a database. It isn't part of the real name; setup
-records each real name.
+## Names
 
-## Tasks and their states
+ntm writes a label's name with a `$` in front, such as `$price-watch`, and a
+database's with a `%`, such as `%Settings`. The mark isn't part of the name.
+Setup records the real names, so yours can be anything.
 
-ntm works on one task list: the place that holds all of the user's tasks,
-whatever the backend calls it. Each task has an id the user can read, such as
-`ABC-12`, a title, a description, a link that opens it, and a status. ntm
-usually reads every open task at once; for reports, it reads the tasks closed
-over a span of days, with when each one closed. It also creates tasks, edits
-their title and description, and moves them between the groups below, including
-closing them.
+## The task list
 
-ntm never cares what a status is called, only which group it's in:
+ntm needs one place that holds every task. Each task has an id you can read, a
+title, a description, a link that opens it, and a status. ntm reads every open
+task at once, and for reports, the tasks closed over a span of days, with when
+each one closed.
 
-| Group     | The task is                                    |
-| --------- | ---------------------------------------------- |
-| Plannable | open and not started, such as backlog or to do |
-| Started   | in progress: work on it has begun              |
-| Blocked   | open, but the user can't move it right now     |
-| Done      | finished                                       |
-| Canceled  | closed without being done                      |
-| Duplicate | the same as another; only the original counts  |
+Our task list is a Linear team. The team's key starts every task's id, `HOME` in
+`HOME-12`; we picked one we're happy to read in reminders.
 
-A task is open until it's done, canceled or duplicate, so a blocked task is
-still open. Planning picks only plannable and started tasks, reminders cover
-every open task planned for the day, and reports count what's done.
+## Status groups
 
-## Planning
+ntm never cares what a status is called, only which group it's in. Linear
+already sorts every status into a type, so we read the type and ignore the name,
+except one: a status we named Blocked.
 
-A task has one date that ntm uses: the day the work is planned for. It's never a
-deadline, and a day passing with the work undone costs nothing. Planning sets
-it, moves it and clears it freely, and reminders read it to say what's on today.
+| Group     | The task is                                   | In Linear                          |
+| --------- | --------------------------------------------- | ---------------------------------- |
+| Plannable | open and not started                          | backlog or unstarted               |
+| Started   | open, and work on it has begun                | started                            |
+| Blocked   | open, but you can't move it right now         | the status named Blocked, any type |
+| Done      | finished                                      | completed                          |
+| Canceled  | closed without being done                     | canceled                           |
+| Duplicate | the same as another; only the original counts | duplicate                          |
 
-A planned date before today, on a task that's still open, is stale. ntm finds
-stale dates and either carries the work to today or clears the date.
+Planning picks plannable and started tasks, reminders cover every open task
+planned for the day, and reports count what's done. Duplicate is a group of its
+own: review merges a duplicate into the task it copies, and reports list
+duplicates apart from canceled tasks.
 
-## Organizing
+## The planned date
 
-Projects group tasks, such as a kitchen remodel, or a catch-all for errands.
+ntm plans with one date on each task: the day the work is planned for, never a
+deadline. Planning sets it, moves it and clears it freely, and reminders read it
+to say what's on today.
 
-Labels mark tasks for ntm. A label written with a `$`, such as
-`$no-autoschedule`, is one ntm acts on: that one keeps a task out of planning.
-Each feature's rules name the labels it uses. A label on a project counts on
-every task in it, so `$price-watch` on a project watches everything in it. Any
-other label is the user's own category.
+We plan with Linear's due date. To us it means the day we mean to do the work,
+so a day that passes costs nothing.
 
-A parent task holds sub-tasks; a review splits a big task into smaller ones
-under it. One task can block another: the blocked one is planned for a day after
-all of its blockers. That link isn't the Blocked group: a task can wait on
-another and still be plannable.
+A planned date before today, on a task that's still open, is stale. ntm either
+carries the work to today or clears the date.
 
-## Notes
+## Projects and labels
 
-Comments on a task hold what's added over time, such as why it's blocked or the
+Projects group tasks, such as a kitchen remodel or a catch-all for errands.
+Labels mark tasks for ntm: `$no-autoschedule` keeps a task out of planning, and
+each feature's rules name the labels it uses. Any other label is your own. A
+label on a project counts on every task in it, so `$price-watch` on a project
+watches everything in it.
+
+We use Linear's projects and issue labels. Linear keeps a project's labels as a
+separate set, so we match the two by name: for `$price-watch` to count on a
+project, the project carries a project label with the same name.
+
+## Sub-tasks and blocking
+
+A task can hold sub-tasks; a review splits a big task into smaller ones under
+it. One task can block another, and the blocked one is planned for a day after
+all of its blockers.
+
+In Linear these are sub-issues and blocked-by links. A blocked-by link isn't the
+Blocked group: a task can wait on another and still be plannable.
+
+## Comments and estimates
+
+Comments hold what's added to a task over time, such as why it's blocked or the
 stores the price watch last checked. ntm reads them, and adds and updates its
-own.
+own. We use Linear's comments as they are.
 
-A task's estimate is the last line of its description, in full words:
-`Estimate: 2 hours`. It lives there on every backend, whatever estimate field
-the backend has of its own.
+An estimate is the last line of a task's description, in full words:
+`Estimate: 2 hours`. Linear has an estimate field of its own; we leave it empty,
+and the line in the description is the estimate.
 
-## ntm's own records
+## Databases
 
 ntm keeps its records in databases, such as `%Settings` and `%Message-rules`. A
 database is a page of text, found by its title, that ntm reads whole and saves
-back with its changes. Ideally the backend holds them beside the tasks, so
-everything ntm knows lives in one place. A database can belong to a project,
-kept in its documents. `ntm-user:backend` records where each one is.
+back with its changes.
 
-## Connecting another backend
+Ours are Linear documents, so everything ntm knows sits beside the tasks. Most
+live in the team; one that belongs to a project lives in that project's
+documents.
 
-The agent running setup reads this file and the user's own tools for their
-backend. It maps each idea above onto those tools with the user, and writes how
-into `ntm-user:backend`, such as which statuses are in which group, which date
-field is the planned date, what counts as a project and where the databases
-live. Where the choice is the user's, it proposes one and lets them decide.
-Nothing lists every call: the tools' own descriptions say how to make them.
+## Connecting Linear
 
-ntm needs at least a date to plan with and a way to tell open tasks from closed.
-It also needs one quick read that proves the task list answers, which
-`ntm:ready-check` runs before every job. Once `ntm-user` is installed,
-`/ntm:self-test` tries the whole mapping on a throwaway task and database.
+In Claude's settings, on the Connectors tab, we added Linear and signed in to
+the workspace that holds the team. `ntm-user` bundles the same connector, from
+`linear-mcp.json` beside this file, and asks for its own sign-in the first time.
+From there, the connector's own tool descriptions say how to make each call.
 
-## With Linear
+One read of the team proves the connection works. `ntm:ready-check` makes that
+read before every job.
 
-Linear is the backend ntm suggests; a free account is enough. A Linear team is
-the task list, and the team's key starts every task's id: `HOME` in `HOME-12`.
+## Making your own
 
-| Idea         | In Linear                                                    |
-| ------------ | ------------------------------------------------------------ |
-| Planned date | the due date                                                 |
-| Status group | the workflow state's type; a status named Blocked is blocked |
-| Labels       | issue labels; on a project, project labels of the same names |
-| Databases    | documents in the team, or in a project                       |
-
-Projects, comments, sub-issues and blocking go by the same names in Linear. The
-user's Linear tools do the rest: their descriptions say how to make each call.
-
-To connect it, in Claude's settings, on the Connectors tab, add Linear and sign
-in to the workspace that holds the team. `ntm-user` bundles the same connector,
-from `linear-mcp.json` beside this file, and it asks for its own sign-in the
-first time.
+None of this is required. It's what worked for us in Linear. If your tasks live
+somewhere else, or you'd arrange Linear differently, work out with your agent
+what plays each part: the list, the groups, the planned date, the labels, the
+databases. Setup records your answers, and `/ntm:self-test` shows whether they
+hold. The choices are yours.

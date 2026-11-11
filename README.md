@@ -23,6 +23,10 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
 
+### `/ntm:setup`
+
+This acts as a setup wizard to make sure you have everything needed to run ntm.
+
 ### `/ntm:today`
 
 Lists what's planned on your task list: every open task planned for today. Add a

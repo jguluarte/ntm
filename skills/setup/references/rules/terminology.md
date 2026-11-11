@@ -10,12 +10,12 @@ The system behind the task list.
 
 A document stored in the backend that ntm keeps persistent data in, written by
 its default title with a `%` in front, such as `%Settings`. The titles are under
-Databases in these rules; ntm's `references/databases/` holds the templates.
+Databases in these rules, `ntm-user:backend` says where each one lives, and
+ntm's `references/databases/` holds the templates.
 
 ### Guide
 
-How each operation is done on this backend: the calls `ntm-user:backend` gives
-with these rules.
+How each operation is done on this backend: the calls `ntm-user:backend` gives.
 
 ### Job
 
@@ -42,8 +42,7 @@ backend gives it, such as `ABC-12`.
 
 ### Task list
 
-The place that holds every task: `<List name>`, with `<List id>` where the
-backend needs it.
+The place that holds every task, named in `ntm-user:backend`.
 
 ## Task management
 

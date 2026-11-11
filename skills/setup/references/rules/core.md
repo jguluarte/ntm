@@ -1,13 +1,5 @@
 # Core rules
 
-The rules every user's `ntm-user:backend` carries, whatever features they
-picked. The build copies `terminology.md` into it first, with `<List name>` and
-`<List id>` filled in, leaving out its Task management terms when the user
-didn't pick that feature. Then it copies everything below this paragraph as
-written, with `<Labels>` replaced by one line per system label of the user's
-features: its default name and its real name, from Labels in the `%Settings`
-document.
-
 The rules every ntm skill and agent follows to read and write the user's todo
 list. They are a general guide, not a rulebook for every edge; the other skills
 and the jobs put the todo list right as they run. A value these rules name under
@@ -83,12 +75,11 @@ Ignore it everywhere; the original task is what counts.
 ### System labels
 
 A label written in backticks with a `$` in front, such as `$price-watch`, is a
-system label, written by its default name. Its real name on the todo list is the
-one below; use that, and never show the `$` in a message to the user (the
-plugin's docs may show it). Any of them can sit on a task or on a project; on a
-project, every task in it carries it too (see Project labels).
-
-`<Labels>`
+system label, written by its default name. Its real name on the task list is
+under Labels in the `%Settings` document; use that, and never show the `$` in a
+message to the user (the plugin's docs may show it). Any of them can sit on a
+task or on a project; on a project, every task in it carries it too (see Project
+labels).
 
 Any other label is an ordinary category as far as these rules go. A skill or job
 can still give a label its own meaning without any change here; the label's
@@ -107,9 +98,9 @@ and the user puts the labels on tasks directly.
 
 The system keeps its own records in databases on the todo list. A database
 written in backticks with a `%` in front, such as `%Message-history`, is named
-by its default title, as each heading shows, with hyphens for spaces. Its real
-title on the todo list is the one `ntm-user:backend` records; use that, and
-never show the `%` in a message to the user (the plugin's docs may show it).
+by its default title, as each heading shows, with hyphens for spaces.
+`ntm-user:backend` records where each one lives and its real title; use that,
+and never show the `%` in a message to the user (the plugin's docs may show it).
 Read and write them with the guide's `read database` / `write database`. Each
 database has one writer; everything else only reads it.
 

@@ -1,15 +1,15 @@
 # Persona contract
 
-The %Style document holds the user's persona: what `ntm:style` reads before it
+The `%Style` document holds the user's persona: what `ntm:style` reads before it
 writes a message. Setup's persona step writes it, and `ntm:style` revises it
 with the user on request. This page says what the document must hold, what it
 may hold, and what `ntm:style` does when a part is missing. `%Message-history`
-is a database of its own, not part of the %Style document.
+is a database of its own, not part of the `%Style` document.
 
 Required means setup and every revision write it. A run never stops over a
 missing part: `ntm:style` falls back as each part says.
 
-A %Style document has one of two shapes:
+A `%Style` document has one of two shapes:
 
 - **A Profile:** built with the user in setup, plain or from a theme.
 - **A persona:** one the user already had, under a `## For ntm` section.
@@ -71,7 +71,7 @@ the text has no words, such as the `Title:` line and the history entries.
 
 ## What `ntm:style` brings
 
-These hold for every %Style document, so none states them:
+These hold for every `%Style` document, so none states them:
 
 - Facts stay exact: ids, titles, dates and counts as given, nothing added.
 - A title is written with its message, in its theme, never the reminder's name.

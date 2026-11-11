@@ -127,7 +127,7 @@ follow this section; the afternoon never climbs.
 Recurring bits a line can be built from, one per line: from the theme's world,
 or, with a plain register, from their own life (the pets, the house, the hobby,
 the commute). Propose a list; they add, cut and replace. Each is a short name
-%Message-history records exactly. With brevity, fewer is fine: each is a word
+`%Message-history` records exactly. With brevity, fewer is fine: each is a word
 the line can carry. Empty is fine too.
 
 Variety comes from two things, so talk about both: how many motifs there are,

@@ -128,9 +128,9 @@ Check for an existing match with `list_issues` (`query`) first.
 ### Databases
 
 Databases are Linear documents in the team, under the titles the core rules
-give. A database kept inside a project (%Price-watch-stores, in the project that
-carries the $price-watch label) lives in that project's documents instead.
-Search with `projectId` instead of `teamId` (the project's id, from
+give. A database kept inside a project (`%Price-watch-stores`, in the project
+that carries the `$price-watch` label) lives in that project's documents
+instead. Search with `projectId` instead of `teamId` (the project's id, from
 `list_projects` with `team: "<List name>"` and `query: "<project name>"`), and
 create with `project: "<project name>"` instead of `team`.
 
@@ -140,13 +140,13 @@ create with `project: "<project name>"` instead of `team`.
 - **`write database`:** `save_document` with the database's `id` and the new
   `content`, changing only what the skill says to change. When the database is
   missing, create it the way `create database` does, but with the whole content
-  given, not only its frontmatter (the content for %Message-history already
+  given, not only its frontmatter (the content for `%Message-history` already
   starts with its frontmatter).
 - **`create database`:** `read database` first; one that exists is left alone.
   Otherwise `save_document` without `id`, with `team: "<List name>"` (or
   `project: "<project name>"` for a database kept in a project), `title` set to
   the database's title, and `content` set to its first content (for
-  %Message-history, its frontmatter).
+  `%Message-history`, its frontmatter).
 
 ## Writing
 

@@ -48,7 +48,7 @@ states only what differs for its user.
 ## Setup
 
 1. Load `ntm-user:backend` to read the user's conventions, and `ntm:pause`.
-2. Read Planning from the %Settings document: how this user wants their todo
+2. Read Planning from the `%Settings` document: how this user wants their todo
    list planned, with the excluded labels and anything else they wrote there.
 3. Find every open task, excluded and blocked ones included.
 
@@ -59,8 +59,8 @@ If any step fails, stop and say what went wrong. Run by a job, end with
 
 A candidate is an open task with a plannable status, and either no planned date
 or a stale one, and not excluded as Excluded tasks in `ntm-user:backend` says
-(by default anything carrying the $no-autoschedule or $pending-shipment label,
-by their real names from Labels, or in the blocked status). Shortlist the
+(by default anything carrying the `$no-autoschedule` or `$pending-shipment`
+label, by their real names from Labels, or in the blocked status). Shortlist the
 likeliest picks from what Setup found (status, project, labels, titles, planned
 dates) before reading any task in full; then read only the shortlist, for
 descriptions and relations. Blocked-by relations follow Blocks and blocked by in
@@ -175,7 +175,7 @@ you're given" says. The estimate goes only on a task this run picked.
   date it had on a task carried over, and `started` when its status is the
   started one. When nothing is planned and nothing qualified, the single line
   `today: none`. A stale task left where it was: `kept: <id> (blocked)`. How
-  many days a task has slipped is the style's to count, from %Message-history;
+  many days a task has slipped is the style's to count, from `%Message-history`;
   don't compute it here.
 - `--auto <range>`: one `planned:` line per task planned in the range, days the
   user had already dated included, in day order, or the single line

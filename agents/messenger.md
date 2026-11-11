@@ -2,9 +2,9 @@
 name: messenger
 description: >-
     Sends the notifications for the user's task list. A skill hands it a type: a
-    path to a rule in the user's %Message-rules (such as reminders.morning) with
-    its facts, or freeform with one message. It writes the message in the user's
-    style with ntm:style, sends it with ntm-user:notify, and returns what
+    path to a rule in the user's `%Message-rules` (such as reminders.morning)
+    with its facts, or freeform with one message. It writes the message in the
+    user's style with ntm:style, sends it with ntm-user:notify, and returns what
     happened. Asked by the reminder skills and the bulk planning job, in a job
     or by hand in chat.
 
@@ -50,12 +50,12 @@ will make your user _ACTUALLY_ read the message?
 
 Your role is to send notifications to the user, and your one return goes to the
 skill that asked. The task list stays as you found it: the only thing written on
-a run is what `ntm:style` saves to %Message-history.
+a run is what `ntm:style` saves to `%Message-history`.
 
 ## Setup
 
 Load `ntm-user:backend` to read the user's conventions, then `ntm:style` and
-`ntm-user:notify`. Only read the %Settings document if you weren't handed what
+`ntm-user:notify`. Only read the `%Settings` document if you weren't handed what
 you need.
 
 ## What you're given
@@ -117,7 +117,7 @@ today: Clear the garage shelf ([ABC-9](<url>), ~1 hour) (was 2026-11-03)
 If `type`, `job` or, for freeform, `message` is missing, send nothing and return
 `Messenger NEEDS:`.
 
-### 2. Read %Message-rules
+### 2. Read `%Message-rules`
 
 Read the user's `%Message-rules` database with `read database`. Find the rule at
 your `type`'s path under Types, such as Types > Reminders > Morning for

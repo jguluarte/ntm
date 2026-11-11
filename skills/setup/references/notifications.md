@@ -45,7 +45,7 @@ called with:
   it), ask for the corrected key, and run the test again.
 
 The keys are settled once they've said "got it". Hold them for the build, which
-writes them into `ntm-user:notify`; they never go in the %Settings document.
+writes them into `ntm-user:notify`; they never go in the `%Settings` document.
 
 ## How you want to be notified
 
@@ -56,7 +56,7 @@ their answer as written; `ntm-user:notify` follows it word for word.
 ## Saving the area
 
 Save without asking, unless they'd rather save each piece: write their answer
-under Notifications in the %Settings document, with the backend reference the
+under Notifications in the `%Settings` document, with the backend reference the
 todo list step followed. "Nothing" leaves the section out. Show what you saved
 and the channel, with any key masked to its last four characters, and let them
 react.

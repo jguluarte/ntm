@@ -25,19 +25,19 @@ currency it prices in.
 
 <!--
 The name on the user's task list for each label ntm uses, by ntm's name for it.
-Only the labels of the features the user picked: $no-autoschedule and
-$pending-shipment for task management, the other three for price watch. The
+Only the labels of the features the user picked: `$no-autoschedule` and
+`$pending-shipment` for task management, the other three for price watch. The
 build writes these names into `ntm-user:backend`, so a change here means a
 rebuild with `/ntm:update`.
 -->
 
 | Label                 | Name on your task list |
 | --------------------- | ---------------------- |
-| `$no-autoschedule`    | no-autoschedule        |
-| `$pending-shipment`   | pending-shipment       |
-| `$price-watch`        | price-watch            |
-| `$has-amazon-alert`   | has-amazon-alert       |
-| `$amazon-unavailable` | amazon-unavailable     |
+| `$no-autoschedule`    | `no-autoschedule`      |
+| `$pending-shipment`   | `pending-shipment`     |
+| `$price-watch`        | `price-watch`          |
+| `$has-amazon-alert`   | `has-amazon-alert`     |
+| `$amazon-unavailable` | `amazon-unavailable`   |
 
 ## Planning
 
@@ -50,8 +50,8 @@ planning goes in its own subsection, in their words.
 
 ### Labels to exclude from auto-scheduling
 
-- no-autoschedule
-- pending-shipment
+- `no-autoschedule`
+- `pending-shipment`
 
 ## Shopping
 

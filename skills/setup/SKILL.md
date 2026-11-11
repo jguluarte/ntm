@@ -38,7 +38,7 @@ reachable wherever ntm runs. For Linear, that's
 `references/backends/linear-mcp.json`, copied as written. For another backend,
 it's the connector they set up in Connect to a backend, in the same shape.
 
-Keys go only in the plugin, never into chat.
+Keys go only in the plugin; never repeat one back in chat.
 
 Everything else they set up lives in their databases and their jobs.
 

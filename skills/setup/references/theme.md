@@ -76,5 +76,6 @@ write it as the `Repeat limit:` line after the motifs.
 
 ## Examples
 
-A few example reminders for each level, and a few for an evening when everything
-closed, with tasks like theirs. Read them back and revise until they smile.
+A few example reminders for each register and each level, and a few for an
+evening when everything closed, with tasks like theirs. Read them back and
+revise until they smile.

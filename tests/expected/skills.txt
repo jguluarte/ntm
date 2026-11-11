@@ -9,7 +9,6 @@ price-watch
 ready-check
 reminder
 review-todo-list
-schedules
 self-test
 settings
 setup

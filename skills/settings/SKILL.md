@@ -2,9 +2,10 @@
 name: settings
 description: >-
     Shows the user's ntm settings, the `%Settings` document on their todo list,
-    and changes them, or says where a change goes: a scheduled task, the
-    `%Style` document, or a rebuild. Run when the user says "show my settings",
-    "change my timezone", "rename a label", or asks where a value lives.
+    and changes them and their jobs, or says where a change goes: the `%Style`
+    document, or a rebuild. Run when the user says "show my settings", "change
+    my timezone", "change the morning time", "rename a label", or asks where a
+    value lives.
 ---
 
 # ntm:settings
@@ -41,8 +42,8 @@ The Labels section, then `/ntm:update` rebuilds.
 
 ### Their jobs
 
-What runs, on which days, at what time, and the model: their scheduled tasks,
-through `ntm:schedules`.
+What runs, on which days, at what time, and the model: their scheduled tasks.
+Change the scheduled task itself, in place.
 
 ### How reminders talk to them
 
@@ -63,9 +64,9 @@ say in a line or two where a change goes, as Where a change goes gives it.
 When the words only ask to see the `%Settings` document, show it and stop. For a
 change to a section of it, find the line by section and label, and write the new
 value in the same style; ask once if the words leave the line unclear. For their
-jobs or the `%Style` document, load the skill that Where a change goes names for
-it, and follow it with their words. For anything else, say where it goes, and
-stop.
+jobs, change the scheduled task with them. For the `%Style` document, load
+`ntm:style` and follow it with their words. For anything else, say where it
+goes, and stop.
 
 ## Regenerating `ntm-user.plugin`
 

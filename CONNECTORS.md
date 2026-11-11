@@ -4,7 +4,7 @@ Neurodivergent Task Manager (ntm) holds no connector of yours; what it needs
 depends on your todo list and your channel, both named in `ntm-user:settings`.
 
 A scheduled task inherits the connectors of the session that creates it, so the
-list's connector must be attached when `/ntm:configure-schedule` runs.
+list's connector must be attached when `/ntm:setup` creates the jobs.
 
 ## Your todo list, on Linear
 

@@ -32,5 +32,3 @@ NOTIFY VIA FINAL REPLY
 <title>
 <message>
 ```
-
-It has no length cap.

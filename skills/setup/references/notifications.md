@@ -1,8 +1,5 @@
 # Notifications
 
-How setup's Notifications step gets each channel ready: the Pushover keys and
-one test push, or nothing at all for the AI app's own push.
-
 ## Pushover
 
 ### The keys

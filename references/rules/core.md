@@ -1,7 +1,6 @@
 # Core rules
 
-The rules every ntm run follows, whatever features the user picked. Each
-feature's rules add their own.
+The rules every ntm run follows. Each feature's rules add their own.
 
 The task list belongs to one person, not a team. Backends are built for teams at
 work; read their words, such as due date and priority, without that weight.
@@ -10,7 +9,7 @@ work; read their words, such as due date and priority, without that weight.
 
 An id alone means nothing to the user, and a full title reads like a report.
 Name a task the way a person would in conversation: a few natural words for what
-it is, with its id in parentheses, never its full title.
+it is, with its id in parentheses.
 
 For `ABC-15`, titled "Replace the leaking kitchen tap", say:
 
@@ -38,8 +37,6 @@ Today is the date in the user's timezone, which a job's prompt states and
 
 ### Planned dates
 
-A planned date is the day the user means to do the work.
-
 **NEVER treat a planned date as a deadline.**
 
 A planned date before today, on a task that's still open, is "stale". Nothing
@@ -57,8 +54,7 @@ or in none.
 ## Databases
 
 ntm keeps its own records in databases on the task list. A `%` name, such as
-`%Settings`, is a database's default title; `ntm-user:backend` gives its real
-title and where it lives.
+`%Settings`, is a database's default title.
 
 Find each part of a database by its name, and save it back whole with only your
 change.

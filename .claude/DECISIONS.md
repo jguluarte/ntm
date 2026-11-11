@@ -102,6 +102,9 @@ Each user database has a template in `skills/setup/references/databases/`: its
 real shape, with default or dummy values. Only setup reads a template, to create
 the user's database from it. Agents read the user's own database.
 
+`%Theme` has no template; setup builds it from the parts in
+`skills/setup/references/theme.md`.
+
 #### Comments are for agents
 
 A `<!-- -->` comment in a template tells setup how to fill in its part, and it

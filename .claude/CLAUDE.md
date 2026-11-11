@@ -6,10 +6,11 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 
 A Claude plugin: markdown skills and agents, and a few JSON files. The base
 plugin is `ntm` and the user's generated plugin is `ntm-user`, on main and in
-0.4 alike. Use main's names, paths and words. Main is the source: don't author
-from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0 copy.
-The 0.4 decisions in `DECISIONS.md` set direction only; author nothing for 0.4
-until Justin has talked it through and says go.
+0.4 alike. 0.4 is built on `release-0.4`, an integration branch: branch from it
+and open every PR against it. It may hold mismatches between files while each
+file is rebuilt in its own PR; it only has to be right before release. Don't
+author from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0
+copy.
 
 ## Justin owns the plugin
 
@@ -27,9 +28,9 @@ until Justin has talked it through and says go.
 
 ## How work runs
 
-- Small PRs against main, one concern each, one Opus agent per PR, briefed with
-  `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
-  agents; the orchestrator does any fan-out.
+- Small PRs against `release-0.4`, one concern each, one Opus agent per PR,
+  briefed with `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents
+  can't start agents; the orchestrator does any fan-out.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
   worktrees are siblings under `~/code/.claude-worktrees/ntm/`.
 - Reviewer and dry-run agents get Read, Glob, Grep and Write only, never Bash.
@@ -41,8 +42,8 @@ until Justin has talked it through and says go.
 - Merges are squash merges, on his say-so. Merged branches auto-delete.
 - A squash merge gets a written message: one short paragraph on the net change,
   not GitHub's default list of every commit.
-- Once he's reviewing a PR: no amend, rebase or force-push. Bring main in with a
-  merge commit.
+- Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.4`
+  in with a merge commit.
 - Versions are set at merge; PR branches don't change them. He doesn't want
   patch version bumps.
 

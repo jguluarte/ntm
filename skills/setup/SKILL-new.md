@@ -108,50 +108,85 @@ everything.
 | Task management | A small task planned each weekday, with reminders       |
 | Price watch     | What they want to buy, watched until the price is right |
 
-Then collect what the picked features need, in the order below. A value more
-than one of them uses is confirmed once, for all of them. When the user wants
-more on any of it, the feature's rules, the database templates and the skills
-named here say more.
+Note which features they're installing. Then confirm what those features need,
+for all of them at once, in this order: every setting, then every label, then
+every database, then every job. Show only what the picked features need, with
+the defaults below. A label's default name is ntm's, without the `$`. With the
+jobs, ask which model they run on: the default is the one running this chat.
+Then save, as Saving the features says. When the user wants more on any of it,
+the feature's rules and the database templates say more.
 
-#### Settings
+#### Task management
 
-| Setting                                | Feature         | For                                                                 |
-| -------------------------------------- | --------------- | ------------------------------------------------------------------- |
-| Country and currency                   | Price watch     | Where it shops, and the prices it looks for                         |
-| Amazon interface                       | Price watch     | How `/ntm:sync-price-watch-to-amazon` reaches Amazon                |
-| Labels to exclude from auto-scheduling | Task management | Labels planning never picks: $no-autoschedule and $pending-shipment |
+##### Settings
 
-#### Databases
+| Setting                                | Default                                 |
+| -------------------------------------- | --------------------------------------- |
+| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
 
-Confirm the name of each database the picked features keep on their task list.
-For `Price watch stores`, ask for any stores they already trust, for its Seed.
+##### Labels
 
-| Database             | Feature         |
-| -------------------- | --------------- |
-| `Message rules`      | Task management |
-| `Paused dates`       | Task management |
-| `Task review log`    | Task management |
-| `Price watch stores` | Price watch     |
+| Label               | For                                   |
+| ------------------- | ------------------------------------- |
+| `$no-autoschedule`  | A task kept out of automatic planning |
+| `$pending-shipment` | A task waiting on an order to arrive  |
 
-#### Labels
+##### Databases
 
-Confirm the name on their task list for each label the picked features use;
-ntm's own name is the default. $price-watch goes on the project that holds what
-they want to buy: ask which project, or what to call a new one.
+| Database          | For                                |
+| ----------------- | ---------------------------------- |
+| `Message rules`   | What each reminder's message says  |
+| `Paused dates`    | The days when nothing gets planned |
+| `Task review log` | How estimating works with them     |
 
-| Label                 | Feature         |
-| --------------------- | --------------- |
-| `$no-autoschedule`    | Task management |
-| `$pending-shipment`   | Task management |
-| `$price-watch`        | Price watch     |
-| `$has-amazon-alert`   | Price watch     |
-| `$amazon-unavailable` | Price watch     |
+##### Jobs
 
-#### Schedules
+| Job         | What it does                                        | Default         |
+| ----------- | --------------------------------------------------- | --------------- |
+| `morning`   | Makes today ready, then sends what's on today       | Weekdays, 08:44 |
+| `afternoon` | What's still open today                             | Weekdays, 14:26 |
+| `evening`   | How the day went                                    | Weekdays, 19:23 |
+| `week`      | Plans the week ahead and looks back on the last one | Sunday, 21:50   |
 
-Propose jobs for the picked features from the table under What a job can run in
-`ntm:schedules`, and agree a time for each. Then ask which model the jobs run
-on: the default is the one running this chat, unless they want another.
+#### Price watch
+
+##### Settings
+
+| Setting          | Default                      |
+| ---------------- | ---------------------------- |
+| Country          | From the session, such as US |
+| Currency         | The country's, such as USD   |
+| Amazon interface | Claude's built-in browser    |
+
+Jobs can't reach Amazon, so `/ntm:sync-price-watch-to-amazon` keeps its price
+alerts from a browser in chat. Amazon interface is which one: Claude's built-in
+browser, their own browser through the Claude extension, or off.
+
+##### Labels
+
+| Label                 | For                                             |
+| --------------------- | ----------------------------------------------- |
+| `$price-watch`        | What they want to buy                           |
+| `$has-amazon-alert`   | An item with an Amazon price alert              |
+| `$amazon-unavailable` | An item not on Amazon in a condition they allow |
+
+$price-watch goes on the project that holds what they want to buy: ask which
+project, or what to call a new one.
+
+##### Databases
+
+| Database             | For                        |
+| -------------------- | -------------------------- |
+| `Price watch stores` | Stores they trust or block |
+
+It lives in the $price-watch project. Ask for any stores they already trust, for
+its Seed.
+
+##### Jobs
+
+| Job           | What it does                        | Default          |
+| ------------- | ----------------------------------- | ---------------- |
+| `price-watch` | Which watched items are a good deal | Every day, 06:57 |
 
 #### Saving the features
 

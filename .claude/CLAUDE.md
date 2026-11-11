@@ -6,10 +6,11 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 
 A Claude plugin: markdown skills and agents, and a few JSON files. The base
 plugin is `ntm` and the user's generated plugin is `ntm-user`, on main and in
-0.4 alike. Use main's names, paths and words. Main is the source: don't author
-from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0 copy.
-The 0.4 decisions in `DECISIONS.md` set direction only; author nothing for 0.4
-until Justin has talked it through and says go.
+0.4 alike. 0.4 is built on `release-0.4`, an integration branch: branch from it
+and open every PR against it. It may hold mismatches between files while each
+file is rebuilt in its own PR; it only has to be right before release. Don't
+author from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0
+copy.
 
 ## Justin owns the plugin
 

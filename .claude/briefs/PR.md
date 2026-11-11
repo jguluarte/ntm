@@ -18,7 +18,7 @@ When your branch's commits are done:
 
     - No bare `@name` anywhere; put any such text in backticks.
 3. Open it:
-   `gh pr create -R jguluarte/ntm --base main --head <branch> --title "<plain title>" --body-file <body file>`
+   `gh pr create -R jguluarte/ntm --base release-0.4 --head <branch> --title "<plain title>" --body-file <body file>`
 4. End with the pull request's URL and your report as your final message. When
    the owner comments, the orchestrator sends you the comments.
 

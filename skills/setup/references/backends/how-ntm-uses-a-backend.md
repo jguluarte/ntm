@@ -91,8 +91,7 @@ database is a page of text, found by its title, that ntm reads whole and saves
 back with its changes.
 
 Ours are Linear documents, so everything ntm knows sits beside the tasks. Most
-live in the team; `%Price-watch-stores` lives in the documents of the project
-that carries `$price-watch`.
+live in the team; a database can belong to a project, kept in its documents.
 
 ## Connecting Linear
 

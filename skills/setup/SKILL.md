@@ -2,10 +2,9 @@
 name: setup
 description: >-
     The ntm wizard. Takes a new user from a fresh install to a connected task
-    list, a persona, the features they pick and reminders on their phone,
-    building their ntm-user plugin as it goes. Run when the user says "set up
-    ntm", "get started" or "set up my todo list", or installs ntm for the first
-    time.
+    list, a theme, the features they pick and reminders on their phone, building
+    their ntm-user plugin as it goes. Run when the user says "set up ntm", "get
+    started" or "set up my todo list", or installs ntm for the first time.
 ---
 
 # ntm:setup
@@ -64,10 +63,9 @@ You'll save the timezone later, so keep it.
 > let me help you wait until something is on sale. And I'll let you know when we
 > find it!
 >
-> To use me, you'll create a persona that will help to theme the messages I
-> send, that way what I say isn't boring and you'll actually see the reminder.
-> This is vital to how this works for my creator, so they think it will be for
-> you too!
+> To use me, you'll create a theme for the messages I send, that way what I say
+> isn't boring and you'll actually see the reminder. This is vital to how this
+> works for my creator, so they think it will be for you too!
 >
 > Updates will come every so often when my creator finds new ways I can help
 > them.
@@ -272,23 +270,23 @@ template, and say in a line where each one lives. Add where each one lives to
 labels' real names under its Labels. Keep the jobs and their model for Create
 the jobs, after Notifications.
 
-### Create a persona
+### Create a theme
 
 Send this text as written, in one message. Then add anything else you think is
 important for them to know before they pick one, based on what you know about
 your user from your memories about them.
 
-> The persona is the theme your reminders are created with, that way messages
-> are always unique and ultimately bring you joy. This is how reminders are
-> never exactly the same, so it doesn't become noise you ignore.
+> The theme is what your reminders are created with, that way messages are
+> always unique and ultimately bring you joy. This is how reminders are never
+> exactly the same, so it doesn't become noise you ignore.
 >
-> Consider a character you enjoy, from a book or maybe a show. Reality
-> competition shows in particular typically follow a kind of formula that allows
-> ntm to introduce a wider variety of reminders. If you decide to schedule
-> things a week at a time, then the weekly plan is sort of like the season
-> preview. Each day has a preview of what is to come (sometimes a quick synopsis
-> of yesterday), the afternoon is whatever would normally happen in the first
-> half of the episode, and the evening is how an episode ends. This pattern is
+> Consider something you enjoy, like a book or maybe a show. Reality competition
+> shows in particular typically follow a kind of formula that allows ntm to
+> introduce a wider variety of reminders. If you decide to schedule things a
+> week at a time, then the weekly plan is sort of like the season preview. Each
+> day has a preview of what is to come (sometimes a quick synopsis of
+> yesterday), the afternoon is whatever would normally happen in the first half
+> of the episode, and the evening is how an episode ends. This pattern is
 > something an LLM is particularly good at following.
 >
 > It's now up to you to get creative, pick something that brings you happiness
@@ -296,13 +294,13 @@ your user from your memories about them.
 > motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
 > a demon to stalk you? The world is your oyster - make it so!
 
-Then build the persona with them as `references/persona.md` says: from the
-`%Style` template's parts, or from a persona they already have.
+Then build the theme with them as `references/persona.md` says: from the
+`%Style` template's parts, or from a theme they already have.
 
 Confirm the names of the `%Style` and `%Message-history` databases. Then save
-the persona: create the `%Style` database from its template, with their persona
-in place of the placeholders, and `%Message-history` from its own. Add where
-each one lives to `ntm-user:backend`.
+the theme: create the `%Style` database from its template, with their theme in
+place of the placeholders, and `%Message-history` from its own. Add where each
+one lives to `ntm-user:backend`.
 
 ### Notifications
 
@@ -363,4 +361,4 @@ Run /ntm:self-test.
 ```
 
 Tell them, in a line meant to make them smile, that a passing self-test sends a
-success message in their persona, in chat and on their phone.
+success message in their theme, in chat and on their phone.

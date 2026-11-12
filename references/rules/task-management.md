@@ -48,4 +48,4 @@ Planning never automatically picks a task for a paused day.
 ### `%Estimator-log`
 
 What reviews have taught about how the user sizes and breaks up tasks. The
-estimator agent keeps it, from what `ntm:review-task-list` sends it.
+estimator agent keeps it, from what `ntm:review` sends it.

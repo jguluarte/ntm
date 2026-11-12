@@ -211,7 +211,7 @@ composable on purpose.
 1. `/ntm:ready-check`
 2. Look up the tasks planned in the past that are still open, and the tasks
    closed in the last week.
-3. `/ntm:fix-task-list`
+3. `/ntm:clean`
 4. `/ntm:plan --auto week`
 5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
    week ahead from step 4. End the run with what it returns.

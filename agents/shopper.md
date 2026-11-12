@@ -87,9 +87,7 @@ over time. One without that evidence goes under Not used, unpriced. Never use a
 store the user blocked. Use each store's own domain for the user's country,
 never a lookalike from a search result or an ad.
 
-When Amazon alerts are on, Amazon's own alerts cover Amazon: don't price it.
-When they're off, try Amazon like any store, and leave it out if its page won't
-read.
+Don't price Amazon; when Amazon alerts are on, they cover it.
 
 ### 3. Verify the prices
 

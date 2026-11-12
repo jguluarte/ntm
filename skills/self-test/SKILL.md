@@ -3,12 +3,12 @@ name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check that setup made their databases and labels, then
-    create, read, find, plan, label, comment on, estimate, change and close a
-    throwaway task, and write and read a throwaway database, then clean up and
-    have the messenger agent send a success message. Each step's result is shown
-    as it passes or fails. The first thing to run after installing ntm and
-    ntm-user ("test ntm", "run the self test", "is everything wired up?"), and
-    the smoke test for a backend the user described themselves.
+    create, read, find, plan, label, comment on, change and close a throwaway
+    task, and write and read a throwaway database, then clean up and have the
+    messenger agent send a success message. Each step's result is shown as it
+    passes or fails. The first thing to run after installing ntm and ntm-user
+    ("test ntm", "run the self test", "is everything wired up?"), and the smoke
+    test for a backend the user described themselves.
 ---
 
 # ntm:self-test
@@ -56,14 +56,11 @@ Create the below task. It should get an id.
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test, <timestamp>               |
 | Description | This is a test, it can safely be removed |
-| Label       | `$no-autoschedule`, by its real name     |
 | Project     | none                                     |
-
-The label keeps anything from planning it.
 
 ### 4. Read it back
 
-The task shows the title, description and label from step 3.
+The task shows the title and description from step 3.
 
 ### 5. Find it
 
@@ -76,8 +73,8 @@ its planned date, and it has none.
 
 ### 7. Label it
 
-Add another of the user's labels, and the task shows both. Then remove it, and
-only `$no-autoschedule` is left.
+Add the label `ntm-self-test`, creating it when the task list doesn't have it
+yet, and the task shows it. Then remove it, and the task has no labels.
 
 ### 8. Comment on it
 
@@ -87,7 +84,7 @@ new text.
 ### 9. Change it
 
 Change its description to `This is a changed test, it can safely be removed`,
-with the estimate line `Estimate: 2 hours` at its end, and the task shows both.
+and the task shows it.
 
 ### 10. Store data
 
@@ -106,10 +103,11 @@ and it is among the tasks closed today, canceled included.
 
 ### 12. Clean up
 
-Runs after a failure too. Cancel the task if it's still open, remove the added
-label if it's still on, and delete the test database, or empty it when the task
-list can't delete one. Do the same for any test task or database an earlier
-self-test left behind. Touch nothing else on the task list.
+Runs after a failure too. Cancel the task if it's still open, and delete the
+test label and the test database. When the task list can't delete them, take the
+label off the task and empty the database, for a rerun to reuse. Do the same for
+any test task an earlier self-test left behind. Touch nothing else on the task
+list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.

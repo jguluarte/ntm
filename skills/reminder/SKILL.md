@@ -37,8 +37,9 @@ done still gets its message.
 
 A task has slipped one day for each date its `Planned date history` comment
 lists, as ntm's core rules describe it; a task with no comment hasn't slipped.
-When something on a task warrants upping the ante, you may also mark it to press
-harder.
+Dates from a while back weigh less: a task picked up again after a long gap gets
+fewer days slipped than its dates, as you judge it. When something on a task
+warrants upping the ante, you may also mark it to press harder.
 
 ## The message
 

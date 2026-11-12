@@ -21,12 +21,12 @@ in the `%Settings` database: by default `$no-autoschedule` and
 ### Plannable tasks
 
 Planning picks only plannable tasks: open, not in the blocked status, and not
-excluded by a label. Reminders cover every open task planned for the day,
-blocked or excluded included.
+excluded by a label. Reminders cover every task planned for the day, open and
+done, blocked or excluded included.
 
 ### Blocking order
 
-A task waiting on open blockers is planned for a day after all of them. A task
+A task waiting on open blockers is picked for a day after all of them. A task
 whose blocker has no planned date gets none either. Planning can date a blocker
 and the task it blocks in the same run.
 
@@ -43,7 +43,7 @@ changes it.
 ### `%Paused-dates`
 
 The days when nothing gets planned automatically. `ntm:pause` keeps it. Planning
-never dates a task on a paused day, but a date the user sets there stands.
+never picks a task for a paused day, but a date the user sets there stands.
 
 ### `%Estimator-log`
 

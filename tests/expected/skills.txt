@@ -2,10 +2,10 @@ fix-task-list
 help
 pause
 plan
-price-watch
 ready-check
 reminder
 review-task-list
+run-price-watch
 self-test
 setup
 style

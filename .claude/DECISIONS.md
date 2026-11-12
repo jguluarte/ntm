@@ -81,7 +81,8 @@ backend, channel and features.
 
 Publishing waits for the test-drives, and needs:
 
-- the base self-test passing with no user plugin installed
+- the self-test failing with no user plugin installed, and saying to run
+  `/ntm:setup`
 - `setup` never sending or creating without being asked
 - a privacy page
 - a README of 40+ words, LICENSE, icon, author, homepage and repository

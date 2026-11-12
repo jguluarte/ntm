@@ -13,7 +13,9 @@ description: >-
 # ntm:plan
 
 Plan gives the user's days their tasks by setting planned dates. It sets and
-moves dates, and clears one only when the user agrees to it in chat.
+moves dates, and clears one only when the user agrees to it in chat. A stale
+date it moves or clears goes into the task's `Planned date history` first, as
+ntm's core rules say.
 
 ## Usage
 
@@ -66,7 +68,8 @@ them.
 
 ### 1. Carry over
 
-Move every open task planned before today to today, even when today is paused.
+Move every open task planned before today to today, even when today is paused,
+adding each old date to the task's `Planned date history` first.
 
 ### 2. Fill today
 

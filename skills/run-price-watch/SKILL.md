@@ -69,8 +69,8 @@ When they gave no reason, ask once, and add it if they answer.
 ### They bought it
 
 Set the task to done. When `%Settings` has `$pending-shipment` under Labels, add
-that label to any open task it blocks. When it has `$has-amazon-alert`, say the
-next Amazon sync removes its alert.
+that label to any open task it blocks. When the bought task has
+`$has-amazon-alert`, say the next Amazon sync removes its alert.
 
 ### Trust or block a store
 
@@ -84,8 +84,8 @@ with its task id, and what the messenger returned, such as
 `Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When the
-messenger returns its delivery block, end the run with its title and message,
-without the `NOTIFY VIA FINAL REPLY` line.
+messenger returns its delivery block, return only its title and message, in
+place of that line, without the `NOTIFY VIA FINAL REPLY` line.
 
 In chat, tell the user in plain words: each deal with its price, store and
 product link, what each other item came to, and any notes they could fix. When

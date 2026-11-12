@@ -44,7 +44,8 @@ task is open until it's done, canceled or a duplicate.
 | Duplicate | the same as another; only the original counts |
 
 A task is excluded when it carries a label `%Settings` keeps out of planning:
-`$no-autoschedule` and `$pending-shipment` by default.
+`$no-autoschedule` and `$pending-shipment` by default. So is a task on the price
+watch.
 
 ## Estimate
 

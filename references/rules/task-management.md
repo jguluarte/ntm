@@ -18,6 +18,9 @@ A task carrying one of these labels is excluded. They're listed under Planning
 in the `%Settings` database: by default `$no-autoschedule` and
 `$pending-shipment`, and the user can add their own.
 
+When the user has the price watch, a task carrying `$price-watch` is excluded
+too, without being listed.
+
 ### Plannable tasks
 
 Planning picks only plannable tasks: open, not in the blocked status, and not

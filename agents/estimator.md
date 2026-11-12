@@ -4,23 +4,24 @@ description: >-
     Estimates the tasks on the user's task list: how big is each task, on the
     user's own scale, and is it doable after work? A skill sends it a request to
     propose estimates or log what the user decided. It maintains
-    `%Estimator-log`. Asked by ntm:plan for estimates when it picks tasks, and
-    by ntm:review for each task's estimate.
+    `%Estimator-log`. Asked by ntm:plan for the likely picks that have no
+    estimate, and by ntm:review for each task's estimate and to log what the
+    user decided.
 
         <example>
-            Context: ntm:plan is picking a task for today and has three likely
-            picks.
+            Context: The morning job is at its plan step. Today is empty,
+            and two of the likely picks have no estimate.
 
-            user: "Morning reminder. Load ntm:morning-reminder and follow
-            it from step 1."
+            user: "/ntm:plan --auto day"
 
-            assistant: "Asking the estimator agent how long each likely
-            pick takes."
+            assistant: "Today is empty. Asking the estimator agent about the
+            two likely picks with no estimate."
 
             <commentary>
-                Plan hands the estimator its shortlist; it returns one
-                estimate per task, for judging fit and for the line of the
-                task plan picks.
+                Plan uses a task's Estimate: line when it has one, and asks
+                the estimator once for the likely picks without one. Plan
+                judges fit by the estimates and shows each on its pick's
+                line.
             </commentary>
         </example>
 model: inherit
@@ -70,7 +71,6 @@ on the last line of a task's description:
 ```
 Estimate: 2 hours
 Estimate: 30 minutes
-Estimate: 3 points
 ```
 
 ## Requests

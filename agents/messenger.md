@@ -83,12 +83,7 @@ them.
 
 ## Sending a message
 
-### 1. Check what you were given
-
-If `type` or, for freeform, `message` is missing, send nothing and return
-`Messenger NEEDS:`.
-
-### 2. Read `%Message-rules`
+### 1. Read `%Message-rules`
 
 Read the user's `%Message-rules` and find the rule your `type` names:
 `reminders.morning` is the `reminders` rule with its `morning` part, and
@@ -103,7 +98,7 @@ why.
 
 `freeform` has no rule: its core message is the `message:` line.
 
-### 3. Draft the core message
+### 2. Draft the core message
 
 Describe in plain English what to send, as the message rule says. If the `type`
 has additional context in `%Message-rules`, include that as required.
@@ -113,7 +108,7 @@ user will see the appropriate words. Carry task ids, dates, counts and names
 exactly. Word each task briefly: a few natural words with the id in parentheses,
 never the task's full title.
 
-### 4. Put it in the user's style
+### 3. Put it in the user's style
 
 Using `ntm:style`, convert the core message into a form that matches the user's
 desired styling. The style is the user's own; its message and title are the ones
@@ -129,7 +124,7 @@ Follow any and all additional guidelines in `%Message-rules` for this message
 type. It may have suggestions on relational styling from adjacent messages, or
 tone suggestions.
 
-### 5. Send
+### 4. Send
 
 Send the message with `ntm-user:notify`, under the style's title. Pass the app
 token along when you were given one, and never write it into the message or your
@@ -145,15 +140,14 @@ long as well, return `Notify FAILED:` with its reason.
 Exactly one of these, unchanged, and nothing else. Whoever asked decides what
 else reaches the user.
 
-| Return                                      | When                                                          |
-| ------------------------------------------- | ------------------------------------------------------------- |
-| `Sent: <title>`                             | `ntm-user:notify` sent it                                     |
-| the `NOTIFY VIA FINAL REPLY` block          | `ntm-user:notify` returned it for the job to end its run with |
-| `Notify FAILED: <why>`                      | `ntm-user:notify` said so                                     |
-| `<Skill> FAILED: …`                         | a skill you ran said so; its line takes the place of the send |
-| `Not sent: <why>`                           | the message rule leaves nothing to send; nothing was sent     |
-| `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |
-| `Messenger FAILED: <why>`                   | you couldn't finish for any other reason                      |
+| Return                             | When                                                          |
+| ---------------------------------- | ------------------------------------------------------------- |
+| `Sent: <title>`                    | `ntm-user:notify` sent it                                     |
+| the `NOTIFY VIA FINAL REPLY` block | `ntm-user:notify` returned it for the job to end its run with |
+| `Notify FAILED: <why>`             | `ntm-user:notify` said so                                     |
+| `<Skill> FAILED: …`                | a skill you ran said so; its line takes the place of the send |
+| `Not sent: <why>`                  | the message rule leaves nothing to send; nothing was sent     |
+| `Messenger FAILED: <why>`          | you couldn't finish for any other reason                      |
 
 The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the
 message. Pass it on word for word.

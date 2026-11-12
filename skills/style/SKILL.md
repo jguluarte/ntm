@@ -3,7 +3,8 @@ name: style
 description: >-
     Writes a message in the user's style, from their `%Theme`, and keeps
     `%Message-history`. Loaded by the messenger agent for every message it
-    sends, and in chat when the user asks for something in their style.
+    sends. In chat, writes something in the user's style when they ask, or
+    changes their theme with them ("make my reminders meaner").
 ---
 
 # ntm:style
@@ -63,3 +64,6 @@ Then drop the entries older than the `Keep:` line, and save.
 
 When the user asks for something in their style, write it the same way and show
 it to them.
+
+When they ask to change how their messages read, change the part of `%Theme`
+their words are about, with them, and save it when they say yes.

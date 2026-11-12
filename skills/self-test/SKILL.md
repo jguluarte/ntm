@@ -2,7 +2,7 @@
 name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
-    every backend must: check that setup made their databases and labels, then
+    every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a throwaway
     task, and write and read a throwaway database, then clean up and have the
     messenger agent send a success message. Each step's result is shown as it
@@ -48,6 +48,9 @@ The step passes when setup made everything it was supposed to: every database
 `ntm-user:backend` says where it lives opens, and every label under Labels in
 `%Settings` is on the task list, by its name there. Name each one that's
 missing.
+
+Every job under Jobs in `%Settings` is one of their scheduled tasks, by its
+title. A missing job doesn't fail the step; the result names it.
 
 ### 3. Create a task
 
@@ -127,3 +130,6 @@ failure, add the fix when it's plain: for a ready-check failure, the fix in its
 failure line, which is `/ntm:setup` when `ntm-user` isn't installed; for
 anything missing from the user's setup, or a call that errored on a backend the
 user described themselves, `/ntm:update`.
+
+When step 2 found jobs missing, add a line naming them, like
+`Jobs not scheduled: Morning reminder, Price watch`.

@@ -3,8 +3,8 @@ name: run-price-watch
 description: >-
     Runs the price watch for the user's todo list: which watched items are a
     good deal today? Hands each watched task to a shopper agent, sends one alert
-    for the deals and anything to fix, and reports. Run by a job. In chat, it
-    takes the user's replies about a watched item ("I bought it", "skip this
+    for the deals, and reports them with anything to fix. Run by a job. In chat,
+    it takes the user's replies about a watched item ("I bought it", "skip this
     sale", "trust this store").
 ---
 
@@ -50,13 +50,10 @@ aren't none.
 
 ### 3. Send the alert
 
-When any result is a deal, or any task has something to fix, hand the messenger
-agent `type: freeform` and a `message:` line. It names each deal: the item in a
-few words with its task id linked, the price and store, and the condition,
-membership or coupon when the price depends on one. Then each task to fix, the
-same way, with what to fix in a few words, such as no target, or a store to
-vouch for. When Amazon alerts need syncing, end the message with
-`Amazon alerts need syncing: run /ntm:sync-price-watch-to-amazon in chat.`
+When any result is a deal, hand the messenger agent `type: freeform` and a
+`message:` line naming each deal: the item in a few words with its task id
+linked, the price and store, and the condition, membership or coupon when the
+price depends on one. The alert is only for deals.
 
 ## The user's replies
 
@@ -97,7 +94,8 @@ such as:
 
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When the
-messenger returns its delivery block, return only its title and message, in
-place of that line, without the `NOTIFY VIA FINAL REPLY` line.
+messenger returns its delivery block, return its title and message in place of
+that line, without the `NOTIFY VIA FINAL REPLY` line, then the To fix part and
+the sync ending when there are any.
 
 When the run can't finish, return `Run-price-watch FAILED: <what went wrong>`.

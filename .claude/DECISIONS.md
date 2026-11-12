@@ -1,9 +1,9 @@
 # ntm decisions
 
-What's decided and still shapes the work to come: the 0.4 shape being built, the
-patterns every rewritten file follows, and what was declined. What the plugin
-already does is recorded by the plugin itself; read the file. The order of work
-is in `.claude/plans/0.4-build-plan.md`, and the working rules are in
+What's decided and still shapes the work to come: the 0.4 shape being built,
+what's left for release, the patterns every rewritten file follows, what was
+declined or deferred, and what's still unknown. What the plugin already does is
+recorded by the plugin itself; read the file. The working rules are in
 `CLAUDE.md`. When something changes, edit it here; don't add a dated entry.
 
 ## The 0.4 shape
@@ -34,6 +34,12 @@ The rules live in ntm's `references/rules/`, and runs read them there. The
 backend guides and database templates are setup's, in
 `skills/setup/references/`. A rule fix reaches users with the next version of
 the base. Tokens matter most.
+
+### Plugin files
+
+Skills and agents reach the plugin's files through `${CLAUDE_PLUGIN_ROOT}`
+(#198), which expands to the plugin root in skill and agent text, in the CLI and
+in Cowork. A file read later keeps the literal.
 
 ### Runs load only the user's paths
 
@@ -89,10 +95,37 @@ Publishing waits for the test-drives, and needs:
 
 How the published release is identified is open.
 
+## Left for release
+
+### Docs and tests
+
+The README describes the two plugins and the first steps. A privacy page says
+what leaves a run. A test holds the build to the expected user plugin skills.
+
+### The owner's fresh install
+
+A fresh setup: turn off or delete the 0.3 jobs, install the 0.4 base, run setup.
+Findings become small PRs on `release-0.4`.
+
+### Release
+
+`release-0.4` merges into main, and the version is tagged there.
+
 ## Patterns every rewritten file follows
 
 From Justin's reviews of #116, #117 and #120. His words there win over this
 summary.
+
+### Rewriting a file
+
+1. The rewrite is drafted beside the current file, as `SKILL-new.md`. An agent's
+   draft goes in `drafts/`, as `drafts/<name>-new.md`, because every file in
+   `agents/` loads as an agent.
+2. The owner reviews the draft. Each round of his comments is a new commit.
+3. When he approves, the draft's text replaces the current file and the draft
+   file goes.
+4. A second agent does a comprehension pass: could a person follow this? It is
+   never a hunt for edge cases.
 
 ### Databases
 
@@ -223,6 +256,69 @@ backend's task hierarchy, and their words stay.
 ### Price watch
 
 An Amazon alert steps database.
+
+## Deferred
+
+After 0.4.0, or when the owner raises them.
+
+### The update skill
+
+`update` waits until ntm is shared with other people. Until then, a change to
+someone's setup is a fresh setup or an edit to `%Settings`.
+
+### Weekday and weekend message rules
+
+Message rules that differ by weekday and weekend. Weekend reminders would plan
+nothing and cover only tasks planned for that day.
+
+### A closer look at the Message rules template
+
+The owner asked to be reminded at a calm point.
+
+### A quiet evening
+
+The evening reminder skips the push when everything was done by the afternoon
+and nothing changed since.
+
+### Recurring reminders
+
+At an interval (pet care, medicine), where the next date follows from when it
+was last done. Likely 1.1; needs the weekend reminders.
+
+### A price watch talk
+
+Its default pattern makes too much busywork, and setup needs better guidelines.
+
+## Unknowns: one experiment each
+
+### The bundled Linear connector
+
+Does it ask for its own sign-in, and does a job created afterwards carry it?
+
+### A job reaches the user plugin
+
+Does a job whose prompt loads `ntm:today` also load `ntm-user:backend` and reach
+the messenger agent?
+
+### The cost of reading Settings and the theme
+
+How long does one read of a `%Settings` section, and of `%Theme`, take from a
+job on Linear? If the `%Theme` read costs too much, the build copies the theme
+into `ntm-user`.
+
+### The size of the backend skill
+
+How big is `ntm-user:backend` for a Linear user with both features, and with
+task management only? 0.4 is for tokens; this proves it.
+
+### A list in a Claude Doc or an artifact
+
+Does a list built in one work from a job? Until it does, setup offers only what
+passed.
+
+### Where the build folder goes
+
+`/tmp` or the working directory?
 
 ## Test-drive findings
 

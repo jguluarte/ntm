@@ -69,7 +69,8 @@ differs from the rules' defaults, the stores the user trusts or blocks for it,
 any `Skip:` comments, and your Stores comment.
 
 If you can't tell what the item is, or it can't be bought in a condition the
-user allows, return `result: NOT ACTIONABLE (<why>)` and stop.
+user allows, write why under Problems in your Stores comment, then return
+`result: NOT ACTIONABLE (<why>)` and stop.
 
 ### 2. Find the stores
 

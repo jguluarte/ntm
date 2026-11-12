@@ -106,7 +106,9 @@ has additional context in `%Message-rules`, include that as required.
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, dates, counts and names
 exactly. Word each task briefly: a few natural words with the id in parentheses,
-never the task's full title.
+never the task's full title. The weekly message names no task ids: it talks
+about last week and the week ahead in words, so its `%Message-history` entry
+records none.
 
 ### 3. Put it in the user's style
 
@@ -132,8 +134,8 @@ return.
 
 How long a notification may be belongs to the channel, so `ntm-user:notify` owns
 the limit and you never count characters. When it answers `Notify TOO LONG`,
-tighten the message, keeping its task ids, and send once more. If that is too
-long as well, return `Notify FAILED:` with its reason.
+tighten the message, keeping any task ids it names, and send once more. If that
+is too long as well, return `Notify FAILED:` with its reason.
 
 ## What you return
 

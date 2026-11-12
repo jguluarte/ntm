@@ -71,16 +71,12 @@ Usage:
     [app token: <token>]
 
     type: <rule path>
-    [record_task_ids: false]
     [app token: <token>]
 
 Inputs:
     type:       freeform, or the path to a rule in the user's
                 %Message-rules, such as reminders.morning or weekly
     message:    for freeform, its one fact: a line of plain text
-    record_task_ids:
-                true to record the message's task ids in %Message-history,
-                as ntm:reminder sets it; false when left out
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
@@ -128,7 +124,7 @@ today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
 the message is about, with the days slipped, any task marked to press harder and
-which are done, and `record_task_ids` when you were given them.
+which are done.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

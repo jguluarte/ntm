@@ -27,8 +27,9 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
 | `ntm-user:notify`  | How they receive notifications: their channel                                |
 
-`ntm-user:backend` opens with one Built line: its version, the version of the
-installed `ntm` it was built from, and the date, in this shape:
+The user plugin's version, in its `plugin.json`, is the version of the installed
+`ntm` it was built from: built from ntm 0.4.0, it is 0.4.0. `ntm-user:backend`
+opens with one Built line: that version and the date, in this shape:
 `Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`.
 `ntm-user:backend` always says where `%Settings` lives, it is the entry point
 ntm depends on.

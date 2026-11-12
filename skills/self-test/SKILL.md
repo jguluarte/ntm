@@ -28,9 +28,9 @@ asking.
 
 ## Test execution steps
 
-Do each step on the task list as `ntm-user:backend` teaches; step 1 loads it.
-Read `%Settings` for the user's label names. `<timestamp>` is the date and time
-the run starts, to the second, in the user's timezone, like
+Do each step on the task list as `ntm-user:backend` teaches. Step 1 loads it and
+`%Settings`, which holds the user's label names. `<timestamp>` is the date and
+time the run starts, to the second, in the user's timezone, like
 `2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it

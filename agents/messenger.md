@@ -68,18 +68,23 @@ Usage:
     [app token: <token>]
 
     type: <rule path>
+    [record_task_ids: true]
     [app token: <token>]
 
 Inputs:
     type:       freeform, or the path to a rule in the user's
                 %Message-rules, such as reminders.morning or weekly
     message:    for freeform, its one fact: a line of plain text
+    record_task_ids:
+                true to record the message's task ids in %Message-history;
+                false when left out
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
 
 For `weekly`, the job also hands you last week and the week ahead, as it found
-them.
+them. For a reminder, `ntm:reminder` hands you today's tasks, each with the days
+it has slipped.
 
 ## Sending a message
 
@@ -90,13 +95,8 @@ them.
 
 For any other type, read the user's `%Message-rules` and find the rule your
 `type` names: `reminders.morning` is the `reminders` rule with its `morning`
-part, and `weekly` is the `weekly` rule. Follow it, loading what it asks for
-yourself.
-
-Today's tasks are every task planned for today, open and done, so an evening
-where everything got done still gets its message. A task has carried over one
-day for each earlier day with an entry that lists its id in `ids` in
-`%Message-history`.
+part, and `weekly` is the `weekly` rule. Follow it, with the facts you were
+handed.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
@@ -122,8 +122,8 @@ The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
-the message is about; carry-over is counted from that list, never from the
-message text.
+the message is about, with the days slipped and `record_task_ids` when you were
+given them.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

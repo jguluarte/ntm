@@ -38,17 +38,15 @@ done still gets its message.
 A task has slipped one day for each date its `Planned date history` comment
 lists, as ntm's core rules describe it; a task with no comment hasn't slipped.
 Dates from a while back weigh less: a task picked up again after a long gap gets
-fewer days slipped than its dates, as you judge it. When something on a task
-warrants upping the ante, you may also mark it to press harder.
+fewer days slipped than its dates, as you judge it.
 
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
 today's date, and today's tasks, each with whether it's done, its days slipped
-with the dates from its `Planned date history`, and any mark to press harder. It
-sends the message for that type, as the user's message rules say. Hand it over
-even when there are no tasks; the messenger decides when there's nothing to
-send.
+and the dates from its `Planned date history`. It sends the message for that
+type, as the user's message rules say. Hand it over even when there are no
+tasks; the messenger decides when there's nothing to send.
 
 ## Result
 

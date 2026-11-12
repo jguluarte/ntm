@@ -84,7 +84,7 @@ Inputs:
 For `weekly`, the job also hands you last week and the week ahead, as it found
 them. For a reminder, `ntm:reminder` hands you today's date and today's tasks,
 each with whether it's done, the days it has slipped and the dates it slipped
-from, and may mark a task to press harder.
+from.
 
 ## Sending a message
 
@@ -123,8 +123,7 @@ The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
-the message is about, with the days slipped, any task marked to press harder and
-which are done.
+the message is about, with the days slipped and the dates, and which are done.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

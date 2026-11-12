@@ -2,10 +2,11 @@
 name: reminder
 description: >-
     Sends one of the user's daily reminders about their todo list, morning,
-    afternoon or evening: checks that ntm can run, then hands the reminder to
-    the messenger agent, which follows the user's message rule for it, writes
-    the message in the user's style and sends it. Run by a job, as /ntm:reminder
-    --type morning, afternoon or evening.
+    afternoon or evening: checks that ntm can run, gathers today's tasks and how
+    many days each has slipped, then hands them to the messenger agent, which
+    follows the user's message rule for it, writes the message in the user's
+    style and sends it. Run by a job, as /ntm:reminder --type morning, afternoon
+    or evening.
 ---
 
 # ntm:reminder

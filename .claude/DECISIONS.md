@@ -224,7 +224,7 @@ Justin said no to each of these. Don't propose them again.
 
 ### Settings and jobs
 
-- Schedules kept in Settings, or anything comparing the jobs against Settings.
+- Schedules (job titles or times) kept in `%Settings`.
 - A catch-all section in Settings for whatever the user does differently.
 
 ### Persona

@@ -27,8 +27,10 @@ Write times and estimates in full words, in the user's language: `2 hours`,
 ## The task list
 
 `ntm-user:backend` says how to read and write the user's task list, and where
-each database lives, `%Settings` included. `%Settings` holds the real names of
-their labels, under Labels.
+each database lives, `%Settings` included.
+
+A `$` name, such as `$price-watch`, is a label's default name. `%Settings` holds
+the real names of the user's labels, under Labels.
 
 ### Reading it
 
@@ -39,6 +41,8 @@ Today is the date in the user's timezone, which a job's prompt states and
 `%Settings` holds under About you.
 
 ### Planned dates
+
+A task's planned date is the day its work is planned for.
 
 **NEVER treat a planned date as a deadline!**
 
@@ -82,6 +86,9 @@ What ntm's messages have said, so the next ones don't repeat it, and the
 reminder can count how many days a task has slipped. `ntm:style` keeps it.
 
 ## Results
+
+A job is a scheduled run of ntm skills, in order. No one is in the chat while it
+runs.
 
 A skill returns text; the job or chat that ran it decides what reaches the user.
 Every notification goes through `ntm-user:notify`.

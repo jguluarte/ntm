@@ -22,8 +22,8 @@ The type picks the user's message rule, which says what the message holds.
 ## Setup
 
 Run `/ntm:ready-check`, unless it already ran in this session. It loads
-`ntm-user:backend` and `%Settings`; if it fails, end the run with its result
-line.
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
 
 Then load the user's `%Message-rules`.
 

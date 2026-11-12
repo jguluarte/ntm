@@ -24,9 +24,12 @@ show them.
 
 ## Setup
 
-Load `ntm-user:backend` to read the user's conventions. Read the Paused dates
-part of `%Paused-dates`. Today is the date in the timezone under About you in
-`%Settings`.
+Run `/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
+
+Read the Paused dates part of `%Paused-dates`. Today is the date in the timezone
+under About you in `%Settings`.
 
 ## Keeping `%Paused-dates`
 

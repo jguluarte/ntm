@@ -16,8 +16,10 @@ good one, you bring proposals and they react, and their wording wins over yours.
 
 ## Setup
 
-Load `ntm-user:backend` to read the user's conventions. If the task list can't
-be read or written, say what went wrong.
+Run `/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line. If the task list can't be read or written later in the
+review, say what went wrong.
 
 ## Usage
 

@@ -44,11 +44,12 @@ Everything else they set up lives in their databases and their jobs.
 
 ### Already set up
 
-If `ntm-user:backend` loads, the user is already set up. When their jobs aren't
-scheduled, do only the jobs: ask about them as the jobs round does for their
-features, then create them as Create the jobs says. Otherwise, say in a line
-that to change their setup, they tell ntm what to change, or edit their
-`%Settings`, and stop.
+If `ntm-user:backend` loads, the user is already set up. Look for their jobs
+among their scheduled tasks, knowing each by the `ntm:` skills it runs. When any
+are missing, do only those jobs: ask about them as the jobs round does for the
+features in their `%Settings`, then create them as Create the jobs says.
+Otherwise, say in a line that to change their setup, they tell ntm what to
+change, or edit their `%Settings`, and stop.
 
 ## The steps
 
@@ -364,13 +365,14 @@ example:
 > Once the test is done, come back to this chat and I'll schedule your jobs. The
 > test will say in one line that they aren't scheduled yet, and that's expected.
 
+When they're back, ask whether the self-test passed, since you can't see that
+chat. On their yes, go on to Create the jobs.
+
 ### Create the jobs
 
-When they're back, ask whether the self-test passed, since you can't see that
-chat. On their yes, create each job they confirmed as a scheduled task. Its
-title is the one Jobs gives it, such as Morning reminder. It runs at its days
-and time in their timezone, on the model they confirmed, with push notifications
-on.
+Create each job they confirmed as a scheduled task. Its title is the one Jobs
+gives it, such as Morning reminder. It runs at its days and time in their
+timezone, on the model they confirmed, with push notifications on.
 
 Its prompt is this frame, with one numbered step for each step Jobs gives it, in
 order. A step that runs a skill takes the frame's shape; the Weekly setup's

@@ -11,8 +11,7 @@ description: >-
 
 Some tasks on the user's task list are things they want to buy, marked with
 `$price-watch`. Once a day the price watch asks of each one: is this a good deal
-today? The price watch rules, `references/rules/price-watch.md`, say what a
-watched task holds.
+today?
 
 ## Usage
 
@@ -25,8 +24,9 @@ its task id, check that one and answer in chat, with no alert.
 
 ## Setup
 
-Load `ntm-user:backend`, then run `/ntm:ready-check`. If it fails, end the run
-with its result line.
+Load `ntm-user:backend` and read the price watch rules,
+`references/rules/price-watch.md`. Then run `/ntm:ready-check`. If it fails, end
+the run with its result line.
 
 ## The run
 

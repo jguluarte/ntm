@@ -56,9 +56,9 @@ don't message the user.
 ## Setup
 
 Load `ntm-user:backend`, then read Shopping in `%Settings`: the country the
-stores deliver to, the currency every price is in, and the Amazon interface. The
-price watch rules, `references/rules/price-watch.md`, say what a watched task
-holds and when Amazon alerts are on.
+stores deliver to, the currency every price is in, and the Amazon interface.
+Read the price watch rules, `references/rules/price-watch.md`: what a watched
+task holds, its defaults, and when Amazon alerts are on.
 
 ## The check
 

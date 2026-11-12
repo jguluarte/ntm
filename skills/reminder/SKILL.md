@@ -32,17 +32,17 @@ Load what the Reminders part of `%Message-rules` says to load. Today's tasks are
 every task planned for today, open and done, so an evening where everything got
 done still gets its message.
 
-A task has slipped one day for each earlier day with an entry that lists its id
-in `ids` in `%Message-history`. You may raise a task's count when something on
-it warrants upping the ante.
+A task's days slipped are the earlier days with a `%Message-history` entry whose
+`ids` list it. When something on a task warrants upping the ante, you may also
+mark it to press harder.
 
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
 with `record_task_ids: true` and today's tasks, each with the days it has
-slipped. It sends the message for that type, as the user's message rules say.
-Hand it over even when there are no tasks; the messenger decides when there's
-nothing to send.
+slipped and any mark to press harder. It sends the message for that type, as the
+user's message rules say. Hand it over even when there are no tasks; the
+messenger decides when there's nothing to send.
 
 ## Result
 

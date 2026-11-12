@@ -27,16 +27,12 @@ asking.
 /ntm:self-test
 ```
 
-## With no user plugin
-
-Load `ntm-user:backend`. When it won't load, ntm isn't set up yet and there's
-nothing to test: run no step, and end with the base-only result line.
-
 ## Test execution steps
 
-Do each step on the task list as `ntm-user:backend` teaches. Read `%Settings`
-for the user's label names. `<timestamp>` is the date and time the run starts,
-to the second, in the user's timezone, like `2026-11-09 14:03:27`.
+Do each step on the task list as `ntm-user:backend` teaches; step 1 loads it.
+Read `%Settings` for the user's label names. `<timestamp>` is the date and time
+the run starts, to the second, in the user's timezone, like
+`2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "3. Create a task: the task list takes a new
@@ -145,13 +141,8 @@ fails the step.
 
 ## Result
 
-One line:
-
-- `Self-test OK`
-- `Self-test OK (base only): run /ntm:setup to set up your task list`, when
-  `ntm-user:backend` won't load
-- `Self-test FAILED at <n>. <step>: <why>`
-
-On a failure, add the fix when it's plain: for a ready-check failure, the fix in
-its failure line; for anything missing from the user's setup, or a call that
-errored on a backend the user described themselves, `/ntm:update`.
+One line: `Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a
+failure, add the fix when it's plain: for a ready-check failure, the fix in its
+failure line, which is `/ntm:setup` when `ntm-user` isn't installed; for
+anything missing from the user's setup, or a call that errored on a backend the
+user described themselves, `/ntm:update`.

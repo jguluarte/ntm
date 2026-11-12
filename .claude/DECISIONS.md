@@ -73,8 +73,8 @@ waits until ntm is shared with other people.
 ### Versions
 
 The user plugin's `major.minor` mirrors the base's; its patch counts the user's
-rebuilds. `ntm-user:backend` opens with a Built line naming the versions,
-backend, channel and features.
+rebuilds. `ntm-user:backend` opens with a Built line naming its version, the
+`ntm` version it was built from, and the date.
 
 0.3 installs start fresh. The base and the user plugin update together.
 

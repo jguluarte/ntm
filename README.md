@@ -18,6 +18,19 @@ the initiative to get started (or worse, just forgot to finish after losing
 steam). This system helps them remember the things that they want to do, and
 says so in a way that they don't ignore. Hopefully it'll help you too!
 
+## Getting started
+
+Ntm comes as two plugins. `ntm` is the one you install. `ntm-user` is a plugin
+of your own: setup builds it from your answers, and you install it too.
+
+1. Install `ntm`.
+2. Run `/ntm:setup`. It connects your task list, sets up the features and theme
+   you pick, and builds your plugin.
+3. Install the plugin setup built for you.
+4. In a new chat, run `/ntm:self-test` to try everything out.
+5. Go back to setup's chat and tell it the test passed. Setup then schedules
+   your jobs.
+
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
 

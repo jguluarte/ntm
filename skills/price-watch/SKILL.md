@@ -32,7 +32,7 @@ the run with its result line.
 
 ### 1. Find the watch
 
-The watch is every open task `$price-watch` covers, on the task or its project.
+The watch is the open tasks `$price-watch` covers.
 
 When Amazon alerts are on, as the rules say, a sync is due when an open watched
 task has neither Amazon label, or a closed task still has `$has-amazon-alert`.

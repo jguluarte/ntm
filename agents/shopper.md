@@ -92,8 +92,7 @@ Don't price Amazon; when Amazon alerts are on, they cover it.
 ### 3. Verify the prices
 
 Read each store's product page today. Fetch tools summarize, so ask for the
-page's own words: title and model, variant, condition, selling price and what it
-depends on, stock, and any marketplace seller.
+page's own words.
 
 A price counts when it's on the store's own domain, quoted as written (not a
 "from" or range figure), for this item in an allowed condition, in stock, and
@@ -129,7 +128,7 @@ shape:
 
     Stores: kept by the price watch.
     Checked <date>: <result>, best <price> at <store> (<product link>)
-    Target <price or none>, usual <price or unknown> (<source>)
+    Usual <price or unknown> (<source>)
     Last full search: <date>
 
     - <store> (<domain>): <why it's trusted>

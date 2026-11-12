@@ -35,4 +35,5 @@ only.
 
 ### `/ntm:fix-task-list`
 
-Clears dates on previously planned tasks that didn't finish.
+Clears dates on previously planned tasks that didn't finish, and removes pauses
+that are over.

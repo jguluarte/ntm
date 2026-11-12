@@ -18,9 +18,10 @@ description: >-
             morning message."
 
             <commentary>
-                The skill hands the messenger only the type; the messenger
-                follows the user's rule for it, owns the composing, the style
-                and the channel, and returns Sent: or a delivery block.
+                The skill hands the messenger the type, today's date and
+                today's tasks with their days slipped; the messenger follows
+                the user's rule for it, owns the composing, the style and the
+                channel, and returns Sent: or a delivery block.
             </commentary>
         </example>
 

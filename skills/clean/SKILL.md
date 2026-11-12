@@ -22,8 +22,8 @@ Cleans up stale information in the backend.
 
 Load `ntm-user:backend`, and read ntm's core rules,
 `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`. Then find all non-closed tasks
-which have a planned date in the past. Add each one's date to its
-`Planned date history`, as the core rules say, then clear the date.
+which have a planned date in the past. Add that stale date to its
+`Planned date history` comment, then clear the date.
 
 Read the Paused dates part of `%Paused-dates`, and find the paused dates that
 have passed: a day, or a range's last day, before today. Take those off the

@@ -89,8 +89,8 @@ each message, and changes it with the user when they ask.
 
 ### `%Message-history`
 
-What ntm's messages have said, so the next ones don't repeat it. `ntm:style`
-keeps it.
+What ntm's messages have said, so the next ones don't repeat it, and the
+reminder can count how many days a task has slipped. `ntm:style` keeps it.
 
 ## Results
 

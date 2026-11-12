@@ -218,7 +218,8 @@ composable on purpose.
 
 ###### Reminders
 
-The morning reminder begins with `/ntm:plan --auto day`. Each reminder then runs
+The morning reminder begins with `/ntm:ready-check`, then
+`/ntm:plan --auto day`. Each reminder then runs
 `/ntm:reminder --type <morning|afternoon|evening>`, with its own type.
 
 #### Price watch

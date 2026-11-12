@@ -26,8 +26,11 @@ Write times and estimates in full words, in the user's language: `2 hours`,
 
 ## The task list
 
-`ntm-user:backend` says how to read and write the user's task list, the real
-names of their labels, and where each database lives.
+`ntm-user:backend` says how to read and write the user's task list, and where
+each database lives, `%Settings` included.
+
+A `$` name, such as `$price-watch`, is a label's default name. `%Settings` holds
+the real names of the user's labels, under Labels.
 
 ### Reading it
 
@@ -38,6 +41,8 @@ Today is the date in the user's timezone, which a job's prompt states and
 `%Settings` holds under About you.
 
 ### Planned dates
+
+A task's planned date is the day its work is planned for.
 
 **NEVER treat a planned date as a deadline!**
 
@@ -77,15 +82,18 @@ each message, and changes it with the user when they ask.
 
 ### `%Message-history`
 
-What ntm's messages have said, so the next ones don't repeat it. `ntm:style`
-keeps it.
+What ntm's messages have said, so the next ones don't repeat it, and the
+reminder can count how many days a task has slipped. `ntm:style` keeps it.
 
 ## Results
 
-A skill returns text; the job or chat that ran it decides what reaches the user.
-All notifications are handled through `ntm-user:notify`.
+A job is a scheduled run of ntm skills, in order. No one is in the chat while it
+runs.
 
-When a skill fails, it returns one line that starts with its own name:
+A skill returns text; the job or chat that ran it decides what reaches the user.
+Every notification goes through `ntm-user:notify`.
+
+When a skill or agent fails, it returns one line that starts with its own name:
 `Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
 words, naming tasks as Talking to the user about tasks says.
 

@@ -1,4 +1,4 @@
-# Price watch conventions
+# Price watch rules
 
 The price watch checks the things the user wants to buy, and tells them when one
 is a good deal. Each item is represented as a task on their task list.

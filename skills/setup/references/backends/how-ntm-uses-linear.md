@@ -53,16 +53,16 @@ except one: a status we added and named Blocked.
 | Canceled  | closed without being done                     | canceled                           |
 | Duplicate | the same as another; only the original counts | duplicate                          |
 
-Planning picks plannable tasks, reminders cover every open task planned for the
-day, and reports count what's done. Duplicate is a group of its own: review
-merges a duplicate into the task it copies, and reports list duplicates apart
-from canceled tasks.
+Planning picks plannable tasks, reminders cover every task planned for the day,
+open and done, and reports count what's done. Duplicate is a group of its own:
+review merges a duplicate into the task it copies, and reports list duplicates
+apart from canceled tasks.
 
 ## The planned date
 
 ntm plans with one date on each task: the day the work is planned for. Planning
-sets it, moves it and clears it freely, and reminders read it to say what's on
-today.
+sets and moves it, and clears it only when you agree. Reminders read it to say
+what's on today.
 
 **NEVER treat a planned date as a deadline.**
 

@@ -21,8 +21,8 @@ in the `%Settings` database: by default `$no-autoschedule` and
 ### Plannable tasks
 
 Planning picks only plannable tasks: open, not in the blocked status, and not
-excluded by a label. Reminders cover every open task planned for the day,
-blocked or excluded included.
+excluded by a label. Reminders cover every task planned for the day, open and
+done, blocked or excluded included.
 
 ### Blocking order
 

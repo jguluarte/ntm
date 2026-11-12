@@ -44,8 +44,12 @@ Everything else they set up lives in their databases and their jobs.
 
 ### Already set up
 
-If `ntm-user:backend` loads, the user is already set up. Say in a line that
-`/ntm:update` is how they change their setup, and stop.
+If `ntm-user:backend` loads, the user is already set up. Look for their jobs
+among their scheduled tasks, knowing each by the `ntm:` skills it runs. When any
+are missing, do only those jobs: ask about them as the jobs round does for the
+features in their `%Settings`, then create them as Create the jobs says.
+Otherwise, say in a line that to change their setup, they tell ntm what to
+change, or edit their `%Settings`, and stop.
 
 ## The steps
 
@@ -286,7 +290,7 @@ template, and say in a line where each one lives. Add where each one lives to
 `ntm-user:backend`. Write the settings into the `%Settings` database, with the
 labels' real names, dropping Planning when they skipped task management,
 Shopping when they skipped price watch, and the label rows for labels you didn't
-create. Keep the jobs and their model for Create the jobs, after Notifications.
+create. Keep the jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
@@ -343,6 +347,27 @@ the AI app's own push, build it from the same file without Keys or
 `--app-token`. In place of Send and Result, it returns `NOTIFY VIA FINAL REPLY`,
 then the title, then the message, for the job to end its run with.
 
+### Install and self-test
+
+Package their user plugin and have them install it. Then hand off with one
+prompt for a new chat:
+
+```
+Run /ntm:self-test.
+```
+
+Tell them, in a line meant to make them smile, that a passing self-test sends a
+success message in their theme, in chat and on their phone.
+
+When they confirmed jobs, tell them the last step happens back here. For
+example:
+
+> Once the test is done, come back to this chat and I'll schedule your jobs. The
+> test will say in one line that they aren't scheduled yet, and that's expected.
+
+When they're back, ask whether the self-test passed, since you can't see that
+chat. On their yes, go on to Create the jobs.
+
 ### Create the jobs
 
 Create each job they confirmed as a scheduled task. Its title is the one Jobs
@@ -361,15 +386,3 @@ Timezone: <Timezone>.
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its
 own or stops at an action that needs approval.
-
-### Install and self-test
-
-Package their user plugin and have them install it. Then hand off with one
-prompt for a new chat:
-
-```
-Run /ntm:self-test.
-```
-
-Tell them, in a line meant to make them smile, that a passing self-test sends a
-success message in their theme, in chat and on their phone.

@@ -37,16 +37,16 @@ other message, every task is on the first level.
 
 ### 2. Write it
 
-Write the core message as `%Theme` says for its type, in the tone, with each
-task at its level. Keep every fact it holds.
+Rewrite the core message in the user's theme, in today's tone, with each task at
+its level. Keep every fact in it.
 
 Don't reuse a line, an opener or a shape from recent entries, and let each motif
 rest as the theme's `Repeat limit:` line says.
 
 ### 3. Give it a title
 
-A title in the same style that says what the message is about, never just the
-type's name.
+Give it a title in the same style that says what the message is about. The
+type's name alone isn't a title.
 
 ## Keeping `%Message-history`
 
@@ -66,5 +66,6 @@ Then drop the entries older than the `Keep:` line, and save.
 When the user asks for something in their style, write it the same way and show
 it to them.
 
-When they ask to change how their messages read, change the part of `%Theme`
-their words are about, with them, and save it when they say yes.
+When they ask to change how their messages read, work out with them the change
+to the part of `%Theme` their words are about, show it, and save it when they
+say yes.

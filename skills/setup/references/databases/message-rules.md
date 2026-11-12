@@ -25,13 +25,14 @@ where they differ.
 
 If there are no tasks, you can exit with nothing to send.
 
-### Morning
-
-Morning is responsible to let the user know what's on the docket for today.
 Include relevant details if any tasks have carried over (check the task's
 `Planned date history` to determine if this is a pattern, or how many times it
 has been missed). That information could influence how the `%Theme` is applied
 to the message content.
+
+### Morning
+
+Morning is responsible to let the user know what's on the docket for today.
 
 ### Afternoon
 

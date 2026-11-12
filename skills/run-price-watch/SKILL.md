@@ -68,8 +68,9 @@ When they gave no reason, ask once, and add it if they answer.
 
 ### They bought it
 
-Set the task to done, and add `$pending-shipment` to any open task it blocks.
-When it has `$has-amazon-alert`, say the next Amazon sync removes its alert.
+Set the task to done. When `%Settings` has `$pending-shipment` under Labels, add
+that label to any open task it blocks. When it has `$has-amazon-alert`, say the
+next Amazon sync removes its alert.
 
 ### Trust or block a store
 

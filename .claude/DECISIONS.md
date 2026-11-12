@@ -77,9 +77,10 @@ deferred, below.
 
 ### Versions
 
-The user plugin's `major.minor` mirrors the base's; its patch counts the user's
-rebuilds. `ntm-user:backend` opens with a Built line naming its version, the
-`ntm` version it was built from, and the date.
+The user plugin takes the installed `ntm`'s `major.minor`, with patch 0: with
+`update` deferred, every build is a first build. `ntm-user:backend` opens with a
+Built line naming its version, the `ntm` version it was built from, and the
+date.
 
 0.3 installs start fresh. The base and the user plugin update together.
 

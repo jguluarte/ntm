@@ -50,7 +50,8 @@ The step passes when setup made everything it was supposed to: every database
 missing.
 
 Every job under Jobs in `%Settings` is one of their scheduled tasks, by its
-title. A missing job doesn't fail the step; the result names it.
+title. A missing job doesn't fail the step. When you can't see their scheduled
+tasks, say you couldn't check the jobs, and go on.
 
 ### 3. Create a task
 
@@ -125,11 +126,11 @@ fails the step.
 
 ## Result
 
-One line: `Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a
-failure, add the fix when it's plain: for a ready-check failure, the fix in its
-failure line, which is `/ntm:setup` when `ntm-user` isn't installed; for
-anything missing from the user's setup, or a call that errored on a backend the
-user described themselves, `/ntm:update`.
+`Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a failure, add
+the fix when it's plain: for a ready-check failure, the fix in its failure line,
+which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
+the user's setup, or a call that errored on a backend the user described
+themselves, `/ntm:update`.
 
-When step 2 found jobs missing, add a line naming them, like
-`Jobs not scheduled: Morning reminder, Price watch`.
+When step 2 found jobs missing, add a line naming them, with the fix, like
+`Jobs not scheduled: Price watch. Go back to the chat where you ran setup to schedule them.`

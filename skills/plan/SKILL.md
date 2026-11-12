@@ -67,7 +67,7 @@ them.
 ### 1. Carry over
 
 Move every open task planned before today to today, even when today is paused,
-adding each old date to the task's `Planned date history` first.
+adding each old date to the task's `Planned date history` comment.
 
 ### 2. Fill today
 

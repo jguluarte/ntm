@@ -8,4 +8,4 @@ description: >-
 
 # ntm:help
 
-Read ntm's `README.md` and show it to the user, word for word.
+Read ntm's `README.md` and render it to the user, word for word.

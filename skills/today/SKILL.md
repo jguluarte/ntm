@@ -10,7 +10,9 @@ description: >-
 
 ## Setup
 
-Load `ntm-user:backend` to read the user's conventions.
+Run `/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
 
 ## Usage
 

@@ -28,13 +28,11 @@ moves dates, and clears one only when the user agrees to it in chat.
 ## Setup
 
 Run `/ntm:ready-check`, unless it already ran in this session. It loads
-`ntm-user:backend` and `%Settings`; if it fails, end the run with its result
-line.
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
 
-Read ntm's rules:
-
-- `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`
-- `${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md`
+Read the task management rules,
+`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md`.
 
 Read the Paused dates part of `%Paused-dates`. Each item is a paused day, or a
 range with both ends included, then an optional reason.

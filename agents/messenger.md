@@ -85,9 +85,13 @@ them.
 
 ### 1. Read `%Message-rules`
 
-Read the user's `%Message-rules` and find the rule your `type` names:
-`reminders.morning` is the `reminders` rule with its `morning` part, and
-`weekly` is the `weekly` rule. Follow it, loading what it asks for yourself.
+`freeform` has no rule and reads no `%Message-rules`: its core message is the
+`message:` line.
+
+For any other type, read the user's `%Message-rules` and find the rule your
+`type` names: `reminders.morning` is the `reminders` rule with its `morning`
+part, and `weekly` is the `weekly` rule. Follow it, loading what it asks for
+yourself.
 
 Today's tasks are every task planned for today, open and done, so an evening
 where everything got done still gets its message. A task has carried over when
@@ -95,8 +99,6 @@ earlier days' entries in `%Message-history` name its id.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
-
-`freeform` has no rule: its core message is the `message:` line.
 
 ### 2. Draft the core message
 

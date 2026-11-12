@@ -35,7 +35,6 @@ Read ntm's rules:
 
 - `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md`
-- `${CLAUDE_PLUGIN_ROOT}/references/rules/terminology.md`
 
 Read the Paused dates part of `%Paused-dates`. Each item is a paused day, or a
 range with both ends included, then an optional reason.

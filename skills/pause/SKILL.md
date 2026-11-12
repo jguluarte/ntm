@@ -10,7 +10,6 @@ description: >-
 # ntm:pause
 
 A pause is a day, or a span of days, when nothing gets planned automatically.
-Planning skips paused days.
 
 ## Usage
 
@@ -52,18 +51,16 @@ Add, shorten, split or remove pauses as they say. Their words are the go-ahead;
 don't ask for approval. A new pause's reason is in their words, or `Paused` when
 they give none.
 
-### 3. Planned work on a paused day
+### 3. Save
+
+Save the list, with any pauses that have ended taken off.
+
+### 4. Planned work on a paused day
 
 When a newly paused day already has tasks planned on it, name them and offer to
 clear their dates. Clear them when the user says yes.
-
-### 4. Save
-
-Save the list, with any pauses that have ended taken off.
 
 ## Result
 
 Show the user the pauses as they stand, each date with its weekday, so a wrong
 guess about a day is easy to spot.
-
-If the task list can't be read, say what went wrong instead.

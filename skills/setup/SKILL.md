@@ -200,18 +200,23 @@ For example:
 > | Afternoon reminder | Weekdays | 14:45 |
 > | Evening reminder   | Weekdays | 20:45 |
 
-What each job runs, in order, for Create the jobs:
+What each job runs, in order, for Create the jobs. The jobs are lean, and
+composable on purpose.
 
-| Job                | Runs                                                                          |
-| ------------------ | ----------------------------------------------------------------------------- |
-| Weekly setup       | `show-completed`, `fix-task-list`, `plan --auto week`, `reminder --type week` |
-| Morning reminder   | `plan --auto day`, `reminder --type morning`                                  |
-| Afternoon reminder | `reminder --type afternoon`                                                   |
-| Evening reminder   | `reminder --type evening`                                                     |
+###### Weekly setup
 
-In the weekly setup, `show-completed` runs with
-`the last 7 days and what's still open`. It runs first, before `fix-task-list`
-clears the planned dates that say what's still open.
+1. Load `ntm-user:backend`.
+2. Look up the tasks planned in the past that are still open, and the tasks
+   closed in the last week.
+3. `/ntm:fix-task-list`
+4. `/ntm:plan --auto week`
+5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
+   week ahead from step 4. End the run with what it returns.
+
+###### Reminders
+
+The morning reminder begins with `/ntm:plan --auto day`. Each reminder then runs
+`/ntm:reminder --type <morning|afternoon|evening>`, with its own type.
 
 #### Price watch
 
@@ -336,8 +341,9 @@ Create each job they confirmed as a scheduled task. Its title is the one Jobs
 gives it, such as Morning reminder. It runs at its days and time in their
 timezone, on the model they confirmed, with push notifications on.
 
-Its prompt is this frame, with one numbered step for each skill the job runs, in
-order.
+Its prompt is this frame, with one numbered step for each step Jobs gives it, in
+order. A step that runs a skill takes the frame's shape; the Weekly setup's
+other steps go in as Jobs writes them.
 
 ```
 <Title>.

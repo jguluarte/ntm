@@ -56,9 +56,9 @@ don't message the user.
 ## Setup
 
 Load `ntm-user:backend`, then read Shopping in `%Settings`: the country the
-stores deliver to, the currency every price is in, and the Amazon interface.
-Read the price watch rules, `references/rules/price-watch.md`: what a watched
-task holds, its defaults, and when Amazon alerts are on.
+stores deliver to and the currency every price is in. Read the price watch
+rules, `references/rules/price-watch.md`: what a watched task holds and its
+defaults.
 
 ## The check
 
@@ -87,7 +87,7 @@ over time. One without that evidence goes under Not used, unpriced. Never use a
 store the user blocked. Use each store's own domain for the user's country,
 never a lookalike from a search result or an ad.
 
-Don't price Amazon; when Amazon alerts are on, they cover it.
+Don't price Amazon.
 
 ### 3. Verify the prices
 

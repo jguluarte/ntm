@@ -1,13 +1,14 @@
 ---
-name: price-watch
+name: run-price-watch
 description: >-
-    The price watch for the user's todo list: which watched items are a good
-    deal today? Hands each watched task to a shopper agent, sends one alert for
-    the deals and reports. Run by a job, or by hand in chat ("/ntm:price-watch",
-    "check my watch list", "is the backup battery a good price today?").
+    Runs the price watch for the user's todo list: which watched items are a
+    good deal today? Hands each watched task to a shopper agent, sends one alert
+    for the deals and reports. Run by a job, or by hand in chat
+    ("/ntm:run-price-watch", "check my watch list", "is the backup battery a
+    good price today?").
 ---
 
-# ntm:price-watch
+# ntm:run-price-watch
 
 Some tasks on the user's task list are things they want to buy, marked with
 `$price-watch`. Once a day the price watch asks of each one: is this a good deal
@@ -16,7 +17,7 @@ today?
 ## Usage
 
 ```
-/ntm:price-watch [<item>]
+/ntm:run-price-watch [<item>]
 ```
 
 With nothing after it, check every watched task. With an item, by its words or
@@ -81,7 +82,7 @@ date.
 
 In a job, return one line: how many tasks were checked, each deal in a few words
 with its task id, and what the messenger returned, such as
-`Price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
+`Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
 When a sync is due, end the line with
 `Amazon sync due. Run /ntm:sync-price-watch-to-amazon.` When the messenger
 returns its delivery block, return that as it came.
@@ -91,4 +92,4 @@ product link, what each other item came to, and any notes they could fix. When
 Amazon alerts are on, say Amazon isn't checked here; when a sync is due, say to
 run `/ntm:sync-price-watch-to-amazon`.
 
-When the run can't finish, return `Price-watch FAILED: <what went wrong>`.
+When the run can't finish, return `Run-price-watch FAILED: <what went wrong>`.

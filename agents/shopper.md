@@ -4,14 +4,14 @@ description: >-
     Checks one watched task on the user's todo list: is this item a good deal
     today? Given a task id and today's date, it finds trusted stores, verifies
     today's prices on their own pages, records what it found on the task and
-    returns its result lines. Asked by ntm:price-watch once per watched task, in
-    a job or by hand in chat.
+    returns its result lines. Asked by ntm:run-price-watch once per watched
+    task, in a job or by hand in chat.
 
         <example>
-            Context: ntm:price-watch found three watched tasks and is at its
-            check step.
+            Context: ntm:run-price-watch found three watched tasks and is at
+            its check step.
 
-            user: "/ntm:price-watch"
+            user: "/ntm:run-price-watch"
 
             assistant: "Three items on the watch; asking a shopper agent for
             each one."

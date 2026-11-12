@@ -4,12 +4,11 @@ description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check that setup made their databases and labels, then
     create, read, find, plan, label, comment on, estimate, change and close a
-    throwaway task, give it a sub-task and mark that a duplicate, and write and
-    read a throwaway database, then clean up and have the messenger agent send a
-    success message. Each step's result is shown as it passes or fails. The
-    first thing to run after installing ntm and ntm-user ("test ntm", "run the
-    self test", "is everything wired up?"), and the smoke test for a backend the
-    user described themselves.
+    throwaway task, and write and read a throwaway database, then clean up and
+    have the messenger agent send a success message. Each step's result is shown
+    as it passes or fails. The first thing to run after installing ntm and
+    ntm-user ("test ntm", "run the self test", "is everything wired up?"), and
+    the smoke test for a backend the user described themselves.
 ---
 
 # ntm:self-test
@@ -37,7 +36,7 @@ the run starts, to the second, in the user's timezone, like
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "3. Create a task: the task list takes a new
 task. Pass." A call that fails for a backend reason gets one retry. At the first
-failure, say why and skip to step 14.
+failure, say why and skip to step 12.
 
 ### 1. Connectivity
 
@@ -90,24 +89,7 @@ new text.
 Change its description to `This is a changed test, it can safely be removed`,
 with the estimate line `Estimate: 2 hours` at its end, and the task shows both.
 
-### 10. Add a sub-task
-
-Create the below task. It should get an id, and show the test task as its
-parent.
-
-| Field       | Value                                    |
-| ----------- | ---------------------------------------- |
-| Title       | ntm self-test sub-task, <timestamp>      |
-| Description | This is a test, it can safely be removed |
-| Label       | `$no-autoschedule`, by its real name     |
-| Parent      | the test task from step 3                |
-
-### 11. Mark it a duplicate
-
-Mark the sub-task a duplicate of the test task, and it is among the tasks closed
-today, duplicates included.
-
-### 12. Store data
+### 10. Store data
 
 Write the below database, into the one an earlier self-test left behind or a new
 one when there isn't one, then find it by its title, and it holds the contents.
@@ -117,22 +99,22 @@ one when there isn't one, then find it by its title, and it holds the contents.
 | Title    | ntm self-test database     |
 | Contents | ntm self-test, <timestamp> |
 
-### 13. Close it
+### 11. Close it
 
 Cancel the test task, or mark it done when the task list has no canceled status,
 and it is among the tasks closed today, canceled included.
 
-### 14. Clean up
+### 12. Clean up
 
-Runs after a failure too. Cancel the task and the sub-task if they're still
-open, remove the added label if it's still on, and delete the test database, or
-empty it when the task list can't delete one. Do the same for any test task or
-database an earlier self-test left behind. Touch nothing else on the task list.
+Runs after a failure too. Cancel the task if it's still open, remove the added
+label if it's still on, and delete the test database, or empty it when the task
+list can't delete one. Do the same for any test task or database an earlier
+self-test left behind. Touch nothing else on the task list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
-### 15. Send the success message
+### 13. Send the success message
 
 Only when every step before it passed. Ask the messenger agent for a `freeform`
 message: `ntm is ready; the self-test passed`. It passes when the messenger

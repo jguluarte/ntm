@@ -94,8 +94,9 @@ part, and `weekly` is the `weekly` rule. Follow it, loading what it asks for
 yourself.
 
 Today's tasks are every task planned for today, open and done, so an evening
-where everything got done still gets its message. A task has carried over when
-its id is in the `ids` of earlier days' entries in `%Message-history`.
+where everything got done still gets its message. A task has carried over one
+day for each earlier day with an entry that lists its id in `ids` in
+`%Message-history`.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.

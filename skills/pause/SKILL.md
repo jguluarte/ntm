@@ -36,7 +36,7 @@ The Paused dates part holds one list item per pause, in date order:
 | One day                 | `- 2026-11-27`               |
 | A range                 | `- 2026-12-21 to 2026-12-31` |
 | With a reason they gave | `- 2026-11-26: Thanksgiving` |
-| No pauses               | `None.`                      |
+| No pauses               | `None.`, or an empty part    |
 
 A range includes both its ends. A pause comes off the list once it has ended.
 

@@ -72,8 +72,10 @@ Every job starts with `/ntm:ready-check`.
 
 ### Setup
 
-`setup` is the wizard, and the only place the user plugin gets built. Running it
-again builds the user plugin fresh. `update` is deferred, below.
+`setup` is the wizard, and the only place the user plugin gets built. Run again
+for a user who is set up, it creates only their missing jobs, or says to change
+things by telling ntm or editing `%Settings`, and stops. `update` is deferred,
+below.
 
 ### Versions
 

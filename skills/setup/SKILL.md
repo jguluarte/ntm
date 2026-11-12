@@ -157,9 +157,12 @@ Then save, as Saving the features says.
 
 ##### Settings
 
-| Setting                                | Default                                 |
-| -------------------------------------- | --------------------------------------- |
-| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
+| Setting                                | Default                                                  |
+| -------------------------------------- | -------------------------------------------------------- |
+| Days to plan                           | Weekdays                                                 |
+| Tasks a day                            | One                                                      |
+| Task size                              | About an hour or less; slightly bigger is sometimes okay |
+| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment`                  |
 
 ##### Databases
 
@@ -215,7 +218,8 @@ composable on purpose.
 
 ###### Reminders
 
-The morning reminder begins with `/ntm:plan --auto day`. Each reminder then runs
+The morning reminder begins with `/ntm:ready-check`, then
+`/ntm:plan --auto day`. Each reminder then runs
 `/ntm:reminder --type <morning|afternoon|evening>`, with its own type.
 
 #### Price watch
@@ -267,9 +271,9 @@ Present the price watch as one daily job, early each morning. For example:
 
 What it runs, for Create the jobs:
 
-| Job         | Runs          |
-| ----------- | ------------- |
-| Price watch | `price-watch` |
+| Job         | Runs              |
+| ----------- | ----------------- |
+| Price watch | `run-price-watch` |
 
 #### Saving the features
 

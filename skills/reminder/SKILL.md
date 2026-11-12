@@ -26,15 +26,8 @@ If it fails, end the run with its result line.
 
 ## The message
 
-Ask the messenger agent for the reminder, with the `type:` for its rule:
-
-| `--type`    | `type:`               |
-| ----------- | --------------------- |
-| `morning`   | `reminders.morning`   |
-| `afternoon` | `reminders.afternoon` |
-| `evening`   | `reminders.evening`   |
-
-The messenger loads today's tasks itself, as the message rules say.
+Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`.
+It sends the message for that type, as the user's message rules say.
 
 ## Result
 

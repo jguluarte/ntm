@@ -4,8 +4,9 @@
 What each reminder's message says, for the messenger agent. A skill asks the
 messenger for a type such as `reminders.morning` or `weekly`, and the type is
 the path to its rule: Reminders > Morning, or Weekly. Rules are found by those
-names, so keep them. How a message sounds, and how and when it escalates, is
-`%Theme`'s job.
+names, so keep them. `ntm:reminder` loads what a rule says to load and hands it
+to the messenger agent, which follows the rest. How a message sounds, and how
+and when it escalates, is `%Theme`'s job.
 
 Setup creates this database from this template. The user edits a rule, adds to
 it, or deletes it to go back to this template's. These comments are for the
@@ -49,5 +50,4 @@ The weekly reminder is a combination of describing what happened last week, and
 what is scheduled for the upcoming week. By the time you're reading this, you
 should have all of that information in your context.
 
-Don't include any task ids in `%Message-history`. It is fine to include them in
-the message body.
+It is fine to include task ids in the message body.

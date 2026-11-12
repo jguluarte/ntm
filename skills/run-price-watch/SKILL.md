@@ -84,7 +84,8 @@ with its task id, and what the messenger returned, such as
 `Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When the
-messenger returns its delivery block, return that as it came.
+messenger returns its delivery block, end the run with its title and message,
+without the `NOTIFY VIA FINAL REPLY` line.
 
 In chat, tell the user in plain words: each deal with its price, store and
 product link, what each other item came to, and any notes they could fix. When

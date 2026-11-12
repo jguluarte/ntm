@@ -214,7 +214,8 @@ composable on purpose.
 3. `/ntm:clean`
 4. `/ntm:plan --auto week`
 5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
-   week ahead from step 4. End the run with what it returns.
+   week ahead from step 4. End the run with what it returns; a delivery block
+   ends it as its title and message, without the `NOTIFY VIA FINAL REPLY` line.
 
 ###### Reminders
 

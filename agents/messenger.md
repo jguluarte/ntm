@@ -58,6 +58,8 @@ run is what `ntm:style` saves to `%Message-history`.
 Load `ntm-user:backend`, which says how to work with the task list and where
 each database lives, then `ntm:style` and `ntm-user:notify`.
 
+Read ntm's core rules, `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`.
+
 ## What you're given
 
 One input per line.

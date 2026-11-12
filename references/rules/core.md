@@ -54,11 +54,6 @@ was missed: ntm carries the work to today or clears the date.
 When you change a task, change only what you were asked to, and leave the rest
 of it as it was.
 
-The user often adds a task just so they don't forget it; what it takes gets
-worked out later. When they ask for one, make what they asked for, in their
-words, and add no meaning they didn't give it. File it in a project that fits,
-or in none.
-
 ## Databases
 
 ntm keeps its own records in databases on the task list. A `%` name, such as

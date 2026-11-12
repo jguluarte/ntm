@@ -355,15 +355,19 @@ Run /ntm:self-test.
 Tell them, in a line meant to make them smile, that a passing self-test sends a
 success message in their theme, in chat and on their phone.
 
-When they confirmed jobs, say the self-test will find them not scheduled yet,
-and ask them to come back to this chat when it's done.
+When they confirmed jobs, tell them the last step happens back here. For
+example:
+
+> Once the test is done, come back to this chat and I'll schedule your jobs. The
+> test will say in one line that they aren't scheduled yet, and that's expected.
 
 ### Create the jobs
 
-Once they're back and the self-test has passed, create each job they confirmed
-as a scheduled task. Its title is the one Jobs gives it, such as Morning
-reminder. It runs at its days and time in their timezone, on the model they
-confirmed, with push notifications on.
+When they're back, ask whether the self-test passed, since you can't see that
+chat. On their yes, create each job they confirmed as a scheduled task. Its
+title is the one Jobs gives it, such as Morning reminder. It runs at its days
+and time in their timezone, on the model they confirmed, with push notifications
+on.
 
 Its prompt is this frame, with one numbered step for each step Jobs gives it, in
 order. A step that runs a skill takes the frame's shape; the Weekly setup's

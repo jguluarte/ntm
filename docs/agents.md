@@ -1,43 +1,33 @@
 # Agents
 
-An agent does one job for the skills that ask it; you don't run one yourself.
-Some use a database: a record ntm keeps on your task list, which you can read
-and change. A name with a `%` in front, like `%Message-rules`, is one of them,
-written by its default title.
+Behind the skills, three agents each do one job. A skill or scheduled job asks
+an agent when it needs that job done; you don't run one yourself. The messenger
+is the one that sends you messages. The estimator and the shopper hand their
+answers back to the skill that asked.
 
 ## The messenger
 
-The messenger sends your reminders, with one question in mind: what will make
-you actually read this one? A reminder hands it the facts, such as today's
-tasks. It writes the message in your style, takes its tone from the day, and
-sends it through the channel you chose. It has no fixed shape: the same message
-every day stops getting read.
-
-Every reminder goes through it, whether a job sends it on schedule or you run it
-by hand.
-
-### `%Message-rules`
-
-Your `%Message-rules` database says, for each reminder, what its message holds
-and what list goes under it: the evening rule, for example, covers what's still
-open and what got done. A rule can also say when a reminder isn't needed, and
-then nothing is sent. Edit a rule to change its reminder, or delete it to go
-back to ntm's own. How the message sounds is your style's job.
+The messenger writes and sends everything ntm sends to your phone: your
+reminders, your weekly plan and the price watch's deals. It has one question in
+mind: what will make you actually read this one? It writes each message in the
+style you set up, takes its tone from the day, and sends it the way you chose to
+be notified. It has no fixed shape, because the same message every day stops
+getting read.
 
 ## The estimator
 
-The estimator works out how big each task is, the way you would size it, and
-whether you could do all of it in one go after a workday. An estimate is in
-hours unless your settings say otherwise, and goes on the last line of the
-task's description in full words, such as `Estimate: 2 hours`.
+The estimator works out how big each task is, on your own scale, and whether you
+could do all of it in one go after a workday. When you review your task list
+with ntm, it proposes each task's estimate and you decide. It learns from the
+estimates you decide on, so its guesses get closer to yours over time.
 
-When ntm picks tasks to plan, it asks the estimator how long each one takes. In
-a review of the task list with you, the estimator proposes each task's estimate
-and records the one you decide on.
+Planning uses the estimates to pick tasks that fit your day.
 
-### `%Estimator-log`
+## The shopper
 
-Your `%Estimator-log` database is how the estimator's guesses get closer to
-yours, review after review. It holds what it has learned about how you work: how
-you like tasks written and broken up, how you like a review to go, and what you
-keep correcting. It also holds each estimate you decided, beside its guess.
+The shopper checks one thing you're watching to buy: is it a good deal today? It
+looks across stores you'd trust, checks today's price on each store's own page,
+and notes what it found on the task.
+
+The daily price watch asks a shopper about each item you're watching, then the
+messenger tells you about the deals.

@@ -79,7 +79,7 @@ Goes through your task list with you, a project at a time: closes what's done or
 no longer needed, then estimates each task and breaks up the big ones. Stop
 whenever you like.
 
-### `/ntm:fix-task-list`
+### `/ntm:clean`
 
 Clears dates on previously planned tasks that didn't finish, and removes pause
 dates that have since passed.

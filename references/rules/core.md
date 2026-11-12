@@ -86,8 +86,8 @@ A skill returns text; the job or chat that ran it decides what reaches the user.
 All notifications are handled through `ntm-user:notify`.
 
 When a skill fails, it returns one line that starts with its own name:
-`Fix-task-list FAILED: <what went wrong>`. In chat, tell the user the same in
-plain words, naming tasks as Talking to the user about tasks says.
+`Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
+words, naming tasks as Talking to the user about tasks says.
 
 A job's final reply is what its last step returned, in one line. When a step
 returned a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything

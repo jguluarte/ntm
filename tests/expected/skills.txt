@@ -1,4 +1,4 @@
-fix-task-list
+clean
 help
 pause
 plan

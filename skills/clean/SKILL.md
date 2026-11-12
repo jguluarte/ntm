@@ -1,5 +1,5 @@
 ---
-name: fix-task-list
+name: clean
 description: |-
     Tidies the user's task list by:
     - Clearing stale planned dates
@@ -8,14 +8,14 @@ description: |-
     This is run via scheduled job. It reports back the things it changed.
 ---
 
-# ntm:fix-task-list
+# ntm:clean
 
 Cleans up stale information in the backend.
 
 ## Usage
 
 ```
-/ntm:fix-task-list
+/ntm:clean
 ```
 
 ## Fix
@@ -39,5 +39,5 @@ Removed paused date <as the list had it>
 ```
 
 When there were none, return `Nothing to fix.`; when the task list can't be
-read, `Fix-task-list FAILED: <what went wrong>`. In chat, tell the user the same
-in plain words.
+read, `Clean FAILED: <what went wrong>`. In chat, tell the user the same in
+plain words.

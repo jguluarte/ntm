@@ -20,8 +20,7 @@ The type picks the user's message rule, which says what the message holds.
 
 ## Setup
 
-Load `ntm-user:backend` and their `%Message-rules`. Then run
-`/ntm:ready-check --notify-failure <type>-reminder`, such as `morning-reminder`.
+Load `ntm-user:backend` and their `%Message-rules`. Then run `/ntm:ready-check`.
 If it fails, end the run with its result line.
 
 ## The message

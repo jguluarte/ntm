@@ -5,12 +5,12 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 ## The repo
 
 A Claude plugin: markdown skills and agents, and a few JSON files. The base
-plugin is `ntm` and the user's generated plugin is `ntm-user`, on main and in
-0.4 alike. 0.4 is built on `release-0.4`, an integration branch: branch from it
-and open every PR against it. It may hold mismatches between files while each
-file is rebuilt in its own PR; it only has to be right before release. Don't
-author from the `v0.4` branch, the old 0.4 design page, or his installed 0.3.0
-copy.
+plugin is `ntm` and the user's generated plugin is `ntm-user`. 0.5 is built on
+`release-0.5`, an integration branch: branch from it and open every PR against
+it. It may hold mismatches between files while each file is rebuilt in its own
+PR; it only has to be right before release. Don't author from the old
+`release-0.4` or `v0.4` branches (kept on the remote for history for now), or
+his installed copy.
 
 ## Justin owns the plugin
 
@@ -30,7 +30,7 @@ copy.
 
 - Each PR is a chunk of work a person can review and know in one sitting. Each
   thing in it lands with the work that first needs it.
-- Small PRs against `release-0.4`, one Opus agent per PR, briefed with
+- Small PRs against `release-0.5`, one Opus agent per PR, briefed with
   `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
   agents; the orchestrator does any fan-out.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
@@ -43,9 +43,9 @@ copy.
   agents don't.
 - Merges happen on his say-so, and what lands is intentional commits. Usually
   that's a squash merge with a written message, one short paragraph on the net
-  change. When each commit is already intentional, as when `release-0.4` merges
+  change. When each commit is already intentional, as when `release-0.5` merges
   into `main`, it's a merge commit. Merged branches auto-delete.
-- Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.4`
+- Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.5`
   in with a merge commit.
 - Versions are set at merge; PR branches don't change them. He doesn't want
   patch version bumps.

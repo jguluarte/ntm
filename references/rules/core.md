@@ -94,5 +94,5 @@ words, naming tasks as Talking to the user about tasks says.
 
 A job's final reply is what its last step returned, in one line. When a step
 returned a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything
-after that line, as written, and nothing else: the scheduled task's own push
-shows it.
+after that line, as written, and nothing else unless the skill says what follows
+it: the scheduled task's own push shows it.

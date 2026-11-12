@@ -31,19 +31,6 @@ Each label ntm uses, by ntm's name, with its name on the user's task list.
 | `$has-amazon-alert`   | `has-amazon-alert`     |
 | `$amazon-unavailable` | `amazon-unavailable`   |
 
-## Jobs
-
-<!--
-The title of each job the user chose in setup, or `None.` when they chose none.
-Each job's days, time and model live in its scheduled task.
--->
-
-- Weekly setup
-- Morning reminder
-- Afternoon reminder
-- Evening reminder
-- Price watch
-
 ## Planning
 
 <!--

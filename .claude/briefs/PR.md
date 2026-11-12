@@ -26,11 +26,11 @@ When your branch's commits are done:
 
     ```sh
     gh pr create -R jguluarte/ntm \
-        --base release-0.4 --head <branch> \
+        --base release-0.5 --head <branch> \
         --title "<plain title>" --body-file <body file>
     ```
 
-    The base is `release-0.4`, the integration branch for 0.4.
+    The base is `release-0.5`, the integration branch for 0.5.
 
 4. End with the pull request's URL and your report as your final message. When
    the owner comments, the orchestrator sends you the comments.

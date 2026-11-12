@@ -1,16 +1,15 @@
 # ntm decisions
 
-What's decided and still shapes the work to come: the 0.4 shape being built,
-what's left for release, the patterns every rewritten file follows, what was
-declined or deferred, and what's still unknown. What the plugin already does is
-recorded by the plugin itself; read the file. The working rules are in
-`CLAUDE.md`. When something changes, edit it here; don't add a dated entry.
+What's decided and still shapes the work to come: the plugin's shape on main,
+the 0.5 work, the patterns every rewritten file follows, what was declined or
+deferred, and what's still unknown. What the plugin already does is recorded by
+the plugin itself; read the file. The working rules are in `CLAUDE.md`. When
+something changes, edit it here; don't add a dated entry.
 
-## The 0.4 shape
+## The plugin's shape
 
-Built on `release-0.4`; main stays installable as 0.3. "The base" is the
-published plugin, `ntm`. "The user plugin" is `ntm-user`, which setup generates
-and which holds only what's tailored to this user.
+"The base" is the published plugin, `ntm`. "The user plugin" is `ntm-user`,
+which setup generates and which holds only what's tailored to this user.
 
 ### The base
 
@@ -91,26 +90,44 @@ Publishing waits for the test-drives, and needs:
 
 - `setup` never sending or creating without being asked
 - a privacy page
-- a LICENSE file, an icon, and a homepage and repository in `plugin.json`
+- an icon, and a homepage and repository in `plugin.json`
 - no credentials or brand names
 
 How the published release is identified is open.
 
-## Left for release
+## 0.5: the Theme
 
-### Docs and tests
+Built on `release-0.5`.
 
-The README describes the two plugins and the first steps. A privacy page says
-what leaves a run. A test holds the build to the expected user plugin skills.
+### The goal
 
-### The owner's fresh install
+Reminders vary more. Today the frame repeats: "darling" is in 9 of 16 lines, and
+11 of 16 open the same way.
 
-A fresh setup: turn off or delete the 0.3 jobs, install the 0.4 base, run setup.
-Findings become small PRs on `release-0.4`.
+### The shape
+
+In Justin's words: "the message history should probably support whatever theme
+components are needed ... that way it can have whatever context is needed for
+any kind of theme". The theme says what each history entry records, and
+`ntm:style` writes and reads that record.
+
+### The work
+
+- `%Message-history` holds the record the theme describes.
+- The theme guide, `skills/setup/references/theme.md`, gets spots for a cast of
+  speakers, motif groups, ways to play each motif, builds (how a line is put
+  together) and per-part rests.
+- `ntm:style` rests from the records, rolls its picks in the shell, keeps a
+  day's episode, and builds the joke from the task.
+- Justin's `%Theme` is redone with him in chat after the guide lands.
+
+### Held back
+
+Writing three drafts per message.
 
 ### Release
 
-`release-0.4` merges into main, and the version is tagged there.
+`release-0.5` merges into main, and the version is tagged there.
 
 ## Patterns every rewritten file follows
 
@@ -260,31 +277,26 @@ An Amazon alert steps database.
 
 ## Deferred
 
-After 0.4.0, or when the owner raises them.
+After 0.5, or when the owner raises them.
 
 ### The update skill
 
 `update` waits until ntm is shared with other people. Until then, a change to
 someone's setup is a fresh setup or an edit to `%Settings`.
 
-### Weekday and weekend message rules
-
-Message rules that differ by weekday and weekend. Weekend reminders would plan
-nothing and cover only tasks planned for that day.
+When he shares, it may become "any new features I might want?": it compares the
+user's setup to the base plugin, finds what's new, and sets that up in their
+backend, since everything that changes lives there.
 
 ### A closer look at the Message rules template
 
 The owner asked to be reminded at a calm point.
 
-### A quiet evening
-
-The evening reminder skips the push when everything was done by the afternoon
-and nothing changed since.
-
 ### Recurring reminders
 
 At an interval (pet care, medicine), where the next date follows from when it
-was last done. Likely 1.1; needs the weekend reminders.
+was last done. It comes after 0.5. Justin is first trying it with Linear and his
+settings, and it may not need a feature.
 
 ### A price watch talk
 
@@ -310,7 +322,7 @@ into `ntm-user`.
 ### The size of the backend skill
 
 How big is `ntm-user:backend` for a Linear user with both features, and with
-task management only? 0.4 is for tokens; this proves it.
+task management only? The plugin's shape is for tokens; this proves it.
 
 ### A list in a Claude Doc or an artifact
 
@@ -332,8 +344,6 @@ Not handled by the plugin yet.
 
 ## Justin's installed copy
 
-ntm 0.3.2, rebuilt 2026-11-08, with five jobs on Opus. Touch none of it unasked.
-
-For his fresh 0.4 setup: the weekly planning plans weekdays; the morning plans
-today if it's empty and not paused. Both aim for an hour or less where they can,
-without ruling out bigger tasks; a bigger task is the signal to break it up.
+ntm 0.4.0 and ntm-user 0.4.0 in his Cowork, migrated 2026-11-11, with five jobs:
+Price watch, Morning, Afternoon and Evening reminders, and Weekly planning.
+Touch none of it unasked.

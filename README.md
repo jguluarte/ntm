@@ -119,8 +119,9 @@ its own each day.
 ### `/ntm:run-price-watch`
 
 Checks the things you want to buy, the tasks in the project you picked for them
-in setup, and tells you when one is a good deal today. A scheduled job runs it
-once a day; run it yourself to check now.
+in setup, and tells you when one is a good deal today. Its daily result, in the
+scheduled task, also lists any item that needs something from you, such as a
+target price.
 
 ### `/ntm:sync-price-watch-to-amazon`
 

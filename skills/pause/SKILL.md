@@ -1,0 +1,69 @@
+---
+name: pause
+description: >-
+    The user's pauses, the days when nothing on their todo list gets planned
+    automatically. Pauses or unpauses days, or shows the pauses, with the user
+    in chat ("pause Friday", "pause next week", "unpause the 12th", "show my
+    pauses").
+---
+
+# ntm:pause
+
+A pause is a day, or a span of days, when nothing gets planned automatically.
+Planning skips paused days.
+
+## Usage
+
+```
+/ntm:pause [<what to change, in words>]
+```
+
+With nothing after it, show the pauses. With words, change the pauses as they
+say, then show them.
+
+## Setup
+
+Load `ntm-user:backend` to read the user's conventions. Read the Paused dates
+part of `%Paused-dates`. Today is the date in the timezone under About you in
+`%Settings`.
+
+## Keeping `%Paused-dates`
+
+The Paused dates part holds one list item per pause, in date order, with the
+reason in the user's words:
+
+| A pause   | Its list item                              |
+| --------- | ------------------------------------------ |
+| One day   | `- 2026-11-26: Thanksgiving`               |
+| A span    | `- 2026-12-21 to 2026-12-31: Winter break` |
+| No pauses | `None.`                                    |
+
+A span includes both its ends. A pause comes off the list once it has ended.
+
+## Changing pauses
+
+### 1. Work out the days
+
+Read the user's words as a person would: "Friday" is the coming one.
+
+### 2. Change the list
+
+Add, shorten, split or remove pauses as they say. Their words are the go-ahead;
+don't ask for approval. A new pause's reason is in their words, or `Paused` when
+they give none.
+
+### 3. Planned work on a paused day
+
+When a newly paused day already has tasks planned on it, name them and offer to
+clear their dates. Clear them when the user says yes.
+
+### 4. Save
+
+Save the list, with any pauses that have ended taken off.
+
+## Result
+
+Show the user the pauses as they stand, each date with its weekday, so a wrong
+guess about a day is easy to spot.
+
+If the task list can't be read, say what went wrong instead.

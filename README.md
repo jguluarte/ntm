@@ -27,6 +27,11 @@ These skills get ntm running and keep it working. You run setup and the
 self-test once, when you start; after that ntm mostly checks itself, and you can
 run a check by hand when something seems off.
 
+### `/ntm:help`
+
+Shows you this page in the chat, any time you want to know what ntm does or what
+one of its skills is for.
+
 ### `/ntm:setup`
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.

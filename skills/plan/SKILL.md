@@ -31,8 +31,7 @@ Run `/ntm:ready-check`, unless it already ran in this session. It loads
 `ntm-user:backend` and `%Settings`; if it fails, end the run with its result
 line.
 
-Read ntm's rules in `references/rules/`: `core.md`, `task-management.md` and
-`terminology.md`.
+Read ntm's rules in `references/rules/`: `core.md` and `task-management.md`.
 
 Read the Paused dates part of `%Paused-dates`. Each item is a paused day, or a
 range with both ends included, then an optional reason.

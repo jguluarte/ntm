@@ -166,11 +166,11 @@ Then save, as Saving the features says.
 
 ##### Databases
 
-| Database         | For                                |
-| ---------------- | ---------------------------------- |
-| `%Message-rules` | What each reminder's message says  |
-| `%Paused-dates`  | The days when nothing gets planned |
-| `%Estimator-log` | How estimating works with them     |
+| Database         | For                                   |
+| ---------------- | ------------------------------------- |
+| `%Message-rules` | What each reminder's message says     |
+| `%Paused-dates`  | The days that get nothing new planned |
+| `%Estimator-log` | How estimating works with them        |
 
 ##### Jobs
 

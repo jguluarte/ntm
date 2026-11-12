@@ -110,8 +110,8 @@ has additional context in `%Message-rules`, include that as required.
 
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, dates, counts and names
-exactly. Word each task briefly, as the conventions say: a few natural words
-with the id in parentheses, never the task's full title.
+exactly. Word each task briefly: a few natural words with the id in parentheses,
+never the task's full title.
 
 ### 4. Put it in the user's style
 

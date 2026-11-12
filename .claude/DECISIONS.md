@@ -115,7 +115,8 @@ any kind of theme". The theme says what each history entry records, and
 
 - `%Message-history` holds the record the theme describes.
 - The theme guide, `skills/setup/references/theme.md`, gets spots for a cast of
-  speakers, motif groups, ways to play each motif, builds and per-part rests.
+  speakers, motif groups, ways to play each motif, builds (how a line is put
+  together) and per-part rests.
 - `ntm:style` rests from the records, rolls its picks in the shell, keeps a
   day's episode, and builds the joke from the task.
 - Justin's `%Theme` is redone with him in chat after the guide lands.
@@ -321,7 +322,7 @@ into `ntm-user`.
 ### The size of the backend skill
 
 How big is `ntm-user:backend` for a Linear user with both features, and with
-task management only? 0.4 is for tokens; this proves it.
+task management only? The plugin's shape is for tokens; this proves it.
 
 ### A list in a Claude Doc or an artifact
 

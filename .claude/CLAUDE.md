@@ -5,12 +5,12 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 ## The repo
 
 A Claude plugin: markdown skills and agents, and a few JSON files. The base
-plugin is `ntm` and the user's generated plugin is `ntm-user`, on main and in
-0.4 alike. 0.5 is built on `release-0.5`, an integration branch: branch from it
-and open every PR against it. It may hold mismatches between files while each
-file is rebuilt in its own PR; it only has to be right before release. Don't
-author from the old `release-0.4` or `v0.4` branches (kept on the remote for
-history for now), or his installed copy.
+plugin is `ntm` and the user's generated plugin is `ntm-user`. 0.5 is built on
+`release-0.5`, an integration branch: branch from it and open every PR against
+it. It may hold mismatches between files while each file is rebuilt in its own
+PR; it only has to be right before release. Don't author from the old
+`release-0.4` or `v0.4` branches (kept on the remote for history for now), or
+his installed copy.
 
 ## Justin owns the plugin
 

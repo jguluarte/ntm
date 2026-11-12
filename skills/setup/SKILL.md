@@ -279,9 +279,9 @@ Present the price watch as one daily job, early each morning. For example:
 
 What it runs, for Create the jobs:
 
-| Job         | Runs              |
-| ----------- | ----------------- |
-| Price watch | `run-price-watch` |
+| Job         | Runs                                            |
+| ----------- | ----------------------------------------------- |
+| Price watch | `/ntm:ready-check`, then `/ntm:run-price-watch` |
 
 #### Saving the features
 
@@ -358,7 +358,8 @@ Run /ntm:self-test.
 ```
 
 Tell them, in a line meant to make them smile, that a passing self-test sends a
-success message in their theme, in chat and on their phone.
+success message in their theme: on their phone with Pushover, or in the chat
+otherwise.
 
 When they confirmed jobs, tell them the last step happens back here. For
 example:

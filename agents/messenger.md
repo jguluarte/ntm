@@ -95,8 +95,8 @@ it has slipped.
 
 For any other type, read the user's `%Message-rules` and find the rule your
 `type` names: `reminders.morning` is the `reminders` rule with its `morning`
-part, and `weekly` is the `weekly` rule. Follow it, with the facts you were
-handed.
+part, and `weekly` is the `weekly` rule. Follow it with the facts you were
+handed: they are what it says to load, and the days slipped are its carry-over.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.

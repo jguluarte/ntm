@@ -1,29 +1,37 @@
 # Connectors
 
-Neurodivergent Task Manager (ntm) holds no connector of yours; what it needs
-depends on your todo list and your channel, both named in `ntm-user:settings`.
+Ntm works on a task list you own and reaches you on your phone, so it needs a
+few things connected. `/ntm:setup` walks you through each one.
 
-A scheduled task inherits the connectors of the session that creates it, so the
-list's connector must be attached when `/ntm:configure-schedule` runs.
+## Your task list
 
-## Your todo list, on Linear
+Linear is the task list ntm is built around. It's free for individuals, and
+setup helps you make an account and add Linear on the Connectors tab in Claude's
+settings. The plugin setup builds for you carries the same connection, so your
+scheduled jobs reach your list too.
 
-Linear's connector, added on the Connectors tab in Claude's settings;
-`/ntm:configure-todo-list` walks you through it. Free for individuals.
-
-## Your todo list, on anything else
-
-Your own connector for that backend. Todo list in `ntm-user:settings` says how
-each operation is done; `/ntm:configure-todo-list` writes it with you and
-`/ntm:self-test` proves it.
+Your tasks can live somewhere else instead, through that service's own
+connector. That's a custom setup you work out with your agent during setup, and
+`/ntm:self-test` shows whether it holds.
 
 ## Notifications
 
-None. Pushover is reached over HTTPS from the run, with the keys in
-`ntm-user:settings`. The claude-push channel uses the scheduled task's own
-completion push.
+Reminders reach your phone one of two ways, and you pick one in setup.
 
-## Amazon alert sync
+### Pushover
 
-Claude's built-in browser, or your own through the Claude extension. Only for
-`/ntm:sync-price-watch-to-amazon`.
+Reminders arrive in their own app, which your phone's focus settings can treat
+apart from everything else. It needs an inexpensive license you buy, the
+Pushover app on your phone, and two keys from pushover.net: your user key and an
+app token. Setup saves the keys in your `%Settings` and sends one test push.
+
+### The AI app's own push
+
+Nothing to buy or set up: you need the AI app on your phone, with its
+notifications allowed. Each reminder arrives as a push when its job finishes.
+
+## Amazon price alerts
+
+Only if you turn them on for the price watch. `/ntm:sync-price-watch-to-amazon`
+sets the alerts from a browser signed in to Amazon: Claude's built-in browser,
+or your own through the Claude extension. Amazon needs no connector.

@@ -1,8 +1,6 @@
 # Terminology
 
-The words ntm's skills and agents share. How ntm uses Linear, in
-`skills/setup/references/backends/how-ntm-uses-linear.md`, shows most of them on
-a real task list.
+The words ntm's skills and agents share.
 
 ## Task list
 
@@ -22,14 +20,14 @@ on a project counts on every task in it.
 ## Label
 
 A tag on a task or a project. A label ntm uses is written with a `$`, such as
-`$price-watch`; the `$` isn't part of the name, and `ntm-user:backend` gives the
-real one. Any other label is the user's own.
+`$price-watch`; the `$` isn't part of the name, and `%Settings` gives the real
+one, under Labels. Any other label is the user's own.
 
 ## Planned date
 
 The day a task's work is planned for. Planning sets and moves it, and clears it
-only when the user agrees. **NEVER treat a planned date as a deadline.** A
-planned date before today, on a task that's still open, is "stale".
+only when the user agrees. A planned date before today, on a task that's still
+open, is "stale".
 
 ## Status groups
 

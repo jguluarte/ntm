@@ -75,7 +75,7 @@ When it has `$has-amazon-alert`, say the next Amazon sync removes its alert.
 ### Trust or block a store
 
 Add a comment to its task in their words, with the store's domain and today's
-date. A store they mean for every item goes under Shopping in `%Settings`.
+date.
 
 ## Result
 

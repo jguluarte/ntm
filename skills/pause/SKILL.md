@@ -1,7 +1,7 @@
 ---
 name: pause
 description: >-
-    The user's pauses, the days when nothing on their todo list gets planned
+    The user's pauses, the days when nothing on their task list gets planned
     automatically. Pauses or unpauses days, or shows the pauses, with the user
     in chat ("pause Friday", "pause next week", "unpause the 12th", "show my
     pauses").
@@ -17,8 +17,9 @@ A pause is a day, or a span of days, when nothing gets planned automatically.
 /ntm:pause [<what to change, in words>]
 ```
 
-With nothing after it, show the pauses. With words, change the pauses as they
-say, then show them.
+With nothing after it, take off any pauses that have ended, save if that changed
+the list, and show the pauses. With words, change the pauses as they say, then
+show them.
 
 ## Setup
 
@@ -53,7 +54,7 @@ they give none.
 
 ### 3. Save
 
-Save the list, with any pauses that have ended taken off.
+Save the list.
 
 ### 4. Planned work on a paused day
 

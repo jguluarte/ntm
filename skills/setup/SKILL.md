@@ -281,9 +281,9 @@ What it runs, for Create the jobs:
 Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
 template, and say in a line where each one lives. Add where each one lives to
-`ntm-user:backend`. Write the settings into the `%Settings` database, and under
-its Labels keep only the labels you created, with their real names. Keep the
-jobs and their model for Create the jobs, after Notifications.
+`ntm-user:backend`. Write the settings into the `%Settings` database, keeping
+only the parts their features use and the labels you created, with their real
+names. Keep the jobs and their model for Create the jobs, after Notifications.
 
 ### Create a theme
 

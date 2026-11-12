@@ -1,5 +1,10 @@
 # Opening your pull request, and answering the owner's comments
 
+## The README
+
+A branch that adds, changes, renames or removes a skill updates that skill's
+entry in `README.md` in the same PR. `/ntm:help` answers from the README.
+
 ## Open it
 
 When your branch's commits are done:

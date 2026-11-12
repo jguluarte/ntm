@@ -2,7 +2,7 @@
 name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
-    every backend must: check that setup made their databases and labels, then
+    every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a throwaway
     task, and write and read a throwaway database, then clean up and have the
     messenger agent send a success message. Each step's result is shown as it
@@ -48,6 +48,12 @@ The step passes when setup made everything it was supposed to: every database
 `ntm-user:backend` says where it lives opens, and every label under Labels in
 `%Settings` is on the task list, by its name there. Name each one that's
 missing.
+
+Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
+skills it runs. With Planning in `%Settings`, expect the weekly setup and the
+morning, afternoon and evening reminders; with Shopping, the price watch. A job
+you don't find doesn't fail the step. When you can't see their scheduled tasks,
+say you couldn't check the jobs, and go on.
 
 ### 3. Create a task
 
@@ -122,8 +128,14 @@ fails the step.
 
 ## Result
 
-One line: `Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a
-failure, add the fix when it's plain: for a ready-check failure, the fix in its
-failure line, which is `/ntm:setup` when `ntm-user` isn't installed; for
-anything missing from the user's setup, or a call that errored on a backend the
-user described themselves, `/ntm:update`.
+`Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a failure, add
+the fix when it's plain: for a ready-check failure, the fix in its failure line,
+which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
+the user's setup, or a call that errored on a backend the user described
+themselves, telling ntm in chat what to fix.
+
+When step 2 didn't find some jobs, add one line naming them, and how to schedule
+them if they want them. For example:
+
+> No weekly setup or reminders are scheduled. If you want them, run `/ntm:setup`
+> again, or tell ntm to set them up.

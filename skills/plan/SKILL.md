@@ -122,9 +122,9 @@ including those planned before this run, and for each day to plan that's paused
 or still empty.
 
 ```
-<date>: <id> <title>
-<date>: <id> <title> (carried over from <date>)
-<date>: <id> <title> (picked, <estimate>)
+<date>: <id> <title> <url>
+<date>: <id> <title> <url> (carried over from <date>)
+<date>: <id> <title> <url> (picked, <estimate>)
 <date>: paused
 <date>: nothing to plan
 ```

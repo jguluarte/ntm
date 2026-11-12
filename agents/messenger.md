@@ -18,9 +18,10 @@ description: >-
             morning message."
 
             <commentary>
-                The skill hands the messenger only the type; the messenger
-                follows the user's rule for it, owns the composing, the style
-                and the channel, and returns Sent: or a delivery block.
+                The skill hands the messenger the type, today's date and
+                today's tasks with their days slipped; the messenger follows
+                the user's rule for it, owns the composing, the style and the
+                channel, and returns Sent: or a delivery block.
             </commentary>
         </example>
 
@@ -68,18 +69,24 @@ Usage:
     [app token: <token>]
 
     type: <rule path>
+    [record_task_ids: false]
     [app token: <token>]
 
 Inputs:
     type:       freeform, or the path to a rule in the user's
                 %Message-rules, such as reminders.morning or weekly
     message:    for freeform, its one fact: a line of plain text
+    record_task_ids:
+                true to record the message's task ids in %Message-history,
+                as ntm:reminder sets it; false when left out
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```
 
 For `weekly`, the job also hands you last week and the week ahead, as it found
-them.
+them. For a reminder, `ntm:reminder` hands you today's date and today's tasks,
+each with whether it's done and the days it has slipped, and may mark a task to
+press harder.
 
 ## Sending a message
 
@@ -90,12 +97,9 @@ them.
 
 For any other type, read the user's `%Message-rules` and find the rule your
 `type` names: `reminders.morning` is the `reminders` rule with its `morning`
-part, and `weekly` is the `weekly` rule. Follow it, loading what it asks for
-yourself.
-
-Today's tasks are every task planned for today, open and done, so an evening
-where everything got done still gets its message. A task has carried over when
-its id is in the `ids` of earlier days' entries in `%Message-history`.
+part, and `weekly` is the `weekly` rule. Follow it with the facts you were
+handed, which are what it says to load. Where it talks about tasks carrying
+over, use their days slipped.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
@@ -121,8 +125,8 @@ The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
-the message is about, unless the message rule says otherwise; carry-over is
-counted from that list, never from the message text.
+the message is about, with the days slipped, any task marked to press harder and
+which are done, and `record_task_ids` when you were given them.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational
@@ -138,6 +142,8 @@ How long a notification may be belongs to the channel, so `ntm-user:notify` owns
 the limit and you never count characters. When it answers `Notify TOO LONG`,
 tighten the message, keeping any task ids it names, and send once more. If that
 is too long as well, return `Notify FAILED:` with its reason.
+
+Then add the `%Message-history` entry, as `ntm:style` says.
 
 ## What you return
 

@@ -285,7 +285,8 @@ template, and say in a line where each one lives. Add where each one lives to
 `ntm-user:backend`. Write the settings into the `%Settings` database, with the
 labels' real names, dropping Planning when they skipped task management,
 Shopping when they skipped price watch, and the label rows for labels you didn't
-create. Keep the jobs and their model for Create the jobs, after Notifications.
+create. Under Jobs in `%Settings`, list the title of each job they confirmed.
+Keep the jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
@@ -342,11 +343,27 @@ the AI app's own push, build it from the same file without Keys or
 `--app-token`. In place of Send and Result, it returns `NOTIFY VIA FINAL REPLY`,
 then the title, then the message, for the job to end its run with.
 
+### Install and self-test
+
+Package their user plugin and have them install it. Then hand off with one
+prompt for a new chat:
+
+```
+Run /ntm:self-test.
+```
+
+Tell them, in a line meant to make them smile, that a passing self-test sends a
+success message in their theme, in chat and on their phone.
+
+When they confirmed jobs, say the self-test will find them not scheduled yet,
+and ask them to come back to this chat when it's done.
+
 ### Create the jobs
 
-Create each job they confirmed as a scheduled task. Its title is the one Jobs
-gives it, such as Morning reminder. It runs at its days and time in their
-timezone, on the model they confirmed, with push notifications on.
+Once they're back and the self-test has passed, create each job they confirmed
+as a scheduled task. Its title is the one Jobs gives it, such as Morning
+reminder. It runs at its days and time in their timezone, on the model they
+confirmed, with push notifications on.
 
 Its prompt is this frame, with one numbered step for each step Jobs gives it, in
 order. A step that runs a skill takes the frame's shape; the Weekly setup's
@@ -360,15 +377,3 @@ Timezone: <Timezone>.
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its
 own or stops at an action that needs approval.
-
-### Install and self-test
-
-Package their user plugin and have them install it. Then hand off with one
-prompt for a new chat:
-
-```
-Run /ntm:self-test.
-```
-
-Tell them, in a line meant to make them smile, that a passing self-test sends a
-success message in their theme, in chat and on their phone.

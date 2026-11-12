@@ -32,8 +32,8 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 In a reminder, a `reminders.*` message, for each task id you were given, count
 the earlier days with an entry that lists it in `ids`. The theme's Responding to
-procrastination part gives the task's level for that count; any other message
-has no levels.
+procrastination part gives the task's level for that count. Any other message
+skips this step: its tasks have no level.
 
 ### 2. Write it
 
@@ -45,7 +45,7 @@ rest as the theme's `Repeat limit:` line says.
 
 ### 3. Give it a title
 
-Give it a title in the same style that says what the message is about. The
+Give it a title, in the same style, that says what the message is about. The
 type's name alone isn't a title.
 
 ## Keeping `%Message-history`
@@ -69,6 +69,5 @@ Then drop the entries older than the `Keep:` line, and save.
 When the user asks for something in their style, write it the same way and show
 it to them.
 
-When they ask to change how their messages read, work out with them the change
-to the part of `%Theme` their words are about, show it, and save it when they
-say yes.
+When they ask to change how their messages read, find the part of `%Theme` they
+mean, draft the change with them, show it, and save it when they say yes.

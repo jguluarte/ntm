@@ -44,8 +44,11 @@ Everything else they set up lives in their databases and their jobs.
 
 ### Already set up
 
-If `ntm-user:backend` loads, the user is already set up. Say in a line that
-`/ntm:update` is how they change their setup, and stop.
+If `ntm-user:backend` loads, the user is already set up. When their jobs aren't
+scheduled, do only the jobs: ask about them as the jobs round does for their
+features, then create them as Create the jobs says. Otherwise, say in a line
+that to change their setup, they tell ntm what to change, or edit their
+`%Settings`, and stop.
 
 ## The steps
 
@@ -286,8 +289,7 @@ template, and say in a line where each one lives. Add where each one lives to
 `ntm-user:backend`. Write the settings into the `%Settings` database, with the
 labels' real names, dropping Planning when they skipped task management,
 Shopping when they skipped price watch, and the label rows for labels you didn't
-create. Under Jobs in `%Settings`, list the title of each job they confirmed.
-Keep the jobs and their model for Create the jobs, after the self-test.
+create. Keep the jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 

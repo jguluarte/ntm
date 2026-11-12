@@ -36,3 +36,10 @@ only.
 ### `/ntm:fix-task-list`
 
 Clears dates on previously planned tasks that didn't finish.
+
+### `/ntm:style`
+
+Writes your reminders in the theme you created during setup, so they sound like
+something you enjoy and keep changing instead of repeating. A task you keep
+putting off gets a stronger nudge each day. Ask it to write something in your
+style, or to change how your reminders sound.

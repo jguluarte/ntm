@@ -30,9 +30,10 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ### 1. Count the days each task has carried over
 
-In a reminder, for each task id you were given, count the earlier days with an
-entry that lists it in `ids`. The theme's Responding to procrastination part
-gives the task's level for that count; any other message has no levels.
+In a reminder, a `reminders.*` message, for each task id you were given, count
+the earlier days with an entry that lists it in `ids`. The theme's Responding to
+procrastination part gives the task's level for that count; any other message
+has no levels.
 
 ### 2. Write it
 
@@ -52,15 +53,14 @@ type's name alone isn't a title.
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its entry: one JSON line at the top of the Entries part.
 
-| Field  | What it holds                                              |
-| ------ | ---------------------------------------------------------- |
-| `date` | The date it went out, such as `2026-11-09`                 |
-| `ids`  | The task ids you were given, such as `["ABC-12"]`, or `[]` |
-| `line` | The message as sent                                        |
+| Field  | What it holds                               |
+| ------ | ------------------------------------------- |
+| `date` | The date it went out, such as `2026-11-09`  |
+| `ids`  | The task ids, such as `["ABC-12"]`, or `[]` |
+| `line` | The message as sent                         |
 
-A reminder, a `reminders.*` type, records its task ids, so a task that keeps
-slipping changes how the reminders talk to the user; any other message records
-`[]`.
+Only a reminder records its task ids, so a task that keeps slipping changes how
+later reminders talk to the user. Any other message records `[]`.
 
 Then drop the entries older than the `Keep:` line, and save.
 

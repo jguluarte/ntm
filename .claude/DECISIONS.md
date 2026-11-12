@@ -79,9 +79,9 @@ below.
 
 ### Versions
 
-The user plugin's version is the exact version of the installed `ntm` it was
-built from. `ntm-user:backend` opens with a Built line naming its version, the
-`ntm` version it was built from, and the date.
+Each time the user plugin is built, its version mirrors the installed `ntm`'s
+exactly, `major.minor.patch`. `ntm-user:backend` opens with a Built line naming
+its version, the `ntm` version it was built from, and the date.
 
 0.3 installs start fresh. The base and the user plugin update together.
 

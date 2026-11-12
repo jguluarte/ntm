@@ -72,9 +72,8 @@ Every job starts with `/ntm:ready-check`.
 
 ### Setup
 
-`setup` is the wizard. Setup's build is the one rebuild path. A change to
-someone's setup is a fresh setup or an edit to `%Settings`. The `update` skill
-waits until ntm is shared with other people.
+`setup` is the wizard. Setup's build is the one rebuild path. `update` is
+deferred, below.
 
 ### Versions
 

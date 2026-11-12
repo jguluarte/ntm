@@ -43,8 +43,8 @@ don't message the user.
 
 Load `ntm-user:backend`, then read Shopping in `%Settings`: the country the
 stores deliver to and the currency every price is in. Read the price watch
-rules, `references/rules/price-watch.md`: what a watched task holds and its
-defaults.
+rules, `${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`: what a watched
+task holds and its defaults.
 
 ## The check
 

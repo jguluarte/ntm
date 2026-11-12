@@ -22,8 +22,8 @@ today?
 ## Setup
 
 Load `ntm-user:backend` and read the price watch rules,
-`references/rules/price-watch.md`. Then run `/ntm:ready-check`. If it fails, end
-the run with its result line.
+`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`. Then run
+`/ntm:ready-check`. If it fails, end the run with its result line.
 
 ## The run
 

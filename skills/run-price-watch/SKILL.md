@@ -27,9 +27,11 @@ the run with its result line.
 
 ## The run
 
-### 1. Find the watch
+### 1. Find pricewatch items
 
-The watch is the open tasks `$price-watch` covers.
+These are the open tasks `$price-watch` covers.
+
+#### If Amazon alerts are on
 
 When Amazon alerts are on, they need syncing if an open watched task has neither
 Amazon label, or a closed task still has `$has-amazon-alert`.

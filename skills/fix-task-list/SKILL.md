@@ -1,9 +1,11 @@
 ---
 name: fix-task-list
-description: >-
-    Tidies the user's task list by clearing stale planned dates and removing
-    pauses that have ended, and returns what it changed. Run by a job, or by the
-    user ("fix my todo list", "tidy my todo list").
+description: |-
+    Tidies the user's task list by:
+    - Clearing stale planned dates
+    - Removing paused dates that have passed from `%Paused-dates`
+
+    This is run via scheduled job. It reports back the things it changed.
 ---
 
 # ntm:fix-task-list

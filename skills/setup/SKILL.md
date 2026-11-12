@@ -208,7 +208,7 @@ composable on purpose.
 
 ###### Weekly setup
 
-1. Load `ntm-user:backend`.
+1. `/ntm:ready-check`
 2. Look up the tasks planned in the past that are still open, and the tasks
    closed in the last week.
 3. `/ntm:fix-task-list`
@@ -218,7 +218,7 @@ composable on purpose.
 
 ###### Reminders
 
-The morning reminder begins with `/ntm:ready-check`, then
+Each reminder begins with `/ntm:ready-check`. The morning reminder then runs
 `/ntm:plan --auto day`. Each reminder then runs
 `/ntm:reminder --type <morning|afternoon|evening>`, with its own type.
 

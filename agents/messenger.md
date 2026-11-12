@@ -121,8 +121,8 @@ The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
-the message is about, unless the message rule says otherwise; carry-over is
-counted from that list, never from the message text.
+the message is about; carry-over is counted from that list, never from the
+message text.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

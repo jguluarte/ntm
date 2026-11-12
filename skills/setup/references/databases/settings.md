@@ -69,5 +69,13 @@ Claude's built-in browser
 
 <!--
 How the user wants to be notified, in their words, such as quiet hours. Their
-channel and any keys live in `ntm-user:notify`.
+channel lives in `ntm-user:notify`, which reads its Pushover keys here when it
+sends. Write Pushover keys only for a Pushover user, with their keys in full.
 -->
+
+### Pushover keys
+
+| Key       | Value         |
+| --------- | ------------- |
+| App token | `<app token>` |
+| User key  | `<user key>`  |

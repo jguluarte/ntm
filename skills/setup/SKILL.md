@@ -348,11 +348,8 @@ other steps go in as Jobs writes them.
 ```
 <Title>.
 Timezone: <Timezone>.
-Pushover app token: <token>.
 1. Load `ntm:<skill>` and run `/ntm:<skill> <arguments>`.
 ```
-
-The Pushover app token line is only for a job with its own Pushover app.
 
 Then tell them which model the jobs run on, and whether a run goes ahead on its
 own or stops at an action that needs approval.

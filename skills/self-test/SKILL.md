@@ -135,5 +135,7 @@ the user's setup, or a call that errored on a backend the user described
 themselves, telling ntm in chat what to fix.
 
 When step 2 didn't find some jobs, add one line naming them, and how to schedule
-them if they want them, like
-`No weekly setup or reminders are scheduled. If you want them, run /ntm:setup again, or tell ntm to set them up.`
+them if they want them. For example:
+
+> No weekly setup or reminders are scheduled. If you want them, run `/ntm:setup`
+> again, or tell ntm to set them up.

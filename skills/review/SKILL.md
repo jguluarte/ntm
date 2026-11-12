@@ -62,8 +62,8 @@ entire run, so they persist context**. When the estimator finishes the first
 one, give it the next two so they're ready for the user quickly. Keep it alive
 in case the user has more questions.
 
-Send it an Estimate request in hours, with the task as it stands, any end state
-you assumed, and anything the user said about size. Hold its answers until their
+Send it an Estimate request with the task as it stands, any end state you
+assumed, and anything the user said about size. Hold its answers until their
 task comes up.
 
 Present one task per message:
@@ -71,7 +71,7 @@ Present one task per message:
 - its id, linked to its URL, and its title
 - the proposed estimate
 - the estimate already on the task, if any
-- a line on breaking it up, when the estimator says it isn't doable after work
+- a line on breaking it up, when the estimator's `fits task size:` is `no`
 - the description as written
 
 Rarely, when the task as written would be hard to start, propose up to two edits
@@ -87,13 +87,13 @@ or changed, in the same turn you present the next task.
 
 #### Breaking up big tasks
 
-When the estimator says a task isn't doable after work, or the user says it's
-too big, help the user break it up: suggest a few ways to split it. Not every
-task splits, but try. Use the user's pieces when they have them. Show the exact
-new titles and the original's reduced scope, and write only that. New tasks get
-the original's project and parent, and the later one is blocked by the earlier
-when order matters. They go to the end of the review order. Ask the estimator
-again for what's left of the original.
+When the estimator's `fits task size:` is `no`, or the user says a task is too
+big, help the user break it up: suggest a few ways to split it. Not every task
+splits, but try. Use the user's pieces when they have them. Show the exact new
+titles and the original's reduced scope, and write only that. New tasks get the
+original's project and parent, and the later one is blocked by the earlier when
+order matters. They go to the end of the review order. Ask the estimator again
+for what's left of the original.
 
 ### 4. End
 

@@ -30,9 +30,9 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ### 1. Count the days each task has carried over
 
-For each task id you were given, count the earlier days with an entry that lists
-it in `ids`. The theme's Responding to procrastination part gives the task's
-level for that count.
+In a reminder, for each task id you were given, count the earlier days with an
+entry that lists it in `ids`. The theme's Responding to procrastination part
+gives the task's level for that count; any other message has no levels.
 
 ### 2. Write it
 

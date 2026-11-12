@@ -1,9 +1,11 @@
 ---
 name: ready-check
 description: >-
-    Proves this session can run an ntm job: ntm-user loads, and the task list
-    answers with the user's `%Settings`. Run at the start of a job, or by hand
-    ("can you see my todo list?", "check the connection", "is ntm ready?").
+    Proves this session can run an ntm job and loads the user's settings for it:
+    ntm-user loads, and the task list answers with the user's `%Settings`. On a
+    failure, says what is wrong and how to fix it. Run at the start of a job, or
+    by hand ("can you see my todo list?", "check the connection", "is ntm
+    ready?").
 ---
 
 # ntm:ready-check
@@ -11,11 +13,8 @@ description: >-
 ## Usage
 
 ```
-/ntm:ready-check [--notify-failure <skill>]
+/ntm:ready-check
 ```
-
-With `--notify-failure`, a failure is also sent to the user through
-`ntm-user:notify`, on behalf of the skill named, such as `reminder`.
 
 ## The check
 
@@ -25,10 +24,11 @@ Stop at the first failure.
 
 If it doesn't load, the failure is Not configured.
 
-### 2. Read `%Settings`
+### 2. Load `%Settings`
 
 Read `%Settings` where `ntm-user:backend` says it lives. It's on the task list,
-so this one read proves the connector, its sign-in and the account.
+so this one read proves the connector, its sign-in and the account. Its values
+are the user's settings for the rest of the run.
 
 If the read fails, name the failure from what went wrong:
 
@@ -40,7 +40,8 @@ If the read fails, name the failure from what went wrong:
 ## Result
 
 One line: `Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A
-backend error names the error, shortened.
+backend error names the error, shortened. In a job, the failure line ends the
+run, and the job's own push delivers it.
 
 | Failure                | Fix                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
@@ -49,18 +50,3 @@ backend error names the error, shortened.
 | Sign-in expired        | Reconnect the task list's connector                               |
 | Wrong account          | Reconnect the connector with the account that holds the task list |
 | Backend error          | Usually temporary; if it repeats, check the backend's status page |
-
-## With `--notify-failure`
-
-On a failure, load `ntm-user:notify` and send:
-
-| Input       | Value              |
-| ----------- | ------------------ |
-| `--title`   | `<name> failed`    |
-| `--message` | `<failure>. <fix>` |
-
-`<name>` is the job's title, such as Morning reminder, or the skill's name in
-plain words when it runs in chat.
-
-End with the result line, then what `ntm-user:notify` returned. When it can't be
-loaded, add `(notification not sent: <reason>)` to the result line.

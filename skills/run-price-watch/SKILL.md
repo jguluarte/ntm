@@ -4,8 +4,7 @@ description: >-
     Runs the price watch for the user's todo list: which watched items are a
     good deal today? Hands each watched task to a shopper agent, sends one alert
     for the deals and reports. Run by a job, or by hand in chat
-    ("/ntm:run-price-watch", "check my watch list", "is the backup battery a
-    good price today?").
+    ("/ntm:run-price-watch", "check my watch list", "run the price watch").
 ---
 
 # ntm:run-price-watch
@@ -17,11 +16,8 @@ today?
 ## Usage
 
 ```
-/ntm:run-price-watch [<item>]
+/ntm:run-price-watch
 ```
-
-With nothing after it, check every watched task. With an item, by its words or
-its task id, check that one and answer in chat, with no alert.
 
 ## Setup
 
@@ -88,8 +84,7 @@ When a sync is due, end the line with
 returns its delivery block, return that as it came.
 
 In chat, tell the user in plain words: each deal with its price, store and
-product link, what each other item came to, and any notes they could fix. When
-Amazon alerts are on, say Amazon isn't checked here; when a sync is due, say to
-run `/ntm:sync-price-watch-to-amazon`.
+product link, what each other item came to, and any notes they could fix. When a
+sync is due, say to run `/ntm:sync-price-watch-to-amazon`.
 
 When the run can't finish, return `Run-price-watch FAILED: <what went wrong>`.

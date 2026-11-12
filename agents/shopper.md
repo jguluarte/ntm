@@ -21,20 +21,6 @@ description: >-
                 once; each returns its result lines.
             </commentary>
         </example>
-
-        <example>
-            Context: The user asks about one watched item in chat.
-
-            user: "Is the backup battery (ABC-24) a good price anywhere today?"
-
-            assistant: "Asking a shopper agent to verify today's prices for
-            ABC-24."
-
-            <commentary>
-                One task, the same check as the daily run; the price watch
-                words the answer for the user.
-            </commentary>
-        </example>
 model: inherit
 color: yellow
 ---

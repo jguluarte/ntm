@@ -30,7 +30,7 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ## Writing the message
 
-### 1. Find each task's level
+### 1. Determine the message intensity
 
 A task's level is the one the theme's Responding to procrastination part gives
 for its days slipped. A task marked to press harder may go one level up. A done

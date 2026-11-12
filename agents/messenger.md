@@ -106,9 +106,7 @@ has additional context in `%Message-rules`, include that as required.
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, dates, counts and names
 exactly. Word each task briefly: a few natural words with the id in parentheses,
-never the task's full title. The weekly message names no task ids: it talks
-about last week and the week ahead in words, so its `%Message-history` entry
-records none.
+never the task's full title.
 
 ### 3. Put it in the user's style
 

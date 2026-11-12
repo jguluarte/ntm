@@ -30,8 +30,7 @@ build up as you go. It holds two skills:
 `ntm-user:backend` opens with one Built line: its version, the version of the
 installed `ntm` it was built from, and the date, in this shape:
 `Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`.
-`ntm:help` reads the Built line to name both versions. `ntm-user:backend` always
-says where `%Settings` lives.
+`ntm-user:backend` always says where `%Settings` lives.
 
 The plugin also bundles the connector for their backend, so their task list is
 reachable wherever ntm runs. Write the plugin's `.mcp.json` with that

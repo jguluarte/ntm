@@ -45,10 +45,10 @@ Your scheduled jobs run it first; run it yourself if something seems off.
 
 ### `/ntm:style`
 
-Writes your reminders in the theme you created during setup, so they sound like
-something you enjoy and keep changing instead of repeating. A task you keep
-putting off gets a stronger nudge the longer it slips. Ask it to write something
-in your style, or to change how your reminders sound.
+Writes ntm's messages to you in the theme you created during setup, so they
+sound like something you enjoy and keep changing instead of repeating. A task
+you keep putting off gets a stronger nudge the longer it slips. Ask it to write
+something in your style, or to change how your reminders sound.
 
 ## Task management
 

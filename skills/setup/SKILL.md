@@ -343,8 +343,9 @@ Create each job they confirmed as a scheduled task. Its title is the one Jobs
 gives it, such as Morning reminder. It runs at its days and time in their
 timezone, on the model they confirmed, with push notifications on.
 
-Its prompt is this frame, with one numbered step for each skill the job runs, in
-order.
+Its prompt is this frame, with one numbered step for each step Jobs gives it, in
+order. A step that runs a skill takes the frame's shape; the Weekly setup's
+other steps go in as Jobs writes them.
 
 ```
 <Title>.

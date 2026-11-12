@@ -101,8 +101,7 @@ earlier days' entries in `%Message-history` name its id.
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
 
-`freeform` has no rule: its core message is the `message:` line, and it has no
-list.
+`freeform` has no rule: its core message is the `message:` line.
 
 ### 3. Draft the core message
 
@@ -130,14 +129,7 @@ Follow any and all additional guidelines in `%Message-rules` for this message
 type. It may have suggestions on relational styling from adjacent messages, or
 tone suggestions.
 
-### 5. Add the list
-
-When the message rule has a list, put it under the styled message after a blank
-line. One task per line, no bullet: the task linked as the conventions say, then
-`(~<time>)` with the time in full words in the user's language, `(was <date>)`
-and `(started)`, each only when given.
-
-### 6. Send
+### 5. Send
 
 Send the message with `ntm-user:notify`, under the style's title. Pass the app
 token along when you were given one, and never write it into the message or your
@@ -145,9 +137,8 @@ return.
 
 How long a notification may be belongs to the channel, so `ntm-user:notify` owns
 the limit and you never count characters. When it answers `Notify TOO LONG`,
-send once more with one plain line in place of the list, such as
-`3 open; the full list is in the run`, and return the full list with `Sent:`. If
-that is too long as well, return `Notify FAILED:` with its reason.
+tighten the message, keeping its task ids, and send once more. If that is too
+long as well, return `Notify FAILED:` with its reason.
 
 ## What you return
 
@@ -164,11 +155,7 @@ else reaches the user.
 | `Messenger NEEDS: <what's missing and why>` | a required input was missing; nothing was sent                |
 | `Messenger FAILED: <why>`                   | you couldn't finish for any other reason                      |
 
-After step 6's "too-long fallback" (and only then), `Sent:` is followed by
-`List:` on the next line, then the full list, one task per line as the list
-would have read.
-
-The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the full
-message with its list. Pass it on word for word.
+The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the
+message. Pass it on word for word.
 
 Never say a message was sent when it wasn't.

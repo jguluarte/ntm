@@ -72,8 +72,8 @@ Every job starts with `/ntm:ready-check`.
 
 ### Setup
 
-`setup` is the wizard. Setup's build is the one rebuild path. `update` is
-deferred, below.
+`setup` is the wizard, and the only place the user plugin gets built. Running it
+again builds the user plugin fresh. `update` is deferred, below.
 
 ### Versions
 

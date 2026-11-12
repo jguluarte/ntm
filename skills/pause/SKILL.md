@@ -1,7 +1,7 @@
 ---
 name: pause
 description: >-
-    The user's pauses, the days when nothing on their task list gets planned
+    The user's pauses, the days that get nothing new planned on their task list
     automatically. Pauses or unpauses days, or shows the pauses, with the user
     in chat ("pause Friday", "pause next week", "unpause the 12th", "show my
     pauses").
@@ -9,7 +9,8 @@ description: >-
 
 # ntm:pause
 
-A pause is a day, or a range of days, when nothing gets planned automatically.
+A pause is a day, or a range of days, that gets nothing new planned
+automatically.
 
 ## Usage
 

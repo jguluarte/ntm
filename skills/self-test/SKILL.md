@@ -27,14 +27,14 @@ push. Once the user starts it, run it without asking.
 
 ## Test execution steps
 
-Load `ntm-user:backend`, and do each step with the operations described in it.
-`<timestamp>` is the date and time the run starts, to the second, in the user's
-timezone, like `2026-11-09 14:03:27`.
+Load `ntm-user:backend`, and do each step on the task list as it teaches. Read
+`%Settings` for the user's label names. `<timestamp>` is the date and time the
+run starts, to the second, in the user's timezone, like `2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "2. Create a task: the task list takes a new
-task. Pass." A call that fails for a backend reason gets one retry, as described
-in `ntm-user:backend`. At the first failure, say why and skip to step 13.
+task. Pass." A call that fails for a backend reason gets one retry. At the first
+failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
@@ -42,7 +42,7 @@ Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 
 ### 2. Create a task
 
-Use `create task` to make the below task. It should return an id.
+Create the below task. It should get an id.
 
 | Field       | Value                                    |
 | ----------- | ---------------------------------------- |
@@ -55,36 +55,36 @@ The label keeps anything from planning it.
 
 ### 3. Read it back
 
-`read task` shows the title, description and label from step 2.
+The task shows the title, description and label from step 2.
 
 ### 4. Find it
 
-`fetch open` lists it among the open tasks.
+It is among the open tasks.
 
 ### 5. Plan it
 
-`set planned date` to today, and `fetch open` shows it planned for today. Then
-`clear planned date`, and `read task` shows no date.
+Plan it for today, and it is among the open tasks planned for today. Then clear
+its planned date, and it has none.
 
 ### 6. Label it
 
-`add labels` with another of the user's labels, and `read task` shows both. Then
-`remove labels` with it, and only `$no-autoschedule` is left.
+Add another of the user's labels, and the task shows both. Then remove it, and
+only `$no-autoschedule` is left.
 
 ### 7. Comment on it
 
-`write comment`, then `update comment` with new text, and `read comments` shows
-the new text.
+Comment on it, then change the comment's text, and the task's comments show the
+new text.
 
 ### 8. Change it
 
-`update task` with an estimate on the user's scale and the description
-`This is a changed test, it can safely be removed`, and `read task` shows both.
+Change its description to `This is a changed test, it can safely be removed`,
+with the estimate line `Estimate: 2 hours` at its end, and the task shows both.
 
 ### 9. Add a sub-task
 
-Use `create task` to make the below task. It should return an id, and
-`read task` shows the test task as its parent.
+Create the below task. It should get an id, and show the test task as its
+parent.
 
 | Field       | Value                                    |
 | ----------- | ---------------------------------------- |
@@ -95,46 +95,43 @@ Use `create task` to make the below task. It should return an id, and
 
 ### 10. Mark it a duplicate
 
-`mark duplicate of` the sub-task as a duplicate of the test task, and
-`fetch closed` for today, duplicate included, lists it.
+Mark the sub-task a duplicate of the test task, and it is among the tasks closed
+today, duplicates included.
 
 ### 11. Store data
 
-Use `write database` to make the below database, and `read database` returns its
-contents.
+Create the below database, then find it by its title, and it holds the contents.
 
 | Field    | Value                      |
 | -------- | -------------------------- |
 | Title    | ntm self-test database     |
-| Level    | list                       |
 | Contents | ntm self-test, <timestamp> |
 
 ### 12. Close it
 
-`set status` to canceled, or done when the task list has no canceled status, and
-`fetch closed` for today, canceled included, lists it.
+Cancel the test task, or mark it done when the task list has no canceled status,
+and it is among the tasks closed today, canceled included.
 
 ### 13. Clean up
 
 Runs after a failure too. Cancel the task and the sub-task if they're still
-open, remove the added label if it's still on, and write the database empty;
-when the database lives in a task, cancel that task too. Cancel any open task an
-earlier self-test left behind. Touch nothing else on the task list.
+open, remove the added label if it's still on, and delete the test database, or
+empty it when the task list can't delete one. Do the same for any test task or
+database an earlier self-test left behind. Touch nothing else on the task list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
 ### 14. Send the success message
 
-Only when every step before it passed. Ask the messenger agent with
-`type: freeform`, `job: self-test` and
-`message: ntm is ready; the self-test passed`. It passes when the messenger
-returns `Sent:`, or a delivery block, which you show the user. A
-`Messenger NEEDS` answer fails the step.
+Only when every step before it passed. Ask the messenger agent for a `freeform`
+message: `ntm is ready; the self-test passed`. It passes when the messenger
+returns `Sent:`, or a delivery block, which you show the user. Any other return
+fails the step.
 
 ## Result
 
 One line: `Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a
 failure, add the fix when it's plain: for a ready-check failure, the fix in its
-failure line; for a missing label, or an operation that errored on a backend the
-user described themselves, `/ntm:setup`.
+failure line; for a missing label, or a call that errored on a backend the user
+described themselves, `/ntm:update`.

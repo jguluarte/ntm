@@ -8,7 +8,7 @@ answers back to the skill that asked.
 ## The messenger
 
 The messenger writes and sends everything ntm sends to your phone: your
-reminders, your weekly plan and the price watch's deals. It has one question in
+reminders, your weekly plan and the price watch's alerts. It has one question in
 mind: what will make you actually read this one? It writes each message in the
 style you set up, takes its tone from the day, and sends it the way you chose to
 be notified. It has no fixed shape, because the same message every day stops
@@ -30,4 +30,4 @@ looks across stores you'd trust, checks today's price on each store's own page,
 and notes what it found on the task.
 
 The daily price watch asks a shopper about each item you're watching, then the
-messenger tells you about the deals.
+messenger tells you about the deals and anything you could fix.

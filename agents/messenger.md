@@ -102,8 +102,9 @@ why.
 
 ### 2. Draft the core message
 
-Describe in plain English what to send, as the message rule says. If the `type`
-has additional context in `%Message-rules`, include that as required.
+Describe in plain English what to send, as the message rule says. For a type
+with a rule, if it has additional context in `%Message-rules`, include that as
+required.
 
 Stick to facts and context, the next step is to rephrase things to ensure the
 user will see the appropriate words. Carry task ids, dates, counts and names
@@ -119,13 +120,13 @@ you send.
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
-name, unless the message rule says fewer. Give the style the ids its
-`%Message-history` entry records, as the message rule says; carry-over is
+name, unless the message rule says fewer. Give the style the ids of the tasks
+the message is about, unless the message rule says otherwise; carry-over is
 counted from that list, never from the message text.
 
-Follow any and all additional guidelines in `%Message-rules` for this message
-type. It may have suggestions on relational styling from adjacent messages, or
-tone suggestions.
+For a type with a rule, follow any and all additional guidelines in
+`%Message-rules` for this message type. It may have suggestions on relational
+styling from adjacent messages, or tone suggestions.
 
 ### 4. Send
 

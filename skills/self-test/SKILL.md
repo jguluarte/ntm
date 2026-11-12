@@ -45,8 +45,9 @@ Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 ### 2. What setup made
 
 The step passes when setup made everything it was supposed to: every database
-`ntm-user:backend` lists opens, and every label under Labels in `%Settings` is
-on the task list, by its name there. Name each one that's missing.
+`ntm-user:backend` says where it lives opens, and every label under Labels in
+`%Settings` is on the task list, by its name there. Name each one that's
+missing.
 
 ### 3. Create a task
 

@@ -1,7 +1,7 @@
 {
     "name": "ntm",
     "displayName": "Neurodivergent Task Manager",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "author": { "name": "Justin", "url": "https://github.com/jguluarte" },
     "keywords": [
         "tasks",

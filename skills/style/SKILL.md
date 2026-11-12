@@ -54,11 +54,15 @@ type's name alone isn't a title. Don't be boring and just use the reminder type.
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its entry: one JSON line at the top of the Entries part.
 
-| Field  | What it holds                                                                     |
-| ------ | --------------------------------------------------------------------------------- |
-| `date` | The date it went out, such as `2026-11-09`                                        |
-| `ids`  | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]` |
-| `line` | The message as sent                                                               |
+| Field    | What it holds                                                                              |
+| -------- | ------------------------------------------------------------------------------------------ |
+| `date`   | The date it went out, such as `2026-11-09`                                                 |
+| `type`   | The type, as you were given it, such as `weekly`                                           |
+| `ids`    | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]`          |
+| `record` | What the theme says an entry records, such as the motif it used; `{}` when it says nothing |
+| `line`   | The message as sent                                                                        |
+
+An older entry without a `record` doesn't count toward what rests.
 
 Then drop the entries older than the `Keep:` line, and save.
 

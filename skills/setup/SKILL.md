@@ -161,7 +161,7 @@ Then save, as Saving the features says.
 | -------------------------------------- | --------------------------------------- |
 | Days to plan                           | Weekdays                                |
 | Tasks a day                            | One                                     |
-| Task size                              | About an hour or less where possible    |
+| Task size                              | About an hour or less; bigger is fine   |
 | Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
 
 ##### Databases

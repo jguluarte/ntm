@@ -41,7 +41,7 @@ Labels.
 
 - Days to plan: weekdays
 - Tasks a day: one
-- Task size: about an hour or less where possible, though bigger is fine
+- Task size: about an hour or less; bigger is fine
 
 ### Labels to exclude from auto-scheduling
 

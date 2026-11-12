@@ -2,8 +2,8 @@
 
 ## The README
 
-A branch that adds, changes, renames or removes a skill or agent updates that
-one's entry in `README.md` in the same PR. `/ntm:help` answers from the README.
+A branch that adds, changes, renames or removes a skill updates that skill's
+entry in `README.md` in the same PR. `/ntm:help` answers from the README.
 
 ## Open it
 

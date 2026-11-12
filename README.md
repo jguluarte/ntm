@@ -18,24 +18,30 @@ the initiative to get started (or worse, just forgot to finish after losing
 steam). This system helps them remember the things that they want to do, and
 says so in a way that they don't ignore. Hopefully it'll help you too!
 
-## Skills
-
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
+
+## Setup and updates
+
+These skills get ntm running and keep it working. You run setup and the
+self-test once, when you start; after that ntm mostly checks itself, and you can
+run a check by hand when something seems off.
 
 ### `/ntm:setup`
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.
+It ends with a plugin of your own for you to install.
 
-### `/ntm:today`
+### `/ntm:self-test`
 
-Lists what's planned on your task list: every open task planned for today. Add a
-few words to narrow it down, such as `/ntm:today errands` for today's errands
-only.
+Tries out everything setup built, on a throwaway task it cleans up afterwards,
+and ends with a test message to your phone. Run it once setup is done and you've
+installed the plugin it built.
 
-### `/ntm:fix-task-list`
+### `/ntm:ready-check`
 
-Clears dates on previously planned tasks that didn't finish.
+Checks that ntm can reach your task list, and says how to fix it when it can't.
+Your scheduled jobs run it first; run it yourself if something seems off.
 
 ### `/ntm:style`
 
@@ -43,3 +49,62 @@ Writes your reminders in the theme you created during setup, so they sound like
 something you enjoy and keep changing instead of repeating. A task you keep
 putting off gets a stronger nudge the longer it slips. Ask it to write something
 in your style, or to change how your reminders sound.
+
+## Task management
+
+These skills plan your days, remind you about them and keep your task list tidy.
+Some run on their own from your scheduled jobs; you can run any of them
+yourself, any time.
+
+### `/ntm:today`
+
+Lists what's planned on your task list: every open task planned for today. Add a
+few words to narrow it down, such as `/ntm:today errands` for today's errands
+only.
+
+### `/ntm:plan`
+
+Picks what you'll work on each day: one small task a weekday, unless you chose
+otherwise in setup. Scheduled jobs plan your week ahead, and each morning move
+unfinished work to today. Run it yourself to plan together, such as
+`/ntm:plan next week around the garage`.
+
+### `/ntm:reminder`
+
+Sends your morning, afternoon and evening reminders to your phone, in the style
+you set up. Scheduled jobs run it for you at the times you picked.
+
+### `/ntm:pause`
+
+Marks days off, such as a holiday or a busy week, so nothing new gets planned
+for them. Name the days in your own words, like `/ntm:pause next week`, or run
+it alone to see your pauses.
+
+### `/ntm:review-task-list`
+
+Goes through your task list with you, a project at a time: closes what's done or
+no longer needed, then estimates each task and breaks up the big ones. Stop
+whenever you like.
+
+### `/ntm:fix-task-list`
+
+Clears dates on previously planned tasks that didn't finish, and removes pause
+dates that have since passed.
+
+## Price watch
+
+These skills keep an eye on the things you want to buy, so you can wait for a
+good price instead of buying them now to remember them. The price watch runs on
+its own each day.
+
+### `/ntm:run-price-watch`
+
+Checks the things you want to buy, the tasks in the project you picked for them
+in setup, and tells you when one is a good deal today. A scheduled job runs it
+once a day; run it yourself to check now.
+
+### `/ntm:sync-price-watch-to-amazon`
+
+If you turned on Amazon price alerts, this sets one for each item you're
+watching, and removes the alerts for tasks you've closed. Run it in chat, in a
+browser signed in to Amazon. The price watch tells you when it's time.

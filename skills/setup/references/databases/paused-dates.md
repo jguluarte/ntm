@@ -1,6 +1,6 @@
 # Paused dates
 
-The days when nothing gets planned automatically.
+The days that get nothing new planned automatically.
 
 <!--
 `ntm:pause` reads this database, and changes it with the user. Write it without

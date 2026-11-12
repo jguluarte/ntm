@@ -1,7 +1,7 @@
 # Message history
 
 <!--
-What the user's reminders have said, so the next ones don't
+What ntm's messages have said, so the next ones don't
 repeat it and a task that keeps slipping climbs the levels in their `%Theme`.
 `ntm:style` keeps it. Setup creates this database from this template, and
 writes it without these comments: they are for you, never for the user. The

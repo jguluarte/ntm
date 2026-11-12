@@ -19,13 +19,14 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ## What you write from
 
-| Input            | What it is                                                 |
-| ---------------- | ---------------------------------------------------------- |
-| The core message | What to say, in plain words                                |
-| The type         | `freeform`, or the message rule it's for, such as `weekly` |
-| The task ids     | The tasks the message is about                             |
-| Days slipped     | How many days each task has slipped, when given            |
-| The tone         | Your read of today's facts                                 |
+| Input             | What it is                                                             |
+| ----------------- | ---------------------------------------------------------------------- |
+| The core message  | What to say, in plain words                                            |
+| The type          | `freeform`, or the message rule it's for, such as `weekly`             |
+| The task ids      | The tasks the message is about                                         |
+| Days slipped      | How many days each task has slipped, when given                        |
+| `record_task_ids` | Whether the history entry records the task ids; `false` when not given |
+| The tone          | Your read of today's facts                                             |
 
 ## Writing the message
 
@@ -53,14 +54,11 @@ type's name alone isn't a title.
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its entry: one JSON line at the top of the Entries part.
 
-| Field  | What it holds                               |
-| ------ | ------------------------------------------- |
-| `date` | The date it went out, such as `2026-11-09`  |
-| `ids`  | The task ids, such as `["ABC-12"]`, or `[]` |
-| `line` | The message as sent                         |
-
-Only a reminder records its task ids, so a task that keeps slipping changes how
-later reminders talk to the user. Any other message records `[]`.
+| Field  | What it holds                                                                     |
+| ------ | --------------------------------------------------------------------------------- |
+| `date` | The date it went out, such as `2026-11-09`                                        |
+| `ids`  | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]` |
+| `line` | The message as sent                                                               |
 
 Then drop the entries older than the `Keep:` line, and save.
 

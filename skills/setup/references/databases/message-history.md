@@ -17,7 +17,7 @@ Keep: 8 weeks
 
 <!--
 One JSON line per message sent, newest first: the date it went out, the ids of
-the tasks it's about unless its message rule says otherwise, and the message as
+the tasks a reminder is about (`[]` for any other message), and the message as
 sent. The ids are how `ntm:style` counts the days a task has slipped. A line
 looks like
 {"date":"2026-11-09","ids":["ABC-12"],"line":"The gutters (ABC-12), day three. Still waiting."}

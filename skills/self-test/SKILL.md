@@ -49,9 +49,11 @@ The step passes when setup made everything it was supposed to: every database
 `%Settings` is on the task list, by its name there. Name each one that's
 missing.
 
-Every job under Jobs in `%Settings` is one of their scheduled tasks, by its
-title. A missing job doesn't fail the step. When you can't see their scheduled
-tasks, say you couldn't check the jobs, and go on.
+Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
+skills it runs. With Planning in `%Settings`, expect the weekly setup and the
+morning, afternoon and evening reminders; with Shopping, the price watch. A job
+you don't find doesn't fail the step. When you can't see their scheduled tasks,
+say you couldn't check the jobs, and go on.
 
 ### 3. Create a task
 
@@ -130,7 +132,8 @@ fails the step.
 the fix when it's plain: for a ready-check failure, the fix in its failure line,
 which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
 the user's setup, or a call that errored on a backend the user described
-themselves, `/ntm:update`.
+themselves, telling ntm in chat what to fix.
 
-When step 2 found jobs missing, add a line naming them, with the fix, like
-`Jobs not scheduled: Price watch. Go back to the chat where you ran setup to schedule them.`
+When step 2 didn't find a job, add a line saying so, and how to schedule it if
+they want it, like
+`No morning reminder is scheduled. If you want one, run /ntm:setup again, or ask Claude to set it up.`

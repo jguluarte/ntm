@@ -18,7 +18,7 @@ Cleans up stale information in the backend.
 /ntm:clean
 ```
 
-## Fix
+## Clean
 
 Load `ntm-user:backend`, and then find all non-closed tasks which have a planned
 date in the past. Clear the date on all of those tasks.
@@ -33,11 +33,11 @@ For a job, return these lines, with one `Cleared` line per date cleared and one
 `Removed` line per paused date removed:
 
 ```
-Fixed <today>:
+Cleaned <today>:
 Cleared <id> <title> <url> (was <date>)
 Removed paused date <as the list had it>
 ```
 
-When there were none, return `Nothing to fix.`; when the task list can't be
+When there were none, return `Nothing to clean.`; when the task list can't be
 read, `Clean FAILED: <what went wrong>`. In chat, tell the user the same in
 plain words.

@@ -54,8 +54,8 @@ the self-test passes.
 ### `/ntm:self-test`
 
 Tries out everything setup built, on a throwaway task it cleans up afterwards,
-and ends with a test message to your phone. Run it when setup asks, once you've
-installed the plugin it built.
+and ends with a test message, on your phone if you use Pushover. Run it when
+setup asks, once you've installed the plugin it built.
 
 ### `/ntm:ready-check`
 

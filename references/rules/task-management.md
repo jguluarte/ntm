@@ -43,8 +43,7 @@ changes it.
 ### `%Paused-dates`
 
 The days that get nothing new planned automatically. `ntm:pause` maintains it.
-Planning never picks a task for a paused day, but a date the user sets there
-stands.
+Planning never automatically picks a task for a paused day.
 
 ### `%Estimator-log`
 

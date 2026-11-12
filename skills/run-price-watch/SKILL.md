@@ -54,8 +54,9 @@ When any result is a deal, or any task has something to fix, hand the messenger
 agent `type: freeform` and a `message:` line. It names each deal: the item in a
 few words with its task id linked, the price and store, and the condition,
 membership or coupon when the price depends on one. Then each task to fix, the
-same way, with what to fix in a few words, such as no target, or a store it
-couldn't verify.
+same way, with what to fix in a few words, such as no target, or a store to
+vouch for. When Amazon alerts need syncing, end the message with
+`Amazon alerts need syncing: run /ntm:sync-price-watch-to-amazon in chat.`
 
 ## The user's replies
 
@@ -91,8 +92,8 @@ task id, each task to fix with what to fix, and what the messenger returned,
 such as:
 
 > Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). To fix: the
-> desk lamp (ABC-30), no target; the drill (ABC-31), couldn't verify a store.
-> Sent: Good price
+> desk lamp (ABC-30), no target; the drill (ABC-31), a store to vouch for. Sent:
+> Good price
 
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When the

@@ -35,12 +35,13 @@ one of its skills is for.
 ### `/ntm:setup`
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.
-It ends with a plugin of your own for you to install.
+It builds a plugin of your own for you to install, and schedules your jobs once
+the self-test passes.
 
 ### `/ntm:self-test`
 
 Tries out everything setup built, on a throwaway task it cleans up afterwards,
-and ends with a test message to your phone. Run it once setup is done and you've
+and ends with a test message to your phone. Run it when setup asks, once you've
 installed the plugin it built.
 
 ### `/ntm:ready-check`

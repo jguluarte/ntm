@@ -134,6 +134,6 @@ which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
 the user's setup, or a call that errored on a backend the user described
 themselves, telling ntm in chat what to fix.
 
-When step 2 didn't find a job, add a line saying so, and how to schedule it if
-they want it, like
-`No morning reminder is scheduled. If you want one, run /ntm:setup again, or ask Claude to set it up.`
+When step 2 didn't find some jobs, add one line naming them, and how to schedule
+them if they want them, like
+`No weekly setup or reminders are scheduled. If you want them, run /ntm:setup again, or tell ntm to set them up.`

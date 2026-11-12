@@ -8,5 +8,4 @@ description: >-
 
 # ntm:help
 
-Read ntm's `README.md` and show it to the user, word for word. If they asked
-about something in particular, then name the section that answers it.
+Read ntm's `README.md` and show it to the user, word for word.

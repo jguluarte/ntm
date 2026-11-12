@@ -48,4 +48,5 @@ tasks; the messenger decides when there's nothing to send.
 
 ## Result
 
-Return what the messenger returned, as it came.
+Return what the messenger returned, as it came. A delivery block ends the run as
+its title and message, without the `NOTIFY VIA FINAL REPLY` line.

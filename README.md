@@ -73,7 +73,7 @@ Marks days off, such as a holiday or a busy week, so nothing new gets planned
 for them. Name the days in your own words, like `/ntm:pause next week`, or run
 it alone to see your pauses.
 
-### `/ntm:review-task-list`
+### `/ntm:review`
 
 Goes through your task list with you, a project at a time: closes what's done or
 no longer needed, then estimates each task and breaks up the big ones. Stop

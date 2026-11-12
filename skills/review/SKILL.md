@@ -1,5 +1,5 @@
 ---
-name: review-task-list
+name: review
 description: >-
     Reviews the user's task list with them in chat: closes obsolete or duplicate
     tasks, then estimates unreviewed ones and breaks up big ones, with their
@@ -8,7 +8,7 @@ description: >-
     work").
 ---
 
-# ntm:review-task-list
+# ntm:review
 
 Reminders only help when they point at something the user could pick up. Review
 gets tasks there. Keep it light so the user keeps doing it: a short session is a
@@ -22,7 +22,7 @@ be read or written, say what went wrong.
 ## Usage
 
 ```
-/ntm:review-task-list [<what to review, in words>]
+/ntm:review [<what to review, in words>]
 ```
 
 The user names a project, part of one, or a few tasks. Without one, propose one

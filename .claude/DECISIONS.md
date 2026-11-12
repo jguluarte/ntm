@@ -93,8 +93,7 @@ How the published release is identified is open.
 
 ## Setup, as a new user meets it
 
-Setup's flow, step by step, is in `.claude/plans/0.4-setup-flow.md` until the
-`setup` skill encodes it.
+Setup's flow, step by step, is in the `setup` skill.
 
 ## Patterns every rewritten file follows
 

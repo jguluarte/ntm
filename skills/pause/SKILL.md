@@ -29,14 +29,14 @@ part of `%Paused-dates`. Today is the date in the timezone under About you in
 
 ## Keeping `%Paused-dates`
 
-The Paused dates part holds one list item per pause, in date order, with the
-reason in the user's words:
+The Paused dates part holds one list item per pause, in date order:
 
-| A pause   | Its list item                              |
-| --------- | ------------------------------------------ |
-| One day   | `- 2026-11-26: Thanksgiving`               |
-| A span    | `- 2026-12-21 to 2026-12-31: Winter break` |
-| No pauses | `None.`                                    |
+| A pause                 | Its list item                |
+| ----------------------- | ---------------------------- |
+| One day                 | `- 2026-11-27`               |
+| A span                  | `- 2026-12-21 to 2026-12-31` |
+| With a reason they gave | `- 2026-11-26: Thanksgiving` |
+| No pauses               | `None.`                      |
 
 A span includes both its ends. A pause comes off the list once it has ended.
 
@@ -49,8 +49,7 @@ Read the user's words as a person would: "Friday" is the coming one.
 ### 2. Change the list
 
 Add, shorten, split or remove pauses as they say. Their words are the go-ahead;
-don't ask for approval. A new pause's reason is in their words, or `Paused` when
-they give none.
+don't ask for approval.
 
 ### 3. Save
 

@@ -126,9 +126,10 @@ you send.
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
-name, unless the message rule says fewer. Give the style your type, the ids of
-the tasks the message is about, with the days slipped, any task marked to press
-harder and which are done, and `record_task_ids` when you were given them.
+name, unless the message rule says fewer. Give the style the type you were
+given, the ids of the tasks the message is about, with the days slipped, any
+task marked to press harder and which are done, and `record_task_ids` when you
+were given them.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

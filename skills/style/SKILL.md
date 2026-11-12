@@ -62,7 +62,7 @@ final reply, add its entry: one JSON line at the top of the Entries part.
 | `record` | What the theme says an entry records, such as the motif it used; `{}` when it says nothing |
 | `line`   | The message as sent                                                                        |
 
-An older entry without a `record` doesn't count toward what rests.
+An older entry without a `record` doesn't count toward any `Repeat limit:`.
 
 Then drop the entries older than the `Keep:` line, and save.
 

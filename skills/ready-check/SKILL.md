@@ -1,10 +1,9 @@
 ---
 name: ready-check
 description: >-
-    Proves this session can run an ntm job: ntm-user loads, the task list
-    answers, and the user's settings load from %Settings. Run at the start of a
-    job, or by hand ("can you see my todo list?", "check the connection", "is
-    ntm ready?").
+    Proves this session can run an ntm job: ntm-user loads, and the task list
+    answers with the user's `%Settings`. Run at the start of a job, or by hand
+    ("can you see my todo list?", "check the connection", "is ntm ready?").
 ---
 
 # ntm:ready-check
@@ -29,8 +28,7 @@ If it doesn't load, the failure is Not configured.
 ### 2. Read `%Settings`
 
 Read `%Settings` where `ntm-user:backend` says it lives. It's on the task list,
-so this one read proves the connector, its sign-in and the account. Its values
-are the user's settings for the rest of the run.
+so this one read proves the connector, its sign-in and the account.
 
 If the read fails, name the failure from what went wrong:
 

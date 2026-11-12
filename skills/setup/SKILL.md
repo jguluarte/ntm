@@ -278,9 +278,9 @@ Present the price watch as one daily job, early each morning. For example:
 
 What it runs, for Create the jobs:
 
-| Job         | Runs              |
-| ----------- | ----------------- |
-| Price watch | `run-price-watch` |
+| Job         | Runs                                            |
+| ----------- | ----------------------------------------------- |
+| Price watch | `/ntm:ready-check`, then `/ntm:run-price-watch` |
 
 #### Saving the features
 

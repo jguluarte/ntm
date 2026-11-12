@@ -27,12 +27,59 @@ like an actual assistant.
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.
 
+### `/ntm:self-test`
+
+Tries out everything setup built, on a throwaway task it cleans up afterwards,
+and ends with a test message to your phone. Run it once setup is done and its
+plugin is installed.
+
 ### `/ntm:today`
 
 Lists what's planned on your task list: every open task planned for today. Add a
 few words to narrow it down, such as `/ntm:today errands` for today's errands
 only.
 
+### `/ntm:plan`
+
+Gives your days their tasks, one small task a weekday unless you set it up
+otherwise. Scheduled jobs plan your week ahead, and each morning move unfinished
+work to today. Run it yourself to plan together, such as
+`/ntm:plan next week around the garage`.
+
+### `/ntm:pause`
+
+Pauses days when you don't want anything planned for you, such as a holiday or a
+busy week. Say it in words, like `/ntm:pause next week`, or run it alone to see
+your pauses.
+
+### `/ntm:reminder`
+
+Sends your morning, afternoon and evening reminders to your phone, in the theme
+you chose during setup. Scheduled jobs run it for you at the times you picked.
+
+### `/ntm:review-task-list`
+
+Goes through your task list with you, a project at a time: closes what's done or
+no longer needed, then estimates each task and breaks up the big ones. Stop
+whenever you like.
+
+### `/ntm:run-price-watch`
+
+Checks the things on your task list you want to buy, and tells you when one is a
+good deal today. A scheduled job runs it once a day, so you only hear about an
+item when it's worth buying. Run it yourself to check now.
+
+### `/ntm:sync-price-watch-to-amazon`
+
+If you turned on Amazon price alerts, this sets one for each item you're
+watching, and removes it once you close the task. It works in your browser,
+signed in to Amazon. The price watch tells you when it's time to run it.
+
 ### `/ntm:fix-task-list`
 
 Clears dates on previously planned tasks that didn't finish.
+
+### `/ntm:ready-check`
+
+Checks that ntm can reach your task list, and says how to fix it when it can't.
+Your scheduled jobs run it first; run it yourself if something seems off.

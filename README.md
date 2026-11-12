@@ -21,11 +21,11 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
 
-## Setup and updates
+## Core skills
 
-These skills get ntm running and keep it working. You run setup and the
-self-test once, when you start; after that ntm mostly checks itself, and you can
-run a check by hand when something seems off.
+These are the shared pieces the rest of ntm is built on. You run setup and the
+self-test once, when you start; after that the others work in the background,
+and you can run any of them yourself.
 
 ### `/ntm:setup`
 

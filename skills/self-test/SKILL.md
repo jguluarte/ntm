@@ -1,21 +1,24 @@
 ---
 name: self-test
 description: >-
-    Exercises the whole ntm loop on a throwaway task and a throwaway database,
-    comments, labels and one agent included, one line per step, and ends with
-    Self-test OK or the first step that failed. The first thing to run after
-    installing ntm and ntm-user ("test ntm", "run the self test", "is everything
-    wired up?"), and the smoke test for a backend the user described themselves.
+    A test that the user's setup is complete and their task list can do what
+    every backend must: check setup made their databases, labels and jobs, then
+    create, read, find, plan, label, comment on, change and close a throwaway
+    task, and write and read a throwaway database, then clean up and have the
+    messenger agent send a success message. Each step's result is shown as it
+    passes or fails. The first thing to run after installing ntm and ntm-user
+    ("test ntm", "run the self test", "is everything wired up?"), and the smoke
+    test for a backend the user described themselves.
 ---
 
 # ntm:self-test
 
-Runs every skill a job uses, the backend operations they need on tasks,
-comments, labels and databases, and one of the plugin's agents, once, on a task
-and a database made for the purpose and canceled and emptied at the end. Run it
-in chat, in a new chat after installing `ntm-user`: it's the first thing to run
-after install, and the thing to run again after changing Todo list in your
-settings.
+A test that this user's setup is complete, and that their task list can do the
+core interactions every backend must support, on a task and a database made for
+the purpose. Run it in a new chat after installing `ntm-user`, and again after
+`ntm-user` is rebuilt. Never run it unasked: a run writes to the task list, and
+the messenger agent sends a push. Once the user starts it, run it without
+asking.
 
 ## Usage
 
@@ -23,152 +26,116 @@ settings.
 /ntm:self-test
 ```
 
-## What it uses
+## Test execution steps
 
-- Load `ntm:conventions`.
-- One throwaway task, titled `ntm self-test`, labeled with the $no-autoschedule
-  label by its real name from Labels in your settings, in no project. Keep its
-  id once created; `ABC-12` below stands for it.
-- One throwaway database, titled `ntm self-test`, at list level. It's not one of
-  the databases in `ntm:conventions`; only this skill knows it.
-- If an earlier run left either behind (`fetch open` shows a task with that
-  title; `read database` finds the database), remove them first, as Cleanup
-  says, so this run starts clean.
+Do each step on the task list as `ntm-user:backend` teaches. Step 1 loads it,
+ntm's core rules and `%Settings`, which holds the user's label names.
+`<timestamp>` is the date and time the run starts, to the second, in the user's
+timezone, like `2026-11-09 14:03:27`.
 
-## Steps
+Run the steps in order. As each one finishes, tell the user in one line what it
+tested and whether it passed, like "3. Create a task: the task list takes a new
+task. Pass." A call that fails for a backend reason gets one retry. At the first
+failure, say why and skip to step 12.
 
-Run in order. Each ends with one line, `<n>. <step>: pass` or
-`<n>. <step>: FAIL: <why>`. Stop at the first failure and go to Cleanup. A call
-that fails for a backend reason (a timeout, a server error) gets one retry, as
-the conventions say; a second failure is the step's failure.
+### 1. Connectivity
 
-### 1: ready-check
+Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 
-`/ntm:ready-check`. Pass on `Ready-check OK` or `Ready-check OK (no style)`; the
-text after `Ready-check FAILED:` is the why.
+### 2. What setup made
 
-### 2: create task
+The step passes when setup made everything it was supposed to: every database
+`ntm-user:backend` says where it lives opens, and every label under Labels in
+`%Settings` is on the task list, by its name there. Name each one that's
+missing.
 
-The guide's `create task` with the title, a one-line description
-(`ntm self-test, <today>; safe to remove`), the label, and nothing else. Create
-it new; a canceled one from an earlier run is not a match. Pass when it comes
-back with an id. If the backend rejects the label, the why is
-`no-autoschedule label missing; run /ntm:configure-todo-list`.
+Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
+skills it runs. With Planning in `%Settings`, expect the weekly setup and the
+morning, afternoon and evening reminders; with Shopping, the price watch. A job
+you don't find doesn't fail the step. When you can't see their scheduled tasks,
+say you couldn't check the jobs, and go on.
 
-### 3: plan
+### 3. Create a task
 
-`/ntm:plan put ABC-12 on today and move nothing else`. The user asked for this
-test, so that is their approval. Take the plan it proposes as approved when it
-dates only that task, paused day or not; otherwise answer that only ABC-12
-moves, and approve that. The $no-autoschedule label doesn't stop it; in chat the
-user has the final say. Pass when `read task` shows the planned date as today.
+Create the below task. It should get an id.
 
-### 4: today
+| Field       | Value                                    |
+| ----------- | ---------------------------------------- |
+| Title       | ntm self-test, <timestamp>               |
+| Description | This is a test, it can safely be removed |
+| Project     | none                                     |
 
-`/ntm:today`. Pass when a line starts with `ABC-12`.
+### 4. Read it back
 
-### 5: style
+The task shows the title and description from step 3.
 
-```
-/ntm-user:style --for morning
-    "Morning reminder; self-test, ABC-12 planned for today"
-    ABC-12 is planned for today
-```
+### 5. Find it
 
-Pass when the output contains `ABC-12` and ends with a `Title:` line. When
-`ntm-user:style` won't load, the line is `5. style: skipped (no style)` and the
-next step uses the message as given with the title `Morning reminder`. Keep the
-message and the title for the next step.
+It is among the open tasks.
 
-### 6: notify
+### 6. Plan it
 
-Read Channel in Notifications in your settings first. On `pushover`,
-`/ntm:notify --title "<the title>" --message "<the message>"`. Pass on `Sent:`,
-as `6. notify: pass (push sent; check your phone)`. Nobody waits for the phone:
-the user asked for this test, so one push is expected, and whether it arrived is
-theirs to confirm. On the `claude-push` channel, run `ntm:notify` anyway; it
-returns its delivery block instead of sending. Show the block and pass as
-`6. notify: pass (claude-push; shown, not sent)`. `Notify FAILED` is the why.
+Plan it for today, and it is among the open tasks planned for today. Then clear
+its planned date, and it has none.
 
-### 7: close
+### 7. Label it
 
-`set status` to done. Pass when `read task` shows it closed.
+Add the label `ntm-self-test`, creating it when the task list doesn't have it
+yet, and the task shows it. Then remove it, and the task has no labels.
 
-### 8: completed
+### 8. Comment on it
 
-`/ntm:show-completed today`. Pass when `ABC-12` is listed under `Done`.
-
-### 9: fix-todo-list
-
-`/ntm:fix-todo-list --dry-run`. Pass on `Dry run <today>:` with any lines, or
-`Dry run <today>: nothing to fix.`; `Fix-todo-list FAILED` is the why.
-
-### 10: pause --check
-
-`/ntm:pause --check`. Pass on one `<today>: true` or `<today>: false` line.
-
-### 11: database
-
-`write database` on the throwaway database with the content `self-test <today>`,
-then `read database` returns the same content. Pass when it does.
-
-### 12: write comment
-
-`write comment` on ABC-12 with `ntm self-test comment, <today>`. Pass when
-`read comments` shows it; keep its id.
-
-### 13: update comment
-
-`update comment` on that comment, by its id, with
-`ntm self-test comment, <today>, updated`. Pass when `read comments` shows the
+Comment on it, then change the comment's text, and the task's comments show the
 new text.
 
-### 14: add label
+### 9. Change it
 
-`add labels` on ABC-12 with the $pending-shipment label, by its real name from
-Labels. Pass when `read task` shows it. If the backend rejects the label, the
-why is `pending-shipment label missing; run /ntm:configure-todo-list`.
+Change its description to `This is a changed test, it can safely be removed`,
+and the task shows it.
 
-### 15: remove label
+### 10. Store data
 
-`remove labels` on ABC-12 with the same label. Pass when `read task` no longer
-shows it and still shows the $no-autoschedule label.
+Write the below database, into the one an earlier self-test left behind or a new
+one when there isn't one, then find it by its title, and it holds the contents.
 
-### 16: agent
+| Field    | Value                      |
+| -------- | -------------------------- |
+| Title    | ntm self-test database     |
+| Contents | ntm self-test, <timestamp> |
 
-Ask the estimator agent for an Estimate, a time, for ABC-12, with its id, title
-and description. Pass on a `time: ABC-12 ~<time>` line. When the estimator agent
-isn't available in this session, read `agents/estimator.md` from the installed
-plugin and follow it yourself, as the conventions' "Chat, jobs and agents" says,
-and end the line `(no agent here; followed agents/estimator.md)`.
+### 11. Close it
 
-## Cleanup
+Cancel the test task, or mark it done when the task list has no canceled status,
+and it is among the tasks closed today, canceled included.
 
-Always, whether the steps passed or stopped, and in this order; one line each,
-`cleanup: <what>` or `cleanup: couldn't <what>: <why>`.
+### 12. Clean up
 
-- **The task:** if it was created, `set status` to canceled, so it never counts
-  as work done (leave it done when the todo list has no canceled status). Where
-  the backend keeps databases in tasks, cancel the database's task the same way.
-- **The database:** if it was written, `write database` it empty.
-- **The label:** if step 14 added it and step 15 didn't remove it,
-  `remove labels` it.
+Runs after a failure too. Cancel the task if it's still open, and delete the
+test label and the test database. When the task list can't delete them, take the
+label off the task and empty the database, for a rerun to reuse. Do the same for
+any test task an earlier self-test left behind. Touch nothing else on the task
+list.
 
-Nothing else on the todo list is touched: the test dates, comments on, labels,
-closes and cancels its own task and empties its own database only, plus the one
-history entry the style writes in step 5, which ages out. The estimator only
-answers; it writes nothing.
+It fails when anything can't be cleaned up: a run that leaves its test data
+behind didn't pass.
+
+### 13. Send the success message
+
+Only when every step before it passed. Ask the messenger agent for a `freeform`
+message: `ntm is ready; the self-test passed`. It passes when the messenger
+returns `Sent:`, or a delivery block, which you show the user. Any other return
+fails the step.
 
 ## Result
 
-After the cleanup lines, one line:
+`Self-test OK`, or `Self-test FAILED at <n>. <step>: <why>`. On a failure, add
+the fix when it's plain: for a ready-check failure, the fix in its failure line,
+which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
+the user's setup, or a call that errored on a backend the user described
+themselves, telling ntm in chat what to fix.
 
-- `Self-test OK`
-- `Self-test FAILED at <step>: <why>`, the step being the number and name from
-  Steps.
+When step 2 didn't find some jobs, add one line naming them, and how to schedule
+them if they want them. For example:
 
-On a failure, add one line with the fix when it's plain: a `ready-check` failure
-carries its own fix; a missing label is `/ntm:configure-todo-list`; a notify
-failure is `/ntm:configure-notifications`; a backend operation that errored on a
-backend of your own means the operation's description under Todo list needs
-correcting, with `/ntm:configure-todo-list`.
+> No weekly setup or reminders are scheduled. If you want them, run `/ntm:setup`
+> again, or tell ntm to set them up.

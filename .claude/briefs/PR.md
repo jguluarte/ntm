@@ -1,5 +1,10 @@
 # Opening your pull request, and answering the owner's comments
 
+## The README
+
+A branch that adds, changes, renames or removes a skill updates that skill's
+entry in `README.md` in the same PR. `/ntm:help` answers from the README.
+
 ## Open it
 
 When your branch's commits are done:
@@ -18,7 +23,15 @@ When your branch's commits are done:
 
     - No bare `@name` anywhere; put any such text in backticks.
 3. Open it:
-   `gh pr create -R jguluarte/ntm --base main --head <branch> --title "<plain title>" --body-file <body file>`
+
+    ```sh
+    gh pr create -R jguluarte/ntm \
+        --base release-0.4 --head <branch> \
+        --title "<plain title>" --body-file <body file>
+    ```
+
+    The base is `release-0.4`, the integration branch for 0.4.
+
 4. End with the pull request's URL and your report as your final message. When
    the owner comments, the orchestrator sends you the comments.
 

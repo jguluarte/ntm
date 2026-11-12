@@ -1,9 +1,10 @@
 ---
 name: ready-check
 description: >-
-    Proves this session can run an ntm job: the user's settings load, the
-    backend connector is present, and the todo list answers. Run at the start of
-    a scheduled run, or by hand ("can you see my todo list?", "check the
+    Proves this session can run an ntm job and loads the user's settings and
+    ntm's core rules for it: ntm-user loads, and the task list answers with the
+    user's `%Settings`. On a failure, says what is wrong and how to fix it. Run
+    at the start of a job, or by hand ("can you see my todo list?", "check the
     connection", "is ntm ready?").
 ---
 
@@ -12,106 +13,45 @@ description: >-
 ## Usage
 
 ```
-/ntm:ready-check [--notify-failure <skill>]
+/ntm:ready-check
 ```
-
-- `--notify-failure <skill>`: on failure, send the result through `ntm:notify`,
-  for the skill named, such as `morning-reminder`. Without it, nothing is sent.
 
 ## The check
 
 Stop at the first failure.
 
-### 1: Load `ntm:conventions`
+### 1. Load `ntm-user:backend`
 
-If it can't be loaded: **Dependency missing**. Its first step loads
-`ntm-user:settings`; if that won't load (it says "not configured"): **Not
-configured**.
+If it doesn't load, the failure is Not configured.
 
-### 2: Find the connector's tools
+### 2. Load `%Settings`
 
-The backend guide's `ping` names the tool it uses (for a backend with no guide,
-Todo list in your settings does). If that tool isn't loaded, search for it with
-ToolSearch. If it still isn't there: **Connector not attached**.
+Read `%Settings` where `ntm-user:backend` says it lives. It's on the task list,
+so this one read proves the connector, its sign-in and the account. Its values
+are the user's settings for the rest of the run.
 
-### 3: Ping the todo list
+If the read fails, name the failure from what went wrong:
 
-Carry out the guide's `ping`. If it comes back with the todo list named by List
-name in Todo list in your settings, the ping passes; a different todo list is
-**Wrong account**. If the call errors, go to step 4.
+- Connector not attached: its tools aren't in this session, even after a search
+- Sign-in expired: the connector rejects its sign-in, or waits on one
+- Wrong account: the connector answers, but can't see `%Settings`
+- Backend error: anything else, after one more try
 
-### 4: If the call errors
+### 3. Read the core rules
 
-Classify it the way the guide's `ping` says:
-
-- An authentication or authorization error (unauthorized, forbidden, invalid or
-  expired token): **Sign-in expired**.
-- The todo list isn't found: **Wrong account**.
-- Anything else (a timeout, a server error): retry once. If the retry returns a
-  todo list, apply step 3 to it. If it errors, classify an authentication or
-  not-found error as above, and anything else as **Backend error**.
-
-### 5: Load `ntm-user:style`
-
-It's optional: if it won't load, the check still passes, as `(no style)`.
+Read ntm's core rules, `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`, and
+follow them for the rest of the run.
 
 ## Result
 
-End with one result line, after the notification if there is one:
+One line: `Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A
+backend error names the error, shortened. In a job, the failure line ends the
+run, and the job's own push delivers it.
 
-- Pass: `Ready-check OK`, or `Ready-check OK (no style)` when `ntm-user:style`
-  didn't load
-- Fail: `Ready-check FAILED: <failure> — <fix>`
-
-The failures, and the fix for each:
-
-### Dependency missing
-
-The ntm:conventions skill couldn't be loaded. Check the ntm plugin is installed
-and enabled.
-
-### Not configured
-
-ntm-user:settings couldn't be loaded. Run /ntm:configure and install the
-ntm-user plugin it produces.
-
-### Connector not attached
-
-The backend connector isn't in this session. Connect it as
-/ntm:configure-todo-list shows; for a scheduled task, attach it there.
-
-### Sign-in expired
-
-The backend rejected the connector's sign-in. Reconnect the connector.
-
-### Wrong account
-
-The connector can't see the todo list named in Todo list in your settings.
-Reconnect it with the account that owns that todo list.
-
-### Backend error
-
-The backend returned <the error, shortened> on retry. Usually temporary; if it
-repeats, check the backend's status page.
-
-## With `--notify-failure`
-
-When the check fails, load `ntm:notify` and run:
-
-```
-/ntm:notify --from <skill> --title "<List name> — <name> failed"
-    --message "<name>: <failure>. <fix>"
-```
-
-`<name>` is the skill's name in plain words: `morning-reminder` becomes Morning
-reminder.
-
-This is the one error that may use the notification channel; a job reports every
-later error in its final reply instead. If `ntm:notify` can't be loaded or the
-send fails, append `(notification not sent: <reason>)` to the result line.
-
-With the `claude-push` channel, `ntm:notify` sends nothing and returns
-`NOTIFY VIA FINAL REPLY` with the title and message. That's not a failure:
-return the result line, then the title and the message (not the marker line). A
-job that ends its run with what this check returned then shows the failure once,
-as the completion push.
+| Failure                | Fix                                                               |
+| ---------------------- | ----------------------------------------------------------------- |
+| Not configured         | Run /ntm:setup and install the ntm-user plugin it builds          |
+| Connector not attached | Attach the task list's connector to the job, or connect it again  |
+| Sign-in expired        | Reconnect the task list's connector                               |
+| Wrong account          | Reconnect the connector with the account that holds the task list |
+| Backend error          | Usually temporary; if it repeats, check the backend's status page |

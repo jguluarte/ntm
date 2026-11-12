@@ -24,16 +24,16 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 | The core message | What to say, in plain words                                |
 | The type         | `freeform`, or the message rule it's for, such as `weekly` |
 | The task ids     | The tasks the message is about                             |
+| Days slipped     | How many days each task has slipped, when given            |
 | The tone         | Your read of today's facts                                 |
 
 ## Writing the message
 
-### 1. Count the days each task has carried over
+### 1. Find each task's level
 
-In a reminder, a `reminders.*` message, for each task id you were given, count
-the earlier days with an entry that lists it in `ids`. The theme's Responding to
-procrastination part gives the task's level for that count. Any other message
-skips this step: its tasks have no level.
+For each task given with its days slipped, the theme's Responding to
+procrastination part gives its level for that count. A message without days
+slipped skips this step: its tasks have no level.
 
 ### 2. Write it
 

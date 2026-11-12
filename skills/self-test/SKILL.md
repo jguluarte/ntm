@@ -2,10 +2,10 @@
 name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
-    every backend must: check their settings, labels and databases, then create,
-    read, find, plan, label, comment on, estimate, change and close a throwaway
-    task, give it a sub-task and mark that a duplicate, and write and read a
-    throwaway database, then clean up and have the messenger agent send a
+    every backend must: check that setup made their databases and labels, then
+    create, read, find, plan, label, comment on, estimate, change and close a
+    throwaway task, give it a sub-task and mark that a duplicate, and write and
+    read a throwaway database, then clean up and have the messenger agent send a
     success message. Each step's result is shown as it passes or fails. The
     first thing to run after installing ntm and ntm-user ("test ntm", "run the
     self test", "is everything wired up?"), and the smoke test for a backend the
@@ -47,16 +47,11 @@ failure, say why and skip to step 14.
 
 Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 
-### 2. Configuration
+### 2. What setup made
 
-The step passes when the user's setup has everything ntm reads:
-
-- every database `ntm-user:backend` lists opens, with the parts setup creates it
-  with: its template in `skills/setup/references/databases/`, or for `%Theme`,
-  the parts in `skills/setup/references/theme.md`
-- every label under Labels in `%Settings` is on the task list, by its name there
-
-Name each missing database, part, setting or label.
+The step passes when setup made everything it was supposed to: every database
+`ntm-user:backend` lists opens, and every label under Labels in `%Settings` is
+on the task list, by its name there. Name each one that's missing.
 
 ### 3. Create a task
 

@@ -69,7 +69,7 @@ Usage:
     [app token: <token>]
 
     type: <rule path>
-    [record_task_ids: true]
+    [record_task_ids: false]
     [app token: <token>]
 
 Inputs:
@@ -77,8 +77,8 @@ Inputs:
                 %Message-rules, such as reminders.morning or weekly
     message:    for freeform, its one fact: a line of plain text
     record_task_ids:
-                true to record the message's task ids in %Message-history;
-                false when left out
+                true to record the message's task ids in %Message-history,
+                as ntm:reminder sets it; false when left out
     app token:  a Pushover app token, for a job that sends from its own
                 Pushover app
 ```

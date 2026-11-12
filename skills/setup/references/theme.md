@@ -20,6 +20,10 @@ snap back when the user needs it, how they celebrate when it's earned. Ask how
 hard each one goes: swearing, roasting and shade are all welcome when they want
 them. Push for vivid.
 
+Build a cast, more than one who talks to them: a host, a rival, a mentor, a
+narrator, whoever their theme has. Give each one their own way of talking, the
+words they reach for and how they treat the user.
+
 ## What motivates you to read reminders from ntm
 
 What makes them open a reminder: a joke, shade, a running bit, a story that
@@ -71,12 +75,40 @@ Recurring bits from the theme's world or their own life, each with a short name:
 a catchphrase, a stock moment, a character who keeps turning up. Push for a few
 weeks' worth of variety. That comes from how many motifs there are and how many
 ways each one can be used: a running scene that moves forward, or a catchphrase
-that bends to the task, stretches across many reminders. Talk that through with
-them, then agree how long a motif rests before it comes back, given how many
-there are, and write it as the `Repeat limit:` line after the motifs.
+that bends to the task, stretches across many reminders. Give each motif a few
+ways to play it, so it's never a bare name.
+
+Sort the motifs into groups: a setting, a character, a kind of moment. A day's
+episode draws its motifs from one group. Talk that through with them.
+
+## Builds
+
+How a line is put together. Start with these, then add ways that fit their
+theme:
+
+- A verdict first, then the task.
+- A question.
+- The task speaking for itself.
+- One word, then the task.
+
+## What rotates
+
+The things a message picks that rest before they come back: the speakers, the
+motif groups, the motifs, the builds, and anything else their theme has. Agree
+with them how long each one rests, given how many there are, and write a
+`Repeat limit:` line for each, such as `Repeat limit: motifs, 20 messages` or
+`Repeat limit: motif groups, 5 days`.
+
+## What the history records
+
+What each `%Message-history` entry notes about its message: each thing it used
+from What rotates, the day's episode, a running thread, whatever their theme
+needs to pick up where it left off. Agree it with them as a short list, each
+item a short name and what it holds.
 
 ## Examples
 
 A few example reminders for each register and each level, and a few for an
-evening when everything closed, with tasks like theirs. Read them back and
-revise until they smile.
+evening when everything closed, with tasks like theirs. Build each joke from the
+task's own details, never a label in front of a list of tasks. Read them back
+and revise until they smile.

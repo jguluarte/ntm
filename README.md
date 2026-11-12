@@ -26,12 +26,13 @@ like an actual assistant.
 ### `/ntm:setup`
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.
+It ends with a plugin of your own for you to install.
 
 ### `/ntm:self-test`
 
 Tries out everything setup built, on a throwaway task it cleans up afterwards,
-and ends with a test message to your phone. Run it once setup is done and its
-plugin is installed.
+and ends with a test message to your phone. Run it once setup is done and you've
+installed the plugin it built.
 
 ### `/ntm:today`
 
@@ -41,21 +42,21 @@ only.
 
 ### `/ntm:plan`
 
-Gives your days their tasks, one small task a weekday unless you set it up
-otherwise. Scheduled jobs plan your week ahead, and each morning move unfinished
-work to today. Run it yourself to plan together, such as
+Picks what you'll work on each day: one small task a weekday, unless you chose
+otherwise in setup. Scheduled jobs plan your week ahead, and each morning move
+unfinished work to today. Run it yourself to plan together, such as
 `/ntm:plan next week around the garage`.
 
 ### `/ntm:pause`
 
-Pauses days when you don't want anything planned for you, such as a holiday or a
-busy week. Say it in words, like `/ntm:pause next week`, or run it alone to see
-your pauses.
+Marks days off, such as a holiday or a busy week, so nothing new gets planned
+for them. Name the days in your own words, like `/ntm:pause next week`, or run
+it alone to see your pauses.
 
 ### `/ntm:reminder`
 
-Sends your morning, afternoon and evening reminders to your phone, in the theme
-you chose during setup. Scheduled jobs run it for you at the times you picked.
+Sends your morning, afternoon and evening reminders to your phone, in the style
+you set up. Scheduled jobs run it for you at the times you picked.
 
 ### `/ntm:review-task-list`
 
@@ -65,15 +66,15 @@ whenever you like.
 
 ### `/ntm:run-price-watch`
 
-Checks the things on your task list you want to buy, and tells you when one is a
-good deal today. A scheduled job runs it once a day, so you only hear about an
-item when it's worth buying. Run it yourself to check now.
+Checks the things you want to buy, the tasks in the project you picked for them
+in setup, and tells you when one is a good deal today. A scheduled job runs it
+once a day; run it yourself to check now.
 
 ### `/ntm:sync-price-watch-to-amazon`
 
 If you turned on Amazon price alerts, this sets one for each item you're
-watching, and removes it once you close the task. It works in your browser,
-signed in to Amazon. The price watch tells you when it's time to run it.
+watching, and removes the alerts for tasks you've closed. Run it in chat, in a
+browser signed in to Amazon. The price watch tells you when it's time.
 
 ### `/ntm:fix-task-list`
 

@@ -55,10 +55,12 @@ don't ask for approval.
 
 Save the list.
 
-### 4. Planned work on a paused day
+### 4. Planned work on paused days
 
-When a newly paused day already has tasks planned on it, name them and offer to
-clear their dates. Clear them when the user says yes.
+Look at what's already planned on the newly paused days, and handle it as fits.
+For one day, saying what's planned and asking if they want to change it may be
+enough. For several days, ask if they want those dates cleared too; they may
+want to see what was planned. Be flexible.
 
 ## Result
 

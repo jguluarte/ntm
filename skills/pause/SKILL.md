@@ -64,5 +64,4 @@ want to see what was planned. Be flexible.
 
 ## Result
 
-Show the user the pauses as they stand, each date with its weekday, so a wrong
-guess about a day is easy to spot.
+Show the user their pauses, each date with its day of the week.

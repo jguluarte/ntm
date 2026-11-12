@@ -41,9 +41,10 @@ copy.
   pushes a new commit. Agents post under his account, and every reply ends with
   `<!-- ntm-agent -->`. The orchestrator resolves finished threads; author
   agents don't.
-- Merges are squash merges, on his say-so. Merged branches auto-delete.
-- A squash merge gets a written message: one short paragraph on the net change,
-  not GitHub's default list of every commit.
+- Merges happen on his say-so, and what lands is intentional commits. Usually
+  that's a squash merge with a written message, one short paragraph on the net
+  change. When each commit is already intentional, as when `release-0.4` merges
+  into `main`, it's a merge commit. Merged branches auto-delete.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.4`
   in with a merge commit.
 - Versions are set at merge; PR branches don't change them. He doesn't want

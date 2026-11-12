@@ -24,8 +24,8 @@ like an actual assistant.
 ## Core skills
 
 These are the shared pieces the rest of ntm is built on. You run setup and the
-self-test once, when you start; after that the others work in the background,
-and you can run any of them yourself.
+self-test once, when you start; the others are there whenever you or ntm need
+them.
 
 ### `/ntm:help`
 

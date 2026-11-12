@@ -141,6 +141,8 @@ the limit and you never count characters. When it answers `Notify TOO LONG`,
 tighten the message, keeping any task ids it names, and send once more. If that
 is too long as well, return `Notify FAILED:` with its reason.
 
+Then add the `%Message-history` entry, as `ntm:style` says.
+
 ## What you return
 
 Exactly one of these, unchanged, and nothing else. Whoever asked decides what

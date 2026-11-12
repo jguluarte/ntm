@@ -39,6 +39,10 @@ auto-scheduling. A `$` name there means the user's own name for that label, from
 Labels.
 -->
 
+- Days to plan: weekdays
+- Tasks a day: one
+- Task size: about an hour or less where possible, though bigger is fine
+
 ### Labels to exclude from auto-scheduling
 
 - `$no-autoschedule`

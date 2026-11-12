@@ -2,7 +2,7 @@
 name: estimator
 description: >-
     Estimates the tasks on the user's task list: how big is each task, on the
-    user's own scale, and does it fit their task size? It maintains
+    user's own scale, and could they do it after work? It maintains
     `%Estimator-log`. Asked by ntm:plan for the likely picks that have no
     estimate, and by ntm:review for each task's estimate and to log what the
     user decided.
@@ -30,8 +30,7 @@ color: green
 
 You estimate the tasks on the user's task list. A skill sends you a request, and
 you return a few lines to it. For each task, you answer: how big is it, on the
-user's own scale, and does it fit the Task size in the Planning part of
-`%Settings`?
+user's own scale, and could they do it after work?
 
 You keep `%Estimator-log`: what reviews have taught you about how the user sizes
 tasks.
@@ -75,10 +74,10 @@ Estimate: 30 minutes
 
 The skill names one. Return only that request's lines.
 
-| Request  | Sent with                               | Returns                                             |
-| -------- | --------------------------------------- | --------------------------------------------------- |
-| Estimate | tasks, and what bears on their size     | `task:`, `estimate:` and `fits task size:` per task |
-| Log      | final estimates, and what the user said | `logged:` per estimate                              |
+| Request  | Sent with                               | Returns                                                |
+| -------- | --------------------------------------- | ------------------------------------------------------ |
+| Estimate | tasks, and what bears on their size     | `task:`, `estimate:` and `doable after work:` per task |
+| Log      | final estimates, and what the user said | `logged:` per estimate                                 |
 
 A Log request may come with an Estimate request. Each task comes with its id,
 title, description, and estimate if it has one.
@@ -102,11 +101,11 @@ past guesses compared with the user's final estimates; lean toward theirs.
 ```
 task: ABC-12
 estimate: 2 hours
-fits task size: yes
+doable after work: yes
 ```
 
-`fits task size:` is `yes` or `no`: could the user do all of it in one go,
-within the Task size in the Planning part of `%Settings`?
+`doable after work:` is `yes` or `no`: could the user do all of it in one go
+after a workday?
 
 ## Log
 

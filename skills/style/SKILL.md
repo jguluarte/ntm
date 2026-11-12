@@ -34,8 +34,8 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 For each task given with its days slipped, the theme's Responding to
 procrastination part gives its level for that count; a task marked to press
-harder may go a level up. A message without days slipped skips this step: its
-tasks have no level.
+harder may go a level up. A done task has no level. A message without days
+slipped skips this step: its tasks have no level.
 
 ### 2. Write it
 

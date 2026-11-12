@@ -157,12 +157,12 @@ Then save, as Saving the features says.
 
 ##### Settings
 
-| Setting                                | Default                                 |
-| -------------------------------------- | --------------------------------------- |
-| Days to plan                           | Weekdays                                |
-| Tasks a day                            | One                                     |
-| Task size                              | About an hour or less; bigger is fine   |
-| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment` |
+| Setting                                | Default                                                  |
+| -------------------------------------- | -------------------------------------------------------- |
+| Days to plan                           | Weekdays                                                 |
+| Tasks a day                            | One                                                      |
+| Task size                              | About an hour or less; slightly bigger is sometimes okay |
+| Labels to exclude from auto-scheduling | `$no-autoschedule`, `$pending-shipment`                  |
 
 ##### Databases
 

@@ -27,9 +27,9 @@ real one. Any other label is the user's own.
 
 ## Planned date
 
-The day a task's work is planned for. Planning sets, moves and clears it freely.
-**NEVER treat a planned date as a deadline.** A planned date before today, on a
-task that's still open, is "stale".
+The day a task's work is planned for. Planning sets and moves it, and clears it
+only when the user agrees. **NEVER treat a planned date as a deadline.** A
+planned date before today, on a task that's still open, is "stale".
 
 ## Status groups
 

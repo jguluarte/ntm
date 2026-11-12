@@ -67,7 +67,8 @@ Every user has the three below.
 ### `%Settings`
 
 The values the user agreed to in setup, such as their timezone, their label
-names and how they want to be notified. Skills read the part they need.
+names and how they want to be notified. `ntm:ready-check` loads it at the start
+of a run, and skills read the part they need.
 
 ### `%Theme`
 

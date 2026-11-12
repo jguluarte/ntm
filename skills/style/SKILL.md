@@ -47,7 +47,7 @@ rest as the theme's `Repeat limit:` line says.
 ### 3. Give it a title
 
 Give it a title, in the same style, that says what the message is about. The
-type's name alone isn't a title.
+type's name alone isn't a title. Don't be boring and just use the reminder type.
 
 ## Keeping `%Message-history`
 

@@ -9,7 +9,7 @@ description: >-
 
 # ntm:pause
 
-A pause is a day, or a span of days, when nothing gets planned automatically.
+A pause is a day, or a range of days, when nothing gets planned automatically.
 
 ## Usage
 
@@ -34,11 +34,11 @@ The Paused dates part holds one list item per pause, in date order:
 | A pause                 | Its list item                |
 | ----------------------- | ---------------------------- |
 | One day                 | `- 2026-11-27`               |
-| A span                  | `- 2026-12-21 to 2026-12-31` |
+| A range                 | `- 2026-12-21 to 2026-12-31` |
 | With a reason they gave | `- 2026-11-26: Thanksgiving` |
 | No pauses               | `None.`                      |
 
-A span includes both its ends. A pause comes off the list once it has ended.
+A range includes both its ends. A pause comes off the list once it has ended.
 
 ## Changing pauses
 
@@ -57,10 +57,10 @@ Save the list.
 
 ### 4. Planned work on paused days
 
-Look at what's already planned on the newly paused days, and handle it as fits.
-For one day, saying what's planned and asking if they want to change it may be
-enough. For several days, ask if they want those dates cleared too; they may
-want to see what was planned. Be flexible.
+Look at what's already planned on the newly paused days, and handle it as fits
+the case. For one day, saying what's planned and asking if they want to change
+it may be enough. For several days, ask if they want those dates cleared too,
+and show what was planned if they'd like to see it. Be flexible.
 
 ## Result
 

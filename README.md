@@ -21,11 +21,11 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
 
-## Setup and updates
+## Core skills
 
-These skills get ntm running and keep it working. You run setup and the
-self-test once, when you start; after that ntm mostly checks itself, and you can
-run a check by hand when something seems off.
+These are the shared pieces the rest of ntm is built on. You run setup and the
+self-test once, when you start; the others are there whenever you or ntm need
+them.
 
 ### `/ntm:help`
 
@@ -47,6 +47,13 @@ installed the plugin it built.
 
 Checks that ntm can reach your task list, and says how to fix it when it can't.
 Your scheduled jobs run it first; run it yourself if something seems off.
+
+### `/ntm:style`
+
+Writes ntm's messages to you in the theme you created during setup, so they
+sound like something you enjoy and keep changing instead of repeating. A task
+you keep putting off gets a stronger nudge the longer it slips. Ask it to write
+something in your style, or to change how your reminders sound.
 
 ## Task management
 

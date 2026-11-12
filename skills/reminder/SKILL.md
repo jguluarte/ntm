@@ -35,17 +35,19 @@ Load what the Reminders part of `%Message-rules` says to load. Today's tasks are
 every task planned for today, open and done, so an evening where everything got
 done still gets its message.
 
-A task's days slipped are the earlier days with a `%Message-history` entry whose
-`ids` list it. When something on a task warrants upping the ante, you may also
-mark it to press harder.
+A task has slipped one day for each date its `Planned date history` comment
+lists, as ntm's core rules describe it; a task with no comment hasn't slipped.
+When something on a task warrants upping the ante, you may also mark it to press
+harder.
 
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
-with `record_task_ids: true`, today's date, and today's tasks, each with whether
-it's done, the days it has slipped and any mark to press harder. It sends the
-message for that type, as the user's message rules say. Hand it over even when
-there are no tasks; the messenger decides when there's nothing to send.
+today's date, and today's tasks, each with whether it's done, its days slipped
+with the dates from its `Planned date history`, and any mark to press harder. It
+sends the message for that type, as the user's message rules say. Hand it over
+even when there are no tasks; the messenger decides when there's nothing to
+send.
 
 ## Result
 

@@ -87,8 +87,8 @@ Inputs:
 
 For `weekly`, the job also hands you last week and the week ahead, as it found
 them. For a reminder, `ntm:reminder` hands you today's date and today's tasks,
-each with whether it's done and the days it has slipped, and may mark a task to
-press harder.
+each with whether it's done and the days it has slipped, with the dates from its
+`Planned date history`, and may mark a task to press harder.
 
 ## Sending a message
 
@@ -101,7 +101,7 @@ For any other type, read the user's `%Message-rules` and find the rule your
 `type` names: `reminders.morning` is the `reminders` rule with its `morning`
 part, and `weekly` is the `weekly` rule. Follow it with the facts you were
 handed, which are what it says to load. Where it talks about tasks carrying
-over, use their days slipped.
+over, use their days slipped and `Planned date history` dates.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.

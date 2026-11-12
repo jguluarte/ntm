@@ -105,7 +105,7 @@ doable after work: yes
 ```
 
 `doable after work:` is `yes` or `no`: could the user do all of it in one go
-after a workday?
+after a workday, judged by the Task size in the Planning part of `%Settings`?
 
 ## Log
 

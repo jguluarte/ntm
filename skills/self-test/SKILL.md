@@ -1,7 +1,7 @@
 ---
 name: self-test
 description: >-
-    A test that the user's setup is complete and their todo list can do what
+    A test that the user's setup is complete and their task list can do what
     every backend must: check their settings, labels and databases, then create,
     read, find, plan, label, comment on, estimate, change and close a throwaway
     task, give it a sub-task and mark that a duplicate, and write and read a
@@ -118,7 +118,8 @@ today, duplicates included.
 
 ### 12. Store data
 
-Create the below database, then find it by its title, and it holds the contents.
+Write the below database, into the one an earlier self-test left behind or a new
+one when there isn't one, then find it by its title, and it holds the contents.
 
 | Field    | Value                      |
 | -------- | -------------------------- |

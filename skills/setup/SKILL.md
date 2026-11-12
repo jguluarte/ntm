@@ -214,7 +214,9 @@ composable on purpose.
 3. `/ntm:clean`
 4. `/ntm:plan --auto week`
 5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
-   week ahead from step 4. End the run with what it returns.
+   week ahead from step 4. End the run with what it returns; for a delivery
+   block, that is its title and message, without the `NOTIFY VIA FINAL REPLY`
+   line.
 
 ###### Reminders
 
@@ -280,9 +282,10 @@ What it runs, for Create the jobs:
 Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
 template, and say in a line where each one lives. Add where each one lives to
-`ntm-user:backend`. Write the settings into the `%Settings` database, and the
-labels' real names under its Labels. Keep the jobs and their model for Create
-the jobs, after Notifications.
+`ntm-user:backend`. Write the settings into the `%Settings` database, with the
+labels' real names, dropping Planning when they skipped task management,
+Shopping when they skipped price watch, and the label rows for labels you didn't
+create. Keep the jobs and their model for Create the jobs, after Notifications.
 
 ### Create a theme
 

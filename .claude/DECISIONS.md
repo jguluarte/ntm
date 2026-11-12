@@ -62,9 +62,7 @@ last, in its Create the jobs step, after the install and `self-test`, and the
 scheduled tasks are the source of truth. Re-running `/ntm:setup` creates any
 that aren't scheduled.
 
-Every job starts with `/ntm:ready-check`. The suggested weekly job is setup's
-five plain steps: the ready check, a look-up of past-due and last week's closed
-tasks, `/ntm:clean`, `/ntm:plan --auto week`, then one message.
+Every job starts with `/ntm:ready-check`.
 
 ### Setup
 
@@ -84,18 +82,12 @@ rebuilds. `ntm-user:backend` opens with a Built line naming its version, the
 
 Publishing waits for the test-drives, and needs:
 
-- the self-test failing with no user plugin installed, and saying to run
-  `/ntm:setup`
 - `setup` never sending or creating without being asked
 - a privacy page
-- a README of 40+ words, LICENSE, icon, author, homepage and repository
+- a LICENSE file, an icon, and a homepage and repository in `plugin.json`
 - no credentials or brand names
 
 How the published release is identified is open.
-
-## Setup, as a new user meets it
-
-Setup's flow, step by step, is in the `setup` skill.
 
 ## Patterns every rewritten file follows
 
@@ -132,34 +124,11 @@ Setup creates every database from its template during onboarding.
 Agents and skills refer to a database's parts by name ("the `morning` message
 rule"), never by heading structure.
 
-#### A PR per template
-
-A template lands in its own PR, never in a batch, before setup's rewrite creates
-databases from it. It may still change then.
-
 ### Configuration is guaranteed
 
 Setup and self-test guarantee the user's configuration. Agents and skills are
 written for a configured user and the typical flow: every database, part and
 setting they name is there.
-
-### The messenger
-
-- It takes one `type:` input: `freeform` with a `message:` line, or a path into
-  the user's Message rules, such as `reminders.morning`, with that rule's facts.
-- The user's rule for a type says what the message holds, and may say when no
-  notification is needed. The messenger follows it.
-- It drafts the core message in plain words first, then puts it in the user's
-  style. The tone is its read of today's facts.
-
-### Estimates
-
-- An estimate is an `Estimate: 2 hours` line at the end of the task's
-  description, on every backend.
-- Estimates are in hours unless the user's Settings say otherwise. Anyone can
-  estimate in hours.
-- Estimates and times are written in full words, in the user's language:
-  `2 hours`, `~20 minutes`.
 
 ### Writing
 

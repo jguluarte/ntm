@@ -28,6 +28,8 @@ Then load the user's `%Message-rules`.
 
 ## The facts
 
+Today is the date in the timezone under About you in `%Settings`.
+
 Load what the Reminders part of `%Message-rules` says to load. Today's tasks are
 every task planned for today, open and done, so an evening where everything got
 done still gets its message.
@@ -39,10 +41,10 @@ mark it to press harder.
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
-with `record_task_ids: true` and today's tasks, each with the days it has
-slipped and any mark to press harder. It sends the message for that type, as the
-user's message rules say. Hand it over even when there are no tasks; the
-messenger decides when there's nothing to send.
+with `record_task_ids: true`, today's date, and today's tasks, each with the
+days it has slipped and any mark to press harder. It sends the message for that
+type, as the user's message rules say. Hand it over even when there are no
+tasks; the messenger decides when there's nothing to send.
 
 ## Result
 

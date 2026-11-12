@@ -83,8 +83,8 @@ Inputs:
 ```
 
 For `weekly`, the job also hands you last week and the week ahead, as it found
-them. For a reminder, `ntm:reminder` hands you today's tasks, each with the days
-it has slipped, and may mark a task to press harder.
+them. For a reminder, `ntm:reminder` hands you today's date and today's tasks,
+each with the days it has slipped, and may mark a task to press harder.
 
 ## Sending a message
 

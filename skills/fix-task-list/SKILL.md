@@ -13,24 +13,17 @@ Cleans up stale information in the backend.
 ## Usage
 
 ```
-/ntm:fix-task-list [--dry-run]
+/ntm:fix-task-list
 ```
-
-With `--dry-run`, write nothing and say what would change, under
-`Dry run <today>:`.
 
 ## Fix
 
 Load `ntm-user:backend`, and then find all non-closed tasks which have a planned
-date in the past.
-
-**If this is not a `--dry-run`**, clear the date on all of those tasks.
+date in the past. Clear the date on all of those tasks.
 
 Read the Paused dates part of `%Paused-dates`, and find the pauses that have
-ended: a day, or a range's last day, before today.
-
-**If this is not a `--dry-run`**, take those off the list. With none left, the
-part says `None.`
+ended: a day, or a range's last day, before today. Take those off the list. With
+none left, the part says `None.`
 
 ## Result
 

@@ -1,6 +1,7 @@
 # Core rules
 
-The rules every ntm run follows. Each feature's rules add their own.
+The rules every ntm run follows. `ntm:ready-check` loads them at the start of a
+run. Each feature's rules add their own.
 
 The task list belongs to one person, not a team. Backends are built for teams at
 work, where a due date is a promise to someone else. On the user's list nothing

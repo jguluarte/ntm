@@ -3,9 +3,8 @@
 <!--
 What ntm's messages have said, so the next ones don't repeat it. `ntm:style`
 keeps it. Setup creates this database from this template, and writes it without
-these comments:
-they are for you, never for the user. The user can edit, delete or add any part,
-and you find each part by its name.
+these comments: they are for you, never for the user. The user can edit, delete
+or add any part, and you find each part by its name.
 
 `Keep:` is how much history to keep. After each new entry, drop the entries
 older than that.

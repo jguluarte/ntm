@@ -60,8 +60,8 @@ user allows, write why under Problems in your Stores comment, then return
 
 ### 2. Find the stores
 
-A full search is due when there's no Stores comment, or its last full search was
-7 or more days ago. It looks well past the stores you know: the manufacturer's
+Do a full search when there's no Stores comment, or its last full search was 7
+or more days ago. It looks well past the stores you know: the manufacturer's
 store and where-to-buy page, well-known retailers in the user's country, and
 deal-community threads. Aim for as many trusted stores as the item realistically
 has, and never pad. Other days, check the stores you know and take a short look

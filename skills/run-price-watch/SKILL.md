@@ -31,8 +31,9 @@ the run with its result line.
 
 The watch is the open tasks `$price-watch` covers.
 
-When Amazon alerts are on, as the rules say, a sync is due when an open watched
-task has neither Amazon label, or a closed task still has `$has-amazon-alert`.
+When Amazon alerts are on, as the rules say, they need syncing when an open
+watched task has neither Amazon label and needs an alert set, or a closed task
+still has `$has-amazon-alert` and its alert needs removing.
 
 ### 2. Check each task
 
@@ -79,12 +80,12 @@ date.
 In a job, return one line: how many tasks were checked, each deal in a few words
 with its task id, and what the messenger returned, such as
 `Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
-When a sync is due, end the line with
-`Amazon sync due. Run /ntm:sync-price-watch-to-amazon.` When the messenger
-returns its delivery block, return that as it came.
+When Amazon alerts need syncing, end the line with
+`Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When the
+messenger returns its delivery block, return that as it came.
 
 In chat, tell the user in plain words: each deal with its price, store and
-product link, what each other item came to, and any notes they could fix. When a
-sync is due, say to run `/ntm:sync-price-watch-to-amazon`.
+product link, what each other item came to, and any notes they could fix. When
+Amazon alerts need syncing, say to run `/ntm:sync-price-watch-to-amazon`.
 
 When the run can't finish, return `Run-price-watch FAILED: <what went wrong>`.

@@ -13,9 +13,7 @@ description: >-
 # ntm:plan
 
 Plan gives the user's days their tasks by setting planned dates. It sets and
-moves dates, and clears one only when the user agrees to it in chat. A stale
-date it moves or clears goes into the task's `Planned date history` first, as
-ntm's core rules say.
+moves dates, and clears one only when the user agrees to it in chat.
 
 ## Usage
 

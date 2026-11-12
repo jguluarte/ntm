@@ -52,10 +52,10 @@ was missed: ntm carries the work to today or clears the date.
 
 ### Planned date history
 
-A task's `Planned date history` comment lists the planned dates it had that went
-stale, oldest first. Before moving or clearing a stale planned date, add it to
-the comment: update the comment in place, or add it when the task has none. A
-planned date changed before it passes adds nothing.
+A task's `Planned date history` comment lists the planned dates it slipped from,
+oldest first. `ntm:plan --auto day` adds the old date when it carries the task
+to today, and `ntm:clean` adds it when it clears a stale date: update the
+comment in place, or add it when the task has none.
 
     Planned date history:
     - 2026-11-10

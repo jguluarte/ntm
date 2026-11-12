@@ -1,10 +1,10 @@
-fix-task-list
+clean
 help
 pause
 plan
 ready-check
 reminder
-review-task-list
+review
 run-price-watch
 self-test
 setup

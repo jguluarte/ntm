@@ -27,6 +27,11 @@ These are the shared pieces the rest of ntm is built on. You run setup and the
 self-test once, when you start; after that the others work in the background,
 and you can run any of them yourself.
 
+### `/ntm:help`
+
+Shows you this page in the chat, any time you want to know what ntm does or what
+one of its skills is for.
+
 ### `/ntm:setup`
 
 This acts as a setup wizard to make sure you have everything needed to run ntm.
@@ -80,13 +85,13 @@ Marks days off, such as a holiday or a busy week, so nothing new gets planned
 for them. Name the days in your own words, like `/ntm:pause next week`, or run
 it alone to see your pauses.
 
-### `/ntm:review-task-list`
+### `/ntm:review`
 
 Goes through your task list with you, a project at a time: closes what's done or
 no longer needed, then estimates each task and breaks up the big ones. Stop
 whenever you like.
 
-### `/ntm:fix-task-list`
+### `/ntm:clean`
 
 Clears dates on previously planned tasks that didn't finish, and removes pause
 dates that have since passed.

@@ -30,8 +30,8 @@ build up as you go. It holds two skills:
 `ntm-user:backend` opens with one Built line: its version, the version of the
 installed `ntm` it was built from, and the date, in this shape:
 `Built: ntm-user <its version> from ntm <ntm's version>, <YYYY-MM-DD>`.
-`ntm:help` reads the Built line to name both versions. `ntm-user:backend` always
-says where `%Settings` lives.
+`ntm-user:backend` always says where `%Settings` lives, it is the entry point
+ntm depends on.
 
 The plugin also bundles the connector for their backend, so their task list is
 reachable wherever ntm runs. Write the plugin's `.mcp.json` with that
@@ -211,7 +211,7 @@ composable on purpose.
 1. `/ntm:ready-check`
 2. Look up the tasks planned in the past that are still open, and the tasks
    closed in the last week.
-3. `/ntm:fix-task-list`
+3. `/ntm:clean`
 4. `/ntm:plan --auto week`
 5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
    week ahead from step 4. End the run with what it returns.

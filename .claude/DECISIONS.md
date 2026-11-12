@@ -57,11 +57,12 @@ The theme lives in the `%Theme` database, in the parts
 
 ### Jobs
 
-Jobs are composed from base skills however the user wants. `ntm:schedules`
-creates and changes them, and the scheduled tasks are the source of truth.
+Jobs are composed from base skills however the user wants. Setup creates them,
+in its Create the jobs step, and the scheduled tasks are the source of truth.
 
-The suggested weekly job: `show-completed` for the span just past,
-`fix-task-list`, `plan --auto` for the next span, then one message.
+Every job starts with `/ntm:ready-check`. The suggested weekly job is setup's
+five plain steps: the ready check, a look-up of past-due and last week's closed
+tasks, `/ntm:clean`, `/ntm:plan --auto week`, then one message.
 
 ### Setup and update
 

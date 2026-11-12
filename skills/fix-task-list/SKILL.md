@@ -1,9 +1,11 @@
 ---
 name: fix-task-list
-description: >-
-    Tidies the user's task list by clearing stale planned dates, and returns
-    what it changed. Run by a job, or by the user ("fix my todo list", "tidy my
-    todo list").
+description: |-
+    Tidies the user's task list by:
+    - Clearing stale planned dates
+    - Removing paused dates that have passed from `%Paused-dates`
+
+    This is run via scheduled job. It reports back the things it changed.
 ---
 
 # ntm:fix-task-list
@@ -13,26 +15,27 @@ Cleans up stale information in the backend.
 ## Usage
 
 ```
-/ntm:fix-task-list [--dry-run]
+/ntm:fix-task-list
 ```
-
-With `--dry-run`, write nothing and say what would be cleared, under
-`Dry run <today>:`.
 
 ## Fix
 
 Load `ntm-user:backend`, and then find all non-closed tasks which have a planned
-date in the past.
+date in the past. Clear the date on all of those tasks.
 
-**If this is not a `--dry-run`**, clear the date on all of those tasks.
+Read the Paused dates part of `%Paused-dates`, and find the paused dates that
+have passed: a day, or a range's last day, before today. Take those off the
+list. With none left, the part says `None.`
 
 ## Result
 
-For a job, return these lines, with one `Cleared` line per date cleared:
+For a job, return these lines, with one `Cleared` line per date cleared and one
+`Removed` line per paused date removed:
 
 ```
 Fixed <today>:
 Cleared <id> <title> <url> (was <date>)
+Removed paused date <as the list had it>
 ```
 
 When there were none, return `Nothing to fix.`; when the task list can't be

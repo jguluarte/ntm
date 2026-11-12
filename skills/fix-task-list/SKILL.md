@@ -23,19 +23,19 @@ Cleans up stale information in the backend.
 Load `ntm-user:backend`, and then find all non-closed tasks which have a planned
 date in the past. Clear the date on all of those tasks.
 
-Read the Paused dates part of `%Paused-dates`, and find the pauses that have
-ended: a day, or a range's last day, before today. Take those off the list. With
-none left, the part says `None.`
+Read the Paused dates part of `%Paused-dates`, and find the paused dates that
+have passed: a day, or a range's last day, before today. Take those off the
+list. With none left, the part says `None.`
 
 ## Result
 
 For a job, return these lines, with one `Cleared` line per date cleared and one
-`Removed` line per pause removed:
+`Removed` line per paused date removed:
 
 ```
 Fixed <today>:
 Cleared <id> <title> <url> (was <date>)
-Removed pause <pause, as the list had it>
+Removed paused date <as the list had it>
 ```
 
 When there were none, return `Nothing to fix.`; when the task list can't be

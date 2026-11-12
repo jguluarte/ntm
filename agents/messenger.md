@@ -85,7 +85,8 @@ Inputs:
 
 For `weekly`, the job also hands you last week and the week ahead, as it found
 them. For a reminder, `ntm:reminder` hands you today's date and today's tasks,
-each with the days it has slipped, and may mark a task to press harder.
+each with whether it's done and the days it has slipped, and may mark a task to
+press harder.
 
 ## Sending a message
 
@@ -97,7 +98,8 @@ each with the days it has slipped, and may mark a task to press harder.
 For any other type, read the user's `%Message-rules` and find the rule your
 `type` names: `reminders.morning` is the `reminders` rule with its `morning`
 part, and `weekly` is the `weekly` rule. Follow it with the facts you were
-handed: they are what it says to load, and the days slipped are its carry-over.
+handed, which are what it says to load. Where it talks about tasks carrying
+over, use their days slipped.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
@@ -123,8 +125,8 @@ The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
 name, unless the message rule says fewer. Give the style the ids of the tasks
-the message is about, with the days slipped, any task marked to press harder,
-and `record_task_ids` when you were given them.
+the message is about, with the days slipped, any task marked to press harder and
+which are done, and `record_task_ids` when you were given them.
 
 For a type with a rule, follow any and all additional guidelines in
 `%Message-rules` for this message type. It may have suggestions on relational

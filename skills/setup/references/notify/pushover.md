@@ -9,11 +9,11 @@ Sends one notification to the user through Pushover, and says whether it went.
     [--app-token <token>]
 ```
 
-| Input         | What it is                                                         |
-| ------------- | ------------------------------------------------------------------ |
-| `--title`     | The notification's title                                           |
-| `--message`   | The message, with task links in markdown                           |
-| `--app-token` | A job's own Pushover app token, in place of the one in `%Settings` |
+| Input         | What it is                                                |
+| ------------- | --------------------------------------------------------- |
+| `--title`     | The notification's title                                  |
+| `--message`   | The message, with task links in markdown                  |
+| `--app-token` | Optional. A job's own token, used in place of the default |
 
 ## Keys
 

@@ -42,12 +42,12 @@ mark it to press harder.
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
-with `record_task_ids: true`, today's date, and today's tasks, each with the
-days it has slipped and any mark to press harder. It sends the message for that
-type, as the user's message rules say. Hand it over even when there are no
-tasks; the messenger decides when there's nothing to send.
+with `record_task_ids: true`, today's date, and today's tasks, each with whether
+it's done, the days it has slipped and any mark to press harder. It sends the
+message for that type, as the user's message rules say. Hand it over even when
+there are no tasks; the messenger decides when there's nothing to send.
 
 ## Result
 
-Return what the messenger returned, as it came. A delivery block ends the run as
-its title and message, without the `NOTIFY VIA FINAL REPLY` line.
+Return what the messenger returned. For a delivery block, end the run with its
+title and message, without the `NOTIFY VIA FINAL REPLY` line.

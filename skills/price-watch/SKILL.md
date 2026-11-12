@@ -79,11 +79,12 @@ date.
 
 ## Result
 
-In a job, return one line: how many tasks were checked, the deals by task id,
-and what the messenger returned, such as
-`Price watch: 5 checked, 1 deal (ABC-24). Sent: Good price`. When a sync is due,
-end the line with `Amazon sync due.` When the messenger returns its delivery
-block, return that as it came.
+In a job, return one line: how many tasks were checked, each deal in a few words
+with its task id, and what the messenger returned, such as
+`Price-watch: 5 checked, 1 deal: the backup battery (ABC-24). Sent: Good price`.
+When a sync is due, end the line with
+`Amazon sync due. Run /ntm:sync-price-watch-to-amazon.` When the messenger
+returns its delivery block, return that as it came.
 
 In chat, tell the user in plain words: each deal with its price, store and
 product link, what each other item came to, and any notes they could fix. When

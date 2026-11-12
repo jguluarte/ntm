@@ -8,4 +8,4 @@ description: >-
 
 # ntm:help
 
-Read ntm's `README.md` and render it to the user, word for word.
+Read `${CLAUDE_PLUGIN_ROOT}/README.md` and render it to the user, word for word.

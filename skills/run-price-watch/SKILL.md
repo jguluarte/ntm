@@ -31,9 +31,8 @@ the run with its result line.
 
 The watch is the open tasks `$price-watch` covers.
 
-When Amazon alerts are on, as the rules say, they need syncing when an open
-watched task has neither Amazon label and needs an alert set, or a closed task
-still has `$has-amazon-alert` and its alert needs removing.
+When Amazon alerts are on, they need syncing if an open watched task has neither
+Amazon label, or a closed task still has `$has-amazon-alert`.
 
 ### 2. Check each task
 

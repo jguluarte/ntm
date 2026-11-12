@@ -1,9 +1,9 @@
 # ntm decisions
 
-What's decided and still shapes the work to come: the 0.4 shape being built, the
-patterns every rewritten file follows, and what was declined. What the plugin
-already does is recorded by the plugin itself; read the file. The order of work
-is in `.claude/plans/0.4-build-plan.md`, and the working rules are in
+What's decided and still shapes the work to come: the 0.4 shape being built,
+what's left for release, the patterns every rewritten file follows, what was
+declined or deferred, and what's still unknown. What the plugin already does is
+recorded by the plugin itself; read the file. The working rules are in
 `CLAUDE.md`. When something changes, edit it here; don't add a dated entry.
 
 ## The 0.4 shape
@@ -35,6 +35,12 @@ backend guides and database templates are setup's, in
 `skills/setup/references/`. A rule fix reaches users with the next version of
 the base. Tokens matter most.
 
+### Plugin files
+
+Skills and agents reach the plugin's files through `${CLAUDE_PLUGIN_ROOT}`
+(#198), which expands to the plugin root in skill and agent text, in the CLI and
+in Cowork. A file read later keeps the literal.
+
 ### Runs load only the user's paths
 
 No day-to-day run loads text about a path the user isn't set up for (another
@@ -57,23 +63,23 @@ The theme lives in the `%Theme` database, in the parts
 
 ### Jobs
 
-Jobs are composed from base skills however the user wants. `ntm:schedules`
-creates and changes them, and the scheduled tasks are the source of truth.
+Jobs are composed from base skills however the user wants. Setup creates them
+last, in its Create the jobs step, after the install and `self-test`, and the
+scheduled tasks are the source of truth. Re-running `/ntm:setup` creates any
+that aren't scheduled.
 
-The suggested weekly job: `show-completed` for the span just past, `clean`,
-`plan --auto` for the next span, then one message.
+Every job starts with `/ntm:ready-check`.
 
-### Setup and update
+### Setup
 
-`setup` is the wizard. `update` is tiny: it loads `setup`, which offers what's
-new from per-version reference files and rebuilds. Setup's build is the one
-rebuild path.
+`setup` is the wizard. Setup's build is the one rebuild path. `update` is
+deferred, below.
 
 ### Versions
 
 The user plugin's `major.minor` mirrors the base's; its patch counts the user's
-rebuilds. `ntm-user:backend` opens with a Built line naming the versions,
-backend, channel and features.
+rebuilds. `ntm-user:backend` opens with a Built line naming its version, the
+`ntm` version it was built from, and the date.
 
 0.3 installs start fresh. The base and the user plugin update together.
 
@@ -81,24 +87,44 @@ backend, channel and features.
 
 Publishing waits for the test-drives, and needs:
 
-- the self-test failing with no user plugin installed, and saying to run
-  `/ntm:setup`
 - `setup` never sending or creating without being asked
 - a privacy page
-- a README of 40+ words, LICENSE, icon, author, homepage and repository
+- a LICENSE file, an icon, and a homepage and repository in `plugin.json`
 - no credentials or brand names
 
 How the published release is identified is open.
 
-## Setup, as a new user meets it
+## Left for release
 
-Setup's flow, step by step, is in `.claude/plans/0.4-setup-flow.md` until the
-`setup` skill encodes it.
+### Docs and tests
+
+The README describes the two plugins and the first steps. A privacy page says
+what leaves a run. A test holds the build to the expected user plugin skills.
+
+### The owner's fresh install
+
+A fresh setup: turn off or delete the 0.3 jobs, install the 0.4 base, run setup.
+Findings become small PRs on `release-0.4`.
+
+### Release
+
+`release-0.4` merges into main, and the version is tagged there.
 
 ## Patterns every rewritten file follows
 
 From Justin's reviews of #116, #117 and #120. His words there win over this
 summary.
+
+### Rewriting a file
+
+1. The rewrite is drafted beside the current file, as `SKILL-new.md`. An agent's
+   draft goes in `drafts/`, as `drafts/<name>-new.md`, because every file in
+   `agents/` loads as an agent.
+2. The owner reviews the draft. Each round of his comments is a new commit.
+3. When he approves, the draft's text replaces the current file and the draft
+   file goes.
+4. A second agent does a comprehension pass: could a person follow this? It is
+   never a hunt for edge cases.
 
 ### Databases
 
@@ -130,34 +156,11 @@ Setup creates every database from its template during onboarding.
 Agents and skills refer to a database's parts by name ("the `morning` message
 rule"), never by heading structure.
 
-#### A PR per template
-
-A template lands in its own PR, never in a batch, before setup's rewrite creates
-databases from it. It may still change then.
-
 ### Configuration is guaranteed
 
 Setup and self-test guarantee the user's configuration. Agents and skills are
 written for a configured user and the typical flow: every database, part and
 setting they name is there.
-
-### The messenger
-
-- It takes one `type:` input: `freeform` with a `message:` line, or a path into
-  the user's Message rules, such as `reminders.morning`, with that rule's facts.
-- The user's rule for a type says what the message holds, and may say when no
-  notification is needed. The messenger follows it.
-- It drafts the core message in plain words first, then puts it in the user's
-  style. The tone is its read of today's facts.
-
-### Estimates
-
-- An estimate is an `Estimate: 2 hours` line at the end of the task's
-  description, on every backend.
-- Estimates are in hours unless the user's Settings say otherwise. Anyone can
-  estimate in hours.
-- Estimates and times are written in full words, in the user's language:
-  `2 hours`, `~20 minutes`.
 
 ### Writing
 
@@ -224,7 +227,7 @@ Justin said no to each of these. Don't propose them again.
 
 ### Settings and jobs
 
-- Schedules kept in Settings, or anything comparing the jobs against Settings.
+- Schedules (job titles or times) kept in `%Settings`.
 - A catch-all section in Settings for whatever the user does differently.
 
 ### Persona
@@ -252,6 +255,69 @@ backend's task hierarchy, and their words stay.
 ### Price watch
 
 An Amazon alert steps database.
+
+## Deferred
+
+After 0.4.0, or when the owner raises them.
+
+### The update skill
+
+`update` waits until ntm is shared with other people. Until then, a change to
+someone's setup is a fresh setup or an edit to `%Settings`.
+
+### Weekday and weekend message rules
+
+Message rules that differ by weekday and weekend. Weekend reminders would plan
+nothing and cover only tasks planned for that day.
+
+### A closer look at the Message rules template
+
+The owner asked to be reminded at a calm point.
+
+### A quiet evening
+
+The evening reminder skips the push when everything was done by the afternoon
+and nothing changed since.
+
+### Recurring reminders
+
+At an interval (pet care, medicine), where the next date follows from when it
+was last done. Likely 1.1; needs the weekend reminders.
+
+### A price watch talk
+
+Its default pattern makes too much busywork, and setup needs better guidelines.
+
+## Unknowns: one experiment each
+
+### The bundled Linear connector
+
+Does it ask for its own sign-in, and does a job created afterwards carry it?
+
+### A job reaches the user plugin
+
+Does a job whose prompt loads `ntm:today` also load `ntm-user:backend` and reach
+the messenger agent?
+
+### The cost of reading Settings and the theme
+
+How long does one read of a `%Settings` section, and of `%Theme`, take from a
+job on Linear? If the `%Theme` read costs too much, the build copies the theme
+into `ntm-user`.
+
+### The size of the backend skill
+
+How big is `ntm-user:backend` for a Linear user with both features, and with
+task management only? 0.4 is for tokens; this proves it.
+
+### A list in a Claude Doc or an artifact
+
+Does a list built in one work from a job? Until it does, setup offers only what
+passed.
+
+### Where the build folder goes
+
+`/tmp` or the working directory?
 
 ## Test-drive findings
 

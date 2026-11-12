@@ -64,11 +64,11 @@ Every job starts with `/ntm:ready-check`. The suggested weekly job is setup's
 five plain steps: the ready check, a look-up of past-due and last week's closed
 tasks, `/ntm:clean`, `/ntm:plan --auto week`, then one message.
 
-### Setup and update
+### Setup
 
-`setup` is the wizard. `update` is tiny: it loads `setup`, which offers what's
-new from per-version reference files and rebuilds. Setup's build is the one
-rebuild path.
+`setup` is the wizard. Setup's build is the one rebuild path. A change to
+someone's setup is a fresh setup or an edit to `%Settings`. The `update` skill
+waits until ntm is shared with other people.
 
 ### Versions
 

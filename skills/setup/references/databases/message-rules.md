@@ -49,4 +49,5 @@ The weekly reminder is a combination of describing what happened last week, and
 what is scheduled for the upcoming week. By the time you're reading this, you
 should have all of that information in your context.
 
-Don't include any task ids in it; describe the weeks in words.
+Don't include any task ids in `%Message-history`. It is fine to include them in
+the message body.

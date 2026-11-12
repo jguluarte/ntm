@@ -95,7 +95,7 @@ yourself.
 
 Today's tasks are every task planned for today, open and done, so an evening
 where everything got done still gets its message. A task has carried over when
-earlier days' entries in `%Message-history` name its id.
+its id is in the `ids` of earlier days' entries in `%Message-history`.
 
 When the rule leaves nothing to send, send nothing and return `Not sent:` with
 why.
@@ -119,8 +119,9 @@ you send.
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Yesterday's tone is no template, and no opener is fixed; the
 same shape every day stops getting read. Name every task id the message should
-name, unless the message rule says fewer, because the style tracks tasks by the
-ids it's given.
+name, unless the message rule says fewer. Give the style the ids its
+`%Message-history` entry records, as the message rule says; carry-over is
+counted from that list, never from the message text.
 
 Follow any and all additional guidelines in `%Message-rules` for this message
 type. It may have suggestions on relational styling from adjacent messages, or

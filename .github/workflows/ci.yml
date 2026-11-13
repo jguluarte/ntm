@@ -1,19 +1,19 @@
 name: CI
 
 on:
-    pull_request:
+  pull_request:
 
 jobs:
-    lint:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-            - uses: ./.github/actions/setup
-            - run: . ./.env && make lint
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - run: . ./.env && make lint
 
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-            - uses: ./.github/actions/setup
-            - run: . ./.env && make test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - run: . ./.env && make test

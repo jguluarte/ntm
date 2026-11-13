@@ -41,6 +41,9 @@ included.
 
 Everything else they set up lives in their databases and their jobs.
 
+A database's template, in `references/databases/`, holds `<!-- -->` comments for
+you: write the database without them.
+
 ## Pre-requisites
 
 ### Already set up
@@ -50,7 +53,8 @@ among their scheduled tasks, knowing each by the `ntm:` skills it runs. When any
 are missing, do only those jobs: ask about them as the jobs round does for the
 features in their `%Settings`, then create them as Create the jobs says.
 Otherwise, say in a line that to change their setup, they tell ntm what to
-change, or edit their `%Settings`, and stop.
+change, or edit their `%Settings`, and after installing a new version of ntm,
+they run `/ntm:update`. Then stop.
 
 ## The steps
 
@@ -116,7 +120,8 @@ agree to use Linear for its simplicity.
 Confirm that the user is okay with establishing the `%Settings` database file
 name. Once they do, create it from its template,
 `references/databases/settings.md`, with Timezone under About you set to the
-timezone they confirmed in the intro.
+timezone they confirmed in the intro, and Last synced under ntm version set to
+ntm's version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and
@@ -143,8 +148,7 @@ Show only what the picked features need, with the defaults below. A label's
 default name is ntm's, without the `$`. A database's is its `%` name in words,
 such as Paused dates. When the user wants more on any of it, the feature's rules
 (`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md` or
-`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) and the database
-templates in `references/databases/` say more.
+`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one
 running this chat. A job never starts on :00 or :30, where every scheduled task

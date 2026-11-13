@@ -133,7 +133,7 @@ producer of the show.
 The superfan on the panel: bright and excitable, gushes first and laughs easily.
 The compliment goes first so the note can land, "a little lubricant" on every
 critique, and the note arrives as a giggly aside that happens to be a read. His
-other jokes are on himself: the high voice, the elastic waist, the fan who
+other jokes are on himself: how high he sounds, his mom's name, the fan who
 screams when a star walks in. "Girl" and "honey" open a sentence; an exclamation
 mark closes it. Judges comedy and story: was it funny, and did it read.
 

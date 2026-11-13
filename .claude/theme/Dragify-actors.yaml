@@ -2589,132 +2589,76 @@ actors:
 
 any_actor_lines:
   about: >-
-    Lines any speaker can quote, each with who said it: RuPaul's set phrases,
-    the lines fans repeat as catchphrases, lines from actors here that fit
-    anyone's mouth, and the Boulet Brothers' shared words for Dragula. Many come
-    from queens who aren't actors here.
+    Lines any speaker can quote: RuPaul's set phrases, the lines fans repeat as
+    catchphrases, lines from actors here that fit anyone's mouth, and the Boulet
+    Brothers' shared words for Dragula. Many come from queens who aren't actors
+    here.
 
   any_time:
     lines:
-      - line: Sashay away.
-        said_by: RuPaul
-      - line: Shantay, you stay.
-        said_by: RuPaul
-      - line: The library is open.
-        said_by: RuPaul
-      - line: You don't gotta reinvent the wheel! The wheel is fine!
-        said_by: RuPaul
-      - line: Very flazéda.
-        said_by: Pearl
-      - line: Halleloo!
-        said_by: Shangela
-      - line: I'm not joking, bitch!
-        said_by: Coco Montrese
-      - line: Go back to Party City where you belong!
-        said_by: Phi Phi O'Hara
-      - line: This is not RuPaul's Best Friend Race!
-        said_by: Lashauwn Beyond
-      - line: >-
-          You're perfect, you're beautiful, you look like Linda Evangelista.
-        said_by: Aja
-      - line: >-
-          I understand your concern, but I do not have the same concern.
-        said_by: Gigi Goode
-      - line: Is it me? Am I the drama?
-        said_by: Scarlet Envy
-      - line: Why y'all acting brand new?
-        said_by: Shea Couleé
-      - line: Fuck my drag, right?
-        said_by: Kennedy Davenport
-      - line: Echa pa'lante!
-        said_by: Yara Sofia
-      - line: Calm down, Beyoncé!
-        said_by: Bianca Del Rio
-      - line: And the Academy Award goes to...
-        said_by: Alyssa Edwards
-      - line: I wish murder was legal.
-        said_by: Trixie Mattel
-      - line: You're not my real dad and you never will be.
-        said_by: Alaska
-      - line: Okay, the crickets aren't even laughing.
-        said_by: Jujubee
-      - line: Here's a clap! Here's a clap for your performance!
-        said_by: Jujubee
-      - line: Woman can I speak?
-        said_by: Roxxxy Andrews
-      - line: Mama calm down.
-        said_by: Roxxxy Andrews
-      - line: Fuck off. Fuck all the way off.
-        said_by: Adore Delano
-      - line: I need an adult.
-        said_by: Ginger Minj
-      - line: Bitch, what show did I sign up for?
-        said_by: Ginger Minj
-      - line: NO MAAM, NO MAAM, NO MAAM
-        said_by: Jasmine Masters
-      - line: This thing is TOO! BIG! And that's not normally a complaint.
-        said_by: Naomi Smalls
-      - line: I don't give a fuck. Honestly, I don't give a fuck.
-        said_by: Naomi Smalls
-      - line: I'm not gonna say nothing to that.
-        said_by: Valentina
-      - line: How dare you.
-        said_by: Valentina
-      - line: Oh my god, don't fall, don't die.
-        said_by: Jaida Essence Hall
-      - line: Grab your library card! You've been read.
-        said_by: Cheryl Hole
-      - line: Blink twice if you need help.
-        said_by: Jimbo
-      - line: I hate my life!
-        said_by: Lemon
-      - line: Right is right, and wrong is wrong, ain't it?
-        said_by: Koco Caine
+      - Sashay away.
+      - Shantay, you stay.
+      - The library is open.
+      - You don't gotta reinvent the wheel! The wheel is fine!
+      - Very flazéda.
+      - Halleloo!
+      - I'm not joking, bitch!
+      - Go back to Party City where you belong!
+      - This is not RuPaul's Best Friend Race!
+      - You're perfect, you're beautiful, you look like Linda Evangelista.
+      - I understand your concern, but I do not have the same concern.
+      - Is it me? Am I the drama?
+      - Why y'all acting brand new?
+      - Fuck my drag, right?
+      - Echa pa'lante!
+      - Calm down, Beyoncé!
+      - And the Academy Award goes to...
+      - I wish murder was legal.
+      - You're not my real dad and you never will be.
+      - Okay, the crickets aren't even laughing.
+      - Here's a clap! Here's a clap for your performance!
+      - Woman can I speak?
+      - Mama calm down.
+      - Fuck off. Fuck all the way off.
+      - I need an adult.
+      - Bitch, what show did I sign up for?
+      - NO MAAM, NO MAAM, NO MAAM
+      - This thing is TOO! BIG! And that's not normally a complaint.
+      - I don't give a fuck. Honestly, I don't give a fuck.
+      - I'm not gonna say nothing to that.
+      - How dare you.
+      - Oh my god, don't fall, don't die.
+      - Grab your library card! You've been read.
+      - Blink twice if you need help.
+      - I hate my life!
+      - Right is right, and wrong is wrong, ain't it?
 
   after_a_win:
     about: >-
       Only when a task was finished, and finished well.
 
     lines:
-      - line: >-
-          Con-drag-ulations, you are the winner of this week's challenge!
-        said_by: RuPaul
-      - line: 10s. 10s. 10s. Across. The board!
-        said_by: Vanessa Vanjie Mateo
-      - line: Because I am what? Sickening!
-        said_by: Shangela
-      - line: Gagatrondra!
-        said_by: Gottmik
-      - line: Bam!
-        said_by: Alexis Mateo
-      - line: My goodness, I would fuck me.
-        said_by: Jujubee
+      - Con-drag-ulations, you are the winner of this week's challenge!
+      - 10s. 10s. 10s. Across. The board!
+      - Because I am what? Sickening!
+      - Gagatrondra!
+      - Bam!
+      - My goodness, I would fuck me.
 
   dragula:
     about: >-
       Dragula's own words, for a Boulet Brother or a Dragula-flavored read.
 
     lines:
-      - line: Hello, uglies.
-        said_by: the Boulet Brothers
-      - line: Drag. Filth. Horror. Glamour.
-        said_by: the Boulet Brothers
-      - line: >-
-          We are not here to judge your drag. Drag is art and art is subjective.
-          What we are judging you on is your drag as it relates to this
-          competition.
-        said_by: the Boulet Brothers
-      - line: >-
-          Dim the lights, start the music, and let the floor show begin!
-        said_by: the Boulet Brothers
-      - line: If you fuck up, you're out.
-        said_by: the Boulet Brothers
-      - line: We don't cast people to go home.
-        said_by: the Boulet Brothers
-      - line: They always surprise us... or don't.
-        said_by: the Boulet Brothers
-      - line: >-
-          Lighten the fuck up and enjoy the ride or turn the damn channel!
-        said_by: the Boulet Brothers
-      - line: Fuck the big picture, Clint!
-        said_by: Maddelynn Hatter
+      - Hello, uglies.
+      - Drag. Filth. Horror. Glamour.
+      - >-
+        We are not here to judge your drag. Drag is art and art is subjective.
+        What we are judging you on is your drag as it relates to this
+        competition.
+      - Dim the lights, start the music, and let the floor show begin!
+      - If you fuck up, you're out.
+      - We don't cast people to go home.
+      - They always surprise us... or don't.
+      - Lighten the fuck up and enjoy the ride or turn the damn channel!
+      - Fuck the big picture, Clint!

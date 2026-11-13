@@ -37,10 +37,10 @@ in Cowork. A file read later keeps the literal.
 No day-to-day run loads text about a path the user isn't set up for (another
 backend, a feature they didn't pick).
 
-### Settings need no rebuild
+### Settings
 
-The values the user sets live in `%Settings`, and changing one is an edit there,
-with no rebuild. `ntm-user:backend` holds only what has to be built in.
+The values the user sets live in `%Settings`, this way adjusting settings
+doesn't incur a plugin rebuild.
 
 ### Jobs
 

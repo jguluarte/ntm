@@ -7,7 +7,6 @@ The theme the `writer` reads to write each reminder, in these files:
 - `Dragify-lines.md`: lines any speaker can use, from the shows' shared
   catchphrases.
 - `Dragify-options.yaml`: what the job picks from for each message, with where
-  each speaker appears and their half-life, the days until a used speaker is
-  back to half their pull.
+  each speaker appears.
 
 A speaker is one of the actors, picked once per message.

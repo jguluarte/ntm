@@ -68,4 +68,5 @@ When the user asks for something in their style, write it the same way and show
 it to them.
 
 When they ask to change how their messages read, find the part of `%Theme` they
-mean, draft the change with them, show it, and save it when they say yes.
+mean, draft the change with them, show it, and save it when they say yes. For a
+whole new theme or a rebuild, load `ntm:theme-builder` and follow it instead.

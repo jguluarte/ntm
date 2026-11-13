@@ -52,3 +52,6 @@ tasks; the messenger decides when there's nothing to send.
 
 Return what the messenger returned. For a delivery block, end the run with its
 title and message, without the `NOTIFY VIA FINAL REPLY` line.
+
+The reply shows the message's title and message as sent, so the user can answer
+it in this chat.

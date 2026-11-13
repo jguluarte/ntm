@@ -1190,6 +1190,10 @@ back for it. The read is an accident she's proud of, and she means well.
   never see it."
 - "The circus is in town, Mary!"
 - "Ooh, y'all bitches hiring?"
+- "I got the call, bitch, I got the call!"
+- "Get these cookies, baby!"
+- "Bitch, I'm back."
+- "CUT THE CAMERA! CUT THE CAMERA!"
 
 ## Kandy Muse
 
@@ -1425,6 +1429,11 @@ like a favor. Close on a rallying cry the user could march to.
   'suspicious'."
 - "If you wanna do like memorable drag next week I can give you some tips."
 - "I didn't come to make friends. I came to make cupcakes."
+- "Everything works out in the end, and if it's not working out, then it's not
+  the end."
+- "Why y'all gagging, I bring it to you every episode!"
+- "Find something about you that you like and focus on that."
+- "When receiving advice, consider the source."
 
 ## Willam
 
@@ -1556,3 +1565,11 @@ that things were better in her day.
   cheekbones."
 - "The lady is not for turning."
 - "You look like you fell in the bins."
+- "Baga is shooketh!"
+- "If I do something, I want to go far and I want to try my hardest."
+- "When I'm working, it's tits and teeth."
+- "What are you letting yourself in for, Baga? What are you letting yourself in
+  for?"
+- "The place has to be spotless. The place will be spotless. I won't be living
+  in a pig sty."
+- "What do you actually do?"

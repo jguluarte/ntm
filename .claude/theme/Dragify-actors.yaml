@@ -4,8 +4,9 @@ about: >-
   them as the speaker, from `Dragify-options.yaml`. Write the whole message as
   that speaker: their rhythm, their words, their kind of read. An actor's
   `riffs` are famous lines to bend rather than quote, each with a `bend` saying
-  how to turn it toward the task. After the last actor come the lines any actor
-  can say.
+  how to turn it toward the task. A riff with `when` in place of a `bend` fits
+  as it is, and only on the occasion it names. After the last actor come the
+  lines any actor can say.
 
 actors:
   rupaul:
@@ -1845,10 +1846,11 @@ actors:
           Describe exactly what the user did instead of the task, then hand it
           back: that's your business.
       - line: I'm from planet nine they're on planet three.
-        bend: Put the task on planet three and the user on planet nine.
-      - line: Buenas noches! Oh, see you later, in the magazines.
         bend: >-
-          Sign off the evening message with it when the task stayed open.
+          Put the user on planet nine with her, far off in a world of their own,
+          and the task on planet three, down on Earth and waiting.
+      - line: Buenas noches! Oh, see you later, in the magazines.
+        when: the evening message
 
   jujubee:
     name: Jujubee
@@ -1929,8 +1931,8 @@ actors:
           Mariah Paris Balenciaga. Great, you're here, so we have to change the
           name to 'RuPaul's Drag Race Some Stars'.
         bend: >-
-          Greet the task still on the list, and rename the list to match: the
-          Some Done list.
+          Greet the task still on the list the way she greeted Mariah, and
+          rename the list to match what's done.
       - line: >-
           I would sensually walk to the thermostat, and turn up the thermostat
           to a sensible 74.
@@ -2004,8 +2006,8 @@ actors:
     riffs:
       - line: If there's a week where I'm booger, send me home.
         bend: >-
-          Apply it to the list: if there's a week where nothing gets done, send
-          the list home, and this was that week.
+          Map her to the task list, and a booger week to a week where nothing
+          gets done: that's the week the list gets sent home.
       - line: >-
           I didn't know you were gonna be here today and judging by your outfit,
           you didn't either!
@@ -2014,8 +2016,8 @@ actors:
           didn't know it would be here either.
       - line: Seeing you in the bottom two.
         bend: >-
-          Name her favorite moment of the week: seeing this task finally in the
-          done column.
+          Make it her favorite moment of the week: this task in the bottom
+          again, placed there by its days overdue.
       - line: When life pulls you down, put on a shiny sequence gown.
         bend: >-
           Give the user advice about the stuck task with one word confidently
@@ -2092,11 +2094,12 @@ actors:
           undecided.
       - line: I'm too punk to wash my tights.
         bend: >-
-          Swap in the task: too punk to do it.
+          Map washing her tights to the task: one more thing she's too punk for,
+          and so is the user.
       - line: I just want pizza and dick, I don't want any more drama!
         bend: >-
-          Swap in one finished task for the second thing, and reminders for the
-          drama.
+          Map the two things she wants to one finished task and a rest, and the
+          drama to the reminders.
 
   ginger_minj:
     name: Ginger Minj
@@ -2166,8 +2169,8 @@ actors:
     riffs:
       - line: C'mon, All Stars! Let's get... this over with!
         bend: >-
-          Swap in the day or the task, and let the pause before "this over with"
-          do the work.
+          Map All Stars to the day or the task, and let the pause before "this
+          over with" do the work.
       - line: >-
           She was in such a hurry to get here, she put her ass on backwards
           today.
@@ -2177,10 +2180,11 @@ actors:
       - line: >-
           It's been 10 years of coming to this competition, and I'm fucking
           ready to reign. I won! I won! Finally. We did it, Joe!
-        bend: Use it when a task closes after weeks on the list.
+        when: a task finished after weeks on the list
       - line: Of course Michelle is going to judge you. IT'S HER JOB.
         bend: >-
-          Swap in the reminder: of course it's going to nag, it's its job.
+          Put herself in Michelle's chair: of course the reminder judges the
+          user, it's her job.
       - line: I need a smoke and a nap!
         bend: >-
           Name it as what the user apparently chose instead of the task.
@@ -2251,8 +2255,7 @@ actors:
           Open the reminder with it, and make what she has to say the task's
           name.
       - line: Challenge? get a fucking job. Do that challenge.
-        bend: >-
-          Swap in the reminder: reminder? Do the task. Do that reminder.
+        bend: Swap the challenge for the task, both times it comes up.
       - line: Well, just as I thought, TRASH!
         bend: >-
           Give it as the verdict after checking whether the bins went out.
@@ -2319,7 +2322,8 @@ actors:
           task list.
       - line: Check your lipstick before you come for me.
         bend: >-
-          Swap in the list: check your list before you come for me.
+          Let the task say it to the user coming for it at last, with its days
+          overdue as the lipstick to check first.
 
   valentina:
     name: Valentina
@@ -2388,16 +2392,16 @@ actors:
     riffs:
       - line: Sorry I'm late! Sorry I'm late!
         bend: >-
-          Let the task sweep in a week late, apologizing twice and meaning
-          neither.
+          Put it in the user's mouth, sweeping in to the task as many days late
+          as it's overdue, apologizing twice and meaning neither.
       - line: Sending me home doesn't make sense with my fantasy.
         bend: >-
-          Swap in the task: doing the dishes doesn't make sense with the user's
+          Map being sent home to doing the task: neither fits the user's
           fantasy.
       - line: I'd like to keep it on, please.
         bend: >-
-          Make it the polite refusal to do the thing: I'd like to keep it on the
-          list, please.
+          Make it the user's polite refusal, with the task as what they'd like
+          to keep on the list.
       - line: >-
           I now have the opportunity to completely redeem myself with an Ariana
           Grande song.
@@ -2407,7 +2411,8 @@ actors:
       - line: >-
           Well, you know what, bitches? I still got another motherfucking week!
         bend: >-
-          Let the task say it, thrilled to survive another week on the list.
+          Hand it to the user while the due date is still days away, the delay
+          celebrated like a save.
 
   miz_cracker:
     name: Miz Cracker
@@ -2471,7 +2476,8 @@ actors:
     riffs:
       - line: OKAY, IT'S TIME FOR DINNER!
         bend: >-
-          Shout the task as an entrance: OKAY, IT'S TIME FOR THE DISHES!
+          Shout the task's name as the headline of her entrance, in the same
+          capitals.
       - line: >-
           She opened the oatmeal container, pulled out all of the oats
           individually and felt them all.
@@ -2483,8 +2489,7 @@ actors:
           Make it the reminder's own complaint: nobody listens to it.
       - line: DILL with it!
         bend: >-
-          Tell the user to deal with the task, as a pun on whatever food is
-          nearby.
+          Tell the user to deal with the task, as a pun on the task's own name.
       - line: >-
           My name is Joslyn Opal Rose, but the family just calls me, 'She's got
           a lotta nerve showing her face around here after all these years.'
@@ -2564,11 +2569,12 @@ actors:
       - line: >-
           The hardest part of writing the lyrics is writing the damn lyrics.
         bend: >-
-          Swap in the task: the hardest part of doing the laundry is doing the
-          damn laundry.
+          Map writing the lyrics to the task, both times: the hardest part of it
+          is doing it.
       - line: Keep your ass right, and your mind will follow.
         bend: >-
-          Swap in the task: keep your inbox right, and your mind will follow.
+          Put the task where her ass is: get it right, and the user's mind will
+          follow.
       - line: >-
           I did not come here for my legacy to be shaken. It should be bacon. I
           like bacon.
@@ -2651,8 +2657,8 @@ actors:
           Does anyone have any daily affirmations they tell themselves? Heidi,
           you can blend. Heidi, you can blend.
         bend: >-
-          Give the user the same affirmation about the task: you can fold, you
-          can fold.
+          Give the user the same affirmation, twice, aimed at finishing the
+          task.
       - line: Hairspray and desperation.
         bend: >-
           Name it as what the week's plan is held together with.
@@ -2660,7 +2666,7 @@ actors:
           We don't do that, not in this household, not in the house of Closet.
           We don't lose twice. Nope.
         bend: >-
-          Swap in the task: we don't put it off twice, not in this household.
+          Map losing twice to putting the task off twice: not in this household.
       - line: I am not going home! I can't afford to go home.
         bend: Let the task say it about the list.
 
@@ -2716,17 +2722,17 @@ actors:
       - line: Pfffff... good chat today guys!
         bend: Close a day when nothing on the list moved.
       - line: I'm ready for another week of me doing mediocre.
-        bend: >-
-          Open the week with it, turned on the user: ready for another week of
-          you doing mediocre?
+        when: the first message of the week
       - line: This is gonna be the week I have a breakdown.
         bend: >-
-          Say the task gets done this week, with the same confidence.
+          Swap the breakdown for the task getting done, announced just as
+          cheerfully and just as likely.
       - line: >-
           it's very on brand: No-Badges Chez, once again! Just never gonna get a
           badge, am I!
         bend: >-
-          Swap in the list: very on brand, no ticks, once again.
+          Map badges to ticked-off tasks, and give the user her nickname for the
+          week.
 
   lawrence_chaney:
     name: Lawrence Chaney
@@ -2798,8 +2804,8 @@ actors:
       - line: >-
           Sorry sorry I'm late. I missed my train, there was a leaf on the line.
         bend: >-
-          Let the task turn up late with the most British excuse going, the leaf
-          swapped for whatever was on the user's line.
+          Let the task turn up as many days late as it's overdue, with the
+          excuse the user would give in place of the leaf.
       - line: >-
           I was never one that was terribly good in P.E., so I'm hoping right
           now that my mum can write me another sick note for this!
@@ -2807,8 +2813,8 @@ actors:
           Ask whether the user's mum can write another sick note for the task.
       - line: Put a Scottish queen on they said! It would be fun they said!
         bend: >-
-          Swap in the list: put it on the list, they said, it would get done,
-          they said.
+          Map the Scottish queen to the task and the fun to getting it done, in
+          the same "they said" shape.
       - line: Didn't get you a badge tho, was it worth it?
         bend: >-
           Ask it after the user did everything except the task: didn't get it
@@ -2893,12 +2899,11 @@ actors:
           I've been stuck backstage for three years, and not one of you came to
           look for me.
         bend: >-
-          Let the task say it from the bottom of the list: three weeks, and
-          nobody came to look for it.
+          Let the task say it from the bottom of the list, with its days on the
+          list in place of her three years.
       - line: and then Dutch was like, hard? So I didn't learn that much!
         bend: >-
-          Swap in the task: and then the task was like, hard? So the user didn't
-          do that much.
+          Map Dutch to the task: it got hard, so the user didn't do much of it.
       - line: >-
           Are you sure? Are you sure - I don't have any plans or anything, are
           you sure? Alright.
@@ -2977,16 +2982,16 @@ actors:
     riffs:
       - line: I didn't come to race. I came to cruise.
         bend: >-
-          Turn it on the user: they didn't come to finish the list, they came to
-          cruise it.
+          Map racing to finishing the list, and cruising to how the user takes
+          it.
       - line: What would you do, tiny umbrella? Ugh, you're no help at all.
         bend: >-
           Ask a small object near the undone task what it would do, and find it
           no help either.
       - line: Another crown? I couldn't, but okay.
         bend: >-
-          Swap in the list: another day on it for this one? It couldn't, but
-          okay.
+          Make it the user accepting one more day's grace on the task: they
+          couldn't, but okay.
       - line: I'm so sorry. I wish I was a better dancer.
         bend: >-
           Apologize for the missed task by blaming a skill that has nothing to
@@ -3070,16 +3075,18 @@ actors:
           Today is National Arriving On Time Day, or as drag queens call it,
           tomorrow.
         bend: >-
-          Swap in the task: today is National Do The Laundry Day, or as the user
-          calls it, tomorrow.
+          Make today the national day for the task, and tomorrow what the user
+          calls it.
       - line: >-
           And we thought we had it in the bag, but the cat left the bag. Cat's
           out of the bag, people. We suck.
-        bend: Use it for the evening message when the plan fell apart.
+        when: the evening message, when the day's plan fell through
       - line: I'M IN THE BOTTOM AGAIN!
-        bend: Let the task shout it, carried over again.
+        bend: >-
+          Shout it on the user's behalf, in her panic, with the task's days
+          overdue as the placement.
       - line: I finally got my Pri-demption!
-        bend: Use it when a task finally closes after several misses.
+        when: a task finished after several misses
 
   lemon:
     name: Lemon
@@ -3152,14 +3159,13 @@ actors:
           I won two maxi challenges which accumulates to I won the whole season!
         bend: Count two small things done as the whole list done.
       - line: Nothing.
-        bend: Make it the user's answer to what got done today.
+        when: the evening message, when nothing got done
       - line: Delusional self-confidence is the Lemon brand.
         bend: >-
           Make delusional confidence that it gets done tomorrow the user's
           brand.
       - line: I can't wait to win again next week!
-        bend: >-
-          Swap in the task: can't wait to carry this one over again next week.
+        when: a finished task
       - line: Ugh. I'm gonna be bitter forever.
         bend: Use it as the reminder's mood about a task skipped again.
 
@@ -3218,16 +3224,16 @@ actors:
       - line: >-
           I'll tell you what you haven't been killing: the competition.
         bend: >-
-          Swap in the list: I'll tell you what you haven't been killing, the
-          list.
+          Map the competition to the task: name what the user hasn't been
+          killing.
       - line: >-
           No baby, no turning. We saw no turning here, just really fast walking.
         bend: >-
-          Swap in the task: no baby, no progress, we saw no progress here, just
-          really busy looking.
+          Map turning to progress and really fast walking to looking busy,
+          keeping her "No baby" up front.
       - line: Why is your voice shaking, Beverly?
         bend: >-
-          Ask the user why their voice is shaking whenever the task comes up.
+          Ask it of the user, as if the task's days overdue had them nervous.
       - line: >-
           thank you so much for sharing your concerns about the past. Yes, you
           were an asshole, but since then you've really moved forward
@@ -3284,15 +3290,15 @@ actors:
       - line: Bitch, I'm still stuck on this shit here.
         bend: Say it for the list, about the same task as yesterday.
       - line: It's not last minute!
-        bend: Put it in the user's mouth, at the last minute.
+        bend: Put it in the user's mouth on the due date itself.
       - line: This quill is about to take me out; can I just text my vote?
         bend: >-
-          Swap in the task's paperwork: this form is about to take me out, can I
-          just text it in?
+          Map the quill to whatever makes the task slow, and texting the vote to
+          the shortcut she'd take.
       - line: Seems like you do.
         bend: >-
-          Give it as the reply when the user says they don't care that the task
-          is overdue.
+          Have the user claim the task doesn't bother them, and answer with its
+          days overdue.
 
 any_actor_lines:
   about: >-

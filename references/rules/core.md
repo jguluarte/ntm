@@ -120,15 +120,16 @@ says to add. When a step returned a `NOTIFY VIA FINAL REPLY` block, everything
 after that block's first line, as written, takes the place of that line: the
 scheduled task's own push shows it.
 
-### Sending a message in the user's style
+## Sending a message in the user's style
 
-The sender works out what the message says. Then:
+The sender decides whether there's a message, and gathers its facts as its own
+file says. Then:
 
-1. Load `ntm:style` and follow it to turn what the message says, and its facts,
-   into a title and message.
+1. Load `ntm:style` and follow it to turn the facts into a title and message.
 2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
    the message, keeping every task id, and send it once more.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
    message as `ntm:style` says.
 
-The sender's result is what `ntm-user:notify` returned.
+The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
+`ntm:style` ended with it.

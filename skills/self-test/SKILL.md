@@ -121,10 +121,10 @@ behind didn't pass.
 ### 13. Send the success message
 
 Only when every step before it passed. Send it as the core rules' Sending a
-message in the user's style says, with type `freeform`: it says
-`ntm is ready; the self-test passed`, and has no facts. It passes when
-`ntm-user:notify` returns `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which
-you show the user. Any other return fails the step.
+message in the user's style says. Its one fact is
+`ntm is ready; the self-test passed`. It passes when `ntm-user:notify` returns
+`Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
+other return fails the step.
 
 ## Result
 

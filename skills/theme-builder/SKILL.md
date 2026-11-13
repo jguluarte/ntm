@@ -20,8 +20,8 @@ This skill builds it with them, one part at a time, and saves it as `%Theme`.
 
 ## Setup
 
-When `ntm:setup` runs this skill, it already holds where their databases go and
-the `%Theme` name they confirmed. Go to step 1.
+When `ntm:setup` runs this skill, it already holds where their databases go. Go
+to step 1.
 
 Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
 loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
@@ -55,17 +55,17 @@ your user from your memories about them.
 
 ### 2. Build it with them
 
-Build the theme with them as
-`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md` says: from the
+Build the theme with them as the theme guide,
+`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: from the
 parts it describes, or from a theme they already have.
 
 ### 3. Save `%Theme`
 
-Save their theme in the parts the guide describes: during setup, create the
-`%Theme` database; otherwise, replace their `%Theme` where `ntm-user:backend`
-says it lives. Each part holds what you built with them, never the guide's own
-text: How to connect this theme to ntm's flow holds what their week, morning,
-afternoon and evening are in their theme.
+Save their theme in the parts the guide describes: during setup, confirm the
+`%Theme` database's name, then create it; otherwise, once they say yes, replace
+their `%Theme` where `ntm-user:backend` says it lives. Each part holds what you
+built with them, never the guide's own text: How to connect this theme to ntm's
+flow holds what their week, morning, afternoon and evening are in their theme.
 
 ## Result
 

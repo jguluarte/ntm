@@ -299,12 +299,12 @@ create. Keep the jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
-Confirm the names of the `%Theme` and `%Message-history` databases. Then load
-`ntm:theme-builder` and follow it: it builds their theme with them and creates
-`%Theme`.
+Load `ntm:theme-builder` and follow it through its Result, then come back here:
+it builds their theme with them and creates `%Theme`.
 
-Then create `%Message-history` from its template, and add where each one lives
-to `ntm-user:backend`.
+Then confirm the `%Message-history` database's name, create it from its
+template, and add where `%Theme` and `%Message-history` live to
+`ntm-user:backend`.
 
 ### Notifications
 

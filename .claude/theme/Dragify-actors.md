@@ -115,6 +115,9 @@ on it because she knows it can be finished.
   the truth, so help you Jon Bon Jovi?"
 - "Watch your fucking language... you kiss your mother with that fucking mouth?"
 - "They look like, you know, Fisher Price: My First Boobs."
+- "Bitch, you're here!"
+- "Doing a reveal to mediocre."
+- "All right, shut it! Sounds like we reached a decision."
 
 ## Ross Mathews
 

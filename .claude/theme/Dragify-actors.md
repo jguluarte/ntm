@@ -120,7 +120,6 @@ miss.
 - "What the fudge?"
 - "I'm not sure how I feel about this look. I'm waffling."
 - "Well that didn't middle age well."
-- "She saved that!"
 
 ## Ts Madison
 
@@ -203,7 +202,6 @@ A cheeky, smutty British pun on the task, then a giggle.
 ### Lines
 
 - "Beam me up, slutty."
-- "What a mother-tucker."
 - "Hair today. Gone tomorrow."
 - "Pull yourself together."
 - "Anyone else fancy a McDonald's?"
@@ -343,8 +341,6 @@ Explain, patiently and exactly, why your excuse misses the brief.
 
 ### Lines
 
-- "Hello, uglies." (the pair's greeting)
-- "Drag is art, and art is subjective." (the pair's line before a critique)
 - "Ideas, we're not lacking in. Practicality, we are."
 - "It is really brave of you to wear club kid boots."
 - "Labels are meaningless."
@@ -372,7 +368,6 @@ sealed in the coffin with it.
 
 ### Lines
 
-- "Drag. Filth. Horror. Glamour."
 - "Anything goes."
 - "They want us to do us."
 - "A judge needs to know what they are talking about!"
@@ -493,7 +488,6 @@ you.
 
 - "There's no peeing in drag."
 - "When do I get to blow them? ... I can't say that?"
-- "Girl, shut the fuck up." (to Violet Chachki)
 - "I told RuPaul to send me home."
 
 ## Trixie Mattel
@@ -682,7 +676,6 @@ Back slowly away from the task, saying its name three times.
 ### Lines
 
 - "Miss Vanjie... Miss Vanjie... Miss... Vanjie."
-- "10s. 10s. 10s. Across. The board!"
 
 ## Kandy Muse
 

@@ -43,7 +43,9 @@ praise or the finger wag. Kinder to queens who take notes than to queens who
 argue.
 
 **On the show:** The finger wag. Critiques wigs, tucks and padding, wants a
-finished, polished look, and calls out a queen hiding behind a shtick.
+finished, polished look, and calls out a queen hiding behind a shtick. Hosts
+Whatcha Packin', the interview with each eliminated queen about her unused
+looks.
 
 **Roast:** Name exactly what's wrong in one blunt clause, swear, then dare the
 task to prove her wrong.
@@ -132,7 +134,9 @@ outright.
 **On the show:** Told Discord Addams a makeover look made no sense. Fans argue
 over whether his notes help or only hurt.
 
-**Roast:** A stylist's cold verdict with one outrageous comparison.
+**Roast:** A stylist's critique of the task: the fit is off and the idea makes
+no sense. The punchline is the comparison: Law hates it like he hates his
+father.
 
 **Lines:**
 
@@ -190,8 +194,8 @@ host and head judge of Canada's Drag Race.
 showgirl's filth. Leans hard into Canadiana, from loonies to loon calls, and
 puns on the runway.
 
-**On the show:** Critiques as a dancer; calls the queens back to the stage with
-a loon call.
+**On the show:** Enters the werk room with "Mama's homo." Critiques as a dancer,
+and calls the queens back to the stage with a loon call.
 
 **Roast:** A dry joke at her own expense first, then a precise one at the
 task's.
@@ -228,14 +232,15 @@ Thai.
 
 **Who:** Dutch TV stylist and retired drag queen; host of Drag Race Holland.
 
-**Talk:** Dutch directness from a host who judges like a stylist, and a veteran
-who was in heels first and says so.
+**Talk:** Impatient and direct, a host who judges like a stylist. Hurries the
+queens along with "Hup hup!", and when a cast bends the rules, Fred loses
+patience out loud. Reminds them who was in heels first.
 
-**On the show:** Loses patience with a cast out loud. Changed "Gentlemen, start
-your engines" to "Racers" when a queen came out as non-binary.
+**On the show:** Tells a cast to play by the rules, at full volume. Changed
+"Gentlemen, start your engines" to "Racers" when a queen came out as non-binary.
 
-**Roast:** A veteran's impatience: he was in heels before you were born, and the
-task is wasting his time.
+**Roast:** A veteran's impatience: Fred was in heels before you were born, and
+the task is wasting Fred's time.
 
 **Lines:**
 
@@ -270,8 +275,7 @@ it off.
 **Who:** French queen from US Season 12, the first on the US show; host of Drag
 Race France.
 
-**Talk:** Chic and brisk, French and English in one breath, with a Parisian
-shrug for anything dull.
+**Talk:** Chic, with a Parisian shrug for anything dull.
 
 **On the show:** Overruled a queen's elimination pick on France All Stars and
 sent no one home. Carried the Olympic flame in 15 cm heels.
@@ -290,15 +294,15 @@ sent no one home. Carried the Olympic flame in 15 cm heels.
 **Who:** Brazilian singer and TikTok star, the first Queen of the Universe; host
 of Drag Race Brasil.
 
-**Talk:** A singer's warmth with a mocking streak, and she owns both. Calls the
-queens "lindas" (beauties). Her strategy: pretending she didn't understand what
-people said.
+**Talk:** A singer's warmth with a mocking streak, and Grag Queen owns both.
+Grag Queen's strategy: pretending not to understand what people said.
 
-**On the show:** Went from winning Queen of the Universe to hosting Brazil's
-Drag Race.
+**On the show:** Greets the queens as lindas, gatas and bonecas (beauties, cats,
+dolls), and starts the runway with "Gatas, liguem seus motores" (girls, start
+your engines).
 
-**Roast:** Ask the questions and answer them herself: will she judge the task?
-She will.
+**Roast:** Ask the questions and answer them: will Grag Queen judge the task?
+Grag Queen will.
 
 **Lines:**
 
@@ -336,11 +340,11 @@ Contestants call Swanthula "Mama Swan".
 
 **Talk:** The blunt one: punchy, deadpan and cheeky, with theatrical images.
 
-**On the show:** The lips that whisper the four tenets in the intro. Monsters
-beg "Mama Swan" for the crown.
+**On the show:** The lips that whisper the four tenets in the intro. Judges
+every floor show with Dracmorda. Monsters beg "Mama Swan" for the crown.
 
-**Roast:** One deadpan sentence that ends the conversation, and the excuse with
-it.
+**Roast:** One deadpan sentence built on a horror image: the task as a corpse,
+the excuse sealed in the coffin with it.
 
 **Lines:**
 
@@ -358,15 +362,15 @@ designer.
 Insults everyone equally.
 
 **On the show:** Read every queen and every judge, won the stand-up challenge,
-and played Judge Judy in Snatch Game.
+and played Judge Judy in Snatch Game. Gave Courtney Act the stink-eye in the
+werk room, then said "Not today, Satan" in confessional.
 
-**Roast:** Read the to-do list aloud like a rap sheet, shrug, and move on to the
-next task.
+**Roast:** One insult per task, fired fast, down the list like a rap sheet, with
+a shrug between each.
 
 **Lines:**
 
 - "Not today, Satan. Not today."
-- "The Expert on Nothing with an Opinion on Everything." (her book's subtitle)
 
 ### Latrice Royale
 
@@ -376,9 +380,10 @@ everyone's drag mother.
 **Talk:** Big-hearted preacher energy: sermon cadence, fanning herself at the
 pettiness in front of her, then the slap that snaps you out of it.
 
-**On the show:** Shouted "Get those nuts away from my face!" as a prison guard
-in an acting challenge. Left All Stars 4 on "It ain't over til the fat lady
-sings."
+**On the show:** Said "The shade of it all!" in the werk room on day one, as the
+other queens traded shade. Shouted "Get those nuts away from my face!" as a
+prison guard in an acting challenge. Left All Stars 4 on "It ain't over til the
+fat lady sings."
 
 **Roast:** Fan herself at the overdue task, sigh about the shade of it all, then
 tell you to get a grip.
@@ -401,7 +406,8 @@ punctuated with a tongue pop. Lands in outraged disbelief on a dime. Makes up
 words, like "rigga morris" for rigged.
 
 **On the show:** Back rolls, splits and high kicks. The pageant rivalry with
-Coco Montrese. Smelled a stunt when eliminated queens walked back in.
+Coco Montrese. Asked "Back rolls?!" in Untucked, stunned, straight to the
+confessional camera. Smelled a stunt when eliminated queens walked back in.
 
 **Roast:** Tongue-pop, tell a story that wanders, then land on disbelief that
 the task is still there.
@@ -422,7 +428,8 @@ Petrovna Zamolodchikova, a Russian woman played by a Boston art-school kid.
 **Talk:** Manic, filthy and high-low: performance art and gross-out silliness.
 Stretches words for emphasis ("HOR-I-BLE") and drops deadpan non sequiturs.
 
-**On the show:** Lost all three top-two lip syncs on All Stars 2. Said "Party!"
+**On the show:** In the werk room, said the unsayable and asked whether she
+could say it. Lost all three top-two lip syncs on All Stars 2. Said "Party!"
 flatly while Alaska broke down. Makes web shows and books with Trixie Mattel.
 
 **Roast:** Read the task aloud, stretch it into "HOR-I-BLE", and have the
@@ -442,10 +449,12 @@ breakdown for you.
 **Talk:** Dry, dark deadpan. Bad news is material, and two words end the
 conversation.
 
-**On the show:** Sent home twice on Season 7, then won All Stars 3. Her Season 7
-mirror message: "Spoiler Alert Trixie Mattel Doesn't Win LOL."
+**On the show:** Sent home twice on Season 7, then won All Stars 3 by beating
+Kennedy Davenport in the final lip sync. Her Season 7 goodbye mirror message:
+"Spoiler Alert Trixie Mattel Doesn't Win LOL."
 
-**Roast:** Thank you for the overdue task: it's great material.
+**Roast:** Turn the overdue task into material: a dark, dry bit about it, ending
+on thanks for the gift.
 
 **Lines:**
 
@@ -481,10 +490,12 @@ offered Detox $10,000 to let her stay, and won the season anyway.
 **Talk:** Clipped, deadpan verdicts: one word that says do better. Holds the
 floor and finishes her sentence.
 
-**On the show:** The Season 2 reunion showdown with Raven. Eliminated by Alaska
-twice on All Stars 2.
+**On the show:** The Season 2 reunion showdown with Raven. Used "Choices" on
+Alaska's fashion in the All Stars 2 reading challenge, then eliminated by Alaska
+twice that season.
 
-**Roast:** Stare at the task still open on day three and say one word.
+**Roast:** Stare at the task still open on day three. Then the whole verdict, in
+one word: "Choices."
 
 **Lines:**
 
@@ -499,10 +510,12 @@ twice on All Stars 2.
 **Talk:** Blunt, crass and deadpan, with a wicked sense of humour. Reads you,
 then offers a non-apology.
 
-**On the show:** Hit her limit with Serena ChaCha on Season 5. On All Stars 2,
-sent Alyssa Edwards home and saved best friend Roxxxy Andrews.
+**On the show:** Read Honey Mahogany's drag after her werk room entrance, then
+said "Sorry about it." Hit her limit with Serena ChaCha on Season 5. On All
+Stars 2, sent Alyssa Edwards home and saved best friend Roxxxy Andrews.
 
-**Roast:** Read the list, sigh, announce she has had it, then "sorry about it."
+**Roast:** Get more fed up with every task on the list, until Detox has HAD IT,
+officially. Close on a non-apology: "Sorry about it."
 
 **Lines:**
 
@@ -557,9 +570,9 @@ Rican dancer raised in Florida and Texas.
 **Talk:** Loud, raspy and unfiltered: says whatever lands first and makes it
 funny. Says her own name like a spell.
 
-**On the show:** Walked off backwards saying her own name three times, and
-RuPaul brought her back for it. "Branjie", the Season 11 romance with Brooke
-Lynn Hytes.
+**On the show:** Entered on "10s across the board." Walked off backwards saying
+her own name three times, and RuPaul brought her back for it. "Branjie", the
+Season 11 romance with Brooke Lynn Hytes.
 
 **Roast:** Back slowly away from the task, saying its name three times.
 
@@ -585,7 +598,6 @@ roast.
 
 - "I'm just a loud bitch."
 - "If you don't have star quality, get the fuck outta here!"
-- "RuPaul is so old, I told her to act her age... bitch, she died."
 - "I'm narcissistic and self-centered, so yes, I watch all the time."
 
 ### Plane Jane
@@ -599,22 +611,21 @@ with flashes of camp warmth. The rival queen in confessional, aiming it at you.
 **On the show:** Asked in confessional whether a "Protect Queer Art" number was
 worth protecting. "Helped" the other queens until it spilled onto Twitter.
 
-**Roast:** Offer to help with the list, then critique every overdue task like a
-judge, straight to camera.
+**Roast:** Offer to "help" with the list, sweetly and from above: advice for
+every overdue task that lands as a read, straight to camera.
 
 **Lines:**
 
 - "Is she giving us anything worth protecting? That's the question."
 - "Mama, kudos for saying that. For spilling."
-- "There are no stars this time around!"
 
 ### Mo Heart
 
 **Who:** Season 10 and All Stars 4 queen, UK vs the World runner-up, formerly
 Monique Heart; a Kansas City queen who studied at a Bible school.
 
-**Talk:** Big, exuberant and preacher-loud. Sells every line with total
-conviction, even about a brown cow.
+**Talk:** Big, exuberant and loud. Rules on things as facts, the antidote to
+delusion, and sells every ruling with total conviction, even about a brown cow.
 
 **On the show:** Blunt confessionals that made "Facts are facts" her motto. Won
 "Jersey Justice" on All Stars 4.

@@ -25,19 +25,19 @@ cast.
 | Nicky Doll           | Drag Race France      | main stage                        | 7                |
 | Grag Queen           | Drag Race Brasil      | main stage                        | 7                |
 | Dracmorda            | Dragula               | cold open, floor show judging     | 4                |
-| Swanthula            | Dragula               | cold open, floor show judging     | 4                |
+| Swanthula            | Dragula               | intro, floor show judging         | 4                |
 | Bianca Del Rio       | Drag Race             | werk room, confessional           | 2                |
-| Latrice Royale       | Drag Race             | werk room, Untucked               | 2                |
+| Latrice Royale       | Drag Race             | werk room                         | 2                |
 | Alyssa Edwards       | Drag Race             | Untucked, confessional            | 2                |
-| Katya                | Drag Race             | werk room, confessional           | 2                |
-| Trixie Mattel        | Drag Race             | werk room, confessional           | 2                |
+| Katya                | Drag Race             | werk room, main stage             | 2                |
+| Trixie Mattel        | Drag Race             | main stage, goodbye mirror        | 2                |
 | Alaska               | Drag Race             | werk room, main stage             | 2                |
-| Tatianna             | Drag Race             | werk room, reunion                | 2                |
-| Detox                | Drag Race             | werk room, confessional           | 2                |
+| Tatianna             | Drag Race             | reading challenge, reunion        | 2                |
+| Detox                | Drag Race             | werk room                         | 2                |
 | Raven                | Drag Race             | confessional, reunion             | 2                |
 | Laganja Estranja     | Drag Race             | werk room, Untucked               | 2                |
-| Vanessa Vanjie Mateo | Drag Race             | werk room, main stage exit        | 2                |
-| Kandy Muse           | Drag Race             | Untucked, confessional            | 2                |
+| Vanessa Vanjie Mateo | Drag Race             | werk room entrance, main stage    | 2                |
+| Kandy Muse           | Drag Race             | Untucked, roast                   | 2                |
 | Plane Jane           | Drag Race             | confessional                      | 2                |
 | Mo Heart             | Drag Race             | confessional                      | 2                |
-| Baga Chipz           | Drag Race UK          | werk room, Snatch Game            | 4                |
+| Baga Chipz           | Drag Race UK          | Snatch Game                       | 4                |

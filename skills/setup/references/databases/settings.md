@@ -83,3 +83,7 @@ sends. Write Pushover keys only for a Pushover user, with their keys in full.
 | --------- | ------------- |
 | App token | `<app token>` |
 | User key  | `<user key>`  |
+
+## Updates
+
+- Version: 0.4.0

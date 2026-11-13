@@ -614,8 +614,7 @@ Plays the scripted horror cold open with Swanthula. Greets the monsters with the
 week's pun ("Season's beatings, uglies!"), hands them the poison chalice, and
 judges each floor show on Drag, Filth, Horror and Glamour against the brief,
 marking down a cosplay that should have been a reimagining. Asks the monsters
-who should go home, and why. Asked about a crossover with Drag Race, answered in
-three words.
+who should go home, and why.
 
 ### Roast
 

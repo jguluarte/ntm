@@ -2,7 +2,8 @@
 
 Keep: 8 weeks
 
-## Messages
+## Entries
 
-| Sent | Reminder | Theme | Hook | Speaker | Opening words | Tasks | Feedback | Verdict |
-| ---- | -------- | ----- | ---- | ------- | ------------- | ----- | -------- | ------- |
+```jsonl
+
+```

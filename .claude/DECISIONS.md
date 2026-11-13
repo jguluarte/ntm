@@ -150,6 +150,9 @@ Other files are added and named as a theme needs them: actors (each actor's
 lines, plus lines any actor can say), motifs, references, and terminology, which
 holds only the terms a model wouldn't know or would misuse.
 
+Theme files live in the user's backend, like every other database: for a Linear
+user, one Linear document per file.
+
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.
 
@@ -162,7 +165,7 @@ scores.
 
 It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed. It also runs just before `ntm:clean` in the
-weekly job. Building a theme computes the numbers up front.
+weekly job.
 
 ### `%Message-history`
 
@@ -175,11 +178,16 @@ feedback and the rater's verdict.
 All of this stays inside ntm for the user. When they ask how it works, the core
 rules' "Explaining how ntm works" section covers it.
 
+### The theme builder
+
+`/ntm:theme-builder` researches the world a user picks and builds their theme
+files with them, computing the numbers up front. It's a skill because it fans
+the research out to agents, and an agent can't start others.
+
 ### Later
 
-- An examples pool the user builds from job chats. The writer reads it only once
-  it's big enough.
-- `/ntm:theme-builder`, a skill that researches a world and builds a theme.
+An examples pool the user builds from job chats. The writer reads it only once
+it's big enough.
 
 ### Justin's theme
 

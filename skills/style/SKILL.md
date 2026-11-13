@@ -53,24 +53,27 @@ type's name alone isn't a title. Don't be boring and just use the reminder type.
 
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its row to the Messages table, newest first: right under the
-header row. Fill every column you can, and leave Feedback and Verdict empty.
-Whoever picked the hook and speaker hands them to you with the theme's name; a
-column you weren't handed stays empty.
+header row. You fill Sent, Reminder, Opening words and Tasks; Theme, Hook and
+Speaker come only from whoever picked them, and stay empty otherwise; Feedback
+and Verdict start empty.
 
-| Column        | What it holds                                                                    |
-| ------------- | -------------------------------------------------------------------------------- |
-| Sent          | When it went out, 24-hour, in the user's timezone: `2026-11-13 08:45`            |
-| Reminder      | The message rule's name, such as `morning` or `weekly`, or `freeform`            |
-| Theme         | The theme's name                                                                 |
-| Hook          | The hook picked for it                                                           |
-| Speaker       | The speaker picked for it, or `none` when the pick named no speaker              |
-| Opening words | The message's first five words, as sent                                          |
-| Tasks         | Each task's id and its planned date, or `none`: `ABC-12 2026-11-13, ABC-15 none` |
-| Feedback      | The user's word on it, `keep` or `stale`                                         |
-| Verdict       | The nightly rater's                                                              |
+| Column        | What it holds                                                           |
+| ------------- | ----------------------------------------------------------------------- |
+| Sent          | When it went out, 24-hour, in the user's timezone: `2026-11-13 08:45`   |
+| Reminder      | The message rule's name, such as `morning` or `weekly`, or `freeform`   |
+| Theme         | The theme's name                                                        |
+| Hook          | The hook picked for it                                                  |
+| Speaker       | The speaker picked for it, or `none` when the pick named no speaker     |
+| Opening words | The message's first five words, as sent                                 |
+| Tasks         | Each task's id and planned date: `ABC-12 2026-11-13, ABC-15 2026-11-12` |
+| Feedback      | The user's word on it, `keep` or `stale`                                |
+| Verdict       | The nightly rater's                                                     |
 
-Write a `|` inside a cell as `/`. Then drop the rows older than the `Keep:`
-line, and save.
+In Tasks, a task with no planned date gets `none` in place of its date, and a
+message about no tasks leaves the cell empty.
+
+Write a `|` inside a cell as `/`, and a line break as a space. Then drop the
+rows older than the `Keep:` line, and save.
 
 When `%Message-history` has no table yet, replace everything under its `Keep:`
 line with a Messages part holding the table's header row, then add the row.

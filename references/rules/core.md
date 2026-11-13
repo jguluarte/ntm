@@ -99,8 +99,9 @@ each message, and changes it with the user when they ask.
 
 ### `%Message-history`
 
-A row for each message ntm sends the user: when it went out, what was picked for
-it, which tasks it was about, and how it landed. `ntm:style` keeps it.
+A row for each message ntm writes in the user's theme: when it went out, what
+was picked for it, which tasks it was about, and how it landed. `ntm:style`
+keeps it.
 
 ## Results
 

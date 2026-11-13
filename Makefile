@@ -2,6 +2,7 @@
 .PHONY: lint lint-absolute-line-length lint-fix test
 
 LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
+YAML_FILES := $(shell git ls-files -- '*.yml' '*.yaml')
 
 TOO_LONG = length > $(ABSOLUTE_MAXIMUM_LINE_LENGTH)
 REPORT = { print FILENAME; bad = 1; nextfile } END { exit bad }
@@ -9,6 +10,7 @@ REPORT = { print FILENAME; bad = 1; nextfile } END { exit bad }
 lint:
 	prettier --check .
 	markdownlint-cli2
+	yamllint --strict $(YAML_FILES)
 	$(MAKE) lint-absolute-line-length
 
 lint-absolute-line-length:

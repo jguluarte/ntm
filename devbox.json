@@ -5,7 +5,8 @@
         "markdownlint-cli2@0.24.0",
         "direnv@2.38.2",
         "bats@1.14.0",
-        "jq@1.8.2"
+        "jq@1.8.2",
+        "yamllint@1.37.1"
     ],
     "shell": {
         "scripts": {

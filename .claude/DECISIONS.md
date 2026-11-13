@@ -57,8 +57,7 @@ list, and where each database lives, `%Settings` included.
 The Pushover keys live in `%Settings`, and changing them needs no rebuild. A
 job's own app token goes in that job's prompt.
 
-The theme lives in the `%Theme` database, in the parts
-`skills/setup/references/theme.md` describes.
+The theme lives in its theme files, described under 0.5.
 
 ### Jobs
 
@@ -71,10 +70,20 @@ Every job starts with `/ntm:ready-check`.
 
 ### Setup
 
-`setup` is the wizard, and the only place the user plugin gets built. Run again
-for a user who is set up, it creates only their missing jobs, or says to change
-things by telling ntm or editing `%Settings`, and stops. `update` is deferred,
-below.
+`setup` is the wizard, and builds the user plugin. Run again for a user who is
+set up, it creates only their missing jobs, or says to change things by telling
+ntm or editing `%Settings`, and stops.
+
+### Update
+
+`/ntm:update` brings the user's setup up to the installed `ntm`, with them in
+chat. Each version ships an update note in `skills/update/references/`: a
+changelog, then instructions for update, including whether the user plugin needs
+rebuilding. `%Settings` records the version the setup was last brought up to, as
+Last synced under `## ntm version`.
+
+The 0.5.0 note lands last, before release. It offers the theme builder and reads
+the user's current theme to pre-fill it.
 
 ### Versions
 
@@ -82,7 +91,8 @@ Each time the user plugin is built, its version mirrors the installed `ntm`'s
 exactly, `major.minor.patch`. `ntm-user:backend` opens with a Built line naming
 its version, the `ntm` version it was built from, and the date.
 
-0.3 installs start fresh. The base and the user plugin update together.
+0.3 installs start fresh. After installing a new `ntm`, the user runs
+`/ntm:update`.
 
 ### Publishing
 
@@ -101,29 +111,80 @@ Built on `release-0.5`.
 
 ### The goal
 
-Reminders vary more. Today the frame repeats: "darling" is in 9 of 16 lines, and
-11 of 16 open the same way.
+Reminders stay fresh. The research found that the frame converges when one model
+call both picks it and writes the line, so 0.5 splits picking from writing.
 
-### The shape
+### Who does what
 
-In Justin's words: "the message history should probably support whatever theme
-components are needed ... that way it can have whatever context is needed for
-any kind of theme". The theme says what each history entry records, and
-`ntm:style` writes and reads that record.
+The job picks. The `writer` agent, which is the messenger renamed, writes
+several versions of the message from the picks and today's facts, and never
+reads the history. The job chooses among them, and notify delivers, unchanged.
 
-### The work
+### The deal alert
 
-- `%Message-history` holds the record the theme describes.
-- The theme guide, `skills/setup/references/theme.md`, gets spots for a cast of
-  speakers, motif groups, ways to play each motif, builds (how a line is put
-  together) and per-part rests.
-- `ntm:style` rests from the records, rolls its picks in the shell, keeps a
-  day's episode, and builds the joke from the task.
-- Justin's `%Theme` is redone with him in chat after the guide lands.
+The price watch's deal alert goes out plain, straight through notify, with no
+style and no writer. It gives each deal's store link and no task id. The run's
+result in the job's chat carries everything needed to act: the item, task id,
+price, store, link, conditions and sale end.
 
-### Held back
+### The pick
 
-Writing three drafts per message.
+The pick is a bandit. Each value has a score, minus a penalty that halves over a
+computed half-life since its last use, and a weighted random draw takes one, so
+a value's place in its list means nothing.
+
+Each message gets one hook, from the pool of motifs, references and actors'
+lines. It names a speaker only sometimes, at a rate computed from the pool.
+Messages never address the user.
+
+### Theme files
+
+A theme is a set of YAML files named after it. The root, for Justin
+`Dragify.yaml`, is the guide: the world, the reads, the reminders, and what each
+other file holds.
+
+The options file, `<theme>-options.yaml`, is the only file the picker reads. It
+holds the computed numbers and a checksum of the content they came from.
+
+Other files are added and named as a theme needs them: actors (each actor's
+lines, plus lines any actor can say), motifs, references, and terminology, which
+holds only the terms a model wouldn't know or would misuse.
+
+Fan reviewers judge lines one at a time. A line that only lands from one person
+stays with that person.
+
+### The nightly job
+
+It rates each message by whether the user acted on its tasks: closing one,
+moving its date or clearing the day all count. ntm's own date changes are known
+from each task's `Planned date history`, and set aside. It then updates the
+scores.
+
+It recomputes the half-lives, actor weights and speaker rate only when the
+checksum shows the content changed. It also runs just before `ntm:clean` in the
+weekly job. Building a theme computes the numbers up front.
+
+### `%Message-history`
+
+One row per message: the date and time, the reminder, the theme, the picks, the
+opening words, the task ids with their planned dates at send, the user's
+feedback and the rater's verdict.
+
+### Inside ntm
+
+All of this stays inside ntm for the user. When they ask how it works, the core
+rules' "Explaining how ntm works" section covers it.
+
+### Later
+
+- An examples pool the user builds from job chats. The writer reads it only once
+  it's big enough.
+- `/ntm:theme-builder`, a skill that researches a world and builds a theme.
+
+### Justin's theme
+
+It's built on a `dragify` branch, which never merges anywhere and is deleted
+once the theme is in Linear.
 
 ### Release
 
@@ -153,8 +214,7 @@ Each user database has a template in `skills/setup/references/databases/`: its
 real shape, with default or dummy values. Only setup reads a template, to create
 the user's database from it. Agents read the user's own database.
 
-`%Theme` has no template; setup builds it from the parts in
-`skills/setup/references/theme.md`.
+A theme's files have no template; they're built with the user.
 
 #### Comments are for agents
 
@@ -279,15 +339,6 @@ An Amazon alert steps database.
 
 After 0.5, or when the owner raises them.
 
-### The update skill
-
-`update` waits until ntm is shared with other people. Until then, a change to
-someone's setup is a fresh setup or an edit to `%Settings`.
-
-When he shares, it may become "any new features I might want?": it compares the
-user's setup to the base plugin, finds what's new, and sets that up in their
-backend, since everything that changes lives there.
-
 ### A closer look at the Message rules template
 
 The owner asked to be reminded at a calm point.
@@ -315,8 +366,8 @@ the messenger agent?
 
 ### The cost of reading Settings and the theme
 
-How long does one read of a `%Settings` section, and of `%Theme`, take from a
-job on Linear? If the `%Theme` read costs too much, the build copies the theme
+How long does one read of a `%Settings` section, and of a theme file, take from
+a job on Linear? If the theme read costs too much, the build copies the theme
 into `ntm-user`.
 
 ### The size of the backend skill

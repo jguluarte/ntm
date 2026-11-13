@@ -41,6 +41,9 @@ included.
 
 Everything else they set up lives in their databases and their jobs.
 
+A database's template, in `references/databases/`, holds `<!-- -->` comments for
+you: write the database without them.
+
 ## Pre-requisites
 
 ### Already set up

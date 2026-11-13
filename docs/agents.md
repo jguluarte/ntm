@@ -1,17 +1,18 @@
 # Agents
 
 Behind the skills, three agents each do one job. A skill or scheduled job asks
-an agent when it needs that job done; you don't run one yourself. The writer
-sends you your reminders. The estimator and the shopper hand their answers back
-to the skill that asked.
+an agent when it needs that job done, and the agent hands its answer back; you
+don't run one yourself.
 
 ## The writer
 
-The writer writes and sends your reminders and your weekly plan to your phone.
-It has one question in mind: what will make you actually read this one? It
-writes each message in the style you set up, takes its tone from the day, and
-sends it the way you chose to be notified. It has no fixed shape, because the
-same message every day stops getting read.
+The writer writes your reminders and your weekly plan in your theme. It has one
+question in mind: what will make you actually read this one? For each message,
+ntm hands it what the message should say, today's tasks, and the ideas from your
+theme picked for that message. It writes a few versions, each a scene from your
+theme's world with the task inside it, and says how predictable each one is. ntm
+sends the least predictable one whose opening it hasn't used lately, so the same
+message doesn't come back day after day.
 
 ## The estimator
 

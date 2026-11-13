@@ -114,7 +114,7 @@ When a skill or agent fails, it returns one line that starts with its own name:
 `Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
 words, naming tasks as Talking to the user about tasks says.
 
-A job's final reply is what its last step returned, in one line. When a step
-returned a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything
-after that line, as written, and nothing else unless the skill says what follows
-it: the scheduled task's own push shows it.
+A job's final reply is the line its last step returned, then anything that skill
+says to add. When a step returned a `NOTIFY VIA FINAL REPLY` block, everything
+after that block's first line, as written, takes the place of that line: the
+scheduled task's own push shows it.

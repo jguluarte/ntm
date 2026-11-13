@@ -14,16 +14,15 @@ mind).
 
 Everything about an item lives on its task. The task names the exact item, with
 its model and variant, and its target price. A different variant is a different
-item.
+item. The price watch looks for the item new, unless the task says otherwise.
 
 Where the user wants something other than these defaults, the task says so in
 their words:
 
-| Detail    | Default                                                      |
-| --------- | ------------------------------------------------------------ |
-| Condition | New                                                          |
-| Delivery  | Bought online and delivered                                  |
-| A deal    | A price at or near the target, or well below the usual price |
+| Detail   | Default                                                      |
+| -------- | ------------------------------------------------------------ |
+| Delivery | Bought online and delivered                                  |
+| A deal   | A price at or near the target, or well below the usual price |
 
 The stores for an item are on its task too: the ones the user trusts or blocks
 for it.
@@ -36,10 +35,10 @@ The price watch can't read Amazon, so Amazon's own price alerts cover Amazon.
 `/ntm:sync-price-watch-to-amazon` sets and removes them in a browser, and keeps
 these labels:
 
-| Label                 | The task's item                                     |
-| --------------------- | --------------------------------------------------- |
-| `$has-amazon-alert`   | has an Amazon price alert                           |
-| `$amazon-unavailable` | isn't sold on Amazon in a condition the user allows |
+| Label                 | The task's item           |
+| --------------------- | ------------------------- |
+| `$has-amazon-alert`   | has an Amazon price alert |
+| `$amazon-unavailable` | isn't sold new on Amazon  |
 
 `$has-amazon-alert` stays on a task that closes until the sync removes its
 alert: the label is the only record that the alert is live.

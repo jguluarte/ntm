@@ -126,9 +126,10 @@ its own each day.
 ### `/ntm:run-price-watch`
 
 Checks the things you want to buy, the tasks in the project you picked for them
-in setup, and tells you when one is a good deal today. Its daily result, in the
-scheduled task, also lists any item that needs something from you, such as a
-target price.
+in setup, and tells you when one is a good deal today. The alert is a plain push
+with the price, the store and a link to the store's page. Its daily result, in
+the scheduled task, gives each deal's full details, and lists any item that
+needs something from you, such as a target price.
 
 ### `/ntm:sync-price-watch-to-amazon`
 

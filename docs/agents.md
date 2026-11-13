@@ -2,17 +2,16 @@
 
 Behind the skills, three agents each do one job. A skill or scheduled job asks
 an agent when it needs that job done; you don't run one yourself. The messenger
-is the one that sends you messages. The estimator and the shopper hand their
-answers back to the skill that asked.
+sends you your reminders. The estimator and the shopper hand their answers back
+to the skill that asked.
 
 ## The messenger
 
-The messenger writes and sends everything ntm sends to your phone: your
-reminders, your weekly plan and the price watch's deals. It has one question in
-mind: what will make you actually read this one? It writes each message in the
-style you set up, takes its tone from the day, and sends it the way you chose to
-be notified. It has no fixed shape, because the same message every day stops
-getting read.
+The messenger writes and sends your reminders and your weekly plan to your
+phone. It has one question in mind: what will make you actually read this one?
+It writes each message in the style you set up, takes its tone from the day, and
+sends it the way you chose to be notified. It has no fixed shape, because the
+same message every day stops getting read.
 
 ## The estimator
 
@@ -29,5 +28,5 @@ The shopper checks one thing you're watching to buy: is it a good deal today? It
 looks across stores you'd trust, checks today's price on each store's own page,
 and notes what it found on the task.
 
-The daily price watch asks a shopper about each item you're watching, then the
-messenger tells you about the deals.
+The daily price watch asks a shopper about each item you're watching, then sends
+you one push with each deal's price, store and a link to the store's page.

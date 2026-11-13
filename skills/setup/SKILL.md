@@ -238,11 +238,11 @@ Each reminder begins with `/ntm:ready-check`. The morning reminder then runs
 
 ##### Labels
 
-| Label                 | For                                             |
-| --------------------- | ----------------------------------------------- |
-| `$price-watch`        | What they want to buy                           |
-| `$has-amazon-alert`   | An item with an Amazon price alert              |
-| `$amazon-unavailable` | An item not on Amazon in a condition they allow |
+| Label                 | For                                |
+| --------------------- | ---------------------------------- |
+| `$price-watch`        | What they want to buy              |
+| `$has-amazon-alert`   | An item with an Amazon price alert |
+| `$amazon-unavailable` | An item not sold new on Amazon     |
 
 `$price-watch` goes on the project that holds what they want to buy: ask which
 project, or what to call a new one. The two Amazon labels are only for Amazon

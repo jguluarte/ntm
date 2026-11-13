@@ -54,9 +54,9 @@ Read the task and its comments: the exact item, its target price, anything that
 differs from the rules' defaults, the stores the user trusts or blocks for it,
 any `Skip:` comments, and your Stores comment.
 
-If you can't tell what the item is, or it can't be bought in a condition the
-user allows, write why under Problems in your Stores comment, then return
-`result: NOT ACTIONABLE (<why>)` and stop.
+If you can't tell what the item is, or it's no longer sold, write why under
+Problems in your Stores comment, then return `result: NOT ACTIONABLE (<why>)`
+and stop.
 
 ### 2. Find the stores
 
@@ -81,10 +81,10 @@ Read each store's product page today. Fetch tools summarize, so ask for the
 page's own words.
 
 A price counts when it's on the store's own domain, quoted as written (not a
-"from" or range figure), for this item in an allowed condition, in stock, and
-needs no trade-in, activation, financing or bundle the task doesn't allow. A
-marketplace seller's listing on a trusted store counts. A page that's blocked or
-won't load leaves that price unverified; don't work around it.
+"from" or range figure), for this item, new unless the task says otherwise, in
+stock, and needs no trade-in, activation, financing or bundle the task doesn't
+allow. A marketplace seller's listing on a trusted store counts. A page that's
+blocked or won't load leaves that price unverified; don't work around it.
 
 Note shipping (unknown when the page doesn't show it), any membership or coupon
 the price needs, any sale end date, and the item's usual price with where you
@@ -129,11 +129,11 @@ shape:
 
 Return these lines and nothing else. Every price is in the user's currency.
 
-| Line      | Holds                                                                     |
-| --------- | ------------------------------------------------------------------------- |
-| `result:` | `DEAL`, `NO DEAL`, `NO VERIFIED PRICE` or `NOT ACTIONABLE (<why>)`        |
-| `best:`   | the best verified price, store and seller, product link, condition, terms |
-| `notes:`  | your Problems, or none                                                    |
+| Line      | Holds                                                              |
+| --------- | ------------------------------------------------------------------ |
+| `result:` | `DEAL`, `NO DEAL`, `NO VERIFIED PRICE` or `NOT ACTIONABLE (<why>)` |
+| `best:`   | the best verified price, store and seller, product link, terms     |
+| `notes:`  | your Problems, or none                                             |
 
 `best:` comes only when you verified a price. Its terms are shipping, any
 membership or coupon, and the sale end.

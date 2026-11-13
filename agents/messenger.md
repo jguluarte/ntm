@@ -5,8 +5,8 @@ description: >-
     type: a path to a rule in the user's `%Message-rules` (such as
     reminders.morning or weekly), or freeform with one message. It writes the
     message in the user's style with ntm:style, sends it with ntm-user:notify,
-    and returns what happened. Asked by the reminder skill, the weekly setup
-    job, run-price-watch and self-test, in a job or by hand in chat.
+    and returns what happened. Asked by the reminder skill, the weekly setup job
+    and self-test, in a job or by hand in chat.
 
         <example>
             Context: ntm:reminder --type morning has passed its ready-check

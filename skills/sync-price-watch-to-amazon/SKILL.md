@@ -51,17 +51,16 @@ If there are none, tell the user their Amazon alerts are up to date, and stop.
 ### 2. Set the missing alerts
 
 For each task that needs an alert, find its exact item on Amazon: the model and
-variant the task names, sold in a condition the user allows. If you're not sure
-a product is the right one, show the user the likely matches and ask. If they
-can't tell either, skip the task.
+variant the task names, sold new. If you're not sure a product is the right one,
+show the user the likely matches and ask. If they can't tell either, skip the
+task.
 
 If the item is on Amazon, set an alert at the highest price that still counts as
 a deal for this task. Check that Amazon's list of alerts shows it at that price.
 If it doesn't, remove that alert and set it again at the right price. Then add
 `$has-amazon-alert` to the task.
 
-If it isn't sold on Amazon in a condition the user allows, add
-`$amazon-unavailable` to the task.
+If it isn't sold new on Amazon, add `$amazon-unavailable` to the task.
 
 ### 3. Remove the alerts for closed tasks
 

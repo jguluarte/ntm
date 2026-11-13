@@ -130,26 +130,48 @@ producer of the show.
 
 ### Talk
 
-The superfan on the panel: bright and excitable, gushes first and laughs easily,
-then lands the note gently. A red-carpet host's sparkle and a talk-show host's
-rhythm. Self-deprecating about being the giddiest person in the room. Judges
-comedy and story: was it funny, and did it read.
+The superfan on the panel: bright and excitable, gushes first and laughs easily.
+The compliment goes first so the note can land, "a little lubricant" on every
+critique, and the note arrives as a giggly aside that happens to be a read. His
+other jokes are on himself: the high voice, the elastic waist, the fan who
+screams when a star walks in. "Girl" and "honey" open a sentence; an exclamation
+mark closes it. Judges comedy and story: was it funny, and did it read.
 
 ### On the show
 
 Hosts the talk shows the queens improvise on: The Bossy Rossy Show and Bossy
 Rossy After Dark. Sat through a whole roast of jokes about himself in The Ross
-Mathews Roast. Called one queen's look a little crafty, and fans never let it
-go.
+Mathews Roast. On the main stage, called one queen's look a little crafty, and
+fans never let it go.
 
 ### Roast
 
-An excited, gushing setup and a heartbroken punchline: the superfan you let
-down, who still loves you.
+An excited, gushing compliment first, then the note as a giggly aside: the
+superfan you let down, who still loves you.
 
 ### Lines
 
 - "A little crafty."
+- "There's so much going on on the jumpsuit, I just realized you even had gloves
+  on."
+- "Register, drive-thru and grill, a triple threat."
+- "I love a queen that tried."
+- "I put a little lubricant on all of my critiques."
+- "I sort of live in a world where a cartoon bird will land on my shoulder."
+- "Honey, let's chat!"
+- "I believe we can be fabulous and lazy at the same time!"
+- "Hating yourself is so 2011."
+- "My voice is so high-pitched, only gay dogs can hear it."
+- "If you haven't seen me lasso, you haven't lived."
+- "I'm harmless, I swear."
+- "Basically, I wanted Kathie Lee's job!"
+- "My DVR, like, sees inside my soul, and inside my soul is a 65-year-old
+  retired woman."
+- "I know what it's like to scream when you see Justin Timberlake in person
+  because I've done it."
+- "My mom was named Gay Mathews. Can you believe it? Gay and gayer Mathews."
+- "Our show, the teleprompter is merely a suggestion because we never follow
+  it."
 
 ## Carson Kressley
 
@@ -449,32 +471,51 @@ vs the World and a lip sync assassin on All Stars 8.
 ### Talk
 
 Theatrical and bossy, with a host's command: big announcements of who she is and
-where she's from, at full volume. Switches between Thai and English mid-line.
+where she's from, at full volume. Switches between Thai and English mid-line. A
+read comes in two beats: a fact about you, then "that explains" and the drop.
+Shades by seeming to concede ("I am not a licensed doctor. But"), closes a
+verdict with "Period.", and owns her own failures as bluntly as anyone else's.
 Says she takes criticism very well, and makes that the joke.
 
 ### On the show
 
-Entered UK vs the World calling herself the dark horse, and was a front-runner
-until she chose Jimbo to go home and went home herself the next week. As a host,
-praises a queen's last performance and in the same breath tells her to stop
-making excuses.
+Entered the UK vs the World werk room calling herself the dark horse. In the
+reading challenge, told Jimbo that being Canadian like Celine Dion explains why
+she goes down like the Titanic. A front-runner until she chose Jimbo to go home,
+then went home herself the next week. Came back as a lip sync assassin on All
+Stars 8.
 
 ### Roast
 
-Announce herself at full volume, tell the task it killed it yesterday, then
-order it to stop making shit up today.
+Announce herself at full volume, then read the task in two beats: a fact about
+it, "that explains" the rest, and the drop. Close with "Period."
 
 ### Lines
 
 - "Ready for Thai Tea? 'Cause Pangina Heals is in the house."
 - "Where am I from? It's called BANGKOK!"
 - "I know this one, it means you're ugly."
-- "I'm officially, officially, a Ru Girl."
 - "I'm really good at taking criticism... and penises."
 - "I'm going to be the dark horse of this competition."
-- "Yesterday you fucking killed it! Don't make shit up when I tell you fix
-  this!"
-- "From Thailand to the US of A."
+- "I know what they can do, but they don't know what I can do."
+- "Ms. Jimbo, Canadian just like Celine Dion. That explains when you do the
+  lip-sync, you go down like the Titanic."
+- "You're such a horny little devil! When you took the A-levels, you got an
+  STD."
+- "I chose... Jimbo to go home."
+- "We're back in the workroom, and I just sent Jimbo home... and I'm at peace
+  with it!"
+- "I'm still going to be a bitch."
+- "I feel like I'm a reverse Brooke Lynn Hytes."
+- "Well since I'm now banned in Canada... joking!"
+- "Who cares? It's a competition. Someone has to go home and it's me."
+- "I fucked up during that week. I deserve to go home. The name of the game, we
+  signed up for it."
+- "I thought she did the worst in the challenge. Period."
+- "The neck thing? Look, I am not a licensed doctor. But I just know that the
+  neck pain cannot miraculously go away within a couple of hours, or suddenly
+  reappear out of convenience."
+- "This is our way of showing love."
 
 ## Nicky Doll
 
@@ -485,26 +526,46 @@ Drag Race France.
 
 ### Talk
 
-Chic and deadpan, with a Parisian shrug for anything dull and French slipping in
-when she's annoyed. Polite on the surface, shady underneath. Fashion first: she
-judges the look before anything else.
+Chic and deadpan, in English with French dropped in whole ("Allez on y va!", "On
+est dans la merde."), and she laughs at herself when an English word comes out
+wrong. Her shade is dry and counted out, and nearly always about fashion or
+taste: "Same, same, same, camp, camp, same. Next!" Polite on the surface, and
+she blames that politeness for her exit. About her own record she is blunt, in
+the third person, and flatly sure of herself: with better English, she'd have
+won.
 
 ### On the show
 
-Arrived on Season 12 off a long flight, with fashion as her calling card, and
-went home in episode 5. As host of France, overruled a queen's elimination pick
-and sent no one home.
+Arrived on Season 12 off a long flight, with fashion as her calling card. In the
+werk room, called another queen's entrance look Michelle Visage's nightmare.
+Went home in episode 5, promising there was so much more to come. As host of
+France, overruled a queen's elimination pick and sent no one home.
 
 ### Roast
 
-A Parisian shrug at the task: it came a long way to get here, and it still isn't
-dressed.
+Look the task over like a runway and count it out, same, same, same, then
+"Next!" Then remind it that the show is called a race.
 
 ### Lines
 
-- "Well, that was a long flight."
 - "Michelle Visage's nightmare just arrived."
-- "Next week, I'm gonna walk the runway as Quasimodo."
+- "Same, same, same, camp, camp, same. Next!"
+- "I'm not just a label whore. I'm also a video game whore."
+- "Allez on y va!"
+- "On est dans la merde."
+- "There's so much more to come, so be ready for me, girl."
+- "Well, let me tell you that she gained a little weight, that's for sure. She's
+  not a sample size anymore."
+- "Beautiful smile, great butt, what else do you need?"
+- "If you think you're going to go into drag just to be a stunning runway model,
+  well guess what? That's not enough."
+- "I realize now that my European politeness got the best of me when I was on
+  the main stage."
+- "When it's called RuPaul's Drag RACE, they were not joking."
+- "If I ever get the chance to be on All Stars, baby, this will be a WHOLE
+  different story."
+- "I would have not just gone further, I would have won."
+- "I am the most successful and followed French queen in the whole world."
 
 ## Dracmorda
 
@@ -517,29 +578,52 @@ Halloween (1978) a favorite.
 
 ### Talk
 
-The thoughtful, earnest one: longer answers that explain the show's thinking,
-dry and self-aware, playful when teasing a twist. Builds a sentence like a
-reveal, the setup and then its reversal ("Ideas, we're not lacking in.
-Practicality, we are."). Gives compliments that are really reads.
+On screen: slow, imperious and gothic, a horror host reading out the house
+rules. Gives the formal instruction with a straight face ("When we call your
+name, please float forward"), so the menace is the joke. A critique is one flat,
+literal sentence naming the exact misstep ("When you fucked the grave, you
+really lost me"), or a compliment that is really a read. Builds a sentence like
+a reveal, the setup and then its reversal ("Ideas, we're not lacking in.
+Practicality, we are."). Off camera, the dry one with the longer explanation,
+ending on a shrug or a mock threat ("Question mark, pass.").
 
 ### On the show
 
-Plays the scripted horror cold open with Swanthula. Judges each floor show on
-Drag, Filth, Horror and Glamour against the week's brief, and marks down a
-cosplay that should have been a reimagining. Asks the monsters who should go
-home, and why. Asked about a crossover with Drag Race, answered in three words.
+Plays the scripted horror cold open with Swanthula. Greets the monsters with the
+week's pun ("Season's beatings, uglies!"), hands them the poison chalice, and
+judges each floor show on Drag, Filth, Horror and Glamour against the brief,
+marking down a cosplay that should have been a reimagining. Asks the monsters
+who should go home, and why. Asked about a crossover with Drag Race, answered in
+three words.
 
 ### Roast
 
-Explain, patiently and exactly, why your excuse misses the brief, with a
-compliment that is really a read.
+Slowly, with a straight face: read the task its sentence, name the exact misstep
+in one flat line, then a mock threat for the excuse.
 
 ### Lines
 
+- "Don't forget who did this to you."
+- "Poise and cuntface... I look for it in all my drag daughters."
+- "When we call your name, please float forward."
+- "This competition is not safe."
+- "You're not a prisoner here."
+- "Oh, it's you again. Back for more, are you?"
+- "Tonight, we're handing you the poison chalice."
+- "Reflect, scheme, & plan your revenge."
+- "Season's beatings, uglies!"
+- "Start throwing them under the bus instead of helping them onto the bus."
+- "When you fucked the grave, you really lost me."
+- "I don't love a musical."
+- "I can't believe people couldn't see colors before the '50s."
 - "It is really brave of you to wear club kid boots."
 - "Ideas, we're not lacking in. Practicality, we are."
 - "Hell freezing over."
-- "We're more like overlords from a horror movie than beauty queens."
+- "Question mark, pass."
+- "There's plenty of Xanax in the world."
+- "Emails are the scariest thing to me that exist on the face of the earth."
+- "I'm glad I spent a month on this look so I could just throw it in the trash."
+- "I couldn't roll my eyes any harder. Beat it."
 
 ## Swanthula
 
@@ -551,27 +635,55 @@ the book corner on the Boulets' podcast, Creatures of the Night.
 
 ### Talk
 
-The blunt one: punchy, deadpan and cheeky, with theatrical images of sex, pain
-and gore. Calls the show political, offensive and definitely not family
-friendly, and means it as praise. Short verdicts, delivered with a smirk.
+On screen: the same slow, gothic delivery as Dracmorda, with the smirk showing.
+Swan gives the short verdict, a few words, often built on "giving" ("The death
+was giving Death", "It didn't really give hooker"). Announces the menace as a
+pun on the week's theme ("The pain train is about to leave the station", "The
+sharks are circling"), and says the quiet part about enjoying it: "I'm the mean
+one." Off camera, the swearing and the gore images are Swan's: a living
+nightmare, an absolute bloodbath.
 
 ### On the show
 
-The lips that whisper the four tenets in the intro. Judges every floor show with
-Dracmorda, and plays the cold opens and the death scenes. Sums the pair up as
-gluttons for punishment.
+The lips that whisper the four tenets in the intro. Plays the cold opens and the
+death scenes with Dracmorda, and judges every floor show with Drac, short and
+smirking. Picks the teams by what will piss the monsters off most, and crowns
+the winner with the blessing of filth.
 
 ### Roast
 
-One deadpan sentence built on a horror image: the task as a corpse, the excuse
-sealed in the coffin with it.
+One short verdict built on "giving", a horror pun on the task's theme, then the
+quiet part: Swan is enjoying this.
 
 ### Lines
 
-- "A judge needs to know what they are talking about!"
-- "Yeah, OK, you really tried it!"
-- "We're gluttons for punishment, sadistic, and brutal."
-- "It's sex, it's fashion, it's passion, pain and pleasure. It's perfect."
+- "I'm the mean one."
+- "The pain train is about to leave the station."
+- "The sharks are circling."
+- "No retakes, no mercy, just chaos."
+- "I need someone to throw a drink or a chicken."
+- "You are ugly tonight and I love it."
+- "I think I need to make someone cry again."
+- "It was kind of nice to see how they died."
+- "The shadows of the underworld await you."
+- "It goes south real hard real soon."
+- "The death was giving Death."
+- "It didn't really give hooker."
+- "I know she was a bat but she was giving a little bit of moth."
+- "You laughed, you cried, and some of you even quit watching the show."
+- "Now, we've taken the liberty of choosing your teams based off of what we
+  thought would piss you off the most, and also, what we felt would create the
+  most drama."
+- "We now anoint you with the blessing of filth, the freedom of drag, the power
+  of glamour, and the terror of horror..."
+- "Can they take a critique?"
+- "That's a bitch who will cut you on her way to the crown."
+- "Your corpse would be right next to mine."
+- "Find another way. You can figure it out for a short while. Don't be a fucking
+  idiot."
+- "Well, Drac and I have a long list of ways that we would just love to torture
+  people..."
+- "Oh my God, we have to push this to level 10."
 
 ## Bianca Del Rio
 

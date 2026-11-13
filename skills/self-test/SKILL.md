@@ -5,7 +5,7 @@ description: >-
     every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a throwaway
     task, and write and read a throwaway database, then clean up and have the
-    messenger agent send a success message. Each step's result is shown as it
+    writer agent send a success message. Each step's result is shown as it
     passes or fails. The first thing to run after installing ntm and ntm-user
     ("test ntm", "run the self test", "is everything wired up?"), and the smoke
     test for a backend the user described themselves.
@@ -17,8 +17,7 @@ A test that this user's setup is complete, and that their task list can do the
 core interactions every backend must support, on a task and a database made for
 the purpose. Run it in a new chat after installing `ntm-user`, and again after
 `ntm-user` is rebuilt. Never run it unasked: a run writes to the task list, and
-the messenger agent sends a push. Once the user starts it, run it without
-asking.
+the writer agent sends a push. Once the user starts it, run it without asking.
 
 ## Usage
 
@@ -121,10 +120,10 @@ behind didn't pass.
 
 ### 13. Send the success message
 
-Only when every step before it passed. Ask the messenger agent for a `freeform`
-message: `ntm is ready; the self-test passed`. It passes when the messenger
-returns `Sent:`, or a delivery block, which you show the user. Any other return
-fails the step.
+Only when every step before it passed. Ask the writer agent for a `freeform`
+message: `ntm is ready; the self-test passed`. It passes when the writer returns
+`Sent:`, or a delivery block, which you show the user. Any other return fails
+the step.
 
 ## Result
 

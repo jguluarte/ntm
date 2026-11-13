@@ -3,7 +3,7 @@ name: reminder
 description: >-
     Sends one of the user's daily reminders about their todo list, morning,
     afternoon or evening: checks that ntm can run, gathers today's tasks and how
-    many days each has slipped, then hands them to the messenger agent, which
+    many days each has slipped, then hands them to the writer agent, which
     follows the user's message rule for it, writes the message in the user's
     style and sends it. Run by a job, as /ntm:reminder --type morning, afternoon
     or evening.
@@ -42,14 +42,13 @@ fewer days slipped than its dates, as you judge it.
 
 ## The message
 
-Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
+Hand the writer agent `type: reminders.<type>`, such as `reminders.morning`,
 with `record_task_ids: true`, today's date, and today's tasks, each with whether
 it's done, its days slipped and the dates from its `Planned date history`. It
 sends the message for that type, as the user's message rules say. Hand it over
-even when there are no tasks; the messenger decides when there's nothing to
-send.
+even when there are no tasks; the writer decides when there's nothing to send.
 
 ## Result
 
-Return what the messenger returned. For a delivery block, end the run with its
+Return what the writer returned. For a delivery block, end the run with its
 title and message, without the `NOTIFY VIA FINAL REPLY` line.

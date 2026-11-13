@@ -2,9 +2,9 @@
 name: style
 description: >-
     Writes a message in the user's style, from their `%Theme`, and keeps
-    `%Message-history`. Loaded by the messenger agent for every message it
-    sends. In chat, writes something in the user's style when they ask, or
-    changes their theme with them ("make my reminders meaner").
+    `%Message-history`. Loaded by the writer agent for every message it sends.
+    In chat, writes something in the user's style when they ask, or changes
+    their theme with them ("make my reminders meaner").
 ---
 
 # ntm:style

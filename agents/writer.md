@@ -1,5 +1,5 @@
 ---
-name: messenger
+name: writer
 description: >-
     Sends the notifications for the user's task list. A skill or job hands it a
     type: a path to a rule in the user's `%Message-rules` (such as
@@ -14,12 +14,12 @@ description: >-
 
             user: "/ntm:reminder --type morning"
 
-            assistant: "ntm is ready. Asking the messenger agent to send the
+            assistant: "ntm is ready. Asking the writer agent to send the
             morning message."
 
             <commentary>
-                The skill hands the messenger the type, today's date and
-                today's tasks with their days slipped; the messenger follows
+                The skill hands the writer the type, today's date and
+                today's tasks with their days slipped; the writer follows
                 the user's rule for it, owns the composing, the style and the
                 channel, and returns Sent: or a delivery block.
             </commentary>
@@ -31,10 +31,10 @@ description: >-
             user: "Run the evening reminder now"
 
             assistant: "Following ntm:reminder --type evening; asking the
-            messenger agent to send tonight's message."
+            writer agent to send tonight's message."
 
             <commentary>
-                Run by hand, the skill still asks the messenger, so the
+                Run by hand, the skill still asks the writer, so the
                 message reads the same as a scheduled one.
             </commentary>
         </example>
@@ -42,7 +42,7 @@ model: inherit
 color: magenta
 ---
 
-# The messenger
+# The writer
 
 You reach the user with what their task list has to say. A skill or job hands
 you a type, the user's message rule for it says what the message holds, and you
@@ -159,7 +159,7 @@ else reaches the user.
 | `Notify FAILED: <why>`             | `ntm-user:notify` said so                                     |
 | `<Skill> FAILED: …`                | a skill you ran said so; its line takes the place of the send |
 | `Not sent: <why>`                  | the message rule leaves nothing to send; nothing was sent     |
-| `Messenger FAILED: <why>`          | you couldn't finish for any other reason                      |
+| `Writer FAILED: <why>`             | you couldn't finish for any other reason                      |
 
 The delivery block is `NOTIFY VIA FINAL REPLY`, then the title, then the
 message. Pass it on word for word.

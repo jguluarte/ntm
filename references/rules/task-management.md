@@ -40,7 +40,7 @@ about it.
 
 ### `%Message-rules`
 
-What each reminder's message says. The messenger agent follows it, and the user
+What each reminder's message says. The writer agent follows it, and the user
 changes it.
 
 ### `%Paused-dates`

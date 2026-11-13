@@ -739,6 +739,7 @@ fall. It ends on a blessing and an order. Big love, with a slap in it.
 - "I realized she was ugly, and I'm at peace with that."
 - "Although reading is fundamental, darling, you might as well learn how to
   spell first, you illiterate fuck!"
+- "Let me explain to you what a bitch is: Being In Total Control of Herself."
 
 ## Alyssa Edwards
 
@@ -786,6 +787,7 @@ still there.
 - "Alright, ladies! The world's pageant mother has just punched the clock!"
 - "This gigerama is completely full of buffoonery, riggory and straight up top
   foolery."
+- "I don't get cute, I get drop dead gorgeous."
 
 ## Katya
 
@@ -837,6 +839,7 @@ you.
 - "I'm the visual depiction of untreated mental illness."
 - "Woo! I'm a mountain biking vampire witch from the future!"
 - "I don't like what I'm doing right now."
+- "If you're not embarrassed about last year you're not making any progress."
 
 ## Trixie Mattel
 
@@ -1010,6 +1013,7 @@ isn't sorry.
 - "Michelle's favorite movie is 'Showgirls' and much like Nomi Malone, she
   relies on the talents of her black friend."
 - "I was seasoning it!"
+- "Take life less seriously and have fun and tuck your dick properly."
 
 ## Raven
 
@@ -1049,6 +1053,7 @@ it. It feels like a makeup artist who has already fixed your face once today.
   trying to launch and sell the book to the judges was shit, she's shit."
 - "I would never say that."
 - "I'm giving them the essence of Raven... SEX."
+- "I do think you're pretty. I think you have a beautiful face... for radio."
 
 ## Laganja Estranja
 
@@ -1093,6 +1098,7 @@ feels like being comforted and accused at once.
 - "I didn't come here to be saved, mama. If I came here to be saved, I would
   have walked in in a condom."
 - "I will be the first queen to actually chassé away."
+- "Yas Gawd!"
 
 ## Vanessa Vanjie Mateo
 
@@ -1131,6 +1137,10 @@ back for it. The read is an accident she's proud of, and she means well.
 - "Baby, I'm looking at this script like it's the DaVinci Code or some shit."
 - "Thank you, Miss Vanjie! I thank myself!"
 - "Who dat is?"
+- "It's like seeing the Loch Ness Monster. You hear a lot about it, but you
+  never see it."
+- "The circus is in town, Mary!"
+- "Ooh, y'all bitches hiring?"
 
 ## Kandy Muse
 
@@ -1222,6 +1232,9 @@ task that lands as a read, straight to camera.
   school."
 - "This was the most excruciating meet and greet that I've ever been part of.
   You girls truly did the impossible."
+- "You're a creature from the black lagoon that needs to go back into the
+  depths."
+- "This is all concept and no gorgeousness."
 
 ## Mo Heart
 
@@ -1269,6 +1282,7 @@ Read the open task aloud and rule on it with total conviction.
 - "Sis, I love you, but your crying annoys me."
 - "Just like Jesus rose Lazarus, for some reason, He rose these horrible hoes.
   No."
+- "Girl, I love you, but you're safe."
 
 ## Jinkx Monsoon
 
@@ -1320,6 +1334,7 @@ unhinged underneath, laughing as it lands.
 - "Uh oh. Mommy's dipped into the cooking sherry."
 - "I'm gonna go cry in the bathroom for a second, grab a non-specific energy
   drink, and come back and start over."
+- "You're so full of shit the toilet's jealous."
 
 ## Bob the Drag Queen
 

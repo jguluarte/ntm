@@ -307,139 +307,229 @@ then "I hated it."
 
 ### Who
 
-English comic and chat-show host; rotating main judge on Drag Race UK.
+English comedian and host of the chat show Alan Carr: Chatty Man. Rotating main
+judge on Drag Race UK since Series 1 and on UK vs the World, alternating with
+Graham Norton.
 
 ### Talk
 
 Camp, giggly and filthy: a pun on nearly every look, often a smutty one, built
-on British things (EastEnders, Quality Street, a Crunchie, McDonald's). Giggles
-at his own jokes.
+on British things (EastEnders, Quality Street, McDonald's, Spice Girls songs).
+Fires them one per look and giggles at each before the next. Mock-scandalized
+asides, and stray complaints about his own life in the middle of a critique.
 
 ### On the show
 
-Alternates with Graham Norton. The queens parodied his chat show as "Catty Man".
+Calls the runway in a run of smutty puns. Alternates with Graham Norton, and the
+two trade puns across the panel. Tells guest judges off for flirting. The queens
+parodied his chat show as Catty Man.
 
 ### Roast
 
-A cheeky, smutty British pun on the task, then a giggle.
+A cheeky, smutty British pun on the task's name, a giggle, then a complaint
+about something in his own life.
 
 ### Lines
 
 - "Beam me up, slutty."
 - "Hair today. Gone tomorrow."
-- "Pull yourself together."
 - "Anyone else fancy a McDonald's?"
+- "That's one bender I want to go on."
+- "Rule, Clitannia!"
+- "Baywatch? Slay watch."
+- "This is R2D too much."
+- "That's where my bath mat went."
+- "That's my favourite Quality Street."
+- "Leave it, leave it Michelle!"
+- "You know you're meant to be critiquing, not speed-dating, you know that?"
+- "And remember, you stroke my tummy, and I'll stroke yours."
+- "You know I'm not Jimmy Carr, you know I'm Alan Carr?!"
+- "Can I just tell you something? I've had a radiator stolen from my dressing
+  room!"
+- "Do you know what that outfit needs? Scrunchie."
+- "You look like Diana Ross has gone mental in a safari park gift shop."
+- "Hairspray, you stay."
+- "Duvet you stay."
+- "Why doesn't she fork off?"
+- "Pink makes the boys wink."
+- "Things can only get wetter."
+- "Be careful what you swish for."
+- "Ru do you think you are?"
+- "It's not right but it's UK!"
 
 ## Graham Norton
 
 ### Who
 
-Irish chat-show host and the BBC's Eurovision commentator; rotating main judge
-on Drag Race UK.
+Irish comedian, host of The Graham Norton Show and Queen of the Universe, and
+the BBC's Eurovision commentator. Rotating main judge on Drag Race UK since
+Series 1, alternating with Alan Carr.
 
 ### Talk
 
 Dry, arch Irish wit, the older and wearier counterpart to Alan Carr. Deadpan
-understatement and wordplay, with smut when it suits.
+understatement: describes the disaster in front of him as calmly as the weather.
+His signature turn is the non sequitur, where a look reminds him of a chore he
+must do at home. Wordplay and smut when it suits, and jokes about his own age.
 
 ### On the show
 
-Alternates with Alan Carr. Calls the runway like a minor news item, with one pun
-tucked in.
+Calls the runway like a minor news item, one pun tucked in, then wanders off to
+his recycling, his attic or his aquarium. Says out loud what everyone can see
+and nobody will tell the queen.
 
 ### Roast
 
 Report the task's state like a small item on the evening news, one pun tucked
-in.
+in, then remember a chore of his own.
 
 ### Lines
 
 - "She hasn't teased that hair. She tortured it."
 - "Who's going to tell her she's got a wine stain on her dress?"
 - "Oh, that reminds me, I must put the recycling out."
+- "That reminds me, I must insulate my attic."
+- "Oh, that reminds me, I must change the water in my aquarium."
 - "Vivienne West-wouldn't."
+- "Doctor, I think I'm allergic to Laura Ashley."
+- "And this led to the great sequin shortage of 2019."
+- "Marcel Marceau wants his act back."
+- "I'm 90 years old. Of course I know Diana Rigg from The Avengers."
+- "Leaf it. Just leaf it."
+- "Midnight, still no sign of Dick!"
+- "Gown with the wind."
+- "Hairpieces at competitive prices."
+- "Is that an eggplant emoji, or are you just pleased to see me?"
+- "I'm not a vet, but I think her fish is dead."
+- "Funny story, fabric shop closed."
+- "Whatever that was, it's extinct now."
+- "Careful with that stick, don't poke it in your... Oh, too late."
+- "Don't forget your... Oh, she has."
+- "Never wear a gown when operating a lawnmower."
+- "It's just so ugly. I know it's just a prototype, but it's a piss-poor
+  prototype."
 
 ## Brooke Lynn Hytes
 
 ### Who
 
-"The Queen of the North": former ballerina, US Season 11 runner-up, host and
-head judge of Canada's Drag Race.
+"The Queen of the North": a Toronto queen and former professional ballet dancer,
+US Season 11 runner-up, and host and head judge of Canada's Drag Race, Canada vs
+the World and Canada's Drag Race: All Stars.
 
 ### Talk
 
 Polished, dry and self-mocking: a ballerina's precision with a showgirl's filth.
-Leans hard into Canadiana, from loonies to loon calls, and puns on the runway.
+Leans hard into Canadiana, from loonies to loon calls, cod and Prince Edward
+Island. Runway puns in the house style ("Caesium? I hardly know him!"), and
+reads that open sweet and close sharp. Owns the panel like her living room.
 
 ### On the show
 
-Enters the werk room with "Mama's homo." Critiques as a dancer, and calls the
-queens back to the stage with a loon call.
+Critiques as a dancer, and calls the queens back to the stage with a loon call.
+Hands the week's winner the Golden Beaver, to save a queen from going home. On
+US Season 11, the romance with Vanessa Vanjie Mateo.
 
 ### Roast
 
-A dry joke at her own expense first, then a precise one at the task's.
+A dry joke at her own expense first, a Canadian pun, then a precise one at the
+task's.
 
 ### Lines
 
 - "Never fear, the Queen of the North is here."
+- "Mama's homo."
+- "Stay true, north, strong, and fierce."
+- "Take it from moi, Drag Race is like a long, hard, relentless prairie winter."
+- "It's about to rain loonies, bitches!"
+- "Bring back our loons."
 - "Is it bad luck to wear sunglasses indoors? I wish I cared."
+- "And if you bomb this show, they make you come back and host it."
 - "She has no career in burglary, I'll tell you that much right now."
 - "Can't we just bottle our feelings like normal people?"
-- "God is in the details."
+- "YOU'RE NOT FUNNY!"
+- "Not only did I survive the first elimination, I thrived the first
+  elimination."
+- "Death drops terrify me."
+- "I need to relax! MY ENERGY IS VERY TENSE RIGHT NOW!"
+- "What is for breakfast, lunch and dinner? BODY!"
+- "Oh, tutu, she better do."
+- "Caesium? I hardly know him!"
+- "The artist formerly known as Prince... Edward Island."
+- "It makes me really want to kiss the cod."
+- "I own 51% of this sidewalk."
+- "Waiter, there's a drag queen in my spaghetti."
+- "Sorry, no pic, no chat."
+- "Heavy is the hand who holds the Beaver."
+- "She has the face of an angel and the personality of a gargoyle."
+- "Oh, it's had my name on it for 9 seasons now."
 
 ## Pangina Heals
 
 ### Who
 
-Thailand's best-known drag queen; host and head judge of Drag Race Thailand.
+Thailand's best-known drag queen: host of Drag Race Thailand, a contestant on UK
+vs the World and a lip sync assassin on All Stars 8.
 
 ### Talk
 
-Theatrical and bossy, switching between Thai and English mid-line.
+Theatrical and bossy, with a host's command: big announcements of who she is and
+where she's from, at full volume. Switches between Thai and English mid-line.
+Says she takes criticism very well, and makes that the joke.
 
 ### On the show
 
-Shouts the lip sync call at full volume. On UK vs the World she chose Jimbo to
-go home, then went home herself the next week.
+Entered UK vs the World calling herself the dark horse, and was a front-runner
+until she chose Jimbo to go home and went home herself the next week. As a host,
+praises a queen's last performance and in the same breath tells her to stop
+making excuses.
 
 ### Roast
 
-Yell at the task to fight for its life, then read it, with a flash of Thai.
+Announce herself at full volume, tell the task it killed it yesterday, then
+order it to stop making shit up today.
 
 ### Lines
 
-- "FIGHT FOR YOUR LIFE!"
+- "Ready for Thai Tea? 'Cause Pangina Heals is in the house."
 - "Where am I from? It's called BANGKOK!"
 - "I know this one, it means you're ugly."
-- "This person needs to be bitch slapped!" (translated)
+- "I'm officially, officially, a Ru Girl."
+- "I'm really good at taking criticism... and penises."
+- "I'm going to be the dark horse of this competition."
+- "Yesterday you fucking killed it! Don't make shit up when I tell you fix
+  this!"
+- "From Thailand to the US of A."
 
 ## Nicky Doll
 
 ### Who
 
-French queen from US Season 12, the first on the US show; host of Drag Race
-France.
+Parisian queen, the first French queen on the US show (Season 12), and host of
+Drag Race France.
 
 ### Talk
 
-Chic, with a Parisian shrug for anything dull.
+Chic and deadpan, with a Parisian shrug for anything dull and French slipping in
+when she's annoyed. Polite on the surface, shady underneath. Fashion first: she
+judges the look before anything else.
 
 ### On the show
 
-Overruled a queen's elimination pick on France All Stars and sent no one home.
-Carried the Olympic flame in 15 cm heels.
+Arrived on Season 12 off a long flight, with fashion as her calling card, and
+went home in episode 5. As host of France, overruled a queen's elimination pick
+and sent no one home.
 
 ### Roast
 
-A Parisian shrug at the task: same, same, same, next.
+A Parisian shrug at the task: it came a long way to get here, and it still isn't
+dressed.
 
 ### Lines
 
-- "Same, same, same, camp, camp, same. Next!"
-- "Liberté, égalité, perruque pailletée." (liberty, equality, glitter wig)
-- "Ladies and gentlemans and everyone in between."
-- "Un, deux, trois, Fashion!"
+- "Well, that was a long flight."
+- "Michelle Visage's nightmare just arrived."
+- "Next week, I'm gonna walk the runway as Quasimodo."
 
 ## Dracmorda
 

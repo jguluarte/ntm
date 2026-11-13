@@ -19,21 +19,22 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ## What you write from
 
-| Input            | What it is                                                                     |
-| ---------------- | ------------------------------------------------------------------------------ |
-| The core message | What to say, in plain words                                                    |
-| The type         | `freeform`, or the message rule it's for, such as `weekly`                     |
-| The task ids     | The tasks the message is about, and which of them are done                     |
-| Days slipped     | How many days each task has slipped, and the dates it slipped from, when given |
-| The tone         | Your read of today's facts                                                     |
+| Input             | What it is                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| The core message  | What to say, in plain words                                                          |
+| The type          | `freeform`, or the message rule it's for, such as `weekly`                           |
+| The task ids      | The tasks the message is about, and which of them are done                           |
+| Days slipped      | How many days each task has slipped, and any task marked to press harder, when given |
+| `record_task_ids` | Whether the history entry records the task ids; `false` when not given               |
+| The tone          | Your read of today's facts                                                           |
 
 ## Writing the message
 
 ### 1. Determine the message intensity
 
 A task's level is the one the theme's Responding to procrastination part gives
-for its days slipped. Let the dates it slipped from inform it. A done task has
-no level, and when no days slipped were given, no task has one.
+for its days slipped. A task marked to press harder may go one level up. A done
+task has no level, and when no days slipped were given, no task has one.
 
 ### 2. Write it
 
@@ -53,10 +54,11 @@ type's name alone isn't a title. Don't be boring and just use the reminder type.
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its entry: one JSON line at the top of the Entries part.
 
-| Field  | What it holds                              |
-| ------ | ------------------------------------------ |
-| `date` | The date it went out, such as `2026-11-09` |
-| `line` | The message as sent                        |
+| Field  | What it holds                                                                     |
+| ------ | --------------------------------------------------------------------------------- |
+| `date` | The date it went out, such as `2026-11-09`                                        |
+| `ids`  | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]` |
+| `line` | The message as sent                                                               |
 
 Then drop the entries older than the `Keep:` line, and save.
 

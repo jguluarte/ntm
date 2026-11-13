@@ -43,10 +43,11 @@ fewer days slipped than its dates, as you judge it.
 ## The message
 
 Hand the messenger agent `type: reminders.<type>`, such as `reminders.morning`,
-today's date, and today's tasks, each with whether it's done, its days slipped
-and the dates from its `Planned date history`. It sends the message for that
-type, as the user's message rules say. Hand it over even when there are no
-tasks; the messenger decides when there's nothing to send.
+with `record_task_ids: true`, today's date, and today's tasks, each with whether
+it's done, its days slipped and the dates from its `Planned date history`. It
+sends the message for that type, as the user's message rules say. Hand it over
+even when there are no tasks; the messenger decides when there's nothing to
+send.
 
 ## Result
 

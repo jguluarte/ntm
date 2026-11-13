@@ -57,7 +57,7 @@ When any result is a deal, send one push with `ntm-user:notify`, from the deals'
 Price watch: <count> deal(s)
 
 <item in a few words>: <price> at [<store>](<product link>)
-<what the price needs: a membership, a coupon, or a used or refurbished unit>
+<what the price needs: a membership or a coupon>
 
 <the next deal, the same way>
 ```
@@ -113,7 +113,6 @@ Then give each deal these lines, from its `best:` line:
 ```
 <item in a few words> (<task id>): <price> at <store>
     Link: <product link>
-    Condition: <condition>
     Terms: <shipping, and any membership or coupon>
     Sale ends: <date, or unknown>
 ```

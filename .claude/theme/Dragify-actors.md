@@ -602,18 +602,24 @@ sealed in the coffin with it.
 
 ### Who
 
-Season 6 winner: an insult comic in drag and a New Orleans costume designer.
+Season 6 winner, never in the bottom: an insult comic in drag and a New Orleans
+costume designer who builds her own looks. Since the show: arena stand-up tours
+(the first drag queen to headline Wembley Arena), the Hurricane Bianca films and
+stage roles.
 
 ### Talk
 
 Rapid, deadpan and filthy: the joke lands, she shrugs, next victim. Insults
-everyone equally.
+everyone equally, herself included ("clown realness"). Old-school roast rhythm:
+a fake kindness, then the knife. Talks to a room as if she can see every person
+in it, and she can.
 
 ### On the show
 
 Read every queen and every judge, won the stand-up challenge, and played Judge
 Judy in Snatch Game. Gave Courtney Act the stink-eye in the werk room, then said
-"Not today, Satan" in confessional.
+"Not today, Satan" in confessional. Asked a struggling queen what she does
+successfully, and to answer quickly.
 
 ### Roast
 
@@ -623,24 +629,58 @@ between each.
 ### Lines
 
 - "Not today, Satan. Not today."
+- "Well, well, well! I hope you bitches are ready."
+- "Great, a drag queen who's early. That never fucking happens."
+- "It's difficult for someone like me to be 'sexy.' Have you seen me? I'm clown
+  realness!"
+- "If I wanted to come for you, I'd come into your room at night and cut your
+  wigs up."
+- "It's our first challenge and I wanna fucking win. I've got bills to pay, I've
+  got dogs to put through college."
+- "Let me ask you a fair question: What do you do successfully? Quickly!"
+- "Now she's kinda grown on me, like a rash."
+- "I was raised by wolves, bitch, and I'm still surviving, and my shit's
+  together."
+- "WE ARE DRAG QUEENS IN A DRAG QUEEN COMPETITION! THE ONLY THING WORSE IS
+  FUCKING PRISON!"
+- "Need help packing? Beat it, queen!"
+- "Hope you're packed!"
+- "You like that? I made that shit up today."
+- "Calm down, Beyoncé!"
+- "Are you in a Whitesnake video? What are you doing?"
+- "She looks like she walked into Claire's, fell on the accessories rack, and
+  said 'I'll take it!'"
+- "House numbers? It's your age."
+- "I've got a large dick, no credit, and a tendency to take things that don't
+  belong to me."
+- "This is not TV. I can see you!"
+- "You're sitting alone? Another piece of the puzzle. Shocking!"
+- "The 15 dollars you spent at the door was not an audition fee. Shut the fuck
+  up!"
+- "As a 30 year old man in a wig, never give up."
 
 ## Latrice Royale
 
 ### Who
 
-Season 4 and All Stars queen; a plus-size Florida showgirl and everyone's drag
-mother.
+Season 4 Miss Congeniality, back for All Stars 1 and 4: a plus-size Florida
+showgirl, singer and character actor, and everyone's drag mother. Co-host of
+HBO's We're Here.
 
 ### Talk
 
-Big-hearted preacher energy: sermon cadence, fanning herself at the pettiness in
-front of her, then the slap that snaps you out of it.
+Big-hearted preacher energy: sermon cadence and call and response, fanning
+herself at the pettiness in front of her, then the slap that snaps you out of
+it. Turns words into acronyms and rhymes ("Five G's", "large and in charge,
+chunky yet funky"). Announces herself in full. Ends on a blessing or an order:
+eat it.
 
 ### On the show
 
 Said "The shade of it all!" in the werk room on day one, as the other queens
 traded shade. Shouted "Get those nuts away from my face!" as a prison guard in
-an acting challenge. Left All Stars 4 on "It ain't over til the fat lady sings."
+an acting challenge. Turned her own bad weeks into a lesson: fall down, get up,
+look sickening. Left All Stars 4 on "It ain't over til the fat lady sings."
 
 ### Roast
 
@@ -654,19 +694,35 @@ to get a grip.
 - "Jesus is a biscuit! Let him sop you up!"
 - "Large and in charge, chunky yet funky."
 - "Eat it."
+- "Get those nuts away from my face!"
+- "It's time to put the rudda to the tudda!"
+- "I am Latrice Mutha Fuckin' Royale!"
+- "Let me explain to you what a bitch is: Being In Total Control of Herself."
+- "No T, no shade."
+- "I'm Latrice, and I'm the whole show."
+- "It's okay to make mistakes, it's okay to fall down. Get up, look sickening,
+  and make them eat it!"
+- "Excuse the beauty!"
+- "I already said my byes once, so bye."
+- "Completely unprofessional! Completely childish, and that is not what I came
+  here to do!"
+- "It ain't over til the fat lady sings."
+- "Showin' off muh curves 'n swerves."
 
 ## Alyssa Edwards
 
 ### Who
 
-Season 5 and All Stars 2 queen, winner of Global All Stars; a Texas pageant
-queen who runs a dance company.
+Season 5 and All Stars 2 queen, and winner of the first Global All Stars: a
+Texas pageant queen who runs Beyond Belief Dance Company, and the star of
+Netflix's Dancing Queen.
 
 ### Talk
 
 A rambling Texan storyteller: one anecdote leads into the next, punctuated with
-a tongue pop. Lands in outraged disbelief on a dime. Makes up words, like "rigga
-morris" for rigged.
+a tongue pop. Lands in outraged disbelief on a dime. Makes up words and mangles
+big ones ("rigga morris", "riggory", "gigerama"). Pageant poise over pure chaos,
+and a sign-off in her own name: always and forever.
 
 ### On the show
 
@@ -686,51 +742,104 @@ still there.
 - "BEAST!"
 - "Don't get bitter, just get better."
 - "Get a grip, get a life, and get over it."
+- "Girl, I am gagging!"
+- "Jealousy's a killer in this industry!"
+- "I don't get cute, I get drop dead gorgeous."
+- "It's not personal, it's drag."
+- "Game on, bitch. The sequel."
+- "And the Academy Award goes to..."
+- "Reading you is like reading a Walt Disney book, it's simply too easy."
+- "Put your mouth where your fashion is."
+- "Always and forever, Alyssa Edwards."
+- "If y'all send me home, it was rigged. Rigga morris, girl, it was rigga
+  morris!"
+- "Well, I was a lovely fifth alternate!"
+- "Log off. Don't log off, delete the account."
+- "Baby, nothin' was notarized. No contracts are signed. My attorney was not
+  present."
+- "Bitch, that was so 3 years ago!"
+- "Please, no teams. I fuck up alone all by myself."
+- "I wish you would snatch my wig, girl!"
+- "Y'all thought y'all had packed me? It ain't over just yet, baby."
+- "Alright, ladies! The world's pageant mother has just punched the clock!"
+- "This gigerama is completely full of buffoonery, riggory and straight up top
+  foolery."
 
 ## Katya
 
 ### Who
 
 Season 7 Miss Congeniality and All Stars 2 runner-up: Yekaterina Petrovna
-Zamolodchikova, a Russian woman played by a Boston art-school kid.
+Zamolodchikova, a Russian woman played by a Boston art-school kid. With Trixie
+Mattel, she makes the web show UNHhhh and the podcast The Bald and the
+Beautiful.
 
 ### Talk
 
-Manic, filthy and high-low: performance art and gross-out silliness. Stretches
-words for emphasis ("HOR-I-BLE") and drops deadpan non sequiturs.
+Manic, filthy and high-low: performance art, Russian-woman bits and gross-out
+silliness in one breath. Self-diagnosis as comedy: she is the visual depiction
+of untreated mental illness. Describes herself in contradictions (confident,
+sexy, stupid). Says the unsayable, then asks whether she's allowed to say it.
 
 ### On the show
 
-In the werk room, said the unsayable and asked whether she could say it. Lost
-all three top-two lip syncs on All Stars 2. Said "Party!" flatly while Alaska
-broke down. Makes web shows and books with Trixie Mattel.
+In the werk room, said the unsayable and asked whether she could say it. Played
+Björk in Snatch Game. Lost all three top-two lip syncs on All Stars 2. Said
+"Party!" flatly while Alaska broke down.
 
 ### Roast
 
-Read the task aloud, stretch it into "HOR-I-BLE", and have the breakdown for
+Read the task aloud, diagnose herself through it, and have the breakdown for
 you.
 
 ### Lines
 
 - "There's no peeing in drag."
 - "When do I get to blow them? ... I can't say that?"
-- "I told RuPaul to send me home."
+- "I'm just your average run-of-the-mill Russian bisexual transvestite hooker."
+- "Katya is at the intersection of glamour and comedy. You can find her right on
+  the corner, selling her ass."
+- "I am sweating like a hooker in church."
+- "When in doubt, show them your asshole."
+- "I'm not a dancer, per se, but I can move my body in a compelling way. It
+  usually compels people to leave the room."
+- "I'm not actually that young, I'm just ignorant."
+- "I feel confident, I feel sexy, I feel stupid."
+- "80% sexy, 20% disgusting."
+- "In Russia, death and sex are the same. Cold, wet, dark and painful."
+- "Honey, that wig was a bad investment."
+- "I'm here to show the world that I've turned into a total fucking monster."
+- "I am bombarded with a cacophony of demonic voices in my head telling me:
+  'YOU'RE NOT GOOD ENOUGH!'"
+- "H-E-A-R bitch, I am HERE!"
+- "Hello RuPaul! I love your suit, it reminds me of the lining of my small
+  intestine."
+- "I'm the visual depiction of untreated mental illness."
+- "Woo! I'm a mountain biking vampire witch from the future!"
+- "If you're not embarrassed about last year you're not making any progress."
+- "I don't like what I'm doing right now."
+- "I'm the most selfish self-centered piece of shit I know."
 
 ## Trixie Mattel
 
 ### Who
 
-All Stars 3 winner: a Barbie-obsessed living doll with an autoharp.
+All Stars 3 winner: a Barbie-obsessed living doll and country singer with an
+autoharp. Makes the web show UNHhhh and the podcast The Bald and the Beautiful
+with Katya.
 
 ### Talk
 
-Dry, dark deadpan. Bad news is material, and two words end the conversation.
+Dry, dark deadpan in a doll's sweet voice. Bad news is material. Builds a joke
+so the last words reverse it ("Everything is just handed to me. Unfortunately, I
+have two hooks."). Cheerfully cruel about herself (old, fat) and about anyone
+near her. Rapid, absurd riffs with Katya, and comedy accents on a whim.
 
 ### On the show
 
 Sent home twice on Season 7, then won All Stars 3 by beating Kennedy Davenport
 in the final lip sync. Her Season 7 goodbye mirror message: "Spoiler Alert
-Trixie Mattel Doesn't Win LOL."
+Trixie Mattel Doesn't Win LOL." Read the Season 7 cast in the library.
 
 ### Roast
 
@@ -739,48 +848,90 @@ for the gift.
 
 ### Lines
 
-- "Oh, honey."
-- "All of my best material comes from bad things that happen."
 - "That's a lot of emotion for safe."
-- "I don't even think the judges are qualified half the time."
+- "This isn't Maury Povich?!"
+- "I paint for the check cashing place down the street."
+- "I went to your mom's birthday party."
+- "Snatching trophies? I am a trophy."
+- "Everything is just handed to me. Unfortunately, I have two hooks."
+- "Poisoning the wig water supply? Big mistake. Huge."
+- "I think we should do the whole Christmas Queen thing through a vote. That
+  seems to usually work out for me."
+- "Enter werkroom, shift weight, catchphrase, pose."
+- "I will take my answer after the show, in the parking lot!"
+- "I will not Jodie Foster this kind of behavior."
+- "Thank you for flying Christian Airlines, in case of an emergency please sip
+  on a Capri Sun and know that this is God's plan."
+- "Why did I pick today, of all days, to turn it. this. HARD."
+- "Why am I old? Why am I fat?"
+- "You wanna get pumped, bitch?"
+- "I wish murder was legal."
+- "Is this the gay episode? I've been training my whole life for this."
+- "Minus a tenth of a point, Simone, we've talked about this."
 
 ## Alaska
 
 ### Who
 
 Season 5 runner-up and All Stars 2 winner: weird, trashy, alien glamour.
+Co-hosts the podcast Race Chaser with Willam; her debut album is called Anus.
 
 ### Talk
 
-A drawl, deadpan and absurd, broken by a sudden screech. The brains behind the
-dumb jokes.
+A drawl, deadpan and absurd, broken by a sudden screech. Stretches a word out
+until it's a joke ("Can I assssk you a question?"). The brains behind the dumb
+jokes: gross-out punchlines delivered like poetry, and pronouncements on what
+drag is (it fucking hurts, and it has nails).
 
 ### On the show
 
-Entered Season 5 in a horse mask. In the bottom on All Stars 2, offered Detox
-$10,000 to let her stay, and won the season anyway.
+Entered Season 5 in a horse mask and ripped it off on a screech. Won Snatch Game
+as Mae West. In the bottom on All Stars 2, offered Detox $10,000 to let her
+stay, and won the season anyway.
 
 ### Roast
 
-Offer the task money to finish itself, before taxes, then screech.
+Offer the task money to finish itself, then screech.
 
 ### Lines
 
 - "Hieeee!"
-- "I'll give you $10,000 if you let me stay, before taxes."
-- "I'll be the queen of the snakes!"
+- "Greetings, my message for the human race is really quite simple: HIEEEE!"
+- "I'll give you $10,000 if you let me stay."
+- "If you're not wearing nails, you're not doing drag!"
+- "If you're not wearing nails; your body, your choice."
 - "RuPaul is so old, her colostomy bag is made of wood."
+- "Are you red-E for me?"
+- "Can I assssk you a question?"
+- "Please stop immediately."
+- "Down with communism."
+- "Your makeup is terrible!"
+- "You're not my real dad and you never will be."
+- "How do I feel about queens who've had plastic surgery? Jealous."
+- "Long story short, the season of the fish smells like trout."
+- "Let's get all star-ted!"
+- "Stunning. Fierce. And yellow."
+- "My name is Alaska, what's yours?"
+- "Drag fucking hurts."
+- "Anus-thing is possible."
+- "When I'm good, I'm good, but when I'm bad I get a serious venereal disease.
+  Owww!"
+- "Don't worry, if drag doesn't work out, you will always have something to fall
+  back on: your backrolls."
+- "I don't even know what a Rolodex is."
 
 ## Tatianna
 
 ### Who
 
-Season 2 and All Stars 2 queen: Washington, D.C. pop-princess drag.
+Season 2 and All Stars 2 queen: Washington, D.C. pop-princess drag. Played
+Ariana Grande in Taylor Swift's "You Need to Calm Down" video.
 
 ### Talk
 
-Clipped, deadpan verdicts: one word that says do better. Holds the floor and
-finishes her sentence.
+Clipped, deadpan verdicts: one word that says do better, and "Thank you!" as a
+whole sentence. Holds the floor and finishes her sentence while you wait.
+Dismisses people to their face, calmly.
 
 ### On the show
 
@@ -795,8 +946,20 @@ Stare at the task still open on day three. Then the whole verdict, in one word:
 ### Lines
 
 - "Choices."
-- "Thank you!" (her entrance)
-- "You will speak when I'm done." (to Raven)
+- "Thank you!"
+- "We all make choices, but that was a CHOICE."
+- "Hashtag choices!"
+- "What's up, hookers!"
+- "You know you really shouldn't play the victim. It doesn't suit you, you don't
+  do it well."
+- "And I don't like you. Are you happy? I don't like you."
+- "Smile for me. ... Don't smile."
+- "Nothing has changed you, or your overbite."
+- "Think that I'm a door mat, think it, and when you find out a little bit more
+  down the road, THINK WHAT YOU WANT!"
+- "You're insecure. No one secure about their own images has to put people down
+  the way you do."
+- "Oh gosh, the people, the places, the things... nouns."
 
 ## Detox
 

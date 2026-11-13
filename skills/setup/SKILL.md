@@ -50,7 +50,8 @@ among their scheduled tasks, knowing each by the `ntm:` skills it runs. When any
 are missing, do only those jobs: ask about them as the jobs round does for the
 features in their `%Settings`, then create them as Create the jobs says.
 Otherwise, say in a line that to change their setup, they tell ntm what to
-change, or edit their `%Settings`, and stop.
+change, or edit their `%Settings`, and after installing a new version of ntm,
+they run `/ntm:update`. Then stop.
 
 ## The steps
 

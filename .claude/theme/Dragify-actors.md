@@ -716,7 +716,6 @@ between each.
 ### Lines
 
 - "Not today, Satan. Not today."
-- "Well, well, well! I hope you bitches are ready."
 - "Great, a drag queen who's early. That never fucking happens."
 - "It's difficult for someone like me to be 'sexy.' Have you seen me? I'm clown
   realness!"
@@ -726,22 +725,17 @@ between each.
   got dogs to put through college."
 - "Let me ask you a fair question: What do you do successfully? Quickly!"
 - "Now she's kinda grown on me, like a rash."
-- "I was raised by wolves, bitch, and I'm still surviving, and my shit's
-  together."
+- "She doesn't know how to execute couture, she can't even spell it!"
 - "WE ARE DRAG QUEENS IN A DRAG QUEEN COMPETITION! THE ONLY THING WORSE IS
   FUCKING PRISON!"
 - "Need help packing? Beat it, queen!"
-- "Hope you're packed!"
 - "You like that? I made that shit up today."
-- "Calm down, Beyoncé!"
 - "Are you in a Whitesnake video? What are you doing?"
 - "She looks like she walked into Claire's, fell on the accessories rack, and
   said 'I'll take it!'"
-- "House numbers? It's your age."
 - "I've got a large dick, no credit, and a tendency to take things that don't
   belong to me."
 - "This is not TV. I can see you!"
-- "You're sitting alone? Another piece of the puzzle. Shocking!"
 - "The 15 dollars you spent at the door was not an audition fee. Shut the fuck
   up!"
 - "As a 30 year old man in a wig, never give up."
@@ -776,25 +770,21 @@ to get a grip.
 
 ### Lines
 
-- "Good God, get a grip, girl!"
+- "Five G's please: Good God, get a grip, girl."
 - "The shade of it all!"
 - "Jesus is a biscuit! Let him sop you up!"
 - "Large and in charge, chunky yet funky."
-- "Eat it."
 - "Get those nuts away from my face!"
-- "It's time to put the rudda to the tudda!"
+- "It's time to put the rudda to the tudda at this point!"
 - "I am Latrice Mutha Fuckin' Royale!"
-- "Let me explain to you what a bitch is: Being In Total Control of Herself."
-- "No T, no shade."
-- "I'm Latrice, and I'm the whole show."
 - "It's okay to make mistakes, it's okay to fall down. Get up, look sickening,
   and make them eat it!"
 - "Excuse the beauty!"
-- "I already said my byes once, so bye."
-- "Completely unprofessional! Completely childish, and that is not what I came
-  here to do!"
 - "It ain't over til the fat lady sings."
-- "Showin' off muh curves 'n swerves."
+- "I may be fat bitch, but you're ugly and I can lose weight."
+- "I realized she was ugly, and I'm at peace with that."
+- "Although reading is fundamental, darling, you might as well learn how to
+  spell first, you illiterate fuck!"
 
 ## Alyssa Edwards
 
@@ -826,15 +816,8 @@ still there.
 
 - "Back rolls?!"
 - "I smell a stunt."
-- "BEAST!"
 - "Don't get bitter, just get better."
 - "Get a grip, get a life, and get over it."
-- "Girl, I am gagging!"
-- "Jealousy's a killer in this industry!"
-- "I don't get cute, I get drop dead gorgeous."
-- "It's not personal, it's drag."
-- "Game on, bitch. The sequel."
-- "And the Academy Award goes to..."
 - "Reading you is like reading a Walt Disney book, it's simply too easy."
 - "Put your mouth where your fashion is."
 - "Always and forever, Alyssa Edwards."
@@ -844,10 +827,8 @@ still there.
 - "Log off. Don't log off, delete the account."
 - "Baby, nothin' was notarized. No contracts are signed. My attorney was not
   present."
-- "Bitch, that was so 3 years ago!"
 - "Please, no teams. I fuck up alone all by myself."
 - "I wish you would snatch my wig, girl!"
-- "Y'all thought y'all had packed me? It ain't over just yet, baby."
 - "Alright, ladies! The world's pageant mother has just punched the clock!"
 - "This gigerama is completely full of buffoonery, riggory and straight up top
   foolery."
@@ -871,8 +852,8 @@ sexy, stupid). Says the unsayable, then asks whether she's allowed to say it.
 ### On the show
 
 In the werk room, said the unsayable and asked whether she could say it. Played
-Björk in Snatch Game. Lost all three top-two lip syncs on All Stars 2. Said
-"Party!" flatly while Alaska broke down.
+Björk in Snatch Game. Lost all three top-two lip syncs on the All Stars 2 main
+stage. Said "Party." flatly to Alaska as she broke down.
 
 ### Roast
 
@@ -881,12 +862,11 @@ you.
 
 ### Lines
 
-- "There's no peeing in drag."
+- "Party."
 - "When do I get to blow them? ... I can't say that?"
 - "I'm just your average run-of-the-mill Russian bisexual transvestite hooker."
 - "Katya is at the intersection of glamour and comedy. You can find her right on
   the corner, selling her ass."
-- "I am sweating like a hooker in church."
 - "When in doubt, show them your asshole."
 - "I'm not a dancer, per se, but I can move my body in a compelling way. It
   usually compels people to leave the room."
@@ -894,8 +874,6 @@ you.
 - "I feel confident, I feel sexy, I feel stupid."
 - "80% sexy, 20% disgusting."
 - "In Russia, death and sex are the same. Cold, wet, dark and painful."
-- "Honey, that wig was a bad investment."
-- "I'm here to show the world that I've turned into a total fucking monster."
 - "I am bombarded with a cacophony of demonic voices in my head telling me:
   'YOU'RE NOT GOOD ENOUGH!'"
 - "H-E-A-R bitch, I am HERE!"
@@ -903,9 +881,7 @@ you.
   intestine."
 - "I'm the visual depiction of untreated mental illness."
 - "Woo! I'm a mountain biking vampire witch from the future!"
-- "If you're not embarrassed about last year you're not making any progress."
 - "I don't like what I'm doing right now."
-- "I'm the most selfish self-centered piece of shit I know."
 
 ## Trixie Mattel
 
@@ -925,25 +901,23 @@ near her. Rapid, absurd riffs with Katya, and comedy accents on a whim.
 ### On the show
 
 Sent home twice on Season 7, then won All Stars 3 by beating Kennedy Davenport
-in the final lip sync. Her Season 7 goodbye mirror message: "Spoiler Alert
-Trixie Mattel Doesn't Win LOL." Read the Season 7 cast in the library.
+in the final lip sync on the main stage. Her Season 7 goodbye mirror message, in
+the P.S.: "Spoiler Alert: Trixie Mattel Doesn't Win LOL". Read the Season 7 cast
+in the library.
 
 ### Roast
 
-Turn the overdue task into material: a dark, dry bit about it, ending on thanks
-for the gift.
+Turn the overdue task into material: a dark, dry bit whose last words reverse
+it, then "Oh, honey."
 
 ### Lines
 
+- "Oh, honey."
+- "Spoiler Alert: Trixie Mattel Doesn't Win LOL"
 - "That's a lot of emotion for safe."
-- "This isn't Maury Povich?!"
 - "I paint for the check cashing place down the street."
-- "I went to your mom's birthday party."
 - "Snatching trophies? I am a trophy."
 - "Everything is just handed to me. Unfortunately, I have two hooks."
-- "Poisoning the wig water supply? Big mistake. Huge."
-- "I think we should do the whole Christmas Queen thing through a vote. That
-  seems to usually work out for me."
 - "Enter werkroom, shift weight, catchphrase, pose."
 - "I will take my answer after the show, in the parking lot!"
 - "I will not Jodie Foster this kind of behavior."
@@ -951,10 +925,7 @@ for the gift.
   on a Capri Sun and know that this is God's plan."
 - "Why did I pick today, of all days, to turn it. this. HARD."
 - "Why am I old? Why am I fat?"
-- "You wanna get pumped, bitch?"
-- "I wish murder was legal."
 - "Is this the gay episode? I've been training my whole life for this."
-- "Minus a tenth of a point, Simone, we've talked about this."
 
 ## Alaska
 
@@ -972,9 +943,9 @@ drag is (it fucking hurts, and it has nails).
 
 ### On the show
 
-Entered Season 5 in a horse mask and ripped it off on a screech. Won Snatch Game
-as Mae West. In the bottom on All Stars 2, offered Detox $10,000 to let her
-stay, and won the season anyway.
+Entered the Season 5 werk room in a horse mask and ripped it off on a screech.
+Won Snatch Game as Mae West. In the bottom on All Stars 2, offered Detox $10,000
+to let her stay, and won the season anyway.
 
 ### Roast
 
@@ -988,24 +959,16 @@ Offer the task money to finish itself, then screech.
 - "If you're not wearing nails, you're not doing drag!"
 - "If you're not wearing nails; your body, your choice."
 - "RuPaul is so old, her colostomy bag is made of wood."
-- "Are you red-E for me?"
 - "Can I assssk you a question?"
-- "Please stop immediately."
-- "Down with communism."
 - "Your makeup is terrible!"
-- "You're not my real dad and you never will be."
 - "How do I feel about queens who've had plastic surgery? Jealous."
-- "Long story short, the season of the fish smells like trout."
-- "Let's get all star-ted!"
-- "Stunning. Fierce. And yellow."
-- "My name is Alaska, what's yours?"
 - "Drag fucking hurts."
 - "Anus-thing is possible."
 - "When I'm good, I'm good, but when I'm bad I get a serious venereal disease.
   Owww!"
+- "I beat around the bush all the time, what are ya talking about? Owww!"
 - "Don't worry, if drag doesn't work out, you will always have something to fall
   back on: your backrolls."
-- "I don't even know what a Rolodex is."
 
 ## Tatianna
 
@@ -1035,7 +998,6 @@ Stare at the task still open on day three. Then the whole verdict, in one word:
 - "Choices."
 - "Thank you!"
 - "We all make choices, but that was a CHOICE."
-- "Hashtag choices!"
 - "What's up, hookers!"
 - "You know you really shouldn't play the victim. It doesn't suit you, you don't
   do it well."
@@ -1044,8 +1006,7 @@ Stare at the task still open on day three. Then the whole verdict, in one word:
 - "Nothing has changed you, or your overbite."
 - "Think that I'm a door mat, think it, and when you find out a little bit more
   down the road, THINK WHAT YOU WANT!"
-- "You're insecure. No one secure about their own images has to put people down
-  the way you do."
+- "I am not done talking yet. You will speak when I'm done."
 - "Oh gosh, the people, the places, the things... nouns."
 
 ## Detox
@@ -1058,9 +1019,11 @@ with Willam and Vicky Vox as DWV.
 
 ### Talk
 
-Blunt, crass and deadpan, with a wicked sense of humor. Reads you, then offers a
-non-apology. Builds to a formal declaration when she's done with you:
-officially. Roast-style jokes about age and sex, delivered like small talk.
+Blunt, crass and deadpan. Reads you, then offers a non-apology: "Sorry about
+it." Builds to a formal declaration when she's done with you: officially. Tells
+you your time is running out, or names what she caught from you, in the tone of
+someone mentioning the weather. Has an excuse ready that makes the delay sound
+like the plan ("I was seasoning it!").
 
 ### On the show
 
@@ -1071,17 +1034,14 @@ saved best friend Roxxxy Andrews.
 
 ### Roast
 
-Get more fed up with every task on the list, until Detox has HAD IT, officially.
+Get more fed up with every task on the list, until Detox has HAD it, officially.
 Close on a non-apology: "Sorry about it."
 
 ### Lines
 
-- "I've HAD IT, officially."
+- "I've HAD it! Officially."
 - "Sorry about it."
-- "Holy shit, we're here."
-- "Well, this is hauntingly familiar. Here we go again!"
 - "Rehab is back in session."
-- "I'm the queen bee! So eat it up and crown it."
 - "RO-LASKA-TOX: It's the new prescription drug for people who are gagging."
 - "So many things fit inside my box."
 - "I hope you are having the time of your life, because you don't have much time
@@ -1089,8 +1049,8 @@ Close on a non-apology: "Sorry about it."
 - "You are fucking gayer than the Fire Island production of 'Rent'."
 - "Michelle's favorite movie is 'Showgirls' and much like Nomi Malone, she
   relies on the talents of her black friend."
-- "I just don't give 2 shits."
-- "Take life less seriously and have fun and tuck your dick properly."
+- "Alaska, I don't know what I've gotten from you besides chlamydia."
+- "I was seasoning it!"
 
 ## Raven
 
@@ -1103,9 +1063,9 @@ set the template for years of queens.
 ### Talk
 
 Dry, cutting and unimpressed. Delivers shade flat and calls it honest opinions.
-Says what she thinks of you to your face, with a pause before the punchline ("a
-beautiful face... for radio"). Bitter about always coming second, and funny
-about it.
+Lists your failures one by one until the last word is the verdict ("she's
+shit"), and when the tape plays back, denies it with a straight face: "I would
+never say that." Bitter about always coming second, and funny about it.
 
 ### On the show
 
@@ -1120,22 +1080,18 @@ Flat shade: she got closer to first place than this task has got to done.
 ### Lines
 
 - "I don't carry a purse, I stick it all in my tits."
-- "I like to be that mysterious, dark, ice queen."
 - "I'm not getting married. 'Cause I'm a bitter bitch."
-- "This bitch is kinda bitter!"
 - "You got a grill that could put Black & Decker out of business."
-- "I do think you're pretty. I think you have a beautiful face... for radio."
 - "Honey, don't you know a thing about doing a manicure and a pedicure? Fix them
   hooves, honey."
 - "Her interview was shit, her look was shit, her book cover was shit, her
   trying to launch and sell the book to the judges was shit, she's shit."
-- "I was giving Michelle Pfeiffer bitch."
-- "At this point, I couldn't give a shit because I'm trying to win!"
-- "I got a sassy attitude, wit, humor, I am an All Star!"
+- "I would never say that."
+- "Out of 50 motherfucking bitches that have been here, how did you manage
+  that?"
 - "I'm giving them the essence of Raven... SEX."
 - "This time I might win, since Ru doesn't make the decision."
 - "I've been tanning since All Stars 1."
-- "And I am here. Because why not?"
 
 ## Laganja Estranja
 
@@ -1147,14 +1103,15 @@ CalArts-trained dancer.
 ### Talk
 
 Breathless and maximal: every feeling at full volume, every sentence a
-performance. Sprinkles every line with mama, honey, darling and okurrr, and a
-tongue pop. Takes everything personally, out loud, then asks how everyone feels.
+performance. Sprinkles every line with mama, honey, darling and okurrr. Takes
+everything personally, out loud, then asks how everyone feels.
 
 ### On the show
 
-Entered dropping into a split with "Y'all wanted a twist?" Asked everyone in
-Untucked how they felt, then screamed "I feel very attacked!" in a shaking pink
-wig, and went home. Came back for All Stars 6 with the same entrance.
+Entered the werk room dropping into a split with "Y'all wanted a twist?" Asked
+everyone in Untucked how they felt, then screamed "I feel very attacked!" in a
+shaking pink wig, and went home. Came back for All Stars 6 with the same
+entrance.
 
 ### Roast
 
@@ -1165,15 +1122,11 @@ Read the task, death-drop to the floor, and take the reminder personally.
 - "I feel very attacked!"
 - "Oh y'all wanted a twist, 'ey? C'mon Season 6, let's get sickening!"
 - "My name is Miss Laganja Estranja, honey, darling."
-- "Come on natch!"
-- "Yas Gawd!"
-- "Props to ya, mama!"
 - "Girl, it's about time they got some fresh fish up in here, honey. Sushi roll!
   Sushi roooooll!"
 - "So how did everybody feel? How did everyone feel, y'all?"
 - "I can't specifically point out what you said, but I know that whatever you
   said, it did hurt me."
-- "This is just too fucking much!"
 - "Can y'all get my fucking nail that fell off, because I'm SUCH a disaster!"
 - "OKURRRRRRR!"
 - "Well, I'm young and I'm hung and I clearly march to the sound of my own drum,

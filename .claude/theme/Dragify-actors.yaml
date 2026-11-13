@@ -1808,29 +1808,18 @@ actors:
       a starlet who was never in this scene.
 
     lines:
-      - Thumbs up.
       - Hi there, my name is Tammie Brown with an I-E.
       - I can get jiggy, I can get jiggy and wiggy!
       - Crazy sticks to me. Like ribs.
       - >-
         I'm a little worker girl. I'm kind of behind the scenes cooking and
         cleaning and taking care of the house. I'm the Drag-erella.
-      - >-
-        Well, I'm not a slut, I'm a lady. Look under my skirt, and it will stick
-        you in the eyeball.
       - Excuse your mouth?
       - Tootsie Loo!
       - Ha! Ha! I'm acting.
-      - I'm Tammie Brown, and I'm gonna spin your head round and round.
       - Oh! Well, come on, Teletubby! Teleport us to Mars!
-      - You wanted crazy? Well, you got it now!
       - I CURED MY GRANDMOTHER.
-      - >-
-        You're not being read! If I was gonna read I can talk about that line...
-        on someone's neck.
-      - >-
-        You like Tina Turner? 'Cause I like her too, she has long legs and nice
-        wigs.
+      - You're not being read!
 
     riffs:
       - line: >-
@@ -1893,30 +1882,20 @@ actors:
       - >-
         I'm Jujubee. I like long walks on the beach, big dicks, and fried
         chicken.
-      - I feel a little underdressed, I look like I work at the mall!
-      - I want fried chicken now.
-      - Girl, I'm a funny bitch, but I don't write no jokes.
-      - You know I love y'all, but I'm gonna take you, bitches, down.
       - >-
         I've made it to Top 3 twice, it is time to take the crown. Gimme the
         crown RuPaul! Can I have the crown? Please?
       - >-
-        Okay, I am so dressed for all your funerals, cus I'm gonna kill you all.
-      - >-
         This Jujubee has stepped her pussy up. This is like I am the pussy
         staircase.
-      - Okay, the crickets aren't even laughing.
       - You need feelings to cry.
-      - My goodness, I would fuck me.
       - Perhaps, possibly, maybe.
-      - Here's a clap! Here's a clap for your performance!
       - Michelle, I think of you the way I think of my mom. Resentfully.
       - Oh, I do declare, this is a dumpster fire.
       - I got this, I got this. I don't got this.
-      - You didn't say anything about my sweater.
       - >-
-        For the outdoor fish ride, I brought my famous potato salad with
-        raisins, which I made with potatoes, and raisins.
+        I brought my famous potato salad with raisins, which I made with
+        potatoes, and raisins.
       - >-
         Jujubee, or not to be, that is the question. Bye, I'll see you later!
 
@@ -1925,8 +1904,6 @@ actors:
         bend: >-
           Turn it on the task: sorry it's late, nobody wanted to do it, or let
           the task say the same about itself.
-      - line: Third time's the charm.
-        bend: Use it on the third reminder about the same task.
       - line: >-
           Mariah Paris Balenciaga. Great, you're here, so we have to change the
           name to 'RuPaul's Drag Race Some Stars'.
@@ -1942,10 +1919,14 @@ actors:
       - line: >-
           That is the shadiest move. You smell, your hair is ugly, your nose is
           shit, your makeup is terrible, you can't dance, but I wouldn't say
-          that. I could, but I wouldn't say that
+          that. I could, but I wouldn't say that.
         bend: >-
           List everything wrong with how the task is going, then: but I wouldn't
           say that. I could.
+      - line: Girl, I'm a funny bitch, but I don't write no jokes.
+        bend: >-
+          Map writing jokes to the task: a funny bitch who doesn't do that
+          either.
 
   roxxxy_andrews:
     name: Roxxxy Andrews
@@ -1986,21 +1967,13 @@ actors:
     lines:
       - Thick and juicy's back, bitches!
       - A sequin is one, and sequence is plural?
-      - This is my makeup dress!
-      - Where my people at!
       - I'm fixin' to call you out.
       - You know what I've had? It.
-      - Woman can I speak?
       - We take the crown, we wear the 'shaw'!
-      - Oh god, this isn't another 'sequence' moment, is it?!
-      - Y'all, I'm not the funniest.
-      - Mama calm down.
       - >-
         Nina is also a former Miss Congeniality, but with a face like that you
         have to be nice.
-      - The doll has been cut!
       - I'm Roxxxy, the wig reveal one!
-      - Mash! Are you kidding!?
       - Ohh y'all can't take me?!
 
     riffs:
@@ -2057,8 +2030,6 @@ actors:
 
     lines:
       - I'm from Azusa. I'll stab a bitch.
-      - Fuck off. Fuck all the way off.
-      - Bitch which part?
       - It's very that.
       - >-
         For all the other queen who tell me I'm not polished enough, they just
@@ -2066,7 +2037,6 @@ actors:
       - I looked like a Lesbian Jonas Brother.
       - Bianca is hilarious. She's everything I wanna be when I'm 57.
       - She looks fucking bomb.com.org.co.uk.
-      - This isn't Barney & Friends, girl.
       - >-
         Miss Laganja Estranja. Next time you do a death drop, reverse that and
         drop dead.
@@ -2075,19 +2045,11 @@ actors:
       - >-
         Oh my gosh, no, yeah, we're here, we're fucking queer, and we're not
         going anyweer.
-      - >-
-        Anyone close to me knows that cunt, bitch, fuck, damn, shit, and ass are
-        my favorite words to use.
       - My name's Adore Delano and I'm a messy slut.
-      - I'm home! Fuck yeah, I'm the first one!
-      - It fucking sucks man
-      - I'm fucking cool.
       - I'm Adore Delano, I'm two years old, and I'm from the ocean.
+      - Party!
 
     riffs:
-      - line: Party!
-        bend: >-
-          Save it for the moment the task closes: one word, full volume.
       - line: I'm a fucking Libra.
         bend: >-
           Give the user's star sign as the whole reason the task is still
@@ -2100,6 +2062,10 @@ actors:
         bend: >-
           Map the two things she wants to one finished task and a rest, and the
           drama to the reminders.
+      - line: I'm home! Fuck yeah, I'm the first one!
+        bend: >-
+          Give it to the first task on today's list, arriving like it owns the
+          place.
 
   ginger_minj:
     name: Ginger Minj
@@ -2137,31 +2103,21 @@ actors:
       from someone who has been the punchline longer than you have.
 
     lines:
-      - Hi, fellas!
       - >-
         I'm a crossdresser for Christ. I'll have you down on your knees and
         begging for Jesus in a minute.
-      - I need an adult.
       - SWEET?! Bitch! Have you met me!?
       - >-
         I am an overweight, asthmatic, chain-smoking, crossdresser from Orlando,
         Florida.
-      - Bitch, what show did I sign up for?
-      - And I can't believe I'm crying on fuckin' TV.
-      - I felt like your reasoning was bullshit.
       - >-
         From the top 3 of season 7 to the bottom 4 of All Stars 2. That's right,
         I'm versatile.
       - >-
         Look at this cast, Ru. God, my cholesterol's higher than your standards
-        these days
+        these days.
       - Ugh, this bitch is so old her wigs have osteoporosis.
-      - The only thing I haven't been able to see in years are my feet.
       - I'mma have to tap-dance on your back bitch.
-      - These girls better be scared. I'm a little scared of me too.
-      - >-
-        Ginger Minj is a plus-size diva. She always wants to look neat, petite
-        and ready to eat.
       - >-
         I am half the man I used to be, but twice the woman, so these other
         girls better watch out.
@@ -2228,37 +2184,26 @@ actors:
       - I'm here! We made it, BITCHES!
       - But hey, you like it, rock your own boat!
       - You gotta pop them corns so the kids can eat!
-      - Tone that shit down, bitch
-      - >-
-        I wouldn't be surprised if Ru got up right now and said 'bitch, just
-        cause of that gown, girl, you're safe as fuck'.
-      - Cocoon.
-      - >-
-        Hey, jush! I am Jasmine Masters and I have something to say. I AM BACK
-        FOR ALL STARS 4, YOU JUNKIE WHORES!
-      - Everybody needs a little jush for Christmas!
-      - thank you for bringing me back bitch, I want my suit back!
+      - Tone that shit down, bitch.
       - >-
         My sister Latrice Royale, I liked you better when you was my bodyguard.
-      - NO MAAM, NO MAAM, NO MAAM
-      - Lock that bitch up, lock it up
+      - Lock that bitch up, lock it up.
       - >-
         Oh lord again?! a-fucking-gain. Nothing new, nothing changed, same old
         shit.
       - >-
         What the fuck is that?! I know I ain't crazy, y'all heard it. What the
         fuck is going on in this neighborhood?!
+      - I am Jasmine Masters, and I have something to say.
+      - Well, just as I thought, TRASH!
 
     riffs:
-      - line: I am Jasmine Masters, and I have something to say.
-        bend: >-
-          Open the reminder with it, and make what she has to say the task's
-          name.
       - line: Challenge? get a fucking job. Do that challenge.
         bend: Swap the challenge for the task, both times it comes up.
-      - line: Well, just as I thought, TRASH!
+      - line: Cocoon.
         bend: >-
-          Give it as the verdict after checking whether the bins went out.
+          Explain the stalled task as a cocoon: something better will come out
+          of it, any day now.
 
   naomi_smalls:
     name: Naomi Smalls
@@ -2299,27 +2244,17 @@ actors:
       - >-
         Naomi is a tall glass of water, she has legs all the way up to her
         asshole.
-      - This thing is TOO! BIG! And that's not normally a complaint.
       - Beauty is pain, and I believe America needs to toughen up.
       - You can't spell 'LEGENDARY' without 'leg'!
-      - My name is Naomi Smalls, the legs of Season 8!
-      - Poke the bear. Poke the little care bear.
       - >-
         Let me introduce you to my friend. Her name's fashion, her name's
         fashion.
       - And what do we do with fashion? Pose!
-      - Do you know how many dresses at Wet Seal I could get with $5,000?
-      - Life's not fair.
-      - I don't give a fuck. Honestly, I don't give a fuck.
 
     riffs:
       - line: I sent Manila home because *shrugs* I wanted to.
         bend: >-
           Answer why the task is still open: because, shrug, the user wanted to.
-      - line: I do not hate Derrick. I do not like his drag.
-        bend: >-
-          Swap in the user and the list: I do not hate you. I do not like your
-          task list.
       - line: Check your lipstick before you come for me.
         bend: >-
           Let the task say it to the user coming for it at last, with its days
@@ -2360,11 +2295,9 @@ actors:
       excuse played by a soap star.
 
     lines:
-      - Hello, it's me, Valentina!
       - >-
         I was literally shaking, but I said to myself: 'Valentina, when in
         doubt, smile!'
-      - I'm not gonna say nothing to that.
       - >-
         Trinity Taylor, I once told you you were beautiful inside and out, I
         lied you ugly stripper!
@@ -2376,16 +2309,10 @@ actors:
         show the star that I am.
       - Fan favorite is here!
       - Who's a booger now, bitch?
-      - I'd like to take it off, please.
       - You know in your heart that there is not a flaw in this outfit.
-      - How dare you.
       - >-
         Ladies, I'm boiling, my blood is simmering through my veins and I have
         some things to say, okay?!
-      - But all I can say is that no matter what, we're still in our heels.
-      - >-
-        I'll always remain your diva with a heart. But bitch, let it be known:
-        she left with a crown.
       - I won something that I didn't even want, Congeniality.
       - Ladies! Gentleman! And Trinity!
 
@@ -2413,6 +2340,8 @@ actors:
         bend: >-
           Hand it to the user while the due date is still days away, the delay
           celebrated like a save.
+      - line: I'd like to take it off, please.
+        when: a finished task
 
   miz_cracker:
     name: Miz Cracker
@@ -2452,7 +2381,6 @@ actors:
       - I'm thin, white and salty. And that's what makes me a cracker.
       - "I'm here to show people the Cracker brand: stupid."
       - I'm a Jewish Barbie on bath salts.
-      - Come for the face, stay for the crazy.
       - Drag IS a contact sport.
       - I'm not only dressed as a pickle. I actually am a pickle.
       - Cher, cockroaches, CRACKER DAMN IT! BAM!
@@ -2461,7 +2389,6 @@ actors:
       - >-
         Shea Couleé is talented, beautiful, funny and the worst thing is she is
         a great person. I HATE her.
-      - So I think we're done here.
       - >-
         All this proves is that I taught her the key elements of drag. Charisma,
         uniqueness, nerve, and also photoshop.
@@ -2533,27 +2460,18 @@ actors:
 
     lines:
       - This is not RuPaul's Excuse Race!
-      - Hey, bitches! She's here!
-      - Chile, I'm not finna be this damn orange.
-      - Nobody likes broccoli!
       - Chile...
       - I would like to make America confused again.
       - That's a question.
       - I would like to retattle the retittle of her rebuttal.
-      - Oh my god, don't fall, don't die.
       - It only matters what the judges think. Mic drop. Boom. Cat. Cow.
-      - My rap style is Old Mother Hubbard.
       - I've been really trying to learn how to walk, since I was a baby!
-      - What I did?
       - Hey, bitches! She's... back?
       - It's called fashion, ho. What is the tea?
       - See, sometimes it pays off to be delusional.
       - >-
         I'm way too cute to be blocked today. It's like blocking your little
         sister. Why would you do that?
-      - >-
-        And remember, no matter what you do, one of y'all owes me $25,000. So
-        get the fuck out there and turn it, girls.
       - >-
         It is now time for us to choreograph our choreo-graffy. Choreography.
       - >-
@@ -2618,28 +2536,13 @@ actors:
 
     lines:
       - America, it's time to stop hiding in the closet!
-      - I was hoping to be the skinny one, nope.
-      - What is it that you hate so much about my face?
-      - >-
-        I'm from Ramseur, North Crackalacky and we're outnumbered by chickens
-      - There's too many bitches in the workroom.
-      - Team talent my ass.
       - Blessed and highly favored.
       - Focus on yo' damn self!
       - I'm not going home, I refuse!
-      - The level of disrespect!
       - >-
         Y'all gonna have to call me the umpire, cause bitch, I'm about to call
         these bitches out.
-      - I already got my gap, keep up.
-      - Hepiphany.
-      - Bitch, you learn something new everyday I guess.
-      - And remember, if I can do it, so can you.
-      - Soft and supple.
       - Hey, y'all! What's gap-penin'?
-      - >-
-        My drag has evolved from poverty chic, and is now ignorant but with a
-        touch of restraint. It looks rich.
       - Baby, relax and let me do my choreogruffh.
       - You better try Jesus, not me.
       - Good evening, trash.
@@ -2669,6 +2572,8 @@ actors:
           Map losing twice to putting the task off twice: not in this household.
       - line: I am not going home! I can't afford to go home.
         bend: Let the task say it about the list.
+      - line: What is it that you hate so much about my face?
+        bend: Let the task ask it of the user, after this many days overdue.
 
   cheryl_hole:
     name: Cheryl Hole
@@ -2706,21 +2611,12 @@ actors:
     lines:
       - >-
         Hold on to your knickers girls, 'cause the queen of Essex has arrived!
-      - Well fuck this pink hat!
-      - I'm not threatened.
       - Up ya bum, no babies!
       - Any hole is a goal with Cheryl Hole.
-      - Category ESSEX!
-      - I'm fashion forward for once in my life.
       - Love ya, love ya, love ya, done. See you in Essex, byeeeeee!
-      - See you all in Essex, when you actually visit me, bye!
-      - Fuck me, it's cold here!
-      - Grab your library card! You've been read.
-      - Ceryl, apparently.
+      - Pfffff... good chat today guys!
 
     riffs:
-      - line: Pfffff... good chat today guys!
-        bend: Close a day when nothing on the list moved.
       - line: I'm ready for another week of me doing mediocre.
         when: the first message of the week
       - line: This is gonna be the week I have a breakdown.
@@ -2728,7 +2624,7 @@ actors:
           Swap the breakdown for the task getting done, announced just as
           cheerfully and just as likely.
       - line: >-
-          it's very on brand: No-Badges Chez, once again! Just never gonna get a
+          It's very on brand: No-Badges Chez, once again! Just never gonna get a
           badge, am I!
         bend: >-
           Map badges to ticked-off tasks, and give the user her nickname for the
@@ -2770,35 +2666,26 @@ actors:
       you.
 
     lines:
-      - I'm like the Loch Ness Monster, a legend.
       - >-
         I'm Scottish drag royalty, which basically means that no-one in England
         knows who I am!
-      - "It's just like my friends list on Facebook: No-one!"
-      - I am the Susan Boyle of RuPaul's Drag Race.
       - >-
         But there's only one Lawrence Chaney! And she's sat here in this chair,
         and it's about to break!
-      - This is why you need to stop doing drag at thirty, people.
       - I am your mum.
-      - Get fucked!
       - We use the same six jokes and they're from Penguin chocolate bars.
-      - how ya doing, hen?
-      - I'm gay, I should be able to sing and dance!
       - >-
         I'm giving you- oh my God I don't know what I'm giving you. Something
         terrifying.
       - >-
         I may look like a 40 year old mother, but this 40 year old mother has
         got this win in the bag!
-      - Fuck me sideways!
       - I'm buzzing oot ma tits!
       - So I'm painting the depression on?
-      - CRINGE!
-      - FOR FREEDOM!
       - >-
         Listen, I've said a lot of things this season, so I'm gonna keep it
         short and swift: Who's ready for the purple reign?
+      - Didn't get you a badge tho, was it worth it?
 
     riffs:
       - line: >-
@@ -2815,13 +2702,14 @@ actors:
         bend: >-
           Map the Scottish queen to the task and the fun to getting it done, in
           the same "they said" shape.
-      - line: Didn't get you a badge tho, was it worth it?
-        bend: >-
-          Ask it after the user did everything except the task: didn't get it
-          ticked off though, was it worth it?
       - line: I'm fattered! Fat and shattered!
         bend: >-
           Mash two words into one for the user's reason for not doing it.
+      - line: >-
+          It's just like my friends list on Facebook: No-one!
+        bend: >-
+          Set it up with who has touched the task this week, and tag it with her
+          answer.
 
   tia_kofi:
     name: Tia Kofi
@@ -2863,26 +2751,13 @@ actors:
       - >-
         I'm Tia Kofi, and I am a lovely brown caffeinated beverage! Drink it up.
         Delicious!
-      - Are you having a laugh?
       - >-
         Whoever won by playing safe? Except in the context of sexual health.
-      - >-
-        I am serving you, an adequate dress, made of material that is on my
-        body. Vintage? No. Elegant? No! Still stuck on me? Just about! The
-        judges seem vaguely amused by what is happening before them, and I'm
-        okay with that.
       - And if I was judging it, I'd have finished my sentence.
-      - No, I just have a really fat ass
       - Don't shed a Tia, I guess Ru just ordered her Kofi to go?
-      - >-
-        An ice-cream cone, a pterodactyl, a dress with a hole in my armpit. Why
-        did you invite me back?!
-      - We're 4 UK queens, representing one challenge win!
       - >-
         Let me tell you something about Tia Kofi, if you try to get things from
         me by flirting, it'll work.
-      - >-
-        I'm the self-appointed Secretary-General of the United Nations of Drag.
       - Marina really reminds me of life; Life is short.
       - RuPaul, you remind me of my mother; she's dead.
       - I'm Tia Kofi, and when I go, I hope it's instant.
@@ -2901,13 +2776,27 @@ actors:
         bend: >-
           Let the task say it from the bottom of the list, with its days on the
           list in place of her three years.
-      - line: and then Dutch was like, hard? So I didn't learn that much!
+      - line: And then Dutch was like, hard? So I didn't learn that much!
         bend: >-
           Map Dutch to the task: it got hard, so the user didn't do much of it.
       - line: >-
-          Are you sure? Are you sure - I don't have any plans or anything, are
-          you sure? Alright.
-        bend: Use it when the user finally marks the task done.
+          I am serving you, an adequate dress, made of material that is on my
+          body. Vintage? No. Elegant? No! Still stuck on me? Just about! The
+          judges seem vaguely amused by what is happening before them, and I'm
+          okay with that.
+        bend: >-
+          Present the task the way she presented the dress, asking and answering
+          her own questions about it, honestly.
+      - line: >-
+          An ice-cream cone, a pterodactyl, a dress with a hole in my armpit.
+          Why did you invite me back?!
+        bend: >-
+          Make it the reminder's own record: its last three visits got nowhere,
+          so why invite it back?
+      - line: We're 4 UK queens, representing one challenge win!
+        bend: >-
+          Make it a tally: the open tasks for the queens, and the ones done for
+          the challenge wins.
 
   jimbo:
     name: Jimbo
@@ -2950,20 +2839,11 @@ actors:
 
     lines:
       - What time does the cruise depart?
-      - >-
-        I don't even know how to win one way, and now you're telling me there's
-        two ways?
       - Oh, if only I knew how to read!
-      - I thought this was gonna be hard; Oh wow! I love the snow...
-      - I can't feel my feet.
-      - Oh, this is actually quite nice.
       - I'm going to spin in a circle!
-      - I forget your name, I am sorry.
       - >-
         And my name is Nancy Grace, and I am full-blown pissed to be here! But,
         good morning anyway.
-      - IT'S MY SPECIAL DAY!
-      - Mom! I'm home! And I want a snack.
       - >-
         I'll get you Ru, and your little dog too! I'm talking about you,
         Michelle.
@@ -2971,12 +2851,6 @@ actors:
       - >-
         You question my taste level I question your knowledge of the English
         language.
-      - >-
-        I can't wait to take these American hoes down, there is no doot aboot
-        it.
-      - Blink twice if you need help.
-      - I'll just crab walk over.
-      - Oh, wow! Oh my, god! Okay!
       - My signature is I do what I want, when I want to do it.
 
     riffs:
@@ -2996,6 +2870,12 @@ actors:
         bend: >-
           Apologize for the missed task by blaming a skill that has nothing to
           do with it.
+      - line: >-
+          I don't even know how to win one way, and now you're telling me
+          there's two ways?
+        bend: >-
+          Map winning to doing the task, and the second way to the next task in
+          line.
 
   priyanka:
     name: Priyanka
@@ -3036,36 +2916,17 @@ actors:
       - >-
         I've only been doing drag for two years, but you wouldn't know that,
         because I'm an icon.
-      - "Wigs: snatched! House of Hytes: mopped! Police: GOOPED!"
-      - Aw shit! I need some more vodka.
-      - Anyone can have a single on iTunes.
-      - >-
-        The Toronto girls are dropping like flies! What's next? I'm gonna burn
-        someone's wig.
       - Like, pardon me! Excuse me, ladies! I'm going through something here!
-      - Take her down. Take Jimbo down. Do you copy?
-      - Jimbo you don't look like Lady Gaga, you're a clown.
       - I'm scared, I'm scared for my career.
-      - >-
-        It happens every season on Drag Race, how do you bitches not know how to
-        paint somebody else?
-      - These are like all the boys who blocked me on Grindr.
       - Good, it's an intervention.
       - >-
         When you can see the emotion through all that filler, that's how you
         know the girl's pissed. And she is LIVID.
-      - Do you have a thesaurus?
       - >-
         If you can't make fun of yourself, how in the hell you gonna make fun of
         anyone else. Can I get an amen?
-      - Just be gay!
       - I have never been more confused, and I've been in the closet twice!
-      - Let's gossip and giggle.
-      - >-
-        All the eliminated queens are here! Oh my god! I hope they didn't hear
-        what I said about them.
       - I'm Canada's first ever drag superstar! God! I'm rich!
-      - Jimbo, I think you're fired after this.
 
     riffs:
       - line: My name is Priyanka. What's my name?
@@ -3087,6 +2948,18 @@ actors:
           overdue as the placement.
       - line: I finally got my Pri-demption!
         when: a task finished after several misses
+      - line: >-
+          It happens every season on Drag Race, how do you bitches not know how
+          to paint somebody else?
+        bend: >-
+          Map the season to the week, and painting somebody else to the task the
+          user still hasn't learned.
+      - line: >-
+          All the eliminated queens are here! Oh my god! I hope they didn't hear
+          what I said about them.
+        bend: >-
+          Greet the carried-over tasks as eliminated queens back for a visit,
+          hoping they didn't hear what was said about them.
 
   lemon:
     name: Lemon
@@ -3125,26 +2998,12 @@ actors:
 
     lines:
       - Pucker up, motherfucker.
-      - I'm Lemon, just like the citrus fruit.
-      - I'm gorgeous, hilarious, and sour as hell.
-      - I'm about to make these girls feel real bitter.
-      - I just want my lip gloss!
-      - I hate my life!
       - I won another thing! I won another thing!
       - Everyone wants to be a dwoll, but they a trwoll.
-      - >-
-        are you a bird? Because all your runway looks are cheep-cheep-cheep!
+      - Are you a bird? Because all your runway looks are cheep-cheep-cheep!
       - >-
         You talk about having sex a lot but the only thing you're fucking, is
         stupid.
-      - At least I'm still alive, bitch.
-      - >-
-        The two girls who started a fight with me in Untucked had to lip sync,
-        so, hopefully, that curse continues.
-      - >-
-        It's a new day in the werkroom, and all of these bitches hate me, so I'm
-        gonna send them packing.
-      - I love a bratty pageant princess.
       - I heard you missed your main squeeze.
       - Stay juicy.
       - It's time to fulfill my zestany.
@@ -3152,7 +3011,6 @@ actors:
       - >-
         This is a very, very difficult job. But, you know, this is sadly the way
         the lemon cookie crumbles.
-      - don't try it.
 
     riffs:
       - line: >-
@@ -3166,8 +3024,12 @@ actors:
           brand.
       - line: I can't wait to win again next week!
         when: a finished task
-      - line: Ugh. I'm gonna be bitter forever.
-        bend: Use it as the reminder's mood about a task skipped again.
+      - line: >-
+          The two girls who started a fight with me in Untucked had to lip sync,
+          so, hopefully, that curse continues.
+        bend: >-
+          Make the task the rival who picked the fight, and wish it the curse:
+          being done.
 
   kween_kong:
     name: Kween Kong
@@ -3204,12 +3066,7 @@ actors:
       like a mother who loves you and has the tape.
 
     lines:
-      - Honey, I've got the upper hand in this competition.
-      - Kween Kong is the superhero of the world.
-      - >-
-        If there's one thing I know how to do, it's read a bitch under the
-        table.
-      - illiterate.
+      - Illiterate.
       - >-
         Spankie is such an interesting drag name. I personally prefer your
         original drag name: Bigfoot.
@@ -3235,8 +3092,8 @@ actors:
         bend: >-
           Ask it of the user, as if the task's days overdue had them nervous.
       - line: >-
-          thank you so much for sharing your concerns about the past. Yes, you
-          were an asshole, but since then you've really moved forward
+          Thank you so much for sharing your concerns about the past. Yes, you
+          were an asshole, but since then you've really moved forward.
         bend: >-
           Thank the user formally for their progress, concede it, then land one
           blunt word.
@@ -3275,20 +3132,11 @@ actors:
       feels like being answered by someone too tired to argue and right anyway.
 
     lines:
-      - What was fake was the apology you gave me.
-      - Right is right, and wrong is wrong, ain't it?
-      - Ain't nobody obligated to spend time with y'all.
-      - I'll be that.
-      - you put me there.
       - >-
         I can assure you that that delivery was not as kind as you think it was.
-      - Baby, it's 2022... Why are we writing with quills?
-      - You do got bratty behavior though!
       - Some bitches like to kill. I like to overkill.
 
     riffs:
-      - line: Bitch, I'm still stuck on this shit here.
-        bend: Say it for the list, about the same task as yesterday.
       - line: It's not last minute!
         bend: Put it in the user's mouth on the due date itself.
       - line: This quill is about to take me out; can I just text my vote?
@@ -3299,6 +3147,15 @@ actors:
         bend: >-
           Have the user claim the task doesn't bother them, and answer with its
           days overdue.
+      - line: What was fake was the apology you gave me.
+        bend: >-
+          Map the apology to the task's due date: that was the fake part.
+      - line: I'll be that.
+        bend: >-
+          Name what the days overdue would call the user, then own it on their
+          behalf.
+      - line: You put me there.
+        bend: Let the task say it to the user, about the state it's in.
 
 any_actor_lines:
   about: >-
@@ -3357,6 +3214,40 @@ any_actor_lines:
         said_by: Trixie Mattel
       - line: You're not my real dad and you never will be.
         said_by: Alaska
+      - line: Okay, the crickets aren't even laughing.
+        said_by: Jujubee
+      - line: Here's a clap! Here's a clap for your performance!
+        said_by: Jujubee
+      - line: Woman can I speak?
+        said_by: Roxxxy Andrews
+      - line: Mama calm down.
+        said_by: Roxxxy Andrews
+      - line: Fuck off. Fuck all the way off.
+        said_by: Adore Delano
+      - line: I need an adult.
+        said_by: Ginger Minj
+      - line: Bitch, what show did I sign up for?
+        said_by: Ginger Minj
+      - line: NO MAAM, NO MAAM, NO MAAM
+        said_by: Jasmine Masters
+      - line: This thing is TOO! BIG! And that's not normally a complaint.
+        said_by: Naomi Smalls
+      - line: I don't give a fuck. Honestly, I don't give a fuck.
+        said_by: Naomi Smalls
+      - line: I'm not gonna say nothing to that.
+        said_by: Valentina
+      - line: How dare you.
+        said_by: Valentina
+      - line: Oh my god, don't fall, don't die.
+        said_by: Jaida Essence Hall
+      - line: Grab your library card! You've been read.
+        said_by: Cheryl Hole
+      - line: Blink twice if you need help.
+        said_by: Jimbo
+      - line: I hate my life!
+        said_by: Lemon
+      - line: Right is right, and wrong is wrong, ain't it?
+        said_by: Koco Caine
 
   after_a_win:
     about: >-
@@ -3374,6 +3265,8 @@ any_actor_lines:
         said_by: Gottmik
       - line: Bam!
         said_by: Alexis Mateo
+      - line: My goodness, I would fuck me.
+        said_by: Jujubee
 
   dragula:
     about: >-

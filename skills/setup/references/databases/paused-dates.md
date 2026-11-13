@@ -4,7 +4,7 @@ The days that get nothing new planned automatically.
 
 ## Paused dates
 
-<!-- Write these holidays with their next upcoming dates. -->
+<!-- These are examples. Feel free to omit. -->
 
 - 2026-11-26: Thanksgiving
 - 2026-11-27: Black Friday

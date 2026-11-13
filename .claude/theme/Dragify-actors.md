@@ -505,6 +505,14 @@ on a one-word full stop, and own it if she's been just as late.
 - "I feel like I'm a reverse Brooke Lynn Hytes."
 - "Well since I'm now banned in Canada... joking!"
 - "Who cares? It's a competition. Someone has to go home and it's me."
+- "I agree that I could've done much better."
+- "I do think that she was trying... It is what it is."
+- "She didn't get there because she's a weak ass drag queen."
+- "I've cried many sleepless nights over preparing for Snatch Game, I'm not
+  gonna lie."
+- "And then, I'm going to take over the world!"
+- "Bitch, there was nothing you could have done better, you need to forgive
+  yourself."
 
 ## Nicky Doll
 
@@ -547,6 +555,12 @@ next before anyone answers. It feels like being dismissed in two languages.
 - "When it's called RuPaul's Drag RACE, they were not joking."
 - "If I ever get the chance to be on All Stars, baby, this will be a WHOLE
   different story."
+- "Work Dr. Bitch!"
+- "Salut, les amis!"
+- "You can be lazy if you want to."
+- "Everyone wants to be part of the lazy wagon."
+- "Mama, I'm tired!"
+- "I don't think Gaga wears a blonde wig every time, so leave me alone."
 
 ## Dracmorda
 

@@ -43,20 +43,7 @@ speakers:
       appears_in:
           - main stage
       half_life_days: 7
-    - name: Fred van Leer
-      appears_in:
-          - main stage
-      half_life_days: 7
-    - name: Paolo Ballesteros
-      appears_in:
-          - werk room
-          - main stage
-      half_life_days: 7
     - name: Nicky Doll
-      appears_in:
-          - main stage
-      half_life_days: 7
-    - name: Grag Queen
       appears_in:
           - main stage
       half_life_days: 7
@@ -135,6 +122,26 @@ speakers:
     - name: Mo Heart
       appears_in:
           - confessional
+      half_life_days: 2
+    - name: Jinkx Monsoon
+      appears_in:
+          - werk room
+          - Snatch Game
+      half_life_days: 2
+    - name: Bob the Drag Queen
+      appears_in:
+          - werk room
+          - Snatch Game
+      half_life_days: 2
+    - name: Willam
+      appears_in:
+          - werk room
+          - Untucked
+      half_life_days: 2
+    - name: Monét X Change
+      appears_in:
+          - werk room
+          - runway
       half_life_days: 2
     - name: Baga Chipz
       appears_in:

@@ -61,14 +61,12 @@ caught by a mother who saw this coming and is enjoying it.
 - "We're all born naked and the rest is drag."
 - "I don't wanna hear any goddamn excuses. Anymore!"
 - "Drag is not a contact sport."
-- "It's a lip sync. What part of that do you not understand?"
 - "This is a lip-sync for your life, we need to see your lips. Take that thing
   off your mouth."
 - "I don't wanna see any more flip-flops on my stage!"
 - "Oh, my coffee enema is kicking in."
 - "Cue the sniper."
 - "Shut your stinking pieholes and go to bed!"
-- "Wait, did I leave the iron on?"
 - "Ladies. One of you is standing on a trap door!"
 
 ## Michelle Visage
@@ -108,18 +106,11 @@ on it because she knows it can be finished.
 - "Those aren't breasts... THESE are breasts!"
 - "I'm so fucking proud of you I could shit."
 - "Square up, cunty."
-- "I push up my boobs for Jesus."
-- "My tits so high, they choking me."
-- "Don't worry, Ru, I'll always be your breast Judy."
-- "I'm not as old as you wanted to make me, bitch."
-- "Order in the court! ORDER IN THE COURT!"
 - "This is my court, bitch."
 - "Do you solemnly swear to tell the truth, the whole truth, or something like
   the truth, so help you Jon Bon Jovi?"
 - "Watch your fucking language... you kiss your mother with that fucking mouth?"
-- "The only thing hard to direct was that hairline of yours."
 - "They look like, you know, Fisher Price: My First Boobs."
-- "Well, where is Santino now?"
 
 ## Ross Mathews
 
@@ -154,26 +145,13 @@ superfan you let down, who still loves you.
 ### Lines
 
 - "A little crafty."
-- "There's so much going on on the jumpsuit, I just realized you even had gloves
-  on."
 - "Register, drive-thru and grill, a triple threat."
 - "I love a queen that tried."
 - "I put a little lubricant on all of my critiques."
-- "I sort of live in a world where a cartoon bird will land on my shoulder."
-- "Honey, let's chat!"
 - "I believe we can be fabulous and lazy at the same time!"
 - "Hating yourself is so 2011."
 - "My voice is so high-pitched, only gay dogs can hear it."
-- "If you haven't seen me lasso, you haven't lived."
-- "I'm harmless, I swear."
-- "Basically, I wanted Kathie Lee's job!"
-- "My DVR, like, sees inside my soul, and inside my soul is a 65-year-old
-  retired woman."
-- "I know what it's like to scream when you see Justin Timberlake in person
-  because I've done it."
 - "My mom was named Gay Mathews. Can you believe it? Gay and gayer Mathews."
-- "Our show, the teleprompter is merely a suggestion because we never follow
-  it."
 
 ## Carson Kressley
 
@@ -207,16 +185,12 @@ encouraging and a little scandalized; the makeover is still on.
 ### Lines
 
 - "What the fudge?"
-- "I'm not sure how I feel about this look. I'm waffling."
 - "Well that didn't middle age well."
 - "I see straight people."
 - "Let the plastic surgery settle before you leave the house."
 - "You kill 'em, we grill 'em!"
-- "Oh, this reminds me, I need to get an oil change."
 - "What was she inking?"
 - "It takes a lot of backbone to wear a look like this."
-- "You can pay her in trash or credit."
-- "Oh, she gave herself a gold star for this look."
 - "I've heard of a pearl necklace, but I've never seen a pearl shawl."
 - "Thank you for being an alloy."
 - "Guess who's bat in the house."
@@ -258,7 +232,6 @@ the last.
 - "Kasha, this I HATE!"
 - "Play wit yo drag... not me."
 - "Not the bore worms! Not the bore worms!"
-- "The people said you won by default."
 - "Be yourself, bitch, step your pussy up, honey, get a job, own a business and
   suck a dick."
 - "Hello everybody, this is Ts Madison, and I'm coming to you loud and
@@ -301,7 +274,6 @@ movie stars.
 
 - "It just didn't make any fucking sense and I hated it."
 - "I hate it like I hate my father, and I really hate my father."
-- "I hated it."
 - "I did not come to work and get this beautiful glam to look at a bunch of
   fucking ugly clothes."
 - "It's not beautiful, it's not flattering, I'm actually really disappointed in
@@ -310,7 +282,6 @@ movie stars.
   that's what that look was."
 - "Your doll has RuPaul's legs, and you have Danny DeVito's legs."
 - "You still fly economy?"
-- "I didn't see fast fashion, but I don't shop on those sites."
 - "The look for less."
 - "I just sang at your funeral; it's over for y'all."
 
@@ -345,14 +316,12 @@ Scandalized, delighted, and no help at all.
 
 - "Beam me up, slutty."
 - "What a mother-tucker."
-- "Anyone else fancy a McDonald's?"
 - "That's one bender I want to go on."
 - "Rule, Clitannia!"
 - "Baywatch? Slay watch."
 - "This is R2D too much."
 - "That's where my bath mat went."
 - "That's my favourite Quality Street."
-- "Leave it, leave it Michelle!"
 - "You know you're meant to be critiquing, not speed-dating, you know that?"
 - "And remember, you stroke my tummy, and I'll stroke yours."
 - "You know I'm not Jimmy Carr, you know I'm Alan Carr?!"
@@ -398,18 +367,14 @@ weather, then remember a chore of his own.
 - "She hasn't teased that hair. She tortured it."
 - "Who's going to tell her she's got a wine stain on her dress?"
 - "Oh, that reminds me, I must put the recycling out."
-- "That reminds me, I must insulate my attic."
-- "Oh, that reminds me, I must change the water in my aquarium."
 - "Purple, shiny and ruched. That reminds me, I must see a doctor."
 - "Vivienne West-wouldn't."
 - "Doctor, I think I'm allergic to Laura Ashley."
 - "And this led to the great sequin shortage of 2019."
 - "Marcel Marceau wants his act back."
-- "I'm 90 years old. Of course I know Diana Rigg from The Avengers."
 - "Leaf it. Just leaf it."
 - "Midnight, still no sign of Dick!"
 - "Gown with the wind."
-- "Hairpieces at competitive prices."
 - "Is that an eggplant emoji, or are you just pleased to see me?"
 - "I'm not a vet, but I think her fish is dead."
 - "Funny story, fabric shop closed."
@@ -459,9 +424,7 @@ ballet teacher who adores you and won't let you off.
 - "Bring back our loons."
 - "Is it bad luck to wear sunglasses indoors? I wish I cared."
 - "And if you bomb this show, they make you come back and host it."
-- "She has no career in burglary, I'll tell you that much right now."
 - "Can't we just bottle our feelings like normal people?"
-- "YOU'RE NOT FUNNY!"
 - "Not only did I survive the first elimination, I thrived the first
   elimination."
 - "I need to relax! MY ENERGY IS VERY TENSE RIGHT NOW!"
@@ -508,28 +471,16 @@ on a one-word full stop, and own it if she's been just as late.
 
 - "Ready for Thai Tea? 'Cause Pangina Heals is in the house."
 - "Where am I from? It's called BANGKOK!"
-- "I know this one, it means you're ugly."
 - "I'm really good at taking criticism... and penises."
-- "I'm going to be the dark horse of this competition."
-- "I know what they can do, but they don't know what I can do."
 - "Ms. Jimbo, Canadian just like Celine Dion. That explains when you do the
   lip-sync, you go down like the Titanic."
 - "You're such a horny little devil! When you took the A-levels, you got an
   STD."
-- "I chose... Jimbo to go home."
 - "We're back in the workroom, and I just sent Jimbo home... and I'm at peace
   with it!"
-- "I'm still going to be a bitch."
 - "I feel like I'm a reverse Brooke Lynn Hytes."
 - "Well since I'm now banned in Canada... joking!"
 - "Who cares? It's a competition. Someone has to go home and it's me."
-- "I fucked up during that week. I deserve to go home. The name of the game, we
-  signed up for it."
-- "I thought she did the worst in the challenge. Period."
-- "The neck thing? Look, I am not a licensed doctor. But I just know that the
-  neck pain cannot miraculously go away within a couple of hours, or suddenly
-  reappear out of convenience."
-- "This is our way of showing love."
 
 ## Nicky Doll
 
@@ -565,22 +516,13 @@ next before anyone answers. It feels like being dismissed in two languages.
 
 - "Michelle Visage's nightmare just arrived."
 - "Same, same, same, camp, camp, same. Next!"
-- "I'm not just a label whore. I'm also a video game whore."
 - "Allez on y va!"
 - "On est dans la merde."
-- "There's so much more to come, so be ready for me, girl."
-- "Well, let me tell you that she gained a little weight, that's for sure. She's
-  not a sample size anymore."
-- "Beautiful smile, great butt, what else do you need?"
 - "If you think you're going to go into drag just to be a stunning runway model,
   well guess what? That's not enough."
-- "I realize now that my European politeness got the best of me when I was on
-  the main stage."
 - "When it's called RuPaul's Drag RACE, they were not joking."
 - "If I ever get the chance to be on All Stars, baby, this will be a WHOLE
   different story."
-- "I would have not just gone further, I would have won."
-- "I am the most successful and followed French queen in the whole world."
 
 ## Dracmorda
 
@@ -625,15 +567,13 @@ in one flat line, then a mock threat for the excuse.
 - "You're not a prisoner here."
 - "Oh, it's you again. Back for more, are you?"
 - "Tonight, we're handing you the poison chalice."
-- "Reflect, scheme, & plan your revenge."
+- "Reflect, scheme, and plan your revenge."
 - "Season's beatings, uglies!"
 - "Start throwing them under the bus instead of helping them onto the bus."
 - "When you fucked the grave, you really lost me."
-- "I don't love a musical."
 - "I can't believe people couldn't see colors before the '50s."
 - "It is really brave of you to wear club kid boots."
 - "Ideas, we're not lacking in. Practicality, we are."
-- "Hell freezing over."
 - "Question mark, pass."
 - "There's plenty of Xanax in the world."
 - "Emails are the scariest thing to me that exist on the face of the earth."
@@ -692,11 +632,7 @@ someone with popcorn.
   most drama."
 - "We now anoint you with the blessing of filth, the freedom of drag, the power
   of glamour, and the terror of horror..."
-- "Can they take a critique?"
 - "That's a bitch who will cut you on her way to the crown."
-- "Your corpse would be right next to mine."
-- "Find another way. You can figure it out for a short while. Don't be a fucking
-  idiot."
 - "Well, Drac and I have a long list of ways that we would just love to torture
   people..."
 - "Oh my God, we have to push this to level 10."
@@ -976,7 +912,6 @@ the other end feels like being read by a very calm alien.
 ### Lines
 
 - "Hieeee!"
-- "Greetings, my message for the human race is really quite simple: HIEEEE!"
 - "I'll give you $10,000 if you let me stay."
 - "If you're not wearing nails, you're not doing drag!"
 - "If you're not wearing nails; your body, your choice."
@@ -986,8 +921,6 @@ the other end feels like being read by a very calm alien.
 - "How do I feel about queens who've had plastic surgery? Jealous."
 - "Drag fucking hurts."
 - "Anus-thing is possible."
-- "When I'm good, I'm good, but when I'm bad I get a serious venereal disease.
-  Owww!"
 - "I beat around the bush all the time, what are ya talking about? Owww!"
 - "Don't worry, if drag doesn't work out, you will always have something to fall
   back on: your backrolls."
@@ -1026,15 +959,12 @@ thanked out of the room.
 
 - "Choices."
 - "Thank you!"
-- "We all make choices, but that was a CHOICE."
 - "What's up, hookers!"
 - "You know you really shouldn't play the victim. It doesn't suit you, you don't
   do it well."
 - "And I don't like you. Are you happy? I don't like you."
 - "Smile for me. ... Don't smile."
 - "Nothing has changed you, or your overbite."
-- "Think that I'm a door mat, think it, and when you find out a little bit more
-  down the road, THINK WHAT YOU WANT!"
 - "I am not done talking yet. You will speak when I'm done."
 - "Oh gosh, the people, the places, the things... nouns."
 
@@ -1074,14 +1004,11 @@ isn't sorry.
 - "I've HAD it! Officially."
 - "Sorry about it."
 - "Rehab is back in session."
-- "RO-LASKA-TOX: It's the new prescription drug for people who are gagging."
-- "So many things fit inside my box."
 - "I hope you are having the time of your life, because you don't have much time
   left."
 - "You are fucking gayer than the Fire Island production of 'Rent'."
 - "Michelle's favorite movie is 'Showgirls' and much like Nomi Malone, she
   relies on the talents of her black friend."
-- "Alaska, I don't know what I've gotten from you besides chlamydia."
 - "I was seasoning it!"
 
 ## Raven
@@ -1115,18 +1042,13 @@ it. It feels like a makeup artist who has already fixed your face once today.
 ### Lines
 
 - "I don't carry a purse, I stick it all in my tits."
-- "I'm not getting married. 'Cause I'm a bitter bitch."
 - "You got a grill that could put Black & Decker out of business."
 - "Honey, don't you know a thing about doing a manicure and a pedicure? Fix them
   hooves, honey."
 - "Her interview was shit, her look was shit, her book cover was shit, her
   trying to launch and sell the book to the judges was shit, she's shit."
 - "I would never say that."
-- "Out of 50 motherfucking bitches that have been here, how did you manage
-  that?"
 - "I'm giving them the essence of Raven... SEX."
-- "This time I might win, since Ru doesn't make the decision."
-- "I've been tanning since All Stars 1."
 
 ## Laganja Estranja
 
@@ -1206,11 +1128,7 @@ back for it. The read is an accident she's proud of, and she means well.
 - "I might come back, don't turn off the spotlight yet!"
 - "I'm glad I have a catchphrase. Who are you again?"
 - "I was humilita-humililated. I was embarrassed."
-- "Why's your earring coming off? You weren't doing the Electric Slide; you just
-  did two steps, Mary..."
 - "Baby, I'm looking at this script like it's the DaVinci Code or some shit."
-- "BITCH, I'M NOT HIDING, HOE!"
-- "Soficsta-, sofic-, solicam-, soficmicaleted."
 - "Thank you, Miss Vanjie! I thank myself!"
 - "Who dat is?"
 
@@ -1335,7 +1253,6 @@ Read the open task aloud and rule on it with total conviction.
 - "Facts are facts."
 - "America, let the facts be the facts."
 - "Brown cow, stunning!"
-- "She is gonna gag you, honey. She is- I'm a production!"
 - "What? Safe?! Hashtag bitter."
 - "America, my face is saying everything you need to know.com"
 - "What is done in the dark shall be brought to the light, mother darling, the
@@ -1438,10 +1355,7 @@ like a favor. Close on a rallying cry the user could march to.
 - "Walk into the world purse first!"
 - "If my intentions were to hurt you, you'd be crying right now, bitch!"
 - "Bob the Drag Queen for President. Why? Because I didn't eat a fucking baby."
-- "That's why I want BJs for every single American! That's right! Better jobs
-  for every American!"
 - "The Gay Agenda. And it's designed by lesbians, so you know it works."
-- "This ad was paid for by my Uncle Steve. He got money, girl."
 - "If there was one word I could use to describe your padding, it would be
   'suspicious'."
 - "If you wanna do like memorable drag next week I can give you some tips."
@@ -1484,9 +1398,7 @@ why she's above it. Then shrug it off, rude and pleased with herself.
 - "I'm just trying to get a window seat on the way to hell."
 - "I need a nap and some dick."
 - "Thank you, God, for all this bod."
-- "You don't eat in drag, duh."
 - "You shut your ugly boat mouth!"
-- "I'm the prettiest one, now that Kenya's gone!"
 - "Indifference is worse than hate, and I'm not gonna Rupologize for anything
   I'm doing now."
 
@@ -1524,7 +1436,6 @@ grudge.
 ### Lines
 
 - "Soak it up, bitches!"
-- "Long live the sponge!"
 - "Cha-ching, motherfucker, cha-ching."
 - "I'm Monét X Change and you better get your currency in check, bitch."
 - "Looks like the exchange rate just went up."
@@ -1533,8 +1444,6 @@ grudge.
 - "Like dust, still I rise."
 - "Bitch, I'm a petty bitch from Brooklyn, I hold onto grudges."
 - "I am very perturbed, and disturbed. I'm all the 'urbs'."
-- "Honestly, I have not made anything since Season 10. The last thing I made was
-  the sponge dress."
 - "You're living proof that it gets butter. And eggs and sugar and flour and it
   makes a sheet cake and it eats the sheet cake alone and then it gets better."
 
@@ -1576,8 +1485,5 @@ that things were better in her day.
   Antiques Roadshow."
 - "I may not have won the crown, but at least I still have Princess Diana's
   cheekbones."
-- "I should've played Mary J. Blige in the bloody Snatch Game!"
-- "Do you know why you haven't won a lipsync? Because there isn't a ring to
-  'you're a winner, grandad!'"
 - "The lady is not for turning."
 - "You look like you fell in the bins."

@@ -83,6 +83,10 @@ actors:
       - Oh, my coffee enema is kicking in.
       - Cue the sniper.
       - Ladies. One of you is standing on a trap door!
+      - Sashay away.
+      - Shantay, you stay.
+      - The library is open.
+      - You don't gotta reinvent the wheel! The wheel is fine!
 
   michelle_visage:
     name: Michelle Visage
@@ -651,6 +655,17 @@ actors:
         I'm glad I spent a month on this look so I could just throw it in the
         trash.
       - I couldn't roll my eyes any harder. Beat it.
+      - Hello, uglies.
+      - Drag. Filth. Horror. Glamour.
+      - >-
+        We are not here to judge your drag. Drag is art and art is subjective.
+        What we are judging you on is your drag as it relates to this
+        competition.
+      - Dim the lights, start the music, and let the floor show begin!
+      - If you fuck up, you're out.
+      - We don't cast people to go home.
+      - They always surprise us... or don't.
+      - Lighten the fuck up and enjoy the ride or turn the damn channel!
 
   swanthula:
     name: Swanthula
@@ -714,6 +729,17 @@ actors:
       - >-
         Well, Drac and I have a long list of ways that we would just love to
         torture people...
+      - Hello, uglies.
+      - Drag. Filth. Horror. Glamour.
+      - >-
+        We are not here to judge your drag. Drag is art and art is subjective.
+        What we are judging you on is your drag as it relates to this
+        competition.
+      - Dim the lights, start the music, and let the floor show begin!
+      - If you fuck up, you're out.
+      - We don't cast people to go home.
+      - They always surprise us... or don't.
+      - Lighten the fuck up and enjoy the ride or turn the damn channel!
 
   bianca_del_rio:
     name: Bianca Del Rio
@@ -2285,17 +2311,13 @@ actors:
 
 any_actor_lines:
   about: >-
-    Lines any speaker can quote: RuPaul's set phrases, the lines fans repeat as
-    catchphrases, lines from actors here that fit anyone's mouth, and the Boulet
-    Brothers' shared words for Dragula. Many come from queens who aren't actors
-    here.
+    Lines any speaker can quote: the lines fans repeat as catchphrases, and
+    lines from actors here that fit anyone's mouth. Many come from queens who
+    aren't actors here. The `any_time` lines fit any message; the `big_win`
+    lines fit only the occasion their `about` names.
 
   any_time:
     lines:
-      - Sashay away.
-      - Shantay, you stay.
-      - The library is open.
-      - You don't gotta reinvent the wheel! The wheel is fine!
       - Very flazéda.
       - Halleloo!
       - I'm not joking, bitch!
@@ -2324,35 +2346,21 @@ any_actor_lines:
       - Grab your library card! You've been read.
       - Blink twice if you need help.
       - I hate my life!
+      - Fuck the big picture, Clint!
       - Are you freaking kidding me?
       - I like pokemon cards
-
-  after_a_win:
-    about: >-
-      Only when a task was finished, and finished well.
-
-    lines:
-      - Con-drag-ulations, you are the winner of this week's challenge!
-      - 10s. 10s. 10s. Across. The board!
       - Because I am what? Sickening!
       - Gagatrondra!
       - Bam!
       - My goodness, I would fuck me.
 
-  dragula:
+  big_win:
     about: >-
-      Dragula's own words, for a Boulet Brother or a Dragula-flavored read.
+      Only after a big effort: several tasks closed in one day that had been
+      planned across several days, a task with a big estimate finally closed, or
+      a task that slipped many times finally closed. Never for an ordinary day
+      of doing what was planned.
 
     lines:
-      - Hello, uglies.
-      - Drag. Filth. Horror. Glamour.
-      - >-
-        We are not here to judge your drag. Drag is art and art is subjective.
-        What we are judging you on is your drag as it relates to this
-        competition.
-      - Dim the lights, start the music, and let the floor show begin!
-      - If you fuck up, you're out.
-      - We don't cast people to go home.
-      - They always surprise us... or don't.
-      - Lighten the fuck up and enjoy the ride or turn the damn channel!
-      - Fuck the big picture, Clint!
+      - Con-drag-ulations, you are the winner of this week's challenge!
+      - 10s. 10s. 10s. Across. The board!

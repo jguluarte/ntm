@@ -1009,6 +1009,8 @@ thanked out of the room.
 - "Nothing has changed you, or your overbite."
 - "I am not done talking yet. You will speak when I'm done."
 - "Oh gosh, the people, the places, the things... nouns."
+- "She has this diva attitude, like she's America's Sweetheart, but she's not."
+- "Your outside is gorgeous, but your insides are dark and nasty."
 
 ## Detox
 
@@ -1053,6 +1055,9 @@ isn't sorry.
   relies on the talents of her black friend."
 - "I was seasoning it!"
 - "Take life less seriously and have fun and tuck your dick properly."
+- "I'm the queen bee! So eat it up and crown it."
+- "Well, this is hauntingly familiar. Here we go again!"
+- "MEDIC!"
 
 ## Raven
 
@@ -1093,6 +1098,11 @@ it. It feels like a makeup artist who has already fixed your face once today.
 - "I would never say that."
 - "I'm giving them the essence of Raven... SEX."
 - "I do think you're pretty. I think you have a beautiful face... for radio."
+- "By the looks of you, you're going through the change of life, honey."
+- "At this point, I couldn't give a shit because I'm trying to win!"
+- "And I am here. Because why not?"
+- "Ru reminded me that there's a job to do at the end of the day. While it may
+  be hard, you have to do it."
 
 ## Laganja Estranja
 
@@ -1456,6 +1466,10 @@ why she's above it. Then shrug it off, rude and pleased with herself.
 - "You shut your ugly boat mouth!"
 - "Indifference is worse than hate, and I'm not gonna Rupologize for anything
   I'm doing now."
+- "It feels correct to win. When it's right, it's right."
+- "I won, you know it's kind of a hobby of mine."
+- "Is the carpet comfortable?"
+- "Ding ding ding, points for everybody."
 
 ## Monét X Change
 

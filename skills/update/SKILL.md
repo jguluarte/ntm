@@ -11,8 +11,8 @@ description: >-
 
 # ntm:update
 
-Takes the user's setup from the version of ntm it last took in to the installed
-one, a version at a time, from each version's update note.
+Brings the user's setup from the version of ntm it was last brought up to, to
+the installed one, a version at a time, following each version's update note.
 
 ## Usage
 
@@ -35,22 +35,24 @@ with its result line.
 | Theirs    | Version under Updates in `%Settings`; 0.4.0 when there is none  |
 | Installed | `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json` |
 
-The update notes are in `references/`, each named for its version, such as
-`0.5.0.md`. Take the ones newer than theirs, up to the installed version, oldest
-first. With none, tell them their setup is up to date, and go to step 4.
+The update notes are in `${CLAUDE_PLUGIN_ROOT}/skills/update/references/`, each
+named for its version, such as `0.5.0.md`. Take the ones newer than theirs, up
+to the installed version, oldest first. With none, go to step 4.
 
 ### 2. Take in each note
 
 For each note in turn, show its What's new, then follow its For ntm:update with
-the user. Offer each change, and make only the ones they agree to.
+the user.
 
 ### 3. Rebuild the user plugin
 
 When any note says `Rebuild ntm-user: yes`, rebuild the user plugin once, after
-the last note. Load `ntm:setup` and build their user plugin again the way it
-does, filled in with what their installed `ntm-user` holds: their task list,
-where each database lives, their channel and their connector. Have them install
-it, then run `/ntm:self-test` in a new chat.
+the last note, as The user plugin, ntm backend assets and Notifications in
+`${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` say. Fill it in from their
+installed `ntm-user`: their task list and where each database lives from
+`ntm-user:backend`, their channel from `ntm-user:notify`, and their connector
+from the installed plugin's `.mcp.json`. Have them install it, then run
+`/ntm:self-test` in a new chat.
 
 ### 4. Record the version
 
@@ -59,5 +61,5 @@ Updates part when it isn't there.
 
 ## Result
 
-Tell the user which version of ntm their setup is on now, and what's left for
-them, such as installing the rebuilt plugin.
+Tell the user which version of ntm their setup is up to date with now, and
+what's left for them, such as installing the rebuilt plugin.

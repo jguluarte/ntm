@@ -85,7 +85,8 @@ only.
 
 Picks what you'll work on each day: one small task a weekday, unless you chose
 otherwise in setup. Scheduled jobs plan your week ahead, and each morning move
-unfinished work to today. Run it yourself to plan together, such as
+unfinished work to today. Each planned day a task misses is kept in a Planned
+date history comment on the task. Run it yourself to plan together, such as
 `/ntm:plan next week around the garage`.
 
 ### `/ntm:reminder`

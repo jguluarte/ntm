@@ -7,12 +7,9 @@ don't run one yourself.
 ## The writer
 
 The writer writes your reminders and your weekly plan in your theme. It has one
-question in mind: what will make you actually read this one? For each message,
-ntm hands it what the message should say, today's tasks, and the ideas from your
-theme picked for that message. It writes a few versions, each a scene from your
-theme's world with the task inside it, and says how predictable each one is. ntm
-sends the least predictable one whose opening it hasn't used lately, so the same
-message doesn't come back day after day.
+question in mind: what will make you actually read this one? It writes a few
+versions, and ntm sends the freshest, so the same message doesn't come back day
+after day.
 
 ## The estimator
 

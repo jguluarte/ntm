@@ -30,10 +30,10 @@ with its result line.
 
 ### 1. Find the notes
 
-| Version   | Where it comes from                                             |
-| --------- | --------------------------------------------------------------- |
-| Theirs    | Version under Updates in `%Settings`; 0.4.0 when there is none  |
-| Installed | `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json` |
+| Version   | Where it comes from                                                    |
+| --------- | ---------------------------------------------------------------------- |
+| Theirs    | Last synced under ntm version in `%Settings`; 0.4.0 when there is none |
+| Installed | `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`        |
 
 The update notes are in `${CLAUDE_PLUGIN_ROOT}/skills/update/references/`, each
 named for its version, such as `0.5.0.md`. Take the ones newer than theirs, up
@@ -56,10 +56,10 @@ from the installed plugin's `.mcp.json`. Have them install it, then run
 
 ### 4. Record the version
 
-Write the installed version to Version under Updates in `%Settings`, adding the
-Updates part when it isn't there.
+Write the installed version to Last synced under ntm version in `%Settings`,
+adding the part when it isn't there.
 
 ## Result
 
-Tell the user which version of ntm their setup is up to date with now, and
-what's left for them, such as installing the rebuilt plugin.
+Tell the user which version of ntm their setup is synced with now, and what's
+left for them, such as installing the rebuilt plugin.

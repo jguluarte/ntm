@@ -120,8 +120,8 @@ agree to use Linear for its simplicity.
 Confirm that the user is okay with establishing the `%Settings` database file
 name. Once they do, create it from its template,
 `references/databases/settings.md`, with Timezone under About you set to the
-timezone they confirmed in the intro, and Version under Updates set to ntm's
-version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
+timezone they confirmed in the intro, and Last synced under ntm version set to
+ntm's version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and

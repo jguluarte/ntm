@@ -50,6 +50,6 @@ Claude's built-in browser
 | App token | `<app token>` |
 | User key  | `<user key>`  |
 
-## Updates
+## ntm version
 
-- Version: <ntm's version>
+- Last synced: <ntm's version>

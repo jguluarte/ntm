@@ -41,9 +41,7 @@ Claude's built-in browser
 
 ## Notifications
 
-<!--
-Write Pushover keys only for a Pushover user, with their keys in full.
--->
+<!-- Write Pushover keys only for a Pushover user, with their keys in full. -->
 
 ### Pushover keys
 

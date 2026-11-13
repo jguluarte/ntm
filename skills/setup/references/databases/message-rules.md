@@ -2,11 +2,6 @@
 
 ## Reminders
 
-<!--
-What every reminder shares. Each reminder's own part below adds to it, and wins
-where they differ.
--->
-
 - Load all tasks with today's date
 - Load the message history
 

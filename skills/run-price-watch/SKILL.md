@@ -50,22 +50,22 @@ aren't none.
 
 ### 3. Send the alert
 
-When any result is a deal, send one push with `/ntm-user:notify`, from the
-deals' `best:` lines. The first line below is its title, the rest its message:
+When any result is a deal, send one push with `ntm-user:notify`, from the deals'
+`best:` lines. The first line below is its title, the rest its message:
 
 ```
 Price watch: <count> deal(s)
 
 <item in a few words>: <price> at [<store>](<product link>)
-<the membership, coupon or used or refurbished unit the price needs>
+<what the price needs: a membership, a coupon, or a used or refurbished unit>
 
 <the next deal, the same way>
 ```
 
-A deal's second line is there only when its price needs one. Write it plain, as
-shown, with no task id and no style. When `ntm-user:notify` answers
-`Notify TOO LONG`, shorten the items' words, keep every price, store and link,
-and send once more.
+A deal's second line is there only when its price needs one. When the seller
+isn't the store, the store reads `<store>, sold by <seller>`, here and in the
+result. Write it plain, as shown, with no task id and no style. When
+`ntm-user:notify` answers `Notify TOO LONG`, send each deal as its own push.
 
 ## The user's replies
 
@@ -96,13 +96,11 @@ date.
 
 ## Result
 
-Return one line: how many tasks were checked, each deal in a few words with its
-task id, each task to fix with what to fix, and what `ntm-user:notify` returned,
-such as:
+Return one line: how many tasks were checked, how many are deals, each task to
+fix with what to fix, and what `ntm-user:notify` returned, such as:
 
-> Run-price-watch: 5 checked, 1 deal: the backup battery (ABC-24). To fix: the
-> desk lamp (ABC-30), no target; the drill (ABC-31), a store to vouch for. Sent:
-> Price watch: 1 deal
+> Run-price-watch: 5 checked, 1 deal. To fix: the desk lamp (ABC-30), no target;
+> the drill (ABC-31), a store to vouch for. Sent: Price watch: 1 deal
 
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When

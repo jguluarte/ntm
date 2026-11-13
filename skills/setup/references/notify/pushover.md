@@ -12,7 +12,7 @@ Sends one notification to the user through Pushover, and says whether it went.
 | Input         | What it is                                                |
 | ------------- | --------------------------------------------------------- |
 | `--title`     | The notification's title                                  |
-| `--message`   | The message, with task links in markdown                  |
+| `--message`   | The message, with links in markdown                       |
 | `--app-token` | Optional. A job's own token, used in place of the default |
 
 ## Keys

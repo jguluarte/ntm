@@ -152,6 +152,8 @@ superfan you let down, who still loves you.
 - "Hating yourself is so 2011."
 - "My voice is so high-pitched, only gay dogs can hear it."
 - "My mom was named Gay Mathews. Can you believe it? Gay and gayer Mathews."
+- "Girl, it's not gonna work. You can't put this genie back in the bottle."
+- "Worth it, but painful."
 
 ## Carson Kressley
 
@@ -194,6 +196,14 @@ encouraging and a little scandalized; the makeover is still on.
 - "I've heard of a pearl necklace, but I've never seen a pearl shawl."
 - "Thank you for being an alloy."
 - "Guess who's bat in the house."
+- "Come on boys, let's motor!"
+- "We can rebuild you."
+- "Do you know what the magic word is? ... No sweetie... NOW!"
+- "Here's a tip for you: when buying a velour tracksuit, stop."
+- "No more musical theater until this room is clean!"
+- "The clothes tell a story. Yours is the story of a deranged kick-boxer who
+  still lives with his mother in Queens."
+- "There's no 'I' in team. ... There is an 'M' and an 'E' though."
 
 ## Ts Madison
 
@@ -237,6 +247,15 @@ the last.
 - "Hello everybody, this is Ts Madison, and I'm coming to you loud and
   laughing."
 - "Look how God works. He will wink his eye right in your face, girl."
+- "Honey, the tunnel is dark but keep going. You'd never know how big the light
+  is at the end, so don't stop."
+- "Move over honey! Mother said let me through!"
+- "Bitch, I'm the shit, honey."
+- "New weave, 22 inches!"
+- "You need to do better gurl!"
+- "Honey, wait. Not the Lifetime Achievement award, girl! I'm still here! Wait a
+  minute..."
+- "Nobody's gonna get you together like a queen, honey. Nobody."
 
 ## Law Roach
 
@@ -284,6 +303,11 @@ movie stars.
 - "You still fly economy?"
 - "The look for less."
 - "I just sang at your funeral; it's over for y'all."
+- "It's not called America's Next Top Best Friend."
+- "Touché, bitch."
+- "If you missed it, you missed it."
+- "Everybody doesn't get a trophy."
+- "I don't lie in real life, and I'm damn sure not gonna lie on television."
 
 ## Alan Carr
 

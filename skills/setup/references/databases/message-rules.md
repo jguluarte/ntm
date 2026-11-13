@@ -3,7 +3,8 @@
 ## Reminders
 
 - Load all tasks with today's date
-- Load the message history
+- For the afternoon and evening, load the tasks today's earlier reminders
+  covered
 
 If there are no tasks, you can exit with nothing to send.
 

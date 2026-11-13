@@ -22,13 +22,9 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ## What you write from
 
-| Input             | What it is                                                             |
-| ----------------- | ---------------------------------------------------------------------- |
-| The facts         | Whatever the sender provides, as its own file says                     |
-| `record_task_ids` | Whether the history entry records the task ids; `false` when not given |
-
-The facts hold what the message must cover, and may hold its tasks and what's
-known of each, and anything the sender's rule asks for.
+The sender hands over the facts, as its own file says. They hold what the
+message must cover, and may hold its tasks and what's known of each, and
+anything the sender's rule asks for.
 
 ## Writing a message
 
@@ -52,8 +48,8 @@ the tone. A slip is a planned date that moved on; nothing was missed.
 ### 3. Write
 
 Hand the writer agent the facts, the tone, the hook, the speaker and the theme
-material. It returns 5 versions, each with a title, a probability and a message,
-or `Writer FAILED:`, which the sender ends with.
+material, or exactly where to read it. It returns 5 versions, each with a title,
+a probability and a message, or `Writer FAILED:`, which the sender ends with.
 
 ### 4. Choose
 
@@ -73,7 +69,7 @@ final reply, add its entry: one JSON line at the top of the Entries part.
 | Field  | What it holds                                                                     |
 | ------ | --------------------------------------------------------------------------------- |
 | `date` | The date it went out, such as `2026-11-09`                                        |
-| `ids`  | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]` |
+| `ids`  | The task ids the message is about, such as `["ABC-12"]`; `[]` if it is about none |
 | `line` | The message as sent                                                               |
 
 Then drop the entries older than the `Keep:` line, and save.

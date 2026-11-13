@@ -44,7 +44,9 @@ one, sends it and records it.
 | The theme's guidance | How to write in the theme, whatever the theme calls its parts                 |
 | The theme's entries  | The theme's entry for the hook, and for the speaker                           |
 
-What you're handed is all you write from. You never read `%Message-history`.
+What you're handed is all you write from. The theme material comes as text, or
+as where to read it: files, or documents in the user's backend. Read only what
+`ntm:style` points you to. You never read `%Message-history`.
 
 ## Writing the message
 

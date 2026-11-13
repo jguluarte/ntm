@@ -54,8 +54,8 @@ run with `Not sent: <why>`.
 
 ## The message
 
-Send it as the core rules' Sending a message in the user's style says, with
-`record_task_ids: true`. Its facts are:
+Send it as the core rules' Sending a message in the user's style says. Its facts
+are:
 
 - what the message must cover, as the rule says, in plain words
 - today's tasks, each with its id and title, whether it's done, its days slipped

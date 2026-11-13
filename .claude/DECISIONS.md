@@ -1,10 +1,10 @@
 # ntm decisions
 
 What's decided and still shapes the work to come: the plugin's shape on main,
-the 0.5 work, the patterns every rewritten file follows, what was declined or
-deferred, and what's still unknown. What the plugin already does is recorded by
-the plugin itself; read the file. The working rules are in `CLAUDE.md`. When
-something changes, edit it here; don't add a dated entry.
+the 0.5 work, the patterns every file follows, what was declined or deferred,
+and what's still unknown. What the plugin already does is recorded by the plugin
+itself; read the file. The working rules are in `CLAUDE.md`. When something
+changes, edit it here; don't add a dated entry.
 
 ## The plugin's shape
 
@@ -13,14 +13,7 @@ which setup generates and which holds only what's tailored to this user.
 
 ### The base
 
-It holds every procedure that is the same for everyone. Its skills are called
-directly (`/ntm:today`), and a job's prompt loads `ntm:<skill>`.
-
-### The user plugin
-
-It holds two skills. `backend` teaches how to work with this user's task list:
-its calls and statuses, what counts as open, and where each database lives.
-`notify` is their channel. Linear users also get the Linear connector bundled.
+It holds every procedure that is the same for everyone.
 
 ### Skills do their own work
 
@@ -29,10 +22,9 @@ itself. Only agents are handed work and send something back.
 
 ### Generic text lives in the base
 
-The rules live in ntm's `references/rules/`, and runs read them there. The
-backend guides and database templates are setup's, in
-`skills/setup/references/`. A rule fix reaches users with the next version of
-the base. Tokens matter most.
+The rules, backend guides and database templates live in the base, and runs read
+them there. A rule fix reaches users with the next version of the base. Tokens
+matter most.
 
 ### Plugin files
 
@@ -45,54 +37,15 @@ in Cowork. A file read later keeps the literal.
 No day-to-day run loads text about a path the user isn't set up for (another
 backend, a feature they didn't pick).
 
-### Where values live
+### Settings need no rebuild
 
-The values setup collects live in the `%Settings` database, label names
-included, and skills load them from there. Changing a setting is an edit to
-`%Settings`, with no rebuild.
-
-`ntm-user:backend` holds only what has to be built in: how to work with the task
-list, and where each database lives, `%Settings` included.
-
-The Pushover keys live in `%Settings`, and changing them needs no rebuild. A
-job's own app token goes in that job's prompt.
-
-The theme lives in its theme files, described under 0.5.
+The values the user sets live in `%Settings`, and changing one is an edit there,
+with no rebuild. `ntm-user:backend` holds only what has to be built in.
 
 ### Jobs
 
-Jobs are composed from base skills however the user wants. Setup creates them
-last, in its Create the jobs step, after the install and `self-test`, and the
-scheduled tasks are the source of truth. Re-running `/ntm:setup` creates any
-that aren't scheduled.
-
-Every job starts with `/ntm:ready-check`.
-
-### Setup
-
-`setup` is the wizard, and builds the user plugin. Run again for a user who is
-set up, it creates only their missing jobs, or says to change things by telling
-ntm or editing `%Settings`, and stops.
-
-### Update
-
-`/ntm:update` brings the user's setup up to the installed `ntm`, with them in
-chat. Each version ships an update note in `skills/update/references/`: a
-changelog, then instructions for update, including whether the user plugin needs
-rebuilding. `%Settings` records the version the setup was last brought up to, as
-Last synced under `## ntm version`.
-
-The 0.5.0 note lands last, before release. It offers the theme builder and reads
-the user's current theme to pre-fill it.
-
-### Versions
-
-Each time the user plugin is built, its version mirrors the installed `ntm`'s
-exactly, `major.minor.patch`. `ntm-user:backend` opens with a Built line naming
-its version, the `ntm` version it was built from, and the date.
-
-0.3 installs start fresh. After installing a new `ntm`, the user runs
-`/ntm:update`.
+Jobs are composed from base skills however the user wants, and the scheduled
+tasks are the source of truth.
 
 ### Publishing
 
@@ -178,6 +131,11 @@ feedback and the rater's verdict.
 All of this stays inside ntm for the user. When they ask how it works, the core
 rules' "Explaining how ntm works" section covers it.
 
+### The 0.5.0 update note
+
+It lands last, before release. It offers the theme builder and reads the user's
+current theme to pre-fill it.
+
 ### The theme builder
 
 `/ntm:theme-builder` researches the world a user picks and builds their theme
@@ -198,21 +156,10 @@ once the theme is in Linear.
 
 `release-0.5` merges into main, and the version is tagged there.
 
-## Patterns every rewritten file follows
+## Patterns every file follows
 
 From Justin's reviews of #116, #117 and #120. His words there win over this
 summary.
-
-### Rewriting a file
-
-1. The rewrite is drafted beside the current file, as `SKILL-new.md`. An agent's
-   draft goes in `drafts/`, as `drafts/<name>-new.md`, because every file in
-   `agents/` loads as an agent.
-2. The owner reviews the draft. Each round of his comments is a new commit.
-3. When he approves, the draft's text replaces the current file and the draft
-   file goes.
-4. A second agent does a comprehension pass: could a person follow this? It is
-   never a hunt for edge cases.
 
 ### Databases
 
@@ -367,11 +314,6 @@ Its default pattern makes too much busywork, and setup needs better guidelines.
 
 Does it ask for its own sign-in, and does a job created afterwards carry it?
 
-### A job reaches the user plugin
-
-Does a job whose prompt loads `ntm:today` also load `ntm-user:backend` and reach
-the messenger agent?
-
 ### The cost of reading Settings and the theme
 
 How long does one read of a `%Settings` section, and of a theme file, take from
@@ -396,10 +338,8 @@ passed.
 
 Not handled by the plugin yet.
 
-- An imported persona may carry its own history instructions and double-write
-  the message history database. Watch real runs.
-- Installing through Chrome: `file_upload` rejects `/mnt/user-data/outputs/`; a
-  path under the working directory works.
+Installing through Chrome: `file_upload` rejects `/mnt/user-data/outputs/`; a
+path under the working directory works.
 
 ## Justin's installed copy
 

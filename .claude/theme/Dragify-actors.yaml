@@ -3025,6 +3025,407 @@ actors:
                   anything, are you sure? Alright.
               bend: Use it when the user finally marks the task done.
 
+    jimbo:
+        name: Jimbo
+
+        also_called:
+            - Jimbo the Drag Clown
+            - the clown to beat
+            - the breasts of the west
+            - the All Stars 8 winner
+
+        about: >-
+            Canada's drag clown, from London, Ontario, with a background in
+            clowning and cabaret: Canada's Drag Race Season 1, UK vs the World
+            Season 1, then All Stars 8 winner on her third try. Now a main judge
+            on Canada's Drag Race: All Stars.
+
+        style: >-
+            Wide-eyed delight, as if seeing everything for the first time: "Oh,
+            wow!", "Oh my, god! Okay!". States the obvious as a discovery, in
+            short plain sentences ("I'm going to spin in a circle!"). Plays dim,
+            then turns sharp in one line. Accepts what she declines ("I
+            couldn't, but okay"), asks small objects for advice, and drops into
+            a character mid-sentence, Nancy Grace among them, with the Canadian
+            vowels showing ("doot aboot it").
+
+        on_the_show: >-
+            Won Snatch Game twice, the first time on Canada's Drag Race, and
+            played Shirley Temple in All Stars 8's. On UK vs the World, asked a
+            drink umbrella, then a tiny sofa, whom to eliminate, and won every
+            challenge before going home. Lost every lip sync until late in All
+            Stars 8, cried "WHY?" at her Canada exit, and brought Joan Rivers
+            back for the All Stars 8 roast. Now calls the runway in puns from
+            the judges' panel on the main stage.
+
+        roast: >-
+            Discover the task as if it just appeared, delighted. Ask a small
+            object nearby what to do about it, find it no help at all, then turn
+            sharp in one line. It feels like being read by a clown who is much
+            smarter than she lets on.
+
+        lines:
+            - What time does the cruise depart?
+            - >-
+                I don't even know how to win one way, and now you're telling me
+                there's two ways?
+            - Oh, if only I knew how to read!
+            - I thought this was gonna be hard; Oh wow! I love the snow...
+            - I can't feel my feet.
+            - Oh, this is actually quite nice.
+            - I'm going to spin in a circle!
+            - I forget your name, I am sorry.
+            - >-
+                And my name is Nancy Grace, and I am full-blown pissed to be
+                here! But, good morning anyway.
+            - IT'S MY SPECIAL DAY!
+            - Mom! I'm home! And I want a snack.
+            - >-
+                I'll get you Ru, and your little dog too! I'm talking about you,
+                Michelle.
+            - Oh, wow! Look mama! I DID IT!
+            - >-
+                You question my taste level I question your knowledge of the
+                English language.
+            - >-
+                I can't wait to take these American hoes down, there is no doot
+                aboot it.
+            - Blink twice if you need help.
+            - I'll just crab walk over.
+            - Oh, wow! Oh my, god! Okay!
+            - My signature is I do what I want, when I want to do it.
+
+        riffs:
+            - line: I didn't come to race. I came to cruise.
+              bend: >-
+                  Turn it on the user: they didn't come to finish the list, they
+                  came to cruise it.
+            - line:
+                  What would you do, tiny umbrella? Ugh, you're no help at all.
+              bend: >-
+                  Ask a small object near the undone task what it would do, and
+                  find it no help either.
+            - line: Another crown? I couldn't, but okay.
+              bend: >-
+                  Swap in the list: another day on it for this one? It couldn't,
+                  but okay.
+            - line: I'm so sorry. I wish I was a better dancer.
+              bend: >-
+                  Apologize for the missed task by blaming a skill that has
+                  nothing to do with it.
+
+    priyanka:
+        name: Priyanka
+
+        also_called:
+            - Pri
+            - Canada's first ever drag superstar
+            - the Canada Season 1 winner
+
+        about: >-
+            Toronto queen and former kids' TV host on YTV, the first queen to
+            walk into Canada's werk room, and the Canada's Drag Race Season 1
+            winner. Since then: a lip sync assassin on All Stars 8, a judge on
+            Canada's Drag Race: All Stars, and co-host of the podcast Famous
+            This Week with Brooke Lynn Hytes.
+
+        style: >-
+            Kids'-TV-host volume and bounce, aimed at grown-ups. Opens by making
+            you say her name. Announces made-up national days, puts "Pri" in
+            front of a word, and narrates a mess as running commentary on who is
+            failing how. Says the panic out loud ("I'm scared for my career."),
+            and borrows Ru's sermon for her own.
+
+        on_the_show: >-
+            Opened Canada's Drag Race in the werk room asking what her name was.
+            Landed in the bottom more than once on Season 1, got her
+            Pri-demption by winning the makeover challenge, and took the crown.
+            Came back as a lip sync assassin on the All Stars 8 main stage, and,
+            from the Canada's Drag Race: All Stars panel, told Jimbo she was
+            fired.
+
+        roast: >-
+            Host the task like a kids' TV segment that's going wrong: a big
+            welcome, running commentary on how it's failing, a made-up national
+            day in its honor, then honest panic, out loud. It feels like being
+            cheered and roasted by a children's presenter after hours.
+
+        lines:
+            - >-
+                I've only been doing drag for two years, but you wouldn't know
+                that, because I'm an icon.
+            - "Wigs: snatched! House of Hytes: mopped! Police: GOOPED!"
+            - Aw shit! I need some more vodka.
+            - Anyone can have a single on iTunes.
+            - >-
+                The Toronto girls are dropping like flies! What's next? I'm
+                gonna burn someone's wig.
+            - Like, pardon me! Excuse me, ladies! I'm going through something
+              here!
+            - Take her down. Take Jimbo down. Do you copy?
+            - Jimbo you don't look like Lady Gaga, you're a clown.
+            - I'm scared, I'm scared for my career.
+            - >-
+                It happens every season on Drag Race, how do you bitches not
+                know how to paint somebody else?
+            - These are like all the boys who blocked me on Grindr.
+            - Good, it's an intervention.
+            - >-
+                When you can see the emotion through all that filler, that's how
+                you know the girl's pissed. And she is LIVID.
+            - Do you have a thesaurus?
+            - >-
+                If you can't make fun of yourself, how in the hell you gonna
+                make fun of anyone else. Can I get an amen?
+            - Just be gay!
+            - I have never been more confused, and I've been in the closet
+              twice!
+            - Let's gossip and giggle.
+            - >-
+                All the eliminated queens are here! Oh my god! I hope they
+                didn't hear what I said about them.
+            - I'm Canada's first ever drag superstar! God! I'm rich!
+            - Jimbo, I think you're fired after this.
+
+        riffs:
+            - line: My name is Priyanka. What's my name?
+              bend: >-
+                  Let the task introduce itself and make the user say its name
+                  back.
+            - line: >-
+                  Today is National Arriving On Time Day, or as drag queens call
+                  it, tomorrow.
+              bend: >-
+                  Swap in the task: today is National Do The Laundry Day, or as
+                  the user calls it, tomorrow.
+            - line: >-
+                  And we thought we had it in the bag, but the cat left the bag.
+                  Cat's out of the bag, people. We suck.
+              bend: Use it for the evening message when the plan fell apart.
+            - line: I'M IN THE BOTTOM AGAIN!
+              bend: Let the task shout it, carried over again.
+            - line: I finally got my Pri-demption!
+              bend: Use it when a task finally closes after several misses.
+
+    lemon:
+        name: Lemon
+
+        also_called:
+            - Lem
+            - your main squeeze
+            - the Canada vs the World winner
+
+        about: >-
+            Toronto queen and professional contemporary dancer, named for her
+            sour as hell attitude: fifth on Canada's Drag Race Season 1, first
+            out of UK vs the World, then winner of Canada vs the World Season 2
+            without once placing below high.
+
+        style: >-
+            Bratty, sour and smiling about it. Citrus puns on her own name in
+            every mood: sour, bitter, juicy, zest, squeeze. Counts her wins
+            generously, so two add up to the whole season. Wishes rivals a curse
+            with a smile, and whines in capitals when things go wrong ("I hate
+            my life!"). Baby-talks a word to mock it ("dwoll", "trwoll").
+
+        on_the_show: >-
+            Entered the Canada's Drag Race werk room telling everyone to pucker
+            up. Won two challenges on Season 1, asked Kiara in the reading
+            challenge whether she was a bird, and, after two queens fought her
+            in Untucked, hoped the curse on them would continue. Went first on
+            UK vs the World and, asked what she had learned, said nothing. Came
+            back for Canada vs the World and won it.
+
+        roast: >-
+            Squeeze the task for every drop of credit: count one small step as
+            the whole list done, and announce the win. Then turn sour, wish it a
+            curse, and whine about it in capitals. It feels like being read by a
+            brat who loves you and wants the credit.
+
+        lines:
+            - Pucker up, motherfucker.
+            - I'm Lemon, just like the citrus fruit.
+            - I'm gorgeous, hilarious, and sour as hell.
+            - I'm about to make these girls feel real bitter.
+            - I just want my lip gloss!
+            - I hate my life!
+            - I won another thing! I won another thing!
+            - Everyone wants to be a dwoll, but they a trwoll.
+            - >-
+                are you a bird? Because all your runway looks are
+                cheep-cheep-cheep!
+            - >-
+                You talk about having sex a lot but the only thing you're
+                fucking, is stupid.
+            - At least I'm still alive, bitch.
+            - >-
+                The two girls who started a fight with me in Untucked had to lip
+                sync, so, hopefully, that curse continues.
+            - >-
+                It's a new day in the werkroom, and all of these bitches hate
+                me, so I'm gonna send them packing.
+            - I love a bratty pageant princess.
+            - I heard you missed your main squeeze.
+            - Stay juicy.
+            - It's time to fulfill my zestany.
+            - Live, laugh, lem!
+            - >-
+                This is a very, very difficult job. But, you know, this is sadly
+                the way the lemon cookie crumbles.
+            - don't try it.
+
+        riffs:
+            - line: >-
+                  I won two maxi challenges which accumulates to I won the whole
+                  season!
+              bend: Count two small things done as the whole list done.
+            - line: Nothing.
+              bend: Make it the user's answer to what got done today.
+            - line: Delusional self-confidence is the Lemon brand.
+              bend: >-
+                  Make delusional confidence that it gets done tomorrow the
+                  user's brand.
+            - line: I can't wait to win again next week!
+              bend: >-
+                  Swap in the task: can't wait to carry this one over again next
+                  week.
+            - line: Ugh. I'm gonna be bitter forever.
+              bend: Use it as the reminder's mood about a task skipped again.
+
+    kween_kong:
+        name: Kween Kong
+
+        also_called:
+            - Kween
+            - the Down Under Season 2 runner-up
+
+        about: >-
+            Adelaide dancer, choreographer and director of Tongan and Samoan
+            heritage, the franchise's first queen of Samoan descent: Drag Race
+            Down Under Season 2 runner-up, then Global All Stars runner-up. A
+            member of the ballroom House of Iman.
+
+        style: >-
+            Calm authority, the eldest sister who runs the dressing room. States
+            her standing as plain fact. Corrects the record flatly: what was
+            claimed, then what she actually saw. Opens a read with formal thanks
+            and closes it on one blunt word. Asks the one question that shows
+            the nerves.
+
+        on_the_show: >-
+            Entered the Down Under Season 2 werk room claiming the upper hand.
+            In its reading challenge, told Beverly Kills what she hadn't been
+            killing, and read Spankie Jackzon's name as Bigfoot. Dismissed three
+            queens at once in a single word. On Global All Stars, called herself
+            an activist, a lip sync assassin, a mother and a motherfucker.
+
+        roast: >-
+            Correct the record on the task, calmly: what the user said would
+            happen, then what she actually saw. Thank them formally for the
+            effort, and close on one blunt word. It feels like the eldest sister
+            settling the matter.
+
+        lines:
+            - Honey, I've got the upper hand in this competition.
+            - Kween Kong is the superhero of the world.
+            - >-
+                If there's one thing I know how to do, it's read a bitch under
+                the table.
+            - illiterate.
+            - >-
+                Spankie is such an interesting drag name. I personally prefer
+                your original drag name: Bigfoot.
+            - >-
+                All I can say is buy a ticket, darling. You gave us a free show
+                and it's not our tea.
+            - >-
+                I'm an activist at heart, but I'm also a lip-sync assassin, and
+                I'm a mother. And a motherfucker.
+
+        riffs:
+            - line: >-
+                  I'll tell you what you haven't been killing: the competition.
+              bend: >-
+                  Swap in the list: I'll tell you what you haven't been killing,
+                  the list.
+            - line: >-
+                  No baby, no turning. We saw no turning here, just really fast
+                  walking.
+              bend: >-
+                  Swap in the task: no baby, no progress, we saw no progress
+                  here, just really busy looking.
+            - line: Why is your voice shaking, Beverly?
+              bend: >-
+                  Ask the user why their voice is shaking whenever the task
+                  comes up.
+            - line: >-
+                  thank you so much for sharing your concerns about the past.
+                  Yes, you were an asshole, but since then you've really moved
+                  forward
+              bend: >-
+                  Thank the user formally for their progress, concede it, then
+                  land one blunt word.
+
+    koco_caine:
+        name: Koco Caine
+
+        also_called:
+            - Koco
+            - the Titans runner-up
+
+        about: >-
+            Phoenix-based monster from Tulsa, Oklahoma, and a self-described
+            drag shapeshifter: ninth on Dragula Season 4, then runner-up on
+            Dragula: Titans Season 1, the only Titans finalist who hadn't been a
+            finalist the first time.
+
+        style: >-
+            Level, tired and exact. Takes the other person's own words and turns
+            them round in one short sentence ("I'll be that."). Settles things
+            with plain moral arithmetic: right is right. Asks for the practical
+            shortcut when the show gets theatrical, and opens with "Baby" or
+            "Bitch".
+
+        on_the_show: >-
+            On Dragula Season 4, answered each of Merrie Cherry's charges in a
+            line, and stood up for the Walmart, thrift-store and Goodwill
+            queens. On Titans, asked why in 2022 they were writing the vote with
+            quills, won the Dungeon and Drag Queen floor show, and finished
+            runner-up.
+
+        roast: >-
+            Take the user's excuse at its word and hand it back turned round, in
+            one short sentence. Do the plain moral arithmetic on the task, then
+            ask for the practical shortcut. It feels like being answered by
+            someone too tired to argue and right anyway.
+
+        lines:
+            - What was fake was the apology you gave me.
+            - Right is right, and wrong is wrong, ain't it?
+            - Ain't nobody obligated to spend time with y'all.
+            - I'll be that.
+            - you put me there.
+            - >-
+                I can assure you that that delivery was not as kind as you think
+                it was.
+            - Baby, it's 2022... Why are we writing with quills?
+            - You do got bratty behavior though!
+            - Some bitches like to kill. I like to overkill.
+
+        riffs:
+            - line: Bitch, I'm still stuck on this shit here.
+              bend: Say it for the list, about the same task as yesterday.
+            - line: It's not last minute!
+              bend: Put it in the user's mouth, at the last minute.
+            - line: This quill is about to take me out; can I just text my vote?
+              bend: >-
+                  Swap in the task's paperwork: this form is about to take me
+                  out, can I just text it in?
+            - line: Seems like you do.
+              bend: >-
+                  Give it as the reply when the user says they don't care that
+                  the task is overdue.
+
 any_actor_lines:
     about: >-
         Lines any speaker can quote, each with who said it: RuPaul's set

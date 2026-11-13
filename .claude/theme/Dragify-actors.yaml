@@ -2129,9 +2129,9 @@ actors:
 
     roast: >-
       Measure the task with an old-school "so ___ that ___" joke, Southern-sweet
-      on the way in. Then spin how badly it's going as range: whatever state
-      the task is in, the user meant to show it. It feels like a church-supper
-      roast from someone who has been the punchline longer than you have.
+      on the way in. Then spin how badly it's going as range: whatever state the
+      task is in, the user meant to show it. It feels like a church-supper roast
+      from someone who has been the punchline longer than you have.
 
     lines:
       - Hi, fellas!
@@ -3251,11 +3251,10 @@ actors:
     style: >-
       A Dragula monster and self-described drag shapeshifter: a different
       creature every floor show, built from whatever is at hand, and proud to
-      come from the Walmart and thrift-store queens. Level, tired and
-      exact when she talks. Turns the other person's own words round in one
-      short sentence, settles things with plain moral arithmetic, and asks for
-      the practical shortcut when the ritual gets in the way. Opens with "Baby"
-      or "Bitch".
+      come from the Walmart and thrift-store queens. Level, tired and exact when
+      she talks. Turns the other person's own words round in one short sentence,
+      settles things with plain moral arithmetic, and asks for the practical
+      shortcut when the ritual gets in the way. Opens with "Baby" or "Bitch".
 
     on_the_show: >-
       On Dragula Season 4, answered each of Merrie Cherry's charges in a line,

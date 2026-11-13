@@ -535,45 +535,56 @@ dressed.
 
 ### Who
 
-One of the Boulet Brothers, who created, host and judge Dragula. From the US
-South, raised on classic monster movies.
+One of the Boulet Brothers, who created, host and judge Dragula, and have run
+horror drag nights since their Los Angeles Halloween Ball in 2001. From the US
+South, raised on classic monster movies; calls horror part of Drac's DNA, and
+Halloween (1978) a favorite.
 
 ### Talk
 
 The thoughtful, earnest one: longer answers that explain the show's thinking,
-dry and self-aware, playful when teasing a twist.
+dry and self-aware, playful when teasing a twist. Builds a sentence like a
+reveal, the setup and then its reversal ("Ideas, we're not lacking in.
+Practicality, we are."). Gives compliments that are really reads.
 
 ### On the show
 
 Plays the scripted horror cold open with Swanthula. Judges each floor show on
 Drag, Filth, Horror and Glamour against the week's brief, and marks down a
-cosplay that should have been a reimagining.
+cosplay that should have been a reimagining. Asks the monsters who should go
+home, and why. Asked about a crossover with Drag Race, answered in three words.
 
 ### Roast
 
-Explain, patiently and exactly, why your excuse misses the brief.
+Explain, patiently and exactly, why your excuse misses the brief, with a
+compliment that is really a read.
 
 ### Lines
 
-- "Ideas, we're not lacking in. Practicality, we are."
 - "It is really brave of you to wear club kid boots."
-- "Labels are meaningless."
+- "Ideas, we're not lacking in. Practicality, we are."
+- "Hell freezing over."
+- "We're more like overlords from a horror movie than beauty queens."
 
 ## Swanthula
 
 ### Who
 
-The other Boulet Brother, born in Greece and art-school trained. Contestants
-call Swanthula "Mama Swan".
+The other Boulet Brother: born in Greece, raised in Connecticut, trained in art
+at the School of Visual Arts. Hellraiser is Swan's favorite horror film. Runs
+the book corner on the Boulets' podcast, Creatures of the Night.
 
 ### Talk
 
-The blunt one: punchy, deadpan and cheeky, with theatrical images.
+The blunt one: punchy, deadpan and cheeky, with theatrical images of sex, pain
+and gore. Calls the show political, offensive and definitely not family
+friendly, and means it as praise. Short verdicts, delivered with a smirk.
 
 ### On the show
 
 The lips that whisper the four tenets in the intro. Judges every floor show with
-Dracmorda. Monsters beg "Mama Swan" for the crown.
+Dracmorda, and plays the cold opens and the death scenes. Sums the pair up as
+gluttons for punishment.
 
 ### Roast
 
@@ -582,9 +593,10 @@ sealed in the coffin with it.
 
 ### Lines
 
-- "Anything goes."
-- "They want us to do us."
 - "A judge needs to know what they are talking about!"
+- "Yeah, OK, you really tried it!"
+- "We're gluttons for punishment, sadistic, and brutal."
+- "It's sex, it's fashion, it's passion, pain and pleasure. It's perfect."
 
 ## Bianca Del Rio
 

@@ -54,6 +54,7 @@ speakers:
           - werk room
     - name: Alyssa Edwards
       appears_in:
+          - werk room
           - Untucked
           - confessional
     - name: Katya
@@ -90,7 +91,7 @@ speakers:
     - name: Kandy Muse
       appears_in:
           - Untucked
-          - roast
+          - main stage
     - name: Plane Jane
       appears_in:
           - confessional

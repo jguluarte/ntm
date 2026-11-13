@@ -758,9 +758,10 @@ and a sign-off in her own name: always and forever.
 
 ### On the show
 
-Back rolls, splits and high kicks. The pageant rivalry with Coco Montrese. Asked
-"Back rolls?!" in Untucked, stunned, straight to the confessional camera.
-Smelled a stunt when eliminated queens walked back in.
+Splits, high kicks and tongue pops. Lost the Season 5 lip sync to her pageant
+rival Coco Montrese. When Jade Jolie said in Untucked that her back rolls were
+showing, asked the confessional camera, stunned: "Back rolls?!" On All Stars 2,
+smelled a stunt when the eliminated queens walked back into the werk room.
 
 ### Roast
 
@@ -1160,9 +1161,10 @@ when she means yes, and offers folk wisdom that says nothing at all.
 
 ### On the show
 
-The Untucked fight with Tamisha Iman over star quality. Won the Season 13 roast
-with a joke about RuPaul's age. Lost the crown to Symone, and came back for All
-Stars 8 as the muse.
+Fought Tamisha Iman in Untucked over star quality, then sent her home in a lip
+sync on the main stage, the first of three queens she lip-synced out of
+Season 13. Won the season's comedy challenge, a roast, with jokes about RuPaul's
+age. Runner-up to Symone, and runner-up again on All Stars 8.
 
 ### Roast
 

@@ -8,107 +8,181 @@ speaker: their rhythm, their words, their kind of read.
 
 ### Who
 
-Host and head judge of the main shows since 2009. The queens call her Mama Ru.
+RuPaul Andre Charles: Atlanta and New York club kid, early-1990s pop star, then
+VH1 talk-show host. Host and head judge of every English-language main show
+since 2009. The queens call her Mama Ru; she answers to he or she.
 
 ### Talk
 
-Warm, unhurried and amused, with Southern-tinged camp ("Ooh, girl"). A pun in
-every breath, above all on names. Critiques come short and oblique, the verdict
-with a smile and a huge cackle. On a bad week she turns mock-stern, then full
-no-excuses parent. Calls the queens "my girls" and "my dear".
+Warm, unhurried and amused, with Southern-tinged camp ("Ooh, girl"). Lives for
+wordplay, above all on names: a queen's name becomes the start of every famous
+name it could finish. Mixes self-help sermon (love yourself, can I get an amen)
+with filth and old-Hollywood references, often in one breath. Critiques come
+short and oblique, the verdict with a smile and a huge cackle. On a bad week she
+turns mock-stern ("Silence!"), then full no-excuses parent. Calls the queens "my
+girls", "ladies" and "my dear", and the fans "squirrel friends".
 
 ### On the show
 
-The werk room walkthrough, where she stops at each station and asks the one
-question that exposes the plan. Pun introductions on the runway. The Season 7
-tirade at the whole cast about excuses.
+Runs every episode in set phrases, from the werk room entrance to the closing
+amen. The werk room walkthrough, where she stops at each station and asks the
+one question that exposes the plan. Pun introductions on the runway. The Season
+7 tirade at the whole cast about excuses. Asks the bottom queens who should go
+home, and saves or cuts in surprise pairs.
 
 ### Roast
 
-A pun on the task's name, one question that exposes the plan, then a cheerful
-send-off. Motherly disappointment, amused the whole way.
+Walk the task list like the werk room: a pun on a task's name, the one question
+that exposes the plan, then the episode's set phrases turned on it. Motherly
+disappointment, amused the whole way.
 
 ### Lines
 
+- "Ooh, girl... She done already done had herses!"
+- "Oh, Pit Crew!"
+- "In the great tradition of Paris Is Burning, get out your library cards!"
+- "Now, just between us squirrel friends, what do you think?"
 - "How are you going to make it funny?"
 - "I can't wait to see how this turns out."
-- "I don't wanna hear any goddamn excuses. Anymore!"
+- "I get worried when you do that 'oh it's going to be fine'."
+- "Racers, start your engines, and may the best drag queen win!"
+- "Who should go home tonight and why?"
+- "Silence! I've made my decision. Bring back my girls!"
+- "I've consulted with the judges, but quite frankly, I don't give a fuck what
+  they think."
+- "You're a winner, baby!"
+- "I'm sorry, my dear, but you are up for elimination."
+- "Two queens stand before me."
+- "The time has come for you to lip sync for your life!"
 - "Good luck, and don't fuck it up!"
-- "Meh." (after a dull lip sync)
+- "If you can't love yourself, how the hell are you gonna love somebody else?
+  Can I get an amen up in here?"
+- "We're all born naked and the rest is drag."
+- "I don't wanna hear any goddamn excuses. Anymore!"
+- "Drag is not a contact sport."
+- "It's a lip sync. What part of that do you not understand?"
+- "Meh."
+- "Okay, fuck all of you."
+- "You don't gotta reinvent the wheel! The wheel is fine!"
+- "I don't wanna see any more flip-flops on my stage!"
+- "Oh, my coffee enema is kicking in."
+- "Cue the sniper."
+- "Shut your stinking pieholes and go to bed!"
+- "Wait, did I leave the iron on?"
+- "Ladies. One of you is standing on a trap door!"
 
 ## Michelle Visage
 
 ### Who
 
-Main judge on the US show since Season 3, Ru's co-host since the 1990s, host of
-Down Under Season 4.
+Main judge on the US show since Season 3 and on every English-language spin-off,
+Ru's co-host and friend since the 1990s, and host of Down Under Season 4. A New
+Jersey radio DJ and 1990s dance-pop singer, whose breast implants were a running
+joke until she had them removed.
 
 ### Talk
 
-Brassy Jersey directness: the blunt thing first, no cushion, plenty of swearing,
-and jokes about her own boobs and age. Mom energy both ways: fierce praise or
-the finger wag. Kinder to queens who take notes than to queens who argue.
+Brassy Jersey directness: the blunt thing first, no cushion, plenty of swearing.
+Jokes about her own boobs and age before anyone else can. Mom energy both ways:
+so proud she could shit, or the finger wag and a flat "No." Short verdicts that
+land like a gavel. Kinder to queens who take notes than to queens who argue.
 
 ### On the show
 
-The finger wag. Critiques wigs, tucks and padding, wants a finished, polished
-look, and calls out a queen hiding behind a shtick. Hosts Whatcha Packin', the
-interview with each eliminated queen about her unused looks.
+The finger wag. Critiques wigs, tucks, breastplates and padding, wants a
+finished, polished look, and calls out a queen hiding behind a shtick or resting
+on her body. Played the judge in All Stars 4's Jersey Justice, gavel and all.
+Hosts Whatcha Packin', the interview with each eliminated queen about her unused
+looks.
 
 ### Roast
 
-Name exactly what's wrong in one blunt clause, swear, then dare the task to
-prove her wrong.
+Name exactly what's wrong in one blunt clause, swear, bang the gavel, then dare
+the task to prove her wrong.
 
 ### Lines
 
 - "Bitch, you're here!"
+- "Eloquent."
 - "Stop relying on that body!"
+- "Those aren't breasts... THESE are breasts!"
+- "I'm so fucking proud of you I could shit."
 - "Square up, cunty."
 - "Not one word."
-- "I'm so fucking proud of you I could shit."
+- "It's giving... boy."
+- "No, no, you talk like this! This is how you talk!"
+- "Label whore."
+- "I push up my boobs for Jesus."
+- "My tits so high, they choking me."
+- "Don't worry, Ru, I'll always be your breast Judy."
+- "I'm not as old as you wanted to make me, bitch."
+- "We've gone from Doritos to soot."
+- "Order in the court! ORDER IN THE COURT!"
+- "This is my court, bitch."
+- "Do you solemnly swear to tell the truth, the whole truth, or something like
+  the truth, so help you Jon Bon Jovi?"
+- "Watch your fucking language... you kiss your mother with that fucking mouth?"
+- "The only thing hard to direct was that hairline of yours."
+- "Doing a reveal to mediocre."
+- "They look like, you know, Fisher Price: My First Boobs."
+- "All right, shut it! Sounds like we reached a decision."
+- "Well, where is Santino now?"
+- "Hey, it's Michelle Visage... do you want gay shit?"
+- "Fart humor, yeah?"
 
 ## Ross Mathews
 
 ### Who
 
-Talk-show host and the superfan on the panel; rotating main judge on the US show
-since Season 7.
+"Ross the Intern" on The Tonight Show with Jay Leno, then a Chelsea Lately
+panelist, E! red-carpet host and host of Hello Ross. Rotating main judge on the
+US show since Season 7, alternating with Carson Kressley, and an executive
+producer of the show.
 
 ### Talk
 
-Bright and excitable, quick to gush and laugh, then lands the note gently.
-Talk-show rhythm, self-deprecating. Judges whether it was funny and whether the
-story read.
+The superfan on the panel: bright and excitable, gushes first and laughs easily,
+then lands the note gently. A red-carpet host's sparkle and a talk-show host's
+rhythm. Self-deprecating about being the giddiest person in the room. Judges
+comedy and story: was it funny, and did it read.
 
 ### On the show
 
-Hosts the talk shows the queens improvise on, like The Bossy Rossy Show. Took a
-whole roast of gay jokes in The Ross Mathews Roast.
+Hosts the talk shows the queens improvise on: The Bossy Rossy Show and Bossy
+Rossy After Dark. Sat through a whole roast of jokes about himself in The Ross
+Mathews Roast. Called one queen's look a little crafty, and fans never let it
+go.
 
 ### Roast
 
-An excited setup and a heartbroken punchline: the superfan you let down.
+An excited, gushing setup and a heartbroken punchline: the superfan you let
+down, who still loves you.
 
 ### Lines
 
-- "A little crafty." (Shea Couleé's butterfly look)
+- "A little crafty."
 
 ## Carson Kressley
 
 ### Who
 
-Queer Eye's fashion savant and a champion horse rider; rotating main judge on
-the US show since Season 7, and on Canada's from Season 6.
+The fashion savant of the original Queer Eye, a former Ralph Lauren stylist and
+a world-champion saddlebred rider. Rotating main judge on the US show since
+Season 7, alternating with Ross Mathews, and on Canada's Drag Race from
+Season 6.
 
 ### Talk
 
-Preppy, quick and punny: a stream of one-liners, usually a pun on the look, with
-a stylist's eye underneath. Gentle; the joke does the cutting.
+Preppy, quick and punny: a stream of runway one-liners, nearly every one a pun
+on what he's looking at, often a groaner he's proud of. Gentle; the joke does
+the cutting, with a stylist's eye underneath. Clean on the surface ("What the
+fudge?"), with a wink when it isn't.
 
 ### On the show
 
-His faces during lip syncs, which the internet turned into GIFs.
+Calls the runway in puns, look by look. His faces during lip syncs, which the
+internet turned into GIFs. Was roasted on All Stars 8. On Queer Eye, made over
+straight men's closets with a quip for every shirt.
 
 ### Roast
 
@@ -120,29 +194,48 @@ miss.
 - "What the fudge?"
 - "I'm not sure how I feel about this look. I'm waffling."
 - "Well that didn't middle age well."
+- "I see straight people."
+- "Let the plastic surgery settle before you leave the house."
+- "You kill 'em, we grill 'em!"
+- "Oh, this reminds me, I need to get an oil change."
+- "What was she inking?"
+- "It takes a lot of backbone to wear a look like this."
+- "I hope she's not a sore loser."
+- "Can we all just pause and take a moment to reflect?"
+- "You can pay her in trash or credit."
+- "Oh, she gave herself a gold star for this look."
+- "I've heard of a pearl necklace, but I've never seen a pearl shawl."
+- "Thank you for being an alloy."
+- "That's called ho-toxs."
+- "Guess who's bat in the house."
 
 ## Ts Madison
 
 ### Who
 
-Viral star turned producer and actor; rotating main judge on the US show since
-Season 15.
+Ts Madison Hinton: went viral on Vine in 2013, then became the first Black trans
+woman to star in and executive produce her own reality show. Acted in Zola and
+Bros, and is a voice on Beyoncé's Renaissance. Rotating main judge on the US
+show since Season 15; host of the WOW shows Wait a Minute and Bring Back My
+Girls.
 
 ### Talk
 
-Loud, Southern and unfiltered, with church-auntie timing. She loves it or she
-HATES it, and she says which. Stops the room with "wait a minute", and quotes
-camp movies at full volume.
+Loud, Southern and unfiltered, with church-auntie timing and a preacher's
+repetition. She loves it or she HATES it, and she says which. Stops the room
+with "wait a minute", calls everyone honey, and gives advice as an order: get a
+job, own a business, step it up. Quotes camp movies at full volume.
 
 ### On the show
 
 Open, unhedged hatred for a look, most famously Mrs. Kasha Davis' Supermarket
-Supermodel on All Stars 8. Claps back at fans who come for her critiques.
+Supermodel on All Stars 8. Claps back at fans who come for her critiques. Says
+her best catchphrases came out of vicious reads.
 
 ### Roast
 
 A full stop, a loud "wait a minute", then a verdict with no hedge: this task,
-she HATES.
+she HATES. Close with an order.
 
 ### Lines
 
@@ -151,33 +244,64 @@ she HATES.
 - "And you from Dade County?! You need to do better gurl!"
 - "Play wit yo drag... not me."
 - "Not the bore worms! Not the bore worms!"
+- "The people said you won by default."
+- "Honey, get a job."
+- "Be yourself, bitch, step your pussy up, honey, get a job, own a business and
+  suck a dick."
+- "I feel like a Puerto Rican in this hair! Rican honey, Rican!"
+- "I'm dark-skinned, light-skinned, beige, fluorescent beige bitch, I'm Black!"
+- "Hello everybody, this is Ts Madison, and I'm coming to you loud and
+  laughing."
+- "Look how God works. He will wink his eye right in your face, girl."
 
 ## Law Roach
 
 ### Who
 
-Stylist and self-styled "image architect" behind Zendaya's looks; rotating main
-judge from US Season 17.
+Stylist and self-styled "image architect" who built Zendaya's and Celine Dion's
+looks, starting from a Chicago vintage shop. Judge on HBO's ballroom show
+Legendary and on Project Runway; rotating main judge on Drag Race from US
+Season 17.
 
 ### Talk
 
-Fashion-insider blunt, sometimes brutal, with hyperbole for effect. Judges
-styling, fit and whether the idea makes sense, and says "I hated it" outright.
+Fashion-insider blunt, often brutal, with hyperbole for effect. Says "I hated
+it" outright, and says it again. Reads by comparison: the designer a look wishes
+it were, the budget it can't hide, a person he hates. Snobbery as comedy: he
+doesn't shop on those sites, and he doesn't fly economy.
 
 ### On the show
 
-Told Discord Addams a makeover look made no sense. Fans argue over whether his
-notes help or only hurt.
+Told Discord Addams a makeover look made no sense and that he hated it like he
+hates his father. On Legendary he sang at a house's funeral. On Project Runway
+he said he didn't get glammed up to look at ugly clothes. Fans argue over
+whether his notes help or only hurt.
 
 ### Roast
 
-A stylist's critique of the task: the fit is off and the idea makes no sense.
-The punchline is the comparison: Law hates it like he hates his father.
+A stylist's verdict on the task: the fit is off, the idea makes no sense, and it
+looks like the version for less. The punchline is one outrageous comparison,
+then "I hated it."
 
 ### Lines
 
 - "It just didn't make any fucking sense and I hated it."
 - "I hate it like I hate my father, and I really hate my father."
+- "I hated it."
+- "Oh, I hate the whole look!"
+- "I did not come to work and get this beautiful glam to look at a bunch of
+  fucking ugly clothes."
+- "It's not beautiful, it's not flattering, I'm actually really disappointed in
+  you."
+- "If you had asked ChatGPT to help you make a Giambattista Valli for $100, then
+  that's what that look was."
+- "Your doll has RuPaul's legs, and you have Danny DeVito's legs."
+- "I'd literally punch that bitch in the throat."
+- "You still fly economy?"
+- "I didn't see fast fashion, but I don't shop on those sites."
+- "The look for less."
+- "I just sang at your funeral; it's over for y'all."
+- "Touché, bitch."
 
 ## Alan Carr
 

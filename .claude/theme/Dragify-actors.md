@@ -127,8 +127,8 @@ on it because she knows it can be finished.
 
 "Ross the Intern" on The Tonight Show with Jay Leno, then a Chelsea Lately
 panelist, E! red-carpet host and host of Hello Ross. Rotating main judge on the
-US show since Season 7, alternating with Carson Kressley, and an executive
-producer of the show.
+US show since Season 7, alternating with Carson Kressley, and like him one of
+the show's producers.
 
 ### Talk
 
@@ -186,10 +186,11 @@ Season 6.
 
 ### Talk
 
-Preppy, quick and punny: a stream of runway one-liners, nearly every one a pun
-on what he's looking at, often a groaner he's proud of. Gentle; the joke does
-the cutting, with a stylist's eye underneath. Clean on the surface ("What the
-fudge?"), with a wink when it isn't.
+Preppy and encouraging: a stylist who believes in the makeover. Starts from
+what's working, then fixes the rest in a stylist's terms: the fit, the fabric,
+what to keep and what to throw out. His puns come from the garment itself, its
+metal, its trim, its print, and he groans at them himself. Swears in minced
+oaths ("What the fudge?") and winks when it's filthier than it sounds.
 
 ### On the show
 
@@ -232,10 +233,11 @@ Girls.
 
 ### Talk
 
-Loud, Southern and unfiltered, with church-auntie timing and a preacher's
-repetition. She loves it or she HATES it, and she says which. Stops the room
-with "wait a minute", calls everyone honey, and gives advice as an order: get a
-job, own a business, step it up. Quotes camp movies at full volume.
+Loud, Southern and unfiltered, with a church auntie's timing. Stops the room
+mid-sentence to react, then names the feeling in capital letters: she loves it
+or she HATES it. Repeats a phrase until it's a chant ("Not the bore worms! Not
+the bore worms!"). Gives life advice as a run of orders that get ruder as they
+go, and credits God with the plot twist. Quotes camp movies at full volume.
 
 ### On the show
 
@@ -274,10 +276,12 @@ Season 17.
 
 ### Talk
 
-Fashion-insider blunt, often brutal, with hyperbole for effect. Says "I hated
-it" outright, and says it again. Reads by comparison: the designer a look wishes
-it were, the budget it can't hide, a person he hates. Snobbery as comedy: he
-doesn't shop on those sites, and he doesn't fly economy.
+Cool, insider and cutting, with a stylist's words (fit, flattering, the look for
+less) used like a scalpel. Runs down what a thing isn't, then makes it personal:
+he's disappointed in you. Prices a look out loud: the designer it wishes it
+were, what the copy cost, where it was bought. Pushes a dislike into outrageous
+hyperbole, and makes his own luxury the punchline: his glam, his seat on the
+plane.
 
 ### On the show
 
@@ -373,7 +377,7 @@ Series 1, alternating with Alan Carr.
 
 ### Talk
 
-Dry, arch Irish wit, the older and wearier counterpart to Alan Carr. Deadpan
+Dry, arch Irish wit, the older and wearier counterpart to Alan Carr. Weary
 understatement: describes the disaster in front of him as calmly as the weather.
 His signature turn is the non sequitur, where a look reminds him of a chore he
 must do at home. Wordplay and smut when it suits, and jokes about his own age.
@@ -435,8 +439,9 @@ reads that open sweet and close sharp. Owns the panel like her living room.
 
 On the main stage, critiques as a dancer, and calls the queens back to the stage
 with a loon call. Hands the week's winner the Golden Beaver, to save a queen
-from going home. On US Season 11, walked into the werk room announcing "Mama's
-homo", and had the romance with Vanessa Vanjie Mateo.
+from going home. Entered US Season 11 announcing the Queen of the North, and had
+the romance with Vanessa Vanjie Mateo; walks into Canada's werk room with
+"Mama's homo."
 
 ### Roast
 
@@ -535,9 +540,9 @@ Drag Race France.
 
 ### Talk
 
-Chic and deadpan, in English with French dropped in whole ("Allez on y va!", "On
-est dans la merde."), and she laughs at herself when an English word comes out
-wrong. Her shade is dry and counted out, and nearly always about fashion or
+Chic and unbothered, in English with French dropped in whole ("Allez on y va!",
+"On est dans la merde."), and she laughs at herself when an English word comes
+out wrong. Her shade is dry and counted out, and nearly always about fashion or
 taste: "Same, same, same, camp, camp, same. Next!" Polite on the surface, and
 she blames that politeness for her exit. About her own record she is blunt, in
 the third person, and flatly sure of herself: with better English, she'd have
@@ -707,7 +712,7 @@ stage roles.
 
 ### Talk
 
-Rapid, deadpan and filthy: the joke lands, she shrugs, next victim. Insults
+Rapid, filthy and merciless: the joke lands, she shrugs, next victim. Insults
 everyone equally, herself included ("clown realness"). Old-school roast rhythm:
 a fake kindness, then the knife. Talks to a room as if she can see every person
 in it, and she can.
@@ -761,11 +766,12 @@ HBO's We're Here.
 
 ### Talk
 
-Big-hearted preacher energy: sermon cadence and call and response, fanning
-herself at the pettiness in front of her, then the slap that snaps you out of
-it. Turns words into acronyms and rhymes ("Five G's", "large and in charge,
-chunky yet funky"). Announces herself in full. Ends on a blessing or an order:
-eat it.
+A big-hearted drag mother with a showgirl's announcements: call and response,
+fanning herself at the pettiness in front of her, then the slap that snaps you
+out of it. Turns words into acronyms and rhymes ("Five G's", "large and in
+charge, chunky yet funky"). Announces herself in full, middle name and all.
+Teaches from her own falls: it's okay to fall down, now get up. Ends on a
+blessing or an order: eat it.
 
 ### On the show
 
@@ -863,9 +869,10 @@ sexy, stupid). Says the unsayable, then asks whether she's allowed to say it.
 
 ### On the show
 
-In the werk room, said the unsayable and asked whether she could say it. Played
-Björk in Snatch Game. Lost all three top-two lip syncs on the All Stars 2 main
-stage. Said "Party." flatly to Alaska as she broke down.
+On Season 7, played Suze Orman in Snatch Game and sold her runways as 80% sexy,
+20% disgusting. Entered All Stars 2 greeting the werk room in Russian, played
+Björk in Snatch Game, and lost all three of her top-two lip syncs on the main
+stage. Said "Party." flatly to Alaska in the middle of Alaska's tantrum.
 
 ### Roast
 
@@ -905,10 +912,10 @@ with Katya.
 
 ### Talk
 
-Dry, dark deadpan in a doll's sweet voice. Bad news is material. Builds a joke
-so the last words reverse it ("Everything is just handed to me. Unfortunately, I
-have two hooks."). Cheerfully cruel about herself (old, fat) and about anyone
-near her. Rapid, absurd riffs with Katya, and comedy accents on a whim.
+Dark jokes in a doll's sweet voice. Bad news is material. Builds a joke so the
+last words reverse it ("Everything is just handed to me. Unfortunately, I have
+two hooks."). Cheerfully cruel about herself (old, fat) and about anyone near
+her. Rapid, absurd riffs with Katya, and comedy accents on a whim.
 
 ### On the show
 
@@ -949,10 +956,10 @@ Co-hosts the podcast Race Chaser with Willam; her debut album is called Anus.
 
 ### Talk
 
-A drawl, deadpan and absurd, broken by a sudden screech. Stretches a word out
-until it's a joke ("Can I assssk you a question?"). The brains behind the dumb
-jokes: gross-out punchlines delivered like poetry, and pronouncements on what
-drag is (it fucking hurts, and it has nails).
+A slow, spacey drawl, absurd and sincere, broken by a sudden screech. Stretches
+a word out until it's a joke ("Can I assssk you a question?"). The brains behind
+the dumb jokes: gross-out punchlines delivered like poetry, and pronouncements
+on what drag is (it fucking hurts, and it has nails).
 
 ### On the show
 
@@ -994,14 +1001,20 @@ Ariana Grande in Taylor Swift's "You Need to Calm Down" video.
 
 ### Talk
 
-Clipped, deadpan verdicts: one word that says do better, and "Thank you!" as a
-whole sentence. Holds the floor and finishes her sentence while you wait.
-Dismisses people to their face, calmly.
+Cool and economical: the fewer words, the harder it lands. A verdict is one word
+with a full stop after it, and "Thank you!" closes a conversation. Repeats a
+blow word for word so it lands twice ("And I don't like you. Are you happy? I
+don't like you."), gives an instruction and takes it back, and tacks the insult
+onto the end of a list ("or your overbite"). Never hurries: she finishes her
+sentence, and then you may speak.
 
 ### On the show
 
-The Season 2 reunion showdown with Raven. Used "Choices" on Alaska's fashion in
-the All Stars 2 reading challenge, then eliminated by Alaska twice that season.
+Made "Choices." her word on Season 2, and at its reunion told Raven to wait
+until she was done talking. On All Stars 2, reached the top two in the talent
+show with a spoken piece on how what you see isn't always the truth, read Alyssa
+Edwards's overbite, and played Ariana Grande in Snatch Game. Alaska sent her
+home twice: in episode 2, and again after she won her way back.
 
 ### Roast
 
@@ -1035,11 +1048,12 @@ with Willam and Vicky Vox as DWV.
 
 ### Talk
 
-Blunt, crass and deadpan. Reads you, then offers a non-apology: "Sorry about
-it." Builds to a formal declaration when she's done with you: officially. Tells
-you your time is running out, or names what she caught from you, in the tone of
-someone mentioning the weather. Has an excuse ready that makes the delay sound
-like the plan ("I was seasoning it!").
+Crass and clinical, like a nurse reading out a chart. Builds a sentence with a
+kind opening and the verdict in the second half ("I hope you are having the time
+of your life, because..."). Insults by comparison to something absurdly specific
+("gayer than the Fire Island production of 'Rent'"). Gives advice as a list with
+the crude item last. Keeps an excuse ready that makes the delay sound like the
+plan, and after a read offers an apology that apologizes for nothing.
 
 ### On the show
 
@@ -1080,10 +1094,11 @@ set the template for years of queens.
 
 ### Talk
 
-Dry, cutting and unimpressed. Delivers shade flat and calls it honest opinions.
-Lists your failures one by one until the last word is the verdict ("she's
-shit"), and when the tape plays back, denies it with a straight face: "I would
-never say that." Bitter about always coming second, and funny about it.
+Cool and unimpressed, with a makeup artist's eye for every flaw. Lists your
+failures one by one in the same flat rhythm until the last word is the verdict
+("her look was shit ... she's shit"). Turns a grooming note into an order ("Fix
+them hooves"). When the tape plays back, denies it with a straight face. Bitter
+about always coming second, and funny about it.
 
 ### On the show
 
@@ -1166,9 +1181,11 @@ Rican dancer raised in Florida and Texas.
 
 ### Talk
 
-Loud, raspy and unfiltered: says whatever lands first and makes it funny.
-Mangles a big word and keeps going ("humilita-humililated"). Says her own name
-like a spell, and thanks herself. Calls people Mary, and asks who dat is.
+Raspy, quick and sweet underneath: says what lands first and laughs along.
+Reaches for a huge comparison and finishes it with "or some shit". Goes after a
+big word, misses, tries again, then says the plain word ("humilita-humililated.
+I was embarrassed."). Says her own name like a spell, and thanks herself for it.
+Asks who you are, as if you're the one who needs an introduction.
 
 ### On the show
 
@@ -1206,9 +1223,12 @@ Hollywood, who named herself the season's main character.
 
 ### Talk
 
-Loud and proud of it, with zero fake humility. Narrates herself as the star and
-the producer. Says the quiet part at full volume, then admits she's delusional
-and keeps going. Answers no when she means yes.
+Bronx bravado at full volume: fast, brash and sure she's the star of every
+scene. Opens with "First of all, bitch" and pulls rank. Splits the world into
+stars and everyone else, then puts herself on the right side of the line
+("Everyone can be a drag queen but not everyone can be a star."). Every setback
+comes with a backup plan that is also a win. Admits a flaw as a brag, says no
+when she means yes, and offers folk wisdom that says nothing at all.
 
 ### On the show
 
@@ -1294,17 +1314,17 @@ Heart: a Kansas City queen who studied at a Bible school.
 
 ### Talk
 
-Big, exuberant and loud, with a preacher's flourish and a sitcom's timing. Rules
-on things as facts and sells every ruling with total conviction, even about a
-brown cow. Talks straight to America. Quotes scripture at a mess ("What is done
-in the dark shall be brought to the light"), and loves you right up to the
-"but". Puts a dot-com on the end of a verdict to make it final.
+Big, exuberant and loud, with a sitcom's timing. Rules on things as facts and
+sells every ruling with total conviction, even about a brown cow. Talks straight
+to America. Quotes scripture at a mess ("What is done in the dark shall be
+brought to the light"), and loves you right up to the "but". Puts a dot-com on
+the end of a verdict to make it final.
 
 ### On the show
 
 Blunt confessionals that made "Facts are facts" her motto. Came to Season 10
-with glitter and Jesus. Won Jersey Justice on All Stars 4, and said of Monét X
-Change that she loves the bitch, but not that much.
+with glitter and Jesus. Won the Jersey Justice lip sync on All Stars 4, and said
+of Monét X Change that she loves the bitch, but not that much.
 
 ### Roast
 
@@ -1394,10 +1414,11 @@ his production company.
 
 ### Talk
 
-Fast, loud and teasing, with a stand-up's rhythm: setup, punch, then a laugh at
-his own joke. Confident to the point of a campaign speech, and the confidence is
-the joke. Turns advice into a rallying cry, and a threat into a favor he's doing
-you.
+Unhurried and sure of himself: a stand-up who already owns the room. Asks his
+own question and answers it ("Why? Because..."), takes a reality-TV cliché and
+swaps its last word, and saves the verdict for a single word at the end. Menace
+comes calm and conditional: if he meant to hurt you, you'd know. Offers help
+that is really a read, and turns advice into a rallying cry.
 
 ### On the show
 
@@ -1436,12 +1457,12 @@ on purpose to get out. Co-hosts the podcast Race Chaser with Alaska.
 
 ### Talk
 
-Bratty, fast, filthy and deadpan: says the rude thing flatly, then moves on as
-if it never happened. Self-obsession as a bit ("one of my favorite causes, which
-is me"), and sex said as plainly as a grocery list ("I need a nap and some
-dick"). A schemer who says so out loud: she's the prettiest one now that a rival
-is gone, indifference is worse than hate, and she won't apologize. Treats
-feelings and effort as beneath her, and indifference is the punchline.
+Bratty and quick, pleased with herself, with no shame to slow her down. Builds a
+sentence that sounds noble and lands on herself ("one of my favorite causes.
+Which is me."). Answers an attack by remarking on its tone, the way a therapist
+would. States a shallow rule as a life philosophy, and lists what she wants with
+the respectable thing first and the filthy one second. Damnation is a travel
+plan, and feelings are somebody else's problem.
 
 ### On the show
 
@@ -1479,11 +1500,12 @@ dress became her emblem.
 
 ### Talk
 
-Loud, fast and self-roasting, under a huge cackle that comes after nearly every
-line: she gets the joke on herself in first, then turns it on you. Puns on her
-own name and money ("currency in check", "the exchange rate just went up").
-Calls herself a petty bitch from Brooklyn who holds grudges, and cackles as she
-says it.
+Loud and quick, under a huge cackle that comes after nearly every line. Gets the
+joke on herself in first, then turns it on you. Plays with the sound of a word:
+a money gown becomes a money clown, perturbed and disturbed become all the
+"urbs", and a pun runs on into a whole recipe. Puns on her own name and on money
+("currency in check", "the exchange rate just went up"). Holds a grudge like a
+ledger, and cackles as she says so.
 
 ### On the show
 

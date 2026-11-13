@@ -1,20 +1,20 @@
 name: Setup
 description:
-    Install the lint and test tools at devbox.json's versions, and load .env.
+  Install the lint and test tools at devbox.json's versions, and load .env.
 
 runs:
-    using: composite
-    steps:
-        - name: Install prettier and markdownlint-cli2
-          shell: bash
-          run: >
-              npm install --global $(jq -r '.packages[] |
-              select(test("^(prettier|markdownlint-cli2)@"))' devbox.json)
-        - name: Install bats
-          shell: bash
-          run: |
-              version=$(jq -r '.packages[] | select(test("^bats@"))
-                  | sub("^bats@"; "")' devbox.json)
-              git clone --quiet --depth 1 --branch "v$version" \
-                  https://github.com/bats-core/bats-core /tmp/bats-core
-              sudo /tmp/bats-core/install.sh /usr/local
+  using: composite
+  steps:
+    - name: Install prettier and markdownlint-cli2
+      shell: bash
+      run: >
+        npm install --global $(jq -r '.packages[] |
+        select(test("^(prettier|markdownlint-cli2)@"))' devbox.json)
+    - name: Install bats
+      shell: bash
+      run: |
+        version=$(jq -r '.packages[] | select(test("^bats@"))
+            | sub("^bats@"; "")' devbox.json)
+        git clone --quiet --depth 1 --branch "v$version" \
+            https://github.com/bats-core/bats-core /tmp/bats-core
+        sudo /tmp/bats-core/install.sh /usr/local

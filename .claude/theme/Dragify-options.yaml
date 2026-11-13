@@ -51,12 +51,12 @@ speakers:
   - name: Dracmorda
     appears_in:
       - cold open
-      - floor show
+      - main stage
 
   - name: Swanthula
     appears_in:
       - intro
-      - floor show
+      - main stage
 
   - name: Bianca Del Rio
     appears_in:
@@ -201,4 +201,5 @@ speakers:
 
   - name: Koco Caine
     appears_in:
-      - floor show
+      - main stage
+      - werk room

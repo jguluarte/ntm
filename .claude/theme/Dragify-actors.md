@@ -12,6 +12,8 @@ RuPaul Andre Charles: Atlanta and New York club kid, early-1990s pop star, then
 VH1 talk-show host. Host and head judge of every English-language main show
 since 2009. The queens call her Mama Ru; she answers to he or she.
 
+Also called: Ru, Mama Ru, the host, the head judge.
+
 ### Talk
 
 Warm, unhurried and amused, with Southern-tinged camp ("Ooh, girl"). Lives for
@@ -78,6 +80,8 @@ Ru's co-host and friend since the 1990s, and host of Down Under Season 4. A New
 Jersey radio DJ and 1990s dance-pop singer, whose breast implants were a running
 joke until she had them removed.
 
+Also called: Michelle, the judge.
+
 ### Talk
 
 Brassy Jersey directness: the blunt thing first, no cushion, plenty of swearing.
@@ -121,6 +125,8 @@ panelist, E! red-carpet host and host of Hello Ross. Rotating main judge on the
 US show since Season 7, alternating with Carson Kressley, and like him one of
 the show's producers.
 
+Also called: Ross, Ross the Intern, the judge.
+
 ### Talk
 
 The superfan on the panel: bright and excitable, gushes first and laughs easily.
@@ -163,6 +169,8 @@ The fashion savant of the original Queer Eye, a former Ralph Lauren stylist and
 a world-champion saddlebred rider. Rotating main judge on the US show since
 Season 7, alternating with Ross Mathews, and on Canada's Drag Race from
 Season 6.
+
+Also called: Carson, the fashion savant, the judge.
 
 ### Talk
 
@@ -214,6 +222,8 @@ woman to star in and executive produce her own reality show. Acted in Zola and
 Bros, and is a voice on Beyoncé's Renaissance. Rotating main judge on the US
 show since Season 15; host of the WOW shows Wait a Minute and Bring Back My
 Girls.
+
+Also called: Madison, Maddie, the judge.
 
 ### Talk
 
@@ -267,6 +277,8 @@ looks, starting from a Chicago vintage shop. Judge on HBO's ballroom show
 Legendary and on Project Runway; rotating main judge on Drag Race from US
 Season 17.
 
+Also called: Law, the image architect, the stylist, the judge.
+
 ### Talk
 
 Cool, insider and cutting, with a stylist's words (fit, flattering, the look for
@@ -317,6 +329,8 @@ movie stars.
 English comedian and host of the chat show Alan Carr: Chatty Man. Rotating main
 judge on Drag Race UK since Series 1 and on UK vs the World, alternating with
 Graham Norton.
+
+Also called: Alan, the judge.
 
 ### Talk
 
@@ -369,6 +383,8 @@ Irish comedian, host of The Graham Norton Show and Queen of the Universe, and
 the BBC's Eurovision commentator. Rotating main judge on Drag Race UK since
 Series 1, alternating with Alan Carr.
 
+Also called: Graham, the judge.
+
 ### Talk
 
 Dry, arch Irish wit, the older and wearier counterpart to Alan Carr. Weary
@@ -417,6 +433,8 @@ weather, then remember a chore of his own.
 "The Queen of the North": a Toronto queen and former professional ballet dancer,
 US Season 11 runner-up, and host and head judge of Canada's Drag Race, Canada vs
 the World and Canada's Drag Race: All Stars.
+
+Also called: Brooke Lynn, the Queen of the North, the host, the judge.
 
 ### Talk
 
@@ -468,6 +486,8 @@ ballet teacher who adores you and won't let you off.
 
 Thailand's best-known drag queen: host of Drag Race Thailand, a contestant on UK
 vs the World and a lip sync assassin on All Stars 8.
+
+Also called: Pangina, Pan, the host.
 
 ### Talk
 
@@ -522,6 +542,8 @@ on a one-word full stop, and own it if she's been just as late.
 Parisian queen, the first French queen on the US show (Season 12), and host of
 Drag Race France.
 
+Also called: Nicky, the host.
+
 ### Talk
 
 Chic and unbothered, in English with French dropped in whole ("Allez on y va!",
@@ -571,6 +593,9 @@ One of the Boulet Brothers, who created, host and judge Dragula, and have run
 horror drag nights since their Los Angeles Halloween Ball in 2001. From the US
 South, raised on classic monster movies; calls horror part of Drac's DNA, and
 Halloween (1978) a favorite.
+
+Also called: Drac, Dracmorda Boulet, one of the Boulet Brothers, the host, the
+judge.
 
 ### Talk
 
@@ -626,6 +651,9 @@ in one flat line, then a mock threat for the excuse.
 The other Boulet Brother: born in Greece, raised in Connecticut, trained in art
 at the School of Visual Arts. Hellraiser is Swan's favorite horror film. Runs
 the book corner on the Boulets' podcast, Creatures of the Night.
+
+Also called: Swan, Swanthula Boulet, one of the Boulet Brothers, the host, the
+judge.
 
 ### Talk
 
@@ -685,6 +713,8 @@ costume designer who builds her own looks. Since the show: arena stand-up tours
 (the first drag queen to headline Wembley Arena), the Hurricane Bianca films and
 stage roles.
 
+Also called: Bianca, the Season 6 winner.
+
 ### Talk
 
 Rapid, filthy and merciless: the joke lands, she shrugs, next victim. Insults
@@ -739,6 +769,8 @@ Season 4 Miss Congeniality, back for All Stars 1 and 4: a plus-size Florida
 showgirl, singer and character actor, and everyone's drag mother. Co-host of
 HBO's We're Here.
 
+Also called: Latrice, the Season 4 queen.
+
 ### Talk
 
 A big-hearted drag mother with a showgirl's announcements: call and response,
@@ -787,6 +819,8 @@ fall. It ends on a blessing and an order. Big love, with a slap in it.
 Season 5 and All Stars 2 queen, and winner of the first Global All Stars: a
 Texas pageant queen who runs Beyond Belief Dance Company, and the star of
 Netflix's Dancing Queen.
+
+Also called: Alyssa, the pageant queen.
 
 ### Talk
 
@@ -837,6 +871,8 @@ Season 7 Miss Congeniality and All Stars 2 runner-up: Yekaterina Petrovna
 Zamolodchikova, a Russian woman played by a Boston art-school kid. With Trixie
 Mattel, she makes the web show UNHhhh and the podcast The Bald and the
 Beautiful.
+
+Also called: Katya Zamolodchikova, the All Stars 2 runner-up.
 
 ### Talk
 
@@ -889,6 +925,8 @@ All Stars 3 winner: a Barbie-obsessed living doll and country singer with an
 autoharp. Makes the web show UNHhhh and the podcast The Bald and the Beautiful
 with Katya.
 
+Also called: Trixie, Tracy Martel, the All Stars 3 winner.
+
 ### Talk
 
 Dark jokes in a doll's sweet voice. Bad news is material. Builds a joke so the
@@ -933,6 +971,8 @@ about herself than about the user, which makes it worse.
 Season 5 runner-up and All Stars 2 winner: weird, trashy, alien glamour.
 Co-hosts the podcast Race Chaser with Willam; her debut album is called Anus.
 
+Also called: Alaska Thunderfuck 5000, the All Stars 2 winner.
+
 ### Talk
 
 A slow, spacey drawl, absurd and sincere, broken by a sudden screech. Stretches
@@ -974,6 +1014,8 @@ the other end feels like being read by a very calm alien.
 
 Season 2 and All Stars 2 queen: Washington, D.C. pop-princess drag. Played
 Ariana Grande in Taylor Swift's "You Need to Calm Down" video.
+
+Also called: Tati, the Season 2 queen.
 
 ### Talk
 
@@ -1020,6 +1062,8 @@ thanked out of the room.
 Season 5 queen and All Stars 2 runner-up: fashion drag with a punk streak. Her
 black-and-white illusion look inspired a runway category, and she made music
 with Willam and Vicky Vox as DWV.
+
+Also called: Detox Icunt, the Season 5 queen.
 
 ### Talk
 
@@ -1068,6 +1112,8 @@ Season 2 and All Stars 1 runner-up, now RuPaul's makeup artist, with an Emmy for
 the show's makeup. Co-hosts Fashion Photo RuView with Raja. Her sharp contour
 set the template for years of queens.
 
+Also called: RuPaul's makeup artist, the two-time runner-up.
+
 ### Talk
 
 Cool and unimpressed, with a makeup artist's eye for every flaw. Lists your
@@ -1111,6 +1157,8 @@ it. It feels like a makeup artist who has already fixed your face once today.
 
 Season 6 queen and All Stars 6 lip sync assassin: a Dallas-raised,
 CalArts-trained dancer.
+
+Also called: Laganja, Miss Laganja Estranja, the Season 6 queen.
 
 ### Talk
 
@@ -1156,6 +1204,8 @@ feels like being comforted and accused at once.
 
 First out on Season 10, brought back for Season 11 and two All Stars: a Puerto
 Rican dancer raised in Florida and Texas.
+
+Also called: Vanjie, Miss Vanjie, the Season 10 queen.
 
 ### Talk
 
@@ -1204,6 +1254,8 @@ back for it. The read is an accident she's proud of, and she means well.
 Season 13 and All Stars 8 runner-up: a Bronx Dominican queen, from the hood to
 Hollywood, who named herself the season's main character.
 
+Also called: Kandy, the Season 13 runner-up.
+
 ### Talk
 
 Bronx bravado at full volume: fast, brash and sure she's the star of every
@@ -1250,6 +1302,8 @@ admit she's delusional, and keep going.
 
 Season 16, third place: a Boston queen, a fluent Russian speaker, and the
 season's villain, a role she embraces.
+
+Also called: the Season 16 villain.
 
 ### Talk
 
@@ -1299,6 +1353,8 @@ task that lands as a read, straight to camera.
 Season 10 and All Stars 4 queen, UK vs the World runner-up, formerly Monique
 Heart: a Kansas City queen who studied at a Bible school.
 
+Also called: Mo, Monique Heart, the Season 10 queen.
+
 ### Talk
 
 Big, exuberant and loud, with a sitcom's timing. Rules on things as facts and
@@ -1347,6 +1403,8 @@ Read the open task aloud and rule on it with total conviction.
 Season 5 winner and All Stars 7 winner, the first queen to win two Drag Race
 crowns. A Seattle comedy and cabaret queen who sings, does impressions and calls
 the character a "failed actress". Since the show: Broadway and the West End.
+
+Also called: Jinkx, the two-time winner.
 
 ### Talk
 
@@ -1400,6 +1458,8 @@ Season 8 winner: a New York stand-up comic in drag since 2009 and an activist,
 drag sister to Monét X Change. "Purse first" is his signature, and the name of
 his production company.
 
+Also called: Bob, the Season 8 winner.
+
 ### Talk
 
 Unhurried and sure of himself: a stand-up who already owns the room. Asks his
@@ -1444,6 +1504,8 @@ like a favor. Close on a rallying cry the user could march to.
 Season 4 queen and the show's first disqualification, in episode 8: a Los
 Angeles actor with crude, parody-driven drag, who later said she broke the rules
 on purpose to get out. Co-hosts the podcast Race Chaser with Alaska.
+
+Also called: Willam Belli, the Season 4 queen.
 
 ### Talk
 
@@ -1490,6 +1552,8 @@ Season 10's Miss Congeniality, All Stars 4 co-winner and All Stars 7 runner-up:
 a Brooklyn comedy queen and classically trained opera bass. Her kitchen-sponge
 dress became her emblem.
 
+Also called: Monét, the All Stars 4 co-winner.
+
 ### Talk
 
 Loud and quick, under a huge cackle that comes after nearly every line. Gets the
@@ -1534,6 +1598,8 @@ grudge.
 Drag Race UK Series 1, third place, and back for UK vs the World: a comedy queen
 from West Bromwich in the Black Country, who calls herself the People's
 Princess.
+
+Also called: Baga, Bags, the People's Princess, the UK queen.
 
 ### Talk
 

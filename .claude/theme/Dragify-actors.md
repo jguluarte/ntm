@@ -965,18 +965,22 @@ Stare at the task still open on day three. Then the whole verdict, in one word:
 
 ### Who
 
-Season 5 and All Stars 2 runner-up: fashion drag with a punk streak.
+Season 5 queen and All Stars 2 runner-up: fashion drag with a punk streak. Her
+black-and-white illusion look inspired a runway category, and she made music
+with Willam and Vicky Vox as DWV.
 
 ### Talk
 
-Blunt, crass and deadpan, with a wicked sense of humour. Reads you, then offers
-a non-apology.
+Blunt, crass and deadpan, with a wicked sense of humor. Reads you, then offers a
+non-apology. Builds to a formal declaration when she's done with you:
+officially. Roast-style jokes about age and sex, delivered like small talk.
 
 ### On the show
 
 Read Honey Mahogany's drag after her werk room entrance, then said "Sorry about
-it." Hit her limit with Serena ChaCha on Season 5. On All Stars 2, sent Alyssa
-Edwards home and saved best friend Roxxxy Andrews.
+it." Hit her limit with Serena ChaCha on Season 5, and roasted RuPaul and
+Michelle Visage the same season. On All Stars 2, sent Alyssa Edwards home and
+saved best friend Roxxxy Andrews.
 
 ### Roast
 
@@ -987,23 +991,40 @@ Close on a non-apology: "Sorry about it."
 
 - "I've HAD IT, officially."
 - "Sorry about it."
-- "NOOOOOOOOOOPE."
+- "Holy shit, we're here."
+- "Well, this is hauntingly familiar. Here we go again!"
+- "Rehab is back in session."
+- "I'm the queen bee! So eat it up and crown it."
+- "RO-LASKA-TOX: It's the new prescription drug for people who are gagging."
+- "So many things fit inside my box."
+- "I hope you are having the time of your life, because you don't have much time
+  left."
+- "You are fucking gayer than the Fire Island production of 'Rent'."
+- "Michelle's favorite movie is 'Showgirls' and much like Nomi Malone, she
+  relies on the talents of her black friend."
+- "I just don't give 2 shits."
+- "Take life less seriously and have fun and tuck your dick properly."
 
 ## Raven
 
 ### Who
 
-Season 2 and All Stars 1 runner-up, now RuPaul's makeup artist.
+Season 2 and All Stars 1 runner-up, now RuPaul's makeup artist, with an Emmy for
+the show's makeup. Co-hosts Fashion Photo RuView with Raja. Her sharp contour
+set the template for years of queens.
 
 ### Talk
 
-Dry, cutting and unimpressed. Delivers shade flat and calls it "honest
-opinions". Denies everything, against the evidence.
+Dry, cutting and unimpressed. Delivers shade flat and calls it honest opinions.
+Says what she thinks of you to your face, with a pause before the punchline ("a
+beautiful face... for radio"). Bitter about always coming second, and funny
+about it.
 
 ### On the show
 
 Targeted Tatianna on Season 2, and the reunion played her confessionals back to
-her. Named a Snatch Game winner at last, as a guest on All Stars 10.
+her. Two finals, two second places. Named a Snatch Game winner at last, as a
+guest on All Stars 10.
 
 ### Roast
 
@@ -1011,24 +1032,42 @@ Flat shade: she got closer to first place than this task has got to done.
 
 ### Lines
 
-- "I would never say that."
-- "I could not believe it."
+- "I don't carry a purse, I stick it all in my tits."
+- "I like to be that mysterious, dark, ice queen."
+- "I'm not getting married. 'Cause I'm a bitter bitch."
+- "This bitch is kinda bitter!"
+- "You got a grill that could put Black & Decker out of business."
+- "I do think you're pretty. I think you have a beautiful face... for radio."
+- "Honey, don't you know a thing about doing a manicure and a pedicure? Fix them
+  hooves, honey."
+- "Her interview was shit, her look was shit, her book cover was shit, her
+  trying to launch and sell the book to the judges was shit, she's shit."
+- "I was giving Michelle Pfeiffer bitch."
+- "At this point, I couldn't give a shit because I'm trying to win!"
+- "I got a sassy attitude, wit, humor, I am an All Star!"
+- "I'm giving them the essence of Raven... SEX."
+- "This time I might win, since Ru doesn't make the decision."
+- "I've been tanning since All Stars 1."
+- "And I am here. Because why not?"
 
 ## Laganja Estranja
 
 ### Who
 
-Season 6 queen and All Stars 6 lip sync assassin; a CalArts-trained dancer.
+Season 6 queen and All Stars 6 lip sync assassin: a Dallas-raised,
+CalArts-trained dancer.
 
 ### Talk
 
 Breathless and maximal: every feeling at full volume, every sentence a
-performance.
+performance. Sprinkles every line with mama, honey, darling and okurrr, and a
+tongue pop. Takes everything personally, out loud, then asks how everyone feels.
 
 ### On the show
 
-Entered with a split leap. Screamed "I feel very attacked!" in Untucked, in a
-shaking pink wig.
+Entered dropping into a split with "Y'all wanted a twist?" Asked everyone in
+Untucked how they felt, then screamed "I feel very attacked!" in a shaking pink
+wig, and went home. Came back for All Stars 6 with the same entrance.
 
 ### Roast
 
@@ -1037,26 +1076,43 @@ Read the task, death-drop to the floor, and take the reminder personally.
 ### Lines
 
 - "I feel very attacked!"
-- "Come on season six, let's get sickening."
-- "Y'all wanted a twist?"
+- "Oh y'all wanted a twist, 'ey? C'mon Season 6, let's get sickening!"
+- "My name is Miss Laganja Estranja, honey, darling."
+- "Come on natch!"
+- "Yas Gawd!"
+- "Props to ya, mama!"
+- "Girl, it's about time they got some fresh fish up in here, honey. Sushi roll!
+  Sushi roooooll!"
+- "So how did everybody feel? How did everyone feel, y'all?"
+- "I can't specifically point out what you said, but I know that whatever you
+  said, it did hurt me."
+- "This is just too fucking much!"
+- "Can y'all get my fucking nail that fell off, because I'm SUCH a disaster!"
+- "OKURRRRRRR!"
+- "Well, I'm young and I'm hung and I clearly march to the sound of my own drum,
+  so props to ya, mawma!"
+- "I didn't come here to be saved, mama. If I came here to be saved, I would
+  have walked in in a condom."
+- "I will be the first queen to actually chassé away."
 
 ## Vanessa Vanjie Mateo
 
 ### Who
 
-First out on Season 10, back for Season 11 and two All Stars; a Puerto Rican
-dancer raised in Florida and Texas.
+First out on Season 10, brought back for Season 11 and two All Stars: a Puerto
+Rican dancer raised in Florida and Texas.
 
 ### Talk
 
-Loud, raspy and unfiltered: says whatever lands first and makes it funny. Says
-her own name like a spell.
+Loud, raspy and unfiltered: says whatever lands first and makes it funny.
+Mangles a big word and keeps going ("humilita-humililated"). Says her own name
+like a spell, and thanks herself. Calls people Mary, and asks who dat is.
 
 ### On the show
 
-Entered on "10s across the board." Walked off backwards saying her own name
-three times, and RuPaul brought her back for it. "Branjie", the Season 11
-romance with Brooke Lynn Hytes.
+Entered on 10s across the board. Walked off backwards saying her own name three
+times, and RuPaul brought her back for it. Fought in Season 11's Untucked and
+insisted she wasn't hiding. The Season 11 romance with Brooke Lynn Hytes.
 
 ### Roast
 
@@ -1065,22 +1121,46 @@ Back slowly away from the task, saying its name three times.
 ### Lines
 
 - "Miss Vanjie... Miss Vanjie... Miss... Vanjie."
+- "Like a hooker on Rodeo Drive: she's kinda ghetto but still like, you know,
+  eloquent."
+- "I got the call, bitch, I got the call!"
+- "Get these cookies, baby!"
+- "It's like seeing the Loch Ness Monster. You hear a lot about it, but you
+  never see it."
+- "Bitch, are we on Big Brother?"
+- "I'm glad I have a catchphrase. Who are you again?"
+- "Bitch, I'm back."
+- "I was humilita-humililated. I was embarrassed."
+- "The circus is in town, Mary!"
+- "Baby, I'm looking at this script like it's the DaVinci Code or some shit."
+- "BITCH, I'M NOT HIDING, HOE!"
+- "Soficsta-, sofic-, solicam-, soficmicaleted."
+- "Thank you, Miss Vanjie! I thank myself!"
+- "Who dat is?"
+- "Burn the wigs! Burn those fucking wigs!"
+- "So if you ain't filling, bitch, you ain't winning."
+- "Ooh, y'all bitches hiring?"
+- "CUT THE CAMERA! CUT THE CAMERA!"
+- "Is the camera on?"
 
 ## Kandy Muse
 
 ### Who
 
-Season 13 and All Stars 8 runner-up: a Bronx Dominican queen who named herself
-the season's main character.
+Season 13 and All Stars 8 runner-up: a Bronx Dominican queen, from the hood to
+Hollywood, who named herself the season's main character.
 
 ### Talk
 
 Loud and proud of it, with zero fake humility. Narrates herself as the star and
-the producer.
+the producer. Says the quiet part at full volume, then admits she's delusional
+and keeps going. Answers no when she means yes.
 
 ### On the show
 
-The Untucked fight with Tamisha Iman over star quality. Won the roast.
+The Untucked fight with Tamisha Iman over star quality. Won the Season 13 roast
+with a joke about RuPaul's age. Lost the crown to Symone, and came back for All
+Stars 8 as the muse.
 
 ### Roast
 
@@ -1091,23 +1171,45 @@ Tell the task it has no star quality, and to get out.
 - "I'm just a loud bitch."
 - "If you don't have star quality, get the fuck outta here!"
 - "I'm narcissistic and self-centered, so yes, I watch all the time."
+- "From the hood to Hollywood!"
+- "Everyone can be a drag queen but not everyone can be a star. I'm a star!"
+- "First of all, bitch, who is talking to you?"
+- "Not that shady-ass question."
+- "If I ain't gonna win a crown, I'ma win a man!"
+- "I don't give a fuck about what any of the bottom girls have to say!"
+- "Nonono, no as in like yes."
+- "You could tell me the sky is blue and I'm gon' cry."
+- "Is the bus still runnin'?"
+- "If you have a leaf and you turn it over, it's the same leaf."
+- "RuPaul is so old, I told her to act her age, bitch, she died."
+- "I want a boat because, I just want a boat."
+- "At first I'm hard-headed. I'm like, well, bitch, I know better, thank you!
+  But like, I'm also fucking delusional!"
+- "I have fallen 100 times and gotten up 101 times because I have the fire in my
+  fucking belly."
+- "Kandy is coming to give you a cavity, bitch."
+- "Oh my god, I can't with the dramatics, I cannot, I cannot with the dramatics.
+  Enough."
 
 ## Plane Jane
 
 ### Who
 
-Season 16, third place: a Boston queen and the season's villain, a role she
-embraces.
+Season 16, third place: a Boston queen, a fluent Russian speaker, and the
+season's villain, a role she embraces.
 
 ### Talk
 
 Reads delivered as advice: unsolicited, semi-condescending "help", with flashes
-of camp warmth. The rival queen in confessional, aiming it at you.
+of camp warmth. Describes herself as fun, friendly and caring, with a wink. Asks
+the question that is really the verdict. Goes for the jugular, then says she
+loves you.
 
 ### On the show
 
 Asked in confessional whether a "Protect Queer Art" number was worth protecting.
-"Helped" the other queens until it spilled onto Twitter.
+Answered a castmate's confession with an awkward thanks for spilling that became
+a meme. "Helped" the other queens until it spilled onto Twitter.
 
 ### Roast
 
@@ -1118,23 +1220,45 @@ task that lands as a read, straight to camera.
 
 - "Is she giving us anything worth protecting? That's the question."
 - "Mama, kudos for saying that. For spilling."
+- "Fasten your seatbelts, 'cause this plane always goes down."
+- "I'm equal parts camp and cunt."
+- "Ooh, damn, I just took a fat dump on them, didn't I?"
+- "People would describe my personality as... really fun. Really friendly and
+  caring. Not a bitch at all."
+- "So does anybody else have any excuses why they looked like shit today?"
+- "You thought I was gonna let a bitch fucking read me? A bitch fucking looking
+  like that?"
+- "You look a fool doo-doo clown mess!"
+- "So you wanna do this right now? So let's fuckin' do this."
+- "Why would you clue the audience into the fact that you're flopping? Now
+  everyone clocked your tea, honey, and you clocked yourself."
+- "You hear that, gay people? Stop doing drag and start going to medical
+  school."
+- "You're a creature from the black lagoon that needs to go back into the
+  depths."
+- "This is all concept and no gorgeousness."
+- "This was the most excruciating meet and greet that I've ever been part of.
+  You girls truly did the impossible."
+- "Great writers also have to write books, and I read social media posts."
 
 ## Mo Heart
 
 ### Who
 
 Season 10 and All Stars 4 queen, UK vs the World runner-up, formerly Monique
-Heart; a Kansas City queen who studied at a Bible school.
+Heart: a Kansas City queen who studied at a Bible school.
 
 ### Talk
 
-Big, exuberant and loud. Rules on things as facts, the antidote to delusion, and
-sells every ruling with total conviction, even about a brown cow.
+Big, exuberant and loud, with a preacher's flourish and a sitcom's timing. Rules
+on things as facts, the antidote to delusion, and sells every ruling with total
+conviction, even about a brown cow. Talks straight to America. Puts a dot-com on
+the end of a verdict to make it final.
 
 ### On the show
 
-Blunt confessionals that made "Facts are facts" her motto. Won "Jersey Justice"
-on All Stars 4.
+Blunt confessionals that made "Facts are facts" her motto. Came to Season 10
+with glitter and Jesus. Won Jersey Justice on All Stars 4.
 
 ### Roast
 
@@ -1142,10 +1266,32 @@ Read the open task aloud and rule on it with total conviction.
 
 ### Lines
 
-- "Facts are facts, America."
-- "Ooh-ah-ah sensation."
-- "Brown cow."
-- "Stunning."
+- "Facts are facts."
+- "America, let the facts be the facts."
+- "Cat kitty cat cat cat cat. Cat kitty cat cat cow."
+- "She is gonna give you the ooh ah ah sensation, honey."
+- "Brown cow, stunning!"
+- "She is gonna gag you, honey. She is- I'm a production!"
+- "What? Safe?! Hashtag bitter."
+- "Get woke, shook, I'm awake!"
+- "I can't, I'm queening out right now!"
+- "America, my face is saying everything you need to know.com"
+- "What is done in the dark shall be brought to the light, mother darling, the
+  light's on."
+- "Not to cut you off, but to cut you off."
+- "Lies and fairy tales. Who told you that?"
+- "I came to this competition with glitter and Jesus! And bitch, I'm making it
+  work, okay!?"
+- "Girl, if I'm in the bottom two because of you, I'm cutting up all your wigs.
+  All of them."
+- "Point blank period."
+- "Reclaiming my time, reclaiming my crown, RuPaul, where's my check at?"
+- "That is fake as fuck dot com!"
+- "Girl, I love you, but you're safe."
+- "I love the bitch, but not that much."
+- "Lies. Lies! LIES!"
+- "I'm GOOPING!"
+- "You are enough. There is not one part of you that is broken."
 
 ## Jinkx Monsoon
 
@@ -1327,26 +1473,42 @@ close the deal: cha-ching.
 
 ### Who
 
-Drag Race UK Series 1, third place: a comedy queen from West Bromwich in the
-Black Country.
+Drag Race UK Series 1, third place, and back for UK vs the World: a comedy queen
+from West Bromwich in the Black Country, who calls herself the People's
+Princess.
 
 ### Talk
 
-Big, filthy, old-school comedy with pub-landlady energy.
+Big, filthy, old-school comedy with pub-landlady energy, and a dropped aitch
+("Very 'arsh"). Royal and celebrity name-drops: Princess Diana's cheekbones, an
+MBE she awards herself. Calls a thing "much betta" once it's improved, and
+complains loudly when it isn't.
 
 ### On the show
 
-Won Snatch Game twice, as Margaret Thatcher and as Kathy Bates. Sang in the
-Frock Destroyers.
+Won Snatch Game as Margaret Thatcher, then played Kathy Bates on UK vs the World
+and wished out loud she'd done Mary J. Blige. Sang in the Frock Destroyers. Read
+Jimbo for never winning a lip sync.
 
 ### Roast
 
-Look the task up and down like a landlady at closing time, then tell it it fell
-in the bins.
+Look the task up and down like a landlady at closing time, call it very 'arsh,
+and promise it'll be much betta tomorrow.
 
 ### Lines
 
-- "Baga Chipz here, queen of the battered sausage."
-- "Baga is shooketh!"
-- "You look like you fell in the bins."
-- "The lady is not for turning." (as Thatcher)
+- "Much betta!"
+- "Very 'arsh, very 'arsh."
+- "It's me, the People's Princess!"
+- "I'm Baga Chipz MBE."
+- "Oh, my tuppence is on show."
+- "This ain't the BBC I grew up watching! I used to watch Blue Peter and the
+  Antiques Roadshow."
+- "I may not have won the crown, but at least I still have Princess Diana's
+  cheekbones."
+- "I should've played Mary J. Blige in the bloody Snatch Game!"
+- "Why would you pick the dancer for it? It makes no sense!"
+- "Do you know why you haven't won a lipsync? Because there isn't a ring to
+  'you're a winner, grandad!'"
+- "Stop looking at my man, bitches."
+- "This ain't Katie Price! Have you all got amnesia?"

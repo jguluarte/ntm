@@ -53,7 +53,8 @@ among their scheduled tasks, knowing each by the `ntm:` skills it runs. When any
 are missing, do only those jobs: ask about them as the jobs round does for the
 features in their `%Settings`, then create them as Create the jobs says.
 Otherwise, say in a line that to change their setup, they tell ntm what to
-change, or edit their `%Settings`, and stop.
+change, or edit their `%Settings`, and after installing a new version of ntm,
+they run `/ntm:update`. Then stop.
 
 ## The steps
 
@@ -119,7 +120,8 @@ agree to use Linear for its simplicity.
 Confirm that the user is okay with establishing the `%Settings` database file
 name. Once they do, create it from its template,
 `references/databases/settings.md`, with Timezone under About you set to the
-timezone they confirmed in the intro.
+timezone they confirmed in the intro, and Last synced under ntm version set to
+ntm's version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and

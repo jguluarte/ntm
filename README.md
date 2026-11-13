@@ -57,6 +57,12 @@ Tries out everything setup built, on a throwaway task it cleans up afterwards,
 and ends with a test message, on your phone if you use Pushover. Run it when
 setup asks, once you've installed the plugin it built.
 
+### `/ntm:update`
+
+Run it after you install a new version of ntm. It tells you what's new since
+your last update, helps you set up anything the new version offers, and rebuilds
+your own plugin when the new version needs it.
+
 ### `/ntm:ready-check`
 
 Checks that ntm can reach your task list, and says how to fix it when it can't.

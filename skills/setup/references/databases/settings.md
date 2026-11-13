@@ -49,3 +49,7 @@ Claude's built-in browser
 | --------- | ------------- |
 | App token | `<app token>` |
 | User key  | `<user key>`  |
+
+## ntm version
+
+- Last synced: <ntm's version>

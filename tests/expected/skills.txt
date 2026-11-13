@@ -11,3 +11,4 @@ setup
 style
 sync-price-watch-to-amazon
 today
+update

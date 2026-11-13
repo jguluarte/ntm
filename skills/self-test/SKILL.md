@@ -123,8 +123,8 @@ behind didn't pass.
 
 Only when every step before it passed. Ask the messenger agent for a `freeform`
 message: `ntm is ready; the self-test passed`. It passes when the messenger
-returns `Sent:`, or a delivery block, which you show the user. Any other return
-fails the step.
+returns `Sent:` or a delivery block; show the user its title and message. Any
+other return fails the step.
 
 ## Result
 

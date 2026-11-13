@@ -3,8 +3,9 @@ name: style
 description: >-
     Writes a message in the user's style, from their `%Theme`, and keeps
     `%Message-history`. Loaded by the messenger agent for every message it
-    sends. In chat, writes something in the user's style when they ask, or
-    changes their theme with them ("make my reminders meaner").
+    sends. In chat, writes something in the user's style when they ask, changes
+    their theme with them ("make my reminders meaner"), and notes their word on
+    a message they got ("keep that one", "that one's stale").
 ---
 
 # ntm:style
@@ -81,3 +82,9 @@ it to them.
 
 When they ask to change how their messages read, find the part of `%Theme` they
 mean, draft the change with them, show it, and save it when they say yes.
+
+When they say a message is a keeper or has gone stale, in their own words ("keep
+that one", "loved that", "stale", "that one's old"), find its row in
+`%Message-history`: the one with the opening words of the message shown in this
+chat, or the newest row when none is shown. Write `keep` or `stale` in its
+Feedback column, save, and tell them in a line that it's noted.

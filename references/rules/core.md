@@ -118,3 +118,6 @@ A job's final reply is the line its last step returned, then anything that skill
 says to add. When a step returned a `NOTIFY VIA FINAL REPLY` block, everything
 after that block's first line, as written, takes the place of that line: the
 scheduled task's own push shows it.
+
+A reply that reports a message sent in the user's theme shows its title and
+message as sent, so the user can answer it in that chat.

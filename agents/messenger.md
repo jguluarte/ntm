@@ -150,7 +150,7 @@ else reaches the user.
 
 | Return                             | When                                                          |
 | ---------------------------------- | ------------------------------------------------------------- |
-| `Sent: <title>`                    | `ntm-user:notify` sent it                                     |
+| `Sent: <title>`, then the message  | `ntm-user:notify` sent it                                     |
 | the `NOTIFY VIA FINAL REPLY` block | `ntm-user:notify` returned it for the job to end its run with |
 | `Notify FAILED: <why>`             | `ntm-user:notify` said so                                     |
 | `<Skill> FAILED: …`                | a skill you ran said so; its line takes the place of the send |

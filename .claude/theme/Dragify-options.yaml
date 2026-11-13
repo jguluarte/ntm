@@ -1,0 +1,142 @@
+# What the job picks from for each message; it picks one speaker per message.
+speakers:
+    - name: RuPaul
+      appears_in:
+          - werk room walkthrough
+          - main stage
+      half_life_days: 2
+    - name: Michelle Visage
+      appears_in:
+          - main stage
+          - Whatcha Packin'
+      half_life_days: 2
+    - name: Ross Mathews
+      appears_in:
+          - main stage
+      half_life_days: 4
+    - name: Carson Kressley
+      appears_in:
+          - main stage
+      half_life_days: 2
+    - name: Ts Madison
+      appears_in:
+          - main stage
+      half_life_days: 2
+    - name: Law Roach
+      appears_in:
+          - main stage
+      half_life_days: 4
+    - name: Alan Carr
+      appears_in:
+          - main stage
+      half_life_days: 4
+    - name: Graham Norton
+      appears_in:
+          - main stage
+      half_life_days: 4
+    - name: Brooke Lynn Hytes
+      appears_in:
+          - werk room
+          - main stage
+      half_life_days: 7
+    - name: Pangina Heals
+      appears_in:
+          - main stage
+      half_life_days: 7
+    - name: Fred van Leer
+      appears_in:
+          - main stage
+      half_life_days: 7
+    - name: Paolo Ballesteros
+      appears_in:
+          - werk room
+          - main stage
+      half_life_days: 7
+    - name: Nicky Doll
+      appears_in:
+          - main stage
+      half_life_days: 7
+    - name: Grag Queen
+      appears_in:
+          - main stage
+      half_life_days: 7
+    - name: Dracmorda
+      appears_in:
+          - cold open
+          - floor show judging
+      half_life_days: 4
+    - name: Swanthula
+      appears_in:
+          - intro
+          - floor show judging
+      half_life_days: 4
+    - name: Bianca Del Rio
+      appears_in:
+          - werk room
+          - confessional
+      half_life_days: 2
+    - name: Latrice Royale
+      appears_in:
+          - werk room
+      half_life_days: 2
+    - name: Alyssa Edwards
+      appears_in:
+          - Untucked
+          - confessional
+      half_life_days: 2
+    - name: Katya
+      appears_in:
+          - werk room
+          - main stage
+      half_life_days: 2
+    - name: Trixie Mattel
+      appears_in:
+          - main stage
+          - goodbye mirror
+      half_life_days: 2
+    - name: Alaska
+      appears_in:
+          - werk room
+          - main stage
+      half_life_days: 2
+    - name: Tatianna
+      appears_in:
+          - reading challenge
+          - reunion
+      half_life_days: 2
+    - name: Detox
+      appears_in:
+          - werk room
+      half_life_days: 2
+    - name: Raven
+      appears_in:
+          - confessional
+          - reunion
+      half_life_days: 2
+    - name: Laganja Estranja
+      appears_in:
+          - werk room
+          - Untucked
+      half_life_days: 2
+    - name: Vanessa Vanjie Mateo
+      appears_in:
+          - werk room entrance
+          - main stage
+      half_life_days: 2
+    - name: Kandy Muse
+      appears_in:
+          - Untucked
+          - roast
+      half_life_days: 2
+    - name: Plane Jane
+      appears_in:
+          - confessional
+      half_life_days: 2
+    - name: Mo Heart
+      appears_in:
+          - confessional
+      half_life_days: 2
+    - name: Baga Chipz
+      appears_in:
+          - Snatch Game
+      half_life_days: 4

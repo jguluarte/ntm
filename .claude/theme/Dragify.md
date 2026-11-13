@@ -4,8 +4,8 @@ The theme the `writer` reads to write each reminder.
 
 ## The cast
 
-The job picks one speaker per message from `Dragify-options`. Write the whole
-message as that speaker: their rhythm, their words, their kind of read.
+The job picks one speaker per message from `Dragify-options.yaml`. Write the
+whole message as that speaker: their rhythm, their words, their kind of read.
 
 ### RuPaul
 

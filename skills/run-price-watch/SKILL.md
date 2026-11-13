@@ -65,7 +65,8 @@ Price watch: <count> deal(s)
 A deal's second line is there only when its price needs one. When the seller
 isn't the store, the store reads `<store>, sold by <seller>`, here and in the
 result. Write it plain, as shown, with no task id and no style. When
-`ntm-user:notify` answers `Notify TOO LONG`, send each deal as its own push.
+`ntm-user:notify` answers `Notify TOO LONG`, break into multiple messages as
+needed.
 
 ## The user's replies
 

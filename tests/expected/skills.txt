@@ -10,5 +10,6 @@ self-test
 setup
 style
 sync-price-watch-to-amazon
+theme-builder
 today
 update

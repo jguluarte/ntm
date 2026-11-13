@@ -301,37 +301,11 @@ create. Keep the jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
-Send this text as written, in one message. Then add anything else you think is
-important for them to know before they pick one, based on what you know about
-your user from your memories about them.
+Load `ntm:theme-builder` and follow it through its Result, then come back here:
+it builds their theme with them and creates `%Theme`.
 
-> The theme is what your reminders are created with, that way messages are
-> always unique and ultimately bring you joy. This is how reminders are never
-> exactly the same, so it doesn't become noise you ignore.
->
-> Consider something you enjoy, like a book or maybe a show. Reality competition
-> shows in particular typically follow a kind of formula that allows ntm to
-> introduce a wider variety of reminders. If you decide to schedule things a
-> week at a time, then the weekly plan is sort of like the season preview. Each
-> day has a preview of what is to come (sometimes a quick synopsis of
-> yesterday), the afternoon is whatever would normally happen in the first half
-> of the episode, and the evening is how an episode ends. This pattern is
-> something an LLM is particularly good at following.
->
-> It's now up to you to get creative, pick something that brings you happiness
-> and will make you smile. When you're slacking off, imagine how they could
-> motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
-> a demon to stalk you? The world is your oyster - make it so!
-
-Then build the theme with them as `references/theme.md` says: from the parts it
-describes, or from a theme they already have.
-
-Confirm the names of the `%Theme` and `%Message-history` databases. Then save
-the theme: create the `%Theme` database with their theme in the parts
-`references/theme.md` describes, and `%Message-history` from its template. Each
-`%Theme` part holds what you built with them, never the reference's own text:
-How to connect this theme to ntm's flow holds what their week, morning,
-afternoon and evening are in their theme. Add where each one lives to
+Then confirm the `%Message-history` database's name, create it from its
+template, and add where `%Theme` and `%Message-history` live to
 `ntm-user:backend`.
 
 ### Notifications

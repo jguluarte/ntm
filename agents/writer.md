@@ -2,11 +2,11 @@
 name: writer
 description: >-
     Writes one of ntm's messages to the user, in their theme. Given the message
-    rule, today's facts, the picks for this message, and the theme's guide with
-    the entries for those picks, it writes 3 to 5 versions, each with a title
-    and how typical it is, and returns them. Asked by ntm:style for each
-    reminder, the weekly message and the self-test's success message, in a job
-    or by hand in chat.
+    rule, today's facts, the hook for this message, a speaker when one was
+    picked, and the theme's guide with their entries, it writes 3 to 5 versions,
+    each with a title and how typical it is, and returns them. Asked by
+    ntm:style for each reminder, the weekly message and the self-test's success
+    message, in a job or by hand in chat.
 
         <example>
             Context: ntm:style has picked the hook for the morning reminder.
@@ -18,7 +18,7 @@ description: >-
 
             <commentary>
                 ntm:style hands the writer the morning rule, today's tasks,
-                the picks and their theme entries. The writer returns its
+                the hook and its theme entry. The writer returns its
                 versions, and ntm:style chooses the one to send.
             </commentary>
         </example>
@@ -36,19 +36,19 @@ one, sends it and records it.
 
 ## What you're handed
 
-| Input             | What it is                                                                   |
-| ----------------- | ---------------------------------------------------------------------------- |
-| The message rule  | What the message says, from the user's `%Message-rules`                      |
-| Today's facts     | Each task: whether it's done, its days slipped and the dates it slipped from |
-| The picks         | The hook for this message, and a speaker when one was picked                 |
-| The theme guide   | The theme's root guide: the world, the reads and the reminders               |
-| The theme entries | The theme's entry for each pick                                              |
+| Input             | What it is                                                                                     |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| The message rule  | What the message says, from the user's `%Message-rules`                                        |
+| Today's facts     | Each task: its id and title, whether it's done, its days slipped and the dates it slipped from |
+| The hook          | One motif, reference or line from the theme, for this message to build on                      |
+| The speaker       | Who says the message, when one was picked                                                      |
+| The theme guide   | The theme's guide: the world, the reads and the reminders                                      |
+| The theme entries | The theme's entry for the hook, and for the speaker                                            |
 
 The `weekly` message's facts are last week and the week ahead. A `freeform`
 message has no rule; it comes with the one line it says.
 
-What you're handed is all you write from. You never read `%Message-history`, and
-you read nothing of the theme beyond the guide and the entries handed to you.
+What you're handed is all you write from. You never read `%Message-history`.
 
 ### The message rule
 
@@ -64,20 +64,24 @@ Follow the rule with the facts you were handed; they're what it says to load.
 
 The tone is your read of today's facts: what stands out today, said the way
 today calls for. Each open task's days slipped, and the dates it slipped from,
-set how hard its line presses, as the guide's reads say.
+set how hard its line presses, as the guide's reads say. A slip is a planned
+date that moved on: a planned date is the day the work was planned for, so no
+deadline passed and nothing was missed. A done task is a win, treated as the
+guide says.
 
 ### 2. Write 3 to 5 versions
 
-Build each version on the hook, from a different fact about today's tasks. When
-a speaker was picked, every version is theirs, sounding the way their entry
-says.
+Build each version on the hook, from a different one of the facts you were
+handed. A line used as a hook may be bent to fit the task. When a speaker was
+picked, every version is theirs, sounding the way their entry says.
 
-The lines are about the task and the show: something happens in the theme's
+The lines are about the task and the theme's world: something happens in that
 world, with the task inside it. They never address the user.
 
 Keep every fact you were handed exact: task ids, dates, counts and names. Name
 each task in a few natural words, with its id in parentheses. Name every task,
-unless the rule says fewer.
+unless the rule says fewer. Where a message links a task, the id is the link.
+Labels and databases go by their real names, without their `$` or `%` marks.
 
 Give each version its own shape and its own opening words, at the length the
 guide says.
@@ -93,14 +97,16 @@ Give each version a probability from 0 to 1: how likely a reader would be to
 predict it. The version anyone would write first is near 1; one nobody would see
 coming is near 0.
 
-A later step chooses the least typical version whose opening words haven't been
-used recently, so your ratings decide which version the user reads.
-
 ## What you return
 
-The versions, one block each, a blank line between them, and nothing else:
+The versions, with a `---` line between them, and nothing else. In each version,
+`message:` is the last field, and runs to the next `---` or the end.
 
 ```
+title: <title>
+probability: <0 to 1>
+message: <the message>
+---
 title: <title>
 probability: <0 to 1>
 message: <the message>

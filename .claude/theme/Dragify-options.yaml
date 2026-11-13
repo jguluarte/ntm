@@ -32,18 +32,19 @@ speakers:
           - main stage
     - name: Pangina Heals
       appears_in:
-          - main stage
+          - werk room
+          - reading challenge
     - name: Nicky Doll
       appears_in:
-          - main stage
+          - werk room
     - name: Dracmorda
       appears_in:
           - cold open
-          - floor show judging
+          - floor show
     - name: Swanthula
       appears_in:
           - intro
-          - floor show judging
+          - floor show
     - name: Bianca Del Rio
       appears_in:
           - werk room
@@ -66,7 +67,7 @@ speakers:
     - name: Alaska
       appears_in:
           - werk room
-          - main stage
+          - Snatch Game
     - name: Tatianna
       appears_in:
           - reading challenge
@@ -84,7 +85,7 @@ speakers:
           - Untucked
     - name: Vanessa Vanjie Mateo
       appears_in:
-          - werk room entrance
+          - werk room
           - main stage
     - name: Kandy Muse
       appears_in:
@@ -102,16 +103,15 @@ speakers:
           - Snatch Game
     - name: Bob the Drag Queen
       appears_in:
-          - werk room
           - Snatch Game
+          - smear-ad challenge
     - name: Willam
       appears_in:
-          - werk room
           - Untucked
     - name: Monét X Change
       appears_in:
           - werk room
-          - runway
+          - main stage
     - name: Baga Chipz
       appears_in:
           - Snatch Game

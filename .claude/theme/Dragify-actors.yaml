@@ -1975,6 +1975,7 @@ actors:
         have to be nice.
       - I'm Roxxxy, the wig reveal one!
       - Ohh y'all can't take me?!
+      - Baby, you can't read the doll.
 
     riffs:
       - line: If there's a week where I'm booger, send me home.
@@ -2122,6 +2123,7 @@ actors:
       - >-
         I am half the man I used to be, but twice the woman, so these other
         girls better watch out.
+      - They got me, gal!
 
     riffs:
       - line: C'mon, All Stars! Let's get... this over with!
@@ -2197,6 +2199,8 @@ actors:
         fuck is going on in this neighborhood?!
       - I am Jasmine Masters, and I have something to say.
       - Well, just as I thought, TRASH!
+      - And I oop-
+      - No tea, no shade, no pink lemonade.
 
     riffs:
       - line: Challenge? get a fucking job. Do that challenge.
@@ -3168,9 +3172,9 @@ actors:
 any_actor_lines:
   about: >-
     Lines any speaker can quote, each with who said it: RuPaul's set phrases,
-    the lines fans repeat as catchphrases, and the Boulet Brothers' shared words
-    for Dragula. Many come from queens who aren't actors here. An actor's own
-    lines are in their own entry above.
+    the lines fans repeat as catchphrases, lines from actors here that fit
+    anyone's mouth, and the Boulet Brothers' shared words for Dragula. Many come
+    from queens who aren't actors here.
 
   any_time:
     lines:
@@ -3200,14 +3204,6 @@ any_actor_lines:
         said_by: Gigi Goode
       - line: Is it me? Am I the drama?
         said_by: Scarlet Envy
-      - line: And I oop-
-        said_by: Jasmine Masters
-      - line: No tea, no shade, no pink lemonade.
-        said_by: Jasmine Masters
-      - line: They got me, gal!
-        said_by: Ginger Minj
-      - line: Baby, you can't read the doll.
-        said_by: Roxxxy Andrews
       - line: Why y'all acting brand new?
         said_by: Shea Couleé
       - line: Fuck my drag, right?

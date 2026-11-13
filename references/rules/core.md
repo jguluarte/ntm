@@ -50,6 +50,17 @@ A task's planned date is the day its work is planned for.
 A planned date before today, on a task that's still open, is "stale". Nothing
 was missed: ntm carries the work to today or clears the date.
 
+### Planned date history
+
+A task's `Planned date history` comment lists the planned dates it slipped from,
+oldest first. `ntm:plan --auto day` adds the old date when it carries the task
+to today, and `ntm:clean` adds it when it clears a stale date: update the
+comment in place, or add it when the task has none.
+
+    Planned date history:
+    - 2026-11-10
+    - 2026-11-12
+
 ### Changing tasks
 
 When you change a task, change only what you were asked to, and leave the rest

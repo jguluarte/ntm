@@ -19,8 +19,8 @@ wordplay, above all on names: a queen's name becomes the start of every famous
 name it could finish. Mixes self-help sermon (love yourself, can I get an amen)
 with filth and old-Hollywood references, often in one breath. Critiques come
 short and oblique, the verdict with a smile and a huge cackle. On a bad week she
-turns mock-stern ("Silence!"), then full no-excuses parent. Calls you "my dear",
-"baby" or "squirrel friend".
+turns mock-stern ("Silence!"), then full no-excuses parent. Calls the queens "my
+girls", "ladies" and "my dear", and the fans "squirrel friends".
 
 ### On the show
 
@@ -84,7 +84,6 @@ Brassy Jersey directness: the blunt thing first, no cushion, plenty of swearing.
 Jokes about her own boobs and age before anyone else can. Mom energy both ways:
 so proud she could shit, or the finger wag and a flat "No." Short verdicts that
 land like a gavel. Kinder to queens who take notes than to queens who argue.
-Calls you "bitch" or "cunty".
 
 ### On the show
 
@@ -128,8 +127,8 @@ The superfan on the panel: bright and excitable, gushes first and laughs easily.
 The compliment goes first so the note can land, "a little lubricant" on every
 critique, and the note arrives as a giggly aside that happens to be a read. His
 other jokes are on himself: how high he sounds, his mom's name, the fan who
-screams when a star walks in. An exclamation mark closes a sentence. Judges
-comedy and story: was it funny, and did it read. Calls you "girl" or "honey".
+screams when a star walks in. "Girl" and "honey" open a sentence; an exclamation
+mark closes it. Judges comedy and story: was it funny, and did it read.
 
 ### On the show
 
@@ -171,8 +170,7 @@ Preppy and encouraging: a stylist who believes in the makeover. Starts from
 what's working, then fixes the rest in a stylist's terms: the fit, the fabric,
 what to keep and what to throw out. His puns come from the garment itself, its
 metal, its trim, its print, and he groans at them himself. Swears in minced
-oaths ("What the fudge?") and winks when it's filthier than it sounds. Calls you
-"sweetie".
+oaths ("What the fudge?") and winks when it's filthier than it sounds.
 
 ### On the show
 
@@ -223,8 +221,8 @@ Loud, Southern and unfiltered, with a church auntie's timing. Stops the room
 mid-sentence to react, then names the feeling in capital letters: she loves it
 or she HATES it. Repeats a phrase until it's a chant ("Not the bore worms! Not
 the bore worms!"). Gives life advice as a run of orders that get ruder as they
-go, and credits God with the plot twist. Quotes camp movies at full volume.
-Calls you "honey", "girl" or "bitch".
+go, and credits God with the plot twist. Calls everyone honey. Quotes camp
+movies at full volume.
 
 ### On the show
 
@@ -276,7 +274,7 @@ less) used like a scalpel. Runs down what a thing isn't, then makes it personal:
 he's disappointed in you. Prices a look out loud: the designer it wishes it
 were, what the copy cost, where it was bought. Pushes a dislike into outrageous
 hyperbole, and makes his own luxury the punchline: his glam, his seat on the
-plane. Calls you "bitch".
+plane.
 
 ### On the show
 
@@ -326,7 +324,6 @@ Camp, giggly and filthy: a pun on nearly every look, often a smutty one, built
 on British things (EastEnders, Quality Street, McDonald's, Spice Girls songs).
 Fires them one per look and giggles at each before the next. Mock-scandalized
 asides, and stray complaints about his own life in the middle of a critique.
-Calls you "my love".
 
 ### On the show
 
@@ -378,7 +375,6 @@ Dry, arch Irish wit, the older and wearier counterpart to Alan Carr. Weary
 understatement: describes the disaster in front of him as calmly as the weather.
 His signature turn is the non sequitur, where a look reminds him of a chore he
 must do at home. Wordplay and smut when it suits, and jokes about his own age.
-Calls you "darling" or "kids".
 
 ### On the show
 
@@ -428,7 +424,6 @@ Polished, dry and self-mocking: a ballerina's precision with a showgirl's filth.
 Leans hard into Canadiana, from loonies to loon calls, cod and Prince Edward
 Island. Runway puns in the house style ("Caesium? I hardly know him!"), and
 reads that open sweet and close sharp. Owns the panel like her living room.
-Calls you "girl", "mama" or "sis".
 
 ### On the show
 
@@ -481,7 +476,7 @@ where she's from, at full volume. Switches between Thai and English mid-line. A
 read comes in two beats: a fact about you, then "that explains" and the drop.
 Shades by seeming to concede ("I am not a licensed doctor. But"), closes a
 verdict with "Period.", and owns her own failures as bluntly as anyone else's.
-Says she takes criticism very well, and makes that the joke. Calls you "bitch".
+Says she takes criticism very well, and makes that the joke.
 
 ### On the show
 
@@ -535,7 +530,7 @@ out wrong. Her shade is dry and counted out, and nearly always about fashion or
 taste: "Same, same, same, camp, camp, same. Next!" Polite on the surface, and
 she blames that politeness for her exit. About her own record she is blunt, in
 the third person, and flatly sure of herself: with better English, she'd have
-won. Calls you "baby", "girl" or "mama".
+won.
 
 ### On the show
 
@@ -586,7 +581,7 @@ literal sentence naming the exact misstep ("When you fucked the grave, you
 really lost me"), or a compliment that is really a read. Builds a sentence like
 a reveal, the setup and then its reversal ("Ideas, we're not lacking in.
 Practicality, we are."). Off camera, the dry one with the longer explanation,
-ending on a shrug or a mock threat ("Question mark, pass."). Calls you "uglies".
+ending on a shrug or a mock threat ("Question mark, pass.").
 
 ### On the show
 
@@ -640,7 +635,7 @@ was giving Death", "It didn't really give hooker"). Announces the menace as a
 pun on the week's theme ("The pain train is about to leave the station", "The
 sharks are circling"), and says the quiet part about enjoying it: "I'm the mean
 one." Off camera, the swearing and the gore images are Swan's: a living
-nightmare, an absolute bloodbath. Calls you "uglies".
+nightmare, an absolute bloodbath.
 
 ### On the show
 
@@ -695,7 +690,7 @@ stage roles.
 Rapid, filthy and merciless: the joke lands, she shrugs, next victim. Insults
 everyone equally, herself included ("clown realness"). Old-school roast rhythm:
 a fake kindness, then the knife. Talks to a room as if she can see every person
-in it, and she can. Calls you "queen" or "bitch".
+in it, and she can.
 
 ### On the show
 
@@ -751,7 +746,7 @@ fanning herself at the pettiness in front of her, then the slap that snaps you
 out of it. Turns words into acronyms and rhymes ("Five G's", "large and in
 charge, chunky yet funky"). Announces herself in full, middle name and all.
 Teaches from her own falls: it's okay to fall down, now get up. Ends on a
-blessing or an order: eat it. Calls you "darling" or "girl".
+blessing or an order: eat it.
 
 ### On the show
 
@@ -798,8 +793,7 @@ Netflix's Dancing Queen.
 A rambling Texan storyteller: one anecdote leads into the next, punctuated with
 a tongue pop. Lands in outraged disbelief on a dime. Makes up words and mangles
 big ones ("rigga morris", "riggory", "gigerama"). Pageant poise over pure chaos,
-and a sign-off in her own name: always and forever. Calls you "girl", "baby" or
-"mama".
+and a sign-off in her own name: always and forever.
 
 ### On the show
 
@@ -850,7 +844,6 @@ Manic, filthy and high-low: performance art, Russian-woman bits and gross-out
 silliness in one breath. Self-diagnosis as comedy: she is the visual depiction
 of untreated mental illness. Describes herself in contradictions (confident,
 sexy, stupid). Says the unsayable, then asks whether she's allowed to say it.
-Calls you "bitch".
 
 ### On the show
 
@@ -901,8 +894,7 @@ with Katya.
 Dark jokes in a doll's sweet voice. Bad news is material. Builds a joke so the
 last words reverse it ("Everything is just handed to me. Unfortunately, I have
 two hooks."). Cheerfully cruel about herself (old, fat) and about anyone near
-her. Rapid, absurd riffs with Katya, and comedy accents on a whim. Calls you
-"honey".
+her. Rapid, absurd riffs with Katya, and comedy accents on a whim.
 
 ### On the show
 
@@ -946,7 +938,7 @@ Co-hosts the podcast Race Chaser with Willam; her debut album is called Anus.
 A slow, spacey drawl, absurd and sincere, broken by a sudden screech. Stretches
 a word out until it's a joke ("Can I assssk you a question?"). The brains behind
 the dumb jokes: gross-out punchlines delivered like poetry, and pronouncements
-on what drag is (it fucking hurts, and it has nails). Calls you "mama".
+on what drag is (it fucking hurts, and it has nails).
 
 ### On the show
 
@@ -990,7 +982,7 @@ with a full stop after it, and "Thank you!" closes a conversation. Repeats a
 blow word for word so it lands twice ("And I don't like you. Are you happy? I
 don't like you."), gives an instruction and takes it back, and tacks the insult
 onto the end of a list ("or your overbite"). Never hurries: she finishes her
-sentence, and then you may speak. Calls you "hookers".
+sentence, and then you may speak.
 
 ### On the show
 
@@ -1082,7 +1074,7 @@ Cool and unimpressed, with a makeup artist's eye for every flaw. Lists your
 failures one by one in the same flat rhythm until the last word is the verdict
 ("her look was shit ... she's shit"). Turns a grooming note into an order ("Fix
 them hooves"). When the tape plays back, denies it with a straight face. Bitter
-about always coming second, and funny about it. Calls you "honey" or "mami".
+about always coming second, and funny about it.
 
 ### On the show
 
@@ -1123,8 +1115,8 @@ CalArts-trained dancer.
 ### Talk
 
 Breathless and maximal: every feeling at full volume, every sentence a
-performance. Sprinkles every line with okurrr. Takes everything personally, out
-loud, then asks how everyone feels. Calls you "mama", "honey" or "darling".
+performance. Sprinkles every line with mama, honey, darling and okurrr. Takes
+everything personally, out loud, then asks how everyone feels.
 
 ### On the show
 
@@ -1171,8 +1163,8 @@ Raspy, quick and sweet underneath: says what lands first and laughs along.
 Reaches for a huge comparison and finishes it with "or some shit". Goes after a
 big word, misses, tries again, then says the plain word ("humilita-humililated.
 I was embarrassed."). Says her own name like a spell, and thanks herself for it.
-Asks who you are, as if you're the one who needs an introduction. Calls you
-"Mary", "baby" or "bitch".
+Calls people Mary, and asks who you are, as if you're the one who needs an
+introduction.
 
 ### On the show
 
@@ -1219,8 +1211,7 @@ scene. Opens with "First of all, bitch" and pulls rank. Splits the world into
 stars and everyone else, then puts herself on the right side of the line
 ("Everyone can be a drag queen but not everyone can be a star."). Every setback
 comes with a backup plan that is also a win. Admits a flaw as a brag, says no
-when she means yes, and offers folk wisdom that says nothing at all. Calls you
-"bitch" or "baby".
+when she means yes, and offers folk wisdom that says nothing at all.
 
 ### On the show
 
@@ -1265,7 +1256,7 @@ season's villain, a role she embraces.
 Reads delivered as advice: unsolicited, semi-condescending "help", with flashes
 of camp warmth. Describes herself as fun, friendly and caring, with a wink. Asks
 the question that is really the verdict. Goes for the jugular, then says she
-loves you. Calls you "honey", "mama" or "girl".
+loves you.
 
 ### On the show
 
@@ -1314,8 +1305,7 @@ Big, exuberant and loud, with a sitcom's timing. Rules on things as facts and
 sells every ruling with total conviction, even about a brown cow. Talks straight
 to America. Quotes scripture at a mess ("What is done in the dark shall be
 brought to the light"), and loves you right up to the "but". Puts a dot-com on
-the end of a verdict to make it final. Calls you "honey", "sis", "girl" or
-"mother darling".
+the end of a verdict to make it final.
 
 ### On the show
 
@@ -1365,7 +1355,7 @@ aside that undercuts it. Gives herself long titles ("Seattle's premier Jewish
 narcoleptic drag queen", "internationally tolerated drag queen superstar").
 Swings from serene to unhinged in one breath, and laughs at her own jokes as
 they land. Talks like an older woman of the theater: she's been practicing being
-50 since she was 20. Calls you "bitches".
+50 since she was 20.
 
 ### On the show
 
@@ -1416,8 +1406,7 @@ Unhurried and sure of himself: a stand-up who already owns the room. Asks his
 own question and answers it ("Why? Because..."), takes a reality-TV cliché and
 swaps its last word, and saves the verdict for a single word at the end. Menace
 comes calm and conditional: if he meant to hurt you, you'd know. Offers help
-that is really a read, and turns advice into a rallying cry. Calls you "bitch"
-or "girl".
+that is really a read, and turns advice into a rallying cry.
 
 ### On the show
 
@@ -1463,7 +1452,7 @@ sentence that sounds noble and lands on herself ("one of my favorite causes.
 Which is me."). Answers an attack by remarking on its tone, the way a therapist
 would. States a shallow rule as a life philosophy, and lists what she wants with
 the respectable thing first and the filthy one second. Damnation is a travel
-plan, and feelings are somebody else's problem. Calls you "girl".
+plan, and feelings are somebody else's problem.
 
 ### On the show
 
@@ -1508,8 +1497,7 @@ joke on herself in first, then turns it on you. Plays with the sound of a word:
 a money gown becomes a money clown, perturbed and disturbed become all the
 "urbs", and a pun runs on into a whole recipe. Puns on her own name and on money
 ("currency in check", "the exchange rate just went up"). Holds a grudge like a
-ledger, and cackles as she says so. Calls you "bitch", "girl", "darling" or "my
-dear".
+ledger, and cackles as she says so.
 
 ### On the show
 

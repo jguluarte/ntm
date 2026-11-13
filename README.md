@@ -77,6 +77,12 @@ something in your style, or to change how your reminders sound. When a reminder
 is a keeper, or one has gone stale, say so in that reminder's chat, and ntm
 notes it to keep your reminders fresh.
 
+### `/ntm:theme-builder`
+
+Builds your theme with you, one part at a time: something you enjoy, like a show
+or a book, and how it talks to you when you're on track or slacking off. Setup
+runs it for you; run it again any time you want a whole new theme.
+
 ## Task management
 
 These skills plan your days, remind you about them and keep your task list tidy.

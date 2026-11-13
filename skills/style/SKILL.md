@@ -1,16 +1,19 @@
 ---
 name: style
 description: >-
-    Writes a message in the user's style, from their `%Theme`, and keeps
-    `%Message-history`. Loaded by the writer agent for every message it sends.
-    In chat, writes something in the user's style when they ask, or changes
-    their theme with them ("make my reminders meaner").
+    Turns what a message says into a finished message in the user's style: picks
+    what it draws on from their `%Theme`, has the writer agent write versions,
+    chooses one, and records it in `%Message-history` once it's sent. Loaded for
+    every message ntm sends in the user's style. In chat, writes something in
+    the user's style when they ask, or changes their theme with them ("make my
+    reminders meaner").
 ---
 
 # ntm:style
 
 The user's style is their `%Theme`, the database that says how every message to
-them is written.
+them is written. This skill is the only reader of `%Theme` and
+`%Message-history`.
 
 ## Setup
 
@@ -19,35 +22,42 @@ and read both. Today is the date in the timezone under About you in `%Settings`.
 
 ## What you write from
 
-| Input             | What it is                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------ |
-| The core message  | What to say, in plain words                                                          |
-| The type          | `freeform`, or the message rule it's for, such as `weekly`                           |
-| The task ids      | The tasks the message is about, and which of them are done                           |
-| Days slipped      | How many days each task has slipped, and any task marked to press harder, when given |
-| `record_task_ids` | Whether the history entry records the task ids; `false` when not given               |
-| The tone          | Your read of today's facts                                                           |
+| Input                  | What it is                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------- |
+| What this message says | What the message must cover, in plain words                                                 |
+| The facts              | Each task's id and title, whether it's done, its days slipped and the dates it slipped from |
+| The type               | The message's name, such as `morning`, `weekly` or `freeform`                               |
+| `record_task_ids`      | Whether the history entry records the task ids; `false` when not given                      |
 
-## Writing the message
+## Writing a message
 
-### 1. Determine the message intensity
+### 1. Pick
 
-A task's level is the one the theme's Responding to procrastination part gives
-for its days slipped. A task marked to press harder may go one level up. A done
-task has no level, and when no days slipped were given, no task has one.
+Pick what this message draws on from `%Theme`: one hook, a motif, reference or
+line from the theme, and a speaker when the theme has them and one fits. Steer
+away from what recent `%Message-history` entries used, and let each motif rest
+as the theme's `Repeat limit:` line says.
 
-### 2. Write it
+The pick gives the hook, the speaker or none, and the theme material: the
+theme's guidance for writing in it, and its entries for the hook and the
+speaker.
 
-Rewrite the core message in the user's theme, in today's tone, with each task at
-its level. Keep every fact in it.
+### 2. Write
 
-Don't reuse a line, an opener or a shape from recent entries, and let each motif
-rest as the theme's `Repeat limit:` line says.
+Hand the writer agent what this message says, the facts, the hook, the speaker
+and the theme material. It returns 5 versions, each with a title, a probability
+and a message, or `Writer FAILED:`, which the sender ends with.
 
-### 3. Give it a title
+### 3. Choose
 
-Give it a title, in the same style, that says what the message is about. The
-type's name alone isn't a title. Don't be boring and just use the reminder type.
+Take the version with the lowest probability whose opening words don't open a
+recent `%Message-history` entry. Its title and message are what the sender
+sends.
+
+### 4. Record
+
+Once the sender has sent it, add its entry as Keeping `%Message-history` says,
+with the hook and the speaker from the pick.
 
 ## Keeping `%Message-history`
 
@@ -64,8 +74,8 @@ Then drop the entries older than the `Keep:` line, and save.
 
 ## In chat
 
-When the user asks for something in their style, write it the same way and show
-it to them.
+When the user asks for something in their style, write it with steps 1 to 3 and
+show it to them.
 
 When they ask to change how their messages read, find the part of `%Theme` they
 mean, draft the change with them, show it, and save it when they say yes.

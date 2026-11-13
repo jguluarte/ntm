@@ -94,13 +94,14 @@ of a run, and skills read the part they need.
 
 ### `%Theme`
 
-The style ntm's messages to the user are written in. `ntm:style` reads it before
-each message, and changes it with the user when they ask.
+The style ntm's messages to the user are written in. `ntm:style` reads it for
+each message, hands the writer agent only what that message needs, and changes
+it with the user when they ask.
 
 ### `%Message-history`
 
-What ntm's messages have said, so the next ones don't repeat it, and the
-reminder can count how many days a task has slipped. `ntm:style` keeps it.
+What ntm's messages have said, so the next ones don't repeat it. `ntm:style`
+reads it and keeps it.
 
 ## Results
 
@@ -118,3 +119,16 @@ A job's final reply is the line its last step returned, then anything that skill
 says to add. When a step returned a `NOTIFY VIA FINAL REPLY` block, everything
 after that block's first line, as written, takes the place of that line: the
 scheduled task's own push shows it.
+
+### Sending a message in the user's style
+
+The sender works out what the message says. Then:
+
+1. Load `ntm:style` and follow it to turn what the message says, and its facts,
+   into a title and message.
+2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
+   the message, keeping every task id, and send it once more.
+3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
+   message as `ntm:style` says.
+
+The sender's result is what `ntm-user:notify` returned.

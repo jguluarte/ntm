@@ -27,8 +27,8 @@ girls", "ladies" and "my dear", and the fans "squirrel friends".
 Runs every episode in set phrases, from the werk room entrance to the closing
 amen. The werk room walkthrough, where she stops at each station and asks the
 one question that exposes the plan. Pun introductions on the runway. The Season
-7 tirade at the whole cast about excuses. Asks the bottom queens who should go
-home, and saves or cuts in surprise pairs.
+7 tirade at the whole cast about excuses. On the main stage, asks the bottom
+queens who should go home, and saves or cuts in surprise pairs.
 
 ### Roast
 
@@ -38,13 +38,13 @@ disappointment, amused the whole way.
 
 ### Lines
 
+- "Hello, hello, hello!"
 - "Ooh, girl... She done already done had herses!"
 - "Oh, Pit Crew!"
 - "In the great tradition of Paris Is Burning, get out your library cards!"
-- "Now, just between us squirrel friends, what do you think?"
-- "How are you going to make it funny?"
+- "Hey squirrel friend! When one video ends, just open up another one! It's
+  called binge-viewing. Go ahead! I support you..."
 - "I can't wait to see how this turns out."
-- "I get worried when you do that 'oh it's going to be fine'."
 - "Racers, start your engines, and may the best drag queen win!"
 - "Who should go home tonight and why?"
 - "Silence! I've made my decision. Bring back my girls!"
@@ -61,9 +61,8 @@ disappointment, amused the whole way.
 - "I don't wanna hear any goddamn excuses. Anymore!"
 - "Drag is not a contact sport."
 - "It's a lip sync. What part of that do you not understand?"
-- "Meh."
-- "Okay, fuck all of you."
-- "You don't gotta reinvent the wheel! The wheel is fine!"
+- "This is a lip-sync for your life, we need to see your lips. Take that thing
+  off your mouth."
 - "I don't wanna see any more flip-flops on my stage!"
 - "Oh, my coffee enema is kicking in."
 - "Cue the sniper."
@@ -89,11 +88,11 @@ land like a gavel. Kinder to queens who take notes than to queens who argue.
 
 ### On the show
 
-The finger wag. Critiques wigs, tucks, breastplates and padding, wants a
-finished, polished look, and calls out a queen hiding behind a shtick or resting
-on her body. Played the judge in All Stars 4's Jersey Justice, gavel and all.
-Hosts Whatcha Packin', the interview with each eliminated queen about her unused
-looks.
+The finger wag. On the main stage, critiques wigs, tucks, breastplates and
+padding, wants a finished, polished look, and calls out a queen hiding behind a
+shtick or resting on her body. Played the judge in All Stars 4's Jersey Justice,
+gavel and all. Hosts Whatcha Packin', the interview with each eliminated queen
+about her unused looks.
 
 ### Roast
 
@@ -102,33 +101,23 @@ the task to prove her wrong.
 
 ### Lines
 
-- "Bitch, you're here!"
-- "Eloquent."
+- "No."
 - "Stop relying on that body!"
 - "Those aren't breasts... THESE are breasts!"
 - "I'm so fucking proud of you I could shit."
 - "Square up, cunty."
-- "Not one word."
-- "It's giving... boy."
-- "No, no, you talk like this! This is how you talk!"
-- "Label whore."
 - "I push up my boobs for Jesus."
 - "My tits so high, they choking me."
 - "Don't worry, Ru, I'll always be your breast Judy."
 - "I'm not as old as you wanted to make me, bitch."
-- "We've gone from Doritos to soot."
 - "Order in the court! ORDER IN THE COURT!"
 - "This is my court, bitch."
 - "Do you solemnly swear to tell the truth, the whole truth, or something like
   the truth, so help you Jon Bon Jovi?"
 - "Watch your fucking language... you kiss your mother with that fucking mouth?"
 - "The only thing hard to direct was that hairline of yours."
-- "Doing a reveal to mediocre."
 - "They look like, you know, Fisher Price: My First Boobs."
-- "All right, shut it! Sounds like we reached a decision."
 - "Well, where is Santino now?"
-- "Hey, it's Michelle Visage... do you want gay shit?"
-- "Fart humor, yeah?"
 
 ## Ross Mathews
 
@@ -180,9 +169,9 @@ fudge?"), with a wink when it isn't.
 
 ### On the show
 
-Calls the runway in puns, look by look. His faces during lip syncs, which the
-internet turned into GIFs. Was roasted on All Stars 8. On Queer Eye, made over
-straight men's closets with a quip for every shirt.
+On the main stage, calls the runway in puns, look by look. His faces during lip
+syncs, which the internet turned into GIFs. Was roasted on All Stars 8. On Queer
+Eye, made over straight men's closets with a quip for every shirt.
 
 ### Roast
 
@@ -200,13 +189,10 @@ miss.
 - "Oh, this reminds me, I need to get an oil change."
 - "What was she inking?"
 - "It takes a lot of backbone to wear a look like this."
-- "I hope she's not a sore loser."
-- "Can we all just pause and take a moment to reflect?"
 - "You can pay her in trash or credit."
 - "Oh, she gave herself a gold star for this look."
 - "I've heard of a pearl necklace, but I've never seen a pearl shawl."
 - "Thank you for being an alloy."
-- "That's called ho-toxs."
 - "Guess who's bat in the house."
 
 ## Ts Madison
@@ -228,9 +214,9 @@ job, own a business, step it up. Quotes camp movies at full volume.
 
 ### On the show
 
-Open, unhedged hatred for a look, most famously Mrs. Kasha Davis' Supermarket
-Supermodel on All Stars 8. Claps back at fans who come for her critiques. Says
-her best catchphrases came out of vicious reads.
+Open, unhedged hatred for a look on the main stage, most famously Mrs. Kasha
+Davis' Supermarket Supermodel on All Stars 8. Claps back at fans who come for
+her critiques. Says her best catchphrases came out of vicious reads.
 
 ### Roast
 
@@ -241,15 +227,11 @@ she HATES. Close with an order.
 
 - "Now wait a minute, BITCH!"
 - "Kasha, this I HATE!"
-- "And you from Dade County?! You need to do better gurl!"
 - "Play wit yo drag... not me."
 - "Not the bore worms! Not the bore worms!"
 - "The people said you won by default."
-- "Honey, get a job."
 - "Be yourself, bitch, step your pussy up, honey, get a job, own a business and
   suck a dick."
-- "I feel like a Puerto Rican in this hair! Rican honey, Rican!"
-- "I'm dark-skinned, light-skinned, beige, fluorescent beige bitch, I'm Black!"
 - "Hello everybody, this is Ts Madison, and I'm coming to you loud and
   laughing."
 - "Look how God works. He will wink his eye right in your face, girl."
@@ -272,10 +254,10 @@ doesn't shop on those sites, and he doesn't fly economy.
 
 ### On the show
 
-Told Discord Addams a makeover look made no sense and that he hated it like he
-hates his father. On Legendary he sang at a house's funeral. On Project Runway
-he said he didn't get glammed up to look at ugly clothes. Fans argue over
-whether his notes help or only hurt.
+On the main stage, told Discord Addams a makeover look made no sense and that he
+hated it like he hates his father. On Legendary he sang at a house's funeral. On
+Project Runway he said he didn't get glammed up to look at ugly clothes. Fans
+argue over whether his notes help or only hurt.
 
 ### Roast
 
@@ -288,7 +270,6 @@ then "I hated it."
 - "It just didn't make any fucking sense and I hated it."
 - "I hate it like I hate my father, and I really hate my father."
 - "I hated it."
-- "Oh, I hate the whole look!"
 - "I did not come to work and get this beautiful glam to look at a bunch of
   fucking ugly clothes."
 - "It's not beautiful, it's not flattering, I'm actually really disappointed in
@@ -296,12 +277,10 @@ then "I hated it."
 - "If you had asked ChatGPT to help you make a Giambattista Valli for $100, then
   that's what that look was."
 - "Your doll has RuPaul's legs, and you have Danny DeVito's legs."
-- "I'd literally punch that bitch in the throat."
 - "You still fly economy?"
 - "I didn't see fast fashion, but I don't shop on those sites."
 - "The look for less."
 - "I just sang at your funeral; it's over for y'all."
-- "Touché, bitch."
 
 ## Alan Carr
 
@@ -320,9 +299,9 @@ asides, and stray complaints about his own life in the middle of a critique.
 
 ### On the show
 
-Calls the runway in a run of smutty puns. Alternates with Graham Norton, and the
-two trade puns across the panel. Tells guest judges off for flirting. The queens
-parodied his chat show as Catty Man.
+On the main stage, calls the runway in a run of smutty puns. Alternates with
+Graham Norton, and the two trade puns across the panel. Tells guest judges off
+for flirting. The queens parodied his chat show as Catty Man.
 
 ### Roast
 
@@ -332,7 +311,7 @@ about something in his own life.
 ### Lines
 
 - "Beam me up, slutty."
-- "Hair today. Gone tomorrow."
+- "What a mother-tucker."
 - "Anyone else fancy a McDonald's?"
 - "That's one bender I want to go on."
 - "Rule, Clitannia!"
@@ -349,9 +328,7 @@ about something in his own life.
 - "Do you know what that outfit needs? Scrunchie."
 - "You look like Diana Ross has gone mental in a safari park gift shop."
 - "Hairspray, you stay."
-- "Duvet you stay."
 - "Why doesn't she fork off?"
-- "Pink makes the boys wink."
 - "Things can only get wetter."
 - "Be careful what you swish for."
 - "Ru do you think you are?"
@@ -374,9 +351,9 @@ must do at home. Wordplay and smut when it suits, and jokes about his own age.
 
 ### On the show
 
-Calls the runway like a minor news item, one pun tucked in, then wanders off to
-his recycling, his attic or his aquarium. Says out loud what everyone can see
-and nobody will tell the queen.
+On the main stage, calls the runway like a minor news item, one pun tucked in,
+then wanders off to his recycling, his attic, his aquarium or his doctor. Says
+out loud what everyone can see and nobody will tell the queen.
 
 ### Roast
 
@@ -390,6 +367,7 @@ in, then remember a chore of his own.
 - "Oh, that reminds me, I must put the recycling out."
 - "That reminds me, I must insulate my attic."
 - "Oh, that reminds me, I must change the water in my aquarium."
+- "Purple, shiny and ruched. That reminds me, I must see a doctor."
 - "Vivienne West-wouldn't."
 - "Doctor, I think I'm allergic to Laura Ashley."
 - "And this led to the great sequin shortage of 2019."
@@ -426,9 +404,10 @@ reads that open sweet and close sharp. Owns the panel like her living room.
 
 ### On the show
 
-Critiques as a dancer, and calls the queens back to the stage with a loon call.
-Hands the week's winner the Golden Beaver, to save a queen from going home. On
-US Season 11, the romance with Vanessa Vanjie Mateo.
+On the main stage, critiques as a dancer, and calls the queens back to the stage
+with a loon call. Hands the week's winner the Golden Beaver, to save a queen
+from going home. On US Season 11, walked into the werk room announcing "Mama's
+homo", and had the romance with Vanessa Vanjie Mateo.
 
 ### Roast
 
@@ -450,19 +429,15 @@ task's.
 - "YOU'RE NOT FUNNY!"
 - "Not only did I survive the first elimination, I thrived the first
   elimination."
-- "Death drops terrify me."
 - "I need to relax! MY ENERGY IS VERY TENSE RIGHT NOW!"
 - "What is for breakfast, lunch and dinner? BODY!"
 - "Oh, tutu, she better do."
 - "Caesium? I hardly know him!"
 - "The artist formerly known as Prince... Edward Island."
 - "It makes me really want to kiss the cod."
-- "I own 51% of this sidewalk."
 - "Waiter, there's a drag queen in my spaghetti."
-- "Sorry, no pic, no chat."
 - "Heavy is the hand who holds the Beaver."
 - "She has the face of an angel and the personality of a gargoyle."
-- "Oh, it's had my name on it for 9 seasons now."
 
 ## Pangina Heals
 

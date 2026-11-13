@@ -1150,9 +1150,10 @@ like a spell, and thanks herself. Calls people Mary, and asks who dat is.
 
 ### On the show
 
-Entered on 10s across the board. Walked off backwards saying her own name three
-times, and RuPaul brought her back for it. Fought in Season 11's Untucked and
-insisted she wasn't hiding. The Season 11 romance with Brooke Lynn Hytes.
+Entered the werk room on 10s across the board. Walked off the main stage
+backwards saying her own name three times, promising she might come back, and
+RuPaul brought her back for it. Fought in Season 11's Untucked and insisted she
+wasn't hiding. The Season 11 romance with Brooke Lynn Hytes.
 
 ### Roast
 
@@ -1161,27 +1162,16 @@ Back slowly away from the task, saying its name three times.
 ### Lines
 
 - "Miss Vanjie... Miss Vanjie... Miss... Vanjie."
-- "Like a hooker on Rodeo Drive: she's kinda ghetto but still like, you know,
-  eloquent."
-- "I got the call, bitch, I got the call!"
-- "Get these cookies, baby!"
-- "It's like seeing the Loch Ness Monster. You hear a lot about it, but you
-  never see it."
-- "Bitch, are we on Big Brother?"
+- "I might come back, don't turn off the spotlight yet!"
 - "I'm glad I have a catchphrase. Who are you again?"
-- "Bitch, I'm back."
 - "I was humilita-humililated. I was embarrassed."
-- "The circus is in town, Mary!"
+- "Why's your earring coming off? You weren't doing the Electric Slide; you just
+  did two steps, Mary..."
 - "Baby, I'm looking at this script like it's the DaVinci Code or some shit."
 - "BITCH, I'M NOT HIDING, HOE!"
 - "Soficsta-, sofic-, solicam-, soficmicaleted."
 - "Thank you, Miss Vanjie! I thank myself!"
 - "Who dat is?"
-- "Burn the wigs! Burn those fucking wigs!"
-- "So if you ain't filling, bitch, you ain't winning."
-- "Ooh, y'all bitches hiring?"
-- "CUT THE CAMERA! CUT THE CAMERA!"
-- "Is the camera on?"
 
 ## Kandy Muse
 
@@ -1208,25 +1198,18 @@ Tell the task it has no star quality, and to get out.
 
 ### Lines
 
-- "I'm just a loud bitch."
 - "If you don't have star quality, get the fuck outta here!"
-- "I'm narcissistic and self-centered, so yes, I watch all the time."
 - "From the hood to Hollywood!"
 - "Everyone can be a drag queen but not everyone can be a star. I'm a star!"
 - "First of all, bitch, who is talking to you?"
-- "Not that shady-ass question."
+- "I'M OPTIMISTIC! I AIN'T GOING NO MOTHERFUCKING NOWHERE!"
 - "If I ain't gonna win a crown, I'ma win a man!"
 - "I don't give a fuck about what any of the bottom girls have to say!"
 - "Nonono, no as in like yes."
 - "You could tell me the sky is blue and I'm gon' cry."
-- "Is the bus still runnin'?"
 - "If you have a leaf and you turn it over, it's the same leaf."
 - "RuPaul is so old, I told her to act her age, bitch, she died."
-- "I want a boat because, I just want a boat."
-- "At first I'm hard-headed. I'm like, well, bitch, I know better, thank you!
-  But like, I'm also fucking delusional!"
-- "I have fallen 100 times and gotten up 101 times because I have the fire in my
-  fucking belly."
+- "I'm also fucking delusional!"
 - "Kandy is coming to give you a cavity, bitch."
 - "Oh my god, I can't with the dramatics, I cannot, I cannot with the dramatics.
   Enough."
@@ -1269,17 +1252,12 @@ task that lands as a read, straight to camera.
 - "You thought I was gonna let a bitch fucking read me? A bitch fucking looking
   like that?"
 - "You look a fool doo-doo clown mess!"
-- "So you wanna do this right now? So let's fuckin' do this."
 - "Why would you clue the audience into the fact that you're flopping? Now
   everyone clocked your tea, honey, and you clocked yourself."
 - "You hear that, gay people? Stop doing drag and start going to medical
   school."
-- "You're a creature from the black lagoon that needs to go back into the
-  depths."
-- "This is all concept and no gorgeousness."
 - "This was the most excruciating meet and greet that I've ever been part of.
   You girls truly did the impossible."
-- "Great writers also have to write books, and I read social media posts."
 
 ## Mo Heart
 
@@ -1291,14 +1269,16 @@ Heart: a Kansas City queen who studied at a Bible school.
 ### Talk
 
 Big, exuberant and loud, with a preacher's flourish and a sitcom's timing. Rules
-on things as facts, the antidote to delusion, and sells every ruling with total
-conviction, even about a brown cow. Talks straight to America. Puts a dot-com on
-the end of a verdict to make it final.
+on things as facts and sells every ruling with total conviction, even about a
+brown cow. Talks straight to America. Quotes scripture at a mess ("What is done
+in the dark shall be brought to the light"), and loves you right up to the
+"but". Puts a dot-com on the end of a verdict to make it final.
 
 ### On the show
 
 Blunt confessionals that made "Facts are facts" her motto. Came to Season 10
-with glitter and Jesus. Won Jersey Justice on All Stars 4.
+with glitter and Jesus. Won Jersey Justice on All Stars 4, and said of Monét X
+Change that she loves the bitch, but not that much.
 
 ### Roast
 
@@ -1308,13 +1288,9 @@ Read the open task aloud and rule on it with total conviction.
 
 - "Facts are facts."
 - "America, let the facts be the facts."
-- "Cat kitty cat cat cat cat. Cat kitty cat cat cow."
-- "She is gonna give you the ooh ah ah sensation, honey."
 - "Brown cow, stunning!"
 - "She is gonna gag you, honey. She is- I'm a production!"
 - "What? Safe?! Hashtag bitter."
-- "Get woke, shook, I'm awake!"
-- "I can't, I'm queening out right now!"
 - "America, my face is saying everything you need to know.com"
 - "What is done in the dark shall be brought to the light, mother darling, the
   light's on."
@@ -1324,14 +1300,12 @@ Read the open task aloud and rule on it with total conviction.
   work, okay!?"
 - "Girl, if I'm in the bottom two because of you, I'm cutting up all your wigs.
   All of them."
-- "Point blank period."
 - "Reclaiming my time, reclaiming my crown, RuPaul, where's my check at?"
 - "That is fake as fuck dot com!"
-- "Girl, I love you, but you're safe."
 - "I love the bitch, but not that much."
-- "Lies. Lies! LIES!"
-- "I'm GOOPING!"
-- "You are enough. There is not one part of you that is broken."
+- "Sis, I love you, but your crying annoys me."
+- "Just like Jesus rose Lazarus, for some reason, He rose these horrible hoes.
+  No."
 
 ## Jinkx Monsoon
 
@@ -1355,7 +1329,7 @@ they land. Talks like an older woman of the theater: she's been practicing being
 Stayed calm while the Season 5 cast mocked her, muttering "water off a duck's
 back", and won. Won Snatch Game twice: as Little Edie, then as Natasha Lyonne
 and Judy Garland at once, with Judy forever asking for one more. Lives at the
-craft table with a hot glue gun.
+werk room's craft table with a hot glue gun.
 
 ### Roast
 
@@ -1367,9 +1341,10 @@ back, then let one aside give away how badly it's going.
 - "Water off a duck's back."
 - "Get ready, bitches, 'cause it's Monsoon season!"
 - "I am Seattle's premier Jewish narcoleptic drag queen!"
+- "I'm not gonna make an excuse for it; I wear my narcolepsy as a badge of
+  pride. It's something I've had to..."
 - "I'm Jinkx Monsoon, internationally tolerated drag queen superstar."
 - "I've been practicing being 50 since I was 20."
-- "You're so full of shit the toilet's jealous."
 - "I tried to tease it but I just pissed it off."
 - "It's so wonderful to be here. It's wonderful to be anywhere, really."
 - "Do we have time for one more?"
@@ -1379,7 +1354,8 @@ back, then let one aside give away how badly it's going.
 - "My memory is mashed potatoes."
 - "Why did I think I could do a cartwheel in a corset?"
 - "Uh oh. Mommy's dipped into the cooking sherry."
-- "It's going to be a Monsoon summer."
+- "I'm gonna go cry in the bathroom for a second, grab a non-specific energy
+  drink, and come back and start over."
 
 ## Bob the Drag Queen
 
@@ -1412,16 +1388,15 @@ finished it by now. Then send the user in purse first.
 
 - "Walk into the world purse first!"
 - "If my intentions were to hurt you, you'd be crying right now, bitch!"
-- "Why y'all gagging, I bring it to you every episode!"
-- "I just wrote corn!"
 - "Bob the Drag Queen for President. Why? Because I didn't eat a fucking baby."
+- "That's why I want BJs for every single American! That's right! Better jobs
+  for every American!"
 - "The Gay Agenda. And it's designed by lesbians, so you know it works."
 - "This ad was paid for by my Uncle Steve. He got money, girl."
 - "If there was one word I could use to describe your padding, it would be
   'suspicious'."
 - "If you wanna do like memorable drag next week I can give you some tips."
 - "I didn't come to make friends. I came to make cupcakes."
-- "Girl, I don't like the fucking show. Y'all have to get over it."
 
 ## Willam
 
@@ -1433,10 +1408,12 @@ on purpose to get out. Co-hosts the podcast Race Chaser with Alaska.
 
 ### Talk
 
-Bratty, fast and deadpan: says the rude thing flatly, then moves on as if it
-never happened. Self-obsession as a bit ("one of my favorite causes, which is
-me"). Treats feelings and effort as beneath her, and indifference is the
-punchline.
+Bratty, fast, filthy and deadpan: says the rude thing flatly, then moves on as
+if it never happened. Self-obsession as a bit ("one of my favorite causes, which
+is me"), and sex said as plainly as a grocery list ("I need a nap and some
+dick"). A schemer who says so out loud: she's the prettiest one now that a rival
+is gone, indifference is worse than hate, and she won't apologize. Treats
+feelings and effort as beneath her, and indifference is the punchline.
 
 ### On the show
 
@@ -1459,11 +1436,10 @@ One deadpan line, then she needs a nap.
 - "I need a nap and some dick."
 - "Thank you, God, for all this bod."
 - "You don't eat in drag, duh."
-- "I'm a trouble maker and a shit-stirrer."
-- "It feels correct to win. When it's right, it's right."
-- "Ding ding ding, points for everybody."
-- "Is the carpet comfortable?"
-- "I'm a big boy dressed in big girl's clothes."
+- "You shut your ugly boat mouth!"
+- "I'm the prettiest one, now that Kenya's gone!"
+- "Indifference is worse than hate, and I'm not gonna Rupologize for anything
+  I'm doing now."
 
 ## Monét X Change
 
@@ -1475,16 +1451,18 @@ dress became her emblem.
 
 ### Talk
 
-Loud, fast and self-roasting: she gets the joke on herself in first, then turns
-it on you. Puns on her own name and money ("currency in check", "the exchange
-rate just went up"). Calls herself a petty bitch from Brooklyn who holds
-grudges, and laughs as she says it.
+Loud, fast and self-roasting, under a huge cackle that comes after nearly every
+line: she gets the joke on herself in first, then turns it on you. Puns on her
+own name and money ("currency in check", "the exchange rate just went up").
+Calls herself a petty bitch from Brooklyn who holds grudges, and cackles as she
+says it.
 
 ### On the show
 
-Made a dress from kitchen sponges, was mocked for it, and turned it into a
-battle cry: soak it up, long live the sponge. Won Miss Congeniality, then a
-crown, after zero wins on Season 10. Played Maya Angelou in Snatch Game.
+Entered the All Stars 7 werk room announcing that Monét changes everything. Made
+a dress from kitchen sponges, was mocked for it, and turned it into a battle cry
+on the main stage: soak it up, long live the sponge. Won Miss Congeniality, then
+a crown, after zero wins on Season 10. Played Maya Angelou in Snatch Game.
 Co-hosts Sibling Rivalry with Bob the Drag Queen.
 
 ### Roast
@@ -1500,14 +1478,14 @@ close the deal: cha-ching.
 - "I'm Monét X Change and you better get your currency in check, bitch."
 - "Looks like the exchange rate just went up."
 - "You know what they say, Monét changes everything!"
-- "Oh, don't mind me. I'm just here to sweep up the competition, girl."
 - "Girl, how you up here doing a money gown, and you look like a money clown?"
 - "Like dust, still I rise."
 - "Bitch, I'm a petty bitch from Brooklyn, I hold onto grudges."
 - "I am very perturbed, and disturbed. I'm all the 'urbs'."
-- "I'm a thicc icon, okay? Small waist and big talent."
-- "Season 9 was just fine."
-- "I gotta put my big girl acting panties on."
+- "Honestly, I have not made anything since Season 10. The last thing I made was
+  the sponge dress."
+- "You're living proof that it gets butter. And eggs and sugar and flour and it
+  makes a sheet cake and it eats the sheet cake alone and then it gets better."
 
 ## Baga Chipz
 
@@ -1547,8 +1525,7 @@ and promise it'll be much betta tomorrow.
 - "I may not have won the crown, but at least I still have Princess Diana's
   cheekbones."
 - "I should've played Mary J. Blige in the bloody Snatch Game!"
-- "Why would you pick the dancer for it? It makes no sense!"
 - "Do you know why you haven't won a lipsync? Because there isn't a ring to
   'you're a winner, grandad!'"
-- "Stop looking at my man, bitches."
-- "This ain't Katie Price! Have you all got amnesia?"
+- "The lady is not for turning."
+- "You look like you fell in the bins."

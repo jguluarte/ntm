@@ -448,26 +448,6 @@ references:
       Fits a task the user is explaining instead of doing: the setup lands only
       if the room has seen the show.
 
-  asias_butterflies:
-    name: Asia's butterflies
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 10 finale: lip syncing "Nasty" against Kameron Michaels, Asia
-      O'Hara released live butterflies from her costume. Too cold to fly, they
-      fell and crawled on the stage, and she lost.
-
-    meaning: >-
-      The big stunt that flops on live TV.
-
-    callback: >-
-      Fits an ambitious plan that landed with a thud: release the butterflies,
-      and watch them crawl.
-
-    when:
-      - slipped
-
   monets_fake_split:
     name: Monét's fake split
 
@@ -558,26 +538,6 @@ references:
 
     when:
       - done
-
-  opulence:
-    name: Opulence
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 11: voguing in a parody challenge, Mercedes Iman Diamond stumbled
-      over "opulence, you own everything", a line from Paris Is Burning. Fans
-      spell what came out "oppalance".
-
-    meaning: >-
-      Fumbling the big line at the big moment.
-
-    callback: >-
-      Fits a task where the easiest part went wrong: the grand line, fumbled in
-      front of everyone.
-
-    when:
-      - slipped
 
   silky_strips_in_untucked:
     name: Silky strips in Untucked
@@ -1141,23 +1101,6 @@ references:
       Fits a task the user quits while it's going well: win the round, then pull
       your own name.
 
-  is_she_gonna_jump:
-    name: Is she gonna jump?
-
-    show: Drag Race
-
-    what_happened: >-
-      All Stars 3 premiere: as Aja climbed a stage block during her talent
-      number, Milk asked whether she was going to jump from there. The moment
-      became a captioned image.
-
-    meaning: >-
-      Watching someone about to do something risky.
-
-    callback: >-
-      Fits a user about to take on far too much in one day: watch them climb the
-      block, and ask.
-
   lifes_not_fair:
     name: Life's not fair
 
@@ -1397,26 +1340,6 @@ references:
       - evening
       - slipped
 
-  banksies_last_walk:
-    name: Banksie's last walk
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race UK, Series 5: a week after storming out of Untucked and telling
-      everyone to fuck off, Banksie was eliminated, and walked the runway one
-      last time.
-
-    meaning: >-
-      The exit taken on your own terms, after the storm.
-
-    callback: >-
-      Fits a task dropped at the end of the day: give it one last walk down the
-      runway before it goes.
-
-    when:
-      - evening
-
   love_most_of_you:
     name: Love most of you
 
@@ -1567,22 +1490,6 @@ references:
 
     when:
       - done
-
-  trudeau_in_the_werk_room:
-    name: Trudeau in the werk room
-
-    show: Drag Race
-
-    what_happened: >-
-      Canada vs the World, Season 2 (2024): Justin Trudeau walked into the werk
-      room, the first world leader to do so.
-
-    meaning: >-
-      The most important visitor the werk room ever had.
-
-    callback: >-
-      Fits a task important enough for an official visit: send the head of
-      government by its station to check on it.
 
   # Drag Race Down Under
 
@@ -2516,26 +2423,6 @@ references:
     callback: >-
       Fits a user making a tragedy of a small task: put it in perspective, the
       way Kourtney did.
-
-  rooting_for_you:
-    name: We were all rooting for you
-
-    show: Queer culture
-
-    what_happened: >-
-      America's Next Top Model, Cycle 4 (2005): Tyra Banks screamed at an
-      eliminated contestant that she was rooting for her, that they were all
-      rooting for her. Tyra later said she regretted airing it.
-
-    meaning: >-
-      Disappointment at full volume: reality TV's most-used GIF for it.
-
-    callback: >-
-      Fits a task that let everyone down: tell it how hard everyone was rooting
-      for it.
-
-    when:
-      - slipped
 
   make_it_work:
     name: Make it work

@@ -1,404 +1,176 @@
 # Dragify terminology
 
-The drag words the `writer` needs help with: the shows' own coinages and
-rituals, and the ballroom and scene words they borrow. Each term says what it
-means and how the cast use it, and a term that's easy to get wrong has an
-example. Any drag word not here is used in its ordinary sense.
+Most messages use none of these words: the speaker's own lines and rhythm carry
+the message. Use one, two at the most, where it is the exact word for what the
+task did: it survived, it hid, it got cut. Write it in the speaker's sentence
+shape; the examples here show the meaning only.
+
+Drawled and respelled forms (henny, ovah, herses) belong to the speakers who
+talk that way, as their entries in `Dragify-actors.yaml` show. Each term says
+what it means as far as you need, then how to use it on a task. For a drag word
+not here, use it as you already know it.
 
 Much of this language comes from Black and Latino ballroom and from trans women;
-an entry says so where that changes how to use it. Use these words the way the
-cast do: with affection, at the task's expense.
+an entry says so where that changes how to use it. Use it the way the cast do,
+with affection.
 
-## The show's rituals
+## Drag Race
 
-### Werk room
+Werk, spelled with an e, is the cheer and the werk room; everything else is
+work.
 
-The workroom where the queens build their looks and bicker, spelled with an e.
+| Term                   | Use it for                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------- |
+| Werk room              | Where the queens build their looks and bicker. The task list is a werk room.             |
+| The walkthrough        | Ru stopping at each station to ask the plan; a worried question means trouble.           |
+| Bottom two             | The two lowest, who lip sync for your life; one goes home. Two tasks, one gets done.     |
+| Lip sync for the crown | The finale's last lip sync. Fits the last task between you and a clear list.             |
+| Lip sync assassin      | Fans' name for a queen who keeps winning lip syncs. A task that keeps surviving.         |
+| Park and bark          | A lip sync done standing still, sold with the face. Doing the minimum with conviction.   |
+| Shantay, you stay      | Ru's words to the queen who wins the lip sync. Say it to whatever survived a close call. |
+| Goodbye mirror         | The lipstick note an eliminated queen leaves on the mirror. A dropped task's last word.  |
+| Golden Boot            | The reunion award for the season's worst look. A task done worst is a nominee.           |
+| Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for you.        |
+| Inner saboteur         | Ru's name for the voice that talks a queen out of it. Blame it for a task put off.       |
+| Resting on pretty      | Getting by on looks instead of work. A task that looks handled and isn't.                |
 
-### The walkthrough
+### Ru's message
 
-RuPaul's stroll through the werk room during the challenge, stopping at each
-station to ask about the plan. A worried question from Ru means trouble ahead.
-Example: "Ru stopped at the tax return's station and asked what the plan was.
-Silence."
+The video message from RuPaul that lands in the werk room before a challenge; a
+reminder is one. Ru's sound bite plays as it arrives: "She done already done had
+herses", from a fast-food worker refusing to hand a customer's order to someone
+else, meaning she has already had hers. Only Ru's sound bite says it. The show
+called the message she-mail until 2014, when it dropped the name after
+complaints that it plays on a slur for trans women; call it Ru's message.
+Example: "A message from Mama Ru just landed in the werk room, and it's about
+the gutters."
 
 ### Safe
 
-The queens neither praised nor critiqued, sent off the stage before the
-critiques. It stings: not good enough to praise, not bad enough to discuss. Use
-it for a task done in the dullest way, never as relief. Example: "The laundry is
-safe this week. Not praised. Safe."
-
-### Lip sync for your life
-
-The bottom two queens lip sync to one song, and the loser goes home. Use it for
-two overdue tasks where only one gets done today, never for a performance in
-general. Example: "The dishes and the dentist call are in the bottom two. The
-time has come to lip sync for your life."
-
-### Lip sync for your legacy
-
-The All Stars version: the week's top two lip sync, and the winner picks who
-goes home. It's for a winner choosing, not a loser surviving.
-
-### Lip sync assassin
-
-A famous lip syncer from a past season, brought back on All Stars to face the
-week's top queen. Fits a task that survives the bottom two again and again.
-
-### Park and bark
-
-Fan slang for a lip sync where the queen stands still and mouths hard. A
-put-down for going through the motions without moving.
-
-### Shantay, you stay
-
-RuPaul's words to the queen who wins the lip sync: she stays in the competition.
-Use it only after a close call, for something that survived; when both stay,
-it's a double shantay. Example: "The bill got paid at 23:58. Shantay, you stay."
+Where a queen lands when she's neither praised nor critiqued, sent off before
+the critiques: not good enough to praise, not bad enough to discuss. High is
+just short of the top, low just short of the bottom. Use safe for a task done in
+the dullest way possible. Example: "The laundry got done, so it's safe. Nobody
+on the panel looked up."
 
 ### Sashay away
 
-RuPaul's words to the queen who loses the lip sync: she's out of the
-competition. It means eliminated, not walking off with flair. Say it as the
-verdict on a task dropped from the list, or on an excuse. Example: "The gym
-membership nobody uses: sashay away."
-
-### Untucked
-
-The backstage lounge, and the companion show, where the queens wait out the
-judges' deliberation and fight. Use it for the gossip that happens offstage.
-
-### Condragulations
-
-RuPaul's word for the winner of the week's challenge. Only for a real win.
-
-### Racers, start your engines
-
-RuPaul's send-off as a challenge begins, worded this way since season 13 so it
-takes in every queen; use this wording.
-
-### Snatch Game
-
-The celebrity game show parody, midseason: the queens play celebrities on a
-panel, and nothing gets snatched. A winning character has jokes and reacts to
-the panel; a flop is an impression that's only the wig.
-
-### The mirror message
-
-The goodbye an eliminated queen writes in lipstick on the werk room mirror, read
-by the rest the next morning. Anything from a joke to a grudge.
-
-### Golden Boot
-
-The award for the season's worst look, handed out at the reunion. Example: "That
-half-built shelf is a Golden Boot nominee."
-
-### She done already done had herses
-
-RuPaul's line when a message arrives in the werk room, from a story about
-someone grabbing a restaurant order that wasn't theirs. It means "that's taken".
-Say it whole, grammar and all.
+Ru's words to the queen who loses the lip sync: she's out of the competition.
+Say it as the verdict on a task dropped from the list, or on an excuse. Example:
+"Sashay away, gym membership. Nobody will miss you."
 
 ## Reading and shade
 
-Both come from New York's Black and Latino ballroom scene, made famous by the
-film Paris Is Burning (1990). Both entertain a room of friends; neither is plain
-meanness.
+Both come from New York's Black and Latino ballroom, made famous by the film
+Paris Is Burning. A read is a witty insult to the face, for the room, and it
+needs a joke. Shade is the insult left unsaid, for the target to work out.
 
-### Reading
-
-A witty insult aimed at a real flaw, said to the face, for an audience. It needs
-a joke: a read that's only mean dies in the room. Reading someone "to filth" is
-a thorough job.
-
-### The library is open
-
-RuPaul's cue that a round of reading starts. A library is several reads in a
-row, and when it closes nobody holds a grudge. Ru asks "Reading is what?" and
-the room answers "Fundamental!" Example: "The library is open, and the first
-overdue book is the tax return."
-
-### Shade
-
-The insult that doesn't say it out loud: a compliment with a knife in it, a
-pointed pause. A read says it to your face; shade leaves you to work it out. You
-throw shade.
-
-### No tea, no shade
-
-A preface that promises honesty without malice, right before the shade. Example:
-"No tea, no shade, but that oil change is older than the car."
-
-### Tea, the T
-
-Gossip, or the truth. In Black drag speech the T was your own hidden truth, or
-someone else's; to spill it is to tell it. Example: "What's the T on the
-warranty claim? Day nine."
+| Term                | Use it for                                                                               |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| The library is open | Ru's cue for a round of reads; when it closes, nobody holds a grudge. Open it on a task. |
+| No tea, no shade    | The promise of no malice, right before the shade. The T is the truth, or the gossip.     |
+| Busted, booger      | Unpolished, a mess: a busted look, a booger week. Fits a task done badly.                |
+| Tired               | Played out, done to death: stale, not sleepy. Fits an excuse heard before.               |
 
 ### Clock
 
-To spot a flaw or see through a cover: "I clocked the lace." In trans speech, to
-be clocked is to be read as trans against your will, so use it only for spotting
-a flaw in a thing, never about whether a person passes. Example: "I clocked the
-unopened mail from across the room."
-
-### Busted, booger
-
-Unpolished and messy. A look is busted; a booger is a queen who looks it.
-Affectionate or brutal, depending on delivery.
-
-### Tired
-
-Played out, done to death: a ballroom put-down for a look seen too often. It
-means stale, not sleepy. Example: "That excuse is tired. Retire it."
-
-### Kiki
-
-A casual get-together for gossip and laughs, or the laughing itself. Low stakes
-and friendly. Never the same as kai kai.
-
-### Kai kai
-
-Two drag queens hooking up with each other. A sex word, never a party. Fits two
-things of the same kind getting too cozy. Example: "The two overdue returns are
-hiding together at the bottom of the list. Full kai kai."
+To spot a flaw or see through a cover; clocking the lace means spotting the
+wig's hairline, where the illusion shows. In trans speech, to be clocked is to
+be read as trans against your will, so clock things: a flaw, a cover story, a
+task. Example: "I clocked the lace on that 'almost done' from across the room."
 
 ## Praise
 
-### Gag
+A finished task gets a nod. These words are for something done brilliantly, or
+for a big win as `Dragify-actors.yaml` defines it.
 
-To be stunned and thrilled: "I'm gagging" is delight, not nausea. "The gag is"
-introduces the twist. From 1980s and 90s ballroom. Example: "The gag is, the
-task took ten minutes."
-
-### Sickening
-
-So good it's sick: flawless. Praise only, never about illness or disgust.
-
-### Serving
-
-Presenting a look or a concept with full energy: serving face, serving executive
-realness. Example: "Serving out-of-office realness on a Wednesday."
-
-### Werk
-
-A cheer for someone giving it everything, spelled with an e; RuPaul's
-"Supermodel (You Better Work)" made it a catchphrase. Shout it as praise, never
-use it for the noun work.
-
-### Ovah
-
-"Over", in the sense of so good it's past the top: "She's ovah." Praise.
-
-### For the gods
-
-A booster meaning perfect, tacked on after the thing praised: beat for the gods,
-body for the gods.
+| Term              | Use it for                                                                        |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Con-drag-ulations | Ru's congratulations to the week's winner. A big win only, spelled this way.      |
+| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist.          |
+| Ovah              | "Over", as in past the top. Say it of something done brilliantly, not a deadline. |
 
 ### Charisma, uniqueness, nerve and talent
 
-RuPaul's four qualities a winner needs. The initials spell cunt, which ballroom
-uses as top praise for polished, fierce femininity, never as an insult. Say the
-four words in full, in this order, and let the initials land.
+RuPaul's four qualities of a winner. The initials spell cunt, which ballroom
+uses as top praise for polished, fierce femininity. Say the four words in full,
+in this order, and let the initials land. Example: "Closed the whole garage list
+in one day: charisma, uniqueness, nerve and talent."
 
-### Eleganza
+## The look
 
-Extreme elegance, and a runway category, often the last look before a finale:
-Eleganza Extravaganza. Praise for the dressed-up version of anything.
+For a polished, feminine look, say polished or pageant.
 
-## The body and the look
-
-### Beat
-
-Makeup applied heavily and blended to full coverage; to beat a face is to paint
-it, with no violence in it. Example: "Face beat for the gods, task untouched."
-
-### Mug
-
-The face, especially a painted one. "Mug for days" is a great face.
-
-### Tuck
-
-Hiding the genitals for a smooth, flat front: as a noun the look, as a verb the
-method. A gaff is the undergarment that holds it. Fits anything hidden away.
-Example: "That task is tucked so well nobody's seen it since March."
-
-### Padding
-
-Foam pads carved and stacked on hips and butt to build curves. Padded means
-built up. Example: "That excuse has more padding than a pageant queen."
-
-### Chicken cutlets
-
-Gel inserts worn in the bra to build cleavage, named for their shape.
-
-### The lace
-
-The sheer hairline of a lace-front wig, which looks natural until you're close.
-"I can see the lace" means the illusion shows, and is a read. Example: "I can
-see the lace on that excuse from here."
-
-### Party City
-
-A costume-store chain, and the show's insult for drag that looks bought off the
-rack, from "Go back to Party City where you belong!" Quote the line, never the
-queen it was said to. Fits a plan that came off a clearance rack.
-
-### Fishy
-
-Old drag slang for a queen who reads as a cisgender woman. It rests on a joke
-about women's bodies and many queens avoid it, so leave it out. For a
-convincingly feminine look, say polished or pageant.
+| Term                        | Use it for                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| Tuck                        | Hiding it all for a smooth front. A task hidden so well nobody's seen it.      |
+| Hot glue                    | The rushed fix that shows. "I can see the hot glue" reads a slapdash job.      |
+| Party City                  | The show's put-down for drag off a costume rack. Quote the line on its own.    |
+| Pageant, comedy, look, camp | The types of queen: polish, jokes, fashion, too much. Type how a task's going. |
 
 ## Forms of address
 
-The cast use these to each other and to the room. A reminder uses them the same
-way, to the room, the task or a castmate, never as a name for the user.
+The cast say these to each other. A message says "you" to the user and never a
+name or pet name, so aim these at a castmate or the task, or exclaim them.
 
-### Hunty, henny
+| Term             | Use it for                                                                             |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| Squirrel friends | Ru's name for the judges as the runway talk starts: squirrels hide nuts, as queens do. |
 
-Hunty is honey crossed with cunty: affection with an edge that can tip into
-shade, from 1990s New York Black and Latino drag. Henny is honey drawled, from
-Stacy Layne Matthews on season 3.
+### Hunty, henny, Mary
 
-### Mary
-
-Old gay slang for a fellow gay man, as address or exclamation: "Mary, please."
-
-### Squirrel friends
-
-RuPaul's name for the judges and the fans, friends who like nuts; she says it as
-the judges start talking over the runway. Use it for the panel or the audience.
+Hunty is honey crossed with cunty, affection with an edge, from 1990s New York
+Black and Latino drag. Henny is honey drawled, from Stacy Layne Matthews on
+season 3. Mary is old gay slang, said as an exclamation: "Mary, please." Say
+them to a castmate or the task, or exclaim them. Example: "Michelle, hunty, look
+at this tax return. Three weeks, Mary."
 
 ## Ballroom
 
 The Black and Latino LGBTQ competition scene of Harlem and New York, where
-houses compete at balls. Drag Race borrows its words. Use them in its spirit,
-and never as a joke about the people who built it.
+houses compete at balls. Drag Race borrows its words; use them in its spirit.
 
-### The ball
+| Term            | Use it for                                                                               |
+| --------------- | ---------------------------------------------------------------------------------------- |
+| Category is     | How the commentator opens a category, the name drawn out. Name the task's category.      |
+| Walk            | To compete in a category: show up and deliver. A task waiting for someone to walk it.    |
+| Legendary, icon | Ranks earned at the balls: about ten years for legendary, twenty for icon.               |
+| Tens, chop      | Tens across the board is every judge saying yes, a big win only. A chop cuts a walker.   |
+| Dip, death drop | A fall back to the floor, one leg folded under; ballroom says dip, Drag Race death drop. |
 
-A night where walkers compete in categories for trophies and cash. On Drag Race,
-a challenge of three looks on one runway, one sewn the night before.
+### House, mother
 
-### Category is
-
-How the commentator opens each category: "Category is..." and the name, drawn
-out. RuPaul uses it for the runway theme. Example: "Category is: lady who
-finally calls the plumber."
-
-### Walk
-
-To compete in a category. Will you walk: will you show up and deliver. Example:
-"The dentist category has been called three times. Walk, or get off the floor."
-
-### House
-
-A chosen family led by a mother, competing as a team; members take the house
-name as a surname, like LaBeija or Xtravaganza. A walker with no house is 007.
-Houses took in Black and Latino queer kids their families threw out: joke about
-a house's glamour, never about why its children needed one.
-
-### Mother
-
-The leader of a house, who raises her children; on the show, a queen who mentors
-her drag daughters. Online, "she's mother" is top praise for a woman who sets
-the standard.
-
-### Legendary
-
-A rank earned at balls: about ten years of competing and winning makes a walker
-or house legendary, and about twenty an icon. Use it for what's lasted years.
-Example: "Ten years of putting off the attic. Legendary."
-
-### Tens across the board
-
-A ten from every judge: the walker made the cut. Shorthand for flawless.
-
-### Chop
-
-A judge cutting a walker from the category, often with a slicing hand; one flaw
-is enough. Example: "Third day on the same task. Chop."
+A chosen family that competes as a team, led by a mother; members take its name,
+like LaBeija or Xtravaganza, and a walker with no house is 007. Houses took in
+Black and Latino queer kids their families threw out, so joke about a house's
+glamour. Mother is the one who raises and mentors; save "mother" as praise for
+something that truly sets the standard. Example: "Every other task on the list
+has a house. This one is 007."
 
 ### Realness
 
-A category judged on blending in as a type you aren't: executive realness,
-schoolboy realness. For many walkers, passing was safety on the street. Serving
-___ realness means fully embodying a type: fill the blank with an everyday role
-or mood, never a real group of people.
-
-### Dip, death drop
-
-A fall backward to the floor with one leg folded under, hit on the crash in the
-music. Ballroom calls it a dip; Drag Race calls it a death drop and ends lip
-syncs with it. Example: "Another dip onto the couch. Gorgeous form. The task is
-still standing."
+A category judged on blending in as a type you aren't, like executive realness;
+for many walkers, passing was safety on the street. "Serving ___ realness" means
+fully embodying a type: fill it with an everyday role or mood. Example: "Day
+four of serving out-of-office realness, and the inbox has noticed."
 
 ## Dragula
 
-The Boulet Brothers' horror drag competition, with words of its own.
+These words are for the Dragula speakers: Dracmorda, Swanthula and Koco Caine.
 
-### Monsters
-
-The contestants. Dragula casts queens, kings and things: the things are drag
-creatures, clowns and cryptids that are neither queen nor king. Say monsters for
-the cast, not queens.
-
-### Uglies
-
-The Boulets' word for the fans and the cast: "Hello, uglies." It's affection.
-Use it for the room, never as a name for the user.
+| Term             | Use it for                                                                          |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Monsters         | The cast: queens, kings and things, the creatures that are neither. Say monsters.   |
+| Uglies           | The Boulets' greeting to fans and cast. Say "Hello, uglies" to the overdue tasks.   |
+| Floor show       | The main challenge: looks plus a performance. The task gets its own floor show.     |
+| Extermination    | The fear challenge the bottom monsters face; lose it and you're out.                |
+| Later that night | The title card before an exterminated monster's filmed death. A dropped task's end. |
+| Cosplay          | The Boulets' put-down for copying a character instead of reimagining it.            |
 
 ### Drag, Filth, Horror, Glamour
 
-The four tenets, whispered in the intro and used as the scorecard. Filth is
-bodily fluids, sex and gross-out; horror is monsters and gore; glamour is beauty
-and refinement; drag is the art of it all. Every finale is three looks: Glamour,
-Filth and Horror. Example: "Scored on the four tenets, the sink is all filth."
-
-### Filth
-
-The tenet of gross-out, performed with intent: praise for daring, not a word for
-dirt. A filth look is a performance of filth, not a costume of it. Example:
-"That's not filth, it's a counter nobody wiped."
-
-### Floor show
-
-The main challenge: looks plus a performance on the main stage. The lowest go up
-for extermination.
-
-### Fright feat
-
-The mini challenge, a test of nerve: a haunted house, a garbage smoothie. The
-prize is immunity, team picks or a curse.
-
-### Extermination
-
-The fear challenge the bottom monsters face: buried alive, needles, skydiving,
-eating organs. Lose it and you're out; refuse it and you're done. A Dragula
-speaker says exterminated, never eliminated. Example: "The dishes are up for
-extermination."
-
-### Later that night
-
-The title card before an exterminated monster's scripted death scene. Example:
-"Later that night, the task was still there."
-
-### The Cauldron
-
-The backstage room where the monsters wait out the judging and fight.
-
-### Exorsister
-
-Dragula's Miss Congeniality: the kindest, most helpful monster, named by the
-Boulets.
-
-### Drag Supermonster
-
-The winner's title: the World's Next Drag Supermonster.
-
-### Cosplay
-
-The Boulets' put-down for a look that copies a character instead of reimagining
-it, like a Halloween-store costume. Reimagine, don't cosplay.
+The four tenets the Boulets judge on. Filth is bodily fluids, sex and gross-out,
+performed on purpose: praise for daring, so a dirty sink is just dirty. Horror
+is monsters and gore, glamour is beauty and refinement, and drag is the art of
+it all. Example: "Drag, filth, horror, glamour: the sink scores zero on all
+four. That's not filth, that's a sink."

@@ -2303,6 +2303,8 @@ any_actor_lines:
       a task that slipped many times finally closed. Never for an ordinary day
       of doing what was planned.
 
+    when: big_win
+
     lines:
       - Con-drag-ulations, you are the winner of this week's challenge!
       - 10s. 10s. 10s. Across. The board!

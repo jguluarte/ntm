@@ -262,10 +262,10 @@ picked.
 
 For each message, the run hands the picker the options file's text, the recent
 picks and the message's occasions. The recent picks come from
-`%Message-history`, which records each message's hook, speaker and when it went
-out, and will record the line drawn. The run works out the occasions: which
-reminder this is, whether a task in it has slipped, whether one got done, and
-whether it's a big win.
+`%Message-history`, which records each message's hook, speaker, line drawn and
+when it went out. The run works out the occasions: which reminder this is,
+whether a task in it has slipped, whether one got done, and whether it's a big
+win.
 
 The picker keeps the entries whose `when` fits, or when none does, the entries
 without `when`. Each message gets exactly one hook, drawn from all the entries

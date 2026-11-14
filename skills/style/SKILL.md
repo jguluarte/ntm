@@ -120,8 +120,8 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
-and message are what gets sent, and step 1's hook and speaker go into its entry
-with the theme's name.
+and message are what gets sent, and step 1's hook, speaker and line go into its
+entry with the theme's name.
 
 ## Keeping `%Message-history`
 
@@ -138,7 +138,10 @@ that have a value:
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
 - `theme`: the theme's name
-- `hook`, `speaker`: what step 1 picked; `speaker` only when it picked one
+- `hook`, `speaker`: what step 1 picked, as the picker printed them,
+  `<kind>/<slug>`; `speaker` only when it picked one
+- `line_drawn`: the line step 1 drew for the hook, word for word, so the picker
+  can rest it; only when it drew one
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has one
 - `feedback`: the user's word on it, `keep` or `stale`

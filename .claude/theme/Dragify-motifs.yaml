@@ -159,6 +159,32 @@ motifs:
       - morning
       - weekly
 
+  picking_teams:
+    name: Picking teams
+
+    show: Drag Race
+
+    about: >-
+      When a challenge is done in teams, the mini challenge winner is often a
+      team captain, and the captains pick their teams from the queens lined up.
+
+    on_the_show: >-
+      The captains take turns, one queen at a time, and the queens still
+      standing watch the line shrink. Being picked last is a read of its own,
+      and the queens remember who picked them and who didn't.
+
+    staging: >-
+      Line up the day's tasks and have the user pick them one at a time, the way
+      a captain builds a team: the first pick says what the day is for. The task
+      is the one still standing at the end, picked last, and the read lands on
+      its face as the line empties.
+
+    phrases:
+      - Finally! I'm not gonna get picked last!
+
+    when:
+      - morning
+
   werk_room_walkthrough:
     name: Werk room walkthrough
 
@@ -187,6 +213,82 @@ motifs:
 
     when:
       - afternoon
+
+  the_twist:
+    name: The twist
+
+    show: Drag Race
+
+    about: >-
+      RuPaul stops everything with a surprise that changes the rules: a pairing,
+      a prize, a save, a catch.
+
+    on_the_show: >-
+      Twists come back season after season: queens paired off to lip sync in a
+      premiere, a golden chocolate bar, eliminated queens back in the werk room,
+      the rules suspended for a week. The room goes quiet, then every queen
+      works out what it means for her.
+
+    staging: >-
+      Stop the afternoon with the host's surprise, one that raises the stakes on
+      the task: a prize for having it done by tonight, a catch for leaving it.
+      The room goes quiet, then every station works out what the twist means for
+      it, and the read lands on the task's reaction.
+
+    phrases:
+      - Do you like surprises?
+
+    when:
+      - afternoon
+
+  getting_ready:
+    name: Getting ready
+
+    show: Drag Race
+
+    about: >-
+      Before the runway, the queens sit at the werk room mirrors and get into
+      face: makeup, wigs, padding, and talk.
+
+    on_the_show: >-
+      The talk at the mirrors turns personal: families, coming out, who's
+      worried about tonight. Someone is often behind, still not dressed when
+      it's time to walk.
+
+    staging: >-
+      Seat the day's tasks at the mirrors before the runway, each getting into
+      face, with what each still has to do before it can walk. The task is the
+      one furthest behind, talking about anything but tonight, and the read
+      lands on how much face is left to put on.
+
+    phrases: []
+
+    when:
+      - afternoon
+
+  confessional:
+    name: Confessional
+
+    show: Drag Race
+
+    about: >-
+      The talking-head interviews cut into each episode, where a queen tells the
+      camera what she really thinks.
+
+    on_the_show: >-
+      Queens answer the producers' questions to camera, and the edit drops the
+      answer right after the moment it's about. What a queen says to a rival's
+      face and what she says in confessional rarely match, and fans read the
+      edit for who's going to win.
+
+    staging: >-
+      Cut away from the day to a confessional: one of the other tasks, or the
+      task itself, tells the camera what it really thinks of how today is going
+      and of the user's plan for it. Drop the confessional right after the
+      moment it contradicts.
+
+    phrases:
+      - She's getting the winner's edit.
 
   design_challenge:
     name: Design challenge
@@ -1042,6 +1144,31 @@ motifs:
     when:
       - morning
 
+  the_boudoir:
+    name: The Boudoir
+
+    show: Dragula
+
+    about: >-
+      Dragula's workroom, later renamed the Lab, where the monsters build each
+      week's look and the fights start.
+
+    on_the_show: >-
+      The monsters build their floor show looks from whatever they can find,
+      with a mirror on every table and a rival at the next one. It's where the
+      looks come together and the fights start.
+
+    staging: >-
+      Put the task at its station in the Boudoir, mid-build: tonight's monster,
+      made from whatever is at hand, each step a part of the creature, and a
+      rival watching from the next table. The read lands on what the creature
+      looks like so far.
+
+    phrases: []
+
+    when:
+      - afternoon
+
   floor_show:
     name: Floor show
 
@@ -1284,6 +1411,31 @@ motifs:
 
     when:
       - slipped
+
+  extermination_survivor:
+    name: Extermination survivor
+
+    show: Dragula
+
+    about: >-
+      The bottom monster who comes through the extermination: the Boulets name
+      them a survivor, and they go back to the Boudoir for another week.
+
+    on_the_show: >-
+      Every extermination ends with its survivors named beside the monster who
+      goes out. Some monsters survive several in one season, and one survived
+      all four of theirs and made it to the finale.
+
+    staging: >-
+      Name the finished task a survivor: it faced today's ordeal and walked out.
+      The hosts say so flatly, and it goes back to its station a little worse
+      for wear, alive for another week.
+
+    phrases:
+      - Extermination survivor
+
+    when:
+      - done
 
   supermonster_crowning:
     name: Supermonster crowning

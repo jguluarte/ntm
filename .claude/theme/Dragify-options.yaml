@@ -234,10 +234,28 @@ motifs:
       - morning
       - weekly
 
+  - name: Picking teams
+    show: Drag Race
+    when:
+      - morning
+
   - name: Werk room walkthrough
     show: Drag Race
     when:
       - afternoon
+
+  - name: The twist
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Getting ready
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Confessional
+    show: Drag Race
 
   - name: Design challenge
     show: Drag Race
@@ -391,6 +409,11 @@ motifs:
     when:
       - morning
 
+  - name: The Boudoir
+    show: Dragula
+    when:
+      - afternoon
+
   - name: Floor show
     show: Dragula
 
@@ -434,6 +457,11 @@ motifs:
     show: Dragula
     when:
       - slipped
+
+  - name: Extermination survivor
+    show: Dragula
+    when:
+      - done
 
   - name: Supermonster crowning
     show: Dragula

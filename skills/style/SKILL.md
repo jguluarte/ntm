@@ -1,53 +1,74 @@
 ---
 name: style
 description: >-
-    Writes a message in the user's style, from their `%Theme`, and keeps
-    `%Message-history`. Loaded by the messenger agent for every message it
-    sends. In chat, writes something in the user's style when they ask, or
-    changes their theme with them ("make my reminders meaner").
+    Turns a message's facts into a finished message in the user's style: picks
+    what it draws on from their `%Theme`, sets the tone, has the writer agent
+    write versions, chooses one, and records it in `%Message-history` once it's
+    sent. Loaded for every message ntm sends in the user's style. In chat,
+    writes something in the user's style when they ask, or changes their theme
+    with them ("make my reminders meaner").
 ---
 
 # ntm:style
 
 The user's style is their `%Theme`, the database that says how every message to
-them is written.
+them is written. This skill reads `%Theme` and `%Message-history`. The writer
+agent reads only the parts of `%Theme` this skill points it to, and never
+`%Message-history`.
 
 ## Setup
 
 Load `ntm-user:backend`, which says where `%Theme` and `%Message-history` live,
-and read both. Today is the date in the timezone under About you in `%Settings`.
+and read both.
 
 ## What you write from
 
-| Input             | What it is                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------ |
-| The core message  | What to say, in plain words                                                          |
-| The type          | `freeform`, or the message rule it's for, such as `weekly`                           |
-| The task ids      | The tasks the message is about, and which of them are done                           |
-| Days slipped      | How many days each task has slipped, and any task marked to press harder, when given |
-| `record_task_ids` | Whether the history entry records the task ids; `false` when not given               |
-| The tone          | Your read of today's facts                                                           |
+The sender hands over the facts, as its own file says. They hold what the
+message must cover, and may hold its tasks and what's known of each, and
+anything else its rule asks of the message, such as tone or length.
 
-## Writing the message
+## Writing a message
 
-### 1. Determine the message intensity
+### 1. Pick
 
-A task's level is the one the theme's Responding to procrastination part gives
-for its days slipped. A task marked to press harder may go one level up. A done
-task has no level, and when no days slipped were given, no task has one.
+Pick one hook, the idea this message builds on: one motif, or one line from the
+theme's examples. Take one that no recent `%Message-history` entry used, judging
+from each entry's `line` which motif it used. Recent entries are those from the
+last two weeks, or from the span the theme's `Repeat limit:` line gives, when it
+has one.
 
-### 2. Write it
+Pick a speaker, the person in the theme who says the message, only when the
+theme names people who talk.
 
-Rewrite the core message in the user's theme, in today's tone, with each task at
-its level. Keep every fact in it.
+The theme material is what the writer gets of the theme: its guidance, which is
+every part that says how to write (its registers, its levels, its flow), and the
+entries for the hook and the speaker.
 
-Don't reuse a line, an opener or a shape from recent entries, and let each motif
-rest as the theme's `Repeat limit:` line says.
+### 2. Set the tone
 
-### 3. Give it a title
+Read the facts against the theme's guidance and set the tone: how hard each
+slipped task is pressed, a nod for what's done, and anything the facts ask of
+the tone. Call for a celebration only for a big effort: several tasks closed in
+one day that were planned across several days, a task with a big estimate
+finally closed, or one that slipped many times finally closed. An ordinary day
+of doing what was planned gets a nod. Slips from a while back weigh less: a task
+picked up again after a long gap is pressed less than its count of slips, as you
+judge it.
 
-Give it a title, in the same style, that says what the message is about. The
-type's name alone isn't a title. Don't be boring and just use the reminder type.
+### 3. Write
+
+Start the `ntm:writer` agent, and hand it the facts, the tone, the hook, the
+speaker, and the theme material, as text or as exactly which parts of `%Theme`
+to read. It returns 5 versions, each with a title, a message, and a probability
+from 0 to 1 of how likely a reader would be to predict it.
+
+When it returns `Writer FAILED:`, end with that line. When this session can't
+start it, end with `Writer FAILED: can't start the writer`.
+
+### 4. Choose
+
+Take the version with the lowest probability whose first five words don't begin
+the `line` of a recent entry. Its title and message are what gets sent.
 
 ## Keeping `%Message-history`
 
@@ -57,15 +78,15 @@ final reply, add its entry: one JSON line at the top of the Entries part.
 | Field  | What it holds                                                                     |
 | ------ | --------------------------------------------------------------------------------- |
 | `date` | The date it went out, such as `2026-11-09`                                        |
-| `ids`  | The task ids when `record_task_ids` is true, such as `["ABC-12"]`; otherwise `[]` |
+| `ids`  | The task ids the message is about, such as `["ABC-12"]`; `[]` if it is about none |
 | `line` | The message as sent                                                               |
 
 Then drop the entries older than the `Keep:` line, and save.
 
 ## In chat
 
-When the user asks for something in their style, write it the same way and show
-it to them.
+When the user asks for something in their style, write it with steps 1 to 4 and
+show it to them.
 
 When they ask to change how their messages read, find the part of `%Theme` they
 mean, draft the change with them, show it, and save it when they say yes. For a

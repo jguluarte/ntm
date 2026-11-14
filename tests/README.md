@@ -27,5 +27,5 @@ name back. `git log tests/expected/` is the record of every name change.
 
 `scripts/picker/test/` holds the tests of the picker, `scripts/picker/`, written
 with Python's `unittest`. `make test` runs them with the picker's folder on
-Python's import path, so a test imports the picker's classes by name. Most run
-on small made-up themes in `test/fixtures/`, and one runs `pick` itself.
+Python's import path, so a test imports the picker's classes by name.
+`test_pick.py` runs `pick` itself; the rest call the picker's classes.

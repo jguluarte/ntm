@@ -5,3 +5,7 @@ pools:
       dawn:
       noon:
       dusk:
+  cast:
+    gives: [speaker]
+    entries:
+      host:

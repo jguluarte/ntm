@@ -1,22 +1,21 @@
 import subprocess
 import sys
+import unittest
 from pathlib import Path
 
-from picker_test_case import PickerTestCase
-
 PICK = Path(__file__).parents[1] / "pick"
+EVEN = Path(__file__).parent / "fixtures" / "Even-options.yaml"
+EVEN_HOOKS = {"hook: scenes/dawn", "hook: scenes/noon", "hook: scenes/dusk"}
 
 
-class PickTest(PickerTestCase):
+class PickTest(unittest.TestCase):
     def pick(self, *arguments):
         argv = [sys.executable, str(PICK), *arguments]
         return subprocess.run(argv, capture_output=True, text=True, check=False)
 
-    def test_a_pick_prints_the_hook(self):
-        arguments = self.arguments("Even", "--seed", "1")
-        printed = self.pick("hook", *arguments).stdout.splitlines()
-        names = [line.split(": ")[0] for line in printed]
-        self.assertEqual(["hook"], names)
+    def test_a_pick_prints_one_of_the_hooks(self):
+        ran = self.pick("hook", "--options", str(EVEN), "--seed", "1")
+        self.assertIn(ran.stdout.rstrip("\n"), EVEN_HOOKS)
 
     def test_a_failure_prints_one_line_on_stderr_and_exits_1(self):
         ran = self.pick("hook")

@@ -90,12 +90,17 @@ Every user has the three below.
 
 The values the user agreed to in setup, such as their timezone, their label
 names and how they want to be notified. `ntm:ready-check` loads it at the start
-of a run, and skills read the part they need.
+of a run, and skills read the part they need. Its Themes part lists the user's
+themes and names this week's.
 
 ### `%Theme`
 
 The style ntm's messages to the user are written in. `ntm:style` reads it before
 each message, and changes it with the user when they ask.
+
+Themes are moving to a set of files per theme, which
+`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` describes. No run reads those
+files yet: `%Theme` is the user's theme.
 
 ### `%Message-history`
 

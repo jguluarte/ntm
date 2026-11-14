@@ -32,10 +32,10 @@ anything else its rule asks of the message, such as tone or length.
 ### 1. Pick
 
 Pick one hook, the idea this message builds on: one motif, or one line from the
-theme's examples. Take one that no recent `%Message-history` entry used, judging
-from each entry's `line` which motif it used. Recent entries are those from the
-last two weeks, or from the span the theme's `Repeat limit:` line gives, when it
-has one.
+theme's examples. Take one that no recent `%Message-history` entry used, from
+each entry's `hook`, or for an older entry, judging from its `line` which motif
+it used. Recent entries are those from the last two weeks, or from the span the
+theme's `Repeat limit:` line gives, when it has one.
 
 Pick a speaker, the person in the theme who says the message, only when the
 theme names people who talk.
@@ -67,8 +67,10 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose first five words don't begin
-the `line` of a recent entry. Its title and message are what gets sent.
+Take the version with the lowest probability whose first five words aren't the
+`opening` of a recent entry, or the start of an older entry's `line`. Its title
+and message are what gets sent, and step 1's hook and speaker go into its entry
+with the theme's name.
 
 ## Keeping `%Message-history`
 
@@ -80,15 +82,18 @@ line, written with only the fields that have a value. Spread over lines here:
 {
     "sent": "2026-11-13 08:45",
     "reminder": "morning",
+    "theme": "Deep space",
+    "hook": "the launch window",
     "opening": "Shelf day, one bracket first",
     "tasks": [{ "id": "ABC-12", "planned": "2026-11-13" }]
 }
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
-- `reminder`: the message rule's name, such as `morning` or `weekly`, or
-  `freeform`
-- `theme`, `hook`, `speaker`: from whoever picked them, as handed
+- `reminder`: which message it is: the reminder's type, such as `morning`, or
+  `weekly`, or `self-test`
+- `theme`: the theme's name
+- `hook`, `speaker`: what step 1 picked; `speaker` only when it picked one
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has one
 - `feedback`: the user's word on it, `keep` or `stale`

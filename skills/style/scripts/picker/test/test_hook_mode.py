@@ -37,7 +37,7 @@ class DrawTest(HookModeTest):
         self.assertEqual(first, again)
 
 
-class FlagsTest(HookModeTest):
+class CommandLineTest(HookModeTest):
     def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):
         why = "unrecognized arguments: --colour red"
         self.assertFails(why, self.report, EVEN, "--colour", "red")

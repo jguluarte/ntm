@@ -16,8 +16,8 @@ class HookModeTest(PickerTestCase):
 
 
 class DrawTest(HookModeTest):
-    def test_seeds_1_to_20_draw_every_hook(self):
-        seeds = range(1, 21)
+    def test_every_hook_can_be_drawn(self):
+        seeds = range(100)
         drawn = {self.picks("Even", seed)["hook"] for seed in seeds}
         self.assertEqual(EVEN_HOOKS, drawn)
 

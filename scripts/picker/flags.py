@@ -1,10 +1,4 @@
-import re
-import secrets
-
 from failure import PickerFailed
-
-WHOLE_NUMBER = re.compile("[0-9]+")
-SEED_BITS = 32
 
 
 class Flags:
@@ -16,15 +10,6 @@ class Flags:
 
     def __getitem__(self, flag):
         return self.values.get(flag, "")
-
-    @property
-    def seed(self):
-        text = self["--seed"]
-        if not text:
-            return secrets.randbits(SEED_BITS)
-        if not WHOLE_NUMBER.fullmatch(text):
-            raise PickerFailed("--seed takes a whole number")
-        return int(text)
 
     def _read(self, arguments):
         for flag in arguments:

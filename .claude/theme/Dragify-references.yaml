@@ -126,6 +126,24 @@ references:
       Seat whoever the task is for at the judges' table, the way Natalie Cole
       sat through her own song, and have the user perform it to their face.
 
+  party_city:
+    name: Party City
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Season 4: in a feud between two queens, one told the other,
+      whose spooky drag she looked down on, to go back to Party City where she
+      belonged. The line outlived the feud, and in 2020 a congresswoman told her
+      own critics to go back there.
+
+    meaning: >-
+      Drag off a costume rack; the put-down for the cheap version of anything.
+
+    callback: >-
+      Hold the quick, cheap version of the task up against the real thing, and
+      send it back to the costume rack it came from.
+
   coco_and_alyssa:
     name: Coco and Alyssa
 
@@ -1014,6 +1032,26 @@ references:
       Explain how the task works in Bimini's Katie Price: total confidence, no
       facts, delivered as wisdom.
 
+  danny_beards_clean_run:
+    name: Danny Beard's clean run
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 4: Danny Beard won four challenges, never landed in
+      the bottom, and didn't lip sync once until the final, where a win over
+      Cheddar Gorgeous, to "This Is My Life", took the crown.
+
+    meaning: >-
+      Steady all the way, then the one lip sync that counted.
+
+    callback: >-
+      Crown the big effort that never once landed in the bottom: on plan every
+      day, no lip sync needed, until the last one, and it won that too.
+
+    when:
+      - big_win
+
   love_most_of_ya:
     name: Love most of ya
 
@@ -1055,7 +1093,7 @@ references:
       - evening
       - slipped
 
-  # Canada's Drag Race and Canada vs the World
+  # Canada's Drag Race
 
   eve_6000s_reveal:
     name: Eve 6000's reveal
@@ -1076,6 +1114,27 @@ references:
 
     when:
       - done
+
+  # Drag Race Down Under
+
+  kita_mean_wins_at_home:
+    name: Kita Mean wins at home
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under's first season moved to Auckland because of the
+      pandemic, and Kita Mean, an Auckland queen, won it in her own city.
+
+    meaning: >-
+      The crown won on home ground.
+
+    callback: >-
+      Crown the big effort at home, on the ground it was done on, with the home
+      crowd cheering from the next room.
+
+    when:
+      - big_win
 
   # Dragula
 
@@ -1136,6 +1195,25 @@ references:
 
     when:
       - done
+
+  landon_cider_the_first_king:
+    name: Landon Cider, the first king
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 3: Landon Cider won the season, the first drag king to win
+      an American TV drag competition.
+
+    meaning: >-
+      The first of a kind to take the crown.
+
+    callback: >-
+      Crown the big effort as the first of its kind: no task like it had ever
+      been finished here, and now one has.
+
+    when:
+      - big_win
 
   saint_wins_resurrection:
     name: Saint wins Resurrection
@@ -1239,6 +1317,26 @@ references:
 
     when:
       - slipped
+
+  junior_labeijas_opulence:
+    name: Junior LaBeija's opulence
+
+    show: Queer culture
+
+    what_happened: >-
+      In Paris Is Burning (1990), Junior LaBeija, emceeing a ball, spells out
+      O-P-U-L-E-N-C-E at a walker and tells them they own everything.
+
+    meaning: >-
+      The walk that owns the room: everything is yours.
+
+    callback: >-
+      Call the big effort down the floor the way Junior LaBeija calls a walk:
+      spell out what it's wearing, letter by letter, and hand it everything in
+      the room.
+
+    when:
+      - big_win
 
   pink_flamingos:
     name: Pink Flamingos
@@ -1351,6 +1449,26 @@ references:
     when:
       - done
 
+  little_edies_costume:
+    name: Little Edie's costume for the day
+
+    show: Queer culture
+
+    what_happened: >-
+      In Grey Gardens (1975), Little Edie Beale explains her outfit to the
+      camera: trousers under a skirt, so the skirt can come off and be a cape,
+      which makes it the best costume for the day.
+
+    meaning: >-
+      Dressing for the day with total conviction.
+
+    callback: >-
+      Dress the morning's task in its costume for the day and explain every
+      piece to camera, as if the outfit were the plan.
+
+    when:
+      - morning
+
   picture_it:
     name: Picture it
 
@@ -1404,6 +1522,26 @@ references:
     callback: >-
       Bring the big effort back for its second night, the way Diana Ross came
       back after the rain: the whole set, start to finish.
+
+    when:
+      - big_win
+
+  judy_at_carnegie_hall:
+    name: Judy at Carnegie Hall
+
+    show: Queer culture
+
+    what_happened: >-
+      In April 1961, Judy Garland played Carnegie Hall. The crowd pressed up to
+      the stage and kept calling her back after her songbook ran out, and the
+      live album won four Grammys, Album of the Year among them.
+
+    meaning: >-
+      The night the audience wouldn't let end.
+
+    callback: >-
+      Give the big effort Judy's night at Carnegie Hall: the crowd at the edge
+      of the stage, calling it back for one more bow after the last song.
 
     when:
       - big_win

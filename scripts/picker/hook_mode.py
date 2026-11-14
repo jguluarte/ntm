@@ -1,5 +1,4 @@
 import random
-import re
 
 from draw import Draw
 from failure import PickerFailed
@@ -10,29 +9,25 @@ OPTIONS = "--options"
 SEED = "--seed"
 HOOK_LINE = "hook: {}"
 NO_HOOKS = "the options file has no hooks"
-WHOLE_NUMBER = re.compile("[0-9]+")
 
 
 class HookMode:
     NAME = "hook"
-    REQUIRED_FLAGS = (OPTIONS,)
-    OPTIONAL_FLAGS = (SEED,)
 
     def __init__(self, flags):
-        self.options = Options(YamlFile(flags[OPTIONS]).load())
-        self.generator = self._seeded(flags[SEED])
+        self.options = Options(YamlFile(flags.options).load())
+        self.generator = random.Random(flags.seed)
+
+    @staticmethod
+    def add_flags(flags):
+        flags.add_argument(OPTIONS, required=True)
+        flags.add_argument(SEED, type=int)
 
     def report(self):
         hooks = self.options.hooks()
         self._require_drawable(hooks)
         hook = Draw(hooks).pick(self.generator.random())
         return HOOK_LINE.format(hook.id)
-
-    @staticmethod
-    def _seeded(seed):
-        if seed and not WHOLE_NUMBER.fullmatch(seed):
-            raise PickerFailed(f"{SEED} takes a whole number")
-        return random.Random(int(seed) if seed else None)
 
     @staticmethod
     def _require_drawable(hooks):

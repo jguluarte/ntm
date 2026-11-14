@@ -2,9 +2,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from command_line import CommandLine
 from even_theme import EVEN, EVEN_HOOKS
 from failure import PickerFailed
-from flags import Flags
 from hook_mode import HookMode
 
 
@@ -13,7 +13,8 @@ class HookModeTest(unittest.TestCase):
         self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
 
     def report(self, options, *more):
-        flags = Flags(HookMode, ["--options", str(options), *more])
+        arguments = ["hook", "--options", str(options), *more]
+        flags = CommandLine.for_modes([HookMode]).parse_args(arguments)
         return HookMode(flags).report()
 
     def drawn(self, seed):
@@ -38,11 +39,11 @@ class DrawTest(HookModeTest):
 
 class FlagsTest(HookModeTest):
     def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):
-        why = "pick hook doesn't take --colour"
+        why = "unrecognized arguments: --colour red"
         self.assertFails(why, self.report, EVEN, "--colour", "red")
 
     def test_a_seed_that_isnt_a_whole_number_fails_saying_so(self):
-        why = "--seed takes a whole number"
+        why = "argument --seed: invalid int value: 'seven'"
         self.assertFails(why, self.report, EVEN, "--seed", "seven")
 
 

@@ -1,21 +1,16 @@
 #!/usr/bin/env python3
 import sys
 
+from command_line import CommandLine
 from failure import PickerFailed
-from flags import Flags
 from hook_mode import HookMode
 
 MODES = {mode.NAME: mode for mode in (HookMode,)}
-MODE_NAMES = "|".join(MODES)
-USAGE = f"usage: pick {MODE_NAMES}, as README.md beside it says"
 
 
 def report(arguments):
-    if not arguments or arguments[0] not in MODES:
-        raise PickerFailed(USAGE)
-    name, *flags = arguments
-    mode = MODES[name]
-    return mode(Flags(mode, flags)).report()
+    flags = CommandLine.for_modes(MODES.values()).parse_args(arguments)
+    return MODES[flags.mode](flags).report()
 
 
 try:

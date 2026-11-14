@@ -19,9 +19,10 @@ class PickTest(unittest.TestCase):
 
     def test_a_failure_prints_one_line_on_stderr_and_exits_1(self):
         ran = self.pick("hook")
-        expected = (1, "Picker FAILED: pick hook needs --options\n")
+        why = "the following arguments are required: --options"
+        expected = (1, f"Picker FAILED: {why}\n")
         self.assertEqual(expected, (ran.returncode, ran.stderr))
 
     def test_an_unknown_mode_fails_naming_the_modes(self):
-        usage = "usage: pick hook, as README.md beside it says"
-        self.assertEqual(f"Picker FAILED: {usage}\n", self.pick("hooks").stderr)
+        why = "argument mode: invalid choice: 'hooks' (choose from 'hook')"
+        self.assertEqual(f"Picker FAILED: {why}\n", self.pick("hooks").stderr)

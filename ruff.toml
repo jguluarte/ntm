@@ -1,6 +1,6 @@
 line-length = 80
 target-version = "py313"
-extend-include = ["scripts/picker/pick"]
+extend-include = ["skills/style/scripts/picker/pick"]
 
 [lint]
 select = ["F", "E9", "E501"]

@@ -75,7 +75,8 @@ sound like something you enjoy and keep changing instead of repeating. A task
 you keep putting off gets a stronger nudge the longer it slips. Ask it to write
 something in your style, or to change how your reminders sound. When a reminder
 is a keeper, or one has gone stale, say so in that reminder's chat, and ntm
-notes it to keep your reminders fresh.
+notes it to keep your reminders fresh. Each reminder draws on a different part
+of your theme, picked so that all of it gets used.
 
 ### `/ntm:theme-builder`
 

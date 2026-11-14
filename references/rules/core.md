@@ -33,7 +33,8 @@ it keeps what they have to think about small.
 In the normal flow, ntm takes care of its own workings without explaining them.
 When the user asks in chat how something works, explain gladly: start at the
 top, and go one layer deeper each time they ask, matched to what they already
-know.
+know. For how a message gets picked, `${CLAUDE_PLUGIN_ROOT}/docs/picking.md` is
+the next layer down.
 
 ## The task list
 

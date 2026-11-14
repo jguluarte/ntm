@@ -1618,7 +1618,7 @@ actors:
           Put the user on planet nine with her, far off in a world of their own,
           and the task on planet three, down on Earth and waiting.
       - line: Buenas noches! Oh, see you later, in the magazines.
-        when: the evening message
+        when: evening
 
   jujubee:
     name: Jujubee
@@ -1890,7 +1890,7 @@ actors:
       - line: >-
           It's been 10 years of coming to this competition, and I'm fucking
           ready to reign. I won! I won! Finally. We did it, Joe!
-        when: a task finished after weeks on the list
+        when: big_win
       - line: Of course Michelle is going to judge you. IT'S HER JOB.
         bend: >-
           Put herself in Michelle's chair: of course the reminder judges the
@@ -2009,7 +2009,7 @@ actors:
           Hand it to the user while the due date is still days away, the delay
           celebrated like a save.
       - line: I'd like to take it off, please.
-        when: a finished task
+        when: done
 
   jaida_essence_hall:
     name: Jaida Essence Hall

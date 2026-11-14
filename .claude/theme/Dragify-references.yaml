@@ -978,3 +978,430 @@ references:
 
     when:
       - morning
+
+  # Drag Race All Stars
+
+  the_she_mergency_button:
+    name: The she-mergency button
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 1 put the queens in teams of two, with a she-mergency button to
+      tag in your partner. Yara Sofia hit it to take over a lip sync for Alexis
+      Mateo.
+
+    meaning: >-
+      Calling in backup mid-performance.
+
+    callback: >-
+      Fits a task the user wants someone else to finish: hover a hand over the
+      button, or press it.
+
+  dancing_on_my_own:
+    name: Dancing on My Own
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 1: teammates Jujubee and Raven lip synced "Dancing on My Own",
+      barely moved, and both cried while the judges teared up. RuPaul sent no
+      one home.
+
+    meaning: >-
+      Raw feeling over stunts.
+
+    callback: >-
+      Fits a heavy evening with a task still on it: barely move, cry through it,
+      and still get it done.
+
+    when:
+      - evening
+
+  alaskas_knife:
+    name: Alaska's knife
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 2: lip syncing "Le Freak" against Katya, Alaska stripped and cut
+      her skirt with a knife. She won.
+
+    meaning: >-
+      The prop that turns a lip sync.
+
+    callback: >-
+      Fits a task wrapped in tape, boxes and packaging: bring the knife to the
+      lip sync.
+
+  shut_up_and_drive:
+    name: Shut Up and Drive
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 2, "Revenge of the Queens": two eliminated queens, Alyssa
+      Edwards and Tatianna, lip synced "Shut Up and Drive" for a way back. It
+      was so close that both returned.
+
+    meaning: >-
+      A tie good enough to bring two queens back.
+
+    callback: >-
+      Fits two dropped tasks back on the list together: they lip synced their
+      way back as a pair.
+
+    when:
+      - slipped
+
+  ben_eliminates_herself:
+    name: Ben eliminates herself
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 3: the clear front-runner, BenDeLaCreme, won a lip sync, then
+      sent herself home, saying the others wanted it more.
+
+    meaning: >-
+      Leaving the party early, while ahead.
+
+    callback: >-
+      Fits a task the user quits while it's going well: win the round, then pull
+      your own name.
+
+  is_she_gonna_jump:
+    name: Is she gonna jump?
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 3 premiere: as Aja climbed a stage block during her talent
+      number, Milk asked whether she was going to jump from there. The moment
+      became a captioned image.
+
+    meaning: >-
+      Watching someone about to do something risky.
+
+    callback: >-
+      Fits a user about to take on far too much in one day: watch them climb the
+      block, and ask.
+
+  lifes_not_fair:
+    name: Life's not fair
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 4: Naomi Smalls won the lip sync and sent home Manila Luzon, the
+      presumed front-runner, who had never been in the bottom. Naomi's
+      unbothered "Life's not fair" became the meme.
+
+    meaning: >-
+      A shrug at any mild injustice.
+
+    callback: >-
+      Fits a favorite task bumped for a dull one: shrug it off the way Naomi
+      did.
+
+  the_same_wig:
+    name: The same wig
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 4 finale: lip syncing "Fighter" against Trinity the Tuck, Monét
+      X Change pulled off her wig to reveal the same wig underneath. The two
+      were crowned together.
+
+    meaning: >-
+      The reveal that reveals nothing, and wins anyway.
+
+    callback: >-
+      Fits a task the user took the cover off, only to find the same task under
+      it: pull the wig and show the wig.
+
+  club_96:
+    name: Club 96
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 4: Naomi Smalls and Valentina named their nightclub Club 96 and
+      whispered the name over and over. They landed in the bottom, but the
+      whisper won the internet.
+
+    meaning: >-
+      Two people whispering; the caption for any photo of a whisper.
+
+    callback: >-
+      Fits a task the rest of the list is whispering about: lean in and whisper
+      its name.
+
+  kylies_boa:
+    name: Kylie's boa
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 6 finale: mid lip sync, Kylie Sonique Love's heel caught a boa,
+      and she rolled out of the fall into a pose and kept going. Carson Kressley
+      said she saved that, and she won the season.
+
+    meaning: >-
+      Turning a stumble into a move.
+
+    callback: >-
+      Fits a task that tripped on the way and got done anyway: roll the fall
+      into a pose.
+
+    when:
+      - done
+
+  silkys_barbie_girl:
+    name: Silky's Barbie Girl
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 6: in a RuDemption round, Silky Nutmeg Ganache lip synced
+      "Barbie Girl" alone, playing both characters, pulling props from her bra
+      and strumming a pizza-box guitar.
+
+    meaning: >-
+      Doing both parts at once, by yourself.
+
+    callback: >-
+      Fits a task with nobody to split it with: play both parts, the one who
+      stalls and the one who does it.
+
+  the_spoken_word_lip_sync:
+    name: The spoken-word lip sync
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 7: Monét X Change and Jinkx Monsoon lip synced the franchise's
+      first spoken-word number, a monologue from Designing Women. Monét won.
+
+    meaning: >-
+      No music, only the words, and someone still wins.
+
+    callback: >-
+      Fits a dull task with no fun in it: drop the song and deliver the
+      monologue anyway.
+
+    when:
+      - evening
+
+  # Drag Race UK and UK vs the World
+
+  frock_destroyers:
+    name: Frock Destroyers
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 1: Baga Chipz, Blu Hydrangea and Divina de Campo sang
+      the girl-group song "Break Up (Bye Bye)" as the Frock Destroyers. It
+      charted, and made girl groups a UK staple.
+
+    meaning: >-
+      The girl group that outlived its challenge.
+
+    callback: >-
+      Fits a day when several tasks closed together: form them into the group
+      and give them a chart position.
+
+    when:
+      - big_win
+
+  uk_hun:
+    name: UK Hun?
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2: two groups, the United Kingdolls and Bananadrama,
+      sang the same girl-group song, "UK Hun?". Fans rank it the best girl-group
+      number.
+
+    meaning: >-
+      The same song, done two ways, and everyone ranks them.
+
+    callback: >-
+      Fits two tasks of the same size competing for today: give each its version
+      of the song and rank them.
+
+  the_lockdown_break:
+    name: The lockdown break
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2: filming stopped for the pandemic after episode 4
+      and resumed seven months later. Sister Sister came back with new teeth.
+
+    meaning: >-
+      The long pause in the middle, and coming back changed.
+
+    callback: >-
+      Fits a task paused so long it needs a comeback: return to it months later
+      with new teeth.
+
+    when:
+      - slipped
+
+  ginny_lemon_walks_off:
+    name: Ginny Lemon walks off
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2: Ginny Lemon walked off mid lip sync and left
+      Sister Sister performing alone, the first UK self-elimination.
+
+    meaning: >-
+      Leaving the stage while the song's still playing.
+
+    callback: >-
+      Fits a task the user walked away from halfway: describe the partner left
+      lip syncing alone.
+
+    when:
+      - slipped
+
+  bimini_as_katie_price:
+    name: Bimini's Katie Price
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2 Snatch Game: Bimini Bon-Boulash played Katie Price
+      and said the nipples are the eyes to the face.
+
+    meaning: >-
+      Confident nonsense, delivered as wisdom.
+
+    callback: >-
+      Fits the user's theory of why the task can wait: deliver it with Katie
+      Price's confidence.
+
+  a_leaf_on_the_line:
+    name: A leaf on the line
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2: Lawrence Chaney's excuse for being late was a leaf
+      on the line, the classic British rail excuse. She went on to win the
+      series.
+
+    meaning: >-
+      The official-sounding excuse for being late.
+
+    callback: >-
+      Fits a task running late: put the delay down to a leaf on the line, with a
+      straight face.
+
+    when:
+      - slipped
+
+  smintys_sad_twerk:
+    name: Sminty's sad twerk
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 4: Sminty Drop gave a sad twerk on her way out.
+
+    meaning: >-
+      Leaving with the moves, if not the mood.
+
+    callback: >-
+      Fits the evening's undone task heading off the stage: give it one sad
+      twerk on the way out.
+
+    when:
+      - evening
+      - slipped
+
+  banksies_last_walk:
+    name: Banksie's last walk
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 5: a week after storming out of Untucked and telling
+      everyone to fuck off, Banksie was eliminated, and walked the runway one
+      last time.
+
+    meaning: >-
+      The exit taken on your own terms, after the storm.
+
+    callback: >-
+      Fits a task dropped at the end of the day: give it one last walk down the
+      runway before it goes.
+
+    when:
+      - evening
+
+  love_most_of_you:
+    name: Love most of you
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 5: Vicki Vivacious signed her mirror message "love
+      most of you", and nobody knew who was left out. At the reunion she named
+      who had left a bad taste in her mouth.
+
+    meaning: >-
+      The sweet goodbye with a hole in it.
+
+    callback: >-
+      Fits an evening when most of the list got done: love most of it, and leave
+      the rest guessing.
+
+    when:
+      - evening
+      - done
+
+  jimbos_mirror_message:
+    name: Jimbo's mirror message
+
+    show: Drag Race
+
+    what_happened: >-
+      UK vs the World, Series 1: sent home by Pangina Heals, Jimbo wrote her
+      farewell lipstick message as Pangina: "MY NAME IS PANGINA AND I'M A STUPID
+      IDIOT."
+
+    meaning: >-
+      Signing the goodbye in someone else's name.
+
+    callback: >-
+      Fits a task dropped tonight: write its mirror message in the name of
+      whatever knocked it off the list.
+
+    when:
+      - evening
+
+  tia_kofi_wins:
+    name: Tia Kofi wins
+
+    show: Drag Race
+
+    what_happened: >-
+      Tia Kofi placed seventh on Drag Race UK Series 2, then won UK vs the World
+      Series 2 as the underdog.
+
+    meaning: >-
+      The seventh-placer who came back and won it all.
+
+    callback: >-
+      Fits a big effort on a task that once finished near the bottom: bring up
+      the seventh place, then the crown.
+
+    when:
+      - big_win

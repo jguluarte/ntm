@@ -11,6 +11,8 @@ A script, the picker, will pick what each message draws on, and a writer writes
 the message from the picks. For a script to pick, a theme has to be data in a
 known shape, and this file is that shape. Today `ntm:theme-builder` builds a
 theme as one `%Theme` database, and `ntm:style` picks for it without the picker.
+The rest of this file describes theme files, and the picker that reads them, as
+they will work.
 
 A user will be able to have several themes. The Themes part of `%Settings` lists
 each one by its root and names this week's theme, the one everything picked in a
@@ -110,8 +112,8 @@ which is never an entry.
 Each entry is keyed by a slug, a short key such as `detective`, which the
 options file uses to name it. Within a theme, the entries of a kind share their
 keys, and their optional keys, when present, come in the same order. Key names
-are the theme's own, except `about`, `lines`, `riffs` and `when`, which ntm
-reads. Prose sits in `>-` folded text.
+are the theme's own, except `about`, `lines`, `riffs`, `line`, `bend` and
+`when`, which ntm reads. Prose sits in `>-` folded text.
 
 An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus
 either a `bend`, which says how to turn the line toward a task, or a `when`, for
@@ -171,9 +173,9 @@ set, of two kinds: which reminder a message is, and what happened to its tasks.
 | `done`      | What happened  | A task in the message got done    |
 | `big_win`   | What happened  | A big effort, as below            |
 
-A message is one reminder at most, and any of what happened that holds. An entry
-fits a message when its `when` names no reminder or this message's reminder, and
-names nothing that happened or something that happened in this message. So
+A message is one reminder, and any number of things can have happened in it. An
+entry fits a message when the message is one of the reminders its `when` names,
+if it names any, and one of the things it names happened, if it names any. So
 `when: evening` fits any evening, `when: slipped` any message with a slipped
 task, `when: [evening, slipped]` only an evening with a slipped task, and
 `when: [morning, weekly]` either reminder.
@@ -182,8 +184,8 @@ A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that
 slipped many times finally closed. An ordinary day of doing what was planned is
 never a big win. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference will say what happens when a theme
-keeps none.
+kept for `big_win`; the picker's reference says what happens when a theme keeps
+none.
 
 ## The options file
 
@@ -243,17 +245,16 @@ pools:
 The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
 its checksum differs. The picker's own reference, the plugin's
-`scripts/picker/README.md` once the picker lands, defines how each number is
-computed.
+`scripts/picker/README.md`, defines how each number is computed.
 
-| Field                 | What it is                                                              |
-| --------------------- | ----------------------------------------------------------------------- |
-| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above     |
-| `half_life_days`      | The days for the chance a picked entry lost to halve; per pool          |
-| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1         |
-| `weight`              | What the entry has to offer: 1 without lines, less with only a few      |
-| `line_half_life_days` | The days for the chance a used line lost to halve; per entry with lines |
-| `score`               | How well messages built on the entry landed, from `%Message-history`    |
+| Field                 | What it is                                                                                   |
+| --------------------- | -------------------------------------------------------------------------------------------- |
+| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
+| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
+| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                              |
+| `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
+| `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
+| `score`               | How well messages built on the entry landed, from `%Message-history`                         |
 
 An entry's line half-life comes from how many lines it has and how often it is
 picked.
@@ -262,10 +263,10 @@ picked.
 
 For each message, the run hands the picker the options file's text, the recent
 picks and the message's occasions. The recent picks come from
-`%Message-history`, which records each message's hook, speaker and when it went
-out, and will record the line drawn. The run works out the occasions: which
-reminder this is, whether a task in it has slipped, whether one got done, and
-whether it's a big win.
+`%Message-history`, which records each message's hook, speaker, line drawn and
+when it went out. The run works out the occasions: which reminder this is,
+whether a task in it has slipped, whether one got done, and whether it's a big
+win.
 
 The picker keeps the entries whose `when` fits, as `when` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools

@@ -30,23 +30,6 @@ references:
       Fits a task old enough to have been filmed in 2009: put its plan behind
       the filter, where it reads fine at a distance and falls apart in focus.
 
-  two_piece_and_a_biscuit:
-    name: Two piece and a biscuit
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 2: Mystique Summers Madison gave her secret to success as a Popeyes
-      meal, a two piece and a biscuit.
-
-    meaning: >-
-      Comfort food as a strategy: the reward that comes before the work.
-
-    callback: >-
-      Fits a task the user is rewarding themselves for before starting it: name
-      the meal as the plan, and the task as what's still waiting after the
-      biscuit.
-
   susan_lucci:
     name: The Susan Lucci of the competition
 
@@ -250,110 +233,6 @@ references:
       Fits a task that needs one committed move to finish: jump off the stage
       into it, splits and all.
 
-  status_update_dead:
-    name: Status update, dead
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7, ShakesQueer, an acting challenge nearly every queen bombed:
-      Max's "Status update: dead" became the GIF for it.
-
-    meaning: >-
-      Anything that died on arrival.
-
-    callback: >-
-      Fits a task stalled so long it has flatlined: post its status update.
-
-    when:
-      - slipped
-
-  hows_your_head:
-    name: How's your head?
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7: RuPaul kept setting up the innuendo for Miss Fame, who missed it
-      every time and said her head was fine.
-
-    meaning: >-
-      Missing an obvious cue, again and again.
-
-    callback: >-
-      Fits a task the user keeps missing every hint about: set up the cue once
-      more and let it sail past.
-
-  loaf_of_bread:
-    name: The loaf of bread
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7, ShakesQueer: Jasmine Masters came out for the mini challenge
-      holding a loaf of bread, and RuPaul asked where she got it. She had packed
-      it to make sandwiches.
-
-    meaning: >-
-      Turning up with the one thing nobody asked for.
-
-    callback: >-
-      Fits a task the user arrives at with all the wrong supplies: let them walk
-      on holding the bread, and ask where they got it.
-
-  violets_two_in_one:
-    name: Violet's two-in-one
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7 premiere: Violet Chachki's resort look tore away into a second
-      look, and she won the challenge. It made her the queen to beat, and she
-      went on to win the season.
-
-    meaning: >-
-      The double reveal: the fashion queen's flex.
-
-    callback: >-
-      Fits a task that turned out to be two, both done: tear away the first and
-      show the second underneath.
-
-    when:
-      - done
-
-  gingers_tear_away:
-    name: Ginger's tear-away
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7, the conjoined-queens episode: lip syncing "I Think We're Alone
-      Now" against Sasha Belle, Ginger Minj tore away her costume and ended up
-      bare-chested and wigless.
-
-    meaning: >-
-      A reveal that goes all the way, past anything planned.
-
-    callback: >-
-      Fits a task stripped down to its bare job: tear away the excuses and show
-      how little is left underneath.
-
-  cucu:
-    name: Cucu
-
-    show: Drag Race
-
-    what_happened: >-
-      Seasons 8 and 9: Cynthia Lee Fontaine called her rear end her cucu. The
-      word became her nickname and helped win her Miss Congeniality.
-
-    meaning: >-
-      A big booty, and a fond name for her.
-
-    callback: >-
-      Fits a task the user has been sitting on: name exactly what they've been
-      sitting on it with.
-
   the_beyonce_curse:
     name: The Beyoncé curse
 
@@ -431,23 +310,6 @@ references:
     when:
       - slipped
 
-  the_all_green_look:
-    name: The all-green look
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 9: Alexis Michelle walked the runway in all green, a joke about
-      Michelle Visage hating the color. Guest judge Tamar Braxton critiqued the
-      look straight, and the joke fell flat.
-
-    meaning: >-
-      A bit that dies on someone who doesn't know the reference.
-
-    callback: >-
-      Fits a task the user is explaining instead of doing: the setup lands only
-      if the room has seen the show.
-
   monets_fake_split:
     name: Monét's fake split
 
@@ -482,23 +344,6 @@ references:
 
     when:
       - slipped
-
-  mayhems_eyes:
-    name: Mayhem's eyes
-
-    show: Drag Race
-
-    what_happened: >-
-      A 2011 club video of Mayhem Miller, years before her Season 10 run, shows
-      her opening and closing her eyes to the music. It became the
-      #MayhemChallenge in 2018.
-
-    meaning: >-
-      The slow, intense look: side-eye with commitment.
-
-    callback: >-
-      Fits a task the user keeps glancing at and away from: open and close the
-      eyes on it, slowly, to the beat.
 
   # Drag Race, Seasons 11 to 18
 
@@ -576,25 +421,6 @@ references:
     when:
       - done
 
-  wheres_the_body:
-    name: Where's the body?
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 11: a three-second clip of A'keria C. Davenport's verse in the
-      "Queens Everywhere" challenge song, which fans caption as a grim question
-      about a missing body.
-
-    meaning: >-
-      Something hidden or lost, asked about darkly.
-
-    callback: >-
-      Fits a task that has gone missing from the list: ask where it's buried.
-
-    when:
-      - slipped
-
   jans_face_crack:
     name: Jan's face crack
 
@@ -614,22 +440,6 @@ references:
 
     when:
       - done
-
-  gigis_robot:
-    name: Gigi's robot
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 12 Snatch Game: RuPaul worried that Gigi Goode's Maria the Robot
-      was too robotic. Gigi held her ground and won the challenge.
-
-    meaning: >-
-      Backing your own plan against the boss's worry, and being right.
-
-    callback: >-
-      Fits a task the user insists on doing their own odd way: let the worry be
-      voiced, then let the robot win.
 
   nicki_detests_it:
     name: Nicki detests it
@@ -664,24 +474,6 @@ references:
 
     when:
       - done
-
-  apolo_lie:
-    name: Apolo-lie
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 12: Widow Von'Du's word for an apology nobody means.
-
-    meaning: >-
-      The fake apology, called out.
-
-    callback: >-
-      Fits a task the user has said sorry to and still left undone: name the
-      apology for what it is.
-
-    when:
-      - slipped
 
   kandys_boombox:
     name: Kandy's boombox
@@ -719,23 +511,6 @@ references:
       Fits a task that keeps answering back with excuses: reply the way Ru
       replied to Utica, with one finger and no words.
 
-  denalis_stare:
-    name: Denali's stare
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 13 premiere: sent to the Porkchop Loading Dock after losing her lip
-      sync, Denali gave the camera a slow, deadpan stare that closed the
-      episode.
-
-    meaning: >-
-      Silent judgment, sitcom-style.
-
-    callback: >-
-      Fits a task that has been sitting there all day: end on a long, flat stare
-      at it, straight to camera.
-
   mary_queen_of_scots:
     name: Mary, Queen of Scots
 
@@ -752,25 +527,6 @@ references:
     callback: >-
       Fits a task with a name nobody remembers the reason for: play it grandly
       anyway, to a room that has never heard of it.
-
-  jorgeous_five_lip_syncs:
-    name: Jorgeous lip syncs five times
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 14: Jorgeous lip synced five times, a first, and survived four of
-      them.
-
-    meaning: >-
-      The queen who lives in the bottom and keeps winning there.
-
-    callback: >-
-      Fits a task that keeps landing in the bottom and keeps surviving: count
-      its lip syncs.
-
-    when:
-      - slipped
 
   willow_pills_variety_show:
     name: Willow Pill's variety show
@@ -826,40 +582,6 @@ references:
     when:
       - big_win
 
-  mistress_takes_the_book:
-    name: Mistress takes the book
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 15, the Wigloose Rusical: Mistress Isabelle Brooks took RuPaul's
-      book GuRu from the set, thinking it was a prop. She gave it back when she
-      learned it was a producer's, so nobody would search her things and find
-      the jewelry, wigs and piece of the werk room wall she had also taken.
-
-    meaning: >-
-      Taking everything that isn't bolted down.
-
-    callback: >-
-      Fits a task that has picked up other tasks along the way: hand back the
-      one thing, and keep quiet about the wall.
-
-  you_know_why:
-    name: You know why
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 16 premiere: Sapphira Cristál sang a dragged-up "O mio babbino
-      caro" while pointing at RuPaul. Asked why, she said, "You know why."
-
-    meaning: >-
-      The point made without explaining it.
-
-    callback: >-
-      Fits a task everyone knows the reason for: point at it, sing, and decline
-      to explain.
-
   the_immunity_potion:
     name: The immunity potion
 
@@ -914,23 +636,6 @@ references:
 
     when:
       - slipped
-
-  kori_explains_cabaret:
-    name: Kori explains cabaret
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 17's Kori King went out ninth and became a fan favorite anyway. In
-      a viral September 2025 clip, she explained to the streamer IShowSpeed that
-      a cabaret is a venue, not a French dish.
-
-    meaning: >-
-      The early exit who won the internet.
-
-    callback: >-
-      Fits a task the user doesn't understand yet: explain it patiently, the way
-      Kori explained a cabaret to a streamer.
 
   onyas_crown_lip_sync:
     name: Onya's crown lip sync
@@ -990,26 +695,6 @@ references:
     when:
       - done
 
-  hit_the_slay_button:
-    name: Hit the slay button
-
-    show: Drag Race
-
-    what_happened: >-
-      The 2021 mobile game RuPaul's Drag Race Superstar has a cartoon RuPaul
-      telling the player to hit the slay button. Memes read "slay" as "kill" for
-      dark jokes.
-
-    meaning: >-
-      A cheerful order for anything, often darker than it sounds.
-
-    callback: >-
-      Fits a task that needs one press to start: tell the user to hit the
-      button.
-
-    when:
-      - morning
-
   # Drag Race All Stars
 
   the_she_mergency_button:
@@ -1048,22 +733,6 @@ references:
 
     when:
       - evening
-
-  alaskas_knife:
-    name: Alaska's knife
-
-    show: Drag Race
-
-    what_happened: >-
-      All Stars 2: lip syncing "Le Freak" against Katya, Alaska stripped and cut
-      her skirt with a knife. She won.
-
-    meaning: >-
-      The prop that turns a lip sync.
-
-    callback: >-
-      Fits a task wrapped in tape, boxes and packaging: bring the knife to the
-      lip sync.
 
   shut_up_and_drive:
     name: Shut Up and Drive
@@ -1301,45 +970,6 @@ references:
       Fits the user's theory of why the task can wait: deliver it with Katie
       Price's confidence.
 
-  a_leaf_on_the_line:
-    name: A leaf on the line
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race UK, Series 2: Lawrence Chaney's excuse for being late was a leaf
-      on the line, the classic British rail excuse. She went on to win the
-      series.
-
-    meaning: >-
-      The official-sounding excuse for being late.
-
-    callback: >-
-      Fits a task running late: put the delay down to a leaf on the line, with a
-      straight face.
-
-    when:
-      - slipped
-
-  smintys_sad_twerk:
-    name: Sminty's sad twerk
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race UK, Series 4: Sminty Drop gave a sad twerk on her way out.
-
-    meaning: >-
-      Leaving with the moves, if not the mood.
-
-    callback: >-
-      Fits the evening's undone task heading off the stage: give it one sad
-      twerk on the way out.
-
-    when:
-      - evening
-      - slipped
-
   love_most_of_you:
     name: Love most of you
 
@@ -1381,95 +1011,7 @@ references:
     when:
       - evening
 
-  tia_kofi_wins:
-    name: Tia Kofi wins
-
-    show: Drag Race
-
-    what_happened: >-
-      Tia Kofi placed seventh on Drag Race UK Series 2, then won UK vs the World
-      Series 2 as the underdog.
-
-    meaning: >-
-      The seventh-placer who came back and won it all.
-
-    callback: >-
-      Fits a big effort on a task that once finished near the bottom: bring up
-      the seventh place, then the crown.
-
-    when:
-      - big_win
-
   # Canada's Drag Race and Canada vs the World
-
-  canadas_squirrel_friend:
-    name: Canada's Squirrel Friend
-
-    show: Drag Race
-
-    what_happened: >-
-      Canada's Drag Race, Season 1: a mini challenge had judge Traci Melchor act
-      like a squirrel reading the news, and the bit became her title.
-
-    meaning: >-
-      The judge who earned a nickname by playing along.
-
-    callback: >-
-      Fits a morning task with news to share: have it read out as a bulletin by
-      a squirrel.
-
-    when:
-      - morning
-
-  not_sorry_aboot_it:
-    name: Not Sorry Aboot It
-
-    show: Drag Race
-
-    what_happened: >-
-      Canada's Drag Race, Season 1: the queens split into two groups and traded
-      verses in diss tracks, rap-battle style.
-
-    meaning: >-
-      The apology that isn't one, in a Canadian accent.
-
-    callback: >-
-      Fits a task skipped with no regret at all: give it a diss-track verse.
-
-    when:
-      - slipped
-
-  lemons_library_door:
-    name: Lemon's library door
-
-    show: Drag Race
-
-    what_happened: >-
-      Canada's Drag Race, Season 1: in the reading challenge, Lemon slammed a
-      library door in Priyanka's face.
-
-    meaning: >-
-      Closing the conversation, literally.
-
-    callback: >-
-      Fits an excuse the reminder is done hearing: slam the library door on it.
-
-  the_roast_of_brooke_lynn:
-    name: The Roast of Brooke Lynn Hytes
-
-    show: Drag Race
-
-    what_happened: >-
-      Canada's Drag Race, Season 2: the queens roasted their host, Brooke Lynn
-      Hytes, in one of the franchise's cringiest episodes. Icesis Couture ran
-      over time and lost, and Kendall Gender won.
-
-    meaning: >-
-      The roast that died in the room.
-
-    callback: >-
-      Fits a task the user tried to make fun that fell flat: describe the
-      silence after each joke.
 
   eve_6000s_reveal:
     name: Eve 6000's reveal
@@ -1491,152 +1033,7 @@ references:
     when:
       - done
 
-  # Drag Race Down Under
-
-  kita_says_anita:
-    name: Kita says Anita
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 1: Kita Mean and Anita Wigl'it own a cabaret
-      together. Asked who would go home if they lip synced against each other,
-      Kita answered: "Anita."
-
-    meaning: >-
-      No hesitation, even about your business partner.
-
-    callback: >-
-      Fits two tasks competing for today: ask which one goes, and answer without
-      a pause.
-
-  that_means_nothing:
-    name: That means nothing
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 1: eliminated in episode 2, Art Simone
-      snapped "That means nothing" at a producer in her exit interview. She came
-      back two episodes later and reached the finale.
-
-    meaning: >-
-      Refusing the verdict, and being right.
-
-    callback: >-
-      Fits a task knocked off the list that came back: snap at the setback, then
-      bring the task back and finish it.
-
-    when:
-      - slipped
-
-  sickening_in_parliament:
-    name: Sickening in Parliament
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under's first season moved from Sydney to Auckland because
-      of the pandemic, and a New South Wales politician called the move
-      "sickening" in Parliament.
-
-    meaning: >-
-      Drag slang reaching places it was never meant to.
-
-    callback: >-
-      Fits a task whose delay has become a matter for official debate: take it
-      to Parliament.
-
-    when:
-      - slipped
-
-  two_corgis:
-    name: Two corgis and a jar of peanut butter
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 1 Snatch Game: Anita Wigl'it's Queen
-      Elizabeth II asked who needs a man when she has two corgis and a jar of
-      peanut butter.
-
-    meaning: >-
-      Royal filth, delivered regally.
-
-    callback: >-
-      Fits a task the user says they need no help with: list what they have
-      instead, regally.
-
-  ru_spanks_spankie:
-    name: Ru spanks Spankie
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 2: fans said RuPaul had been green-screened
-      into Season 1, so she called Spankie Jackzon out of line in the werk room
-      and spanked her. Spankie won the season.
-
-    meaning: >-
-      Proving you were really in the room.
-
-    callback: >-
-      Fits a task the user claims to be on top of: show up in person to prove
-      it.
-
-  minnie_coopers_tv:
-    name: Minnie Cooper's TV
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 2: Minnie Cooper walked the first runway
-      carrying a television as a clutch.
-
-    meaning: >-
-      The accessory bigger than the point.
-
-    callback: >-
-      Fits a task with a giant prop and no plan: carry the TV down the runway.
-
-  hollywould_is_28:
-    name: Hollywould is 28
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race Down Under, Season 3: Hollywould Star told RuPaul she was 28.
-      Shown paperwork that said 34, she said she didn't know who wrote 34; it
-      must have been a mysterious man.
-
-    meaning: >-
-      Standing by the number, whatever the paperwork says.
-
-    callback: >-
-      Fits a task whose age the user disputes: insist it's newer than it is, and
-      blame the date on a mysterious man.
-
-    when:
-      - slipped
-
   # Dragula
-
-  the_midnight_drag_pageant:
-    name: The Midnight Drag Pageant
-
-    show: Dragula
-
-    what_happened: >-
-      Before TV, Dragula was the Boulet Brothers' club night at the Faultline, a
-      Silver Lake leather bar. Its Midnight Drag Pageant put 13 performers
-      through extreme stage challenges for $300, a crown and the title.
-
-    meaning: >-
-      Where the exterminations started: real stunts for a small prize.
-
-    callback: >-
-      Fits a task that would make a fine stage stunt: ask whether the user would
-      do it for $300 and a crown.
 
   the_mud_wrestling_cage:
     name: The mud-wrestling cage
@@ -1674,95 +1071,6 @@ references:
     when:
       - done
 
-  pinche_queen_skips_the_supper:
-    name: Pinche Queen skips the Last Supper
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 1: Pinche Queen was the first monster ever exterminated,
-      buried alive in episode 1, and the only one ever to skip the Last Supper.
-
-    meaning: >-
-      First out, and absent from the reunion.
-
-    callback: >-
-      Fits a task that slipped on day one and hasn't shown its face since: set
-      its empty chair at the table.
-
-    when:
-      - slipped
-
-  biqtch_puddins_janitor:
-    name: Biqtch Puddin's janitor
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 2: Biqtch Puddin' won the season with a janitor as her
-      filth look in the finale.
-
-    meaning: >-
-      The crown won with a mop.
-
-    callback: >-
-      Fits a big cleaning effort finished: crown it as the janitor look that won
-      a season.
-
-    when:
-      - big_win
-
-  erika_never_safe:
-    name: Erika never safe
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 2: Erika Klash never once placed safe, and was the first
-      monster in the bottom four times.
-
-    meaning: >-
-      Always at one end of the scoreboard.
-
-    callback: >-
-      Fits a task that's either brilliant or in the bottom, with nothing in
-      between: give it Erika's record.
-
-  the_masked_monster_curse:
-    name: The masked-monster curse
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula's masked monsters, Monikkie Shame on Season 2, Yovska on Season 3
-      and Formelda Hyde on Season 4, all went out early.
-
-    meaning: >-
-      Hiding your face is bad luck on this show.
-
-    callback: >-
-      Fits a task the user keeps hidden behind something else: put the mask on
-      it, and bring up the curse.
-
-    when:
-      - slipped
-
-  victorias_line:
-    name: Line?
-
-    show: Dragula
-
-    what_happened: >-
-      Victoria Black's running bit from Dragula's acting challenges: "Line?" She
-      went on to win Titans Season 1.
-
-    meaning: >-
-      Forgetting the line mid-scene.
-
-    callback: >-
-      Fits a task the user has lost the thread of: stop mid-scene and ask for
-      the line.
-
   landons_spiders:
     name: Landon's spiders
 
@@ -1781,61 +1089,6 @@ references:
 
     when:
       - morning
-
-  season_3_on_prime:
-    name: Season 3 on Prime
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 3's run on Amazon Prime was a mess: episodes went up early
-      or late, were listed as separate series, and went missing from search.
-
-    meaning: >-
-      A schedule nobody could follow.
-
-    callback: >-
-      Fits a week whose plan kept airing out of order: list its tasks like
-      Season 3 on Prime.
-
-    when:
-      - weekly
-
-  louisianna_says_no_twice:
-    name: Louisianna says no twice
-
-    show: Dragula
-
-    what_happened: >-
-      Louisianna Purchase turned Dragula down twice before saying yes, then
-      placed fourth on Season 3.
-
-    meaning: >-
-      The yes that took three asks.
-
-    callback: >-
-      Fits a task the user has turned down twice already: this is the third ask.
-
-    when:
-      - slipped
-
-  for_free:
-    name: For free
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 4: Sigourney Beaver kept ending her stories with "...for
-      free", and a castmate mocked it. She reached the finale anyway.
-
-    meaning: >-
-      Underlining how much you did without being paid.
-
-    callback: >-
-      Fits a chore nobody pays for, finished: add that the user did it for free.
-
-    when:
-      - done
 
   saint_wins_resurrection:
     name: Saint wins Resurrection
@@ -1877,42 +1130,6 @@ references:
     when:
       - slipped
 
-  makeup_in_a_porta_potty:
-    name: Makeup in a porta-potty
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 5: a fright-feat curse made Cynthia Doll do her makeup in a
-      porta-potty.
-
-    meaning: >-
-      Doing the job in the worst room available.
-
-    callback: >-
-      Fits a task the user has to do somewhere grim: hand them the porta-potty
-      and the makeup bag.
-
-  jarvis_at_the_foot_of_the_bed:
-    name: Jarvis at the foot of the bed
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 5: Jarvis Hammer, whose character is the ghost of a 1973
-      performer, says he got cast by hovering at the foot of the Boulets' bed
-      until they said yes.
-
-    meaning: >-
-      Haunting someone until they give in.
-
-    callback: >-
-      Fits a task that won't leave the user alone tonight: let it hover at the
-      foot of the bed until they say yes.
-
-    when:
-      - evening
-
   asias_stolen_wig:
     name: Asia's stolen wig
 
@@ -1932,183 +1149,6 @@ references:
 
     when:
       - done
-
-  majestys_note:
-    name: Majesty's note
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 6: after a clash with Auntie Heroine, Majesty quit, and the
-      cast learned of it from a note read in the Lab.
-
-    meaning: >-
-      Leaving without saying goodbye to anyone's face.
-
-    callback: >-
-      Fits a task the user dropped without a word: read its note to the room.
-
-    when:
-      - slipped
-
-  its_a_game:
-    name: It's a game
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 6: midway through, Pi declared that this was not just a
-      competition anymore, it was a game.
-
-    meaning: >-
-      Announcing, late, what everyone already knew.
-
-    callback: >-
-      Fits a user waking up to the size of a task: announce, as if it's news,
-      what the task always was.
-
-  scyllas_scroll:
-    name: Scylla's scroll
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula Season 6: Scylla won the haunted-house immunity scroll in episode
-      1, then went out in episode 2, the night her drag mother won.
-
-    meaning: >-
-      Protection that lasts exactly one week.
-
-    callback: >-
-      Fits a task that was safe yesterday and is exposed today: the scroll has
-      run out.
-
-    when:
-      - slipped
-
-  the_shoes_lip_sync:
-    name: The Shoes lip sync
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula: Titans Season 1: a surprise lip sync to "Shoes", the viral
-      YouTube song, which Horror Press voted the season's most gag-worthy
-      moment.
-
-    meaning: >-
-      Life-or-death stakes set to a ridiculous song.
-
-    callback: >-
-      Fits a small, silly task treated like a battle to the death: set it to
-      "Shoes".
-
-  teletubbies_on_a_toilet_bowl:
-    name: Teletubbies on a toilet bowl
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula: Titans Season 1 premiere: as Yovska walked in, Kendra Onixxx said
-      the look was giving her Teletubbies on a toilet bowl. Horror Press called
-      the entrance meme-worthy.
-
-    meaning: >-
-      The entrance read that sticks forever.
-
-    callback: >-
-      Fits a task that shows up this morning looking strange: read its entrance
-      look the moment it walks in.
-
-    when:
-      - morning
-
-  grandmother_bitch:
-    name: Grandmother Bitch
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula: Titans Season 1: Kendra Onixxx's Grandmother Bitch, a surreal
-      spoken-word performance in homage to Zenon: Girl of the 21st Century.
-      Horror Press named it the season's biggest WTF moment.
-
-    meaning: >-
-      Peak what-did-we-just-watch.
-
-    callback: >-
-      Fits a task the user handled in a way nobody can explain: describe it as a
-      spoken-word piece.
-
-  the_intestine_wig:
-    name: The intestine wig
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula: Titans Season 1, Zombie Prom: Victoria Black won the floor show
-      in a wig made of intestines.
-
-    meaning: >-
-      Gross made glamorous.
-
-    callback: >-
-      Fits a disgusting task done with style: wear it like a wig.
-
-    when:
-      - done
-
-  the_third_boulet_brother:
-    name: The third Boulet Brother
-
-    show: Dragula
-
-    what_happened: >-
-      Dragula: Titans Season 1, Horror Icons Reimagined: Koco Caine performed as
-      the third Boulet Brother.
-
-    meaning: >-
-      Casting yourself as the boss.
-
-    callback: >-
-      Fits a task the user is running like the person in charge: give them a
-      seat beside the Boulets.
-
-  felony_dodgers_nine_years:
-    name: Felony Dodger's nine years
-
-    show: Dragula
-
-    what_happened: >-
-      Felony Dodger went out first on Dragula Season 2, auditioned every season
-      after, and came back for Season 7 nine years later, the longest gap in the
-      franchise.
-
-    meaning: >-
-      Never giving up on a comeback.
-
-    callback: >-
-      Fits a task left so long it's a returning monster: count the years since
-      its first appearance.
-
-    when:
-      - slipped
-
-  hell_freezing_over:
-    name: Hell freezing over
-
-    show: Dragula
-
-    what_happened: >-
-      Asked about a crossover between Dragula and Drag Race, Dracmorda answered:
-      hell freezing over.
-
-    meaning: >-
-      Never, said with style.
-
-    callback: >-
-      Fits a task the user swears is about to happen: weigh its odds against a
-      Dragula and Drag Race crossover.
 
   # Queer culture: ballroom, drag history, camp film and TV, and the divas
 
@@ -2146,22 +1186,6 @@ references:
     callback: >-
       Fits a task the user already knows is overdue: leave the obvious unsaid,
       and let them hear it anyway.
-
-  wigstock:
-    name: Wigstock
-
-    show: Queer culture
-
-    what_happened: >-
-      Wigstock started in the mid-1980s in Tompkins Square Park, after a drunken
-      night at the Pyramid Club, with Lady Bunny hosting. It moved to bigger
-      venues, ran until 2005, and came back in 2018.
-
-    meaning: >-
-      The drag festival that grew out of a late night.
-
-    callback: >-
-      Fits a task born from a late-night idea: throw it a festival in the park.
 
   pink_flamingos:
     name: Pink Flamingos
@@ -2233,22 +1257,6 @@ references:
     when:
       - slipped
 
-  what_a_dump:
-    name: What a dump
-
-    show: Queer culture
-
-    what_happened: >-
-      In Beyond the Forest (1949), Bette Davis sneers, "What a dump!" Elizabeth
-      Taylor borrowed the line in Who's Afraid of Virginia Woolf?
-
-    meaning: >-
-      Grand contempt for a room.
-
-    callback: >-
-      Fits a task that lives in a mess: walk into the room and say it like
-      Bette.
-
   ready_for_my_close_up:
     name: Ready for my close-up
 
@@ -2287,70 +1295,6 @@ references:
     when:
       - done
 
-  the_chocolate_factory:
-    name: The chocolate factory
-
-    show: Queer culture
-
-    what_happened: >-
-      I Love Lucy, "Job Switching" (1952): Lucy and Ethel take jobs wrapping
-      chocolates on a conveyor belt that speeds up faster than they can keep up.
-
-    meaning: >-
-      Tasks coming faster than anyone can handle.
-
-    callback: >-
-      Fits a day when tasks arrive faster than they close: speed up the belt.
-
-  florals_for_spring:
-    name: Florals for spring
-
-    show: Queer culture
-
-    what_happened: >-
-      The Devil Wears Prada (2006): Meryl Streep's Miranda Priestly dismisses an
-      idea with "Florals? For spring? Groundbreaking."
-
-    meaning: >-
-      The cold read of an unoriginal idea.
-
-    callback: >-
-      Fits a task approached in the most obvious way: greet the plan with
-      Miranda's enthusiasm.
-
-  making_fetch_happen:
-    name: Stop trying to make fetch happen
-
-    show: Queer culture
-
-    what_happened: >-
-      Mean Girls (2004): Regina George's "Stop trying to make fetch happen."
-
-    meaning: >-
-      Giving up on a thing that isn't catching on.
-
-    callback: >-
-      Fits a promise the user keeps repeating that never sticks: treat it as
-      their fetch.
-
-    when:
-      - slipped
-
-  a_full_on_monet:
-    name: A full-on Monet
-
-    show: Queer culture
-
-    what_happened: >-
-      Clueless (1995): Alicia Silverstone's Cher Horowitz calls someone a
-      full-on Monet: fine from far away, a mess up close.
-
-    meaning: >-
-      Good from a distance only.
-
-    callback: >-
-      Fits a task that looks done from across the room: step closer.
-
   picture_it:
     name: Picture it
 
@@ -2368,80 +1312,6 @@ references:
 
     when:
       - weekly
-
-  the_table_flip:
-    name: The table flip
-
-    show: Queer culture
-
-    what_happened: >-
-      The Real Housewives of New Jersey, Season 1 finale (2009): fed up with
-      Danielle Staub, Teresa Giudice flips the dinner table.
-
-    meaning: >-
-      Losing it completely, furniture included.
-
-    callback: >-
-      Fits a task that has pushed the user past their limit: let them flip the
-      table over it.
-
-    when:
-      - slipped
-
-  who_gon_check_me:
-    name: Who gon' check me, boo?
-
-    show: Queer culture
-
-    what_happened: >-
-      The Real Housewives of Atlanta (2009): furious at her party planner,
-      Sheree Whitfield demands to know who is going to check her.
-
-    meaning: >-
-      The battle cry of the unaccountable.
-
-    callback: >-
-      Fits a user acting as if nobody will hold them to a task: answer Sheree's
-      question.
-
-    when:
-      - slipped
-
-  people_are_dying:
-    name: There's people that are dying
-
-    show: Queer culture
-
-    what_happened: >-
-      Keeping Up with the Kardashians (2011): Kim loses a diamond earring in the
-      ocean in Bora Bora and sobs, and Kourtney tells her, "Kim, there's people
-      that are dying."
-
-    meaning: >-
-      Drama out of all proportion.
-
-    callback: >-
-      Fits a user making a tragedy of a small task: put it in perspective, the
-      way Kourtney did.
-
-  make_it_work:
-    name: Make it work
-
-    show: Queer culture
-
-    what_happened: >-
-      On Project Runway, mentor Tim Gunn tells designers in trouble to make it
-      work.
-
-    meaning: >-
-      Fix it with what you've got.
-
-    callback: >-
-      Fits a task going wrong halfway through the day: send the mentor round to
-      its station.
-
-    when:
-      - afternoon
 
   i_dont_know_her:
     name: I don't know her
@@ -2461,24 +1331,6 @@ references:
 
     when:
       - slipped
-
-  a_lot_of_money_to_look_this_cheap:
-    name: A lot of money to look this cheap
-
-    show: Queer culture
-
-    what_happened: >-
-      Dolly Parton told Vanity Fair in 2012: "It takes a lot of money to look
-      this cheap."
-
-    meaning: >-
-      Real effort behind an easy-looking result.
-
-    callback: >-
-      Fits a task finished so it looks effortless: point out what it cost.
-
-    when:
-      - done
 
   diana_in_the_rain:
     name: Diana Ross in the rain
@@ -2531,50 +1383,3 @@ references:
 
     callback: >-
       Fits a task that has been hogging the spotlight: snatch its wig and flush.
-
-  versayce:
-    name: Versayce
-
-    show: Queer culture
-
-    what_happened: >-
-      Showgirls (1995) swept the Razzies, then became a midnight-movie camp
-      classic. Elizabeth Berkley's Nomi Malone pronounces the label "Versayce".
-
-    meaning: >-
-      Total confidence with the wrong pronunciation.
-
-    callback: >-
-      Fits a task the user is doing confidently and slightly wrong: say it the
-      way Nomi says Versace.
-
-  the_man_behind_the_curtain:
-    name: The man behind the curtain
-
-    show: Queer culture
-
-    what_happened: >-
-      The Wizard of Oz (1939): the Wizard's "Pay no attention to that man behind
-      the curtain!"
-
-    meaning: >-
-      Hiding the works and hoping nobody looks.
-
-    callback: >-
-      Fits a task hidden behind a show of being busy: pull the curtain back.
-
-  kidmans_amc_ad:
-    name: Nicole Kidman's AMC ad
-
-    show: Queer culture
-
-    what_happened: >-
-      In a 2021 cinema ad, Nicole Kidman walks into an empty AMC theater and
-      says that somehow, heartbreak feels good in a place like this.
-
-    meaning: >-
-      Earnest camp, played completely straight.
-
-    callback: >-
-      Fits a dull task given far too much ceremony: walk into it the way Kidman
-      walks into an empty cinema.

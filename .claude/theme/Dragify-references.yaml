@@ -1058,8 +1058,8 @@ references:
       A fight that broke the set.
 
     callback: >-
-      Fits a task the user has been wrestling all week: bring the cage down
-      around them both.
+      Throw the user and the slipped task into the mud-wrestling cage, in
+      character, and wrestle until the set comes down around them.
 
   vander_volunteers:
     name: Vander volunteers
@@ -1075,8 +1075,8 @@ references:
       Choosing the punishment you had already earned your way out of.
 
     callback: >-
-      Fits a task the user could have skipped and did anyway: they volunteered
-      for it, pig brains and all.
+      Treat the done task as Vander's extermination: volunteered for, eaten with
+      no hands, and back to winning after.
 
     when:
       - done
@@ -1094,7 +1094,8 @@ references:
       Swallowing the worst part first.
 
     callback: >-
-      Fits a task with a nasty first step: drink the spiders before breakfast.
+      Name the done task's worst step, the one that went down like Landon's jar
+      of live spiders on day one, and note that it was swallowed first.
 
     when:
       - morning
@@ -1113,8 +1114,9 @@ references:
       Winning the way back in.
 
     callback: >-
-      Fits a task that slipped many times and finally got done: bring up where
-      it started, then the win.
+      Count the big effort as Saint's Resurrection: out early once, then winning
+      the round that only buys a way back in, and walking through the door it
+      opened.
 
     when:
       - big_win
@@ -1132,8 +1134,8 @@ references:
       Going out twice in one season.
 
     callback: >-
-      Fits a task that got dropped, came back, and got dropped again: give it
-      its second death scene.
+      Give the task its second death scene: dropped, back the next day, a win in
+      between, and dropped again.
 
     when:
       - slipped
@@ -1152,8 +1154,8 @@ references:
       Winning after losing the most important thing at the door.
 
     callback: >-
-      Fits a task done even though something went missing on the way: it got
-      done bald, and the wig comes back in the mail.
+      Take something from the done task at the door, the way a creature snatched
+      Asia's wig on her walk in, and let it win the episode without it.
 
     when:
       - done
@@ -1175,8 +1177,8 @@ references:
       Owning the room, and refusing to be overlooked.
 
     callback: >-
-      Fits a result the user calls unfair: call out the judges on camera, then
-      walk.
+      Let the task that keeps getting passed over walk in like Crystal LaBeija:
+      sure of its worth, and done waiting to be noticed.
 
   dorian_corey_on_shade:
     name: Dorian Corey on shade
@@ -1192,8 +1194,8 @@ references:
       The definition of shade everyone quotes.
 
     callback: >-
-      Fits a task the user already knows is overdue: leave the obvious unsaid,
-      and let them hear it anyway.
+      Leave the obvious unsaid, the way Dorian Corey explains shade: the task
+      knows it's overdue, so say anything but that, and let it hear it anyway.
 
   pink_flamingos:
     name: Pink Flamingos
@@ -1208,8 +1210,8 @@ references:
       The benchmark for gross-out camp.
 
     callback: >-
-      Fits a filthy task, like the fridge, the bins or the drain: enter it for
-      the title.
+      Enter a filthy task, the fridge or the bins or the drain, for Babs
+      Johnson's title, and let it defend the crown with pride.
 
   rocky_horror_at_midnight:
     name: Rocky Horror at midnight
@@ -1224,8 +1226,9 @@ references:
       The original audience-participation camp ritual.
 
     callback: >-
-      Fits the week's look back at tasks that come round every week: give them
-      the costumes, the props and a crowd shouting the lines.
+      Screen the week's repeat tasks like Rocky Horror at midnight: everyone in
+      costume, everyone knows the lines, and the crowd shouts back at the
+      screen.
 
     when:
       - weekly
@@ -1244,7 +1247,8 @@ references:
       Monster-mother rage over one small thing.
 
     callback: >-
-      Fits a small household task: escalate it to wire-hanger rage.
+      Escalate a small household task to wire-hanger rage: the whole Joan
+      Crawford scene, over one tiny thing.
 
   baby_janes_rat:
     name: Baby Jane's rat
@@ -1260,7 +1264,8 @@ references:
       Gothic sister rivalry, and aging-diva horror.
 
     callback: >-
-      Fits a task left to rot: serve it up under a silver cover.
+      Serve the task that's been left to rot under a silver cover, Baby Jane
+      style, and lift the lid at the table.
 
     when:
       - slipped
@@ -1279,8 +1284,8 @@ references:
       Delusion, and the grand descent.
 
     callback: >-
-      Fits a user ready to be seen doing a task they haven't started: make the
-      grand descent, and let the camera find nothing in hand.
+      Sweep down the staircase toward the task like Norma Desmond, ready for the
+      close-up, and let the camera notice what isn't in hand yet.
 
   the_curtain_dress:
     name: The curtain dress
@@ -1297,8 +1302,8 @@ references:
       Making do, grandly.
 
     callback: >-
-      Fits a task done with whatever was in the house: wear the curtains, rod
-      and all.
+      Dress the done task in the curtains, rod and all: made from what was in
+      the house, and grand anyway.
 
     when:
       - done
@@ -1316,7 +1321,8 @@ references:
       The long story, launched with a place and a date.
 
     callback: >-
-      Fits the week's look back: open the week's story with a place and a date.
+      Open the week's story Sophia's way, with a place and a date, then tell it
+      long.
 
     when:
       - weekly
@@ -1334,8 +1340,8 @@ references:
       The queen of dismissals.
 
     callback: >-
-      Fits a task ignored so long the user no longer recognizes it: claim not to
-      know it.
+      Meet the long-ignored task with Mariah's smile, and decline to recognize
+      it at all.
 
     when:
       - slipped
@@ -1353,8 +1359,8 @@ references:
       The boss diva who finishes the show, even a day late.
 
     callback: >-
-      Fits a task rained off yesterday and done today: come back and play the
-      whole set.
+      Bring the big effort back for its second night, the way Diana Ross came
+      back after the rain: the whole set, start to finish.
 
     when:
       - done
@@ -1371,8 +1377,8 @@ references:
       The goodbye that never ends.
 
     callback: >-
-      Fits a task the user keeps saying a last goodbye to and never finishes:
-      book it another farewell date.
+      Book the task another farewell date: its last goodbye has been announced
+      before, and the tour keeps going.
 
     when:
       - slipped
@@ -1390,4 +1396,5 @@ references:
       The ultimate diva takedown.
 
     callback: >-
-      Fits a task that has been hogging the spotlight: snatch its wig and flush.
+      Pull the wig off whatever has been upstaging the task today and toss it in
+      the toilet, Neely O'Hara style.

@@ -22,6 +22,10 @@ files:
     what the job picks from for each message: the speakers, each with its show
     and where it appears, and the motifs, each with its show and `when`.
 
+  Dragify-terminology.md: >-
+    the drag words the writer would otherwise miss or misuse, and how sparingly
+    to use them; the writer reads it whole, every time.
+
 speaker: >-
   A speaker is one of the actors, picked once per message.
 

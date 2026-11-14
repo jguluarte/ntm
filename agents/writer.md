@@ -67,8 +67,9 @@ person, sounding the way their entry says. Without one, the theme's own narrator
 tells it, as its guidance says, or it's told plainly.
 
 The message is about its subject and the theme's world: something happens in
-that world, with the subject inside it. The speaker talks to the task or to the
-room, and the message has no "you" for the user.
+that world, with the subject inside it. The speaker talks to the user as "you",
+to the task, or to the room, and calls the user only "you", never by name or by
+a pet name.
 
 Name each task in a few natural words, with its id in parentheses. Any fact you
 use stays exact: ids, counts and names as given, and dates as given, unless the

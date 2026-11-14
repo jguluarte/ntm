@@ -7,11 +7,10 @@ for anyone curious.
 
 ## Where themes are going
 
-ntm is moving to a script, the picker, that picks what each message draws on,
-and a writer that writes the message from the picks. For a script to pick, a
-theme has to be data in a known shape, and this file is that shape. Today a
-user's theme is still one `%Theme` database, as `ntm:theme-builder` builds it,
-and `ntm:style` runs the picker only for a theme in files.
+A script, the picker, picks what each message draws on, and a writer writes the
+message from the picks. For a script to pick, a theme has to be data in a known
+shape, and this file is that shape. Today `ntm:theme-builder` builds a theme as
+one `%Theme` database, and `ntm:style` picks for it without the picker.
 
 A user will be able to have several themes. The Themes part of `%Settings` lists
 each one by its root and names this week's theme, the one everything picked in a
@@ -183,7 +182,8 @@ A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that
 slipped many times finally closed. An ordinary day of doing what was planned is
 never a big win. A message with a big win takes its hook only from the entries
-kept for `big_win`.
+kept for `big_win`; the picker's reference says what happens when a theme keeps
+none.
 
 ## The options file
 
@@ -211,7 +211,7 @@ pools:
     speaker_rate: 0.4
     entries:
       detective:
-        weight: 1.0
+        weight: 0.57
         line_half_life_days: 9
         score: 0.2
 
@@ -221,12 +221,12 @@ pools:
     half_life_days: 5
     entries:
       any_time:
-        weight: 1.0
+        weight: 0.25
         line_half_life_days: 4
         score: 0.0
       big_win:
         when: big_win
-        weight: 0.5
+        weight: 0.25
         line_half_life_days: 30
         score: 0.0
 
@@ -242,17 +242,16 @@ pools:
 
 The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
-its checksum differs. The picker's own reference,
-`${CLAUDE_PLUGIN_ROOT}/scripts/picker/README.md`, defines how each number is
-computed.
+its checksum differs. The picker's own reference, the plugin's
+`scripts/picker/README.md`, defines how each number is computed.
 
 | Field                 | What it is                                                              |
 | --------------------- | ----------------------------------------------------------------------- |
 | `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above     |
-| `half_life_days`      | The days for a picked entry's rest to halve; per pool                   |
+| `half_life_days`      | The days for the chance a picked entry lost to halve; per pool          |
 | `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1         |
-| `weight`              | How likely the entry is to be picked, against every other hook entry    |
-| `line_half_life_days` | The days for a used line's rest to halve; per entry with lines or riffs |
+| `weight`              | What the entry has to offer: 1 without lines, less with only a few      |
+| `line_half_life_days` | The days for the chance a used line lost to halve; per entry with lines |
 | `score`               | How well messages built on the entry landed, from `%Message-history`    |
 
 An entry's line half-life comes from how many lines it has and how often it is
@@ -267,11 +266,10 @@ when it went out. The run works out the occasions: which reminder this is,
 whether a task in it has slipped, whether one got done, and whether it's a big
 win.
 
-The picker keeps the entries whose `when` fits, or when none does, the entries
-without `when`. Each message gets exactly one hook, drawn from all the entries
-in hook pools together, each entry counting once at its weight. An entry's score
-raises or lowers its chance, and an entry picked recently is less likely while
-it rests.
+The picker keeps the entries whose `when` fits, as `when` above says. Each
+message gets exactly one hook, drawn from all the entries in hook pools
+together, each entry counting once at its weight. An entry's score raises or
+lowers its chance, and an entry picked recently is less likely while it rests.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

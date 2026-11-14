@@ -46,14 +46,14 @@ The examples below are from `Casebook`, a made-up detective story.
 The root is the theme's guide for the writer, read whole for every message. Its
 parts are the same in every theme:
 
-| Part        | What it holds                                                                     |
-| ----------- | --------------------------------------------------------------------------------- |
-| `theme`     | The theme's name                                                                  |
-| `world`     | The theme's world, and where the user sits in it                                  |
-| `slipped`   | How the theme reads a task that slipped, and how it presses harder with each slip |
-| `wins`      | How the theme marks a finished task, and a big win                                |
-| `reminders` | What each reminder is in the theme's world, by its name                           |
-| `files`     | Every other file of the theme: what it holds, and how it is read                  |
+| Part         | What it holds                                                                |
+| ------------ | ---------------------------------------------------------------------------- |
+| `theme`      | The theme's name                                                             |
+| `world`      | The theme's world, and where the user sits in it                             |
+| `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
+| `wins`       | How the theme marks a finished task, and a big win                           |
+| `reminders`  | What each reminder is in the theme's world, by its name                      |
+| `files`      | Every other file of the theme: what it holds, and how it is read             |
 
 Each file in `files` is read one of three ways:
 
@@ -71,7 +71,7 @@ world: >-
   A detective story set in a foggy city. The user is the client who hired the
   detective; each task is a case on the detective's desk.
 
-slipped: >-
+escalation: >-
   A slipped task is a case going cold. One slip draws a raised eyebrow, three
   draw a lecture on neglect, five and the inspector starts asking questions.
 

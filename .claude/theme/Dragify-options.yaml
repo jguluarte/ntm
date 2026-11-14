@@ -203,3 +203,214 @@ speakers:
     appears_in:
       - main stage
       - werk room
+
+motifs:
+  - name: Previously on
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: Werk room entrance
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: The morning after
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Video message
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Challenge announcement
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: Werk room walkthrough
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Design challenge
+    show: Drag Race
+
+  - name: No excuses
+    show: Drag Race
+
+  - name: Reading challenge
+    show: Drag Race
+
+  - name: Puppets
+    show: Drag Race
+
+  - name: Untucked
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Snatch Game
+    show: Drag Race
+
+  - name: Rusical
+    show: Drag Race
+
+  - name: Girl group
+    show: Drag Race
+
+  - name: Talent show
+    show: Drag Race
+
+  - name: Makeover
+    show: Drag Race
+
+  - name: The roast
+    show: Drag Race
+
+  - name: The ball
+    show: Drag Race
+
+  - name: The runway
+    show: Drag Race
+
+  - name: The reveal
+    show: Drag Race
+
+  - name: The critiques
+    show: Drag Race
+
+  - name: Safe
+    show: Drag Race
+
+  - name: Deliberation
+    show: Drag Race
+
+  - name: Lip sync for your life
+    show: Drag Race
+
+  - name: Shantay, you stay
+    show: Drag Race
+    when:
+      - done
+
+  - name: Challenge win
+    show: Drag Race
+    when:
+      - done
+
+  - name: RuPeter badge
+    show: Drag Race
+    when:
+      - done
+
+  - name: Lip sync for your legacy
+    show: Drag Race
+    when:
+      - done
+
+  - name: Sashay away
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Mirror message
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Closing line
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Porkchop
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: The save
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Returning queen
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: LaLaPaRUza
+    show: Drag Race
+    when:
+      - slipped
+      - weekly
+
+  - name: Reunion
+    show: Drag Race
+    when:
+      - weekly
+
+  - name: The crowning
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: Meet our monsters
+    show: Dragula
+    when:
+      - weekly
+
+  - name: Fright feat
+    show: Dragula
+
+  - name: Floor show
+    show: Dragula
+
+  - name: Four tenets
+    show: Dragula
+
+  - name: Boulets' judgment
+    show: Dragula
+
+  - name: Who should go home
+    show: Dragula
+
+  - name: The Cauldron
+    show: Dragula
+
+  - name: Extermination
+    show: Dragula
+
+  - name: Endurance extermination
+    show: Dragula
+
+  - name: The jump
+    show: Dragula
+
+  - name: The plea
+    show: Dragula
+
+  - name: Later that night
+    show: Dragula
+    when:
+      - evening
+
+  - name: Key of Life and Death
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Hellbound Showdown
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Supermonster crowning
+    show: Dragula
+    when:
+      - big_win

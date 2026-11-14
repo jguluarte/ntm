@@ -221,6 +221,7 @@ motifs:
     show: Drag Race
     when:
       - morning
+      - slipped
 
   - name: Video message
     show: Drag Race
@@ -240,9 +241,13 @@ motifs:
 
   - name: Design challenge
     show: Drag Race
+    when:
+      - afternoon
 
   - name: No excuses
     show: Drag Race
+    when:
+      - slipped
 
   - name: Reading challenge
     show: Drag Race
@@ -260,39 +265,58 @@ motifs:
 
   - name: Rusical
     show: Drag Race
+    when:
+      - afternoon
 
   - name: Girl group
     show: Drag Race
+    when:
+      - afternoon
 
   - name: Talent show
     show: Drag Race
 
   - name: Makeover
     show: Drag Race
+    when:
+      - afternoon
 
   - name: The roast
     show: Drag Race
 
   - name: The ball
     show: Drag Race
+    when:
+      - afternoon
 
   - name: The runway
     show: Drag Race
 
   - name: The reveal
     show: Drag Race
+    when:
+      - done
 
   - name: The critiques
     show: Drag Race
+    when:
+      - slipped
 
   - name: Safe
     show: Drag Race
+    when:
+      - done
 
   - name: Deliberation
     show: Drag Race
+    when:
+      - evening
 
   - name: Lip sync for your life
     show: Drag Race
+    when:
+      - evening
+      - slipped
 
   - name: Shantay, you stay
     show: Drag Race
@@ -302,7 +326,7 @@ motifs:
   - name: Challenge win
     show: Drag Race
     when:
-      - done
+      - big_win
 
   - name: RuPeter badge
     show: Drag Race
@@ -318,11 +342,13 @@ motifs:
     show: Drag Race
     when:
       - evening
+      - slipped
 
   - name: Mirror message
     show: Drag Race
     when:
       - evening
+      - slipped
 
   - name: Closing line
     show: Drag Race
@@ -332,6 +358,7 @@ motifs:
   - name: Porkchop
     show: Drag Race
     when:
+      - weekly
       - slipped
 
   - name: The save
@@ -348,7 +375,6 @@ motifs:
     show: Drag Race
     when:
       - slipped
-      - weekly
 
   - name: Reunion
     show: Drag Race
@@ -367,6 +393,8 @@ motifs:
 
   - name: Fright feat
     show: Dragula
+    when:
+      - morning
 
   - name: Floor show
     show: Dragula
@@ -376,29 +404,46 @@ motifs:
 
   - name: Boulets' judgment
     show: Dragula
+    when:
+      - evening
 
   - name: Who should go home
     show: Dragula
+    when:
+      - evening
+      - slipped
 
   - name: The Cauldron
     show: Dragula
+    when:
+      - evening
+      - slipped
 
   - name: Extermination
     show: Dragula
+    when:
+      - slipped
 
   - name: Endurance extermination
     show: Dragula
+    when:
+      - slipped
 
   - name: The jump
     show: Dragula
+    when:
+      - slipped
 
   - name: The plea
     show: Dragula
+    when:
+      - slipped
 
   - name: Later that night
     show: Dragula
     when:
       - evening
+      - slipped
 
   - name: Key of Life and Death
     show: Dragula

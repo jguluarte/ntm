@@ -4,8 +4,13 @@ about: >-
   Race and Dragula. When the job picks a motif for a message, from
   `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
   scene plays, `staging` casts the task in it, and `phrases` are what people say
-  at that moment on the show. A motif with `when` fits only the occasions it
-  lists.
+  at that moment on the show.
+
+  `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
+  `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
+  `big_win`). A motif fits a message when it lists no reminder or this message's
+  reminder, and lists no what-happened value or one that holds; a motif with no
+  `when` fits every message. On a big win, only motifs listing `big_win` fit.
 
 motifs:
   previously_on:
@@ -93,6 +98,7 @@ motifs:
 
     when:
       - morning
+      - slipped
 
   video_message:
     name: Video message
@@ -210,6 +216,9 @@ motifs:
       - But, I mean, I did sew this. I didn't glue like, stuff on a corset.
       - I want you to get off my station.
 
+    when:
+      - afternoon
+
   no_excuses:
     name: No excuses
 
@@ -232,6 +241,9 @@ motifs:
     phrases:
       - I don't wanna hear any goddamn excuses. Anymore!
       - You don't gotta reinvent the wheel! The wheel is fine!
+
+    when:
+      - slipped
 
   reading_challenge:
     name: Reading challenge
@@ -366,6 +378,9 @@ motifs:
       - tonight you ruled the world! You're safe.
       - I'M ALIVE! AAA-OOO-AAA-OOO-AAA-OOOOO!
 
+    when:
+      - afternoon
+
   girl_group:
     name: Girl group
 
@@ -392,6 +407,9 @@ motifs:
         for Gregg's.
       - Ah-choo! Actually, I'm allergic to their choreography.
       - It is now time for us to choreograph our choreo-graffy. Choreography.
+
+    when:
+      - afternoon
 
   talent_show:
     name: Talent show
@@ -441,6 +459,9 @@ motifs:
     phrases:
       - Drag Family Resemblance
       - It's bring your fairy to work day.
+
+    when:
+      - afternoon
 
   the_roast:
     name: The roast
@@ -494,6 +515,9 @@ motifs:
       - Eleganza Extravaganza
       - Happiness is in your own backyard.
 
+    when:
+      - afternoon
+
   the_runway:
     name: The runway
 
@@ -540,6 +564,9 @@ motifs:
       - Ru-veal
       - RuVeal Yourself
 
+    when:
+      - done
+
   the_critiques:
     name: The critiques
 
@@ -566,6 +593,9 @@ motifs:
       - Resting on pretty
       - I'll be the judge of that!
 
+    when:
+      - slipped
+
   safe:
     name: Safe
 
@@ -586,6 +616,9 @@ motifs:
     phrases:
       - That's a lot of emotion for safe
       - Fuck it, just have fun and hope you are safe.
+
+    when:
+      - done
 
   deliberation:
     name: Deliberation
@@ -614,6 +647,9 @@ motifs:
       - Silence! I've made my decision. Bring back my girls!
       - I've consulted with the judges, but the final decision is mine to make.
 
+    when:
+      - evening
+
   lip_sync_for_your_life:
     name: Lip sync for your life
 
@@ -641,6 +677,10 @@ motifs:
         elimination.
       - The time has come for you to lip sync for your life!
       - Good luck, and don't fuck it up!
+
+    when:
+      - evening
+      - slipped
 
   shantay_you_stay:
     name: Shantay, you stay
@@ -685,11 +725,11 @@ motifs:
       crowning.
 
     phrases:
-      - Condragulations!
+      - Con-drag-ulations!
       - I have never won before, but I'mma take it.
 
     when:
-      - done
+      - big_win
 
   rupeter_badge:
     name: RuPeter badge
@@ -771,6 +811,7 @@ motifs:
 
     when:
       - evening
+      - slipped
 
   mirror_message:
     name: Mirror message
@@ -799,6 +840,7 @@ motifs:
 
     when:
       - evening
+      - slipped
 
   closing_line:
     name: Closing line
@@ -850,6 +892,7 @@ motifs:
       - I'm the UK's Porkchop
 
     when:
+      - weekly
       - slipped
 
   the_save:
@@ -932,7 +975,6 @@ motifs:
 
     when:
       - slipped
-      - weekly
 
   reunion:
     name: Reunion
@@ -1041,6 +1083,9 @@ motifs:
       - Boulet Blindness
       - Glinda's Bubble of Protection
 
+    when:
+      - morning
+
   floor_show:
     name: Floor show
 
@@ -1115,6 +1160,9 @@ motifs:
       - It is really brave of you to wear club kid boots.
       - Well, you just missed the mark.
 
+    when:
+      - evening
+
   who_should_go_home:
     name: Who should go home
 
@@ -1139,6 +1187,10 @@ motifs:
       - I can not vote for myself.
       - The rules were not made clear!
 
+    when:
+      - evening
+      - slipped
+
   the_cauldron:
     name: The Cauldron
 
@@ -1162,6 +1214,10 @@ motifs:
       - Don't fucking throw a fucking chicken at me!
       - I guess chickens do fly.
       - Give them the fucking needles!
+
+    when:
+      - evening
+      - slipped
 
   extermination:
     name: Extermination
@@ -1188,6 +1244,9 @@ motifs:
       - Actually, you have to prove 'cause you're in the extermination.
       - Are you fucking kidding me?
 
+    when:
+      - slipped
+
   endurance_extermination:
     name: Endurance extermination
 
@@ -1210,6 +1269,9 @@ motifs:
     phrases:
       - I kinda like it. It's warm and I need warmth right now.
       - I hope you're enjoying this!
+
+    when:
+      - slipped
 
   the_jump:
     name: The jump
@@ -1237,6 +1299,9 @@ motifs:
         sauce.
       - the Bridge to Nowhere
 
+    when:
+      - slipped
+
   the_plea:
     name: The plea
 
@@ -1260,6 +1325,9 @@ motifs:
     phrases:
       - Fuck the big picture, Clint.
       - Let's make some good fucking TV!
+
+    when:
+      - slipped
 
   later_that_night:
     name: Later that night
@@ -1288,6 +1356,7 @@ motifs:
 
     when:
       - evening
+      - slipped
 
   key_of_life_and_death:
     name: Key of Life and Death

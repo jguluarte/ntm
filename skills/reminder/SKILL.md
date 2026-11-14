@@ -37,8 +37,8 @@ ntm's core rules describe it; a task with no comment hasn't slipped.
 
 For the afternoon and evening, the rule compares against the tasks today's
 earlier reminders covered. `ntm:style`'s Setup read today's `%Message-history`
-entries, and their `ids` are those tasks. Look up each one's title and where
-it's planned now.
+entries, and the ids in their `tasks` are those tasks. Look up each one's title
+and where it's planned now.
 
 ## The message rule
 
@@ -66,3 +66,6 @@ are:
 
 `Not sent: no tasks planned today`, or the sender's result the core rules'
 Sending a message in the user's style gives.
+
+The reply shows the message's title and message as sent, so the user can answer
+it in this chat: after `Sent: <title>`, add the message.

@@ -100,7 +100,8 @@ it with the user when they ask.
 
 ### `%Message-history`
 
-What ntm's messages have said, so the next ones don't repeat it. `ntm:style`
+An entry for each message ntm writes in the user's theme: when it went out, what
+was picked for it, which tasks it was about, and how it landed. `ntm:style`
 reads it and keeps it.
 
 ## Results

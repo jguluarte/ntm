@@ -311,3 +311,185 @@ motifs:
 
     when:
       - evening
+
+  snatch_game:
+    name: Snatch Game
+
+    show: Drag Race
+
+    about: >-
+      The game-show parody where the queens play celebrities on a panel while
+      RuPaul hosts.
+
+    on_the_show: >-
+      A send-up of Match Game: Ru asks fill-in-the-blank questions, celebrity
+      guests play the contestants, and the queens answer in character. What
+      wins: a character with a point of view and real jokes, who plays off the
+      panel. What goes wrong: a celebrity with nothing to say, an impression
+      that's only the wig, talking over the panel, freezing.
+
+    staging: >-
+      Seat the task on the panel as a celebrity famous for exactly what it never
+      gets around to. Ru's question sets up the excuse, and the excuse comes
+      back as the character's answer, in character. The read lands on an
+      impression that's only the wig.
+
+    phrases:
+      - the basic bitches from the fierce-ass queens
+      - I didn't have time to write anything.
+      - Do we have time for one more?
+
+  rusical:
+    name: Rusical
+
+    show: Drag Race
+
+    about: >-
+      The musical parody: original songs, roles cast among the queens, a
+      recording session, then choreography on the main stage.
+
+    on_the_show: >-
+      The mini challenge winner often hands out the roles, and the fight over
+      the lead starts right away. The queens record their vocals, learn the
+      choreography and perform. What goes wrong: a small part that disappears,
+      missed choreography, a weak recording session. What wins: owning a small
+      role.
+
+    staging: >-
+      Cast the task as the part nobody fought for, a small role in the day's
+      musical. The delay is the missed choreography and the flat recording
+      session; the read lands on a small part that vanishes when it could have
+      stolen the show. A Rusical hands out roles; in a girl group, each member
+      writes her own verse.
+
+    phrases:
+      - tonight you ruled the world! You're safe.
+      - I'M ALIVE! AAA-OOO-AAA-OOO-AAA-OOOOO!
+
+  girl_group:
+    name: Girl group
+
+    show: Drag Race
+
+    about: >-
+      Teams write their own verses, record them, put together choreography, and
+      perform as a girl group.
+
+    on_the_show: >-
+      Each queen writes a verse and records it with a producer, then the team
+      learns its choreography together. What goes wrong: a bad verse, a rap off
+      the beat, one queen lost in the choreography, one queen carrying the
+      group. On the UK show the whole winning team wins.
+
+    staging: >-
+      Make the day's tasks a girl group with this task in it: the others know
+      their verses and their marks, and this one is lost in the choreography.
+      The read lands on who's carrying the group.
+
+    phrases:
+      - >-
+        They're gonna look like a girl group and we're gonna look like a queue
+        for Gregg's.
+      - Ah-choo! Actually, I'm allergic to their choreography.
+      - It is now time for us to choreograph our choreo-graffy. Choreography.
+
+  talent_show:
+    name: Talent show
+
+    show: Drag Race
+
+    about: >-
+      Usually the premiere: each queen performs her own talent on the main
+      stage, while the others watch from seats beside the runway.
+
+    on_the_show: >-
+      One act after another, judged on whether it's really a talent. What goes
+      wrong: a talent that isn't one, a comedy act with no jokes, a lip sync
+      passed off as a talent. The queens in the seats have opinions.
+
+    staging: >-
+      Put the task on as the act: doing it is the talent. The delay is the act
+      that isn't one, the lip sync passed off as a skill, and the read comes
+      from the queens watching from their seats.
+
+    phrases:
+      - It's not bad, it's just not good.
+      - Wait a minute, ain't no chord on that guitar.
+
+  makeover:
+    name: Makeover
+
+    show: Drag Race
+
+    about: >-
+      Each queen puts someone who isn't a queen in drag and walks the runway
+      with them as her drag family.
+
+    on_the_show: >-
+      The partners have been veterans, grooms, teachers, firefighters and
+      eliminated queens. The runway calls for a family resemblance. What goes
+      wrong: no resemblance, a partner who looks like a hostage, a queen who
+      spends all her time on the partner and walks out half-done herself. What
+      wins: a partner who looks like kin and gets to be herself.
+
+    staging: >-
+      Make the task the makeover partner: plain, willing, waiting for its drag.
+      Finished, it has to look like family next to the plan. The read lands on a
+      partner that looks like a hostage, or on the queen who made over
+      everything else and walked out half-done.
+
+    phrases:
+      - Drag Family Resemblance
+      - It's bring your fairy to work day.
+
+  the_roast:
+    name: The roast
+
+    show: Drag Race
+
+    about: >-
+      A mock dais: the queens roast a guest of honor or each other, or do
+      stand-up, in front of the judges and often an audience.
+
+    on_the_show: >-
+      The mini challenge winner often sets the running order, and each queen
+      gets her set at the mic. What goes wrong: silence, jokes that are only
+      mean, a set read off the card, nerves. What wins: confident timing, reads
+      with a turn, a persona that carries.
+
+    staging: >-
+      Seat the task on the dais as the guest of honor and run a set at it: a
+      warm open, then jokes about its age, its excuses and its delays, each with
+      a turn, and a closer that's love and a joke at once. It's comedy for a
+      room; the judges' verdict on the work is the critiques.
+
+    phrases:
+      - It's absolutely terminal and your departure was delayed
+      - RuPaul is so old, I told her to act her age... bitch, she died.
+      - a burnt bag of popcorn
+
+  the_ball:
+    name: The ball
+
+    show: Drag Race
+
+    about: >-
+      Three looks on one runway, each to a category, with one of them made in
+      the werk room the night before.
+
+    on_the_show: >-
+      Each ball has a theme and two or three categories, often ending on an
+      Eleganza. What goes wrong: the sewn look isn't finished, hot glue shows, a
+      look reads as a costume, the queen runs out of time and walks it
+      unfinished anyway. What wins: one clear story across all three looks, and
+      a homemade look that doesn't look homemade.
+
+    staging: >-
+      Make a few of the day's tasks the three looks of one ball, with this task
+      as the look still in pieces at midnight. The read lands on walking it out
+      unfinished. The runway is one look a night; a ball is three in a row, one
+      of them sewn overnight.
+
+    phrases:
+      - Eleganza Extravaganza
+      - Happiness is in your own backyard.

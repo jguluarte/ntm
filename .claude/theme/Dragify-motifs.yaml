@@ -278,8 +278,9 @@ motifs:
     on_the_show: >-
       Queens answer the producers' questions to camera, and the edit drops the
       answer right after the moment it's about. What a queen says to a rival's
-      face and what she says in confessional rarely match, and fans read the
-      edit for who's going to win.
+      face and what she says in confessional rarely match. Fans read the edit
+      for who's going to win, and a queen who says a rival has the winner's edit
+      can mean it or be throwing pure shade.
 
     staging: >-
       Cut away from the day to a confessional: one of the other tasks, or the
@@ -339,7 +340,6 @@ motifs:
       makes it land. Then close the library, and nobody holds a grudge.
 
     phrases:
-      - Get out your library cards!
       - Because reading is what?
       - Fundamental!
       - The library is open.
@@ -445,9 +445,6 @@ motifs:
       for. Map the part to the task's steps: its line in the recording session,
       its eight counts of choreography, its one entrance. The read lands on
       whether a small part can steal the show.
-
-    phrases:
-      - Five, six, seven, eight!
 
     when:
       - afternoon

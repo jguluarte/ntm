@@ -88,7 +88,7 @@ a value's place in its list means nothing.
 
 Each message gets one hook, from the pool of motifs, references and actors'
 lines. It names a speaker only sometimes, at a rate computed from the pool.
-Messages never address the user.
+Messages may talk to the user as "you", and never use their name or a pet name.
 
 ### Theme files
 
@@ -122,9 +122,9 @@ weekly job.
 
 ### `%Message-history`
 
-One row per message: the date and time, the reminder, the theme, the picks, the
-opening words, the task ids with their planned dates at send, the user's
-feedback and the rater's verdict.
+One JSON line per message: the date and time, the reminder, the theme, the
+picks, the opening words, the task ids with their planned dates at send, the
+user's feedback and the rater's verdict. A field with no value is left out.
 
 ### Inside ntm
 

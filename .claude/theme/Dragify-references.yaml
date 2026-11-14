@@ -63,6 +63,26 @@ references:
       Fits a task planned again and again that never quite gets done: hand it
       the title, and count its nominations.
 
+  jujubees_unbeaten_run:
+    name: Jujubee's unbeaten run
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 2: Jujubee's "Black Velvet" lip sync against Sahara Davenport made
+      her a lip sync assassin. She stayed unbeaten until Monét X Change, on All
+      Stars 5.
+
+    meaning: >-
+      A streak so long it takes years and a new season to end it.
+
+    callback: >-
+      Fits a run of days where everything got done, now broken by one task: name
+      the streak, and the task that finally ended it.
+
+    when:
+      - slipped
+
   mimi_lifts_india:
     name: Mimi lifts India
 
@@ -317,6 +337,22 @@ references:
     callback: >-
       Fits a task stripped down to its bare job: tear away the excuses and show
       how little is left underneath.
+
+  cucu:
+    name: Cucu
+
+    show: Drag Race
+
+    what_happened: >-
+      Seasons 8 and 9: Cynthia Lee Fontaine called her rear end her cucu. The
+      word became her nickname and helped win her Miss Congeniality.
+
+    meaning: >-
+      A big booty, and a fond name for her.
+
+    callback: >-
+      Fits a task the user has been sitting on: name exactly what they've been
+      sitting on it with.
 
   the_beyonce_curse:
     name: The Beyoncé curse
@@ -775,6 +811,41 @@ references:
 
     when:
       - slipped
+
+  willow_pills_variety_show:
+    name: Willow Pill's variety show
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 14: Willow Pill's variety show number made her a front-runner, and
+      Out called it something fans had never seen. She won the season.
+
+    meaning: >-
+      Weird, done brilliantly.
+
+    callback: >-
+      Fits a task done the user's own odd way that worked: call it a variety
+      show number nobody had seen before.
+
+    when:
+      - done
+
+  dejas_lil_jon:
+    name: DeJa's Lil Jon
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 14 Snatch Game: DeJa Skye won as Lil Jon, earned praise from Lil
+      Jon himself, and came away with a catchphrase: "Yay-uh!"
+
+    meaning: >-
+      Winning with one word, said with total commitment.
+
+    callback: >-
+      Fits a task that needs a hype man more than a plan: give it Lil Jon on the
+      sidelines.
 
   boss_bitch:
     name: Boss Bitch

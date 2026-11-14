@@ -826,3 +826,166 @@ motifs:
 
     when:
       - evening
+
+  porkchop:
+    name: Porkchop
+
+    show: Drag Race
+
+    about: >-
+      The first queen out of a season wears the porkchop, after Season 1's first
+      eliminated queen.
+
+    on_the_show: >-
+      RuPaul keeps the reference going, and first-out queens claim the title in
+      their mirror messages. Season 13 gave the losers of its premiere lip syncs
+      a Porkchop Loading Dock to wait in.
+
+    staging: >-
+      Hand the task the week's porkchop: the first one to slip. It's out first,
+      it's a footnote, and it carries the title all week.
+
+    phrases:
+      - you are getting the Porkchop.
+      - I'm the UK's Porkchop
+
+    when:
+      - slipped
+
+  the_save:
+    name: The save
+
+    show: Drag Race
+
+    about: >-
+      The rare night the loser of a lip sync doesn't go home: RuPaul spares her,
+      or a twist does.
+
+    on_the_show: >-
+      Ru has called a queen back as she was leaving, and suspended the rules for
+      a whole week. In Season 14 each queen picked a chocolate bar: a lip sync
+      loser unwrapped hers, and only the golden one saved her. Plain chocolate
+      meant home.
+
+    staging: >-
+      The slipped task gets one save and unwraps its chocolate bar to see if
+      this is it. The read lands on the plain wrapper, and on how many saves it
+      has already used. A save comes on the stage, before the exit; a returning
+      queen comes back after it.
+
+    phrases:
+      - It's chocolate.
+      - All Star rules are temporarily suspended, until further notice.
+
+    when:
+      - slipped
+
+  returning_queen:
+    name: Returning queen
+
+    show: Drag Race
+
+    about: >-
+      An eliminated queen walks back into the werk room: voted back, brought in
+      as a wildcard, or called back by RuPaul.
+
+    on_the_show: >-
+      The door opens on a face the others thought they'd seen the last of. The
+      room reacts first and asks questions after: why her, why now, and who goes
+      home to make room.
+
+    staging: >-
+      The task that slipped off the list walks back into the werk room: the
+      others' faces, the history between them, the reason it's back. The read
+      lands on it being back at all.
+
+    phrases:
+      - I just had to eliminate two queens. How soon can you get here?
+      - It took ya'll hoes 4 times to get Rid of me!!!
+
+    when:
+      - slipped
+
+  lalaparuza:
+    name: LaLaPaRUza
+
+    show: Drag Race
+
+    about: >-
+      A lip sync tournament: queens lip sync in a bracket, one round after
+      another, until one is left.
+
+    on_the_show: >-
+      It first brought eliminated All Stars back to challenge the queens still
+      in; later a bracket of the bottom queens decided an elimination. Late in
+      recent seasons, the eliminated queens fight it out for a title of their
+      own.
+
+    staging: >-
+      Put every slipped task in a bracket and run the smackdown: each round, two
+      lip sync and one goes down, until one is left standing. On the weekly
+      message, the bracket is the week's slipped tasks.
+
+    phrases:
+      - Lip Sync LaLaPaRuZa Smackdown
+      - Queen of She Done Already Done Had Herses
+
+    when:
+      - slipped
+      - weekly
+
+  reunion:
+    name: Reunion
+
+    show: Drag Race
+
+    about: >-
+      The cast comes back after the season for a sit-down with RuPaul: feuds
+      settled, clips replayed, awards handed out.
+
+    on_the_show: >-
+      Ru rolls the clips and makes the queens watch themselves. Old fights get
+      reopened and, sometimes, settled. A round of Toot or Boot on the season's
+      looks ends with the Golden Boot for the worst one.
+
+    staging: >-
+      Sit the week's tasks on the reunion couches and roll the clips: the day
+      each one slipped, the day each got done. Settle the feuds, then hand out
+      the awards, the Golden Boot going to the week's worst-kept task.
+      Previously on is a quick recap; the reunion sits everyone down to relive
+      it.
+
+    phrases:
+      - Toot or Boot
+      - Golden Boot
+      - Reunited
+
+    when:
+      - weekly
+
+  the_crowning:
+    name: The crowning
+
+    show: Drag Race
+
+    about: >-
+      The finale: the last queens perform, and one is crowned America's Next
+      Drag Superstar.
+
+    on_the_show: >-
+      Since Season 9, a live lip sync tournament decides it. The winner gets the
+      crown, the tears and the speech. All Stars 4 crowned two queens at once.
+
+    staging: >-
+      Crown the big effort: the finale, the crown, the winner's speech. Name
+      every day it took and every time it slipped on the way here. Several big
+      efforts done in one day share a double crown.
+
+    phrases:
+      - America's Next Drag Superstar
+      - Queen of All Queens
+      - I won! I won! Finally.
+      - I'm just ready to rule the fucking world!
+
+    when:
+      - big_win

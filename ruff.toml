@@ -3,5 +3,4 @@ target-version = "py313"
 extend-include = ["scripts/picker/pick"]
 
 [lint]
-extend-select = ["E501"]
-ignore = ["I001"]
+select = ["F", "E9", "E501"]

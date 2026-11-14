@@ -1,205 +1,248 @@
-# What the job picks from for each message; it picks one speaker per message.
+# What the job picks from per message: a speaker, and the motifs a hook can be.
 speakers:
   - name: RuPaul
+    show: Drag Race
     appears_in:
       - werk room walkthrough
       - main stage
 
   - name: Michelle Visage
+    show: Drag Race
     appears_in:
       - main stage
       - Whatcha Packin'
 
   - name: Ross Mathews
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Carson Kressley
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Ts Madison
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Law Roach
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Alan Carr
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Graham Norton
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Brooke Lynn Hytes
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Pangina Heals
+    show: Drag Race
     appears_in:
       - werk room
       - reading challenge
 
   - name: Nicky Doll
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Dracmorda
+    show: Dragula
     appears_in:
       - cold open
       - main stage
 
   - name: Swanthula
+    show: Dragula
     appears_in:
       - intro
       - main stage
 
   - name: Bianca Del Rio
+    show: Drag Race
     appears_in:
       - werk room
       - confessional
 
   - name: Latrice Royale
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Alyssa Edwards
+    show: Drag Race
     appears_in:
       - werk room
       - Untucked
       - confessional
 
   - name: Katya
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Trixie Mattel
+    show: Drag Race
     appears_in:
       - main stage
       - goodbye mirror
 
   - name: Alaska
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Tatianna
+    show: Drag Race
     appears_in:
       - reading challenge
       - reunion
 
   - name: Detox
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Raven
+    show: Drag Race
     appears_in:
       - confessional
       - reunion
 
   - name: Laganja Estranja
+    show: Drag Race
     appears_in:
       - werk room
       - Untucked
 
   - name: Vanessa Vanjie Mateo
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Kandy Muse
+    show: Drag Race
     appears_in:
       - Untucked
       - main stage
 
   - name: Plane Jane
+    show: Drag Race
     appears_in:
       - confessional
 
   - name: Mo Heart
+    show: Drag Race
     appears_in:
       - confessional
 
   - name: Jinkx Monsoon
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Bob the Drag Queen
+    show: Drag Race
     appears_in:
       - Snatch Game
       - smear-ad challenge
 
   - name: Willam
+    show: Drag Race
     appears_in:
       - Untucked
 
   - name: Monét X Change
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Baga Chipz
+    show: Drag Race
     appears_in:
       - Snatch Game
 
   - name: Tammie Brown
+    show: Drag Race
     appears_in:
       - Untucked
 
   - name: Jujubee
+    show: Drag Race
     appears_in:
       - reading challenge
       - Snatch Game
 
   - name: Roxxxy Andrews
+    show: Drag Race
     appears_in:
       - main stage
       - reading challenge
 
   - name: Adore Delano
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Ginger Minj
+    show: Drag Race
     appears_in:
       - reading challenge
       - werk room
       - Snatch Game
 
   - name: Jasmine Masters
+    show: Drag Race
     appears_in:
       - werk room
       - reading challenge
       - YouTube videos
 
   - name: Valentina
+    show: Drag Race
     appears_in:
       - reading challenge
       - main stage
 
   - name: Jaida Essence Hall
+    show: Drag Race
     appears_in:
       - debate challenge
       - main stage
 
   - name: Heidi N Closet
+    show: Drag Race
     appears_in:
       - main stage
       - Untucked
 
   - name: Jimbo
+    show: Drag Race
     appears_in:
       - Snatch Game
       - main stage
 
   - name: Koco Caine
+    show: Dragula
     appears_in:
       - main stage
       - werk room

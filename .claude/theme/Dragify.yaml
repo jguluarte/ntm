@@ -15,11 +15,15 @@ files:
   Dragify-motifs.yaml: >-
     the motifs: the shows' challenges, rituals and scenes a message can be
     staged as, each with its show, what it is, how it plays on the show, how to
-    stage a task in it, the phrases said at that moment, and for some the
-    occasions it fits.
+    stage a task in it, the phrases said at that moment, and for some a `when`
+    naming the messages it fits.
 
   Dragify-options.yaml: >-
-    what the job picks from for each message, with where each speaker appears.
+    what the job picks from for each message: the speakers, each with its show
+    and where it appears, and the motifs, each with its show and `when`.
 
 speaker: >-
   A speaker is one of the actors, picked once per message.
+
+motif: >-
+  A motif is one of the shows' recurring scenes, a hook a message is staged as.

@@ -19,9 +19,9 @@ files:
     naming the messages it fits.
 
   Dragify-options.yaml: >-
-    what the job picks from for each message: the speakers, each with its show
-    and where it appears, and the motifs and the references, each with its show
-    and `when` where it has them.
+    the pools the job picks from: the actors as speakers, with show and where
+    each appears, and the shared lines, motifs and references as hooks, with
+    show and `when` where they have them.
 
   Dragify-references.yaml: >-
     the references: single moments from the shows and the culture around them

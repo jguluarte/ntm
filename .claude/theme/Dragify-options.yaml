@@ -1,208 +1,516 @@
-# What the job picks from per message: a speaker, and the references for a hook.
+# What the job picks from per message: a speaker, and the motifs and references
+# for a hook.
 speakers:
   - name: RuPaul
+    show: Drag Race
     appears_in:
       - werk room walkthrough
       - main stage
 
   - name: Michelle Visage
+    show: Drag Race
     appears_in:
       - main stage
       - Whatcha Packin'
 
   - name: Ross Mathews
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Carson Kressley
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Ts Madison
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Law Roach
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Alan Carr
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Graham Norton
+    show: Drag Race
     appears_in:
       - main stage
 
   - name: Brooke Lynn Hytes
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Pangina Heals
+    show: Drag Race
     appears_in:
       - werk room
       - reading challenge
 
   - name: Nicky Doll
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Dracmorda
+    show: Dragula
     appears_in:
       - cold open
       - main stage
 
   - name: Swanthula
+    show: Dragula
     appears_in:
       - intro
       - main stage
 
   - name: Bianca Del Rio
+    show: Drag Race
     appears_in:
       - werk room
       - confessional
 
   - name: Latrice Royale
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Alyssa Edwards
+    show: Drag Race
     appears_in:
       - werk room
       - Untucked
       - confessional
 
   - name: Katya
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Trixie Mattel
+    show: Drag Race
     appears_in:
       - main stage
       - goodbye mirror
 
   - name: Alaska
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Tatianna
+    show: Drag Race
     appears_in:
       - reading challenge
       - reunion
 
   - name: Detox
+    show: Drag Race
     appears_in:
       - werk room
 
   - name: Raven
+    show: Drag Race
     appears_in:
       - confessional
       - reunion
 
   - name: Laganja Estranja
+    show: Drag Race
     appears_in:
       - werk room
       - Untucked
 
   - name: Vanessa Vanjie Mateo
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Kandy Muse
+    show: Drag Race
     appears_in:
       - Untucked
       - main stage
 
   - name: Plane Jane
+    show: Drag Race
     appears_in:
       - confessional
 
   - name: Mo Heart
+    show: Drag Race
     appears_in:
       - confessional
 
   - name: Jinkx Monsoon
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Bob the Drag Queen
+    show: Drag Race
     appears_in:
       - Snatch Game
       - smear-ad challenge
 
   - name: Willam
+    show: Drag Race
     appears_in:
       - Untucked
 
   - name: Monét X Change
+    show: Drag Race
     appears_in:
       - werk room
       - main stage
 
   - name: Baga Chipz
+    show: Drag Race
     appears_in:
       - Snatch Game
 
   - name: Tammie Brown
+    show: Drag Race
     appears_in:
       - Untucked
 
   - name: Jujubee
+    show: Drag Race
     appears_in:
       - reading challenge
       - Snatch Game
 
   - name: Roxxxy Andrews
+    show: Drag Race
     appears_in:
       - main stage
       - reading challenge
 
   - name: Adore Delano
+    show: Drag Race
     appears_in:
       - werk room
       - Snatch Game
 
   - name: Ginger Minj
+    show: Drag Race
     appears_in:
       - reading challenge
       - werk room
       - Snatch Game
 
   - name: Jasmine Masters
+    show: Drag Race
     appears_in:
       - werk room
       - reading challenge
       - YouTube videos
 
   - name: Valentina
+    show: Drag Race
     appears_in:
       - reading challenge
       - main stage
 
   - name: Jaida Essence Hall
+    show: Drag Race
     appears_in:
       - debate challenge
       - main stage
 
   - name: Heidi N Closet
+    show: Drag Race
     appears_in:
       - main stage
       - Untucked
 
   - name: Jimbo
+    show: Drag Race
     appears_in:
       - Snatch Game
       - main stage
 
   - name: Koco Caine
+    show: Dragula
     appears_in:
       - main stage
       - werk room
+
+motifs:
+  - name: Previously on
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: Werk room entrance
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: The morning after
+    show: Drag Race
+    when:
+      - morning
+      - slipped
+
+  - name: Video message
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Challenge announcement
+    show: Drag Race
+    when:
+      - morning
+      - weekly
+
+  - name: Picking teams
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Werk room walkthrough
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: The twist
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Getting ready
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Confessional
+    show: Drag Race
+
+  - name: Design challenge
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Reading challenge
+    show: Drag Race
+
+  - name: Puppets
+    show: Drag Race
+
+  - name: Untucked
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Snatch Game
+    show: Drag Race
+
+  - name: Rusical
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Girl group
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Talent show
+    show: Drag Race
+
+  - name: Makeover
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: The roast
+    show: Drag Race
+
+  - name: The ball
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: The runway
+    show: Drag Race
+
+  - name: The reveal
+    show: Drag Race
+    when:
+      - done
+
+  - name: The critiques
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Safe
+    show: Drag Race
+    when:
+      - done
+
+  - name: Deliberation
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Lip sync for your life
+    show: Drag Race
+    when:
+      - evening
+      - slipped
+
+  - name: Shantay, you stay
+    show: Drag Race
+    when:
+      - done
+
+  - name: Challenge win
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: RuPeter badge
+    show: Drag Race
+    when:
+      - done
+
+  - name: Lip sync for your legacy
+    show: Drag Race
+    when:
+      - done
+
+  - name: Sashay away
+    show: Drag Race
+    when:
+      - evening
+      - slipped
+
+  - name: Mirror message
+    show: Drag Race
+    when:
+      - evening
+      - slipped
+
+  - name: Closing line
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Porkchop
+    show: Drag Race
+    when:
+      - weekly
+      - slipped
+
+  - name: The save
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Returning queen
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: LaLaPaRUza
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Reunion
+    show: Drag Race
+    when:
+      - weekly
+
+  - name: The crowning
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: Meet our monsters
+    show: Dragula
+    when:
+      - weekly
+
+  - name: Fright feat
+    show: Dragula
+    when:
+      - morning
+
+  - name: The Boudoir
+    show: Dragula
+    when:
+      - afternoon
+
+  - name: Floor show
+    show: Dragula
+
+  - name: Four tenets
+    show: Dragula
+
+  - name: Boulets' judgment
+    show: Dragula
+    when:
+      - evening
+
+  - name: Who should go home
+    show: Dragula
+    when:
+      - evening
+      - slipped
+
+  - name: The Cauldron
+    show: Dragula
+    when:
+      - evening
+      - slipped
+
+  - name: Extermination
+    show: Dragula
+    when:
+      - slipped
+
+  - name: The plea
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Later that night
+    show: Dragula
+    when:
+      - evening
+      - slipped
+
+  - name: Key of Life and Death
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Extermination survivor
+    show: Dragula
+    when:
+      - done
+
+  - name: Supermonster crowning
+    show: Dragula
+    when:
+      - big_win
 
 references:
   - name: The Season 1 filter

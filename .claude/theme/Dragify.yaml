@@ -12,10 +12,16 @@ files:
     Then the lines any actor can say: the lines fans repeat as catchphrases,
     many from queens who aren't actors here, and a few kept for a big win.
 
+  Dragify-motifs.yaml: >-
+    the motifs: the shows' challenges, rituals and scenes a message can be
+    staged as, each with its show, what it is, how it plays on the show, how to
+    stage a task in it, the phrases said at that moment, and for some a `when`
+    naming the messages it fits.
+
   Dragify-options.yaml: >-
-    what the job picks from for each message: the speakers, each with where it
-    appears, and the references, each with its `show` and `when` where it has
-    them.
+    what the job picks from for each message: the speakers, each with its show
+    and where it appears, and the motifs and the references, each with its show
+    and `when` where it has them.
 
   Dragify-references.yaml: >-
     the references: single moments from the shows and the culture around them
@@ -23,5 +29,12 @@ files:
     for and how to call back to it on a task, and for some the show it comes
     from and a `when` naming the messages it fits.
 
+  Dragify-terminology.md: >-
+    the drag words the writer would otherwise miss or misuse, and how sparingly
+    to use them; the writer reads it whole, every time.
+
 speaker: >-
   A speaker is one of the actors, picked once per message.
+
+motif: >-
+  A motif is one of the shows' recurring scenes, a hook a message is staged as.

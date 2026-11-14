@@ -135,4 +135,4 @@ file says. Then:
    message as `ntm:style`'s Keeping `%Message-history` says.
 
 The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
-`ntm:style` ended with it.
+`ntm:style` ended with it, then any line `ntm:style` adds.

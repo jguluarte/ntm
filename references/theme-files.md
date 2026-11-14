@@ -11,7 +11,7 @@ ntm is moving to a script, the picker, that picks what each message draws on,
 and a writer that writes the message from the picks. For a script to pick, a
 theme has to be data in a known shape, and this file is that shape. Today a
 user's theme is still one `%Theme` database, as `ntm:theme-builder` builds it,
-and no run reads theme files yet.
+and `ntm:style` runs the picker only for a theme in files.
 
 A user will be able to have several themes. The Themes part of `%Settings` lists
 each one by its root and names this week's theme, the one everything picked in a

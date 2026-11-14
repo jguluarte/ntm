@@ -1,4 +1,4 @@
-# What the job picks from for each message; it picks one speaker per message.
+# What the job picks from per message: a speaker, and the references for a hook.
 speakers:
   - name: RuPaul
     appears_in:
@@ -207,16 +207,18 @@ speakers:
 references:
   - name: The Season 1 filter
     show: Drag Race
-
-  - name: Two piece and a biscuit
-    show: Drag Race
+    when:
+      - slipped
 
   - name: The Susan Lucci of the competition
     show: Drag Race
+    when:
+      - slipped
 
   - name: Jujubee's unbeaten run
     show: Drag Race
     when:
+      - weekly
       - slipped
 
   - name: Mimi lifts India
@@ -230,8 +232,13 @@ references:
   - name: DiDa and Natalie Cole
     show: Drag Race
 
+  - name: Party City
+    show: Drag Race
+
   - name: Coco and Alyssa
     show: Drag Race
+    when:
+      - slipped
 
   - name: Alyssa's Katy Perry
     show: Drag Race
@@ -248,38 +255,13 @@ references:
     when:
       - morning
 
-  - name: Courtney comes back
-    show: Drag Race
-    when:
-      - slipped
-
   - name: Kennedy's leap
-    show: Drag Race
-
-  - name: Status update, dead
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: How's your head?
-    show: Drag Race
-
-  - name: The loaf of bread
-    show: Drag Race
-
-  - name: Violet's two-in-one
-    show: Drag Race
-    when:
-      - done
-
-  - name: Ginger's tear-away
-    show: Drag Race
-
-  - name: Cucu
     show: Drag Race
 
   - name: The Beyoncé curse
     show: Drag Race
+    when:
+      - slipped
 
   - name: Gaga in the werk room
     show: Drag Race
@@ -294,39 +276,28 @@ references:
   - name: Shea's finale
     show: Drag Race
     when:
-      - slipped
-
-  - name: The all-green look
-    show: Drag Race
-
-  - name: Asia's butterflies
-    show: Drag Race
-    when:
+      - weekly
       - slipped
 
   - name: Monét's fake split
     show: Drag Race
+    when:
+      - afternoon
 
   - name: Not next time
     show: Drag Race
     when:
       - slipped
 
-  - name: Mayhem's eyes
-    show: Drag Race
-
   - name: The six-way lip sync
     show: Drag Race
+    when:
+      - morning
 
   - name: Sorry Not Sorry
     show: Drag Race
     when:
       - done
-
-  - name: Opulence
-    show: Drag Race
-    when:
-      - slipped
 
   - name: Silky strips in Untucked
     show: Drag Race
@@ -336,18 +307,10 @@ references:
     when:
       - done
 
-  - name: Where's the body?
-    show: Drag Race
-    when:
-      - slipped
-
   - name: Jan's face crack
     show: Drag Race
     when:
       - done
-
-  - name: Gigi's robot
-    show: Drag Race
 
   - name: Nicki detests it
     show: Drag Race
@@ -357,11 +320,6 @@ references:
     when:
       - done
 
-  - name: Apolo-lie
-    show: Drag Race
-    when:
-      - slipped
-
   - name: Kandy's boombox
     show: Drag Race
     when:
@@ -369,17 +327,11 @@ references:
 
   - name: Ru flips off Utica
     show: Drag Race
-
-  - name: Denali's stare
-    show: Drag Race
+    when:
+      - slipped
 
   - name: Mary, Queen of Scots
     show: Drag Race
-
-  - name: Jorgeous lip syncs five times
-    show: Drag Race
-    when:
-      - slipped
 
   - name: Willow Pill's variety show
     show: Drag Race
@@ -392,16 +344,12 @@ references:
   - name: Boss Bitch
     show: Drag Race
     when:
-      - big_win
-
-  - name: Mistress takes the book
-    show: Drag Race
-
-  - name: You know why
-    show: Drag Race
+      - done
 
   - name: The immunity potion
     show: Drag Race
+    when:
+      - slipped
 
   - name: Nymphia's bananas
     show: Drag Race
@@ -410,9 +358,6 @@ references:
     show: Drag Race
     when:
       - slipped
-
-  - name: Kori explains cabaret
-    show: Drag Race
 
   - name: Onya's crown lip sync
     show: Drag Race
@@ -429,21 +374,16 @@ references:
     when:
       - done
 
-  - name: Hit the slay button
-    show: Drag Race
-    when:
-      - morning
-
   - name: The she-mergency button
     show: Drag Race
+    when:
+      - afternoon
 
   - name: Dancing on My Own
     show: Drag Race
     when:
       - evening
-
-  - name: Alaska's knife
-    show: Drag Race
+      - slipped
 
   - name: Shut Up and Drive
     show: Drag Race
@@ -452,9 +392,8 @@ references:
 
   - name: Ben eliminates herself
     show: Drag Race
-
-  - name: Is she gonna jump?
-    show: Drag Race
+    when:
+      - afternoon
 
   - name: Life's not fair
     show: Drag Race
@@ -465,7 +404,7 @@ references:
   - name: Club 96
     show: Drag Race
 
-  - name: Kylie's boa
+  - name: Kylie's slip
     show: Drag Race
     when:
       - done
@@ -481,7 +420,7 @@ references:
   - name: Frock Destroyers
     show: Drag Race
     when:
-      - big_win
+      - done
 
   - name: UK Hun?
     show: Drag Race
@@ -499,23 +438,12 @@ references:
   - name: Bimini's Katie Price
     show: Drag Race
 
-  - name: A leaf on the line
+  - name: Danny Beard's clean run
     show: Drag Race
     when:
-      - slipped
+      - big_win
 
-  - name: Sminty's sad twerk
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Banksie's last walk
-    show: Drag Race
-    when:
-      - evening
-
-  - name: Love most of you
+  - name: Love most of ya
     show: Drag Race
     when:
       - evening
@@ -525,114 +453,37 @@ references:
     show: Drag Race
     when:
       - evening
-
-  - name: Tia Kofi wins
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: Canada's Squirrel Friend
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Not Sorry Aboot It
-    show: Drag Race
-    when:
       - slipped
-
-  - name: Lemon's library door
-    show: Drag Race
-
-  - name: The Roast of Brooke Lynn Hytes
-    show: Drag Race
 
   - name: Eve 6000's reveal
     show: Drag Race
     when:
       - done
 
-  - name: Trudeau in the werk room
-    show: Drag Race
-
-  - name: Kita says Anita
-    show: Drag Race
-
-  - name: That means nothing
+  - name: Kita Mean wins at home
     show: Drag Race
     when:
-      - slipped
-
-  - name: Sickening in Parliament
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Two corgis and a jar of peanut butter
-    show: Drag Race
-
-  - name: Ru spanks Spankie
-    show: Drag Race
-
-  - name: Minnie Cooper's TV
-    show: Drag Race
-
-  - name: Hollywould is 28
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: The Midnight Drag Pageant
-    show: Dragula
+      - big_win
 
   - name: The mud-wrestling cage
     show: Dragula
+    when:
+      - slipped
 
   - name: Vander volunteers
     show: Dragula
     when:
       - done
 
-  - name: Pinche Queen skips the Last Supper
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Biqtch Puddin's janitor
-    show: Dragula
-    when:
-      - big_win
-
-  - name: Erika never safe
-    show: Dragula
-
-  - name: The masked-monster curse
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Line?
-    show: Dragula
-
   - name: Landon's spiders
     show: Dragula
     when:
-      - morning
-
-  - name: Season 3 on Prime
-    show: Dragula
-    when:
-      - weekly
-
-  - name: Louisianna says no twice
-    show: Dragula
-    when:
-      - slipped
-
-  - name: For free
-    show: Dragula
-    when:
       - done
+
+  - name: Landon Cider, the first king
+    show: Dragula
+    when:
+      - big_win
 
   - name: Saint wins Resurrection
     show: Dragula
@@ -644,165 +495,67 @@ references:
     when:
       - slipped
 
-  - name: Makeup in a porta-potty
-    show: Dragula
-
-  - name: Jarvis at the foot of the bed
-    show: Dragula
-    when:
-      - evening
-
   - name: Asia's stolen wig
     show: Dragula
     when:
       - done
 
-  - name: Majesty's note
-    show: Dragula
-    when:
-      - slipped
-
-  - name: It's a game
-    show: Dragula
-
-  - name: Scylla's scroll
-    show: Dragula
-    when:
-      - slipped
-
-  - name: The Shoes lip sync
-    show: Dragula
-
-  - name: Teletubbies on a toilet bowl
-    show: Dragula
-    when:
-      - morning
-
-  - name: Grandmother Bitch
-    show: Dragula
-
-  - name: The intestine wig
-    show: Dragula
-    when:
-      - done
-
-  - name: The third Boulet Brother
-    show: Dragula
-
-  - name: Felony Dodger's nine years
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Hell freezing over
-    show: Dragula
-
   - name: Crystal LaBeija's walk-off
-    show: Queer culture
+    when:
+      - slipped
 
   - name: Dorian Corey on shade
-    show: Queer culture
+    when:
+      - slipped
 
-  - name: Wigstock
-    show: Queer culture
+  - name: Junior LaBeija's opulence
+    when:
+      - big_win
+
+  - name: Courtney comes back
+    when:
+      - slipped
 
   - name: Pink Flamingos
-    show: Queer culture
 
   - name: Rocky Horror at midnight
-    show: Queer culture
     when:
       - weekly
 
   - name: No wire hangers
-    show: Queer culture
 
   - name: Baby Jane's rat
-    show: Queer culture
     when:
       - slipped
 
-  - name: What a dump
-    show: Queer culture
-
   - name: Ready for my close-up
-    show: Queer culture
 
   - name: The curtain dress
-    show: Queer culture
     when:
       - done
 
-  - name: The chocolate factory
-    show: Queer culture
-
-  - name: Florals for spring
-    show: Queer culture
-
-  - name: Stop trying to make fetch happen
-    show: Queer culture
+  - name: Little Edie's costume for the day
     when:
-      - slipped
-
-  - name: A full-on Monet
-    show: Queer culture
+      - morning
 
   - name: Picture it
-    show: Queer culture
     when:
       - weekly
 
-  - name: The table flip
-    show: Queer culture
-    when:
-      - slipped
-
-  - name: Who gon' check me, boo?
-    show: Queer culture
-    when:
-      - slipped
-
-  - name: There's people that are dying
-    show: Queer culture
-
-  - name: We were all rooting for you
-    show: Queer culture
-    when:
-      - slipped
-
-  - name: Make it work
-    show: Queer culture
-    when:
-      - afternoon
-
   - name: I don't know her
-    show: Queer culture
     when:
       - slipped
-
-  - name: A lot of money to look this cheap
-    show: Queer culture
-    when:
-      - done
 
   - name: Diana Ross in the rain
-    show: Queer culture
     when:
-      - done
+      - big_win
+
+  - name: Judy at Carnegie Hall
+    when:
+      - big_win
 
   - name: Cher's farewell tour
-    show: Queer culture
     when:
       - slipped
 
   - name: The wig in the toilet
-    show: Queer culture
-
-  - name: Versayce
-    show: Queer culture
-
-  - name: The man behind the curtain
-    show: Queer culture
-
-  - name: Nicole Kidman's AMC ad
-    show: Queer culture

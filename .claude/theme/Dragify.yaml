@@ -13,13 +13,15 @@ files:
     many from queens who aren't actors here, and a few kept for a big win.
 
   Dragify-options.yaml: >-
-    what the job picks from for each message, with where each speaker appears.
+    what the job picks from for each message: the speakers, each with where it
+    appears, and the references, each with its `show` and `when` where it has
+    them.
 
   Dragify-references.yaml: >-
     the references: single moments from the shows and the culture around them
-    that a message can call back to, each with its show, what happened, what
-    fans use it for, how to call back to it on a task, and for some the
-    occasions it fits.
+    that a message can call back to, each with what happened, what fans use it
+    for and how to call back to it on a task, and for some the show it comes
+    from and a `when` naming the messages it fits.
 
 speaker: >-
   A speaker is one of the actors, picked once per message.

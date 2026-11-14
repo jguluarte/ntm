@@ -24,3 +24,9 @@ runs:
         version=$(jq -r '.packages[] | select(test("^yamllint@"))
             | sub("^yamllint@"; "")' devbox.json)
         pipx install "yamllint==$version"
+    - name: Install yq
+      shell: bash
+      run: |
+        version=$(jq -r '.packages[] | select(test("^yq@"))
+            | sub("^yq@"; "")' devbox.json)
+        pipx install "yq==$version"

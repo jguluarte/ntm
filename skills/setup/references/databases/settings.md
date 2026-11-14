@@ -52,6 +52,9 @@ Claude's built-in browser
 
 ## Themes
 
+<!-- Each theme by its root. Today the root is the `%Theme` database: write its
+title. -->
+
 - This week's theme: <theme's root>
 
 ### All themes

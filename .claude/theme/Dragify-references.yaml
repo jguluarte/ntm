@@ -1405,3 +1405,238 @@ references:
 
     when:
       - big_win
+
+  # Canada's Drag Race and Canada vs the World
+
+  canadas_squirrel_friend:
+    name: Canada's Squirrel Friend
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada's Drag Race, Season 1: a mini challenge had judge Traci Melchor act
+      like a squirrel reading the news, and the bit became her title.
+
+    meaning: >-
+      The judge who earned a nickname by playing along.
+
+    callback: >-
+      Fits a morning task with news to share: have it read out as a bulletin by
+      a squirrel.
+
+    when:
+      - morning
+
+  not_sorry_aboot_it:
+    name: Not Sorry Aboot It
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada's Drag Race, Season 1: the queens split into two groups and traded
+      verses in diss tracks, rap-battle style.
+
+    meaning: >-
+      The apology that isn't one, in a Canadian accent.
+
+    callback: >-
+      Fits a task skipped with no regret at all: give it a diss-track verse.
+
+    when:
+      - slipped
+
+  lemons_library_door:
+    name: Lemon's library door
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada's Drag Race, Season 1: in the reading challenge, Lemon slammed a
+      library door in Priyanka's face.
+
+    meaning: >-
+      Closing the conversation, literally.
+
+    callback: >-
+      Fits an excuse the reminder is done hearing: slam the library door on it.
+
+  the_roast_of_brooke_lynn:
+    name: The Roast of Brooke Lynn Hytes
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada's Drag Race, Season 2: the queens roasted their host, Brooke Lynn
+      Hytes, in one of the franchise's cringiest episodes. Icesis Couture ran
+      over time and lost, and Kendall Gender won.
+
+    meaning: >-
+      The roast that died in the room.
+
+    callback: >-
+      Fits a task the user tried to make fun that fell flat: describe the
+      silence after each joke.
+
+  eve_6000s_reveal:
+    name: Eve 6000's reveal
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada's Drag Race, Season 2, the Rusical: Eve 6000's reveal went wrong
+      when her dress rode up, and then her wig fell off. She calmly picked it up
+      and did the reveal again.
+
+    meaning: >-
+      Redoing the moment, unbothered, after it fell apart.
+
+    callback: >-
+      Fits a task that fell apart the first time and got done on the second try:
+      pick up the wig and do the reveal again.
+
+    when:
+      - done
+
+  trudeau_in_the_werk_room:
+    name: Trudeau in the werk room
+
+    show: Drag Race
+
+    what_happened: >-
+      Canada vs the World, Season 2 (2024): Justin Trudeau walked into the werk
+      room, the first world leader to do so.
+
+    meaning: >-
+      The most important visitor the werk room ever had.
+
+    callback: >-
+      Fits a task important enough for an official visit: send the head of
+      government by its station to check on it.
+
+  # Drag Race Down Under
+
+  kita_says_anita:
+    name: Kita says Anita
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 1: Kita Mean and Anita Wigl'it own a cabaret
+      together. Asked who would go home if they lip synced against each other,
+      Kita answered: "Anita."
+
+    meaning: >-
+      No hesitation, even about your business partner.
+
+    callback: >-
+      Fits two tasks competing for today: ask which one goes, and answer without
+      a pause.
+
+  that_means_nothing:
+    name: That means nothing
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 1: eliminated in episode 2, Art Simone
+      snapped "That means nothing" at a producer in her exit interview. She came
+      back two episodes later and reached the finale.
+
+    meaning: >-
+      Refusing the verdict, and being right.
+
+    callback: >-
+      Fits a task knocked off the list that came back: snap at the setback, then
+      bring the task back and finish it.
+
+    when:
+      - slipped
+
+  sickening_in_parliament:
+    name: Sickening in Parliament
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under's first season moved from Sydney to Auckland because
+      of the pandemic, and a New South Wales politician called the move
+      "sickening" in Parliament.
+
+    meaning: >-
+      Drag slang reaching places it was never meant to.
+
+    callback: >-
+      Fits a task whose delay has become a matter for official debate: take it
+      to Parliament.
+
+    when:
+      - slipped
+
+  two_corgis:
+    name: Two corgis and a jar of peanut butter
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 1 Snatch Game: Anita Wigl'it's Queen
+      Elizabeth II asked who needs a man when she has two corgis and a jar of
+      peanut butter.
+
+    meaning: >-
+      Royal filth, delivered regally.
+
+    callback: >-
+      Fits a task the user says they need no help with: list what they have
+      instead, regally.
+
+  ru_spanks_spankie:
+    name: Ru spanks Spankie
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 2: fans said RuPaul had been green-screened
+      into Season 1, so she called Spankie Jackzon out of line in the werk room
+      and spanked her. Spankie won the season.
+
+    meaning: >-
+      Proving you were really in the room.
+
+    callback: >-
+      Fits a task the user claims to be on top of: show up in person to prove
+      it.
+
+  minnie_coopers_tv:
+    name: Minnie Cooper's TV
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 2: Minnie Cooper walked the first runway
+      carrying a television as a clutch.
+
+    meaning: >-
+      The accessory bigger than the point.
+
+    callback: >-
+      Fits a task with a giant prop and no plan: carry the TV down the runway.
+
+  hollywould_is_28:
+    name: Hollywould is 28
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race Down Under, Season 3: Hollywould Star told RuPaul she was 28.
+      Shown paperwork that said 34, she said she didn't know who wrote 34; it
+      must have been a mysterious man.
+
+    meaning: >-
+      Standing by the number, whatever the paperwork says.
+
+    callback: >-
+      Fits a task whose age the user disputes: insist it's newer than it is, and
+      blame the date on a mysterious man.
+
+    when:
+      - slipped

@@ -26,22 +26,19 @@ with its result line.
 
 Then load the user's `%Message-rules`, then `ntm:style`, and follow its Setup.
 
-## The facts
+## Today's tasks
 
-Today is the date in the timezone under About you in `%Settings`.
+Load what the Reminders part of `%Message-rules` says to load. Where it says
+today's tasks, that is every task planned for today, open and done, so an
+evening where everything got done still gets its message.
 
-Load what the Reminders part of `%Message-rules` says to load. Today's tasks are
-every task planned for today, open and done, so an evening where everything got
-done still gets its message.
-
-A task has slipped one day for each date its `Planned date history` comment
-lists, as ntm's core rules describe it; a task with no comment hasn't slipped.
-Dates from a while back weigh less: a task picked up again after a long gap gets
-fewer days slipped than its dates, as you judge it.
+A task slipped once for each date its `Planned date history` comment lists, as
+ntm's core rules describe it; a task with no comment hasn't slipped.
 
 For the afternoon and evening, the rule compares against the tasks today's
-earlier reminders covered: the task ids in today's `%Message-history` entries,
-from `ntm:style`'s reading of them.
+earlier reminders covered. `ntm:style`'s Setup read today's `%Message-history`
+entries, and their `ids` are those tasks. Look up each one's title and where
+it's planned now.
 
 ## The message rule
 
@@ -49,8 +46,8 @@ The rule for this reminder is the Reminders part of `%Message-rules` and the
 reminder's own part, such as Morning. The reminder's own part adds to the
 Reminders part, and wins where they differ.
 
-Apply it to the facts. When it leaves nothing to send, such as no tasks, end the
-run with `Not sent: <why>`.
+Apply it to today's tasks. With none, end the run with
+`Not sent: no tasks planned today`, unless the rule asks for a message anyway.
 
 ## The message
 
@@ -58,13 +55,14 @@ Send it as the core rules' Sending a message in the user's style says. Its facts
 are:
 
 - what the message must cover, as the rule says, in plain words
-- today's tasks, each with its id and title, whether it's done, its days slipped
-  and the dates from its `Planned date history`
-- for the afternoon and evening, the tasks the earlier reminders covered
-- anything the rule asks for about tone
+- today's tasks, each with its id and title, whether it's done, how many times
+  it slipped, and the dates it slipped from
+- for the afternoon and evening, the tasks the earlier reminders covered, each
+  with its id, title and where it's planned now
+- anything else the rule asks of the message, such as tone or length, already
+  decided for today
 
 ## Result
 
-What `ntm-user:notify` returned, `Writer FAILED: <why>`, or `Not sent: <why>`.
-For a `NOTIFY VIA FINAL REPLY` block, end the run with its title and message,
-without that line.
+`Not sent: no tasks planned today`, or the sender's result the core rules'
+Sending a message in the user's style gives.

@@ -116,8 +116,8 @@ When a skill or agent fails, it returns one line that starts with its own name:
 words, naming tasks as Talking to the user about tasks says.
 
 A job's final reply is the line its last step returned, then anything that skill
-says to add. When a step returned a `NOTIFY VIA FINAL REPLY` block, everything
-after that block's first line, as written, takes the place of that line: the
+says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
+holds the block's title and message, as written, without its first line: the
 scheduled task's own push shows it.
 
 ## Sending a message in the user's style
@@ -125,11 +125,12 @@ scheduled task's own push shows it.
 The sender decides whether there's a message, and gathers its facts as its own
 file says. Then:
 
-1. Load `ntm:style` and follow it to turn the facts into a title and message.
+1. Follow `ntm:style`, loading it first if the sender hasn't, to turn the facts
+   into a title and message.
 2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
    the message, keeping every task id, and send it once more.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
-   message as `ntm:style` says.
+   message as `ntm:style`'s Keeping `%Message-history` says.
 
 The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
 `ntm:style` ended with it.

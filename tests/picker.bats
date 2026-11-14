@@ -6,6 +6,8 @@ setup() {
 }
 
 now='2026-11-13 20:45'
+themes_dir=tests/picker
+history_file=tests/picker/history.jsonl
 
 hooks_without_when=(
     characters/detective shared_lines/any_time scenes/stakeout
@@ -18,22 +20,23 @@ detective_lines=(
 )
 
 pick() {
-    bash scripts/picker/pick "$@"
+    PATH=${tools:-$PATH} bash scripts/picker/pick "$@"
 }
 
 pick_from() {
     local theme=$1 mode=$2 occasions=$3
     shift 3
-    pick "$mode" --options "tests/picker/$theme-options.yaml" \
-        --history tests/picker/history.jsonl --theme "$theme" \
+    pick "$mode" --options "$themes_dir/$theme-options.yaml" \
+        --history "$history_file" --theme "$theme" \
         --occasions "$occasions" --now "$now" "$@"
 }
 
 draw_line() {
     local entry_file=$1 hook=$2 occasions=$3
+    local theme=${entry_file%%-*}
     shift 3
-    pick_from Casebook line "$occasions" --hook "$hook" \
-        --entries "tests/picker/$entry_file" "$@"
+    pick_from "$theme" line "$occasions" --hook "$hook" \
+        --entries "$themes_dir/$entry_file" "$@"
 }
 
 column_of() {
@@ -58,6 +61,20 @@ speaker_value() {
 line_candidates() {
     draw_line Casebook-characters.yaml "$1" "$2" --chances |
         awk -F '\t' 'NR > 1 { print $NF }'
+}
+
+with_tools() {
+    tools=$BATS_TEST_TMPDIR/tools
+    mkdir -p "$tools"
+    local tool
+    for tool in bash dirname od tr "$@"; do
+        ln -s "$(command -v "$tool")" "$tools/$tool"
+    done
+}
+
+fake_tool() {
+    printf '#!/bin/sh\necho "%s"\n' "$2" > "$tools/$1"
+    chmod +x "$tools/$1"
 }
 
 line_value() {
@@ -148,6 +165,11 @@ expect_failure() {
     hook_candidates evening,big_win | expect_set shared_lines/big_win
 }
 
+@test "when: spaces after the commas between occasions are trimmed" {
+    expect "$(hook_candidates evening,slipped)" \
+        "$(hook_candidates 'evening, slipped')"
+}
+
 @test "hook: a pick names exactly one hook, from the entries that fit" {
     run pick_from Casebook hook morning --seed 7
     expect 1 "$(grep -c '^hook: ' <<< "$output")"
@@ -188,12 +210,52 @@ YAML
     expect 0.5 "$(hook_value rest characters/detective evening)"
 }
 
+@test "rest: a use whose sent can't be read rests nothing" {
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    cat > "$history_file" << 'JSONL'
+{"sent":"2026-11-13T08:45","theme":"Casebook","hook":"characters/detective"}
+{"theme":"Casebook","hook":"characters/detective"}
+JSONL
+    expect 1 "$(hook_value rest characters/detective evening)"
+}
+
 @test "rest: another theme's picks don't rest an entry" {
     expect 1 "$(hook_value rest shared_lines/any_time evening)"
 }
 
 @test "rest: a pool without half_life_days never rests its entries" {
     expect 1 "$(hook_value rest scenes/stakeout evening)"
+}
+
+@test "draw: when every hook that fits rests at 0, rest is set aside" {
+    themes_dir=$BATS_TEST_TMPDIR
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  scenes:
+    gives: [hook]
+    half_life_days: 2
+    entries:
+      dusk:
+YAML
+    echo '{"sent":"2026-11-13 20:45","theme":"Dusk","hook":"scenes/dusk"}' \
+        > "$history_file"
+    expect "hook: scenes/dusk" \
+        "$(pick_from Dusk hook evening --seed 1 | grep '^hook: ')"
+}
+
+@test "draw: when every hook that fits weighs 0, it fails in one line" {
+    themes_dir=$BATS_TEST_TMPDIR
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dusk:
+        weight: 0
+YAML
+    run pick_from Dusk hook evening --seed 1
+    expect_failure "every hook that fits evening weighs 0"
 }
 
 @test "score: a score of 1 doubles an entry's weight" {
@@ -245,9 +307,42 @@ bend: Ask the slipped task where it was on the day it was planned." \
         "$(draw_line Casebook-characters.yaml characters/inspector slipped)"
 }
 
+@test "line: when every line rests at 0, rest is set aside" {
+    themes_dir=$BATS_TEST_TMPDIR
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  people:
+    gives: [hook, speaker]
+    entries:
+      host:
+        line_half_life_days: 2
+YAML
+    cat > "$themes_dir/Dusk-people.yaml" << 'YAML'
+people:
+  host:
+    lines:
+      - Good evening.
+YAML
+    cat > "$history_file" << 'JSONL'
+{"sent":"2026-11-13 20:45","theme":"Dusk","line_drawn":"Good evening."}
+JSONL
+    expect "line: Good evening." \
+        "$(draw_line Dusk-people.yaml people/host evening --seed 1)"
+}
+
 @test "line: an entry without lines draws none" {
     expect "line: none" \
         "$(draw_line Casebook-scenes.yaml scenes/stakeout evening)"
+}
+
+@test "history: the lines of its code fence are skipped" {
+    local unfenced
+    unfenced=$(pick_from Casebook hook evening --chances)
+    { echo '```jsonl'; cat "$history_file"; echo '```'; } \
+        > "$BATS_TEST_TMPDIR/history.jsonl"
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    expect "$unfenced" "$(pick_from Casebook hook evening --chances)"
 }
 
 @test "theme: the next theme follows this week's" {
@@ -274,7 +369,7 @@ bend: Ask the slipped task where it was on the day it was planned." \
     run pick hook --options tests/picker/Casebook-options.yaml \
         --history "$BATS_TEST_TMPDIR/history.jsonl" --theme Casebook \
         --now "$now"
-    expect_failure "$BATS_TEST_TMPDIR/history.jsonl isn't JSON lines"
+    expect_failure "history line 1 isn't JSON"
 }
 
 @test "malformed: an unknown occasion fails in one line" {
@@ -285,4 +380,83 @@ bend: Ask the slipped task where it was on the day it was planned." \
 @test "malformed: a message of two reminders fails in one line" {
     run pick_from Casebook hook morning,evening
     expect_failure "more than one reminder: morning, evening"
+}
+
+@test "malformed: an unknown when in the options file fails naming it" {
+    themes_dir=$BATS_TEST_TMPDIR
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dusk:
+        when: [evening, night]
+YAML
+    run pick_from Dusk hook evening --seed 1
+    expect_failure "scenes/dusk has an unknown when: night"
+}
+
+@test "malformed: an unknown when on a riff fails naming it" {
+    themes_dir=$BATS_TEST_TMPDIR
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  people:
+    gives: [hook, speaker]
+    entries:
+      host:
+YAML
+    cat > "$themes_dir/Dusk-people.yaml" << 'YAML'
+people:
+  host:
+    riffs:
+      - line: Good evening.
+        when: night
+YAML
+    run draw_line Dusk-people.yaml people/host evening --seed 1
+    expect_failure "a riff of people/host has an unknown when: night"
+}
+
+@test "malformed: a line that isn't text fails naming its entry" {
+    themes_dir=$BATS_TEST_TMPDIR
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  people:
+    gives: [hook, speaker]
+    entries:
+      host:
+YAML
+    cat > "$themes_dir/Dusk-people.yaml" << 'YAML'
+people:
+  host:
+    lines:
+      - Rule one: never trust a client.
+YAML
+    run draw_line Dusk-people.yaml people/host evening --seed 1
+    expect_failure "people/host has a line that isn't text: \
+{\"Rule one\":\"never trust a client.\"}"
+}
+
+@test "malformed: a hook that isn't <kind>/<slug> fails in one line" {
+    run draw_line Casebook-characters.yaml characters/detective/x evening \
+        --seed 1
+    expect_failure "--hook takes <kind>/<slug>, not characters/detective/x"
+}
+
+@test "tools: pick theme needs only jq" {
+    with_tools jq
+    expect "theme: Harbor" "$(pick theme --this-week Casebook Casebook Harbor)"
+}
+
+@test "tools: the Go yq fails, naming what's needed" {
+    with_tools jq
+    fake_tool yq 'yq (https://github.com/mikefarah/yq/) version v4.44.1'
+    run pick_from Casebook hook evening --seed 1
+    expect_failure "pick hook needs jq 1.6 or later, and yq, the Python one"
+}
+
+@test "tools: an old jq fails, naming what's needed" {
+    with_tools
+    fake_tool jq 'jq-1.5'
+    run pick theme --this-week Casebook Casebook Harbor
+    expect_failure "pick theme needs jq 1.6 or later"
 }

@@ -6,6 +6,12 @@ picker_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 usage='usage: pick hook|line|theme, as README.md beside it says'
 message_flags='--options --history --theme --now --occasions --seed --chances'
 whole_number='^[0-9]+$'
+jq_version='^jq-([0-9]+)\.([0-9]+)'
+oldest_jq_major=1
+oldest_jq_minor=6
+python_yq_version='^yq [0-9]'
+jq_needed="jq $oldest_jq_major.$oldest_jq_minor or later"
+message_tools_needed="$jq_needed, and yq, the Python one"
 
 mode=''
 mode_flags=''
@@ -79,7 +85,6 @@ require_message_flags() {
 require_line_flags() {
     require_flag --hook "$hook"
     require_flag --entries "$entries"
-    [[ $hook == */* ]] || fail "--hook takes <kind>/<slug>"
 }
 
 require_theme_flags() {
@@ -95,11 +100,26 @@ require_flags() {
     esac
 }
 
+has_new_jq() {
+    [[ $(jq --version 2> /dev/null) =~ $jq_version ]] || return 1
+    local major=${BASH_REMATCH[1]} minor=${BASH_REMATCH[2]}
+    (( major > oldest_jq_major )) && return 0
+    (( major == oldest_jq_major && minor >= oldest_jq_minor ))
+}
+
+has_python_yq() {
+    [[ $(yq --version 2> /dev/null) =~ $python_yq_version ]]
+}
+
+has_message_tools() {
+    has_new_jq && has_python_yq
+}
+
 require_tools() {
-    local tool
-    for tool in yq jq; do
-        command -v "$tool" > /dev/null || fail "$tool isn't installed"
-    done
+    case $mode in
+        theme) has_new_jq || fail "pick theme needs $jq_needed" ;;
+        *) has_message_tools || fail "pick $mode needs $message_tools_needed" ;;
+    esac
 }
 
 choose_seed() {
@@ -120,8 +140,7 @@ yaml_input() {
 
 history_input() {
     require_readable "$history"
-    jq -cs '{history: .}' "$history" 2> /dev/null ||
-        fail "$history isn't JSON lines"
+    jq -Rsc '{history: .}' "$history"
 }
 
 named_inputs() {

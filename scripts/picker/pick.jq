@@ -4,6 +4,8 @@ def big_win: "big_win";
 
 def task_occasions: ["slipped", "done", big_win];
 
+def every_occasion: reminder_occasions + task_occasions;
+
 def a_hook: "hook";
 
 def a_speaker: "speaker";
@@ -22,13 +24,15 @@ def seconds_in_a_day: 86400;
 
 def time_format: "%Y-%m-%d %H:%M";
 
+def code_fence: "```";
+
 def shown_decimals: 2;
 
 def flags($args): $args.named + {themes: $args.positional};
 
 def named_inputs: reduce inputs as $input ({}; . + $input);
 
-def unknown_occasions: . - reminder_occasions - task_occasions;
+def unknown_occasions: . - every_occasion;
 
 def reminders_named: . - task_occasions;
 
@@ -40,9 +44,24 @@ def checked_occasions:
     else .
     end;
 
-def occasions_from_flag: split(",") | map(select(. != "")) | checked_occasions;
+def trimmed: sub("^\\s+"; "") | sub("\\s+$"; "");
+
+def occasions_from_flag:
+    split(",") | map(trimmed | select(. != "")) | checked_occasions;
 
 def when_list: [.when // empty] | flatten;
+
+def unknown_when: when_list - every_occasion;
+
+def first_unknown_when(whens):
+    first(whens | select(unknown_when != [])) // null;
+
+def unknown_when_error:
+    "\(.owner) has an unknown when: \(unknown_when | join(", "))";
+
+def known_whens(whens):
+    first_unknown_when(whens) as $unknown
+    | if $unknown == null then . else error($unknown | unknown_when_error) end;
 
 def allows($occasions): . == [] or any(.[]; IN($occasions[]));
 
@@ -52,10 +71,15 @@ def fits($occasions):
     | ($when - reminder_occasions | allows($occasions)) as $what_happened_fits
     | $reminder_fits and $what_happened_fits;
 
-def timestamp:
+# --now and sent are both the user's local time; reading both as UTC keeps
+# the days between them right.
+def parsed_time: strptime(time_format) | mktime;
+
+def now_time:
     . as $text
-    | try (strptime(time_format) | mktime)
-    catch error("\($text) isn't a YYYY-MM-DD HH:MM time");
+    | try parsed_time catch error("--now takes YYYY-MM-DD HH:MM, not \($text)");
+
+def sent_time: try (.sent | parsed_time) catch null;
 
 def days_since($now):
     if . == null then null
@@ -70,11 +94,11 @@ def rest($half_life; $days):
 def message($flags; $history):
     {
         occasions: ($flags.occasions | occasions_from_flag),
-        now: ($flags.now | timestamp),
+        now: ($flags.now | now_time),
         theme_history: [$history[] | select(.theme == $flags.theme)]
     };
 
-def latest_use_time: map(.sent | timestamp) | max;
+def latest_use_time: map(sent_time | values) | max;
 
 def days_since_used($id; $message):
     $message.theme_history
@@ -94,18 +118,34 @@ def broken_pools:
 
 def first_broken_pool: first(broken_pools) // null;
 
+def entry_whens:
+    .pools | to_entries[] | .key as $kind
+    | .value.entries | to_entries[]
+    | {owner: "\($kind)/\(.key)", when: (.value // {} | .when)};
+
 def checked_options:
     if (.pools | type) != "object" then error("the options file has no pools")
     elif first_broken_pool != null then
         error("pool \(first_broken_pool) needs gives and entries")
-    else .
+    else known_whens(entry_whens)
     end;
+
+def holds_an_entry: test("\\S") and (startswith(code_fence) | not);
+
+def history_entry:
+    .key as $index
+    | .value
+    | try fromjson catch error("history line \($index + 1) isn't JSON");
+
+def history_entries:
+    split("\n") | to_entries
+    | map(select(.value | holds_an_entry) | history_entry);
 
 def message_inputs($flags):
     named_inputs as $files
     | {
         options: ($files.options | checked_options),
-        message: message($flags; $files.history),
+        message: message($flags; $files.history | history_entries),
         entries: $files.entries
     };
 
@@ -128,11 +168,15 @@ def entries_giving($gives; $options; $message):
         | candidate("\($kind)/\(.key)"; .value // {}; $pool; $message)
     ];
 
-def effective_weight: .weight * pow(2; .score) * .rest;
-
-def weighed: map(.effective_weight = effective_weight);
+def effective_weight($rest): .weight * pow(2; .score) * $rest;
 
 def total_effective_weight: map(.effective_weight) | add // 0;
+
+def weighed:
+    map(.effective_weight = effective_weight(.rest))
+    | if total_effective_weight > 0 then .
+    else map(.effective_weight = effective_weight(fully_rested))
+    end;
 
 def kept_for_big_wins: any(.when[]; . == big_win);
 
@@ -160,11 +204,20 @@ def speaker_candidates($options; $message):
 def line_candidate($line; $bend):
     {line: $line, bend: $bend, weight: default_weight, score: default_score};
 
-def line_candidates($entry; $half_life; $message):
-    [($entry.lines // [])[] | line_candidate(.; null)]
+def riff_whens($hook):
+    (.riffs // [])[] | {owner: "a riff of \($hook)", when};
+
+def text_line($hook):
+    if type == "string" then .
+    else error("\($hook) has a line that isn't text: \(tojson)")
+    end;
+
+def line_candidates($hook; $half_life; $message):
+    known_whens(riff_whens($hook))
+    | [(.lines // [])[] | line_candidate(text_line($hook); null)]
     + [
-        ($entry.riffs // [])[] | select(fits($message.occasions))
-        | line_candidate(.line; .bend)
+        (.riffs // [])[] | select(fits($message.occasions))
+        | line_candidate(.line | text_line($hook); .bend)
     ]
     | map(.rest = rest($half_life; days_since_drawn(.line; $message)))
     | weighed;
@@ -234,8 +287,12 @@ def hook_chances($hooks; $speakers):
     | table(candidate_columns);
 
 def drawable_hooks($occasions):
-    if total_effective_weight > 0 then .
-    else error("no hook fits \($occasions), and every entry has a when")
+    ($occasions | join(",")) as $named
+    | if . == [] then
+        error("no hook fits \($named), and every entry has a when")
+    elif total_effective_weight == 0 then
+        error("every hook that fits \($named) weighs 0")
+    else .
     end;
 
 def hook_pick($hooks; $speakers; $seed):
@@ -259,7 +316,7 @@ def hook($flags):
     | (
         if $flags.chances then hook_chances($candidates; $speakers)
         else
-            $candidates | drawable_hooks($flags.occasions)
+            $candidates | drawable_hooks($message.occasions)
             | hook_pick(.; $speakers; $seed)
         end
     ),
@@ -268,7 +325,11 @@ def hook($flags):
 def entry_for($slug; $not_found):
     if (. // {}) | has($slug) then .[$slug] // {} else error($not_found) end;
 
-def kind_and_slug: split("/");
+def kind_and_slug:
+    split("/") as $parts
+    | if ($parts | length) == 2 and all($parts[]; . != "") then $parts
+    else error("--hook takes <kind>/<slug>, not \(.)")
+    end;
 
 def hook_option($options; $hook):
     ($hook | kind_and_slug) as [$kind, $slug]
@@ -291,7 +352,7 @@ def line($flags):
     message_inputs($flags) as {$options, $message, $entries}
     | (hook_option($options; $flags.hook) | .line_half_life_days) as $half_life
     | hook_entry($entries; $flags.hook)
-    | line_candidates(.; $half_life; $message)
+    | line_candidates($flags.hook; $half_life; $message)
     | if $flags.chances then with_chances | table(line_columns)
     else line_pick($flags.seed | tonumber)
     end;

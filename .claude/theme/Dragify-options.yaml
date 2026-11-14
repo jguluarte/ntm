@@ -1,5 +1,5 @@
-# What the job picks from per message: a speaker, and the motifs and references
-# for a hook.
+# What the job picks from per message: a speaker, and a hook from the lines any
+# actor can say, the motifs or the references.
 pools:
   actors:
     file: Dragify-actors.yaml

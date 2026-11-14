@@ -30,6 +30,9 @@ references:
       Run the old task's plan through the Season 1 filter: from across the room
       it looks fine, and the haze hides how long ago it was shot.
 
+    when:
+      - slipped
+
   susan_lucci:
     name: The Susan Lucci of the competition
 
@@ -45,6 +48,9 @@ references:
     callback: >-
       Give the task the title, and read out its nominations: one for every day
       it was planned, and not a single win.
+
+    when:
+      - slipped
 
   jujubees_unbeaten_run:
     name: Jujubee's unbeaten run
@@ -64,6 +70,7 @@ references:
       finally broke the streak.
 
     when:
+      - weekly
       - slipped
 
   mimi_lifts_india:
@@ -137,6 +144,9 @@ references:
       Write the task and the user as pageant rivals from way back, a season of
       side-eye between them, and set up the bottom two where one of them finally
       goes home.
+
+    when:
+      - slipped
 
   alyssas_katy_perry:
     name: Alyssa's Katy Perry
@@ -253,6 +263,9 @@ references:
       Cast the slipped task's next try as one more queen walking into Snatch
       Game as Beyoncé: the curse is famous, and so is the queen who broke it.
 
+    when:
+      - slipped
+
   gaga_in_the_werk_room:
     name: Gaga in the werk room
 
@@ -314,6 +327,7 @@ references:
       along, and then the one round that came at the wrong moment.
 
     when:
+      - weekly
       - slipped
 
   monets_fake_split:
@@ -332,6 +346,9 @@ references:
       Stage the afternoon's progress on the task as Monét's fake split: the leap
       sells it, the crowd gasps, and then check whether it ever touched the
       floor.
+
+    when:
+      - afternoon
 
   not_next_time:
     name: Not next time
@@ -371,6 +388,9 @@ references:
       Put every task due today on the main stage at once, the whole team lip
       syncing the same song, and pick out the one most likely to go home
       tonight.
+
+    when:
+      - morning
 
   sorry_not_sorry:
     name: Sorry Not Sorry
@@ -519,6 +539,9 @@ references:
       Give the slipped task's latest excuse the host's answer to a joke that
       went too far: wordless, rude and fond, and over before it can reply.
 
+    when:
+      - slipped
+
   mary_queen_of_scots:
     name: Mary, Queen of Scots
 
@@ -589,7 +612,7 @@ references:
       one clean move, and on to the next count.
 
     when:
-      - big_win
+      - done
 
   the_immunity_potion:
     name: The immunity potion
@@ -608,6 +631,9 @@ references:
     callback: >-
       Let the slipped task drink the immunity potion it has been saving for
       weeks, then reveal it was spent on a week nobody was going home.
+
+    when:
+      - slipped
 
   nymphias_bananas:
     name: Nymphia's bananas
@@ -723,6 +749,9 @@ references:
       Hover a hand over the she-mergency button this afternoon: tag a partner in
       to finish the task, or remember the pair who pressed it still went home.
 
+    when:
+      - afternoon
+
   dancing_on_my_own:
     name: Dancing on My Own
 
@@ -741,6 +770,7 @@ references:
 
     when:
       - evening
+      - slipped
 
   shut_up_and_drive:
     name: Shut Up and Drive
@@ -777,6 +807,9 @@ references:
     callback: >-
       Catch the task this afternoon at its BenDeLaCreme moment: winning the
       round, and reaching for the lipstick to write its own name.
+
+    when:
+      - afternoon
 
   lifes_not_fair:
     name: Life's not fair
@@ -906,7 +939,7 @@ references:
       give the single a chart position.
 
     when:
-      - big_win
+      - done
 
   uk_hun:
     name: UK Hun?
@@ -1020,6 +1053,7 @@ references:
 
     when:
       - evening
+      - slipped
 
   # Canada's Drag Race and Canada vs the World
 
@@ -1061,6 +1095,9 @@ references:
       Throw the user and the slipped task into the mud-wrestling cage, in
       character, and wrestle until the set comes down around them.
 
+    when:
+      - slipped
+
   vander_volunteers:
     name: Vander volunteers
 
@@ -1098,7 +1135,7 @@ references:
       of live spiders on day one, and note that it was swallowed first.
 
     when:
-      - morning
+      - done
 
   saint_wins_resurrection:
     name: Saint wins Resurrection
@@ -1180,6 +1217,9 @@ references:
       Let the task that keeps getting passed over walk in like Crystal LaBeija:
       sure of its worth, and done waiting to be noticed.
 
+    when:
+      - slipped
+
   dorian_corey_on_shade:
     name: Dorian Corey on shade
 
@@ -1196,6 +1236,9 @@ references:
     callback: >-
       Leave the obvious unsaid, the way Dorian Corey explains shade: the task
       knows it's overdue, so say anything but that, and let it hear it anyway.
+
+    when:
+      - slipped
 
   pink_flamingos:
     name: Pink Flamingos
@@ -1363,7 +1406,7 @@ references:
       back after the rain: the whole set, start to finish.
 
     when:
-      - done
+      - big_win
 
   chers_farewell_tour:
     name: Cher's farewell tour

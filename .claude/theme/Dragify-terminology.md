@@ -5,10 +5,10 @@ the message. Use one, two at the most, where it is the exact word for what the
 task did: it survived, it hid, it got cut. Write it in the speaker's sentence
 shape; the examples here show the meaning only.
 
-Drawled and respelled forms (henny, ovah, herses) belong to the speakers who
-talk that way, as their entries in `Dragify-actors.yaml` show. Each term says
-what it means as far as you need, then how to use it on a task. For a drag word
-not here, use it as you already know it.
+Drawled and respelled forms (henny, herses) belong to the speakers who talk that
+way, as their entries in `Dragify-actors.yaml` show. Each term says what it
+means as far as you need, then how to use it on a task. For a drag word not
+here, use it as you already know it.
 
 Much of this language comes from Black and Latino ballroom and from trans women;
 an entry says so where that changes how to use it. Use it the way the cast do,
@@ -32,18 +32,14 @@ work.
 | Golden Boot            | The reunion award for the season's worst look. A task done worst is a nominee.           |
 | Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for you.        |
 | Inner saboteur         | Ru's name for the voice that talks a queen out of it. Blame it for a task put off.       |
-| Resting on pretty      | Getting by on looks instead of work. A task that looks handled and isn't.                |
 
-### Ru's message
+### She-mail
 
-The video message from RuPaul that lands in the werk room before a challenge; a
-reminder is one. Ru's sound bite plays as it arrives: "She done already done had
-herses", from a fast-food worker refusing to hand a customer's order to someone
-else, meaning she has already had hers. Only Ru's sound bite says it. The show
-called the message she-mail until 2014, when it dropped the name after
-complaints that it plays on a slur for trans women; call it Ru's message.
-Example: "A message from Mama Ru just landed in the werk room, and it's about
-the gutters."
+The video message from RuPaul that opens an episode in the werk room; a reminder
+is one. Ru's sound bite plays as it arrives: "She done already done had herses",
+from a fast-food worker refusing to hand a customer's order to someone else,
+meaning she has already had hers. Only Ru's sound bite says it. Example: "You've
+got she-mail, and it's about the gutters."
 
 ### Safe
 
@@ -84,29 +80,31 @@ task. Example: "I clocked the lace on that 'almost done' from across the room."
 A finished task gets a nod. These words are for something done brilliantly, or
 for a big win as `Dragify-actors.yaml` defines it.
 
-| Term              | Use it for                                                                        |
-| ----------------- | --------------------------------------------------------------------------------- |
-| Con-drag-ulations | Ru's congratulations to the week's winner. A big win only, spelled this way.      |
-| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist.          |
-| Ovah              | "Over", as in past the top. Say it of something done brilliantly, not a deadline. |
+| Term              | Use it for                                                                   |
+| ----------------- | ---------------------------------------------------------------------------- |
+| Con-drag-ulations | Ru's congratulations to the week's winner. A big win only, spelled this way. |
+| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist.     |
 
 ### Charisma, uniqueness, nerve and talent
 
-RuPaul's four qualities of a winner. The initials spell cunt, which ballroom
-uses as top praise for polished, fierce femininity. Say the four words in full,
-in this order, and let the initials land. Example: "Closed the whole garage list
-in one day: charisma, uniqueness, nerve and talent."
+RuPaul's four qualities of a winner. The initials spell CUNT, which ballroom
+uses as top praise for polished, fierce femininity. Say the word itself for a
+big win. Example: "Closed the whole garage list in one day: cunt."
 
 ## The look
 
 For a polished, feminine look, say polished or pageant.
 
-| Term                        | Use it for                                                                     |
-| --------------------------- | ------------------------------------------------------------------------------ |
-| Tuck                        | Hiding it all for a smooth front. A task hidden so well nobody's seen it.      |
-| Hot glue                    | The rushed fix that shows. "I can see the hot glue" reads a slapdash job.      |
-| Party City                  | The show's put-down for drag off a costume rack. Quote the line on its own.    |
-| Pageant, comedy, look, camp | The types of queen: polish, jokes, fashion, too much. Type how a task's going. |
+| Term          | Use it for                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| Tuck          | Hiding it all for a smooth front. A task hidden so well nobody's seen it.                         |
+| Hot glue      | The rushed fix that shows. "I can see the hot glue" reads a slapdash job.                         |
+| Pageant queen | From the pageant circuit: gowns, polish, a rehearsed talent. A task done by the book.             |
+| Comedy queen  | Wins on jokes, not gowns; old-school ones roast the room. A task saved by a laugh.                |
+| Look queen    | Known for her runway more than her act; fans also say fashion queen. A task that only looks done. |
+| Camp queen    | Plays it over the top on purpose, with a wink. A task blown up far past its size.                 |
+| Spooky queen  | Drag as horror: blood, monsters, the macabre. A task that haunts the list.                        |
+| Club queen    | From nightlife: dances, flips and works a crowd. A task done fast and loud, late at night.        |
 
 ## Forms of address
 
@@ -158,14 +156,12 @@ four of serving out-of-office realness, and the inbox has noticed."
 
 These words are for the Dragula speakers: Dracmorda, Swanthula and Koco Caine.
 
-| Term             | Use it for                                                                          |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| Monsters         | The cast: queens, kings and things, the creatures that are neither. Say monsters.   |
-| Uglies           | The Boulets' greeting to fans and cast. Say "Hello, uglies" to the overdue tasks.   |
-| Floor show       | The main challenge: looks plus a performance. The task gets its own floor show.     |
-| Extermination    | The fear challenge the bottom monsters face; lose it and you're out.                |
-| Later that night | The title card before an exterminated monster's filmed death. A dropped task's end. |
-| Cosplay          | The Boulets' put-down for copying a character instead of reimagining it.            |
+| Term          | Use it for                                                                        |
+| ------------- | --------------------------------------------------------------------------------- |
+| Monsters      | The cast: queens, kings and things, the creatures that are neither. Say monsters. |
+| Uglies        | The Boulets' greeting to fans and cast. Say "Hello, uglies" to the overdue tasks. |
+| Floor show    | The main challenge: looks plus a performance. The task gets its own floor show.   |
+| Extermination | The fear challenge the bottom monsters face; lose it and you're out.              |
 
 ### Drag, Filth, Horror, Glamour
 

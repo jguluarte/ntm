@@ -14,7 +14,7 @@ hooks_without_when=(
 )
 
 detective_lines=(
-    'The answer was on the table.'
+    'It was on the table.'
     'Nobody leaves this room until I have finished.'
     'Every lie leaves a crumb.'
 )
@@ -63,6 +63,39 @@ line_candidates() {
         awk -F '\t' 'NR > 1 { print $NF }'
 }
 
+line_value() {
+    draw_line Casebook-characters.yaml "$2" "$3" --chances |
+        column_of "$1" "$4"
+}
+
+picks_with_seeds() {
+    local theme=$1 seed
+    shift
+    for seed in "$@"; do
+        pick_from "$theme" hook morning --seed "$seed"
+    done
+}
+
+park_miller_numbers() {
+    jq -nr -L scripts/picker --argjson state "$1" --argjson count "$2" \
+        'include "pick"; park_miller($state; $count)[]'
+}
+
+stage_options() {
+    cat << YAML
+pools:
+  cast:
+    gives: [speaker]
+    speaker_rate: $1
+    entries:
+      host:
+  scenes:
+    gives: [hook]
+    entries:
+      stage:
+YAML
+}
+
 with_tools() {
     tools=$BATS_TEST_TMPDIR/tools
     mkdir -p "$tools"
@@ -75,18 +108,6 @@ with_tools() {
 fake_tool() {
     printf '#!/bin/sh\necho "%s"\n' "$2" > "$tools/$1"
     chmod +x "$tools/$1"
-}
-
-line_value() {
-    draw_line Casebook-characters.yaml "$2" "$3" --chances |
-        column_of "$1" "$4"
-}
-
-picks_for_seeds() {
-    local seed
-    for seed in 1 2 3 4 5; do
-        pick_from Casebook hook evening --seed "$seed"
-    done
 }
 
 expect() {
@@ -108,6 +129,12 @@ expect_set() {
 
 only_in() {
     comm -23 <(echo "$1") <(echo "$2") | paste -sd '|' -
+}
+
+expect_among() {
+    grep -qxF -- "$1" && return 0
+    echo "missing: $1"
+    return 1
 }
 
 expect_one_of() {
@@ -148,8 +175,8 @@ expect_failure() {
 }
 
 @test "when: a task done adds the entries kept for a task done" {
-    hook_candidates morning,done |
-        expect_set "${hooks_without_when[@]}" shared_lines/case_closed
+    hook_candidates morning,done | expect_set "${hooks_without_when[@]}" \
+        shared_lines/case_closed shared_lines/the_reveal
 }
 
 @test "when: an evening with a slip adds the entries kept for either or both" {
@@ -157,12 +184,29 @@ expect_failure() {
         shared_lines/evenings characters/inspector shared_lines/cold_trail
 }
 
-@test "when: an entry for an evening with a slip is out on an evening without" {
-    expect 0 "$(hook_candidates evening | grep -cx shared_lines/cold_trail)"
+@test "when: three occasions at once add the entries kept for any of them" {
+    hook_candidates evening,slipped,done |
+        expect_set "${hooks_without_when[@]}" shared_lines/evenings \
+            characters/inspector shared_lines/cold_trail \
+            shared_lines/case_closed shared_lines/the_reveal
+}
+
+@test "when: a message with no occasions fits only the entries without when" {
+    hook_candidates '' | expect_set "${hooks_without_when[@]}"
+}
+
+@test "when: an entry kept for a task done or a big win fits either" {
+    hook_candidates evening,done | expect_among shared_lines/the_reveal
+    hook_candidates evening,big_win | expect_among shared_lines/the_reveal
+}
+
+@test "when: an empty when fits every message, as no when does" {
+    hook_candidates weekly,done | expect_among shared_lines/any_time
 }
 
 @test "when: a big win draws only from the entries kept for big wins" {
-    hook_candidates evening,big_win | expect_set shared_lines/big_win
+    hook_candidates evening,big_win |
+        expect_set shared_lines/big_win shared_lines/the_reveal
 }
 
 @test "when: spaces after the commas between occasions are trimmed" {
@@ -170,61 +214,28 @@ expect_failure() {
         "$(hook_candidates 'evening, slipped')"
 }
 
-@test "hook: a pick names exactly one hook, from the entries that fit" {
+@test "draw: a pick names exactly one hook, from the entries that fit" {
     run pick_from Casebook hook morning --seed 7
     expect 1 "$(grep -c '^hook: ' <<< "$output")"
     expect_one_of "$(sed -n 's/^hook: //p' <<< "$output")" \
         "${hooks_without_when[@]}"
 }
 
-@test "hook: the same seed picks the same hook and speaker" {
-    expect "$(picks_for_seeds)" "$(picks_for_seeds)"
+@test "draw: seeds 1 to 20 draw every hook but the one of weight 0" {
+    picks_with_seeds Even {1..20} | sed -n 's/^hook: //p' | sort -u |
+        expect_set scenes/dawn scenes/noon scenes/dusk
 }
 
-@test "fallback: with no hook fitting, it draws from the entries without when" {
-    expect "hook: characters/narrator" \
-        "$(pick_from Solo hook evening,big_win | grep '^hook: ')"
+@test "draw: the same seed draws the same hook and speaker" {
+    expect "$(picks_with_seeds Casebook {1..5})" \
+        "$(picks_with_seeds Casebook {1..5})"
 }
 
-@test "fallback: a hook drawn without its occasions says so" {
-    expect "fallback: no hook fits evening,big_win; drew from the entries \
-without when" "$(pick_from Solo hook evening,big_win | grep '^fallback: ')"
-}
-
-@test "fallback: with no entry without when either, it fails in one line" {
-    cat > "$BATS_TEST_TMPDIR/options.yaml" << 'YAML'
-pools:
-  scenes:
-    gives: [hook]
-    entries:
-      dusk:
-        when: evening
-YAML
-    run pick hook --options "$BATS_TEST_TMPDIR/options.yaml" \
-        --history tests/picker/history.jsonl --theme Dusk \
-        --occasions morning --now "$now"
-    expect_failure "no hook fits morning, and every entry has a when"
-}
-
-@test "rest: an entry used one half-life ago rests at half" {
-    expect 0.5 "$(hook_value rest characters/detective evening)"
-}
-
-@test "rest: a use whose sent can't be read rests nothing" {
-    history_file=$BATS_TEST_TMPDIR/history.jsonl
-    cat > "$history_file" << 'JSONL'
-{"sent":"2026-11-13T08:45","theme":"Casebook","hook":"characters/detective"}
-{"theme":"Casebook","hook":"characters/detective"}
-JSONL
-    expect 1 "$(hook_value rest characters/detective evening)"
-}
-
-@test "rest: another theme's picks don't rest an entry" {
-    expect 1 "$(hook_value rest shared_lines/any_time evening)"
-}
-
-@test "rest: a pool without half_life_days never rests its entries" {
-    expect 1 "$(hook_value rest scenes/stakeout evening)"
+@test "draw: the generator gives Park-Miller's published numbers" {
+    expect "48271 182605794 1291394886" \
+        "$(park_miller_numbers 1 3 | paste -sd ' ' -)"
+    # C++'s minstd_rand gives 399268537 as its 10000th number from seed 1.
+    expect 399268537 "$(park_miller_numbers 1 10000 | tail -n 1)"
 }
 
 @test "draw: when every hook that fits rests at 0, rest is set aside" {
@@ -258,13 +269,86 @@ YAML
     expect_failure "every hook that fits evening weighs 0"
 }
 
+@test "fallback: with none kept for a big win, it draws the hooks without when" {
+    expect "hook: characters/narrator" \
+        "$(pick_from Solo hook evening,big_win --seed 1 | grep '^hook: ')"
+}
+
+@test "fallback: a hook drawn without its occasions says so" {
+    expect "fallback: no hook fits evening,big_win; drew from the entries \
+without when" \
+        "$(pick_from Solo hook evening,big_win --seed 1 | grep '^fallback: ')"
+}
+
+@test "fallback: with no entry without when either, it fails in one line" {
+    themes_dir=$BATS_TEST_TMPDIR
+    cat > "$themes_dir/Dusk-options.yaml" << 'YAML'
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dusk:
+        when: evening
+YAML
+    run pick_from Dusk hook morning --seed 1
+    expect_failure "no hook fits morning, and every entry has a when"
+}
+
+@test "rest: an entry used one half-life ago rests at half" {
+    expect 0.5 "$(hook_value rest characters/detective evening)"
+}
+
+@test "rest: an entry used two half-lives ago rests at three quarters" {
+    now='2026-11-15 20:45'
+    expect 0.75 "$(hook_value rest characters/detective evening)"
+}
+
+@test "rest: an entry used at the time now rests at 0" {
+    now='2026-11-11 20:45'
+    expect 0 "$(hook_value rest characters/detective evening)"
+}
+
+@test "rest: an entry used twice rests from its latest use" {
+    expect 0.29 "$(hook_value rest shared_lines/evenings evening)"
+}
+
+@test "rest: a use as the speaker rests an entry too" {
+    expect 0.16 "$(hook_value rest characters/inspector evening,slipped)"
+}
+
+@test "rest: a use whose sent can't be read rests nothing" {
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    cat > "$history_file" << 'JSONL'
+{"sent":"2026-11-13T08:45","theme":"Casebook","hook":"characters/detective"}
+{"theme":"Casebook","hook":"characters/detective"}
+JSONL
+    expect 1 "$(hook_value rest characters/detective evening)"
+}
+
+@test "rest: another theme's picks don't rest an entry" {
+    expect 1 "$(hook_value rest shared_lines/any_time evening)"
+}
+
+@test "rest: a pool without half_life_days never rests its entries" {
+    expect 1 "$(hook_value rest scenes/stakeout evening)"
+}
+
 @test "score: a score of 1 doubles an entry's weight" {
     expect 0.5 \
         "$(hook_value effective_weight shared_lines/case_closed evening,done)"
 }
 
-@test "defaults: an entry without numbers weighs 1" {
-    expect 1 "$(hook_value effective_weight scenes/stakeout evening)"
+@test "score: a score of -1 halves an entry's weight" {
+    expect 0.25 \
+        "$(hook_value effective_weight shared_lines/cold_trail evening,slipped)"
+}
+
+@test "defaults: an entry without a weight weighs 1" {
+    expect 1 "$(hook_value weight scenes/stakeout evening)"
+}
+
+@test "defaults: an entry without a score scores 0" {
+    expect 0 "$(hook_value score scenes/stakeout evening)"
 }
 
 @test "defaults: a speaker pool without speaker_rate names one half the time" {
@@ -278,7 +362,21 @@ YAML
 
 @test "speaker: a person's line is spoken by that person, whatever the rate" {
     expect "speaker: characters/narrator" \
-        "$(pick_from Solo hook evening | grep '^speaker: ')"
+        "$(pick_from Solo hook evening --seed 1 | grep '^speaker: ')"
+}
+
+@test "speaker: at a speaker_rate of 1, a hook not a person's always gets one" {
+    themes_dir=$BATS_TEST_TMPDIR
+    stage_options 1 > "$themes_dir/Stage-options.yaml"
+    expect "speaker: cast/host" \
+        "$(pick_from Stage hook evening --seed 1 | grep '^speaker: ')"
+}
+
+@test "speaker: at a speaker_rate of 0, a hook not a person's never gets one" {
+    themes_dir=$BATS_TEST_TMPDIR
+    stage_options 0 > "$themes_dir/Stage-options.yaml"
+    expect "speaker: none" \
+        "$(pick_from Stage hook evening --seed 1 | grep '^speaker: ')"
 }
 
 @test "line: lines and riffs without when fit any occasion" {
@@ -291,20 +389,15 @@ YAML
         expect_set "${detective_lines[@]}" 'File it under closed.'
 }
 
-@test "line: a line drawn one half-life ago rests at half" {
-    expect 0.5 "$(line_value rest characters/detective evening \
-        'The answer was on the table.')"
+@test "line: a line drawn two half-lives ago rests at three quarters" {
+    now='2026-11-15 20:45'
+    expect 0.75 "$(line_value rest characters/detective evening \
+        'It was on the table.')"
 }
 
 @test "line: an entry without line_half_life_days never rests its lines" {
     expect 1 "$(line_value rest characters/inspector slipped \
         'Where were you that night?')"
-}
-
-@test "line: a riff's bend comes with its line" {
-    expect "line: Where were you that night?
-bend: Ask the slipped task where it was on the day it was planned." \
-        "$(draw_line Casebook-characters.yaml characters/inspector slipped)"
 }
 
 @test "line: when every line rests at 0, rest is set aside" {
@@ -331,9 +424,16 @@ JSONL
         "$(draw_line Dusk-people.yaml people/host evening --seed 1)"
 }
 
+@test "line: a riff's bend comes with its line" {
+    expect "line: Where were you that night?
+bend: Ask the slipped task where it was on the day it was planned." \
+        "$(draw_line Casebook-characters.yaml characters/inspector slipped \
+            --seed 1)"
+}
+
 @test "line: an entry without lines draws none" {
     expect "line: none" \
-        "$(draw_line Casebook-scenes.yaml scenes/stakeout evening)"
+        "$(draw_line Casebook-scenes.yaml scenes/stakeout evening --seed 1)"
 }
 
 @test "history: the lines of its code fence are skipped" {
@@ -357,29 +457,49 @@ JSONL
     expect "theme: Casebook" "$(pick theme --this-week Casebook Casebook)"
 }
 
-@test "malformed: an options file that isn't YAML fails in one line" {
-    echo 'pools: [unclosed' > "$BATS_TEST_TMPDIR/options.yaml"
-    run pick hook --options "$BATS_TEST_TMPDIR/options.yaml" \
-        --history tests/picker/history.jsonl --theme Casebook --now "$now"
-    expect_failure "$BATS_TEST_TMPDIR/options.yaml isn't YAML"
+@test "theme: when this week's theme isn't in the list, the first follows" {
+    expect "theme: Casebook" "$(pick theme --this-week Gone Casebook Harbor)"
 }
 
-@test "malformed: a history that isn't JSON lines fails in one line" {
-    echo '{"sent": "2026-11-13 08:45",' > "$BATS_TEST_TMPDIR/history.jsonl"
+@test "flags: a mode without a flag it needs fails in one line" {
     run pick hook --options tests/picker/Casebook-options.yaml \
-        --history "$BATS_TEST_TMPDIR/history.jsonl" --theme Casebook \
-        --now "$now"
-    expect_failure "history line 1 isn't JSON"
+        --history "$history_file" --theme Casebook
+    expect_failure "pick hook needs --now"
 }
 
-@test "malformed: an unknown occasion fails in one line" {
-    run pick_from Casebook hook mornin
+@test "flags: a flag the mode doesn't take fails in one line" {
+    run pick theme --this-week Casebook --options x Casebook
+    expect_failure "pick theme doesn't take --options"
+}
+
+@test "flags: a --now that isn't YYYY-MM-DD HH:MM fails in one line" {
+    now='2026-11-13T20:45'
+    run pick_from Casebook hook evening --seed 1
+    expect_failure "--now takes YYYY-MM-DD HH:MM, not 2026-11-13T20:45"
+}
+
+@test "flags: an unknown occasion fails in one line" {
+    run pick_from Casebook hook mornin --seed 1
     expect_failure "unknown occasion: mornin"
 }
 
-@test "malformed: a message of two reminders fails in one line" {
-    run pick_from Casebook hook morning,evening
+@test "flags: a message of two reminders fails in one line" {
+    run pick_from Casebook hook morning,evening --seed 1
     expect_failure "more than one reminder: morning, evening"
+}
+
+@test "malformed: an options file that isn't YAML fails in one line" {
+    themes_dir=$BATS_TEST_TMPDIR
+    echo 'pools: [unclosed' > "$themes_dir/Dusk-options.yaml"
+    run pick_from Dusk hook evening --seed 1
+    expect_failure "$themes_dir/Dusk-options.yaml isn't YAML"
+}
+
+@test "malformed: a history line that isn't JSON fails naming the line" {
+    history_file=$BATS_TEST_TMPDIR/history.jsonl
+    echo '{"sent": "2026-11-13 08:45",' > "$history_file"
+    run pick_from Casebook hook evening --seed 1
+    expect_failure "history line 1 isn't JSON"
 }
 
 @test "malformed: an unknown when in the options file fails naming it" {
@@ -440,6 +560,16 @@ YAML
     run draw_line Casebook-characters.yaml characters/detective/x evening \
         --seed 1
     expect_failure "--hook takes <kind>/<slug>, not characters/detective/x"
+}
+
+@test "malformed: a hook not in the options file fails in one line" {
+    run draw_line Casebook-characters.yaml characters/butler evening --seed 1
+    expect_failure "characters/butler isn't in the options file"
+}
+
+@test "malformed: a hook not in its entry file fails in one line" {
+    run draw_line Casebook-scenes.yaml characters/detective evening --seed 1
+    expect_failure "characters/detective isn't in the entry file"
 }
 
 @test "tools: pick theme needs only jq" {

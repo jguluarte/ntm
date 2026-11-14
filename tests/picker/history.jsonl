@@ -1,5 +1,6 @@
-{"sent":"2026-11-13 08:45","theme":"Casebook","hook":"scenes/stakeout"}
+{"sent":"2026-11-13 08:45","theme":"Casebook","hook":"scenes/stakeout","speaker":"characters/inspector"}
 {"sent":"2026-11-12 20:45","theme":"Harbor","hook":"shared_lines/any_time"}
+{"sent":"2026-11-12 20:45","theme":"Casebook","hook":"shared_lines/evenings"}
 {"sent":"2026-11-12 08:45","theme":"Casebook","hook":"characters/inspector","line_drawn":"Where were you that night?"}
-{"sent":"2026-11-11 20:45","theme":"Casebook","hook":"characters/detective","line_drawn":"The answer was on the table."}
-{"sent":"2026-11-01 08:45","reminder":"morning","hook":"launch","line":"Morning. The launch is today."}
+{"sent":"2026-11-11 20:45","theme":"Casebook","hook":"characters/detective","line_drawn":"It was on the table."}
+{"sent":"2026-11-09 20:45","theme":"Casebook","hook":"shared_lines/evenings"}

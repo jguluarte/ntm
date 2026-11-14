@@ -1,7 +1,3 @@
-checksums:
-  Casebook-characters.yaml: 9f86d081884c7d65
-  Casebook-scenes.yaml: 2c26b46b68ffc68f
-
 pools:
   characters:
     file: Casebook-characters.yaml
@@ -11,7 +7,6 @@ pools:
       detective:
         weight: 0.57
         line_half_life_days: 2
-        score: 0.0
       inspector:
         when: slipped
         weight: 0.25
@@ -22,6 +17,7 @@ pools:
     half_life_days: 2
     entries:
       any_time:
+        when: []
         weight: 0.25
       case_closed:
         when: done
@@ -32,9 +28,13 @@ pools:
         weight: 0.25
       cold_trail:
         when: [evening, slipped]
-        weight: 0.25
+        weight: 0.5
+        score: -1.0
       big_win:
         when: big_win
+        weight: 0.25
+      the_reveal:
+        when: [done, big_win]
         weight: 0.25
 
   scenes:

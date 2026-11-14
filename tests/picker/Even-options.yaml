@@ -1,0 +1,9 @@
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dawn:
+      noon:
+      dusk:
+      weightless:
+        weight: 0

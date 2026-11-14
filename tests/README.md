@@ -25,6 +25,11 @@ name back. `git log tests/expected/` is the record of every name change.
 ## The picker
 
 `picker.bats` holds the picker, `scripts/picker/pick`, to what its reference
-says, on small made-up themes in `picker/`: `Casebook`, with a history, and
-`Solo`, a theme of one person. Each test reads one number or set from
-`pick --chances`, or one pick at a fixed `--seed`, so no test depends on luck.
+says. Most tests run on small made-up themes in `picker/`: `Casebook`, with a
+history; `Solo`, a theme of one person; and `Even`, three hooks of the same
+weight and one of weight 0. A test about one odd file writes that file itself.
+
+A test reads one number or set from `pick --chances`, or picks at a fixed
+`--seed`, so no test depends on luck. One test holds the random number generator
+to its published numbers. The tools tests run the picker with only the tools
+they name.

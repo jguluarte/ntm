@@ -8,7 +8,7 @@ characters:
     manner: >-
       Calm and precise, faintly bored by the obvious.
     lines:
-      - The answer was on the table.
+      - It was on the table.
       - Nobody leaves this room until I have finished.
     riffs:
       - line: Every lie leaves a crumb.
@@ -30,6 +30,7 @@ shared_lines:
   about: >-
     Lines any character can say.
   any_time:
+    when: []
     lines:
       - Somebody in this house is lying.
   case_closed:
@@ -44,7 +45,13 @@ shared_lines:
     when: [evening, slipped]
     lines:
       - The trail goes cold after dark.
+      - Nobody saw a thing.
+      - The rain took the footprints.
   big_win:
     when: big_win
     lines:
       - Gather everyone in the drawing room.
+  the_reveal:
+    when: [done, big_win]
+    lines:
+      - And that is how it was done.

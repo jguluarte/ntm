@@ -134,7 +134,7 @@ require_readable() {
 yaml_input() {
     local name=$1 file=$2
     require_readable "$file"
-    yq -c --arg name "$name" '{($name): .}' "$file" 2> /dev/null ||
+    yq -c "{$name: .}" "$file" 2> /dev/null ||
         fail "$file isn't YAML"
 }
 

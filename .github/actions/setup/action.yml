@@ -5,6 +5,14 @@ description:
 runs:
   using: composite
   steps:
+    - name: Install jq
+      shell: bash
+      run: |
+        version=$(jq -r '.packages[] | select(test("^jq@"))
+            | sub("^jq@"; "")' devbox.json)
+        release=https://github.com/jqlang/jq/releases/download/jq-$version
+        sudo curl -sSL -o /usr/local/bin/jq "$release/jq-linux-amd64"
+        sudo chmod +x /usr/local/bin/jq
     - name: Install prettier and markdownlint-cli2
       shell: bash
       run: >
@@ -30,3 +38,12 @@ runs:
         version=$(jq -r '.packages[] | select(test("^yq@"))
             | sub("^yq@"; "")' devbox.json)
         pipx install "yq==$version"
+    - name: Install shellcheck
+      shell: bash
+      run: |
+        version=$(jq -r '.packages[] | select(test("^shellcheck@"))
+            | sub("^shellcheck@"; "")' devbox.json)
+        release=https://github.com/koalaman/shellcheck/releases/download
+        archive=shellcheck-v$version.linux.x86_64.tar.xz
+        curl -sSL "$release/v$version/$archive" | tar -xJ -C /tmp
+        sudo mv "/tmp/shellcheck-v$version/shellcheck" /usr/local/bin/

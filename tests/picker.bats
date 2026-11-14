@@ -269,7 +269,7 @@ YAML
     expect_failure "every hook that fits evening weighs 0"
 }
 
-@test "fallback: with none kept for a big win, it draws the hooks without when" {
+@test "fallback: with none kept for a big win, it draws hooks without when" {
     expect "hook: characters/narrator" \
         "$(pick_from Solo hook evening,big_win --seed 1 | grep '^hook: ')"
 }

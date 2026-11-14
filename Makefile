@@ -11,6 +11,7 @@ lint:
 	prettier --check .
 	markdownlint-cli2
 	yamllint --strict $(YAML_FILES)
+	ruff check
 	$(MAKE) lint-absolute-line-length
 
 lint-absolute-line-length:
@@ -20,5 +21,7 @@ lint-fix:
 	prettier --write .
 	markdownlint-cli2 --fix
 
+test: export PYTHONPATH := scripts/picker:$(PYTHONPATH)
 test:
 	bats tests
+	python3 -m unittest discover -s tests/picker

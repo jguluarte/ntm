@@ -1,0 +1,2 @@
+class PickerFailed(Exception):
+    pass

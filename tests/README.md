@@ -1,8 +1,8 @@
 # Tests
 
-`make test` runs the bats tests here (Bash Automated Testing System). Each
-`@test` block is one test, and it fails when a line in it fails. bats and jq
-come from devbox.
+`make test` runs the bats tests here (Bash Automated Testing System), then the
+picker's Python tests. Each `@test` block is one test, and it fails when a line
+in it fails. bats, jq, Python and PyYAML come from devbox.
 
 ## User-facing names
 
@@ -21,3 +21,9 @@ A failing test means a change modified the contract. When the change is meant,
 update `expected/` in the same PR and say so in its description: the user sees
 the rename in the diff and can push back before merging. When it isn't, put the
 name back. `git log tests/expected/` is the record of every name change.
+
+## The picker
+
+`picker/` holds the tests of the picker, `scripts/picker/`, written with
+Python's `unittest`. `make test` runs them with the picker's folder on Python's
+import path, so a test imports the picker's classes by name.

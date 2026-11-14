@@ -47,9 +47,13 @@ entries for the hook and the speaker.
 ### 2. Set the tone
 
 Read the facts against the theme's guidance and set the tone: how hard each
-slipped task is pressed, a win for what's done, and anything the facts ask of
-the tone. Slips from a while back weigh less: a task picked up again after a
-long gap is pressed less than its count of slips, as you judge it.
+slipped task is pressed, a nod for what's done, and anything the facts ask of
+the tone. Call for a celebration only for a big effort: several tasks closed in
+one day that were planned across several days, a task with a big estimate
+finally closed, or one that slipped many times finally closed. An ordinary day
+of doing what was planned gets a nod. Slips from a while back weigh less: a task
+picked up again after a long gap is pressed less than its count of slips, as you
+judge it.
 
 ### 3. Write
 

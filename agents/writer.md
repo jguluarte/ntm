@@ -54,7 +54,8 @@ from what you were handed.
 ### 1. Take the tone
 
 Write in the tone you're handed. A slip is a planned date the work moved on
-from: the work waits for another day. A done task is a win.
+from: the work waits for another day. Note a done task as done, plainly or with
+a nod, and celebrate only when the tone you're handed calls for it.
 
 ### 2. Write 5 versions
 

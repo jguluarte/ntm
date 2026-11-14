@@ -1,6 +1,5 @@
 import random
 
-from draw import Draw
 from failure import PickerFailed
 from input_files import YamlFile
 from options import Options
@@ -26,7 +25,7 @@ class HookMode:
     def report(self):
         hooks = self.options.hooks()
         self._require_drawable(hooks)
-        hook = Draw(hooks).pick(self.generator.random())
+        hook = self.generator.choice(hooks)
         return HOOK_LINE.format(hook.id)
 
     @staticmethod

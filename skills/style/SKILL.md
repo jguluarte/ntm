@@ -5,8 +5,9 @@ description: >-
     what it draws on from their `%Theme`, sets the tone, has the writer agent
     write versions, chooses one, and records it in `%Message-history` once it's
     sent. Loaded for every message ntm sends in the user's style. In chat,
-    writes something in the user's style when they ask, or changes their theme
-    with them ("make my reminders meaner").
+    writes something in the user's style when they ask, changes their theme with
+    them ("make my reminders meaner"), and notes it when the user says a message
+    is a keeper or has gone stale ("keep that one", "that one's stale").
 ---
 
 # ntm:style

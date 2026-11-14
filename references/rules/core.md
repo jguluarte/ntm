@@ -98,10 +98,6 @@ themes and names this week's.
 The style ntm's messages to the user are written in. `ntm:style` reads it before
 each message, and changes it with the user when they ask.
 
-Themes are moving to a set of files per theme, which
-`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` describes. No run reads those
-files yet: `%Theme` is the user's theme.
-
 ### `%Message-history`
 
 What ntm's messages have said, so the next ones don't repeat it, and the

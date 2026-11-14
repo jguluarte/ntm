@@ -24,4 +24,4 @@ lint-fix:
 test: export PYTHONPATH := scripts/picker:$(PYTHONPATH)
 test:
 	bats tests
-	python3 -m unittest discover -s tests/picker
+	python3 -m unittest discover -s scripts/picker/test

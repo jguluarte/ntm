@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+import sys
+
+from failure import PickerFailed
+from flags import Flags
+from hook_mode import HookMode
+
+MODES = {mode.NAME: mode for mode in (HookMode,)}
+MODE_NAMES = "|".join(MODES)
+USAGE = f"usage: pick {MODE_NAMES}, as README.md beside it says"
+
+
+def report(arguments):
+    name, *flags = arguments or [""]
+    if name not in MODES:
+        raise PickerFailed(USAGE)
+    mode = MODES[name]
+    return mode(Flags(mode, flags)).report()
+
+
+try:
+    print(report(sys.argv[1:]))
+except PickerFailed as failure:
+    sys.exit(f"Picker FAILED: {failure}")

@@ -1,8 +1,9 @@
 # Tests
 
 `make test` runs the bats tests here (Bash Automated Testing System), then the
-picker's Python tests. Each `@test` block is one test, and it fails when a line
-in it fails. bats, jq, Python and PyYAML come from devbox.
+picker's Python tests in `scripts/picker/test/`. Each `@test` block is one test,
+and it fails when a line in it fails. bats, jq, Python and PyYAML come from
+devbox.
 
 ## User-facing names
 
@@ -24,6 +25,7 @@ name back. `git log tests/expected/` is the record of every name change.
 
 ## The picker
 
-`picker/` holds the tests of the picker, `scripts/picker/`, written with
-Python's `unittest`. `make test` runs them with the picker's folder on Python's
-import path, so a test imports the picker's classes by name.
+`scripts/picker/test/` holds the tests of the picker, `scripts/picker/`, written
+with Python's `unittest`. `make test` runs them with the picker's folder on
+Python's import path, so a test imports the picker's classes by name. Most run
+on small made-up themes in `test/fixtures/`, and one runs `pick` itself.

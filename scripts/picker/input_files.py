@@ -1,6 +1,6 @@
-from failure import PickerFailed
+import yaml
 
-PYYAML_NEEDED = "pick needs PyYAML"
+from failure import PickerFailed
 
 
 class TextFile:
@@ -17,16 +17,7 @@ class TextFile:
 
 class YamlFile(TextFile):
     def load(self):
-        yaml = self._pyyaml()
         try:
             return yaml.safe_load(self.read())
         except yaml.YAMLError:
             raise PickerFailed(f"{self.path} isn't YAML") from None
-
-    @staticmethod
-    def _pyyaml():
-        try:
-            import yaml
-        except ImportError:
-            raise PickerFailed(PYYAML_NEEDED) from None
-        return yaml

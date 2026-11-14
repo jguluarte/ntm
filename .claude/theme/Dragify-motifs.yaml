@@ -1,0 +1,1460 @@
+# The motifs a message can be staged as: the shows' recurring scenes.
+about: >-
+  The challenges, rituals and scenes that come back season after season on Drag
+  Race and Dragula. When the job picks a motif for a message, from
+  `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
+  scene plays, `staging` casts the task in it, and `phrases` are what people say
+  at that moment on the show. Use at most one phrase, where the scene says it,
+  bent toward the task when that helps. A speaker who isn't the host plays the
+  host's part in a scene by reporting it or standing in, in their own manner.
+
+  `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
+  `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
+  `big_win`). A motif fits a message when it lists no reminder or this message's
+  reminder, and lists no what-happened value or one that holds; a motif with no
+  `when` fits every message. On a big win, only motifs listing `big_win` fit.
+
+  When a message carries several tasks, the staging's task is the one its `when`
+  is about: a finished one for `done` or `big_win`, the one slipped longest for
+  `slipped`, and otherwise the first one the facts list. The other tasks fill
+  the scene's other parts.
+
+motifs:
+  previously_on:
+    name: Previously on
+
+    show: Drag Race
+
+    about: >-
+      The quick recap that opens each episode: who won last week, who went home,
+      who's fighting.
+
+    on_the_show: >-
+      A fast cut of last week down to the moments that matter now: the win, the
+      bottom two, the lip sync, the grudge. The recap sets up what this episode
+      is about before anyone speaks.
+
+    staging: >-
+      Recut the task's history as the recap: the day it went on the list, each
+      day it waited as a shot in the montage, each slip as a cliffhanger, and
+      today opens on the scene the recap set up. On the weekly message, recap
+      the whole week, wins included.
+
+    phrases:
+      - Previously on...
+
+    when:
+      - morning
+      - weekly
+
+  werk_room_entrance:
+    name: Werk room entrance
+
+    show: Drag Race
+
+    about: >-
+      Day one: the queens walk into the werk room one at a time, each with a
+      first line, while the queens already there size her up.
+
+    on_the_show: >-
+      The door opens, the queen poses and gives her first line to the camera,
+      and the room reads her look before she reaches her station. The ones who
+      came in earlier whisper. Catchphrases often start here.
+
+    staging: >-
+      Walk the task in as the new arrival: a first line that says what it thinks
+      of itself, then the rest of the list sizing it up from their stations, its
+      look against the work it brings. On the weekly message, the week's tasks
+      are the new cast, entering one at a time.
+
+    phrases:
+      - Purse first!
+      - Check your lipstick before you come for me.
+      - Come on season six, let's get sickening.
+
+    when:
+      - morning
+      - weekly
+
+  the_morning_after:
+    name: The morning after
+
+    show: Drag Race
+
+    about: >-
+      The day after an elimination: the queens walk back into the werk room,
+      find the goodbye written in lipstick on the mirror, and face the empty
+      station.
+
+    on_the_show: >-
+      The queens read the message and react to it, sweet or petty. Then the talk
+      turns to who saw it coming, who is still angry about last night, and who's
+      next.
+
+    staging: >-
+      Walk the slipped task back into the werk room as the queen who survived
+      last night's bottom. Yesterday went home without it and left a goodbye in
+      lipstick on the mirror, addressed to the task: read it out, sweet and
+      petty at once. Then the room's talk turns to who's next, with the task
+      standing right there.
+
+    phrases:
+      - Have fun cleaning this.
+
+    when:
+      - morning
+      - slipped
+
+  video_message:
+    name: Video message
+
+    show: Drag Race
+
+    about: >-
+      The werk room screen lights up with a message from RuPaul that teases the
+      next challenge.
+
+    on_the_show: >-
+      The queens gather at the screen for RuPaul's short, punning tease of
+      what's coming, then guess at what it means. The UK and Down Under shows
+      open it with their own local twist.
+
+    staging: >-
+      Put the task on the screen as the host's teaser: a punning hint at today's
+      job, no details. Then the room guesses what it means and how bad it is,
+      and the read lands on the guesses.
+
+    phrases:
+      - Ooh, girl... She done already done had herses!
+
+    when:
+      - morning
+
+  challenge_announcement:
+    name: Challenge announcement
+
+    show: Drag Race
+
+    about: >-
+      RuPaul walks into the werk room, sets the week's challenge, and sends the
+      queens off to work.
+
+    on_the_show: >-
+      The greeting as she walks in, the Pit Crew carrying in whatever the
+      challenge needs, then the rules: the teams or roles, and the prize. She
+      closes on the start signal, and the queens scatter. The UK and Down Under
+      shows have their own greetings.
+
+    staging: >-
+      Announce the task as today's challenge: what it is, what it takes, and
+      what doing it wins. Then the start signal, and every minute after it
+      counts. On the weekly message, announce the week's challenges in one go.
+
+    phrases:
+      - Hello, hello, hello!
+      - Oh, Pit Crew!
+      - Racers, start your engines, and may the best drag queen win!
+
+    when:
+      - morning
+      - weekly
+
+  picking_teams:
+    name: Picking teams
+
+    show: Drag Race
+
+    about: >-
+      When a challenge is done in teams, the mini challenge winner is often a
+      team captain, and the captains pick their teams from the queens lined up.
+
+    on_the_show: >-
+      The captains take turns, one queen at a time, and the queens still
+      standing watch the line shrink. Being picked last is a read of its own,
+      and the queens remember who picked them and who didn't.
+
+    staging: >-
+      Line up the day's tasks and have the user pick them one at a time, the way
+      a captain builds a team: the first pick says what the day is for. The task
+      is the one still standing at the end, picked last, and the read lands on
+      its face as the line empties.
+
+    phrases:
+      - Finally! I'm not gonna get picked last!
+
+    when:
+      - morning
+
+  werk_room_walkthrough:
+    name: Werk room walkthrough
+
+    show: Drag Race
+
+    about: >-
+      While the queens work, RuPaul tours the werk room and stops at each
+      station to ask about the plan.
+
+    on_the_show: >-
+      Ru stops, smiles, and asks the one question that exposes the plan;
+      Michelle Visage or a coach sometimes comes too. A queen who answers that
+      it'll be fine gets a worried look back, and a worried question from Ru
+      usually means trouble on the runway.
+
+    staging: >-
+      Stop at the task's station mid-day: the task explains its plan, the host
+      asks one question about it, and the host's face answers before anyone
+      speaks. Then the host moves on to the next station, and the task is left
+      alone with the question.
+
+    phrases:
+      - How are you going to make it funny?
+      - I can't wait to see how this turns out.
+      - I get worried when you do that 'oh it's going to be fine'
+
+    when:
+      - afternoon
+
+  the_twist:
+    name: The twist
+
+    show: Drag Race
+
+    about: >-
+      RuPaul stops everything with a surprise that changes the rules: a pairing,
+      a prize, a save, a catch.
+
+    on_the_show: >-
+      Twists come back season after season: queens paired off to lip sync in a
+      premiere, a golden chocolate bar, eliminated queens back in the werk room,
+      the rules suspended for a week. The room goes quiet, then every queen
+      works out what it means for her.
+
+    staging: >-
+      Stop the afternoon with the host's surprise, one that raises the stakes on
+      the task: a prize for having it done by tonight, a catch for leaving it.
+      The room goes quiet, then every station works out what the twist means for
+      it, and the read lands on the task's reaction.
+
+    phrases:
+      - Do you like surprises?
+
+    when:
+      - afternoon
+
+  getting_ready:
+    name: Getting ready
+
+    show: Drag Race
+
+    about: >-
+      Before the runway, the queens sit at the werk room mirrors and get into
+      face: makeup, wigs, padding, and talk.
+
+    on_the_show: >-
+      The talk at the mirrors turns personal: families, coming out, who's
+      worried about tonight. Someone is often behind, still not dressed when
+      it's time to walk.
+
+    staging: >-
+      Seat the day's tasks at the mirrors before the runway, each getting into
+      face, with what each still has to do before it can walk. The task is the
+      one furthest behind, talking about anything but tonight, and the read
+      lands on how much face is left to put on.
+
+    phrases: []
+
+    when:
+      - afternoon
+
+  confessional:
+    name: Confessional
+
+    show: Drag Race
+
+    about: >-
+      The talking-head interviews cut into each episode, where a queen tells the
+      camera what she really thinks.
+
+    on_the_show: >-
+      Queens answer the producers' questions to camera, and the edit drops the
+      answer right after the moment it's about. What a queen says to a rival's
+      face and what she says in confessional rarely match. Fans read the edit
+      for who's going to win, and a queen who says a rival has the winner's edit
+      can mean it or be throwing pure shade.
+
+    staging: >-
+      Cut away from the day to a confessional: one of the other tasks, or the
+      task itself, tells the camera what it really thinks of how today is going
+      and of the user's plan for it. Drop the confessional right after the
+      moment it contradicts.
+
+    phrases:
+      - She's getting the winner's edit.
+
+  design_challenge:
+    name: Design challenge
+
+    show: Drag Race
+
+    about: >-
+      The sewing challenge: make a runway look from scratch in a day, from
+      fabric or from whatever odd materials production hands out.
+
+    on_the_show: >-
+      The queens grab materials, and the ones who can't sew say so out loud.
+      Then it's sewing machines, hot glue and the clock. What goes wrong: a look
+      that's still visibly a shower curtain, raw glue, a hem that never got
+      finished and walks the runway anyway. The season's worst look can win the
+      Golden Boot at the reunion.
+
+    staging: >-
+      Make the task a look to build from nothing by tonight: name the odd
+      material it's made of, whatever the task really takes, map its steps to
+      cutting, sewing and gluing, and count the hours left. The read lands on
+      what the look is right now, and how much of it is still the material.
+
+    phrases:
+      - I don't sew.
+
+    when:
+      - afternoon
+
+  reading_challenge:
+    name: Reading challenge
+
+    show: Drag Race
+
+    about: >-
+      The mini challenge where the queens take turns reading each other: quick,
+      cutting insults for sport, borrowed from ballroom.
+
+    on_the_show: >-
+      RuPaul opens the library, and each queen steps up and reads everyone else
+      in a line. The funniest, shadiest reads win. A read that's only mean, with
+      no joke in it, dies in the room. When the library closes, the reading
+      stops and nobody holds a grudge.
+
+    staging: >-
+      Open the library on the task: each of the other tasks on the list steps up
+      and reads it in one line, each on a different flaw, each with a turn that
+      makes it land. Then close the library, and nobody holds a grudge.
+
+    phrases:
+      - Because reading is what?
+      - Fundamental!
+      - The library is open.
+
+  puppets:
+    name: Puppets
+
+    show: Drag Race
+
+    about: >-
+      The mini challenge where each queen gets a puppet of a rival, drags it up,
+      and reads the rival through it.
+
+    on_the_show: >-
+      Each queen is handed a puppet made to look like another queen, dresses it,
+      and puts on a short show as her. The puppet says what the queen wouldn't
+      say to a face. It comes late in the season.
+
+    staging: >-
+      Make a puppet of the task and work it: through the puppet, the task says
+      out loud what it thinks of its spot on the list, how long it has been
+      there, and what it has heard the user say about it. The read comes from
+      the task's own mouth.
+
+    phrases:
+      - Everyone loves puppets!
+      - What did I tell you about chewing the scenery?
+      - What was your name again?
+
+  untucked:
+    name: Untucked
+
+    show: Drag Race
+
+    about: >-
+      The backstage lounge where the queens wait while the judges deliberate,
+      and where it gets messy.
+
+    on_the_show: >-
+      Drinks, tears and fights: the queens go over their critiques, who should
+      have been in the bottom, and who has been coasting. In the US it's a show
+      of its own; most other versions run it inside the episode.
+
+    staging: >-
+      Send the day's tasks backstage to the lounge while the verdict is out:
+      drinks, nerves, going over the day. The finished ones relive their notes,
+      and an open one gets asked where it was all day. End the day in the
+      lounge, the verdict still out.
+
+    phrases:
+      - So how did everybody feel?
+      - I was working hard while you were sleeping!
+      - That was a messy mess.
+
+    when:
+      - evening
+
+  snatch_game:
+    name: Snatch Game
+
+    show: Drag Race
+
+    about: >-
+      The game-show parody where the queens play celebrities on a panel while
+      RuPaul hosts.
+
+    on_the_show: >-
+      A send-up of Match Game: Ru asks fill-in-the-blank questions, celebrity
+      guests play the contestants, and the queens answer in character. What
+      wins: a character with a point of view and real jokes, who plays off the
+      panel. What goes wrong: a celebrity with nothing to say, an impression
+      that's only the wig, talking over the panel, freezing.
+
+    staging: >-
+      Host a round about the task: one fill-in-the-blank question built from it,
+      and a panel of celebrities, each picked for how they'd fill it in,
+      answering one at a time in character. The read lands on the best answer,
+      and on the worst.
+
+    phrases:
+      - the basic bitches from the fierce-ass queens
+      - I didn't have time to write anything.
+      - Do we have time for one more?
+
+  rusical:
+    name: Rusical
+
+    show: Drag Race
+
+    about: >-
+      The musical parody: original songs, roles cast among the queens, a
+      recording session, then choreography on the main stage.
+
+    on_the_show: >-
+      The mini challenge winner often hands out the roles, and the fight over
+      the lead starts right away. The queens record their vocals, learn the
+      choreography and perform. What goes wrong: a small part that disappears,
+      missed choreography, a weak recording session. What wins: owning a small
+      role.
+
+    staging: >-
+      Cast the day's tasks in a musical, with the task in the part nobody fought
+      for. Map the part to the task's steps: its line in the recording session,
+      its eight counts of choreography, its one entrance. The read lands on
+      whether a small part can steal the show.
+
+    when:
+      - afternoon
+
+  girl_group:
+    name: Girl group
+
+    show: Drag Race
+
+    about: >-
+      Teams write their own verses, record them, put together choreography, and
+      perform as a girl group.
+
+    on_the_show: >-
+      Each queen writes a verse and records it with a producer, then the team
+      learns its choreography together. What goes wrong: a bad verse, a rap off
+      the beat, one queen lost in the choreography, one queen carrying the
+      group. Groups are judged as teams, and from the UK's first season a whole
+      winning team can share the win.
+
+    staging: >-
+      Make the day's tasks a girl group, each with a verse about itself. The
+      others have recorded theirs, and this task is still in the booth writing
+      its verse while the producer waits. The read lands on the verse it finally
+      lays down.
+
+    phrases: []
+
+    when:
+      - afternoon
+
+  talent_show:
+    name: Talent show
+
+    show: Drag Race
+
+    about: >-
+      Each queen performs her own talent on the main stage while the others
+      watch from seats beside the runway. It opens many premieres, and most All
+      Stars seasons.
+
+    on_the_show: >-
+      One act after another, judged on whether it's really a talent. What goes
+      wrong: a talent that isn't one, a comedy act with no jokes, a lip sync
+      passed off as a talent. The queens in the seats have opinions.
+
+    staging: >-
+      Put the task on as an act: doing it is the talent, and the user is the
+      performer stepping into the light. The queens in the seats watch and judge
+      whether it's a real talent, and the read comes from their row.
+
+    phrases:
+      - It's not bad, it's just not good.
+
+  makeover:
+    name: Makeover
+
+    show: Drag Race
+
+    about: >-
+      Each queen puts someone who isn't a queen in drag and walks the runway
+      with them as her drag family.
+
+    on_the_show: >-
+      The partners have been veterans, grooms, teachers, firefighters and
+      eliminated queens. The runway calls for a family resemblance. What goes
+      wrong: no resemblance, a partner who looks like a hostage, a queen who
+      spends all her time on the partner and walks out half-done herself. What
+      wins: a partner who looks like kin and gets to be herself.
+
+    staging: >-
+      Make the task the makeover partner: plain, willing, waiting for its drag.
+      Map the steps still to do to the makeover, so that finished, it looks like
+      family next to the user. The read lands on the resemblance so far, or on
+      the queen who made over everything else and walked out half-done.
+
+    phrases:
+      - Drag Family Resemblance
+      - It's bring your fairy to work day.
+
+    when:
+      - afternoon
+
+  the_roast:
+    name: The roast
+
+    show: Drag Race
+
+    about: >-
+      A mock dais: the queens roast a guest of honor or each other, or do
+      stand-up, in front of the judges and often an audience.
+
+    on_the_show: >-
+      The mini challenge winner often sets the running order, and each queen
+      gets her set at the mic. What goes wrong: silence, jokes that are only
+      mean, a set read off the card, nerves. What wins: confident timing, reads
+      with a turn, a persona that carries.
+
+    staging: >-
+      Seat the task on the dais as the guest of honor and run one set at it: a
+      warm open, then jokes about its size, its history on the list and what it
+      asks of the user, each with a turn, and a closer that's love and a joke at
+      once. Let the room react between the jokes.
+
+    phrases:
+      - Wow. How will I ever follow that one up?
+
+  the_ball:
+    name: The ball
+
+    show: Drag Race
+
+    about: >-
+      Two or three looks on one runway, each to a category, with one of them
+      made in the werk room from the materials production hands out.
+
+    on_the_show: >-
+      Each ball has a theme and two or three categories, often ending on an
+      Eleganza. What goes wrong: the homemade look isn't finished, hot glue
+      shows, a look reads as a costume. What wins: one clear story across all
+      the looks, and a homemade look that doesn't look homemade.
+
+    staging: >-
+      Make the day's tasks, or the task's steps, the looks of a ball: give the
+      ball a theme and each look a named category. The task is the homemade
+      look, still in pieces on the werk room table, and the read lands on
+      whether it will be finished for its category.
+
+    phrases:
+      - Eleganza Extravaganza
+
+    when:
+      - afternoon
+
+  the_runway:
+    name: The runway
+
+    show: Drag Race
+
+    about: >-
+      Every episode ends on the main stage: RuPaul names the night's category
+      and the queens walk it one at a time.
+
+    on_the_show: >-
+      "Category is" comes from ballroom, where the announcer calls the category.
+      Each queen walks while RuPaul and the judges trade puns on her look.
+
+    staging: >-
+      Name a category for the task, the punnier the better, and walk it: the
+      task as it stands today is the look, and the judges' puns land on whatever
+      it's wearing.
+
+    phrases:
+      - Category is...
+      - You better walk that fucking duck.
+
+  the_reveal:
+    name: The reveal
+
+    show: Drag Race
+
+    about: >-
+      The runway trick: a tear-away skirt, a second look under the first, a wig
+      under a wig.
+
+    on_the_show: >-
+      Mid-walk, the queen tears away the top layer and something new is
+      underneath. The show puns it a Ru-veal. A reveal that sticks, or lands in
+      a heap, gets read for it.
+
+    staging: >-
+      Walk the finished task out in its first look, the state it was in this
+      morning, then pull the cord: done is underneath. The read lands on how
+      clean the tear-away was.
+
+    phrases:
+      - Ru-veal
+
+    when:
+      - done
+
+  the_critiques:
+    name: The critiques
+
+    show: Drag Race
+
+    about: >-
+      After the runway, the top and bottom queens stay on stage and the judges
+      tell them what worked and what didn't.
+
+    on_the_show: >-
+      RuPaul names the safe queens and they leave the stage. The panel is
+      RuPaul, Michelle Visage, a rotating judge and a guest or two, each with a
+      short, blunt note. Ru asks the bottom queens who should go home.
+
+    staging: >-
+      Stand the task in front of the panel for notes: each judge gives it one,
+      short and in their own manner, and moves on. The read lands on the note it
+      has heard before.
+
+    phrases:
+      - Who should go home tonight and why?
+      - Charisma, uniqueness, nerve and talent
+      - Resting on pretty
+      - I'll be the judge of that!
+
+    when:
+      - slipped
+
+  safe:
+    name: Safe
+
+    show: Drag Race
+
+    about: >-
+      The queens between the top and the bottom: not praised, not discussed,
+      sent off the stage.
+
+    on_the_show: >-
+      Safe is its own sting: not good enough to praise, not bad enough to talk
+      about. The safe queens leave the stage, and the others stay for critiques.
+
+    staging: >-
+      Call the finished task safe: done, and nothing the judges need to discuss.
+      Name what got it there in a line, then send it off the stage while any
+      open task stays behind for critiques.
+
+    phrases:
+      - You're safe.
+      - Fuck it, just have fun and hope you are safe.
+
+    when:
+      - done
+
+  deliberation:
+    name: Deliberation
+
+    show: Drag Race
+
+    about: >-
+      The queens leave the stage, the judges talk it over, and RuPaul calls the
+      queens back for the verdict.
+
+    on_the_show: >-
+      With the queens gone, the judges talk about them more freely than to their
+      faces, and Ru asks the panel what they think. Then she cuts it off, calls
+      the queens back, and hands out the results: the winner, the safe queens,
+      the bottom two.
+
+    staging: >-
+      Send the day's tasks off the stage and talk about each one the way the
+      judges do once the queens have gone: franker than to its face, done and
+      open alike. Then call them back for the results: the winner, the safe, the
+      bottom.
+
+    phrases:
+      - While you untuck in the werk room, the judges and I will deliberate.
+      - Silence! I've made my decision. Bring back my girls!
+      - I've consulted with the judges, but the final decision is mine to make.
+
+    when:
+      - evening
+
+  lip_sync_for_your_life:
+    name: Lip sync for your life
+
+    show: Drag Race
+
+    about: >-
+      The bottom two lip sync to the week's song, and RuPaul alone decides who
+      stays and who goes home.
+
+    on_the_show: >-
+      The queens know the song in advance and plan reveals and stunts. The
+      judges watch for every word known cold, the song's story, energy, and a
+      moment people will replay. Ru reads the script, the song plays, and she
+      gives the verdict.
+
+    staging: >-
+      Stand the task in the bottom two against whatever has been beating it, the
+      couch, another task or the excuse, and make them lip sync for tonight. The
+      song is the time left in the evening, doing the task is the win, and the
+      host is watching.
+
+    phrases:
+      - Two queens stand before me.
+      - >-
+        This is your last chance to impress me and save yourself from
+        elimination.
+      - The time has come for you to lip sync for your life!
+      - Good luck, and don't fuck it up!
+
+    when:
+      - evening
+      - slipped
+
+  shantay_you_stay:
+    name: Shantay, you stay
+
+    show: Drag Race
+
+    about: >-
+      What RuPaul tells the queen who wins the lip sync: she stays in the
+      competition.
+
+    on_the_show: >-
+      The winner of the lip sync for your life hears it; the loser hears the
+      other line. When both queens stay, it's a double shantay.
+
+    staging: >-
+      The finished task stays: give the verdict, then one note on how it got
+      through. A task that slipped before it got done barely survived; one done
+      on its day stayed with room to spare. Two done make a double shantay.
+
+    phrases:
+      - Shantay, you stay.
+      - Shantay, you both stay!
+
+    when:
+      - done
+
+  challenge_win:
+    name: Challenge win
+
+    show: Drag Race
+
+    about: >-
+      RuPaul names the week's winner on the main stage.
+
+    on_the_show: >-
+      The winner takes the challenge and a prize: a sponsor's gift, a trip, or a
+      cash tip.
+
+    staging: >-
+      Call the big effort forward as the week's challenge winner: name what it
+      beat to get here, the days, the slips or the size of it, and hand over a
+      prize sized to match. Then let it gloat backstage.
+
+    phrases:
+      - Con-drag-ulations!
+      - I have never won before, but I'mma take it.
+
+    when:
+      - big_win
+
+  rupeter_badge:
+    name: RuPeter badge
+
+    show: Drag Race
+
+    about: >-
+      Drag Race UK's prize for a challenge win: a RuPeter badge, a spoof of the
+      Blue Peter badge, in place of cash.
+
+    on_the_show: >-
+      Winners get a badge, and the queens count each other's. A queen who never
+      wins one gets teased for it. In the first two seasons of UK vs the World,
+      the lip sync winner got a golden one.
+
+    staging: >-
+      Pin a badge on the finished task: small, shiny, worth exactly nothing, and
+      still worth having. Count the badges so far, and let the task that never
+      gets done stay badgeless.
+
+    phrases:
+      - RuPeter Badge
+      - You were a bitch before the badge.
+      - No-Badges Chez
+
+    when:
+      - done
+
+  lip_sync_for_your_legacy:
+    name: Lip sync for your legacy
+
+    show: Drag Race
+
+    about: >-
+      All Stars: the week's top two lip sync, and the winner chooses which
+      bottom queen goes home, by revealing a lipstick with her name.
+
+    on_the_show: >-
+      The winner takes a cash prize and the power, and reveals the lipstick with
+      a name on it. Later seasons pit the top queen against a lip sync assassin
+      instead.
+
+    staging: >-
+      The finished task holds the lipstick: it chooses the open task that gets
+      done next, or tomorrow's if none is open, and takes its time revealing the
+      name. The read lands on whichever name is on the lipstick.
+
+    phrases:
+      - The time has come, for you to Lip-Sync. For. Your. Legacy!
+      - As it is written, so it shall be done.
+
+    when:
+      - done
+
+  sashay_away:
+    name: Sashay away
+
+    show: Drag Race
+
+    about: >-
+      What RuPaul tells the queen who loses the lip sync: she's out, with a last
+      word on the stage before she walks off.
+
+    on_the_show: >-
+      The queen gets her exit line, then leaves through the arch. One walked off
+      backward repeating her own name, and it got her invited back. Sometimes
+      both queens go home at once.
+
+    staging: >-
+      Give the task that's still open its exit line on the stage: a last word,
+      short and in character, then it walks off until tomorrow. The read lands
+      between the exit line it planned and the one it actually delivers.
+
+    phrases:
+      - Sashay away.
+      - I came in first!
+      - I... have no exit line.
+
+    when:
+      - evening
+      - slipped
+
+  mirror_message:
+    name: Mirror message
+
+    show: Drag Race
+
+    about: >-
+      The eliminated queen writes a goodbye in lipstick on the werk room mirror
+      for the others to find.
+
+    on_the_show: >-
+      It started in Season 2 with the first queen out. Messages run from love
+      notes to grudges to jokes about who should win, often all in one line, and
+      signed with a kiss.
+
+    staging: >-
+      Have the task that's still open write its goodbye in lipstick on the werk
+      room mirror, to the tasks that got done today, or to tomorrow's list if
+      none did: sweet, petty, or both in one line, signed with a kiss. The read
+      sits in the petty half.
+
+    phrases:
+      - Keep your eyes on the stars... you'll never be one!
+      - HATE YOUR HAIR HOPE YOU LOSE ABSOLUTELY LOVE YOU CAMP COWS
+      - Getting the crown Just Got a LOT easier for y'all
+
+    when:
+      - evening
+      - slipped
+
+  closing_line:
+    name: Closing line
+
+    show: Drag Race
+
+    about: >-
+      How RuPaul ends every episode: a line about loving yourself, then a call
+      for an amen.
+
+    on_the_show: >-
+      The same sign-off since Season 1. The queens shout the amen back, and the
+      music starts.
+
+    staging: >-
+      Close the day with the host's send-off to whoever is still on the stage: a
+      short sermon drawn from today, what got done and what it took, turned
+      toward loving yourself. Then the call for the amen, the room's answer, and
+      the music.
+
+    phrases:
+      - >-
+        If you can't love yourself, how the hell are you gonna love somebody
+        else?
+      - Can I get an amen up in here?
+      - Now let the music play!
+
+    when:
+      - evening
+
+  porkchop:
+    name: Porkchop
+
+    show: Drag Race
+
+    about: >-
+      The first queen out of a season wears the porkchop, after Season 1's first
+      eliminated queen.
+
+    on_the_show: >-
+      RuPaul keeps the reference going, and first-out queens claim the title in
+      their mirror messages. Season 13 gave the losers of its premiere lip syncs
+      a Porkchop Loading Dock to wait in.
+
+    staging: >-
+      Hand the week's first slip the porkchop: the first task this week to miss
+      its day. It's out first, it's a footnote, and it carries the title all
+      week, whatever it does next.
+
+    phrases:
+      - I'm sorry my dear but you are getting the Porkchop.
+      - I'm the UK's Porkchop
+
+    when:
+      - weekly
+      - slipped
+
+  the_save:
+    name: The save
+
+    show: Drag Race
+
+    about: >-
+      The rare night the loser of a lip sync doesn't go home: RuPaul spares her,
+      or a twist does.
+
+    on_the_show: >-
+      Ru has called a queen back as she was leaving, kept both queens after a
+      lip sync, and suspended the rules for a whole week. In Season 14 a golden
+      chocolate bar was the one thing that could save a lip sync loser.
+
+    staging: >-
+      Bend one rule for the slipped task, once: a reprieve, a suspended
+      deadline, a golden ticket, whatever form fits the task. Count the saves it
+      has already used, and make this one the last.
+
+    phrases:
+      - All Star rules are temporarily suspended, until further notice.
+
+    when:
+      - slipped
+
+  returning_queen:
+    name: Returning queen
+
+    show: Drag Race
+
+    about: >-
+      An eliminated queen walks back into the werk room: voted back, brought in
+      as a wildcard, or called back by RuPaul.
+
+    on_the_show: >-
+      The door opens on a face the others thought they'd seen the last of. The
+      room reacts first and asks questions after: why her, why now, and who goes
+      home to make room.
+
+    staging: >-
+      Walk the slipped task back into the werk room as if it had gone home and
+      come back: the others' faces, the history between them, the reason it's
+      back. The read lands on it being back at all.
+
+    phrases:
+      - I just had to eliminate two queens. How soon can you get here?
+
+    when:
+      - slipped
+
+  lalaparuza:
+    name: LaLaPaRUza
+
+    show: Drag Race
+
+    about: >-
+      A lip sync tournament: queens lip sync in a bracket, one round after
+      another, until one is left.
+
+    on_the_show: >-
+      It first brought eliminated All Stars back to challenge the queens still
+      in; later a bracket of the bottom queens decided an elimination. Late in
+      recent seasons, the eliminated queens fight it out for a title of their
+      own.
+
+    staging: >-
+      Put the slipped tasks in a bracket and lip sync them in pairs: in each
+      round, the one that has slipped more days wins, until one is left, the
+      most-slipped task, crowned for it. A lone slipped task faces each day it
+      slipped, one round each.
+
+    phrases:
+      - Lip Sync LaLaPaRUza Smackdown
+      - Queen of She Done Already Done Had Herses
+
+    when:
+      - slipped
+
+  reunion:
+    name: Reunion
+
+    show: Drag Race
+
+    about: >-
+      The cast comes back after the season for a sit-down with RuPaul: feuds
+      settled, clips replayed, awards handed out.
+
+    on_the_show: >-
+      Ru rolls the clips and makes the queens watch themselves. Old fights get
+      reopened and, sometimes, settled. A round of Toot or Boot on the season's
+      looks ends with the Golden Boot for the worst one.
+
+    staging: >-
+      Sit the week's tasks on the reunion couches and roll the clips: the day
+      each one slipped, the day each got done. Settle the feuds, then hand out
+      the awards, the Golden Boot going to the week's worst-kept task.
+
+    phrases:
+      - Toot or Boot
+      - Golden Boot
+
+    when:
+      - weekly
+
+  the_crowning:
+    name: The crowning
+
+    show: Drag Race
+
+    about: >-
+      The finale: the last queens perform, and one is crowned America's Next
+      Drag Superstar.
+
+    on_the_show: >-
+      In most seasons since Season 9, a lip sync tournament decides it. The
+      winner gets the crown, the tears and the speech. All Stars 4 crowned two
+      queens at once.
+
+    staging: >-
+      Crown the big effort: the finale, the crown, the winner's speech. Name
+      every day it took and every time it slipped on the way here. Several big
+      efforts done in one day share a double crown.
+
+    phrases:
+      - America's Next Drag Superstar
+      - Queen of All Queens
+      - I'm just ready to rule the fucking world!
+
+    when:
+      - big_win
+
+  meet_our_monsters:
+    name: Meet our monsters
+
+    show: Dragula
+
+    about: >-
+      The start of a season, when the Boulets present their cast and each
+      monster gets an introduction.
+
+    on_the_show: >-
+      Each monster has a "Meet Our Monsters" video before the season. Then they
+      arrive: together in the early seasons, one by one later, and once dropped
+      in the woods to find the camp.
+
+    staging: >-
+      Introduce the week's tasks as the season's cast of monsters: each one's
+      look, its kind of horror, and what it does to people who leave it alone,
+      the horror carrying each introduction. A task back from last week gets a
+      returning monster's intro.
+
+    phrases:
+      - Meet our... monsters.
+
+    when:
+      - weekly
+
+  fright_feat:
+    name: Fright feat
+
+    show: Dragula
+
+    about: >-
+      Dragula's mini challenge: a short test of nerve, like a haunted house or a
+      garbage smoothie, for a perk or a curse.
+
+    on_the_show: >-
+      Survive a haunted house, chug a garbage smoothie, bob for apples in blood.
+      The prize can be immunity, picking teams, nominating someone for the
+      bottom, or a curse on a rival for the floor show. In Titans every episode
+      opens with one.
+
+    staging: >-
+      Make the task's first small step the morning's fright feat: thirty seconds
+      of nerve. Doing it wins a perk for the rest of the day; skipping it earns
+      a curse, named and fitted to the task.
+
+    phrases:
+      - Curse of Baldness
+      - Boulet Blindness
+      - Glinda's Bubble of Protection
+
+    when:
+      - morning
+
+  the_boudoir:
+    name: The Boudoir
+
+    show: Dragula
+
+    about: >-
+      Dragula's workroom, later renamed the Lab, where the monsters build each
+      week's look and the fights start.
+
+    on_the_show: >-
+      The monsters build their floor show looks from whatever they can find,
+      with a mirror on every table and a rival at the next one. It's where the
+      looks come together and the fights start.
+
+    staging: >-
+      Put the task at its station in the Boudoir, mid-build: tonight's monster,
+      made from whatever is at hand, each step a part of the creature, and a
+      rival watching from the next table. The read lands on what the creature
+      looks like so far.
+
+    phrases: []
+
+    when:
+      - afternoon
+
+  floor_show:
+    name: Floor show
+
+    show: Dragula
+
+    about: >-
+      Dragula's main challenge: a look and a performance on the main stage,
+      judged against the week's brief.
+
+    on_the_show: >-
+      The performance can be a lip sync, a band, burlesque, an acting scene, a
+      photo shoot or a haunted runway. The Boulets open it with their cue, judge
+      it against the brief, pick one winner, and send the lowest two or more to
+      extermination. A reimagining beats a cosplay.
+
+    staging: >-
+      Stage the task as tonight's floor show: pick the kind of performance that
+      fits it, a lip sync, a band, burlesque, an acting scene, a photo shoot or
+      a haunted runway, and doing the task is the number, from the hosts' cue to
+      the last beat. The read lands on its big moment.
+
+    phrases:
+      - Dim the lights, start the music, and let the floor show begin!
+      - "ATTENTION COMPETITORS: THE FLOOR SHOW IS ABOUT TO BEGIN"
+
+  four_tenets:
+    name: Four tenets
+
+    show: Dragula
+
+    about: >-
+      Drag, Filth, Horror, Glamour: the four things Dragula scores every look
+      on, whispered in the intro.
+
+    on_the_show: >-
+      Filth is bodily fluids, sex and gross-out; horror is monsters and gore;
+      glamour is beauty and refinement; drag is the art of all of it. Every
+      finale is three looks: glamour, filth and horror. A filth look has to be a
+      performance of filth.
+
+    staging: >-
+      Score the task on all four tenets: drag is the art in how it gets done,
+      filth is the mess it makes or has made, horror is what it threatens if
+      left, and glamour is how it will look finished. The read lands on the
+      tenet that's missing.
+
+    phrases:
+      - Drag. Filth. Horror. Glamour.
+      - I don't play pretend on filth.
+      - I am giving filth. I am giving Dragula.
+
+  boulets_judgment:
+    name: Boulets' judgment
+
+    show: Dragula
+
+    about: >-
+      The Boulets and their guests judge each floor show against the brief, then
+      name the top, the safe and the bottom.
+
+    on_the_show: >-
+      A stock line warns that a critique is about to hurt. Gender doesn't enter
+      into it, and since art is subjective, each look is judged against the
+      week's brief and the competition so far. A look that reads like a
+      Halloween-store costume gets marked down.
+
+    staging: >-
+      Read out the task's brief, what today asked of it, and judge only what
+      came of it against that brief. Then place each of the day's tasks: the
+      top, the safe, and the bottom headed for extermination.
+
+    phrases:
+      - >-
+        We are not here to judge your drag. Drag is art and art is subjective.
+        What we are judging you on is your drag as it relates to this
+        competition.
+      - Well, you just missed the mark.
+
+    when:
+      - evening
+
+  who_should_go_home:
+    name: Who should go home
+
+    show: Dragula
+
+    about: >-
+      From Season 3 on, the Boulets ask each monster who should go home, and
+      why, and the room throws someone under the bus.
+
+    on_the_show: >-
+      One by one, each monster names a rival and gives a reason. Once, every
+      monster named the same queen. Some seasons the vote decides who faces
+      extermination.
+
+    staging: >-
+      Let the rest of the list vote on who goes home tonight, one at a time,
+      each naming a task and giving its reason. The read lands when every vote
+      names the same task.
+
+    phrases:
+      - let's cut the shit. Who's going home first?
+      - I can not vote for myself.
+      - The rules were not made clear!
+
+    when:
+      - evening
+      - slipped
+
+  the_cauldron:
+    name: The Cauldron
+
+    show: Dragula
+
+    about: >-
+      The backstage room where the monsters wait out the Boulets' deliberation:
+      Dragula's Untucked, from Season 4 on.
+
+    on_the_show: >-
+      Where the fights happen, with extermination hanging over everyone in the
+      room. In Season 6 one monster threw a whole raw chicken across the room at
+      another, and fans still call it Chickengate.
+
+    staging: >-
+      Lock the task in the Cauldron with the monsters it has kept waiting, while
+      extermination hangs over the room: tempers up, accusations flying,
+      something about to be thrown at it.
+
+    phrases:
+      - So, today's Cauldron is just a big fucking hot mess.
+      - Give them the fucking needles!
+
+    when:
+      - evening
+      - slipped
+
+  extermination:
+    name: Extermination
+
+    show: Dragula
+
+    about: >-
+      The bottom monsters face a test of fear or endurance, and the Boulets
+      weigh it with the floor show to decide who's out.
+
+    on_the_show: >-
+      Buried alive, needles, skydiving, a bungee off the Bridge to Nowhere,
+      eating organs, a bed of rats. Some take one leap of nerve; others go to
+      whoever lasts longest. Refusing means you're done, and the monster who
+      goes out is killed off later that night.
+
+    staging: >-
+      Put the slipped task up for extermination and pick the ordeal that fits
+      it: one leap for a task that only needs starting, endurance for one that
+      takes hours. Doing it is surviving, and refusing means it's out. The read
+      lands on the moment it's tempted to tap out.
+
+    phrases:
+      - exterminations are for pests
+      - I hope you're enjoying this!
+      - >-
+        The worst thing that could happen is I fall to my death and I'm sidewalk
+        sauce.
+
+    when:
+      - slipped
+
+  the_plea:
+    name: The plea
+
+    show: Dragula
+
+    about: >-
+      The extermination where the bottom monster pleads for survival while the
+      safe monsters pelt them with rotten food and insults.
+
+    on_the_show: >-
+      Season 3: the plea goes on while the food flies. Season 1 had a lip sync
+      under the same barrage. Before the Season 3 one, a monster refused a
+      producer's note, and the line became one of Dragula's best-known memes.
+
+    staging: >-
+      Give the slipped task the floor to plead its case, and let the rest of the
+      list pelt it with rotten food: each excuse earns a tomato. The read lands
+      on the excuse that draws the most.
+
+    phrases:
+      - Let's make some good fucking TV!
+
+    when:
+      - slipped
+
+  later_that_night:
+    name: Later that night
+
+    show: Dragula
+
+    about: >-
+      The exterminated monster is killed off in a scripted horror short, cued by
+      a "Later that night" title card.
+
+    on_the_show: >-
+      From Season 3 they die in their challenge looks. One was eaten by dolls of
+      the week's top three; one died offscreen and turned up in a morgue an
+      episode later; one escaped.
+
+    staging: >-
+      End the day on the title card and the death scene: whatever didn't get
+      done today meets its end in a horror short, in its look, by the horror
+      that fits it. Or make the task the killer, coming for the excuse.
+
+    phrases:
+      - Later that night
+      - Kill them all.
+
+    when:
+      - evening
+      - slipped
+
+  key_of_life_and_death:
+    name: Key of Life and Death
+
+    show: Dragula
+
+    about: >-
+      Seasons 3 to 5: the Key's holder can save one monster from extermination,
+      or put another up for it.
+
+    on_the_show: >-
+      Both monsters who used the Key to send a rival down were exterminated the
+      very next episode. One of their targets survived a bed of rats and came
+      out promising revenge.
+
+    staging: >-
+      Putting the task off is turning the Key on it: the task goes down a day,
+      and the Key's curse comes back on whoever turned it.
+
+    phrases:
+      - The Key of Life and Death
+
+    when:
+      - slipped
+
+  extermination_survivor:
+    name: Extermination survivor
+
+    show: Dragula
+
+    about: >-
+      The bottom monster who comes through the extermination: the Boulets name
+      them a survivor, and they go back to the Boudoir for another week.
+
+    on_the_show: >-
+      Every extermination ends with its survivors named beside the monster who
+      goes out. Some monsters survive several in one season, and one survived
+      all four of theirs and made it to the finale.
+
+    staging: >-
+      Name the finished task a survivor: it faced today's ordeal and walked out.
+      The hosts say so flatly, and it goes back to its station a little worse
+      for wear, alive for another week.
+
+    phrases:
+      - Extermination survivor
+
+    when:
+      - done
+
+  supermonster_crowning:
+    name: Supermonster crowning
+
+    show: Dragula
+
+    about: >-
+      The finale: the winner is crowned the World's Next Drag Supermonster, with
+      a crown, a scepter and blood poured over them.
+
+    on_the_show: >-
+      Three finale looks, glamour, filth and horror, then the crowning and the
+      blood bath. Titans crowns the Queen of the Underworld instead; one was
+      crowned in a rainstorm by the previous Titan.
+
+    staging: >-
+      Crown the big effort the Supermonster: the crown, the scepter, the blood
+      poured over its head. Name what it survived to get here.
+
+    phrases:
+      - The World's Next Drag Supermonster
+      - Queen of the Underworld
+
+    when:
+      - big_win

@@ -1,181 +1,95 @@
-# What the job picks from per message: a speaker, and a hook from the lines any
-# actor can say, the motifs or the references.
+# What the job picks from per message: a speaker from the actors, and a hook
+# from the actors, the lines any actor can say, the motifs or the references.
 pools:
   actors:
     file: Dragify-actors.yaml
-    gives: [speaker]
+    gives: [hook, speaker]
     entries:
-      rupaul:
-        show: Drag Race
-        appears_in: [werk room walkthrough, main stage]
+      rupaul: {}
 
-      michelle_visage:
-        show: Drag Race
-        appears_in: [main stage, Whatcha Packin']
+      michelle_visage: {}
 
-      ross_mathews:
-        show: Drag Race
-        appears_in: [main stage]
+      ross_mathews: {}
 
-      carson_kressley:
-        show: Drag Race
-        appears_in: [main stage]
+      carson_kressley: {}
 
-      ts_madison:
-        show: Drag Race
-        appears_in: [main stage]
+      ts_madison: {}
 
-      law_roach:
-        show: Drag Race
-        appears_in: [main stage]
+      law_roach: {}
 
-      alan_carr:
-        show: Drag Race
-        appears_in: [main stage]
+      alan_carr: {}
 
-      graham_norton:
-        show: Drag Race
-        appears_in: [main stage]
+      graham_norton: {}
 
-      brooke_lynn_hytes:
-        show: Drag Race
-        appears_in: [werk room, main stage]
+      brooke_lynn_hytes: {}
 
-      pangina_heals:
-        show: Drag Race
-        appears_in: [werk room, reading challenge]
+      pangina_heals: {}
 
-      nicky_doll:
-        show: Drag Race
-        appears_in: [werk room]
+      nicky_doll: {}
 
-      dracmorda:
-        show: Dragula
-        appears_in: [cold open, main stage]
+      dracmorda: {}
 
-      swanthula:
-        show: Dragula
-        appears_in: [intro, main stage]
+      swanthula: {}
 
-      bianca_del_rio:
-        show: Drag Race
-        appears_in: [werk room, confessional]
+      bianca_del_rio: {}
 
-      latrice_royale:
-        show: Drag Race
-        appears_in: [werk room]
+      latrice_royale: {}
 
-      alyssa_edwards:
-        show: Drag Race
-        appears_in: [werk room, Untucked, confessional]
+      alyssa_edwards: {}
 
-      katya:
-        show: Drag Race
-        appears_in: [werk room, main stage]
+      katya: {}
 
-      trixie_mattel:
-        show: Drag Race
-        appears_in: [main stage, goodbye mirror]
+      trixie_mattel: {}
 
-      alaska:
-        show: Drag Race
-        appears_in: [werk room, Snatch Game]
+      alaska: {}
 
-      tatianna:
-        show: Drag Race
-        appears_in: [reading challenge, reunion]
+      tatianna: {}
 
-      detox:
-        show: Drag Race
-        appears_in: [werk room]
+      detox: {}
 
-      raven:
-        show: Drag Race
-        appears_in: [confessional, reunion]
+      raven: {}
 
-      laganja_estranja:
-        show: Drag Race
-        appears_in: [werk room, Untucked]
+      laganja_estranja: {}
 
-      vanessa_vanjie_mateo:
-        show: Drag Race
-        appears_in: [werk room, main stage]
+      vanessa_vanjie_mateo: {}
 
-      kandy_muse:
-        show: Drag Race
-        appears_in: [Untucked, main stage]
+      kandy_muse: {}
 
-      plane_jane:
-        show: Drag Race
-        appears_in: [confessional]
+      plane_jane: {}
 
-      mo_heart:
-        show: Drag Race
-        appears_in: [confessional]
+      mo_heart: {}
 
-      jinkx_monsoon:
-        show: Drag Race
-        appears_in: [werk room, Snatch Game]
+      jinkx_monsoon: {}
 
-      bob_the_drag_queen:
-        show: Drag Race
-        appears_in: [Snatch Game, smear-ad challenge]
+      bob_the_drag_queen: {}
 
-      willam:
-        show: Drag Race
-        appears_in: [Untucked]
+      willam: {}
 
-      monet_x_change:
-        show: Drag Race
-        appears_in: [werk room, main stage]
+      monet_x_change: {}
 
-      baga_chipz:
-        show: Drag Race
-        appears_in: [Snatch Game]
+      baga_chipz: {}
 
-      tammie_brown:
-        show: Drag Race
-        appears_in: [Untucked]
+      tammie_brown: {}
 
-      jujubee:
-        show: Drag Race
-        appears_in: [reading challenge, Snatch Game]
+      jujubee: {}
 
-      roxxxy_andrews:
-        show: Drag Race
-        appears_in: [main stage, reading challenge]
+      roxxxy_andrews: {}
 
-      adore_delano:
-        show: Drag Race
-        appears_in: [werk room, Snatch Game]
+      adore_delano: {}
 
-      ginger_minj:
-        show: Drag Race
-        appears_in: [reading challenge, werk room, Snatch Game]
+      ginger_minj: {}
 
-      jasmine_masters:
-        show: Drag Race
-        appears_in: [werk room, reading challenge, YouTube videos]
+      jasmine_masters: {}
 
-      valentina:
-        show: Drag Race
-        appears_in: [reading challenge, main stage]
+      valentina: {}
 
-      jaida_essence_hall:
-        show: Drag Race
-        appears_in: [debate challenge, main stage]
+      jaida_essence_hall: {}
 
-      heidi_n_closet:
-        show: Drag Race
-        appears_in: [main stage, Untucked]
+      heidi_n_closet: {}
 
-      jimbo:
-        show: Drag Race
-        appears_in: [Snatch Game, main stage]
+      jimbo: {}
 
-      koco_caine:
-        show: Dragula
-        appears_in: [main stage, werk room]
+      koco_caine: {}
 
   any_actor_lines:
     file: Dragify-actors.yaml
@@ -191,210 +105,156 @@ pools:
     gives: [hook]
     entries:
       previously_on:
-        show: Drag Race
         when: [morning, weekly]
 
       werk_room_entrance:
-        show: Drag Race
         when: [morning, weekly]
 
       the_morning_after:
-        show: Drag Race
         when: [morning, slipped]
 
       video_message:
-        show: Drag Race
         when: morning
 
       challenge_announcement:
-        show: Drag Race
         when: [morning, weekly]
 
       picking_teams:
-        show: Drag Race
         when: morning
 
       werk_room_walkthrough:
-        show: Drag Race
         when: afternoon
 
       the_twist:
-        show: Drag Race
         when: afternoon
 
       getting_ready:
-        show: Drag Race
         when: afternoon
 
-      confessional:
-        show: Drag Race
+      confessional: {}
 
       design_challenge:
-        show: Drag Race
         when: afternoon
 
-      reading_challenge:
-        show: Drag Race
+      reading_challenge: {}
 
-      puppets:
-        show: Drag Race
+      puppets: {}
 
       untucked:
-        show: Drag Race
         when: evening
 
-      snatch_game:
-        show: Drag Race
+      snatch_game: {}
 
       rusical:
-        show: Drag Race
         when: afternoon
 
       girl_group:
-        show: Drag Race
         when: afternoon
 
-      talent_show:
-        show: Drag Race
+      talent_show: {}
 
       makeover:
-        show: Drag Race
         when: afternoon
 
-      the_roast:
-        show: Drag Race
+      the_roast: {}
 
       the_ball:
-        show: Drag Race
         when: afternoon
 
-      the_runway:
-        show: Drag Race
+      the_runway: {}
 
       the_reveal:
-        show: Drag Race
         when: done
 
       the_critiques:
-        show: Drag Race
         when: slipped
 
       safe:
-        show: Drag Race
         when: done
 
       deliberation:
-        show: Drag Race
         when: evening
 
       lip_sync_for_your_life:
-        show: Drag Race
         when: [evening, slipped]
 
       shantay_you_stay:
-        show: Drag Race
         when: done
 
       challenge_win:
-        show: Drag Race
         when: big_win
 
       rupeter_badge:
-        show: Drag Race
         when: done
 
       lip_sync_for_your_legacy:
-        show: Drag Race
         when: done
 
       sashay_away:
-        show: Drag Race
         when: [evening, slipped]
 
       mirror_message:
-        show: Drag Race
         when: [evening, slipped]
 
       closing_line:
-        show: Drag Race
         when: evening
 
       porkchop:
-        show: Drag Race
         when: [weekly, slipped]
 
       the_save:
-        show: Drag Race
         when: slipped
 
       returning_queen:
-        show: Drag Race
         when: slipped
 
       lalaparuza:
-        show: Drag Race
         when: slipped
 
       reunion:
-        show: Drag Race
         when: weekly
 
       the_crowning:
-        show: Drag Race
         when: big_win
 
       meet_our_monsters:
-        show: Dragula
         when: weekly
 
       fright_feat:
-        show: Dragula
         when: morning
 
       the_boudoir:
-        show: Dragula
         when: afternoon
 
-      floor_show:
-        show: Dragula
+      floor_show: {}
 
-      four_tenets:
-        show: Dragula
+      four_tenets: {}
 
       boulets_judgment:
-        show: Dragula
         when: evening
 
       who_should_go_home:
-        show: Dragula
         when: [evening, slipped]
 
       the_cauldron:
-        show: Dragula
         when: [evening, slipped]
 
       extermination:
-        show: Dragula
         when: slipped
 
       the_plea:
-        show: Dragula
         when: slipped
 
       later_that_night:
-        show: Dragula
         when: [evening, slipped]
 
       key_of_life_and_death:
-        show: Dragula
         when: slipped
 
       extermination_survivor:
-        show: Dragula
         when: done
 
       supermonster_crowning:
-        show: Dragula
         when: big_win
 
   references:
@@ -402,244 +262,180 @@ pools:
     gives: [hook]
     entries:
       season_1_filter:
-        show: Drag Race
         when: slipped
 
       susan_lucci:
-        show: Drag Race
         when: slipped
 
       jujubees_unbeaten_run:
-        show: Drag Race
         when: [weekly, slipped]
 
-      mimi_lifts_india:
-        show: Drag Race
+      mimi_lifts_india: {}
 
       chads_cher:
-        show: Drag Race
         when: done
 
-      dida_and_natalie_cole:
-        show: Drag Race
+      dida_and_natalie_cole: {}
 
-      party_city:
-        show: Drag Race
+      party_city: {}
 
       coco_and_alyssa:
-        show: Drag Race
         when: slipped
 
       alyssas_katy_perry:
-        show: Drag Race
         when: slipped
 
       lil_poundcake:
-        show: Drag Race
         when: slipped
 
       ornacia:
-        show: Drag Race
         when: morning
 
-      kennedys_leap:
-        show: Drag Race
+      kennedys_leap: {}
 
       the_beyonce_curse:
-        show: Drag Race
         when: slipped
 
       gaga_in_the_werk_room:
-        show: Drag Race
         when: morning
 
       sashas_rose_petals:
-        show: Drag Race
         when: big_win
 
       sheas_finale:
-        show: Drag Race
         when: [weekly, slipped]
 
       monets_fake_split:
-        show: Drag Race
         when: afternoon
 
       not_next_time:
-        show: Drag Race
         when: slipped
 
       the_six_way_lip_sync:
-        show: Drag Race
         when: morning
 
       sorry_not_sorry:
-        show: Drag Race
         when: done
 
-      silky_strips_in_untucked:
-        show: Drag Race
+      silky_strips_in_untucked: {}
 
       rus_meh:
-        show: Drag Race
         when: done
 
       jans_face_crack:
-        show: Drag Race
         when: done
 
-      nicki_detests_it:
-        show: Drag Race
+      nicki_detests_it: {}
 
       the_virtual_finale:
-        show: Drag Race
         when: done
 
       kandys_boombox:
-        show: Drag Race
         when: morning
 
       ru_flips_off_utica:
-        show: Drag Race
         when: slipped
 
-      mary_queen_of_scots:
-        show: Drag Race
+      mary_queen_of_scots: {}
 
       willow_pills_variety_show:
-        show: Drag Race
         when: done
 
-      dejas_lil_jon:
-        show: Drag Race
+      dejas_lil_jon: {}
 
       boss_bitch:
-        show: Drag Race
         when: done
 
       the_immunity_potion:
-        show: Drag Race
         when: slipped
 
-      nymphias_bananas:
-        show: Drag Race
+      nymphias_bananas: {}
 
       the_badonka_dunk_tank:
-        show: Drag Race
         when: slipped
 
       onyas_crown_lip_sync:
-        show: Drag Race
         when: done
 
       myki_ranked_last:
-        show: Drag Race
         when: big_win
 
       nini_cocos_streak:
-        show: Drag Race
         when: done
 
       the_she_mergency_button:
-        show: Drag Race
         when: afternoon
 
       dancing_on_my_own:
-        show: Drag Race
         when: [evening, slipped]
 
       shut_up_and_drive:
-        show: Drag Race
         when: slipped
 
       ben_eliminates_herself:
-        show: Drag Race
         when: afternoon
 
-      lifes_not_fair:
-        show: Drag Race
+      lifes_not_fair: {}
 
-      the_same_wig:
-        show: Drag Race
+      the_same_wig: {}
 
-      club_96:
-        show: Drag Race
+      club_96: {}
 
       kylies_slip:
-        show: Drag Race
         when: done
 
-      silkys_barbie_girl:
-        show: Drag Race
+      silkys_barbie_girl: {}
 
       the_spoken_word_lip_sync:
-        show: Drag Race
         when: evening
 
       frock_destroyers:
-        show: Drag Race
         when: done
 
-      uk_hun:
-        show: Drag Race
+      uk_hun: {}
 
       the_lockdown_break:
-        show: Drag Race
         when: slipped
 
       ginny_lemon_walks_off:
-        show: Drag Race
         when: slipped
 
-      biminis_katie_price:
-        show: Drag Race
+      biminis_katie_price: {}
 
       danny_beards_clean_run:
-        show: Drag Race
         when: big_win
 
       love_most_of_ya:
-        show: Drag Race
         when: [evening, done]
 
       jimbos_mirror_message:
-        show: Drag Race
         when: [evening, slipped]
 
       eve_6000s_reveal:
-        show: Drag Race
         when: done
 
       kita_mean_wins_at_home:
-        show: Drag Race
         when: big_win
 
       the_mud_wrestling_cage:
-        show: Dragula
         when: slipped
 
       vander_volunteers:
-        show: Dragula
         when: done
 
       landons_spiders:
-        show: Dragula
         when: done
 
       landon_cider_the_first_king:
-        show: Dragula
         when: big_win
 
       saint_wins_resurrection:
-        show: Dragula
         when: big_win
 
       jay_kay_dies_twice:
-        show: Dragula
         when: slipped
 
       asias_stolen_wig:
-        show: Dragula
         when: done
 
       crystal_labeijas_walk_off:

@@ -12,7 +12,9 @@ now=''
 seed=''
 hook=''
 entries=''
+this_week=''
 chances=false
+themes=()
 
 fail() {
     echo "Picker FAILED: $1" >&2
@@ -35,7 +37,7 @@ read_flags() {
         case $1 in
             --chances) chances=true; shift; continue ;;
             --*) [ $# -ge 2 ] || fail "$1 needs a value" ;;
-            *) fail "unexpected $1" ;;
+            *) themes+=("$1"); shift; continue ;;
         esac
         case $1 in
             --options) options=$2 ;;
@@ -46,6 +48,7 @@ read_flags() {
             --seed) seed=$2 ;;
             --hook) hook=$2 ;;
             --entries) entries=$2 ;;
+            --this-week) this_week=$2 ;;
             *) fail "unknown flag $1" ;;
         esac
         shift 2
@@ -57,6 +60,7 @@ require_message_flags() {
     require --history "$history"
     require --theme "$theme"
     require --now "$now"
+    [ ${#themes[@]} -eq 0 ] || fail "unexpected ${themes[0]}"
 }
 
 choose_seed() {
@@ -104,17 +108,26 @@ pick_line() {
         ask_picker line
 }
 
+pick_theme() {
+    require --this-week "$this_week"
+    [ ${#themes[@]} -gt 0 ] || fail "pick theme needs every theme, in order"
+    printf '%s\n' "${themes[@]}" |
+        jq -nRr -L "$picker_dir" --arg this_week "$this_week" \
+            'include "pick"; report(theme([inputs]; $ARGS.named))'
+}
+
 main() {
     require_tools
     mode=${1-}
     case $mode in
-        hook | line) shift ;;
-        *) fail "usage: pick hook|line, as README.md beside it says" ;;
+        hook | line | theme) shift ;;
+        *) fail "usage: pick hook|line|theme, as README.md beside it says" ;;
     esac
     read_flags "$@"
     case $mode in
         hook) pick_hook ;;
         line) pick_line ;;
+        theme) pick_theme ;;
     esac
 }
 

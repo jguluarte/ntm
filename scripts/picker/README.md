@@ -2,11 +2,13 @@
 
 The picker picks what each message is built on: a hook, sometimes a speaker, and
 a line from the hook. It draws at random, weighted, and rests whatever was used
-lately, so a theme's whole range gets used.
+lately, so a theme's whole range gets used. It also moves the user on to the
+next theme each week.
 
-`ntm:style` runs it in its Pick step. The run fetches the theme's files and the
-history from the backend and hands them over as files; the picker reads them and
-prints a few lines. It needs `yq`, the Python one, and `jq`.
+`ntm:style` runs it: in its Pick step for each message, and in This week's theme
+for the weekly job. The run fetches the theme's files and the history from the
+backend and hands them over as files; the picker reads them and prints a few
+lines. It needs `yq`, the Python one, and `jq`.
 
 `references/theme-files.md` describes the files it reads.
 
@@ -19,6 +21,8 @@ pick hook --options <file> --history <file> --theme <name> --now <time>
 pick line --options <file> --history <file> --theme <name> --now <time>
     --hook <kind>/<slug> --entries <file>
     [--occasions <list>] [--seed <number>] [--chances]
+
+pick theme --this-week <theme> <theme>...
 ```
 
 | Flag          | What it is                                                              |
@@ -32,6 +36,8 @@ pick line --options <file> --history <file> --theme <name> --now <time>
 | `--chances`   | Print each candidate's numbers and chance in place of drawing           |
 | `--hook`      | The hook `pick hook` printed                                            |
 | `--entries`   | The hook's entry file, the file its pool names, as YAML                 |
+| `--this-week` | This week's theme                                                       |
+| `<theme>...`  | Every theme, in the order the Themes part of `%Settings` lists them     |
 
 ## What it prints
 
@@ -57,6 +63,9 @@ is a riff that has one, or `line: none` when the entry has no line that fits.
 line: Every lie leaves a crumb.
 bend: Treat the slipped task as the crumb that gives away what the user did.
 ```
+
+`pick theme` prints the theme after this week's, in the list's order, and the
+first after the last: `theme: Harbor`. With one theme, it prints that one.
 
 When it can't pick, it prints one line, `Picker FAILED: <why>`, and exits 1:
 when no hook fits and every entry has a `when`, when an input is missing or

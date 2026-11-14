@@ -250,6 +250,18 @@ bend: Ask the slipped task where it was on the day it was planned." \
         "$(line_of Casebook-scenes.yaml scenes/stakeout evening)"
 }
 
+@test "theme: the next theme follows this week's" {
+    expect "theme: Harbor" "$(pick theme --this-week Casebook Casebook Harbor)"
+}
+
+@test "theme: the first theme follows the last" {
+    expect "theme: Casebook" "$(pick theme --this-week Harbor Casebook Harbor)"
+}
+
+@test "theme: a single theme follows itself" {
+    expect "theme: Casebook" "$(pick theme --this-week Casebook Casebook)"
+}
+
 @test "malformed: an options file that isn't YAML fails in one line" {
     echo 'pools: [unclosed' > "$BATS_TEST_TMPDIR/options.yaml"
     run pick hook --options "$BATS_TEST_TMPDIR/options.yaml" \

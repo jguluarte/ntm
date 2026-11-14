@@ -149,6 +149,20 @@ that have a value:
 
 Then drop the entries older than the `Keep:` line, and save.
 
+## This week's theme
+
+The weekly job moves the user to the next theme when the Themes part of
+`%Settings` lists more than one. Run the picker with this week's theme and every
+theme in All themes, in their order:
+
+```
+pick theme --this-week <this week's theme> <theme> <theme>...
+```
+
+It prints `theme: <theme>`. Write that theme as This week's theme under Themes,
+and save `%Settings`. When the picker can't run, take the theme after this
+week's in All themes, or the first after the last.
+
 ## Picking without the picker
 
 For a theme not in files yet, or when the picker fails.

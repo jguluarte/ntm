@@ -213,5 +213,12 @@ def line($files; $flags):
       else line_pick($lines; $flags)
       end;
 
+def next_theme($this_week):
+    (index($this_week) // -1) as $at
+    | .[($at + 1) % length];
+
+def theme($themes; $flags):
+    "theme: \($themes | next_theme($flags.this_week))";
+
 def report(answer):
     try answer catch ("Picker FAILED: \(.)\n" | halt_error(1));

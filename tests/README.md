@@ -21,3 +21,10 @@ A failing test means a change modified the contract. When the change is meant,
 update `expected/` in the same PR and say so in its description: the user sees
 the rename in the diff and can push back before merging. When it isn't, put the
 name back. `git log tests/expected/` is the record of every name change.
+
+## The picker
+
+`picker.bats` holds the picker, `scripts/picker/pick`, to what its reference
+says, on small made-up themes in `picker/`: `Casebook`, with a history, and
+`Solo`, a theme of one person. Each test reads one number or set from
+`pick --chances`, or one pick at a fixed `--seed`, so no test depends on luck.

@@ -1,0 +1,44 @@
+checksums:
+  Casebook-characters.yaml: 9f86d081884c7d65
+  Casebook-scenes.yaml: 2c26b46b68ffc68f
+
+pools:
+  characters:
+    file: Casebook-characters.yaml
+    gives: [hook, speaker]
+    half_life_days: 2
+    entries:
+      detective:
+        weight: 0.57
+        line_half_life_days: 2
+        score: 0.0
+      inspector:
+        when: slipped
+        weight: 0.25
+
+  shared_lines:
+    file: Casebook-characters.yaml
+    gives: [hook]
+    half_life_days: 2
+    entries:
+      any_time:
+        weight: 0.25
+      case_closed:
+        when: done
+        weight: 0.25
+        score: 1.0
+      evenings:
+        when: [evening, weekly]
+        weight: 0.25
+      cold_trail:
+        when: [evening, slipped]
+        weight: 0.25
+      big_win:
+        when: big_win
+        weight: 0.25
+
+  scenes:
+    file: Casebook-scenes.yaml
+    gives: [hook]
+    entries:
+      stakeout:

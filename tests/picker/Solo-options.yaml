@@ -1,0 +1,7 @@
+pools:
+  characters:
+    file: Solo-characters.yaml
+    gives: [hook, speaker]
+    speaker_rate: 0
+    entries:
+      narrator:

@@ -159,23 +159,31 @@ shared_lines:
 ## `when`
 
 An entry or riff that fits only some occasions says which with `when`: one
-occasion, or a list of several, any of which fits. No `when` means any occasion.
-The occasions are one fixed set:
+occasion, or a list. No `when` means any occasion. The occasions are one fixed
+set, of two kinds: which reminder a message is, and what happened to its tasks.
 
-| `when`      | The occasion                      |
-| ----------- | --------------------------------- |
-| `morning`   | The morning reminder              |
-| `afternoon` | The afternoon reminder            |
-| `evening`   | The evening reminder              |
-| `weekly`    | The weekly planning message       |
-| `slipped`   | A task in the message has slipped |
-| `done`      | A task in the message got done    |
-| `big_win`   | A big effort, as below            |
+| `when`      | Kind           | The occasion                      |
+| ----------- | -------------- | --------------------------------- |
+| `morning`   | Which reminder | The morning reminder              |
+| `afternoon` | Which reminder | The afternoon reminder            |
+| `evening`   | Which reminder | The evening reminder              |
+| `weekly`    | Which reminder | The weekly planning message       |
+| `slipped`   | What happened  | A task in the message has slipped |
+| `done`      | What happened  | A task in the message got done    |
+| `big_win`   | What happened  | A big effort, as below            |
+
+A message is one reminder at most, and any of what happened that holds. An entry
+fits a message when its `when` names no reminder or this message's reminder, and
+names nothing that happened or something that happened in this message. So
+`when: evening` fits any evening, `when: slipped` any message with a slipped
+task, `when: [evening, slipped]` only an evening with a slipped task, and
+`when: [morning, weekly]` either reminder.
 
 A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that
 slipped many times finally closed. An ordinary day of doing what was planned is
-never a big win.
+never a big win. A message with a big win takes its hook only from the entries
+kept for `big_win`.
 
 ## The options file
 
@@ -234,8 +242,9 @@ pools:
 
 The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
-its checksum differs. The picker's own reference, a later PR, defines how each
-number is computed.
+its checksum differs. The picker's own reference,
+`${CLAUDE_PLUGIN_ROOT}/scripts/picker/README.md`, defines how each number is
+computed.
 
 | Field                 | What it is                                                              |
 | --------------------- | ----------------------------------------------------------------------- |
@@ -258,10 +267,11 @@ out, and will record the line drawn. The run works out the occasions: which
 reminder this is, whether a task in it has slipped, whether one got done, and
 whether it's a big win.
 
-The picker keeps the entries whose `when` fits. Each message gets exactly one
-hook, drawn from all the entries in hook pools together, each entry counting
-once at its weight. An entry's score raises or lowers its chance, and an entry
-picked recently is less likely while it rests.
+The picker keeps the entries whose `when` fits, or when none does, the entries
+without `when`. Each message gets exactly one hook, drawn from all the entries
+in hook pools together, each entry counting once at its weight. An entry's score
+raises or lowers its chance, and an entry picked recently is less likely while
+it rests.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

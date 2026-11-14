@@ -1,0 +1,50 @@
+about: >-
+  The people of the story. A picked character speaks the whole message, in their
+  own manner, built on the line drawn from them.
+
+characters:
+  detective:
+    name: The Detective
+    manner: >-
+      Calm and precise, faintly bored by the obvious.
+    lines:
+      - The answer was on the table.
+      - Nobody leaves this room until I have finished.
+    riffs:
+      - line: Every lie leaves a crumb.
+        bend: >-
+          Treat the slipped task as the crumb that gives away what the user did
+          instead.
+      - line: File it under closed.
+        when: done
+  inspector:
+    name: The Inspector
+    manner: >-
+      Gruff, tired, and certain the user knows more than they say.
+    riffs:
+      - line: Where were you that night?
+        bend: >-
+          Ask the slipped task where it was on the day it was planned.
+
+shared_lines:
+  about: >-
+    Lines any character can say.
+  any_time:
+    lines:
+      - Somebody in this house is lying.
+  case_closed:
+    when: done
+    lines:
+      - Another one for the files.
+  evenings:
+    when: [evening, weekly]
+    lines:
+      - Draw the curtains; we begin.
+  cold_trail:
+    when: [evening, slipped]
+    lines:
+      - The trail goes cold after dark.
+  big_win:
+    when: big_win
+    lines:
+      - Gather everyone in the drawing room.

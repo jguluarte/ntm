@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+picker_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+mode=''
+options=''
+history=''
+theme=''
+occasions=''
+now=''
+seed=''
+hook=''
+entries=''
+chances=false
+
+fail() {
+    echo "Picker FAILED: $1" >&2
+    exit 1
+}
+
+require_tools() {
+    local tool
+    for tool in yq jq; do
+        command -v "$tool" > /dev/null || fail "$tool isn't installed"
+    done
+}
+
+require() {
+    [ -n "$2" ] || fail "pick $mode needs $1"
+}
+
+read_flags() {
+    while [ $# -gt 0 ]; do
+        case $1 in
+            --chances) chances=true; shift; continue ;;
+            --*) [ $# -ge 2 ] || fail "$1 needs a value" ;;
+            *) fail "unexpected $1" ;;
+        esac
+        case $1 in
+            --options) options=$2 ;;
+            --history) history=$2 ;;
+            --theme) theme=$2 ;;
+            --occasions) occasions=$2 ;;
+            --now) now=$2 ;;
+            --seed) seed=$2 ;;
+            --hook) hook=$2 ;;
+            --entries) entries=$2 ;;
+            *) fail "unknown flag $1" ;;
+        esac
+        shift 2
+    done
+}
+
+require_message_flags() {
+    require --options "$options"
+    require --history "$history"
+    require --theme "$theme"
+    require --now "$now"
+}
+
+choose_seed() {
+    seed=${seed:-$(od -An -N4 -tu4 /dev/urandom | tr -d ' ')}
+    [[ $seed =~ ^[0-9]+$ ]] || fail "--seed takes a whole number"
+}
+
+yaml_as_json() {
+    [ -r "$1" ] || fail "can't read $1"
+    yq -c . "$1" 2> /dev/null || fail "$1 isn't YAML"
+}
+
+history_as_json() {
+    [ -r "$1" ] || fail "can't read $1"
+    jq -cs . "$1" 2> /dev/null || fail "$1 isn't JSON lines"
+}
+
+ask_picker() {
+    jq -nr -L "$picker_dir" \
+        --arg theme "$theme" --arg occasions "$occasions" --arg now "$now" \
+        --arg seed "$seed" --arg hook "$hook" --argjson chances "$chances" \
+        "include \"pick\"; report($1([inputs]; \$ARGS.named))"
+}
+
+pick_hook() {
+    require_message_flags
+    choose_seed
+    local options_json history_json
+    options_json=$(yaml_as_json "$options")
+    history_json=$(history_as_json "$history")
+    printf '%s\n' "$options_json" "$history_json" | ask_picker hook
+}
+
+pick_line() {
+    require_message_flags
+    require --hook "$hook"
+    require --entries "$entries"
+    [[ $hook == */* ]] || fail "--hook takes <kind>/<slug>"
+    choose_seed
+    local options_json history_json entries_json
+    options_json=$(yaml_as_json "$options")
+    history_json=$(history_as_json "$history")
+    entries_json=$(yaml_as_json "$entries")
+    printf '%s\n' "$options_json" "$history_json" "$entries_json" |
+        ask_picker line
+}
+
+main() {
+    require_tools
+    mode=${1-}
+    case $mode in
+        hook | line) shift ;;
+        *) fail "usage: pick hook|line, as README.md beside it says" ;;
+    esac
+    read_flags "$@"
+    case $mode in
+        hook) pick_hook ;;
+        line) pick_line ;;
+    esac
+}
+
+main "$@"

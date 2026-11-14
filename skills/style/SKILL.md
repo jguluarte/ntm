@@ -77,17 +77,11 @@ with the theme's name.
 
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
 final reply, add its entry at the top of the Entries part. An entry is one JSON
-line, written with only the fields that have a value. Spread over lines here:
+line, written compact, with no spaces or line breaks added, and only the fields
+that have a value:
 
-```json
-{
-    "sent": "2026-11-13 08:45",
-    "reminder": "morning",
-    "theme": "Deep space",
-    "hook": "the launch window",
-    "opening": "Shelf day, one bracket first",
-    "tasks": [{ "id": "ABC-12", "planned": "2026-11-13" }]
-}
+```
+{"sent":"2026-11-13 08:45","reminder":"morning","hook":"launch","tasks":[{"id":"ABC-12","planned":"2026-11-13"}]}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone

@@ -1,869 +1,690 @@
 # What the job picks from per message: a speaker, and the motifs and references
 # for a hook.
-speakers:
-  - name: RuPaul
-    show: Drag Race
-    appears_in:
-      - werk room walkthrough
-      - main stage
-
-  - name: Michelle Visage
-    show: Drag Race
-    appears_in:
-      - main stage
-      - Whatcha Packin'
-
-  - name: Ross Mathews
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Carson Kressley
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Ts Madison
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Law Roach
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Alan Carr
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Graham Norton
-    show: Drag Race
-    appears_in:
-      - main stage
-
-  - name: Brooke Lynn Hytes
-    show: Drag Race
-    appears_in:
-      - werk room
-      - main stage
-
-  - name: Pangina Heals
-    show: Drag Race
-    appears_in:
-      - werk room
-      - reading challenge
-
-  - name: Nicky Doll
-    show: Drag Race
-    appears_in:
-      - werk room
-
-  - name: Dracmorda
-    show: Dragula
-    appears_in:
-      - cold open
-      - main stage
-
-  - name: Swanthula
-    show: Dragula
-    appears_in:
-      - intro
-      - main stage
-
-  - name: Bianca Del Rio
-    show: Drag Race
-    appears_in:
-      - werk room
-      - confessional
-
-  - name: Latrice Royale
-    show: Drag Race
-    appears_in:
-      - werk room
-
-  - name: Alyssa Edwards
-    show: Drag Race
-    appears_in:
-      - werk room
-      - Untucked
-      - confessional
-
-  - name: Katya
-    show: Drag Race
-    appears_in:
-      - werk room
-      - main stage
-
-  - name: Trixie Mattel
-    show: Drag Race
-    appears_in:
-      - main stage
-      - goodbye mirror
-
-  - name: Alaska
-    show: Drag Race
-    appears_in:
-      - werk room
-      - Snatch Game
-
-  - name: Tatianna
-    show: Drag Race
-    appears_in:
-      - reading challenge
-      - reunion
-
-  - name: Detox
-    show: Drag Race
-    appears_in:
-      - werk room
-
-  - name: Raven
-    show: Drag Race
-    appears_in:
-      - confessional
-      - reunion
-
-  - name: Laganja Estranja
-    show: Drag Race
-    appears_in:
-      - werk room
-      - Untucked
-
-  - name: Vanessa Vanjie Mateo
-    show: Drag Race
-    appears_in:
-      - werk room
-      - main stage
-
-  - name: Kandy Muse
-    show: Drag Race
-    appears_in:
-      - Untucked
-      - main stage
-
-  - name: Plane Jane
-    show: Drag Race
-    appears_in:
-      - confessional
-
-  - name: Mo Heart
-    show: Drag Race
-    appears_in:
-      - confessional
-
-  - name: Jinkx Monsoon
-    show: Drag Race
-    appears_in:
-      - werk room
-      - Snatch Game
-
-  - name: Bob the Drag Queen
-    show: Drag Race
-    appears_in:
-      - Snatch Game
-      - smear-ad challenge
-
-  - name: Willam
-    show: Drag Race
-    appears_in:
-      - Untucked
-
-  - name: Monét X Change
-    show: Drag Race
-    appears_in:
-      - werk room
-      - main stage
-
-  - name: Baga Chipz
-    show: Drag Race
-    appears_in:
-      - Snatch Game
-
-  - name: Tammie Brown
-    show: Drag Race
-    appears_in:
-      - Untucked
-
-  - name: Jujubee
-    show: Drag Race
-    appears_in:
-      - reading challenge
-      - Snatch Game
-
-  - name: Roxxxy Andrews
-    show: Drag Race
-    appears_in:
-      - main stage
-      - reading challenge
-
-  - name: Adore Delano
-    show: Drag Race
-    appears_in:
-      - werk room
-      - Snatch Game
-
-  - name: Ginger Minj
-    show: Drag Race
-    appears_in:
-      - reading challenge
-      - werk room
-      - Snatch Game
-
-  - name: Jasmine Masters
-    show: Drag Race
-    appears_in:
-      - werk room
-      - reading challenge
-      - YouTube videos
-
-  - name: Valentina
-    show: Drag Race
-    appears_in:
-      - reading challenge
-      - main stage
-
-  - name: Jaida Essence Hall
-    show: Drag Race
-    appears_in:
-      - debate challenge
-      - main stage
-
-  - name: Heidi N Closet
-    show: Drag Race
-    appears_in:
-      - main stage
-      - Untucked
-
-  - name: Jimbo
-    show: Drag Race
-    appears_in:
-      - Snatch Game
-      - main stage
-
-  - name: Koco Caine
-    show: Dragula
-    appears_in:
-      - main stage
-      - werk room
-
-motifs:
-  - name: Previously on
-    show: Drag Race
-    when:
-      - morning
-      - weekly
-
-  - name: Werk room entrance
-    show: Drag Race
-    when:
-      - morning
-      - weekly
-
-  - name: The morning after
-    show: Drag Race
-    when:
-      - morning
-      - slipped
-
-  - name: Video message
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Challenge announcement
-    show: Drag Race
-    when:
-      - morning
-      - weekly
-
-  - name: Picking teams
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Werk room walkthrough
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: The twist
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Getting ready
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Confessional
-    show: Drag Race
-
-  - name: Design challenge
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Reading challenge
-    show: Drag Race
-
-  - name: Puppets
-    show: Drag Race
-
-  - name: Untucked
-    show: Drag Race
-    when:
-      - evening
-
-  - name: Snatch Game
-    show: Drag Race
-
-  - name: Rusical
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Girl group
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Talent show
-    show: Drag Race
-
-  - name: Makeover
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: The roast
-    show: Drag Race
-
-  - name: The ball
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: The runway
-    show: Drag Race
-
-  - name: The reveal
-    show: Drag Race
-    when:
-      - done
-
-  - name: The critiques
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Safe
-    show: Drag Race
-    when:
-      - done
-
-  - name: Deliberation
-    show: Drag Race
-    when:
-      - evening
-
-  - name: Lip sync for your life
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Shantay, you stay
-    show: Drag Race
-    when:
-      - done
-
-  - name: Challenge win
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: RuPeter badge
-    show: Drag Race
-    when:
-      - done
-
-  - name: Lip sync for your legacy
-    show: Drag Race
-    when:
-      - done
-
-  - name: Sashay away
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Mirror message
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Closing line
-    show: Drag Race
-    when:
-      - evening
-
-  - name: Porkchop
-    show: Drag Race
-    when:
-      - weekly
-      - slipped
-
-  - name: The save
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Returning queen
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: LaLaPaRUza
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Reunion
-    show: Drag Race
-    when:
-      - weekly
-
-  - name: The crowning
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: Meet our monsters
-    show: Dragula
-    when:
-      - weekly
-
-  - name: Fright feat
-    show: Dragula
-    when:
-      - morning
-
-  - name: The Boudoir
-    show: Dragula
-    when:
-      - afternoon
-
-  - name: Floor show
-    show: Dragula
-
-  - name: Four tenets
-    show: Dragula
-
-  - name: Boulets' judgment
-    show: Dragula
-    when:
-      - evening
-
-  - name: Who should go home
-    show: Dragula
-    when:
-      - evening
-      - slipped
-
-  - name: The Cauldron
-    show: Dragula
-    when:
-      - evening
-      - slipped
-
-  - name: Extermination
-    show: Dragula
-    when:
-      - slipped
-
-  - name: The plea
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Later that night
-    show: Dragula
-    when:
-      - evening
-      - slipped
-
-  - name: Key of Life and Death
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Extermination survivor
-    show: Dragula
-    when:
-      - done
-
-  - name: Supermonster crowning
-    show: Dragula
-    when:
-      - big_win
-
-references:
-  - name: The Season 1 filter
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: The Susan Lucci of the competition
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Jujubee's unbeaten run
-    show: Drag Race
-    when:
-      - weekly
-      - slipped
-
-  - name: Mimi lifts India
-    show: Drag Race
-
-  - name: Chad's Cher
-    show: Drag Race
-    when:
-      - done
-
-  - name: DiDa and Natalie Cole
-    show: Drag Race
-
-  - name: Party City
-    show: Drag Race
-
-  - name: Coco and Alyssa
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Alyssa's Katy Perry
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Lil Poundcake
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Ornacia
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Kennedy's leap
-    show: Drag Race
-
-  - name: The Beyoncé curse
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Gaga in the werk room
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Sasha's rose petals
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: Shea's finale
-    show: Drag Race
-    when:
-      - weekly
-      - slipped
-
-  - name: Monét's fake split
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Not next time
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: The six-way lip sync
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Sorry Not Sorry
-    show: Drag Race
-    when:
-      - done
-
-  - name: Silky strips in Untucked
-    show: Drag Race
-
-  - name: Ru's meh
-    show: Drag Race
-    when:
-      - done
-
-  - name: Jan's face crack
-    show: Drag Race
-    when:
-      - done
-
-  - name: Nicki detests it
-    show: Drag Race
-
-  - name: The virtual finale
-    show: Drag Race
-    when:
-      - done
-
-  - name: Kandy's boombox
-    show: Drag Race
-    when:
-      - morning
-
-  - name: Ru flips off Utica
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Mary, Queen of Scots
-    show: Drag Race
-
-  - name: Willow Pill's variety show
-    show: Drag Race
-    when:
-      - done
-
-  - name: DeJa's Lil Jon
-    show: Drag Race
-
-  - name: Boss Bitch
-    show: Drag Race
-    when:
-      - done
-
-  - name: The immunity potion
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Nymphia's bananas
-    show: Drag Race
-
-  - name: The Badonka Dunk Tank
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Onya's crown lip sync
-    show: Drag Race
-    when:
-      - done
-
-  - name: Myki ranked last
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: Nini Coco's streak
-    show: Drag Race
-    when:
-      - done
-
-  - name: The she-mergency button
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Dancing on My Own
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Shut Up and Drive
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Ben eliminates herself
-    show: Drag Race
-    when:
-      - afternoon
-
-  - name: Life's not fair
-    show: Drag Race
-
-  - name: The same wig
-    show: Drag Race
-
-  - name: Club 96
-    show: Drag Race
-
-  - name: Kylie's slip
-    show: Drag Race
-    when:
-      - done
-
-  - name: Silky's Barbie Girl
-    show: Drag Race
-
-  - name: The spoken-word lip sync
-    show: Drag Race
-    when:
-      - evening
-
-  - name: Frock Destroyers
-    show: Drag Race
-    when:
-      - done
-
-  - name: UK Hun?
-    show: Drag Race
-
-  - name: The lockdown break
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Ginny Lemon walks off
-    show: Drag Race
-    when:
-      - slipped
-
-  - name: Bimini's Katie Price
-    show: Drag Race
-
-  - name: Danny Beard's clean run
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: Love most of ya
-    show: Drag Race
-    when:
-      - evening
-      - done
-
-  - name: Jimbo's mirror message
-    show: Drag Race
-    when:
-      - evening
-      - slipped
-
-  - name: Eve 6000's reveal
-    show: Drag Race
-    when:
-      - done
-
-  - name: Kita Mean wins at home
-    show: Drag Race
-    when:
-      - big_win
-
-  - name: The mud-wrestling cage
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Vander volunteers
-    show: Dragula
-    when:
-      - done
-
-  - name: Landon's spiders
-    show: Dragula
-    when:
-      - done
-
-  - name: Landon Cider, the first king
-    show: Dragula
-    when:
-      - big_win
-
-  - name: Saint wins Resurrection
-    show: Dragula
-    when:
-      - big_win
-
-  - name: Jay Kay dies twice
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Asia's stolen wig
-    show: Dragula
-    when:
-      - done
-
-  - name: Crystal LaBeija's walk-off
-    when:
-      - slipped
-
-  - name: Dorian Corey on shade
-    when:
-      - slipped
-
-  - name: Junior LaBeija's opulence
-    when:
-      - big_win
-
-  - name: Courtney comes back
-    when:
-      - slipped
-
-  - name: Pink Flamingos
-
-  - name: Rocky Horror at midnight
-    when:
-      - weekly
-
-  - name: No wire hangers
-
-  - name: Baby Jane's rat
-    when:
-      - slipped
-
-  - name: Ready for my close-up
-
-  - name: The curtain dress
-    when:
-      - done
-
-  - name: Little Edie's costume for the day
-    when:
-      - morning
-
-  - name: Picture it
-    when:
-      - weekly
-
-  - name: I don't know her
-    when:
-      - slipped
-
-  - name: Diana Ross in the rain
-    when:
-      - big_win
-
-  - name: Judy at Carnegie Hall
-    when:
-      - big_win
-
-  - name: Cher's farewell tour
-    when:
-      - slipped
-
-  - name: The wig in the toilet
+pools:
+  actors:
+    file: Dragify-actors.yaml
+    gives: [speaker]
+    entries:
+      rupaul:
+        show: Drag Race
+        appears_in: [werk room walkthrough, main stage]
+
+      michelle_visage:
+        show: Drag Race
+        appears_in: [main stage, Whatcha Packin']
+
+      ross_mathews:
+        show: Drag Race
+        appears_in: [main stage]
+
+      carson_kressley:
+        show: Drag Race
+        appears_in: [main stage]
+
+      ts_madison:
+        show: Drag Race
+        appears_in: [main stage]
+
+      law_roach:
+        show: Drag Race
+        appears_in: [main stage]
+
+      alan_carr:
+        show: Drag Race
+        appears_in: [main stage]
+
+      graham_norton:
+        show: Drag Race
+        appears_in: [main stage]
+
+      brooke_lynn_hytes:
+        show: Drag Race
+        appears_in: [werk room, main stage]
+
+      pangina_heals:
+        show: Drag Race
+        appears_in: [werk room, reading challenge]
+
+      nicky_doll:
+        show: Drag Race
+        appears_in: [werk room]
+
+      dracmorda:
+        show: Dragula
+        appears_in: [cold open, main stage]
+
+      swanthula:
+        show: Dragula
+        appears_in: [intro, main stage]
+
+      bianca_del_rio:
+        show: Drag Race
+        appears_in: [werk room, confessional]
+
+      latrice_royale:
+        show: Drag Race
+        appears_in: [werk room]
+
+      alyssa_edwards:
+        show: Drag Race
+        appears_in: [werk room, Untucked, confessional]
+
+      katya:
+        show: Drag Race
+        appears_in: [werk room, main stage]
+
+      trixie_mattel:
+        show: Drag Race
+        appears_in: [main stage, goodbye mirror]
+
+      alaska:
+        show: Drag Race
+        appears_in: [werk room, Snatch Game]
+
+      tatianna:
+        show: Drag Race
+        appears_in: [reading challenge, reunion]
+
+      detox:
+        show: Drag Race
+        appears_in: [werk room]
+
+      raven:
+        show: Drag Race
+        appears_in: [confessional, reunion]
+
+      laganja_estranja:
+        show: Drag Race
+        appears_in: [werk room, Untucked]
+
+      vanessa_vanjie_mateo:
+        show: Drag Race
+        appears_in: [werk room, main stage]
+
+      kandy_muse:
+        show: Drag Race
+        appears_in: [Untucked, main stage]
+
+      plane_jane:
+        show: Drag Race
+        appears_in: [confessional]
+
+      mo_heart:
+        show: Drag Race
+        appears_in: [confessional]
+
+      jinkx_monsoon:
+        show: Drag Race
+        appears_in: [werk room, Snatch Game]
+
+      bob_the_drag_queen:
+        show: Drag Race
+        appears_in: [Snatch Game, smear-ad challenge]
+
+      willam:
+        show: Drag Race
+        appears_in: [Untucked]
+
+      monet_x_change:
+        show: Drag Race
+        appears_in: [werk room, main stage]
+
+      baga_chipz:
+        show: Drag Race
+        appears_in: [Snatch Game]
+
+      tammie_brown:
+        show: Drag Race
+        appears_in: [Untucked]
+
+      jujubee:
+        show: Drag Race
+        appears_in: [reading challenge, Snatch Game]
+
+      roxxxy_andrews:
+        show: Drag Race
+        appears_in: [main stage, reading challenge]
+
+      adore_delano:
+        show: Drag Race
+        appears_in: [werk room, Snatch Game]
+
+      ginger_minj:
+        show: Drag Race
+        appears_in: [reading challenge, werk room, Snatch Game]
+
+      jasmine_masters:
+        show: Drag Race
+        appears_in: [werk room, reading challenge, YouTube videos]
+
+      valentina:
+        show: Drag Race
+        appears_in: [reading challenge, main stage]
+
+      jaida_essence_hall:
+        show: Drag Race
+        appears_in: [debate challenge, main stage]
+
+      heidi_n_closet:
+        show: Drag Race
+        appears_in: [main stage, Untucked]
+
+      jimbo:
+        show: Drag Race
+        appears_in: [Snatch Game, main stage]
+
+      koco_caine:
+        show: Dragula
+        appears_in: [main stage, werk room]
+
+  any_actor_lines:
+    file: Dragify-actors.yaml
+    gives: [hook]
+    entries:
+      any_time: {}
+
+      big_win:
+        when: big_win
+
+  motifs:
+    file: Dragify-motifs.yaml
+    gives: [hook]
+    entries:
+      previously_on:
+        show: Drag Race
+        when: [morning, weekly]
+
+      werk_room_entrance:
+        show: Drag Race
+        when: [morning, weekly]
+
+      the_morning_after:
+        show: Drag Race
+        when: [morning, slipped]
+
+      video_message:
+        show: Drag Race
+        when: morning
+
+      challenge_announcement:
+        show: Drag Race
+        when: [morning, weekly]
+
+      picking_teams:
+        show: Drag Race
+        when: morning
+
+      werk_room_walkthrough:
+        show: Drag Race
+        when: afternoon
+
+      the_twist:
+        show: Drag Race
+        when: afternoon
+
+      getting_ready:
+        show: Drag Race
+        when: afternoon
+
+      confessional:
+        show: Drag Race
+
+      design_challenge:
+        show: Drag Race
+        when: afternoon
+
+      reading_challenge:
+        show: Drag Race
+
+      puppets:
+        show: Drag Race
+
+      untucked:
+        show: Drag Race
+        when: evening
+
+      snatch_game:
+        show: Drag Race
+
+      rusical:
+        show: Drag Race
+        when: afternoon
+
+      girl_group:
+        show: Drag Race
+        when: afternoon
+
+      talent_show:
+        show: Drag Race
+
+      makeover:
+        show: Drag Race
+        when: afternoon
+
+      the_roast:
+        show: Drag Race
+
+      the_ball:
+        show: Drag Race
+        when: afternoon
+
+      the_runway:
+        show: Drag Race
+
+      the_reveal:
+        show: Drag Race
+        when: done
+
+      the_critiques:
+        show: Drag Race
+        when: slipped
+
+      safe:
+        show: Drag Race
+        when: done
+
+      deliberation:
+        show: Drag Race
+        when: evening
+
+      lip_sync_for_your_life:
+        show: Drag Race
+        when: [evening, slipped]
+
+      shantay_you_stay:
+        show: Drag Race
+        when: done
+
+      challenge_win:
+        show: Drag Race
+        when: big_win
+
+      rupeter_badge:
+        show: Drag Race
+        when: done
+
+      lip_sync_for_your_legacy:
+        show: Drag Race
+        when: done
+
+      sashay_away:
+        show: Drag Race
+        when: [evening, slipped]
+
+      mirror_message:
+        show: Drag Race
+        when: [evening, slipped]
+
+      closing_line:
+        show: Drag Race
+        when: evening
+
+      porkchop:
+        show: Drag Race
+        when: [weekly, slipped]
+
+      the_save:
+        show: Drag Race
+        when: slipped
+
+      returning_queen:
+        show: Drag Race
+        when: slipped
+
+      lalaparuza:
+        show: Drag Race
+        when: slipped
+
+      reunion:
+        show: Drag Race
+        when: weekly
+
+      the_crowning:
+        show: Drag Race
+        when: big_win
+
+      meet_our_monsters:
+        show: Dragula
+        when: weekly
+
+      fright_feat:
+        show: Dragula
+        when: morning
+
+      the_boudoir:
+        show: Dragula
+        when: afternoon
+
+      floor_show:
+        show: Dragula
+
+      four_tenets:
+        show: Dragula
+
+      boulets_judgment:
+        show: Dragula
+        when: evening
+
+      who_should_go_home:
+        show: Dragula
+        when: [evening, slipped]
+
+      the_cauldron:
+        show: Dragula
+        when: [evening, slipped]
+
+      extermination:
+        show: Dragula
+        when: slipped
+
+      the_plea:
+        show: Dragula
+        when: slipped
+
+      later_that_night:
+        show: Dragula
+        when: [evening, slipped]
+
+      key_of_life_and_death:
+        show: Dragula
+        when: slipped
+
+      extermination_survivor:
+        show: Dragula
+        when: done
+
+      supermonster_crowning:
+        show: Dragula
+        when: big_win
+
+  references:
+    file: Dragify-references.yaml
+    gives: [hook]
+    entries:
+      season_1_filter:
+        show: Drag Race
+        when: slipped
+
+      susan_lucci:
+        show: Drag Race
+        when: slipped
+
+      jujubees_unbeaten_run:
+        show: Drag Race
+        when: [weekly, slipped]
+
+      mimi_lifts_india:
+        show: Drag Race
+
+      chads_cher:
+        show: Drag Race
+        when: done
+
+      dida_and_natalie_cole:
+        show: Drag Race
+
+      party_city:
+        show: Drag Race
+
+      coco_and_alyssa:
+        show: Drag Race
+        when: slipped
+
+      alyssas_katy_perry:
+        show: Drag Race
+        when: slipped
+
+      lil_poundcake:
+        show: Drag Race
+        when: slipped
+
+      ornacia:
+        show: Drag Race
+        when: morning
+
+      kennedys_leap:
+        show: Drag Race
+
+      the_beyonce_curse:
+        show: Drag Race
+        when: slipped
+
+      gaga_in_the_werk_room:
+        show: Drag Race
+        when: morning
+
+      sashas_rose_petals:
+        show: Drag Race
+        when: big_win
+
+      sheas_finale:
+        show: Drag Race
+        when: [weekly, slipped]
+
+      monets_fake_split:
+        show: Drag Race
+        when: afternoon
+
+      not_next_time:
+        show: Drag Race
+        when: slipped
+
+      the_six_way_lip_sync:
+        show: Drag Race
+        when: morning
+
+      sorry_not_sorry:
+        show: Drag Race
+        when: done
+
+      silky_strips_in_untucked:
+        show: Drag Race
+
+      rus_meh:
+        show: Drag Race
+        when: done
+
+      jans_face_crack:
+        show: Drag Race
+        when: done
+
+      nicki_detests_it:
+        show: Drag Race
+
+      the_virtual_finale:
+        show: Drag Race
+        when: done
+
+      kandys_boombox:
+        show: Drag Race
+        when: morning
+
+      ru_flips_off_utica:
+        show: Drag Race
+        when: slipped
+
+      mary_queen_of_scots:
+        show: Drag Race
+
+      willow_pills_variety_show:
+        show: Drag Race
+        when: done
+
+      dejas_lil_jon:
+        show: Drag Race
+
+      boss_bitch:
+        show: Drag Race
+        when: done
+
+      the_immunity_potion:
+        show: Drag Race
+        when: slipped
+
+      nymphias_bananas:
+        show: Drag Race
+
+      the_badonka_dunk_tank:
+        show: Drag Race
+        when: slipped
+
+      onyas_crown_lip_sync:
+        show: Drag Race
+        when: done
+
+      myki_ranked_last:
+        show: Drag Race
+        when: big_win
+
+      nini_cocos_streak:
+        show: Drag Race
+        when: done
+
+      the_she_mergency_button:
+        show: Drag Race
+        when: afternoon
+
+      dancing_on_my_own:
+        show: Drag Race
+        when: [evening, slipped]
+
+      shut_up_and_drive:
+        show: Drag Race
+        when: slipped
+
+      ben_eliminates_herself:
+        show: Drag Race
+        when: afternoon
+
+      lifes_not_fair:
+        show: Drag Race
+
+      the_same_wig:
+        show: Drag Race
+
+      club_96:
+        show: Drag Race
+
+      kylies_slip:
+        show: Drag Race
+        when: done
+
+      silkys_barbie_girl:
+        show: Drag Race
+
+      the_spoken_word_lip_sync:
+        show: Drag Race
+        when: evening
+
+      frock_destroyers:
+        show: Drag Race
+        when: done
+
+      uk_hun:
+        show: Drag Race
+
+      the_lockdown_break:
+        show: Drag Race
+        when: slipped
+
+      ginny_lemon_walks_off:
+        show: Drag Race
+        when: slipped
+
+      biminis_katie_price:
+        show: Drag Race
+
+      danny_beards_clean_run:
+        show: Drag Race
+        when: big_win
+
+      love_most_of_ya:
+        show: Drag Race
+        when: [evening, done]
+
+      jimbos_mirror_message:
+        show: Drag Race
+        when: [evening, slipped]
+
+      eve_6000s_reveal:
+        show: Drag Race
+        when: done
+
+      kita_mean_wins_at_home:
+        show: Drag Race
+        when: big_win
+
+      the_mud_wrestling_cage:
+        show: Dragula
+        when: slipped
+
+      vander_volunteers:
+        show: Dragula
+        when: done
+
+      landons_spiders:
+        show: Dragula
+        when: done
+
+      landon_cider_the_first_king:
+        show: Dragula
+        when: big_win
+
+      saint_wins_resurrection:
+        show: Dragula
+        when: big_win
+
+      jay_kay_dies_twice:
+        show: Dragula
+        when: slipped
+
+      asias_stolen_wig:
+        show: Dragula
+        when: done
+
+      crystal_labeijas_walk_off:
+        when: slipped
+
+      dorian_corey_on_shade:
+        when: slipped
+
+      junior_labeijas_opulence:
+        when: big_win
+
+      courtney_comes_back:
+        when: slipped
+
+      pink_flamingos: {}
+
+      rocky_horror_at_midnight:
+        when: weekly
+
+      no_wire_hangers: {}
+
+      baby_janes_rat:
+        when: slipped
+
+      ready_for_my_close_up: {}
+
+      the_curtain_dress:
+        when: done
+
+      little_edies_costume:
+        when: morning
+
+      picture_it:
+        when: weekly
+
+      i_dont_know_her:
+        when: slipped
+
+      diana_in_the_rain:
+        when: big_win
+
+      judy_at_carnegie_hall:
+        when: big_win
+
+      chers_farewell_tour:
+        when: slipped
+
+      the_wig_in_the_toilet: {}

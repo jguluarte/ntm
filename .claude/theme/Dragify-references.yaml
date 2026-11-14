@@ -7,8 +7,23 @@ about: >-
   happened once. When the job picks a reference for a message, from
   `Dragify-options.yaml`, call back to it in a clause or a line, as if the
   reader already knows the story: `what_happened` is the record, `meaning` is
-  what fans use it for, and `callback` is the move that ties it to the task. A
-  reference with `when` fits only the occasions it lists.
+  what fans use it for, and `callback` is the move that ties it to the task.
+
+  `show` names the show a moment comes from, Drag Race or Dragula, so the job
+  can keep a reference and its speaker to the same show. A reference with no
+  `show` belongs to neither show, and fits any speaker.
+
+  `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
+  `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
+  `big_win`). A reference fits a message when it lists no reminder or this
+  message's reminder, and lists no what-happened value or one that holds; a
+  reference with no `when` fits every message. On a big win, only references
+  listing `big_win` fit.
+
+  When a message carries several tasks, the callback's task is the one its
+  `when` is about: a finished one for `done` or `big_win`, the one slipped
+  longest for `slipped`, and otherwise the first one the facts list. The other
+  tasks fill any other parts the moment has.
 
 references:
   # Drag Race, Seasons 1 to 10
@@ -227,25 +242,6 @@ references:
 
     when:
       - morning
-
-  courtney_comes_back:
-    name: Courtney comes back
-
-    show: Drag Race
-
-    what_happened: >-
-      In 2003, before Drag Race, the Australian Idol judges turned Courtney Act
-      down out of drag. She came back the next day as Courtney and got through.
-
-    meaning: >-
-      Returning the next day in full drag, and getting through.
-
-    callback: >-
-      Send yesterday's task back in today in full drag: the same task, turned
-      away once, walking in as the version the judges can't refuse.
-
-    when:
-      - slipped
 
   kennedys_leap:
     name: Kennedy's leap
@@ -1275,12 +1271,10 @@ references:
     when:
       - done
 
-  # Queer culture: ballroom, drag history, camp film and TV, and the divas
+  # Around the shows: ballroom, drag history, camp film and TV, divas
 
   crystal_labeijas_walk_off:
     name: Crystal LaBeija's walk-off
-
-    show: Queer culture
 
     what_happened: >-
       At the 1967 Miss All-America Camp Beauty Contest, Crystal LaBeija accused
@@ -1301,8 +1295,6 @@ references:
   dorian_corey_on_shade:
     name: Dorian Corey on shade
 
-    show: Queer culture
-
     what_happened: >-
       In Paris Is Burning (1990), Dorian Corey, at her makeup mirror, explains
       reading and shade: she doesn't tell you you're ugly, because you already
@@ -1321,8 +1313,6 @@ references:
   junior_labeijas_opulence:
     name: Junior LaBeija's opulence
 
-    show: Queer culture
-
     what_happened: >-
       In Paris Is Burning (1990), Junior LaBeija, emceeing a ball, spells out
       O-P-U-L-E-N-C-E at a walker and tells them they own everything.
@@ -1338,10 +1328,27 @@ references:
     when:
       - big_win
 
+  courtney_comes_back:
+    name: Courtney comes back
+
+    show: Drag Race
+
+    what_happened: >-
+      In 2003, before Drag Race, the Australian Idol judges turned Courtney Act
+      down out of drag. She came back the next day as Courtney and got through.
+
+    meaning: >-
+      Returning the next day in full drag, and getting through.
+
+    callback: >-
+      Send yesterday's task back in today in full drag: the same task, turned
+      away once, walking in as the version the judges can't refuse.
+
+    when:
+      - slipped
+
   pink_flamingos:
     name: Pink Flamingos
-
-    show: Queer culture
 
     what_happened: >-
       In John Waters's Pink Flamingos (1972), Divine's Babs Johnson defends her
@@ -1356,8 +1363,6 @@ references:
 
   rocky_horror_at_midnight:
     name: Rocky Horror at midnight
-
-    show: Queer culture
 
     what_happened: >-
       The Rocky Horror Picture Show (1975) has played at midnight screenings
@@ -1377,8 +1382,6 @@ references:
   no_wire_hangers:
     name: No wire hangers
 
-    show: Queer culture
-
     what_happened: >-
       Mommie Dearest (1981), with Faye Dunaway as Joan Crawford: "No wire
       hangers, ever!" It won the Razzie for worst picture and became a camp
@@ -1393,8 +1396,6 @@ references:
 
   baby_janes_rat:
     name: Baby Jane's rat
-
-    show: Queer culture
 
     what_happened: >-
       In What Ever Happened to Baby Jane? (1962), Bette Davis's Jane serves her
@@ -1414,8 +1415,6 @@ references:
   ready_for_my_close_up:
     name: Ready for my close-up
 
-    show: Queer culture
-
     what_happened: >-
       Sunset Boulevard (1950): Gloria Swanson's Norma Desmond, a faded silent
       star, insists she is big and the pictures got small. The film ends on her
@@ -1430,8 +1429,6 @@ references:
 
   the_curtain_dress:
     name: The curtain dress
-
-    show: Queer culture
 
     what_happened: >-
       The Carol Burnett Show's Gone with the Wind parody (1976): Carol Burnett's
@@ -1452,8 +1449,6 @@ references:
   little_edies_costume:
     name: Little Edie's costume for the day
 
-    show: Queer culture
-
     what_happened: >-
       In Grey Gardens (1975), Little Edie Beale explains her outfit to the
       camera: trousers under a skirt, so the skirt can come off and be a cape,
@@ -1472,8 +1467,6 @@ references:
   picture_it:
     name: Picture it
 
-    show: Queer culture
-
     what_happened: >-
       The Golden Girls (1985 to 1992): Sophia opens her stories with "Picture
       it: Sicily, 1922."
@@ -1490,8 +1483,6 @@ references:
 
   i_dont_know_her:
     name: I don't know her
-
-    show: Queer culture
 
     what_happened: >-
       Asked about Jennifer Lopez on German TV around 2003, Mariah Carey smiled
@@ -1510,8 +1501,6 @@ references:
   diana_in_the_rain:
     name: Diana Ross in the rain
 
-    show: Queer culture
-
     what_happened: >-
       At her 1983 Central Park concert, Diana Ross sang into a downpour until
       the show was stopped. She came back the next day and did it again.
@@ -1528,8 +1517,6 @@ references:
 
   judy_at_carnegie_hall:
     name: Judy at Carnegie Hall
-
-    show: Queer culture
 
     what_happened: >-
       In April 1961, Judy Garland played Carnegie Hall. The crowd pressed up to
@@ -1549,8 +1536,6 @@ references:
   chers_farewell_tour:
     name: Cher's farewell tour
 
-    show: Queer culture
-
     what_happened: >-
       Cher's Farewell Tour ran from 2002 to 2005, and more tours followed it.
 
@@ -1566,8 +1551,6 @@ references:
 
   the_wig_in_the_toilet:
     name: The wig in the toilet
-
-    show: Queer culture
 
     what_happened: >-
       Valley of the Dolls (1967): Patty Duke's Neely O'Hara pulls the wig off

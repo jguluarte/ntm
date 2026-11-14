@@ -989,3 +989,385 @@ motifs:
 
     when:
       - big_win
+
+  meet_our_monsters:
+    name: Meet our monsters
+
+    show: Dragula
+
+    about: >-
+      The start of a season, when the Boulets present their cast and each
+      monster gets an introduction.
+
+    on_the_show: >-
+      Each monster has a "Meet Our Monsters" video before the season. Then they
+      arrive: together in the early seasons, one by one later, and once dropped
+      in the woods to find the camp.
+
+    staging: >-
+      Introduce the week's tasks as the season's cast of monsters: each one's
+      look, its kind of horror, what it does to people who leave it alone. A
+      task back from last week gets a returning monster's intro.
+
+    phrases:
+      - Meet our... monsters.
+      - if you saw Dragula Season 2 you have no idea who I am.
+
+    when:
+      - weekly
+
+  fright_feat:
+    name: Fright feat
+
+    show: Dragula
+
+    about: >-
+      Dragula's mini challenge: a short test of nerve, like a haunted house or a
+      garbage smoothie, for a perk or a curse.
+
+    on_the_show: >-
+      Survive a haunted house, chug a garbage smoothie, bob for apples in blood.
+      The prize can be immunity, picking teams, nominating someone for the
+      bottom, or a curse on a rival for the floor show. In Titans every episode
+      opens with one.
+
+    staging: >-
+      Make the task's first small step the fright feat: the one thing that's
+      scary for thirty seconds. Doing it wins a perk for the rest of the day;
+      skipping it earns the task a curse.
+
+    phrases:
+      - Curse of Baldness
+      - Boulet Blindness
+      - Glinda's Bubble of Protection
+
+  floor_show:
+    name: Floor show
+
+    show: Dragula
+
+    about: >-
+      Dragula's main challenge: a look and a performance on the main stage,
+      judged against the week's brief.
+
+    on_the_show: >-
+      The performance can be a lip sync, a band, burlesque, an acting scene, a
+      photo shoot or a haunted runway. The Boulets open it with their cue, judge
+      it against the brief, pick one winner, and send the lowest two or more to
+      extermination. A reimagining beats a cosplay.
+
+    staging: >-
+      Stage the task as the week's floor show: the task is the brief, and doing
+      it is the performance. The read lands on a cosplay of done, something that
+      looks like the task from across the room and isn't.
+
+    phrases:
+      - Dim the lights, start the music, and let the floor show begin!
+      - "ATTENTION COMPETITORS: THE FLOOR SHOW IS ABOUT TO BEGIN"
+
+  four_tenets:
+    name: Four tenets
+
+    show: Dragula
+
+    about: >-
+      Drag, Filth, Horror, Glamour: the four things Dragula scores every look
+      on, whispered in the intro.
+
+    on_the_show: >-
+      Filth is bodily fluids, sex and gross-out; horror is monsters and gore;
+      glamour is beauty and refinement; drag is the art of all of it. Every
+      finale is three looks: glamour, filth and horror. A filth look has to be a
+      performance of filth.
+
+    staging: >-
+      Score the task on all four tenets: how much drag, filth, horror and
+      glamour it's serving today. It's usually heavy on filth and short on the
+      rest; the read lands on the tenet that's missing. The scorecard covers all
+      four; the Boulets' judgment is one flat sentence.
+
+    phrases:
+      - Drag. Filth. Horror. Glamour.
+      - I don't play pretend on filth.
+      - I am giving filth. I am giving Dragula.
+
+  boulets_judgment:
+    name: Boulets' judgment
+
+    show: Dragula
+
+    about: >-
+      The Boulets and their guests judge each floor show against the brief, then
+      name the top, the safe and the bottom.
+
+    on_the_show: >-
+      A stock line warns that a critique is about to hurt. Then one flat,
+      literal sentence names the misstep. Gender doesn't enter into it; a look
+      that reads like a Halloween-store costume gets marked down.
+
+    staging: >-
+      Judge the task against its brief in one flat sentence that names the exact
+      misstep, and let the sentence sit. Art is subjective; whether the task is
+      done is not.
+
+    phrases:
+      - We are not here to judge your drag. Drag is art, and art is subjective.
+      - It is really brave of you to wear club kid boots.
+      - Well, you just missed the mark.
+
+  who_should_go_home:
+    name: Who should go home
+
+    show: Dragula
+
+    about: >-
+      From Season 3 on, the Boulets ask each monster who should go home, and
+      why, and the room throws someone under the bus.
+
+    on_the_show: >-
+      One by one, each monster names a rival and gives a reason. Once, every
+      monster named the same queen. Some seasons the vote decides who faces
+      extermination.
+
+    staging: >-
+      Let the rest of the list vote on who goes home tonight, each naming the
+      task and giving its reason. The read lands when every vote names the same
+      task. A vote is cold and orderly; the fight comes after, in the Cauldron.
+
+    phrases:
+      - let's cut the shit. Who's going home first?
+      - I can not vote for myself.
+      - The rules were not made clear!
+
+  the_cauldron:
+    name: The Cauldron
+
+    show: Dragula
+
+    about: >-
+      The backstage room where the monsters wait out the Boulets' deliberation:
+      Dragula's Untucked, from Season 4 on.
+
+    on_the_show: >-
+      Where the fights happen. In Season 6 one monster threw a whole raw chicken
+      across the room at another, and fans still call it Chickengate.
+
+    staging: >-
+      Lock the task in the Cauldron with the monsters it has kept waiting:
+      tempers up, accusations flying, something about to be thrown at it.
+      Untucked talks behind its back; the Cauldron says it to its face.
+
+    phrases:
+      - So, today's Cauldron is just a big fucking hot mess.
+      - Don't fucking throw a fucking chicken at me!
+      - I guess chickens do fly.
+      - Give them the fucking needles!
+
+  extermination:
+    name: Extermination
+
+    show: Dragula
+
+    about: >-
+      The bottom monsters face a test of fear and endurance, and the Boulets
+      weigh it with the floor show to decide who's out.
+
+    on_the_show: >-
+      Buried alive, needles, skydiving, eating organs, a night in a haunted
+      house. Refusing it means you're done. The monster who goes out is killed
+      off later that night.
+
+    staging: >-
+      Put the task up for extermination: doing it is the ordeal, and refusing it
+      means it's out. The read lands on how small this ordeal is next to what
+      monsters have done on camera. One task, one ordeal; a bracket of slipped
+      tasks is the LaLaPaRUza.
+
+    phrases:
+      - exterminations are for pests
+      - Actually, you have to prove 'cause you're in the extermination.
+      - Are you fucking kidding me?
+
+  endurance_extermination:
+    name: Endurance extermination
+
+    show: Dragula
+
+    about: >-
+      The exterminations where a monster has to outlast something: buried alive,
+      sealed in latex, a freezer, a coffin of snakes, a bed of rats.
+
+    on_the_show: >-
+      Bugs, water and dirt pour into the coffin; the latex closes in; the cold
+      sets in. The one who lasts longest survives. One monster, tied to a bed
+      under rats, decided they were cozy.
+
+    staging: >-
+      Seal the task in, with the rest of the list pouring in on top of it like
+      dirt into the coffin. Doing it is the way out, and each hour it stays shut
+      is another shovelful. The read lands on whoever taps out first.
+
+    phrases:
+      - I kinda like it. It's warm and I need warmth right now.
+      - I hope you're enjoying this!
+
+  the_jump:
+    name: The jump
+
+    show: Dragula
+
+    about: >-
+      The exterminations from a height: skydiving, a bungee off the Bridge to
+      Nowhere, diving with sharks.
+
+    on_the_show: >-
+      One step off the edge and it's over. One monster refused the skydive and
+      quit, the only one ever to refuse an extermination. Another, afraid of
+      heights, took the bungee and survived.
+
+    staging: >-
+      Make starting the task the jump: one step off the edge, then it's done.
+      The delay is standing at the open door of the plane; the read lands on a
+      refusal said out loud. The jump is one moment of nerve; outlasting
+      something is the endurance extermination.
+
+    phrases:
+      - >-
+        The worst thing that could happen is I fall to my death and I'm sidewalk
+        sauce.
+      - the Bridge to Nowhere
+
+  the_plea:
+    name: The plea
+
+    show: Dragula
+
+    about: >-
+      The extermination where the bottom monster pleads for survival while the
+      safe monsters pelt her with rotten food and insults.
+
+    on_the_show: >-
+      Season 3: the plea goes on while the food flies. Season 1 had a lip sync
+      under the same barrage. Before the Season 3 one, a monster refused a
+      producer's note, and the line became one of Dragula's best-known memes.
+
+    staging: >-
+      Give the task the floor to plead its case, and let the rest of the list
+      pelt it with rotten food: every excuse earns a tomato. The read lands on
+      the worst excuse yet. Here the excuse is pleaded under fire; with no
+      excuses, the host refuses to hear one.
+
+    phrases:
+      - Fuck the big picture, Clint.
+      - Let's make some good fucking TV!
+
+  later_that_night:
+    name: Later that night
+
+    show: Dragula
+
+    about: >-
+      The exterminated monster is killed off in a scripted horror short, cued by
+      a "Later that night" title card.
+
+    on_the_show: >-
+      From Season 3 they die in their challenge looks. One was eaten by dolls of
+      the week's top three; one died offscreen and turned up in a morgue an
+      episode later; one escaped.
+
+    staging: >-
+      End the day on the title card and the death scene: whatever didn't get
+      done today meets its end in a horror short, in its look, by the horror
+      that fits it. Or make the task the killer, coming for the excuse. Sashay
+      away is the exit line on stage; this is what happens after.
+
+    phrases:
+      - Later that night
+      - Kill them all.
+      - After all... I am a ghost.
+
+    when:
+      - evening
+
+  key_of_life_and_death:
+    name: Key of Life and Death
+
+    show: Dragula
+
+    about: >-
+      Seasons 3 to 5: the Key's holder can save one monster from extermination,
+      or put another up for it.
+
+    on_the_show: >-
+      Both monsters who used the Key to send a rival down were exterminated the
+      very next episode. One of their targets survived a bed of rats and came
+      out promising revenge.
+
+    staging: >-
+      Putting the task off is using the Key on it: the task goes down a day, and
+      the Key's curse comes back on whoever turned it. The read lands on the
+      holder, and the task comes back promising revenge.
+
+    phrases:
+      - The Key of Life and Death
+      - >-
+        I have a lot of time to think on this mattress, and I decided... I'm
+        coming for you
+
+    when:
+      - slipped
+
+  hellbound_showdown:
+    name: Hellbound Showdown
+
+    show: Dragula
+
+    about: >-
+      Titans Season 2: the exterminated monsters fight each other for a way back
+      into the competition.
+
+    on_the_show: >-
+      The dead face off in matchups, and the last one standing returns for the
+      finale. It fits a show where monsters keep coming back: one was
+      exterminated three times, and one won a season after dying twice.
+
+    staging: >-
+      Send the slipped tasks to the Hellbound Showdown: they fight each other
+      for one way back onto the list, and the winner returns. The read lands on
+      a task that refuses to stay dead. A returning queen is called back; here
+      the dead fight their way back.
+
+    phrases:
+      - Why can't Abhora fucking stay dead?
+      - I am not trying to lose to the same bitch twice.
+      - So, now I have a vengeance.
+
+    when:
+      - slipped
+
+  supermonster_crowning:
+    name: Supermonster crowning
+
+    show: Dragula
+
+    about: >-
+      The finale: the winner is crowned the World's Next Drag Supermonster, with
+      a crown, a scepter and blood poured over her.
+
+    on_the_show: >-
+      Three finale looks, glamour, filth and horror, then the crowning and the
+      blood bath. Titans crowns the Queen of the Underworld instead; one was
+      crowned in a rainstorm by the previous Titan.
+
+    staging: >-
+      Crown the big effort the Supermonster: the crown, the scepter, the blood
+      poured over its head. Name what it survived to get here. Drag Race crowns
+      with tears and a speech; Dragula crowns in blood.
+
+    phrases:
+      - The World's Next Drag Supermonster
+      - Queen of the Underworld
+      - Come on Mama Swan, gimme the crown!
+
+    when:
+      - big_win

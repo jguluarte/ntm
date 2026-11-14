@@ -1,0 +1,11 @@
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dawn:
+      noon:
+      dusk:
+  cast:
+    gives: [speaker]
+    entries:
+      host:

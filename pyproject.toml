@@ -1,0 +1,3 @@
+[tool.pytest.ini_options]
+testpaths = ["skills/style/scripts/picker/test"]
+pythonpath = ["skills/style/scripts/picker"]

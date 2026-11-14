@@ -40,8 +40,8 @@ about it.
 
 ### `%Message-rules`
 
-What each reminder's message says. The messenger agent follows it, and the user
-changes it.
+What each reminder's message says. `ntm:reminder` and the weekly job follow it,
+and the user changes it.
 
 ### `%Paused-dates`
 

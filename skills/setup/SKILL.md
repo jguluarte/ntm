@@ -223,10 +223,11 @@ composable on purpose.
    closed in the last week.
 3. `/ntm:clean`
 4. `/ntm:plan --auto week`
-5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
-   week ahead from step 4. End the run with what it returns; for a delivery
-   block, that is its title and message, without the `NOTIFY VIA FINAL REPLY`
-   line.
+5. Read the `weekly` rule in `%Message-rules`; it says what the message covers.
+   Send the week's message as the core rules' Sending a message in the user's
+   style says. Its facts are what the rule asks for, from last week in step 2
+   and the week ahead in step 4, as counts and the few tasks worth naming, so
+   the message fits a push. End the run with what that returns.
 
 ###### Reminders
 

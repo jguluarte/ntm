@@ -2,12 +2,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from even_theme import EVEN, EVEN_HOOKS
 from failure import PickerFailed
 from flags import Flags
 from hook_mode import HookMode
-
-EVEN = Path(__file__).parent / "fixtures" / "Even-options.yaml"
-EVEN_HOOKS = {"hook: scenes/dawn", "hook: scenes/noon", "hook: scenes/dusk"}
 
 
 class HookModeTest(unittest.TestCase):

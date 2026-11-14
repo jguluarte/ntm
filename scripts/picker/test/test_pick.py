@@ -3,9 +3,9 @@ import sys
 import unittest
 from pathlib import Path
 
+from even_theme import EVEN, EVEN_HOOKS
+
 PICK = Path(__file__).parents[1] / "pick"
-EVEN = Path(__file__).parent / "fixtures" / "Even-options.yaml"
-EVEN_HOOKS = {"hook: scenes/dawn", "hook: scenes/noon", "hook: scenes/dusk"}
 
 
 class PickTest(unittest.TestCase):

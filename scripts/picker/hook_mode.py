@@ -20,12 +20,12 @@ class HookMode:
 
     def __init__(self, flags):
         self.options = Options(YamlFile(flags[OPTIONS]).load())
-        self.random = self._seeded(flags[SEED])
+        self.generator = self._seeded(flags[SEED])
 
     def report(self):
         hooks = self.options.hooks()
         self._require_drawable(hooks)
-        hook = Draw(hooks).pick(self.random.random())
+        hook = Draw(hooks).pick(self.generator.random())
         return HOOK_LINE.format(hook.id)
 
     @staticmethod

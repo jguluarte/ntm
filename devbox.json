@@ -9,7 +9,8 @@
         "yamllint@1.37.1",
         "python@3.13.18",
         "python313Packages.pyyaml@6.0.3",
-        "ruff@0.17.4"
+        "ruff@0.17.4",
+        "python313Packages.pytest@9.1.1"
     ],
     "shell": {
         "scripts": {

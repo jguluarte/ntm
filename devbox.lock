@@ -246,6 +246,68 @@
         }
       }
     },
+    "python313Packages.pytest@9.1.1": {
+      "last_modified": "2026-11-12T14:50:34Z",
+      "resolved": "github:NixOS/nixpkgs/2074cc672349f14240fb7ea90d509e0b643e9dd4#python313Packages.pytest",
+      "source": "devbox-search",
+      "version": "9.1.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vspbk2ky46m7gdwx2m9pk1swzkzh79an-python3.13-pytest-9.1.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/h7a7bgknqa3a760dh0sy4h80mayyx07y-python3.13-pytest-9.1.1-dist"
+            },
+            {
+              "name": "testout",
+              "path": "/nix/store/dncws14hswnrlkyicr16jwsdhv60nx14-python3.13-pytest-9.1.1-testout"
+            }
+          ],
+          "store_path": "/nix/store/vspbk2ky46m7gdwx2m9pk1swzkzh79an-python3.13-pytest-9.1.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dib0dkgjrnp8zfyid1g87p8p8z4qrfy5-python3.13-pytest-9.1.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/60j2m87lvma88z3yjacz391zgqfh36hm-python3.13-pytest-9.1.1-dist"
+            },
+            {
+              "name": "testout",
+              "path": "/nix/store/ysc1hj0gqcmj8cai4jzya0vjd3a79z7l-python3.13-pytest-9.1.1-testout"
+            }
+          ],
+          "store_path": "/nix/store/dib0dkgjrnp8zfyid1g87p8p8z4qrfy5-python3.13-pytest-9.1.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vxx0p3vw3ahmk0k847zf1qk0y8da3adg-python3.13-pytest-9.1.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/lzdkh5zwx8mn6zv8kmn9hcnjf949xwck-python3.13-pytest-9.1.1-dist"
+            },
+            {
+              "name": "testout",
+              "path": "/nix/store/nh5a9r9lrkkbrlzhyk15apkibppc0i92-python3.13-pytest-9.1.1-testout"
+            }
+          ],
+          "store_path": "/nix/store/vxx0p3vw3ahmk0k847zf1qk0y8da3adg-python3.13-pytest-9.1.1"
+        }
+      }
+    },
     "python313Packages.pyyaml@6.0.3": {
       "last_modified": "2026-11-12T14:50:34Z",
       "resolved": "github:NixOS/nixpkgs/2074cc672349f14240fb7ea90d509e0b643e9dd4#python313Packages.pyyaml",

@@ -1,6 +1,6 @@
 
 .PHONY: lint lint-markdown lint-yaml lint-python lint-absolute-line-length
-.PHONY: lint-fix lint-fix-markdown test
+.PHONY: lint-fix lint-fix-markdown test test-names test-picker
 
 LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 YAML_FILES := $(shell git ls-files -- '*.yml' '*.yaml')
@@ -29,7 +29,10 @@ lint-fix: lint-fix-markdown
 lint-fix-markdown:
 	markdownlint-cli2 --fix
 
-test: export PYTHONPATH := scripts/picker:$(PYTHONPATH)
-test:
+test: test-names test-picker
+
+test-names:
 	bats tests
-	python3 -m unittest discover -s scripts/picker/test
+
+test-picker:
+	pytest

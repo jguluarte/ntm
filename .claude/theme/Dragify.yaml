@@ -20,7 +20,14 @@ files:
 
   Dragify-options.yaml: >-
     what the job picks from for each message: the speakers, each with its show
-    and where it appears, and the motifs, each with its show and `when`.
+    and where it appears, and the motifs and the references, each with its show
+    and `when` where it has them.
+
+  Dragify-references.yaml: >-
+    the references: single moments from the shows and the culture around them
+    that a message can call back to, each with what happened, what fans use it
+    for and how to call back to it on a task, and for some the show it comes
+    from and a `when` naming the messages it fits.
 
   Dragify-terminology.md: >-
     the drag words the writer would otherwise miss or misuse, and how sparingly

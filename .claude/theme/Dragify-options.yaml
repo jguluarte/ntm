@@ -1,4 +1,5 @@
-# What the job picks from per message: a speaker, and the motifs a hook can be.
+# What the job picks from per message: a speaker, and the motifs and references
+# for a hook.
 speakers:
   - name: RuPaul
     show: Drag Race
@@ -510,3 +511,359 @@ motifs:
     show: Dragula
     when:
       - big_win
+
+references:
+  - name: The Season 1 filter
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: The Susan Lucci of the competition
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Jujubee's unbeaten run
+    show: Drag Race
+    when:
+      - weekly
+      - slipped
+
+  - name: Mimi lifts India
+    show: Drag Race
+
+  - name: Chad's Cher
+    show: Drag Race
+    when:
+      - done
+
+  - name: DiDa and Natalie Cole
+    show: Drag Race
+
+  - name: Party City
+    show: Drag Race
+
+  - name: Coco and Alyssa
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Alyssa's Katy Perry
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Lil Poundcake
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Ornacia
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Kennedy's leap
+    show: Drag Race
+
+  - name: The Beyoncé curse
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Gaga in the werk room
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Sasha's rose petals
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: Shea's finale
+    show: Drag Race
+    when:
+      - weekly
+      - slipped
+
+  - name: Monét's fake split
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Not next time
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: The six-way lip sync
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Sorry Not Sorry
+    show: Drag Race
+    when:
+      - done
+
+  - name: Silky strips in Untucked
+    show: Drag Race
+
+  - name: Ru's meh
+    show: Drag Race
+    when:
+      - done
+
+  - name: Jan's face crack
+    show: Drag Race
+    when:
+      - done
+
+  - name: Nicki detests it
+    show: Drag Race
+
+  - name: The virtual finale
+    show: Drag Race
+    when:
+      - done
+
+  - name: Kandy's boombox
+    show: Drag Race
+    when:
+      - morning
+
+  - name: Ru flips off Utica
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Mary, Queen of Scots
+    show: Drag Race
+
+  - name: Willow Pill's variety show
+    show: Drag Race
+    when:
+      - done
+
+  - name: DeJa's Lil Jon
+    show: Drag Race
+
+  - name: Boss Bitch
+    show: Drag Race
+    when:
+      - done
+
+  - name: The immunity potion
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Nymphia's bananas
+    show: Drag Race
+
+  - name: The Badonka Dunk Tank
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Onya's crown lip sync
+    show: Drag Race
+    when:
+      - done
+
+  - name: Myki ranked last
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: Nini Coco's streak
+    show: Drag Race
+    when:
+      - done
+
+  - name: The she-mergency button
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Dancing on My Own
+    show: Drag Race
+    when:
+      - evening
+      - slipped
+
+  - name: Shut Up and Drive
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Ben eliminates herself
+    show: Drag Race
+    when:
+      - afternoon
+
+  - name: Life's not fair
+    show: Drag Race
+
+  - name: The same wig
+    show: Drag Race
+
+  - name: Club 96
+    show: Drag Race
+
+  - name: Kylie's slip
+    show: Drag Race
+    when:
+      - done
+
+  - name: Silky's Barbie Girl
+    show: Drag Race
+
+  - name: The spoken-word lip sync
+    show: Drag Race
+    when:
+      - evening
+
+  - name: Frock Destroyers
+    show: Drag Race
+    when:
+      - done
+
+  - name: UK Hun?
+    show: Drag Race
+
+  - name: The lockdown break
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Ginny Lemon walks off
+    show: Drag Race
+    when:
+      - slipped
+
+  - name: Bimini's Katie Price
+    show: Drag Race
+
+  - name: Danny Beard's clean run
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: Love most of ya
+    show: Drag Race
+    when:
+      - evening
+      - done
+
+  - name: Jimbo's mirror message
+    show: Drag Race
+    when:
+      - evening
+      - slipped
+
+  - name: Eve 6000's reveal
+    show: Drag Race
+    when:
+      - done
+
+  - name: Kita Mean wins at home
+    show: Drag Race
+    when:
+      - big_win
+
+  - name: The mud-wrestling cage
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Vander volunteers
+    show: Dragula
+    when:
+      - done
+
+  - name: Landon's spiders
+    show: Dragula
+    when:
+      - done
+
+  - name: Landon Cider, the first king
+    show: Dragula
+    when:
+      - big_win
+
+  - name: Saint wins Resurrection
+    show: Dragula
+    when:
+      - big_win
+
+  - name: Jay Kay dies twice
+    show: Dragula
+    when:
+      - slipped
+
+  - name: Asia's stolen wig
+    show: Dragula
+    when:
+      - done
+
+  - name: Crystal LaBeija's walk-off
+    when:
+      - slipped
+
+  - name: Dorian Corey on shade
+    when:
+      - slipped
+
+  - name: Junior LaBeija's opulence
+    when:
+      - big_win
+
+  - name: Courtney comes back
+    when:
+      - slipped
+
+  - name: Pink Flamingos
+
+  - name: Rocky Horror at midnight
+    when:
+      - weekly
+
+  - name: No wire hangers
+
+  - name: Baby Jane's rat
+    when:
+      - slipped
+
+  - name: Ready for my close-up
+
+  - name: The curtain dress
+    when:
+      - done
+
+  - name: Little Edie's costume for the day
+    when:
+      - morning
+
+  - name: Picture it
+    when:
+      - weekly
+
+  - name: I don't know her
+    when:
+      - slipped
+
+  - name: Diana Ross in the rain
+    when:
+      - big_win
+
+  - name: Judy at Carnegie Hall
+    when:
+      - big_win
+
+  - name: Cher's farewell tour
+    when:
+      - slipped
+
+  - name: The wig in the toilet

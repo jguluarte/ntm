@@ -12,54 +12,59 @@ description: >-
 # ntm:style
 
 The user's style is their `%Theme`, the database that says how every message to
-them is written. `%Theme` and `%Message-history` are read only through this
-skill; the writer agent reads neither.
+them is written. This skill reads `%Theme` and `%Message-history`. The writer
+agent reads only the parts of `%Theme` this skill points it to, and never
+`%Message-history`.
 
 ## Setup
 
 Load `ntm-user:backend`, which says where `%Theme` and `%Message-history` live,
-and read both. Today is the date in the timezone under About you in `%Settings`.
+and read both.
 
 ## What you write from
 
 The sender hands over the facts, as its own file says. They hold what the
 message must cover, and may hold its tasks and what's known of each, and
-anything the sender's rule asks for.
+anything else its rule asks of the message, such as tone or length.
 
 ## Writing a message
 
 ### 1. Pick
 
-Pick what this message draws on from `%Theme`: one hook, a motif, reference or
-line from the theme, and a speaker when the theme has them and one fits. Steer
-away from what recent `%Message-history` entries used, and let each motif rest
-as the theme's `Repeat limit:` line says, when it has one.
+Pick one hook, the idea this message builds on: one motif, or one line from the
+theme's examples. Take one that no recent `%Message-history` entry used, judging
+from each entry's `line` which motif it used. Recent entries are those from the
+last two weeks, or from the span the theme's `Repeat limit:` line gives, when it
+has one.
 
-The pick gives the hook, the speaker or none, and the theme material: the
-theme's guidance for writing in it, and its entries for the hook and the
-speaker.
+Pick a speaker, the person in the theme who says the message, only when the
+theme names people who talk.
+
+The theme material is what the writer gets of the theme: its guidance, which is
+every part that says how to write (its registers, its levels, its flow), and the
+entries for the hook and the speaker.
 
 ### 2. Set the tone
 
 Read the facts against the theme's guidance and set the tone: how hard each
 slipped task is pressed, a win for what's done, and anything the facts ask of
-the tone. A slip is a planned date that moved on; nothing was missed.
+the tone. Slips from a while back weigh less: a task picked up again after a
+long gap is pressed less than its count of slips, as you judge it.
 
 ### 3. Write
 
-Hand the writer agent the facts, the tone, the hook, the speaker and the theme
-material, or exactly where to read it. It returns 5 versions, each with a title,
-a probability and a message, or `Writer FAILED:`, which the sender ends with.
+Start the `ntm:writer` agent, and hand it the facts, the tone, the hook, the
+speaker, and the theme material, as text or as exactly which parts of `%Theme`
+to read. It returns 5 versions, each with a title, a message, and a probability
+from 0 to 1 of how likely a reader would be to predict it.
+
+When it returns `Writer FAILED:`, end with that line. When this session can't
+start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose opening words don't open a
-recent `%Message-history` entry. Its title and message are what the sender
-sends.
-
-### 5. Record
-
-Once the sender has sent it, add its entry as Keeping `%Message-history` says.
+Take the version with the lowest probability whose first five words don't begin
+the `line` of a recent entry. Its title and message are what gets sent.
 
 ## Keeping `%Message-history`
 

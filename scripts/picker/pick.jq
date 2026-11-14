@@ -343,8 +343,10 @@ def line($flags):
     end;
 
 def next_theme($this_week):
-    (index($this_week) // -1) as $this_weeks_place
-    | .[($this_weeks_place + 1) % length];
+    index($this_week) as $this_weeks_place
+    | if $this_weeks_place == null then first
+    else .[($this_weeks_place + 1) % length]
+    end;
 
 def theme($flags):
     "theme: \($flags.themes | next_theme($flags.this_week))";

@@ -83,6 +83,7 @@ require_message_flags() {
 }
 
 require_line_flags() {
+    require_message_flags
     require_flag --hook "$hook"
     require_flag --entries "$entries"
 }
@@ -90,14 +91,6 @@ require_line_flags() {
 require_theme_flags() {
     require_flag --this-week "$this_week"
     [ ${#themes[@]} -gt 0 ] || fail "pick theme needs every theme, in order"
-}
-
-require_flags() {
-    case $mode in
-        hook) require_message_flags ;;
-        line) require_message_flags; require_line_flags ;;
-        theme) require_theme_flags ;;
-    esac
 }
 
 has_new_jq() {
@@ -115,10 +108,19 @@ has_message_tools() {
     has_new_jq && has_python_yq
 }
 
-require_tools() {
+require_message_tools() {
+    has_message_tools || fail "pick $mode needs $message_tools_needed"
+}
+
+require_theme_tools() {
+    has_new_jq || fail "pick theme needs $jq_needed"
+}
+
+require_mode_needs() {
     case $mode in
-        theme) has_new_jq || fail "pick theme needs $jq_needed" ;;
-        *) has_message_tools || fail "pick $mode needs $message_tools_needed" ;;
+        hook) require_message_flags; require_message_tools ;;
+        line) require_line_flags; require_message_tools ;;
+        theme) require_theme_flags; require_theme_tools ;;
     esac
 }
 
@@ -138,14 +140,15 @@ yaml_input() {
         fail "$file isn't YAML"
 }
 
-history_input() {
-    require_readable "$history"
-    jq -Rsc '{history: .}' "$history"
+text_input() {
+    local name=$1 file=$2
+    require_readable "$file"
+    jq -Rsc "{$name: .}" "$file"
 }
 
 named_inputs() {
     [ -z "$options" ] || yaml_input options "$options"
-    [ -z "$history" ] || history_input
+    [ -z "$history" ] || text_input history "$history"
     [ -z "$entries" ] || yaml_input entries "$entries"
 }
 
@@ -162,8 +165,7 @@ main() {
     read_mode "${1-}"
     shift
     read_flags "$@"
-    require_flags
-    require_tools
+    require_mode_needs
     choose_seed
     local inputs
     inputs=$(named_inputs)

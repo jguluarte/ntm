@@ -483,3 +483,498 @@ references:
     callback: >-
       Fits a task the user keeps glancing at and away from: open and close the
       eyes on it, slowly, to the beat.
+
+  # Drag Race, Seasons 11 to 18
+
+  the_six_way_lip_sync:
+    name: The six-way lip sync
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11, "Diva Worship": RuPaul made six queens lip sync at once in
+      front of guest judge Troye Sivan. Wigs flew, and Honey Davenport went home
+      after leaping off the stage.
+
+    meaning: >-
+      Chaos as a format.
+
+    callback: >-
+      Fits a day with too many tasks due at once: put them all on the stage
+      together and see whose wig flies first.
+
+  sorry_not_sorry:
+    name: Sorry Not Sorry
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11: after both bombed Snatch Game, Yvie Oddly and Brooke Lynn Hytes
+      lip synced "Sorry Not Sorry", and both stayed. Yvie cartwheeled into a wig
+      reveal, and went on to win the season.
+
+    meaning: >-
+      Redemption through a lip sync, right after a flop.
+
+    callback: >-
+      Fits a task that went badly earlier and got done later: it bombed at
+      Snatch Game, then lip synced for its life.
+
+    when:
+      - done
+
+  opulence:
+    name: Opulence
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11: voguing in a parody challenge, Mercedes Iman Diamond stumbled
+      over "opulence, you own everything", a line from Paris Is Burning. Fans
+      spell what came out "oppalance".
+
+    meaning: >-
+      Fumbling the big line at the big moment.
+
+    callback: >-
+      Fits a task where the easiest part went wrong: the grand line, fumbled in
+      front of everyone.
+
+    when:
+      - slipped
+
+  silky_strips_in_untucked:
+    name: Silky strips in Untucked
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11: told she was merely safe, Silky Nutmeg Ganache stripped off her
+      outfit in Untucked, ready to lip sync. Yvie Oddly asked what that had to
+      do with anything.
+
+    meaning: >-
+      Gearing up for a fight nobody called.
+
+    callback: >-
+      Fits a user gearing up hard for a small task: strip down for the lip sync,
+      then hear the task was safe all along.
+
+  rus_meh:
+    name: Ru's meh
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11, the makeover episode: after Nina West and Silky Nutmeg Ganache
+      lip synced "No Scrubs", RuPaul's verdict was "meh". Nina later called it
+      cutting.
+
+    meaning: >-
+      The one-word review that's worse than a read.
+
+    callback: >-
+      Fits a task done with no flair at all: one syllable from the host is the
+      whole review.
+
+    when:
+      - done
+
+  wheres_the_body:
+    name: Where's the body?
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 11: a three-second clip of A'keria C. Davenport's verse in the
+      "Queens Everywhere" challenge song, which fans caption as a grim question
+      about a missing body.
+
+    meaning: >-
+      Something hidden or lost, asked about darkly.
+
+    callback: >-
+      Fits a task that has gone missing from the list: ask where it's buried.
+
+    when:
+      - slipped
+
+  jans_face_crack:
+    name: Jan's face crack
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 12, the Madonna Rusical: Jan expected the win, RuPaul told her she
+      was safe, and her smile drained into disbelief on camera. She did it again
+      on All Stars 6.
+
+    meaning: >-
+      When the result is less than you expected.
+
+    callback: >-
+      Fits an ordinary task done that wanted a parade: tell it it's safe, and
+      watch the face.
+
+    when:
+      - done
+
+  gigis_robot:
+    name: Gigi's robot
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 12 Snatch Game: RuPaul worried that Gigi Goode's Maria the Robot
+      was too robotic. Gigi held her ground and won the challenge.
+
+    meaning: >-
+      Backing your own plan against the boss's worry, and being right.
+
+    callback: >-
+      Fits a task the user insists on doing their own odd way: let the worry be
+      voiced, then let the robot win.
+
+  nicki_detests_it:
+    name: Nicki detests it
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 12 premiere: guest judge Nicki Minaj told Heidi N Closet she
+      detested her hair and makeup, undercutting a strong gown.
+
+    meaning: >-
+      The celebrity judge who softens nothing on day one.
+
+    callback: >-
+      Fits a task that's mostly right with one glaring flaw: praise the gown,
+      then detest the wig.
+
+  the_virtual_finale:
+    name: The virtual finale
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 12's finale went virtual in the pandemic, with the queens on
+      screens from their homes. Jaida Essence Hall was crowned from home.
+
+    meaning: >-
+      Winning the whole thing without leaving the house.
+
+    callback: >-
+      Fits a task done from the couch: crown it from home, faces on screens.
+
+    when:
+      - done
+
+  apolo_lie:
+    name: Apolo-lie
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 12: Widow Von'Du's word for an apology nobody means.
+
+    meaning: >-
+      The fake apology, called out.
+
+    callback: >-
+      Fits a task the user has said sorry to and still left undone: name the
+      apology for what it is.
+
+    when:
+      - slipped
+
+  kandys_boombox:
+    name: Kandy's boombox
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 13 premiere: lip syncing "Call Me Maybe" against Joey Jay, Kandy
+      Muse opened by switching on an imaginary boombox. She won.
+
+    meaning: >-
+      An iconic start from nothing.
+
+    callback: >-
+      Fits a task started with total confidence and no plan: switch on the
+      imaginary boombox and go.
+
+    when:
+      - morning
+
+  ru_flips_off_utica:
+    name: Ru flips off Utica
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 13, the roast: after a joke that went too far, RuPaul gave Utica
+      Queen the middle finger on her way out, and fans loved it. Utica
+      apologized.
+
+    meaning: >-
+      The host giving it right back.
+
+    callback: >-
+      Fits a task that keeps answering back with excuses: reply the way Ru
+      replied to Utica, with one finger and no words.
+
+  denalis_stare:
+    name: Denali's stare
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 13 premiere: sent to the Porkchop Loading Dock after losing her lip
+      sync, Denali gave the camera a slow, deadpan stare that closed the
+      episode.
+
+    meaning: >-
+      Silent judgment, sitcom-style.
+
+    callback: >-
+      Fits a task that has been sitting there all day: end on a long, flat stare
+      at it, straight to camera.
+
+  mary_queen_of_scots:
+    name: Mary, Queen of Scots
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 13 Snatch Game: Rosé played Mary, Queen of Scots, all beheading
+      jokes and a thick accent. In confessional, Kandy Muse said she had no idea
+      who Mary, Queen of Scots was.
+
+    meaning: >-
+      A reference that sails over the room.
+
+    callback: >-
+      Fits a task with a name nobody remembers the reason for: play it grandly
+      anyway, to a room that has never heard of it.
+
+  jorgeous_five_lip_syncs:
+    name: Jorgeous lip syncs five times
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 14: Jorgeous lip synced five times, a first, and survived four of
+      them.
+
+    meaning: >-
+      The queen who lives in the bottom and keeps winning there.
+
+    callback: >-
+      Fits a task that keeps landing in the bottom and keeps surviving: count
+      its lip syncs.
+
+    when:
+      - slipped
+
+  boss_bitch:
+    name: Boss Bitch
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 15: in the "Boss Bitch" lip sync, Anetra somersaulted over Marcia
+      Marcia Marcia in a martial-arts routine. It is Michelle Visage's favorite
+      lip sync of all time.
+
+    meaning: >-
+      Athletic perfection under pressure.
+
+    callback: >-
+      Fits a hard task done with style: describe the somersault over it.
+
+    when:
+      - big_win
+
+  mistress_takes_the_book:
+    name: Mistress takes the book
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 15, the Wigloose Rusical: Mistress Isabelle Brooks took RuPaul's
+      book GuRu from the set, thinking it was a prop. She gave it back when she
+      learned it was a producer's, so nobody would search her things and find
+      the jewelry, wigs and piece of the werk room wall she had also taken.
+
+    meaning: >-
+      Taking everything that isn't bolted down.
+
+    callback: >-
+      Fits a task that has picked up other tasks along the way: hand back the
+      one thing, and keep quiet about the wall.
+
+  you_know_why:
+    name: You know why
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 16 premiere: Sapphira Cristál sang a dragged-up "O mio babbino
+      caro" while pointing at RuPaul. Asked why, she said, "You know why."
+
+    meaning: >-
+      The point made without explaining it.
+
+    callback: >-
+      Fits a task everyone knows the reason for: point at it, sing, and decline
+      to explain.
+
+  the_immunity_potion:
+    name: The immunity potion
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 16: the premiere winners each got an immunity potion. Plane Jane
+      held hers for weeks and used it on Nymphia Wind in the last week she
+      could, a week when nobody went home.
+
+    meaning: >-
+      Saving the power for the perfect moment, then spending it on a week that
+      didn't need it.
+
+    callback: >-
+      Fits a task the user has been saving an excuse for: spend the potion, and
+      find out nobody was going home anyway.
+
+  nymphias_bananas:
+    name: Nymphia's bananas
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 16: Nymphia Wind built her drag on bananas and yellow, from her
+      entrance to her finale reveal. She beat Sapphira Cristál to "Padam Padam"
+      and became the first Taiwanese winner.
+
+    meaning: >-
+      Total commitment to one bit.
+
+    callback: >-
+      Fits a user going all in on one task: make everything about it, down to
+      the color.
+
+  the_badonka_dunk_tank:
+    name: The Badonka Dunk Tank
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 17: a lip sync loser could pull one of ten levers, and the right
+      one dropped Michelle Visage into a dunk tank and saved her. It saved three
+      queens and sent two home, and fans panned it.
+
+    meaning: >-
+      The gimmick second chance.
+
+    callback: >-
+      Fits a task the user hopes luck will save: pull a lever and see whether
+      Michelle gets wet.
+
+    when:
+      - slipped
+
+  kori_explains_cabaret:
+    name: Kori explains cabaret
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 17's Kori King went out ninth and became a fan favorite anyway. In
+      a viral September 2025 clip, she explained to the streamer IShowSpeed that
+      a cabaret is a venue, not a French dish.
+
+    meaning: >-
+      The early exit who won the internet.
+
+    callback: >-
+      Fits a task the user doesn't understand yet: explain it patiently, the way
+      Kori explained a cabaret to a streamer.
+
+  onyas_crown_lip_sync:
+    name: Onya's crown lip sync
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 17 finale: Onya Nurve won the lip sync for the crown, to
+      "Abracadabra", without a single reveal or stunt.
+
+    meaning: >-
+      Winning on the basics alone.
+
+    callback: >-
+      Fits a task finished with no tricks at all: nothing torn away, nothing
+      thrown, just done.
+
+    when:
+      - done
+
+  myki_ranked_last:
+    name: Myki ranked last
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 18: in the Rate-A-Queen talent show, the other queens ranked Myki
+      Meeks last. She went on to win four challenges and the crown.
+
+    meaning: >-
+      Counted out on day one, crowned at the end.
+
+    callback: >-
+      Fits a big effort on a task everyone had written off: read out its day-one
+      ranking, then the crown.
+
+    when:
+      - big_win
+
+  nini_cocos_streak:
+    name: Nini Coco's streak
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 18: Nini Coco landed in the bottom three weeks running and won
+      every lip sync, sending home the front-runner among others. Then she lost
+      the crown to Myki Meeks.
+
+    meaning: >-
+      Surviving the bottom over and over.
+
+    callback: >-
+      Fits a task finished at the last minute again: one more week in the
+      bottom, one more win, and the streak goes on.
+
+    when:
+      - done
+
+  hit_the_slay_button:
+    name: Hit the slay button
+
+    show: Drag Race
+
+    what_happened: >-
+      The 2021 mobile game RuPaul's Drag Race Superstar has a cartoon RuPaul
+      telling the player to hit the slay button. Memes read "slay" as "kill" for
+      dark jokes.
+
+    meaning: >-
+      A cheerful order for anything, often darker than it sounds.
+
+    callback: >-
+      Fits a task that needs one press to start: tell the user to hit the
+      button.
+
+    when:
+      - morning

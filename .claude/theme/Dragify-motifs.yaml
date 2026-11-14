@@ -219,32 +219,6 @@ motifs:
     when:
       - afternoon
 
-  no_excuses:
-    name: No excuses
-
-    show: Drag Race
-
-    about: >-
-      The time RuPaul tells the whole cast off for coming in unprepared, after a
-      challenge goes to pieces.
-
-    on_the_show: >-
-      Season 7, after a chaotic Shakespeare acting challenge: RuPaul drops the
-      warmth and tells the queens she has no patience for excuses or for being
-      unprepared. Fans still treat it as the template for Ru losing patience.
-
-    staging: >-
-      Let every excuse for the task have its say, then answer them all at once
-      with the plain job, unsoftened. The read lands on how much longer the
-      excuses took than the task would have.
-
-    phrases:
-      - I don't wanna hear any goddamn excuses. Anymore!
-      - You don't gotta reinvent the wheel! The wheel is fine!
-
-    when:
-      - slipped
-
   reading_challenge:
     name: Reading challenge
 
@@ -1225,75 +1199,27 @@ motifs:
     show: Dragula
 
     about: >-
-      The bottom monsters face a test of fear and endurance, and the Boulets
+      The bottom monsters face a test of fear or endurance, and the Boulets
       weigh it with the floor show to decide who's out.
 
     on_the_show: >-
-      Buried alive, needles, skydiving, eating organs, a night in a haunted
-      house. Refusing it means you're done. The monster who goes out is killed
-      off later that night.
+      Buried alive, needles, skydiving, a bungee off the Bridge to Nowhere,
+      eating organs, a bed of rats. Some take one leap of nerve; others go to
+      whoever lasts longest. Refusing means you're done, and the monster who
+      goes out is killed off later that night.
 
     staging: >-
-      Put the task up for extermination: doing it is the ordeal, and refusing it
-      means it's out. The read lands on how small this ordeal is next to what
-      monsters have done on camera. One task, one ordeal; a bracket of slipped
-      tasks is the LaLaPaRUza.
+      Put the slipped task up for extermination and pick the ordeal that fits
+      it: one leap for a task that only needs starting, endurance for one that
+      takes hours. Doing it is surviving, and refusing means it's out. The read
+      lands on the moment it's tempted to tap out.
 
     phrases:
       - exterminations are for pests
       - Actually, you have to prove 'cause you're in the extermination.
       - Are you fucking kidding me?
-
-    when:
-      - slipped
-
-  endurance_extermination:
-    name: Endurance extermination
-
-    show: Dragula
-
-    about: >-
-      The exterminations where a monster has to outlast something: buried alive,
-      sealed in latex, a freezer, a coffin of snakes, a bed of rats.
-
-    on_the_show: >-
-      Bugs, water and dirt pour into the coffin; the latex closes in; the cold
-      sets in. The one who lasts longest survives. One monster, tied to a bed
-      under rats, decided they were cozy.
-
-    staging: >-
-      Seal the task in, with the rest of the list pouring in on top of it like
-      dirt into the coffin. Doing it is the way out, and each hour it stays shut
-      is another shovelful. The read lands on whoever taps out first.
-
-    phrases:
       - I kinda like it. It's warm and I need warmth right now.
       - I hope you're enjoying this!
-
-    when:
-      - slipped
-
-  the_jump:
-    name: The jump
-
-    show: Dragula
-
-    about: >-
-      The exterminations from a height: skydiving, a bungee off the Bridge to
-      Nowhere, diving with sharks.
-
-    on_the_show: >-
-      One step off the edge and it's over. One monster refused the skydive and
-      quit, the only one ever to refuse an extermination. Another, afraid of
-      heights, took the bungee and survived.
-
-    staging: >-
-      Make starting the task the jump: one step off the edge, then it's done.
-      The delay is standing at the open door of the plane; the read lands on a
-      refusal said out loud. The jump is one moment of nerve; outlasting
-      something is the endurance extermination.
-
-    phrases:
       - >-
         The worst thing that could happen is I fall to my death and I'm sidewalk
         sauce.
@@ -1382,34 +1308,6 @@ motifs:
       - >-
         I have a lot of time to think on this mattress, and I decided... I'm
         coming for you
-
-    when:
-      - slipped
-
-  hellbound_showdown:
-    name: Hellbound Showdown
-
-    show: Dragula
-
-    about: >-
-      Titans Season 2: the exterminated monsters fight each other for a way back
-      into the competition.
-
-    on_the_show: >-
-      The dead face off in matchups, and the last one standing returns for the
-      finale. It fits a show where monsters keep coming back: one was
-      exterminated three times, and one won a season after dying twice.
-
-    staging: >-
-      Send the slipped tasks to the Hellbound Showdown: they fight each other
-      for one way back onto the list, and the winner returns. The read lands on
-      a task that refuses to stay dead. A returning queen is called back; here
-      the dead fight their way back.
-
-    phrases:
-      - Why can't Abhora fucking stay dead?
-      - I am not trying to lose to the same bitch twice.
-      - So, now I have a vengeance.
 
     when:
       - slipped

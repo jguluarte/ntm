@@ -244,11 +244,6 @@ motifs:
     when:
       - afternoon
 
-  - name: No excuses
-    show: Drag Race
-    when:
-      - slipped
-
   - name: Reading challenge
     show: Drag Race
 
@@ -424,16 +419,6 @@ motifs:
     when:
       - slipped
 
-  - name: Endurance extermination
-    show: Dragula
-    when:
-      - slipped
-
-  - name: The jump
-    show: Dragula
-    when:
-      - slipped
-
   - name: The plea
     show: Dragula
     when:
@@ -446,11 +431,6 @@ motifs:
       - slipped
 
   - name: Key of Life and Death
-    show: Dragula
-    when:
-      - slipped
-
-  - name: Hellbound Showdown
     show: Dragula
     when:
       - slipped

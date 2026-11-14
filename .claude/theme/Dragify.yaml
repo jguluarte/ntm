@@ -15,5 +15,11 @@ files:
   Dragify-options.yaml: >-
     what the job picks from for each message, with where each speaker appears.
 
+  Dragify-references.yaml: >-
+    the references: single moments from the shows and the culture around them
+    that a message can call back to, each with its show, what happened, what
+    fans use it for, how to call back to it on a task, and for some the
+    occasions it fits.
+
 speaker: >-
   A speaker is one of the actors, picked once per message.

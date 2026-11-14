@@ -493,3 +493,336 @@ motifs:
     phrases:
       - Eleganza Extravaganza
       - Happiness is in your own backyard.
+
+  the_runway:
+    name: The runway
+
+    show: Drag Race
+
+    about: >-
+      Every episode ends on the main stage: RuPaul names the night's category
+      and the queens walk it one at a time.
+
+    on_the_show: >-
+      "Category is" comes from ballroom, where the announcer calls the category.
+      Each queen walks while RuPaul and the judges trade puns on her look.
+
+    staging: >-
+      Name a category for the task, the punnier the better, and walk it: the
+      finished task is the look, and the judges' puns land on whatever it's
+      wearing today. One look on one night; three looks in a row is the ball.
+
+    phrases:
+      - Category is…
+      - Sissy that walk
+      - You better walk that fucking duck.
+
+  the_reveal:
+    name: The reveal
+
+    show: Drag Race
+
+    about: >-
+      The runway trick: a tear-away skirt, a second look under the first, a wig
+      under a wig.
+
+    on_the_show: >-
+      Mid-walk, the queen tears away the top layer and something new is
+      underneath. The show puns it a Ru-veal. A reveal that sticks, or lands in
+      a heap, gets read for it.
+
+    staging: >-
+      Stage the task as a reveal: the mess on top is the first look, and done is
+      what's underneath. The delay is the cord that won't pull; the read lands
+      on a reveal that sticks halfway.
+
+    phrases:
+      - Ru-veal
+      - RuVeal Yourself
+
+  the_critiques:
+    name: The critiques
+
+    show: Drag Race
+
+    about: >-
+      After the runway, the top and bottom queens stay on stage and the judges
+      tell them what worked and what didn't.
+
+    on_the_show: >-
+      RuPaul names the safe queens and they step back. The panel is RuPaul,
+      Michelle Visage, a rotating judge and a guest or two, each with a short,
+      blunt note. Ru asks the bottom queens who should go home.
+
+    staging: >-
+      Stand the task on the main stage for notes: each judge names one thing
+      wrong, in one line, and moves on. The read lands on the flaw it keeps
+      getting noted for. The critiques judge the work; jokes for a room are the
+      roast.
+
+    phrases:
+      - Who should go home tonight and why?
+      - Charisma, uniqueness, nerve and talent
+      - Resting on pretty
+      - I'll be the judge of that!
+
+  safe:
+    name: Safe
+
+    show: Drag Race
+
+    about: >-
+      The queens between the top and the bottom: not praised, not discussed,
+      sent to the back of the stage.
+
+    on_the_show: >-
+      Safe is its own sting: not good enough to praise, not bad enough to talk
+      about. The safe queens step back and watch the others get critiqued.
+
+    staging: >-
+      Call the task safe: done enough to pass, not enough to talk about. Give it
+      no notes at all; the read lands on how little there is to say.
+
+    phrases:
+      - That's a lot of emotion for safe
+      - Fuck it, just have fun and hope you are safe.
+
+  deliberation:
+    name: Deliberation
+
+    show: Drag Race
+
+    about: >-
+      The queens leave the stage, the judges talk it over, and RuPaul calls the
+      queens back for the verdict.
+
+    on_the_show: >-
+      With the queens gone, the judges talk about them more freely than to their
+      faces, and Ru asks the panel what they think. Then she cuts it off, calls
+      the queens back, and hands out the results: the winner, the safe queens,
+      the bottom two.
+
+    staging: >-
+      Send the task out of the room and talk about it the way the judges do once
+      the queens have gone: franker than to its face. Then call it back for the
+      verdict. This is the judges' side of the wait; the queens' side is
+      Untucked.
+
+    phrases:
+      - While you untuck in the werk room, the judges and I will deliberate.
+      - Now, just between us squirrel friends, what do you think?
+      - Silence! I've made my decision. Bring back my girls!
+      - I've consulted with the judges, but the final decision is mine to make.
+
+  lip_sync_for_your_life:
+    name: Lip sync for your life
+
+    show: Drag Race
+
+    about: >-
+      The bottom two lip sync to the week's song, and RuPaul alone decides who
+      stays and who goes home.
+
+    on_the_show: >-
+      The queens know the song in advance and plan reveals and stunts. The
+      judges watch for every word known cold, the song's story, energy, and a
+      moment people will replay. Ru reads the script, the song plays, and she
+      gives the verdict.
+
+    staging: >-
+      Put two tasks in the bottom two, this one and another, and make them lip
+      sync for the day: one gets done, the other goes home to another day. The
+      read lands on the one that only knows half the words.
+
+    phrases:
+      - Two queens stand before me.
+      - >-
+        This is your last chance to impress me and save yourself from
+        elimination.
+      - The time has come for you to lip sync for your life!
+      - Good luck, and don't fuck it up!
+
+  shantay_you_stay:
+    name: Shantay, you stay
+
+    show: Drag Race
+
+    about: >-
+      What RuPaul tells the queen who wins the lip sync: she stays in the
+      competition.
+
+    on_the_show: >-
+      The winner of the lip sync for your life hears it; the loser hears the
+      other line. When both queens stay, it's a double shantay.
+
+    staging: >-
+      The task got done at its last chance, so it stays: say so in Ru's words,
+      then give the one note it barely survived on. Two tasks done at the last
+      minute make a double shantay.
+
+    phrases:
+      - Shantay, you stay.
+      - Shantay, you both stay!
+
+    when:
+      - done
+
+  challenge_win:
+    name: Challenge win
+
+    show: Drag Race
+
+    about: >-
+      RuPaul names the week's winner on the main stage.
+
+    on_the_show: >-
+      The winner takes the challenge and a prize: a sponsor's gift, a trip, or a
+      cash tip.
+
+    staging: >-
+      Make the finished task the week's challenge winner: name what it beat,
+      hand it the prize, and let it gloat backstage. Save the big speech for a
+      crowning.
+
+    phrases:
+      - Condragulations!
+      - I have never won before, but I'mma take it.
+
+    when:
+      - done
+
+  rupeter_badge:
+    name: RuPeter badge
+
+    show: Drag Race
+
+    about: >-
+      Drag Race UK's prize for a challenge win: a RuPeter badge, a spoof of the
+      Blue Peter badge, in place of cash.
+
+    on_the_show: >-
+      Winners get a badge, and the queens count each other's. A queen who never
+      wins one gets teased for it. On UK vs the World, the lip sync winner gets
+      a golden one.
+
+    staging: >-
+      Pin a badge on the finished task: small, shiny, worth exactly nothing, and
+      still worth having. Count the badges so far, and let the task that never
+      gets done stay badgeless.
+
+    phrases:
+      - RuPeter Badge
+      - You were a bitch before the badge.
+      - No-Badges Chez
+
+    when:
+      - done
+
+  lip_sync_for_your_legacy:
+    name: Lip sync for your legacy
+
+    show: Drag Race
+
+    about: >-
+      All Stars: the week's top two lip sync, and the winner chooses which
+      bottom queen goes home, by revealing a lipstick with her name.
+
+    on_the_show: >-
+      The winner takes a cash prize and the power, and reveals the lipstick with
+      a name on it. Later seasons pit the top queen against a lip sync assassin
+      instead.
+
+    staging: >-
+      The task won the week, so it holds the lipstick: let it name the next task
+      to go, and take its time doing it. The read lands on whichever task's name
+      is on the lipstick.
+
+    phrases:
+      - The time has come, for you to Lip-Sync. For. Your. Legacy!
+      - As it is written, so it shall be done.
+
+    when:
+      - done
+
+  sashay_away:
+    name: Sashay away
+
+    show: Drag Race
+
+    about: >-
+      What RuPaul tells the queen who loses the lip sync: she's out, with a last
+      word on the stage before she walks off.
+
+    on_the_show: >-
+      The queen gets her exit line, then leaves through the arch. One walked off
+      backward repeating her own name, and it got her invited back. Sometimes
+      both queens go home at once.
+
+    staging: >-
+      Give the day its exit: what's still open gets a last word, short and in
+      character, then walks off the stage. The read lands between the exit line
+      it planned and the one it actually delivers.
+
+    phrases:
+      - Sashay away.
+      - I came in first!
+      - I... have no exit line.
+      - Miss Vanjie... Miss Vanjie... Miss... Vanjie.
+
+    when:
+      - evening
+
+  mirror_message:
+    name: Mirror message
+
+    show: Drag Race
+
+    about: >-
+      The eliminated queen writes a goodbye in lipstick on the werk room mirror
+      for the others to find.
+
+    on_the_show: >-
+      It started in Season 2 with the first queen out. Messages run from love
+      notes to grudges to jokes about who should win, often all in one line, and
+      signed with a kiss.
+
+    staging: >-
+      Write the day's goodbye in lipstick, from whatever didn't make it through
+      today: sweet, petty, or both in one line, signed with a kiss. The read
+      sits in the petty half.
+
+    phrases:
+      - Keep your eyes on the stars... you'll never be one!
+      - Hope you all lose
+      - HATE YOUR HAIR HOPE YOU LOSE ABSOLUTELY LOVE YOU CAMP COWS
+      - Getting the crown Just Got a LOT easier for y'all
+
+    when:
+      - evening
+
+  closing_line:
+    name: Closing line
+
+    show: Drag Race
+
+    about: >-
+      How RuPaul ends every episode: a line about loving yourself, then a call
+      for an amen.
+
+    on_the_show: >-
+      The same sign-off since Season 1. The queens shout the amen back, and the
+      music starts.
+
+    staging: >-
+      Sign the day off the way Ru does: the self-love line turned toward the
+      task, then the amen. The read is in the turn.
+
+    phrases:
+      - >-
+        If you can't love yourself, how the hell are you gonna love somebody
+        else?
+      - Can I get an amen up in here?
+      - Now let the music play!
+
+    when:
+      - evening

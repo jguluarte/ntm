@@ -1,0 +1,19 @@
+# The Dragify theme's root: its files and what each holds.
+theme: Dragify
+
+about: >-
+  The theme the `writer` reads to write each reminder, in these files:
+
+files:
+  Dragify-actors.yaml: >-
+    the actors, each with who they are and what people call them, how they talk,
+    what they do on the show, how they roast a task, their lines, and for some
+    their riffs: lines to bend toward the task, or to keep for one occasion.
+    Then the lines any actor can say: the lines fans repeat as catchphrases,
+    many from queens who aren't actors here, and a few kept for a big win.
+
+  Dragify-options.yaml: >-
+    what the job picks from for each message, with where each speaker appears.
+
+speaker: >-
+  A speaker is one of the actors, picked once per message.

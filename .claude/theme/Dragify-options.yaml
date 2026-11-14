@@ -1,0 +1,205 @@
+# What the job picks from for each message; it picks one speaker per message.
+speakers:
+  - name: RuPaul
+    appears_in:
+      - werk room walkthrough
+      - main stage
+
+  - name: Michelle Visage
+    appears_in:
+      - main stage
+      - Whatcha Packin'
+
+  - name: Ross Mathews
+    appears_in:
+      - main stage
+
+  - name: Carson Kressley
+    appears_in:
+      - main stage
+
+  - name: Ts Madison
+    appears_in:
+      - main stage
+
+  - name: Law Roach
+    appears_in:
+      - main stage
+
+  - name: Alan Carr
+    appears_in:
+      - main stage
+
+  - name: Graham Norton
+    appears_in:
+      - main stage
+
+  - name: Brooke Lynn Hytes
+    appears_in:
+      - werk room
+      - main stage
+
+  - name: Pangina Heals
+    appears_in:
+      - werk room
+      - reading challenge
+
+  - name: Nicky Doll
+    appears_in:
+      - werk room
+
+  - name: Dracmorda
+    appears_in:
+      - cold open
+      - main stage
+
+  - name: Swanthula
+    appears_in:
+      - intro
+      - main stage
+
+  - name: Bianca Del Rio
+    appears_in:
+      - werk room
+      - confessional
+
+  - name: Latrice Royale
+    appears_in:
+      - werk room
+
+  - name: Alyssa Edwards
+    appears_in:
+      - werk room
+      - Untucked
+      - confessional
+
+  - name: Katya
+    appears_in:
+      - werk room
+      - main stage
+
+  - name: Trixie Mattel
+    appears_in:
+      - main stage
+      - goodbye mirror
+
+  - name: Alaska
+    appears_in:
+      - werk room
+      - Snatch Game
+
+  - name: Tatianna
+    appears_in:
+      - reading challenge
+      - reunion
+
+  - name: Detox
+    appears_in:
+      - werk room
+
+  - name: Raven
+    appears_in:
+      - confessional
+      - reunion
+
+  - name: Laganja Estranja
+    appears_in:
+      - werk room
+      - Untucked
+
+  - name: Vanessa Vanjie Mateo
+    appears_in:
+      - werk room
+      - main stage
+
+  - name: Kandy Muse
+    appears_in:
+      - Untucked
+      - main stage
+
+  - name: Plane Jane
+    appears_in:
+      - confessional
+
+  - name: Mo Heart
+    appears_in:
+      - confessional
+
+  - name: Jinkx Monsoon
+    appears_in:
+      - werk room
+      - Snatch Game
+
+  - name: Bob the Drag Queen
+    appears_in:
+      - Snatch Game
+      - smear-ad challenge
+
+  - name: Willam
+    appears_in:
+      - Untucked
+
+  - name: Monét X Change
+    appears_in:
+      - werk room
+      - main stage
+
+  - name: Baga Chipz
+    appears_in:
+      - Snatch Game
+
+  - name: Tammie Brown
+    appears_in:
+      - Untucked
+
+  - name: Jujubee
+    appears_in:
+      - reading challenge
+      - Snatch Game
+
+  - name: Roxxxy Andrews
+    appears_in:
+      - main stage
+      - reading challenge
+
+  - name: Adore Delano
+    appears_in:
+      - werk room
+      - Snatch Game
+
+  - name: Ginger Minj
+    appears_in:
+      - reading challenge
+      - werk room
+      - Snatch Game
+
+  - name: Jasmine Masters
+    appears_in:
+      - werk room
+      - reading challenge
+      - YouTube videos
+
+  - name: Valentina
+    appears_in:
+      - reading challenge
+      - main stage
+
+  - name: Jaida Essence Hall
+    appears_in:
+      - debate challenge
+      - main stage
+
+  - name: Heidi N Closet
+    appears_in:
+      - main stage
+      - Untucked
+
+  - name: Jimbo
+    appears_in:
+      - Snatch Game
+      - main stage
+
+  - name: Koco Caine
+    appears_in:
+      - main stage
+      - werk room

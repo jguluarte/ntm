@@ -54,12 +54,16 @@ never a big win.
 
 ### 1. Pick
 
-For a theme in files, the picker picks the hook, the speaker and the line.
-Otherwise, pick as Picking without the picker says.
+Pick what the message is built on: one hook, sometimes a speaker, and for a
+theme in files, a line drawn from the hook. How depends on where the theme is.
 
-The picker is `${CLAUDE_PLUGIN_ROOT}/scripts/picker/pick`; run it with `bash`.
-Save the text of the options file's `yaml` block to a file, and the lines of the
-Entries part of `%Message-history` to another. Then pick the hook and speaker:
+#### A theme in files
+
+The picker, `${CLAUDE_PLUGIN_ROOT}/scripts/picker/pick`, picks; run it with
+`bash`. Fetch the options file, the one the root's `files` marks `picker`, and
+save the text inside its `yaml` block to a file. Save the lines inside the
+`jsonl` block of the Entries part of `%Message-history` to another. Then pick
+the hook and the speaker:
 
 ```
 pick hook --options <options file> --history <history file> --theme <theme>
@@ -71,8 +75,9 @@ commas between them, and `--now` the time now in the user's timezone. It prints
 `hook: <kind>/<slug>` and `speaker: <kind>/<slug>`, or `speaker: none`.
 
 Fetch the hook's entry file, the `file` its pool names in the options file, and
-save its `yaml` block's text to a file. Then draw the hook's line, with the same
-flags and two more:
+save the text inside its `yaml` block to a file. When the speaker's pool names
+another file, fetch that one too, for the speaker's entry. Then draw the hook's
+line, with the same flags and two more:
 
 ```
 pick line <the same flags> --hook <kind>/<slug> --entries <entry file>
@@ -81,10 +86,14 @@ pick line <the same flags> --hook <kind>/<slug> --entries <entry file>
 It prints `line: <the line>`, then `bend: <how to turn it>` when it has one, or
 `line: none`.
 
-When `pick hook` also prints a `fallback:` line, the theme has nothing for these
-occasions: add that line after the sender's result. When either prints
-`Picker FAILED:` or can't run, pick as Picking without the picker says, and add
-`Picked without the picker: <why>` after the sender's result.
+When either prints `Picker FAILED:` or can't run, pick without it: an entry of
+the options file that no recent hook used, as for a theme in `%Theme` below, one
+of its lines or a riff whose `when` fits, and a speaker as for a theme in
+`%Theme`. The message goes out as usual, with nothing added about the picker;
+`ntm:self-test` is where it shows.
+
+Either way, the message's entry in `%Message-history` records the hook and the
+speaker as `<kind>/<slug>`, and the line drawn, word for word, as `line_drawn`.
 
 The theme material is what the writer gets of the theme:
 
@@ -94,8 +103,26 @@ The theme material is what the writer gets of the theme:
   their entry, with only the line drawn in place of the hook's `lines` and
   `riffs`, and none of the speaker's
 
-For the writer, the hook is the line drawn, with its bend, or the hook's entry
-when no line was drawn.
+For the writer, the hook is the line drawn, with its bend when it has one, or
+the hook's entry when no line was drawn.
+
+#### A theme in `%Theme`
+
+Pick one hook, the idea this message builds on: one motif, or one line from the
+theme's examples. Take one that no recent `%Message-history` entry used, from
+each entry's `hook`, or for an older entry, judging from its `line` which motif
+it used. Recent entries are those from the last two weeks, or from the span the
+theme's `Repeat limit:` line gives, when it has one.
+
+Pick a speaker, the person in the theme who says the message, only when the
+theme names people who talk.
+
+The message's entry in `%Message-history` records the hook and the speaker by
+name, such as `launch`, and no `line_drawn`.
+
+The theme material is what the writer gets of the theme: its guidance, which is
+every part that says how to write (its registers, its levels, its flow), and the
+entries for the hook and the speaker.
 
 ### 2. Set the tone
 
@@ -138,10 +165,10 @@ that have a value:
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
 - `theme`: the theme's name
-- `hook`, `speaker`: what step 1 picked, as the picker printed them,
-  `<kind>/<slug>`; `speaker` only when it picked one
-- `line_drawn`: the line step 1 drew for the hook, word for word, so the picker
-  can rest it; only when it drew one
+- `hook`, `speaker`: what step 1 picked, written as step 1 says for the theme;
+  `speaker` only when it picked one
+- `line_drawn`: for a theme in files, the line step 1 drew for the hook, so the
+  picker can rest it; only when it drew one
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has one
 - `feedback`: the user's word on it, `keep` or `stale`
@@ -163,32 +190,12 @@ It prints `theme: <theme>`. Write that theme as This week's theme under Themes,
 and save `%Settings`. When the picker can't run, take the theme after this
 week's in All themes, or the first after the last.
 
-## Picking without the picker
-
-For a theme not in files yet, or when the picker fails.
-
-Pick one hook, the idea this message builds on: one motif, or one line from the
-theme's examples. Take one that no recent `%Message-history` entry used, from
-each entry's `hook`, or for an older entry, judging from its `line` which motif
-it used. Recent entries are those from the last two weeks, or from the span the
-theme's `Repeat limit:` line gives, when it has one.
-
-Pick a speaker, the person in the theme who says the message, only when the
-theme names people who talk.
-
-The theme material is what the writer gets of the theme: its guidance, which is
-every part that says how to write (its registers, its levels, its flow), and the
-entries for the hook and the speaker.
-
-For a theme in files, pick an entry of its options file this way, and gather the
-theme material as step 1 says.
-
 ## In chat
 
 When the user asks for something in their style, write it with steps 1 to 4 and
 show it to them.
 
-When they ask to change how their messages read, find the part of `%Theme` they
+When they ask to change how their messages read, find the part of the theme they
 mean, draft the change with them, show it, and save it when they say yes. For a
 whole new theme or a rebuild, load `ntm:theme-builder` and follow it instead.
 

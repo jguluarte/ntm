@@ -184,17 +184,13 @@ def without_when: .when == [];
 
 def big_win_hooks:
     map(select(kept_for_big_wins)) as $kept
-    | if $kept != [] then {candidates: $kept, fallback: false}
-    else {candidates: map(select(without_when)), fallback: true}
-    end;
+    | if $kept != [] then $kept else map(select(without_when)) end;
 
 def hook_candidates($options; $message):
     entries_giving(a_hook; $options; $message)
     | map(select(fits($message.occasions)))
-    | if big_win | IN($message.occasions[]) then big_win_hooks
-    else {candidates: ., fallback: false}
-    end
-    | .candidates |= weighed;
+    | if big_win | IN($message.occasions[]) then big_win_hooks else . end
+    | weighed;
 
 def speaker_candidates($options; $message):
     entries_giving(a_speaker; $options; $message)
@@ -301,26 +297,15 @@ def hook_pick($hooks; $speakers; $seed):
     | speaker_for($hook; $speakers; $speaker_draw; $speaker_kept) as $speaker
     | "hook: \($hook.id)", "speaker: \($speaker)";
 
-def fallback_note($fallback; $occasions):
-    if $fallback then
-        "fallback: no hook fits \($occasions);"
-        + " drew from the entries without when"
-    else empty
-    end;
-
 def hook($flags):
     message_inputs($flags) as {$options, $message}
-    | hook_candidates($options; $message) as {$candidates, $fallback}
+    | hook_candidates($options; $message) as $hooks
     | speaker_candidates($options; $message) as $speakers
-    | ($flags.seed | tonumber) as $seed
-    | (
-        if $flags.chances then hook_chances($candidates; $speakers)
-        else
-            $candidates | drawable_hooks($message.occasions)
-            | hook_pick(.; $speakers; $seed)
-        end
-    ),
-    fallback_note($fallback; $flags.occasions);
+    | if $flags.chances then hook_chances($hooks; $speakers)
+    else
+        $hooks | drawable_hooks($message.occasions)
+        | hook_pick(.; $speakers; $flags.seed | tonumber)
+    end;
 
 def entry_for($slug; $not_found):
     if (. // {}) | has($slug) then .[$slug] // {} else error($not_found) end;

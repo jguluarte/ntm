@@ -2,13 +2,13 @@
 name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
-    every backend must: check setup made their databases, labels and jobs, then
-    create, read, find, plan, label, comment on, change and close a throwaway
-    task, and write and read a throwaway database, then clean up and send a
-    success message in the user's style. Each step's result is shown as it
-    passes or fails. The first thing to run after installing ntm and ntm-user
-    ("test ntm", "run the self test", "is everything wired up?"), and the smoke
-    test for a backend the user described themselves.
+    every backend must: check setup made their databases, labels and jobs, and
+    whether the picker runs, then create, read, find, plan, label, comment on,
+    change and close a throwaway task, and write and read a throwaway database,
+    then clean up and send a success message in the user's style. Each step's
+    result is shown as it passes or fails. The first thing to run after
+    installing ntm and ntm-user ("test ntm", "run the self test", "is everything
+    wired up?"), and the smoke test for a backend the user described themselves.
 ---
 
 # ntm:self-test
@@ -33,9 +33,9 @@ ntm's core rules and `%Settings`, which holds the user's label names.
 timezone, like `2026-11-09 14:03:27`.
 
 Run the steps in order. As each one finishes, tell the user in one line what it
-tested and whether it passed, like "3. Create a task: the task list takes a new
+tested and whether it passed, like "4. Create a task: the task list takes a new
 task. Pass." A call that fails for a backend reason gets one retry. At the first
-failure, say why and skip to step 12.
+failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
@@ -54,7 +54,16 @@ morning, afternoon and evening reminders; with Shopping, the price watch. A job
 you don't find doesn't fail the step. When you can't see their scheduled tasks,
 say you couldn't check the jobs, and go on.
 
-### 3. Create a task
+### 3. The picker
+
+When this week's theme is in files, which `ntm-user:backend` shows by listing
+its options file, load `ntm:style` and run `pick hook` once, as its Pick step
+says, with no occasions. Say whether the picker ran, and when it didn't, its
+one-line reason: until it runs here, messages are picked without it. This step
+never fails the self-test. For a theme in `%Theme`, say it doesn't use the
+picker yet.
+
+### 4. Create a task
 
 Create the below task. It should get an id.
 
@@ -64,35 +73,35 @@ Create the below task. It should get an id.
 | Description | This is a test, it can safely be removed |
 | Project     | none                                     |
 
-### 4. Read it back
+### 5. Read it back
 
-The task shows the title and description from step 3.
+The task shows the title and description from step 4.
 
-### 5. Find it
+### 6. Find it
 
 It is among the open tasks.
 
-### 6. Plan it
+### 7. Plan it
 
 Plan it for today, and it is among the open tasks planned for today. Then clear
 its planned date, and it has none.
 
-### 7. Label it
+### 8. Label it
 
 Add the label `ntm-self-test`, creating it when the task list doesn't have it
 yet, and the task shows it. Then remove it, and the task has no labels.
 
-### 8. Comment on it
+### 9. Comment on it
 
 Comment on it, then change the comment's text, and the task's comments show the
 new text.
 
-### 9. Change it
+### 10. Change it
 
 Change its description to `This is a changed test, it can safely be removed`,
 and the task shows it.
 
-### 10. Store data
+### 11. Store data
 
 Write the below database, into the one an earlier self-test left behind or a new
 one when there isn't one, then find it by its title, and it holds the contents.
@@ -102,12 +111,12 @@ one when there isn't one, then find it by its title, and it holds the contents.
 | Title    | ntm self-test database     |
 | Contents | ntm self-test, <timestamp> |
 
-### 11. Close it
+### 12. Close it
 
 Cancel the test task, or mark it done when the task list has no canceled status,
 and it is among the tasks closed today, canceled included.
 
-### 12. Clean up
+### 13. Clean up
 
 Runs after a failure too. Cancel the task if it's still open, and delete the
 test label and the test database. When the task list can't delete them, take the
@@ -118,7 +127,7 @@ list.
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
-### 13. Send the success message
+### 14. Send the success message
 
 Only when every step before it passed. Send it as the core rules' Sending a
 message in the user's style says. Its one fact is

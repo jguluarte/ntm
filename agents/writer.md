@@ -38,13 +38,13 @@ Any of your five versions may be the one sent, so write each one ready to send.
 | ------------------ | --------------------------------------------------------------------------------------- |
 | The facts          | What the message must cover, its tasks, and what the sender's rule asks, such as length |
 | The tone           | How the message sounds, and how hard it presses each task                               |
-| The hook           | The idea this message builds on: one motif, or one line from the theme                  |
+| The hook           | The idea this message builds on: one motif, or one line with its bend, if it has one    |
 | The speaker        | The person in the theme who says the message, when one was picked                       |
 | The theme material | The theme's guidance on how to write in it, and its entries for the hook and speaker    |
 
 The theme material comes as text, or as where to read it: files, or documents in
 the user's backend. Write from the facts and the theme material: read only the
-parts of `%Theme` `ntm:style` points you to, and never `%Message-history`.
+parts of the theme `ntm:style` points you to, and never `%Message-history`.
 
 When the theme material lacks something, such as an entry for the speaker, write
 from what you were handed.
@@ -61,7 +61,8 @@ a nod, and celebrate only when the tone you're handed calls for it.
 
 Each version names every task and covers everything the message must cover. Hang
 the hook on a different fact in each version; with too few facts, take the hook
-a different way each time. A line used as a hook may be bent to fit the task.
+a different way each time. A line used as a hook may be bent to fit the task;
+when it comes with a bend, turn it the way the bend says.
 
 When a speaker was picked, every version is theirs: their own words, in first
 person, sounding the way their entry says. Without one, the theme's own narrator

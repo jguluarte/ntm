@@ -274,12 +274,6 @@ YAML
         "$(pick_from Solo hook evening,big_win --seed 1 | grep '^hook: ')"
 }
 
-@test "fallback: a hook drawn without its occasions says so" {
-    expect "fallback: no hook fits evening,big_win; drew from the entries \
-without when" \
-        "$(pick_from Solo hook evening,big_win --seed 1 | grep '^fallback: ')"
-}
-
 @test "fallback: with no entry without when either, it fails in one line" {
     themes_dir=$BATS_TEST_TMPDIR
     cat > "$themes_dir/Dusk-options.yaml" << 'YAML'

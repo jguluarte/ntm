@@ -1,0 +1,485 @@
+# The references a message can call back to: single moments from the shows and
+# from the culture around them.
+about: >-
+  A reference is one thing fans remember: a moment from Drag Race or Dragula, a
+  meme, a feud, an exit, a look, or a piece of the drag and queer culture the
+  shows draw on. A motif is a scene that comes back every season; a reference
+  happened once. When the job picks a reference for a message, from
+  `Dragify-options.yaml`, call back to it in a clause or a line, as if the
+  reader already knows the story: `what_happened` is the record, `meaning` is
+  what fans use it for, and `callback` is the move that ties it to the task. A
+  reference with `when` fits only the occasions it lists.
+
+references:
+  # Drag Race, Seasons 1 to 10
+
+  lost_season_filter:
+    name: The Season 1 filter
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 1 (2009) was shot through a cloudy, soft-focus haze that makes the
+      queens hard to make out. Fans call it the lost season, and it re-aired in
+      2013 as The Lost Season Ru-Vealed.
+
+    meaning: >-
+      Anything that looks better blurred, and the show's early, dated days.
+
+    callback: >-
+      Fits a task old enough to have been filmed in 2009: put its plan behind
+      the filter, where it reads fine at a distance and falls apart in focus.
+
+  two_piece_and_a_biscuit:
+    name: Two piece and a biscuit
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 2: Mystique Summers Madison gave her secret to success as a Popeyes
+      meal, a two piece and a biscuit.
+
+    meaning: >-
+      Comfort food as a strategy: the reward that comes before the work.
+
+    callback: >-
+      Fits a task the user is rewarding themselves for before starting it: name
+      the meal as the plan, and the task as what's still waiting after the
+      biscuit.
+
+  susan_lucci:
+    name: The Susan Lucci of the competition
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 2: after weeks without a win, RuPaul called Pandora Boxx "the Susan
+      Lucci of this competition". Her first time in the bottom sent her home.
+
+    meaning: >-
+      The one who's always nearly there and never wins.
+
+    callback: >-
+      Fits a task planned again and again that never quite gets done: hand it
+      the title, and count its nominations.
+
+  mimi_lifts_india:
+    name: Mimi lifts India
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 3: lip syncing "Don't Leave Me This Way", Mimi Imfurst picked up
+      India Ferrah as she headed for the judges' table and carried her back to
+      the stage. Mimi went home.
+
+    meaning: >-
+      The lip sync no-no: taking the job literally, and far too hard.
+
+    callback: >-
+      Fits a task being handled with much more force than it needs: let the user
+      pick it up and carry it across the stage, and remember who went home.
+
+  chads_cher:
+    name: Chad's Cher
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 4 Snatch Game: Chad Michaels, a professional Cher impersonator,
+      played Cher and won. It is still a benchmark for the challenge.
+
+    meaning: >-
+      Doing the obvious thing well still wins.
+
+    callback: >-
+      Fits a plain task done the plain way: credit it as Cher played by a Cher
+      impersonator, with no twist needed.
+
+    when:
+      - done
+
+  dida_and_natalie_cole:
+    name: DiDa and Natalie Cole
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 4: DiDa Ritz lip synced "This Will Be (An Everlasting Love)" with
+      Natalie Cole sitting at the judges' table. Out calls it one of the show's
+      most powerful moments.
+
+    meaning: >-
+      Rising to the occasion with the person who matters watching.
+
+    callback: >-
+      Fits a task done in front of the person it's for, like the bill with the
+      bank waiting or the gift with its owner in the room: seat that person at
+      the judges' table.
+
+  coco_and_alyssa:
+    name: Coco and Alyssa
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 5: pageant rivals Coco Montrese and Alyssa Edwards feuded from the
+      premiere, through "too orange" at Snatch Game. They met in the bottom two
+      on "Cold Hearted", and Coco sent Alyssa home.
+
+    meaning: >-
+      The rivalry that runs all season and pays off in one lip sync.
+
+    callback: >-
+      Fits a task the user has been feuding with for days: cast them as old
+      pageant rivals, and set up the bottom two where one of them goes home.
+
+  alyssas_katy_perry:
+    name: Alyssa's Katy Perry
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 5 Snatch Game: Alyssa Edwards played Katy Perry, now ranked the
+      worst Snatch Game of all time. She later gave a strong Joan Crawford on
+      All Stars.
+
+    meaning: >-
+      Proof that a legend can flop.
+
+    callback: >-
+      Fits an easy task fumbled by someone who's usually reliable: file it next
+      to Alyssa's Katy Perry, a bad night from a good queen.
+
+    when:
+      - slipped
+
+  lil_poundcake:
+    name: Lil Poundcake
+
+    show: Drag Race
+
+    what_happened: >-
+      Lil Poundcake was a doll from a Season 5 mini challenge. On All Stars 2,
+      Alaska tore off a garbage-bag outfit to reveal a pink recreation of it.
+
+    meaning: >-
+      The show paying homage to its own jokes.
+
+    callback: >-
+      Fits an old task that comes back in a new outfit: rip off the garbage bag
+      and show it's the same one from seasons ago.
+
+    when:
+      - slipped
+
+  ornacia:
+    name: Ornacia
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 6 premiere: Vivacious walked into the werk room with a second head
+      on top of her own, a styrofoam dome she called Ornacia. Ornacia became a
+      legend of its own, and guest judge Ariana Grande wore a replica into the
+      Season 15 premiere.
+
+    meaning: >-
+      The entrance accessory that became a character.
+
+    callback: >-
+      Fits a task whose setup has upstaged it, like the folder made and the
+      tools bought: give the accessory its own entrance, with the task still
+      underneath it.
+
+    when:
+      - morning
+
+  courtney_comes_back:
+    name: Courtney comes back
+
+    show: Drag Race
+
+    what_happened: >-
+      In 2003, before Drag Race, the Australian Idol judges turned Courtney Act
+      down out of drag. She came back the next day as Courtney and got through.
+
+    meaning: >-
+      Returning the next day in full drag, and getting through.
+
+    callback: >-
+      Fits a task that went badly yesterday: send it back in today in full drag,
+      the same task in a better outfit.
+
+    when:
+      - slipped
+
+  kennedys_leap:
+    name: Kennedy's leap
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7: lip syncing "Roar" against Katya, Kennedy Davenport jumped off
+      the stage and hit the splits in front of the judges. Katya went home.
+
+    meaning: >-
+      The all-in move that wins the lip sync.
+
+    callback: >-
+      Fits a task that needs one committed move to finish: jump off the stage
+      into it, splits and all.
+
+  status_update_dead:
+    name: Status update, dead
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7, ShakesQueer, an acting challenge nearly every queen bombed:
+      Max's "Status update: dead" became the GIF for it.
+
+    meaning: >-
+      Anything that died on arrival.
+
+    callback: >-
+      Fits a task stalled so long it has flatlined: post its status update.
+
+    when:
+      - slipped
+
+  hows_your_head:
+    name: How's your head?
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7: RuPaul kept setting up the innuendo for Miss Fame, who missed it
+      every time and said her head was fine.
+
+    meaning: >-
+      Missing an obvious cue, again and again.
+
+    callback: >-
+      Fits a task the user keeps missing every hint about: set up the cue once
+      more and let it sail past.
+
+  loaf_of_bread:
+    name: The loaf of bread
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7, ShakesQueer: Jasmine Masters came out for the mini challenge
+      holding a loaf of bread, and RuPaul asked where she got it. She had packed
+      it to make sandwiches.
+
+    meaning: >-
+      Turning up with the one thing nobody asked for.
+
+    callback: >-
+      Fits a task the user arrives at with all the wrong supplies: let them walk
+      on holding the bread, and ask where they got it.
+
+  violets_two_in_one:
+    name: Violet's two-in-one
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7 premiere: Violet Chachki's resort look tore away into a second
+      look, and she won the challenge. It made her the queen to beat, and she
+      went on to win the season.
+
+    meaning: >-
+      The double reveal: the fashion queen's flex.
+
+    callback: >-
+      Fits a task that turned out to be two, both done: tear away the first and
+      show the second underneath.
+
+    when:
+      - done
+
+  gingers_tear_away:
+    name: Ginger's tear-away
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7, the conjoined-queens episode: lip syncing "I Think We're Alone
+      Now" against Sasha Belle, Ginger Minj tore away her costume and ended up
+      bare-chested and wigless.
+
+    meaning: >-
+      A reveal that goes all the way, past anything planned.
+
+    callback: >-
+      Fits a task stripped down to its bare job: tear away the excuses and show
+      how little is left underneath.
+
+  the_beyonce_curse:
+    name: The Beyoncé curse
+
+    show: Drag Race
+
+    what_happened: >-
+      Queens who play Beyoncé in Snatch Game flop, Kenya Michaels on Season 4
+      and Asia O'Hara on Season 10 among them, and fans call it a curse. Trinity
+      K. Bonet broke it on All Stars 6, in a halftime show.
+
+    meaning: >-
+      A known-doomed choice.
+
+    callback: >-
+      Fits a plan the user keeps retrying that has never once worked: cast it as
+      Beyoncé at Snatch Game, and let the curse do the rest.
+
+  gaga_in_the_werk_room:
+    name: Gaga in the werk room
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9 premiere (2017): Lady Gaga walked into the werk room posing as
+      one of the queens, her face half hidden by a headpiece, and the cast sized
+      her up as an impersonator. Then she revealed herself.
+
+    meaning: >-
+      The surprise entrance nobody clocked until the reveal.
+
+    callback: >-
+      Fits a task that walks in this morning disguised as something small: let
+      it pose as a nobody at its station until it shows its real size.
+
+    when:
+      - morning
+
+  sashas_rose_petals:
+    name: Sasha's rose petals
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9 finale, the first lip sync for the crown: on "So Emotional"
+      against Shea Couleé, Sasha Velour pulled off a glove, then her wig, and
+      rose petals poured out of both. She won the crown.
+
+    meaning: >-
+      The gold standard reveal, the one every finalist since has chased.
+
+    callback: >-
+      Fits a big effort finally finished: the last step is the wig coming off,
+      and everything it took pours out as petals.
+
+    when:
+      - big_win
+
+  sheas_finale:
+    name: Shea's finale
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9: front-runner Shea Couleé, with the most wins of her season, lost
+      the first round of the new finale lip sync tournament to Sasha Velour. She
+      said later it was not her time.
+
+    meaning: >-
+      The front-runner undone by one bad night.
+
+    callback: >-
+      Fits a well-planned week knocked over by one day: the record was perfect
+      right up to the round that counted.
+
+    when:
+      - slipped
+
+  the_all_green_look:
+    name: The all-green look
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9: Alexis Michelle walked the runway in all green, a joke about
+      Michelle Visage hating the color. Guest judge Tamar Braxton critiqued the
+      look straight, and the joke fell flat.
+
+    meaning: >-
+      A bit that dies on someone who doesn't know the reference.
+
+    callback: >-
+      Fits a task the user is explaining instead of doing: the setup lands only
+      if the room has seen the show.
+
+  asias_butterflies:
+    name: Asia's butterflies
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 10 finale: lip syncing "Nasty" against Kameron Michaels, Asia
+      O'Hara released live butterflies from her costume. Too cold to fly, they
+      fell and crawled on the stage, and she lost.
+
+    meaning: >-
+      The big stunt that flops on live TV.
+
+    callback: >-
+      Fits an ambitious plan that landed with a thud: release the butterflies,
+      and watch them crawl.
+
+    when:
+      - slipped
+
+  monets_fake_split:
+    name: Monét's fake split
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 10: lip syncing "Pound the Alarm" against Dusty Ray Bottoms, Monét
+      X Change faked a split, and won.
+
+    meaning: >-
+      The bluff that sells.
+
+    callback: >-
+      Fits a task the user is pretending to work on: describe the convincing
+      fake split, and the floor it never reached.
+
+  not_next_time:
+    name: Not next time
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 10 reunion: Asia O'Hara apologized to Miz Cracker for calling her
+      "not a star". Miz accepted: "Not next time, bitch."
+
+    meaning: >-
+      Forgiveness with a warning attached.
+
+    callback: >-
+      Fits a task forgiven for slipping once: accept its apology, and make the
+      warning the second half of the sentence.
+
+    when:
+      - slipped
+
+  mayhems_eyes:
+    name: Mayhem's eyes
+
+    show: Drag Race
+
+    what_happened: >-
+      A 2011 club video of Mayhem Miller, years before her Season 10 run, shows
+      her opening and closing her eyes to the music. It became the
+      #MayhemChallenge in 2018.
+
+    meaning: >-
+      The slow, intense look: side-eye with commitment.
+
+    callback: >-
+      Fits a task the user keeps glancing at and away from: open and close the
+      eyes on it, slowly, to the beat.

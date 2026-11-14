@@ -4,8 +4,9 @@ about: >-
   Race and Dragula. When the job picks a motif for a message, from
   `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
   scene plays, `staging` casts the task in it, and `phrases` are what people say
-  at that moment on the show. A speaker who isn't the host plays the host's part
-  in a scene by reporting it or standing in, in their own manner.
+  at that moment on the show. Use at most one phrase, where the scene says it,
+  bent toward the task when that helps. A speaker who isn't the host plays the
+  host's part in a scene by reporting it or standing in, in their own manner.
 
   `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
   `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
@@ -41,7 +42,6 @@ motifs:
 
     phrases:
       - Previously on...
-      - For the first time in Drag Race herstory
 
     when:
       - morning
@@ -68,7 +68,6 @@ motifs:
       are the new cast, entering one at a time.
 
     phrases:
-      - Hieeee!
       - Purse first!
       - Check your lipstick before you come for me.
       - Come on season six, let's get sickening.
@@ -100,7 +99,6 @@ motifs:
       standing right there.
 
     phrases:
-      - Hope you struggle cleaning this LOL.
       - Have fun cleaning this.
 
     when:
@@ -127,9 +125,7 @@ motifs:
       and the read lands on the guesses.
 
     phrases:
-      - She done already done had herses!
-      - Her Majesty done already done had herses!
-      - Well, Sheila done already done had herses!
+      - Ooh, girl... She done already done had herses!
 
     when:
       - morning
@@ -158,7 +154,6 @@ motifs:
       - Hello, hello, hello!
       - Oh, Pit Crew!
       - Racers, start your engines, and may the best drag queen win!
-      - "'Ello, gov'na!"
 
     when:
       - morning
@@ -216,10 +211,7 @@ motifs:
       what the look is right now, and how much of it is still the material.
 
     phrases:
-      - Our maxi challenge is a Design Challe-heu-he-he- noo. WHAT THE FUCK!
       - I don't sew.
-      - But, I mean, I did sew this. I didn't glue like, stuff on a corset.
-      - I want you to get off my station.
 
     when:
       - afternoon
@@ -271,6 +263,7 @@ motifs:
       the task's own mouth.
 
     phrases:
+      - Everyone loves puppets!
       - What did I tell you about chewing the scenery?
       - What was your name again?
 
@@ -296,7 +289,6 @@ motifs:
 
     phrases:
       - So how did everybody feel?
-      - This is not RuPaul's Best Friend Race!
       - I was working hard while you were sleeping!
       - That was a messy mess.
 
@@ -353,8 +345,7 @@ motifs:
       whether a small part can steal the show.
 
     phrases:
-      - tonight you ruled the world! You're safe.
-      - I'M ALIVE! AAA-OOO-AAA-OOO-AAA-OOOOO!
+      - Five, six, seven, eight!
 
     when:
       - afternoon
@@ -380,12 +371,7 @@ motifs:
       its verse while the producer waits. The read lands on the verse it finally
       lays down.
 
-    phrases:
-      - >-
-        They're gonna look like a girl group and we're gonna look like a queue
-        for Gregg's.
-      - Ah-choo! Actually, I'm allergic to their choreography.
-      - It is now time for us to choreograph our choreo-graffy. Choreography.
+    phrases: []
 
     when:
       - afternoon
@@ -411,7 +397,6 @@ motifs:
 
     phrases:
       - It's not bad, it's just not good.
-      - Wait a minute, ain't no chord on that guitar.
 
   makeover:
     name: Makeover
@@ -464,9 +449,7 @@ motifs:
       once. Let the room react between the jokes.
 
     phrases:
-      - It's absolutely terminal and your departure was delayed
-      - RuPaul is so old, I told her to act her age... bitch, she died.
-      - a burnt bag of popcorn
+      - Wow. How will I ever follow that one up?
 
   the_ball:
     name: The ball
@@ -492,7 +475,6 @@ motifs:
 
     phrases:
       - Eleganza Extravaganza
-      - Happiness is in your own backyard.
 
     when:
       - afternoon
@@ -516,8 +498,7 @@ motifs:
       it's wearing.
 
     phrases:
-      - Category is…
-      - Sissy that walk
+      - Category is...
       - You better walk that fucking duck.
 
   the_reveal:
@@ -541,7 +522,6 @@ motifs:
 
     phrases:
       - Ru-veal
-      - RuVeal Yourself
 
     when:
       - done
@@ -593,7 +573,7 @@ motifs:
       open task stays behind for critiques.
 
     phrases:
-      - That's a lot of emotion for safe
+      - You're safe.
       - Fuck it, just have fun and hope you are safe.
 
     when:
@@ -622,7 +602,6 @@ motifs:
 
     phrases:
       - While you untuck in the werk room, the judges and I will deliberate.
-      - Now, just between us squirrel friends, what do you think?
       - Silence! I've made my decision. Bring back my girls!
       - I've consulted with the judges, but the final decision is mine to make.
 
@@ -787,7 +766,6 @@ motifs:
       - Sashay away.
       - I came in first!
       - I... have no exit line.
-      - Miss Vanjie... Miss Vanjie... Miss... Vanjie.
 
     when:
       - evening
@@ -815,7 +793,6 @@ motifs:
 
     phrases:
       - Keep your eyes on the stars... you'll never be one!
-      - Hope you all lose
       - HATE YOUR HAIR HOPE YOU LOSE ABSOLUTELY LOVE YOU CAMP COWS
       - Getting the crown Just Got a LOT easier for y'all
 
@@ -872,7 +849,7 @@ motifs:
       week, whatever it does next.
 
     phrases:
-      - you are getting the Porkchop.
+      - I'm sorry my dear but you are getting the Porkchop.
       - I'm the UK's Porkchop
 
     when:
@@ -900,7 +877,6 @@ motifs:
       has already used, and make this one the last.
 
     phrases:
-      - It's chocolate.
       - All Star rules are temporarily suspended, until further notice.
 
     when:
@@ -927,7 +903,6 @@ motifs:
 
     phrases:
       - I just had to eliminate two queens. How soon can you get here?
-      - It took ya'll hoes 4 times to get Rid of me!!!
 
     when:
       - slipped
@@ -954,7 +929,7 @@ motifs:
       slipped, one round each.
 
     phrases:
-      - Lip Sync LaLaPaRuZa Smackdown
+      - Lip Sync LaLaPaRUza Smackdown
       - Queen of She Done Already Done Had Herses
 
     when:
@@ -982,7 +957,6 @@ motifs:
     phrases:
       - Toot or Boot
       - Golden Boot
-      - Reunited
 
     when:
       - weekly
@@ -1008,7 +982,6 @@ motifs:
     phrases:
       - America's Next Drag Superstar
       - Queen of All Queens
-      - I won! I won! Finally.
       - I'm just ready to rule the fucking world!
 
     when:
@@ -1036,7 +1009,6 @@ motifs:
 
     phrases:
       - Meet our... monsters.
-      - if you saw Dragula Season 2 you have no idea who I am.
 
     when:
       - weekly
@@ -1140,8 +1112,10 @@ motifs:
       top, the safe, and the bottom headed for extermination.
 
     phrases:
-      - We are not here to judge your drag. Drag is art, and art is subjective.
-      - It is really brave of you to wear club kid boots.
+      - >-
+        We are not here to judge your drag. Drag is art and art is subjective.
+        What we are judging you on is your drag as it relates to this
+        competition.
       - Well, you just missed the mark.
 
     when:
@@ -1195,8 +1169,6 @@ motifs:
 
     phrases:
       - So, today's Cauldron is just a big fucking hot mess.
-      - Don't fucking throw a fucking chicken at me!
-      - I guess chickens do fly.
       - Give them the fucking needles!
 
     when:
@@ -1226,14 +1198,10 @@ motifs:
 
     phrases:
       - exterminations are for pests
-      - Actually, you have to prove 'cause you're in the extermination.
-      - Are you fucking kidding me?
-      - I kinda like it. It's warm and I need warmth right now.
       - I hope you're enjoying this!
       - >-
         The worst thing that could happen is I fall to my death and I'm sidewalk
         sauce.
-      - the Bridge to Nowhere
 
     when:
       - slipped
@@ -1258,7 +1226,6 @@ motifs:
       on the excuse that draws the most.
 
     phrases:
-      - Fuck the big picture, Clint.
       - Let's make some good fucking TV!
 
     when:
@@ -1286,7 +1253,6 @@ motifs:
     phrases:
       - Later that night
       - Kill them all.
-      - After all... I am a ghost.
 
     when:
       - evening
@@ -1312,9 +1278,6 @@ motifs:
 
     phrases:
       - The Key of Life and Death
-      - >-
-        I have a lot of time to think on this mattress, and I decided... I'm
-        coming for you
 
     when:
       - slipped
@@ -1340,7 +1303,6 @@ motifs:
     phrases:
       - The World's Next Drag Supermonster
       - Queen of the Underworld
-      - Come on Mama Swan, gimme the crown!
 
     when:
       - big_win

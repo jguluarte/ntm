@@ -90,6 +90,12 @@ Each message gets one hook, from the pool of motifs, references and actors'
 lines. It names a speaker only sometimes, at a rate computed from the pool.
 Messages may talk to the user as "you", and never use their name or a pet name.
 
+The picker is a Python script, standard library plus PyYAML, kept inside
+`ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
+It draws only what one message needs: the hook, sometimes a speaker, and a line
+from the hook. Nothing carries from one message to the next except rest, the
+penalty a value carries since its last use.
+
 ### Theme files
 
 A theme is a set of YAML files named after it. The root, for Justin
@@ -106,6 +112,10 @@ holds only the terms a model wouldn't know or would misuse.
 Theme files live in the user's backend, like every other database: for a Linear
 user, one Linear document per file.
 
+Themes are additive. The Themes part of `%Settings` lists the user's themes, and
+each week the weekly job moves to the next one, back to the first after the
+last. Nothing is picked or weighted.
+
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.
 
@@ -119,6 +129,11 @@ scores.
 It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed. It also runs just before `ntm:clean` in the
 weekly job.
+
+It prunes `%Message-history`. An old entry matters only for its picks' rest.
+Once its hook, speaker and line have each been picked again in a later entry,
+and its feedback and verdict are in the scores, the job drops it. Each theme's
+history then rolls forward with an upper limit.
 
 ### `%Message-history`
 
@@ -147,10 +162,16 @@ the research out to agents, and an agent can't start others.
 An examples pool the user builds from job chats. The writer reads it only once
 it's big enough.
 
+A day's throughline: a pick that carries across a day's messages. It waits until
+Justin finds he wants it.
+
 ### Justin's theme
 
 It's built on a `dragify` branch, which never merges anywhere and is deleted
 once the theme is in Linear.
+
+The picker doesn't keep a scene to its speaker's show, because the shows mix
+freely. `show` stays in his motifs and references files, for the writer only.
 
 ### Release
 

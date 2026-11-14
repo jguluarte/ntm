@@ -1,0 +1,313 @@
+# The motifs a message can be staged as: the shows' recurring scenes.
+about: >-
+  The challenges, rituals and scenes that come back season after season on Drag
+  Race and Dragula. When the job picks a motif for a message, from
+  `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
+  scene plays, `staging` casts the task in it, and `phrases` are what people say
+  at that moment on the show. A motif with `when` fits only the occasions it
+  lists.
+
+motifs:
+  previously_on:
+    name: Previously on
+
+    show: Drag Race
+
+    about: >-
+      The quick recap that opens each episode: who won last week, who went home,
+      who's fighting.
+
+    on_the_show: >-
+      A fast cut of last week down to the moments that matter now: the win, the
+      bottom two, the lip sync, the grudge. The recap sets up what this episode
+      is about before anyone speaks.
+
+    staging: >-
+      Recut the task's recent history as the recap: each day it waited is a shot
+      in the montage, the excuse is last week's cliffhanger, and today opens on
+      the scene the recap set up. On the weekly message, recap the whole week,
+      wins included.
+
+    phrases:
+      - Previously on...
+      - For the first time in Drag Race herstory
+
+    when:
+      - morning
+      - weekly
+
+  werk_room_entrance:
+    name: Werk room entrance
+
+    show: Drag Race
+
+    about: >-
+      Day one: the queens walk into the werk room one at a time, each with a
+      first line, while the queens already there size her up.
+
+    on_the_show: >-
+      The door opens, the queen poses and gives her first line to the camera,
+      and the room reads her look before she reaches her station. The ones who
+      came in earlier whisper. Catchphrases often start here.
+
+    staging: >-
+      Walk the task in as the new arrival: a first line that says what it thinks
+      of itself, then the rest of the list sizing it up from their stations, its
+      look against the work it brings. On the weekly message, the week's tasks
+      are the new cast, entering one at a time.
+
+    phrases:
+      - Hieeee!
+      - Purse first!
+      - Check your lipstick before you come for me.
+      - Come on season six, let's get sickening.
+
+    when:
+      - morning
+      - weekly
+
+  the_morning_after:
+    name: The morning after
+
+    show: Drag Race
+
+    about: >-
+      The day after an elimination: the queens walk back into the werk room,
+      find the goodbye written in lipstick on the mirror, and face the empty
+      station.
+
+    on_the_show: >-
+      The queens read the message and react to it, sweet or petty. Then the talk
+      turns to who saw it coming, who is still angry about last night, and who's
+      next.
+
+    staging: >-
+      Open the day on yesterday's goodbye: whatever left the list yesterday,
+      done or dropped, wrote it on the mirror, and today's task walks in to read
+      it. The empty station is the gap it left. The read lands on who's next,
+      and today's task is standing right there.
+
+    phrases:
+      - Hope you struggle cleaning this LOL.
+      - Have fun cleaning this.
+
+    when:
+      - morning
+
+  video_message:
+    name: Video message
+
+    show: Drag Race
+
+    about: >-
+      The werk room screen lights up with a message from RuPaul that teases the
+      next challenge.
+
+    on_the_show: >-
+      The queens gather at the screen for RuPaul's short, punning tease of
+      what's coming, then guess at what it means. The UK and Down Under shows
+      open it with their own local twist.
+
+    staging: >-
+      Put the task on the screen as RuPaul's teaser: a punning hint at the job,
+      no details, and the room left guessing how bad it is. The read lands on
+      how long the message has been playing to an empty room.
+
+    phrases:
+      - She done already done had herses!
+      - Her Majesty done already done had herses!
+      - Well, Sheila done already done had herses!
+
+    when:
+      - morning
+
+  challenge_announcement:
+    name: Challenge announcement
+
+    show: Drag Race
+
+    about: >-
+      RuPaul walks into the werk room, sets the week's challenge, and sends the
+      queens off to work.
+
+    on_the_show: >-
+      The greeting as she walks in, the Pit Crew carrying in whatever the
+      challenge needs, then the rules: the teams or roles, and the prize. She
+      closes on the start signal, and the queens scatter. The UK and Down Under
+      shows have their own greetings.
+
+    staging: >-
+      Announce the task as this week's challenge: what it is, what it takes,
+      what happens if it slips again. Then the start signal, and every minute
+      after it counts. On the weekly message, announce the week's challenges in
+      one go. The video message only teases; here Ru is in the room and the
+      clock is running.
+
+    phrases:
+      - Hello, hello, hello!
+      - Oh, Pit Crew!
+      - Racers, start your engines, and may the best drag queen win!
+      - "'Ello, gov'na!"
+
+    when:
+      - morning
+      - weekly
+
+  werk_room_walkthrough:
+    name: Werk room walkthrough
+
+    show: Drag Race
+
+    about: >-
+      While the queens work, RuPaul tours the werk room and stops at each
+      station to ask about the plan.
+
+    on_the_show: >-
+      Ru stops, smiles, and asks the one question that exposes the plan;
+      Michelle Visage or a coach sometimes comes too. A queen who answers that
+      it'll be fine gets a worried look back, and a worried question from Ru
+      usually means trouble on the runway.
+
+    staging: >-
+      Stop at the task's station mid-day and ask the one question that shows
+      whether there's a plan. Take the answer at face value and let the look on
+      Ru's face do the rest. The read lands in the gap between "it's going to be
+      fine" and what's actually on the table.
+
+    phrases:
+      - How are you going to make it funny?
+      - I can't wait to see how this turns out.
+      - I get worried when you do that 'oh it's going to be fine'
+
+    when:
+      - afternoon
+
+  design_challenge:
+    name: Design challenge
+
+    show: Drag Race
+
+    about: >-
+      The sewing challenge: make a runway look from scratch in a day, from
+      fabric or from whatever odd materials production hands out.
+
+    on_the_show: >-
+      The queens grab materials, and the ones who can't sew say so out loud.
+      Then it's sewing machines, hot glue and the clock. What goes wrong: a look
+      that's still visibly a shower curtain, raw glue, a hem that never got
+      finished and walks the runway anyway. The season's worst look can win the
+      Golden Boot at the reunion.
+
+    staging: >-
+      Build the task as a look from scratch against the clock: the delay is the
+      hours spent staring at the fabric, the shortcut is the hot glue gun, and
+      the read lands on what shows on the runway: the raw edge, the dried glue,
+      the thing still visibly what it was this morning.
+
+    phrases:
+      - Our maxi challenge is a Design Challe-heu-he-he- noo. WHAT THE FUCK!
+      - I don't sew.
+      - But, I mean, I did sew this. I didn't glue like, stuff on a corset.
+      - I want you to get off my station.
+
+  no_excuses:
+    name: No excuses
+
+    show: Drag Race
+
+    about: >-
+      The time RuPaul tells the whole cast off for coming in unprepared, after a
+      challenge goes to pieces.
+
+    on_the_show: >-
+      Season 7, after a chaotic Shakespeare acting challenge: RuPaul drops the
+      warmth and tells the queens she has no patience for excuses or for being
+      unprepared. Fans still treat it as the template for Ru losing patience.
+
+    staging: >-
+      Let every excuse for the task have its say, then answer them all at once
+      with the plain job, unsoftened. The read lands on how much longer the
+      excuses took than the task would have.
+
+    phrases:
+      - I don't wanna hear any goddamn excuses. Anymore!
+      - You don't gotta reinvent the wheel! The wheel is fine!
+
+  reading_challenge:
+    name: Reading challenge
+
+    show: Drag Race
+
+    about: >-
+      The mini challenge where the queens take turns reading each other: quick,
+      cutting insults for sport, borrowed from ballroom.
+
+    on_the_show: >-
+      RuPaul opens the library, and each queen steps up and reads everyone else
+      in a line. The funniest, shadiest reads win. A read that's only mean, with
+      no joke in it, dies in the room. When the library closes, the reading
+      stops and nobody holds a grudge.
+
+    staging: >-
+      Open the library on the task: a run of one-liners, each on a different
+      flaw (its age, its size, its excuses, its look), each with a turn that
+      makes it land. Then close the library. These are the werk room's quick
+      reads; a prepared set to an audience is the roast.
+
+    phrases:
+      - Get out your library cards!
+      - Because reading is what?
+      - Fundamental!
+      - The library is open.
+
+  puppets:
+    name: Puppets
+
+    show: Drag Race
+
+    about: >-
+      The mini challenge where each queen gets a puppet of a rival, drags it up,
+      and reads the rival through it.
+
+    on_the_show: >-
+      Each queen is handed a puppet made to look like another queen, dresses it,
+      and puts on a short show as her. The puppet says what the queen wouldn't
+      say to a face. It comes late in the season.
+
+    staging: >-
+      Make a puppet of the task and work it: through the puppet, the task says
+      out loud what it thinks about being left on the list, its age, the excuses
+      it has heard. The read comes from the task's own mouth.
+
+    phrases:
+      - What did I tell you about chewing the scenery?
+      - What was your name again?
+
+  untucked:
+    name: Untucked
+
+    show: Drag Race
+
+    about: >-
+      The backstage lounge where the queens wait while the judges deliberate,
+      and where it gets messy.
+
+    on_the_show: >-
+      Drinks, tears and fights: the queens go over their critiques, who should
+      have been in the bottom, and who has been coasting. In the US it's a show
+      of its own; most other versions run it inside the episode.
+
+    staging: >-
+      Send the task backstage to wait for its verdict while the rest of the list
+      gossips about it: who saw this coming, who has been working while it sat
+      there. End the day in the lounge with the verdict still out. This is the
+      queens' side of the wait; the judges' side is deliberation.
+
+    phrases:
+      - So how did everybody feel?
+      - This is not RuPaul's Best Friend Race!
+      - I was working hard while you were sleeping!
+      - That was a messy mess.
+
+    when:
+      - evening

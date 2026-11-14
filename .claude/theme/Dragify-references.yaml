@@ -720,8 +720,8 @@ references:
       Calling in backup mid-performance.
 
     callback: >-
-      Fits a task the user wants someone else to finish: hover a hand over the
-      button, or press it.
+      Hover a hand over the she-mergency button this afternoon: tag a partner in
+      to finish the task, or remember the pair who pressed it still went home.
 
   dancing_on_my_own:
     name: Dancing on My Own
@@ -736,8 +736,8 @@ references:
       Raw feeling over stunts.
 
     callback: >-
-      Fits a heavy evening with a task still on it: barely move, cry through it,
-      and still get it done.
+      Strip the evening's open task of every trick: barely move, mean every
+      word, and get to the end of the song.
 
     when:
       - evening
@@ -756,8 +756,8 @@ references:
       A tie good enough to bring two queens back.
 
     callback: >-
-      Fits two dropped tasks back on the list together: they lip synced their
-      way back as a pair.
+      Bring two dropped tasks back onto the list as a pair, lip syncing for the
+      same way back, too close for either to go home.
 
     when:
       - slipped
@@ -775,8 +775,8 @@ references:
       Leaving the party early, while ahead.
 
     callback: >-
-      Fits a task the user quits while it's going well: win the round, then pull
-      your own name.
+      Catch the task this afternoon at its BenDeLaCreme moment: winning the
+      round, and reaching for the lipstick to write its own name.
 
   lifes_not_fair:
     name: Life's not fair
@@ -792,8 +792,8 @@ references:
       A shrug at any mild injustice.
 
     callback: >-
-      Fits a favorite task bumped for a dull one: shrug it off the way Naomi
-      did.
+      Shrug at whatever the day did to the task with Naomi's unbothered shrug,
+      and move straight on.
 
   the_same_wig:
     name: The same wig
@@ -809,8 +809,8 @@ references:
       The reveal that reveals nothing, and wins anyway.
 
     callback: >-
-      Fits a task the user took the cover off, only to find the same task under
-      it: pull the wig and show the wig.
+      Stage a big reveal on the task that uncovers exactly what was there
+      before, and sell it as hard as Monét sold hers.
 
   club_96:
     name: Club 96
@@ -826,8 +826,8 @@ references:
       Two people whispering; the caption for any photo of a whisper.
 
     callback: >-
-      Fits a task the rest of the list is whispering about: lean in and whisper
-      its name.
+      Have the rest of the list lean in and whisper the task's name to each
+      other, over and over, like Naomi and Valentina at Club 96.
 
   kylies_slip:
     name: Kylie's slip
@@ -843,8 +843,8 @@ references:
       A stumble that doesn't stop the show.
 
     callback: >-
-      Fits a task that tripped on the way and got done anyway: roll the fall
-      into a pose.
+      Fold the done task's stumble into the finish, the way Kylie kept going
+      after her slip in the finale.
 
     when:
       - done
@@ -863,8 +863,8 @@ references:
       Doing both parts at once, by yourself.
 
     callback: >-
-      Fits a task with nobody to split it with: play both parts, the one who
-      stalls and the one who does it.
+      Play the task as Silky's Barbie Girl, with the user in both roles: the one
+      who stalls and the one who gets it done, props pulled from the bra.
 
   the_spoken_word_lip_sync:
     name: The spoken-word lip sync
@@ -880,8 +880,8 @@ references:
       No music, only the words, and someone still wins.
 
     callback: >-
-      Fits a dull task with no fun in it: drop the song and deliver the
-      monologue anyway.
+      Drop the music from the evening's task and deliver it as a monologue:
+      every word, no song to hide behind, and someone still wins.
 
     when:
       - evening
@@ -902,8 +902,8 @@ references:
       The girl group that outlived its challenge.
 
     callback: >-
-      Fits a day when several tasks closed together: form them into the group
-      and give them a chart position.
+      Form the day's finished tasks into a girl group, each with its verse, and
+      give the single a chart position.
 
     when:
       - big_win
@@ -922,8 +922,8 @@ references:
       The same song, done two ways, and everyone ranks them.
 
     callback: >-
-      Fits two tasks of the same size competing for today: give each its version
-      of the song and rank them.
+      Perform the task two ways, like the two groups on UK Hun?: the version the
+      user planned and the version that happened, then rank them.
 
   the_lockdown_break:
     name: The lockdown break
@@ -938,8 +938,8 @@ references:
       The long pause in the middle, and coming back changed.
 
     callback: >-
-      Fits a task paused so long it needs a comeback: return to it months later
-      with new teeth.
+      Bring the long-paused task back after its seven-month break, picking up
+      mid-season as if nothing happened, with brand-new teeth.
 
     when:
       - slipped
@@ -958,8 +958,8 @@ references:
       Leaving the stage while the song's still playing.
 
     callback: >-
-      Fits a task the user walked away from halfway: describe the partner left
-      lip syncing alone.
+      Cast the slipped task as Sister Sister: left on the stage mid-song,
+      finishing the number alone after its partner walked off.
 
     when:
       - slipped
@@ -978,8 +978,8 @@ references:
       Confident nonsense, delivered as wisdom.
 
     callback: >-
-      Fits the user's theory of why the task can wait: deliver it with Katie
-      Price's confidence.
+      Explain how the task works in Bimini's Katie Price: total confidence, no
+      facts, delivered as wisdom.
 
   love_most_of_ya:
     name: Love most of ya
@@ -994,8 +994,8 @@ references:
       The sweet goodbye with a hole in it.
 
     callback: >-
-      Fits an evening when most of the list got done: love most of it, and leave
-      the rest guessing.
+      Sign off the evening the way Vicki signed her mirror: love most of the
+      list, and let the task left out work out it's the one.
 
     when:
       - evening
@@ -1015,8 +1015,8 @@ references:
       Signing the goodbye in someone else's name.
 
     callback: >-
-      Fits a task dropped tonight: write its mirror message in the name of
-      whatever knocked it off the list.
+      Write the dropped task's mirror message in the name of whatever knocked it
+      off today's list, signed as the culprit.
 
     when:
       - evening
@@ -1037,8 +1037,8 @@ references:
       Redoing the moment, unbothered, after it fell apart.
 
     callback: >-
-      Fits a task that fell apart the first time and got done on the second try:
-      pick up the wig and do the reveal again.
+      Nod to the done task with Eve 6000's calm: whatever fell off on the way,
+      pick it up and finish the reveal.
 
     when:
       - done

@@ -3,7 +3,12 @@ set -euo pipefail
 
 picker_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
+usage='usage: pick hook|line|theme, as README.md beside it says'
+message_flags='--options --history --theme --now --occasions --seed --chances'
+whole_number='^[0-9]+$'
+
 mode=''
+mode_flags=''
 options=''
 history=''
 theme=''
@@ -21,19 +26,25 @@ fail() {
     exit 1
 }
 
-require_tools() {
-    local tool
-    for tool in yq jq; do
-        command -v "$tool" > /dev/null || fail "$tool isn't installed"
-    done
+read_mode() {
+    mode=$1
+    case $mode in
+        hook) mode_flags=$message_flags ;;
+        line) mode_flags="$message_flags --hook --entries" ;;
+        theme) mode_flags='--this-week <theme>' ;;
+        *) fail "$usage" ;;
+    esac
 }
 
-require() {
-    [ -n "$2" ] || fail "pick $mode needs $1"
+mode_takes() {
+    local flag=$1
+    [[ $flag == --* ]] || flag='<theme>'
+    [[ " $mode_flags " == *" $flag "* ]]
 }
 
 read_flags() {
     while [ $# -gt 0 ]; do
+        mode_takes "$1" || fail "pick $mode doesn't take $1"
         case $1 in
             --chances) chances=true; shift; continue ;;
             --*) [ $# -ge 2 ] || fail "$1 needs a value" ;;
@@ -49,86 +60,95 @@ read_flags() {
             --hook) hook=$2 ;;
             --entries) entries=$2 ;;
             --this-week) this_week=$2 ;;
-            *) fail "unknown flag $1" ;;
         esac
         shift 2
     done
 }
 
+require_flag() {
+    [ -n "$2" ] || fail "pick $mode needs $1"
+}
+
 require_message_flags() {
-    require --options "$options"
-    require --history "$history"
-    require --theme "$theme"
-    require --now "$now"
-    [ ${#themes[@]} -eq 0 ] || fail "unexpected ${themes[0]}"
+    require_flag --options "$options"
+    require_flag --history "$history"
+    require_flag --theme "$theme"
+    require_flag --now "$now"
+}
+
+require_line_flags() {
+    require_flag --hook "$hook"
+    require_flag --entries "$entries"
+    [[ $hook == */* ]] || fail "--hook takes <kind>/<slug>"
+}
+
+require_theme_flags() {
+    require_flag --this-week "$this_week"
+    [ ${#themes[@]} -gt 0 ] || fail "pick theme needs every theme, in order"
+}
+
+require_flags() {
+    case $mode in
+        hook) require_message_flags ;;
+        line) require_message_flags; require_line_flags ;;
+        theme) require_theme_flags ;;
+    esac
+}
+
+require_tools() {
+    local tool
+    for tool in yq jq; do
+        command -v "$tool" > /dev/null || fail "$tool isn't installed"
+    done
 }
 
 choose_seed() {
     seed=${seed:-$(od -An -N4 -tu4 /dev/urandom | tr -d ' ')}
-    [[ $seed =~ ^[0-9]+$ ]] || fail "--seed takes a whole number"
+    [[ $seed =~ $whole_number ]] || fail "--seed takes a whole number"
 }
 
-yaml_as_json() {
+require_readable() {
     [ -r "$1" ] || fail "can't read $1"
-    yq -c . "$1" 2> /dev/null || fail "$1 isn't YAML"
 }
 
-history_as_json() {
-    [ -r "$1" ] || fail "can't read $1"
-    jq -cs . "$1" 2> /dev/null || fail "$1 isn't JSON lines"
+yaml_input() {
+    local name=$1 file=$2
+    require_readable "$file"
+    yq -c --arg name "$name" '{($name): .}' "$file" 2> /dev/null ||
+        fail "$file isn't YAML"
 }
 
-ask_picker() {
+history_input() {
+    require_readable "$history"
+    jq -cs '{history: .}' "$history" 2> /dev/null ||
+        fail "$history isn't JSON lines"
+}
+
+named_inputs() {
+    [ -z "$options" ] || yaml_input options "$options"
+    [ -z "$history" ] || history_input
+    [ -z "$entries" ] || yaml_input entries "$entries"
+}
+
+pick_in_jq() {
     jq -nr -L "$picker_dir" \
         --arg theme "$theme" --arg occasions "$occasions" --arg now "$now" \
-        --arg seed "$seed" --arg hook "$hook" --argjson chances "$chances" \
-        "include \"pick\"; report($1([inputs]; \$ARGS.named))"
-}
-
-pick_hook() {
-    require_message_flags
-    choose_seed
-    local options_json history_json
-    options_json=$(yaml_as_json "$options")
-    history_json=$(history_as_json "$history")
-    printf '%s\n' "$options_json" "$history_json" | ask_picker hook
-}
-
-pick_line() {
-    require_message_flags
-    require --hook "$hook"
-    require --entries "$entries"
-    [[ $hook == */* ]] || fail "--hook takes <kind>/<slug>"
-    choose_seed
-    local options_json history_json entries_json
-    options_json=$(yaml_as_json "$options")
-    history_json=$(history_as_json "$history")
-    entries_json=$(yaml_as_json "$entries")
-    printf '%s\n' "$options_json" "$history_json" "$entries_json" |
-        ask_picker line
-}
-
-pick_theme() {
-    require --this-week "$this_week"
-    [ ${#themes[@]} -gt 0 ] || fail "pick theme needs every theme, in order"
-    printf '%s\n' "${themes[@]}" |
-        jq -nRr -L "$picker_dir" --arg this_week "$this_week" \
-            'include "pick"; report(theme([inputs]; $ARGS.named))'
+        --arg seed "$seed" --arg hook "$hook" --arg this_week "$this_week" \
+        --argjson chances "$chances" \
+        "include \"pick\"; report($mode(flags(\$ARGS)))" \
+        --args ${themes[@]+"${themes[@]}"}
 }
 
 main() {
-    require_tools
-    mode=${1-}
-    case $mode in
-        hook | line | theme) shift ;;
-        *) fail "usage: pick hook|line|theme, as README.md beside it says" ;;
-    esac
+    read_mode "${1-}"
+    shift
     read_flags "$@"
-    case $mode in
-        hook) pick_hook ;;
-        line) pick_line ;;
-        theme) pick_theme ;;
-    esac
+    require_flags
+    require_tools
+    choose_seed
+    local inputs
+    inputs=$(named_inputs)
+    pick_in_jq <<< "$inputs"
 }
 
 main "$@"

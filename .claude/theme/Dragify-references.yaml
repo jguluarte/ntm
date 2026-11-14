@@ -2131,3 +2131,492 @@ references:
     callback: >-
       Fits a task the user swears is about to happen: weigh its odds against a
       Dragula and Drag Race crossover.
+
+  # Queer culture: ballroom, drag history, camp film and TV, and the divas
+
+  crystal_labeijas_walk_off:
+    name: Crystal LaBeija's walk-off
+
+    show: Queer culture
+
+    what_happened: >-
+      At the 1967 Miss All-America Camp Beauty Contest, Crystal LaBeija placed
+      fourth and accused the organizer of fixing it for the white winner. The
+      documentary The Queen (1968) caught her tirade, and ballroom dates its
+      break from the mixed pageants to that walk-off.
+
+    meaning: >-
+      Calling out a rigged result, loudly and on the record.
+
+    callback: >-
+      Fits a result the user calls unfair: call out the judges on camera, then
+      walk.
+
+  dorian_corey_on_shade:
+    name: Dorian Corey on shade
+
+    show: Queer culture
+
+    what_happened: >-
+      In Paris Is Burning (1990), Dorian Corey, at her makeup mirror, explains
+      reading and shade: she doesn't tell you you're ugly, because you already
+      know.
+
+    meaning: >-
+      The definition of shade everyone quotes.
+
+    callback: >-
+      Fits a task the user already knows is overdue: leave the obvious unsaid,
+      and let them hear it anyway.
+
+  wigstock:
+    name: Wigstock
+
+    show: Queer culture
+
+    what_happened: >-
+      Wigstock started in the mid-1980s in Tompkins Square Park, after a drunken
+      night at the Pyramid Club, with Lady Bunny hosting. It moved to bigger
+      venues, ran until 2005, and came back in 2018.
+
+    meaning: >-
+      The drag festival that grew out of a late night.
+
+    callback: >-
+      Fits a task born from a late-night idea: throw it a festival in the park.
+
+  pink_flamingos:
+    name: Pink Flamingos
+
+    show: Queer culture
+
+    what_happened: >-
+      In John Waters's Pink Flamingos (1972), Divine's Babs Johnson defends her
+      title as the filthiest person alive. It ends on the dog-feces scene.
+
+    meaning: >-
+      The benchmark for gross-out camp.
+
+    callback: >-
+      Fits a filthy task, like the fridge, the bins or the drain: enter it for
+      the title.
+
+  rocky_horror_at_midnight:
+    name: Rocky Horror at midnight
+
+    show: Queer culture
+
+    what_happened: >-
+      The Rocky Horror Picture Show (1975) has played at midnight screenings
+      since 1976, with fans in costume, props and shouted callbacks.
+
+    meaning: >-
+      The original audience-participation camp ritual.
+
+    callback: >-
+      Fits the week's look back at tasks that come round every week: give them
+      the costumes, the props and a crowd shouting the lines.
+
+    when:
+      - weekly
+
+  no_wire_hangers:
+    name: No wire hangers
+
+    show: Queer culture
+
+    what_happened: >-
+      Mommie Dearest (1981), with Faye Dunaway as Joan Crawford: "No wire
+      hangers, ever!" It won the Razzie for worst picture and became a camp
+      classic.
+
+    meaning: >-
+      Monster-mother rage over one small thing.
+
+    callback: >-
+      Fits a small household task: escalate it to wire-hanger rage.
+
+  baby_janes_rat:
+    name: Baby Jane's rat
+
+    show: Queer culture
+
+    what_happened: >-
+      In What Ever Happened to Baby Jane? (1962), Bette Davis's Jane serves her
+      sister Blanche, played by Joan Crawford, a rat for lunch. The two stars
+      feuded off camera too.
+
+    meaning: >-
+      Gothic sister rivalry, and aging-diva horror.
+
+    callback: >-
+      Fits a task left to rot: serve it up under a silver cover.
+
+    when:
+      - slipped
+
+  what_a_dump:
+    name: What a dump
+
+    show: Queer culture
+
+    what_happened: >-
+      In Beyond the Forest (1949), Bette Davis sneers, "What a dump!" Elizabeth
+      Taylor borrowed the line in Who's Afraid of Virginia Woolf?
+
+    meaning: >-
+      Grand contempt for a room.
+
+    callback: >-
+      Fits a task that lives in a mess: walk into the room and say it like
+      Bette.
+
+  ready_for_my_close_up:
+    name: Ready for my close-up
+
+    show: Queer culture
+
+    what_happened: >-
+      Sunset Boulevard (1950): Gloria Swanson's Norma Desmond, a faded silent
+      star, insists she is big and the pictures got small. The film ends on her
+      line, "All right, Mr. DeMille, I'm ready for my close-up."
+
+    meaning: >-
+      Delusion, and the grand descent.
+
+    callback: >-
+      Fits a user ready to be seen doing a task they haven't started: make the
+      grand descent, and let the camera find nothing in hand.
+
+  the_curtain_dress:
+    name: The curtain dress
+
+    show: Queer culture
+
+    what_happened: >-
+      The Carol Burnett Show's Gone with the Wind parody (1976): Carol Burnett's
+      Starlett comes down the stairs in a dress made from the curtains, the rod
+      still across her shoulders. Bob Mackie designed it, and it's in the
+      Smithsonian.
+
+    meaning: >-
+      Making do, grandly.
+
+    callback: >-
+      Fits a task done with whatever was in the house: wear the curtains, rod
+      and all.
+
+    when:
+      - done
+
+  the_chocolate_factory:
+    name: The chocolate factory
+
+    show: Queer culture
+
+    what_happened: >-
+      I Love Lucy, "Job Switching" (1952): Lucy and Ethel take jobs wrapping
+      chocolates on a conveyor belt that speeds up faster than they can keep up.
+
+    meaning: >-
+      Tasks coming faster than anyone can handle.
+
+    callback: >-
+      Fits a day when tasks arrive faster than they close: speed up the belt.
+
+  florals_for_spring:
+    name: Florals for spring
+
+    show: Queer culture
+
+    what_happened: >-
+      The Devil Wears Prada (2006): Meryl Streep's Miranda Priestly dismisses an
+      idea with "Florals? For spring? Groundbreaking."
+
+    meaning: >-
+      The cold read of an unoriginal idea.
+
+    callback: >-
+      Fits a task approached in the most obvious way: greet the plan with
+      Miranda's enthusiasm.
+
+  making_fetch_happen:
+    name: Stop trying to make fetch happen
+
+    show: Queer culture
+
+    what_happened: >-
+      Mean Girls (2004): Regina George's "Stop trying to make fetch happen."
+
+    meaning: >-
+      Giving up on a thing that isn't catching on.
+
+    callback: >-
+      Fits a promise the user keeps repeating that never sticks: treat it as
+      their fetch.
+
+    when:
+      - slipped
+
+  a_full_on_monet:
+    name: A full-on Monet
+
+    show: Queer culture
+
+    what_happened: >-
+      Clueless (1995): Alicia Silverstone's Cher Horowitz calls someone a
+      full-on Monet: fine from far away, a mess up close.
+
+    meaning: >-
+      Good from a distance only.
+
+    callback: >-
+      Fits a task that looks done from across the room: step closer.
+
+  picture_it:
+    name: Picture it
+
+    show: Queer culture
+
+    what_happened: >-
+      The Golden Girls (1985 to 1992): Sophia opens her stories with "Picture
+      it: Sicily, 1922."
+
+    meaning: >-
+      The long story, launched with a place and a date.
+
+    callback: >-
+      Fits the week's look back: open the week's story with a place and a date.
+
+    when:
+      - weekly
+
+  the_table_flip:
+    name: The table flip
+
+    show: Queer culture
+
+    what_happened: >-
+      The Real Housewives of New Jersey, Season 1 finale (2009): fed up with
+      Danielle Staub, Teresa Giudice flips the dinner table.
+
+    meaning: >-
+      Losing it completely, furniture included.
+
+    callback: >-
+      Fits a task that has pushed the user past their limit: let them flip the
+      table over it.
+
+    when:
+      - slipped
+
+  who_gon_check_me:
+    name: Who gon' check me, boo?
+
+    show: Queer culture
+
+    what_happened: >-
+      The Real Housewives of Atlanta (2009): furious at her party planner,
+      Sheree Whitfield demands to know who is going to check her.
+
+    meaning: >-
+      The battle cry of the unaccountable.
+
+    callback: >-
+      Fits a user acting as if nobody will hold them to a task: answer Sheree's
+      question.
+
+    when:
+      - slipped
+
+  people_are_dying:
+    name: There's people that are dying
+
+    show: Queer culture
+
+    what_happened: >-
+      Keeping Up with the Kardashians (2011): Kim loses a diamond earring in the
+      ocean in Bora Bora and sobs, and Kourtney tells her, "Kim, there's people
+      that are dying."
+
+    meaning: >-
+      Drama out of all proportion.
+
+    callback: >-
+      Fits a user making a tragedy of a small task: put it in perspective, the
+      way Kourtney did.
+
+  rooting_for_you:
+    name: We were all rooting for you
+
+    show: Queer culture
+
+    what_happened: >-
+      America's Next Top Model, Cycle 4 (2005): Tyra Banks screamed at an
+      eliminated contestant that she was rooting for her, that they were all
+      rooting for her. Tyra later said she regretted airing it.
+
+    meaning: >-
+      Disappointment at full volume: reality TV's most-used GIF for it.
+
+    callback: >-
+      Fits a task that let everyone down: tell it how hard everyone was rooting
+      for it.
+
+    when:
+      - slipped
+
+  make_it_work:
+    name: Make it work
+
+    show: Queer culture
+
+    what_happened: >-
+      On Project Runway, mentor Tim Gunn tells designers in trouble to make it
+      work.
+
+    meaning: >-
+      Fix it with what you've got.
+
+    callback: >-
+      Fits a task going wrong halfway through the day: send the mentor round to
+      its station.
+
+    when:
+      - afternoon
+
+  i_dont_know_her:
+    name: I don't know her
+
+    show: Queer culture
+
+    what_happened: >-
+      Asked about Jennifer Lopez on German TV around 2003, Mariah Carey smiled
+      and said, "I don't know her." In 2016 she said she still doesn't.
+
+    meaning: >-
+      The queen of dismissals.
+
+    callback: >-
+      Fits a task ignored so long the user no longer recognizes it: claim not to
+      know it.
+
+    when:
+      - slipped
+
+  a_lot_of_money_to_look_this_cheap:
+    name: A lot of money to look this cheap
+
+    show: Queer culture
+
+    what_happened: >-
+      Dolly Parton told Vanity Fair in 2012: "It takes a lot of money to look
+      this cheap."
+
+    meaning: >-
+      Real effort behind an easy-looking result.
+
+    callback: >-
+      Fits a task finished so it looks effortless: point out what it cost.
+
+    when:
+      - done
+
+  diana_in_the_rain:
+    name: Diana Ross in the rain
+
+    show: Queer culture
+
+    what_happened: >-
+      At her 1983 Central Park concert, Diana Ross sang into a downpour until
+      the show was stopped. She came back the next day and did it again.
+
+    meaning: >-
+      The boss diva who finishes the show, even a day late.
+
+    callback: >-
+      Fits a task rained off yesterday and done today: come back and play the
+      whole set.
+
+    when:
+      - done
+
+  chers_farewell_tour:
+    name: Cher's farewell tour
+
+    show: Queer culture
+
+    what_happened: >-
+      Cher's Farewell Tour ran from 2002 to 2005, and more tours followed it.
+
+    meaning: >-
+      The goodbye that never ends.
+
+    callback: >-
+      Fits a task the user keeps saying a last goodbye to and never finishes:
+      book it another farewell date.
+
+    when:
+      - slipped
+
+  the_wig_in_the_toilet:
+    name: The wig in the toilet
+
+    show: Queer culture
+
+    what_happened: >-
+      Valley of the Dolls (1967): Patty Duke's Neely O'Hara pulls the wig off
+      Broadway diva Helen Lawson and throws it in the toilet.
+
+    meaning: >-
+      The ultimate diva takedown.
+
+    callback: >-
+      Fits a task that has been hogging the spotlight: snatch its wig and flush.
+
+  versayce:
+    name: Versayce
+
+    show: Queer culture
+
+    what_happened: >-
+      Showgirls (1995) swept the Razzies, then became a midnight-movie camp
+      classic. Elizabeth Berkley's Nomi Malone pronounces the label "Versayce".
+
+    meaning: >-
+      Total confidence with the wrong pronunciation.
+
+    callback: >-
+      Fits a task the user is doing confidently and slightly wrong: say it the
+      way Nomi says Versace.
+
+  the_man_behind_the_curtain:
+    name: The man behind the curtain
+
+    show: Queer culture
+
+    what_happened: >-
+      The Wizard of Oz (1939): the Wizard's "Pay no attention to that man behind
+      the curtain!"
+
+    meaning: >-
+      Hiding the works and hoping nobody looks.
+
+    callback: >-
+      Fits a task hidden behind a show of being busy: pull the curtain back.
+
+  kidmans_amc_ad:
+    name: Nicole Kidman's AMC ad
+
+    show: Queer culture
+
+    what_happened: >-
+      In a 2021 cinema ad, Nicole Kidman walks into an empty AMC theater and
+      says that somehow, heartbreak feels good in a place like this.
+
+    meaning: >-
+      Earnest camp, played completely straight.
+
+    callback: >-
+      Fits a dull task given far too much ceremony: walk into it the way Kidman
+      walks into an empty cinema.

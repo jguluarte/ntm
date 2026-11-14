@@ -4,13 +4,19 @@ about: >-
   Race and Dragula. When the job picks a motif for a message, from
   `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
   scene plays, `staging` casts the task in it, and `phrases` are what people say
-  at that moment on the show.
+  at that moment on the show. A speaker who isn't the host plays the host's part
+  in a scene by reporting it or standing in, in their own manner.
 
   `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
   `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
   `big_win`). A motif fits a message when it lists no reminder or this message's
   reminder, and lists no what-happened value or one that holds; a motif with no
   `when` fits every message. On a big win, only motifs listing `big_win` fit.
+
+  When a message carries several tasks, the staging's task is the one its `when`
+  is about: a finished one for `done` or `big_win`, the one slipped longest for
+  `slipped`, and otherwise the first one the facts list. The other tasks fill
+  the scene's other parts.
 
 motifs:
   previously_on:
@@ -28,10 +34,10 @@ motifs:
       is about before anyone speaks.
 
     staging: >-
-      Recut the task's recent history as the recap: each day it waited is a shot
-      in the montage, the excuse is last week's cliffhanger, and today opens on
-      the scene the recap set up. On the weekly message, recap the whole week,
-      wins included.
+      Recut the task's history as the recap: the day it went on the list, each
+      day it waited as a shot in the montage, each slip as a cliffhanger, and
+      today opens on the scene the recap set up. On the weekly message, recap
+      the whole week, wins included.
 
     phrases:
       - Previously on...
@@ -87,10 +93,11 @@ motifs:
       next.
 
     staging: >-
-      Open the day on yesterday's goodbye: whatever left the list yesterday,
-      done or dropped, wrote it on the mirror, and today's task walks in to read
-      it. The empty station is the gap it left. The read lands on who's next,
-      and today's task is standing right there.
+      Walk the slipped task back into the werk room as the queen who survived
+      last night's bottom. Yesterday went home without it and left a goodbye in
+      lipstick on the mirror, addressed to the task: read it out, sweet and
+      petty at once. Then the room's talk turns to who's next, with the task
+      standing right there.
 
     phrases:
       - Hope you struggle cleaning this LOL.
@@ -115,9 +122,9 @@ motifs:
       open it with their own local twist.
 
     staging: >-
-      Put the task on the screen as RuPaul's teaser: a punning hint at the job,
-      no details, and the room left guessing how bad it is. The read lands on
-      how long the message has been playing to an empty room.
+      Put the task on the screen as the host's teaser: a punning hint at today's
+      job, no details. Then the room guesses what it means and how bad it is,
+      and the read lands on the guesses.
 
     phrases:
       - She done already done had herses!
@@ -143,11 +150,9 @@ motifs:
       shows have their own greetings.
 
     staging: >-
-      Announce the task as this week's challenge: what it is, what it takes,
-      what happens if it slips again. Then the start signal, and every minute
-      after it counts. On the weekly message, announce the week's challenges in
-      one go. The video message only teases; here Ru is in the room and the
-      clock is running.
+      Announce the task as today's challenge: what it is, what it takes, and
+      what doing it wins. Then the start signal, and every minute after it
+      counts. On the weekly message, announce the week's challenges in one go.
 
     phrases:
       - Hello, hello, hello!
@@ -175,10 +180,10 @@ motifs:
       usually means trouble on the runway.
 
     staging: >-
-      Stop at the task's station mid-day and ask the one question that shows
-      whether there's a plan. Take the answer at face value and let the look on
-      Ru's face do the rest. The read lands in the gap between "it's going to be
-      fine" and what's actually on the table.
+      Stop at the task's station mid-day: the task explains its plan, the host
+      asks one question about it, and the host's face answers before anyone
+      speaks. Then the host moves on to the next station, and the task is left
+      alone with the question.
 
     phrases:
       - How are you going to make it funny?
@@ -205,10 +210,10 @@ motifs:
       Golden Boot at the reunion.
 
     staging: >-
-      Build the task as a look from scratch against the clock: the delay is the
-      hours spent staring at the fabric, the shortcut is the hot glue gun, and
-      the read lands on what shows on the runway: the raw edge, the dried glue,
-      the thing still visibly what it was this morning.
+      Make the task a look to build from nothing by tonight: name the odd
+      material it's made of, whatever the task really takes, map its steps to
+      cutting, sewing and gluing, and count the hours left. The read lands on
+      what the look is right now, and how much of it is still the material.
 
     phrases:
       - Our maxi challenge is a Design Challe-heu-he-he- noo. WHAT THE FUCK!
@@ -235,10 +240,9 @@ motifs:
       stops and nobody holds a grudge.
 
     staging: >-
-      Open the library on the task: a run of one-liners, each on a different
-      flaw (its age, its size, its excuses, its look), each with a turn that
-      makes it land. Then close the library. These are the werk room's quick
-      reads; a prepared set to an audience is the roast.
+      Open the library on the task: each of the other tasks on the list steps up
+      and reads it in one line, each on a different flaw, each with a turn that
+      makes it land. Then close the library, and nobody holds a grudge.
 
     phrases:
       - Get out your library cards!
@@ -262,8 +266,9 @@ motifs:
 
     staging: >-
       Make a puppet of the task and work it: through the puppet, the task says
-      out loud what it thinks about being left on the list, its age, the excuses
-      it has heard. The read comes from the task's own mouth.
+      out loud what it thinks of its spot on the list, how long it has been
+      there, and what it has heard the user say about it. The read comes from
+      the task's own mouth.
 
     phrases:
       - What did I tell you about chewing the scenery?
@@ -284,10 +289,10 @@ motifs:
       of its own; most other versions run it inside the episode.
 
     staging: >-
-      Send the task backstage to wait for its verdict while the rest of the list
-      gossips about it: who saw this coming, who has been working while it sat
-      there. End the day in the lounge with the verdict still out. This is the
-      queens' side of the wait; the judges' side is deliberation.
+      Send the day's tasks backstage to the lounge while the verdict is out:
+      drinks, nerves, going over the day. The finished ones relive their notes,
+      and an open one gets asked where it was all day. End the day in the
+      lounge, the verdict still out.
 
     phrases:
       - So how did everybody feel?
@@ -315,10 +320,10 @@ motifs:
       that's only the wig, talking over the panel, freezing.
 
     staging: >-
-      Seat the task on the panel as a celebrity famous for exactly what it never
-      gets around to. Ru's question sets up the excuse, and the excuse comes
-      back as the character's answer, in character. The read lands on an
-      impression that's only the wig.
+      Host a round about the task: one fill-in-the-blank question built from it,
+      and a panel of celebrities, each picked for how they'd fill it in,
+      answering one at a time in character. The read lands on the best answer,
+      and on the worst.
 
     phrases:
       - the basic bitches from the fierce-ass queens
@@ -342,11 +347,10 @@ motifs:
       role.
 
     staging: >-
-      Cast the task as the part nobody fought for, a small role in the day's
-      musical. The delay is the missed choreography and the flat recording
-      session; the read lands on a small part that vanishes when it could have
-      stolen the show. A Rusical hands out roles; in a girl group, each member
-      writes her own verse.
+      Cast the day's tasks in a musical, with the task in the part nobody fought
+      for. Map the part to the task's steps: its line in the recording session,
+      its eight counts of choreography, its one entrance. The read lands on
+      whether a small part can steal the show.
 
     phrases:
       - tonight you ruled the world! You're safe.
@@ -371,9 +375,10 @@ motifs:
       group. On the UK show the whole winning team wins.
 
     staging: >-
-      Make the day's tasks a girl group with this task in it: the others know
-      their verses and their marks, and this one is lost in the choreography.
-      The read lands on who's carrying the group.
+      Make the day's tasks a girl group, each with a verse about itself. The
+      others have recorded theirs, and this task is still in the booth writing
+      its verse while the producer waits. The read lands on the verse it finally
+      lays down.
 
     phrases:
       - >-
@@ -400,9 +405,9 @@ motifs:
       passed off as a talent. The queens in the seats have opinions.
 
     staging: >-
-      Put the task on as the act: doing it is the talent. The delay is the act
-      that isn't one, the lip sync passed off as a skill, and the read comes
-      from the queens watching from their seats.
+      Put the task on as an act: doing it is the talent, and the user is the
+      performer stepping into the light. The queens in the seats watch and judge
+      whether it's a real talent, and the read comes from their row.
 
     phrases:
       - It's not bad, it's just not good.
@@ -426,9 +431,9 @@ motifs:
 
     staging: >-
       Make the task the makeover partner: plain, willing, waiting for its drag.
-      Finished, it has to look like family next to the plan. The read lands on a
-      partner that looks like a hostage, or on the queen who made over
-      everything else and walked out half-done.
+      Map the steps still to do to the makeover, so that finished, it looks like
+      family next to the user. The read lands on the resemblance so far, or on
+      the queen who made over everything else and walked out half-done.
 
     phrases:
       - Drag Family Resemblance
@@ -453,10 +458,10 @@ motifs:
       with a turn, a persona that carries.
 
     staging: >-
-      Seat the task on the dais as the guest of honor and run a set at it: a
-      warm open, then jokes about its age, its excuses and its delays, each with
-      a turn, and a closer that's love and a joke at once. It's comedy for a
-      room; the judges' verdict on the work is the critiques.
+      Seat the task on the dais as the guest of honor and run one set at it: a
+      warm open, then jokes about its size, its history on the list and what it
+      asks of the user, each with a turn, and a closer that's love and a joke at
+      once. Let the room react between the jokes.
 
     phrases:
       - It's absolutely terminal and your departure was delayed
@@ -480,10 +485,10 @@ motifs:
       a homemade look that doesn't look homemade.
 
     staging: >-
-      Make a few of the day's tasks the three looks of one ball, with this task
-      as the look still in pieces at midnight. The read lands on walking it out
-      unfinished. The runway is one look a night; a ball is three in a row, one
-      of them sewn overnight.
+      Make the day's tasks, or the task's steps, the looks of a ball: give the
+      ball a theme and each look a named category. The task is the homemade
+      look, still in pieces on the werk room table, and the read lands on
+      whether it will be finished for its category.
 
     phrases:
       - Eleganza Extravaganza
@@ -507,8 +512,8 @@ motifs:
 
     staging: >-
       Name a category for the task, the punnier the better, and walk it: the
-      finished task is the look, and the judges' puns land on whatever it's
-      wearing today. One look on one night; three looks in a row is the ball.
+      task as it stands today is the look, and the judges' puns land on whatever
+      it's wearing.
 
     phrases:
       - Category is…
@@ -530,9 +535,9 @@ motifs:
       a heap, gets read for it.
 
     staging: >-
-      Stage the task as a reveal: the mess on top is the first look, and done is
-      what's underneath. The delay is the cord that won't pull; the read lands
-      on a reveal that sticks halfway.
+      Walk the finished task out in its first look, the state it was in this
+      morning, then pull the cord: done is underneath. The read lands on how
+      clean the tear-away was.
 
     phrases:
       - Ru-veal
@@ -556,10 +561,9 @@ motifs:
       blunt note. Ru asks the bottom queens who should go home.
 
     staging: >-
-      Stand the task on the main stage for notes: each judge names one thing
-      wrong, in one line, and moves on. The read lands on the flaw it keeps
-      getting noted for. The critiques judge the work; jokes for a room are the
-      roast.
+      Stand the task in front of the panel for notes: each judge gives it one,
+      short and in their own manner, and moves on. The read lands on the note it
+      has heard before.
 
     phrases:
       - Who should go home tonight and why?
@@ -584,8 +588,9 @@ motifs:
       about. The safe queens step back and watch the others get critiqued.
 
     staging: >-
-      Call the task safe: done enough to pass, not enough to talk about. Give it
-      no notes at all; the read lands on how little there is to say.
+      Call the finished task safe: done, and nothing the judges need to discuss.
+      Name what got it there in a line, then send it off the stage while any
+      open task stays behind for critiques.
 
     phrases:
       - That's a lot of emotion for safe
@@ -610,10 +615,10 @@ motifs:
       the bottom two.
 
     staging: >-
-      Send the task out of the room and talk about it the way the judges do once
-      the queens have gone: franker than to its face. Then call it back for the
-      verdict. This is the judges' side of the wait; the queens' side is
-      Untucked.
+      Send the day's tasks off the stage and talk about each one the way the
+      judges do once the queens have gone: franker than to its face, done and
+      open alike. Then call them back for the results: the winner, the safe, the
+      bottom.
 
     phrases:
       - While you untuck in the werk room, the judges and I will deliberate.
@@ -640,9 +645,10 @@ motifs:
       gives the verdict.
 
     staging: >-
-      Put two tasks in the bottom two, this one and another, and make them lip
-      sync for the day: one gets done, the other goes home to another day. The
-      read lands on the one that only knows half the words.
+      Stand the task in the bottom two against whatever has been beating it, the
+      couch, another task or the excuse, and make them lip sync for tonight. The
+      song is the time left in the evening, doing the task is the win, and the
+      host is watching.
 
     phrases:
       - Two queens stand before me.
@@ -670,9 +676,9 @@ motifs:
       other line. When both queens stay, it's a double shantay.
 
     staging: >-
-      The task got done at its last chance, so it stays: say so in Ru's words,
-      then give the one note it barely survived on. Two tasks done at the last
-      minute make a double shantay.
+      The finished task stays: give the verdict, then one note on how it got
+      through. A task that slipped before it got done barely survived; one done
+      on its day stayed with room to spare. Two done make a double shantay.
 
     phrases:
       - Shantay, you stay.
@@ -694,9 +700,9 @@ motifs:
       cash tip.
 
     staging: >-
-      Make the finished task the week's challenge winner: name what it beat,
-      hand it the prize, and let it gloat backstage. Save the big speech for a
-      crowning.
+      Call the big effort forward as the week's challenge winner: name what it
+      beat to get here, the days, the slips or the size of it, and hand over a
+      prize sized to match. Then let it gloat backstage.
 
     phrases:
       - Con-drag-ulations!
@@ -747,9 +753,9 @@ motifs:
       instead.
 
     staging: >-
-      The task won the week, so it holds the lipstick: let it name the next task
-      to go, and take its time doing it. The read lands on whichever task's name
-      is on the lipstick.
+      The finished task holds the lipstick: it chooses the open task that gets
+      done next, or tomorrow's if none is open, and takes its time revealing the
+      name. The read lands on whichever name is on the lipstick.
 
     phrases:
       - The time has come, for you to Lip-Sync. For. Your. Legacy!
@@ -773,9 +779,9 @@ motifs:
       both queens go home at once.
 
     staging: >-
-      Give the day its exit: what's still open gets a last word, short and in
-      character, then walks off the stage. The read lands between the exit line
-      it planned and the one it actually delivers.
+      Give the task that's still open its exit line on the stage: a last word,
+      short and in character, then it walks off until tomorrow. The read lands
+      between the exit line it planned and the one it actually delivers.
 
     phrases:
       - Sashay away.
@@ -802,8 +808,9 @@ motifs:
       signed with a kiss.
 
     staging: >-
-      Write the day's goodbye in lipstick, from whatever didn't make it through
-      today: sweet, petty, or both in one line, signed with a kiss. The read
+      Have the task that's still open write its goodbye in lipstick on the werk
+      room mirror, to the tasks that got done today, or to tomorrow's list if
+      none did: sweet, petty, or both in one line, signed with a kiss. The read
       sits in the petty half.
 
     phrases:
@@ -830,8 +837,10 @@ motifs:
       music starts.
 
     staging: >-
-      Sign the day off the way Ru does: the self-love line turned toward the
-      task, then the amen. The read is in the turn.
+      Close the day with the host's send-off to whoever is still on the stage: a
+      short sermon drawn from today, what got done and what it took, turned
+      toward loving yourself. Then the call for the amen, the room's answer, and
+      the music.
 
     phrases:
       - >-
@@ -858,8 +867,9 @@ motifs:
       a Porkchop Loading Dock to wait in.
 
     staging: >-
-      Hand the task the week's porkchop: the first one to slip. It's out first,
-      it's a footnote, and it carries the title all week.
+      Hand the week's first slip the porkchop: the first task this week to miss
+      its day. It's out first, it's a footnote, and it carries the title all
+      week, whatever it does next.
 
     phrases:
       - you are getting the Porkchop.
@@ -885,10 +895,9 @@ motifs:
       meant home.
 
     staging: >-
-      The slipped task gets one save and unwraps its chocolate bar to see if
-      this is it. The read lands on the plain wrapper, and on how many saves it
-      has already used. A save comes on the stage, before the exit; a returning
-      queen comes back after it.
+      Bend one rule for the slipped task, once: a reprieve, a suspended
+      deadline, a golden ticket, whatever form fits the task. Count the saves it
+      has already used, and make this one the last.
 
     phrases:
       - It's chocolate.
@@ -912,9 +921,9 @@ motifs:
       home to make room.
 
     staging: >-
-      The task that slipped off the list walks back into the werk room: the
-      others' faces, the history between them, the reason it's back. The read
-      lands on it being back at all.
+      Walk the slipped task back into the werk room as if it had gone home and
+      come back: the others' faces, the history between them, the reason it's
+      back. The read lands on it being back at all.
 
     phrases:
       - I just had to eliminate two queens. How soon can you get here?
@@ -939,9 +948,10 @@ motifs:
       own.
 
     staging: >-
-      Put every slipped task in a bracket and run the smackdown: each round, two
-      lip sync and one goes down, until one is left standing. On the weekly
-      message, the bracket is the week's slipped tasks.
+      Put the slipped tasks in a bracket and lip sync them in pairs: in each
+      round, the one that has slipped more days wins, until one is left, the
+      most-slipped task, crowned for it. A lone slipped task faces each day it
+      slipped, one round each.
 
     phrases:
       - Lip Sync LaLaPaRuZa Smackdown
@@ -968,8 +978,6 @@ motifs:
       Sit the week's tasks on the reunion couches and roll the clips: the day
       each one slipped, the day each got done. Settle the feuds, then hand out
       the awards, the Golden Boot going to the week's worst-kept task.
-      Previously on is a quick recap; the reunion sits everyone down to relive
-      it.
 
     phrases:
       - Toot or Boot
@@ -1022,8 +1030,9 @@ motifs:
 
     staging: >-
       Introduce the week's tasks as the season's cast of monsters: each one's
-      look, its kind of horror, what it does to people who leave it alone. A
-      task back from last week gets a returning monster's intro.
+      look, its kind of horror, and what it does to people who leave it alone,
+      the horror carrying each introduction. A task back from last week gets a
+      returning monster's intro.
 
     phrases:
       - Meet our... monsters.
@@ -1048,9 +1057,9 @@ motifs:
       opens with one.
 
     staging: >-
-      Make the task's first small step the fright feat: the one thing that's
-      scary for thirty seconds. Doing it wins a perk for the rest of the day;
-      skipping it earns the task a curse.
+      Make the task's first small step the morning's fright feat: thirty seconds
+      of nerve. Doing it wins a perk for the rest of the day; skipping it earns
+      a curse, named and fitted to the task.
 
     phrases:
       - Curse of Baldness
@@ -1076,9 +1085,10 @@ motifs:
       extermination. A reimagining beats a cosplay.
 
     staging: >-
-      Stage the task as the week's floor show: the task is the brief, and doing
-      it is the performance. The read lands on a cosplay of done, something that
-      looks like the task from across the room and isn't.
+      Stage the task as tonight's floor show: pick the kind of performance that
+      fits it, a lip sync, a band, burlesque, an acting scene, a photo shoot or
+      a haunted runway, and doing the task is the number, from the hosts' cue to
+      the last beat. The read lands on its big moment.
 
     phrases:
       - Dim the lights, start the music, and let the floor show begin!
@@ -1100,10 +1110,10 @@ motifs:
       performance of filth.
 
     staging: >-
-      Score the task on all four tenets: how much drag, filth, horror and
-      glamour it's serving today. It's usually heavy on filth and short on the
-      rest; the read lands on the tenet that's missing. The scorecard covers all
-      four; the Boulets' judgment is one flat sentence.
+      Score the task on all four tenets: drag is the art in how it gets done,
+      filth is the mess it makes or has made, horror is what it threatens if
+      left, and glamour is how it will look finished. The read lands on the
+      tenet that's missing.
 
     phrases:
       - Drag. Filth. Horror. Glamour.
@@ -1125,9 +1135,9 @@ motifs:
       that reads like a Halloween-store costume gets marked down.
 
     staging: >-
-      Judge the task against its brief in one flat sentence that names the exact
-      misstep, and let the sentence sit. Art is subjective; whether the task is
-      done is not.
+      Read out the task's brief, what today asked of it, and judge only what
+      came of it against that brief. Then place each of the day's tasks: the
+      top, the safe, and the bottom headed for extermination.
 
     phrases:
       - We are not here to judge your drag. Drag is art, and art is subjective.
@@ -1152,9 +1162,9 @@ motifs:
       extermination.
 
     staging: >-
-      Let the rest of the list vote on who goes home tonight, each naming the
-      task and giving its reason. The read lands when every vote names the same
-      task. A vote is cold and orderly; the fight comes after, in the Cauldron.
+      Let the rest of the list vote on who goes home tonight, one at a time,
+      each naming a task and giving its reason. The read lands when every vote
+      names the same task.
 
     phrases:
       - let's cut the shit. Who's going home first?
@@ -1179,9 +1189,9 @@ motifs:
       across the room at another, and fans still call it Chickengate.
 
     staging: >-
-      Lock the task in the Cauldron with the monsters it has kept waiting:
-      tempers up, accusations flying, something about to be thrown at it.
-      Untucked talks behind its back; the Cauldron says it to its face.
+      Lock the task in the Cauldron with the monsters it has kept waiting, while
+      extermination hangs over the room: tempers up, accusations flying,
+      something about to be thrown at it.
 
     phrases:
       - So, today's Cauldron is just a big fucking hot mess.
@@ -1243,10 +1253,9 @@ motifs:
       producer's note, and the line became one of Dragula's best-known memes.
 
     staging: >-
-      Give the task the floor to plead its case, and let the rest of the list
-      pelt it with rotten food: every excuse earns a tomato. The read lands on
-      the worst excuse yet. Here the excuse is pleaded under fire; with no
-      excuses, the host refuses to hear one.
+      Give the slipped task the floor to plead its case, and let the rest of the
+      list pelt it with rotten food: each excuse earns a tomato. The read lands
+      on the excuse that draws the most.
 
     phrases:
       - Fuck the big picture, Clint.
@@ -1272,8 +1281,7 @@ motifs:
     staging: >-
       End the day on the title card and the death scene: whatever didn't get
       done today meets its end in a horror short, in its look, by the horror
-      that fits it. Or make the task the killer, coming for the excuse. Sashay
-      away is the exit line on stage; this is what happens after.
+      that fits it. Or make the task the killer, coming for the excuse.
 
     phrases:
       - Later that night
@@ -1299,9 +1307,8 @@ motifs:
       out promising revenge.
 
     staging: >-
-      Putting the task off is using the Key on it: the task goes down a day, and
-      the Key's curse comes back on whoever turned it. The read lands on the
-      holder, and the task comes back promising revenge.
+      Putting the task off is turning the Key on it: the task goes down a day,
+      and the Key's curse comes back on whoever turned it.
 
     phrases:
       - The Key of Life and Death
@@ -1328,8 +1335,7 @@ motifs:
 
     staging: >-
       Crown the big effort the Supermonster: the crown, the scepter, the blood
-      poured over its head. Name what it survived to get here. Drag Race crowns
-      with tears and a speech; Dragula crowns in blood.
+      poured over its head. Name what it survived to get here.
 
     phrases:
       - The World's Next Drag Supermonster

@@ -16,8 +16,9 @@ they will work.
 
 A user will be able to have several themes. The Themes part of `%Settings` lists
 each one by its root and names this week's theme, the one everything picked in a
-week comes from. Each week, the weekly job will move to the next theme in the
-list. With one theme, it is always that one.
+week comes from. Each week, the weekly job moves to the next theme in the list,
+in order, back to the first after the last. With one theme, it is always that
+one.
 
 ## A theme's files
 

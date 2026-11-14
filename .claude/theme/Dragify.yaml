@@ -20,8 +20,8 @@ files:
 
   Dragify-options.yaml: >-
     the pools the job picks from: the actors as speakers, with show and where
-    each appears, and the shared lines, motifs and references as hooks, with
-    show and `when` where they have them.
+    each appears, and the lines any actor can say, the motifs and the references
+    as hooks, with show and `when` where they have them.
 
   Dragify-references.yaml: >-
     the references: single moments from the shows and the culture around them

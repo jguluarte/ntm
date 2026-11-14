@@ -27,8 +27,8 @@ references:
       Anything that looks better blurred, and the show's early, dated days.
 
     callback: >-
-      Fits a task old enough to have been filmed in 2009: put its plan behind
-      the filter, where it reads fine at a distance and falls apart in focus.
+      Run the old task's plan through the Season 1 filter: from across the room
+      it looks fine, and the haze hides how long ago it was shot.
 
   susan_lucci:
     name: The Susan Lucci of the competition
@@ -43,8 +43,8 @@ references:
       The one who's always nearly there and never wins.
 
     callback: >-
-      Fits a task planned again and again that never quite gets done: hand it
-      the title, and count its nominations.
+      Give the task the title, and read out its nominations: one for every day
+      it was planned, and not a single win.
 
   jujubees_unbeaten_run:
     name: Jujubee's unbeaten run
@@ -60,8 +60,8 @@ references:
       A streak so long it takes years and a new season to end it.
 
     callback: >-
-      Fits a run of days where everything got done, now broken by one task: name
-      the streak, and the task that finally ended it.
+      Count the week's done days as an unbeaten run, then bring on the task that
+      finally broke the streak.
 
     when:
       - slipped
@@ -80,8 +80,8 @@ references:
       The lip sync no-no: taking the job literally, and far too hard.
 
     callback: >-
-      Fits a task being handled with much more force than it needs: let the user
-      pick it up and carry it across the stage, and remember who went home.
+      Give a small task the Mimi treatment: lift it off the floor and carry it
+      across the stage, when all it needed was a lip sync.
 
   chads_cher:
     name: Chad's Cher
@@ -96,8 +96,8 @@ references:
       Doing the obvious thing well still wins.
 
     callback: >-
-      Fits a plain task done the plain way: credit it as Cher played by a Cher
-      impersonator, with no twist needed.
+      Credit the finished task as Cher played by a Cher impersonator: the plain
+      way, done properly, no twist needed.
 
     when:
       - done
@@ -116,9 +116,8 @@ references:
       Rising to the occasion with the person who matters watching.
 
     callback: >-
-      Fits a task done in front of the person it's for, like the bill with the
-      bank waiting or the gift with its owner in the room: seat that person at
-      the judges' table.
+      Seat whoever the task is for at the judges' table, the way Natalie Cole
+      sat through her own song, and have the user perform it to their face.
 
   coco_and_alyssa:
     name: Coco and Alyssa
@@ -135,8 +134,9 @@ references:
       The rivalry that runs all season and pays off in one lip sync.
 
     callback: >-
-      Fits a task the user has been feuding with for days: cast them as old
-      pageant rivals, and set up the bottom two where one of them goes home.
+      Write the task and the user as pageant rivals from way back, a season of
+      side-eye between them, and set up the bottom two where one of them finally
+      goes home.
 
   alyssas_katy_perry:
     name: Alyssa's Katy Perry
@@ -151,8 +151,8 @@ references:
       Proof that a legend can flop.
 
     callback: >-
-      Fits an easy task fumbled by someone who's usually reliable: file it next
-      to Alyssa's Katy Perry, a bad night from a good queen.
+      Bury the easy task's slip in the Snatch Game hall of shame, next to
+      Alyssa's Katy Perry, where even legends get one bad night.
 
     when:
       - slipped
@@ -172,8 +172,8 @@ references:
       The old bit that keeps coming back, bigger each time.
 
     callback: >-
-      Fits an old task that comes back in a new outfit: rip off the garbage bag
-      and show it's the same one from seasons ago.
+      Bring the old task back in a new outfit, the way Lil Poundcake keeps
+      returning: a little bigger each time, and the same menace underneath.
 
     when:
       - slipped
@@ -193,9 +193,9 @@ references:
       The entrance accessory that became a character.
 
     callback: >-
-      Fits a task whose setup has upstaged it, like the folder made and the
-      tools bought: give the accessory its own entrance, with the task still
-      underneath it.
+      Crown the task with an Ornacia: give its prep, the tools, the folder, the
+      list, a name and a face of its own, and let it make the entrance while the
+      task waits underneath.
 
     when:
       - morning
@@ -213,8 +213,8 @@ references:
       Returning the next day in full drag, and getting through.
 
     callback: >-
-      Fits a task that went badly yesterday: send it back in today in full drag,
-      the same task in a better outfit.
+      Send yesterday's task back in today in full drag: the same task, turned
+      away once, walking in as the version the judges can't refuse.
 
     when:
       - slipped
@@ -232,8 +232,8 @@ references:
       The all-in move that wins the lip sync.
 
     callback: >-
-      Fits a task that needs one committed move to finish: jump off the stage
-      into it, splits and all.
+      Picture the task's one hard step as Kennedy's leap off the stage: one
+      committed jump, the splits on landing, and the lip sync won.
 
   the_beyonce_curse:
     name: The Beyoncé curse
@@ -250,8 +250,8 @@ references:
       A known-doomed choice.
 
     callback: >-
-      Fits a plan the user keeps retrying that has never once worked: cast it as
-      Beyoncé at Snatch Game, and let the curse do the rest.
+      Cast the slipped task's next try as one more queen walking into Snatch
+      Game as Beyoncé: the curse is famous, and so is the queen who broke it.
 
   gaga_in_the_werk_room:
     name: Gaga in the werk room
@@ -267,8 +267,9 @@ references:
       The surprise entrance nobody clocked until the reveal.
 
     callback: >-
-      Fits a task that walks in this morning disguised as something small: let
-      it pose as a nobody at its station until it shows its real size.
+      Walk the task in this morning disguised as a nobody at the next station,
+      half its face hidden, until it drops the headpiece and shows its real
+      size.
 
     when:
       - morning
@@ -288,8 +289,9 @@ references:
       The gold standard reveal, the one every finalist since has chased.
 
     callback: >-
-      Fits a big effort finally finished: the last step is the wig coming off,
-      and everything it took pours out as petals.
+      Make the big effort's last step the glove and the wig coming off, and pour
+      everything it took out of them as petals: the days, the slips, the work,
+      until the stage is covered.
 
     when:
       - big_win
@@ -308,8 +310,8 @@ references:
       The front-runner who met the wrong moment.
 
     callback: >-
-      Fits a well-planned week knocked over by one day: the record was perfect
-      right up to the round that counted.
+      Recap the week as Shea's season: wins stacked up, the front-runner all
+      along, and then the one round that came at the wrong moment.
 
     when:
       - slipped
@@ -327,8 +329,9 @@ references:
       The bluff that sells.
 
     callback: >-
-      Fits a task the user is pretending to work on: describe the convincing
-      fake split, and the floor it never reached.
+      Stage the afternoon's progress on the task as Monét's fake split: the leap
+      sells it, the crowd gasps, and then check whether it ever touched the
+      floor.
 
   not_next_time:
     name: Not next time
@@ -343,8 +346,8 @@ references:
       Forgiveness with a warning attached.
 
     callback: >-
-      Fits a task forgiven for slipping once: accept its apology, and make the
-      warning the second half of the sentence.
+      Accept the slipped task's apology in one breath and warn it in the next,
+      the forgiveness and the threat in the same sentence.
 
     when:
       - slipped
@@ -365,8 +368,9 @@ references:
       Chaos as a format.
 
     callback: >-
-      Fits a day with too many tasks due at once: put them all on the stage
-      together and see whose wig flies first.
+      Put every task due today on the main stage at once, the whole team lip
+      syncing the same song, and pick out the one most likely to go home
+      tonight.
 
   sorry_not_sorry:
     name: Sorry Not Sorry
@@ -383,8 +387,8 @@ references:
       Redemption through a lip sync, right after a flop.
 
     callback: >-
-      Fits a task that went badly earlier and got done later: it bombed at
-      Snatch Game, then lip synced for its life.
+      Run the day's finish as Sorry Not Sorry: the task and the user matching
+      each other flip for flip, and the host keeping both.
 
     when:
       - done
@@ -402,8 +406,8 @@ references:
       Gearing up for a fight nobody called.
 
     callback: >-
-      Fits a user gearing up hard for a small task: strip down for the lip sync,
-      then hear the task was safe all along.
+      Have the small task strip off in Untucked, ready to lip sync for its life,
+      before anyone tells it it's only safe.
 
   rus_meh:
     name: Ru's meh
@@ -419,8 +423,8 @@ references:
       The one-word review that's worse than a read.
 
     callback: >-
-      Fits a task done with no flair at all: one syllable from the host is the
-      whole review.
+      Review the done task with one syllable, RuPaul's after "No Scrubs", and
+      leave it there.
 
     when:
       - done
@@ -438,8 +442,8 @@ references:
       When the result is less than you expected.
 
     callback: >-
-      Fits an ordinary task done that wanted a parade: tell it it's safe, and
-      watch the face.
+      Tell an ordinary finished task it's safe, and describe its face as the
+      parade it was hoping for doesn't come.
 
     when:
       - done
@@ -457,8 +461,8 @@ references:
       The celebrity judge who softens nothing on day one.
 
     callback: >-
-      Fits a task that's mostly right with one glaring flaw: praise the gown,
-      then detest the wig.
+      Split the task into its gown and its wig: praise the part that's going
+      well, then detest the part that isn't, celebrity-judge style.
 
   the_virtual_finale:
     name: The virtual finale
@@ -473,7 +477,8 @@ references:
       Winning the whole thing without leaving the house.
 
     callback: >-
-      Fits a task done from the couch: crown it from home, faces on screens.
+      Nod to the task done without leaving the house: the finale happened on a
+      screen, and it still counted.
 
     when:
       - done
@@ -491,8 +496,8 @@ references:
       An iconic start from nothing.
 
     callback: >-
-      Fits a task started with total confidence and no plan: switch on the
-      imaginary boombox and go.
+      Switch on an imaginary boombox at the start of the task and walk into it
+      on the beat, no plan, all confidence.
 
     when:
       - morning
@@ -511,8 +516,8 @@ references:
       The host giving it right back.
 
     callback: >-
-      Fits a task that keeps answering back with excuses: reply the way Ru
-      replied to Utica, with one finger and no words.
+      Give the slipped task's latest excuse the host's answer to a joke that
+      went too far: wordless, rude and fond, and over before it can reply.
 
   mary_queen_of_scots:
     name: Mary, Queen of Scots
@@ -528,8 +533,8 @@ references:
       A reference that sails over the room.
 
     callback: >-
-      Fits a task with a name nobody remembers the reason for: play it grandly
-      anyway, to a room that has never heard of it.
+      Perform the task's purpose like Rosé's Mary, Queen of Scots: grand,
+      committed, in full accent, to a room that has never heard of her.
 
   willow_pills_variety_show:
     name: Willow Pill's variety show
@@ -544,8 +549,8 @@ references:
       Weird, done brilliantly.
 
     callback: >-
-      Fits a task done the user's own odd way that worked: call it a variety
-      show number nobody had seen before.
+      Present the finished task as a Willow Pill variety number: strange,
+      entirely its own, and it worked.
 
     when:
       - done
@@ -563,8 +568,8 @@ references:
       Winning with one word, said with total commitment.
 
     callback: >-
-      Fits a task that needs a hype man more than a plan: give it Lil Jon on the
-      sidelines.
+      Put Lil Jon on the task's sidelines, hyping every step with one word at
+      full volume.
 
   boss_bitch:
     name: Boss Bitch
@@ -580,7 +585,8 @@ references:
       Athletic perfection under pressure.
 
     callback: >-
-      Fits a hard task done with style: describe the somersault over it.
+      Mark the finished task's hardest step with Anetra's somersault: over it in
+      one clean move, and on to the next count.
 
     when:
       - big_win
@@ -600,8 +606,8 @@ references:
       didn't need it.
 
     callback: >-
-      Fits a task the user has been saving an excuse for: spend the potion, and
-      find out nobody was going home anyway.
+      Let the slipped task drink the immunity potion it has been saving for
+      weeks, then reveal it was spent on a week nobody was going home.
 
   nymphias_bananas:
     name: Nymphia's bananas
@@ -617,8 +623,8 @@ references:
       Total commitment to one bit.
 
     callback: >-
-      Fits a user going all in on one task: make everything about it, down to
-      the color.
+      Theme the task the way Nymphia themed a whole season: one color, one
+      fruit, every step on brief from the entrance to the finale reveal.
 
   the_badonka_dunk_tank:
     name: The Badonka Dunk Tank
@@ -634,8 +640,8 @@ references:
       The gimmick second chance.
 
     callback: >-
-      Fits a task the user hopes luck will save: pull a lever and see whether
-      Michelle gets wet.
+      Line up ten levers for the slipped task and let it pull one: the right one
+      drops Michelle into the tank and saves it, and the other nine don't.
 
     when:
       - slipped
@@ -653,8 +659,8 @@ references:
       Winning on the basics alone.
 
     callback: >-
-      Fits a task finished with no tricks at all: nothing torn away, nothing
-      thrown, just done.
+      Hand the finished task Onya's win: no reveal, no stunt, the song done
+      right, and the crown anyway.
 
     when:
       - done
@@ -673,8 +679,8 @@ references:
       Counted out by the room, crowned at the end.
 
     callback: >-
-      Fits a big effort on a task everyone had written off: read out its day-one
-      ranking, then the crown.
+      Open on the big effort ranked last, the way the room ranked Myki, then
+      read out what came after, win by win, up to the crown.
 
     when:
       - big_win
@@ -692,8 +698,8 @@ references:
       Surviving the bottom over and over.
 
     callback: >-
-      Fits a task finished at the last minute again: one more week in the
-      bottom, one more win, and the streak goes on.
+      Add the done task to Nini Coco's streak: in the bottom again, won again,
+      still standing.
 
     when:
       - done

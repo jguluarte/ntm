@@ -1640,3 +1640,494 @@ references:
 
     when:
       - slipped
+
+  # Dragula
+
+  the_midnight_drag_pageant:
+    name: The Midnight Drag Pageant
+
+    show: Dragula
+
+    what_happened: >-
+      Before TV, Dragula was the Boulet Brothers' club night at the Faultline, a
+      Silver Lake leather bar. Its Midnight Drag Pageant put 13 performers
+      through extreme stage challenges for $300, a crown and the title.
+
+    meaning: >-
+      Where the exterminations started: real stunts for a small prize.
+
+    callback: >-
+      Fits a task that would make a fine stage stunt: ask whether the user would
+      do it for $300 and a crown.
+
+  the_mud_wrestling_cage:
+    name: The mud-wrestling cage
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 1: mud wrestling in character, Melissa Befierce and Xochi
+      Mochi got so physical they brought down the cage.
+
+    meaning: >-
+      A fight that broke the set.
+
+    callback: >-
+      Fits a task the user has been wrestling all week: bring the cage down
+      around them both.
+
+  vander_volunteers:
+    name: Vander volunteers
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 1: right after a win, Vander Von Odd volunteered for
+      extermination to prove herself, and ate pig brains with no hands. She won
+      the season.
+
+    meaning: >-
+      Choosing the punishment you had already earned your way out of.
+
+    callback: >-
+      Fits a task the user could have skipped and did anyway: they volunteered
+      for it, pig brains and all.
+
+    when:
+      - done
+
+  pinche_queen_skips_the_supper:
+    name: Pinche Queen skips the Last Supper
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 1: Pinche Queen was the first monster ever exterminated,
+      buried alive in episode 1, and the only one ever to skip the Last Supper.
+
+    meaning: >-
+      First out, and absent from the reunion.
+
+    callback: >-
+      Fits a task that slipped on day one and hasn't shown its face since: set
+      its empty chair at the table.
+
+    when:
+      - slipped
+
+  biqtch_puddins_janitor:
+    name: Biqtch Puddin's janitor
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 2: Biqtch Puddin' won the season with a janitor as her
+      filth look in the finale.
+
+    meaning: >-
+      The crown won with a mop.
+
+    callback: >-
+      Fits a big cleaning effort finished: crown it as the janitor look that won
+      a season.
+
+    when:
+      - big_win
+
+  erika_never_safe:
+    name: Erika never safe
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 2: Erika Klash never once placed safe, and was the first
+      monster in the bottom four times.
+
+    meaning: >-
+      Always at one end of the scoreboard.
+
+    callback: >-
+      Fits a task that's either brilliant or in the bottom, with nothing in
+      between: give it Erika's record.
+
+  the_masked_monster_curse:
+    name: The masked-monster curse
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula's masked monsters, Monikkie Shame on Season 2, Yovska on Season 3
+      and Formelda Hyde on Season 4, all went out early.
+
+    meaning: >-
+      Hiding your face is bad luck on this show.
+
+    callback: >-
+      Fits a task the user keeps hidden behind something else: put the mask on
+      it, and bring up the curse.
+
+    when:
+      - slipped
+
+  victorias_line:
+    name: Line?
+
+    show: Dragula
+
+    what_happened: >-
+      Victoria Black's running bit from Dragula's acting challenges: "Line?" She
+      went on to win Titans Season 1.
+
+    meaning: >-
+      Forgetting the line mid-scene.
+
+    callback: >-
+      Fits a task the user has lost the thread of: stop mid-scene and ask for
+      the line.
+
+  landons_spiders:
+    name: Landon's spiders
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 3, episode 1: Landon Cider drank a chalice of live spiders.
+      He went on to win the season, the first drag king to win an American TV
+      drag competition.
+
+    meaning: >-
+      Doing the worst thing on day one, and winning.
+
+    callback: >-
+      Fits a task with a nasty first step: drink the spiders before breakfast.
+
+    when:
+      - morning
+
+  season_3_on_prime:
+    name: Season 3 on Prime
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 3's run on Amazon Prime was a mess: episodes went up early
+      or late, were listed as separate series, and went missing from search.
+
+    meaning: >-
+      A schedule nobody could follow.
+
+    callback: >-
+      Fits a week whose plan kept airing out of order: list its tasks like
+      Season 3 on Prime.
+
+    when:
+      - weekly
+
+  louisianna_says_no_twice:
+    name: Louisianna says no twice
+
+    show: Dragula
+
+    what_happened: >-
+      Louisianna Purchase turned Dragula down twice before saying yes, then
+      placed fourth on Season 3.
+
+    meaning: >-
+      The yes that took three asks.
+
+    callback: >-
+      Fits a task the user has turned down twice already: this is the third ask.
+
+    when:
+      - slipped
+
+  for_free:
+    name: For free
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 4: Sigourney Beaver kept ending her stories with "...for
+      free", and a castmate mocked it. She reached the finale anyway.
+
+    meaning: >-
+      Underlining how much you did without being paid.
+
+    callback: >-
+      Fits a chore nobody pays for, finished: add that the user did it for free.
+
+    when:
+      - done
+
+  saint_wins_resurrection:
+    name: Saint wins Resurrection
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Resurrection (2020): seven past monsters competed for a spot on
+      Season 4, and Saint, tenth on Season 3, won from the lowest placement of
+      anyone.
+
+    meaning: >-
+      The longest way back, all the way to the top.
+
+    callback: >-
+      Fits a task that slipped many times and finally got done: bring up where
+      it started, then the win.
+
+    when:
+      - big_win
+
+  jay_kay_dies_twice:
+    name: Jay Kay dies twice
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 5: Jay Kay was exterminated first, brought back the next
+      episode, won a floor show, then was exterminated again: the first monster
+      with two death scenes.
+
+    meaning: >-
+      Going out twice in one season.
+
+    callback: >-
+      Fits a task that got dropped, came back, and got dropped again: give it
+      its second death scene.
+
+    when:
+      - slipped
+
+  makeup_in_a_porta_potty:
+    name: Makeup in a porta-potty
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 5: a fright-feat curse made Cynthia Doll do her makeup in a
+      porta-potty.
+
+    meaning: >-
+      Doing the job in the worst room available.
+
+    callback: >-
+      Fits a task the user has to do somewhere grim: hand them the porta-potty
+      and the makeup bag.
+
+  jarvis_at_the_foot_of_the_bed:
+    name: Jarvis at the foot of the bed
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 5: Jarvis Hammer, whose character is the ghost of a 1973
+      performer, says he got cast by hovering at the foot of the Boulets' bed
+      until they said yes.
+
+    meaning: >-
+      Haunting someone until they give in.
+
+    callback: >-
+      Fits a task that won't leave the user alone tonight: let it hover at the
+      foot of the bed until they say yes.
+
+    when:
+      - evening
+
+  asias_stolen_wig:
+    name: Asia's stolen wig
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 6 premiere: a scare actor snatched Asia Consent's $500 wig
+      as she walked in. She won the episode, and the Boulets mailed the wig back
+      as her prize.
+
+    meaning: >-
+      Winning after losing the most important thing at the door.
+
+    callback: >-
+      Fits a task done even though something went missing on the way: it got
+      done bald, and the wig comes back in the mail.
+
+    when:
+      - done
+
+  majestys_note:
+    name: Majesty's note
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 6: after a clash with Auntie Heroine, Majesty quit, and the
+      cast learned of it from a note read in the Lab.
+
+    meaning: >-
+      Leaving without saying goodbye to anyone's face.
+
+    callback: >-
+      Fits a task the user dropped without a word: read its note to the room.
+
+    when:
+      - slipped
+
+  its_a_game:
+    name: It's a game
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 6: midway through, Pi declared that this was not just a
+      competition anymore, it was a game.
+
+    meaning: >-
+      Announcing, late, what everyone already knew.
+
+    callback: >-
+      Fits a user waking up to the size of a task: announce, as if it's news,
+      what the task always was.
+
+  scyllas_scroll:
+    name: Scylla's scroll
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula Season 6: Scylla won the haunted-house immunity scroll in episode
+      1, then went out in episode 2, the night her drag mother won.
+
+    meaning: >-
+      Protection that lasts exactly one week.
+
+    callback: >-
+      Fits a task that was safe yesterday and is exposed today: the scroll has
+      run out.
+
+    when:
+      - slipped
+
+  the_shoes_lip_sync:
+    name: The Shoes lip sync
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Titans Season 1: a surprise lip sync to "Shoes", the viral
+      YouTube song, which Horror Press voted the season's most gag-worthy
+      moment.
+
+    meaning: >-
+      Life-or-death stakes set to a ridiculous song.
+
+    callback: >-
+      Fits a small, silly task treated like a battle to the death: set it to
+      "Shoes".
+
+  teletubbies_on_a_toilet_bowl:
+    name: Teletubbies on a toilet bowl
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Titans Season 1 premiere: as Yovska walked in, Kendra Onixxx said
+      the look was giving her Teletubbies on a toilet bowl. Horror Press called
+      the entrance meme-worthy.
+
+    meaning: >-
+      The entrance read that sticks forever.
+
+    callback: >-
+      Fits a task that shows up this morning looking strange: read its entrance
+      look the moment it walks in.
+
+    when:
+      - morning
+
+  grandmother_bitch:
+    name: Grandmother Bitch
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Titans Season 1: Kendra Onixxx's Grandmother Bitch, a surreal
+      spoken-word performance in homage to Zenon: Girl of the 21st Century.
+      Horror Press named it the season's biggest WTF moment.
+
+    meaning: >-
+      Peak what-did-we-just-watch.
+
+    callback: >-
+      Fits a task the user handled in a way nobody can explain: describe it as a
+      spoken-word piece.
+
+  the_intestine_wig:
+    name: The intestine wig
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Titans Season 1, Zombie Prom: Victoria Black won the floor show
+      in a wig made of intestines.
+
+    meaning: >-
+      Gross made glamorous.
+
+    callback: >-
+      Fits a disgusting task done with style: wear it like a wig.
+
+    when:
+      - done
+
+  the_third_boulet_brother:
+    name: The third Boulet Brother
+
+    show: Dragula
+
+    what_happened: >-
+      Dragula: Titans Season 1, Horror Icons Reimagined: Koco Caine performed as
+      the third Boulet Brother.
+
+    meaning: >-
+      Casting yourself as the boss.
+
+    callback: >-
+      Fits a task the user is running like the person in charge: give them a
+      seat beside the Boulets.
+
+  felony_dodgers_nine_years:
+    name: Felony Dodger's nine years
+
+    show: Dragula
+
+    what_happened: >-
+      Felony Dodger went out first on Dragula Season 2, auditioned every season
+      after, and came back for Season 7 nine years later, the longest gap in the
+      franchise.
+
+    meaning: >-
+      Never giving up on a comeback.
+
+    callback: >-
+      Fits a task left so long it's a returning monster: count the years since
+      its first appearance.
+
+    when:
+      - slipped
+
+  hell_freezing_over:
+    name: Hell freezing over
+
+    show: Dragula
+
+    what_happened: >-
+      Asked about a crossover between Dragula and Drag Race, Dracmorda answered:
+      hell freezing over.
+
+    meaning: >-
+      Never, said with style.
+
+    callback: >-
+      Fits a task the user swears is about to happen: weigh its odds against a
+      Dragula and Drag Race crossover.

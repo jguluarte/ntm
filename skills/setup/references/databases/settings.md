@@ -50,6 +50,17 @@ Claude's built-in browser
 | App token | `<app token>` |
 | User key  | `<user key>`  |
 
+## Themes
+
+<!-- Each theme by its root. Today the root is the `%Theme` database: write its
+title. -->
+
+- This week's theme: <theme's root>
+
+### All themes
+
+- <theme's root>
+
 ## ntm version
 
 - Last synced: <ntm's version>

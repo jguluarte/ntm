@@ -7,6 +7,7 @@ from picker import Options
 class HooksTest(unittest.TestCase):
     def test_the_hooks_are_the_entries_of_pools_giving_a_hook(self):
         options = Options(fixtures.EVEN)
+
         expected = [
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
         ]

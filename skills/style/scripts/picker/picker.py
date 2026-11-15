@@ -88,6 +88,8 @@ class Picker:
 
 if __name__ == "__main__":
     args = sys.argv[1:]
+
     picker = Picker.from_args(args)
     selections = picker.pick_hook()
+
     print(selections)

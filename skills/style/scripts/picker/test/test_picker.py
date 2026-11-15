@@ -6,8 +6,10 @@ from picker import Options, Picker
 
 def make_picker_args(options, **flags):
     args = ["hook", "--options", str(options)]
+
     for name, value in flags.items():
         args += [f"--{name}", str(value)]
+
     return args
 
 
@@ -38,6 +40,7 @@ class CommandLineTest(unittest.TestCase):
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
         args = make_picker_args(fixtures.EVEN, seed="seven")
+
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
 
@@ -48,6 +51,7 @@ class CommandLineTest(unittest.TestCase):
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
         args = make_picker_args(fixtures.NOT_THERE)
+
         why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
         expected = f"Picker FAILED: FileNotFoundError: {why}"
 
@@ -60,6 +64,7 @@ class CommandLineTest(unittest.TestCase):
 class PickHookTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_hook(self):
         options = Options(fixtures.EVEN)
+
         expected = {
             0: "hook: characters/host",
             1: "hook: scenes/noon",
@@ -85,6 +90,7 @@ class PickHookTest(unittest.TestCase):
 
     def test_only_speaker_pools_fails_saying_no_pool_gives_a_hook(self):
         picker = Picker(Options(fixtures.SPEAKERS_ONLY))
+
         why = "no pool in the options file gives a hook"
         expected = f"Picker FAILED: ValueError: {why}"
 

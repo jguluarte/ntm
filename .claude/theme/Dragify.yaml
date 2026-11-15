@@ -39,15 +39,13 @@ wins:
   win: >-
     A win is a big deal: going well above and beyond, or getting something done
     that was hard for you, a long project, or a task you had next to no
-    motivation for that dragged on a long while because of it. ntm spots a win
-    as a big win: several tasks closed in one day that had been planned across
-    several days, a task with a big estimate finally closed, or a task that
-    slipped many times finally closed.
+    motivation for that dragged on a long while because of it. A day is a win
+    when more than 5 tasks closed, or when a task itself was big or hard to
+    follow through. A week is a win when more than 10 tasks closed.
 
   winners_circle: >-
     A win gets the winner's circle, the finale: you take the crown in front of
-    the whole cast. It's sassy, or sincere when a thin week still got something
-    done.
+    the whole cast, sassy.
 
 reminders:
   weekly: >-

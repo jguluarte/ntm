@@ -99,6 +99,9 @@ The picker is a script in this skill that draws a hook from the theme's options
 file. It reads that file from a path and touches no backend, and
 `%Theme-options` lives in the user's backend, so hand it over this way.
 
+A theme without `%Theme-options` isn't built for the picker: pick the hook
+yourself, as step 1 says, and keep no line. That isn't a failure.
+
 Read `%Theme-options` and take the text of its `yaml` block. Write that text to
 a file named for the theme, such as `Casebook-options.yaml`, in this session's
 working folder, exactly as read: never retype it from memory or summarize it.

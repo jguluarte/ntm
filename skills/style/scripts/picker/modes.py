@@ -6,7 +6,6 @@ from options import Options
 OPTIONS = "--options"
 SEED = "--seed"
 HOOK_LINE = "hook: {}"
-NO_HOOKS = "the options file has no hooks"
 
 
 class HookMode:
@@ -30,7 +29,7 @@ class HookMode:
     @staticmethod
     def _require_drawable(hooks):
         if not hooks:
-            raise PickerFailed(NO_HOOKS)
+            raise PickerFailed("the options file has no hooks")
 
 
 MODES = {HookMode.NAME: HookMode}

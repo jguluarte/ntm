@@ -1,0 +1,20 @@
+pools:
+  characters:
+    file: Casebook-characters.yaml
+    roles: [hook, speaker]
+    entries:
+      detective:
+
+  shared_lines:
+    file: Casebook-characters.yaml
+    roles: [hook]
+    entries:
+      any_time:
+      big_win:
+        when: big_win
+
+  scenes:
+    file: Casebook-scenes.yaml
+    roles: [hook]
+    entries:
+      stakeout:

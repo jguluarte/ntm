@@ -29,9 +29,12 @@ name back. `git log tests/expected/` is the record of every name change.
 `skills/style/scripts/picker/`, written as `unittest` test cases and run by
 pytest. `pyproject.toml` puts the picker's folder on Python's import path, so a
 test imports the picker's classes by name. `test_theme.py` loads options files
-into `Theme` and checks the hooks it finds or the failure it raises;
-`test_theme_options.py` checks the combinations `ThemeOptions` parses or
-refuses; `test_picker.py` checks what the command line builds, and the line
-`pick_hook()` prints or fails with. `fixtures/` holds the options files they
-read, each named for what it holds or lacks, and `Casebook-options.yaml`, the
-example in `references/theme-files.md`.
+into `Theme` and checks the hooks it finds, the entries it holds for an entry
+file, what it saves, or the failure it raises; `test_theme_options.py` checks
+the combinations `ThemeOptions` parses or refuses; `test_picker.py` checks what
+the command line builds, and the line `pick_hook()` prints or fails with.
+`test_entry_file.py` checks the line counts and checksum `EntryFile` reads from
+an entry file; `test_recalculate.py` checks what `start` writes into a copy of
+an options file, and the lines it prints or fails with. `fixtures/` holds the
+options files they read, each named for what it holds or lacks, and the example
+in `references/theme-files.md`: `Casebook-options.yaml` and its two entry files.

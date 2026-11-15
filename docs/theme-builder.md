@@ -130,7 +130,7 @@ sooner" moves one a step.
 | Level | `escalation`, reached by   | `wins`, reached by                                                         |
 | ----- | -------------------------- | -------------------------------------------------------------------------- |
 | 1st   | Where every message starts | Any finished task                                                          |
-| 2nd   | A bump only                | Over 5 closed a day or 10 a week, or a big or hard task; 2.5-day half-life |
+| 2nd   | A bump only                | A big win judged against the user's own plan: `big_win`; 2.5-day half-life |
 | 3rd   | A task slipped 1 day       | Something truly shocking, at most once in 7 days                           |
 | 4th   | A task slipped 3 days      |                                                                            |
 

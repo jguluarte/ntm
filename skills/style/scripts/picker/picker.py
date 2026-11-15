@@ -7,8 +7,10 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-SKILLS = Path(__file__).parents[3]
-OPTIONS_SCHEMA = SKILLS / "theme-builder" / "references" / "options.schema.yaml"
+SKILLS_PATH = Path(__file__).parents[3]
+OPTIONS_SCHEMA = (
+    SKILLS_PATH / "theme-builder" / "references" / "options.schema.yaml"
+)
 
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
@@ -20,9 +22,6 @@ REMINDERS = frozenset({"morning", "afternoon", "evening", "weekly"})
 HAPPENINGS = frozenset({"slipped", "done", "big_win"})
 BIG_WIN = "big_win"
 DONE = "done"
-
-HOOK_LINE = "hook: {}"
-FAILURE_LINE = "Picker FAILED: {}: {}"
 
 
 class InvalidOptions(ValueError):
@@ -139,7 +138,7 @@ class Picker:
         with self._reporting_failures():
             hooks = self.options.hooks(self.occasions)
             generator = random.Random(self.seed)
-            return HOOK_LINE.format(generator.choice(hooks))
+            return f"hook: { generator.choice(hooks) }"
 
     @classmethod
     def _parser(cls):
@@ -175,7 +174,7 @@ class Picker:
         except Exception as failure:
             # Every failure, a bug included, is one line for the skill to read.
             why = " ".join(str(failure).split())
-            sys.exit(FAILURE_LINE.format(type(failure).__name__, why))
+            sys.exit(f"Picker FAILED: { type(failure).__name__ }: {why}")
 
 
 if __name__ == "__main__":

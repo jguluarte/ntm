@@ -5,14 +5,11 @@ from picker import Picker
 from theme import Theme, ThemeOptions
 
 
-def make_picker_args(options, type=None, seed=None):
+def make_picker_args(options, **flags):
     args = ["hook", "--options", str(options)]
 
-    if type is not None:
-        args += ["--type", type]
-
-    if seed is not None:
-        args += ["--seed", str(seed)]
+    for name, value in flags.items():
+        args += [f"--{name}", str(value)]
 
     return args
 
@@ -45,37 +42,41 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(ThemeOptions(), picker.theme_options)
 
     def test_a_missing_options_flag_fails_naming_it(self):
-        why = "the following arguments are required: --options"
-        expected = f"Picker FAILED: ArgumentError: {why}"
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(["hook"])
+
+        why = "the following arguments are required: --options"
+        expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
         args = make_picker_args(fixtures.EVEN, seed="seven")
 
-        why = "argument --seed: invalid int value: 'seven'"
-        expected = f"Picker FAILED: ArgumentError: {why}"
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
+
+        why = "argument --seed: invalid int value: 'seven'"
+        expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
         args = make_picker_args(fixtures.EVEN, type="morning,evening")
 
-        why = "argument --type: more than one reminder type: evening, morning"
-        expected = f"Picker FAILED: ArgumentError: {why}"
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
+
+        why = "argument --type: more than one reminder type: evening, morning"
+        expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
         args = make_picker_args(fixtures.NOT_THERE)
 
-        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
-        expected = f"Picker FAILED: FileNotFoundError: {why}"
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
+
+        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
+        expected = f"Picker FAILED: FileNotFoundError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
 
@@ -98,6 +99,7 @@ class PickHookTest(unittest.TestCase):
 
     def test_without_a_seed_runs_draw_different_hooks(self):
         picker = Picker(Theme(fixtures.EVEN))
+
         attempts = 50
         drawn = {
             picker.pick_hook() for _ in range(attempts)
@@ -109,8 +111,9 @@ class PickHookTest(unittest.TestCase):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
         picker = Picker(theme, ThemeOptions.parse("morning"))
 
-        why = "no hook fits morning"
-        expected = f"Picker FAILED: MissingHook: {why}"
         with self.assertRaises(SystemExit) as exited:
             picker.pick_hook()
+
+        why = "no hook fits morning"
+        expected = f"Picker FAILED: MissingHook: {why}"
         self.assertEqual(expected, exited.exception.code)

@@ -38,12 +38,13 @@ hook: characters/detective
 ```
 
 When it can't pick, it prints one line on stderr,
-`Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type. An
-options file that breaks the schema reads as `InvalidTheme`, with where in the
-file and what is wrong. A `--type` that names something other than a reminder
-type or task outcome, or more than one reminder type, reads as `ArgumentError`,
-naming the flag and the values. A theme where no pool gives a hook reads as
-`NoHooks`, and one with no hook that fits the message as `MissingHook`.
+`Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
+type. An options file that breaks the schema reads as `InvalidTheme`, with where
+in the file and what is wrong. A `--type` that names something other than a
+reminder type or task outcome, or more than one reminder type, reads as
+`ArgumentError`, naming the flag and the values. A theme where no pool gives a
+hook reads as `NoHooks`, and one with no hook that fits the message as
+`MissingHook`.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
@@ -69,7 +70,7 @@ The order of entries in a file doesn't change their chances. With a fixed
 separated by commas. The picker draws from the hooks whose `when` fits that
 type, as `references/theme-files.md` says, or, without `--type`, from the hooks
 without `when`. On a big win it draws from the hooks kept for `big_win`, or,
-when none of those fits, as for a normal win.
+when none of those fits, from the hooks that fit `done`.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --type big_win

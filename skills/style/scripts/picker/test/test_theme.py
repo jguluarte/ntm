@@ -17,9 +17,10 @@ class HooksTest(unittest.TestCase):
     def test_a_theme_whose_pools_give_no_hook_fails_with_no_hooks(self):
         theme = Theme(fixtures.SPEAKERS_ONLY)
 
-        expected = "no pool in the options file gives a hook"
         with self.assertRaises(NoHooks) as raised:
             theme.hooks_for(ThemeOptions())
+
+        expected = "no pool in the options file gives a hook"
         self.assertEqual(expected, str(raised.exception))
 
 
@@ -72,9 +73,10 @@ class FitTest(unittest.TestCase):
     def test_a_big_win_with_no_normal_win_hook_fails_with_missing_hook(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
 
-        expected = "no hook fits morning,big_win"
         with self.assertRaises(MissingHook) as raised:
             theme.hooks_for(ThemeOptions.parse("morning,big_win"))
+
+        expected = "no hook fits morning,big_win"
         self.assertEqual(expected, str(raised.exception))
 
 
@@ -88,31 +90,35 @@ class SchemaTest(unittest.TestCase):
         self.assertEqual(expected, hooks)
 
     def test_a_file_without_pools_fails(self):
-        expected = "$: 'pools' is a required property"
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.WITHOUT_POOLS)
+
+        expected = "$: 'pools' is a required property"
         self.assertEqual(expected, str(raised.exception))
 
     def test_a_pool_without_roles_fails(self):
-        expected = "$.pools.scenes: 'roles' is a required property"
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.POOL_WITHOUT_ROLES)
+
+        expected = "$.pools.scenes: 'roles' is a required property"
         self.assertEqual(expected, str(raised.exception))
 
     def test_a_role_that_isnt_hook_or_speaker_fails(self):
-        why = "'hooks' is not one of ['hook', 'speaker']"
-        expected = f"$.pools.scenes.roles[0]: {why}"
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.UNKNOWN_ROLE)
+
+        why = "'hooks' is not one of ['hook', 'speaker']"
+        expected = f"$.pools.scenes.roles[0]: {why}"
         self.assertEqual(expected, str(raised.exception))
 
     def test_a_when_that_isnt_an_option_fails(self):
+        with self.assertRaises(InvalidTheme) as raised:
+            Theme(fixtures.UNKNOWN_WHEN)
+
         options = [
             "morning", "afternoon", "evening", "weekly", "slipped", "done",
             "big_win",
         ]
         where = "$.pools.scenes.entries.dawn.when"
         expected = f"{where}: 'night' is not one of {options}"
-        with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.UNKNOWN_WHEN)
         self.assertEqual(expected, str(raised.exception))

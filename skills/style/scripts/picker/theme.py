@@ -42,17 +42,17 @@ class InvalidTheme(ValueError):
         super().__init__(f"{where}: {why}")
 
 
-class InvalidThemeOptions(ValueError):
+class InvalidOptions(ValueError):
     pass
 
 
-class UnknownThemeOption(InvalidThemeOptions):
+class UnknownOption(InvalidOptions):
     def __init__(self, values):
         listed = ", ".join(sorted(values))
         super().__init__(f"not an option: {listed}")
 
 
-class MoreThanOneReminderType(InvalidThemeOptions):
+class MoreThanOneReminderType(InvalidOptions):
     def __init__(self, reminder_types):
         values = sorted(reminder_type.value for reminder_type in reminder_types)
         listed = ", ".join(values)
@@ -83,7 +83,7 @@ class ThemeOptions:
         options = reminder_types | task_outcomes
         unknown = values - {option.value for option in options}
         if unknown:
-            raise UnknownThemeOption(unknown)
+            raise UnknownOption(unknown)
 
         if len(reminder_types) > 1:
             raise MoreThanOneReminderType(reminder_types)
@@ -96,12 +96,9 @@ class ThemeOptions:
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
     def __str__(self):
-        values = sorted(
-            task_outcome.value for task_outcome in self.task_outcomes
-        )
-        if self.reminder_type:
-            values.insert(0, self.reminder_type.value)
-        return ",".join(values)
+        reminder = [self.reminder_type.value] if self.reminder_type else []
+        outcomes = sorted(outcome.value for outcome in self.task_outcomes)
+        return ",".join(reminder + outcomes)
 
 
 @dataclass(frozen=True)
@@ -142,17 +139,26 @@ class _Hook:
         return True
 
 
-class _Hooks(tuple):
+class HookManager:
+    def __init__(self, hooks):
+        self._hooks = hooks
+
     def responding_to(self, theme_options):
+        if not self._hooks:
+            raise NoHooks()
+
         names = self._names_that_fit(theme_options)
 
         if not names and theme_options.is_big_win:
             names = self._names_that_fit(self._as_normal_win(theme_options))
 
+        if not names:
+            raise MissingHook(theme_options)
+
         return names
 
     def _names_that_fit(self, theme_options):
-        return [hook.name for hook in self if hook.fits(theme_options)]
+        return [hook.name for hook in self._hooks if hook.fits(theme_options)]
 
     @staticmethod
     def _as_normal_win(theme_options):
@@ -165,18 +171,11 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        self._hooks = self._read_hooks(fields[POOLS_BY_KIND])
+        hooks = self._read_hooks(fields[POOLS_BY_KIND])
+        self._hook_manager = HookManager(hooks)
 
     def hooks_for(self, theme_options):
-        if not self._hooks:
-            raise NoHooks()
-
-        hooks = self._hooks.responding_to(theme_options)
-
-        if not hooks:
-            raise MissingHook(theme_options)
-
-        return hooks
+        return self._hook_manager.responding_to(theme_options)
 
     @staticmethod
     def _read_hooks(pools_by_kind):
@@ -187,7 +186,7 @@ class Theme:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     hooks.append(_Hook.from_entry(kind, slug, entry))
 
-        return _Hooks(hooks)
+        return hooks
 
     @staticmethod
     def _load(path):

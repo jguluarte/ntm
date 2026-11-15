@@ -52,12 +52,6 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(ThemeOptions(), picker.theme_options)
 
-    def test_today_is_optional_without_a_history(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertIsNone(picker.today)
-
     def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
         picker = Picker.from_args(args)
@@ -199,8 +193,8 @@ class ChancesTableTest(unittest.TestCase):
 
     def test_the_documented_rest_example_shows_the_documented_chances(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        picker = Picker(theme, history=history, today=date(2026, 11, 15))
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 15))
+        picker = Picker(theme, history=history)
         rows = picker.chances_table().splitlines()
 
         expected = [

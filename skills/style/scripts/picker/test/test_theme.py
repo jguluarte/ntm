@@ -164,11 +164,8 @@ class HookChanceTest(unittest.TestCase):
 class RestTest(unittest.TestCase):
     def test_a_hook_used_one_half_life_ago_draws_at_half_its_weight(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        today = date(2026, 11, 15)
-        chances = theme.hook_chances_for(
-            ThemeOptions(), "scenes", history, today,
-        )
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 15))
+        chances = theme.hook_chances_for(ThemeOptions(), "scenes", history)
 
         total_rested_draw_weight = 0.5 + 1 + 1
         expected = {
@@ -180,11 +177,8 @@ class RestTest(unittest.TestCase):
 
     def test_a_hook_used_two_half_lives_ago_draws_at_three_quarters(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        today = date(2026, 11, 17)
-        chances = theme.hook_chances_for(
-            ThemeOptions(), "scenes", history, today,
-        )
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 17))
+        chances = theme.hook_chances_for(ThemeOptions(), "scenes", history)
 
         total_rested_draw_weight = 0.75 + 1 + 1
         expected = {
@@ -196,33 +190,24 @@ class RestTest(unittest.TestCase):
 
     def test_a_hook_used_today_has_no_chance(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        today = date(2026, 11, 13)
-        chances = theme.hook_chances_for(
-            ThemeOptions(), "scenes", history, today,
-        )
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
+        chances = theme.hook_chances_for(ThemeOptions(), "scenes", history)
 
         expected = {"scenes/dawn": 0, "scenes/noon": 0.5, "scenes/dusk": 0.5}
         self.assertEqual(expected, chances)
 
     def test_when_every_fitting_hook_was_used_today_none_rests(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        today = date(2026, 11, 13)
-        chances = theme.hook_chances_for(
-            ThemeOptions(), "characters", history, today,
-        )
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
+        chances = theme.hook_chances_for(ThemeOptions(), "characters", history)
 
         expected = {"characters/host": 1.0}
         self.assertEqual(expected, chances)
 
     def test_a_pool_without_a_half_life_never_rests(self):
         theme = Theme(fixtures.WEIGHTED)
-        history = History(fixtures.EVEN_HISTORY)
-        today = date(2026, 11, 13)
-        chances = theme.hook_chances_for(
-            ThemeOptions(), "scenes", history, today,
-        )
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
+        chances = theme.hook_chances_for(ThemeOptions(), "scenes", history)
 
         total_draw_weight = 0.5 + 2 + 0
         expected = {

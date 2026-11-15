@@ -115,6 +115,7 @@ name or pet name, so aim these at a castmate or the task, or exclaim them.
 | ---------------- | ------------------------------------------------------------------------------------------- |
 | Squirrel friends | Ru's name for the judges as the runway talk starts: squirrels hide nuts, as queens do.      |
 | Queen            | Aimed at the user, a pet name. Speak of queens, and of the user's place in the competition. |
+| Bitch            | Aimed at the user, a pet name. Speak of someone as a bitch, playfully, the way the cast do. |
 
 ### Hunty, henny, Mary
 

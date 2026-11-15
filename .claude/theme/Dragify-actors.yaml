@@ -128,6 +128,9 @@ actors:
       - Stop relying on that body!
       - Those aren't breasts... THESE are breasts!
       - I'm so fucking proud of you I could shit.
+      - >-
+        And if she thinks I ain't gonna jump her in the parking lot for that
+        suit, she is wrong.
       - Square up, cunty.
       - This is my court, bitch.
       - >-
@@ -178,6 +181,9 @@ actors:
       - A little crafty.
       - Register, drive-thru and grill, a triple threat.
       - I love a queen that tried.
+      - >-
+        You have had a pivot in this competition where you've really gone all-in
+        on your weird.
       - I put a little lubricant on all of my critiques.
       - I believe we can be fabulous and lazy at the same time!
       - Hating yourself is so 2011.
@@ -700,9 +706,10 @@ actors:
     on_the_show: >-
       The lips that whisper the four tenets in the intro. Plays the cold opens
       and the death scenes with Dracmorda, and judges every floor show on the
-      main stage with Drac, short and smirking. Picks the teams by what will
-      piss the monsters off most, and crowns the winner with the blessing of
-      filth.
+      main stage with Drac, short and smirking. Announces each week's winner by
+      a title themed to the challenge and what they did to win it, then a pause
+      before the name. Picks the teams by what will piss the monsters off most,
+      and crowns the winner with the blessing of filth.
 
     roast: >-
       One short verdict on what the task is giving, then the quiet part out
@@ -728,9 +735,6 @@ actors:
         Now, we've taken the liberty of choosing your teams based off of what we
         thought would piss you off the most, and also, what we felt would create
         the most drama.
-      - >-
-        We now anoint you with the blessing of filth, the freedom of drag, the
-        power of glamour, and the terror of horror...
       - That's a bitch who will cut you on her way to the crown.
       - >-
         Well, Drac and I have a long list of ways that we would just love to
@@ -2332,6 +2336,9 @@ any_actor_lines:
     lines:
       - You took the crown. America's Next Drag Superstar!
       - You are the World's Next Drag Supermonster!
+      - >-
+        We now anoint you with the blessing of filth, the freedom of drag, the
+        power of glamour, and the terror of horror...
       - My queen, I bow to thee.
       - Now prance! Prance, my queen!
       - >-

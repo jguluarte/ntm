@@ -41,13 +41,13 @@ When it can't pick, it prints one line on stderr,
 `Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type. An
 options file that breaks the schema reads as `InvalidTheme`, with where in the
 file and what is wrong. A `--for` that names something other than a reminder
-type or task outcome, or more than one reminder type, reads as
-`InvalidThemeOptions`, naming the values. A theme with no hook for the message
-reads as `MissingHook`: either no pool gives a hook, or no hook fits.
+type or task outcome, or more than one reminder type, reads as `ArgumentError`,
+naming the flag and the values. A theme with no hook for the message reads as
+`MissingHook`: either no pool gives a hook, or no hook fits.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
-Picker FAILED: InvalidThemeOptions: not an option: night
+Picker FAILED: ArgumentError: argument --for: not an option: night
 Picker FAILED: MissingHook: no pool in the options file gives a hook
 Picker FAILED: MissingHook: no hook fits morning,slipped
 ```

@@ -30,7 +30,8 @@ name back. `git log tests/expected/` is the record of every name change.
 pytest. `pyproject.toml` puts the picker's folder on Python's import path, so a
 test imports the picker's classes by name. `test_theme.py` loads options files
 into `Theme` and checks the hooks it finds or the schema failure it raises;
-`test_picker.py` checks what the command line builds, and the line `pick_hook()`
-prints or fails with. `fixtures/` holds the options files they read, each named
-for what it holds or lacks, and `Casebook-options.yaml`, the example in
-`references/theme-files.md`.
+`test_theme_options.py` checks the combinations `ThemeOptions` parses or
+refuses; `test_picker.py` checks what the command line builds, and the line
+`pick_hook()` prints or fails with. `fixtures/` holds the options files they
+read, each named for what it holds or lacks, and `Casebook-options.yaml`, the
+example in `references/theme-files.md`.

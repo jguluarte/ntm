@@ -3,7 +3,7 @@ import contextlib
 import random
 import sys
 
-from theme import Theme, ThemeOptions
+from theme import InvalidThemeOptions, Theme, ThemeOptions
 
 
 class Picker:
@@ -17,8 +17,7 @@ class Picker:
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options)
-            theme_options = ThemeOptions.parse(flags.theme_options)
-            return cls(theme, flags.seed, theme_options)
+            return cls(theme, flags.seed, flags.theme_options)
 
     def pick_hook(self):
         with self._reporting_failures():
@@ -26,15 +25,25 @@ class Picker:
             generator = random.Random(self.seed)
             return f"hook: { generator.choice(hooks) }"
 
-    @staticmethod
-    def _parser():
+    @classmethod
+    def _parser(cls):
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
-        hook.add_argument("--for", dest="theme_options")
+        hook.add_argument(
+            "--for", dest="theme_options", type=cls._parse_theme_options,
+            default=ThemeOptions(),
+        )
         hook.add_argument("--seed", type=int)
         return parser
+
+    @staticmethod
+    def _parse_theme_options(listed):
+        try:
+            return ThemeOptions.parse(listed)
+        except InvalidThemeOptions as invalid:
+            raise argparse.ArgumentTypeError(str(invalid)) from None
 
     @staticmethod
     @contextlib.contextmanager

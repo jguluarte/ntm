@@ -60,11 +60,11 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(expected, exited.exception.code)
 
-    def test_a_for_that_isnt_a_valid_combination_fails_naming_why(self):
+    def test_a_for_that_isnt_a_valid_combination_fails_naming_it(self):
         args = make_picker_args(fixtures.EVEN, "--for", "morning,evening")
 
-        why = "more than one reminder type: evening, morning"
-        expected = f"Picker FAILED: InvalidThemeOptions: {why}"
+        why = "argument --for: more than one reminder type: evening, morning"
+        expected = f"Picker FAILED: ArgumentError: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)

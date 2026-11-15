@@ -54,15 +54,18 @@ parts are the same in every theme:
 | `world`      | The theme's world, and where the user sits in it                             |
 | `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
 | `wins`       | How the theme marks a finished task, and a big win                           |
-| `files`      | Every other file of the theme: what it holds, and how it is read             |
+| `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
 
-Each file in `files` is read one of three ways:
+`files` has three groups. Under each, a file's name maps to a line or two on
+what it holds. In a root, `%{Theme}` stands for the theme's own name, so each
+file is named by its pattern and the root never repeats the name; YAML needs a
+key that starts with `%` in quotes.
 
-| `read`   | How                                                                                                      |
-| -------- | -------------------------------------------------------------------------------------------------------- |
-| `whole`  | The writer gets all of it, for every message: guidance, or the terminology file                          |
-| `entry`  | The writer gets the file's and the kind's `about`, and the picked entry with only its drawn line or riff |
-| `picker` | Only the picker reads it: the options file                                                               |
+| Group            | What the writer gets                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------- |
+| `by_entry`       | The file's and the kind's `about`, and the picked entry with only its drawn line or riff |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file                          |
+| `for_the_picker` | Nothing: only the picker reads it, the options file                                      |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -81,18 +84,20 @@ wins: >-
   gets the whole cast in the drawing room for the reveal.
 
 files:
-  Casebook-options.yaml:
-    holds: What the theme offers the picker.
-    read: picker
-  Casebook-characters.yaml:
-    holds: The people of the story, and lines any of them can say.
-    read: entry
-  Casebook-scenes.yaml:
-    holds: Recurring scenes a message can be set in.
-    read: entry
-  Casebook-terminology.md:
-    holds: The story's own words.
-    read: whole
+  by_entry:
+    "%{Theme}-characters.yaml": >-
+      The people of the story, and lines any of them can say.
+
+    "%{Theme}-scenes.yaml": >-
+      Recurring scenes a message can be set in.
+
+  fully_read:
+    "%{Theme}-terminology.md": >-
+      The story's own words.
+
+  for_the_picker:
+    "%{Theme}-options.yaml": >-
+      What the theme offers the picker.
 ```
 
 ## Entry files

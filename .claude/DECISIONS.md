@@ -130,16 +130,19 @@ It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed. It also runs just before `ntm:clean` in the
 weekly job.
 
-It prunes `%Message-history`. An old entry matters only for its picks' rest.
-Once its hook, speaker and line have each been picked again in a later entry,
-and its feedback and verdict are in the scores, the job drops it. Each theme's
+It prunes each theme's message history. An old entry matters only for its picks'
+rest. Once its hook, speaker and line have each been picked again in a later
+entry, and its feedback and verdict are in the scores, the job drops it. Each
 history then rolls forward with an upper limit.
 
-### `%Message-history`
+### The message history
 
-One JSON line per message: the date and time, the reminder, the theme, the
-picks, the opening words, the task ids with their planned dates at send, the
-user's feedback and the rater's verdict. A field with no value is left out.
+Each theme has its own message history, `<Theme>-message-history`, named like
+the theme's other files: for Justin, `Dragify-message-history`.
+
+One JSON line per message: the date and time, the reminder, the picks, the
+opening words, the task ids with their planned dates at send, the user's
+feedback and the rater's verdict. A field with no value is left out.
 
 ### Inside ntm
 
@@ -199,6 +202,13 @@ The user edits, deletes or adds a template's parts.
 #### Setup creates every database
 
 Setup creates every database from its template during onboarding.
+
+#### Default names
+
+Each database has a default name, such as Settings, Message-rules or
+Paused-dates, so setup doesn't ask the user to confirm each one: fewer things
+need the user's input during setup. The names are written in `%Settings`, where
+the user can change them. Setup confirms only the Settings name, early.
 
 #### Parts by name
 

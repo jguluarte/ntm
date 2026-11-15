@@ -117,7 +117,7 @@ It prints one line: `hook: <kind>/<slug>`, the hook it drew.
 It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
 this runs: without them, the script stops with a Python error. Any other output,
 or a part of this you can't do, means the picker failed. Keep one line for the
-result: the `Picker FAILED: <type>: <why>` line it printed, or else
+result: the `Picker FAILED: <failure>: <why>` line it printed, or else
 `Picker FAILED: <why>`, with the last line it printed or what you couldn't do.
 
 ## Keeping `%Message-history`

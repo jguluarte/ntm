@@ -44,9 +44,10 @@ Everything else they set up lives in their databases and their jobs.
 A database's template, in `references/databases/`, holds `<!-- -->` comments for
 you: write the database without them.
 
-Create each database under its default name, its `%` name in words, such as
-Paused dates, without asking the user about it. The one name they confirm is
-`%Settings`'s, in ntm backend assets, since every run starts from it.
+Create each database other than a theme's files under its default name, its `%`
+name in words, such as Paused dates, without asking the user about it. The one
+name they confirm is `%Settings`'s, in ntm backend assets, since every run
+starts from it.
 
 ## Pre-requisites
 

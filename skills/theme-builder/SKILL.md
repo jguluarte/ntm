@@ -61,11 +61,11 @@ parts it describes, or from a theme they already have.
 
 ### 3. Save `%Theme`
 
-Save their theme in the parts the guide describes: during setup, create
-`%Theme`; otherwise, once they say yes, replace their `%Theme`. Each part holds
-what you built with them, never the guide's own text: How to connect this theme
-to ntm's flow holds what their week, morning, afternoon and evening are in their
-theme.
+Save their theme in the parts the guide describes: during setup, create `%Theme`
+under the theme's name, such as `Casebook`; otherwise, once they say yes,
+replace their `%Theme`. Each part holds what you built with them, never the
+guide's own text: How to connect this theme to ntm's flow holds what their week,
+morning, afternoon and evening are in their theme.
 
 ## Result
 

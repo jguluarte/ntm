@@ -5,7 +5,6 @@ from options import Options
 OPTIONS = "--options"
 SEED = "--seed"
 HOOK_LINE = "hook: {}"
-NO_HOOKS = "no pool in the options file gives a hook"
 
 
 class HookMode:
@@ -27,10 +26,8 @@ class HookMode:
         return cls(flags.options, flags.seed)
 
     def pick(self):
-        options = Options.load(self.options_file)
+        options = Options(self.options_file)
         hooks = options.hooks()
-        if not hooks:
-            raise ValueError(NO_HOOKS)
         generator = random.Random(self.seed)
         hook = generator.choice(hooks)
         return HOOK_LINE.format(hook)

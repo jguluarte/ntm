@@ -1,44 +1,39 @@
+from pathlib import Path
+
+import jsonschema
 import yaml
 
+SCHEMA = Path(__file__).with_name("options.schema.yaml")
 POOLS = "pools"
 GIVES = "gives"
 ENTRIES = "entries"
 HOOK = "hook"
+NO_HOOKS = "no pool in the options file gives a hook"
 
 
 class Options:
-    def __init__(self, fields):
-        pools_by_kind = fields[POOLS]
-        self.pools = [Pool(kind, pools_by_kind[kind]) for kind in pools_by_kind]
-
-    @classmethod
-    def load(cls, path):
-        with open(path, encoding="utf-8") as file:
-            return cls(yaml.safe_load(file))
+    def __init__(self, path):
+        fields = self._load(path)
+        self._validate(fields)
+        self._pools = fields[POOLS]
 
     def hooks(self):
         hooks = []
-        for pool in self.hook_pools():
-            hooks.extend(pool.entries)
+        for kind, pool in self._pools.items():
+            if HOOK in pool[GIVES]:
+                hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES])
+        if not hooks:
+            raise ValueError(NO_HOOKS)
         return hooks
 
-    def hook_pools(self):
-        return [pool for pool in self.pools if pool.gives_hook()]
+    @staticmethod
+    def _load(path):
+        with open(path, encoding="utf-8") as file:
+            return yaml.safe_load(file)
 
-
-class Pool:
-    def __init__(self, kind, fields):
-        self.gives = fields[GIVES]
-        self.entries = [Entry(kind, slug) for slug in fields[ENTRIES]]
-
-    def gives_hook(self):
-        return HOOK in self.gives
-
-
-class Entry:
-    def __init__(self, kind, slug):
-        self.kind = kind
-        self.slug = slug
-
-    def __str__(self):
-        return f"{self.kind}/{self.slug}"
+    @classmethod
+    def _validate(cls, fields):
+        try:
+            jsonschema.validate(fields, cls._load(SCHEMA))
+        except jsonschema.ValidationError as error:
+            raise ValueError(f"{error.json_path}: {error.message}") from None

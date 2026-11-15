@@ -50,7 +50,8 @@ class CommandLineTest(unittest.TestCase):
 class PickFailureTest(unittest.TestCase):
     def test_a_pool_without_gives_fails_naming_gives(self):
         picker = Picker(HookMode(options_file=POOL_WITHOUT_GIVES))
-        expected = "Picker FAILED: KeyError: 'gives'"
+        why = "$.pools.scenes: 'gives' is a required property"
+        expected = f"Picker FAILED: ValueError: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick()
@@ -59,7 +60,8 @@ class PickFailureTest(unittest.TestCase):
 
     def test_an_options_file_without_pools_fails_naming_pools(self):
         picker = Picker(HookMode(options_file=WITHOUT_POOLS))
-        expected = "Picker FAILED: KeyError: 'pools'"
+        why = "$: 'pools' is a required property"
+        expected = f"Picker FAILED: ValueError: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick()

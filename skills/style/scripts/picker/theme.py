@@ -155,35 +155,78 @@ class _Hook:
         return True
 
 
+@dataclass(frozen=True)
+class _Kind:
+    name: str
+    weight: float
+    score: float
+    hooks: tuple[_Hook, ...]
+
+    @classmethod
+    def from_pool(cls, name, pool):
+        hooks = tuple(
+            _Hook.from_entry(name, slug, entry)
+            for slug, entry in pool[ENTRIES_BY_SLUG].items()
+        )
+        weight = pool.get(WEIGHT, 1)
+        score = pool.get(SCORE, 0)
+        return cls(name, weight, score, hooks)
+
+    @property
+    def draw_weight(self):
+        return self.weight * 2 ** self.score
+
+    def hooks_that_fit(self, theme_options):
+        return [hook for hook in self.hooks if hook.fits(theme_options)]
+
+    def can_be_drawn_for(self, theme_options):
+        hooks = self.hooks_that_fit(theme_options)
+        return any(hook.draw_weight > 0 for hook in hooks)
+
+
 class HookManager:
-    def __init__(self, hooks):
-        self._hooks = hooks
+    def __init__(self, kinds):
+        self._kinds_by_name = {kind.name: kind for kind in kinds}
 
-    def chances_for(self, theme_options):
-        hooks = self._responding_to(theme_options)
-        total = sum(hook.draw_weight for hook in hooks)
+    def kind_chances_for(self, theme_options):
+        options = self._options_to_draw_for(theme_options)
+        kinds = self._kinds_by_name.values()
+        drawable = [kind for kind in kinds if kind.can_be_drawn_for(options)]
 
-        if total == 0:
+        if not drawable:
             raise NoHookHasWeight(theme_options)
 
-        return {hook.name: hook.draw_weight / total for hook in hooks}
+        return self._chances_of(drawable)
 
-    def _responding_to(self, theme_options):
-        if not self._hooks:
+    def hook_chances_for(self, theme_options, kind):
+        options = self._options_to_draw_for(theme_options)
+        hooks = self._kinds_by_name[kind].hooks_that_fit(options)
+        return self._chances_of(hooks)
+
+    def _options_to_draw_for(self, theme_options):
+        if not self._kinds_by_name:
             raise NoHooks()
 
-        hooks = self._hooks_that_fit(theme_options)
+        if self._any_hook_fits(theme_options):
+            return theme_options
 
-        if not hooks and theme_options.is_big_win:
-            hooks = self._hooks_that_fit(self._as_normal_win(theme_options))
+        normal_win = self._as_normal_win(theme_options)
+        if theme_options.is_big_win and self._any_hook_fits(normal_win):
+            return normal_win
 
-        if not hooks:
-            raise MissingHook(theme_options)
+        raise MissingHook(theme_options)
 
-        return hooks
+    def _any_hook_fits(self, theme_options):
+        kinds = self._kinds_by_name.values()
+        return any(kind.hooks_that_fit(theme_options) for kind in kinds)
 
-    def _hooks_that_fit(self, theme_options):
-        return [hook for hook in self._hooks if hook.fits(theme_options)]
+    @staticmethod
+    def _chances_of(candidates):
+        total = sum(candidate.draw_weight for candidate in candidates)
+        return {
+            candidate.name: candidate.draw_weight / total
+            for candidate in candidates
+        }
 
     @staticmethod
     def _as_normal_win(theme_options):
@@ -196,22 +239,24 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        hooks = self._read_hooks(fields[POOLS_BY_KIND])
-        self._hook_manager = HookManager(hooks)
+        kinds = self._read_kinds(fields[POOLS_BY_KIND])
+        self._hook_manager = HookManager(kinds)
 
-    def hook_chances_for(self, theme_options):
-        return self._hook_manager.chances_for(theme_options)
+    def kind_chances_for(self, theme_options):
+        return self._hook_manager.kind_chances_for(theme_options)
+
+    def hook_chances_for(self, theme_options, kind):
+        return self._hook_manager.hook_chances_for(theme_options, kind)
 
     @staticmethod
-    def _read_hooks(pools_by_kind):
-        hooks = []
+    def _read_kinds(pools_by_kind):
+        kinds = []
 
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
-                for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    hooks.append(_Hook.from_entry(kind, slug, entry))
+                kinds.append(_Kind.from_pool(kind, pool))
 
-        return hooks
+        return kinds
 
     @staticmethod
     def _load(path):

@@ -27,26 +27,44 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
-            chances = self.theme.hook_chances_for(self.theme_options)
-            hooks = list(chances)
             generator = random.Random(self.seed)
-            [hook] = generator.choices(hooks, weights=chances.values())
+            kind_chances = self.theme.kind_chances_for(self.theme_options)
+            kind = self._draw(generator, kind_chances)
+            hook_chances = self.theme.hook_chances_for(self.theme_options, kind)
+            hook = self._draw(generator, hook_chances)
             return f"hook: {hook}"
 
     def chances_table(self):
         with self._reporting_failures():
-            chances = self.theme.hook_chances_for(self.theme_options)
+            kind_chances = self.theme.kind_chances_for(self.theme_options)
+            hook_chances = {}
+            for kind in kind_chances:
+                hook_chances.update(
+                    self.theme.hook_chances_for(self.theme_options, kind),
+                )
 
-            rows = [("hook", "chance")]
-            for hook, chance in chances.items():
-                rows.append((hook, self._to_hundredths(chance)))
+            kind_table = self._table("kind", "chance", kind_chances)
+            hook_table = self._table("hook", "chance in kind", hook_chances)
+            return f"{kind_table}\n\n{hook_table}"
 
-            hook_width = max(len(hook) for hook, _ in rows)
-            chance_width = max(len(chance) for _, chance in rows)
-            return "\n".join(
-                f"{ hook.ljust(hook_width) }  { chance.rjust(chance_width) }"
-                for hook, chance in rows
-            )
+    @staticmethod
+    def _draw(generator, chances):
+        names = list(chances)
+        [name] = generator.choices(names, weights=chances.values())
+        return name
+
+    @classmethod
+    def _table(cls, name_heading, chance_heading, chances):
+        rows = [(name_heading, chance_heading)]
+        for name, chance in chances.items():
+            rows.append((name, cls._to_hundredths(chance)))
+
+        name_width = max(len(name) for name, _ in rows)
+        chance_width = max(len(chance) for _, chance in rows)
+        return "\n".join(
+            f"{ name.ljust(name_width) }  { chance.rjust(chance_width) }"
+            for name, chance in rows
+        )
 
     @staticmethod
     def _to_hundredths(chance):

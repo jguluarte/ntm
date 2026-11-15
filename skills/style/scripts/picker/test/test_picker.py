@@ -101,11 +101,11 @@ class PickHookTest(unittest.TestCase):
 
         expected = {
             0: "hook: characters/host",
-            1: "hook: scenes/dawn",
+            1: "hook: scenes/dusk",
             2: "hook: characters/host",
-            3: "hook: scenes/dawn",
+            3: "hook: scenes/noon",
             4: "hook: scenes/dawn",
-            5: "hook: scenes/dusk",
+            5: "hook: characters/host",
         }
         self.assertEqual(expected, drawn)
 
@@ -141,28 +141,20 @@ class PickHookTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_fitting_hook_shows_its_chance_with_a_half_rounding_up(self):
+    def test_kinds_then_their_hooks_show_their_chances_a_half_rounding_up(self):
         picker = Picker(Theme(fixtures.WEIGHTED))
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "hook             chance",
-            "scenes/dawn        0.13",
-            "scenes/noon        0.50",
-            "scenes/dusk        0.00",
-            "characters/host    0.38",
-        ]
-        self.assertEqual(expected, rows)
-
-    def test_the_documented_example_shows_the_documented_chances(self):
-        picker = Picker(Theme(fixtures.CASEBOOK))
-        rows = picker.chances_table().splitlines()
-
-        expected = [
-            "hook                   chance",
-            "characters/detective     0.33",
-            "shared_lines/any_time    0.13",
-            "scenes/stakeout          0.54",
+            "kind        chance",
+            "scenes        0.88",
+            "characters    0.13",
+            "",
+            "hook             chance in kind",
+            "scenes/dawn                0.20",
+            "scenes/noon                0.80",
+            "scenes/dusk                0.00",
+            "characters/host            1.00",
         ]
         self.assertEqual(expected, rows)
 

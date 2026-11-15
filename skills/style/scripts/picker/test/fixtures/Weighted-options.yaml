@@ -1,6 +1,8 @@
 pools:
   scenes:
     roles: [hook]
+    weight: 3.5
+    score: 1
     entries:
       dawn:
         weight: 0.5
@@ -13,7 +15,14 @@ pools:
         weight: 0
   characters:
     roles: [hook]
+    weight: 2
+    score: -1
     entries:
       host:
         weight: 3
         score: -1
+  extras:
+    roles: [hook]
+    entries:
+      crowd:
+        weight: 0

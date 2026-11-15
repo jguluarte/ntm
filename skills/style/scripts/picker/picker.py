@@ -7,17 +7,16 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-THEME_BUILDER = Path(__file__).parents[3] / "theme-builder"
-OPTIONS_SCHEMA = THEME_BUILDER / "references" / "options.schema.yaml"
+SKILLS = Path(__file__).parents[3]
+OPTIONS_SCHEMA = SKILLS / "theme-builder" / "references" / "options.schema.yaml"
+
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 HOOK_ROLE = "hook"
-HOOK_COMMAND = "hook"
-OPTIONS_FLAG = "--options"
-SEED_FLAG = "--seed"
+
 HOOK_LINE = "hook: {}"
-FAILED = "Picker FAILED: {}: {}"
+FAILURE_LINE = "Picker FAILED: {}: {}"
 
 
 class NoHooks(ValueError):
@@ -74,9 +73,9 @@ class Picker:
     def _parser():
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
-        hook = subcommands.add_parser(HOOK_COMMAND, exit_on_error=False)
-        hook.add_argument(OPTIONS_FLAG, required=True)
-        hook.add_argument(SEED_FLAG, type=int)
+        hook = subcommands.add_parser("hook", exit_on_error=False)
+        hook.add_argument("--options", required=True)
+        hook.add_argument("--seed", type=int)
         return parser
 
     @staticmethod
@@ -87,7 +86,7 @@ class Picker:
         except Exception as failure:
             # Every failure, a bug included, is one line for the skill to read.
             why = " ".join(str(failure).split())
-            sys.exit(FAILED.format(type(failure).__name__, why))
+            sys.exit(FAILURE_LINE.format(type(failure).__name__, why))
 
 
 if __name__ == "__main__":

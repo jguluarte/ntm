@@ -50,18 +50,19 @@ is" and "Rest" show.
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
 type. An options file that breaks the schema reads as `InvalidTheme`, with where
-in the file and what is wrong. A history line without a `sent` date and time
-reads as `InvalidHistory`, with its line number and the line. A `--type` that
-names something other than a reminder type or task outcome, or more than one
-reminder type, reads as `ArgumentError`, naming the flag and the values, and so
-do `--history` without `--today` and a `--today` that isn't a date. A theme
-where no pool gives a hook reads as `NoHooks`, one with no hook that fits the
-message as `MissingHook`, and one where every hook that fits weighs 0 as
-`NoHookHasWeight`.
+in the file and what is wrong. A history line that isn't a JSON entry with a
+`sent` date and time reads as `InvalidHistory`, with its line number and the
+line, shown below on two lines to fit. A `--type` that names something other
+than a reminder type or task outcome, or more than one reminder type, reads as
+`ArgumentError`, naming the flag and the values, and so do `--history` without
+`--today` and a `--today` that isn't a date. A theme where no pool gives a hook
+reads as `NoHooks`, one with no hook that fits the message as `MissingHook`, and
+one where every hook that fits weighs 0 as `NoHookHasWeight`.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
-Picker FAILED: InvalidHistory: line 2: no sent date and time: {"sent":"13 Nov"}
+Picker FAILED: InvalidHistory: line 2: not an entry with a sent date and time:
+    {"sent":"13 Nov"}
 Picker FAILED: ArgumentError: argument --type: not an option: night
 Picker FAILED: ArgumentError: --history needs --today
 Picker FAILED: ArgumentError: argument --today: not a date as YYYY-MM-DD: 15 Nov
@@ -155,12 +156,11 @@ over 1.
 
 ### Rest
 
-After a message is built on a hook, the hook steps back, and comes back over
-time. Right after its use it can't be drawn. After one half-life it draws at
-half its draw weight again, after two at three quarters: each half-life, it wins
-back half of what it still lacks. A pool's `half_life_days` is the half-life of
-each of its hooks. A pool without one never rests, and without `--history`
-nothing does.
+A pool's `half_life_days` sets how fast its hooks come back after a message is
+built on one. Right after its use, a hook can't be drawn. After `half_life_days`
+days it draws at half its draw weight, and after twice that at three quarters:
+each `half_life_days`, it wins back half of what it still lacks. A pool without
+`half_life_days` never rests, and without `--history` nothing does.
 
 Rest counts whole days, from the day the latest message built on the hook went
 out to `--today`, as each history entry's `sent` and `picks` say. A hook used
@@ -168,11 +168,11 @@ today can't be drawn again until tomorrow. When every fitting hook of the drawn
 kind was used today, none of them rests for that draw: each draws at its draw
 weight, so a kind that can be drawn always gives a hook.
 
-| Number             | What it is                                                                        |
-| ------------------ | --------------------------------------------------------------------------------- |
-| Days since used    | Whole days from the latest message built on the hook to `--today`                 |
-| Share won back     | `1 - 2 ** (-days since used / half_life_days)`; 1 when never used or no half-life |
-| Rested draw weight | Draw weight × share won back                                                      |
+| Number             | What it is                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| Days since used    | Whole days from the latest message built on the hook to `--today`                             |
+| Share won back     | `1 - 2 ** (-days since used / half_life_days)`; 1 when never used or without `half_life_days` |
+| Rested draw weight | Draw weight × share won back                                                                  |
 
 With a history, a hook's chance in its kind is its rested draw weight over the
 total rested draw weight of its kind's fitting hooks. `--chances` shows the days
@@ -185,10 +185,10 @@ its hooks was used.
 2026-11-15.
 
 `scenes` has a `half_life_days` of 2. The latest message built on `scenes/dawn`
-went out on 2026-11-13, so its days since used are 2, one half-life. Its share
-won back is 1 - 2 ** (-2 / 2) = 0.5, and its rested draw weight is its draw
-weight of 1 × 0.5 = 0.5. No message used `noon` or `dusk`, so each keeps its
-draw weight of 1. The fitting hooks total 0.5 + 1 + 1 = 2.5, so `dawn` has a
+went out on 2026-11-13, so its days since used are 2: one `half_life_days`, so
+it has won back half, a share won back of 0.5. Its rested draw weight is its
+draw weight of 1 × 0.5 = 0.5. No message used `noon` or `dusk`, so each keeps
+its draw weight of 1. The fitting hooks total 0.5 + 1 + 1 = 2.5, so `dawn` has a
 chance in `scenes` of 0.5 / 2.5 = 0.2, and `noon` and `dusk` each 1 / 2.5 = 0.4.
 
 The history's message on `dawn` from 2026-11-10 is older, so it doesn't count.

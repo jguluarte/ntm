@@ -11,11 +11,10 @@ from theme import History, InvalidOptions, Theme, ThemeOptions
 class Picker:
     def __init__(
             self, theme, theme_options=ThemeOptions(), history=History(),
-            today=None, seed=None, shows_chances=False):
+            seed=None, shows_chances=False):
         self.theme = theme
         self.theme_options = theme_options
         self.history = history
-        self.today = today
         self.seed = seed
         self.shows_chances = shows_chances
 
@@ -27,9 +26,9 @@ class Picker:
                 raise argparse.ArgumentError(None, "--history needs --today")
 
             theme = Theme(flags.options)
-            history = History(flags.history)
+            history = History(flags.history, flags.today)
             return cls(
-                theme, flags.theme_options, history, flags.today, flags.seed,
+                theme, flags.theme_options, history, flags.seed,
                 flags.shows_chances,
             )
 
@@ -39,7 +38,7 @@ class Picker:
             kind_chances = self.theme.kind_chances_for(self.theme_options)
             kind = self._draw(generator, kind_chances)
             hook_chances = self.theme.hook_chances_for(
-                self.theme_options, kind, self.history, self.today,
+                self.theme_options, kind, self.history,
             )
             hook = self._draw(generator, hook_chances)
             return f"hook: {hook}"
@@ -51,7 +50,7 @@ class Picker:
             for kind in kind_chances:
                 hook_chances.update(
                     self.theme.hook_chances_for(
-                        self.theme_options, kind, self.history, self.today,
+                        self.theme_options, kind, self.history,
                     ),
                 )
 
@@ -68,7 +67,7 @@ class Picker:
     def _table(self, name_heading, chance_heading, chances):
         rows = [(name_heading, "days since used", chance_heading)]
         for name, chance in chances.items():
-            days = self.history.days_since_used(name, self.today)
+            days = self.history.days_since_used(name)
             shown_days = "never" if days is None else str(days)
             rows.append((name, shown_days, self._to_hundredths(chance)))
 

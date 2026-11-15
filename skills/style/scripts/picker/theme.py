@@ -73,7 +73,8 @@ class MoreThanOneReminderType(InvalidOptions):
 
 class InvalidHistory(ValueError):
     def __init__(self, line_number, line):
-        super().__init__(f"line {line_number}: no sent date and time: {line}")
+        why = "not an entry with a sent date and time"
+        super().__init__(f"line {line_number}: {why}: {line}")
 
 
 class NoHooks(ValueError):
@@ -124,19 +125,19 @@ class ThemeOptions:
 
 
 class History:
-    def __init__(self, path=None):
+    def __init__(self, path=None, today=None):
+        self._today = today
         self._latest_use_by_name = {}
         lines = self._load(path) if path else []
         for line_number, line in enumerate(lines, start=1):
-            if line.strip():
-                self._read_entry(line_number, line)
+            self._read_entry(line_number, line)
 
-    def days_since_used(self, name, today):
+    def days_since_used(self, name):
         latest_use = self._latest_use_by_name.get(name)
         if latest_use is None:
             return None
 
-        return (today - latest_use).days
+        return (self._today - latest_use).days
 
     def _read_entry(self, line_number, line):
         try:
@@ -268,17 +269,18 @@ class HookManager:
 
         return self._chances_of(draw_weights)
 
-    def hook_chances_for(self, theme_options, kind, history, today):
+    def hook_chances_for(self, theme_options, kind, history):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
-        draw_weights = {}
+        rested_draw_weights = {}
         for hook in hooks:
-            days_since_used = history.days_since_used(hook.name, today)
-            draw_weights[hook.name] = hook.rested_draw_weight(days_since_used)
+            days = history.days_since_used(hook.name)
+            rested_draw_weights[hook.name] = hook.rested_draw_weight(days)
 
-        if not any(draw_weights.values()):
-            draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+        if any(rested_draw_weights.values()):
+            return self._chances_of(rested_draw_weights)
 
+        draw_weights = {hook.name: hook.draw_weight for hook in hooks}
         return self._chances_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):
@@ -323,11 +325,8 @@ class Theme:
     def kind_chances_for(self, theme_options):
         return self._hook_manager.kind_chances_for(theme_options)
 
-    def hook_chances_for(
-            self, theme_options, kind, history=History(), today=None):
-        return self._hook_manager.hook_chances_for(
-            theme_options, kind, history, today,
-        )
+    def hook_chances_for(self, theme_options, kind, history=History()):
+        return self._hook_manager.hook_chances_for(theme_options, kind, history)
 
     @staticmethod
     def _read_hook_pools(pools_by_kind):

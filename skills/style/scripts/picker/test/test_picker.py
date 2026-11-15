@@ -30,15 +30,22 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
-    def test_hook_rests_what_the_history_used_by_today(self):
-        args = make_picker_args(
+    def test_a_history_changes_which_hook_the_seed_draws(self):
+        without_history = make_picker_args(fixtures.EVEN, seed=32)
+        with_history = make_picker_args(
             fixtures.EVEN, seed=32, history=fixtures.EVEN_HISTORY,
             today="2026-11-15",
         )
-        picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
+        drawn = {
+            "without history": Picker.from_args(without_history).pick_hook(),
+            "with history": Picker.from_args(with_history).pick_hook(),
+        }
 
-        self.assertEqual("hook: scenes/noon", drawn)
+        expected = {
+            "without history": "hook: scenes/dawn",
+            "with history": "hook: scenes/noon",
+        }
+        self.assertEqual(expected, drawn)
 
     def test_the_seed_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
@@ -51,12 +58,6 @@ class CommandLineTest(unittest.TestCase):
         picker = Picker.from_args(args)
 
         self.assertEqual(ThemeOptions(), picker.theme_options)
-
-    def test_today_is_optional_without_a_history(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertIsNone(picker.today)
 
     def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
@@ -199,8 +200,8 @@ class ChancesTableTest(unittest.TestCase):
 
     def test_the_documented_rest_example_shows_the_documented_chances(self):
         theme = Theme(fixtures.EVEN)
-        history = History(fixtures.EVEN_HISTORY)
-        picker = Picker(theme, history=history, today=date(2026, 11, 15))
+        history = History(fixtures.EVEN_HISTORY, date(2026, 11, 15))
+        picker = Picker(theme, history=history)
         rows = picker.chances_table().splitlines()
 
         expected = [

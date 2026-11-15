@@ -61,9 +61,10 @@ class Recalculation:
             yield
         except Exception as failure:
             # Every failure, a bug included, is one line for the skill to read.
-            name = type(failure).__name__
             why = " ".join(str(failure).split())
-            sys.exit(f"Recalculation FAILED: {name}: {why}")
+            sys.exit(
+                f"Recalculation FAILED: { type(failure).__name__ }: {why}"
+            )
 
 
 if __name__ == "__main__":

@@ -10,7 +10,8 @@
         "python@3.13.18",
         "python313Packages.pyyaml@6.0.3",
         "ruff@0.17.4",
-        "python313Packages.pytest@9.1.1"
+        "python313Packages.pytest@9.1.1",
+        "python313Packages.jsonschema@4.26.0"
     ],
     "shell": {
         "scripts": {

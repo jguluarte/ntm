@@ -10,27 +10,18 @@ world: >-
   stage.
 
 escalation:
-  about: >-
-    A message's normal level is `none`, no read at all. Slips raise it, set by
-    the task in the message that has slipped longest: harder the longer a task
-    slips, and back to `none` once it closes. After a stretch with no raised
-    read, the job sometimes raises it one degree, up to a full read, with no
-    slip behind it: playful shade, the way the culture talks.
-
   none: >-
     A message with no read is still the show's world and all its fun, with
     nobody reading you.
 
   light: >-
-    The first degree, the read the job's raise brings on a good stretch: witty
-    and shady, no softening, and playful.
+    Witty and shady, no softening, and playful.
 
   escalated: >-
-    After a task has slipped one day: pointier, because you've been here before.
-    The read names the slip.
+    Pointier, because you've been here before. The read names the slip.
 
   full: >-
-    After a task has slipped three days: no mercy.
+    No mercy.
 
 wins:
   about: >-

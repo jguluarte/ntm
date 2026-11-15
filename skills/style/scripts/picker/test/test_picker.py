@@ -1,6 +1,6 @@
 import unittest
 
-from fixtures import EVEN, NOT_THERE, SPEAKERS_ONLY
+import fixtures
 from picker import Options, Picker
 
 RUNS = 50
@@ -8,7 +8,7 @@ RUNS = 50
 
 class CommandLineTest(unittest.TestCase):
     def test_hook_draws_from_the_options_file_with_the_seed(self):
-        args = ["hook", "--options", str(EVEN), "--seed", "2"]
+        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "2"]
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
@@ -16,7 +16,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual("hook: scenes/dawn", drawn)
 
     def test_the_seed_is_optional(self):
-        args = ["hook", "--options", str(EVEN)]
+        args = ["hook", "--options", str(fixtures.EVEN)]
 
         picker = Picker.from_args(args)
 
@@ -32,7 +32,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["hook", "--options", str(EVEN), "--seed", "seven"]
+        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "seven"]
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
 
@@ -42,8 +42,8 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
-        args = ["hook", "--options", str(NOT_THERE)]
-        why = f"[Errno 2] No such file or directory: '{NOT_THERE}'"
+        args = ["hook", "--options", str(fixtures.NOT_THERE)]
+        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
         expected = f"Picker FAILED: FileNotFoundError: {why}"
 
         with self.assertRaises(SystemExit) as exited:
@@ -54,7 +54,7 @@ class CommandLineTest(unittest.TestCase):
 
 class PickHookTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_hook(self):
-        options = Options(EVEN)
+        options = Options(fixtures.EVEN)
         expected = {
             0: "hook: characters/host",
             1: "hook: scenes/noon",
@@ -69,14 +69,14 @@ class PickHookTest(unittest.TestCase):
         self.assertEqual(expected, drawn)
 
     def test_without_a_seed_runs_draw_different_hooks(self):
-        picker = Picker(Options(EVEN))
+        picker = Picker(Options(fixtures.EVEN))
 
         drawn = {picker.pick_hook() for _ in range(RUNS)}
 
         self.assertGreater(len(drawn), 1)
 
     def test_only_speaker_pools_fails_saying_no_pool_gives_a_hook(self):
-        picker = Picker(Options(SPEAKERS_ONLY))
+        picker = Picker(Options(fixtures.SPEAKERS_ONLY))
         why = "no pool in the options file gives a hook"
         expected = f"Picker FAILED: ValueError: {why}"
 

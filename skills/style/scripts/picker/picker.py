@@ -9,12 +9,13 @@ import yaml
 
 THEME_BUILDER = Path(__file__).parents[3] / "theme-builder"
 OPTIONS_SCHEMA = THEME_BUILDER / "references" / "options.schema.yaml"
-POOLS = "pools"
-GIVES = "gives"
-ENTRIES = "entries"
-HOOK = "hook"
-OPTIONS = "--options"
-SEED = "--seed"
+POOLS_BY_KIND = "pools"
+ROLES = "gives"
+ENTRIES_BY_SLUG = "entries"
+HOOK_ROLE = "hook"
+HOOK_COMMAND = "hook"
+OPTIONS_FLAG = "--options"
+SEED_FLAG = "--seed"
 HOOK_LINE = "hook: {}"
 NO_HOOKS = "no pool in the options file gives a hook"
 FAILED = "Picker FAILED: {}: {}"
@@ -24,13 +25,13 @@ class Options:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        self._pools = fields[POOLS]
+        self._pools = fields[POOLS_BY_KIND]
 
     def hooks(self):
         hooks = []
         for kind, pool in self._pools.items():
-            if HOOK in pool[GIVES]:
-                hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES])
+            if HOOK_ROLE in pool[ROLES]:
+                hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG])
         if not hooks:
             raise ValueError(NO_HOOKS)
         return hooks
@@ -69,9 +70,9 @@ class Picker:
     def _parser():
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
-        hook = subcommands.add_parser(HOOK, exit_on_error=False)
-        hook.add_argument(OPTIONS, required=True)
-        hook.add_argument(SEED, type=int)
+        hook = subcommands.add_parser(HOOK_COMMAND, exit_on_error=False)
+        hook.add_argument(OPTIONS_FLAG, required=True)
+        hook.add_argument(SEED_FLAG, type=int)
         return parser
 
     @staticmethod

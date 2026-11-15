@@ -13,13 +13,12 @@ escalation:
   about: >-
     Three degrees of read, set by the task in the message that has slipped
     longest. Harder the longer a task slips, and back to a light read once it
-    closes.
+    closes. Sometimes the job raises the read one degree with no slip behind it:
+    playful shade, the way the culture talks.
 
   light: >-
-    The everyday read: witty and shady, no softening. It's playful, and it's how
-    the culture talks, so weave it in now and then on any message, even one
-    where nothing has slipped. It's the read for a task that has slipped less
-    than a day.
+    The everyday read: witty and shady, no softening. It's the read for a task
+    that hasn't slipped.
 
   escalated: >-
     After a task has slipped one day: pointier, because you've been here before.

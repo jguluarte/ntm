@@ -17,7 +17,7 @@ characters:
           Treat the slipped task as the crumb that gives away what the user did
           instead.
       - line: File it under closed.
-        when: done
+        type: done
 
 shared_lines:
   about: >-
@@ -26,6 +26,6 @@ shared_lines:
     lines:
       - Somebody in this house is lying.
   big_win:
-    when: big_win
+    type: big_win
     lines:
       - Gather everyone in the drawing room.

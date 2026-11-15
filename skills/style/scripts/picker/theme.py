@@ -13,7 +13,7 @@ POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
-WHEN = "when"
+TYPE = "type"
 WEIGHT = "weight"
 HOOK_ROLE = "hook"
 
@@ -115,7 +115,7 @@ class ThemeOptions:
 
 
 @dataclass(frozen=True)
-class _Hook:
+class Option:
     kind: str
     slug: str
     reminder_types: frozenset[ReminderType]
@@ -123,8 +123,8 @@ class _Hook:
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
-        when = (entry or {}).get(WHEN, [])
-        values = {when} if isinstance(when, str) else set(when)
+        types = (entry or {}).get(TYPE, [])
+        values = {types} if isinstance(types, str) else set(types)
         reminder_types = frozenset(ReminderType.named_in(values))
         task_outcomes = frozenset(TaskOutcome.named_in(values))
         return cls(kind, slug, reminder_types, task_outcomes)
@@ -241,7 +241,7 @@ class Theme:
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    hooks.append(_Hook.from_entry(kind, slug, entry))
+                    hooks.append(Option.from_entry(kind, slug, entry))
 
         return hooks
 

@@ -11,7 +11,7 @@ pools:
     entries:
       any_time:
       big_win:
-        when: big_win
+        type: big_win
 
   scenes:
     file: Casebook-scenes.yaml

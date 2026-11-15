@@ -68,10 +68,10 @@ The order of entries in a file doesn't change their chances. With a fixed
 
 `--type` takes at most one reminder type, `morning`, `afternoon`, `evening` or
 `weekly`, and any of the task outcomes `slipped`, `done` and `big_win`,
-separated by commas. The picker draws from the hooks whose `when` fits that
-type, as `references/theme-files.md` says, or, without `--type`, from the hooks
-without `when`. On a big win it draws from the hooks kept for `big_win`, or,
-when none of those fits, from the hooks that fit `done`.
+separated by commas. The picker draws from the hooks whose `type` fits the
+message's, as `references/theme-files.md` says, or, without `--type`, from the
+hooks without `type`. On a big win it draws from the hooks kept for `big_win`,
+or, when none of those fits, from the hooks that fit `done`.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --type big_win
@@ -112,6 +112,6 @@ one line weighs 0.25. Other keys, such as a scene's `setting`, aren't lines.
 
 ### What it keeps
 
-Everything it doesn't compute stays as it was: `when`, `roles`, `file`, `score`,
+Everything it doesn't compute stays as it was: `type`, `roles`, `file`, `score`,
 the half-lives and `speaker_rate`. Saving keeps the key order and lists on one
 line, and loses the file's comments and blank lines.

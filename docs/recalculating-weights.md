@@ -47,7 +47,7 @@ counted twice.
 
 The run never changes what a person or the theme builder wrote in the options
 file: the levels and thresholds under `escalation` and `finishing_tasks`, a
-pool's `roles` and `file`, an entry's `when`.
+pool's `roles` and `file`, an entry's `type`.
 
 The files are documents in the user's backend, and the script touches no
 backend. As for the picker, the run fetches each file, hands its text over, and

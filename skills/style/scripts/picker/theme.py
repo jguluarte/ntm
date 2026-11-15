@@ -42,17 +42,17 @@ class InvalidTheme(ValueError):
         super().__init__(f"{where}: {why}")
 
 
-class InvalidThemeOptions(ValueError):
+class InvalidOptions(ValueError):
     pass
 
 
-class UnknownThemeOption(InvalidThemeOptions):
+class UnknownOption(InvalidOptions):
     def __init__(self, values):
         listed = ", ".join(sorted(values))
         super().__init__(f"not an option: {listed}")
 
 
-class MoreThanOneReminderType(InvalidThemeOptions):
+class MoreThanOneReminderType(InvalidOptions):
     def __init__(self, reminder_types):
         values = sorted(reminder_type.value for reminder_type in reminder_types)
         listed = ", ".join(values)
@@ -83,7 +83,7 @@ class ThemeOptions:
         options = reminder_types | task_outcomes
         unknown = values - {option.value for option in options}
         if unknown:
-            raise UnknownThemeOption(unknown)
+            raise UnknownOption(unknown)
 
         if len(reminder_types) > 1:
             raise MoreThanOneReminderType(reminder_types)
@@ -139,7 +139,7 @@ class _Hook:
         return True
 
 
-class _Hooks:
+class HookManager:
     def __init__(self, hooks):
         self._hooks = hooks
 
@@ -171,10 +171,11 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        self._hooks = self._read_hooks(fields[POOLS_BY_KIND])
+        hooks = self._read_hooks(fields[POOLS_BY_KIND])
+        self._hook_manager = HookManager(hooks)
 
     def hooks_for(self, theme_options):
-        return self._hooks.responding_to(theme_options)
+        return self._hook_manager.responding_to(theme_options)
 
     @staticmethod
     def _read_hooks(pools_by_kind):
@@ -185,7 +186,7 @@ class Theme:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     hooks.append(_Hook.from_entry(kind, slug, entry))
 
-        return _Hooks(hooks)
+        return hooks
 
     @staticmethod
     def _load(path):

@@ -246,15 +246,16 @@ The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
 its checksum differs.
 
-| Field                 | What it is                                                                                   |
-| --------------------- | -------------------------------------------------------------------------------------------- |
-| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
-| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
-| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                              |
-| `weight`              | How likely the entry is against its pool's others: 1 without lines or riffs, less the fewer  |
-| `weight`              | How likely the pool's kind is against other kinds: the square root of its size; per pool     |
-| `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
-| `score`               | How well messages built on the entry, or on the pool's kind, landed, from `%Message-history` |
+| Field                 | What it is                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------- |
+| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                         |
+| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                   |
+| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                             |
+| `weight`              | How likely the entry is within its pool: 1 without lines or riffs, less the fewer it has    |
+| `weight`              | How likely the pool's kind is against other kinds: the square root of its size; per pool    |
+| `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs |
+| `score`               | How well messages built on the entry landed, from `%Message-history`                        |
+| `score`               | How well messages built on the pool's kind landed, from `%Message-history`; per pool        |
 
 A pool's size counts its entries, or its lines in a pool of line groups such as
 `shared_lines`.

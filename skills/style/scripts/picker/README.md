@@ -94,21 +94,20 @@ how likely its kind is against the other kinds, and an entry's how likely it is
 against the other entries of its kind. Without a `weight`, a pool or entry
 weighs 1; without a `score`, it scores 0.
 
-| Number         | What it is                                                           |
-| -------------- | -------------------------------------------------------------------- |
-| Draw weight    | `weight * 2 ** score`                                                |
-| Kind's chance  | The kind's draw weight over the total of the kinds that can be drawn |
-| Chance in kind | The hook's draw weight over the total of its kind's fitting hooks    |
-| Chance overall | The kind's chance times the hook's chance in its kind                |
+| Number                    | What it is                                                           |
+| ------------------------- | -------------------------------------------------------------------- |
+| Draw weight               | `weight * 2 ** score`                                                |
+| Kind's chance             | The kind's draw weight over the total of the kinds that can be drawn |
+| Hook's chance in its kind | The hook's draw weight over the total of its kind's fitting hooks    |
+| Hook's chance overall     | The kind's chance times the hook's chance in its kind                |
 
 Each point of score doubles the draw weight, and each point below 0 halves it. A
-kind can be drawn when it holds a hook that fits and weighs more than 0, and it
-keeps its full weight however few of its hooks fit. A hook that weighs 0 is
+kind keeps its full weight however few of its hooks fit. A hook that weighs 0 is
 never drawn.
 
-`--chances` prints the kinds that can be drawn, then the hooks that fit, grouped
-by kind, each in file order. It shows a hook's chance in its kind, rounded to
-two places with a half rounding up: 0.125 shows as 0.13.
+`--chances` prints the kinds that can be drawn, then the fitting hooks of each
+of those kinds, both in file order. Each chance is rounded to two places with a
+half rounding up: 0.125 shows as 0.13.
 
 ### An example
 
@@ -139,3 +138,6 @@ scenes/noon                0.80
 scenes/dusk                0.00
 characters/host            1.00
 ```
+
+0.875 and 0.125 show as 0.88 and 0.13, so rounded chances can add up to just
+over 1.

@@ -23,7 +23,7 @@ Setup records your labels' real names in `%Settings` and your databases' in
 | `%Message-history`    | `<Theme>-message-history` |
 | `%Paused-dates`       | `Paused dates`            |
 | `%Estimator-log`      | `Estimator log`           |
-| `%Theme`              | `Theme`                   |
+| `%Theme`              | `<Theme>`                 |
 
 These are the names the plugin's author uses; the marks keep the plugin's files
 consistent and still leave you free to name yours differently.

@@ -2323,9 +2323,9 @@ any_actor_lines:
   winners_circle:
     about: >-
       Only for the winner's circle: something truly impressive and shocking, or
-      going above and beyond, the finale itself. Never for an ordinary win.
-      Write a first-person line as the user's own confessional, with no speaker
-      claiming it.
+      going above and beyond, the finale itself. Never for an ordinary win. A
+      line the winner says about the win is the user's own confessional, with no
+      speaker claiming it; any other line is the speaker's.
 
     lines:
       - You took the crown. America's Next Drag Superstar!

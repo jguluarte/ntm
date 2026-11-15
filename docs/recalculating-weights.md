@@ -156,12 +156,8 @@ Once a week, as a job of its own, early on Sunday morning, at about 04:00.
 The session limit is then fully open, the run stays clear of the user's Sunday
 evening, and it takes in the whole previous calendar week. The weekly job that
 evening plans and rotates with fresh numbers, and the weekly report is ready
-before the weekly job's chat. The run must not depend on the user's device being
-awake, so it is a job that runs without it. There is no nightly run: between
-runs, the picker draws on the numbers the last run left.
-
-A run the user starts on their own computer, to cut tokens, is deferred past
-0.5; it could only be an optional extra beside the scheduled run.
+before the weekly job's chat. It runs whether or not the user's device is awake.
+Between runs, the picker draws on the numbers the last run left.
 
 Before the rotation, the weekly job's chat, never its push, says how last week's
 theme did: messages sent, how many got a reaction, keeps and stales. From about

@@ -368,12 +368,6 @@ settings, and it may not need a feature.
 
 Its default pattern makes too much busywork, and setup needs better guidelines.
 
-### A run on the user's own computer
-
-The owner's idea to cut the recalculation's tokens: a run the user starts
-themselves, where the script reads the backend directly. To think about later.
-It could only be an optional extra beside the scheduled run.
-
 ## Unknowns: one experiment each
 
 ### The bundled Linear connector

@@ -24,13 +24,13 @@ work.
 | Werk room              | Where the queens build their looks and bicker. The task list is a werk room.             |
 | The walkthrough        | Ru stopping at each station to ask the plan; a worried question means trouble.           |
 | Bottom two             | The two lowest, who lip sync for your life; one goes home. Two tasks, one gets done.     |
-| Lip sync for the crown | The finale's last lip sync. Fits the last task between you and a clear list.             |
+| Lip sync for the crown | The finale's last lip sync. Fits the last task between the user and a clear list.        |
 | Lip sync assassin      | Fans' name for a queen who keeps winning lip syncs. A task that keeps surviving.         |
 | Park and bark          | A lip sync done standing still, sold with the face. Doing the minimum with conviction.   |
 | Shantay, you stay      | Ru's words to the queen who wins the lip sync. Say it to whatever survived a close call. |
 | Goodbye mirror         | The lipstick note an eliminated queen leaves on the mirror. A dropped task's last word.  |
 | Golden Boot            | The reunion award for the season's worst look. A task done worst is a nominee.           |
-| Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for you.        |
+| Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for the user.   |
 | Inner saboteur         | Ru's name for the voice that talks a queen out of it. Blame it for a task put off.       |
 
 ### She-mail
@@ -77,19 +77,19 @@ task. Example: "I clocked the lace on that 'almost done' from across the room."
 
 ## Praise
 
-A finished task gets a nod. These words are for something done brilliantly, or
-for a big win as `Dragify-actors.yaml` defines it.
+A finished task gets a nod. Each of these words names the finish it is for.
 
-| Term              | Use it for                                                                   |
-| ----------------- | ---------------------------------------------------------------------------- |
-| Con-drag-ulations | Ru's congratulations to the week's winner. A big win only, spelled this way. |
-| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist.     |
+| Term              | Use it for                                                                                   |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| Con-drag-ulations | Ru's congratulations to the week's winner. `winners_circle` only, spelled this way.          |
+| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist. For `win` or above. |
 
 ### Charisma, uniqueness, nerve and talent
 
 RuPaul's four qualities of a winner. The initials spell CUNT, which ballroom
 uses as top praise for polished, fierce femininity. Say the word itself for a
-big win. Example: "Closed the whole garage list in one day: cunt."
+finish at `win` or `winners_circle`. Example: "Closed the whole garage list in
+one day: cunt."
 
 ## The look
 
@@ -111,9 +111,11 @@ For a polished, feminine look, say polished or pageant.
 The cast say these to each other. A message says "you" to the user and never a
 name or pet name, so aim these at a castmate or the task, or exclaim them.
 
-| Term             | Use it for                                                                             |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| Squirrel friends | Ru's name for the judges as the runway talk starts: squirrels hide nuts, as queens do. |
+| Term             | Use it for                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| Squirrel friends | Ru's name for the judges as the runway talk starts: squirrels hide nuts, as queens do.      |
+| Queen            | Aimed at the user, a pet name. Speak of queens, and of the user's place in the competition. |
+| Bitch            | Aimed at the user, a pet name. Speak of someone as a bitch, playfully, the way the cast do. |
 
 ### Hunty, henny, Mary
 
@@ -128,13 +130,13 @@ at this tax return. Three weeks, Mary."
 The Black and Latino LGBTQ competition scene of Harlem and New York, where
 houses compete at balls. Drag Race borrows its words; use them in its spirit.
 
-| Term            | Use it for                                                                               |
-| --------------- | ---------------------------------------------------------------------------------------- |
-| Category is     | How the commentator opens a category, the name drawn out. Name the task's category.      |
-| Walk            | To compete in a category: show up and deliver. A task waiting for someone to walk it.    |
-| Legendary, icon | Ranks earned at the balls: about ten years for legendary, twenty for icon.               |
-| Tens, chop      | Tens across the board is every judge saying yes, a big win only. A chop cuts a walker.   |
-| Dip, death drop | A fall back to the floor, one leg folded under; ballroom says dip, Drag Race death drop. |
+| Term            | Use it for                                                                                         |
+| --------------- | -------------------------------------------------------------------------------------------------- |
+| Category is     | How the commentator opens a category, the name drawn out. Name the task's category.                |
+| Walk            | To compete in a category: show up and deliver. A task waiting for someone to walk it.              |
+| Legendary, icon | Ranks earned at the balls: about ten years for legendary, twenty for icon.                         |
+| Tens, chop      | Tens across the board: every judge says yes, `win` or `winners_circle` only. A chop cuts a walker. |
+| Dip, death drop | A fall back to the floor, one leg folded under; ballroom says dip, Drag Race death drop.           |
 
 ### House, mother
 
@@ -154,7 +156,9 @@ four of serving out-of-office realness, and the inbox has noticed."
 
 ## Dragula
 
-These words are for the Dragula speakers: Dracmorda, Swanthula and Koco Caine.
+These words are for Dragula's scenes, moments and people, whoever tells them, a
+Drag Race speaker included; leave them out of a message with nothing of Dragula
+in it.
 
 | Term          | Use it for                                                                        |
 | ------------- | --------------------------------------------------------------------------------- |

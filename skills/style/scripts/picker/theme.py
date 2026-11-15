@@ -270,14 +270,15 @@ class HookManager:
     def hook_chances_for(self, theme_options, kind, history):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
-        draw_weights = {}
+        rested_draw_weights = {}
         for hook in hooks:
             days = history.days_since_used(hook.name)
-            draw_weights[hook.name] = hook.rested_draw_weight(days)
+            rested_draw_weights[hook.name] = hook.rested_draw_weight(days)
 
-        if not any(draw_weights.values()):
-            draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+        if any(rested_draw_weights.values()):
+            return self._chances_of(rested_draw_weights)
 
+        draw_weights = {hook.name: hook.draw_weight for hook in hooks}
         return self._chances_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):

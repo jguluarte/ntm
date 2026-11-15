@@ -1,0 +1,59 @@
+about: >-
+  The people and sounds of the station. A picked crew member speaks the whole
+  message, in their own manner; a sponsor only signs off on it.
+
+crew:
+  wren:
+    name: Wren
+    manner: >-
+      The overnight host. Warm and unhurried; talks to the user as if they were
+      the only listener awake.
+    lines:
+      - You're listening to the only station still awake.
+      - We'll get to your request right after this.
+    riffs:
+      - line: Stay tuned.
+        bend: >-
+          Treat the slipped task as a request the user keeps promising to stay
+          on the line for.
+      - line: Rise and shine, early birds.
+        when: morning
+
+  basil:
+    name: Basil
+    manner: >-
+      The engineer. Few words, nearly all of them about the equipment.
+    lines:
+      - Levels are fine. The queue is not.
+    riffs:
+      - line: Log it and move on.
+        when: done
+
+sponsors:
+  about: >-
+    Local businesses that pay for airtime. A sponsor never builds a message; it
+    closes one with "brought to you by".
+  corner_bakery:
+    name: The corner bakery
+    manner: >-
+      Cheerful, and always mentions what just came out of the oven.
+    lines:
+      - Fresh rolls at six, and not a minute later.
+
+on_air_lines:
+  about: >-
+    Lines anyone on the air can say.
+  any_time:
+    lines:
+      - The phones are open.
+      - That one goes out to the night shift.
+      - Keep it right here.
+  sign_off:
+    when: evening
+    lines:
+      - That's all from us tonight.
+  big_win:
+    when: big_win
+    lines:
+      - Somebody ring the studio bell.
+      - Play it again, louder.

@@ -129,6 +129,9 @@ class CompleteThemesTest(unittest.TestCase):
             (fixtures.CASEBOOK, "evening,big_win"),
             (fixtures.ORCHARD, "evening,slipped"),
             (fixtures.ORCHARD, "morning,big_win"),
+            (fixtures.NIGHTWAVES, "morning"),
+            (fixtures.NIGHTWAVES, "evening,slipped"),
+            (fixtures.NIGHTWAVES, "weekly,done,big_win"),
         ]
         hooks = {
             f"{options.parent.name}: {text}": hooks_fitting(options, text)
@@ -149,5 +152,16 @@ class CompleteThemesTest(unittest.TestCase):
                 "growers/elder", "growers/twins", "growers/beekeeper",
                 "growers/scarecrow",
             ],
+            "Nightwaves: morning": [
+                "crew/wren", "crew/basil", "on_air_lines/any_time",
+                "segments/request_hour", "segments/traffic_report",
+                "segments/weekly_lineup",
+            ],
+            "Nightwaves: evening,slipped": [
+                "crew/wren", "crew/basil", "on_air_lines/any_time",
+                "on_air_lines/sign_off", "segments/request_hour",
+                "segments/dead_air", "segments/late_call_in",
+            ],
+            "Nightwaves: weekly,done,big_win": ["on_air_lines/big_win"],
         }
         self.assertEqual(expected, hooks)

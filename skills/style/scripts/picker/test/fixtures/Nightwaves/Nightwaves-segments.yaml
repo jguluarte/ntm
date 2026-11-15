@@ -1,0 +1,44 @@
+about: >-
+  The show's regular segments. A picked segment frames the whole message;
+  whoever speaks, speaks inside it.
+
+segments:
+  request_hour:
+    name: Request hour
+    staging: >-
+      The user's tasks are the requests in the queue, read out one by one.
+
+  traffic_report:
+    name: The traffic report
+    staging: >-
+      The day's tasks read out as roads: what's clear, what's backed up.
+    lines:
+      - Slow going on the main road.
+      - All clear on the bridge.
+    when: morning
+
+  weekly_lineup:
+    name: The weekly lineup
+    staging: >-
+      The week's tasks announced like a program guide, a slot for each.
+    when: [morning, weekly]
+
+  dead_air:
+    name: Dead air
+    staging: >-
+      Silence where the user's task should have been, and the crew scrambling to
+      fill it.
+    when: slipped
+
+  late_call_in:
+    name: The late call-in
+    staging: >-
+      A caller rings the studio after dark, asking about a request that is still
+      waiting.
+    when: [evening, slipped]
+
+  dedication:
+    name: The dedication
+    staging: >-
+      A song goes out in honor of the finished task.
+    when: done

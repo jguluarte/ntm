@@ -1,0 +1,47 @@
+theme: Nightwaves
+
+world: >-
+  A small-town radio station's overnight show. The user is the regular caller;
+  each task is a request waiting in the queue. When no one in particular speaks,
+  the station is on the air by itself: a jingle, the hum of the transmitter, the
+  listeners phoning in.
+
+escalation:
+  clear: >-
+    Where every message starts: easy listening, nobody on the user's case.
+
+  crackle: >-
+    A little interference. The crew mentions that the queue is getting long.
+
+  static: >-
+    A request has waited since yesterday, and the host says so on the air.
+
+  feedback: >-
+    Days of waiting. The booth stops the music to ask about it.
+
+wins:
+  on_air: >-
+    A finished task gets a quick mention between songs.
+
+  request_line: >-
+    A big day: the phones light up and the crew plays the user's song twice.
+
+  hall_of_fame: >-
+    Kept for something astonishing: the user's name goes up on the studio wall.
+
+files:
+  by_entry:
+    Nightwaves-station.yaml: >-
+      The crew who speak, the sponsors who sign off, and lines anyone on the air
+      can say.
+
+    Nightwaves-segments.yaml: >-
+      The show's regular segments a message can be framed as.
+
+  fully_read:
+    Nightwaves-terminology.md: >-
+      The station's own words.
+
+  for_the_picker:
+    Nightwaves-options.yaml: >-
+      What the theme offers the picker.

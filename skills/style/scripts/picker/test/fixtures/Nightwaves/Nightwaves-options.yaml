@@ -1,0 +1,88 @@
+checksums:
+  Nightwaves-station.yaml: >-
+    22e37b127594217d2a312f7fe13ec89981e5736912e1799a559f4405e59ffce0
+  Nightwaves-segments.yaml: >-
+    b444addd3868667570068ffbd70722cbeb4338e98e521373abcfde719be17314
+
+pools:
+  crew:
+    file: Nightwaves-station.yaml
+    roles: [hook, speaker]
+    half_life_days: 2.6
+    speaker_rate: 0.43
+    entries:
+      wren:
+        weight: 0.57
+        line_half_life_days: 8.8
+        score: 0.3
+      basil:
+        weight: 0.4
+        line_half_life_days: 6.3
+        score: -0.1
+
+  sponsors:
+    file: Nightwaves-station.yaml
+    roles: [speaker]
+    speaker_rate: 0.43
+    entries:
+      corner_bakery:
+        score: 0.0
+
+  on_air_lines:
+    file: Nightwaves-station.yaml
+    roles: [hook]
+    half_life_days: 3.3
+    entries:
+      any_time:
+        weight: 0.5
+        line_half_life_days: 7.5
+        score: 0.0
+      sign_off:
+        when: evening
+        weight: 0.25
+        line_half_life_days: 5.0
+        score: 0.2
+      big_win:
+        when: big_win
+        weight: 0.4
+        line_half_life_days: 6.3
+        score: 0.0
+
+  segments:
+    file: Nightwaves-segments.yaml
+    roles: [hook]
+    half_life_days: 1.4
+    entries:
+      request_hour:
+        weight: 1.0
+        score: 0.1
+      traffic_report:
+        when: morning
+        weight: 0.4
+        line_half_life_days: 6.3
+        score: -0.2
+      weekly_lineup:
+        when: [morning, weekly]
+        weight: 1.0
+        score: 0.0
+      dead_air:
+        when: slipped
+        weight: 1.0
+        score: 0.0
+      late_call_in:
+        when: [evening, slipped]
+        weight: 1.0
+        score: 0.0
+      dedication:
+        when: done
+        weight: 1.0
+        score: 0.0
+
+perspectives:
+  the_booth:
+    members: [crew/wren, crew/basil]
+    speaks: >-
+      As one of them, or both, passing the microphone.
+  the_listeners:
+    speaks: >-
+      Together, as a run of calls on the line.

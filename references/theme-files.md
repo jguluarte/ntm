@@ -296,3 +296,7 @@ The file ntm writes as it goes: an entry for each message sent in the theme,
 holding only this theme's messages. The pick reads it for rest, and the nightly
 job for scores. Setup creates it with the theme, from its template. The root's
 `files` leaves it out: the writer never reads it, and ntm finds it by its name.
+
+Each entry is one JSON line. The picker reads its `sent`, the date and time it
+went out, and its `picks`, each value as the picker printed it, such as
+`"picks":{"hook":"scenes/dawn"}`.

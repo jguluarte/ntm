@@ -1,5 +1,7 @@
 import enum
+import json
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 
 import jsonschema
@@ -14,6 +16,10 @@ TYPE = "type"
 WEIGHT = "weight"
 SCORE = "score"
 HOOK_ROLE = "hook"
+
+SENT = "sent"
+PICKS = "picks"
+HOOK_PICK = "hook"
 
 DEFAULT_WEIGHT = 1
 DEFAULT_SCORE = 0
@@ -64,6 +70,11 @@ class MoreThanOneReminderType(InvalidOptions):
         super().__init__(f"more than one reminder type: {listed}")
 
 
+class InvalidHistory(ValueError):
+    def __init__(self, line_number, line):
+        super().__init__(f"line {line_number}: no sent date and time: {line}")
+
+
 class NoHooks(ValueError):
     def __init__(self):
         super().__init__("no pool in the options file gives a hook")
@@ -109,6 +120,43 @@ class ThemeOptions:
         reminder = [self.reminder_type.value] if self.reminder_type else []
         outcomes = sorted(outcome.value for outcome in self.task_outcomes)
         return ",".join(reminder + outcomes)
+
+
+class History:
+    def __init__(self, path=None):
+        self._latest_use_by_name = {}
+        lines = self._load(path) if path else []
+        for line_number, line in enumerate(lines, start=1):
+            if line.strip():
+                self._read_entry(line_number, line)
+
+    def days_since_used(self, name, today):
+        latest_use = self._latest_use_by_name.get(name)
+        if latest_use is None:
+            return None
+
+        return (today - latest_use).days
+
+    def _read_entry(self, line_number, line):
+        try:
+            entry = json.loads(line)
+            sent = datetime.fromisoformat(entry[SENT])
+        except (ValueError, KeyError, TypeError):
+            raise InvalidHistory(line_number, line) from None
+
+        picks = entry.get(PICKS, {})
+        hook = picks.get(HOOK_PICK)
+        if hook:
+            self._record_use(hook, sent.date())
+
+    def _record_use(self, name, used_on):
+        latest_use = self._latest_use_by_name.get(name, used_on)
+        self._latest_use_by_name[name] = max(latest_use, used_on)
+
+    @staticmethod
+    def _load(path):
+        with open(path, encoding="utf-8") as file:
+            return file.read().splitlines()
 
 
 @dataclass(frozen=True)

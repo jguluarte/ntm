@@ -1,6 +1,6 @@
 import yaml
 
-from failure import PickerFailed
+from exceptions import PickerFailed
 
 
 class YamlFile:

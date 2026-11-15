@@ -1,4 +1,4 @@
-from failure import PickerFailed
+from exceptions import PickerFailed
 
 POOLS = "pools"
 GIVES = "gives"

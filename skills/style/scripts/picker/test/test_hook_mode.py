@@ -4,8 +4,8 @@ from pathlib import Path
 
 from command_line import CommandLine
 from even_theme import EVEN, EVEN_HOOKS
-from failure import PickerFailed
-from hook_mode import HookMode
+from exceptions import PickerFailed
+from modes import HookMode
 
 
 class HookModeTest(unittest.TestCase):

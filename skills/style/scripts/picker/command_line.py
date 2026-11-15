@@ -1,6 +1,6 @@
 import argparse
 
-from failure import PickerFailed
+from exceptions import PickerFailed
 
 
 class CommandLine(argparse.ArgumentParser):

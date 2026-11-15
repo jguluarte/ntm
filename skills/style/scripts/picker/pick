@@ -2,8 +2,8 @@
 import sys
 
 from command_line import CommandLine
-from failure import PickerFailed
-from hook_mode import HookMode
+from exceptions import PickerFailed
+from modes import HookMode
 
 MODES = {mode.NAME: mode for mode in (HookMode,)}
 

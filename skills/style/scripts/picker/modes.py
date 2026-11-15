@@ -1,6 +1,6 @@
 import random
 
-from failure import PickerFailed
+from exceptions import PickerFailed
 from options import Options
 from yaml_file import YamlFile
 

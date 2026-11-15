@@ -54,8 +54,9 @@ class Picker:
                     ),
                 )
 
-            kind_table = self._table("kind", "chance", kind_chances)
-            hook_table = self._table("hook", "chance in kind", hook_chances)
+            kind_rows = self._chance_rows("kind", "chance", kind_chances)
+            kind_table = self._table(kind_rows)
+            hook_table = self._table(self._hook_rows(hook_chances))
             return f"{kind_table}\n\n{hook_table}"
 
     @staticmethod
@@ -64,21 +65,38 @@ class Picker:
         [name] = generator.choices(names, weights=chances.values())
         return name
 
-    def _table(self, name_heading, chance_heading, chances):
-        rows = [(name_heading, "days since used", chance_heading)]
-        for name, chance in chances.items():
-            days = self.history.days_since_used(name)
-            shown_days = "never" if days is None else str(days)
-            rows.append((name, shown_days, self._to_hundredths(chance)))
+    def _hook_rows(self, hook_chances):
+        if not self.history.has_file:
+            return self._chance_rows("hook", "chance in kind", hook_chances)
 
-        name_width = max(len(name) for name, _, _ in rows)
-        days_width = max(len(days) for _, days, _ in rows)
-        chance_width = max(len(chance) for _, _, chance in rows)
-        return "\n".join(
-            f"{ name.ljust(name_width) }  { days.rjust(days_width) }  "
-            f"{ chance.rjust(chance_width) }"
-            for name, days, chance in rows
-        )
+        rows = [("hook", "days since used", "chance in kind")]
+        for hook, chance in hook_chances.items():
+            days = self.history.days_since_used(hook)
+            shown_days = "never" if days is None else str(days)
+            rows.append((hook, shown_days, self._to_hundredths(chance)))
+
+        return rows
+
+    @classmethod
+    def _chance_rows(cls, name_heading, chance_heading, chances):
+        rows = [(name_heading, chance_heading)]
+        for name, chance in chances.items():
+            rows.append((name, cls._to_hundredths(chance)))
+
+        return rows
+
+    @staticmethod
+    def _table(rows):
+        widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        lines = []
+        for name, *numbers in rows:
+            cells = [name.ljust(widths[0])]
+            for number, width in zip(numbers, widths[1:]):
+                cells.append(number.rjust(width))
+
+            lines.append("  ".join(cells))
+
+        return "\n".join(lines)
 
     @staticmethod
     def _to_hundredths(chance):

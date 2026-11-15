@@ -126,9 +126,10 @@ class ThemeOptions:
 
 class History:
     def __init__(self, path=None, today=None):
+        self.has_file = path is not None
         self._today = today
         self._latest_use_by_name = {}
-        lines = self._load(path) if path else []
+        lines = self._load(path) if self.has_file else []
         for line_number, line in enumerate(lines, start=1):
             self._read_entry(line_number, line)
 
@@ -149,9 +150,7 @@ class History:
         picks = entry.get(PICKS, {})
         hook = picks.get(HOOK_PICK)
         if hook:
-            kind, _ = hook.split("/")
             self._record_use(hook, sent.date())
-            self._record_use(kind, sent.date())
 
     def _record_use(self, name, used_on):
         latest_use = self._latest_use_by_name.get(name, used_on)

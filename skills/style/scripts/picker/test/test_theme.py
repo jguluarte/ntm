@@ -193,7 +193,12 @@ class RestTest(unittest.TestCase):
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
         chances = theme.hook_chances_for(ThemeOptions(), "scenes", history)
 
-        expected = {"scenes/dawn": 0, "scenes/noon": 0.5, "scenes/dusk": 0.5}
+        total_rested_draw_weight = 0 + 1 + 1
+        expected = {
+            "scenes/dawn": 0 / total_rested_draw_weight,
+            "scenes/noon": 1 / total_rested_draw_weight,
+            "scenes/dusk": 1 / total_rested_draw_weight,
+        }
         self.assertEqual(expected, chances)
 
     def test_when_every_fitting_hook_was_used_today_none_rests(self):

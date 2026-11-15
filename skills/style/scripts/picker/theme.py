@@ -199,6 +199,7 @@ class Theme:
         self._path = path
         self._fields = self._load(path)
         self._validate(self._fields)
+        self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         hooks = self._read_hooks(self._fields[POOLS_BY_KIND])
         self._hook_manager = HookManager(hooks)
 
@@ -224,13 +225,13 @@ class Theme:
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
 
     def set_checksum(self, file_name, checksum):
-        if CHECKSUMS_BY_FILE not in self._fields:
-            self._fields = {CHECKSUMS_BY_FILE: {}, **self._fields}
-
-        self._fields[CHECKSUMS_BY_FILE][file_name] = checksum
+        self._checksums[file_name] = checksum
 
     def save(self):
-        text = yaml.dump(self._fields, Dumper=_OptionsDumper, sort_keys=False)
+        checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
+        text = yaml.dump(
+            checksums_first, Dumper=_OptionsDumper, sort_keys=False,
+        )
         Path(self._path).write_text(text, encoding="utf-8")
 
     @staticmethod

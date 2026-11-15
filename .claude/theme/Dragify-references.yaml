@@ -1,5 +1,5 @@
 # The references a message can call back to: single moments from the shows and
-# from the culture around them.
+# from the culture around them, and the landmark wins for the winner's circle.
 about: >-
   A reference is one thing fans remember: a moment from Drag Race or Dragula, a
   meme, a feud, an exit, a look, or a piece of the drag and queer culture the
@@ -292,28 +292,6 @@ references:
 
     when:
       - morning
-
-  sashas_rose_petals:
-    name: Sasha's rose petals
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 9, the first finale decided by a lip sync tournament: in her first
-      lip sync of the night, against Shea Couleé to "So Emotional", Sasha Velour
-      pulled off a glove, then her wig, and rose petals poured out of both. She
-      went on to beat Peppermint for the crown.
-
-    meaning: >-
-      The gold standard reveal, the one every finalist since has chased.
-
-    callback: >-
-      Make the big effort's last step the glove and the wig coming off, and pour
-      everything it took out of them as petals: the days, the slips, the work,
-      until the stage is covered.
-
-    when:
-      - big_win
 
   sheas_finale:
     name: Shea's finale
@@ -1552,3 +1530,92 @@ references:
     callback: >-
       Pull the wig off whatever has been upstaging the task today and toss it in
       the toilet, Neely O'Hara style.
+
+winners_circle:
+  about: >-
+    Landmark wins, for the winner's circle only: something truly impressive and
+    shocking, or going above and beyond. Never for an ordinary win. Each reads
+    like a reference, and its callback measures the user's finish against the
+    landmark: the task that earned the winner's circle, set beside a win fans
+    still talk about. A landmark can carry the whole message, where a reference
+    gets a clause or a line. When the facts don't show its premise, keep the
+    landmark's scale and leave the premise out.
+
+  # Drag Race, Seasons 1 to 18
+
+  jinkxs_little_edie:
+    name: Jinkx's Little Edie
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 5 (2013) Snatch Game: Jinkx Monsoon played Little Edie Beale of the
+      documentary Grey Gardens and won the challenge. She went on to take the
+      crown, the first season winner who had also won Snatch Game.
+
+    meaning: >-
+      The deep-cut choice that wins anyway; the quirky underdog revealed as the
+      one to beat.
+
+    callback: >-
+      Credit the user's odd, specific way through the task as their Little Edie
+      in Snatch Game: the deep cut nobody else would have picked, and the
+      challenge win that showed who to beat.
+
+  bobs_two_in_one_snatch_game:
+    name: Bob's two-in-one Snatch Game
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 8 Snatch Game: Bob the Drag Queen played Uzo Aduba for the first
+      half, switched to Carol Channing for the second, and won the challenge,
+      the first queen to play two celebrities in one game. He went on to win the
+      season.
+
+    meaning: >-
+      Twice the job in the same time slot, and still the win.
+
+    callback: >-
+      Hold the finish up to Bob's switch mid-game: twice the job the day asked
+      for, done in the time meant for one, and the win for both halves.
+
+  sashas_rose_petals:
+    name: Sasha's rose petals
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9, the first finale decided by a lip sync tournament: in her first
+      lip sync of the night, against Shea Couleé to "So Emotional", Sasha Velour
+      pulled off a glove, then her wig, and rose petals poured out of both. She
+      went on to beat Peppermint for the crown.
+
+    meaning: >-
+      The gold standard reveal, the one every finalist since has chased.
+
+    callback: >-
+      Make the big effort's last step the glove and the wig coming off, and pour
+      everything it took out of them as petals: the days, the slips, the work,
+      until the stage is covered.
+
+  # Drag Race All Stars
+
+  jinkx_queen_of_all_queens:
+    name: Jinkx, Queen of All Queens
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 7 (2022) cast only past winners and sent nobody home. Jinkx
+      Monsoon won five challenges and the final lip sync against Monét X Change,
+      and was named the first Queen of All Queens, the first queen to win Drag
+      Race twice.
+
+    meaning: >-
+      The winner among winners; topping a room of champions.
+
+    callback: >-
+      Line the task up against a cast of winners, like All Stars 7's: the user's
+      past big finishes, or the list's other finished big tasks when none are to
+      hand. Then crown it the winner among them.

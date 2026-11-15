@@ -90,14 +90,44 @@ Each message gets one hook, from the pool of motifs, references and actors'
 lines. It names a speaker only sometimes, at a rate computed from the pool.
 Messages may talk to the user as "you", and never use their name or a pet name.
 
+The picker is a Python script, standard library plus PyYAML, kept inside
+`ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
+It draws only what one message needs: the hook, sometimes a speaker, a line from
+the hook, and the `escalation` and `finishing_tasks` levels. Nothing carries
+from one message to the next except rest: the penalty a value, or a raised
+level, carries since its last use.
+
+The picker applies every threshold, rest and cap, and prints
+`escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
+days and closed counts, plus its judgements. The writer gets the names as
+printed.
+
+The picker can bump the escalation level one step with no slip behind it, capped
+at the top. The bump's chance grows with the days since the last message at a
+raised level, whether slips or a bump raised it, over a half-life: 3 days for
+Justin. So a good stretch still gets read.
+
+A win is earned: it comes from the theme's counts (for Justin, a day with more
+than 5 closed or a week with more than 10) or the run's judgement of a big or
+hard task, and rests on a half-life of about 2.5 days to thin wins out. The
+winners circle comes only from the run's judgement of something truly shocking,
+at most once a week; when capped, it lands as a win.
+
 ### Theme files
 
 A theme is a set of YAML files named after it. The root, for Justin
-`Dragify.yaml`, is the guide: the world, the reads, the reminders, and what each
-other file holds.
+`Dragify.yaml`, is the guide. It holds `world`, `escalation`, `finishing_tasks`
+and `files`, which says what each other file holds. A reminder's job lives in
+`%Message-rules`, and its time-of-day flavour comes from entries with `when`.
+
+`escalation` is a ladder of levels, normal first: for Justin, none, light,
+escalated and full. `finishing_tasks` is a ladder too: typical, win and
+winners_circle. The guide says only how each level sounds. Slips set the base
+escalation level, by the slip days in the options file.
 
 The options file, `<theme>-options.yaml`, is the only file the picker reads. It
-holds the computed numbers and a checksum of the content they came from.
+holds the computed numbers and a checksum of the content they came from. Beside
+them, the levels and their thresholds are written by hand.
 
 Other files are added and named as a theme needs them: actors (each actor's
 lines, plus lines any actor can say), motifs, references, and terminology, which
@@ -105,6 +135,9 @@ holds only the terms a model wouldn't know or would misuse.
 
 Theme files live in the user's backend, like every other database: for a Linear
 user, one Linear document per file.
+
+There can be multiple themes. Themes will be stored as a list that will be
+rotated through each week, that way each theme gets used an equal amount.
 
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.
@@ -120,11 +153,26 @@ It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed. It also runs just before `ntm:clean` in the
 weekly job.
 
-### `%Message-history`
+It compares the user's response rate by escalation level and moves the bump rate
+within bounds. The levels and their thresholds stay as written by hand.
 
-One JSON line per message: the date and time, the reminder, the theme, the
-picks, the opening words, the task ids with their planned dates at send, the
-user's feedback and the rater's verdict. A field with no value is left out.
+It prunes each theme's message history. An old entry matters only for its picks'
+rest. Once its hook, speaker and line have each been picked again in a later
+entry, and its feedback and verdict are in the scores, the job drops it. Each
+history then rolls forward with an upper limit.
+
+### The message history
+
+Each theme has its own message history, `<Theme>-message-history`, named like
+the theme's other files: for Justin, `Dragify-message-history`.
+
+One JSON line per message: the date and time, the reminder, the picks, the
+opening words, the task ids with their planned dates at send, the user's
+feedback and the rater's verdict. A field with no value is left out.
+
+The picks include the `escalation` and `finishing_tasks` names as strings, as
+the picker printed them, the first level included. Either is left out only when
+the picker printed no line for it.
 
 ### Inside ntm
 
@@ -184,6 +232,13 @@ The user edits, deletes or adds a template's parts.
 #### Setup creates every database
 
 Setup creates every database from its template during onboarding.
+
+#### Default names
+
+Each database has a default name, such as Settings, Message-rules or
+Paused-dates, so setup doesn't ask the user to confirm each one: fewer things
+need the user's input during setup. The names are written in `%Settings`, where
+the user can change them. Setup confirms only the Settings name, early.
 
 #### Parts by name
 

@@ -25,16 +25,16 @@ one.
 A theme named `<Theme>` is a set of files, each named after it, so a theme's
 files sort together:
 
-| File                     | What it is                                           |
-| ------------------------ | ---------------------------------------------------- |
-| `<Theme>.yaml`           | The root: the writer's guide, and the list of files  |
-| `<Theme>-options.yaml`   | What the theme offers the picker, and its numbers    |
-| `<Theme>-<kinds>.yaml`   | An entry file: one or more kinds of entry            |
-| `<Theme>-terminology.md` | Words the writer would otherwise get wrong; optional |
+| File                        | What it is                                             |
+| --------------------------- | ------------------------------------------------------ |
+| `<Theme>.yaml`              | The root: the writer's guide, and the list of files    |
+| `<Theme>-options.yaml`      | What the theme offers the picker, and its numbers      |
+| `<Theme>-<descriptor>.yaml` | An entry file, named for what it holds, such as scenes |
+| `<Theme>-terminology.md`    | Words the writer would otherwise get wrong; optional   |
+| `<Theme>-message-history`   | Each message sent in the theme, and how it landed      |
 
 Each file is a database: a page of text in the user's backend, found by its
-title, which is the file's name. `ntm-user:backend` says where each one lives,
-as it does for every database. For a Linear user, each file is one Linear
+title, which is the file's name. For a Linear user, each file is one Linear
 document. A YAML file's text sits in one fenced `yaml` block in its document, so
 a backend that stores markdown keeps it intact.
 
@@ -54,16 +54,17 @@ parts are the same in every theme:
 | `world`      | The theme's world, and where the user sits in it                             |
 | `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
 | `wins`       | How the theme marks a finished task, and a big win                           |
-| `reminders`  | What each reminder is in the theme's world, by its name                      |
-| `files`      | Every other file of the theme: what it holds, and how it is read             |
+| `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
 
-Each file in `files` is read one of three ways:
+`files` has three groups. Under each, a file's name maps to a line or two on
+what it holds. Each file is listed by its full name, which follows the pattern
+in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
-| `read`   | How                                                                                                      |
-| -------- | -------------------------------------------------------------------------------------------------------- |
-| `whole`  | The writer gets all of it, for every message: guidance, or the terminology file                          |
-| `entry`  | The writer gets the file's and the kind's `about`, and the picked entry with only its drawn line or riff |
-| `picker` | Only the picker reads it: the options file                                                               |
+| Group            | What the writer gets                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------- |
+| `by_entry`       | The file's and the kind's `about`, and the picked entry with only its drawn line or riff |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file                          |
+| `for_the_picker` | Nothing: only the picker reads it, the options file                                      |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -81,25 +82,21 @@ wins: >-
   A finished task is a case closed, filed with quiet satisfaction. A big win
   gets the whole cast in the drawing room for the reveal.
 
-reminders:
-  weekly: The new case files land on the desk.
-  morning: The detective reads the morning paper for clues to today's case.
-  afternoon: The legwork, and whether anyone has left the house.
-  evening: The drawing room at dusk, where the day's case is told.
-
 files:
-  Casebook-options.yaml:
-    holds: What the theme offers the picker.
-    read: picker
-  Casebook-characters.yaml:
-    holds: The people of the story, and lines any of them can say.
-    read: entry
-  Casebook-scenes.yaml:
-    holds: Recurring scenes a message can be set in.
-    read: entry
-  Casebook-terminology.md:
-    holds: The story's own words.
-    read: whole
+  by_entry:
+    Casebook-characters.yaml: >-
+      The people of the story, and lines any of them can say.
+
+    Casebook-scenes.yaml: >-
+      Recurring scenes a message can be set in.
+
+  fully_read:
+    Casebook-terminology.md: >-
+      The story's own words.
+
+  for_the_picker:
+    Casebook-options.yaml: >-
+      What the theme offers the picker.
 ```
 
 ## Entry files
@@ -284,3 +281,10 @@ Sometimes a speaker is added from a speaker pool, at its `speaker_rate`.
 
 An optional markdown file, read whole: only the words a writer would otherwise
 not know or would misuse, each with what it means in the theme.
+
+## The message history
+
+The file ntm writes as it goes: an entry for each message sent in the theme,
+holding only this theme's messages. The pick reads it for rest, and the nightly
+job for scores. Setup creates it with the theme, from its template. The root's
+`files` leaves it out: the writer never reads it, and ntm finds it by its name.

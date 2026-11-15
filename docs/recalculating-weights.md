@@ -20,10 +20,12 @@ changes, which each task's `Planned date history` lists. The verdict is `landed`
 when they did, `missed` when they didn't, and `none` when every task was done
 before the message went out.
 
-A message is judged up to a week after it went out. An action credits the last
-message before it that names the task, so a message's window runs until the next
-message naming the task: the evening reminder has the night, Friday evening's
-has the weekend, and the weekly message has until Monday's reminders.
+A run judges the previous calendar week through Saturday: the weekly message of
+the Sunday evening that opens it, and Monday to Friday's reminders. An action
+credits the last message before it that names the task, so a message's window
+runs until the next message naming the task: the evening reminder has the night,
+Friday evening's has Friday night and Saturday, and the weekly message has until
+Monday's reminders.
 
 It hands the script one line per entry, its `sent` time and verdict: in a normal
 week, about 16 messages, three reminders each weekday and the weekly message.
@@ -151,28 +153,18 @@ slice.
 
 ## When it runs
 
-Once a week, as a step of the weekly job just before `ntm:clean`, so the week is
-judged before planning. There is no nightly run: between runs, the picker draws
-on the numbers last week's run left.
+Once a week, as a job of its own, early on Sunday morning.
 
-To decide: run it early on Sunday morning as a job of its own, instead of inside
-the weekly job on Sunday evening. A token-heavy session then stays clear of the
-user's Sunday evening, the session limit is fully open, the run takes in the
-whole previous calendar week, and the user wakes up to the summary. It adds one
-job for setup to create; the weekly job's rotation and planning that evening use
-numbers already fresh, and the weekly report is ready before the weekly job's
-chat. A run in the middle of the night must not depend on the user's device
-being awake, so it is a job that runs without it. Recommended: yes, early
-Sunday.
+The session limit is then fully open, the run stays clear of the user's Sunday
+evening, and it takes in the whole previous calendar week. The weekly job that
+evening plans and rotates with fresh numbers, and the weekly report is ready
+before the weekly job's chat. The run must not depend on the user's device being
+awake, so it is a job that runs without it. There is no nightly run: between
+runs, the picker draws on the numbers the last run left.
 
-To decide: a run the user starts on their own computer, to cut tokens. The
-script already does every number; the tokens go on the model reading the history
-and the tasks, judging the week's messages, and handing file text to the script.
-A run where the script reads the backend itself would save fetching the files
-and handing them over, though the model still reads each message's tasks to
-judge it. It needs a key on the user's machine, and nothing in ntm may depend on
-running locally, so it could only be an optional extra beside the scheduled run.
-Recommended: not for 0.5; keep it as a possible later option.
+A run the user starts on their own computer, to cut tokens, is deferred to think
+about later, not for 0.5; it could only be an optional extra beside the
+scheduled run.
 
 Before the rotation, the weekly job's chat, never its push, says how last week's
 theme did: messages sent, how many got a reaction, keeps and stales. From about
@@ -195,10 +187,10 @@ reads:
 | `%Settings` and the document list | About 1 KB                                  |
 | All of it                         | About 75 KB                                 |
 
-At about 3 bytes a token, that is about 25,000 tokens a week, mostly reading. It
-is less when a day's reminders name the same tasks, as they mostly do. The
-script handles every number, line count, checksum and the pruning without the
-model reading them.
+At about 3 bytes a token, that is about 25,000 tokens a week, mostly reading,
+spent in its own job on Sunday morning. It is less when a day's reminders name
+the same tasks, as they mostly do. The script handles every number, line count,
+checksum and the pruning without the model reading them.
 
 Two things would make it expensive, and the design keeps both out. The entry
 files, about 185 KB or 60,000 tokens for that theme, are fetched only when one
@@ -223,8 +215,8 @@ numbers for both the recalculation and the theme builder
 `start`, for the theme builder, gives a new theme its first numbers with no
 history: weights from lines, square-root kind weights, half-lives and speaker
 rates from starting shares, every score 0, the checksums and an empty `weeks`.
-`update`, weekly, takes in the verdicts, recounts changed files, moves the bump
-rate and prunes. `report` writes the weekly theme report.
+`update`, in the Sunday morning job, takes in the verdicts, recounts changed
+files, moves the bump rate and prunes. `report` writes the weekly theme report.
 
 `Options` and `History` are shared with the picker, one class each, from a
 module beside the schema that both scripts import; `History` comes with the
@@ -242,8 +234,8 @@ picker's history slice.
 3. Scores from verdicts, and `weeks`.
 4. The bump rate.
 5. Pruning.
-6. The skill and its weekly step: judging, the hand-off, the step in setup's
-   weekly job, the README.
+6. The skill and its job: judging, the hand-off, the Sunday morning job, which
+   setup creates and shows with the user's other jobs, the README.
 7. The weekly theme report.
 
 ## Open questions
@@ -253,6 +245,4 @@ picker's history slice.
    `recalculate-weights` for the command. Waits on the owner's yes.
 2. The hand-off of a file's text between the backend and the script.
 3. Each line marked "to decide" above.
-4. When and where it runs: early on Sunday as a job of its own, and a run on the
-   user's own computer, both under When it runs.
-5. Whether the history's `Keep:` line goes, now that pruning bounds it.
+4. Whether the history's `Keep:` line goes, now that pruning bounds it.

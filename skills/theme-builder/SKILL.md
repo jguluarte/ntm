@@ -4,8 +4,7 @@ description: >-
     Builds a theme with the user in chat, one stage at a time: a world they
     enjoy, saved as a set of files every reminder can be written in, and added
     to their themes. Run by setup during onboarding, or by the user to build
-    another theme ("build me a new theme", "add a theme from another show",
-    "switch my reminders to a different show").
+    another theme ("build me a new theme", "add a theme from another show").
 ---
 
 # ntm:theme-builder
@@ -34,9 +33,9 @@ Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
 loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
 run with its result line.
 
-A theme root in their backend that All themes, in `%Settings`, doesn't list is
-an unfinished theme. Offer to pick it up after its last saved stage, judged from
-what its files hold; on a no, start a new one.
+A `<Theme>.yaml` in their backend that All themes, in `%Settings`, doesn't list
+is an unfinished theme. Offer to pick it up after its last saved stage, judged
+from what its files hold; on a no, start a new one.
 
 ## Building the theme
 
@@ -50,14 +49,14 @@ your user from your memories about them.
 > always unique and ultimately bring you joy. This is how reminders are never
 > exactly the same, so it doesn't become noise you ignore.
 >
-> Consider something you enjoy, like a book or maybe a show. Stories that follow
-> a kind of formula, like a detective's casebook, allow ntm to introduce a wider
-> variety of reminders. If you decide to schedule things a week at a time, then
-> the weekly plan is sort of like the case the week opens on. Each day has a
-> preview of what is to come (sometimes a quick synopsis of yesterday), the
-> afternoon is the legwork, and the evening is what the detective turned up.
-> This pattern is something an LLM is particularly good at following, and
-> whether your day follows one at all is up to you.
+> Consider something you enjoy, like a book or maybe a show. Reality competition
+> shows in particular typically follow a kind of formula that allows ntm to
+> introduce a wider variety of reminders. If you decide to schedule things a
+> week at a time, then the weekly plan is sort of like the season preview. Each
+> day has a preview of what is to come (sometimes a quick synopsis of
+> yesterday), the afternoon is whatever would normally happen in the first half
+> of the episode, and the evening is how an episode ends. This pattern is
+> something an LLM is particularly good at following.
 >
 > It's now up to you to get creative, pick something that brings you happiness
 > and will make you smile. When you're slacking off, imagine how they could
@@ -71,11 +70,13 @@ Build the theme with them as the theme guide,
 stage, or from a theme they already have.
 
 Save each stage's part as it finishes, so a later chat picks it up instead of
-starting over. Each of the theme's files is a database in their backend, beside
-their other databases, titled with its file name, such as `Casebook.yaml`. A
-YAML file's text sits in one fenced `yaml` block. Each file holds what you built
-with them, never the guide's own text. No other theme is touched; a name another
-theme already has gets another.
+starting over. Each file holds what you built with them, never the guide's own
+text.
+
+Each of the theme's files is a database in their backend, beside their other
+databases, titled with its file name, such as `Casebook.yaml`. A YAML file's
+text sits in one fenced `yaml` block. No other theme is touched: when another
+theme already has the name they pick, ask them for another.
 
 ### 3. Switch it on
 

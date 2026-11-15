@@ -141,7 +141,7 @@ class PickHookTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_kinds_then_their_hooks_show_their_chances_a_half_rounding_up(self):
+    def test_the_documented_example_shows_the_documented_chances(self):
         picker = Picker(Theme(fixtures.WEIGHTED))
         rows = picker.chances_table().splitlines()
 

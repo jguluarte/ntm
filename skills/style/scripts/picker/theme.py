@@ -15,6 +15,9 @@ WEIGHT = "weight"
 SCORE = "score"
 HOOK_ROLE = "hook"
 
+DEFAULT_WEIGHT = 1
+DEFAULT_SCORE = 0
+
 
 class ReminderType(enum.Enum):
     MORNING = "morning"
@@ -124,8 +127,8 @@ class Option:
         values = {types} if isinstance(types, str) else set(types)
         reminder_types = frozenset(ReminderType.named_in(values))
         task_outcomes = frozenset(TaskOutcome.named_in(values))
-        weight = fields.get(WEIGHT, 1)
-        score = fields.get(SCORE, 0)
+        weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
+        score = fields.get(SCORE, DEFAULT_SCORE)
         return cls(kind, slug, reminder_types, task_outcomes, weight, score)
 
     @property
@@ -156,21 +159,21 @@ class Option:
 
 
 @dataclass(frozen=True)
-class _Kind:
-    name: str
+class _Pool:
+    kind: str
     weight: float
     score: float
     hooks: tuple[Option, ...]
 
     @classmethod
-    def from_pool(cls, name, pool):
+    def from_fields(cls, kind, fields):
         hooks = tuple(
-            Option.from_entry(name, slug, entry)
-            for slug, entry in pool[ENTRIES_BY_SLUG].items()
+            Option.from_entry(kind, slug, entry)
+            for slug, entry in fields[ENTRIES_BY_SLUG].items()
         )
-        weight = pool.get(WEIGHT, 1)
-        score = pool.get(SCORE, 0)
-        return cls(name, weight, score, hooks)
+        weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
+        score = fields.get(SCORE, DEFAULT_SCORE)
+        return cls(kind, weight, score, hooks)
 
     @property
     def draw_weight(self):
@@ -185,26 +188,29 @@ class _Kind:
 
 
 class HookManager:
-    def __init__(self, kinds):
-        self._kinds_by_name = {kind.name: kind for kind in kinds}
+    def __init__(self, pools):
+        self._pools_by_kind = {pool.kind: pool for pool in pools}
 
     def kind_chances_for(self, theme_options):
-        options = self._options_to_draw_for(theme_options)
-        kinds = self._kinds_by_name.values()
-        drawable = [kind for kind in kinds if kind.can_be_drawn_for(options)]
+        drawn_for = self._theme_options_to_draw_for(theme_options)
+        draw_weights = {}
+        for pool in self._pools_by_kind.values():
+            if pool.can_be_drawn_for(drawn_for):
+                draw_weights[pool.kind] = pool.draw_weight
 
-        if not drawable:
+        if not draw_weights:
             raise NoHookHasWeight(theme_options)
 
-        return self._chances_of(drawable)
+        return self._chances_of(draw_weights)
 
     def hook_chances_for(self, theme_options, kind):
-        options = self._options_to_draw_for(theme_options)
-        hooks = self._kinds_by_name[kind].hooks_that_fit(options)
-        return self._chances_of(hooks)
+        drawn_for = self._theme_options_to_draw_for(theme_options)
+        hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
+        draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+        return self._chances_of(draw_weights)
 
-    def _options_to_draw_for(self, theme_options):
-        if not self._kinds_by_name:
+    def _theme_options_to_draw_for(self, theme_options):
+        if not self._pools_by_kind:
             raise NoHooks()
 
         if self._any_hook_fits(theme_options):
@@ -217,15 +223,15 @@ class HookManager:
         raise MissingHook(theme_options)
 
     def _any_hook_fits(self, theme_options):
-        kinds = self._kinds_by_name.values()
-        return any(kind.hooks_that_fit(theme_options) for kind in kinds)
+        pools = self._pools_by_kind.values()
+        return any(pool.hooks_that_fit(theme_options) for pool in pools)
 
     @staticmethod
-    def _chances_of(candidates):
-        total = sum(candidate.draw_weight for candidate in candidates)
+    def _chances_of(draw_weights):
+        total = sum(draw_weights.values())
         return {
-            candidate.name: candidate.draw_weight / total
-            for candidate in candidates
+            name: draw_weight / total
+            for name, draw_weight in draw_weights.items()
         }
 
     @staticmethod
@@ -239,8 +245,8 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        kinds = self._read_kinds(fields[POOLS_BY_KIND])
-        self._hook_manager = HookManager(kinds)
+        pools = self._read_hook_pools(fields[POOLS_BY_KIND])
+        self._hook_manager = HookManager(pools)
 
     def kind_chances_for(self, theme_options):
         return self._hook_manager.kind_chances_for(theme_options)
@@ -249,14 +255,14 @@ class Theme:
         return self._hook_manager.hook_chances_for(theme_options, kind)
 
     @staticmethod
-    def _read_kinds(pools_by_kind):
-        kinds = []
+    def _read_hook_pools(pools_by_kind):
+        pools = []
 
-        for kind, pool in pools_by_kind.items():
-            if HOOK_ROLE in pool[ROLES]:
-                kinds.append(_Kind.from_pool(kind, pool))
+        for kind, fields in pools_by_kind.items():
+            if HOOK_ROLE in fields[ROLES]:
+                pools.append(_Pool.from_fields(kind, fields))
 
-        return kinds
+        return pools
 
     @staticmethod
     def _load(path):

@@ -119,7 +119,7 @@ class KindChanceTest(unittest.TestCase):
         expected = ["scenes", "characters"]
         self.assertEqual(expected, kinds)
 
-    def test_a_kind_with_no_hook_that_fits_is_left_out(self):
+    def test_on_a_big_win_only_kinds_keeping_a_big_win_hook_are_drawn(self):
         theme = Theme(fixtures.CASEBOOK)
         chances = theme.kind_chances_for(ThemeOptions.parse("big_win"))
 

@@ -12,7 +12,7 @@ class HooksTest(unittest.TestCase):
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
         ]
 
-        hooks = options.hooks({"morning"})
+        hooks = options.hooks(set())
 
         self.assertEqual(expected, hooks)
 
@@ -73,7 +73,7 @@ class SchemaTest(unittest.TestCase):
             "characters/detective", "shared_lines/any_time", "scenes/stakeout",
         ]
 
-        hooks = Options(fixtures.CASEBOOK).hooks({"morning"})
+        hooks = Options(fixtures.CASEBOOK).hooks(set())
 
         self.assertEqual(expected, hooks)
 

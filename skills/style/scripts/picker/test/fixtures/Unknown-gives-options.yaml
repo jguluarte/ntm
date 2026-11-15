@@ -1,0 +1,5 @@
+pools:
+  scenes:
+    gives: [hooks]
+    entries:
+      dawn:

@@ -242,8 +242,7 @@ pools:
 
 The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
-its checksum differs. The picker's own reference, the plugin's
-`scripts/picker/README.md`, defines how each number is computed.
+its checksum differs.
 
 | Field                 | What it is                                                                                   |
 | --------------------- | -------------------------------------------------------------------------------------------- |

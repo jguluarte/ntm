@@ -1,0 +1,15 @@
+pools:
+  scenes:
+    gives: [hook]
+    entries:
+      dawn:
+      noon:
+      dusk:
+  characters:
+    gives: [hook, speaker]
+    entries:
+      host:
+  narrators:
+    gives: [speaker]
+    entries:
+      chorus:

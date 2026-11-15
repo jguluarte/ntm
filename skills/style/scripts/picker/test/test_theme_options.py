@@ -41,12 +41,3 @@ class ParseTest(unittest.TestCase):
         options = {option.value for option in [*ReminderType, *TaskOutcome]}
 
         self.assertEqual(expected, options)
-
-
-class NormalWinTest(unittest.TestCase):
-    def test_a_big_win_as_a_normal_win_has_done_in_place_of_big_win(self):
-        expected = ThemeOptions.parse("evening,slipped,done")
-
-        theme_options = ThemeOptions.parse("evening,slipped,big_win")
-
-        self.assertEqual(expected, theme_options.as_normal_win())

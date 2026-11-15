@@ -95,11 +95,6 @@ class ThemeOptions:
     def is_big_win(self):
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
-    def as_normal_win(self):
-        without_big_win = self.task_outcomes - {TaskOutcome.BIG_WIN}
-        task_outcomes = without_big_win | {TaskOutcome.DONE}
-        return ThemeOptions(self.reminder_type, task_outcomes)
-
     def __str__(self):
         values = sorted(
             task_outcome.value for task_outcome in self.task_outcomes
@@ -147,6 +142,25 @@ class _Hook:
         return True
 
 
+class _Hooks(tuple):
+    def responding_to(self, theme_options):
+        names = self._names_that_fit(theme_options)
+
+        if not names and theme_options.is_big_win:
+            names = self._names_that_fit(self._as_normal_win(theme_options))
+
+        return names
+
+    def _names_that_fit(self, theme_options):
+        return [hook.name for hook in self if hook.fits(theme_options)]
+
+    @staticmethod
+    def _as_normal_win(theme_options):
+        without_big_win = theme_options.task_outcomes - {TaskOutcome.BIG_WIN}
+        task_outcomes = without_big_win | {TaskOutcome.DONE}
+        return ThemeOptions(theme_options.reminder_type, task_outcomes)
+
+
 class Theme:
     def __init__(self, path):
         fields = self._load(path)
@@ -157,16 +171,12 @@ class Theme:
         if not self._hooks:
             raise NoHooks()
 
-        hooks = self._hooks_that_fit(theme_options)
-        if not hooks and theme_options.is_big_win:
-            hooks = self._hooks_that_fit(theme_options.as_normal_win())
+        hooks = self._hooks.responding_to(theme_options)
+
         if not hooks:
             raise MissingHook(theme_options)
 
         return hooks
-
-    def _hooks_that_fit(self, theme_options):
-        return [hook.name for hook in self._hooks if hook.fits(theme_options)]
 
     @staticmethod
     def _read_hooks(pools_by_kind):
@@ -177,7 +187,7 @@ class Theme:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     hooks.append(_Hook.from_entry(kind, slug, entry))
 
-        return hooks
+        return _Hooks(hooks)
 
     @staticmethod
     def _load(path):

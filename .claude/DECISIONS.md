@@ -112,9 +112,8 @@ holds only the terms a model wouldn't know or would misuse.
 Theme files live in the user's backend, like every other database: for a Linear
 user, one Linear document per file.
 
-Themes are additive. The Themes part of `%Settings` lists the user's themes, and
-each week the weekly job moves to the next one, back to the first after the
-last. Nothing is picked or weighted.
+There can be multiple themes. Themes will be stored as a list that will be
+rotated through each week, that way each theme gets used an equal amount.
 
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.

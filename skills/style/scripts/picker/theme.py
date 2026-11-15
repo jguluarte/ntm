@@ -32,11 +32,14 @@ class Theme:
 
     def hooks(self):
         hooks = []
+
         for kind, pool in self._pools.items():
             if HOOK_ROLE in pool[ROLES]:
                 hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG])
+
         if not hooks:
             raise NoHooks()
+
         return hooks
 
     @staticmethod

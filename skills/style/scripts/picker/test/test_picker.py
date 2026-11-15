@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from fixtures import EVEN, EVEN_DRAWS, EVEN_HOOKS, HOOKLESS, SHAPELESS
+from fixtures import EVEN, EVEN_DRAWS, EVEN_HOOKS, HOOKLESS, SHAPELESS, UNGIVEN
 from picker import Picker
 
 
@@ -48,6 +48,10 @@ class FailureTest(PickerTestCase):
     def test_an_options_file_without_pools_fails(self):
         line = "Picker FAILED: KeyError: 'pools'"
         self.assertFails(line, "hook", "--options", str(SHAPELESS))
+
+    def test_a_pool_without_gives_fails(self):
+        line = "Picker FAILED: KeyError: 'gives'"
+        self.assertFails(line, "hook", "--options", str(UNGIVEN))
 
     def test_a_missing_options_flag_fails(self):
         why = "the following arguments are required: --options"

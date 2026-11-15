@@ -11,6 +11,7 @@ OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
+HALF_LIFE_DAYS = "half_life_days"
 ENTRIES_BY_SLUG = "entries"
 TYPE = "type"
 WEIGHT = "weight"
@@ -167,9 +168,10 @@ class Option:
     task_outcomes: frozenset[TaskOutcome]
     weight: float
     score: float
+    half_life_days: float | None
 
     @classmethod
-    def from_entry(cls, kind, slug, entry):
+    def from_entry(cls, kind, slug, entry, half_life_days):
         fields = entry or {}
         types = fields.get(TYPE, [])
         values = {types} if isinstance(types, str) else set(types)
@@ -177,7 +179,10 @@ class Option:
         task_outcomes = frozenset(TaskOutcome.named_in(values))
         weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
         score = fields.get(SCORE, DEFAULT_SCORE)
-        return cls(kind, slug, reminder_types, task_outcomes, weight, score)
+        return cls(
+            kind, slug, reminder_types, task_outcomes, weight, score,
+            half_life_days,
+        )
 
     @property
     def name(self):
@@ -186,6 +191,9 @@ class Option:
     @property
     def draw_weight(self):
         return self.weight * 2 ** self.score
+
+    def rested_draw_weight(self, days_since_used):
+        return self.draw_weight * self._share_won_back(days_since_used)
 
     @property
     def kept_for_big_win(self):
@@ -205,6 +213,12 @@ class Option:
 
         return True
 
+    def _share_won_back(self, days_since_used):
+        if days_since_used is None or self.half_life_days is None:
+            return 1
+
+        return 1 - 2 ** (-days_since_used / self.half_life_days)
+
 
 @dataclass(frozen=True)
 class _Pool:
@@ -215,8 +229,9 @@ class _Pool:
 
     @classmethod
     def from_fields(cls, kind, fields):
+        half_life_days = fields.get(HALF_LIFE_DAYS)
         hooks = tuple(
-            Option.from_entry(kind, slug, entry)
+            Option.from_entry(kind, slug, entry, half_life_days)
             for slug, entry in fields[ENTRIES_BY_SLUG].items()
         )
         weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
@@ -251,10 +266,17 @@ class HookManager:
 
         return self._chances_of(draw_weights)
 
-    def hook_chances_for(self, theme_options, kind):
+    def hook_chances_for(self, theme_options, kind, history, today):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
-        draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+        draw_weights = {}
+        for hook in hooks:
+            days_since_used = history.days_since_used(hook.name, today)
+            draw_weights[hook.name] = hook.rested_draw_weight(days_since_used)
+
+        if not any(draw_weights.values()):
+            draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+
         return self._chances_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):
@@ -299,8 +321,11 @@ class Theme:
     def kind_chances_for(self, theme_options):
         return self._hook_manager.kind_chances_for(theme_options)
 
-    def hook_chances_for(self, theme_options, kind):
-        return self._hook_manager.hook_chances_for(theme_options, kind)
+    def hook_chances_for(
+            self, theme_options, kind, history=History(), today=None):
+        return self._hook_manager.hook_chances_for(
+            theme_options, kind, history, today,
+        )
 
     @staticmethod
     def _read_hook_pools(pools_by_kind):

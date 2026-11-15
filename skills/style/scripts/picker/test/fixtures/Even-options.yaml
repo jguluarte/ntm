@@ -1,12 +1,14 @@
 pools:
   scenes:
     roles: [hook]
+    half_life_days: 2
     entries:
       dawn:
       noon:
       dusk:
   characters:
     roles: [hook, speaker]
+    half_life_days: 1
     entries:
       host:
   narrators:

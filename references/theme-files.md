@@ -265,18 +265,19 @@ picked.
 
 ## The pick
 
-For each message, the run hands the picker the options file's text, the recent
-picks and the message's type. The recent picks come from `%Message-history`,
-which records each message's hook, speaker, line drawn and when it went out. The
-run works out the type: which reminder this is, whether a task in it has
-slipped, whether one got done, and whether it's a big win.
+For each message, the run hands the picker the options file's text, the theme's
+message history, today's date and the message's type. The run works out the
+type: which reminder this is, whether a task in it has slipped, whether one got
+done, and whether it's a big win.
 
 The picker keeps the entries whose `type` fits, as `type` above says. Each
 message gets exactly one hook, drawn in two steps: first a kind, from the hook
 pools holding an entry that fits, at the pool's weight; then one of that kind's
-entries that fit, at the entry's weight. A score raises or lowers either chance,
-and an entry picked recently is less likely while it rests. A pool or entry
-without a `weight` weighs 1, and one without a `score` scores 0.
+entries that fit, at the entry's weight. A score raises or lowers either chance.
+An entry a message was built on rests: right after, it has lost all its chance,
+and each `half_life_days` it wins back half of what it still lacks. A pool or
+entry without a `weight` weighs 1, one without a `score` scores 0, and a pool
+without `half_life_days` never rests.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

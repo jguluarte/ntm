@@ -1,0 +1,6 @@
+pools:
+  scenes:
+    roles: [hook]
+    half_life_days: 0
+    entries:
+      dawn:

@@ -27,6 +27,7 @@ $defs:
           enum: [hook, speaker]
       half_life_days:
         type: number
+        exclusiveMinimum: 0
       speaker_rate:
         type: number
         minimum: 0

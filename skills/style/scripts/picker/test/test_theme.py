@@ -1,8 +1,10 @@
 import unittest
+from datetime import date
 
 import fixtures
 from theme import (
-    InvalidTheme, MissingHook, NoHookHasWeight, NoHooks, Theme, ThemeOptions,
+    History, InvalidTheme, MissingHook, NoHookHasWeight, NoHooks, Theme,
+    ThemeOptions,
 )
 
 
@@ -159,6 +161,78 @@ class HookChanceTest(unittest.TestCase):
         self.assertEqual(expected, chances)
 
 
+class RestTest(unittest.TestCase):
+    def test_a_hook_used_one_half_life_ago_draws_at_half_its_weight(self):
+        theme = Theme(fixtures.EVEN)
+        history = History(fixtures.EVEN_HISTORY)
+        today = date(2026, 11, 15)
+        chances = theme.hook_chances_for(
+            ThemeOptions(), "scenes", history, today,
+        )
+
+        total_rested_draw_weight = 0.5 + 1 + 1
+        expected = {
+            "scenes/dawn": 0.5 / total_rested_draw_weight,
+            "scenes/noon": 1 / total_rested_draw_weight,
+            "scenes/dusk": 1 / total_rested_draw_weight,
+        }
+        self.assertEqual(expected, chances)
+
+    def test_a_hook_used_two_half_lives_ago_draws_at_three_quarters(self):
+        theme = Theme(fixtures.EVEN)
+        history = History(fixtures.EVEN_HISTORY)
+        today = date(2026, 11, 17)
+        chances = theme.hook_chances_for(
+            ThemeOptions(), "scenes", history, today,
+        )
+
+        total_rested_draw_weight = 0.75 + 1 + 1
+        expected = {
+            "scenes/dawn": 0.75 / total_rested_draw_weight,
+            "scenes/noon": 1 / total_rested_draw_weight,
+            "scenes/dusk": 1 / total_rested_draw_weight,
+        }
+        self.assertEqual(expected, chances)
+
+    def test_a_hook_used_today_has_no_chance(self):
+        theme = Theme(fixtures.EVEN)
+        history = History(fixtures.EVEN_HISTORY)
+        today = date(2026, 11, 13)
+        chances = theme.hook_chances_for(
+            ThemeOptions(), "scenes", history, today,
+        )
+
+        expected = {"scenes/dawn": 0, "scenes/noon": 0.5, "scenes/dusk": 0.5}
+        self.assertEqual(expected, chances)
+
+    def test_when_every_fitting_hook_was_used_today_none_rests(self):
+        theme = Theme(fixtures.EVEN)
+        history = History(fixtures.EVEN_HISTORY)
+        today = date(2026, 11, 13)
+        chances = theme.hook_chances_for(
+            ThemeOptions(), "characters", history, today,
+        )
+
+        expected = {"characters/host": 1.0}
+        self.assertEqual(expected, chances)
+
+    def test_a_pool_without_a_half_life_never_rests(self):
+        theme = Theme(fixtures.WEIGHTED)
+        history = History(fixtures.EVEN_HISTORY)
+        today = date(2026, 11, 13)
+        chances = theme.hook_chances_for(
+            ThemeOptions(), "scenes", history, today,
+        )
+
+        total_draw_weight = 0.5 + 2 + 0
+        expected = {
+            "scenes/dawn": 0.5 / total_draw_weight,
+            "scenes/noon": 2 / total_draw_weight,
+            "scenes/dusk": 0 / total_draw_weight,
+        }
+        self.assertEqual(expected, chances)
+
+
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.CASEBOOK)
@@ -214,5 +288,13 @@ class SchemaTest(unittest.TestCase):
             Theme(fixtures.WEIGHTLESS_POOL)
 
         where = "$.pools.scenes.weight"
+        expected = f"{where}: 0 is less than or equal to the minimum of 0"
+        self.assertEqual(expected, str(raised.exception))
+
+    def test_a_half_life_of_0_fails(self):
+        with self.assertRaises(InvalidTheme) as raised:
+            Theme(fixtures.ZERO_HALF_LIFE)
+
+        where = "$.pools.scenes.half_life_days"
         expected = f"{where}: 0 is less than or equal to the minimum of 0"
         self.assertEqual(expected, str(raised.exception))

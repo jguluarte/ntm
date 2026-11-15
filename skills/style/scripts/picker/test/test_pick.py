@@ -3,7 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 
-from even_theme import EVEN, EVEN_HOOKS
+from fixtures import EVEN, EVEN_HOOKS
 
 PICK = Path(__file__).parents[1] / "pick"
 

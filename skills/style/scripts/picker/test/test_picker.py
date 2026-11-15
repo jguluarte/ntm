@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from even_theme import EVEN, EVEN_HOOKS
+from fixtures import EVEN, EVEN_HOOKS
 from picker import Picker
 
 

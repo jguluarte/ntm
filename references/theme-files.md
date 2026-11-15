@@ -254,8 +254,9 @@ its checksum differs.
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
 | `score`               | How well messages built on the entry landed, from `%Message-history`                         |
 
-An entry's line half-life comes from how many lines it has and how often it is
-picked.
+An entry's weight comes from how many lines and riffs it has: `n / (n + 3)` for
+`n` of them, or 1 with none. An entry's line half-life comes from how many lines
+it has and how often it is picked.
 
 ## The pick
 

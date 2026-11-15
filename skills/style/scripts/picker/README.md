@@ -3,8 +3,9 @@
 The picker picks what each message is built on: a hook, drawn at random from a
 theme.
 
-It reads a theme's options file and prints the hook it drew. It runs on Python 3
-with PyYAML and jsonschema.
+It reads a theme's options file and prints the hook it drew. Beside it,
+`recalculate.py` writes a theme's numbers into its options file. Both run on
+Python 3 with PyYAML and jsonschema.
 
 `references/theme-files.md` describes the options file. Its schema,
 `options.schema.yaml`, sits beside the picker in the style skill. The picker
@@ -76,3 +77,41 @@ when none of those fits, from the hooks that fit `done`.
 python3 picker.py hook --options Casebook-options.yaml --type big_win
 hook: shared_lines/big_win
 ```
+
+## Writing the numbers
+
+`recalculate.py` writes into a theme's options file the numbers that come from
+its entry files, and saves the file in place.
+
+```
+python3 recalculate.py start --options <file> <entry file>...
+```
+
+`start` gives a new theme its numbers. For each entry file whose checksum
+differs from the one in the options file, or that has none yet, it sets the
+`weight` of each of the file's entries, then writes the file's checksum: the
+SHA-256 of its text exactly as handed over, in full. It leaves the entries of an
+unchanged file alone. It prints a line for each file:
+
+```
+recounted: Casebook-characters.yaml
+unchanged: Casebook-scenes.yaml
+```
+
+When it can't, it prints one line on stderr, exits 1 and changes nothing, as the
+picker does. An entry file that no pool names as its `file` reads as
+`Recalculation FAILED: UnknownEntryFile: no pool in the options file uses Casebook-scenes.yaml`.
+
+### The weight
+
+An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
+rounded to two places, or 1.0 with neither: an entry with 3 lines weighs half.
+In `Casebook`, the detective's 2 lines and 2 riffs weigh 0.57, and `any_time`'s
+one line weighs 0.25. Other keys, such as a scene's `setting`, aren't lines.
+
+### What it keeps
+
+Everything it doesn't compute stays as it was: `when`, `roles`, `file`, `score`,
+the half-lives, `speaker_rate`, and the checksums of files not handed in. An
+entry its entry file doesn't hold keeps what it has. Saving keeps the key order
+and lists on one line, and loses the file's comments and blank lines.

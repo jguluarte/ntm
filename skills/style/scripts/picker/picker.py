@@ -7,7 +7,8 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-SCHEMA = Path(__file__).with_name("options.schema.yaml")
+THEME_BUILDER = Path(__file__).parents[3] / "theme-builder"
+OPTIONS_SCHEMA = THEME_BUILDER / "references" / "options.schema.yaml"
 POOLS = "pools"
 GIVES = "gives"
 ENTRIES = "entries"
@@ -42,7 +43,7 @@ class Options:
     @classmethod
     def _validate(cls, fields):
         try:
-            jsonschema.validate(fields, cls._load(SCHEMA))
+            jsonschema.validate(fields, cls._load(OPTIONS_SCHEMA))
         except jsonschema.ValidationError as error:
             raise ValueError(f"{error.json_path}: {error.message}") from None
 

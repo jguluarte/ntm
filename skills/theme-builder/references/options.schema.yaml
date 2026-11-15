@@ -1,5 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: A theme's options file
+description: Written by the theme builder, and read by the picker in ntm:style.
 type: object
 required: [pools]
 properties:

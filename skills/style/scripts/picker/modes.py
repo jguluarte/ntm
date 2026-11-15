@@ -1,11 +1,11 @@
 import random
 
-from exceptions import NoHooks
 from options import Options
 
 OPTIONS = "--options"
 SEED = "--seed"
 HOOK_LINE = "hook: {}"
+NO_HOOKS = "no pool in the options file gives a hook"
 
 
 class HookMode:
@@ -30,7 +30,7 @@ class HookMode:
         options = Options.load(self.options_file)
         hooks = options.hooks()
         if not hooks:
-            raise NoHooks()
+            raise ValueError(NO_HOOKS)
         generator = random.Random(self.seed)
         hook = generator.choice(hooks)
         return HOOK_LINE.format(hook)

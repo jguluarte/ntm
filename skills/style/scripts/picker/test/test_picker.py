@@ -42,7 +42,7 @@ class FailureTest(PickerTestCase):
 
     def test_a_theme_without_hooks_fails_saying_so(self):
         why = "no pool in the options file gives a hook"
-        line = f"Picker FAILED: NoHooks: {why}"
+        line = f"Picker FAILED: ValueError: {why}"
         self.assertFails(line, "hook", "--options", str(HOOKLESS))
 
     def test_an_options_file_without_pools_fails(self):

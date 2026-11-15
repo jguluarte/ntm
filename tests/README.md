@@ -3,7 +3,7 @@
 `make test` runs the bats tests here (Bash Automated Testing System), then the
 picker's Python tests in `skills/style/scripts/picker/test/` with pytest. Each
 `@test` block is one test, and it fails when a line in it fails. bats, jq,
-Python, PyYAML and pytest come from devbox.
+Python, PyYAML, jsonschema and pytest come from devbox.
 
 ## User-facing names
 
@@ -28,8 +28,9 @@ name back. `git log tests/expected/` is the record of every name change.
 `skills/style/scripts/picker/test/` holds the tests of the picker,
 `skills/style/scripts/picker/`, written as `unittest` test cases and run by
 pytest. `pyproject.toml` puts the picker's folder on Python's import path, so a
-test imports the picker's classes by name. `test_picker.py` checks what the
-command line builds, then builds each `Picker` from a `HookMode` and checks the
-line `pick()` prints or fails with; `test_options.py` asks `Options` for its
-hooks. `fixtures/` holds the options files they read, each named for what it
-holds or lacks, and what the Even theme must draw.
+test imports the picker's classes by name. `test_options.py` loads options files
+into `Options` and checks the hooks it finds or the schema failure it raises;
+`test_picker.py` checks what the command line builds, and the line `pick_hook()`
+prints or fails with. `fixtures/` holds the options files they read, each named
+for what it holds or lacks, and `Casebook-options.yaml`, the example in
+`references/theme-files.md`.

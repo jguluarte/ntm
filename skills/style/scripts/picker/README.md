@@ -4,9 +4,12 @@ The picker picks what each message is built on: a hook, drawn at random from a
 theme.
 
 It reads a theme's options file and prints the hook it drew. It runs on Python 3
-with PyYAML.
+with PyYAML and jsonschema.
 
-`references/theme-files.md` describes the options file.
+`references/theme-files.md` describes the options file, and
+`options.schema.yaml` holds it to that description: the picker checks every
+options file against it before picking. The theme builder will check what it
+builds against the same file.
 
 ## Usage
 
@@ -34,12 +37,12 @@ hook: characters/detective
 ```
 
 When it can't pick, it prints one line on stderr,
-`Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type, so
-a field missing from the options file reads as `KeyError` with the field's name,
-and a theme where no pool gives a hook reads as `ValueError`.
+`Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type. An
+options file that breaks the schema reads as `ValueError`, with where in the
+file and what is wrong, and so does a theme where no pool gives a hook.
 
 ```
-Picker FAILED: KeyError: 'gives'
+Picker FAILED: ValueError: $.pools.scenes: 'gives' is a required property
 Picker FAILED: ValueError: no pool in the options file gives a hook
 ```
 

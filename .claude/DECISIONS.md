@@ -90,6 +90,12 @@ Each message gets one hook, from the pool of motifs, references and actors'
 lines. It names a speaker only sometimes, at a rate computed from the pool.
 Messages may talk to the user as "you", and never use their name or a pet name.
 
+The picker is a Python script, standard library plus PyYAML, kept inside
+`ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
+It draws only what one message needs: the hook, sometimes a speaker, and a line
+from the hook. Nothing carries from one message to the next except rest, the
+penalty a value carries since its last use.
+
 ### Theme files
 
 A theme is a set of YAML files named after it. The root, for Justin
@@ -106,6 +112,9 @@ holds only the terms a model wouldn't know or would misuse.
 Theme files live in the user's backend, like every other database: for a Linear
 user, one Linear document per file.
 
+There can be multiple themes. Themes will be stored as a list that will be
+rotated through each week, that way each theme gets used an equal amount.
+
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.
 
@@ -120,11 +129,19 @@ It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed. It also runs just before `ntm:clean` in the
 weekly job.
 
-### `%Message-history`
+It prunes each theme's message history. An old entry matters only for its picks'
+rest. Once its hook, speaker and line have each been picked again in a later
+entry, and its feedback and verdict are in the scores, the job drops it. Each
+history then rolls forward with an upper limit.
 
-One JSON line per message: the date and time, the reminder, the theme, the
-picks, the opening words, the task ids with their planned dates at send, the
-user's feedback and the rater's verdict. A field with no value is left out.
+### The message history
+
+Each theme has its own message history, `<Theme>-message-history`, named like
+the theme's other files: for Justin, `Dragify-message-history`.
+
+One JSON line per message: the date and time, the reminder, the picks, the
+opening words, the task ids with their planned dates at send, the user's
+feedback and the rater's verdict. A field with no value is left out.
 
 ### Inside ntm
 
@@ -184,6 +201,13 @@ The user edits, deletes or adds a template's parts.
 #### Setup creates every database
 
 Setup creates every database from its template during onboarding.
+
+#### Default names
+
+Each database has a default name, such as Settings, Message-rules or
+Paused-dates, so setup doesn't ask the user to confirm each one: fewer things
+need the user's input during setup. The names are written in `%Settings`, where
+the user can change them. Setup confirms only the Settings name, early.
 
 #### Parts by name
 

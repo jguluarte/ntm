@@ -147,8 +147,8 @@ stays with that person.
 It runs once a week, as a job of its own early on Sunday morning. The session
 limit is then fully open, the run stays clear of the user's Sunday evening, and
 it takes in the whole previous calendar week; the weekly job that evening plans
-with fresh numbers. There is no nightly run: between runs, the picker draws on
-the numbers the last run left. One run a week keeps it cheap.
+with fresh numbers. Between runs, the picker draws on the numbers the last run
+left. One run a week keeps it cheap.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known

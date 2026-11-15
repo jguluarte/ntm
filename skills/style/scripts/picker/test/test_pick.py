@@ -20,5 +20,5 @@ class PickTest(unittest.TestCase):
     def test_a_failure_prints_one_line_on_stderr_and_exits_1(self):
         ran = self.pick("hook")
         why = "the following arguments are required: --options"
-        expected = (1, f"Picker FAILED: {why}\n")
+        expected = (1, f"Picker FAILED: ArgumentError: {why}\n")
         self.assertEqual(expected, (ran.returncode, ran.stderr))

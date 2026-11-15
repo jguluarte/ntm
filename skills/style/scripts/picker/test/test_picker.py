@@ -40,14 +40,14 @@ class DrawTest(PickerTestCase):
 class CommandLineTest(PickerTestCase):
     def test_an_unknown_mode_fails_naming_the_modes(self):
         why = "argument mode: invalid choice: 'hooks' (choose from 'hook')"
-        self.assertFails(why, self.pick, "hooks")
+        self.assertFails(f"ArgumentError: {why}", self.pick, "hooks")
 
     def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):
-        why = "unrecognized arguments: --colour red"
+        why = "ArgumentError: unrecognized arguments: --colour red"
         self.assertFails(why, self.pick_hook, EVEN, "--colour", "red")
 
     def test_a_seed_that_isnt_a_whole_number_fails_saying_so(self):
-        why = "argument --seed: invalid int value: 'seven'"
+        why = "ArgumentError: argument --seed: invalid int value: 'seven'"
         self.assertFails(why, self.pick_hook, EVEN, "--seed", "seven")
 
 
@@ -60,25 +60,25 @@ class OptionsFileTest(PickerTestCase):
     def test_an_options_file_that_cant_be_read_fails_naming_it(self):
         path = self.folder / "Gone-options.yaml"
         why = f"[Errno 2] No such file or directory: '{path}'"
-        self.assertFails(why, self.pick_hook, path)
+        self.assertFails(f"FileNotFoundError: {why}", self.pick_hook, path)
 
     def test_an_options_file_that_isnt_yaml_fails_naming_it(self):
         path = self.options_file("pools: a: b\n")
         where = f'in "{path}", line 1, column 9'
-        why = f"mapping values are not allowed here {where}"
+        why = f"ScannerError: mapping values are not allowed here {where}"
         self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_without_pools_fails_saying_so(self):
         path = self.options_file("theme: Dusk\n")
-        why = "the options file has no pools"
+        why = "PickerFailed: the options file has no pools"
         self.assertFails(why, self.pick_hook, path)
 
     def test_a_pool_without_entries_fails_naming_it(self):
         path = self.options_file("pools:\n  scenes:\n    gives: [hook]\n")
-        why = "pool scenes needs gives and entries"
+        why = "PickerFailed: pool scenes needs gives and entries"
         self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_without_hooks_fails_saying_so(self):
         path = self.options_file("pools:\n  cast: {gives: [], entries: {}}\n")
-        why = "the options file has no hooks"
+        why = "PickerFailed: the options file has no hooks"
         self.assertFails(why, self.pick_hook, path)

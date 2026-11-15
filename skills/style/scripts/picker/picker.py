@@ -1,14 +1,10 @@
 import argparse
 import sys
 
-import yaml
-
-from exceptions import PickerFailed
 from modes import MODES
 
 PICK = "pick"
-FAILED = "Picker FAILED: {}"
-FAILURES = (PickerFailed, argparse.ArgumentError, OSError, yaml.YAMLError)
+FAILED = "Picker FAILED: {}: {}"
 
 
 class Picker:
@@ -29,9 +25,9 @@ class Picker:
         return self
 
     def __exit__(self, kind, failure, traceback):
-        if isinstance(failure, FAILURES):
+        if isinstance(failure, Exception):
             why = " ".join(str(failure).split())
-            sys.exit(FAILED.format(why))
+            sys.exit(FAILED.format(kind.__name__, why))
 
     def selections(self):
         # Parsed inside the with block, so Picker reports a bad flag.

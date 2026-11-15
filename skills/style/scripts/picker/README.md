@@ -35,10 +35,12 @@ hook: characters/detective
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type, so
-a field missing from the options file reads as `KeyError` with the field's name.
+a field missing from the options file reads as `KeyError` with the field's name,
+and a theme where no pool gives a hook reads as `ValueError`.
 
 ```
 Picker FAILED: KeyError: 'gives'
+Picker FAILED: ValueError: no pool in the options file gives a hook
 ```
 
 ## How it picks

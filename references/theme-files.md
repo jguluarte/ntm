@@ -56,6 +56,10 @@ parts are the same in every theme:
 | `wins`       | How the theme marks a finished task, and a big win                           |
 | `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
 
+`escalation` and `finishing_tasks` each hold one paragraph, or levels, the first
+level first, each keyed by its name in the theme's words and saying how it
+sounds.
+
 `files` has three groups. Under each, a file's name maps to a line or two on
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.

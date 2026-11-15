@@ -144,9 +144,11 @@ stays with that person.
 
 ### Recalculating the picker's weights
 
-It runs once a week, as a step of the weekly job just before `ntm:clean`, so the
-week is judged before planning. There is no nightly run: between runs, the
-picker draws on the numbers the last run left. One run a week keeps it cheap.
+It runs once a week, as a job of its own early on Sunday morning. The session
+limit is then fully open, the run stays clear of the user's Sunday evening, and
+it takes in the whole previous calendar week; the weekly job that evening plans
+with fresh numbers. There is no nightly run: between runs, the picker draws on
+the numbers the last run left. One run a week keeps it cheap.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known
@@ -365,6 +367,12 @@ settings, and it may not need a feature.
 ### A price watch talk
 
 Its default pattern makes too much busywork, and setup needs better guidelines.
+
+### A run on the user's own computer
+
+The owner's idea to cut the recalculation's tokens: a run the user starts
+themselves, where the script reads the backend directly. To think about later.
+It could only be an optional extra beside the scheduled run.
 
 ## Unknowns: one experiment each
 

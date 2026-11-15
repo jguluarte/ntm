@@ -299,9 +299,6 @@ pools:
       gaga_in_the_werk_room:
         when: morning
 
-      sashas_rose_petals:
-        when: big_win
-
       sheas_finale:
         when: [weekly, slipped]
 

@@ -293,28 +293,6 @@ references:
     when:
       - morning
 
-  sashas_rose_petals:
-    name: Sasha's rose petals
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 9, the first finale decided by a lip sync tournament: in her first
-      lip sync of the night, against Shea Couleé to "So Emotional", Sasha Velour
-      pulled off a glove, then her wig, and rose petals poured out of both. She
-      went on to beat Peppermint for the crown.
-
-    meaning: >-
-      The gold standard reveal, the one every finalist since has chased.
-
-    callback: >-
-      Make the big effort's last step the glove and the wig coming off, and pour
-      everything it took out of them as petals: the days, the slips, the work,
-      until the stage is covered.
-
-    when:
-      - big_win
-
   sheas_finale:
     name: Shea's finale
 
@@ -1584,24 +1562,6 @@ winners_circle:
       in Snatch Game: the deep cut nobody else would have picked, and the
       challenge win that showed who to beat.
 
-  biancas_clean_run:
-    name: Bianca's clean run
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 6: Bianca Del Rio won three challenges, the stand-up comedy one
-      among them, and was never in the bottom or up for elimination. She was the
-      first winner in the franchise never to place low.
-
-    meaning: >-
-      A flawless run from start to finish; never once in danger.
-
-    callback: >-
-      Go over the task the way the judges went over Bianca's season, looking for
-      a low point and finding none: never once in danger, and winning whatever
-      kind of challenge it turned into.
-
   bobs_two_in_one_snatch_game:
     name: Bob's two-in-one Snatch Game
 
@@ -1620,42 +1580,26 @@ winners_circle:
       Hold the finish up to Bob's switch mid-game: twice the job the day asked
       for, done in the time meant for one, and the win for both halves.
 
+  sashas_rose_petals:
+    name: Sasha's rose petals
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9, the first finale decided by a lip sync tournament: in her first
+      lip sync of the night, against Shea Couleé to "So Emotional", Sasha Velour
+      pulled off a glove, then her wig, and rose petals poured out of both. She
+      went on to beat Peppermint for the crown.
+
+    meaning: >-
+      The gold standard reveal, the one every finalist since has chased.
+
+    callback: >-
+      Make the big effort's last step the glove and the wig coming off, and pour
+      everything it took out of them as petals: the days, the slips, the work,
+      until the stage is covered.
+
   # Drag Race All Stars
-
-  trixies_comeback:
-    name: Trixie's comeback
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 7: Trixie Mattel was sent home in episode 4, brought back in
-      episode 8 and sent home again in episode 10, placing sixth. On All Stars 3
-      she won the final lip sync and the crown.
-
-    meaning: >-
-      Out twice, then the title: the comeback that ends on top.
-
-    callback: >-
-      Count every time the task went home before today against Trixie's two
-      exits in one season, then crown it the way All Stars 3 crowned her.
-
-  sheas_redemption:
-    name: Shea's redemption
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 9: Shea Couleé went out in her first lip sync of the finale,
-      against Sasha Velour. On All Stars 5 she won Snatch Game as Flavor Flav,
-      both her Lip Syncs for Your Legacy, and the Lip Sync for the Crown.
-
-    meaning: >-
-      Losing the big one, coming back, and winning it.
-
-    callback: >-
-      Give Shea's All Stars 5 run to the task that blew its big moment once:
-      back for the round it lost, and this time winning its lip syncs and the
-      crown.
 
   jinkx_queen_of_all_queens:
     name: Jinkx, Queen of All Queens
@@ -1675,132 +1619,3 @@ winners_circle:
       Line the task up against a cast of winners, like All Stars 7's: the user's
       past big finishes, or the list's other finished big tasks when none are to
       hand. Then crown it the winner among them.
-
-  ginger_minjs_fourth_try:
-    name: Ginger Minj's fourth try
-
-    show: Drag Race
-
-    what_happened: >-
-      Ginger Minj was runner-up on Season 7, out eighth on All Stars 2 and
-      runner-up again on All Stars 6. On All Stars 10 (2025), her fourth try,
-      she won the final lip sync against Jorgeous, the crown and a place in the
-      Hall of Fame.
-
-    meaning: >-
-      The long-overdue win after years of nearly.
-
-    callback: >-
-      Read the task's near misses into the record like Ginger's: runner-up, out,
-      runner-up again. Then crown it on the try that finally landed.
-
-  # Drag Race UK and UK vs the World
-
-  tia_kofi_takes_the_world:
-    name: Tia Kofi takes the world
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race UK, Series 2: Tia Kofi lip synced three times and placed
-      seventh. On UK vs the World, Series 2 (2024), she won, was crowned Queen
-      of the Mothertucking World, and took the show's first cash prize, £50,000.
-
-    meaning: >-
-      The queen nobody tipped, coming back to win on the world stage.
-
-    callback: >-
-      Take the task from the bottom, where it lip synced for its life, to the
-      top of the world, the way Tia went from seventh at home to Queen of the
-      Mothertucking World.
-
-  # Dragula
-
-  dahli_back_from_the_dead:
-    name: Dahli, back from the dead
-
-    show: Dragula
-
-    what_happened: >-
-      Dahli placed seventh on Season 2. In the story of Dragula: Resurrection
-      (2020), Dahli was the last monster killed off, then came back to life
-      after the credits. Joining Season 4 in its second episode, Dahli won it:
-      the first contestant on any drag competition to return for a second
-      regular season and win.
-
-    meaning: >-
-      Written off, killed off on the show, and still the champion.
-
-    callback: >-
-      Dig up the task the user had already killed off, the way Dahli came back
-      to life after the credits, walk it in late, and pour the Supermonster's
-      bucket of blood over its head.
-
-  evah_destructions_third_try:
-    name: Evah Destruction's third try
-
-    show: Dragula
-
-    what_happened: >-
-      Evah Destruction competed on Dragula Season 3 and on Dragula: Titans
-      Season 1, and stopped short of the finale both times. On Titans Season 2
-      (2025), her third try, she won and was crowned Queen of the Underworld.
-
-    meaning: >-
-      Clawing out of the grave on the third attempt.
-
-    callback: >-
-      Have the task claw its way out of the grave on its third try, the way Evah
-      did on Titans after falling short of two finales, and crown it Queen of
-      the Underworld.
-
-  # Around the shows: Project Runway and Legendary
-
-  christian_siriano_the_youngest_winner:
-    name: Christian Siriano, the youngest winner
-
-    what_happened: >-
-      Project Runway, Season 4 (2008): Christian Siriano, 21, beat Jillian Lewis
-      and Rami Kashou to become the youngest winner in the show's history. The
-      guest judge, Victoria Beckham, said she would be honored to wear his
-      clothes.
-
-    meaning: >-
-      Arriving young and fierce, and leaving with everything.
-
-    callback: >-
-      Send the finished task down the runway as Christian Siriano's winning
-      collection: done long before anyone thought the user was ready, with the
-      celebrity judge asking to wear it.
-
-  miyake_muglers_last_battle:
-    name: Miyake-Mugler's last battle
-
-    what_happened: >-
-      Legendary, HBO Max's ballroom competition, Season 2 (2021): the final came
-      down to House of Miyake-Mugler and House of Balenciaga, battling one
-      element of vogue at a time. The last, spins and dips, decided it:
-      Miyake-Mugler won, 53 points to 47.
-
-    meaning: >-
-      A title decided in the very last round.
-
-    callback: >-
-      Score the task like the Legendary final, point for point down to the last
-      element, and make its final step the spin and dip that takes it 53 to 47.
-
-  juicy_couture_the_kiki_house:
-    name: Juicy Couture, the kiki house
-
-    what_happened: >-
-      Legendary, Season 3 (2022): House of Juicy Couture came in as a kiki
-      house, from the ballroom tier seen as less experienced. It never landed in
-      the bottom, and beat House of Yohji Yamamoto in the final.
-
-    meaning: >-
-      The junior league beating the legends, without a single slip.
-
-    callback: >-
-      Bring the task in as a kiki house, the junior league in a room of legends,
-      and walk it to the final without one week in the bottom, past the houses
-      meant to win.

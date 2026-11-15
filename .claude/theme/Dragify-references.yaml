@@ -1563,23 +1563,6 @@ winners_circle:
 
   # Drag Race, Seasons 1 to 18
 
-  bebe_the_first_crown:
-    name: BeBe, the first crown
-
-    show: Drag Race
-
-    what_happened: >-
-      Season 1 (2009): BeBe Zahara Benet beat Nina Flowers in the final lip
-      sync, to RuPaul's "Cover Girl", and became the first queen ever crowned
-      America's Next Drag Superstar.
-
-    meaning: >-
-      The very first; the original every later winner follows.
-
-    callback: >-
-      Crown the finished task the way the first crown went to BeBe: the original
-      of its kind, the one every later finish will be held up against.
-
   jinkxs_little_edie:
     name: Jinkx's Little Edie
 
@@ -1598,6 +1581,24 @@ winners_circle:
       Credit the user's odd, specific way through the task as their Little Edie
       in Snatch Game: the deep cut nobody else would have picked, and the
       challenge win that showed who to beat.
+
+  biancas_clean_run:
+    name: Bianca's clean run
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 6: Bianca Del Rio won three challenges, the stand-up comedy one
+      among them, and was never in the bottom or up for elimination. She was the
+      first winner in the franchise never to place low.
+
+    meaning: >-
+      A flawless run from start to finish; never once in danger.
+
+    callback: >-
+      Go over the task the way the judges went over Bianca's season, looking for
+      a low point and finding none: never once in danger, and winning whatever
+      kind of challenge it turned into.
 
   bobs_two_in_one_snatch_game:
     name: Bob's two-in-one Snatch Game
@@ -1693,25 +1694,6 @@ winners_circle:
 
   # Drag Race UK and UK vs the World
 
-  lawrences_five_in_a_row:
-    name: Lawrence's five in a row
-
-    show: Drag Race
-
-    what_happened: >-
-      Drag Race UK, Series 2 (2021): Lawrence Chaney won a challenge in each of
-      the first five episodes, the minis in the first two and the main
-      challenges in the next three. No queen in the franchise had won five
-      episodes running. She went on to win the series.
-
-    meaning: >-
-      A hot streak nobody can stop.
-
-    callback: >-
-      Set the user's run beside Lawrence's opening five, a win every episode,
-      and make the finished task the fifth: the streak nobody in the franchise
-      had pulled off.
-
   tia_kofi_takes_the_world:
     name: Tia Kofi takes the world
 
@@ -1751,6 +1733,24 @@ winners_circle:
       Dig up the task the user had already killed off, the way Dahli came back
       to life after the credits, walk it in late, and pour the Supermonster's
       bucket of blood over its head.
+
+  evah_destructions_third_try:
+    name: Evah Destruction's third try
+
+    show: Dragula
+
+    what_happened: >-
+      Evah Destruction competed on Dragula Season 3 and on Dragula: Titans
+      Season 1, and stopped short of the finale both times. On Titans Season 2
+      (2025), her third try, she won and was crowned Queen of the Underworld.
+
+    meaning: >-
+      Clawing out of the grave on the third attempt.
+
+    callback: >-
+      Have the task claw its way out of the grave on its third try, the way Evah
+      did on Titans after falling short of two finales, and crown it Queen of
+      the Underworld.
 
   # Around the shows: Project Runway and Legendary
 

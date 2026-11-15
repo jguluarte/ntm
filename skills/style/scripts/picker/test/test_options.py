@@ -36,20 +36,20 @@ class SchemaTest(unittest.TestCase):
 
         self.assertEqual(expected, str(raised.exception))
 
-    def test_a_pool_without_gives_fails(self):
-        expected = "$.pools.scenes: 'gives' is a required property"
+    def test_a_pool_without_roles_fails(self):
+        expected = "$.pools.scenes: 'roles' is a required property"
 
         with self.assertRaises(ValueError) as raised:
-            Options(fixtures.POOL_WITHOUT_GIVES)
+            Options(fixtures.POOL_WITHOUT_ROLES)
 
         self.assertEqual(expected, str(raised.exception))
 
-    def test_a_gives_that_isnt_hook_or_speaker_fails(self):
+    def test_a_role_that_isnt_hook_or_speaker_fails(self):
         why = "'hooks' is not one of ['hook', 'speaker']"
-        expected = f"$.pools.scenes.gives[0]: {why}"
+        expected = f"$.pools.scenes.roles[0]: {why}"
 
         with self.assertRaises(ValueError) as raised:
-            Options(fixtures.UNKNOWN_GIVES)
+            Options(fixtures.UNKNOWN_ROLE)
 
         self.assertEqual(expected, str(raised.exception))
 

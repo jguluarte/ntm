@@ -1,29 +1,25 @@
 import unittest
 
 import fixtures
-from picker import Options, Picker
+from picker import Picker
+from theme import Theme, ThemeOptions
 
 
-def make_picker_args(options, **flags):
-    args = ["hook", "--options", str(options)]
-
-    for name, value in flags.items():
-        args += [f"--{name}", str(value)]
-
-    return args
+def make_picker_args(options, *flags):
+    return ["hook", "--options", str(options), *flags]
 
 
 class CommandLineTest(unittest.TestCase):
     def test_hook_draws_from_the_options_file_with_the_seed(self):
-        args = make_picker_args(fixtures.EVEN, seed=2)
+        args = make_picker_args(fixtures.EVEN, "--seed", "2")
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
 
         self.assertEqual("hook: scenes/dawn", drawn)
 
-    def test_hook_draws_only_hooks_fitting_the_occasions(self):
-        args = make_picker_args(fixtures.EVERY_WHEN, occasions="weekly,big_win")
+    def test_hook_draws_only_hooks_fitting_the_theme_options(self):
+        args = make_picker_args(fixtures.EVERY_WHEN, "--for", "weekly,big_win")
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
@@ -37,12 +33,12 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertIsNone(picker.seed)
 
-    def test_the_occasions_are_optional(self):
+    def test_the_theme_options_are_optional(self):
         args = make_picker_args(fixtures.EVEN)
 
         picker = Picker.from_args(args)
 
-        self.assertEqual(set(), picker.occasions)
+        self.assertEqual(ThemeOptions(), picker.theme_options)
 
     def test_a_missing_options_flag_fails_naming_it(self):
         why = "the following arguments are required: --options"
@@ -54,7 +50,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, seed="seven")
+        args = make_picker_args(fixtures.EVEN, "--seed", "seven")
 
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
@@ -64,22 +60,11 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(expected, exited.exception.code)
 
-    def test_an_unknown_occasion_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, occasions="night")
+    def test_a_for_that_isnt_a_valid_combination_fails_naming_why(self):
+        args = make_picker_args(fixtures.EVEN, "--for", "morning,evening")
 
-        why = "argument --occasions: not an occasion: night"
-        expected = f"Picker FAILED: ArgumentError: {why}"
-
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(args)
-
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_two_reminders_fail_naming_them(self):
-        args = make_picker_args(fixtures.EVEN, occasions="morning,evening")
-
-        why = "argument --occasions: more than one reminder: evening, morning"
-        expected = f"Picker FAILED: ArgumentError: {why}"
+        why = "more than one reminder type: evening, morning"
+        expected = f"Picker FAILED: InvalidThemeOptions: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
@@ -100,7 +85,7 @@ class CommandLineTest(unittest.TestCase):
 
 class PickHookTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_hook(self):
-        options = Options(fixtures.EVEN)
+        theme = Theme(fixtures.EVEN)
 
         expected = {
             0: "hook: characters/host",
@@ -111,12 +96,12 @@ class PickHookTest(unittest.TestCase):
             5: "hook: scenes/dusk",
         }
 
-        drawn = {seed: Picker(options, seed).pick_hook() for seed in expected}
+        drawn = {seed: Picker(theme, seed).pick_hook() for seed in expected}
 
         self.assertEqual(expected, drawn)
 
     def test_without_a_seed_runs_draw_different_hooks(self):
-        picker = Picker(Options(fixtures.EVEN))
+        picker = Picker(Theme(fixtures.EVEN))
 
         attempts = 50
         drawn = {
@@ -125,23 +110,12 @@ class PickHookTest(unittest.TestCase):
 
         self.assertGreater(len(drawn), 1)
 
-    def test_only_speaker_pools_fails_saying_no_pool_gives_a_hook(self):
-        picker = Picker(Options(fixtures.SPEAKERS_ONLY))
+    def test_a_theme_with_no_hook_to_give_fails_saying_why(self):
+        theme = Theme(fixtures.WITHOUT_BIG_WIN)
+        picker = Picker(theme, theme_options=ThemeOptions.parse("morning"))
 
-        why = "no pool in the options file gives a hook"
-        expected = f"Picker FAILED: NoHooks: {why}"
-
-        with self.assertRaises(SystemExit) as exited:
-            picker.pick_hook()
-
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_big_win_that_fits_nothing_fails_saying_none_fits(self):
-        options = Options(fixtures.WITHOUT_BIG_WIN)
-        picker = Picker(options, occasions={"morning", "big_win"})
-
-        why = "no hook fits the occasions big_win, morning"
-        expected = f"Picker FAILED: NoHookFits: {why}"
+        why = "no hook fits morning"
+        expected = f"Picker FAILED: MissingHook: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick_hook()

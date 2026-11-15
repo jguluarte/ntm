@@ -65,17 +65,20 @@ class Picker:
         [name] = generator.choices(names, weights=chances.values())
         return name
 
-    @classmethod
-    def _table(cls, name_heading, chance_heading, chances):
-        rows = [(name_heading, chance_heading)]
+    def _table(self, name_heading, chance_heading, chances):
+        rows = [(name_heading, "days since used", chance_heading)]
         for name, chance in chances.items():
-            rows.append((name, cls._to_hundredths(chance)))
+            days = self.history.days_since_used(name, self.today)
+            shown_days = "never" if days is None else str(days)
+            rows.append((name, shown_days, self._to_hundredths(chance)))
 
-        name_width = max(len(name) for name, _ in rows)
-        chance_width = max(len(chance) for _, chance in rows)
+        name_width = max(len(name) for name, _, _ in rows)
+        days_width = max(len(days) for _, days, _ in rows)
+        chance_width = max(len(chance) for _, _, chance in rows)
         return "\n".join(
-            f"{ name.ljust(name_width) }  { chance.rjust(chance_width) }"
-            for name, chance in rows
+            f"{ name.ljust(name_width) }  { days.rjust(days_width) }  "
+            f"{ chance.rjust(chance_width) }"
+            for name, days, chance in rows
         )
 
     @staticmethod

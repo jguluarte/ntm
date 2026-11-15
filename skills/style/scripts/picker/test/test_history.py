@@ -13,6 +13,13 @@ class HistoryTest(unittest.TestCase):
         expected = 2
         self.assertEqual(expected, days)
 
+    def test_a_kind_was_used_when_a_messages_hook_came_from_it(self):
+        history = History(fixtures.EVEN_HISTORY)
+        days = history.days_since_used("characters", date(2026, 11, 15))
+
+        expected = 2
+        self.assertEqual(expected, days)
+
     def test_a_hook_used_by_a_message_sent_today_was_used_0_days_ago(self):
         history = History(fixtures.EVEN_HISTORY)
         days = history.days_since_used("characters/host", date(2026, 11, 13))

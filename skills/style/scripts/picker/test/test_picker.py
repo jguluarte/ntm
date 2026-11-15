@@ -185,15 +185,15 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "kind        chance",
-            "scenes        0.88",
-            "characters    0.13",
+            "kind        days since used  chance",
+            "scenes                never    0.88",
+            "characters            never    0.13",
             "",
-            "hook             chance in kind",
-            "scenes/dawn                0.20",
-            "scenes/noon                0.80",
-            "scenes/dusk                0.00",
-            "characters/host            1.00",
+            "hook             days since used  chance in kind",
+            "scenes/dawn                never            0.20",
+            "scenes/noon                never            0.80",
+            "scenes/dusk                never            0.00",
+            "characters/host            never            1.00",
         ]
         self.assertEqual(expected, rows)
 
@@ -204,15 +204,15 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "kind        chance",
-            "scenes        0.50",
-            "characters    0.50",
+            "kind        days since used  chance",
+            "scenes                    2    0.50",
+            "characters                2    0.50",
             "",
-            "hook             chance in kind",
-            "scenes/dawn                0.20",
-            "scenes/noon                0.40",
-            "scenes/dusk                0.40",
-            "characters/host            1.00",
+            "hook             days since used  chance in kind",
+            "scenes/dawn                    2            0.20",
+            "scenes/noon                never            0.40",
+            "scenes/dusk                never            0.40",
+            "characters/host                2            1.00",
         ]
         self.assertEqual(expected, rows)
 

@@ -44,7 +44,8 @@ hook: characters/detective
 ```
 
 With `--chances`, it prints the chance of each kind and of each hook in its kind
-instead, as "How likely each kind and hook is" and "Rest" show.
+instead, with the days since each was used, as "How likely each kind and hook
+is" and "Rest" show.
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
@@ -138,15 +139,15 @@ Overall, `noon` is drawn 0.875 × 0.8 = 0.7 of the time.
 
 ```
 python3 picker.py hook --options Weighted-options.yaml --chances
-kind        chance
-scenes        0.88
-characters    0.13
+kind        days since used  chance
+scenes                never    0.88
+characters            never    0.13
 
-hook             chance in kind
-scenes/dawn                0.20
-scenes/noon                0.80
-scenes/dusk                0.00
-characters/host            1.00
+hook             days since used  chance in kind
+scenes/dawn                never            0.20
+scenes/noon                never            0.80
+scenes/dusk                never            0.00
+characters/host            never            1.00
 ```
 
 0.875 and 0.125 show as 0.88 and 0.13, so rounded chances can add up to just
@@ -174,7 +175,9 @@ weight, so a kind that can be drawn always gives a hook.
 | Rested draw weight | Draw weight × share won back                                                      |
 
 With a history, a hook's chance in its kind is its rested draw weight over the
-total rested draw weight of its kind's fitting hooks.
+total rested draw weight of its kind's fitting hooks. `--chances` shows the days
+since each hook was used, or `never`; a kind's row shows the days since any of
+its hooks was used.
 
 ### An example of rest
 
@@ -196,15 +199,15 @@ still 1.
 ```
 python3 picker.py hook --options Even-options.yaml \
     --history Even-message-history.jsonl --today 2026-11-15 --chances
-kind        chance
-scenes        0.50
-characters    0.50
+kind        days since used  chance
+scenes                    2    0.50
+characters                2    0.50
 
-hook             chance in kind
-scenes/dawn                0.20
-scenes/noon                0.40
-scenes/dusk                0.40
-characters/host            1.00
+hook             days since used  chance in kind
+scenes/dawn                    2            0.20
+scenes/noon                never            0.40
+scenes/dusk                never            0.40
+characters/host                2            1.00
 ```
 
 With `--seed 32` in place of `--chances`, it draws `scenes/noon`; without the

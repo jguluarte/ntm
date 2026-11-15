@@ -148,7 +148,9 @@ class History:
         picks = entry.get(PICKS, {})
         hook = picks.get(HOOK_PICK)
         if hook:
+            kind, _ = hook.split("/")
             self._record_use(hook, sent.date())
+            self._record_use(kind, sent.date())
 
     def _record_use(self, name, used_on):
         latest_use = self._latest_use_by_name.get(name, used_on)

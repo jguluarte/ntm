@@ -182,8 +182,8 @@ A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that
 slipped many times finally closed. An ordinary day of doing what was planned is
 never a big win. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference says what happens when a theme keeps
-none.
+kept for `big_win`; the picker's reference says what happens when none of them
+fits.
 
 ## The options file
 

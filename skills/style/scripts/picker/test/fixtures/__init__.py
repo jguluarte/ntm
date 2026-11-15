@@ -3,6 +3,8 @@ from pathlib import Path
 FIXTURES = Path(__file__).parent
 EVEN = FIXTURES / "Even-options.yaml"
 CASEBOOK = FIXTURES / "Casebook-options.yaml"
+EVERY_WHEN = FIXTURES / "Every-when-options.yaml"
+WITHOUT_BIG_WIN = FIXTURES / "Without-big-win-options.yaml"
 SPEAKERS_ONLY = FIXTURES / "Speakers-only-options.yaml"
 WITHOUT_POOLS = FIXTURES / "Without-pools-options.yaml"
 POOL_WITHOUT_ROLES = FIXTURES / "Pool-without-roles-options.yaml"

@@ -42,7 +42,7 @@ options file that breaks the schema reads as `ValueError`, with where in the
 file and what is wrong; a theme where no pool gives a hook reads as `NoHooks`.
 
 ```
-Picker FAILED: ValueError: $.pools.scenes: 'gives' is a required property
+Picker FAILED: ValueError: $.pools.scenes: 'roles' is a required property
 Picker FAILED: NoHooks: no pool in the options file gives a hook
 ```
 
@@ -50,8 +50,8 @@ Picker FAILED: NoHooks: no pool in the options file gives a hook
 
 ### The hook
 
-The hooks are the entries of every pool that gives a hook, taken as one list.
-The picker draws one of them, each as likely as the next.
+The hooks are the entries of every pool whose `roles` include `hook`, taken as
+one list. The picker draws one of them, each as likely as the next.
 
 The order of entries in a file doesn't change their chances. With a fixed
 `--seed`, it does change which one is drawn.

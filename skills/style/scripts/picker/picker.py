@@ -10,7 +10,7 @@ import yaml
 THEME_BUILDER = Path(__file__).parents[3] / "theme-builder"
 OPTIONS_SCHEMA = THEME_BUILDER / "references" / "options.schema.yaml"
 POOLS_BY_KIND = "pools"
-ROLES = "gives"
+ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 HOOK_ROLE = "hook"
 HOOK_COMMAND = "hook"

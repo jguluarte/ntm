@@ -5,7 +5,7 @@ checksums:
 pools:
   characters:
     file: Casebook-characters.yaml
-    gives: [hook, speaker]
+    roles: [hook, speaker]
     half_life_days: 3
     speaker_rate: 0.4
     entries:
@@ -16,7 +16,7 @@ pools:
 
   shared_lines:
     file: Casebook-characters.yaml
-    gives: [hook]
+    roles: [hook]
     half_life_days: 5
     entries:
       any_time:
@@ -31,7 +31,7 @@ pools:
 
   scenes:
     file: Casebook-scenes.yaml
-    gives: [hook]
+    roles: [hook]
     half_life_days: 6
     entries:
       stakeout:

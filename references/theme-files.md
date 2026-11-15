@@ -10,7 +10,7 @@ for anyone curious.
 A script, the picker, will pick what each message draws on, and a writer writes
 the message from the picks. For a script to pick, a theme has to be data in a
 known shape, and this file is that shape. Today `ntm:theme-builder` builds a
-theme as one `%Theme` database, and `ntm:style` picks for it without the picker.
+theme's files with the user, and `ntm:style` picks for them without the picker.
 The rest of this file describes theme files, and the picker that reads them, as
 they will work.
 

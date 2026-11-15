@@ -1,82 +1,101 @@
 # Building the theme
 
 The theme is what ntm writes every reminder in, so the user keeps reading them.
-Build it with them one part at a time, from what they picked. Each section below
-is a part of their `%Theme` database, under the same heading. For a theme they
-already have, sort it into these parts and build what's missing with them.
+Build it with them one stage at a time, from what they picked. Each section
+below is a stage: what to ask them, and what it writes in the theme's files. For
+a theme they already have, sort it into these files and build what's missing
+with them.
+
+`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` gives each file's shape, with
+`Casebook`, a made-up detective story, as its example. `Casebook` shows the
+shape and nothing more: build from the user's own world, and never build
+`Casebook` or copy from it.
 
 A theme should be something with enough breadth and material to pull from that
 it can create sufficient variation, so it won't become repetitive. A show is a
 good option, as you can pull from its entire canon. While you could use a single
 character, it will take more effort to ensure an adequate dataset to avoid
 repetition. Build every part with several options to draw from, so reminders
-keep changing.
+keep changing. A world with little to draw on may not work well for them; a
+better defined one holds up longer, so tell them when theirs is thin.
 
-## Registers
+## The world
 
-Where the user sits in the theme's world, and who talks to them. Build several
-registers, the different ways the theme talks to them: an everyday one, how they
-snap back when the user needs it, how they celebrate when it's earned. Ask how
-hard each one goes: swearing, roasting and shade are all welcome when they want
-them. Push for vivid.
+Their world, where they sit in it, and who talks to them. Then what makes them
+open a reminder: a joke, a jab, a running bit, a story that picks up where
+yesterday left off. Several can combine. A world they invent has nothing to look
+up: write all of it with them.
 
-## What motivates you to read reminders from ntm
+Ask how their day maps onto the world, if it does at all: the weekly plan, and
+the morning, afternoon and evening reminders. The intro's detective story is one
+way. The user decides what each part of the day is or is not. Ask too whether
+there is anything they don't want in it.
 
-What makes them open a reminder: a joke, shade, a running bit, a story that
-picks up where yesterday left off. Several can combine.
+Write the theme's name as the root's `theme`. Write the rest in its `world`: the
+world and where they sit in it, what hooks them, how their day maps onto it,
+what stays out, and who tells the story when no one in particular speaks.
 
-## How to connect this theme to ntm's flow
+## The levels
 
-This example is going to describe the flow from the perspective of a reality tv
-competition show. You will need to adapt things accordingly based on the theme
-created by the user. This also assumes a weekly flow.
+The different ways the theme talks to them: an everyday one, how it snaps back
+when a task keeps getting put off, and how it celebrates when it's earned.
+Shame, a cheerleader, a demon that stalks them, jabs that sharpen each time:
+whatever gets them moving. Talk through with them what they want, then decide
+what fits their theme. Ask how hard each level goes: swearing, roasting and
+mockery are all welcome when they want them. Push for vivid.
 
-Consider a week from start to end, consider treating it like "a season" of a
-show. When setting up the week, think about it like a season preview - what
-should you expect? Twists? Turns? Shocks? Excitement? Horror? Lean into their
-theme!
+The root's `escalation` has four levels, and its `wins` three, in this order.
+Name each level in the theme's words, as its key, and write how it sounds.
 
-The next morning is like the episode preview (you know, the thing before the
-opening sequence plays). Sometimes there's a brief recap from yesterday (if
-something carried over).
+| Level | `escalation`                                             | `wins`                                        |
+| ----- | -------------------------------------------------------- | --------------------------------------------- |
+| 1st   | Where every message starts                               | Any finished task                             |
+| 2nd   | Now and then with no slip, so a good run still gets read | A big day or week, or a big or hard task done |
+| 3rd   | A task has slipped                                       | Something truly shocking, and rare            |
+| 4th   | A task has kept slipping                                 |                                               |
 
-The afternoon might be a mini challenge, or the reward challenge. What happens
-in the early part of the show in the user's theme?
+## The kinds
 
-The evening can reference whatever the big event was from the episode. Is there
-a cliffhanger (IE - did they do the thing they planned for the day)? Was there a
-twist (IE - are the planned or closed tasks different than they were earlier in
-the day)? If the user wants shade, throw some.
+A kind is one sort of material in their world. Each kind has its own pool in the
+options file and its own name in an entry file; one entry file can hold several
+kinds. No list of kinds is fixed: derive them from the world's own material, as
+the user describes it and as you know it. Most worlds have actors: people who
+talk in a manner of their own. Two more kinds turn up in many worlds: recurring
+scenes a message can be set in, and single moments to call back to.
 
-Lean into what the user needs from these reminders. If you have a show like
-this, you can spread the themes/motifs over more time, as each day can pull on
-the same sort of theme, evolving on itself over the course of the day. And with
-a show, you can sort of declare a grouped theme for the week - but keeping
-things fresh is of the utmost importance. If the reminder messages you send
-don't change enough, they won't see them and then you're failing to live up to
-ntm's overall objective.
+Propose kinds, each with an `about` saying what an entry is and how a message
+uses one, and the keys its entries share. The user keeps, renames or drops them.
 
-## Responding to procrastination
+An entry that talks in a manner of its own can be a `speaker`; one with
+something to build on, such as lines, a scene or a moment, can be a `hook`.
+Actors are usually both.
 
-How the theme responds when the same task keeps getting put off: shame, a
-cheerleader, a demon that stalks them, escalating shade, whatever gets them
-moving. Talk through with them what they want as a task keeps slipping, then
-decide what fits their theme: how many levels, and which registers each one
-draws on. Each level has a name from the theme, how it sounds and how many days
-a task has carried over when it starts.
+Write each entry file, `<Theme>-<descriptor>.yaml`, with its `about` and each
+kind's `about`. In the options file, `<Theme>-options.yaml`, give each kind a
+pool with its `file` and `roles`. List the entry files under the root's `files`,
+in `by_entry`, and the options file in `for_the_picker`.
 
-## Motifs
+## The entries
 
-Recurring bits from the theme's world or their own life, each with a short name:
-a catchphrase, a stock moment, a character who keeps turning up. Push for a few
-weeks' worth of variety. That comes from how many motifs there are and how many
-ways each one can be used: a running scene that moves forward, or a catchphrase
-that bends to the task, stretches across many reminders. Talk that through with
-them, then agree how long a motif rests before it comes back, given how many
-there are, and write it as the `Repeat limit:` line after the motifs.
+Ask how involved they would like to be with their theme's content. It is likely
+fine to make changes over time if they don't want to dedicate time today.
 
-## Examples
+Write a few entries of each kind with them; about 20 in all, an estimate and not
+a rule, is more than a week of messages. Variety comes from how many entries
+there are and how many ways each one can be used: a running scene that moves
+forward, or a riff that bends a line to the task, stretches across many
+reminders.
 
-A few example reminders for each register and each level, and a few for an
-evening when everything closed, with tasks like theirs. Read them back and
-revise until they smile.
+Each entry follows its kind's keys. Every quote or line comes from the user:
+they say it, or confirm that one you offer is true to their world. An entry that
+fits only some messages gets a `when`, from how their day maps onto the world.
+Keep a few entries for `big_win`, so a big win has material of its own.
+
+Add each entry to its entry file, under its kind, and to the kind's pool in the
+options file, by its slug, with its `when` copied.
+
+## Sample messages
+
+A few sample messages for each escalation level, and a few for each level of
+wins, with tasks like theirs, each built on one of their entries. Read them back
+and revise how each level sounds until they smile.

@@ -79,9 +79,11 @@ notes it to keep your reminders fresh.
 
 ### `/ntm:theme-builder`
 
-Builds your theme with you, one part at a time: something you enjoy, like a show
-or a book, and how it talks to you when you're on track or slacking off. Setup
-runs it for you; run it again any time you want a whole new theme.
+Builds a theme with you, one stage at a time: something you enjoy, like a show
+or a book, how it talks to you when you're on track or slacking off, and the
+people, scenes and moments your reminders draw on. Setup runs it for your first
+theme; run it again any time you want another. Your themes take turns, a week
+each. If you stop partway, it picks up where you left off.
 
 ## Task management
 

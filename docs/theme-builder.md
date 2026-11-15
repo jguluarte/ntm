@@ -30,30 +30,32 @@ already has a theme can start from it: the builder sorts it into the new files.
 | 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `wins`; default thresholds    |
 | 3. Kinds           | Kinds found in the sources; which can talk    | The options file's pools and roles; `files` |
 | 4. Perspectives    | Who else would comment on their week          | The options file's `perspectives`           |
-| 5. Research        | Which kind first; may ntm use their browser   | One entry file per kind                     |
+| 5. Research        | Which kind first                              | The entry files                             |
 | 6. Terminology     | Words from the research a writer would miss   | The terminology file                        |
 | 7. Sample messages | Whether a few sample messages make them smile | Any fixes to how an escalation level sounds |
 
-Each stage saves its part, so each is a place to stop and come back. The
-research reports when it turns up nothing usable. A world with little to draw on
-may not work well for the user; a well defined one holds up longer.
+Stage 1 also asks how the user's day maps onto their world, if it does at all,
+and whether there is anything they don't want in it. The user decides what each
+part of the day is or is not. Both answers go in the root's `world`.
+
+Each stage saves its part, so each is a place to stop and come back.
 
 ## What gets built
 
-| File                      | Written by                                | True before it's used                   |
-| ------------------------- | ----------------------------------------- | --------------------------------------- |
-| `<Theme>.yaml`, the root  | The skill, with the user                  | Every part there, every level described |
-| `<Theme>-<kind>.yaml`     | Research agents, then the review and user | Each line from a page read, or the user |
-| `<Theme>-options.yaml`    | The skill; a script adds the numbers      | Passes the schema; matches entry files  |
-| `<Theme>-terminology.md`  | Research agents; the user agrees          | Optional                                |
-| `<Theme>-message-history` | The skill, from its template              | Exists, empty                           |
+| File                        | Written by                                | True before it's used                   |
+| --------------------------- | ----------------------------------------- | --------------------------------------- |
+| `<Theme>.yaml`, the root    | The skill, with the user                  | Every part there, every level described |
+| `<Theme>-<descriptor>.yaml` | Research agents, then the review and user | Each line from a page read, or the user |
+| `<Theme>-options.yaml`      | The skill; a script adds the numbers      | Passes the schema; matches entry files  |
+| `<Theme>-terminology.md`    | Research agents; the user agrees          | Optional                                |
+| `<Theme>-message-history`   | The skill, from its template              | Exists, empty                           |
 
 The smallest theme that works is a mix: a root, an options file, a history, and
 a few entries of each kind the sources suggest. About 20 entries, an estimate
 and not a rule, is more than a week of messages. Setup builds this one. Its
 research also notes what it found and left for later, such as more kinds,
-sources and people, and that list briefs the bigger research when the theme
-grows.
+sources and people. That list is kept in the user's backend beside the theme's
+files, and briefs the bigger research when the theme grows.
 
 The builder aims to give every theme, the small one included, entries kept for
 `big_win`, so a big win has material of its own. A theme with none still works:
@@ -61,13 +63,16 @@ on a big win, the picker falls back to a normal win.
 
 ## Kinds
 
-A kind is one sort of material in the world: its people, the scenes that come
-back, the moments fans remember. Each kind has its own entry file and its own
-pool in the options file. No list of kinds is fixed: each theme's kinds come
-from its source material. Before the research, the builder reads about the world
-and proposes kinds from what its sources hold, each with an `about` saying what
-an entry is and how a message uses one, and the keys its entries share. The user
-keeps, renames or drops them.
+A kind is one sort of material in the world. Each kind has its own pool in the
+options file and its own name in an entry file; one entry file can hold several
+kinds. No list of kinds is fixed: each theme's kinds come from its source
+material.
+
+At stage 3, the builder searches the web for the world's sources: the pages that
+hold its people, its scenes and what fans say about it, such as wikis, episode
+guides and fan sites. It proposes kinds from what those sources hold, each with
+an `about` saying what an entry is and how a message uses one, and the keys its
+entries share. The user keeps, renames or drops them.
 
 Most worlds have actors: people who talk in a manner of their own, so a message
 can be spoken by one as well as built on them. Two more kinds turn up in many
@@ -78,9 +83,10 @@ back to. The sources decide which a theme has.
 
 The skill starts the agents, since an agent can't start others: one per batch of
 one kind, about 15 entries as an estimate to tune. Each gets the root's `world`,
-the kind's `about` and keys, the entries the theme already has, its part of the
-world, what the user said about their day, and these rules. It writes a scratch
-file of entries, each line with the page it came from.
+the kind's `about` and keys, the sources found at stage 3, the entries the theme
+already has, its part of the world, and these rules. It writes its entries, each
+line with the page it came from, to a scratch file kept in the user's backend
+beside the theme's files, so a later chat can pick up the review.
 
 - Every quote and moment comes from a page read in that run.
 - If you need to browse websites, ask to use the user's browser
@@ -88,16 +94,17 @@ file of entries, each line with the page it came from.
     - This is investigating key information, not crawling the web
 
 Some sites, fan wikis often among them, refuse automated reads, and the user's
-browser reaches them. The builder asks once, at the research stage, and agents
-use a tab each. Without it they skip those pages, and the research reports when
-a world comes out thinner for it.
+browser reaches them. The builder asks the first time a page needs it, at stage
+3 or in the research, and agents use a tab each. Without it they skip those
+pages and say so in their report.
 
-What is off limits in a theme is the user's to say, and the research follows it.
+The research follows what `world` says to leave out, and how it maps the user's
+day: entries that fit one part of the day are tagged with `when` for the
+morning, the afternoon, the evening or the week.
 
-The builder asks how the user's day maps onto their world, if it does at all,
-and the user decides what each part of the day is or is not. The answer briefs
-the research, so entries are written and tagged with `when` for the morning, the
-afternoon, the evening or the week.
+When a kind turns up little, the research reports it, and the builder tells the
+user what came back thin. A world with little to draw on may not work well for
+them; a better defined one holds up longer.
 
 ### Lines judged alone
 
@@ -134,7 +141,7 @@ since the last raised one (3-day half-life), so a good stretch still gets read.
 
 Entries that talk, in a manner of their own, can be a speaker; entries with
 something to build on (lines, a scene, a moment to call back to) can be a hook.
-In `Casebook`, characters are both; scenes and clues are hooks.
+In `Casebook`, characters are both; shared lines and scenes are hooks.
 
 A perspective is a group a speaker comes from. The builder asks who else would
 comment on the user's week, and looks in the research for groups that comment in
@@ -195,11 +202,11 @@ checksum changes, so a hand edit is covered too.
 Building costs more, once per theme. Upkeep stays cheap: scripts do the math,
 and a reminder reads only the root, the picked entry and the options file.
 
-| Build, estimated                    | Agents, estimated    | On a normal subscription, estimated |
-| ----------------------------------- | -------------------- | ----------------------------------- |
-| The small theme, about 20 entries   | 2 research, 2 review | One sitting                         |
-| A later batch of about 15 entries   | 1 research, 1 review | Part of a sitting                   |
-| A large theme, 4 kinds, 180 entries | 12 to 20 of each     | Several sittings over a few days    |
+| Build, estimated                    | Agents, estimated             | On a normal subscription, estimated |
+| ----------------------------------- | ----------------------------- | ----------------------------------- |
+| The small theme, about 20 entries   | 1 research, 1 review per kind | One or two sittings                 |
+| A later batch of about 15 entries   | 1 research, 1 review          | Part of a sitting                   |
+| A large theme, 4 kinds, 180 entries | 12 or more of each            | Several sittings over a few days    |
 
 A research agent reads 20 to 40 pages, about a long chat's worth. Every number
 here is an estimate, not a requirement; the first real build measures them. The

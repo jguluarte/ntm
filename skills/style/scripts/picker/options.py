@@ -28,7 +28,6 @@ class Options:
 
 class Pool:
     def __init__(self, kind, fields):
-        self.kind = kind
         self.gives = fields[GIVES]
         self.entries = [Entry(kind, slug) for slug in fields[ENTRIES]]
 

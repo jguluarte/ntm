@@ -1,4 +1,5 @@
-# The actors a reminder is written as, and the lines any actor can say.
+# The actors a reminder is written as or built on, and the lines any actor can
+# say.
 about: >-
   The actors a reminder is written as or built on. When the job picks one of
   them as the speaker, from `Dragify-options.yaml`, write the whole message as

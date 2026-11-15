@@ -20,15 +20,10 @@ changes, which each task's `Planned date history` lists. The verdict is `landed`
 when they did, `missed` when they didn't, and `none` when every task was done
 before the message went out.
 
-A run judges the previous calendar week through Saturday: the weekly message of
-the Sunday evening that opens it, and Monday to Friday's reminders. An action
-credits the last message before it that names the task, so a message's window
-runs until the next message naming the task: the evening reminder has the night,
-Friday evening's has Friday night and Saturday, and the weekly message has until
-Monday's reminders.
-
-An action on Sunday between the run and the weekly message credits a message the
-run already judged, usually Friday evening's, so it counts for no message.
+A run takes in the seven days before it, last Sunday through yesterday; anything
+done on the Sunday of the run is picked up by the next run. An action credits
+the last message before it that names the task, so a message's window runs until
+the next message naming the task.
 
 It hands the script one line per entry, its `sent` time and verdict: in a normal
 week, about 16 messages, three reminders each weekday and the weekly message.

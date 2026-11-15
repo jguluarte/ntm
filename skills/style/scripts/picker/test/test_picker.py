@@ -6,9 +6,16 @@ from picker import Options, Picker
 RUNS = 50
 
 
+def make_picker_args(options, **flags):
+    args = ["hook", "--options", str(options)]
+    for name, value in flags.items():
+        args += [f"--{name}", str(value)]
+    return args
+
+
 class CommandLineTest(unittest.TestCase):
     def test_hook_draws_from_the_options_file_with_the_seed(self):
-        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "2"]
+        args = make_picker_args(fixtures.EVEN, seed=2)
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
@@ -16,7 +23,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual("hook: scenes/dawn", drawn)
 
     def test_the_seed_is_optional(self):
-        args = ["hook", "--options", str(fixtures.EVEN)]
+        args = make_picker_args(fixtures.EVEN)
 
         picker = Picker.from_args(args)
 
@@ -32,7 +39,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "seven"]
+        args = make_picker_args(fixtures.EVEN, seed="seven")
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
 
@@ -42,7 +49,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
-        args = ["hook", "--options", str(fixtures.NOT_THERE)]
+        args = make_picker_args(fixtures.NOT_THERE)
         why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
         expected = f"Picker FAILED: FileNotFoundError: {why}"
 

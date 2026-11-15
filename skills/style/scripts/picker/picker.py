@@ -1,9 +1,8 @@
 import argparse
 import sys
 
-from modes import MODES
+from modes import HookMode
 
-PICK = "pick"
 FAILED = "Picker FAILED: {}: {}"
 
 
@@ -14,11 +13,9 @@ class Picker:
 
     @classmethod
     def from_args(cls, args):
-        parser = argparse.ArgumentParser(prog=PICK, exit_on_error=False)
-        subcommands = parser.add_subparsers(dest="mode", required=True)
-        for mode in MODES.values():
-            subcommand = subcommands.add_parser(mode.NAME, exit_on_error=False)
-            mode.add_flags(subcommand)
+        parser = argparse.ArgumentParser(exit_on_error=False)
+        subcommands = parser.add_subparsers(required=True)
+        HookMode.add_subcommand(subcommands)
         return cls(parser, args)
 
     def __enter__(self):
@@ -32,5 +29,12 @@ class Picker:
     def selections(self):
         # Parsed inside the with block, so Picker reports a bad flag.
         flags = self.parser.parse_args(self.args)
-        mode = MODES[flags.mode](flags)
+        mode = flags.mode.from_flags(flags)
         return mode.selections()
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    with Picker.from_args(args) as picker:
+        selections = picker.selections()
+        print(selections)

@@ -11,14 +11,21 @@ HOOK_LINE = "hook: {}"
 class HookMode:
     NAME = "hook"
 
-    def __init__(self, flags):
-        self.options = Options.load(flags.options)
-        self.generator = random.Random(flags.seed)
+    def __init__(self, options, generator):
+        self.options = options
+        self.generator = generator
 
-    @staticmethod
-    def add_flags(parser):
-        parser.add_argument(OPTIONS, required=True)
-        parser.add_argument(SEED, type=int)
+    @classmethod
+    def add_subcommand(cls, subcommands):
+        subcommand = subcommands.add_parser(cls.NAME, exit_on_error=False)
+        subcommand.add_argument(OPTIONS, required=True)
+        subcommand.add_argument(SEED, type=int)
+        subcommand.set_defaults(mode=cls)
+
+    @classmethod
+    def from_flags(cls, flags):
+        options = Options.load(flags.options)
+        return cls(options, random.Random(flags.seed))
 
     def selections(self):
         hooks = self.options.hooks()
@@ -26,6 +33,3 @@ class HookMode:
             raise NoHooks()
         hook = self.generator.choice(hooks)
         return HOOK_LINE.format(hook)
-
-
-MODES = {HookMode.NAME: HookMode}

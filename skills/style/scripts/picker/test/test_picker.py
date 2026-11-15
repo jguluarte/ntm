@@ -39,7 +39,7 @@ class DrawTest(PickerTestCase):
 
 class CommandLineTest(PickerTestCase):
     def test_an_unknown_mode_fails_naming_the_modes(self):
-        why = "argument mode: invalid choice: 'hooks' (choose from 'hook')"
+        why = "argument {hook}: invalid choice: 'hooks' (choose from 'hook')"
         self.assertFails(f"ArgumentError: {why}", self.pick, "hooks")
 
     def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):

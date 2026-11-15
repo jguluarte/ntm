@@ -31,9 +31,9 @@ class ParseTest(unittest.TestCase):
         expected = "more than one reminder type: evening, morning"
         self.assertEqual(expected, str(raised.exception))
 
-    def test_the_options_are_the_ones_the_schema_lists_for_when(self):
+    def test_the_options_are_the_ones_the_schema_lists_for_type(self):
         schema = yaml.safe_load(OPTIONS_SCHEMA.read_text(encoding="utf-8"))
         options = {option.value for option in [*ReminderType, *TaskOutcome]}
 
-        expected = set(schema["$defs"]["occasion"]["enum"])
+        expected = set(schema["$defs"]["reminder_type_or_task_outcome"]["enum"])
         self.assertEqual(expected, options)

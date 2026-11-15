@@ -3,8 +3,8 @@ pools:
     roles: [hook]
     entries:
       evening_done:
-        when: [evening, done]
+        type: [evening, done]
       slipped:
-        when: slipped
+        type: slipped
       morning_slipped:
-        when: [morning, slipped]
+        type: [morning, slipped]

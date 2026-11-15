@@ -10,17 +10,19 @@ class PickerTestCase(unittest.TestCase):
     def setUp(self):
         self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
 
-    def pick_hook(self, options, *flags):
-        args = ["hook", "--options", str(options), *flags]
+    def pick(self, *args):
         with Picker.from_args(args) as picker:
             return picker.selections()
+
+    def pick_hook(self, options, *flags):
+        return self.pick("hook", "--options", str(options), *flags)
 
     def drawn(self, seed):
         return self.pick_hook(EVEN, "--seed", str(seed))
 
-    def assertFails(self, why, options, *flags):
+    def assertFails(self, why, pick, *args):
         with self.assertRaises(SystemExit) as exited:
-            self.pick_hook(options, *flags)
+            pick(*args)
         self.assertEqual(f"Picker FAILED: {why}", exited.exception.code)
 
 
@@ -36,13 +38,17 @@ class DrawTest(PickerTestCase):
 
 
 class CommandLineTest(PickerTestCase):
+    def test_an_unknown_mode_fails_naming_the_modes(self):
+        why = "argument mode: invalid choice: 'hooks' (choose from 'hook')"
+        self.assertFails(why, self.pick, "hooks")
+
     def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):
         why = "unrecognized arguments: --colour red"
-        self.assertFails(why, EVEN, "--colour", "red")
+        self.assertFails(why, self.pick_hook, EVEN, "--colour", "red")
 
     def test_a_seed_that_isnt_a_whole_number_fails_saying_so(self):
         why = "argument --seed: invalid int value: 'seven'"
-        self.assertFails(why, EVEN, "--seed", "seven")
+        self.assertFails(why, self.pick_hook, EVEN, "--seed", "seven")
 
 
 class OptionsFileTest(PickerTestCase):
@@ -54,21 +60,25 @@ class OptionsFileTest(PickerTestCase):
     def test_an_options_file_that_cant_be_read_fails_naming_it(self):
         path = self.folder / "Gone-options.yaml"
         why = f"[Errno 2] No such file or directory: '{path}'"
-        self.assertFails(why, path)
+        self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_that_isnt_yaml_fails_naming_it(self):
         path = self.options_file("pools: a: b\n")
         where = f'in "{path}", line 1, column 9'
-        self.assertFails(f"mapping values are not allowed here {where}", path)
+        why = f"mapping values are not allowed here {where}"
+        self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_without_pools_fails_saying_so(self):
         path = self.options_file("theme: Dusk\n")
-        self.assertFails("the options file has no pools", path)
+        why = "the options file has no pools"
+        self.assertFails(why, self.pick_hook, path)
 
     def test_a_pool_without_entries_fails_naming_it(self):
         path = self.options_file("pools:\n  scenes:\n    gives: [hook]\n")
-        self.assertFails("pool scenes needs gives and entries", path)
+        why = "pool scenes needs gives and entries"
+        self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_without_hooks_fails_saying_so(self):
         path = self.options_file("pools:\n  cast: {gives: [], entries: {}}\n")
-        self.assertFails("the options file has no hooks", path)
+        why = "the options file has no hooks"
+        self.assertFails(why, self.pick_hook, path)

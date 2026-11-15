@@ -22,7 +22,3 @@ class PickTest(unittest.TestCase):
         why = "the following arguments are required: --options"
         expected = (1, f"Picker FAILED: {why}\n")
         self.assertEqual(expected, (ran.returncode, ran.stderr))
-
-    def test_an_unknown_mode_fails_naming_the_modes(self):
-        why = "argument mode: invalid choice: 'hooks' (choose from 'hook')"
-        self.assertEqual(f"Picker FAILED: {why}\n", self.pick("hooks").stderr)

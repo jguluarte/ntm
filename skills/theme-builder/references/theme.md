@@ -59,16 +59,17 @@ Name each level in the theme's words, as its key, and write how it sounds.
 A kind is one sort of material in their world. Each kind has its own pool in the
 options file and its own name in an entry file; one entry file can hold several
 kinds. No list of kinds is fixed: derive them from the world's own material, as
-the user describes it and as you know it. Most worlds have actors: people who
+the user describes it and as you know it. Most worlds have speakers: people who
 talk in a manner of their own. Two more kinds turn up in many worlds: recurring
 scenes a message can be set in, and single moments to call back to.
 
 Propose kinds, each with an `about` saying what an entry is and how a message
 uses one, and the keys its entries share. The user keeps, renames or drops them.
 
-An entry that talks in a manner of its own can be a `speaker`; one with
-something to build on, such as lines, a scene or a moment, can be a `hook`.
-Actors are usually both.
+An entry that talks in a manner of its own can be a `speaker`, who says a
+message. One with something to build on, such as lines, a scene or a moment, can
+be a `hook`: what a message is built on, one entry of the theme or a line from
+it. People who talk are usually both.
 
 Write each entry file, `<Theme>-<descriptor>.yaml`, with its `about` and each
 kind's `about`. In the options file, `<Theme>-options.yaml`, give each kind a

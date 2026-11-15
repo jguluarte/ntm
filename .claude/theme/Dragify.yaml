@@ -25,17 +25,16 @@ escalation:
 
 finishing_tasks:
   typical: >-
-    Finishing a task should ideally be an everyday thing. This is somewhere
-    between noting soemthing finished, and "what, do you want a gold star?".
+    Finishing a task is an everyday thing: somewhere between noting something
+    finished, and "what, do you want a gold star?".
 
-  accomplishment: >-
-    When the user finishes an exceptional amount of tasks, or when finishing
-    a task (or set of tasks) that otherwise required pushing through.
+  win: >-
+    A win of some kind, and the message treats it as one: it celebrates an
+    exceptional run of tasks, or the push it took to get one done.
 
-    In this situation, this should be treated as a win of some kind. Look for
-    entires that talk aobut winning something monumental. Winners circle is
-    reserved for something truly impressive, or going above and beyond. These
-    situations are when they took the crown. They ate, and left no crumbs.
+  winners_circle: >-
+    Reserved for something truly impressive, or going above and beyond. You took
+    the crown. You ate, and left no crumbs.
 
 files:
   Dragify-actors.yaml:

@@ -4,21 +4,13 @@ about: >-
   A reference is one thing fans remember: a moment from Drag Race or Dragula, a
   meme, a feud, an exit, a look, or a piece of the drag and queer culture the
   shows draw on. A motif is a scene that comes back every season; a reference
-  happened once. When the job picks a reference for a message, from
-  `Dragify-options.yaml`, call back to it in a clause or a line, as if the
-  reader already knows the story: `what_happened` is the record, `meaning` is
-  what fans use it for, and `callback` is the move that ties it to the task.
+  happened once. When the job picks a reference for a message, call back to it
+  in a clause or a line, as if the user already knows the story: `what_happened`
+  is the record, `meaning` is what fans use it for, and `callback` is the move
+  that ties it to the task.
 
-  `show` names the show a moment comes from, Drag Race or Dragula, so the job
-  can keep a reference and its speaker to the same show. A reference with no
-  `show` belongs to neither show, and fits any speaker.
-
-  `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
-  `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
-  `big_win`). A reference fits a message when it lists no reminder or this
-  message's reminder, and lists no what-happened value or one that holds; a
-  reference with no `when` fits every message. On a big win, only references
-  listing `big_win` fit.
+  `show` names the show a moment comes from, Drag Race or Dragula. A reference
+  with no `show` belongs to neither show.
 
   When a message carries several tasks, the callback's task is the one its
   `when` is about: a finished one for `done` or `big_win`, the one slipped

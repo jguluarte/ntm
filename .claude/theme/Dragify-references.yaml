@@ -4,10 +4,10 @@ about: >-
   A reference is one thing fans remember: a moment from Drag Race or Dragula, a
   meme, a feud, an exit, a look, or a piece of the drag and queer culture the
   shows draw on. A motif is a scene that comes back every season; a reference
-  happened once. When the job picks a reference for a message, from
-  `Dragify-options.yaml`, call back to it in a clause or a line, as if the user
-  already knows the story: `what_happened` is the record, `meaning` is what fans
-  use it for, and `callback` is the move that ties it to the task.
+  happened once. When the job picks a reference for a message, call back to it
+  in a clause or a line, as if the user already knows the story: `what_happened`
+  is the record, `meaning` is what fans use it for, and `callback` is the move
+  that ties it to the task.
 
   `show` names the show a moment comes from, Drag Race or Dragula. A reference
   with no `show` belongs to neither show.

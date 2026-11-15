@@ -1,12 +1,12 @@
 # The motifs a message can be staged as: the shows' recurring scenes.
 about: >-
   The challenges, rituals and scenes that come back season after season on Drag
-  Race and Dragula. When the job picks a motif for a message, from
-  `Dragify-options.yaml`, set the message inside it: `on_the_show` is how the
-  scene plays, `staging` casts the task in it, and `phrases` are what people say
-  at that moment on the show. Use at most one phrase, where the scene says it,
-  bent toward the task when that helps. A speaker who isn't the host plays the
-  host's part in a scene by reporting it or standing in, in their own manner.
+  Race and Dragula. When the job picks a motif for a message, set the message
+  inside it: `on_the_show` is how the scene plays, `staging` casts the task in
+  it, and `phrases` are what people say at that moment on the show. Use at most
+  one phrase, where the scene says it, bent toward the task when that helps. A
+  speaker who isn't the host plays the host's part in a scene by reporting it or
+  standing in, in their own manner.
 
   When a message carries several tasks, the staging's task is the one its `when`
   is about: a finished one for `done` or `big_win`, the one slipped longest for

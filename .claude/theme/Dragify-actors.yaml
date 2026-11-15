@@ -2,13 +2,12 @@
 # say.
 about: >-
   The actors a reminder is written as or built on. When the job picks one of
-  them as the speaker, from `Dragify-options.yaml`, write the whole message as
-  that speaker: their rhythm, their words, their kind of read. When it picks one
-  as the hook, build the message on their lines and riffs. An actor's `riffs`
-  are famous lines to bend rather than quote, each with a `bend` saying how to
-  turn it toward the task. A riff with `when` in place of a `bend` fits as it
-  is, and only on the occasion it names. After the last actor come the lines any
-  actor can say.
+  them as the speaker, write the whole message as that speaker: their rhythm,
+  their words, their kind of read. When it picks one as the hook, build the
+  message on their lines and riffs. An actor's `riffs` are famous lines to bend
+  rather than quote, each with a `bend` saying how to turn it toward the task. A
+  riff with `when` in place of a `bend` fits as it is, and only on the occasion
+  it names. After the last actor come the lines any actor can say.
 
 actors:
   rupaul:

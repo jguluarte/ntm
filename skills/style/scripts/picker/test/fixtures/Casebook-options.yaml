@@ -24,7 +24,7 @@ pools:
         line_half_life_days: 4
         score: 0.0
       big_win:
-        when: big_win
+        type: big_win
         weight: 0.25
         line_half_life_days: 30
         score: 0.0

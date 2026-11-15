@@ -10,7 +10,7 @@ OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
-WHEN = "when"
+TYPE = "type"
 HOOK_ROLE = "hook"
 
 
@@ -110,8 +110,8 @@ class Option:
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
-        when = (entry or {}).get(WHEN, [])
-        values = {when} if isinstance(when, str) else set(when)
+        types = (entry or {}).get(TYPE, [])
+        values = {types} if isinstance(types, str) else set(types)
         reminder_types = frozenset(ReminderType.named_in(values))
         task_outcomes = frozenset(TaskOutcome.named_in(values))
         return cls(kind, slug, reminder_types, task_outcomes)

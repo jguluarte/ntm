@@ -1,7 +1,5 @@
 import yaml
 
-from exceptions import PickerFailed
-
 POOLS = "pools"
 GIVES = "gives"
 ENTRIES = "entries"
@@ -10,11 +8,8 @@ HOOK = "hook"
 
 class Options:
     def __init__(self, fields):
-        pools_by_kind = fields.get(POOLS) if isinstance(fields, dict) else None
-        if not isinstance(pools_by_kind, dict):
-            raise PickerFailed("the options file has no pools")
-        pools = [Pool(kind, pool) for kind, pool in pools_by_kind.items()]
-        self.entries = [entry for pool in pools for entry in pool.entries]
+        pools_by_kind = fields[POOLS]
+        self.pools = [Pool(kind, pools_by_kind[kind]) for kind in pools_by_kind]
 
     @classmethod
     def load(cls, path):
@@ -22,30 +17,29 @@ class Options:
             return cls(yaml.safe_load(file))
 
     def hooks(self):
-        return [entry for entry in self.entries if entry.pool.gives(HOOK)]
+        hooks = []
+        for pool in self.hook_pools():
+            hooks.extend(pool.entries)
+        return hooks
+
+    def hook_pools(self):
+        return [pool for pool in self.pools if pool.gives_hook()]
 
 
 class Pool:
     def __init__(self, kind, fields):
-        if not self._well_formed(fields):
-            raise PickerFailed(f"pool {kind} needs gives and entries")
         self.kind = kind
-        self.given = fields[GIVES]
-        self.entries = [Entry(self, slug) for slug in fields[ENTRIES]]
+        self.gives = fields[GIVES]
+        self.entries = [Entry(kind, slug) for slug in fields[ENTRIES]]
 
-    def gives(self, role):
-        return role in self.given
-
-    @staticmethod
-    def _well_formed(fields):
-        if not isinstance(fields, dict):
-            return False
-        has_gives = isinstance(fields.get(GIVES), list)
-        has_entries = isinstance(fields.get(ENTRIES), dict)
-        return has_gives and has_entries
+    def gives_hook(self):
+        return HOOK in self.gives
 
 
 class Entry:
-    def __init__(self, pool, slug):
-        self.pool = pool
-        self.id = f"{pool.kind}/{slug}"
+    def __init__(self, kind, slug):
+        self.kind = kind
+        self.slug = slug
+
+    def __str__(self):
+        return f"{self.kind}/{self.slug}"

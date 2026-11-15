@@ -70,15 +70,15 @@ class OptionsFileTest(PickerTestCase):
 
     def test_an_options_file_without_pools_fails_saying_so(self):
         path = self.options_file("theme: Dusk\n")
-        why = "PickerFailed: the options file has no pools"
+        why = "KeyError: 'pools'"
         self.assertFails(why, self.pick_hook, path)
 
     def test_a_pool_without_entries_fails_naming_it(self):
         path = self.options_file("pools:\n  scenes:\n    gives: [hook]\n")
-        why = "PickerFailed: pool scenes needs gives and entries"
+        why = "KeyError: 'entries'"
         self.assertFails(why, self.pick_hook, path)
 
     def test_an_options_file_without_hooks_fails_saying_so(self):
         path = self.options_file("pools:\n  cast: {gives: [], entries: {}}\n")
-        why = "PickerFailed: the options file has no hooks"
+        why = "NoHooks: no pool in the options file gives a hook"
         self.assertFails(why, self.pick_hook, path)

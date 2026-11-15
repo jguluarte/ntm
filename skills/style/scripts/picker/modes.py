@@ -1,6 +1,6 @@
 import random
 
-from exceptions import PickerFailed
+from exceptions import NoHooks
 from options import Options
 
 OPTIONS = "--options"
@@ -22,14 +22,10 @@ class HookMode:
 
     def selections(self):
         hooks = self.options.hooks()
-        self._require_drawable(hooks)
-        hook = self.generator.choice(hooks)
-        return HOOK_LINE.format(hook.id)
-
-    @staticmethod
-    def _require_drawable(hooks):
         if not hooks:
-            raise PickerFailed("the options file has no hooks")
+            raise NoHooks()
+        hook = self.generator.choice(hooks)
+        return HOOK_LINE.format(hook)
 
 
 MODES = {HookMode.NAME: HookMode}

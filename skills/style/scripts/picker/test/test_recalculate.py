@@ -29,7 +29,7 @@ def read_weights(options):
 
 
 class CommandLineTest(unittest.TestCase):
-    def test_start_reads_the_options_file_and_each_entry_file(self):
+    def test_start_reads_each_entry_file_it_is_given(self):
         args = make_start_args(
             fixtures.CASEBOOK, fixtures.CASEBOOK_CHARACTERS,
             fixtures.CASEBOOK_SCENES,

@@ -1,5 +1,5 @@
 # The references a message can call back to: single moments from the shows and
-# from the culture around them.
+# from the culture around them, and the landmark wins for the winner's circle.
 about: >-
   A reference is one thing fans remember: a moment from Drag Race or Dragula, a
   meme, a feud, an exit, a look, or a piece of the drag and queer culture the
@@ -1552,3 +1552,251 @@ references:
     callback: >-
       Pull the wig off whatever has been upstaging the task today and toss it in
       the toilet, Neely O'Hara style.
+
+winners_circle:
+  about: >-
+    Landmark wins, for the winner's circle only: something truly impressive and
+    shocking, or going above and beyond. Never for an ordinary win. Each reads
+    like a reference, and its callback measures the user's finish against the
+    landmark: the task that earned the winner's circle, set beside a win fans
+    still talk about.
+
+  # Drag Race, Seasons 1 to 18
+
+  bebe_the_first_crown:
+    name: BeBe, the first crown
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 1 (2009): BeBe Zahara Benet beat Nina Flowers in the final lip
+      sync, to RuPaul's "Cover Girl", and became the first queen ever crowned
+      America's Next Drag Superstar.
+
+    meaning: >-
+      The very first; the original every later winner follows.
+
+    callback: >-
+      Crown the finished task the way the first crown went to BeBe: the original
+      of its kind, the one every later finish will be held up against.
+
+  jinkxs_little_edie:
+    name: Jinkx's Little Edie
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 5 (2013) Snatch Game: Jinkx Monsoon played Little Edie Beale of the
+      documentary Grey Gardens and won the challenge. She went on to take the
+      crown, the first season winner who had also won Snatch Game.
+
+    meaning: >-
+      The deep-cut choice that wins anyway; the quirky underdog revealed as the
+      one to beat.
+
+    callback: >-
+      Credit the user's odd, specific way through the task as their Little Edie:
+      the deep cut nobody else would have picked, and the win that showed who to
+      beat.
+
+  bobs_two_in_one_snatch_game:
+    name: Bob's two-in-one Snatch Game
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 8 Snatch Game: Bob the Drag Queen played Uzo Aduba for the first
+      half, switched to Carol Channing for the second, and won the challenge,
+      the first queen to play two celebrities in one game. She went on to win
+      the season.
+
+    meaning: >-
+      Twice the job in the same time slot, and still the win.
+
+    callback: >-
+      Hold the finish up to Bob's switch mid-game: twice the job the day asked
+      for, done in the time meant for one, and the win for both halves.
+
+  # Drag Race All Stars
+
+  trixies_comeback:
+    name: Trixie's comeback
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 7: Trixie Mattel was sent home in episode 4, brought back in
+      episode 8 and sent home again in episode 10, placing sixth. On All Stars 3
+      she won the final lip sync and the crown.
+
+    meaning: >-
+      Out twice, then the title: the comeback that ends on top.
+
+    callback: >-
+      Count every time the task went home before today against Trixie's two
+      exits in one season, then crown it the way All Stars 3 crowned her.
+
+  sheas_redemption:
+    name: Shea's redemption
+
+    show: Drag Race
+
+    what_happened: >-
+      Season 9: Shea Couleé went out in her first lip sync of the finale,
+      against Sasha Velour. On All Stars 5 she won Snatch Game as Flavor Flav,
+      both her Lip Syncs for Your Legacy, and the Lip Sync for the Crown.
+
+    meaning: >-
+      Losing the big one, coming back, and winning it.
+
+    callback: >-
+      Give Shea's All Stars 5 run to the task that blew its big moment once:
+      back for the round it lost, and this time winning every round, the crown
+      included.
+
+  jinkx_queen_of_all_queens:
+    name: Jinkx, Queen of All Queens
+
+    show: Drag Race
+
+    what_happened: >-
+      All Stars 7 (2022) cast only past winners and sent nobody home. Jinkx
+      Monsoon won five challenges and the final lip sync against Monét X Change,
+      and was named the first Queen of All Queens, the first queen to win Drag
+      Race twice.
+
+    meaning: >-
+      The winner among winners; topping a room of champions.
+
+    callback: >-
+      Line the task up against the user's past big finishes, a cast of winners
+      like All Stars 7's, and crown it the winner among them.
+
+  ginger_minjs_fourth_try:
+    name: Ginger Minj's fourth try
+
+    show: Drag Race
+
+    what_happened: >-
+      Ginger Minj was runner-up on Season 7, out eighth on All Stars 2 and
+      runner-up again on All Stars 6. On All Stars 10 (2025), her fourth try,
+      she won the final lip sync against Jorgeous, the crown and a place in the
+      Hall of Fame.
+
+    meaning: >-
+      The long-overdue win after years of nearly.
+
+    callback: >-
+      Read the task's near misses into the record like Ginger's: runner-up, out,
+      runner-up again. Then crown it on the try that finally landed.
+
+  # Drag Race UK and UK vs the World
+
+  lawrences_five_in_a_row:
+    name: Lawrence's five in a row
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2 (2021): Lawrence Chaney won a challenge in each of
+      the first five episodes, the minis in the first two and the main
+      challenges in the next three. No queen in the franchise had won five
+      episodes running. She went on to win the series.
+
+    meaning: >-
+      A hot streak nobody can stop.
+
+    callback: >-
+      Set the user's run beside Lawrence's opening five, a win every episode,
+      and make the finished task the fifth: the streak nobody in the franchise
+      had pulled off.
+
+  tia_kofi_takes_the_world:
+    name: Tia Kofi takes the world
+
+    show: Drag Race
+
+    what_happened: >-
+      Drag Race UK, Series 2: Tia Kofi lip synced three times and placed
+      seventh. On UK vs the World, Series 2 (2024), she won, was crowned Queen
+      of the Mothertucking World, and took the show's first cash prize, £50,000.
+
+    meaning: >-
+      The queen nobody tipped, coming back to win on the world stage.
+
+    callback: >-
+      Take the task from the bottom, where it lip synced for its life, to the
+      top of the world, the way Tia went from seventh at home to Queen of the
+      Mothertucking World.
+
+  # Dragula
+
+  dahli_back_from_the_dead:
+    name: Dahli, back from the dead
+
+    show: Dragula
+
+    what_happened: >-
+      Dahli placed seventh on Season 2, was the last monster killed off in
+      Dragula: Resurrection (2020), and came back to life after the credits. She
+      joined Season 4 in its second episode and won it: the first contestant on
+      any drag competition to return for a second regular season and win.
+
+    meaning: >-
+      Written off, literally dead, and still the champion.
+
+    callback: >-
+      Dig up the task the user had already killed off, the way Dahli came back
+      to life after the credits, walk it in late, and pour the Supermonster's
+      bucket of blood over its head.
+
+  # Around the shows: Project Runway and Legendary
+
+  christian_siriano_the_youngest_winner:
+    name: Christian Siriano, the youngest winner
+
+    what_happened: >-
+      Project Runway, Season 4 (2008): Christian Siriano, 21, beat Jillian Lewis
+      and Rami Kashou to become the youngest winner in the show's history. The
+      guest judge, Victoria Beckham, said she would be honored to wear his
+      clothes.
+
+    meaning: >-
+      Arriving young and fierce, and leaving with everything.
+
+    callback: >-
+      Send the finished task down the runway as Christian Siriano's winning
+      collection: done long before anyone thought the user was ready, with the
+      celebrity judge asking to wear it.
+
+  miyake_muglers_last_battle:
+    name: Miyake-Mugler's last battle
+
+    what_happened: >-
+      Legendary, HBO Max's ballroom competition, Season 2 (2021): the final came
+      down to House of Miyake-Mugler and House of Balenciaga, battling one
+      element of vogue at a time. The last, spins and dips, decided it:
+      Miyake-Mugler won, 53 points to 47.
+
+    meaning: >-
+      A title decided in the very last round.
+
+    callback: >-
+      Score the task like the Legendary final, point for point down to the last
+      element, and make its final step the spin and dip that takes it 53 to 47.
+
+  juicy_couture_the_kiki_house:
+    name: Juicy Couture, the kiki house
+
+    what_happened: >-
+      Legendary, Season 3 (2022): House of Juicy Couture came in as a kiki
+      house, from the ballroom scene's younger, less experienced tier. It never
+      landed in the bottom, and beat House of Yohji Yamamoto in the final.
+
+    meaning: >-
+      The junior league beating the legends, without a single slip.
+
+    callback: >-
+      Bring the task in as a kiki house, the junior league in a room of legends,
+      and walk it to the final without one week in the bottom, past the houses
+      meant to win.

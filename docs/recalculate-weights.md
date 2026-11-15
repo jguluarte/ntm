@@ -1,7 +1,8 @@
-# The nightly job
+# Recalculating the picker's weights
 
-A sketch of the weekly run that keeps a theme's numbers, and its skill. A line
-that waits on a decision says "to decide"; the open questions are at the end.
+A sketch of how the picker's weights get recalculated, and of the skill that
+does it. A line that waits on a decision says "to decide"; the open questions
+are at the end.
 
 ## What it is for
 
@@ -198,8 +199,8 @@ and the history cost their size again.
 ## The script's shape
 
 The script is one Python module on the picker's stack. It computes a theme's
-numbers for both the weekly run and the theme builder (`docs/theme-builder.md`),
-with a class per file it works on:
+numbers for both the recalculation and the theme builder
+(`docs/theme-builder.md`), with a class per file it works on:
 
 | Class       | Owns                                                             |
 | ----------- | ---------------------------------------------------------------- |
@@ -236,7 +237,9 @@ picker's history slice.
 
 ## Open questions
 
-1. The skill's name, and the command's and this document's title with it.
+1. The skill's name, and the command's with it. Suggested, following the owner's
+   comment that the name says what it does: `ntm:recalculate-weights`, and
+   `recalculate-weights` for the command. Waits on the owner's yes.
 2. The hand-off of a file's text between the backend and the script.
 3. Each line marked "to decide" above.
 4. Whether the history's `Keep:` line goes, now that pruning bounds it.

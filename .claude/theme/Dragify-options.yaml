@@ -3,7 +3,7 @@
 pools:
   actors:
     file: Dragify-actors.yaml
-    gives: [hook, speaker]
+    roles: [hook, speaker]
     entries:
       rupaul: {}
 
@@ -93,7 +93,7 @@ pools:
 
   any_actor_lines:
     file: Dragify-actors.yaml
-    gives: [hook]
+    roles: [hook]
     entries:
       any_time: {}
 
@@ -102,7 +102,7 @@ pools:
 
   motifs:
     file: Dragify-motifs.yaml
-    gives: [hook]
+    roles: [hook]
     entries:
       previously_on:
         when: [morning, weekly]
@@ -259,7 +259,7 @@ pools:
 
   references:
     file: Dragify-references.yaml
-    gives: [hook]
+    roles: [hook]
     entries:
       season_1_filter:
         when: slipped

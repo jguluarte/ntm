@@ -37,41 +37,34 @@ finishing_tasks:
     shocking, or going above and beyond.
 
 files:
-  Dragify-actors.yaml:
-    holds: >-
+  by_entry:
+    Dragify-actors.yaml: >-
       The actors, each with who they are and what people call them, how they
       talk, what they do on the show, how they roast a task, their lines, and
       for some their riffs: lines to bend toward the task, or to keep for one
       occasion. Then the lines any actor can say: the lines fans repeat as
       catchphrases, many from queens who aren't actors here, and a few kept for
       a big win or the winner's circle.
-    read: entry
 
-  Dragify-motifs.yaml:
-    holds: >-
+    Dragify-motifs.yaml: >-
       The motifs: the shows' challenges, rituals and scenes a message can be
       staged as, each with its show, what it is, how it plays on the show, how
       to stage a task in it, the phrases said at that moment, and for some a
       `when` naming the messages it fits.
-    read: entry
 
-  Dragify-options.yaml:
-    holds: >-
-      The pools the job picks from: the actors as speakers and hooks, and the
-      lines any actor can say, the motifs and the references as hooks, each with
-      `when` where it has one.
-    read: picker
-
-  Dragify-references.yaml:
-    holds: >-
+    Dragify-references.yaml: >-
       The references: single moments from the shows and the culture around them
       that a message can call back to, each with what happened, what fans use it
       for and how to call back to it on a task, and for some the show it comes
       from and a `when` naming the messages it fits.
-    read: entry
 
-  Dragify-terminology.md:
-    holds: >-
-      The drag words the writer would otherwise miss or misuse, and how
-      sparingly to use them.
-    read: whole
+  fully_read:
+    Dragify-terminology.md: >-
+      The drag words you would otherwise miss or misuse, and how sparingly to
+      use them.
+
+  for_the_picker:
+    Dragify-options.yaml: >-
+      The pools the job picks from: the actors as speakers and hooks, and the
+      lines any actor can say, the motifs and the references as hooks, each with
+      `when` where it has one.

@@ -42,21 +42,29 @@ stage saves its part, so each is a place to stop and come back.
 | `<Theme>-message-history` | The skill, from its template              | Exists, empty                           |
 
 The smallest theme that works: a root, an options file, a history and one entry
-file of about 20 hooks, more than a week of messages. Speakers, perspectives,
-terminology and more kinds come later. The builder offers this one first.
+file of hooks. About 20 hooks, an estimate and not a rule, is more than a week
+of messages. Speakers, perspectives, terminology and more kinds come later. The
+builder offers this one first.
 
 ## The research pass
 
 The skill starts the agents, since an agent can't start others: one per batch of
-about 15 entries of one kind. Each gets the root's `world`, the kind's `about`
-and keys, the entries the theme already has, its part of the world, and these
-rules. It writes a scratch file of entries, each line with the page it came
-from.
+one kind, about 15 entries as an estimate to tune. Each gets the root's `world`,
+the kind's `about` and keys, the entries the theme already has, its part of the
+world, and these rules. It writes a scratch file of entries, each line with the
+page it came from.
 
 - Every quote and moment comes from a page read in that run.
 - Nothing about illness, death, identity or a scandal.
 - No song lyrics added by an agent.
 - No crawl, no site's API, no changed user agent, nothing submitted.
+
+To decide: today's skill maps the day onto the theme's world (the week as a
+season, the morning as a preview, the evening as the main event), and the root
+has no place for it now. Either it goes, and time-of-day flavour comes only from
+entries whose `when` names a reminder, or the builder still asks for it and
+briefs the research with it, so entries are written and tagged for the morning,
+the evening or the week.
 
 ### Lines judged alone
 
@@ -112,6 +120,9 @@ the story: a crowd, staff, an audience, a newspaper, an object that tells it.
 To decide: whether a memberless perspective's sound lives in its own entry file
 or beside the speakers.
 
+To decide: whether every speaker must belong to a perspective, or one in none is
+still drawn straight from its pool.
+
 ## Validation
 
 A script beside the options schema checks the theme before it joins the
@@ -157,14 +168,15 @@ builder asking whether to grow a theme or add one.
 Building costs more, once per theme. Upkeep stays cheap: scripts do the math,
 and a reminder reads only the root, the picked entry and the options file.
 
-| Build                               | Agents               | On a normal subscription         |
-| ----------------------------------- | -------------------- | -------------------------------- |
-| The small theme, about 20 hooks     | 2 research, 2 review | One sitting                      |
-| A later batch of about 15 entries   | 1 research, 1 review | Part of a sitting                |
-| A large theme, 4 kinds, 180 entries | 12 to 20 of each     | Several sittings over a few days |
+| Build, estimated                    | Agents, estimated    | On a normal subscription, estimated |
+| ----------------------------------- | -------------------- | ----------------------------------- |
+| The small theme, about 20 hooks     | 2 research, 2 review | One sitting                         |
+| A later batch of about 15 entries   | 1 research, 1 review | Part of a sitting                   |
+| A large theme, 4 kinds, 180 entries | 12 to 20 of each     | Several sittings over a few days    |
 
-A research agent reads 20 to 40 pages, about a long chat's worth; the first real
-build measures it. The next run picks up after the last saved stage or batch.
+A research agent reads 20 to 40 pages, about a long chat's worth. Every number
+here is an estimate, not a requirement; the first real build measures them. The
+next run picks up after the last saved stage or batch.
 
 To decide: whether setup builds only the small theme, so its time stays honest.
 
@@ -185,10 +197,12 @@ as it needs.
 
 ## Open questions
 
-1. How much of the research the user reads.
-2. Whether the level thresholds are every user's defaults.
-3. Where a memberless perspective's sound lives.
-4. Where a new theme goes in the rotation.
-5. Where an unfinished theme waits between sittings.
-6. How the user asks to grow a theme.
-7. Whether setup builds only the small theme.
+1. Whether the day mapped onto the world goes, or still briefs the research.
+2. How much of the research the user reads.
+3. Whether the level thresholds are every user's defaults.
+4. Where a memberless perspective's sound lives.
+5. Whether every speaker must belong to a perspective.
+6. Where a new theme goes in the rotation.
+7. Where an unfinished theme waits between sittings.
+8. How the user asks to grow a theme.
+9. Whether setup builds only the small theme.

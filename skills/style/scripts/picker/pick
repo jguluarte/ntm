@@ -1,19 +1,10 @@
 #!/usr/bin/env python3
 import sys
 
-from command_line import CommandLine
-from exceptions import PickerFailed
-from modes import HookMode
+from picker import Picker
 
-MODES = {mode.NAME: mode for mode in (HookMode,)}
+args = sys.argv[1:]
 
-
-def report(arguments):
-    flags = CommandLine.for_modes(MODES.values()).parse_args(arguments)
-    return MODES[flags.mode](flags).report()
-
-
-try:
-    print(report(sys.argv[1:]))
-except PickerFailed as failure:
-    sys.exit(f"Picker FAILED: {failure}")
+with Picker.from_args(args) as picker:
+    selections = picker.selections()
+    print(selections)

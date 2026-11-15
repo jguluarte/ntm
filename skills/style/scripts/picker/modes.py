@@ -22,7 +22,7 @@ class HookMode:
         parser.add_argument(OPTIONS, required=True)
         parser.add_argument(SEED, type=int)
 
-    def report(self):
+    def selections(self):
         hooks = self.options.hooks()
         self._require_drawable(hooks)
         hook = self.generator.choice(hooks)
@@ -32,3 +32,6 @@ class HookMode:
     def _require_drawable(hooks):
         if not hooks:
             raise PickerFailed(NO_HOOKS)
+
+
+MODES = {HookMode.NAME: HookMode}

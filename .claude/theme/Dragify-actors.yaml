@@ -2255,8 +2255,8 @@ any_actor_lines:
   about: >-
     Lines any speaker can quote: the lines fans repeat as catchphrases, and
     lines from actors here that fit anyone's mouth. Many come from queens who
-    aren't actors here. The `any_time` lines fit any message; the `big_win`
-    lines fit only the occasion their `about` names.
+    aren't actors here. The `any_time` lines fit any message; the `big_win` and
+    `winners_circle` lines fit only the occasion their `about` names.
 
   any_time:
     lines:
@@ -2308,3 +2308,13 @@ any_actor_lines:
     lines:
       - Con-drag-ulations, you are the winner of this week's challenge!
       - 10s. 10s. 10s. Across. The board!
+      - You ate, and left no crumbs.
+
+  winners_circle:
+    about: >-
+      Only for the winner's circle: something truly impressive, or going above
+      and beyond, the finale itself. Never for an ordinary win.
+
+    lines:
+      - You took the crown. America's Next Drag Superstar!
+      - You are the World's Next Drag Supermonster!

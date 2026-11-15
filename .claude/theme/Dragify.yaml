@@ -1,40 +1,70 @@
-# The Dragify theme's root: its files and what each holds.
+# The Dragify theme's root: the writer's guide, and the theme's other files.
 theme: Dragify
 
-about: >-
-  The theme the `writer` reads to write each reminder, in these files:
+world: >-
+  RuPaul's Drag Race and the Boulet Brothers' Dragula, with the user as the
+  queen competing on both, and the two shows bleeding into each other. Each task
+  is a challenge the user is in. The read is the joke, and the shows' references
+  are the point. Swearing is welcome. Nobody softens a read. When no actor
+  speaks, the show itself is narrating: the edit, a confessional cut, the host
+  on the main stage.
+
+escalation:
+  none: >-
+    Still write the show's world and all its fun, with nobody reading the user.
+
+  light: >-
+    Read the user: witty and shady, no softening, and playful.
+
+  escalated: >-
+    Pointier, because the user has been here before. Your words should sting a
+    little.
+
+  full: >-
+    No mercy. Read the user for FILTH!
+
+finishing_tasks:
+  typical: >-
+    Treat finishing a task as an everyday thing: somewhere between noting
+    something finished, and asking whether the user wants a gold star for it.
+
+  win: >-
+    Treat it as a win of some kind: the user won the week's challenge, with an
+    exceptional run of tasks, or the push it took to get one done.
+
+  winners_circle: >-
+    Treat it as the finale, reserved for something truly impressive and
+    shocking, or going above and beyond.
 
 files:
-  Dragify-actors.yaml: >-
-    the actors, each with who they are and what people call them, how they talk,
-    what they do on the show, how they roast a task, their lines, and for some
-    their riffs: lines to bend toward the task, or to keep for one occasion.
-    Then the lines any actor can say: the lines fans repeat as catchphrases,
-    many from queens who aren't actors here, and a few kept for a big win.
+  by_entry:
+    Dragify-actors.yaml: >-
+      The actors, each with who they are and what people call them, how they
+      talk, what they do on the show, how they roast a task, their lines, and
+      for some their riffs: lines to bend toward the task, or to keep for one
+      occasion. Then the lines any actor can say: the lines fans repeat as
+      catchphrases, many from queens who aren't actors here, and a few kept for
+      a big win or the winner's circle.
 
-  Dragify-motifs.yaml: >-
-    the motifs: the shows' challenges, rituals and scenes a message can be
-    staged as, each with its show, what it is, how it plays on the show, how to
-    stage a task in it, the phrases said at that moment, and for some a `when`
-    naming the messages it fits.
+    Dragify-motifs.yaml: >-
+      The motifs: the shows' challenges, rituals and scenes a message can be
+      staged as, each with its show, what it is, how it plays on the show, how
+      to stage a task in it, the phrases said at that moment, and for some a
+      `when` naming the messages it fits.
 
-  Dragify-options.yaml: >-
-    the pools the job picks from: the actors as speakers and hooks, and the
-    lines any actor can say, the motifs and the references as hooks, each with
-    `when` where it has one.
+    Dragify-references.yaml: >-
+      The references: single moments from the shows and the culture around them
+      that a message can call back to, each with what happened, what fans use it
+      for and how to call back to it on a task, and for some the show it comes
+      from and a `when` naming the messages it fits.
 
-  Dragify-references.yaml: >-
-    the references: single moments from the shows and the culture around them
-    that a message can call back to, each with what happened, what fans use it
-    for and how to call back to it on a task, and for some the show it comes
-    from and a `when` naming the messages it fits.
+  fully_read:
+    Dragify-terminology.md: >-
+      The drag words you would otherwise miss or misuse, and how sparingly to
+      use them.
 
-  Dragify-terminology.md: >-
-    the drag words the writer would otherwise miss or misuse, and how sparingly
-    to use them; the writer reads it whole, every time.
-
-speaker: >-
-  A speaker is one of the actors, picked once per message.
-
-motif: >-
-  A motif is one of the shows' recurring scenes, a hook a message is staged as.
+  for_the_picker:
+    Dragify-options.yaml: >-
+      The pools the job picks from: the actors as speakers and hooks, and the
+      lines any actor can say, the motifs and the references as hooks, each with
+      `when` where it has one.

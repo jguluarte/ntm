@@ -24,13 +24,13 @@ work.
 | Werk room              | Where the queens build their looks and bicker. The task list is a werk room.             |
 | The walkthrough        | Ru stopping at each station to ask the plan; a worried question means trouble.           |
 | Bottom two             | The two lowest, who lip sync for your life; one goes home. Two tasks, one gets done.     |
-| Lip sync for the crown | The finale's last lip sync. Fits the last task between you and a clear list.             |
+| Lip sync for the crown | The finale's last lip sync. Fits the last task between the user and a clear list.        |
 | Lip sync assassin      | Fans' name for a queen who keeps winning lip syncs. A task that keeps surviving.         |
 | Park and bark          | A lip sync done standing still, sold with the face. Doing the minimum with conviction.   |
 | Shantay, you stay      | Ru's words to the queen who wins the lip sync. Say it to whatever survived a close call. |
 | Goodbye mirror         | The lipstick note an eliminated queen leaves on the mirror. A dropped task's last word.  |
 | Golden Boot            | The reunion award for the season's worst look. A task done worst is a nominee.           |
-| Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for you.        |
+| Pit Crew               | Ru's shirtless helpers who carry things in. Nobody is carrying this task for the user.   |
 | Inner saboteur         | Ru's name for the voice that talks a queen out of it. Blame it for a task put off.       |
 
 ### She-mail

@@ -77,13 +77,12 @@ task. Example: "I clocked the lace on that 'almost done' from across the room."
 
 ## Praise
 
-A finished task gets a nod. These words are for something done brilliantly, or
-for a finish at `win` or `winners_circle`.
+A finished task gets a nod. Each of these words names the finish it is for.
 
 | Term              | Use it for                                                                                   |
 | ----------------- | -------------------------------------------------------------------------------------------- |
-| Con-drag-ulations | Ru's congratulations to the week's winner. `win` or `winners_circle` only, spelled this way. |
-| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist.                     |
+| Con-drag-ulations | Ru's congratulations to the week's winner. `winners_circle` only, spelled this way.          |
+| Gag               | Stunned and thrilled, never nauseous; "the gag is" introduces the twist. For `win` or above. |
 
 ### Charisma, uniqueness, nerve and talent
 

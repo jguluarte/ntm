@@ -32,8 +32,8 @@ class HooksTest(unittest.TestCase):
 
 
 class FitTest(unittest.TestCase):
-    def test_an_entry_fits_only_the_reminder_types_its_when_names(self):
-        theme = Theme(fixtures.EVERY_WHEN)
+    def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
+        theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("weekly")
         hooks = list(theme.hook_chances_for(theme_options, "scenes"))
 
@@ -41,7 +41,7 @@ class FitTest(unittest.TestCase):
         self.assertEqual(expected, hooks)
 
     def test_an_entry_fits_only_when_a_task_outcome_it_names_happened(self):
-        theme = Theme(fixtures.EVERY_WHEN)
+        theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening,slipped")
         hooks = list(theme.hook_chances_for(theme_options, "scenes"))
 
@@ -52,7 +52,7 @@ class FitTest(unittest.TestCase):
         self.assertEqual(expected, hooks)
 
     def test_an_entry_naming_both_kinds_needs_both(self):
-        theme = Theme(fixtures.EVERY_WHEN)
+        theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening")
         hooks = list(theme.hook_chances_for(theme_options, "scenes"))
 
@@ -60,7 +60,7 @@ class FitTest(unittest.TestCase):
         self.assertEqual(expected, hooks)
 
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
-        theme = Theme(fixtures.EVERY_WHEN)
+        theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening,big_win")
         hooks = list(theme.hook_chances_for(theme_options, "scenes"))
 
@@ -68,7 +68,7 @@ class FitTest(unittest.TestCase):
         self.assertEqual(expected, hooks)
 
     def test_on_a_big_win_an_entry_still_fits_only_its_reminder_types(self):
-        theme = Theme(fixtures.EVERY_WHEN)
+        theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("morning,done,big_win")
         hooks = list(theme.hook_chances_for(theme_options, "scenes"))
 
@@ -189,15 +189,15 @@ class SchemaTest(unittest.TestCase):
         expected = f"$.pools.scenes.roles[0]: {why}"
         self.assertEqual(expected, str(raised.exception))
 
-    def test_a_when_that_isnt_an_option_fails(self):
+    def test_a_type_that_isnt_an_option_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.UNKNOWN_WHEN)
+            Theme(fixtures.UNKNOWN_TYPE)
 
         options = [
             "morning", "afternoon", "evening", "weekly", "slipped", "done",
             "big_win",
         ]
-        where = "$.pools.scenes.entries.dawn.when"
+        where = "$.pools.scenes.entries.dawn.type"
         expected = f"{where}: 'night' is not one of {options}"
         self.assertEqual(expected, str(raised.exception))
 

@@ -10,7 +10,7 @@ OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
-WHEN = "when"
+TYPE = "type"
 WEIGHT = "weight"
 SCORE = "score"
 HOOK_ROLE = "hook"
@@ -109,7 +109,7 @@ class ThemeOptions:
 
 
 @dataclass(frozen=True)
-class _Hook:
+class Option:
     kind: str
     slug: str
     reminder_types: frozenset[ReminderType]
@@ -120,8 +120,8 @@ class _Hook:
     @classmethod
     def from_entry(cls, kind, slug, entry):
         fields = entry or {}
-        when = fields.get(WHEN, [])
-        values = {when} if isinstance(when, str) else set(when)
+        types = fields.get(TYPE, [])
+        values = {types} if isinstance(types, str) else set(types)
         reminder_types = frozenset(ReminderType.named_in(values))
         task_outcomes = frozenset(TaskOutcome.named_in(values))
         weight = fields.get(WEIGHT, 1)
@@ -160,12 +160,12 @@ class _Kind:
     name: str
     weight: float
     score: float
-    hooks: tuple[_Hook, ...]
+    hooks: tuple[Option, ...]
 
     @classmethod
     def from_pool(cls, name, pool):
         hooks = tuple(
-            _Hook.from_entry(name, slug, entry)
+            Option.from_entry(name, slug, entry)
             for slug, entry in pool[ENTRIES_BY_SLUG].items()
         )
         weight = pool.get(WEIGHT, 1)

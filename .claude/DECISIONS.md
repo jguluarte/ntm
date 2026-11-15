@@ -118,7 +118,7 @@ at most once a week; when capped, it lands as a win.
 A theme is a set of YAML files named after it. The root, for Justin
 `Dragify.yaml`, is the guide. It holds `world`, `escalation`, `finishing_tasks`
 and `files`, which says what each other file holds. A reminder's job lives in
-`%Message-rules`, and its time-of-day flavour comes from entries with `when`.
+`%Message-rules`, and its time-of-day flavour comes from entries with `type`.
 
 `escalation` is a ladder of levels, normal first: for Justin, none, light,
 escalated and full. `finishing_tasks` is a ladder too: typical, win and

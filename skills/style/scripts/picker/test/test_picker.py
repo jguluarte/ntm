@@ -23,7 +23,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual("hook: characters/host", drawn)
 
     def test_hook_draws_only_hooks_fitting_the_type(self):
-        args = make_picker_args(fixtures.EVERY_WHEN, type="weekly,big_win")
+        args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
 

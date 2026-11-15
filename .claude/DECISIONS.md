@@ -167,9 +167,6 @@ it's big enough.
 It's built on a `dragify` branch, which never merges anywhere and is deleted
 once the theme is in Linear.
 
-The picker doesn't keep a scene to its speaker's show, because the shows mix
-freely. `show` stays in his motifs and references files, for the writer only.
-
 ### Release
 
 `release-0.5` merges into main, and the version is tagged there.

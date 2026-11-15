@@ -107,21 +107,6 @@ class StartTest(unittest.TestCase):
         )
         self.assertEqual(expected, printed)
 
-    def test_a_file_whose_checksum_matches_is_left_unchanged(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
-        self.start(options)
-        theme = Theme(options)
-        theme.set_weight("scenes/stakeout", 0.3)
-        theme.save()
-        printed = self.start(options)
-
-        expected = (
-            "unchanged: Casebook-characters.yaml\n"
-            "unchanged: Casebook-scenes.yaml"
-        )
-        self.assertEqual(expected, printed)
-        self.assertEqual(0.3, read_weights(options)["scenes/stakeout"])
-
     def test_an_entry_file_no_pool_uses_fails_in_one_line(self):
         options = self.copy_of(fixtures.EVEN)
 

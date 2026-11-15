@@ -4,8 +4,8 @@ The picker picks what each message is built on: a hook, drawn at random from a
 theme.
 
 It reads a theme's options file and prints the hook it drew. Beside it,
-`recalculate.py` writes a theme's numbers into its options file. Both run on
-Python 3 with PyYAML and jsonschema.
+`recalculate.py` writes a new theme's weights and checksums into its options
+file. Both run on Python 3 with PyYAML and jsonschema.
 
 `references/theme-files.md` describes the options file. Its schema,
 `options.schema.yaml`, sits beside the picker in the style skill. The picker
@@ -80,22 +80,18 @@ hook: shared_lines/big_win
 
 ## Writing the numbers
 
-`recalculate.py` writes into a theme's options file the numbers that come from
-its entry files, and saves the file in place.
-
 ```
 python3 recalculate.py start --options <file> <entry file>...
 ```
 
-`start` gives a new theme its numbers. For each entry file whose checksum
-differs from the one in the options file, or that has none yet, it sets the
-`weight` of each of the file's entries, then writes the file's checksum: the
-SHA-256 of its text exactly as handed over, in full. It leaves the entries of an
-unchanged file alone. It prints a line for each file:
+`start` writes a new theme's weights and checksums. For each entry file, it sets
+the `weight` of each of the file's entries, then writes the file's checksum, the
+SHA-256 of its text exactly as handed over, in full. It saves the options file
+in place, and prints a line for each entry file:
 
 ```
 recounted: Casebook-characters.yaml
-unchanged: Casebook-scenes.yaml
+recounted: Casebook-scenes.yaml
 ```
 
 When it can't, it prints one line on stderr, exits 1 and changes nothing, as the

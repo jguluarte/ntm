@@ -23,16 +23,12 @@ class Recalculation:
     def start(self):
         with self._reporting_failures():
             printed = [
-                self._recount_if_changed(entry_file)
-                for entry_file in self.entry_files
+                self._recount(entry_file) for entry_file in self.entry_files
             ]
             self.theme.save()
             return "\n".join(printed)
 
-    def _recount_if_changed(self, entry_file):
-        if self.theme.checksum(entry_file.name) == entry_file.checksum:
-            return f"unchanged: {entry_file.name}"
-
+    def _recount(self, entry_file):
         line_counts = entry_file.line_counts
         for entry_name in self.theme.entries_from(entry_file.name):
             if entry_name in line_counts:

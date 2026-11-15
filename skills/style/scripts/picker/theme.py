@@ -217,9 +217,6 @@ class Theme:
 
         return names
 
-    def checksum(self, file_name):
-        return self._fields.get(CHECKSUMS_BY_FILE, {}).get(file_name)
-
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]

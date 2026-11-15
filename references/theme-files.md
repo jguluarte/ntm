@@ -34,8 +34,7 @@ files sort together:
 | `<Theme>-message-history`   | Each message sent in the theme, and how it landed      |
 
 Each file is a database: a page of text in the user's backend, found by its
-title, which is the file's name. `ntm-user:backend` says where each one lives,
-as it does for every database. For a Linear user, each file is one Linear
+title, which is the file's name. For a Linear user, each file is one Linear
 document. A YAML file's text sits in one fenced `yaml` block in its document, so
 a backend that stores markdown keeps it intact.
 

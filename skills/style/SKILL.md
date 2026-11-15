@@ -19,9 +19,11 @@ agent reads only the parts of `%Theme` this skill points it to, and never
 
 ## Setup
 
-Load `ntm-user:backend`, which says where `%Theme` and `%Message-history` live,
-and read both: this week's theme, as `%Settings` names it, and that theme's
-history, found by its name, such as `Casebook-message-history`.
+Run `/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line. Then read `%Theme` and `%Message-history`: this week's
+theme, as `%Settings` names it, and that theme's history, found by its name,
+such as `Casebook-message-history`.
 
 ## What you write from
 

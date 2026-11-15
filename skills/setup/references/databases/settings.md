@@ -6,6 +6,8 @@
 
 ## Labels
 
+When you rename a label on your task list, change its name here too.
+
 | Label                 | Name on your task list |
 | --------------------- | ---------------------- |
 | `$no-autoschedule`    | `no-autoschedule`      |
@@ -13,6 +15,16 @@
 | `$price-watch`        | `price-watch`          |
 | `$has-amazon-alert`   | `has-amazon-alert`     |
 | `$amazon-unavailable` | `amazon-unavailable`   |
+
+## Databases
+
+When you rename a database on your task list, change its name here too.
+
+| Database         | Name on your task list |
+| ---------------- | ---------------------- |
+| `%Message-rules` | `Message rules`        |
+| `%Paused-dates`  | `Paused dates`         |
+| `%Estimator-log` | `Estimator log`        |
 
 ## Planning
 

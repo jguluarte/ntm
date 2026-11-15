@@ -251,9 +251,13 @@ its checksum differs.
 | `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
 | `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
 | `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                              |
-| `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
+| `weight`              | How likely the entry is against its pool's others: 1 without lines or riffs, less the fewer  |
+| `weight`              | How likely the pool's kind is against other kinds: the square root of its size; per pool     |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
-| `score`               | How well messages built on the entry landed, from `%Message-history`                         |
+| `score`               | How well messages built on the entry, or on the pool's kind, landed, from `%Message-history` |
+
+A pool's size counts its entries, or its lines in a pool of line groups such as
+`shared_lines`.
 
 An entry's line half-life comes from how many lines it has and how often it is
 picked.
@@ -267,10 +271,11 @@ run works out the type: which reminder this is, whether a task in it has
 slipped, whether one got done, and whether it's a big win.
 
 The picker keeps the entries whose `type` fits, as `type` above says. Each
-message gets exactly one hook, drawn from all the entries in hook pools
-together, each entry counting once at its weight. An entry's score raises or
-lowers its chance, and an entry picked recently is less likely while it rests.
-An entry without a `weight` weighs 1, and one without a `score` scores 0.
+message gets exactly one hook, drawn in two steps: first a kind, from the hook
+pools holding an entry that fits, at the pool's weight; then one of that kind's
+entries that fit, at the entry's weight. A score raises or lowers either chance,
+and an entry picked recently is less likely while it rests. A pool or entry
+without a `weight` weighs 1, and one without a `score` scores 0.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

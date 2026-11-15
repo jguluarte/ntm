@@ -171,12 +171,12 @@ set, of two kinds: which reminder a message is, and what happened to its tasks.
 | `done`      | What happened  | A task in the message got done    |
 | `big_win`   | What happened  | A big effort, as below            |
 
-A message is one reminder, and any number of things can have happened in it. An
-entry fits a message when the message is one of the reminders its `when` names,
-if it names any, and one of the things it names happened, if it names any. So
-`when: evening` fits any evening, `when: slipped` any message with a slipped
-task, `when: [evening, slipped]` only an evening with a slipped task, and
-`when: [morning, weekly]` either reminder.
+A message is at most one reminder, and any number of things can have happened in
+it. An entry fits a message when the message is one of the reminders its `when`
+names, if it names any, and one of the things it names happened, if it names
+any. So `when: evening` fits any evening, `when: slipped` any message with a
+slipped task, `when: [evening, slipped]` only an evening with a slipped task,
+and `when: [morning, weekly]` either reminder.
 
 A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that

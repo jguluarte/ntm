@@ -8,12 +8,6 @@ about: >-
   bent toward the task when that helps. A speaker who isn't the host plays the
   host's part in a scene by reporting it or standing in, in their own manner.
 
-  `when` holds two kinds of value: which reminder (`morning`, `afternoon`,
-  `evening`, `weekly`) and what happened to the tasks (`slipped`, `done`,
-  `big_win`). A motif fits a message when it lists no reminder or this message's
-  reminder, and lists no what-happened value or one that holds; a motif with no
-  `when` fits every message. On a big win, only motifs listing `big_win` fit.
-
   When a message carries several tasks, the staging's task is the one its `when`
   is about: a finished one for `done` or `big_win`, the one slipped longest for
   `slipped`, and otherwise the first one the facts list. The other tasks fill

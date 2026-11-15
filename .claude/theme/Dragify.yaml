@@ -23,14 +23,10 @@ escalation:
   full: >-
     No mercy. Read them for FILTH!
 
-wins:
-  finished: >-
-    A quick nod in passing, and the message moves on.
-
-  win: >-
-    The winner's circle, the finale: you take the crown in front of the whole
-    cast, sassy. The message honors going well above and beyond, or what it
-    took: the long haul, or the task that dragged with no motivation behind it.
+wins: >-
+  The winner's circle, the finale: you take the crown in front of the whole
+  cast, sassy. It honors what it took: going well above and beyond, the long
+  haul, or the task that dragged with no motivation behind it.
 
 files:
   Dragify-actors.yaml:

@@ -30,9 +30,10 @@ class HookDrawTest(PickerTestCase):
     def test_the_declared_draws_reach_every_hook(self):
         self.assertEqual(self.EVEN_HOOK_LINES, set(EVEN_DRAWS.values()))
 
-    def test_without_a_seed_it_still_draws_a_hook(self):
-        drawn = self.pick("hook", "--options", str(EVEN))
-        self.assertIn(drawn, self.EVEN_HOOK_LINES)
+    def test_without_a_seed_each_run_draws_afresh(self):
+        drawn = {self.pick("hook", "--options", str(EVEN)) for _ in range(50)}
+        self.assertEqual(set(), drawn - self.EVEN_HOOK_LINES)
+        self.assertGreater(len(drawn), 1)
 
 
 class FailureTest(PickerTestCase):

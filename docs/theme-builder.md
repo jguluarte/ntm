@@ -136,6 +136,9 @@ sooner" moves one a step.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.
+The bump is the theme's choice: the builder asks whether the theme ever presses
+on a good day. A theme that doesn't has a `bump_rate` of 0, and only slips raise
+its level.
 
 ## Roles and perspectives
 

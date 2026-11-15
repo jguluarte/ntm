@@ -68,7 +68,7 @@ picker's first draft; where they give a number, it is kept.
 | `line_half_life_days` | Entry        | Each week             | None: no rest       | Above 0    |
 | `speaker_rate`        | Pool         | Each week             | 0.5                 | 0 to 1     |
 | `weight`              | Pool         | Each week             | Square root of size | Above 0    |
-| `bump_rate`           | `escalation` | Each week, with data  | 1.0                 | 0.1 to 0.9 |
+| `bump_rate`           | `escalation` | Each week, with data  | 1.0; 0 with no bump | 0.1 to 0.9 |
 | `checksums`           | Top level    | When a file changes   | None                | None       |
 
 ### An entry's `weight`
@@ -118,6 +118,9 @@ once a week, so 0.05 takes 16 weeks to go from one bound to the other. To
 decide: the step; recommended 0.1, about two months from one bound to the other.
 Also the 5 in 100, the 10 messages, the bounds, and whether a theme starts at
 the picker's 1.0, above the bounds, or at 0.9.
+
+A theme that never presses on a good day, as the theme builder asks, has a
+`bump_rate` of 0, and the script never moves it.
 
 ### `checksums`
 

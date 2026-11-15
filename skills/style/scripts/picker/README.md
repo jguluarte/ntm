@@ -4,14 +4,14 @@ The picker picks what each message is built on: a hook, drawn at random from a
 theme.
 
 It reads a theme's options file and prints the hook it drew. It runs on Python 3
-with PyYAML, as `python3 pick`.
+with PyYAML.
 
 `references/theme-files.md` describes the options file.
 
 ## Usage
 
 ```
-pick hook --options <file> [--seed <number>]
+python3 pick hook --options <file> [--seed <number>]
 ```
 
 | Flag        | What it is                            |

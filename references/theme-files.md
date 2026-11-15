@@ -48,13 +48,13 @@ The examples below are from `Casebook`, a made-up detective story.
 The root is the theme's guide for the writer, read whole for every message. Its
 parts are the same in every theme:
 
-| Part         | What it holds                                                                |
-| ------------ | ---------------------------------------------------------------------------- |
-| `theme`      | The theme's name                                                             |
-| `world`      | The theme's world, and where the user sits in it                             |
-| `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
-| `wins`       | How the theme marks a finished task, and a big win                           |
-| `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
+| Part              | What it holds                                                                |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `theme`           | The theme's name                                                             |
+| `world`           | The theme's world, and where the user sits in it                             |
+| `escalation`      | How the theme reads a task that slipped, and how it escalates with each slip |
+| `finishing_tasks` | How the theme marks a finished task, and a big win                           |
+| `files`           | Every other file of the theme, grouped by how the writer gets data from it   |
 
 `escalation` and `finishing_tasks` each hold one paragraph, or levels, the first
 level first, each keyed by its name in the theme's words and saying how it
@@ -82,7 +82,7 @@ escalation: >-
   A slipped task is a case going cold. One slip draws a raised eyebrow, three
   draw a lecture on neglect, five and the inspector starts asking questions.
 
-wins: >-
+finishing_tasks: >-
   A finished task is a case closed, filed with quiet satisfaction. A big win
   gets the whole cast in the drawing room for the reveal.
 

@@ -19,6 +19,7 @@ HOOK_ROLE = "hook"
 REMINDERS = frozenset({"morning", "afternoon", "evening", "weekly"})
 HAPPENINGS = frozenset({"slipped", "done", "big_win"})
 BIG_WIN = "big_win"
+DONE = "done"
 
 HOOK_LINE = "hook: {}"
 FAILURE_LINE = "Picker FAILED: {}: {}"
@@ -63,13 +64,21 @@ class Options:
         if not entries_by_hook:
             raise NoHooks()
 
-        hooks = []
-        for hook, entry in entries_by_hook.items():
-            if self._fits(entry, occasions):
-                hooks.append(hook)
+        hooks = self._hooks_fitting(entries_by_hook, occasions)
+        if not hooks and BIG_WIN in occasions:
+            normal_win = (occasions - {BIG_WIN}) | {DONE}
+            hooks = self._hooks_fitting(entries_by_hook, normal_win)
         if not hooks:
             raise NoHookFits(occasions)
 
+        return hooks
+
+    @classmethod
+    def _hooks_fitting(cls, entries_by_hook, occasions):
+        hooks = []
+        for hook, entry in entries_by_hook.items():
+            if cls._fits(entry, occasions):
+                hooks.append(hook)
         return hooks
 
     def _entries_by_hook(self):

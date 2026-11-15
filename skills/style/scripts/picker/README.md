@@ -60,9 +60,9 @@ Picker FAILED: ArgumentError: argument --occasions: not an occasion: night
 `references/theme-files.md` lists under `when`: at most one reminder, and any
 number of things that happened. The picker draws only from hooks whose `when`
 fits, as that file says. A hook without `when` fits any message except a big
-win. With `big_win`, only hooks kept for `big_win` fit, and a theme that keeps
-none fails with `NoHookFits`. Without `--occasions`, only hooks without `when`
-fit.
+win. With `big_win`, only hooks kept for `big_win` fit. When none of those fits,
+the picker draws as for a normal win, with `done` in place of `big_win`. Without
+`--occasions`, only hooks without `when` fit.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --occasions big_win

@@ -70,6 +70,15 @@ class FitTest(unittest.TestCase):
 
         self.assertEqual(expected, hooks)
 
+    def test_a_big_win_with_nothing_kept_for_it_fits_as_a_normal_win(self):
+        options = Options(fixtures.WITHOUT_BIG_WIN)
+
+        expected = ["scenes/evening_done"]
+
+        hooks = options.hooks({"evening", "big_win"})
+
+        self.assertEqual(expected, hooks)
+
 
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):

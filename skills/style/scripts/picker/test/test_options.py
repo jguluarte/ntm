@@ -1,7 +1,7 @@
 import unittest
 
 import fixtures
-from picker import Options
+from picker import InvalidOptions, Options
 
 
 class HooksTest(unittest.TestCase):
@@ -31,7 +31,7 @@ class SchemaTest(unittest.TestCase):
     def test_a_file_without_pools_fails(self):
         expected = "$: 'pools' is a required property"
 
-        with self.assertRaises(ValueError) as raised:
+        with self.assertRaises(InvalidOptions) as raised:
             Options(fixtures.WITHOUT_POOLS)
 
         self.assertEqual(expected, str(raised.exception))
@@ -39,7 +39,7 @@ class SchemaTest(unittest.TestCase):
     def test_a_pool_without_roles_fails(self):
         expected = "$.pools.scenes: 'roles' is a required property"
 
-        with self.assertRaises(ValueError) as raised:
+        with self.assertRaises(InvalidOptions) as raised:
             Options(fixtures.POOL_WITHOUT_ROLES)
 
         self.assertEqual(expected, str(raised.exception))
@@ -48,7 +48,7 @@ class SchemaTest(unittest.TestCase):
         why = "'hooks' is not one of ['hook', 'speaker']"
         expected = f"$.pools.scenes.roles[0]: {why}"
 
-        with self.assertRaises(ValueError) as raised:
+        with self.assertRaises(InvalidOptions) as raised:
             Options(fixtures.UNKNOWN_ROLE)
 
         self.assertEqual(expected, str(raised.exception))
@@ -61,7 +61,7 @@ class SchemaTest(unittest.TestCase):
         where = "$.pools.scenes.entries.dawn.when"
         expected = f"{where}: 'night' is not one of {occasions}"
 
-        with self.assertRaises(ValueError) as raised:
+        with self.assertRaises(InvalidOptions) as raised:
             Options(fixtures.UNKNOWN_WHEN)
 
         self.assertEqual(expected, str(raised.exception))

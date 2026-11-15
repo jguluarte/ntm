@@ -22,10 +22,10 @@ section with the user.
 Saving a section also adds its part to their user plugin, `ntm-user`, which you
 build up as you go. It holds two skills:
 
-| Skill              | What it holds                                                                |
-| ------------------ | ---------------------------------------------------------------------------- |
-| `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
-| `ntm-user:notify`  | How they receive notifications: their channel                                |
+| Skill              | What it holds                                                             |
+| ------------------ | ------------------------------------------------------------------------- |
+| `ntm-user:backend` | How the rest of ntm works with their backend, and where `%Settings` lives |
+| `ntm-user:notify`  | How they receive notifications: their channel                             |
 
 The user plugin's version, in its `plugin.json`, is the version of the installed
 `ntm` it was built from: built from ntm 0.4.0, it is 0.4.0. `ntm-user:backend`
@@ -44,9 +44,10 @@ Everything else they set up lives in their databases and their jobs.
 A database's template, in `references/databases/`, holds `<!-- -->` comments for
 you: write the database without them.
 
-Create each database under its default name, its `%` name in words, such as
-Paused dates, without asking the user about it. The one name they confirm is
-`%Settings`'s, in ntm backend assets, since every run starts from it.
+Create each database other than a theme's files under its default name, its `%`
+name in words, such as Paused dates, without asking the user about it. The one
+name they confirm is `%Settings`'s, in ntm backend assets, since every run
+starts from it.
 
 ## Pre-requisites
 
@@ -129,9 +130,9 @@ ntm's version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and
-where `%Settings` lives. Label names stay out of it; they live in `%Settings`.
-The backend guide is the file you read in Connect to a backend. Bundle their
-connector at the same time.
+where `%Settings` lives. Label and database names stay out of it; they live in
+`%Settings`. The backend guide is the file you read in Connect to a backend.
+Bundle their connector at the same time.
 
 ### ntm features
 
@@ -298,11 +299,11 @@ What it runs, for Create the jobs:
 
 Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
-template, and say in a line where each one lives. Add where each one lives to
-`ntm-user:backend`. Write the settings into the `%Settings` database, with the
-labels' real names, dropping Planning when they skipped task management,
-Shopping when they skipped price watch, and the label rows for labels you didn't
-create. Keep the jobs and their model for Create the jobs, after the self-test.
+template, and say in a line where each one lives. Write the settings into the
+`%Settings` database, with the labels' and databases' real names, dropping
+Planning and Databases when they skipped task management, Shopping when they
+skipped price watch, and the label rows for labels you didn't create. Keep the
+jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
@@ -311,8 +312,8 @@ it builds their theme with them and creates `%Theme`. Write the theme's root,
 which today is `%Theme`'s title, under Themes in `%Settings`, as this week's
 theme and as the only one in All themes.
 
-Then create `%Message-history` from its template, and add where `%Theme` and
-`%Message-history` live to `ntm-user:backend`.
+Then create the theme's `%Message-history` from its template, named after the
+theme, such as `Casebook-message-history`, beside `%Theme`.
 
 ### Notifications
 

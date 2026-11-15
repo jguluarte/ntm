@@ -38,7 +38,7 @@ know.
 ## The task list
 
 `ntm-user:backend` says how to read and write the user's task list, and where
-each database lives, `%Settings` included.
+`%Settings` lives.
 
 A `$` name, such as `$price-watch`, is a label's default name. `%Settings` holds
 the real names of the user's labels, under Labels.
@@ -79,7 +79,8 @@ of it as it was.
 ## Databases
 
 ntm keeps its own records in databases on the task list. A `%` name, such as
-`%Settings`, is a database's default title.
+`%Settings`, is a database's default title. `%Settings` holds the real names of
+the others under Databases; a theme's files are named after the theme.
 
 Find each part of a database by its name, and save it back whole with only your
 change.

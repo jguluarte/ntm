@@ -49,7 +49,7 @@ the user.
 When any note says `Rebuild ntm-user: yes`, rebuild the user plugin once, after
 the last note, as The user plugin, ntm backend assets and Notifications in
 `${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` say. Fill it in from their
-installed `ntm-user`: their task list and where each database lives from
+installed `ntm-user`: their task list and where `%Settings` lives from
 `ntm-user:backend`, their channel from `ntm-user:notify`, and their connector
 from the installed plugin's `.mcp.json`. Have them install it, then run
 `/ntm:self-test` in a new chat.

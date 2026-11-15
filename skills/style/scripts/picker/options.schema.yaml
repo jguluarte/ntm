@@ -50,6 +50,7 @@ $defs:
           $ref: "#/$defs/occasion"
       weight:
         type: number
+        minimum: 0
       line_half_life_days:
         type: number
       score:

@@ -11,6 +11,8 @@ POOLS_BY_KIND = "pools"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 WHEN = "when"
+WEIGHT = "weight"
+SCORE = "score"
 HOOK_ROLE = "hook"
 
 
@@ -69,6 +71,11 @@ class MissingHook(ValueError):
         super().__init__(f"no hook fits {theme_options}")
 
 
+class NoHookHasWeight(ValueError):
+    def __init__(self, theme_options):
+        super().__init__(f"every hook that fits {theme_options} weighs 0")
+
+
 @dataclass(frozen=True)
 class ThemeOptions:
     reminder_type: ReminderType | None = None
@@ -107,18 +114,27 @@ class _Hook:
     slug: str
     reminder_types: frozenset[ReminderType]
     task_outcomes: frozenset[TaskOutcome]
+    weight: float
+    score: float
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
-        when = (entry or {}).get(WHEN, [])
+        fields = entry or {}
+        when = fields.get(WHEN, [])
         values = {when} if isinstance(when, str) else set(when)
         reminder_types = frozenset(ReminderType.named_in(values))
         task_outcomes = frozenset(TaskOutcome.named_in(values))
-        return cls(kind, slug, reminder_types, task_outcomes)
+        weight = fields.get(WEIGHT, 1)
+        score = fields.get(SCORE, 0)
+        return cls(kind, slug, reminder_types, task_outcomes, weight, score)
 
     @property
     def name(self):
         return f"{self.kind}/{self.slug}"
+
+    @property
+    def draw_weight(self):
+        return self.weight * 2 ** self.score
 
     @property
     def kept_for_big_win(self):
@@ -143,22 +159,31 @@ class HookManager:
     def __init__(self, hooks):
         self._hooks = hooks
 
-    def responding_to(self, theme_options):
+    def chances_for(self, theme_options):
+        hooks = self._responding_to(theme_options)
+        total = sum(hook.draw_weight for hook in hooks)
+
+        if total == 0:
+            raise NoHookHasWeight(theme_options)
+
+        return {hook.name: hook.draw_weight / total for hook in hooks}
+
+    def _responding_to(self, theme_options):
         if not self._hooks:
             raise NoHooks()
 
-        names = self._names_that_fit(theme_options)
+        hooks = self._hooks_that_fit(theme_options)
 
-        if not names and theme_options.is_big_win:
-            names = self._names_that_fit(self._as_normal_win(theme_options))
+        if not hooks and theme_options.is_big_win:
+            hooks = self._hooks_that_fit(self._as_normal_win(theme_options))
 
-        if not names:
+        if not hooks:
             raise MissingHook(theme_options)
 
-        return names
+        return hooks
 
-    def _names_that_fit(self, theme_options):
-        return [hook.name for hook in self._hooks if hook.fits(theme_options)]
+    def _hooks_that_fit(self, theme_options):
+        return [hook for hook in self._hooks if hook.fits(theme_options)]
 
     @staticmethod
     def _as_normal_win(theme_options):
@@ -174,8 +199,8 @@ class Theme:
         hooks = self._read_hooks(fields[POOLS_BY_KIND])
         self._hook_manager = HookManager(hooks)
 
-    def hooks_for(self, theme_options):
-        return self._hook_manager.responding_to(theme_options)
+    def hook_chances_for(self, theme_options):
+        return self._hook_manager.chances_for(theme_options)
 
     @staticmethod
     def _read_hooks(pools_by_kind):

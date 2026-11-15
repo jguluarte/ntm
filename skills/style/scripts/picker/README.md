@@ -43,14 +43,15 @@ type. An options file that breaks the schema reads as `InvalidTheme`, with where
 in the file and what is wrong. A `--type` that names something other than a
 reminder type or task outcome, or more than one reminder type, reads as
 `ArgumentError`, naming the flag and the values. A theme where no pool gives a
-hook reads as `NoHooks`, and one with no hook that fits the message as
-`MissingHook`.
+hook reads as `NoHooks`, one with no hook that fits the message as
+`MissingHook`, and one where every hook that fits weighs 0 as `NoHookHasWeight`.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
 Picker FAILED: ArgumentError: argument --type: not an option: night
 Picker FAILED: NoHooks: no pool in the options file gives a hook
 Picker FAILED: MissingHook: no hook fits morning,slipped
+Picker FAILED: NoHookHasWeight: every hook that fits big_win weighs 0
 ```
 
 ## How it picks
@@ -58,7 +59,7 @@ Picker FAILED: MissingHook: no hook fits morning,slipped
 ### The hook
 
 The hooks are the entries of every pool whose `roles` include `hook`, taken as
-one list. The picker draws one of those that fit, each as likely as the next.
+one list. The picker draws one of those that fit, each at its chance.
 
 The order of entries in a file doesn't change their chances. With a fixed
 `--seed`, it does change which one is drawn.
@@ -76,3 +77,11 @@ when none of those fits, from the hooks that fit `done`.
 python3 picker.py hook --options Casebook-options.yaml --type big_win
 hook: shared_lines/big_win
 ```
+
+### How likely each hook is
+
+A hook's draw weight is its `weight` times 2 to the power of its `score`,
+`weight * 2 ** score`, so each point of score doubles it and each point below 0
+halves it. An entry without a `weight` weighs 1, and one without a `score`
+scores 0. A hook's chance is its draw weight over the total draw weight of every
+hook that fits. A hook that weighs 0 is never drawn.

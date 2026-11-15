@@ -1,0 +1,19 @@
+pools:
+  scenes:
+    roles: [hook]
+    entries:
+      dawn:
+        weight: 0.5
+      noon:
+        score: 1
+      dusk:
+        weight: 0
+      big_win:
+        when: big_win
+        weight: 0
+  characters:
+    roles: [hook]
+    entries:
+      host:
+        weight: 3
+        score: -1

@@ -21,9 +21,11 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
-            hooks = self.theme.hooks_for(self.theme_options)
+            chances = self.theme.hook_chances_for(self.theme_options)
+            hooks = list(chances)
             generator = random.Random(self.seed)
-            return f"hook: { generator.choice(hooks) }"
+            [hook] = generator.choices(hooks, weights=chances.values())
+            return f"hook: {hook}"
 
     @classmethod
     def _parser(cls):

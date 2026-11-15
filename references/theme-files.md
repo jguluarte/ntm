@@ -270,6 +270,7 @@ The picker keeps the entries whose `when` fits, as `when` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools
 together, each entry counting once at its weight. An entry's score raises or
 lowers its chance, and an entry picked recently is less likely while it rests.
+An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

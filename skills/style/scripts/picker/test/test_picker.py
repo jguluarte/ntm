@@ -20,7 +20,7 @@ class CommandLineTest(unittest.TestCase):
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
 
-        self.assertEqual("hook: scenes/dawn", drawn)
+        self.assertEqual("hook: characters/host", drawn)
 
     def test_hook_draws_only_hooks_fitting_the_type(self):
         args = make_picker_args(fixtures.EVERY_WHEN, type="weekly,big_win")
@@ -89,10 +89,10 @@ class PickHookTest(unittest.TestCase):
 
         expected = {
             0: "hook: characters/host",
-            1: "hook: scenes/noon",
-            2: "hook: scenes/dawn",
-            3: "hook: scenes/noon",
-            4: "hook: scenes/noon",
+            1: "hook: scenes/dawn",
+            2: "hook: characters/host",
+            3: "hook: scenes/dawn",
+            4: "hook: scenes/dawn",
             5: "hook: scenes/dusk",
         }
         self.assertEqual(expected, drawn)
@@ -106,6 +106,15 @@ class PickHookTest(unittest.TestCase):
         }
 
         self.assertGreater(len(drawn), 1)
+
+    def test_a_hook_weighing_0_is_never_drawn(self):
+        theme = Theme(fixtures.WEIGHTED)
+        drawn = {Picker(theme, seed=seed).pick_hook() for seed in range(50)}
+
+        expected = {
+            "hook: scenes/dawn", "hook: scenes/noon", "hook: characters/host",
+        }
+        self.assertEqual(expected, drawn)
 
     def test_a_message_no_hook_fits_fails_with_missing_hook(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)

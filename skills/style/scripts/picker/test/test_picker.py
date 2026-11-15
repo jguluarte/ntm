@@ -5,21 +5,29 @@ from picker import Picker
 from theme import Theme, ThemeOptions
 
 
-def make_picker_args(options, *flags):
-    return ["hook", "--options", str(options), *flags]
+def make_picker_args(options, tyype=None, seed=None):
+    args = ["hook", "--options", str(options)]
+
+    if tyype is not None:
+        args += ["--type", tyype]
+
+    if seed is not None:
+        args += ["--seed", str(seed)]
+
+    return args
 
 
 class CommandLineTest(unittest.TestCase):
     def test_hook_draws_from_the_options_file_with_the_seed(self):
-        args = make_picker_args(fixtures.EVEN, "--seed", "2")
+        args = make_picker_args(fixtures.EVEN, seed=2)
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
 
         self.assertEqual("hook: scenes/dawn", drawn)
 
-    def test_hook_draws_only_hooks_fitting_the_theme_options(self):
-        args = make_picker_args(fixtures.EVERY_WHEN, "--for", "weekly,big_win")
+    def test_hook_draws_only_hooks_fitting_the_type(self):
+        args = make_picker_args(fixtures.EVERY_WHEN, tyype="weekly,big_win")
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
@@ -33,7 +41,7 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertIsNone(picker.seed)
 
-    def test_the_theme_options_are_optional(self):
+    def test_the_type_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
 
         picker = Picker.from_args(args)
@@ -50,7 +58,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, "--seed", "seven")
+        args = make_picker_args(fixtures.EVEN, seed="seven")
 
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
@@ -60,10 +68,10 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(expected, exited.exception.code)
 
-    def test_a_for_that_isnt_a_valid_combination_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, "--for", "morning,evening")
+    def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
+        args = make_picker_args(fixtures.EVEN, tyype="morning,evening")
 
-        why = "argument --for: more than one reminder type: evening, morning"
+        why = "argument --type: more than one reminder type: evening, morning"
         expected = f"Picker FAILED: ArgumentError: {why}"
 
         with self.assertRaises(SystemExit) as exited:

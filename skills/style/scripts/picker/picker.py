@@ -32,7 +32,7 @@ class Picker:
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
         hook.add_argument(
-            "--for", dest="theme_options", type=cls._parse_theme_options,
+            "--type", dest="theme_options", type=cls._parse_theme_options,
             default=ThemeOptions(),
         )
         hook.add_argument("--seed", type=int)

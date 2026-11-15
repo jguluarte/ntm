@@ -14,6 +14,14 @@
 | `$has-amazon-alert`   | `has-amazon-alert`     |
 | `$amazon-unavailable` | `amazon-unavailable`   |
 
+## Databases
+
+| Database         | Name on your task list |
+| ---------------- | ---------------------- |
+| `%Message-rules` | `Message rules`        |
+| `%Paused-dates`  | `Paused dates`         |
+| `%Estimator-log` | `Estimator log`        |
+
 ## Planning
 
 - Days to plan: weekdays

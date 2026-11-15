@@ -19,6 +19,11 @@ HOOK_LINE = "hook: {}"
 FAILURE_LINE = "Picker FAILED: {}: {}"
 
 
+class InvalidOptions(ValueError):
+    def __init__(self, where, why):
+        super().__init__(f"{where}: {why}")
+
+
 class NoHooks(ValueError):
     def __init__(self):
         super().__init__("no pool in the options file gives a hook")
@@ -49,7 +54,7 @@ class Options:
         try:
             jsonschema.validate(fields, cls._load(OPTIONS_SCHEMA))
         except jsonschema.ValidationError as error:
-            raise ValueError(f"{error.json_path}: {error.message}") from None
+            raise InvalidOptions(error.json_path, error.message) from None
 
 
 class Picker:

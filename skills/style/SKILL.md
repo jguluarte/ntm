@@ -20,7 +20,8 @@ agent reads only the parts of `%Theme` this skill points it to, and never
 ## Setup
 
 Load `ntm-user:backend`, which says where `%Theme` and `%Message-history` live,
-and read both.
+and read both: this week's theme, as `%Settings` names it, and that theme's
+history, found by its name, such as `Casebook-message-history`.
 
 ## What you write from
 
@@ -70,15 +71,14 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
-and message are what gets sent, and step 1's hook and speaker go into its entry
-with the theme's name.
+and message are what gets sent, and step 1's hook and speaker go into its entry.
 
 ## Keeping `%Message-history`
 
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
-final reply, add its entry at the top of the Entries part. An entry is one JSON
-line, written compact, with no spaces or line breaks added, and only the fields
-that have a value:
+final reply, add its entry at the top of the Entries part of the history Setup
+read. An entry is one JSON line, written compact, with no spaces or line breaks
+added, and only the fields that have a value:
 
 ```
 {"sent":"2026-11-13 08:45","reminder":"morning","hook":"launch","tasks":[{"id":"ABC-12","planned":"2026-11-13"}]}
@@ -87,7 +87,6 @@ that have a value:
 - `sent`: when it went out, 24-hour, in the user's timezone
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
-- `theme`: the theme's name
 - `hook`, `speaker`: what step 1 picked; `speaker` only when it picked one
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has one

@@ -1,7 +1,7 @@
 import unittest
 
 import fixtures
-from theme import InvalidTheme, MissingHook, Theme, ThemeOptions
+from theme import InvalidTheme, MissingHook, NoHooks, Theme, ThemeOptions
 
 
 class HooksTest(unittest.TestCase):
@@ -16,12 +16,12 @@ class HooksTest(unittest.TestCase):
 
         self.assertEqual(expected, hooks)
 
-    def test_a_theme_whose_pools_give_no_hook_has_none_to_give(self):
+    def test_a_theme_whose_pools_give_no_hook_fails_with_no_hooks(self):
         theme = Theme(fixtures.SPEAKERS_ONLY)
 
         expected = "no pool in the options file gives a hook"
 
-        with self.assertRaises(MissingHook) as raised:
+        with self.assertRaises(NoHooks) as raised:
             theme.hooks_for(ThemeOptions())
 
         self.assertEqual(expected, str(raised.exception))
@@ -85,7 +85,7 @@ class FitTest(unittest.TestCase):
 
         self.assertEqual(expected, hooks)
 
-    def test_a_big_win_that_fits_nothing_as_a_normal_win_has_no_hook(self):
+    def test_a_big_win_with_no_normal_win_hook_fails_with_missing_hook(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
 
         expected = "no hook fits morning,big_win"

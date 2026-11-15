@@ -120,7 +120,7 @@ class PickHookTest(unittest.TestCase):
 
         self.assertGreater(len(drawn), 1)
 
-    def test_a_message_no_hook_fits_fails_naming_its_options(self):
+    def test_a_message_no_hook_fits_fails_with_missing_hook(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
         picker = Picker(theme, ThemeOptions.parse("morning"))
 

@@ -43,13 +43,30 @@ class InvalidTheme(ValueError):
 
 
 class InvalidThemeOptions(ValueError):
-    def __init__(self, why, values):
+    pass
+
+
+class UnknownThemeOption(InvalidThemeOptions):
+    def __init__(self, values):
         listed = ", ".join(sorted(values))
-        super().__init__(f"{why}: {listed}")
+        super().__init__(f"not an option: {listed}")
+
+
+class MoreThanOneReminderType(InvalidThemeOptions):
+    def __init__(self, reminder_types):
+        values = sorted(reminder_type.value for reminder_type in reminder_types)
+        listed = ", ".join(values)
+        super().__init__(f"more than one reminder type: {listed}")
+
+
+class NoHooks(ValueError):
+    def __init__(self):
+        super().__init__("no pool in the options file gives a hook")
 
 
 class MissingHook(ValueError):
-    pass
+    def __init__(self, theme_options):
+        super().__init__(f"no hook fits {theme_options}")
 
 
 @dataclass(frozen=True)
@@ -66,11 +83,10 @@ class ThemeOptions:
         options = reminder_types | task_outcomes
         unknown = values - {option.value for option in options}
         if unknown:
-            raise InvalidThemeOptions("not an option", unknown)
+            raise UnknownThemeOption(unknown)
 
         if len(reminder_types) > 1:
-            named = {reminder_type.value for reminder_type in reminder_types}
-            raise InvalidThemeOptions("more than one reminder type", named)
+            raise MoreThanOneReminderType(reminder_types)
 
         reminder_type = reminder_types.pop() if reminder_types else None
         return cls(reminder_type, frozenset(task_outcomes))
@@ -139,13 +155,13 @@ class Theme:
 
     def hooks_for(self, theme_options):
         if not self._hooks:
-            raise MissingHook("no pool in the options file gives a hook")
+            raise NoHooks()
 
         hooks = self._hooks_that_fit(theme_options)
         if not hooks and theme_options.is_big_win:
             hooks = self._hooks_that_fit(theme_options.as_normal_win())
         if not hooks:
-            raise MissingHook(f"no hook fits {theme_options}")
+            raise MissingHook(theme_options)
 
         return hooks
 

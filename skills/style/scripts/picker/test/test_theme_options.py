@@ -3,8 +3,8 @@ import unittest
 import yaml
 
 from theme import (
-    OPTIONS_SCHEMA, InvalidThemeOptions, ReminderType, TaskOutcome,
-    ThemeOptions,
+    OPTIONS_SCHEMA, MoreThanOneReminderType, ReminderType, TaskOutcome,
+    ThemeOptions, UnknownThemeOption,
 )
 
 
@@ -17,18 +17,18 @@ class ParseTest(unittest.TestCase):
 
         self.assertEqual(expected, theme_options)
 
-    def test_a_value_that_isnt_an_option_fails_naming_it(self):
+    def test_a_value_that_isnt_an_option_fails_with_unknown_theme_option(self):
         expected = "not an option: night"
 
-        with self.assertRaises(InvalidThemeOptions) as raised:
+        with self.assertRaises(UnknownThemeOption) as raised:
             ThemeOptions.parse("evening,night")
 
         self.assertEqual(expected, str(raised.exception))
 
-    def test_two_reminder_types_fail_naming_them(self):
+    def test_two_reminder_types_fail_with_more_than_one_reminder_type(self):
         expected = "more than one reminder type: evening, morning"
 
-        with self.assertRaises(InvalidThemeOptions) as raised:
+        with self.assertRaises(MoreThanOneReminderType) as raised:
             ThemeOptions.parse("morning,evening")
 
         self.assertEqual(expected, str(raised.exception))

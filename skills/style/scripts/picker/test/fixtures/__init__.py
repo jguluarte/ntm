@@ -2,7 +2,7 @@ from pathlib import Path
 
 FIXTURES = Path(__file__).parent
 EVEN = FIXTURES / "Even-options.yaml"
-CASEBOOK = FIXTURES / "Casebook-options.yaml"
+CASEBOOK = FIXTURES / "Casebook" / "Casebook-options.yaml"
 EVERY_WHEN = FIXTURES / "Every-when-options.yaml"
 WITHOUT_BIG_WIN = FIXTURES / "Without-big-win-options.yaml"
 SPEAKERS_ONLY = FIXTURES / "Speakers-only-options.yaml"

@@ -1,0 +1,29 @@
+theme: Casebook
+
+world: >-
+  A detective story set in a foggy city. The user is the client who hired the
+  detective; each task is a case on the detective's desk.
+
+escalation: >-
+  A slipped task is a case going cold. One slip draws a raised eyebrow, three
+  draw a lecture on neglect, five and the inspector starts asking questions.
+
+wins: >-
+  A finished task is a case closed, filed with quiet satisfaction. A big win
+  gets the whole cast in the drawing room for the reveal.
+
+files:
+  by_entry:
+    Casebook-characters.yaml: >-
+      The people of the story, and lines any of them can say.
+
+    Casebook-scenes.yaml: >-
+      Recurring scenes a message can be set in.
+
+  fully_read:
+    Casebook-terminology.md: >-
+      The story's own words.
+
+  for_the_picker:
+    Casebook-options.yaml: >-
+      What the theme offers the picker.

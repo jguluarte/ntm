@@ -1,0 +1,10 @@
+about: >-
+  Recurring scenes a message can be set in. A picked scene stages the whole
+  message; whoever speaks, speaks from inside it.
+
+scenes:
+  stakeout:
+    name: The stakeout
+    staging: >-
+      A cold car across the street, a thermos going lukewarm, a window that
+      hasn't lit up yet. The task is what the detective is waiting to see.

@@ -105,13 +105,33 @@ Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml
 
 ### The weight
 
-An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
-rounded to two places, or 1.0 with neither: an entry with 3 lines weighs half.
+An entry with only a few lines would repeat itself if it were drawn as often as
+one with many, so it is drawn less until it has enough lines to vary. An entry
+with 3 lines is drawn half as readily as it could be, one with 9 lines three
+quarters as readily, and one with 1 line a quarter. An entry with no lines of
+its own counts in full. The 3 is one number that can be tuned later.
+
+```
+weight = lines / (lines + LINES_AT_HALF_WEIGHT)
+```
+
+`lines` counts the entry's `lines` and `riffs`; other keys, such as a scene's
+`setting`, aren't lines. `LINES_AT_HALF_WEIGHT` is 3, the number of lines at
+which an entry weighs half. The weight is rounded to two places, and is 1.0 for
+an entry with no lines.
+
+| lines | weight |
+| ----- | ------ |
+| 1     | 0.25   |
+| 3     | 0.5    |
+| 9     | 0.75   |
+
 In `Casebook`, the detective's 2 lines and 2 riffs weigh 0.57, and `any_time`'s
-one line weighs 0.25. Other keys, such as a scene's `setting`, aren't lines.
+one line weighs 0.25.
 
 ### What it keeps
 
 Everything it doesn't compute stays as it was: `type`, `roles`, `file`, `score`,
 the half-lives and `speaker_rate`. Saving keeps the key order and lists on one
-line, and loses the file's comments and blank lines.
+line, and loses the file's comments and blank lines: the options file is written
+by ntm, not annotated by hand.

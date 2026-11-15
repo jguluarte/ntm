@@ -13,7 +13,12 @@ OPTIONS_SCHEMA = SKILLS / "theme-builder" / "references" / "options.schema.yaml"
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
+WHEN = "when"
 HOOK_ROLE = "hook"
+
+REMINDERS = frozenset({"morning", "afternoon", "evening", "weekly"})
+HAPPENINGS = frozenset({"slipped", "done", "big_win"})
+BIG_WIN = "big_win"
 
 HOOK_LINE = "hook: {}"
 FAILURE_LINE = "Picker FAILED: {}: {}"
@@ -29,20 +34,60 @@ class NoHooks(ValueError):
         super().__init__("no pool in the options file gives a hook")
 
 
+class NoHookFits(ValueError):
+    def __init__(self, occasions):
+        listed = ", ".join(sorted(occasions))
+        super().__init__(f"no hook fits the occasions {listed}")
+
+
 class Options:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
         self._pools = fields[POOLS_BY_KIND]
 
-    def hooks(self):
-        hooks = []
-        for kind, pool in self._pools.items():
-            if HOOK_ROLE in pool[ROLES]:
-                hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG])
-        if not hooks:
+    def hooks(self, occasions):
+        entries_by_hook = self._entries_by_hook()
+        if not entries_by_hook:
             raise NoHooks()
+
+        hooks = [
+            hook for hook, entry in entries_by_hook.items()
+            if self._fits(entry, occasions)
+        ]
+        if not hooks:
+            raise NoHookFits(occasions)
+
         return hooks
+
+    def _entries_by_hook(self):
+        entries_by_hook = {}
+        for kind, pool in self._pools.items():
+            if HOOK_ROLE not in pool[ROLES]:
+                continue
+            for slug, entry in pool[ENTRIES_BY_SLUG].items():
+                entries_by_hook[f"{kind}/{slug}"] = entry
+        return entries_by_hook
+
+    @classmethod
+    def _fits(cls, entry, occasions):
+        when = cls._when(entry)
+        if BIG_WIN in occasions and BIG_WIN not in when:
+            return False
+
+        reminders = when & REMINDERS
+        happenings = when & HAPPENINGS
+        reminder_fits = not reminders or bool(reminders & occasions)
+        happening_fits = not happenings or bool(happenings & occasions)
+        return reminder_fits and happening_fits
+
+    @staticmethod
+    def _when(entry):
+        when = entry.get(WHEN, []) if entry else []
+        if isinstance(when, str):
+            return frozenset([when])
+
+        return frozenset(when)
 
     @staticmethod
     def _load(path):
@@ -58,9 +103,10 @@ class Options:
 
 
 class Picker:
-    def __init__(self, options, seed=None):
+    def __init__(self, options, seed=None, occasions=frozenset()):
         self.options = options
         self.seed = seed
+        self.occasions = occasions
 
     @classmethod
     def from_args(cls, args):
@@ -70,7 +116,7 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
-            hooks = self.options.hooks()
+            hooks = self.options.hooks(self.occasions)
             generator = random.Random(self.seed)
             return HOOK_LINE.format(generator.choice(hooks))
 

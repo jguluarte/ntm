@@ -98,3 +98,15 @@ class PickHookTest(unittest.TestCase):
             picker.pick_hook()
 
         self.assertEqual(expected, exited.exception.code)
+
+    def test_a_big_win_without_big_win_hooks_fails_saying_none_fits(self):
+        options = Options(fixtures.EVEN)
+        picker = Picker(options, occasions={"evening", "big_win"})
+
+        why = "no hook fits the occasions big_win, evening"
+        expected = f"Picker FAILED: NoHookFits: {why}"
+
+        with self.assertRaises(SystemExit) as exited:
+            picker.pick_hook()
+
+        self.assertEqual(expected, exited.exception.code)

@@ -1,0 +1,17 @@
+pools:
+  scenes:
+    roles: [hook]
+    entries:
+      any_time:
+      evening:
+        when: evening
+      slipped:
+        when: slipped
+      evening_slipped:
+        when: [evening, slipped]
+      morning_or_weekly:
+        when: [morning, weekly]
+      big_win:
+        when: big_win
+      evening_big_win:
+        when: [evening, big_win]

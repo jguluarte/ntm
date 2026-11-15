@@ -12,7 +12,48 @@ class HooksTest(unittest.TestCase):
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
         ]
 
-        hooks = options.hooks()
+        hooks = options.hooks({"morning"})
+
+        self.assertEqual(expected, hooks)
+
+
+class FitTest(unittest.TestCase):
+    def test_an_entry_fits_only_the_reminders_its_when_names(self):
+        options = Options(fixtures.EVERY_WHEN)
+
+        expected = ["scenes/any_time", "scenes/morning_or_weekly"]
+
+        hooks = options.hooks({"weekly"})
+
+        self.assertEqual(expected, hooks)
+
+    def test_an_entry_fits_only_when_a_thing_it_names_happened(self):
+        options = Options(fixtures.EVERY_WHEN)
+
+        expected = [
+            "scenes/any_time", "scenes/evening", "scenes/slipped",
+            "scenes/evening_slipped",
+        ]
+
+        hooks = options.hooks({"evening", "slipped"})
+
+        self.assertEqual(expected, hooks)
+
+    def test_an_entry_naming_both_kinds_needs_both(self):
+        options = Options(fixtures.EVERY_WHEN)
+
+        expected = ["scenes/any_time", "scenes/evening"]
+
+        hooks = options.hooks({"evening"})
+
+        self.assertEqual(expected, hooks)
+
+    def test_a_big_win_fits_only_entries_kept_for_big_win(self):
+        options = Options(fixtures.EVERY_WHEN)
+
+        expected = ["scenes/big_win"]
+
+        hooks = options.hooks({"morning", "done", "big_win"})
 
         self.assertEqual(expected, hooks)
 
@@ -20,11 +61,10 @@ class HooksTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         expected = [
-            "characters/detective", "shared_lines/any_time",
-            "shared_lines/big_win", "scenes/stakeout",
+            "characters/detective", "shared_lines/any_time", "scenes/stakeout",
         ]
 
-        hooks = Options(fixtures.CASEBOOK).hooks()
+        hooks = Options(fixtures.CASEBOOK).hooks({"morning"})
 
         self.assertEqual(expected, hooks)
 

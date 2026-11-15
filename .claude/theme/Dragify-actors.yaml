@@ -6,7 +6,7 @@ about: >-
   their words, their kind of read. When it picks one as the hook, build the
   message on their lines and riffs. An actor's `riffs` are famous lines to bend
   rather than quote, each with a `bend` saying how to turn it toward the task. A
-  riff with `when` in place of a `bend` fits as it is, and only on the occasion
+  riff with `type` in place of a `bend` fits as it is, and only on the occasion
   it names. After the last actor come the lines any actor can say.
 
 actors:
@@ -1626,7 +1626,7 @@ actors:
           Put the user on planet nine with her, far off in a world of their own,
           and the task on planet three, down on Earth and waiting.
       - line: Buenas noches! Oh, see you later, in the magazines.
-        when: evening
+        type: evening
 
   jujubee:
     name: Jujubee
@@ -1898,7 +1898,7 @@ actors:
       - line: >-
           It's been 10 years of coming to this competition, and I'm fucking
           ready to reign. I won! I won! Finally. We did it, Joe!
-        when: big_win
+        type: big_win
       - line: Of course Michelle is going to judge you. IT'S HER JOB.
         bend: >-
           Put herself in Michelle's chair: of course the reminder judges the
@@ -2017,7 +2017,7 @@ actors:
           Hand it to the user while the due date is still days away, the delay
           celebrated like a save.
       - line: I'd like to take it off, please.
-        when: done
+        type: done
 
   jaida_essence_hall:
     name: Jaida Essence Hall
@@ -2313,7 +2313,7 @@ any_actor_lines:
       a task that slipped many times finally closed. Never for an ordinary day
       of doing what was planned.
 
-    when: big_win
+    type: big_win
 
     lines:
       - Con-drag-ulations, you are the winner of this week's challenge!

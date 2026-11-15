@@ -13,7 +13,7 @@ about: >-
   with no `show` belongs to neither show.
 
   When a message carries several tasks, the callback's task is the one its
-  `when` is about: a finished one for `done` or `big_win`, the one slipped
+  `type` is about: a finished one for `done` or `big_win`, the one slipped
   longest for `slipped`, and otherwise the first one the facts list. The other
   tasks fill any other parts the moment has.
 
@@ -37,7 +37,7 @@ references:
       Run the old task's plan through the Season 1 filter: from across the room
       it looks fine, and the haze hides how long ago it was shot.
 
-    when:
+    type:
       - slipped
 
   susan_lucci:
@@ -56,7 +56,7 @@ references:
       Give the task the title, and read out its nominations: one for every day
       it was planned, and not a single win.
 
-    when:
+    type:
       - slipped
 
   jujubees_unbeaten_run:
@@ -76,7 +76,7 @@ references:
       Count the week's done days as an unbeaten run, then bring on the task that
       finally broke the streak.
 
-    when:
+    type:
       - weekly
       - slipped
 
@@ -113,7 +113,7 @@ references:
       Credit the finished task as Cher played by a Cher impersonator: the plain
       way, done properly, no twist needed.
 
-    when:
+    type:
       - done
 
   dida_and_natalie_cole:
@@ -170,7 +170,7 @@ references:
       side-eye between them, and set up the bottom two where one of them finally
       goes home.
 
-    when:
+    type:
       - slipped
 
   alyssas_katy_perry:
@@ -189,7 +189,7 @@ references:
       Bury the easy task's slip in the Snatch Game hall of shame, next to
       Alyssa's Katy Perry, where even legends get one bad night.
 
-    when:
+    type:
       - slipped
 
   lil_poundcake:
@@ -210,7 +210,7 @@ references:
       Bring the old task back in a new outfit, the way Lil Poundcake keeps
       returning: a little bigger each time, and the same menace underneath.
 
-    when:
+    type:
       - slipped
 
   ornacia:
@@ -232,7 +232,7 @@ references:
       list, a name and a face of its own, and let it make the entrance while the
       task waits underneath.
 
-    when:
+    type:
       - morning
 
   kennedys_leap:
@@ -269,7 +269,7 @@ references:
       Cast the slipped task's next try as one more queen walking into Snatch
       Game as Beyoncé: the curse is famous, and so is the queen who broke it.
 
-    when:
+    type:
       - slipped
 
   gaga_in_the_werk_room:
@@ -290,7 +290,7 @@ references:
       half its face hidden, until it drops the headpiece and shows its real
       size.
 
-    when:
+    type:
       - morning
 
   sheas_finale:
@@ -310,7 +310,7 @@ references:
       Recap the week as Shea's season: wins stacked up, the front-runner all
       along, and then the one round that came at the wrong moment.
 
-    when:
+    type:
       - weekly
       - slipped
 
@@ -331,7 +331,7 @@ references:
       sells it, the crowd gasps, and then check whether it ever touched the
       floor.
 
-    when:
+    type:
       - afternoon
 
   not_next_time:
@@ -350,7 +350,7 @@ references:
       Accept the slipped task's apology in one breath and warn it in the next,
       the forgiveness and the threat in the same sentence.
 
-    when:
+    type:
       - slipped
 
   # Drag Race, Seasons 11 to 18
@@ -373,7 +373,7 @@ references:
       syncing the same song, and pick out the one most likely to go home
       tonight.
 
-    when:
+    type:
       - morning
 
   sorry_not_sorry:
@@ -394,7 +394,7 @@ references:
       Run the day's finish as Sorry Not Sorry: the task and the user matching
       each other flip for flip, and the host keeping both.
 
-    when:
+    type:
       - done
 
   silky_strips_in_untucked:
@@ -430,7 +430,7 @@ references:
       Review the done task with one syllable, RuPaul's after "No Scrubs", and
       leave it there.
 
-    when:
+    type:
       - done
 
   jans_face_crack:
@@ -449,7 +449,7 @@ references:
       Tell an ordinary finished task it's safe, and describe its face as the
       parade it was hoping for doesn't come.
 
-    when:
+    type:
       - done
 
   nicki_detests_it:
@@ -484,7 +484,7 @@ references:
       Nod to the task done without leaving the house: the finale happened on a
       screen, and it still counted.
 
-    when:
+    type:
       - done
 
   kandys_boombox:
@@ -503,7 +503,7 @@ references:
       Switch on an imaginary boombox at the start of the task and walk into it
       on the beat, no plan, all confidence.
 
-    when:
+    type:
       - morning
 
   ru_flips_off_utica:
@@ -523,7 +523,7 @@ references:
       Give the slipped task's latest excuse the host's answer to a joke that
       went too far: wordless, rude and fond, and over before it can reply.
 
-    when:
+    type:
       - slipped
 
   mary_queen_of_scots:
@@ -559,7 +559,7 @@ references:
       Present the finished task as a Willow Pill variety number: strange,
       entirely its own, and it worked.
 
-    when:
+    type:
       - done
 
   dejas_lil_jon:
@@ -595,7 +595,7 @@ references:
       Mark the finished task's hardest step with Anetra's somersault: over it in
       one clean move, and on to the next count.
 
-    when:
+    type:
       - done
 
   the_immunity_potion:
@@ -616,7 +616,7 @@ references:
       Let the slipped task drink the immunity potion it has been saving for
       weeks, then reveal it was spent on a week nobody was going home.
 
-    when:
+    type:
       - slipped
 
   nymphias_bananas:
@@ -653,7 +653,7 @@ references:
       Line up ten levers for the slipped task and let it pull one: the right one
       drops Michelle into the tank and saves it, and the other nine don't.
 
-    when:
+    type:
       - slipped
 
   onyas_crown_lip_sync:
@@ -672,7 +672,7 @@ references:
       Hand the finished task Onya's win: no reveal, no stunt, the song done
       right, and the crown anyway.
 
-    when:
+    type:
       - done
 
   myki_ranked_last:
@@ -692,7 +692,7 @@ references:
       Open on the big effort ranked last, the way the room ranked Myki, then
       read out what came after, win by win, up to the crown.
 
-    when:
+    type:
       - big_win
 
   nini_cocos_streak:
@@ -711,7 +711,7 @@ references:
       Add the done task to Nini Coco's streak: in the bottom again, won again,
       still standing.
 
-    when:
+    type:
       - done
 
   # Drag Race All Stars
@@ -733,7 +733,7 @@ references:
       Hover a hand over the she-mergency button this afternoon: tag a partner in
       to finish the task, or remember the pair who pressed it still went home.
 
-    when:
+    type:
       - afternoon
 
   dancing_on_my_own:
@@ -752,7 +752,7 @@ references:
       Strip the evening's open task of every trick: barely move, mean every
       word, and get to the end of the song.
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -773,7 +773,7 @@ references:
       Bring two dropped tasks back onto the list as a pair, lip syncing for the
       same way back, too close for either to go home.
 
-    when:
+    type:
       - slipped
 
   ben_eliminates_herself:
@@ -792,7 +792,7 @@ references:
       Catch the task this afternoon at its BenDeLaCreme moment: winning the
       round, and reaching for the lipstick to write its own name.
 
-    when:
+    type:
       - afternoon
 
   lifes_not_fair:
@@ -863,7 +863,7 @@ references:
       Fold the done task's stumble into the finish, the way Kylie kept going
       after her slip in the finale.
 
-    when:
+    type:
       - done
 
   silkys_barbie_girl:
@@ -900,7 +900,7 @@ references:
       Drop the music from the evening's task and deliver it as a monologue:
       every word, no song to hide behind, and someone still wins.
 
-    when:
+    type:
       - evening
 
   # Drag Race UK and UK vs the World
@@ -922,7 +922,7 @@ references:
       Form the day's finished tasks into a girl group, each with its verse, and
       give the single a chart position.
 
-    when:
+    type:
       - done
 
   uk_hun:
@@ -958,7 +958,7 @@ references:
       Bring the long-paused task back after its seven-month break, picking up
       mid-season as if nothing happened, with brand-new teeth.
 
-    when:
+    type:
       - slipped
 
   ginny_lemon_walks_off:
@@ -978,7 +978,7 @@ references:
       Cast the slipped task as Sister Sister: left on the stage mid-song,
       finishing the number alone after its partner walked off.
 
-    when:
+    type:
       - slipped
 
   biminis_katie_price:
@@ -1015,7 +1015,7 @@ references:
       Crown the big effort that never once landed in the bottom: on plan every
       day, no lip sync needed, until the last one, and it won that too.
 
-    when:
+    type:
       - big_win
 
   love_most_of_ya:
@@ -1034,7 +1034,7 @@ references:
       Sign off the evening the way Vicki signed her mirror: love most of the
       list, and let the task left out work out it's the one.
 
-    when:
+    type:
       - evening
       - done
 
@@ -1055,7 +1055,7 @@ references:
       Write the dropped task's mirror message in the name of whatever knocked it
       off today's list, signed as the culprit.
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -1078,7 +1078,7 @@ references:
       Nod to the done task with Eve 6000's calm: whatever fell off on the way,
       pick it up and finish the reveal.
 
-    when:
+    type:
       - done
 
   # Drag Race Down Under
@@ -1099,7 +1099,7 @@ references:
       Crown the big effort at home, on the ground it was done on, with the home
       crowd cheering from the next room.
 
-    when:
+    type:
       - big_win
 
   # Dragula
@@ -1120,7 +1120,7 @@ references:
       Throw the user and the slipped task into the mud-wrestling cage, in
       character, and wrestle until the set comes down around them.
 
-    when:
+    type:
       - slipped
 
   vander_volunteers:
@@ -1140,7 +1140,7 @@ references:
       Treat the done task as Vander's extermination: volunteered for, eaten with
       no hands, and back to winning after.
 
-    when:
+    type:
       - done
 
   landons_spiders:
@@ -1159,7 +1159,7 @@ references:
       Name the done task's worst step, the one that went down like Landon's jar
       of live spiders on day one, and note that it was swallowed first.
 
-    when:
+    type:
       - done
 
   landon_cider_the_first_king:
@@ -1178,7 +1178,7 @@ references:
       Crown the big effort as the first of its kind: no task like it had ever
       been finished here, and now one has.
 
-    when:
+    type:
       - big_win
 
   saint_wins_resurrection:
@@ -1199,7 +1199,7 @@ references:
       the round that only buys a way back in, and walking through the door it
       opened.
 
-    when:
+    type:
       - big_win
 
   jay_kay_dies_twice:
@@ -1218,7 +1218,7 @@ references:
       Give the task its second death scene: dropped, back the next day, a win in
       between, and dropped again.
 
-    when:
+    type:
       - slipped
 
   asias_stolen_wig:
@@ -1238,7 +1238,7 @@ references:
       Take something from the done task at the door, the way a creature snatched
       Asia's wig on her walk in, and let it win the episode without it.
 
-    when:
+    type:
       - done
 
   # Around the shows: ballroom, drag history, camp film and TV, divas
@@ -1259,7 +1259,7 @@ references:
       Let the task that keeps getting passed over walk in like Crystal LaBeija:
       sure of its worth, and done waiting to be noticed.
 
-    when:
+    type:
       - slipped
 
   dorian_corey_on_shade:
@@ -1277,7 +1277,7 @@ references:
       Leave the obvious unsaid, the way Dorian Corey explains shade: the task
       knows it's overdue, so say anything but that, and let it hear it anyway.
 
-    when:
+    type:
       - slipped
 
   junior_labeijas_opulence:
@@ -1295,7 +1295,7 @@ references:
       spell out what it's wearing, letter by letter, and hand it everything in
       the room.
 
-    when:
+    type:
       - big_win
 
   courtney_comes_back:
@@ -1312,7 +1312,7 @@ references:
       Send yesterday's task back in today in full drag: the same task, turned
       away once, walking in as the version the judges can't refuse.
 
-    when:
+    type:
       - slipped
 
   pink_flamingos:
@@ -1344,7 +1344,7 @@ references:
       costume, everyone knows the lines, and the crowd shouts back at the
       screen.
 
-    when:
+    type:
       - weekly
 
   no_wire_hangers:
@@ -1377,7 +1377,7 @@ references:
       Serve the task that's been left to rot under a silver cover, Baby Jane
       style, and lift the lid at the table.
 
-    when:
+    type:
       - slipped
 
   ready_for_my_close_up:
@@ -1411,7 +1411,7 @@ references:
       Dress the done task in the curtains, rod and all: made from what was in
       the house, and grand anyway.
 
-    when:
+    type:
       - done
 
   little_edies_costume:
@@ -1429,7 +1429,7 @@ references:
       Dress the morning's task in its costume for the day and explain every
       piece to camera, as if the outfit were the plan.
 
-    when:
+    type:
       - morning
 
   picture_it:
@@ -1446,7 +1446,7 @@ references:
       Open the week's story Sophia's way, with a place and a date, then tell it
       long.
 
-    when:
+    type:
       - weekly
 
   i_dont_know_her:
@@ -1463,7 +1463,7 @@ references:
       Meet the long-ignored task with Mariah's smile, and decline to recognize
       it at all.
 
-    when:
+    type:
       - slipped
 
   diana_in_the_rain:
@@ -1480,7 +1480,7 @@ references:
       Bring the big effort back for its second night, the way Diana Ross came
       back after the rain: the whole set, start to finish.
 
-    when:
+    type:
       - big_win
 
   judy_at_carnegie_hall:
@@ -1498,7 +1498,7 @@ references:
       Give the big effort Judy's night at Carnegie Hall: the crowd at the edge
       of the stage, calling it back for one more bow after the last song.
 
-    when:
+    type:
       - big_win
 
   chers_farewell_tour:
@@ -1514,7 +1514,7 @@ references:
       Book the task another farewell date: its last goodbye has been announced
       before, and the tour keeps going.
 
-    when:
+    type:
       - slipped
 
   the_wig_in_the_toilet:

@@ -50,13 +50,13 @@ files:
       The motifs: the shows' challenges, rituals and scenes a message can be
       staged as, each with its show, what it is, how it plays on the show, how
       to stage a task in it, the phrases said at that moment, and for some a
-      `when` naming the messages it fits.
+      `type` naming the messages it fits.
 
     Dragify-references.yaml: >-
       The references: single moments from the shows and the culture around them
       that a message can call back to, each with what happened, what fans use it
       for and how to call back to it on a task, and for some the show it comes
-      from and a `when` naming the messages it fits. Then the landmark wins kept
+      from and a `type` naming the messages it fits. Then the landmark wins kept
       for the winner's circle, in the same shape.
 
   fully_read:
@@ -68,4 +68,4 @@ files:
     Dragify-options.yaml: >-
       The pools the job picks from: the actors as speakers and hooks, and the
       lines any actor can say, the motifs and the references as hooks, each with
-      `when` where it has one.
+      `type` where it has one.

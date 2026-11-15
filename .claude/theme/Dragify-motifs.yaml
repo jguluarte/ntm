@@ -8,7 +8,7 @@ about: >-
   speaker who isn't the host plays the host's part in a scene by reporting it or
   standing in, in their own manner.
 
-  When a message carries several tasks, the staging's task is the one its `when`
+  When a message carries several tasks, the staging's task is the one its `type`
   is about: a finished one for `done` or `big_win`, the one slipped longest for
   `slipped`, and otherwise the first one the facts list. The other tasks fill
   the scene's other parts.
@@ -37,7 +37,7 @@ motifs:
     phrases:
       - Previously on...
 
-    when:
+    type:
       - morning
       - weekly
 
@@ -66,7 +66,7 @@ motifs:
       - Check your lipstick before you come for me.
       - Come on season six, let's get sickening.
 
-    when:
+    type:
       - morning
       - weekly
 
@@ -95,7 +95,7 @@ motifs:
     phrases:
       - Have fun cleaning this.
 
-    when:
+    type:
       - morning
       - slipped
 
@@ -121,7 +121,7 @@ motifs:
     phrases:
       - Ooh, girl... She done already done had herses!
 
-    when:
+    type:
       - morning
 
   challenge_announcement:
@@ -149,7 +149,7 @@ motifs:
       - Oh, Pit Crew!
       - Racers, start your engines, and may the best drag queen win!
 
-    when:
+    type:
       - morning
       - weekly
 
@@ -176,7 +176,7 @@ motifs:
     phrases:
       - Finally! I'm not gonna get picked last!
 
-    when:
+    type:
       - morning
 
   werk_room_walkthrough:
@@ -205,7 +205,7 @@ motifs:
       - I can't wait to see how this turns out.
       - I get worried when you do that 'oh it's going to be fine'
 
-    when:
+    type:
       - afternoon
 
   the_twist:
@@ -232,7 +232,7 @@ motifs:
     phrases:
       - Do you like surprises?
 
-    when:
+    type:
       - afternoon
 
   getting_ready:
@@ -257,7 +257,7 @@ motifs:
 
     phrases: []
 
-    when:
+    type:
       - afternoon
 
   confessional:
@@ -310,7 +310,7 @@ motifs:
     phrases:
       - I don't sew.
 
-    when:
+    type:
       - afternoon
 
   reading_challenge:
@@ -388,7 +388,7 @@ motifs:
       - I was working hard while you were sleeping!
       - That was a messy mess.
 
-    when:
+    type:
       - evening
 
   snatch_game:
@@ -440,7 +440,7 @@ motifs:
       its eight counts of choreography, its one entrance. The read lands on
       whether a small part can steal the show.
 
-    when:
+    type:
       - afternoon
 
   girl_group:
@@ -467,7 +467,7 @@ motifs:
 
     phrases: []
 
-    when:
+    type:
       - afternoon
 
   talent_show:
@@ -519,7 +519,7 @@ motifs:
       - Drag Family Resemblance
       - It's bring your fairy to work day.
 
-    when:
+    type:
       - afternoon
 
   the_roast:
@@ -570,7 +570,7 @@ motifs:
     phrases:
       - Eleganza Extravaganza
 
-    when:
+    type:
       - afternoon
 
   the_runway:
@@ -617,7 +617,7 @@ motifs:
     phrases:
       - Ru-veal
 
-    when:
+    type:
       - done
 
   the_critiques:
@@ -645,7 +645,7 @@ motifs:
       - Resting on pretty
       - I'll be the judge of that!
 
-    when:
+    type:
       - slipped
 
   safe:
@@ -670,7 +670,7 @@ motifs:
       - You're safe.
       - Fuck it, just have fun and hope you are safe.
 
-    when:
+    type:
       - done
 
   deliberation:
@@ -699,7 +699,7 @@ motifs:
       - Silence! I've made my decision. Bring back my girls!
       - I've consulted with the judges, but the final decision is mine to make.
 
-    when:
+    type:
       - evening
 
   lip_sync_for_your_life:
@@ -731,7 +731,7 @@ motifs:
       - The time has come for you to lip sync for your life!
       - Good luck, and don't fuck it up!
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -757,7 +757,7 @@ motifs:
       - Shantay, you stay.
       - Shantay, you both stay!
 
-    when:
+    type:
       - done
 
   challenge_win:
@@ -781,7 +781,7 @@ motifs:
       - Con-drag-ulations!
       - I have never won before, but I'mma take it.
 
-    when:
+    type:
       - big_win
 
   rupeter_badge:
@@ -808,7 +808,7 @@ motifs:
       - You were a bitch before the badge.
       - No-Badges Chez
 
-    when:
+    type:
       - done
 
   lip_sync_for_your_legacy:
@@ -834,7 +834,7 @@ motifs:
       - The time has come, for you to Lip-Sync. For. Your. Legacy!
       - As it is written, so it shall be done.
 
-    when:
+    type:
       - done
 
   sashay_away:
@@ -861,7 +861,7 @@ motifs:
       - I came in first!
       - I... have no exit line.
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -890,7 +890,7 @@ motifs:
       - HATE YOUR HAIR HOPE YOU LOSE ABSOLUTELY LOVE YOU CAMP COWS
       - Getting the crown Just Got a LOT easier for y'all
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -920,7 +920,7 @@ motifs:
       - Can I get an amen up in here?
       - Now let the music play!
 
-    when:
+    type:
       - evening
 
   porkchop:
@@ -946,7 +946,7 @@ motifs:
       - I'm sorry my dear but you are getting the Porkchop.
       - I'm the UK's Porkchop
 
-    when:
+    type:
       - weekly
       - slipped
 
@@ -972,7 +972,7 @@ motifs:
     phrases:
       - All Star rules are temporarily suspended, until further notice.
 
-    when:
+    type:
       - slipped
 
   returning_queen:
@@ -997,7 +997,7 @@ motifs:
     phrases:
       - I just had to eliminate two queens. How soon can you get here?
 
-    when:
+    type:
       - slipped
 
   lalaparuza:
@@ -1025,7 +1025,7 @@ motifs:
       - Lip Sync LaLaPaRUza Smackdown
       - Queen of She Done Already Done Had Herses
 
-    when:
+    type:
       - slipped
 
   reunion:
@@ -1051,7 +1051,7 @@ motifs:
       - Toot or Boot
       - Golden Boot
 
-    when:
+    type:
       - weekly
 
   the_crowning:
@@ -1078,7 +1078,7 @@ motifs:
       - Queen of All Queens
       - I'm just ready to rule the fucking world!
 
-    when:
+    type:
       - big_win
 
   meet_our_monsters:
@@ -1104,7 +1104,7 @@ motifs:
     phrases:
       - Meet our... monsters.
 
-    when:
+    type:
       - weekly
 
   fright_feat:
@@ -1132,7 +1132,7 @@ motifs:
       - Boulet Blindness
       - Glinda's Bubble of Protection
 
-    when:
+    type:
       - morning
 
   the_boudoir:
@@ -1157,7 +1157,7 @@ motifs:
 
     phrases: []
 
-    when:
+    type:
       - afternoon
 
   floor_show:
@@ -1238,7 +1238,7 @@ motifs:
         competition.
       - Well, you just missed the mark.
 
-    when:
+    type:
       - evening
 
   who_should_go_home:
@@ -1265,7 +1265,7 @@ motifs:
       - I can not vote for myself.
       - The rules were not made clear!
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -1292,7 +1292,7 @@ motifs:
       - So, today's Cauldron is just a big fucking hot mess.
       - Give them the fucking needles!
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -1324,7 +1324,7 @@ motifs:
         The worst thing that could happen is I fall to my death and I'm sidewalk
         sauce.
 
-    when:
+    type:
       - slipped
 
   the_plea:
@@ -1349,7 +1349,7 @@ motifs:
     phrases:
       - Let's make some good fucking TV!
 
-    when:
+    type:
       - slipped
 
   later_that_night:
@@ -1375,7 +1375,7 @@ motifs:
       - Later that night
       - Kill them all.
 
-    when:
+    type:
       - evening
       - slipped
 
@@ -1400,7 +1400,7 @@ motifs:
     phrases:
       - The Key of Life and Death
 
-    when:
+    type:
       - slipped
 
   extermination_survivor:
@@ -1425,7 +1425,7 @@ motifs:
     phrases:
       - Extermination survivor
 
-    when:
+    type:
       - done
 
   supermonster_crowning:
@@ -1450,5 +1450,5 @@ motifs:
       - The World's Next Drag Supermonster
       - Queen of the Underworld
 
-    when:
+    type:
       - big_win

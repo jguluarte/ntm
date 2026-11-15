@@ -2,7 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from fixtures import EVEN, EVEN_DRAWS, EVEN_HOOKS, HOOKLESS, SHAPELESS, UNGIVEN
+from fixtures import EVEN, EVEN_DRAWS, EVEN_HOOKS, POOL_WITHOUT_GIVES
+from fixtures import SPEAKERS_ONLY, WITHOUT_POOLS
 from picker import Picker
 
 
@@ -43,15 +44,15 @@ class FailureTest(PickerTestCase):
     def test_a_theme_without_hooks_fails_saying_so(self):
         why = "no pool in the options file gives a hook"
         line = f"Picker FAILED: ValueError: {why}"
-        self.assertFails(line, "hook", "--options", str(HOOKLESS))
+        self.assertFails(line, "hook", "--options", str(SPEAKERS_ONLY))
 
     def test_an_options_file_without_pools_fails(self):
         line = "Picker FAILED: KeyError: 'pools'"
-        self.assertFails(line, "hook", "--options", str(SHAPELESS))
+        self.assertFails(line, "hook", "--options", str(WITHOUT_POOLS))
 
     def test_a_pool_without_gives_fails(self):
         line = "Picker FAILED: KeyError: 'gives'"
-        self.assertFails(line, "hook", "--options", str(UNGIVEN))
+        self.assertFails(line, "hook", "--options", str(POOL_WITHOUT_GIVES))
 
     def test_a_missing_options_flag_fails(self):
         why = "the following arguments are required: --options"

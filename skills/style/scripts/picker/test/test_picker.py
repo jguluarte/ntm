@@ -22,12 +22,27 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual("hook: scenes/dawn", drawn)
 
+    def test_hook_draws_only_hooks_fitting_the_occasions(self):
+        args = make_picker_args(fixtures.EVERY_WHEN, occasions="weekly,big_win")
+
+        picker = Picker.from_args(args)
+        drawn = picker.pick_hook()
+
+        self.assertEqual("hook: scenes/big_win", drawn)
+
     def test_the_seed_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
 
         picker = Picker.from_args(args)
 
         self.assertIsNone(picker.seed)
+
+    def test_the_occasions_are_optional(self):
+        args = make_picker_args(fixtures.EVEN)
+
+        picker = Picker.from_args(args)
+
+        self.assertEqual(set(), picker.occasions)
 
     def test_a_missing_options_flag_fails_naming_it(self):
         why = "the following arguments are required: --options"
@@ -42,6 +57,28 @@ class CommandLineTest(unittest.TestCase):
         args = make_picker_args(fixtures.EVEN, seed="seven")
 
         why = "argument --seed: invalid int value: 'seven'"
+        expected = f"Picker FAILED: ArgumentError: {why}"
+
+        with self.assertRaises(SystemExit) as exited:
+            Picker.from_args(args)
+
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_an_unknown_occasion_fails_naming_it(self):
+        args = make_picker_args(fixtures.EVEN, occasions="night")
+
+        why = "argument --occasions: not an occasion: night"
+        expected = f"Picker FAILED: ArgumentError: {why}"
+
+        with self.assertRaises(SystemExit) as exited:
+            Picker.from_args(args)
+
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_two_reminders_fail_naming_them(self):
+        args = make_picker_args(fixtures.EVEN, occasions="morning,evening")
+
+        why = "argument --occasions: more than one reminder: evening, morning"
         expected = f"Picker FAILED: ArgumentError: {why}"
 
         with self.assertRaises(SystemExit) as exited:

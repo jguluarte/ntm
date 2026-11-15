@@ -40,6 +40,18 @@ class NoHookFits(ValueError):
         super().__init__(f"no hook fits the occasions {listed}")
 
 
+class UnknownOccasion(argparse.ArgumentTypeError):
+    def __init__(self, unknown):
+        listed = ", ".join(sorted(unknown))
+        super().__init__(f"not an occasion: {listed}")
+
+
+class MoreThanOneReminder(argparse.ArgumentTypeError):
+    def __init__(self, reminders):
+        listed = ", ".join(sorted(reminders))
+        super().__init__(f"more than one reminder: {listed}")
+
+
 class Options:
     def __init__(self, path):
         fields = self._load(path)
@@ -112,7 +124,7 @@ class Picker:
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
-            return cls(Options(flags.options), flags.seed)
+            return cls(Options(flags.options), flags.seed, flags.occasions)
 
     def pick_hook(self):
         with self._reporting_failures():
@@ -120,14 +132,31 @@ class Picker:
             generator = random.Random(self.seed)
             return HOOK_LINE.format(generator.choice(hooks))
 
-    @staticmethod
-    def _parser():
+    @classmethod
+    def _parser(cls):
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
+        hook.add_argument(
+            "--occasions", type=cls._occasions, default=frozenset()
+        )
         hook.add_argument("--seed", type=int)
         return parser
+
+    @staticmethod
+    def _occasions(listed):
+        occasions = frozenset(listed.split(","))
+
+        unknown = occasions - REMINDERS - HAPPENINGS
+        if unknown:
+            raise UnknownOccasion(unknown)
+
+        reminders = occasions & REMINDERS
+        if len(reminders) > 1:
+            raise MoreThanOneReminder(reminders)
+
+        return occasions
 
     @staticmethod
     @contextlib.contextmanager

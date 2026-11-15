@@ -1,3 +1,5 @@
+import yaml
+
 from exceptions import PickerFailed
 
 POOLS = "pools"
@@ -13,6 +15,11 @@ class Options:
             raise PickerFailed("the options file has no pools")
         pools = [Pool(kind, pool) for kind, pool in listed.items()]
         self.entries = [entry for pool in pools for entry in pool.entries]
+
+    @classmethod
+    def load(cls, path):
+        with open(path, encoding="utf-8") as file:
+            return cls(yaml.safe_load(file))
 
     def hooks(self):
         return [entry for entry in self.entries if entry.pool.gives(HOOK)]

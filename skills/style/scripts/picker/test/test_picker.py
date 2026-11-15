@@ -46,11 +46,29 @@ class CommandLineTest(PickerTestCase):
 
 
 class OptionsFileTest(PickerTestCase):
-    def test_an_options_file_that_isnt_yaml_fails_naming_it(self):
+    def options_file(self, text):
         path = self.folder / "Dusk-options.yaml"
-        path.write_text("pools: [unclosed\n")
-        self.assertFails(f"{path} isn't YAML", path)
+        path.write_text(text)
+        return path
 
     def test_an_options_file_that_cant_be_read_fails_naming_it(self):
         path = self.folder / "Gone-options.yaml"
-        self.assertFails(f"can't read {path}", path)
+        why = f"[Errno 2] No such file or directory: '{path}'"
+        self.assertFails(why, path)
+
+    def test_an_options_file_that_isnt_yaml_fails_naming_it(self):
+        path = self.options_file("pools: a: b\n")
+        where = f'in "{path}", line 1, column 9'
+        self.assertFails(f"mapping values are not allowed here {where}", path)
+
+    def test_an_options_file_without_pools_fails_saying_so(self):
+        path = self.options_file("theme: Dusk\n")
+        self.assertFails("the options file has no pools", path)
+
+    def test_a_pool_without_entries_fails_naming_it(self):
+        path = self.options_file("pools:\n  scenes:\n    gives: [hook]\n")
+        self.assertFails("pool scenes needs gives and entries", path)
+
+    def test_an_options_file_without_hooks_fails_saying_so(self):
+        path = self.options_file("pools:\n  cast: {gives: [], entries: {}}\n")
+        self.assertFails("the options file has no hooks", path)

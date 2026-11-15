@@ -2,7 +2,6 @@ import random
 
 from exceptions import PickerFailed
 from options import Options
-from yaml_file import YamlFile
 
 OPTIONS = "--options"
 SEED = "--seed"
@@ -14,7 +13,7 @@ class HookMode:
     NAME = "hook"
 
     def __init__(self, flags):
-        self.options = Options(YamlFile(flags.options).load())
+        self.options = Options.load(flags.options)
         self.generator = random.Random(flags.seed)
 
     @staticmethod

@@ -1,8 +1,9 @@
 import unittest
+from datetime import date
 
 import fixtures
 from picker import Picker
-from theme import Theme, ThemeOptions
+from theme import History, Theme, ThemeOptions
 
 
 def make_picker_args(options, **flags):
@@ -29,6 +30,16 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
+    def test_hook_rests_what_the_history_used_by_today(self):
+        args = make_picker_args(
+            fixtures.EVEN, seed=32, history=fixtures.EVEN_HISTORY,
+            today="2026-11-15",
+        )
+        picker = Picker.from_args(args)
+        drawn = picker.pick_hook()
+
+        self.assertEqual("hook: scenes/noon", drawn)
+
     def test_the_seed_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
@@ -40,6 +51,12 @@ class CommandLineTest(unittest.TestCase):
         picker = Picker.from_args(args)
 
         self.assertEqual(ThemeOptions(), picker.theme_options)
+
+    def test_today_is_optional_without_a_history(self):
+        args = make_picker_args(fixtures.EVEN)
+        picker = Picker.from_args(args)
+
+        self.assertIsNone(picker.today)
 
     def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
@@ -78,6 +95,28 @@ class CommandLineTest(unittest.TestCase):
             Picker.from_args(args)
 
         why = "argument --type: more than one reminder type: evening, morning"
+        expected = f"Picker FAILED: ArgumentError: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_a_history_without_today_fails_naming_both_flags(self):
+        args = make_picker_args(fixtures.EVEN, history=fixtures.EVEN_HISTORY)
+
+        with self.assertRaises(SystemExit) as exited:
+            Picker.from_args(args)
+
+        why = "--history needs --today"
+        expected = f"Picker FAILED: ArgumentError: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_a_today_that_isnt_a_date_fails_naming_it(self):
+        args = make_picker_args(
+            fixtures.EVEN, history=fixtures.EVEN_HISTORY, today="15 Nov",
+        )
+
+        with self.assertRaises(SystemExit) as exited:
+            Picker.from_args(args)
+
+        why = "argument --today: not a date as YYYY-MM-DD: 15 Nov"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
@@ -154,6 +193,25 @@ class ChancesTableTest(unittest.TestCase):
             "scenes/dawn                0.20",
             "scenes/noon                0.80",
             "scenes/dusk                0.00",
+            "characters/host            1.00",
+        ]
+        self.assertEqual(expected, rows)
+
+    def test_the_documented_rest_example_shows_the_documented_chances(self):
+        theme = Theme(fixtures.EVEN)
+        history = History(fixtures.EVEN_HISTORY)
+        picker = Picker(theme, history=history, today=date(2026, 11, 15))
+        rows = picker.chances_table().splitlines()
+
+        expected = [
+            "kind        chance",
+            "scenes        0.50",
+            "characters    0.50",
+            "",
+            "hook             chance in kind",
+            "scenes/dawn                0.20",
+            "scenes/noon                0.40",
+            "scenes/dusk                0.40",
             "characters/host            1.00",
         ]
         self.assertEqual(expected, rows)

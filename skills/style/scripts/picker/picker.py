@@ -2,17 +2,20 @@ import argparse
 import contextlib
 import random
 import sys
+from datetime import date
 from decimal import ROUND_HALF_UP, Decimal
 
-from theme import InvalidOptions, Theme, ThemeOptions
+from theme import History, InvalidOptions, Theme, ThemeOptions
 
 
 class Picker:
     def __init__(
-            self, theme, theme_options=ThemeOptions(), seed=None,
-            shows_chances=False):
+            self, theme, theme_options=ThemeOptions(), history=History(),
+            today=None, seed=None, shows_chances=False):
         self.theme = theme
         self.theme_options = theme_options
+        self.history = history
+        self.today = today
         self.seed = seed
         self.shows_chances = shows_chances
 
@@ -20,9 +23,14 @@ class Picker:
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
+            if flags.history and not flags.today:
+                raise argparse.ArgumentError(None, "--history needs --today")
+
             theme = Theme(flags.options)
+            history = History(flags.history)
             return cls(
-                theme, flags.theme_options, flags.seed, flags.shows_chances,
+                theme, flags.theme_options, history, flags.today, flags.seed,
+                flags.shows_chances,
             )
 
     def pick_hook(self):
@@ -30,7 +38,9 @@ class Picker:
             generator = random.Random(self.seed)
             kind_chances = self.theme.kind_chances_for(self.theme_options)
             kind = self._draw(generator, kind_chances)
-            hook_chances = self.theme.hook_chances_for(self.theme_options, kind)
+            hook_chances = self.theme.hook_chances_for(
+                self.theme_options, kind, self.history, self.today,
+            )
             hook = self._draw(generator, hook_chances)
             return f"hook: {hook}"
 
@@ -40,7 +50,9 @@ class Picker:
             hook_chances = {}
             for kind in kind_chances:
                 hook_chances.update(
-                    self.theme.hook_chances_for(self.theme_options, kind),
+                    self.theme.hook_chances_for(
+                        self.theme_options, kind, self.history, self.today,
+                    ),
                 )
 
             kind_table = self._table("kind", "chance", kind_chances)
@@ -82,6 +94,8 @@ class Picker:
             "--type", dest="theme_options", type=cls._parse_theme_options,
             default=ThemeOptions(),
         )
+        hook.add_argument("--history")
+        hook.add_argument("--today", type=cls._parse_date)
         hook.add_argument("--seed", type=int)
         hook.add_argument(
             "--chances", dest="shows_chances", action="store_true",
@@ -94,6 +108,14 @@ class Picker:
             return ThemeOptions.parse(text)
         except InvalidOptions as invalid:
             raise argparse.ArgumentTypeError(str(invalid)) from None
+
+    @staticmethod
+    def _parse_date(text):
+        try:
+            return date.fromisoformat(text)
+        except ValueError:
+            why = f"not a date as YYYY-MM-DD: {text}"
+            raise argparse.ArgumentTypeError(why) from None
 
     @staticmethod
     @contextlib.contextmanager

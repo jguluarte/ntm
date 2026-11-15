@@ -51,20 +51,6 @@ wins:
     A win gets the winner's circle, the finale: you take the crown in front of
     the whole cast, sassy.
 
-reminders:
-  weekly: >-
-    Previously on Drag Race: last week's runway in a breath, then the challenges
-    Mama Ru has lined up for the week ahead.
-  morning: >-
-    Mama Ru walks into the werk room and announces today's challenge, with a
-    quick "previously on" when something carried over.
-  afternoon: >-
-    The werk room walkthrough: Mama Ru stops by your station to see how the look
-    is coming.
-  evening: >-
-    The main stage: the runway and the judges' critiques, with what made it down
-    the runway and what's still on the hanger.
-
 files:
   Dragify-actors.yaml:
     holds: >-

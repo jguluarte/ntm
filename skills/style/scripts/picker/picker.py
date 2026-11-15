@@ -22,6 +22,7 @@ class Picker:
         return self
 
     def __exit__(self, failure_type, failure, traceback):
+        # Every failure, a bug included, is one line for the skill to read.
         if isinstance(failure, Exception):
             why = " ".join(str(failure).split())
             sys.exit(FAILED.format(failure_type.__name__, why))

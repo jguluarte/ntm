@@ -1,7 +1,7 @@
 # The nightly job
 
-A sketch of the nightly job and its skill. A line that waits on a decision says
-"to decide"; the open questions are at the end.
+A sketch of the weekly run that keeps a theme's numbers, and its skill. A line
+that waits on a decision says "to decide"; the open questions are at the end.
 
 ## What it is for
 
@@ -19,10 +19,15 @@ changes, which each task's `Planned date history` lists. The verdict is `landed`
 when they did, `missed` when they didn't, and `none` when every task was done
 before the message went out.
 
-It hands the script one line per entry, its `sent` time and verdict: on a normal
-night, the day's three or so messages, each judged once. When two messages name
-the same task, acting on it credits both. To decide: credit only the latest
-message before the action.
+A message is judged up to a week after it went out, so its verdict needs a
+window. To decide: an action counts for a message when it comes the same day,
+after the message; recommended, since the next morning's reminder names the task
+again.
+
+It hands the script one line per entry, its `sent` time and verdict: in a normal
+week, about 16 messages, three reminders each weekday and the weekly message,
+each judged once. When two messages name the same task, acting on it credits
+both. To decide: credit only the latest message before the action.
 
 | Who        | Owns                                                           |
 | ---------- | -------------------------------------------------------------- |
@@ -33,12 +38,12 @@ message before the action.
 
 | File                      | Read or written        | What for                                    |
 | ------------------------- | ---------------------- | ------------------------------------------- |
-| `%Settings`               | Read, by the model     | This week's theme, the one a night works on |
+| `%Settings`               | Read, by the model     | This week's theme, read before the rotation |
 | `<Theme>-message-history` | Read and written       | Entries to judge, verdicts, pruning         |
 | `<Theme>-options.yaml`    | Read and written       | Every number the picker reads               |
 | Entry files               | Read, only when edited | To checksum and count lines                 |
 
-The job never changes what a person or the theme builder wrote in the options
+The run never changes what a person or the theme builder wrote in the options
 file: the levels and thresholds under `escalation` and `finishing_tasks`, a
 pool's `roles` and `file`, an entry's `when`.
 
@@ -56,12 +61,12 @@ picker's first draft; where they give a number, it is kept.
 | Number                | Where        | Changes               | Default             | Bounds     |
 | --------------------- | ------------ | --------------------- | ------------------- | ---------- |
 | `weight`              | Entry        | When its file changes | 1                   | 0 to 1     |
-| `score`               | Entry, pool  | Each night            | 0                   | -1 to 1    |
+| `score`               | Entry, pool  | Each week             | 0                   | -1 to 1    |
 | `half_life_days`      | Pool         | When its file changes | None: no rest       | Above 0    |
 | `line_half_life_days` | Entry        | When its file changes | None: no rest       | Above 0    |
 | `speaker_rate`        | Pool         | When a file changes   | 0.5                 | 0 to 1     |
 | `weight`              | Pool         | When its file changes | Square root of size | Above 0    |
-| `bump_rate`           | `escalation` | Each night, with data | 1.0                 | 0.1 to 0.9 |
+| `bump_rate`           | `escalation` | Each week, with data  | 1.0                 | 0.1 to 0.9 |
 | `checksums`           | Top level    | When a file changes   | None                | None       |
 
 ### An entry's `weight`
@@ -103,12 +108,13 @@ each message whose hook came from it. To decide: that score.
 
 ### `bump_rate`
 
-How readily the picker raises a calm day's level by one. Each night the script
+How readily the picker raises a calm day's level by one. Each week the script
 compares how often messages at a raised `picks.escalation` got a reaction with
-those at the first level. More often by over 5 in 100: up 0.05. Less often by as
-much: down 0.05. It waits for 10 judged messages on each side. To decide: those
-numbers, the bounds, and whether a theme starts at the picker's 1.0, above the
-bounds, or at 0.9.
+those at the first level. More often by over 5 in 100: up a step. Less often by
+as much: down a step. It waits for 10 judged messages on each side. A step comes
+once a week, so 0.05 takes 16 weeks to cross the bounds. To decide: the step;
+recommended 0.1, about two months across. Also the other numbers, the bounds,
+and whether a theme starts at the picker's 1.0, above the bounds, or at 0.9.
 
 ### `checksums`
 
@@ -116,8 +122,9 @@ Each entry file's SHA-256. Linear's document list gives each file's last-edited
 time without its text, so the run fetches an entry file only when it was edited
 since the options file was saved. When its checksum differs, the script
 recomputes what comes from that file: weights, half-lives, the kind's starting
-weight and the speaker rates. To decide: an entry the file gained or lost is
-only reported, for the theme builder.
+weight and the speaker rates. An edit reaches the numbers at the next weekly
+run; until then the picker draws on the old ones. To decide: an entry the file
+gained or lost is only reported, for the theme builder.
 
 ## Pruning the history
 
@@ -132,16 +139,18 @@ Those keys hold for every theme; only their values are the theme's. A judged
 entry goes once every value in its `picks` appears under the same key in a later
 entry.
 
-Nothing is lost. Its verdict and feedback reached the scores and `weeks` the
-night it was judged, and the picker needs only each value's latest use, which
-stays. So a history never holds more entries than its theme has values.
-`ntm:style`, the history template and `references/theme-files.md` take the
-`picks` shape in the picker's history slice.
+Nothing is lost. Its verdict and feedback reached the scores and `weeks` in the
+run that judged it, and the picker needs only each value's latest use, which
+stays. So a history never holds more entries than its theme has values, plus the
+week's entries waiting to be judged. `ntm:style`, the history template and
+`references/theme-files.md` take the `picks` shape in the picker's history
+slice.
 
 ## When it runs
 
-Nightly as its own light job, after the day's last reminder, and in the weekly
-job just before `ntm:clean`, so the week is judged before planning.
+Once a week, as a step of the weekly job just before `ntm:clean`, so the week is
+judged before planning. There is no nightly run: between runs, the picker draws
+on the numbers last week's run left.
 
 Before the rotation, the weekly job's chat, never its push, says how last week's
 theme did: messages sent, how many got a reaction, keeps and stales. From about
@@ -153,25 +162,34 @@ themes'.
 
 ## What it costs
 
-On a normal night the model reads the history, fetched whole (about 250 bytes an
-entry, so 25 KB at 100 entries); the options file, 7 KB in and 7 KB back out;
-the day's three or so tasks with their comments, 1 to 2 KB each; and a few lines
-of `%Settings` and the document list. Sized from a theme in daily use, that is
-about 15,000 tokens a night, mostly reading. The script handles every number,
-line count, checksum and the pruning without the model reading them.
+An estimate, sized from a theme in daily use. In a normal week's run the model
+reads:
+
+| What                              | Size                                        |
+| --------------------------------- | ------------------------------------------- |
+| The history, fetched whole        | 30 KB: 250 bytes an entry, 100 kept, 16 new |
+| The options file                  | 7 KB in, 7 KB back out                      |
+| The week's tasks, with comments   | Up to 30 KB: 16 tasks at 1 to 2 KB          |
+| `%Settings` and the document list | About 1 KB                                  |
+| All of it                         | About 75 KB                                 |
+
+At about 3 bytes a token, that is about 25,000 tokens a week, mostly reading. It
+is less when a day's reminders name the same tasks, as they mostly do. The
+script handles every number, line count, checksum and the pruning without the
+model reading them.
 
 Two things would make it expensive, and the design keeps both out. The entry
 files, about 185 KB or 45,000 tokens for that theme, are fetched only when one
 was edited. The history is fetched whole, as each reminder already does, but the
-model judges only the day's entries and does no arithmetic. One cost is still
+model judges only the week's entries and does no arithmetic. One cost is still
 open: if a document must be written out to reach the script, the options file
 and the history cost their size again.
 
 ## The script's shape
 
 The script is one Python module on the picker's stack. It computes a theme's
-numbers for both the nightly job and the theme builder
-(`docs/theme-builder.md`), with a class per file it works on:
+numbers for both the weekly run and the theme builder (`docs/theme-builder.md`),
+with a class per file it works on:
 
 | Class       | Owns                                                             |
 | ----------- | ---------------------------------------------------------------- |
@@ -183,7 +201,7 @@ numbers for both the nightly job and the theme builder
 `start`, for the theme builder, gives a new theme its first numbers with no
 history: weights from lines, square-root kind weights, half-lives and speaker
 rates from starting shares, every score 0, the checksums and an empty `weeks`.
-`update`, nightly, takes in the verdicts, recounts changed files, moves the bump
+`update`, weekly, takes in the verdicts, recounts changed files, moves the bump
 rate and prunes. `report` writes the weekly theme report.
 
 `Options` and `History` are shared with the picker, one class each, from a
@@ -202,14 +220,13 @@ picker's history slice.
 3. Scores from verdicts, and `weeks`.
 4. The bump rate.
 5. Pruning.
-6. The skill and the job: judging, the hand-off, setup, the weekly step, the
-   README.
+6. The skill and its weekly step: judging, the hand-off, the step in setup's
+   weekly job, the README.
 7. The weekly theme report.
 
 ## Open questions
 
-1. The skill's name, and the command's with it.
-2. Whether setup shows the nightly job in its jobs round for the user's yes.
-3. The hand-off of a file's text between the backend and the script.
-4. Each line marked "to decide" above.
-5. Whether the history's `Keep:` line goes, now that pruning bounds it.
+1. The skill's name, and the command's and this document's title with it.
+2. The hand-off of a file's text between the backend and the script.
+3. Each line marked "to decide" above.
+4. Whether the history's `Keep:` line goes, now that pruning bounds it.

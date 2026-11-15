@@ -6,18 +6,7 @@ from modes import HookMode
 FAILED = "Picker FAILED: {}: {}"
 
 
-class Picker:
-    def __init__(self, parser, args):
-        self.parser = parser
-        self.args = args
-
-    @classmethod
-    def from_args(cls, args):
-        parser = argparse.ArgumentParser(exit_on_error=False)
-        subcommands = parser.add_subparsers(required=True)
-        HookMode.add_subcommand(subcommands)
-        return cls(parser, args)
-
+class FailureLine:
     def __enter__(self):
         return self
 
@@ -27,15 +16,31 @@ class Picker:
             why = " ".join(str(failure).split())
             sys.exit(FAILED.format(failure_type.__name__, why))
 
-    def selections(self):
-        # Parsed inside the with block, so Picker reports a bad flag.
-        flags = self.parser.parse_args(self.args)
-        mode = flags.mode.from_flags(flags)
-        return mode.pick()
+
+class Picker:
+    def __init__(self, mode):
+        self.mode = mode
+
+    @classmethod
+    def from_args(cls, args):
+        with FailureLine():
+            flags = cls.parser().parse_args(args)
+            return cls(flags.mode.from_flags(flags))
+
+    @staticmethod
+    def parser():
+        parser = argparse.ArgumentParser(exit_on_error=False)
+        subcommands = parser.add_subparsers(required=True)
+        HookMode.add_subcommand(subcommands)
+        return parser
+
+    def pick(self):
+        with FailureLine():
+            return self.mode.pick()
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    with Picker.from_args(args) as picker:
-        selections = picker.selections()
-        print(selections)
+    picker = Picker.from_args(args)
+    selections = picker.pick()
+    print(selections)

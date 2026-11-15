@@ -8,8 +8,8 @@ from picker import Picker
 
 class PickerTestCase(unittest.TestCase):
     def pick(self, *args):
-        with Picker.from_args(args) as picker:
-            return picker.selections()
+        picker = Picker.from_args(args)
+        return picker.pick()
 
     def assertFails(self, line, *args):
         with self.assertRaises(SystemExit) as exited:

@@ -14,18 +14,21 @@ class ParseTest(unittest.TestCase):
 
         task_outcomes = frozenset({TaskOutcome.SLIPPED, TaskOutcome.BIG_WIN})
         expected = ThemeOptions(ReminderType.EVENING, task_outcomes)
+
         self.assertEqual(expected, theme_options)
 
     def test_a_value_that_isnt_an_option_fails_with_unknown_theme_option(self):
-        expected = "not an option: night"
         with self.assertRaises(UnknownThemeOption) as raised:
             ThemeOptions.parse("evening,night")
+
+        expected = "not an option: night"
         self.assertEqual(expected, str(raised.exception))
 
     def test_two_reminder_types_fail_with_more_than_one_reminder_type(self):
-        expected = "more than one reminder type: evening, morning"
         with self.assertRaises(MoreThanOneReminderType) as raised:
             ThemeOptions.parse("morning,evening")
+
+        expected = "more than one reminder type: evening, morning"
         self.assertEqual(expected, str(raised.exception))
 
     def test_the_options_are_the_ones_the_schema_lists_for_when(self):

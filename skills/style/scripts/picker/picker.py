@@ -3,7 +3,7 @@ import contextlib
 import random
 import sys
 
-from theme import InvalidThemeOptions, Theme, ThemeOptions
+from theme import InvalidOptions, Theme, ThemeOptions
 
 
 class Picker:
@@ -42,7 +42,7 @@ class Picker:
     def _parse_theme_options(text):
         try:
             return ThemeOptions.parse(text)
-        except InvalidThemeOptions as invalid:
+        except InvalidOptions as invalid:
             raise argparse.ArgumentTypeError(str(invalid)) from None
 
     @staticmethod

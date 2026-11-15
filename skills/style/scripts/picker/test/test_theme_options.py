@@ -4,7 +4,7 @@ import yaml
 
 from theme import (
     OPTIONS_SCHEMA, MoreThanOneReminderType, ReminderType, TaskOutcome,
-    ThemeOptions, UnknownThemeOption,
+    ThemeOptions, UnknownOption,
 )
 
 
@@ -17,8 +17,8 @@ class ParseTest(unittest.TestCase):
 
         self.assertEqual(expected, theme_options)
 
-    def test_a_value_that_isnt_an_option_fails_with_unknown_theme_option(self):
-        with self.assertRaises(UnknownThemeOption) as raised:
+    def test_a_value_that_isnt_an_option_fails_with_unknown_option(self):
+        with self.assertRaises(UnknownOption) as raised:
             ThemeOptions.parse("evening,night")
 
         expected = "not an option: night"

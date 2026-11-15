@@ -23,10 +23,19 @@ escalation:
   full: >-
     No mercy. Read them for FILTH!
 
-wins: >-
-  The winner's circle, the finale: you take the crown in front of the whole
-  cast, sassy. It honors what it took: going well above and beyond, the long
-  haul, or the task that dragged with no motivation behind it.
+finishing_tasks:
+  typical: >-
+    Finishing a task should ideally be an everyday thing. This is somewhere
+    between noting soemthing finished, and "what, do you want a gold star?".
+
+  accomplishment: >-
+    When the user finishes an exceptional amount of tasks, or when finishing
+    a task (or set of tasks) that otherwise required pushing through.
+
+    In this situation, this should be treated as a win of some kind. Look for
+    entires that talk aobut winning something monumental. Winners circle is
+    reserved for something truly impressive, or going above and beyond. These
+    situations are when they took the crown. They ate, and left no crumbs.
 
 files:
   Dragify-actors.yaml:

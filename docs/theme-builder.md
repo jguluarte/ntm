@@ -1,8 +1,7 @@
 # The theme builder, reworked
 
-A sketch of the new `/ntm:theme-builder`, to react to line by line. Lines marked
-"To decide" wait on a decision, and are listed again at the end. Stage names are
-working names.
+A sketch of the new `/ntm:theme-builder`, to react to line by line. Stage names
+are working names.
 
 ## What it is for
 
@@ -12,24 +11,32 @@ Today it builds one `%Theme` database and replaces the user's theme. Now a theme
 is a set of files named after it, added beside the user's others, never
 replacing one.
 
+## The example theme
+
+`Casebook`, a made-up detective story, is the example in this sketch, in
+`references/theme-files.md` and in ntm's tests. It shows the shape of a theme's
+files, and nothing more. The builder never builds `Casebook` or copies from it:
+every theme comes from the user's own world and its sources. The skill says so
+wherever it shows the example.
+
 ## The conversation
 
 It keeps today's intro text and asks one question at a time in chat. A user who
 already has a theme can start from it: the builder sorts it into the new files.
 
-| Stage           | What the user is asked                        | What gets written                           |
-| --------------- | --------------------------------------------- | ------------------------------------------- |
-| 1. World        | Their world, where they sit, what hooks them  | The root's `theme` and `world`              |
-| 2. Levels       | How it sounds when tasks slip, and get done   | The root's ladders; the default thresholds  |
-| 3. Kinds        | The world's kinds of material; which can talk | The options file's pools and roles; `files` |
-| 4. Perspectives | Who else would comment on their week          | The options file's `perspectives`           |
-| 5. Research     | Which kind first; may ntm use their browser   | One entry file per kind                     |
-| 6. Terminology  | Words from the research a writer would miss   | The terminology file                        |
-| 7. Try-out      | Whether a few sample messages make them smile | Any fixes to how a level sounds             |
-| 8. Switch on    | Whether to use it this week or wait its turn  | The numbers, the history, `%Settings`       |
+| Stage              | What the user is asked                        | What gets written                           |
+| ------------------ | --------------------------------------------- | ------------------------------------------- |
+| 1. World           | Their world, where they sit, what hooks them  | The root's `theme` and `world`              |
+| 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `wins`; default thresholds    |
+| 3. Kinds           | Kinds found in the sources; which can talk    | The options file's pools and roles; `files` |
+| 4. Perspectives    | Who else would comment on their week          | The options file's `perspectives`           |
+| 5. Research        | Which kind first; may ntm use their browser   | One entry file per kind                     |
+| 6. Terminology     | Words from the research a writer would miss   | The terminology file                        |
+| 7. Sample messages | Whether a few sample messages make them smile | Any fixes to how an escalation level sounds |
 
-Stages 4, 6 and 7 can be skipped, and research can stop after one kind. Each
-stage saves its part, so each is a place to stop and come back.
+Each stage saves its part, so each is a place to stop and come back. The
+research reports when it turns up nothing usable. A world with little to draw on
+may not work well for the user; a well defined one holds up longer.
 
 ## What gets built
 
@@ -41,59 +48,79 @@ stage saves its part, so each is a place to stop and come back.
 | `<Theme>-terminology.md`  | Research agents; the user agrees          | Optional                                |
 | `<Theme>-message-history` | The skill, from its template              | Exists, empty                           |
 
-The smallest theme that works: a root, an options file, a history and one entry
-file of hooks. About 20 hooks, an estimate and not a rule, is more than a week
-of messages. Speakers, perspectives, terminology and more kinds come later. The
-builder offers this one first.
+The smallest theme that works is a mix: a root, an options file, a history, and
+a few entries of each kind the sources suggest. About 20 entries, an estimate
+and not a rule, is more than a week of messages. Setup builds this one. Its
+research also notes what it found and left for later, such as more kinds,
+sources and people, and that list briefs the bigger research when the theme
+grows.
 
 The builder aims to give every theme, the small one included, entries kept for
 `big_win`, so a big win has material of its own. A theme with none still works:
 on a big win, the picker falls back to a normal win.
+
+## Kinds
+
+A kind is one sort of material in the world: its people, the scenes that come
+back, the moments fans remember. Each kind has its own entry file and its own
+pool in the options file. No list of kinds is fixed: each theme's kinds come
+from its source material. Before the research, the builder reads about the world
+and proposes kinds from what its sources hold, each with an `about` saying what
+an entry is and how a message uses one, and the keys its entries share. The user
+keeps, renames or drops them.
+
+Most worlds have actors: people who talk in a manner of their own, so a message
+can be spoken by one as well as built on them. Two more kinds turn up in many
+worlds: recurring scenes a message can be set in, and single moments to call
+back to. The sources decide which a theme has.
 
 ## The research pass
 
 The skill starts the agents, since an agent can't start others: one per batch of
 one kind, about 15 entries as an estimate to tune. Each gets the root's `world`,
 the kind's `about` and keys, the entries the theme already has, its part of the
-world, and these rules. It writes a scratch file of entries, each line with the
-page it came from.
+world, what the user said about their day, and these rules. It writes a scratch
+file of entries, each line with the page it came from.
 
 - Every quote and moment comes from a page read in that run.
-- Nothing about illness, death, identity or a scandal.
-- No song lyrics added by an agent.
-- No crawl, no site's API, no changed user agent, nothing submitted.
+- If you need to browse websites, ask to use the user's browser
+    - Driving their browser is fine
+    - This is investigating key information, not crawling the web
 
-To decide: today's skill maps the day onto the theme's world (the week as a
-season, the morning as a preview, the evening as the main event), and the root
-has no place for it now. Either it goes, and time-of-day flavour comes only from
-entries whose `when` names a reminder, or the builder still asks for it and
-briefs the research with it, so entries are written and tagged for the morning,
-the evening or the week.
+Some sites, fan wikis often among them, refuse automated reads, and the user's
+browser reaches them. The builder asks once, at the research stage, and agents
+use a tab each. Without it they skip those pages, and the research reports when
+a world comes out thinner for it.
+
+What is off limits in a theme is the user's to say, and the research follows it.
+
+The builder asks how the user's day maps onto their world, if it does at all,
+and the user decides what each part of the day is or is not. The answer briefs
+the research, so entries are written and tagged with `when` for the morning, the
+afternoon, the evening or the week.
 
 ### Lines judged alone
 
 A reviewer agent, briefed as a devoted fan of the world, reads each line alone,
 with no name beside it. A generic line is cut or replaced with a sharper one; a
 line that lands only from one person stays with that person. Then the user sees
-the kept entries, cuts any or asks for more, and the file is saved.
+as many of the kept entries as they want, cuts any or asks for more, and the
+file is saved.
 
-To decide: whether the user reads every line, or each entry's name and one line.
-
-### The user's browser
-
-Some sites, fan wikis often among them, refuse automated reads. The builder asks
-once whether agents may read those pages in the user's browser, a tab each,
-clicking only to read. Without it they skip those pages, and the builder says
-when a world comes out thinner for it.
+Ask the user how involved they would like to be with their theme's content. It
+is likely fine to make changes over time if they don't want to dedicate time
+today.
 
 ## The levels
 
-The builder asks how the theme should sound as a task keeps slipping, and as the
-user finishes things, as today's skill does, then names each level in the
-theme's words and writes how it sounds. The thresholds are ntm's defaults; the
-user sees a number only if they ask, and "push harder sooner" moves one a step.
+Two parts of the root have levels. `escalation` is how the theme sounds as a
+task keeps slipping; `wins` is how it marks finished tasks, up to a big win. The
+builder asks how each should sound, as today's skill does, then names each level
+in the theme's words and writes how it sounds. The thresholds below are every
+user's defaults; the user sees a number only if they ask, and "push harder
+sooner" moves one a step.
 
-| Level | `escalation`, reached by   | `finishing_tasks`, reached by                                              |
+| Level | `escalation`, reached by   | `wins`, reached by                                                         |
 | ----- | -------------------------- | -------------------------------------------------------------------------- |
 | 1st   | Where every message starts | Any finished task                                                          |
 | 2nd   | A bump only                | Over 5 closed a day or 10 a week, or a big or hard task; 2.5-day half-life |
@@ -102,8 +129,6 @@ user sees a number only if they ask, and "push harder sooner" moves one a step.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.
-
-To decide: whether these are every user's defaults.
 
 ## Roles and perspectives
 
@@ -121,11 +146,10 @@ the story: a crowd, staff, an audience, a newspaper, an object that tells it.
 | the suspects           | none                         | together, as alibis     |
 | the morning paper      | none                         | as the day's headline   |
 
-To decide: whether a memberless perspective's sound lives in its own entry file
-or beside the speakers.
-
-To decide: whether every speaker must belong to a perspective, or one in none is
-still drawn straight from its pool.
+Perspectives are optional. A speaker in no perspective is drawn straight from
+its pool. A perspective with no members, such as a narrator, gets its sound from
+the root's `world`, which says who tells the story when no one in particular
+speaks.
 
 ## Validation
 
@@ -147,28 +171,24 @@ builder offers to add some.
 
 ## Saving and switching on
 
-Each stage saves its part as it finishes. At switch on, the builder creates
-`<Theme>-message-history` from its template in the user's backend, and runs the
-nightly job's script (`docs/nightly-job.md`) to compute the first numbers into
-the options file, so the formulas live in one place. Then it adds the root to
-All themes, in the Themes part of `%Settings`. The theme is first used on its
-turn, or this week, as This week's theme, when the user says so. No other theme
-or history is touched; a name already taken gets another.
-
-To decide: whether a new theme goes right after this week's, or at the end.
-
-To decide: whether an unfinished theme waits in the backend, where the user sees
-it, or on the computer, which may not survive between chats.
+Each stage saves its part in the user's backend as it finishes, so an unfinished
+theme waits there, and a later chat picks it up instead of starting over. When
+the last stage is done, the builder switches the theme on. It creates
+`<Theme>-message-history` from its template, and runs the nightly job's script
+(`docs/nightly-job.md`) to compute the first numbers into the options file, so
+the formulas live in one place. Then it adds the root to the end of All themes,
+in the Themes part of `%Settings`, or where the user asks for it. The weekly
+job's rotation decides when it is used. No other theme or history is touched; a
+name already taken gets another.
 
 ## Coming back
 
-Running the builder on an existing theme grows it: more entries, or a new kind.
-Research, review, the check and the script run for the new entries only. A new
-entry starts with no score; existing scores stay. The nightly job recomputes a
-file's numbers when its checksum changes, so a hand edit is covered too.
-
-To decide: how the user asks to grow one: `/ntm:theme-builder Casebook`, or the
-builder asking whether to grow a theme or add one.
+The user asks to grow a theme in their own words, such as "increase variety" or
+"too much repetition". The builder grows it with more entries, or a new kind,
+starting from what the last research left for later. Research, review, the check
+and the script run for the new entries only. A new entry starts with no score;
+existing scores stay. The nightly job recomputes a file's numbers when its
+checksum changes, so a hand edit is covered too.
 
 ## What it costs
 
@@ -177,15 +197,13 @@ and a reminder reads only the root, the picked entry and the options file.
 
 | Build, estimated                    | Agents, estimated    | On a normal subscription, estimated |
 | ----------------------------------- | -------------------- | ----------------------------------- |
-| The small theme, about 20 hooks     | 2 research, 2 review | One sitting                         |
+| The small theme, about 20 entries   | 2 research, 2 review | One sitting                         |
 | A later batch of about 15 entries   | 1 research, 1 review | Part of a sitting                   |
 | A large theme, 4 kinds, 180 entries | 12 to 20 of each     | Several sittings over a few days    |
 
 A research agent reads 20 to 40 pages, about a long chat's worth. Every number
 here is an estimate, not a requirement; the first real build measures them. The
 next run picks up after the last saved stage or batch.
-
-To decide: whether setup builds only the small theme, so its time stays honest.
 
 ## The build order
 
@@ -201,15 +219,3 @@ as it needs.
 | 5. The levels        | Thresholds written, level names checked              | 2; the picker's levels slice       |
 | 6. The perspectives  | Stage 4                                              | 2; the picker's perspectives slice |
 | 7. Coming back       | Growing a theme                                      | 3                                  |
-
-## Open questions
-
-1. Whether the day mapped onto the world goes, or still briefs the research.
-2. How much of the research the user reads.
-3. Whether the level thresholds are every user's defaults.
-4. Where a memberless perspective's sound lives.
-5. Whether every speaker must belong to a perspective.
-6. Where a new theme goes in the rotation.
-7. Where an unfinished theme waits between sittings.
-8. How the user asks to grow a theme.
-9. Whether setup builds only the small theme.

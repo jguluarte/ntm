@@ -35,7 +35,25 @@ anything else its rule asks of the message, such as tone or length.
 
 ### 1. Pick
 
-Pick one hook, the idea this message builds on: one motif, or one line from the
+Pick one hook, the idea this message builds on: one entry of the theme, drawn by
+the picker as The picker says. Hand it the message's type: each value below that
+holds, with commas between them, such as `evening,slipped`.
+
+| Value                               | When                                        |
+| ----------------------------------- | ------------------------------------------- |
+| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type`      |
+| `weekly`                            | It's the weekly setup's message             |
+| `slipped`                           | A task in the facts slipped                 |
+| `done`                              | A task in the facts is done                 |
+| `big_win`                           | The facts show a big effort, as step 2 says |
+
+Any other message, such as the self-test's or one written in chat, has no
+reminder value. With no value at all, leave `--type` out.
+
+The hook comes back as `<kind>/<slug>`. Its entry is under `<kind>`, keyed
+`<slug>`, in the file the `<kind>` pool names in `%Theme-options`.
+
+When the picker fails, pick the hook yourself: one motif, or one line from the
 theme's examples. Take one that no recent `%Message-history` entry used, from
 each entry's `hook`, or for an older entry, judging from its `line` which motif
 it used. Recent entries are those from the last two weeks, or from the span the
@@ -74,6 +92,30 @@ start it, end with `Writer FAILED: can't start the writer`.
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
 and message are what gets sent, and step 1's hook and speaker go into its entry.
+
+## The picker
+
+The picker is a script in this skill that draws a hook from the theme's options
+file. It reads that file from a path and touches no backend, and
+`%Theme-options` lives in the user's backend, so hand it over this way.
+
+Read `%Theme-options` and take the text of its `yaml` block. Write that text to
+a file named for the theme, such as `Casebook-options.yaml`, in this session's
+working folder, exactly as read: never retype it from memory or summarize it.
+Then run the picker on that file, with the message's type from step 1:
+
+```
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook
+    --options <the file> --type <the message's type>
+```
+
+It prints one line: `hook: <kind>/<slug>`, the hook it drew.
+
+It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
+this runs: without them, the script stops with a Python error. Any other output,
+or a part of this you can't do, means the picker failed. Keep one line for the
+result: the `Picker FAILED: <type>: <why>` line it printed, or else
+`Picker FAILED: <why>`, with the last line it printed or what you couldn't do.
 
 ## Keeping `%Message-history`
 

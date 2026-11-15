@@ -26,16 +26,16 @@ escalation:
 finishing_tasks:
   typical: >-
     Finishing a task is an everyday thing: somewhere between noting something
-    finished, and "what, do you want a gold star?".
+    finished, and asking whether you want a gold star for it.
 
   win: >-
     A win of some kind, and the message treats it as one: you won the week's
     challenge, with an exceptional run of tasks, or the push it took to get one
-    done. You ate, and left no crumbs.
+    done.
 
   winners_circle: >-
     Reserved for something truly impressive and shocking, or going above and
-    beyond: the finale, and you took the crown.
+    beyond: the finale.
 
 files:
   Dragify-actors.yaml:
@@ -45,7 +45,7 @@ files:
       for some their riffs: lines to bend toward the task, or to keep for one
       occasion. Then the lines any actor can say: the lines fans repeat as
       catchphrases, many from queens who aren't actors here, and a few kept for
-      a big win.
+      a big win or the winner's circle.
     read: entry
 
   Dragify-motifs.yaml:

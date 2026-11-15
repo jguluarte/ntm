@@ -30,15 +30,22 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
-    def test_hook_rests_what_the_history_used_by_today(self):
-        args = make_picker_args(
+    def test_a_history_changes_which_hook_the_seed_draws(self):
+        without_history = make_picker_args(fixtures.EVEN, seed=32)
+        with_history = make_picker_args(
             fixtures.EVEN, seed=32, history=fixtures.EVEN_HISTORY,
             today="2026-11-15",
         )
-        picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
+        drawn = {
+            "without history": Picker.from_args(without_history).pick_hook(),
+            "with history": Picker.from_args(with_history).pick_hook(),
+        }
 
-        self.assertEqual("hook: scenes/noon", drawn)
+        expected = {
+            "without history": "hook: scenes/dawn",
+            "with history": "hook: scenes/noon",
+        }
+        self.assertEqual(expected, drawn)
 
     def test_the_seed_is_optional(self):
         args = make_picker_args(fixtures.EVEN)

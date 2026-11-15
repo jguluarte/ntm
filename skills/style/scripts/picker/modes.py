@@ -11,9 +11,9 @@ HOOK_LINE = "hook: {}"
 class HookMode:
     NAME = "hook"
 
-    def __init__(self, options, generator):
-        self.options = options
-        self.generator = generator
+    def __init__(self, options_file, seed=None):
+        self.options_file = options_file
+        self.seed = seed
 
     @classmethod
     def add_subcommand(cls, subcommands):
@@ -24,12 +24,13 @@ class HookMode:
 
     @classmethod
     def from_flags(cls, flags):
-        options = Options.load(flags.options)
-        return cls(options, random.Random(flags.seed))
+        return cls(flags.options, flags.seed)
 
-    def selections(self):
-        hooks = self.options.hooks()
+    def pick(self):
+        options = Options.load(self.options_file)
+        hooks = options.hooks()
         if not hooks:
             raise NoHooks()
-        hook = self.generator.choice(hooks)
+        generator = random.Random(self.seed)
+        hook = generator.choice(hooks)
         return HOOK_LINE.format(hook)

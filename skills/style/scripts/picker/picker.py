@@ -31,7 +31,7 @@ class Picker:
         # Parsed inside the with block, so Picker reports a bad flag.
         flags = self.parser.parse_args(self.args)
         mode = flags.mode.from_flags(flags)
-        return mode.selections()
+        return mode.pick()
 
 
 if __name__ == "__main__":

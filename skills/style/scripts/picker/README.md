@@ -11,7 +11,7 @@ with PyYAML.
 ## Usage
 
 ```
-python3 pick hook --options <file> [--seed <number>]
+python3 picker.py hook --options <file> [--seed <number>]
 ```
 
 | Flag        | What it is                            |
@@ -21,27 +21,32 @@ python3 pick hook --options <file> [--seed <number>]
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
-Python seeds the draw from the operating system's randomness source, or from the
-current time where there is none, so each run draws afresh.
+each run draws afresh, seeded from the operating system's randomness rather than
+the clock.
 
 ## What it prints
 
-`pick hook` prints the hook as `<kind>/<slug>`: the pool it came from and the
-entry's slug.
+`hook` prints the hook as `<kind>/<slug>`: the pool it came from and the entry's
+slug.
 
 ```
 hook: characters/detective
 ```
 
-When it can't pick, it prints one line, `Picker FAILED: <why>`, and exits 1:
-when a flag or an input is missing or malformed.
+When it can't pick, it prints one line on stderr,
+`Picker FAILED: <kind>: <why>`, and exits 1. `<kind>` is the failure's type, so
+a field missing from the options file reads as `KeyError` with the field's name.
+
+```
+Picker FAILED: KeyError: 'gives'
+```
 
 ## How it picks
 
 ### The hook
 
-The picker draws one hook from every pool that gives a hook, together, each
-entry as likely as the next.
+The hooks are the entries of every pool that gives a hook, taken as one list.
+The picker draws one of them, each as likely as the next.
 
 The order of entries in a file doesn't change their chances. With a fixed
 `--seed`, it does change which one is drawn.

@@ -93,13 +93,14 @@ Messages may talk to the user as "you", and never use their name or a pet name.
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
 It draws only what one message needs: the hook, sometimes a speaker, a line from
-the hook, and the `escalation` and `wins` levels. Nothing carries from one
-message to the next except rest: the penalty a value, or a raised level, carries
-since its last use.
+the hook, and the `escalation` and `finishing_tasks` levels. Nothing carries
+from one message to the next except rest: the penalty a value, or a raised
+level, carries since its last use.
 
 The picker applies every threshold, rest and cap, and prints
-`escalation: <name>` and `wins: <name>`. The run passes it the slip days and
-closed counts, plus its judgements. The writer gets the names as printed.
+`escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
+days and closed counts, plus its judgements. The writer gets the names as
+printed.
 
 The picker can bump the escalation level one step with no slip behind it, capped
 at the top. The bump's chance grows with the days since the last message at a
@@ -174,9 +175,9 @@ One JSON line per message: the date and time, the reminder, the picks, the
 opening words, the task ids with their planned dates at send, the user's
 feedback and the rater's verdict. A field with no value is left out.
 
-The picks include the `escalation` and `wins` names as strings, as the picker
-printed them, the first level included. Either is left out only when the picker
-printed no line for it.
+The picks include the `escalation` and `finishing_tasks` names as strings, as
+the picker printed them, the first level included. Either is left out only when
+the picker printed no line for it.
 
 ### Inside ntm
 

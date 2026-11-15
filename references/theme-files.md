@@ -54,7 +54,6 @@ parts are the same in every theme:
 | `world`      | The theme's world, and where the user sits in it                             |
 | `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
 | `wins`       | How the theme marks a finished task, and a big win                           |
-| `reminders`  | What each reminder is in the theme's world, by its name                      |
 | `files`      | Every other file of the theme: what it holds, and how it is read             |
 
 Each file in `files` is read one of three ways:
@@ -80,12 +79,6 @@ escalation: >-
 wins: >-
   A finished task is a case closed, filed with quiet satisfaction. A big win
   gets the whole cast in the drawing room for the reveal.
-
-reminders:
-  weekly: The new case files land on the desk.
-  morning: The detective reads the morning paper for clues to today's case.
-  afternoon: The legwork, and whether anyone has left the house.
-  evening: The drawing room at dusk, where the day's case is told.
 
 files:
   Casebook-options.yaml:

@@ -10,17 +10,17 @@ class PickerTestCase(unittest.TestCase):
     def setUp(self):
         self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
 
-    def hook(self, options, *more):
-        args = ["hook", "--options", str(options), *more]
+    def pick_hook(self, options, *flags):
+        args = ["hook", "--options", str(options), *flags]
         with Picker.from_args(args) as picker:
             return picker.selections()
 
     def drawn(self, seed):
-        return self.hook(EVEN, "--seed", str(seed))
+        return self.pick_hook(EVEN, "--seed", str(seed))
 
-    def assertFails(self, why, *hook_args):
+    def assertFails(self, why, options, *flags):
         with self.assertRaises(SystemExit) as exited:
-            self.hook(*hook_args)
+            self.pick_hook(options, *flags)
         self.assertEqual(f"Picker FAILED: {why}", exited.exception.code)
 
 

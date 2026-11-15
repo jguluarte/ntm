@@ -84,7 +84,7 @@ ntm keeps its own records in databases on the task list. A `%` name, such as
 Find each part of a database by its name, and save it back whole with only your
 change.
 
-Every user has the three below.
+Every user has `%Settings` and at least one theme.
 
 ### `%Settings`
 
@@ -93,17 +93,29 @@ names and how they want to be notified. `ntm:ready-check` loads it at the start
 of a run, and skills read the part they need. Its Themes part lists the user's
 themes and names this week's.
 
-### `%Theme`
+### Themes
+
+A user can have several themes. `%Theme` refers to a theme's collection of
+files, each named after the theme. In a run, each name below means this week's
+theme's file; `references/theme-files.md` gives each file's shape.
+
+| How we refer to it in the plugin | example                    |
+| -------------------------------- | -------------------------- |
+| `%Theme`                         | `Casebook`                 |
+| `%Theme-options`                 | `Casebook-options`         |
+| `%Message-history`               | `Casebook-message-history` |
+
+#### `%Theme`
 
 The style ntm's messages to the user are written in. `ntm:style` reads it for
 each message, hands the writer agent only what that message needs, and changes
 it with the user when they ask.
 
-### `%Message-history`
+#### `%Message-history`
 
-An entry for each message ntm writes in the user's theme: when it went out, what
-was picked for it, which tasks it was about, and how it landed. `ntm:style`
-reads it and keeps it.
+An entry for each message ntm writes in the theme: when it went out, what was
+picked for it, which tasks it was about, and how it landed. `ntm:style` reads it
+and keeps it.
 
 ## Results
 

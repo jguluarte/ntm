@@ -44,6 +44,10 @@ Everything else they set up lives in their databases and their jobs.
 A database's template, in `references/databases/`, holds `<!-- -->` comments for
 you: write the database without them.
 
+Create each database under its default name, its `%` name in words, such as
+Paused dates, without asking the user about it. The one name they confirm is
+`%Settings`'s, in ntm backend assets, since every run starts from it.
+
 ## Pre-requisites
 
 ### Already set up
@@ -140,15 +144,14 @@ everything.
 | Price watch     | What they want to buy, watched until the price is right |
 
 Note which features they're installing. Then confirm what those features need in
-four rounds, each covering every picked feature together: labels, then settings,
-then databases, then jobs. Price watch's Amazon labels depend on whether they
-want Amazon price alerts, so ask that question at the start of the labels round.
+three rounds, each covering every picked feature together: labels, then
+settings, then jobs. Price watch's Amazon labels depend on whether they want
+Amazon price alerts, so ask that question at the start of the labels round.
 
 Show only what the picked features need, with the defaults below. A label's
-default name is ntm's, without the `$`. A database's is its `%` name in words,
-such as Paused dates. When the user wants more on any of it, the feature's rules
-(`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md` or
-`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) say more.
+default name is ntm's, without the `$`. When the user wants more on any of it,
+the feature's rules (`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md`
+or `${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one
 running this chat. A job never starts on :00 or :30, where every scheduled task
@@ -308,9 +311,8 @@ it builds their theme with them and creates `%Theme`. Write the theme's root,
 which today is `%Theme`'s title, under Themes in `%Settings`, as this week's
 theme and as the only one in All themes.
 
-Then confirm the `%Message-history` database's name, create it from its
-template, and add where `%Theme` and `%Message-history` live to
-`ntm-user:backend`.
+Then create `%Message-history` from its template, and add where `%Theme` and
+`%Message-history` live to `ntm-user:backend`.
 
 ### Notifications
 

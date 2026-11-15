@@ -96,7 +96,9 @@ class PickHookTest(unittest.TestCase):
             5: "hook: scenes/dusk",
         }
 
-        drawn = {seed: Picker(theme, seed).pick_hook() for seed in expected}
+        drawn = {
+            seed: Picker(theme, seed=seed).pick_hook() for seed in expected
+        }
 
         self.assertEqual(expected, drawn)
 
@@ -110,9 +112,9 @@ class PickHookTest(unittest.TestCase):
 
         self.assertGreater(len(drawn), 1)
 
-    def test_a_theme_with_no_hook_to_give_fails_saying_why(self):
+    def test_a_message_no_hook_fits_fails_naming_its_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        picker = Picker(theme, theme_options=ThemeOptions.parse("morning"))
+        picker = Picker(theme, ThemeOptions.parse("morning"))
 
         why = "no hook fits morning"
         expected = f"Picker FAILED: MissingHook: {why}"

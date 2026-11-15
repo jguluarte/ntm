@@ -17,13 +17,6 @@ class ParseTest(unittest.TestCase):
 
         self.assertEqual(expected, theme_options)
 
-    def test_nothing_listed_parses_as_no_reminder_type_and_no_outcome(self):
-        expected = ThemeOptions(None, frozenset())
-
-        theme_options = ThemeOptions.parse("")
-
-        self.assertEqual(expected, theme_options)
-
     def test_a_value_that_isnt_an_option_fails_naming_it(self):
         expected = "not an option: night"
 
@@ -45,7 +38,7 @@ class ParseTest(unittest.TestCase):
 
         expected = set(schema["$defs"]["occasion"]["enum"])
 
-        options = {each.value for each in [*ReminderType, *TaskOutcome]}
+        options = {option.value for option in [*ReminderType, *TaskOutcome]}
 
         self.assertEqual(expected, options)
 

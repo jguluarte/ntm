@@ -7,17 +7,17 @@ from theme import InvalidThemeOptions, Theme, ThemeOptions
 
 
 class Picker:
-    def __init__(self, theme, seed=None, theme_options=ThemeOptions()):
+    def __init__(self, theme, theme_options=ThemeOptions(), seed=None):
         self.theme = theme
-        self.seed = seed
         self.theme_options = theme_options
+        self.seed = seed
 
     @classmethod
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options)
-            return cls(theme, flags.seed, flags.theme_options)
+            return cls(theme, flags.theme_options, flags.seed)
 
     def pick_hook(self):
         with self._reporting_failures():
@@ -39,9 +39,9 @@ class Picker:
         return parser
 
     @staticmethod
-    def _parse_theme_options(listed):
+    def _parse_theme_options(text):
         try:
-            return ThemeOptions.parse(listed)
+            return ThemeOptions.parse(text)
         except InvalidThemeOptions as invalid:
             raise argparse.ArgumentTypeError(str(invalid)) from None
 

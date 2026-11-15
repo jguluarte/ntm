@@ -23,11 +23,21 @@ class ReminderType(enum.Enum):
     EVENING = "evening"
     WEEKLY = "weekly"
 
+    @classmethod
+    def named_in(cls, values):
+        known = {reminder_type.value for reminder_type in cls}
+        return {cls(value) for value in values & known}
+
 
 class TaskOutcome(enum.Enum):
     SLIPPED = "slipped"
     DONE = "done"
     BIG_WIN = "big_win"
+
+    @classmethod
+    def named_in(cls, values):
+        known = {task_outcome.value for task_outcome in cls}
+        return {cls(value) for value in values & known}
 
 
 class InvalidTheme(ValueError):
@@ -47,22 +57,22 @@ class MissingHook(ValueError):
 
 @dataclass(frozen=True)
 class ThemeOptions:
-    reminder_type: ReminderType = None
-    task_outcomes: frozenset = frozenset()
+    reminder_type: ReminderType | None = None
+    task_outcomes: frozenset[TaskOutcome] = frozenset()
 
     @classmethod
-    def parse(cls, listed):
-        values = set(listed.split(",")) if listed else set()
-        reminder_types = {each for each in ReminderType if each.value in values}
-        task_outcomes = {each for each in TaskOutcome if each.value in values}
+    def parse(cls, text):
+        values = set(text.split(","))
+        reminder_types = ReminderType.named_in(values)
+        task_outcomes = TaskOutcome.named_in(values)
 
-        known = {each.value for each in reminder_types | task_outcomes}
-        unknown = values - known
+        options = reminder_types | task_outcomes
+        unknown = values - {option.value for option in options}
         if unknown:
             raise InvalidThemeOptions("not an option", unknown)
 
         if len(reminder_types) > 1:
-            named = {each.value for each in reminder_types}
+            named = {reminder_type.value for reminder_type in reminder_types}
             raise InvalidThemeOptions("more than one reminder type", named)
 
         reminder_type = reminder_types.pop() if reminder_types else None
@@ -78,31 +88,39 @@ class ThemeOptions:
         return ThemeOptions(self.reminder_type, task_outcomes)
 
     def __str__(self):
-        values = sorted(each.value for each in self.task_outcomes)
+        values = sorted(
+            task_outcome.value for task_outcome in self.task_outcomes
+        )
         if self.reminder_type:
             values.insert(0, self.reminder_type.value)
         return ",".join(values)
 
 
 @dataclass(frozen=True)
-class _KeptFor:
-    reminder_types: frozenset
-    task_outcomes: frozenset
+class _Hook:
+    kind: str
+    slug: str
+    reminder_types: frozenset[ReminderType]
+    task_outcomes: frozenset[TaskOutcome]
 
     @classmethod
-    def read(cls, entry):
+    def from_entry(cls, kind, slug, entry):
         when = (entry or {}).get(WHEN, [])
         values = {when} if isinstance(when, str) else set(when)
-        reminder_types = {each for each in ReminderType if each.value in values}
-        task_outcomes = {each for each in TaskOutcome if each.value in values}
-        return cls(frozenset(reminder_types), frozenset(task_outcomes))
+        reminder_types = frozenset(ReminderType.named_in(values))
+        task_outcomes = frozenset(TaskOutcome.named_in(values))
+        return cls(kind, slug, reminder_types, task_outcomes)
 
     @property
-    def is_big_win(self):
+    def name(self):
+        return f"{self.kind}/{self.slug}"
+
+    @property
+    def kept_for_big_win(self):
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
     def fits(self, theme_options):
-        if theme_options.is_big_win and not self.is_big_win:
+        if theme_options.is_big_win and not self.kept_for_big_win:
             return False
 
         reminder_type = theme_options.reminder_type
@@ -120,36 +138,32 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        self._kept_for_by_hook = self._read_hooks(fields[POOLS_BY_KIND])
+        self._hooks = self._read_hooks(fields[POOLS_BY_KIND])
 
     def hooks_for(self, theme_options):
-        if not self._kept_for_by_hook:
+        if not self._hooks:
             raise MissingHook("no pool in the options file gives a hook")
 
-        hooks = self._hooks_fitting(theme_options)
+        hooks = self._hooks_that_fit(theme_options)
         if not hooks and theme_options.is_big_win:
-            hooks = self._hooks_fitting(theme_options.as_normal_win())
+            hooks = self._hooks_that_fit(theme_options.as_normal_win())
         if not hooks:
             raise MissingHook(f"no hook fits {theme_options}")
 
         return hooks
 
-    def _hooks_fitting(self, theme_options):
-        hooks = []
-        for hook, kept_for in self._kept_for_by_hook.items():
-            if kept_for.fits(theme_options):
-                hooks.append(hook)
-        return hooks
+    def _hooks_that_fit(self, theme_options):
+        return [hook.name for hook in self._hooks if hook.fits(theme_options)]
 
     @staticmethod
     def _read_hooks(pools_by_kind):
-        kept_for_by_hook = {}
+        hooks = []
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE not in pool[ROLES]:
                 continue
             for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                kept_for_by_hook[f"{kind}/{slug}"] = _KeptFor.read(entry)
-        return kept_for_by_hook
+                hooks.append(_Hook.from_entry(kind, slug, entry))
+        return hooks
 
     @staticmethod
     def _load(path):

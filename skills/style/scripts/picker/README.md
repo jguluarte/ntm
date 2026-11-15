@@ -54,6 +54,14 @@ Picker FAILED: MissingHook: no hook fits morning,slipped
 
 ## How it picks
 
+### The hook
+
+The hooks are the entries of every pool whose `roles` include `hook`, taken as
+one list. The picker draws one of those that fit, each as likely as the next.
+
+The order of entries in a file doesn't change their chances. With a fixed
+`--seed`, it does change which one is drawn.
+
 ### What fits the message
 
 `--for` names the message's reminder type and task outcomes, separated by
@@ -68,11 +76,3 @@ place of `big_win`. Without `--for`, only hooks without `when` fit.
 python3 picker.py hook --options Casebook-options.yaml --for big_win
 hook: shared_lines/big_win
 ```
-
-### The hook
-
-The hooks are the entries of every pool whose `roles` include `hook`, taken as
-one list. The picker draws one of those that fit, each as likely as the next.
-
-The order of entries in a file doesn't change their chances. With a fixed
-`--seed`, it does change which one is drawn.

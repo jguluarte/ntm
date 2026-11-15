@@ -44,12 +44,12 @@ whatever gets them moving. Talk through with them what they want, then decide
 what fits their theme. Ask how hard each level goes: swearing, roasting and
 mockery are all welcome when they want them. Push for vivid.
 
-The root's `escalation` and `wins` each hold the theme's levels, lowest first,
-as `${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` shows. The user decides how
-many each has. Name each level in the theme's words and write how it sounds.
-Most themes start from these:
+The root's `escalation` and `finishing_tasks` each hold the theme's levels,
+lowest first, as `${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` shows. The
+user decides how many each has. Name each level in the theme's words and write
+how it sounds. Most themes start from these:
 
-| Level | `escalation`                                             | `wins`                                        |
+| Level | `escalation`                                             | `finishing_tasks`                             |
 | ----- | -------------------------------------------------------- | --------------------------------------------- |
 | 1st   | Where every message starts                               | Any finished task                             |
 | 2nd   | Now and then with no slip, so a good run still gets read | A big day or week, or a big or hard task done |
@@ -101,6 +101,7 @@ options file, by its slug, with its `when` copied.
 
 ## Sample messages
 
-Write a few sample messages yourself for each escalation level, and a few for
-each level of wins, with tasks like theirs, each built on one of their entries.
-Read them back and revise how each level sounds until they smile.
+Write a few sample messages yourself for each level of `escalation`, and a few
+for each level of `finishing_tasks`, with tasks like theirs, each built on one
+of their entries. Read them back and revise how each level sounds until they
+smile.

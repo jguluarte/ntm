@@ -145,9 +145,7 @@ entry.
 Nothing is lost. Its verdict and feedback reached the scores and `weeks` in the
 run that judged it, and the picker needs only each value's latest use, which
 stays. So a history never holds more entries than its theme has values, plus the
-week's entries waiting to be judged. The picker reads `picks.hook` from an
-entry, as `references/theme-files.md` says; `ntm:style` and the history template
-take the `picks` shape with the skill's own change.
+week's entries waiting to be judged.
 
 ## When it runs
 

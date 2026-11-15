@@ -92,9 +92,12 @@ scores 0. A hook's chance is its draw weight over the total draw weight of every
 hook that fits. A hook that weighs 0 is never drawn.
 
 `--chances` prints each hook that fits, in file order, with its chance, rounded
-to two places with a half rounding up: 0.125 shows as 0.13. In
-`Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2, a draw weight
-of 0.65, out of a total of 1.98.
+to two places with a half rounding up: 0.125 shows as 0.13.
+
+In `Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2. 2 to the
+power of 0.2 is about 1.149, so its draw weight is 0.57 × 1.149, about 0.65.
+Without `--type`, three hooks fit, with draw weights 0.65, 0.25 and 1.07, 1.98
+in all. The detective's chance is 0.65 / 1.98, which shows as 0.33.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --chances

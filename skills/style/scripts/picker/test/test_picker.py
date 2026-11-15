@@ -41,7 +41,7 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(ThemeOptions(), picker.theme_options)
 
-    def test_the_chances_flag_shows_chances_in_place_of_a_draw(self):
+    def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
         picker = Picker.from_args(args)
 
@@ -140,10 +140,10 @@ class PickHookTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
 
-class HookChancesTest(unittest.TestCase):
-    def test_chances_list_each_fitting_hook_in_file_order_with_its_chance(self):
+class ChancesTableTest(unittest.TestCase):
+    def test_each_fitting_hook_shows_its_chance_with_a_half_rounding_up(self):
         picker = Picker(Theme(fixtures.WEIGHTED))
-        rows = picker.hook_chances().splitlines()
+        rows = picker.chances_table().splitlines()
 
         expected = [
             "hook             chance",
@@ -154,19 +154,24 @@ class HookChancesTest(unittest.TestCase):
         ]
         self.assertEqual(expected, rows)
 
-    def test_a_chance_ending_in_a_half_rounds_up(self):
-        picker = Picker(Theme(fixtures.WEIGHTED))
-        rows = picker.hook_chances().splitlines()
+    def test_the_documented_example_shows_the_documented_chances(self):
+        picker = Picker(Theme(fixtures.CASEBOOK))
+        rows = picker.chances_table().splitlines()
 
-        expected = "scenes/dawn        0.13"
-        self.assertIn(expected, rows)
+        expected = [
+            "hook                   chance",
+            "characters/detective     0.33",
+            "shared_lines/any_time    0.13",
+            "scenes/stakeout          0.54",
+        ]
+        self.assertEqual(expected, rows)
 
     def test_chances_where_every_fitting_hook_weighs_0_fail_naming_why(self):
         theme = Theme(fixtures.WEIGHTED)
         picker = Picker(theme, ThemeOptions.parse("big_win"))
 
         with self.assertRaises(SystemExit) as exited:
-            picker.hook_chances()
+            picker.chances_table()
 
         why = "every hook that fits big_win weighs 0"
         expected = f"Picker FAILED: NoHookHasWeight: {why}"

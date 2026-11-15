@@ -105,11 +105,12 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTED)
         chances = theme.hook_chances_for(ThemeOptions())
 
+        total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
-            "scenes/dawn": 0.5 * 2 ** 0 / 4,
-            "scenes/noon": 1 * 2 ** 1 / 4,
-            "scenes/dusk": 0 * 2 ** 0 / 4,
-            "characters/host": 3 * 2 ** -1 / 4,
+            "scenes/dawn": 0.5 * 2 ** 0 / total_draw_weight,
+            "scenes/noon": 1 * 2 ** 1 / total_draw_weight,
+            "scenes/dusk": 0 * 2 ** 0 / total_draw_weight,
+            "characters/host": 3 * 2 ** -1 / total_draw_weight,
         }
         self.assertEqual(expected, chances)
 

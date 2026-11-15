@@ -33,16 +33,16 @@ class Picker:
             [hook] = generator.choices(hooks, weights=chances.values())
             return f"hook: {hook}"
 
-    def hook_chances(self):
+    def chances_table(self):
         with self._reporting_failures():
             chances = self.theme.hook_chances_for(self.theme_options)
-            hook_width = max(len(hook) for hook in chances)
-            chance_width = len("chance")
 
             rows = [("hook", "chance")]
             for hook, chance in chances.items():
                 rows.append((hook, self._to_hundredths(chance)))
 
+            hook_width = max(len(hook) for hook, _ in rows)
+            chance_width = max(len(chance) for _, chance in rows)
             return "\n".join(
                 f"{ hook.ljust(hook_width) }  { chance.rjust(chance_width) }"
                 for hook, chance in rows
@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
     picker = Picker.from_args(args)
     if picker.shows_chances:
-        print(picker.hook_chances())
+        print(picker.chances_table())
 
     else:
         print(picker.pick_hook())

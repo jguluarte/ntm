@@ -205,12 +205,13 @@ checksums:
   Casebook-characters.yaml: 9f86d081884c7d65...
   Casebook-scenes.yaml: 2c26b46b68ffc68f...
 
+speaker_rate: 0.4
+
 pools:
   characters:
     file: Casebook-characters.yaml
     roles: [hook, speaker]
     half_life_days: 3
-    speaker_rate: 0.4
     entries:
       detective:
         weight: 0.57
@@ -250,7 +251,7 @@ its checksum differs.
 | --------------------- | -------------------------------------------------------------------------------------------- |
 | `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
 | `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
-| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                              |
+| `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
 | `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
 | `score`               | How well messages built on the entry landed, from `%Message-history`                         |
@@ -276,7 +277,9 @@ from its entry file, and one line or riff is drawn from it, keeping only riffs
 whose `type` fits. A recently used line rests the same way an entry does. That
 line or riff is what the writer builds on.
 
-Sometimes a speaker is added from a speaker pool, at its `speaker_rate`.
+Sometimes a speaker is added, drawn from all speaker pools together, at the
+theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no
+`speaker_rate`: every hook already speaks.
 
 ## The terminology file
 

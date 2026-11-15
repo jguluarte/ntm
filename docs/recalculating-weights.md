@@ -200,7 +200,7 @@ numbers for both the recalculation and the theme builder
 
 | Class       | Owns                                                             |
 | ----------- | ---------------------------------------------------------------- |
-| `Options`   | The options file: loads, checks against the schema, pools, saves |
+| `Theme`     | The options file: loads, checks against the schema, pools, saves |
 | `History`   | A message history: entries, verdicts written in, pruning, saving |
 | `EntryFile` | An entry file: its checksum and each entry's line count          |
 | The command | A method per thing it does; named with the skill                 |
@@ -211,10 +211,10 @@ rates from starting shares, every score 0, the checksums and an empty `weeks`.
 `update`, in the Sunday morning job, takes in the verdicts, recounts changed
 files, moves the bump rate and prunes. `report` writes the weekly theme report.
 
-`Options` and `History` are shared with the picker, one class each, from a
-module beside the schema that both scripts import; `History` comes with the
-picker's history slice. To decide: where that module lives, since it reaches
-across skill folders as the schema does.
+`Theme` and `History` are shared with the picker, one class each, from a module
+beside the schema that both scripts import; `History` comes with the picker's
+history slice. To decide: where that module lives, since it reaches across skill
+folders as the schema does.
 
 ## The build order
 

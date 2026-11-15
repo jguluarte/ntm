@@ -1,7 +1,8 @@
 import unittest
 
 import fixtures
-from picker import Options, Picker
+from picker import Picker
+from theme import Theme
 
 
 def make_picker_args(options, **flags):
@@ -63,7 +64,7 @@ class CommandLineTest(unittest.TestCase):
 
 class PickHookTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_hook(self):
-        options = Options(fixtures.EVEN)
+        theme = Theme(fixtures.EVEN)
 
         expected = {
             0: "hook: characters/host",
@@ -74,12 +75,12 @@ class PickHookTest(unittest.TestCase):
             5: "hook: scenes/dusk",
         }
 
-        drawn = {seed: Picker(options, seed).pick_hook() for seed in expected}
+        drawn = {seed: Picker(theme, seed).pick_hook() for seed in expected}
 
         self.assertEqual(expected, drawn)
 
     def test_without_a_seed_runs_draw_different_hooks(self):
-        picker = Picker(Options(fixtures.EVEN))
+        picker = Picker(Theme(fixtures.EVEN))
 
         attempts = 50
         drawn = {
@@ -89,7 +90,7 @@ class PickHookTest(unittest.TestCase):
         self.assertGreater(len(drawn), 1)
 
     def test_only_speaker_pools_fails_saying_no_pool_gives_a_hook(self):
-        picker = Picker(Options(fixtures.SPEAKERS_ONLY))
+        picker = Picker(Theme(fixtures.SPEAKERS_ONLY))
 
         why = "no pool in the options file gives a hook"
         expected = f"Picker FAILED: NoHooks: {why}"

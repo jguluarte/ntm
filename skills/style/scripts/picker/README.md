@@ -6,10 +6,10 @@ theme.
 It reads a theme's options file and prints the hook it drew. It runs on Python 3
 with PyYAML and jsonschema.
 
-`references/theme-files.md` describes the options file. The theme builder owns
-its schema, `skills/theme-builder/references/options.schema.yaml`, and will
-check what it builds against it; the picker checks every options file against
-the same schema before picking.
+`references/theme-files.md` describes the options file. Its schema,
+`options.schema.yaml`, sits beside the picker in the style skill. The picker
+checks every options file against it before picking, and the theme builder
+checks a theme by running the same code, `theme.py`.
 
 ## Usage
 
@@ -38,11 +38,11 @@ hook: characters/detective
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type. An
-options file that breaks the schema reads as `InvalidOptions`, with where in the
+options file that breaks the schema reads as `InvalidTheme`, with where in the
 file and what is wrong; a theme where no pool gives a hook reads as `NoHooks`.
 
 ```
-Picker FAILED: InvalidOptions: $.pools.scenes: 'roles' is a required property
+Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
 Picker FAILED: NoHooks: no pool in the options file gives a hook
 ```
 

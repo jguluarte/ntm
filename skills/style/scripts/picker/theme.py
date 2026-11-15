@@ -79,7 +79,7 @@ class MissingHook(ValueError):
 
 class UnknownEntryFile(ValueError):
     def __init__(self, file_name):
-        super().__init__(f"no pool in the options file uses {file_name}")
+        super().__init__(f"no pool uses {file_name}")
 
 
 @dataclass(frozen=True)

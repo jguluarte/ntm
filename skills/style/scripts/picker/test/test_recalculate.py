@@ -113,6 +113,6 @@ class StartTest(unittest.TestCase):
         with self.assertRaises(SystemExit) as exited:
             self.start(options)
 
-        why = "no pool in the options file uses Casebook-characters.yaml"
+        why = "no pool uses Casebook-characters.yaml"
         expected = f"Recalculation FAILED: UnknownEntryFile: {why}"
         self.assertEqual(expected, exited.exception.code)

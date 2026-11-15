@@ -96,7 +96,12 @@ recounted: Casebook-scenes.yaml
 
 When it can't, it prints one line on stderr, exits 1 and changes nothing, as the
 picker does. An entry file that no pool names as its `file` reads as
-`Recalculation FAILED: UnknownEntryFile: no pool in the options file uses Casebook-scenes.yaml`.
+`UnknownEntryFile`, as when `Casebook`'s entry files are handed in with another
+theme's options file:
+
+```
+Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml
+```
 
 ### The weight
 

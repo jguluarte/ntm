@@ -147,7 +147,7 @@ class EntryFilesTest(unittest.TestCase):
         with self.assertRaises(UnknownEntryFile) as raised:
             theme.entries_from("Even-scenes.yaml")
 
-        expected = "no pool in the options file uses Even-scenes.yaml"
+        expected = "no pool uses Even-scenes.yaml"
         self.assertEqual(expected, str(raised.exception))
 
 

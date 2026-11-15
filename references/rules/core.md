@@ -147,6 +147,6 @@ file says. Then:
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
    message as `ntm:style`'s Keeping `%Message-history` says.
 
-The sender's result is what `ntm-user:notify` returned, with the picker's
-failure line after it when `ntm:style` kept one, or `Writer FAILED:` when
-`ntm:style` ended with it.
+The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
+`ntm:style` ended with it. When `ntm:style` kept the picker's failure line, it
+is the result's last line.

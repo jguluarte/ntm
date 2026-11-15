@@ -14,10 +14,15 @@ with PyYAML, as `python3 pick`.
 pick hook --options <file> [--seed <number>]
 ```
 
-| Flag        | What it is                                        |
-| ----------- | ------------------------------------------------- |
-| `--options` | The theme's options file, as YAML                 |
-| `--seed`    | A whole number; the same seed draws the same hook |
+| Flag        | What it is                            |
+| ----------- | ------------------------------------- |
+| `--options` | The theme's options file, as YAML     |
+| `--seed`    | A whole number, for a repeatable pick |
+
+A seed makes a pick repeatable: the same seed and options file draw the same
+hook, for tests and for looking into why a hook was picked. Without `--seed`,
+Python seeds the draw from the operating system's randomness source, or from the
+current time where there is none, so each run draws afresh.
 
 ## What it prints
 

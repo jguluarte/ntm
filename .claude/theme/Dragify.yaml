@@ -24,23 +24,13 @@ escalation:
     No mercy. Read them for FILTH!
 
 wins:
-  about: >-
-    How a finished task is marked, from the everyday close to a win.
-
   finished: >-
-    A task done as planned is an everyday close: a quick nod in passing, and the
-    message moves on to what's next.
+    A quick nod in passing, and the message moves on.
 
   win: >-
-    A win is a big deal: going well above and beyond, or getting something done
-    that was hard for you, a long project, or a task you had next to no
-    motivation for that dragged on a long while because of it. A day is a win
-    when more than 5 tasks closed, or when a task itself was big or hard to
-    follow through. A week is a win when more than 10 tasks closed.
-
-  winners_circle: >-
-    A win gets the winner's circle, the finale: you take the crown in front of
-    the whole cast, sassy.
+    The winner's circle, the finale: you take the crown in front of the whole
+    cast, sassy. The message honors going well above and beyond, or what it
+    took: the long haul, or the task that dragged with no motivation behind it.
 
 files:
   Dragify-actors.yaml:

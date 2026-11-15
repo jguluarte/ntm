@@ -52,8 +52,8 @@ parts are the same in every theme:
 | ------------ | ---------------------------------------------------------------------------- |
 | `theme`      | The theme's name                                                             |
 | `world`      | The theme's world, and where the user sits in it                             |
-| `escalation` | How the theme reads a task that slipped, and how it escalates with each slip |
-| `wins`       | How the theme marks a finished task, and a big win                           |
+| `escalation` | How the theme reads a slipping task, in four levels, each named in its words |
+| `wins`       | How the theme marks a finished task, in three levels up to a big win         |
 | `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
 
 `files` has three groups. Under each, a file's name maps to a line or two on
@@ -74,13 +74,28 @@ world: >-
   A detective story set in a foggy city. The user is the client who hired the
   detective; each task is a case on the detective's desk.
 
-escalation: >-
-  A slipped task is a case going cold. One slip draws a raised eyebrow, three
-  draw a lecture on neglect, five and the inspector starts asking questions.
+escalation:
+  on_the_desk: >-
+    A case on the detective's desk, mentioned between clues.
 
-wins: >-
-  A finished task is a case closed, filed with quiet satisfaction. A big win
-  gets the whole cast in the drawing room for the reveal.
+  raised_eyebrow: >-
+    A raised eyebrow at a case nobody has touched.
+
+  going_cold: >-
+    A slipped task is a case going cold. The detective lectures on neglect.
+
+  the_inspector: >-
+    The inspector starts asking questions.
+
+wins:
+  case_closed: >-
+    A finished task is a case closed, filed with quiet satisfaction.
+
+  fine_work: >-
+    A rare word of praise from the detective, for a big day or a hard case.
+
+  the_reveal: >-
+    The whole cast in the drawing room for the reveal.
 
 files:
   by_entry:

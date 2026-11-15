@@ -10,10 +10,10 @@ HOOK = "hook"
 
 class Options:
     def __init__(self, fields):
-        listed = fields.get(POOLS) if isinstance(fields, dict) else None
-        if not isinstance(listed, dict):
+        pools_by_kind = fields.get(POOLS) if isinstance(fields, dict) else None
+        if not isinstance(pools_by_kind, dict):
             raise PickerFailed("the options file has no pools")
-        pools = [Pool(kind, pool) for kind, pool in listed.items()]
+        pools = [Pool(kind, pool) for kind, pool in pools_by_kind.items()]
         self.entries = [entry for pool in pools for entry in pool.entries]
 
     @classmethod
@@ -38,9 +38,10 @@ class Pool:
 
     @staticmethod
     def _well_formed(fields):
-        shape = fields if isinstance(fields, dict) else {}
-        has_gives = isinstance(shape.get(GIVES), list)
-        has_entries = isinstance(shape.get(ENTRIES), dict)
+        if not isinstance(fields, dict):
+            return False
+        has_gives = isinstance(fields.get(GIVES), list)
+        has_entries = isinstance(fields.get(ENTRIES), dict)
         return has_gives and has_entries
 
 

@@ -349,6 +349,7 @@ actors:
       - Everybody doesn't get a trophy.
       - >-
         I don't lie in real life, and I'm damn sure not gonna lie on television.
+      - Mother fucking battle, bitch! That is legendary!
 
   alan_carr:
     name: Alan Carr
@@ -1456,7 +1457,7 @@ actors:
       - >-
         Everything works out in the end, and if it's not working out, then it's
         not the end.
-      - Why y'all gagging, I bring it to you every ball!
+      - Why y'all gagging, I bring it to you every episode!
       - When receiving advice, consider the source.
 
   willam:
@@ -2310,12 +2311,22 @@ any_actor_lines:
       - Con-drag-ulations, you are the winner of this week's challenge!
       - 10s. 10s. 10s. Across. The board!
       - You ate, and left no crumbs.
+      - >-
+        It's good. I can say when it's good. I don't like saying it but I can
+        say it.
 
   winners_circle:
     about: >-
-      Only for the winner's circle: something truly impressive, or going above
-      and beyond, the finale itself. Never for an ordinary win.
+      Only for the winner's circle: something truly impressive and shocking, or
+      going above and beyond, the finale itself. Never for an ordinary win.
+      Write a first-person line as the user's own confessional, with no speaker
+      claiming it.
 
     lines:
       - You took the crown. America's Next Drag Superstar!
       - You are the World's Next Drag Supermonster!
+      - Now prance! Prance, my queen!
+      - I'm not crying, it's my fucking eyelash.
+      - >-
+        I've fucking done it, stop the show, I won, done! Out, come on, let's
+        go. Wrap this up, come on now.

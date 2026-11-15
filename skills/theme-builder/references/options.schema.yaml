@@ -1,0 +1,59 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: A theme's options file
+description: Written by the theme builder, and read by the picker in ntm:style.
+type: object
+required: [pools]
+properties:
+  checksums:
+    type: object
+    additionalProperties:
+      type: string
+  pools:
+    type: object
+    additionalProperties:
+      $ref: "#/$defs/pool"
+
+$defs:
+  pool:
+    type: object
+    required: [roles, entries]
+    properties:
+      file:
+        type: string
+      roles:
+        type: array
+        minItems: 1
+        items:
+          enum: [hook, speaker]
+      half_life_days:
+        type: number
+      speaker_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+      entries:
+        type: object
+        additionalProperties:
+          $ref: "#/$defs/entry"
+
+  entry:
+    type: [object, "null"]
+    properties:
+      when:
+        if:
+          type: array
+        then:
+          minItems: 1
+          items:
+            $ref: "#/$defs/occasion"
+        else:
+          $ref: "#/$defs/occasion"
+      weight:
+        type: number
+      line_half_life_days:
+        type: number
+      score:
+        type: number
+
+  occasion:
+    enum: [morning, afternoon, evening, weekly, slipped, done, big_win]

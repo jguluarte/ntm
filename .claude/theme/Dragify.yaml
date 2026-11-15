@@ -29,12 +29,13 @@ finishing_tasks:
     finished, and "what, do you want a gold star?".
 
   win: >-
-    A win of some kind, and the message treats it as one: it celebrates an
-    exceptional run of tasks, or the push it took to get one done.
+    A win of some kind, and the message treats it as one: you won the week's
+    challenge, with an exceptional run of tasks, or the push it took to get one
+    done. You ate, and left no crumbs.
 
   winners_circle: >-
-    Reserved for something truly impressive, or going above and beyond. You took
-    the crown. You ate, and left no crumbs.
+    Reserved for something truly impressive and shocking, or going above and
+    beyond: the finale, and you took the crown.
 
 files:
   Dragify-actors.yaml:

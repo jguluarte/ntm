@@ -92,7 +92,7 @@ class PickHookTest(unittest.TestCase):
         picker = Picker(Options(fixtures.SPEAKERS_ONLY))
 
         why = "no pool in the options file gives a hook"
-        expected = f"Picker FAILED: ValueError: {why}"
+        expected = f"Picker FAILED: NoHooks: {why}"
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick_hook()

@@ -17,8 +17,12 @@ HOOK_COMMAND = "hook"
 OPTIONS_FLAG = "--options"
 SEED_FLAG = "--seed"
 HOOK_LINE = "hook: {}"
-NO_HOOKS = "no pool in the options file gives a hook"
 FAILED = "Picker FAILED: {}: {}"
+
+
+class NoHooks(ValueError):
+    def __init__(self):
+        super().__init__("no pool in the options file gives a hook")
 
 
 class Options:
@@ -33,7 +37,7 @@ class Options:
             if HOOK_ROLE in pool[ROLES]:
                 hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG])
         if not hooks:
-            raise ValueError(NO_HOOKS)
+            raise NoHooks()
         return hooks
 
     @staticmethod

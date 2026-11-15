@@ -39,11 +39,11 @@ hook: characters/detective
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type. An
 options file that breaks the schema reads as `ValueError`, with where in the
-file and what is wrong, and so does a theme where no pool gives a hook.
+file and what is wrong; a theme where no pool gives a hook reads as `NoHooks`.
 
 ```
 Picker FAILED: ValueError: $.pools.scenes: 'gives' is a required property
-Picker FAILED: ValueError: no pool in the options file gives a hook
+Picker FAILED: NoHooks: no pool in the options file gives a hook
 ```
 
 ## How it picks

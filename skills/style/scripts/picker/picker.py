@@ -21,10 +21,10 @@ class Picker:
     def __enter__(self):
         return self
 
-    def __exit__(self, kind, failure, traceback):
+    def __exit__(self, failure_type, failure, traceback):
         if isinstance(failure, Exception):
             why = " ".join(str(failure).split())
-            sys.exit(FAILED.format(kind.__name__, why))
+            sys.exit(FAILED.format(failure_type.__name__, why))
 
     def selections(self):
         # Parsed inside the with block, so Picker reports a bad flag.

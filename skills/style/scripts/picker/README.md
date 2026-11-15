@@ -34,7 +34,7 @@ hook: characters/detective
 ```
 
 When it can't pick, it prints one line on stderr,
-`Picker FAILED: <kind>: <why>`, and exits 1. `<kind>` is the failure's type, so
+`Picker FAILED: <type>: <why>`, and exits 1. `<type>` is the failure's type, so
 a field missing from the options file reads as `KeyError` with the field's name.
 
 ```

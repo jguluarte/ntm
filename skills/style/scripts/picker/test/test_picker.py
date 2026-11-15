@@ -5,14 +5,11 @@ from picker import Picker
 from theme import Theme, ThemeOptions
 
 
-def make_picker_args(options, type=None, seed=None):
+def make_picker_args(options, **flags):
     args = ["hook", "--options", str(options)]
 
-    if type is not None:
-        args += ["--type", type]
-
-    if seed is not None:
-        args += ["--seed", str(seed)]
+    for name, value in flags.items():
+        args += [f"--{name}", str(value)]
 
     return args
 

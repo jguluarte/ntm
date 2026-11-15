@@ -162,9 +162,6 @@ the research out to agents, and an agent can't start others.
 An examples pool the user builds from job chats. The writer reads it only once
 it's big enough.
 
-A day's throughline: a pick that carries across a day's messages. It waits until
-Justin finds he wants it.
-
 ### Justin's theme
 
 It's built on a `dragify` branch, which never merges anywhere and is deleted

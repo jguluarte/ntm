@@ -57,9 +57,8 @@ parts are the same in every theme:
 | `files`      | Every other file of the theme, grouped by how the writer gets data from it   |
 
 `files` has three groups. Under each, a file's name maps to a line or two on
-what it holds. In a root, `%{Theme}` stands for the theme's own name, so each
-file is named by its pattern and the root never repeats the name; YAML needs a
-key that starts with `%` in quotes.
+what it holds. Each file is listed by its full name, which follows the pattern
+in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
 | Group            | What the writer gets                                                                     |
 | ---------------- | ---------------------------------------------------------------------------------------- |
@@ -85,18 +84,18 @@ wins: >-
 
 files:
   by_entry:
-    "%{Theme}-characters.yaml": >-
+    Casebook-characters.yaml: >-
       The people of the story, and lines any of them can say.
 
-    "%{Theme}-scenes.yaml": >-
+    Casebook-scenes.yaml: >-
       Recurring scenes a message can be set in.
 
   fully_read:
-    "%{Theme}-terminology.md": >-
+    Casebook-terminology.md: >-
       The story's own words.
 
   for_the_picker:
-    "%{Theme}-options.yaml": >-
+    Casebook-options.yaml: >-
       What the theme offers the picker.
 ```
 

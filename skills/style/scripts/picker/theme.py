@@ -5,10 +5,7 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-SKILLS_PATH = Path(__file__).parents[3]
-OPTIONS_SCHEMA = (
-    SKILLS_PATH / "theme-builder" / "references" / "options.schema.yaml"
-)
+OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 POOLS_BY_KIND = "pools"
 ROLES = "roles"
@@ -158,11 +155,12 @@ class Theme:
     @staticmethod
     def _read_hooks(pools_by_kind):
         hooks = []
+
         for kind, pool in pools_by_kind.items():
-            if HOOK_ROLE not in pool[ROLES]:
-                continue
-            for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                hooks.append(_Hook.from_entry(kind, slug, entry))
+            if HOOK_ROLE in pool[ROLES]:
+                for slug, entry in pool[ENTRIES_BY_SLUG].items():
+                    hooks.append(_Hook.from_entry(kind, slug, entry))
+
         return hooks
 
     @staticmethod

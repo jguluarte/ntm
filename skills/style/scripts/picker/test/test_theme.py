@@ -4,6 +4,10 @@ import fixtures
 from theme import InvalidTheme, MissingHook, NoHooks, Theme, ThemeOptions
 
 
+def hooks_fitting(options, text):
+    return Theme(options).hooks_for(ThemeOptions.parse(text))
+
+
 class HooksTest(unittest.TestCase):
     def test_the_hooks_are_the_entries_of_pools_giving_a_hook(self):
         theme = Theme(fixtures.EVEN)
@@ -116,3 +120,34 @@ class SchemaTest(unittest.TestCase):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.UNKNOWN_WHEN)
         self.assertEqual(expected, str(raised.exception))
+
+
+class CompleteThemesTest(unittest.TestCase):
+    def test_each_complete_theme_offers_the_hooks_that_fit_a_message(self):
+        messages = [
+            (fixtures.CASEBOOK, "morning,slipped"),
+            (fixtures.CASEBOOK, "evening,big_win"),
+            (fixtures.ORCHARD, "evening,slipped"),
+            (fixtures.ORCHARD, "morning,big_win"),
+        ]
+        hooks = {
+            f"{options.parent.name}: {text}": hooks_fitting(options, text)
+            for options, text in messages
+        }
+
+        expected = {
+            "Casebook: morning,slipped": [
+                "characters/detective", "shared_lines/any_time",
+                "scenes/stakeout",
+            ],
+            "Casebook: evening,big_win": ["shared_lines/big_win"],
+            "Orchard: evening,slipped": [
+                "growers/elder", "growers/twins", "growers/beekeeper",
+                "growers/scarecrow",
+            ],
+            "Orchard: morning,big_win": [
+                "growers/elder", "growers/twins", "growers/beekeeper",
+                "growers/scarecrow",
+            ],
+        }
+        self.assertEqual(expected, hooks)

@@ -1,0 +1,24 @@
+theme: Orchard
+
+world: >-
+  A hillside orchard kept by a few old growers. The user is the new hand
+  learning the trees; each task is a tree that needs tending. When no grower
+  speaks, the orchard tells it: wind in the leaves, a ladder against a trunk.
+
+escalation: >-
+  A slipped task is fruit left on the branch. One slip draws a look at the
+  ladder, three a talk about the season not waiting, five and every grower walks
+  over to see.
+
+wins: >-
+  A finished task is a full basket, set down without fuss. A big win is the
+  first cider of the year, poured for everyone.
+
+files:
+  by_entry:
+    Orchard-growers.yaml: >-
+      The growers, each with how they talk and the lines they say.
+
+  for_the_picker:
+    Orchard-options.yaml: >-
+      What the theme offers the picker.

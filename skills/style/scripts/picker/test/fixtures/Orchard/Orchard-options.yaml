@@ -1,0 +1,9 @@
+pools:
+  growers:
+    file: Orchard-growers.yaml
+    roles: [hook, speaker]
+    entries:
+      elder: {}
+      twins: {}
+      beekeeper: {}
+      scarecrow: {}

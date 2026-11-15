@@ -1,0 +1,41 @@
+about: >-
+  The growers of the orchard. A picked grower speaks the whole message, in their
+  own manner, built on the line drawn from them.
+
+growers:
+  elder:
+    name: Old Tamsin
+    manner: >-
+      Slow and certain. Counts in seasons, never in days.
+    lines:
+      - The tree does not care what you meant to do.
+      - Pick it now or the birds will.
+      - Every branch remembers the frost.
+
+  twins:
+    name: The Pell twins
+    manner: >-
+      Finish each other's sentences, mostly to disagree with them.
+    lines:
+      - One of us saw you start it.
+
+  beekeeper:
+    name: Ivo
+    manner: >-
+      Quiet and patient. Talks to the hives more than to people.
+    lines:
+      - Busy is not the same as done.
+    riffs:
+      - line: The bees went out at dawn.
+        bend: >-
+          Set the slipped task beside the bees, who started early and are
+          already back.
+      - line: A full comb takes a full summer.
+        bend: >-
+          Treat a long task as a comb built one cell at a time.
+
+  scarecrow:
+    name: The scarecrow
+    manner: >-
+      Never says a word. Its message is what the user sees when they look at it:
+      which way it leans, and what someone has tied to its arms.

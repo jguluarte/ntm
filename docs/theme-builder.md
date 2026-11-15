@@ -27,7 +27,7 @@ already has a theme can start from it: the builder sorts it into the new files.
 | Stage              | What the user is asked                        | What gets written                           |
 | ------------------ | --------------------------------------------- | ------------------------------------------- |
 | 1. World           | Their world, where they sit, what hooks them  | The root's `theme` and `world`              |
-| 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `wins`; default thresholds    |
+| 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `finishing_tasks`; thresholds |
 | 3. Kinds           | Kinds found in the sources; which can talk    | The options file's pools and roles; `files` |
 | 4. Perspectives    | Who else would comment on their week          | The options file's `perspectives`           |
 | 5. Research        | Which kind first                              | The entry files                             |
@@ -121,13 +121,13 @@ today.
 ## The levels
 
 Two parts of the root have levels. `escalation` is how the theme sounds as a
-task keeps slipping; `wins` is how it marks finished tasks, up to a big win. The
-builder asks how each should sound, as today's skill does, then names each level
-in the theme's words and writes how it sounds. The thresholds below are every
-user's defaults; the user sees a number only if they ask, and "push harder
-sooner" moves one a step.
+task keeps slipping; `finishing_tasks` is how it marks finished tasks, up to a
+big win. The builder asks how each should sound, as today's skill does, then
+names each level in the theme's words and writes how it sounds. The thresholds
+below are every user's defaults; the user sees a number only if they ask, and
+"push harder sooner" moves one a step.
 
-| Level | `escalation`, reached by   | `wins`, reached by                                                         |
+| Level | `escalation`, reached by   | `finishing_tasks`, reached by                                              |
 | ----- | -------------------------- | -------------------------------------------------------------------------- |
 | 1st   | Where every message starts | Any finished task                                                          |
 | 2nd   | A bump only                | Over 5 closed a day or 10 a week, or a big or hard task; 2.5-day half-life |

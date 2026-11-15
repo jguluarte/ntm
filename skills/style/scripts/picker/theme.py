@@ -73,7 +73,8 @@ class MoreThanOneReminderType(InvalidOptions):
 
 class InvalidHistory(ValueError):
     def __init__(self, line_number, line):
-        super().__init__(f"line {line_number}: no sent date and time: {line}")
+        why = "not an entry with a sent date and time"
+        super().__init__(f"line {line_number}: {why}: {line}")
 
 
 class NoHooks(ValueError):
@@ -129,8 +130,7 @@ class History:
         self._latest_use_by_name = {}
         lines = self._load(path) if path else []
         for line_number, line in enumerate(lines, start=1):
-            if line.strip():
-                self._read_entry(line_number, line)
+            self._read_entry(line_number, line)
 
     def days_since_used(self, name):
         latest_use = self._latest_use_by_name.get(name)

@@ -49,18 +49,19 @@ instead, as "How likely each kind and hook is" and "Rest" show.
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
 type. An options file that breaks the schema reads as `InvalidTheme`, with where
-in the file and what is wrong. A history line without a `sent` date and time
-reads as `InvalidHistory`, with its line number and the line. A `--type` that
-names something other than a reminder type or task outcome, or more than one
-reminder type, reads as `ArgumentError`, naming the flag and the values, and so
-do `--history` without `--today` and a `--today` that isn't a date. A theme
-where no pool gives a hook reads as `NoHooks`, one with no hook that fits the
-message as `MissingHook`, and one where every hook that fits weighs 0 as
-`NoHookHasWeight`.
+in the file and what is wrong. A history line that isn't a JSON entry with a
+`sent` date and time reads as `InvalidHistory`, with its line number and the
+line, shown below on two lines to fit. A `--type` that names something other
+than a reminder type or task outcome, or more than one reminder type, reads as
+`ArgumentError`, naming the flag and the values, and so do `--history` without
+`--today` and a `--today` that isn't a date. A theme where no pool gives a hook
+reads as `NoHooks`, one with no hook that fits the message as `MissingHook`, and
+one where every hook that fits weighs 0 as `NoHookHasWeight`.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
-Picker FAILED: InvalidHistory: line 2: no sent date and time: {"sent":"13 Nov"}
+Picker FAILED: InvalidHistory: line 2: not an entry with a sent date and time:
+    {"sent":"13 Nov"}
 Picker FAILED: ArgumentError: argument --type: not an option: night
 Picker FAILED: ArgumentError: --history needs --today
 Picker FAILED: ArgumentError: argument --today: not a date as YYYY-MM-DD: 15 Nov
@@ -184,8 +185,8 @@ total rested draw weight of its kind's fitting hooks.
 `scenes` has a `half_life_days` of 2. The latest message built on `scenes/dawn`
 went out on 2026-11-13, so its days since used are 2, one half-life. Its share
 won back is 1 - 2 ** (-2 / 2) = 0.5, and its rested draw weight is its draw
-weight of 1 × 0.5 = 0.5. No message used `noon` or `dusk`, so each keeps its
-draw weight of 1. The fitting hooks total 0.5 + 1 + 1 = 2.5, so `dawn` has a
+weight of 1 × 0.5 = 0.5. No message used `noon` or `dusk`, so each keeps
+its draw weight of 1. The fitting hooks total 0.5 + 1 + 1 = 2.5, so `dawn` has a
 chance in `scenes` of 0.5 / 2.5 = 0.2, and `noon` and `dusk` each 1 / 2.5 = 0.4.
 
 The history's message on `dawn` from 2026-11-10 is older, so it doesn't count.

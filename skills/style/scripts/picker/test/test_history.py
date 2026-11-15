@@ -38,10 +38,10 @@ class HistoryTest(unittest.TestCase):
 
         self.assertIsNone(days)
 
-    def test_a_sent_that_isnt_a_date_and_time_fails_with_invalid_history(self):
+    def test_a_line_that_isnt_an_entry_fails_with_invalid_history(self):
         with self.assertRaises(InvalidHistory) as raised:
             History(fixtures.UNREADABLE_SENT_HISTORY, date(2026, 11, 15))
 
         line = '{"sent":"13 Nov","picks":{"hook":"scenes/dawn"}}'
-        expected = f"line 2: no sent date and time: {line}"
+        expected = f"line 2: not an entry with a sent date and time: {line}"
         self.assertEqual(expected, str(raised.exception))

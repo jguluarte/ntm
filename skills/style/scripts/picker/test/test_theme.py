@@ -175,3 +175,11 @@ class SchemaTest(unittest.TestCase):
         where = "$.pools.scenes.entries.dawn.weight"
         expected = f"{where}: -1 is less than the minimum of 0"
         self.assertEqual(expected, str(raised.exception))
+
+    def test_a_pool_weighing_0_fails(self):
+        with self.assertRaises(InvalidTheme) as raised:
+            Theme(fixtures.WEIGHTLESS_POOL)
+
+        where = "$.pools.scenes.weight"
+        expected = f"{where}: 0 is less than or equal to the minimum of 0"
+        self.assertEqual(expected, str(raised.exception))

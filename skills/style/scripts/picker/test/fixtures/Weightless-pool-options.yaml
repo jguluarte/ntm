@@ -1,0 +1,6 @@
+pools:
+  scenes:
+    roles: [hook]
+    weight: 0
+    entries:
+      dawn:

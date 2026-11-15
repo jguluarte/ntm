@@ -31,6 +31,11 @@ $defs:
         type: number
         minimum: 0
         maximum: 1
+      weight:
+        type: number
+        exclusiveMinimum: 0
+      score:
+        type: number
       entries:
         type: object
         additionalProperties:

@@ -27,6 +27,9 @@ runs until the next message naming the task: the evening reminder has the night,
 Friday evening's has Friday night and Saturday, and the weekly message has until
 Monday's reminders.
 
+An action on Sunday between the run and the weekly message credits a message the
+run already judged, usually Friday evening's, so it counts for no message.
+
 It hands the script one line per entry, its `sent` time and verdict: in a normal
 week, about 16 messages, three reminders each weekday and the weekly message.
 The script writes each verdict into its entry's `verdict` field, which marks the
@@ -40,12 +43,12 @@ counted twice.
 
 ## What the script reads and writes
 
-| File                      | Read or written        | What for                                    |
-| ------------------------- | ---------------------- | ------------------------------------------- |
-| `%Settings`               | Read, by the model     | This week's theme, read before the rotation |
-| `<Theme>-message-history` | Read and written       | Entries to judge, verdicts, pruning         |
-| `<Theme>-options.yaml`    | Read and written       | Every number the picker reads               |
-| Entry files               | Read, only when edited | To checksum and count lines                 |
+| File                      | Read or written        | What for                                                  |
+| ------------------------- | ---------------------- | --------------------------------------------------------- |
+| `%Settings`               | Read, by the model     | The judged week's theme, set until the evening's rotation |
+| `<Theme>-message-history` | Read and written       | Entries to judge, verdicts, pruning                       |
+| `<Theme>-options.yaml`    | Read and written       | Every number the picker reads                             |
+| Entry files               | Read, only when edited | To checksum and count lines                               |
 
 The run never changes what a person or the theme builder wrote in the options
 file: the levels and thresholds under `escalation` and `finishing_tasks`, a
@@ -162,9 +165,8 @@ before the weekly job's chat. The run must not depend on the user's device being
 awake, so it is a job that runs without it. There is no nightly run: between
 runs, the picker draws on the numbers the last run left.
 
-A run the user starts on their own computer, to cut tokens, is deferred to think
-about later, not for 0.5; it could only be an optional extra beside the
-scheduled run.
+A run the user starts on their own computer, to cut tokens, is deferred past
+0.5; it could only be an optional extra beside the scheduled run.
 
 Before the rotation, the weekly job's chat, never its push, says how last week's
 theme did: messages sent, how many got a reaction, keeps and stales. From about

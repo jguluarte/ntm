@@ -113,6 +113,5 @@ one line weighs 0.25. Other keys, such as a scene's `setting`, aren't lines.
 ### What it keeps
 
 Everything it doesn't compute stays as it was: `when`, `roles`, `file`, `score`,
-the half-lives, `speaker_rate`, and the checksums of files not handed in. An
-entry its entry file doesn't hold keeps what it has. Saving keeps the key order
-and lists on one line, and loses the file's comments and blank lines.
+the half-lives and `speaker_rate`. Saving keeps the key order and lists on one
+line, and loses the file's comments and blank lines.

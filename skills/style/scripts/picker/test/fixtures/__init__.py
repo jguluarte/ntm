@@ -2,7 +2,7 @@ from pathlib import Path
 
 FIXTURES = Path(__file__).parent
 EVEN = FIXTURES / "Even-options.yaml"
-SILENT = FIXTURES / "Silent-options.yaml"
+HOOKLESS = FIXTURES / "Hookless-options.yaml"
 SHAPELESS = FIXTURES / "Shapeless-options.yaml"
 
 EVEN_HOOKS = ["scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host"]

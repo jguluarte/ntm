@@ -142,7 +142,11 @@ rotated through each week, that way each theme gets used an equal amount.
 Fan reviewers judge lines one at a time. A line that only lands from one person
 stays with that person.
 
-### The nightly job
+### Recalculating the picker's weights
+
+It runs once a week, as a step of the weekly job just before `ntm:clean`, so the
+week is judged before planning. There is no nightly run: between runs, the
+picker draws on the numbers the last run left. One run a week keeps it cheap.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known
@@ -150,8 +154,7 @@ from each task's `Planned date history`, and set aside. It then updates the
 scores.
 
 It recomputes the half-lives, actor weights and speaker rate only when the
-checksum shows the content changed. It also runs just before `ntm:clean` in the
-weekly job.
+checksum shows the content changed.
 
 It compares the user's response rate by escalation level and moves the bump rate
 within bounds. The levels and their thresholds stay as written by hand.

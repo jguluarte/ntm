@@ -1,5 +1,5 @@
 pools:
   narrators:
-    gives: [speaker]
+    roles: [speaker]
     entries:
       chorus:

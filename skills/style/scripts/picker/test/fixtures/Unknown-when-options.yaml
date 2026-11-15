@@ -1,6 +1,6 @@
 pools:
   scenes:
-    gives: [hook]
+    roles: [hook]
     entries:
       dawn:
         when: night

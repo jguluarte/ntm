@@ -194,8 +194,9 @@ It holds one pool per kind of entry. A pool is keyed by its kind, names its
 file, and lists the entries that can be picked, each by its slug, with its
 `when` copied from the entry file.
 
-A pool gives a hook, a speaker, or both. The hook is what a message is built on.
-The speaker is who says the message.
+A pool's `roles` say what its entries can be drawn as: a hook, a speaker, or
+both. The hook is what a message is built on. The speaker is who says the
+message.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -206,7 +207,7 @@ checksums:
 pools:
   characters:
     file: Casebook-characters.yaml
-    gives: [hook, speaker]
+    roles: [hook, speaker]
     half_life_days: 3
     speaker_rate: 0.4
     entries:
@@ -217,7 +218,7 @@ pools:
 
   shared_lines:
     file: Casebook-characters.yaml
-    gives: [hook]
+    roles: [hook]
     half_life_days: 5
     entries:
       any_time:
@@ -232,7 +233,7 @@ pools:
 
   scenes:
     file: Casebook-scenes.yaml
-    gives: [hook]
+    roles: [hook]
     half_life_days: 6
     entries:
       stakeout:

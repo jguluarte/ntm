@@ -26,8 +26,8 @@ theme comes from the user's own world.
 
 ## Setup
 
-When `ntm:setup` runs this skill, it already holds where their databases go. Go
-to step 1.
+When `ntm:setup` runs this skill, it already holds where their databases go.
+Skip the ready-check, and look for an unfinished theme.
 
 Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
 loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the

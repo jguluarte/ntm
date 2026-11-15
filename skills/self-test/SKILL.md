@@ -124,8 +124,12 @@ Only when every step before it passed. Send it as the core rules' Sending a
 message in the user's style says. Its one fact is
 `ntm is ready; the self-test passed`. It passes when `ntm-user:notify` returns
 `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
-other return fails the step. When `ntm:style` kept the picker's failure line,
-show it too: the message went out, picked without the picker.
+other return fails the step.
+
+The picker has to work. When `ntm:style` keeps a `Picker FAILED:` line, send
+nothing: the step fails, with that line as its why, saying what is wrong. A
+theme with no `%Theme-options` isn't built for the picker, and that isn't a
+failure: the step passes, and its line says the theme has no options file.
 
 ## Result
 

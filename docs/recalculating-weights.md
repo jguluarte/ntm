@@ -20,24 +20,16 @@ changes, which each task's `Planned date history` lists. The verdict is `landed`
 when they did, `missed` when they didn't, and `none` when every task was done
 before the message went out.
 
-A message is judged up to a week after it went out, so the run needs a rule for
-which message an action credits. To decide:
-
-| An action credits                                  | A message's window                     |
-| -------------------------------------------------- | -------------------------------------- |
-| The last message before it that names the task     | Until the next message naming the task |
-| Every message that names the task, the same day    | The rest of that day                   |
-| Every message that names the task, since an action | Until the task is acted on             |
-
-Recommended: the last message. The evening reminder then has the night, Friday
-evening's has the weekend, and the weekly message has until Monday's reminders.
-With the same day as the window, the evening reminder and the weekly message,
-both at about 20:45, get about three hours, and the weekly message would come
-out `missed` almost every week.
+A message is judged up to a week after it went out. An action credits the last
+message before it that names the task, so a message's window runs until the next
+message naming the task: the evening reminder has the night, Friday evening's
+has the weekend, and the weekly message has until Monday's reminders.
 
 It hands the script one line per entry, its `sent` time and verdict: in a normal
-week, about 16 messages, three reminders each weekday and the weekly message,
-each judged once.
+week, about 16 messages, three reminders each weekday and the weekly message.
+The script writes each verdict into its entry's `verdict` field, which marks the
+entry as calculated: a run judges only entries without one, so nothing is
+counted twice.
 
 | Who        | Owns                                                           |
 | ---------- | -------------------------------------------------------------- |
@@ -163,6 +155,25 @@ Once a week, as a step of the weekly job just before `ntm:clean`, so the week is
 judged before planning. There is no nightly run: between runs, the picker draws
 on the numbers last week's run left.
 
+To decide: run it early on Sunday morning as a job of its own, instead of inside
+the weekly job on Sunday evening. A token-heavy session then stays clear of the
+user's Sunday evening, the session limit is fully open, the run takes in the
+whole previous calendar week, and the user wakes up to the summary. It adds one
+job for setup to create; the weekly job's rotation and planning that evening use
+numbers already fresh, and the weekly report is ready before the weekly job's
+chat. A run in the middle of the night must not depend on the user's device
+being awake, so it is a job that runs without it. Recommended: yes, early
+Sunday.
+
+To decide: a run the user starts on their own computer, to cut tokens. The
+script already does every number; the tokens go on the model reading the history
+and the tasks, judging the week's messages, and handing file text to the script.
+A run where the script reads the backend itself would save fetching the files
+and handing them over, though the model still reads each message's tasks to
+judge it. It needs a key on the user's machine, and nothing in ntm may depend on
+running locally, so it could only be an optional extra beside the scheduled run.
+Recommended: not for 0.5; keep it as a possible later option.
+
 Before the rotation, the weekly job's chat, never its push, says how last week's
 theme did: messages sent, how many got a reaction, keeps and stales. From about
 four weeks of scored messages, one tunable number, it also says whether the
@@ -242,4 +253,6 @@ picker's history slice.
    `recalculate-weights` for the command. Waits on the owner's yes.
 2. The hand-off of a file's text between the backend and the script.
 3. Each line marked "to decide" above.
-4. Whether the history's `Keep:` line goes, now that pruning bounds it.
+4. When and where it runs: early on Sunday as a job of its own, and a run on the
+   user's own computer, both under When it runs.
+5. Whether the history's `Keep:` line goes, now that pruning bounds it.

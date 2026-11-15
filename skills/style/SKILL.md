@@ -36,8 +36,8 @@ anything else its rule asks of the message, such as tone or length.
 ### 1. Pick
 
 Pick one hook, the idea this message builds on: one entry of the theme, drawn by
-the picker as The picker says. Hand it the message's type: each value below that
-holds, with commas between them, such as `evening,slipped`.
+the picker as The picker, below, says. Hand it the message's type: each value
+below that holds, with commas between them, such as `evening,slipped`.
 
 | Value                               | When                                        |
 | ----------------------------------- | ------------------------------------------- |
@@ -47,8 +47,8 @@ holds, with commas between them, such as `evening,slipped`.
 | `done`                              | A task in the facts is done                 |
 | `big_win`                           | The facts show a big effort, as step 2 says |
 
-Any other message, such as the self-test's or one written in chat, has no
-reminder value. With no value at all, leave `--type` out.
+The self-test's message, and one written in chat, take none of the first two
+rows' values. With no value at all, leave `--type` out.
 
 The hook comes back as `<kind>/<slug>`. Its entry is under `<kind>`, keyed
 `<slug>`, in the file the `<kind>` pool names in `%Theme-options`.
@@ -108,7 +108,7 @@ working folder, exactly as read: never retype it from memory or summarize it.
 Then run the picker on that file, with the message's type from step 1:
 
 ```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook \
     --options <the file> --type <the message's type>
 ```
 
@@ -128,13 +128,15 @@ read. An entry is one JSON line, written compact, with no spaces or line breaks
 added, and only the fields that have a value:
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"morning","hook":"launch","tasks":[{"id":"ABC-12","planned":"2026-11-13"}]}
+{"sent":"2026-11-13 08:45","reminder":"morning","hook":"scenes/dawn","tasks":[{"id":"ABC-12","planned":"2026-11-13"}]}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
-- `hook`, `speaker`: what step 1 picked; `speaker` only when it picked one
+- `hook`: what step 1 picked, as the picker printed it, such as `scenes/dawn`,
+  or by its name when you picked it yourself, such as `launch`
+- `speaker`: who step 1 picked, only when it picked one
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has one
 - `feedback`: the user's word on it, `keep` or `stale`

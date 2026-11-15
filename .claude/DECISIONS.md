@@ -94,8 +94,8 @@ The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
 It draws only what one message needs: the hook, sometimes a speaker, a line from
 the hook, and the `escalation` and `finishing_tasks` levels. Nothing carries
-from one message to the next except rest, the penalty a value carries since its
-last use, and the levels' half-lives and caps.
+from one message to the next except rest: the penalty a value, or a raised
+level, carries since its last use.
 
 The picker applies every threshold, rest and cap, and prints
 `escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
@@ -107,11 +107,11 @@ at the top. The bump's chance grows with the days since the last message at a
 raised level, whether slips or a bump raised it, over a half-life: 3 days for
 Justin. So a good stretch still gets read.
 
-A finished task isn't automatically a win. A win comes from the theme's counts
-(for Justin, a day with more than 5 closed or a week with more than 10) or the
-run's judgement of a big or hard task, and rests on a half-life of about 2.5
-days to thin wins out. The winners circle comes only from the run's judgement of
-something truly shocking, at most once a week; when capped, it lands as a win.
+A win is earned: it comes from the theme's counts (for Justin, a day with more
+than 5 closed or a week with more than 10) or the run's judgement of a big or
+hard task, and rests on a half-life of about 2.5 days to thin wins out. The
+winners circle comes only from the run's judgement of something truly shocking,
+at most once a week; when capped, it lands as a win.
 
 ### Theme files
 

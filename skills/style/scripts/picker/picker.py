@@ -63,10 +63,10 @@ class Options:
         if not entries_by_hook:
             raise NoHooks()
 
-        hooks = [
-            hook for hook, entry in entries_by_hook.items()
-            if self._fits(entry, occasions)
-        ]
+        hooks = []
+        for hook, entry in entries_by_hook.items():
+            if self._fits(entry, occasions):
+                hooks.append(hook)
         if not hooks:
             raise NoHookFits(occasions)
 
@@ -95,7 +95,7 @@ class Options:
 
     @staticmethod
     def _when(entry):
-        when = entry.get(WHEN, []) if entry else []
+        when = (entry or {}).get(WHEN, [])
         if isinstance(when, str):
             return frozenset([when])
 
@@ -139,13 +139,13 @@ class Picker:
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
         hook.add_argument(
-            "--occasions", type=cls._occasions, default=frozenset()
+            "--occasions", type=cls._parse_occasions, default=frozenset()
         )
         hook.add_argument("--seed", type=int)
         return parser
 
     @staticmethod
-    def _occasions(listed):
+    def _parse_occasions(listed):
         occasions = frozenset(listed.split(","))
 
         unknown = occasions - REMINDERS - HAPPENINGS

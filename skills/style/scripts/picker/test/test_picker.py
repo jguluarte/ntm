@@ -3,8 +3,6 @@ import unittest
 import fixtures
 from picker import Options, Picker
 
-RUNS = 50
-
 
 def make_picker_args(options, **flags):
     args = ["hook", "--options", str(options)]
@@ -78,7 +76,10 @@ class PickHookTest(unittest.TestCase):
     def test_without_a_seed_runs_draw_different_hooks(self):
         picker = Picker(Options(fixtures.EVEN))
 
-        drawn = {picker.pick_hook() for _ in range(RUNS)}
+        attempts = 50
+        drawn = {
+            picker.pick_hook() for _ in range(attempts)
+        }
 
         self.assertGreater(len(drawn), 1)
 

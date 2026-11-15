@@ -46,6 +46,10 @@ file of hooks. About 20 hooks, an estimate and not a rule, is more than a week
 of messages. Speakers, perspectives, terminology and more kinds come later. The
 builder offers this one first.
 
+The builder aims to give every theme, the small one included, entries kept for
+`big_win`, so a big win has material of its own. A theme with none still works:
+on a big win, the picker falls back to a normal win.
+
 ## The research pass
 
 The skill starts the agents, since an agent can't start others: one per batch of
@@ -137,6 +141,9 @@ rotation, and whenever the builder changes it:
 It prints one plain line per problem, naming the file and entry. The builder
 fixes what it can, and asks the user only when a fix is a choice. A failing
 theme is never added to `%Settings`.
+
+A theme that keeps nothing for `big_win` passes; the check says so, and the
+builder offers to add some.
 
 ## Saving and switching on
 

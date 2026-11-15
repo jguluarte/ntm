@@ -99,7 +99,7 @@ browser reaches them. The builder asks the first time a page needs it, at stage
 pages and say so in their report.
 
 The research follows what `world` says to leave out, and how it maps the user's
-day: entries that fit one part of the day are tagged with `when` for the
+day: entries that fit one part of the day are tagged with `type` for the
 morning, the afternoon, the evening or the week.
 
 When a kind turns up little, the research reports it, and the builder tells the

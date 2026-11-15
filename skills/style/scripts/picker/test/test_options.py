@@ -51,6 +51,15 @@ class FitTest(unittest.TestCase):
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
         options = Options(fixtures.EVERY_WHEN)
 
+        expected = ["scenes/big_win", "scenes/evening_big_win"]
+
+        hooks = options.hooks({"evening", "big_win"})
+
+        self.assertEqual(expected, hooks)
+
+    def test_on_a_big_win_an_entry_still_fits_only_its_reminders(self):
+        options = Options(fixtures.EVERY_WHEN)
+
         expected = ["scenes/big_win"]
 
         hooks = options.hooks({"morning", "done", "big_win"})

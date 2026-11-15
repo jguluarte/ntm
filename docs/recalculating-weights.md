@@ -151,7 +151,7 @@ slice.
 
 ## When it runs
 
-Once a week, as a job of its own, early on Sunday morning.
+Once a week, as a job of its own, early on Sunday morning, at about 04:00.
 
 The session limit is then fully open, the run stays clear of the user's Sunday
 evening, and it takes in the whole previous calendar week. The weekly job that

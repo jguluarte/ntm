@@ -6,10 +6,10 @@ theme.
 It reads a theme's options file and prints the hook it drew. It runs on Python 3
 with PyYAML and jsonschema.
 
-`references/theme-files.md` describes the options file. The theme builder owns
-its schema, `skills/theme-builder/references/options.schema.yaml`, and will
-check what it builds against it; the picker checks every options file against
-the same schema before picking.
+`references/theme-files.md` describes the options file. Its schema,
+`options.schema.yaml`, sits beside the picker in the style skill. The picker
+checks every options file against it before picking, and the theme builder
+checks a theme by running the same code, `theme.py`.
 
 ## Usage
 

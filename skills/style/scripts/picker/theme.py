@@ -3,10 +3,7 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-SKILLS_PATH = Path(__file__).parents[3]
-OPTIONS_SCHEMA = (
-    SKILLS_PATH / "theme-builder" / "references" / "options.schema.yaml"
-)
+OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 POOLS_BY_KIND = "pools"
 ROLES = "roles"

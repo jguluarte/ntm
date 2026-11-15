@@ -160,10 +160,10 @@ speaks.
 
 ## Validation
 
-A script beside the options schema checks the theme before it joins the
-rotation, and whenever the builder changes it:
+The builder checks the theme with the picker, the style skill's script, before
+the theme joins the rotation and whenever the builder changes it:
 
-- the options file against the schema
+- the options file against its schema, in the picker's `theme.py`
 - every entry in the options file is in its entry file, and the reverse
 - every file the root lists exists
 - the level names in the root and the options file agree
@@ -171,7 +171,8 @@ rotation, and whenever the builder changes it:
 
 It prints one plain line per problem, naming the file and entry. The builder
 fixes what it can, and asks the user only when a fix is a choice. A failing
-theme is never added to `%Settings`.
+theme is never added to `%Settings`. The builder's test run of picks uses the
+same picker.
 
 A theme that keeps nothing for `big_win` passes; the check says so, and the
 builder offers to add some.

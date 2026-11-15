@@ -46,8 +46,8 @@ counted twice.
 | Entry files               | Read, only when edited | To checksum and count lines                               |
 
 The run never changes what a person or the theme builder wrote in the options
-file: the levels and thresholds under `escalation` and `finishing_tasks`, a
-pool's `roles` and `file`, an entry's `when`.
+file: the levels and thresholds under `escalation` and `wins`, a pool's `roles`
+and `file`, an entry's `when`.
 
 The files are documents in the user's backend, and the script touches no
 backend. As for the picker, the run fetches each file, hands its text over, and
@@ -137,10 +137,9 @@ just maintain a rolling forward and causes an upper limit on that theme's
 message history file."
 
 Each entry holds a `picks` object, exactly what the picker printed: `hook`,
-`speaker`, `line`, `escalation`, `finishing_tasks`, later `role` and `bump`.
-Those keys hold for every theme; only their values are the theme's. A judged
-entry goes once every value in its `picks` appears under the same key in a later
-entry.
+`speaker`, `line`, `escalation`, `wins`, later `role` and `bump`. Those keys
+hold for every theme; only their values are the theme's. A judged entry goes
+once every value in its `picks` appears under the same key in a later entry.
 
 Nothing is lost. Its verdict and feedback reached the scores and `weeks` in the
 run that judged it, and the picker needs only each value's latest use, which

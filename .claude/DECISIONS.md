@@ -175,9 +175,9 @@ One JSON line per message: the date and time, the reminder, the picks, the
 opening words, the task ids with their planned dates at send, the user's
 feedback and the rater's verdict. A field with no value is left out.
 
-The picks include the `escalation` and `finishing_tasks` names as strings, as
-the picker printed them, the first level included. Either is left out only when
-the picker printed no line for it.
+The picks include the `escalation` and `wins` names as strings, as the picker
+printed them, the first level included. Either is left out only when the picker
+printed no line for it.
 
 ### Inside ntm
 

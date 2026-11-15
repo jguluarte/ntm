@@ -1,7 +1,11 @@
 import unittest
 
+import yaml
+
 import fixtures
-from picker import InvalidOptions, Options
+from picker import (
+    HAPPENINGS, OPTIONS_SCHEMA, REMINDERS, InvalidOptions, Options,
+)
 
 
 class HooksTest(unittest.TestCase):
@@ -76,6 +80,15 @@ class SchemaTest(unittest.TestCase):
         hooks = Options(fixtures.CASEBOOK).hooks(set())
 
         self.assertEqual(expected, hooks)
+
+    def test_the_picker_and_the_schema_list_the_same_occasions(self):
+        schema = yaml.safe_load(OPTIONS_SCHEMA.read_text(encoding="utf-8"))
+
+        expected = set(schema["$defs"]["occasion"]["enum"])
+
+        occasions = REMINDERS | HAPPENINGS
+
+        self.assertEqual(expected, occasions)
 
     def test_a_file_without_pools_fails(self):
         expected = "$: 'pools' is a required property"

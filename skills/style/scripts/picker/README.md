@@ -15,6 +15,7 @@ checks a theme by running the same code, `theme.py`.
 
 ```
 python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
+python3 picker.py hook --options <file> [--type <list>] --chances
 ```
 
 | Flag        | What it is                                                          |
@@ -22,6 +23,7 @@ python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
 | `--options` | The theme's options file, as YAML                                   |
 | `--type`    | The message's reminder type and task outcomes, as `evening,slipped` |
 | `--seed`    | A whole number, for a repeatable pick                               |
+| `--chances` | Shows each hook's chance instead of drawing one                     |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
@@ -36,6 +38,9 @@ slug.
 ```
 hook: characters/detective
 ```
+
+With `--chances`, it prints each hook that fits and its chance instead, as "How
+likely each hook is" shows.
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
@@ -85,3 +90,16 @@ A hook's draw weight is its `weight` times 2 to the power of its `score`,
 halves it. An entry without a `weight` weighs 1, and one without a `score`
 scores 0. A hook's chance is its draw weight over the total draw weight of every
 hook that fits. A hook that weighs 0 is never drawn.
+
+`--chances` prints each hook that fits, in file order, with its chance, rounded
+to two places with a half rounding up: 0.125 shows as 0.13. In
+`Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2, a draw weight
+of 0.65, out of a total of 1.98.
+
+```
+python3 picker.py hook --options Casebook-options.yaml --chances
+hook                   chance
+characters/detective     0.33
+shared_lines/any_time    0.13
+scenes/stakeout          0.54
+```

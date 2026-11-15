@@ -2,22 +2,28 @@ import argparse
 import contextlib
 import random
 import sys
+from decimal import ROUND_HALF_UP, Decimal
 
 from theme import InvalidOptions, Theme, ThemeOptions
 
 
 class Picker:
-    def __init__(self, theme, theme_options=ThemeOptions(), seed=None):
+    def __init__(
+            self, theme, theme_options=ThemeOptions(), seed=None,
+            shows_chances=False):
         self.theme = theme
         self.theme_options = theme_options
         self.seed = seed
+        self.shows_chances = shows_chances
 
     @classmethod
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options)
-            return cls(theme, flags.theme_options, flags.seed)
+            return cls(
+                theme, flags.theme_options, flags.seed, flags.shows_chances,
+            )
 
     def pick_hook(self):
         with self._reporting_failures():
@@ -26,6 +32,27 @@ class Picker:
             generator = random.Random(self.seed)
             [hook] = generator.choices(hooks, weights=chances.values())
             return f"hook: {hook}"
+
+    def hook_chances(self):
+        with self._reporting_failures():
+            chances = self.theme.hook_chances_for(self.theme_options)
+            hook_width = max(len(hook) for hook in chances)
+            chance_width = len("chance")
+
+            rows = [("hook", "chance")]
+            for hook, chance in chances.items():
+                rows.append((hook, self._to_hundredths(chance)))
+
+            return "\n".join(
+                f"{ hook.ljust(hook_width) }  { chance.rjust(chance_width) }"
+                for hook, chance in rows
+            )
+
+    @staticmethod
+    def _to_hundredths(chance):
+        hundredth = Decimal("0.01")
+        rounded = Decimal(chance).quantize(hundredth, rounding=ROUND_HALF_UP)
+        return str(rounded)
 
     @classmethod
     def _parser(cls):
@@ -38,6 +65,9 @@ class Picker:
             default=ThemeOptions(),
         )
         hook.add_argument("--seed", type=int)
+        hook.add_argument(
+            "--chances", dest="shows_chances", action="store_true",
+        )
         return parser
 
     @staticmethod
@@ -62,6 +92,8 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     picker = Picker.from_args(args)
-    selections = picker.pick_hook()
+    if picker.shows_chances:
+        print(picker.hook_chances())
 
-    print(selections)
+    else:
+        print(picker.pick_hook())

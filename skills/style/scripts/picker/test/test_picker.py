@@ -41,6 +41,18 @@ class CommandLineTest(unittest.TestCase):
 
         self.assertEqual(ThemeOptions(), picker.theme_options)
 
+    def test_the_chances_flag_shows_chances_in_place_of_a_draw(self):
+        args = make_picker_args(fixtures.EVEN) + ["--chances"]
+        picker = Picker.from_args(args)
+
+        self.assertTrue(picker.shows_chances)
+
+    def test_the_chances_flag_is_optional(self):
+        args = make_picker_args(fixtures.EVEN)
+        picker = Picker.from_args(args)
+
+        self.assertFalse(picker.shows_chances)
+
     def test_a_missing_options_flag_fails_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(["hook"])
@@ -125,4 +137,37 @@ class PickHookTest(unittest.TestCase):
 
         why = "no hook fits morning"
         expected = f"Picker FAILED: MissingHook: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
+
+class HookChancesTest(unittest.TestCase):
+    def test_chances_list_each_fitting_hook_in_file_order_with_its_chance(self):
+        picker = Picker(Theme(fixtures.WEIGHTED))
+        rows = picker.hook_chances().splitlines()
+
+        expected = [
+            "hook             chance",
+            "scenes/dawn        0.13",
+            "scenes/noon        0.50",
+            "scenes/dusk        0.00",
+            "characters/host    0.38",
+        ]
+        self.assertEqual(expected, rows)
+
+    def test_a_chance_ending_in_a_half_rounds_up(self):
+        picker = Picker(Theme(fixtures.WEIGHTED))
+        rows = picker.hook_chances().splitlines()
+
+        expected = "scenes/dawn        0.13"
+        self.assertIn(expected, rows)
+
+    def test_chances_where_every_fitting_hook_weighs_0_fail_naming_why(self):
+        theme = Theme(fixtures.WEIGHTED)
+        picker = Picker(theme, ThemeOptions.parse("big_win"))
+
+        with self.assertRaises(SystemExit) as exited:
+            picker.hook_chances()
+
+        why = "every hook that fits big_win weighs 0"
+        expected = f"Picker FAILED: NoHookHasWeight: {why}"
         self.assertEqual(expected, exited.exception.code)

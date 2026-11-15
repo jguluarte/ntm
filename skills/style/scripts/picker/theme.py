@@ -102,7 +102,7 @@ class ThemeOptions:
 
 
 @dataclass(frozen=True)
-class _Hook:
+class Option:
     kind: str
     slug: str
     reminder_types: frozenset[ReminderType]
@@ -184,7 +184,7 @@ class Theme:
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    hooks.append(_Hook.from_entry(kind, slug, entry))
+                    hooks.append(Option.from_entry(kind, slug, entry))
 
         return hooks
 

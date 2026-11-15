@@ -5,7 +5,11 @@ pools:
       dawn:
       noon:
       dusk:
-  cast:
-    gives: [speaker]
+  characters:
+    gives: [hook, speaker]
     entries:
       host:
+  narrators:
+    gives: [speaker]
+    entries:
+      chorus:

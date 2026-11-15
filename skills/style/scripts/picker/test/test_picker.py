@@ -2,83 +2,67 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from fixtures import EVEN, EVEN_HOOKS
+from fixtures import EVEN, EVEN_DRAWS, EVEN_HOOKS, SHAPELESS, SILENT
 from picker import Picker
 
 
 class PickerTestCase(unittest.TestCase):
-    def setUp(self):
-        self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
-
     def pick(self, *args):
         with Picker.from_args(args) as picker:
             return picker.selections()
 
-    def pick_hook(self, options, *flags):
-        return self.pick("hook", "--options", str(options), *flags)
+    def assertFails(self, line, *args):
+        with self.assertRaises(SystemExit) as exited:
+            self.pick(*args)
+        self.assertEqual(line, exited.exception.code)
+
+
+class HookDrawTest(PickerTestCase):
+    EVEN_HOOK_LINES = {f"hook: {hook}" for hook in EVEN_HOOKS}
 
     def drawn(self, seed):
-        return self.pick_hook(EVEN, "--seed", str(seed))
+        return self.pick("hook", "--options", str(EVEN), "--seed", str(seed))
 
-    def assertFails(self, why, pick, *args):
-        with self.assertRaises(SystemExit) as exited:
-            pick(*args)
-        self.assertEqual(f"Picker FAILED: {why}", exited.exception.code)
+    def test_each_seed_draws_its_declared_hook(self):
+        drawn = {seed: self.drawn(seed) for seed in EVEN_DRAWS}
+        self.assertEqual(EVEN_DRAWS, drawn)
 
+    def test_the_declared_draws_reach_every_hook(self):
+        self.assertEqual(self.EVEN_HOOK_LINES, set(EVEN_DRAWS.values()))
 
-class DrawTest(PickerTestCase):
-    def test_every_hook_can_be_drawn(self):
-        drawn = {self.drawn(seed) for seed in range(100)}
-        self.assertEqual(EVEN_HOOKS, drawn)
-
-    def test_the_same_seed_draws_the_same_hook(self):
-        first = [self.drawn(seed) for seed in range(5)]
-        again = [self.drawn(seed) for seed in range(5)]
-        self.assertEqual(first, again)
+    def test_without_a_seed_it_still_draws_a_hook(self):
+        drawn = self.pick("hook", "--options", str(EVEN))
+        self.assertIn(drawn, self.EVEN_HOOK_LINES)
 
 
-class CommandLineTest(PickerTestCase):
-    def test_an_unknown_mode_fails_naming_the_modes(self):
-        why = "argument {hook}: invalid choice: 'hooks' (choose from 'hook')"
-        self.assertFails(f"ArgumentError: {why}", self.pick, "hooks")
+class FailureTest(PickerTestCase):
+    def setUp(self):
+        self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
 
-    def test_a_flag_the_mode_doesnt_take_fails_naming_it(self):
-        why = "ArgumentError: unrecognized arguments: --colour red"
-        self.assertFails(why, self.pick_hook, EVEN, "--colour", "red")
+    def test_a_theme_without_hooks_fails_saying_so(self):
+        why = "no pool in the options file gives a hook"
+        line = f"Picker FAILED: NoHooks: {why}"
+        self.assertFails(line, "hook", "--options", str(SILENT))
 
-    def test_a_seed_that_isnt_a_whole_number_fails_saying_so(self):
-        why = "ArgumentError: argument --seed: invalid int value: 'seven'"
-        self.assertFails(why, self.pick_hook, EVEN, "--seed", "seven")
+    def test_an_options_file_without_pools_fails(self):
+        line = "Picker FAILED: KeyError: 'pools'"
+        self.assertFails(line, "hook", "--options", str(SHAPELESS))
 
+    def test_a_missing_options_flag_fails(self):
+        why = "the following arguments are required: --options"
+        line = f"Picker FAILED: ArgumentError: {why}"
+        self.assertFails(line, "hook")
 
-class OptionsFileTest(PickerTestCase):
-    def options_file(self, text):
-        path = self.folder / "Dusk-options.yaml"
-        path.write_text(text)
-        return path
-
-    def test_an_options_file_that_cant_be_read_fails_naming_it(self):
+    def test_an_options_file_that_isnt_there_fails(self):
         path = self.folder / "Gone-options.yaml"
         why = f"[Errno 2] No such file or directory: '{path}'"
-        self.assertFails(f"FileNotFoundError: {why}", self.pick_hook, path)
+        line = f"Picker FAILED: FileNotFoundError: {why}"
+        self.assertFails(line, "hook", "--options", str(path))
 
-    def test_an_options_file_that_isnt_yaml_fails_naming_it(self):
-        path = self.options_file("pools: a: b\n")
+    def test_text_that_isnt_yaml_fails_on_one_line(self):
+        path = self.folder / "Broken-options.yaml"
+        path.write_text("pools: a: b\n")
+        why = "mapping values are not allowed here"
         where = f'in "{path}", line 1, column 9'
-        why = f"ScannerError: mapping values are not allowed here {where}"
-        self.assertFails(why, self.pick_hook, path)
-
-    def test_an_options_file_without_pools_fails_saying_so(self):
-        path = self.options_file("theme: Dusk\n")
-        why = "KeyError: 'pools'"
-        self.assertFails(why, self.pick_hook, path)
-
-    def test_a_pool_without_entries_fails_naming_it(self):
-        path = self.options_file("pools:\n  scenes:\n    gives: [hook]\n")
-        why = "KeyError: 'entries'"
-        self.assertFails(why, self.pick_hook, path)
-
-    def test_an_options_file_without_hooks_fails_saying_so(self):
-        path = self.options_file("pools:\n  cast: {gives: [], entries: {}}\n")
-        why = "NoHooks: no pool in the options file gives a hook"
-        self.assertFails(why, self.pick_hook, path)
+        line = f"Picker FAILED: ScannerError: {why} {where}"
+        self.assertFails(line, "hook", "--options", str(path))

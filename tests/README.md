@@ -29,4 +29,5 @@ name back. `git log tests/expected/` is the record of every name change.
 `skills/style/scripts/picker/`, written as `unittest` test cases and run by
 pytest. `pyproject.toml` puts the picker's folder on Python's import path, so a
 test imports the picker's classes by name. `test_picker.py` runs `Picker` the
-way `picker.py`'s main block does.
+way `picker.py`'s main block does, and `test_options.py` asks `Options` for its
+hooks. `fixtures/` holds the themes they read, with what each must produce.

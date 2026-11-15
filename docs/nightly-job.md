@@ -19,15 +19,24 @@ changes, which each task's `Planned date history` lists. The verdict is `landed`
 when they did, `missed` when they didn't, and `none` when every task was done
 before the message went out.
 
-A message is judged up to a week after it went out, so its verdict needs a
-window. To decide: an action counts for a message when it comes the same day,
-after the message; recommended, since the next morning's reminder names the task
-again.
+A message is judged up to a week after it went out, so the run needs a rule for
+which message an action credits. To decide:
+
+| An action credits                                  | A message's window                     |
+| -------------------------------------------------- | -------------------------------------- |
+| The last message before it that names the task     | Until the next message naming the task |
+| Every message that names the task, the same day    | The rest of that day                   |
+| Every message that names the task, since an action | Until the task is acted on             |
+
+Recommended: the last message. The evening reminder then has the night, Friday
+evening's has the weekend, and the weekly message has until Monday's reminders.
+With the same day as the window, the evening reminder and the weekly message,
+both at about 20:45, get about three hours, and the weekly message would come
+out `missed` almost every week.
 
 It hands the script one line per entry, its `sent` time and verdict: in a normal
 week, about 16 messages, three reminders each weekday and the weekly message,
-each judged once. When two messages name the same task, acting on it credits
-both. To decide: credit only the latest message before the action.
+each judged once.
 
 | Who        | Owns                                                           |
 | ---------- | -------------------------------------------------------------- |
@@ -62,10 +71,10 @@ picker's first draft; where they give a number, it is kept.
 | --------------------- | ------------ | --------------------- | ------------------- | ---------- |
 | `weight`              | Entry        | When its file changes | 1                   | 0 to 1     |
 | `score`               | Entry, pool  | Each week             | 0                   | -1 to 1    |
-| `half_life_days`      | Pool         | When its file changes | None: no rest       | Above 0    |
-| `line_half_life_days` | Entry        | When its file changes | None: no rest       | Above 0    |
-| `speaker_rate`        | Pool         | When a file changes   | 0.5                 | 0 to 1     |
-| `weight`              | Pool         | When its file changes | Square root of size | Above 0    |
+| `half_life_days`      | Pool         | Each week             | None: no rest       | Above 0    |
+| `line_half_life_days` | Entry        | Each week             | None: no rest       | Above 0    |
+| `speaker_rate`        | Pool         | Each week             | 0.5                 | 0 to 1     |
+| `weight`              | Pool         | Each week             | Square root of size | Above 0    |
 | `bump_rate`           | `escalation` | Each week, with data  | 1.0                 | 0.1 to 0.9 |
 | `checksums`           | Top level    | When a file changes   | None                | None       |
 
@@ -112,9 +121,10 @@ How readily the picker raises a calm day's level by one. Each week the script
 compares how often messages at a raised `picks.escalation` got a reaction with
 those at the first level. More often by over 5 in 100: up a step. Less often by
 as much: down a step. It waits for 10 judged messages on each side. A step comes
-once a week, so 0.05 takes 16 weeks to cross the bounds. To decide: the step;
-recommended 0.1, about two months across. Also the other numbers, the bounds,
-and whether a theme starts at the picker's 1.0, above the bounds, or at 0.9.
+once a week, so 0.05 takes 16 weeks to go from one bound to the other. To
+decide: the step; recommended 0.1, about two months from one bound to the other.
+Also the 5 in 100, the 10 messages, the bounds, and whether a theme starts at
+the picker's 1.0, above the bounds, or at 0.9.
 
 ### `checksums`
 
@@ -179,7 +189,7 @@ script handles every number, line count, checksum and the pruning without the
 model reading them.
 
 Two things would make it expensive, and the design keeps both out. The entry
-files, about 185 KB or 45,000 tokens for that theme, are fetched only when one
+files, about 185 KB or 60,000 tokens for that theme, are fetched only when one
 was edited. The history is fetched whole, as each reminder already does, but the
 model judges only the week's entries and does no arithmetic. One cost is still
 open: if a document must be written out to reach the script, the options file

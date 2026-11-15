@@ -124,7 +124,8 @@ Only when every step before it passed. Send it as the core rules' Sending a
 message in the user's style says. Its one fact is
 `ntm is ready; the self-test passed`. It passes when `ntm-user:notify` returns
 `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
-other return fails the step.
+other return fails the step. When `ntm:style` kept the picker's failure line,
+show it too: the message went out, picked without the picker.
 
 ## Result
 

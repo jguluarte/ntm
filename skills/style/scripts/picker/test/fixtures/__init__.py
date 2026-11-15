@@ -5,6 +5,8 @@ EVEN = FIXTURES / "Even-options.yaml"
 SPEAKERS_ONLY = FIXTURES / "Speakers-only-options.yaml"
 WITHOUT_POOLS = FIXTURES / "Without-pools-options.yaml"
 POOL_WITHOUT_GIVES = FIXTURES / "Pool-without-gives-options.yaml"
+NOT_THERE = FIXTURES / "Not-there-options.yaml"
+NOT_YAML = FIXTURES / "Not-yaml-options.txt"
 
 EVEN_HOOKS = ["scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host"]
 EVEN_DRAWS = {

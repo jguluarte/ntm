@@ -5,11 +5,11 @@ from picker import Picker
 from theme import Theme, ThemeOptions
 
 
-def make_picker_args(options, tyype=None, seed=None):
+def make_picker_args(options, type=None, seed=None):
     args = ["hook", "--options", str(options)]
 
-    if tyype is not None:
-        args += ["--type", tyype]
+    if type is not None:
+        args += ["--type", type]
 
     if seed is not None:
         args += ["--seed", str(seed)]
@@ -27,7 +27,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual("hook: scenes/dawn", drawn)
 
     def test_hook_draws_only_hooks_fitting_the_type(self):
-        args = make_picker_args(fixtures.EVERY_WHEN, tyype="weekly,big_win")
+        args = make_picker_args(fixtures.EVERY_WHEN, type="weekly,big_win")
 
         picker = Picker.from_args(args)
         drawn = picker.pick_hook()
@@ -69,7 +69,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, tyype="morning,evening")
+        args = make_picker_args(fixtures.EVEN, type="morning,evening")
 
         why = "argument --type: more than one reminder type: evening, morning"
         expected = f"Picker FAILED: ArgumentError: {why}"

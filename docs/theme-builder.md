@@ -137,6 +137,13 @@ sooner" moves one a step.
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.
 
+Each part's level comes from facts ntm gives: how many days a task slipped for
+`escalation`, and the task outcomes `done` and `big_win` for `finishing_tasks`.
+The picker finds the level from them, and the theme says what each level sounds
+like. By default `done` gives the first finishing level and `big_win` the
+second; the third is a big win the run judges truly shocking, at most once in 7
+days, and otherwise lands as the second.
+
 ## Roles and perspectives
 
 Entries that talk, in a manner of their own, can be a speaker; entries with

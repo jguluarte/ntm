@@ -111,14 +111,14 @@ Each entry is keyed by a slug, a short key such as `detective`, which the
 options file uses to name it. Within a theme, the entries of a kind share their
 keys, and their optional keys, when present, come in the same order. Key names
 are the theme's own, except `about`, `lines`, `riffs`, `line`, `bend` and
-`when`, which ntm reads. Prose sits in `>-` folded text.
+`type`, which ntm reads. Prose sits in `>-` folded text.
 
 An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus
-either a `bend`, which says how to turn the line toward a task, or a `when`, for
-a line that fits as it is on the occasions it names.
+either a `bend`, which says how to turn the line toward a task, or a `type`, for
+a line that fits as it is on the reminder types and task outcomes it names.
 
-A group of lines kept for one occasion is an entry with that `when`, such as
-`big_win` below.
+A group of lines kept for one reminder type or task outcome is an entry with
+that `type`, such as `big_win` below.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -141,7 +141,7 @@ characters:
           Treat the slipped task as the crumb that gives away what the user
           did instead.
       - line: File it under closed.
-        when: done
+        type: done
 
 shared_lines:
   about: >-
@@ -150,18 +150,19 @@ shared_lines:
     lines:
       - Somebody in this house is lying.
   big_win:
-    when: big_win
+    type: big_win
     lines:
       - Gather everyone in the drawing room.
 ```
 
-## `when`
+## `type`
 
-An entry or riff that fits only some occasions says which with `when`: one
-occasion, or a list. No `when` means any occasion. The occasions are one fixed
-set, of two kinds: which reminder a message is, and what happened to its tasks.
+An entry or riff that fits only some messages says which with `type`: one
+reminder type or task outcome, or a list. No `type` means any message. The
+reminder types and task outcomes are one fixed set, of two kinds: which reminder
+a message is, and what happened to its tasks.
 
-| `when`      | Kind           | The occasion                      |
+| `type`      | Kind           | What it names                     |
 | ----------- | -------------- | --------------------------------- |
 | `morning`   | Which reminder | The morning reminder              |
 | `afternoon` | Which reminder | The afternoon reminder            |
@@ -172,18 +173,18 @@ set, of two kinds: which reminder a message is, and what happened to its tasks.
 | `big_win`   | What happened  | A big effort, as below            |
 
 A message is one reminder, and any number of things can have happened in it. An
-entry fits a message when the message is one of the reminders its `when` names,
+entry fits a message when the message is one of the reminders its `type` names,
 if it names any, and one of the things it names happened, if it names any. So
-`when: evening` fits any evening, `when: slipped` any message with a slipped
-task, `when: [evening, slipped]` only an evening with a slipped task, and
-`when: [morning, weekly]` either reminder.
+`type: evening` fits any evening, `type: slipped` any message with a slipped
+task, `type: [evening, slipped]` only an evening with a slipped task, and
+`type: [morning, weekly]` either reminder.
 
 A big win is one of these: several tasks closed in one day that had been planned
 across several days, a task with a big estimate finally closed, or a task that
 slipped many times finally closed. An ordinary day of doing what was planned is
 never a big win. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference says what happens when a theme keeps
-none.
+kept for `big_win`; the picker's reference says what happens when none of them
+fits.
 
 ## The options file
 
@@ -192,7 +193,7 @@ nightly job computes. It is the only theme file the picker reads.
 
 It holds one pool per kind of entry. A pool is keyed by its kind, names its
 file, and lists the entries that can be picked, each by its slug, with its
-`when` copied from the entry file.
+`type` copied from the entry file.
 
 A pool's `roles` say what its entries can be drawn as: a hook, a speaker, or
 both. The hook is what a message is built on. The speaker is who says the
@@ -226,7 +227,7 @@ pools:
         line_half_life_days: 4
         score: 0.0
       big_win:
-        when: big_win
+        type: big_win
         weight: 0.25
         line_half_life_days: 30
         score: 0.0
@@ -260,20 +261,19 @@ picked.
 ## The pick
 
 For each message, the run hands the picker the options file's text, the recent
-picks and the message's occasions. The recent picks come from
-`%Message-history`, which records each message's hook, speaker, line drawn and
-when it went out. The run works out the occasions: which reminder this is,
-whether a task in it has slipped, whether one got done, and whether it's a big
-win.
+picks and the message's type. The recent picks come from `%Message-history`,
+which records each message's hook, speaker, line drawn and when it went out. The
+run works out the type: which reminder this is, whether a task in it has
+slipped, whether one got done, and whether it's a big win.
 
-The picker keeps the entries whose `when` fits, as `when` above says. Each
+The picker keeps the entries whose `type` fits, as `type` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools
 together, each entry counting once at its weight. An entry's score raises or
 lowers its chance, and an entry picked recently is less likely while it rests.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs
-whose `when` fits. A recently used line rests the same way an entry does. That
+whose `type` fits. A recently used line rests the same way an entry does. That
 line or riff is what the writer builds on.
 
 Sometimes a speaker is added from a speaker pool, at its `speaker_rate`.

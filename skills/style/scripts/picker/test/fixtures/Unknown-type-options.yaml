@@ -3,4 +3,4 @@ pools:
     roles: [hook]
     entries:
       dawn:
-        when: night
+        type: night

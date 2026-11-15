@@ -47,7 +47,7 @@ counted twice.
 
 The run never changes what a person or the theme builder wrote in the options
 file: the levels and thresholds under `escalation` and `finishing_tasks`, a
-pool's `roles` and `file`, an entry's `when`.
+pool's `roles` and `file`, an entry's `type`.
 
 The files are documents in the user's backend, and the script touches no
 backend. As for the picker, the run fetches each file, hands its text over, and
@@ -200,7 +200,7 @@ numbers for both the recalculation and the theme builder
 
 | Class       | Owns                                                             |
 | ----------- | ---------------------------------------------------------------- |
-| `Options`   | The options file: loads, checks against the schema, pools, saves |
+| `Theme`     | The options file: loads, checks against the schema, pools, saves |
 | `History`   | A message history: entries, verdicts written in, pruning, saving |
 | `EntryFile` | An entry file: its checksum and each entry's line count          |
 | The command | A method per thing it does; named with the skill                 |
@@ -211,10 +211,10 @@ rates from starting shares, every score 0, the checksums and an empty `weeks`.
 `update`, in the Sunday morning job, takes in the verdicts, recounts changed
 files, moves the bump rate and prunes. `report` writes the weekly theme report.
 
-`Options` and `History` are shared with the picker, one class each, from a
-module beside the schema that both scripts import; `History` comes with the
-picker's history slice. To decide: where that module lives, since it reaches
-across skill folders as the schema does.
+`Theme` and `History` are shared with the picker, one class each, from a module
+beside the schema that both scripts import; `History` comes with the picker's
+history slice. To decide: where that module lives, since it reaches across skill
+folders as the schema does.
 
 ## The build order
 

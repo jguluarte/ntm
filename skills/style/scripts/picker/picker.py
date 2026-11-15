@@ -2,85 +2,48 @@ import argparse
 import contextlib
 import random
 import sys
-from pathlib import Path
 
-import jsonschema
-import yaml
-
-SKILLS_PATH = Path(__file__).parents[3]
-OPTIONS_SCHEMA = (
-    SKILLS_PATH / "theme-builder" / "references" / "options.schema.yaml"
-)
-
-POOLS_BY_KIND = "pools"
-ROLES = "roles"
-ENTRIES_BY_SLUG = "entries"
-HOOK_ROLE = "hook"
-
-
-class InvalidOptions(ValueError):
-    def __init__(self, where, why):
-        super().__init__(f"{where}: {why}")
-
-
-class NoHooks(ValueError):
-    def __init__(self):
-        super().__init__("no pool in the options file gives a hook")
-
-
-class Options:
-    def __init__(self, path):
-        fields = self._load(path)
-        self._validate(fields)
-        self._pools = fields[POOLS_BY_KIND]
-
-    def hooks(self):
-        hooks = []
-        for kind, pool in self._pools.items():
-            if HOOK_ROLE in pool[ROLES]:
-                hooks.extend(f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG])
-        if not hooks:
-            raise NoHooks()
-        return hooks
-
-    @staticmethod
-    def _load(path):
-        with open(path, encoding="utf-8") as file:
-            return yaml.safe_load(file)
-
-    @classmethod
-    def _validate(cls, fields):
-        try:
-            jsonschema.validate(fields, cls._load(OPTIONS_SCHEMA))
-        except jsonschema.ValidationError as error:
-            raise InvalidOptions(error.json_path, error.message) from None
+from theme import InvalidOptions, Theme, ThemeOptions
 
 
 class Picker:
-    def __init__(self, options, seed=None):
-        self.options = options
+    def __init__(self, theme, theme_options=ThemeOptions(), seed=None):
+        self.theme = theme
+        self.theme_options = theme_options
         self.seed = seed
 
     @classmethod
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
-            return cls(Options(flags.options), flags.seed)
+            theme = Theme(flags.options)
+            return cls(theme, flags.theme_options, flags.seed)
 
     def pick_hook(self):
         with self._reporting_failures():
-            hooks = self.options.hooks()
+            hooks = self.theme.hooks_for(self.theme_options)
             generator = random.Random(self.seed)
             return f"hook: { generator.choice(hooks) }"
 
-    @staticmethod
-    def _parser():
+    @classmethod
+    def _parser(cls):
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
+        hook.add_argument(
+            "--type", dest="theme_options", type=cls._parse_theme_options,
+            default=ThemeOptions(),
+        )
         hook.add_argument("--seed", type=int)
         return parser
+
+    @staticmethod
+    def _parse_theme_options(text):
+        try:
+            return ThemeOptions.parse(text)
+        except InvalidOptions as invalid:
+            raise argparse.ArgumentTypeError(str(invalid)) from None
 
     @staticmethod
     @contextlib.contextmanager

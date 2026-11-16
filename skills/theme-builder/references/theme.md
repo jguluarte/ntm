@@ -6,18 +6,14 @@ below is a stage: what to ask them, and what it writes in the theme's files. For
 a theme they already have, sort it into these files and build what's missing
 with them.
 
-`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` gives each file's shape, with
-`Casebook`, a made-up detective story, as its example. `Casebook` shows the
-shape and nothing more: build from the user's own world, and never build
-`Casebook` or copy from it.
+`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` gives each file's shape.
 
 A theme should be something with enough breadth and material to pull from that
 it can create sufficient variation, so it won't become repetitive. A show is a
 good option, as you can pull from its entire canon. While you could use a single
 character, it will take more effort to ensure an adequate dataset to avoid
 repetition. Build every part with several options to draw from, so reminders
-keep changing. A world with little to draw on may not work well for them; a
-better defined one holds up longer, so tell them when theirs is thin.
+keep changing. Tell them when their world is thin.
 
 ## The world
 
@@ -44,10 +40,8 @@ whatever gets them moving. Talk through with them what they want, then decide
 what fits their theme. Ask how hard each level goes: swearing, roasting and
 mockery are all welcome when they want them. Push for vivid.
 
-The root's `escalation` and `finishing_tasks` each hold the theme's levels,
-lowest first, as `${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` shows. The
-user decides how many each has. Name each level in the theme's words and write
-how it sounds. Most themes start from these:
+Write the levels in the root's `escalation` and `finishing_tasks`. The user
+decides how many each has. Most themes start from these:
 
 | Level | `escalation`                                             | `finishing_tasks`                             |
 | ----- | -------------------------------------------------------- | --------------------------------------------- |
@@ -58,25 +52,13 @@ how it sounds. Most themes start from these:
 
 ## The kinds
 
-A kind is one sort of material in their world. Each kind has its own pool in the
-options file and its own name in an entry file; one entry file can hold several
-kinds. No list of kinds is fixed: derive them from the world's own material, as
-the user describes it and as you know it. Most worlds have people who talk in a
-manner of their own. Two more kinds turn up in many worlds: recurring scenes a
-message can be set in, and single moments to call back to.
+Derive the theme's kinds from the world's own material, as the user describes it
+and as you know it. Propose kinds, each with an `about` saying what an entry is
+and how a message uses one, and the keys its entries share. The user keeps,
+renames or drops them.
 
-Propose kinds, each with an `about` saying what an entry is and how a message
-uses one, and the keys its entries share. The user keeps, renames or drops them.
-
-An entry that talks in a manner of its own can be a `speaker`, who says a
-message. One with something to build on, such as lines, a scene or a moment, can
-be a `hook`: what a message is built on, one entry of the theme or a line from
-it. People who talk are usually both.
-
-Write each entry file, `<Theme>-<descriptor>.yaml`, with its `about` and each
-kind's `about`. In the options file, `<Theme>-options.yaml`, give each kind a
-pool with its `file` and `roles`. List the entry files under the root's `files`,
-in `by_entry`, and the options file in `for_the_picker`.
+Write each entry file, a pool for each kind in the options file, and the root's
+`files`.
 
 ## The entries
 
@@ -90,13 +72,12 @@ there are and how many ways each one can be used: a running scene that moves
 forward, or a riff that bends a line to the task, stretches across many
 reminders.
 
-Each entry follows its kind's keys. Every quote or line comes from the user:
-they say it, or confirm that one you offer is true to their world. An entry that
-fits only some messages gets a `type`, from how their day maps onto the world.
-Keep a few entries for `big_win`, so a big win has material of its own.
+Every quote or line comes from the user: they say it, or confirm that one you
+offer is true to their world. An entry that fits only some messages gets a
+`type`, from how their day maps onto the world. Keep a few entries for
+`big_win`, so a big win has material of its own.
 
-Add each entry to its entry file, under its kind, and to the kind's pool in the
-options file, by its slug, with its `type` copied.
+Add each entry to its entry file and to its kind's pool in the options file.
 
 ## Sample messages
 

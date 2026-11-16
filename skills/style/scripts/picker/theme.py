@@ -1,4 +1,5 @@
 import enum
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -7,11 +8,18 @@ import yaml
 
 OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
+CHECKSUMS_BY_FILE = "checksums"
 POOLS_BY_KIND = "pools"
+FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 TYPE = "type"
+WEIGHT = "weight"
 HOOK_ROLE = "hook"
+
+ABOUT = "about"
+LINES = "lines"
+RIFFS = "riffs"
 
 
 class ReminderType(enum.Enum):
@@ -67,6 +75,11 @@ class NoHooks(ValueError):
 class MissingHook(ValueError):
     def __init__(self, theme_options):
         super().__init__(f"no hook fits {theme_options}")
+
+
+class UnknownEntryFile(ValueError):
+    def __init__(self, file_name):
+        super().__init__(f"no pool uses {file_name}")
 
 
 @dataclass(frozen=True)
@@ -167,15 +180,59 @@ class HookManager:
         return ThemeOptions(theme_options.reminder_type, task_outcomes)
 
 
+class _OptionsDumper(yaml.SafeDumper):
+    def represent_list_on_one_line(self, items):
+        return self.represent_sequence(
+            "tag:yaml.org,2002:seq", items, flow_style=True,
+        )
+
+    def represent_bare_entry(self, _):
+        return self.represent_scalar("tag:yaml.org,2002:null", "")
+
+
+_OptionsDumper.add_representer(list, _OptionsDumper.represent_list_on_one_line)
+_OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
+
+
 class Theme:
     def __init__(self, path):
-        fields = self._load(path)
-        self._validate(fields)
-        hooks = self._read_hooks(fields[POOLS_BY_KIND])
+        self.path = path
+        self._fields = self._load(path)
+        self._validate(self._fields)
+        self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
+        hooks = self._read_hooks(self._fields[POOLS_BY_KIND])
         self._hook_manager = HookManager(hooks)
 
     def hooks_for(self, theme_options):
         return self._hook_manager.responding_to(theme_options)
+
+    def entries_from(self, file_name):
+        names = []
+
+        for kind, pool in self._fields[POOLS_BY_KIND].items():
+            if pool.get(FILE) == file_name:
+                names += [f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG]]
+
+        if not names:
+            raise UnknownEntryFile(file_name)
+
+        return names
+
+    def set_weight(self, entry_name, weight):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        entries_by_slug[slug] = {**entry, WEIGHT: weight}
+
+    def set_checksum(self, file_name, checksum):
+        self._checksums[file_name] = checksum
+
+    def save(self):
+        checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
+        text = yaml.dump(
+            checksums_first, Dumper=_OptionsDumper, sort_keys=False,
+        )
+        Path(self.path).write_text(text, encoding="utf-8")
 
     @staticmethod
     def _read_hooks(pools_by_kind):
@@ -199,3 +256,26 @@ class Theme:
             jsonschema.validate(fields, cls._load(OPTIONS_SCHEMA))
         except jsonschema.ValidationError as error:
             raise InvalidTheme(error.json_path, error.message) from None
+
+
+class EntryFile:
+    def __init__(self, path):
+        contents = Path(path).read_bytes()
+        self.name = Path(path).name
+        self.checksum = hashlib.sha256(contents).hexdigest()
+        self.line_counts = self._count_lines(yaml.safe_load(contents))
+
+    @classmethod
+    def _count_lines(cls, fields):
+        line_counts = {}
+
+        for kind, entries_by_slug in cls._without_about(fields):
+            for slug, entry in cls._without_about(entries_by_slug):
+                lines = entry.get(LINES, []) + entry.get(RIFFS, [])
+                line_counts[f"{kind}/{slug}"] = len(lines)
+
+        return line_counts
+
+    @staticmethod
+    def _without_about(fields):
+        return [(key, value) for key, value in fields.items() if key != ABOUT]

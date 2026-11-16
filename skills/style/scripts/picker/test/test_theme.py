@@ -1,7 +1,13 @@
+import shutil
+import tempfile
+import textwrap
 import unittest
+from pathlib import Path
 
 import fixtures
-from theme import InvalidTheme, MissingHook, NoHooks, Theme, ThemeOptions
+from theme import (
+    InvalidTheme, MissingHook, NoHooks, Theme, ThemeOptions, UnknownEntryFile,
+)
 
 
 class HooksTest(unittest.TestCase):
@@ -122,3 +128,57 @@ class SchemaTest(unittest.TestCase):
         where = "$.pools.scenes.entries.dawn.type"
         expected = f"{where}: 'night' is not one of {options}"
         self.assertEqual(expected, str(raised.exception))
+
+
+class EntryFilesTest(unittest.TestCase):
+    def test_the_entries_from_a_file_are_those_of_every_pool_naming_it(self):
+        theme = Theme(fixtures.CASEBOOK)
+        entries = theme.entries_from("Casebook-characters.yaml")
+
+        expected = [
+            "characters/detective", "shared_lines/any_time",
+            "shared_lines/big_win",
+        ]
+        self.assertEqual(expected, entries)
+
+    def test_a_file_no_pool_names_fails_with_unknown_entry_file(self):
+        theme = Theme(fixtures.EVEN)
+
+        with self.assertRaises(UnknownEntryFile) as raised:
+            theme.entries_from("Even-scenes.yaml")
+
+        expected = "no pool uses Even-scenes.yaml"
+        self.assertEqual(expected, str(raised.exception))
+
+
+class SaveTest(unittest.TestCase):
+    def test_saving_writes_the_options_files_layout(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        options = Path(shutil.copy(fixtures.EVEN, folder))
+        theme = Theme(options)
+        theme.set_weight("scenes/noon", 0.5)
+        theme.set_checksum("Even-scenes.yaml", "ab12")
+        theme.save()
+        text = options.read_text(encoding="utf-8")
+
+        expected = textwrap.dedent("""\
+            checksums:
+              Even-scenes.yaml: ab12
+            pools:
+              scenes:
+                roles: [hook]
+                entries:
+                  dawn:
+                  noon:
+                    weight: 0.5
+                  dusk:
+              characters:
+                roles: [hook, speaker]
+                entries:
+                  host:
+              narrators:
+                roles: [speaker]
+                entries:
+                  chorus:
+        """)
+        self.assertEqual(expected, text)

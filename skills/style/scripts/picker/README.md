@@ -95,8 +95,8 @@ saved: Casebook-options.yaml
 
 When it can't, it prints one line on stderr and exits 1, as the picker does, and
 leaves the options file as it was. An entry file that no pool names as its
-`file` reads as `UnknownEntryFile`, as when `Casebook`'s entry files are handed
-in with another theme's options file:
+`file` fails with `UnknownEntryFile`, as when `Casebook`'s entry files are
+handed in with another theme's options file:
 
 ```
 Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml
@@ -107,8 +107,7 @@ Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml
 An entry with only a few lines would repeat itself if it were drawn as often as
 one with many, so it is drawn less until it has enough lines to vary. An entry
 with 3 lines is drawn half as readily as it could be, one with 9 lines three
-quarters as readily, and one with 1 line a quarter. An entry with no lines of
-its own counts in full. The 3 is one number that can be tuned later.
+quarters as readily, and one with 1 line a quarter.
 
 ```
 weight = lines / (lines + LINES_AT_HALF_WEIGHT)

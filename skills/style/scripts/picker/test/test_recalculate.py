@@ -1,3 +1,4 @@
+import argparse
 import shutil
 import tempfile
 import unittest
@@ -6,8 +7,8 @@ from pathlib import Path
 import yaml
 
 import fixtures
-from recalculate import Recalculation
-from theme import EntryFile, Theme
+from recalculate import Recalculation, reporting_failures
+from theme import EntryFile, Theme, UnknownEntryFile
 
 
 def make_start_args(options, *entry_files):
@@ -47,12 +48,11 @@ class CommandLineTest(unittest.TestCase):
     def test_start_without_entry_files_fails_naming_them(self):
         args = make_start_args(fixtures.CASEBOOK)
 
-        with self.assertRaises(SystemExit) as exited:
+        with self.assertRaises(argparse.ArgumentError) as raised:
             Recalculation.from_args(args)
 
-        why = "the following arguments are required: entry_files"
-        expected = f"Recalculation FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)
+        expected = "the following arguments are required: entry_files"
+        self.assertEqual(expected, str(raised.exception))
 
 
 class RecalculationTest(unittest.TestCase):
@@ -93,7 +93,7 @@ class RecalculationTest(unittest.TestCase):
         }
         self.assertEqual(expected, read_checksums(options))
 
-    def test_a_recalculation_keeps_every_value_it_doesnt_compute(self):
+    def test_recalculating_the_documented_example_leaves_its_pools_alone(self):
         options = self.copy_of(fixtures.CASEBOOK)
         recalculation = self.recalculation_of(options)
         recalculation.weigh_entries()
@@ -103,11 +103,21 @@ class RecalculationTest(unittest.TestCase):
         expected = read_fields(fixtures.CASEBOOK)["pools"]
         self.assertEqual(expected, read_fields(options)["pools"])
 
-    def test_an_entry_file_no_pool_uses_fails_in_one_line(self):
+    def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
         recalculation = self.recalculation_of(fixtures.EVEN)
 
-        with self.assertRaises(SystemExit) as exited:
+        with self.assertRaises(UnknownEntryFile) as raised:
             recalculation.weigh_entries()
+
+        expected = "no pool uses Casebook-characters.yaml"
+        self.assertEqual(expected, str(raised.exception))
+
+
+class ReportingFailuresTest(unittest.TestCase):
+    def test_a_failure_exits_with_one_line_naming_it(self):
+        with self.assertRaises(SystemExit) as exited:
+            with reporting_failures():
+                raise UnknownEntryFile("Casebook-characters.yaml")
 
         why = "no pool uses Casebook-characters.yaml"
         expected = f"Recalculation FAILED: UnknownEntryFile: {why}"

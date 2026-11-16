@@ -14,25 +14,21 @@ class Recalculation:
 
     @classmethod
     def from_args(cls, args):
-        with cls._reporting_any_failure_in_one_line():
-            flags = cls._parser().parse_args(args)
-            theme = Theme(flags.options)
-            entry_files = [EntryFile(path) for path in flags.entry_files]
-            return cls(theme, entry_files)
+        flags = cls._parser().parse_args(args)
+        theme = Theme(flags.options)
+        entry_files = [EntryFile(path) for path in flags.entry_files]
+        return cls(theme, entry_files)
 
     def weigh_entries(self):
-        with self._reporting_any_failure_in_one_line():
-            for entry_file in self.entry_files:
-                self._weigh_entries_from(entry_file)
+        for entry_file in self.entry_files:
+            self._weigh_entries_from(entry_file)
 
     def record_checksums(self):
-        with self._reporting_any_failure_in_one_line():
-            for entry_file in self.entry_files:
-                self.theme.set_checksum(entry_file.name, entry_file.checksum)
+        for entry_file in self.entry_files:
+            self.theme.set_checksum(entry_file.name, entry_file.checksum)
 
     def save_options_file(self):
-        with self._reporting_any_failure_in_one_line():
-            self.theme.save()
+        self.theme.save()
 
     def _weigh_entries_from(self, entry_file):
         line_counts = entry_file.line_counts
@@ -57,22 +53,21 @@ class Recalculation:
         start.add_argument("entry_files", nargs="+")
         return parser
 
-    @staticmethod
-    @contextlib.contextmanager
-    def _reporting_any_failure_in_one_line():
-        try:
-            yield
-        except Exception as failure:
-            why = " ".join(str(failure).split())
-            sys.exit(
-                f"Recalculation FAILED: { type(failure).__name__ }: {why}"
-            )
+
+@contextlib.contextmanager
+def reporting_failures():
+    try:
+        yield
+    except Exception as failure:
+        why = " ".join(str(failure).split())
+        sys.exit(f"Recalculation FAILED: { type(failure).__name__ }: {why}")
 
 
 if __name__ == "__main__":
-    recalculation = Recalculation.from_args(sys.argv[1:])
-    recalculation.weigh_entries()
-    recalculation.record_checksums()
-    recalculation.save_options_file()
+    with reporting_failures():
+        recalculation = Recalculation.from_args(sys.argv[1:])
+        recalculation.weigh_entries()
+        recalculation.record_checksums()
+        recalculation.save_options_file()
 
     print(f"saved: {recalculation.theme.path}")

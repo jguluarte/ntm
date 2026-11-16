@@ -188,8 +188,8 @@ A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
 sends the message. A big win is a whole project finished: the project itself
 closes as done. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference says what happens when none of them
-fits.
+kept for `big_win`, or, when none of them fits, from the entries that fit
+`done`.
 
 ## The options file
 

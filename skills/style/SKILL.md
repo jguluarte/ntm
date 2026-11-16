@@ -78,9 +78,12 @@ finished: the project itself closes as done. Call either only from the facts you
 were handed; look nothing else up. Only the weekly setup's message counts the
 week; a reminder calls a win from the day: a task finished after slipping for
 days, or one you judge big or hard. A big win is rare: call it only when the
-facts show a project closed as done. An ordinary day of doing what was planned
-gets a nod. Slips from a while back weigh less: a task picked up again after a
-long gap is pressed less than its count of slips, as you judge it.
+facts show a project closed as done. Call a win or a big win once, in the first
+message after it happens: one that an entry Setup read already celebrated, with
+`win` or `big_win` in its `type`, isn't called again. An ordinary day of doing
+what was planned gets a nod. Slips from a while back weigh less: a task picked
+up again after a long gap is pressed less than its count of slips, as you judge
+it.
 
 ### 3. Write
 
@@ -133,12 +136,14 @@ read. An entry is one JSON line, written compact, with no spaces or line breaks
 added, and only the fields that have a value:
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"morning","hook":"scenes/dawn","tasks":[{"id":"ABC-12","planned":"2026-11-13"}]}
+{"sent":"2026-11-13 08:45","reminder":"morning","type":"morning","hook":"scenes/dawn","tasks":[{"id":"ABC-12"}]}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
+- `type`: the message's type from step 1, exactly as built, such as
+  `evening,done,win`, only when it has one
 - `hook`: what step 1 picked, as the picker printed it, such as `scenes/dawn`,
   or by its name when you picked it yourself, such as `launch`
 - `speaker`: who step 1 picked, only when it picked one

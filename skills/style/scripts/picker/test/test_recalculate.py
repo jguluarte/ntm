@@ -1,5 +1,6 @@
 import shutil
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -10,72 +11,86 @@ from recalculate import Recalculation, parser, reporting_failures
 from theme import EntryFile, Theme, UnknownEntryFile
 
 
-def read_fields(options):
-    return yaml.safe_load(options.read_text(encoding="utf-8"))
-
-
-def read_weights(options):
-    pools_by_kind = read_fields(options)["pools"]
-    return {
-        f"{kind}/{slug}": entry["weight"]
-        for kind, pool in pools_by_kind.items()
-        for slug, entry in pool["entries"].items()
-    }
-
-
-def read_checksums(options):
-    return read_fields(options)["checksums"]
-
-
 class RecalculationTest(unittest.TestCase):
     def setUp(self):
-        self.characters = EntryFile(fixtures.casebook.CHARACTERS)
-        self.scenes = EntryFile(fixtures.casebook.SCENES)
-
-    def copy_of(self, options):
-        folder = self.enterContext(tempfile.TemporaryDirectory())
-        return Path(shutil.copy(options, folder))
-
-    def recalculation_of(self, options):
-        return Recalculation(Theme(options), [self.characters, self.scenes])
+        self.folder = self.enterContext(tempfile.TemporaryDirectory())
 
     def test_weighing_gives_the_documented_example_its_own_weights(self):
-        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
-        recalculation = self.recalculation_of(options)
+        options = shutil.copy(
+            fixtures.casebook.OPTIONS_WITHOUT_NUMBERS, self.folder,
+        )
+        theme = Theme(options)
+        characters = EntryFile(fixtures.casebook.CHARACTERS)
+        scenes = EntryFile(fixtures.casebook.SCENES)
+        recalculation = Recalculation(theme, [characters, scenes])
         recalculation.weigh_entries()
         recalculation.save_options_file()
+        text = Path(options).read_text(encoding="utf-8")
 
-        expected = {
-            "characters/detective": 0.57,
-            "shared_lines/any_time": 0.25,
-            "scenes/stakeout": 1.0,
-        }
-        self.assertEqual(expected, read_weights(options))
+        expected = textwrap.dedent("""\
+            checksums: {}
+            pools:
+              characters:
+                file: Casebook-characters.yaml
+                roles: [hook, speaker]
+                entries:
+                  detective:
+                    weight: 0.57
+              shared_lines:
+                file: Casebook-characters.yaml
+                roles: [hook]
+                entries:
+                  any_time:
+                    weight: 0.25
+              scenes:
+                file: Casebook-scenes.yaml
+                roles: [hook]
+                entries:
+                  stakeout:
+                    weight: 1.0
+        """)
+        self.assertEqual(expected, text)
 
     def test_recording_writes_each_entry_files_own_checksum(self):
-        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
-        recalculation = self.recalculation_of(options)
+        options = shutil.copy(
+            fixtures.casebook.OPTIONS_WITHOUT_NUMBERS, self.folder,
+        )
+        theme = Theme(options)
+        characters = EntryFile(fixtures.casebook.CHARACTERS)
+        scenes = EntryFile(fixtures.casebook.SCENES)
+        recalculation = Recalculation(theme, [characters, scenes])
         recalculation.record_checksums()
         recalculation.save_options_file()
+        text = Path(options).read_text(encoding="utf-8")
+        saved_fields = yaml.safe_load(text)
 
         expected = {
-            "Casebook-characters.yaml": self.characters.checksum,
-            "Casebook-scenes.yaml": self.scenes.checksum,
+            "Casebook-characters.yaml": characters.checksum,
+            "Casebook-scenes.yaml": scenes.checksum,
         }
-        self.assertEqual(expected, read_checksums(options))
+        self.assertEqual(expected, saved_fields["checksums"])
 
     def test_recalculating_the_documented_example_leaves_its_pools_alone(self):
-        options = self.copy_of(fixtures.casebook.OPTIONS)
-        recalculation = self.recalculation_of(options)
+        options = shutil.copy(fixtures.casebook.OPTIONS, self.folder)
+        theme = Theme(options)
+        characters = EntryFile(fixtures.casebook.CHARACTERS)
+        scenes = EntryFile(fixtures.casebook.SCENES)
+        recalculation = Recalculation(theme, [characters, scenes])
         recalculation.weigh_entries()
         recalculation.record_checksums()
         recalculation.save_options_file()
+        original_text = fixtures.casebook.OPTIONS.read_text(encoding="utf-8")
+        original_fields = yaml.safe_load(original_text)
+        saved_text = Path(options).read_text(encoding="utf-8")
+        saved_fields = yaml.safe_load(saved_text)
 
-        expected = read_fields(fixtures.casebook.OPTIONS)["pools"]
-        self.assertEqual(expected, read_fields(options)["pools"])
+        self.assertEqual(original_fields["pools"], saved_fields["pools"])
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
-        recalculation = self.recalculation_of(fixtures.EVEN)
+        theme = Theme(fixtures.EVEN)
+        characters = EntryFile(fixtures.casebook.CHARACTERS)
+        scenes = EntryFile(fixtures.casebook.SCENES)
+        recalculation = Recalculation(theme, [characters, scenes])
 
         with self.assertRaises(UnknownEntryFile) as raised:
             recalculation.weigh_entries()

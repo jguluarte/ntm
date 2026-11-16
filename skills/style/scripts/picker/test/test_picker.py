@@ -18,14 +18,14 @@ class CommandLineTest(unittest.TestCase):
     def test_an_option_is_drawn_from_the_options_file_with_the_seed(self):
         args = make_picker_args(fixtures.EVEN, seed=2)
         picker = Picker.from_args(args)
-        drawn = picker.pick_option()
+        drawn = picker.pick()
 
         self.assertEqual("hook: characters/host", drawn)
 
     def test_only_an_option_fitting_the_type_is_drawn(self):
         args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
-        drawn = picker.pick_option()
+        drawn = picker.pick()
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
@@ -91,10 +91,10 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
 
-class PickOptionTest(unittest.TestCase):
+class PickTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_option(self):
         drawn = {
-            seed: Picker(Theme(fixtures.EVEN, seed)).pick_option()
+            seed: Picker(Theme(fixtures.EVEN, seed)).pick()
             for seed in range(6)
         }
 
@@ -113,14 +113,14 @@ class PickOptionTest(unittest.TestCase):
 
         attempts = 50
         drawn = {
-            picker.pick_option() for _ in range(attempts)
+            picker.pick() for _ in range(attempts)
         }
 
         self.assertGreater(len(drawn), 1)
 
     def test_an_option_weighing_0_is_never_drawn(self):
         drawn = {
-            Picker(Theme(fixtures.WEIGHTED, seed)).pick_option()
+            Picker(Theme(fixtures.WEIGHTED, seed)).pick()
             for seed in range(50)
         }
 
@@ -134,7 +134,7 @@ class PickOptionTest(unittest.TestCase):
         picker = Picker(theme, ThemeOptions("morning"))
 
         with self.assertRaises(SystemExit) as exited:
-            picker.pick_option()
+            picker.pick()
 
         why = "no option fits morning"
         expected = f"Picker FAILED: MissingOptions: {why}"

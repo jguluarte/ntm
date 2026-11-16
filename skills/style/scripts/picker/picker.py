@@ -19,7 +19,7 @@ class Picker:
             options = ThemeOptions(flags.type)
             return cls(theme, options, flags.shows_chances)
 
-    def pick_option(self):
+    def pick(self):
         with self._reporting_failures():
             option = self.theme.draw_from(self.options)
             return f"hook: {option.name}"
@@ -82,4 +82,4 @@ if __name__ == "__main__":
         print(picker.chances_table())
 
     else:
-        print(picker.pick_option())
+        print(picker.pick())

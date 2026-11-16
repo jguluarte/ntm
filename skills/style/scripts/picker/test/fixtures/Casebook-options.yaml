@@ -8,6 +8,8 @@ pools:
     roles: [hook, speaker]
     half_life_days: 3
     speaker_rate: 0.4
+    weight: 1.0
+    score: 0.1
     entries:
       detective:
         weight: 0.57
@@ -18,6 +20,8 @@ pools:
     file: Casebook-characters.yaml
     roles: [hook]
     half_life_days: 5
+    weight: 1.41
+    score: 0.0
     entries:
       any_time:
         weight: 0.25
@@ -33,6 +37,8 @@ pools:
     file: Casebook-scenes.yaml
     roles: [hook]
     half_life_days: 6
+    weight: 1.0
+    score: 0.2
     entries:
       stakeout:
         weight: 1.0

@@ -3,7 +3,6 @@ import contextlib
 import random
 import sys
 from datetime import date
-from decimal import ROUND_HALF_UP, Decimal
 
 from theme import History, InvalidOptions, Theme, ThemeOptions
 
@@ -38,7 +37,7 @@ class Picker:
             kind_lottery = self.theme.kind_lottery_for(self.theme_options)
             kind = self._draw(generator, kind_lottery)
             hook_lottery = self.theme.hook_lottery_for(
-                self.theme_options, kind.name, self.history,
+                self.theme_options, kind, self.history,
             )
             hook = self._draw(generator, hook_lottery)
             return f"hook: {hook.name}"
@@ -50,7 +49,7 @@ class Picker:
             for kind in kind_lottery:
                 hook_chances.update(
                     self.theme.hook_lottery_for(
-                        self.theme_options, kind.name, self.history,
+                        self.theme_options, kind, self.history,
                     ),
                 )
 
@@ -73,20 +72,22 @@ class Picker:
             ("hook", "weight", "score", "days since used", "chance in kind"),
         ]
         for hook, chance in hook_chances.items():
-            weight, score = f"{hook.weight:g}", f"{hook.score:g}"
+            weight = f"{hook.weight:g}"
+            score = f"{hook.score:g}"
             days = self.history.days_since_used(hook.name)
             shown_days = "never" if days is None else str(days)
-            rounded_chance = self._to_hundredths(chance)
+            rounded_chance = f"{chance:.2f}"
             rows.append((hook.name, weight, score, shown_days, rounded_chance))
 
         return rows
 
-    @classmethod
-    def _chance_rows(cls, name_heading, chance_heading, chances):
+    @staticmethod
+    def _chance_rows(name_heading, chance_heading, chances):
         rows = [(name_heading, "weight", "score", chance_heading)]
         for candidate, chance in chances.items():
-            weight, score = f"{candidate.weight:g}", f"{candidate.score:g}"
-            rounded_chance = cls._to_hundredths(chance)
+            weight = f"{candidate.weight:g}"
+            score = f"{candidate.score:g}"
+            rounded_chance = f"{chance:.2f}"
             rows.append((candidate.name, weight, score, rounded_chance))
 
         return rows
@@ -94,21 +95,13 @@ class Picker:
     @staticmethod
     def _table(rows):
         widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        name_width, *cell_widths = widths
         lines = []
-        for name, *numbers in rows:
-            cells = [name.ljust(widths[0])]
-            for number, width in zip(numbers, widths[1:]):
-                cells.append(number.rjust(width))
-
-            lines.append("  ".join(cells))
+        for name, *cells in rows:
+            right_aligned = map(str.rjust, cells, cell_widths)
+            lines.append("  ".join([name.ljust(name_width), *right_aligned]))
 
         return "\n".join(lines)
-
-    @staticmethod
-    def _to_hundredths(chance):
-        hundredth = Decimal("0.01")
-        rounded = Decimal(chance).quantize(hundredth, rounding=ROUND_HALF_UP)
-        return str(rounded)
 
     @classmethod
     def _parser(cls):

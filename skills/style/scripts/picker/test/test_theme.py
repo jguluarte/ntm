@@ -8,6 +8,15 @@ from theme import (
 )
 
 
+def hook_names(theme, type=None):
+    theme_options = ThemeOptions.parse(type) if type else ThemeOptions()
+    hooks = []
+    for kind in theme.kind_lottery_for(theme_options):
+        hooks += theme.hook_lottery_for(theme_options, kind)
+
+    return [hook.name for hook in hooks]
+
+
 class HooksTest(unittest.TestCase):
     def test_the_kinds_are_the_pools_giving_a_hook(self):
         theme = Theme(fixtures.EVEN)
@@ -18,7 +27,8 @@ class HooksTest(unittest.TestCase):
 
     def test_a_kinds_hooks_are_the_entries_of_its_pool(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         hooks = [hook.name for hook in lottery]
 
         expected = ["scenes/dawn", "scenes/noon", "scenes/dusk"]
@@ -37,18 +47,14 @@ class HooksTest(unittest.TestCase):
 class FitTest(unittest.TestCase):
     def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        theme_options = ThemeOptions.parse("weekly")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "weekly")
 
         expected = ["scenes/any_time", "scenes/morning_or_weekly"]
         self.assertEqual(expected, hooks)
 
     def test_an_entry_fits_only_when_a_task_outcome_it_names_happened(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        theme_options = ThemeOptions.parse("evening,slipped")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "evening,slipped")
 
         expected = [
             "scenes/any_time", "scenes/evening", "scenes/slipped",
@@ -58,36 +64,28 @@ class FitTest(unittest.TestCase):
 
     def test_an_entry_naming_both_kinds_needs_both(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        theme_options = ThemeOptions.parse("evening")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "evening")
 
         expected = ["scenes/any_time", "scenes/evening"]
         self.assertEqual(expected, hooks)
 
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        theme_options = ThemeOptions.parse("evening,big_win")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "evening,big_win")
 
         expected = ["scenes/big_win", "scenes/evening_big_win"]
         self.assertEqual(expected, hooks)
 
     def test_on_a_big_win_an_entry_still_fits_only_its_reminder_types(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        theme_options = ThemeOptions.parse("morning,done,big_win")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "morning,done,big_win")
 
         expected = ["scenes/big_win"]
         self.assertEqual(expected, hooks)
 
     def test_a_big_win_with_nothing_kept_for_it_fits_as_a_normal_win(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        theme_options = ThemeOptions.parse("evening,big_win")
-        lottery = theme.hook_lottery_for(theme_options, "scenes")
-        hooks = [hook.name for hook in lottery]
+        hooks = hook_names(theme, "evening,big_win")
 
         expected = ["scenes/evening_done"]
         self.assertEqual(expected, hooks)
@@ -127,8 +125,7 @@ class KindChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTED)
         kinds = [kind.name for kind in theme.kind_lottery_for(ThemeOptions())]
 
-        expected = ["scenes", "characters"]
-        self.assertEqual(expected, kinds)
+        self.assertNotIn("extras", kinds)
 
     def test_on_a_big_win_only_kinds_keeping_a_big_win_hook_are_drawn(self):
         theme = Theme(fixtures.CASEBOOK)
@@ -138,7 +135,7 @@ class KindChanceTest(unittest.TestCase):
         expected = {"shared_lines": 1.0}
         self.assertEqual(expected, chance_by_name)
 
-    def test_a_big_win_whose_hooks_weigh_0_fails_with_no_hook_has_weight(self):
+    def test_every_fitting_hook_weighing_0_fails_with_no_hook_has_weight(self):
         theme = Theme(fixtures.WEIGHTED)
 
         with self.assertRaises(NoHookHasWeight) as raised:
@@ -151,7 +148,8 @@ class KindChanceTest(unittest.TestCase):
 class HookChanceTest(unittest.TestCase):
     def test_entries_without_a_weight_or_score_are_equally_likely(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         expected = {
@@ -161,7 +159,8 @@ class HookChanceTest(unittest.TestCase):
 
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_draw_weight = 0.5 + 2 + 0
@@ -177,7 +176,8 @@ class RestTest(unittest.TestCase):
     def test_a_hook_used_one_half_life_ago_draws_at_half_its_weight(self):
         theme = Theme(fixtures.EVEN)
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 15))
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes", history)
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes, history)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_rested_draw_weight = 0.5 + 1 + 1
@@ -191,7 +191,8 @@ class RestTest(unittest.TestCase):
     def test_a_hook_used_two_half_lives_ago_draws_at_three_quarters(self):
         theme = Theme(fixtures.EVEN)
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 17))
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes", history)
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes, history)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_rested_draw_weight = 0.75 + 1 + 1
@@ -205,7 +206,8 @@ class RestTest(unittest.TestCase):
     def test_a_hook_used_today_has_no_chance(self):
         theme = Theme(fixtures.EVEN)
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes", history)
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes, history)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_rested_draw_weight = 0 + 1 + 1
@@ -219,7 +221,8 @@ class RestTest(unittest.TestCase):
     def test_when_every_fitting_hook_was_used_today_none_rests(self):
         theme = Theme(fixtures.EVEN)
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
-        lottery = theme.hook_lottery_for(ThemeOptions(), "characters", history)
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), characters, history)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         expected = {"characters/host": 1.0}
@@ -228,7 +231,8 @@ class RestTest(unittest.TestCase):
     def test_a_pool_without_a_half_life_never_rests(self):
         theme = Theme(fixtures.WEIGHTED)
         history = History(fixtures.EVEN_HISTORY, date(2026, 11, 13))
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes", history)
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes, history)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_draw_weight = 0.5 + 2 + 0

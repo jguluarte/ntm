@@ -59,7 +59,7 @@ files, and briefs the bigger research when the theme grows.
 
 The builder aims to give every theme, the small one included, entries kept for
 `big_win`, so a big win has material of its own. A theme with none still works:
-on a big win, the picker falls back to a normal win.
+on a big win, the picker falls back to the hooks for a finished task.
 
 ## Kinds
 
@@ -128,12 +128,18 @@ the defaults for both parts, how many levels and when each applies, and a theme
 may set its own for either. The user sees a number only if they ask, and "push
 harder sooner" moves one a step.
 
-| Level | `escalation`, reached by   | `finishing_tasks`, reached by                                              |
-| ----- | -------------------------- | -------------------------------------------------------------------------- |
-| 1st   | Where every message starts | Any finished task                                                          |
-| 2nd   | A bump only                | A big win judged against the user's own plan: `big_win`; 2.5-day half-life |
-| 3rd   | A task slipped 1 day       | Something truly shocking, at most once in 7 days                           |
-| 4th   | A task slipped 3 days      |                                                                            |
+| Level | `escalation`, reached by   | `finishing_tasks`, reached by   |
+| ----- | -------------------------- | ------------------------------- |
+| 1st   | Where every message starts | A finished task: `done`         |
+| 2nd   | A bump only                | A win: `win`; 2.5-day half-life |
+| 3rd   | A task slipped 1 day       | A finished project: `big_win`   |
+| 4th   | A task slipped 3 days      |                                 |
+
+A win is any of these: more tasks finished than planned this week, a task
+finished after slipping for days, or a task judged big or hard by the run that
+sends the message. A big win is a whole project finished: the last open task in
+a project closes. The run hands the picker these as task outcomes, `done`, `win`
+and `big_win`, and the picker finds the level from them.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.

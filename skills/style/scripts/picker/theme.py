@@ -219,7 +219,7 @@ class Theme:
         self._options = self._read_options(self._fields[POOLS_BY_KIND])
 
         if not self._options:
-            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no pool gives a hook")
+            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
 
     def lottery_for(self, options):
         fitting = self._fitting(options)

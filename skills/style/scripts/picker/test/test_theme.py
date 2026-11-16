@@ -25,7 +25,7 @@ class OptionsTest(unittest.TestCase):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.SPEAKERS_ONLY)
 
-        expected = "$.pools: no pool gives a hook"
+        expected = "$.pools: no options found"
         self.assertEqual(expected, str(raised.exception))
 
 

@@ -38,7 +38,7 @@ Any of your five versions may be the one sent, so write each one ready to send.
 | ------------------ | --------------------------------------------------------------------------------------- |
 | The facts          | What the message must cover, its tasks, and what the sender's rule asks, such as length |
 | The tone           | How the message sounds, and how hard it presses each task                               |
-| The hook           | The idea this message builds on: one motif, or one line from the theme                  |
+| The hook           | The idea this message builds on: one entry of the theme, such as a scene or a line      |
 | The speaker        | The person in the theme who says the message, when one was picked                       |
 | The theme material | The theme's guidance on how to write in it, and its entries for the hook and speaker    |
 

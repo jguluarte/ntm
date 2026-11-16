@@ -93,22 +93,22 @@ never use their name or a pet name.
 
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
-It draws only what one message needs: the hook, sometimes a speaker, a line from
-the hook, and the `escalation` and `finishing_tasks` levels. Nothing carries
-from one message to the next except rest: the penalty a value, or a raised
-level, carries since its last use.
+It draws only theme pieces: the hook, sometimes a speaker, and a line from the
+hook. It reads the options file and the recent picks, and nothing about the day.
+Nothing carries from one message to the next except rest: the penalty a value
+carries since its last use.
 
-The picker applies every threshold, rest and cap, and prints
-`escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
-days and the message's type, which names `done`, `win` or `big_win` as
-`ntm:style` calls them. The writer gets the names as printed.
+The levels are separate from the theme pieces. The run that sends the message
+works out the `escalation` and `finishing_tasks` levels from the day's facts,
+and applies every threshold, rest and cap. It hands the writer the pick, the
+level names and the reminder type, which the writer may draw on.
 
-The bump is the theme's choice. In a theme that presses on a good day, the
-picker can bump the escalation level one step with no slip behind it, capped at
-the top. The bump's chance grows with the days since the last message at a
-raised level, whether slips or a bump raised it, over a half-life: 3 days for
-Justin. So a good stretch still gets read. A theme that never presses has a
-`bump_rate` of 0, and only slips raise its level.
+The bump is the theme's choice. In a theme that presses on a good day, the run
+can bump the escalation level one step with no slip behind it, capped at the
+top. The bump's chance grows with the days since the last message at a raised
+level, whether slips or a bump raised it, over a half-life: 3 days for Justin.
+So a good stretch still gets read. A theme that never presses has a `bump_rate`
+of 0, and only slips raise its level.
 
 A finished task is the first `finishing_tasks` level. A win is the second, and
 is more than an everyday thing: a task finished after slipping for days, a task
@@ -119,17 +119,18 @@ to thin them out. A big win is the third, and rare: the project itself closes as
 done. A catch-all project, such as one for errands, stays open, so finishing its
 tasks is never a big win.
 
-`ntm:style` calls a win or a big win only from the facts the run already
-gathered; nothing reads the task list for it. It calls each once, in the first
-message after it happens: the message history records each message's type, so a
-later message sees what an earlier one celebrated.
+The run calls a win or a big win only from the facts it already gathered;
+nothing reads the task list for it. It calls each once, in the first message
+after it happens: the message history records each message's levels, so a later
+message sees what an earlier one celebrated.
 
 ### Theme files
 
 A theme is a set of YAML files named after it. The root, for Justin
 `Dragify.yaml`, is the guide. It holds `world`, `escalation`, `finishing_tasks`
 and `files`, which says what each other file holds. A reminder's job lives in
-`%Message-rules`, and its time-of-day flavour comes from entries with `type`.
+`%Message-rules`, and the writer draws its time-of-day flavour from the reminder
+type.
 
 `escalation` is a ladder of levels, normal first: for Justin, none, light,
 escalated and full. `finishing_tasks` is a ladder too: typical, win and
@@ -184,13 +185,12 @@ history then rolls forward with an upper limit.
 Each theme has its own message history, `<Theme>-message-history`, named like
 the theme's other files: for Justin, `Dragify-message-history`.
 
-One JSON line per message: the date and time, the reminder, the message's type,
-the picks, the opening words, the task ids with their planned dates at send, the
+One JSON line per message: the date and time, the reminder type, the picks, the
+levels, the opening words, the task ids with their planned dates at send, the
 user's feedback and the rater's verdict. A field with no value is left out.
 
-The picks include the `escalation` and `finishing_tasks` names as strings, as
-the picker printed them, the first level included. Either is left out only when
-the picker printed no line for it.
+The levels are the `escalation` and `finishing_tasks` names as strings, as the
+run worked them out, the first level included.
 
 ### Inside ntm
 

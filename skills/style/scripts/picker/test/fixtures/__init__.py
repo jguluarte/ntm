@@ -8,6 +8,7 @@ THEMES = FIXTURES / "themes"
 EVEN = THEMES / "Even-options.yaml"
 WEIGHTED = THEMES / "Weighted-options.yaml"
 WEIGHTLESS = THEMES / "Weightless-options.yaml"
+MOSTLY_WEIGHTLESS = THEMES / "Mostly-weightless-options.yaml"
 NOT_THERE = THEMES / "Not-there-options.yaml"
 
 INVALID_THEMES = FIXTURES / "invalid-themes"

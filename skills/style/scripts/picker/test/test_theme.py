@@ -50,6 +50,15 @@ class ChanceTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
 
+class DrawTest(unittest.TestCase):
+    def test_a_draw_returns_the_only_option_weighing_above_0(self):
+        theme = Theme(fixtures.MOSTLY_WEIGHTLESS)
+        option = theme.draw()
+
+        expected = "scenes/dawn"
+        self.assertEqual(expected, option.name)
+
+
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)

@@ -91,10 +91,9 @@ forward, or a riff that bends a line to the task, stretches across many
 reminders.
 
 Each entry follows its kind's keys. Every quote or line comes from the user:
-they say it, or confirm that one you offer is true to their world. A world they
-invent has nothing to look up: write all of it with them. An entry that fits
-only some messages gets a `type`, from how their day maps onto the world. Keep a
-few entries for `big_win`, so a big win has material of its own.
+they say it, or confirm that one you offer is true to their world. An entry that
+fits only some messages gets a `type`, from how their day maps onto the world.
+Keep a few entries for `big_win`, so a big win has material of its own.
 
 Add each entry to its entry file, under its kind, and to the kind's pool in the
 options file, by its slug, with its `type` copied.

@@ -1,7 +1,8 @@
 # The picker
 
 The picker draws the hook for a message: one option from a theme's options file,
-at its chance. `references/theme-files.md` describes that file.
+at its chance. `references/theme-files.md` describes that file. It needs Python
+3 with PyYAML and jsonschema.
 
 ```
 python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
@@ -21,8 +22,9 @@ shared_lines/any_time    0.25      0    0.13
 scenes/stakeout             1    0.1    0.54
 ```
 
-`python3 recalculate.py start --options <file> <entry file>...` gives a new
-theme its first weights and checksums and prints `saved: <file>`.
-
 A failure prints one line on stderr and exits 1, as
 `Picker FAILED: UnknownOption: not an option: night`.
+
+`python3 recalculate.py start --options <file> <entry file>...` gives a new
+theme its first weights and checksums and prints `saved: <file>`, or one
+`Recalculation FAILED:` line.

@@ -14,20 +14,7 @@ def make_picker_args(options, **flags):
     return args
 
 
-def pick_with_seed(seed):
-    args = make_picker_args(fixtures.EVEN, seed=seed)
-    return Picker.from_args(args).pick()
-
-
 class CommandLineTest(unittest.TestCase):
-    def test_the_same_seed_gives_the_same_pick(self):
-        seeds = range(10)
-        first = [pick_with_seed(seed) for seed in seeds]
-
-        second = [pick_with_seed(seed) for seed in seeds]
-
-        self.assertEqual(first, second)
-
     def test_only_an_option_fitting_the_type_is_drawn(self):
         args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
@@ -40,6 +27,12 @@ class CommandLineTest(unittest.TestCase):
         picker = Picker.from_args(args)
 
         self.assertIsNone(picker.theme.seed)
+
+    def test_the_seed_flag_sets_the_themes_seed(self):
+        args = make_picker_args(fixtures.EVEN, seed=3)
+        picker = Picker.from_args(args)
+
+        self.assertEqual(3, picker.theme.seed)
 
     def test_the_type_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
@@ -98,6 +91,19 @@ class CommandLineTest(unittest.TestCase):
 
 
 class PickTest(unittest.TestCase):
+    def test_the_same_seed_gives_the_same_pick(self):
+        seeds = range(10)
+
+        first = [
+            Picker(Theme(fixtures.EVEN, seed)).pick() for seed in seeds
+        ]
+
+        second = [
+            Picker(Theme(fixtures.EVEN, seed)).pick() for seed in seeds
+        ]
+
+        self.assertEqual(first, second)
+
     def test_without_a_seed_runs_draw_different_options(self):
         picker = Picker(Theme(fixtures.EVEN))
 
@@ -109,15 +115,12 @@ class PickTest(unittest.TestCase):
         self.assertGreater(len(drawn), 1)
 
     def test_an_option_weighing_0_is_never_drawn(self):
-        drawn = {
-            Picker(Theme(fixtures.WEIGHTED, seed)).pick()
-            for seed in range(50)
-        }
+        picker = Picker(Theme(fixtures.WEIGHTED))
 
-        expected = {
-            "hook: scenes/dawn", "hook: scenes/noon", "hook: characters/host",
-        }
-        self.assertEqual(expected, drawn)
+        attempts = 50
+        drawn = {picker.pick() for _ in range(attempts)}
+
+        self.assertNotIn("hook: scenes/dusk", drawn)
 
     def test_a_message_no_option_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)

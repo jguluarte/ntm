@@ -18,12 +18,12 @@ python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
 python3 picker.py hook --options <file> [--type <list>] --chances
 ```
 
-| Flag        | What it is                                                          |
-| ----------- | ------------------------------------------------------------------- |
-| `--options` | The theme's options file, as YAML                                   |
-| `--type`    | The message's reminder type and task outcomes, as `evening,slipped` |
-| `--seed`    | A whole number, for a repeatable pick                               |
-| `--chances` | Shows each hook's weight, score and chance instead of drawing one   |
+| Flag        | What it is                                                                         |
+| ----------- | ---------------------------------------------------------------------------------- |
+| `--options` | The theme's options file, as YAML                                                  |
+| `--type`    | The message's reminder type and task outcomes, as `evening,slipped`                |
+| `--seed`    | A whole number, for a repeatable pick                                              |
+| `--chances` | A table of each fitting hook's weight, score and chance, printed instead of a hook |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
@@ -87,17 +87,14 @@ hook: shared_lines/big_win
 
 A hook's draw weight is its `weight` times 2 to the power of its `score`,
 `weight * 2 ** score`, so each point of score doubles it and each point below 0
-halves it. An entry without a `weight` weighs 1, and one without a `score`
-scores 0. A hook's chance is its draw weight over the total draw weight of every
-hook that fits. A hook that weighs 0 is never drawn.
+halves it. A hook's chance is its draw weight over the total draw weight of
+every hook that fits. A hook that weighs 0 is never drawn.
 
 `--chances` prints each hook that fits, in file order, with its `weight`, its
 `score` and its chance.
 
-In `Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2. 2 to the
-power of 0.2 is about 1.149, so its draw weight is 0.57 × 1.149, about 0.65.
-Without `--type`, three hooks fit, with draw weights 0.65, 0.25 and 1.07, 1.98
-in all. The detective's chance is 0.65 / 1.98, which shows as 0.33.
+In `Casebook-options.yaml`, the detective's draw weight, about 0.65, is 0.33 of
+the total draw weight, 1.98, of the three hooks that fit without `--type`.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --chances

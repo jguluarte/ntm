@@ -36,7 +36,7 @@ anything else its rule asks of the message, such as tone or length.
 ### 1. Pick
 
 Pick one hook, the idea this message builds on: one entry of the theme, drawn by
-the picker as The picker, below, says. Hand it the message's type: each value
+the picker as The picker, below, says. Work out the message's type: each value
 below that holds, with commas between them, such as `evening,slipped`. Make step
 2's call on a win or a big win first.
 
@@ -50,7 +50,7 @@ below that holds, with commas between them, such as `evening,slipped`. Make step
 | `big_win`                           | Step 2 calls a big win                 |
 
 The self-test's message, and one written in chat, take none of the first two
-rows' values. With no value at all, leave `--type` out.
+rows' values.
 
 The hook comes back as `<kind>/<slug>`. Its entry is under `<kind>`, keyed
 `<slug>`, in the file the `<kind>` pool names in `%Theme-options`.
@@ -113,11 +113,11 @@ yourself, as step 1 says, and keep no line. That isn't a failure.
 Read `%Theme-options` and take the text of its `yaml` block. Write that text to
 a file named for the theme, such as `Casebook-options.yaml`, in this session's
 working folder, exactly as read: never retype it from memory or summarize it.
-Then run the picker on that file, with the message's type from step 1:
+Then run the picker on that file:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook \
-    --options <the file> --type <the message's type>
+    --options <the file>
 ```
 
 It prints one line: `hook: <kind>/<slug>`, the hook it drew.

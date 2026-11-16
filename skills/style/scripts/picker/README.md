@@ -5,13 +5,12 @@ at its chance. `references/theme-files.md` describes that file. It needs Python
 3 with PyYAML and jsonschema.
 
 ```
-python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
-python3 picker.py hook --options <file> [--type <list>] --chances
+python3 picker.py hook --options <file> [--seed <number>]
+python3 picker.py hook --options <file> --chances
 ```
 
-`--type` is the message's type, as `evening,slipped`. The same `--seed` draws
-the same option. `hook` prints the option it drew; `--chances` prints each
-option that fits instead, with its weight, score and chance:
+The same `--seed` draws the same option. `hook` prints the option it drew;
+`--chances` prints each option instead, with its weight, score and chance:
 
 ```
 hook: characters/detective
@@ -23,7 +22,7 @@ scenes/stakeout             1    0.1    0.54
 ```
 
 A failure prints one line on stderr and exits 1, as
-`Picker FAILED: UnknownOption: not an option: night`.
+`Picker FAILED: MissingWeight: every option weighs 0`.
 
 `python3 recalculate.py start --options <file> <entry file>...` gives a new
 theme its first weights and checksums and prints `saved: <file>`, or one

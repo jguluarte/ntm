@@ -21,7 +21,7 @@ class Recalculation:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
 
     def save_options_file(self):
-        self.theme.save()
+        self.theme.save(self.theme.path)
 
     def _weigh_entries_from(self, entry_file):
         line_counts = entry_file.line_counts

@@ -33,7 +33,7 @@ path, so a test imports their classes by name.
 | File                    | What it checks                                                         |
 | ----------------------- | ---------------------------------------------------------------------- |
 | `test_theme.py`         | The hooks `Theme` finds, an entry file's entries, saving, and failures |
-| `test_theme_options.py` | The combinations `ThemeOptions` parses or refuses                      |
+| `test_theme_options.py` | The types `ThemeOptions` reads or refuses                              |
 | `test_entry_file.py`    | The line counts and checksum `EntryFile` reads                         |
 | `test_picker.py`        | What the picker's command line builds, prints or fails with            |
 | `test_recalculate.py`   | What `start` builds from its command line, saves or fails with         |

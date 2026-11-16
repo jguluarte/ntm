@@ -3,15 +3,15 @@ import contextlib
 import random
 import sys
 
-from theme import InvalidOptions, Theme, ThemeOptions
+from theme import Theme, ThemeOptions
 
 
 class Picker:
     def __init__(
-            self, theme, theme_options=ThemeOptions(), seed=None,
+            self, theme, options=ThemeOptions(), seed=None,
             shows_chances=False):
         self.theme = theme
-        self.theme_options = theme_options
+        self.options = options
         self.seed = seed
         self.shows_chances = shows_chances
 
@@ -20,13 +20,12 @@ class Picker:
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options)
-            return cls(
-                theme, flags.theme_options, flags.seed, flags.shows_chances,
-            )
+            options = ThemeOptions(flags.type)
+            return cls(theme, options, flags.seed, flags.shows_chances)
 
     def pick_hook(self):
         with self._reporting_failures():
-            lottery = self.theme.lottery_for(self.theme_options)
+            lottery = self.theme.lottery_for(self.options)
             hooks = list(lottery)
             generator = random.Random(self.seed)
             [hook] = generator.choices(hooks, weights=lottery.values())
@@ -34,7 +33,7 @@ class Picker:
 
     def chances_table(self):
         with self._reporting_failures():
-            lottery = self.theme.lottery_for(self.theme_options)
+            lottery = self.theme.lottery_for(self.options)
 
             rows = [("hook", "weight", "score", "chance")]
             for hook, chance in lottery.items():
@@ -56,28 +55,18 @@ class Picker:
 
         return "\n".join(lines)
 
-    @classmethod
-    def _parser(cls):
+    @staticmethod
+    def _parser():
         parser = argparse.ArgumentParser(exit_on_error=False)
         subcommands = parser.add_subparsers(required=True)
         hook = subcommands.add_parser("hook", exit_on_error=False)
         hook.add_argument("--options", required=True)
-        hook.add_argument(
-            "--type", dest="theme_options", type=cls._parse_theme_options,
-            default=ThemeOptions(),
-        )
+        hook.add_argument("--type", default="")
         hook.add_argument("--seed", type=int)
         hook.add_argument(
             "--chances", dest="shows_chances", action="store_true",
         )
         return parser
-
-    @staticmethod
-    def _parse_theme_options(text):
-        try:
-            return ThemeOptions.parse(text)
-        except InvalidOptions as invalid:
-            raise argparse.ArgumentTypeError(str(invalid)) from None
 
     @staticmethod
     @contextlib.contextmanager

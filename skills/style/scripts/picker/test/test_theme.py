@@ -11,9 +11,8 @@ from theme import (
 )
 
 
-def hook_names(theme, type=None):
-    theme_options = ThemeOptions.parse(type) if type else ThemeOptions()
-    return [hook.name for hook in theme.lottery_for(theme_options)]
+def hook_names(theme, type=""):
+    return [hook.name for hook in theme.lottery_for(ThemeOptions(type))]
 
 
 class HooksTest(unittest.TestCase):
@@ -86,7 +85,7 @@ class FitTest(unittest.TestCase):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
 
         with self.assertRaises(MissingHook) as raised:
-            theme.lottery_for(ThemeOptions.parse("morning,big_win"))
+            theme.lottery_for(ThemeOptions("morning,big_win"))
 
         expected = "no hook fits morning,big_win"
         self.assertEqual(expected, str(raised.exception))
@@ -124,7 +123,7 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTED)
 
         with self.assertRaises(NoHookHasWeight) as raised:
-            theme.lottery_for(ThemeOptions.parse("big_win"))
+            theme.lottery_for(ThemeOptions("big_win"))
 
         expected = "every hook that fits big_win weighs 0"
         self.assertEqual(expected, str(raised.exception))

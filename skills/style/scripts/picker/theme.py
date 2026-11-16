@@ -88,14 +88,13 @@ class UnknownEntryFile(ValueError):
         super().__init__(f"no pool uses {file_name}")
 
 
-@dataclass(frozen=True)
+@dataclass(init=False)
 class ThemeOptions:
-    reminder_type: ReminderType | None = None
-    task_outcomes: frozenset[TaskOutcome] = frozenset()
+    reminder_type: ReminderType | None
+    task_outcomes: frozenset[TaskOutcome]
 
-    @classmethod
-    def parse(cls, text):
-        values = set(text.split(","))
+    def __init__(self, type=""):
+        values = set(type.split(",")) if type else set()
         reminder_types = ReminderType.named_in(values)
         task_outcomes = TaskOutcome.named_in(values)
 
@@ -107,8 +106,8 @@ class ThemeOptions:
         if len(reminder_types) > 1:
             raise MoreThanOneReminderType(reminder_types)
 
-        reminder_type = reminder_types.pop() if reminder_types else None
-        return cls(reminder_type, frozenset(task_outcomes))
+        self.reminder_type = reminder_types.pop() if reminder_types else None
+        self.task_outcomes = frozenset(task_outcomes)
 
     @property
     def is_big_win(self):
@@ -199,9 +198,8 @@ class HookManager:
 
     @staticmethod
     def _as_normal_win(theme_options):
-        without_big_win = theme_options.task_outcomes - {TaskOutcome.BIG_WIN}
-        task_outcomes = without_big_win | {TaskOutcome.DONE}
-        return ThemeOptions(theme_options.reminder_type, task_outcomes)
+        big_win, done = TaskOutcome.BIG_WIN.value, TaskOutcome.DONE.value
+        return ThemeOptions(str(theme_options).replace(big_win, done))
 
 
 class _OptionsDumper(yaml.SafeDumper):

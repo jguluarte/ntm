@@ -39,7 +39,7 @@ class CommandLineTest(unittest.TestCase):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
 
-        self.assertEqual(ThemeOptions(), picker.theme_options)
+        self.assertEqual(ThemeOptions(), picker.options)
 
     def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
@@ -77,8 +77,8 @@ class CommandLineTest(unittest.TestCase):
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
 
-        why = "argument --type: more than one reminder type: evening, morning"
-        expected = f"Picker FAILED: ArgumentError: {why}"
+        why = "more than one reminder type: evening, morning"
+        expected = f"Picker FAILED: MoreThanOneReminderType: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
@@ -130,7 +130,7 @@ class PickHookTest(unittest.TestCase):
 
     def test_a_message_no_hook_fits_fails_with_missing_hook(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        picker = Picker(theme, ThemeOptions.parse("morning"))
+        picker = Picker(theme, ThemeOptions("morning"))
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick_hook()
@@ -168,7 +168,7 @@ class ChancesTableTest(unittest.TestCase):
 
     def test_chances_where_every_fitting_hook_weighs_0_fail_naming_why(self):
         theme = Theme(fixtures.WEIGHTED)
-        picker = Picker(theme, ThemeOptions.parse("big_win"))
+        picker = Picker(theme, ThemeOptions("big_win"))
 
         with self.assertRaises(SystemExit) as exited:
             picker.chances_table()

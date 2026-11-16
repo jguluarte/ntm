@@ -73,9 +73,10 @@ forward, or a riff that bends a line to the task, stretches across many
 reminders.
 
 Every quote or line comes from the user: they say it, or confirm that one you
-offer is true to their world. An entry that fits only some messages gets a
-`type`, from how their day maps onto the world. Keep a few entries for
-`big_win`, so a big win has material of its own.
+offer is true to their world. Keep a few entries for `big_win`, so a big win has
+material of its own. Give any other entry a `type` only when it truly belongs to
+the reminder types or task outcomes it names; in a theme this small, most
+entries have none.
 
 Add each entry to its entry file and to its kind's pool in the options file.
 

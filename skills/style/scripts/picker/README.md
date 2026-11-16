@@ -92,8 +92,7 @@ scores 0. A hook's chance is its draw weight over the total draw weight of every
 hook that fits. A hook that weighs 0 is never drawn.
 
 `--chances` prints each hook that fits, in file order, with its `weight`, its
-`score` and its chance. The chance is rounded to two places with a half rounding
-up: 0.125 shows as 0.13.
+`score` and its chance.
 
 In `Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2. 2 to the
 power of 0.2 is about 1.149, so its draw weight is 0.57 × 1.149, about 0.65.

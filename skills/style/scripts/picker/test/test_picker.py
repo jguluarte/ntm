@@ -147,7 +147,7 @@ class ChancesTableTest(unittest.TestCase):
 
         expected = [
             "hook             weight  score  chance",
-            "scenes/dawn         0.5      0    0.13",
+            "scenes/dawn         0.5      0    0.12",
             "scenes/noon           1      1    0.50",
             "scenes/dusk           0      0    0.00",
             "characters/host       3     -1    0.38",

@@ -2,7 +2,6 @@ import argparse
 import contextlib
 import random
 import sys
-from decimal import ROUND_HALF_UP, Decimal
 
 from theme import InvalidOptions, Theme, ThemeOptions
 
@@ -39,8 +38,9 @@ class Picker:
 
             rows = [("hook", "weight", "score", "chance")]
             for hook, chance in lottery.items():
-                weight, score = f"{hook.weight:g}", f"{hook.score:g}"
-                rounded_chance = self._to_hundredths(chance)
+                weight = f"{hook.weight:g}"
+                score = f"{hook.score:g}"
+                rounded_chance = f"{chance:.2f}"
                 rows.append((hook.name, weight, score, rounded_chance))
 
             return self._table(rows)
@@ -57,12 +57,6 @@ class Picker:
             lines.append("  ".join(cells))
 
         return "\n".join(lines)
-
-    @staticmethod
-    def _to_hundredths(chance):
-        hundredth = Decimal("0.01")
-        rounded = Decimal(chance).quantize(hundredth, rounding=ROUND_HALF_UP)
-        return str(rounded)
 
     @classmethod
     def _parser(cls):

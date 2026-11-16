@@ -308,12 +308,7 @@ jobs and their model for Create the jobs, after the self-test.
 ### Create a theme
 
 Load `ntm:theme-builder` and follow it through its Result, then come back here:
-it builds their theme with them and creates `%Theme`. Write the theme's root,
-which today is `%Theme`'s title, under Themes in `%Settings`, as this week's
-theme and as the only one in All themes.
-
-Then create the theme's `%Message-history` from its template, named after the
-theme, such as `Casebook-message-history`, beside `%Theme`.
+it builds their first theme with them and switches it on.
 
 ### Notifications
 

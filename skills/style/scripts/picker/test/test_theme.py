@@ -11,19 +11,15 @@ from theme import (
 )
 
 
-def hook_names(theme, type=""):
-    return theme.lottery_for(ThemeOptions(type)).names
-
-
-class HooksTest(unittest.TestCase):
-    def test_the_hooks_are_the_entries_of_pools_giving_a_hook(self):
+class OptionsTest(unittest.TestCase):
+    def test_the_options_are_every_entry_but_those_of_speaker_only_pools(self):
         theme = Theme(fixtures.EVEN)
-        hooks = hook_names(theme)
+        lottery = theme.lottery_for(ThemeOptions())
 
         expected = [
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
         ]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_a_theme_with_only_speaker_pools_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
@@ -36,48 +32,48 @@ class HooksTest(unittest.TestCase):
 class FitTest(unittest.TestCase):
     def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        hooks = hook_names(theme, "weekly")
+        lottery = theme.lottery_for(ThemeOptions("weekly"))
 
         expected = ["scenes/any_time", "scenes/morning_or_weekly"]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_an_entry_fits_only_when_a_task_outcome_it_names_happened(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        hooks = hook_names(theme, "evening,slipped")
+        lottery = theme.lottery_for(ThemeOptions("evening,slipped"))
 
         expected = [
             "scenes/any_time", "scenes/evening", "scenes/slipped",
             "scenes/evening_slipped",
         ]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_an_entry_naming_both_kinds_needs_both(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        hooks = hook_names(theme, "evening")
+        lottery = theme.lottery_for(ThemeOptions("evening"))
 
         expected = ["scenes/any_time", "scenes/evening"]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        hooks = hook_names(theme, "evening,big_win")
+        lottery = theme.lottery_for(ThemeOptions("evening,big_win"))
 
         expected = ["scenes/big_win", "scenes/evening_big_win"]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_on_a_big_win_an_entry_still_fits_only_its_reminder_types(self):
         theme = Theme(fixtures.EVERY_TYPE)
-        hooks = hook_names(theme, "morning,done,big_win")
+        lottery = theme.lottery_for(ThemeOptions("morning,done,big_win"))
 
         expected = ["scenes/big_win"]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
-    def test_a_big_win_with_nothing_kept_for_it_fits_as_a_normal_win(self):
+    def test_a_big_win_with_nothing_kept_for_it_fits_as_a_finished_task(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        hooks = hook_names(theme, "evening,big_win")
+        lottery = theme.lottery_for(ThemeOptions("evening,big_win"))
 
         expected = ["scenes/evening_done"]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_a_big_win_no_entry_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
@@ -128,12 +124,12 @@ class ChanceTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        hooks = hook_names(theme)
+        lottery = theme.lottery_for(ThemeOptions())
 
         expected = [
             "characters/detective", "shared_lines/any_time", "scenes/stakeout",
         ]
-        self.assertEqual(expected, hooks)
+        self.assertEqual(expected, lottery.names)
 
     def test_a_file_without_pools_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
@@ -149,7 +145,7 @@ class SchemaTest(unittest.TestCase):
         expected = "$.pools.scenes: 'roles' is a required property"
         self.assertEqual(expected, str(raised.exception))
 
-    def test_a_role_that_isnt_hook_or_speaker_fails(self):
+    def test_an_unknown_role_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.UNKNOWN_ROLE)
 

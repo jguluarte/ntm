@@ -15,14 +15,14 @@ def make_picker_args(options, **flags):
 
 
 class CommandLineTest(unittest.TestCase):
-    def test_hook_draws_from_the_options_file_with_the_seed(self):
+    def test_an_option_is_drawn_from_the_options_file_with_the_seed(self):
         args = make_picker_args(fixtures.EVEN, seed=2)
         picker = Picker.from_args(args)
         drawn = picker.pick_option()
 
         self.assertEqual("hook: characters/host", drawn)
 
-    def test_hook_draws_only_hooks_fitting_the_type(self):
+    def test_only_an_option_fitting_the_type_is_drawn(self):
         args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
         drawn = picker.pick_option()
@@ -93,7 +93,7 @@ class CommandLineTest(unittest.TestCase):
 
 
 class PickOptionTest(unittest.TestCase):
-    def test_each_seed_draws_its_declared_hook(self):
+    def test_each_seed_draws_its_declared_option(self):
         theme = Theme(fixtures.EVEN)
         drawn = {
             seed: Picker(theme, seed=seed).pick_option() for seed in range(6)
@@ -109,7 +109,7 @@ class PickOptionTest(unittest.TestCase):
         }
         self.assertEqual(expected, drawn)
 
-    def test_without_a_seed_runs_draw_different_hooks(self):
+    def test_without_a_seed_runs_draw_different_options(self):
         picker = Picker(Theme(fixtures.EVEN))
 
         attempts = 50
@@ -119,7 +119,7 @@ class PickOptionTest(unittest.TestCase):
 
         self.assertGreater(len(drawn), 1)
 
-    def test_a_hook_weighing_0_is_never_drawn(self):
+    def test_an_option_weighing_0_is_never_drawn(self):
         theme = Theme(fixtures.WEIGHTED)
         drawn = {Picker(theme, seed=seed).pick_option() for seed in range(50)}
 
@@ -141,7 +141,7 @@ class PickOptionTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_fitting_hook_shows_its_weight_score_and_rounded_chance(self):
+    def test_each_fitting_option_shows_weight_score_and_rounded_chance(self):
         picker = Picker(Theme(fixtures.WEIGHTED))
         rows = picker.chances_table().splitlines()
 
@@ -166,7 +166,7 @@ class ChancesTableTest(unittest.TestCase):
         ]
         self.assertEqual(expected, rows)
 
-    def test_chances_where_every_fitting_hook_weighs_0_fail_naming_why(self):
+    def test_chances_where_every_fitting_option_weighs_0_fail_naming_why(self):
         theme = Theme(fixtures.WEIGHTED)
         picker = Picker(theme, ThemeOptions("big_win"))
 

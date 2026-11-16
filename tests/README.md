@@ -32,7 +32,7 @@ path, so a test imports their classes by name.
 
 | File                    | What it checks                                                         |
 | ----------------------- | ---------------------------------------------------------------------- |
-| `test_theme.py`         | The hooks `Theme` finds, an entry file's entries, saving, and failures |
+| `test_theme.py`         | The lottery `Theme` builds, one entry file's entries, saving, failures |
 | `test_theme_options.py` | The types `ThemeOptions` reads or refuses                              |
 | `test_lottery.py`       | The chances a `Lottery` gives, and what a seed draws                   |
 | `test_entry_file.py`    | The line counts and checksum `EntryFile` reads                         |

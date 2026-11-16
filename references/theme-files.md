@@ -10,7 +10,7 @@ for anyone curious.
 A script, the picker, will pick what each message draws on, and a writer writes
 the message from the picks. For a script to pick, a theme has to be data in a
 known shape, and this file is that shape. Today `ntm:theme-builder` builds a
-theme as one `%Theme` database. `ntm:style` runs the picker when a theme has an
+theme's files with the user. `ntm:style` runs the picker when a theme has an
 options file, and picks the hook itself when it doesn't. The rest of this file
 describes theme files, and the picker that reads them, as they will work.
 
@@ -55,6 +55,10 @@ parts are the same in every theme:
 | `escalation`      | How the theme reads a task that slipped, and how it escalates with each slip |
 | `finishing_tasks` | How the theme marks a finished task, and a big win                           |
 | `files`           | Every other file of the theme, grouped by how the writer gets data from it   |
+
+`escalation` and `finishing_tasks` each hold one paragraph, or levels, the first
+level first, each keyed by its name in the theme's words and saying how it
+sounds.
 
 `files` has three groups. Under each, a file's name maps to a line or two on
 what it holds. Each file is listed by its full name, which follows the pattern
@@ -205,12 +209,13 @@ checksums:
   Casebook-characters.yaml: 9f86d081884c7d65...
   Casebook-scenes.yaml: 2c26b46b68ffc68f...
 
+speaker_rate: 0.4
+
 pools:
   characters:
     file: Casebook-characters.yaml
     roles: [hook, speaker]
     half_life_days: 3
-    speaker_rate: 0.4
     entries:
       detective:
         weight: 0.57
@@ -250,7 +255,7 @@ its checksum differs.
 | --------------------- | -------------------------------------------------------------------------------------------- |
 | `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
 | `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
-| `speaker_rate`        | How often a message names a speaker from this pool, from 0 to 1                              |
+| `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
 | `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
 | `score`               | How well messages built on the entry landed, from `%Message-history`                         |
@@ -276,7 +281,9 @@ from its entry file, and one line or riff is drawn from it, keeping only riffs
 whose `type` fits. A recently used line rests the same way an entry does. That
 line or riff is what the writer builds on.
 
-Sometimes a speaker is added from a speaker pool, at its `speaker_rate`.
+Sometimes a speaker is added, drawn from all speaker pools together, at the
+theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no
+`speaker_rate`: every hook already speaks.
 
 ## The terminology file
 
@@ -287,5 +294,6 @@ not know or would misuse, each with what it means in the theme.
 
 The file ntm writes as it goes: an entry for each message sent in the theme,
 holding only this theme's messages. The pick reads it for rest, and the nightly
-job for scores. Setup creates it with the theme, from its template. The root's
-`files` leaves it out: the writer never reads it, and ntm finds it by its name.
+job for scores. The theme builder creates it when it switches the theme on, from
+its template. The root's `files` leaves it out: the writer never reads it, and
+ntm finds it by its name.

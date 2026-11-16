@@ -42,8 +42,8 @@ path, so a test imports their classes by name.
 of its own, whose `__init__.py` names each file. A one-file theme is an options
 file named for what it holds or lacks.
 
-| Folder            | What it holds                                                   |
-| ----------------- | --------------------------------------------------------------- |
-| `casebook/`       | The example in `references/theme-files.md`: options and entries |
-| `themes/`         | One-file themes `Theme` loads                                   |
-| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault            |
+| Folder            | What it holds                                                            |
+| ----------------- | ------------------------------------------------------------------------ |
+| `casebook/`       | The example in `references/theme-files.md`, with and without its numbers |
+| `themes/`         | One-file themes `Theme` loads                                            |
+| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault                     |

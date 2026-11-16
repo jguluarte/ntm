@@ -6,7 +6,6 @@ FIXTURES = Path(__file__).parent
 
 THEMES = FIXTURES / "themes"
 EVEN = THEMES / "Even-options.yaml"
-WITHOUT_NUMBERS = THEMES / "Without-numbers-options.yaml"
 EVERY_TYPE = THEMES / "Every-type-options.yaml"
 WITHOUT_BIG_WIN = THEMES / "Without-big-win-options.yaml"
 SPEAKERS_ONLY = THEMES / "Speakers-only-options.yaml"

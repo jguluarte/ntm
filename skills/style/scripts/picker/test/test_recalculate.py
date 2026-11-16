@@ -68,7 +68,7 @@ class RecalculationTest(unittest.TestCase):
         return Recalculation(Theme(options), [self.characters, self.scenes])
 
     def test_weighing_gives_the_documented_example_its_own_weights(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
+        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
         recalculation = self.recalculation_of(options)
         recalculation.weigh_entries()
         recalculation.save_options_file()
@@ -82,7 +82,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(expected, read_weights(options))
 
     def test_recording_writes_each_entry_files_own_checksum(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
+        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
         recalculation = self.recalculation_of(options)
         recalculation.record_checksums()
         recalculation.save_options_file()

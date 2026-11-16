@@ -1,10 +1,10 @@
 # The picker's classes
 
 For one message, the picker reads a theme's options file and the message's type,
-such as `evening,slipped`, and draws the option the message is built on, its
-hook. It draws twice: a group of options, then an option in that group, each by
-a chance that comes from weights and scores. It prints `hook: scenes/dawn` for
-`ntm:style`, or, with `--chances`, the chances it draws from.
+such as `evening,slipped`, and draws the option the message is built on. It
+draws twice: a group of options, then an option in that group, each by a chance
+that comes from weights and scores. It prints the option as `hook: scenes/dawn`
+for `ntm:style`, or, with `--chances`, the chances it draws from.
 
 ## The classes
 
@@ -20,7 +20,7 @@ a chance that comes from weights and scores. It prints `hook: scenes/dawn` for
 ## One draw, top to bottom
 
 ```python
-def pick_hook(self):
+def pick_option(self):
     with self._reporting_failures():
         generator = random.Random(self.seed)
         group_lottery = self.theme.lottery_for(self.options)
@@ -32,10 +32,10 @@ def pick_hook(self):
 
 `group_lottery` holds each group with a fitting option that weighs more than 0,
 and `group` is drawn from it. `option_lottery` holds that group's fitting
-options, and `option`, the hook, is drawn from it. Both lotteries apply the
-big-win rule: on a big win with no option kept for it, they draw as for a
-finished task. `chances_table` prints the same two lotteries, headed `group`,
-`option` and `chance in group`.
+options, and `option` is drawn from it. Both lotteries apply the big-win rule:
+on a big win with no option kept for it, they draw as for a finished task.
+`chances_table` prints the same two lotteries, headed `group`, `option` and
+`chance in group`.
 
 ## What a test reads like
 
@@ -77,6 +77,7 @@ nothing to draw.
 ## Words that are the file's
 
 `pools`, `entries`, `roles`, `type`, `weight` and `score` are the options file's
-keys: a group is read from a pool, an option from an entry. `hook` is the role
-an option is drawn for, as in `roles: [hook, speaker]`, and the `hook`
-subcommand and the printed `hook:` line name it.
+keys: a group is read from a pool, an option from an entry.
+
+`hook` is only a value: the role in a pool's `roles`, the subcommand `ntm:style`
+runs, and the label on the printed line. No name in the code uses it.

@@ -259,7 +259,7 @@ class HookManager:
     def __init__(self, pools):
         self._pools_by_kind = {pool.kind: pool for pool in pools}
 
-    def kind_chances_for(self, theme_options):
+    def kind_lottery_for(self, theme_options):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         draw_weights = {}
         for pool in self._pools_by_kind.values():
@@ -269,9 +269,9 @@ class HookManager:
         if not draw_weights:
             raise NoHookHasWeight(theme_options)
 
-        return self._chances_of(draw_weights)
+        return self._lottery_of(draw_weights)
 
-    def hook_chances_for(self, theme_options, kind, history):
+    def hook_lottery_for(self, theme_options, kind, history):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
         rested_draw_weights = {}
@@ -280,10 +280,10 @@ class HookManager:
             rested_draw_weights[hook] = hook.rested_draw_weight(days)
 
         if any(rested_draw_weights.values()):
-            return self._chances_of(rested_draw_weights)
+            return self._lottery_of(rested_draw_weights)
 
         draw_weights = {hook: hook.draw_weight for hook in hooks}
-        return self._chances_of(draw_weights)
+        return self._lottery_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):
         if not self._pools_by_kind:
@@ -303,7 +303,7 @@ class HookManager:
         return any(pool.hooks_that_fit(theme_options) for pool in pools)
 
     @staticmethod
-    def _chances_of(draw_weights):
+    def _lottery_of(draw_weights):
         total = sum(draw_weights.values())
         return {
             candidate: draw_weight / total
@@ -324,11 +324,11 @@ class Theme:
         pools = self._read_hook_pools(fields[POOLS_BY_KIND])
         self._hook_manager = HookManager(pools)
 
-    def kind_chances_for(self, theme_options):
-        return self._hook_manager.kind_chances_for(theme_options)
+    def kind_lottery_for(self, theme_options):
+        return self._hook_manager.kind_lottery_for(theme_options)
 
-    def hook_chances_for(self, theme_options, kind, history=History()):
-        return self._hook_manager.hook_chances_for(theme_options, kind, history)
+    def hook_lottery_for(self, theme_options, kind, history=History()):
+        return self._hook_manager.hook_lottery_for(theme_options, kind, history)
 
     @staticmethod
     def _read_hook_pools(pools_by_kind):

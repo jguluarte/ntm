@@ -111,7 +111,7 @@ class Theme:
         if not self._options:
             raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
 
-    def lottery_for(self):
+    def lottery(self):
         draw_weights = {option: option.draw_weight for option in self._options}
 
         if not any(draw_weights.values()):
@@ -120,7 +120,7 @@ class Theme:
         return Lottery(draw_weights, self.seed)
 
     def draw(self):
-        return self.lottery_for().draw()
+        return self.lottery().draw()
 
     def entries_from(self, file_name):
         names = []

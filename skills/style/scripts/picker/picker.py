@@ -24,7 +24,7 @@ class Picker:
 
     def chances_table(self):
         with self._reporting_failures():
-            lottery = self.theme.lottery_for()
+            lottery = self.theme.lottery()
 
             rows = [("hook", "weight", "score", "chance")]
             for option, chance in lottery.chance_by_candidate.items():

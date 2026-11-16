@@ -199,7 +199,7 @@ class Theme:
         hooks = self._read_hooks(fields[POOLS_BY_KIND])
         self._hook_manager = HookManager(hooks)
 
-    def hook_chances_for(self, theme_options):
+    def lottery_for(self, theme_options):
         return self._hook_manager.chances_for(theme_options)
 
     @staticmethod

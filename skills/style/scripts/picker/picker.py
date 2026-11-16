@@ -27,7 +27,7 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
-            chances = self.theme.hook_chances_for(self.theme_options)
+            chances = self.theme.lottery_for(self.theme_options)
             hooks = list(chances)
             generator = random.Random(self.seed)
             [hook] = generator.choices(hooks, weights=chances.values())
@@ -35,7 +35,7 @@ class Picker:
 
     def chances_table(self):
         with self._reporting_failures():
-            chances = self.theme.hook_chances_for(self.theme_options)
+            chances = self.theme.lottery_for(self.theme_options)
 
             rows = [("hook", "weight", "score", "chance")]
             for hook, chance in chances.items():

@@ -1,107 +1,30 @@
 import unittest
 
 import fixtures
-from picker import Picker
-from theme import Theme, ThemeOptions
+from picker import Picker, chances_table, reporting_failures
+from theme import MissingOptions, Theme, ThemeOptions
+
+SEED = 3
+RUNS = 10
 
 
-def make_picker_args(options, **flags):
-    args = ["hook", "--options", str(options)]
-
-    for name, value in flags.items():
-        args += [f"--{name}", str(value)]
-
-    return args
-
-
-class CommandLineTest(unittest.TestCase):
+class PickTest(unittest.TestCase):
     def test_only_an_option_fitting_the_type_is_drawn(self):
-        args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
-        picker = Picker.from_args(args)
+        theme = Theme(fixtures.EVERY_TYPE)
+        options = ThemeOptions("weekly,big_win")
+        picker = Picker(theme, options)
         drawn = picker.pick()
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
-    def test_the_seed_is_optional(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertIsNone(picker.theme.seed)
-
-    def test_the_seed_flag_sets_the_themes_seed(self):
-        args = make_picker_args(fixtures.EVEN, seed=3)
-        picker = Picker.from_args(args)
-
-        self.assertEqual(3, picker.theme.seed)
-
-    def test_the_type_is_optional(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertEqual(ThemeOptions(), picker.options)
-
-    def test_the_chances_flag_sets_shows_chances(self):
-        args = make_picker_args(fixtures.EVEN) + ["--chances"]
-        picker = Picker.from_args(args)
-
-        self.assertTrue(picker.shows_chances)
-
-    def test_the_chances_flag_is_optional(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertFalse(picker.shows_chances)
-
-    def test_a_missing_options_flag_fails_naming_it(self):
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(["hook"])
-
-        why = "the following arguments are required: --options"
-        expected = f"Picker FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, seed="seven")
-
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(args)
-
-        why = "argument --seed: invalid int value: 'seven'"
-        expected = f"Picker FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
-        args = make_picker_args(fixtures.EVEN, type="night")
-
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(args)
-
-        expected = "Picker FAILED: UnknownOption: not an option: night"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_an_options_file_that_isnt_there_fails_naming_it(self):
-        args = make_picker_args(fixtures.NOT_THERE)
-
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(args)
-
-        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
-        expected = f"Picker FAILED: FileNotFoundError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-
-class PickTest(unittest.TestCase):
     def test_the_same_seed_gives_the_same_pick(self):
-        seed = 3
-        runs = 10
-
-        first_theme = Theme(fixtures.EVEN, seed)
+        first_theme = Theme(fixtures.EVEN, seed=SEED)
         first_picker = Picker(first_theme)
-        first = [first_picker.pick() for _ in range(runs)]
+        first = [first_picker.pick() for _ in range(RUNS)]
 
-        second_theme = Theme(fixtures.EVEN, seed)
+        second_theme = Theme(fixtures.EVEN, seed=SEED)
         second_picker = Picker(second_theme)
-        second = [second_picker.pick() for _ in range(runs)]
+        second = [second_picker.pick() for _ in range(RUNS)]
 
         self.assertEqual(first, second)
 
@@ -128,19 +51,18 @@ class PickTest(unittest.TestCase):
         options = ThemeOptions("morning")
         picker = Picker(theme, options)
 
-        with self.assertRaises(SystemExit) as exited:
+        with self.assertRaises(MissingOptions) as raised:
             picker.pick()
 
-        why = "no option fits morning"
-        expected = f"Picker FAILED: MissingOptions: {why}"
-        self.assertEqual(expected, exited.exception.code)
+        self.assertEqual("no option fits morning", str(raised.exception))
 
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_fitting_option_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
-        picker = Picker(theme)
-        rows = picker.chances_table().splitlines()
+        options = ThemeOptions()
+        lottery = theme.lottery_for(options)
+        rows = chances_table(lottery).splitlines()
 
         expected = [
             "hook             weight  score  chance",
@@ -151,14 +73,21 @@ class ChancesTableTest(unittest.TestCase):
         ]
         self.assertEqual(expected, rows)
 
-    def test_chances_where_every_fitting_option_weighs_0_fail_naming_why(self):
-        theme = Theme(fixtures.WEIGHTED)
-        options = ThemeOptions("big_win")
-        picker = Picker(theme, options)
 
+class ReportingFailuresTest(unittest.TestCase):
+    def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
         with self.assertRaises(SystemExit) as exited:
-            picker.chances_table()
+            with reporting_failures():
+                ThemeOptions("night")
 
-        why = "every option that fits big_win weighs 0"
-        expected = f"Picker FAILED: MissingWeight: {why}"
+        expected = "Picker FAILED: UnknownOption: not an option: night"
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_an_options_file_that_isnt_there_fails_naming_it(self):
+        with self.assertRaises(SystemExit) as exited:
+            with reporting_failures():
+                Theme(fixtures.NOT_THERE)
+
+        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
+        expected = f"Picker FAILED: FileNotFoundError: {why}"
         self.assertEqual(expected, exited.exception.code)

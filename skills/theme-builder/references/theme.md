@@ -50,7 +50,7 @@ decides how many each has. Most themes start from these:
 | 3rd   | A task has slipped                                       | A big win: a project finished |
 | 4th   | A task has kept slipping                                 |                               |
 
-The root part of `theme-files.md` says what a win and a big win are.
+`theme-files.md`, under The root, says what a win and a big win are.
 
 ## The kinds
 

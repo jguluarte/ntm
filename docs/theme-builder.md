@@ -131,7 +131,7 @@ harder sooner" moves one a step.
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
 sends the message. A big win is a whole project finished: the project itself
-closes as done. The run works these out; the picker has no part in it.
+closes as done. The run works these out.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.

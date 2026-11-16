@@ -79,10 +79,3 @@ the reminder types or task outcomes it names; in a theme this small, most
 entries have none.
 
 Add each entry to its entry file and to its kind's pool in the options file.
-
-## Sample messages
-
-Write a few sample messages yourself for each level of `escalation`, and a few
-for each level of `finishing_tasks`, with tasks like theirs, each built on one
-of their entries. Read them back and revise how each level sounds until they
-smile.

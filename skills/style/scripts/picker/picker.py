@@ -25,7 +25,7 @@ class Picker:
     def pick_option(self):
         with self._reporting_failures():
             Lottery.set_seed(self.seed)
-            option = self.theme.draw_for(self.options)
+            option = self.theme.draw_from(self.options)
             return f"hook: {option.name}"
 
     def chances_table(self):

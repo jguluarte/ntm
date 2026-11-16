@@ -113,7 +113,7 @@ class DrawTest(unittest.TestCase):
     def test_a_seeded_draw_returns_one_option(self):
         theme = Theme(fixtures.EVEN)
         Lottery.set_seed(2)
-        option = theme.draw_for(ThemeOptions())
+        option = theme.draw_from(ThemeOptions())
 
         expected = "characters/host"
         self.assertEqual(expected, option.name)

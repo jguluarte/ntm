@@ -240,6 +240,9 @@ class Theme:
 
         return Lottery(draw_weights)
 
+    def draw_for(self, options):
+        return self.lottery_for(options).draw()
+
     def entries_from(self, file_name):
         names = []
 

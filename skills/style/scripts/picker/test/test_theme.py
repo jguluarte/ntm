@@ -6,7 +6,7 @@ from pathlib import Path
 
 import fixtures
 from theme import (
-    InvalidTheme, MissingOptions, MissingWeight, Theme, ThemeOptions,
+    InvalidTheme, Lottery, MissingOptions, MissingWeight, Theme, ThemeOptions,
     UnknownEntryFile,
 )
 
@@ -107,6 +107,16 @@ class ChanceTest(unittest.TestCase):
 
         expected = "every option that fits big_win weighs 0"
         self.assertEqual(expected, str(raised.exception))
+
+
+class DrawTest(unittest.TestCase):
+    def test_a_seeded_draw_returns_one_option(self):
+        theme = Theme(fixtures.EVEN)
+        Lottery.set_seed(2)
+        option = theme.draw_for(ThemeOptions())
+
+        expected = "characters/host"
+        self.assertEqual(expected, option.name)
 
 
 class SchemaTest(unittest.TestCase):

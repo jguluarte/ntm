@@ -15,15 +15,15 @@ class Picker:
         return f"hook: {option.name}"
 
 
-def command_line():
-    parser = argparse.ArgumentParser(exit_on_error=False)
-    subcommands = parser.add_subparsers(required=True)
+def parser():
+    flags_parser = argparse.ArgumentParser(exit_on_error=False)
+    subcommands = flags_parser.add_subparsers(required=True)
     subcommand = subcommands.add_parser("hook", exit_on_error=False)
     subcommand.add_argument("--options", required=True)
     subcommand.add_argument("--type", default="")
     subcommand.add_argument("--seed", type=int)
     subcommand.add_argument("--chances", action="store_true")
-    return parser
+    return flags_parser
 
 
 def chances_table(lottery):
@@ -62,7 +62,7 @@ def reporting_failures():
 
 if __name__ == "__main__":
     with reporting_failures():
-        flags = command_line().parse_args()
+        flags = parser().parse_args()
         theme = Theme(flags.options, flags.seed)
         options = ThemeOptions(flags.type)
 

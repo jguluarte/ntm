@@ -1,11 +1,12 @@
 import unittest
 
 import fixtures
-from picker import Picker, chances_table, reporting_failures
+from picker import Picker, chances_table, parser, reporting_failures
 from theme import MissingOptions, Theme, ThemeOptions
 
 SEED = 3
 RUNS = 10
+ATTEMPTS = 50
 
 
 class PickTest(unittest.TestCase):
@@ -31,18 +32,14 @@ class PickTest(unittest.TestCase):
     def test_without_a_seed_runs_draw_different_options(self):
         theme = Theme(fixtures.EVEN)
         picker = Picker(theme)
-
-        attempts = 50
-        drawn = {picker.pick() for _ in range(attempts)}
+        drawn = {picker.pick() for _ in range(ATTEMPTS)}
 
         self.assertGreater(len(drawn), 1)
 
     def test_an_option_weighing_0_is_never_drawn(self):
         theme = Theme(fixtures.WEIGHTED)
         picker = Picker(theme)
-
-        attempts = 50
-        drawn = {picker.pick() for _ in range(attempts)}
+        drawn = {picker.pick() for _ in range(ATTEMPTS)}
 
         self.assertNotIn("hook: scenes/dusk", drawn)
 
@@ -75,6 +72,15 @@ class ChancesTableTest(unittest.TestCase):
 
 
 class ReportingFailuresTest(unittest.TestCase):
+    def test_a_missing_options_flag_fails_naming_it(self):
+        with self.assertRaises(SystemExit) as exited:
+            with reporting_failures():
+                parser().parse_args(["hook"])
+
+        why = "the following arguments are required: --options"
+        expected = f"Picker FAILED: ArgumentError: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
     def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

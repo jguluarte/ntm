@@ -71,14 +71,13 @@ class CommandLineTest(unittest.TestCase):
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
-    def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, type="morning,evening")
+    def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
+        args = make_picker_args(fixtures.EVEN, type="night")
 
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
 
-        why = "more than one reminder type: evening, morning"
-        expected = f"Picker FAILED: MoreThanOneReminderType: {why}"
+        expected = "Picker FAILED: UnknownOption: not an option: night"
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):

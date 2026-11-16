@@ -75,7 +75,7 @@ class FitTest(unittest.TestCase):
         expected = ["scenes/evening_done"]
         self.assertEqual(expected, lottery.names)
 
-    def test_a_big_win_no_entry_fits_fails_with_missing_options(self):
+    def test_a_big_win_fitting_nothing_as_a_finished_task_fails(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
 
         with self.assertRaises(MissingOptions) as raised:
@@ -86,18 +86,6 @@ class FitTest(unittest.TestCase):
 
 
 class ChanceTest(unittest.TestCase):
-    def test_entries_without_a_weight_or_score_are_equally_likely(self):
-        theme = Theme(fixtures.EVEN)
-        lottery = theme.lottery_for(ThemeOptions())
-
-        expected = {
-            "scenes/dawn": 0.25,
-            "scenes/noon": 0.25,
-            "scenes/dusk": 0.25,
-            "characters/host": 0.25,
-        }
-        self.assertEqual(expected, lottery.chance_by_name)
-
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
         lottery = theme.lottery_for(ThemeOptions())

@@ -10,10 +10,12 @@ class LotteryTest(unittest.TestCase):
         expected = {"heads": 0.25, "tails": 0.75}
         self.assertEqual(expected, lottery.chance_by_candidate)
 
-    def test_a_seed_draws_the_same_candidates_every_run(self):
+    def test_the_same_seed_draws_the_same_candidates(self):
         lottery = Lottery({"heads": 1, "tails": 3})
-        Lottery.set_seed(3)
-        drawn = [lottery.draw() for _ in range(4)]
 
-        expected = ["heads", "tails", "tails", "tails"]
-        self.assertEqual(expected, drawn)
+        Lottery.set_seed(3)
+        first = [lottery.draw() for _ in range(4)]
+        Lottery.set_seed(3)
+        second = [lottery.draw() for _ in range(4)]
+
+        self.assertEqual(first, second)

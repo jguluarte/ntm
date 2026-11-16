@@ -1,9 +1,9 @@
 # The picker
 
-The picker picks what each message is built on: a hook, drawn at random from a
-theme.
+The picker picks what each message is built on, its hook: an option drawn at
+random from a theme.
 
-It reads a theme's options file and prints the hook it drew. Beside it,
+It reads a theme's options file and prints the option it drew. Beside it,
 `recalculate.py` writes a new theme's weights and checksums into its options
 file. Both run on Python 3 with PyYAML and jsonschema.
 
@@ -24,17 +24,17 @@ python3 picker.py hook --options <file> [--type <list>] --chances
 | `--options` | The theme's options file, as YAML                                                  |
 | `--type`    | The message's reminder type and task outcomes, as `evening,slipped`                |
 | `--seed`    | A whole number, for a repeatable pick                                              |
-| `--chances` | A table of each fitting hook's weight, score and chance, printed instead of a hook |
+| `--chances` | A table of each fitting option's weight, score and chance, shown instead of a hook |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
-hook, for tests and for looking into why a hook was picked. Without `--seed`,
-each run draws afresh, seeded from the operating system's randomness rather than
-the clock.
+option, for tests and for looking into why an option was picked. Without
+`--seed`, each run draws afresh, seeded from the operating system's randomness
+rather than the clock.
 
 ## What it prints
 
-`hook` prints the hook as `<kind>/<slug>`: the pool it came from and the entry's
-slug.
+`hook` prints the option it drew as `<kind>/<slug>`: the pool it came from and
+the entry's slug.
 
 ```
 hook: characters/detective
@@ -63,9 +63,9 @@ Picker FAILED: MissingWeight: every option that fits big_win weighs 0
 
 ## How it picks
 
-### The hook
+### The options
 
-The hooks are the entries of every pool whose `roles` include `hook`, taken as
+The options are the entries of every pool whose `roles` include `hook`, taken as
 one list. The picker draws one of those that fit, each at its chance.
 
 The order of entries in a file doesn't change their chances. With a fixed
@@ -75,28 +75,28 @@ The order of entries in a file doesn't change their chances. With a fixed
 
 `--type` takes at most one reminder type, `morning`, `afternoon`, `evening` or
 `weekly`, and any of the task outcomes `slipped`, `done` and `big_win`,
-separated by commas. The picker draws from the hooks whose `type` fits the
+separated by commas. The picker draws from the options whose `type` fits the
 message's, as `references/theme-files.md` says, or, without `--type`, from the
-hooks without `type`. On a big win it draws from the hooks kept for `big_win`,
-or, when none of those fits, from the hooks that fit `done`.
+options without `type`. On a big win it draws from the options kept for
+`big_win`, or, when none of those fits, from the options that fit `done`.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --type big_win
 hook: shared_lines/big_win
 ```
 
-### How likely each hook is
+### How likely each option is
 
-A hook's draw weight is its `weight` times 2 to the power of its `score`,
+An option's draw weight is its `weight` times 2 to the power of its `score`,
 `weight * 2 ** score`, so each point of score doubles it and each point below 0
-halves it. A hook's chance is its draw weight over the total draw weight of
-every hook that fits. A hook that weighs 0 is never drawn.
+halves it. An option's chance is its draw weight over the total draw weight of
+every option that fits. An option that weighs 0 is never drawn.
 
-`--chances` prints each hook that fits, in file order, with its `weight`, its
+`--chances` prints each option that fits, in file order, with its `weight`, its
 `score` and its chance.
 
 In `Casebook-options.yaml`, the detective's draw weight, about 0.65, is 0.33 of
-the total draw weight, 1.98, of the three hooks that fit without `--type`.
+the total draw weight, 1.98, of the three options that fit without `--type`.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --chances

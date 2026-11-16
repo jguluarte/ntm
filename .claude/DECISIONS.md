@@ -87,8 +87,9 @@ computed half-life since its last use, and a weighted random draw takes one, so
 a value's place in its list means nothing.
 
 Each message gets one hook, from the pool of motifs, references and actors'
-lines. It names a speaker only sometimes, at a rate computed from the pool.
-Messages may talk to the user as "you", and never use their name or a pet name.
+lines. It names a speaker only sometimes, drawn from all the theme's speaker
+pools, at one rate for the theme. Messages may talk to the user as "you", and
+never use their name or a pet name.
 
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
@@ -99,19 +100,29 @@ level, carries since its last use.
 
 The picker applies every threshold, rest and cap, and prints
 `escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
-days and closed counts, plus its judgements. The writer gets the names as
-printed.
+days and the message's type, which names `done`, `win` or `big_win` as
+`ntm:style` calls them. The writer gets the names as printed.
 
-The picker can bump the escalation level one step with no slip behind it, capped
-at the top. The bump's chance grows with the days since the last message at a
+The bump is the theme's choice. In a theme that presses on a good day, the
+picker can bump the escalation level one step with no slip behind it, capped at
+the top. The bump's chance grows with the days since the last message at a
 raised level, whether slips or a bump raised it, over a half-life: 3 days for
-Justin. So a good stretch still gets read.
+Justin. So a good stretch still gets read. A theme that never presses has a
+`bump_rate` of 0, and only slips raise its level.
 
-A win is earned: it comes from the theme's counts (for Justin, a day with more
-than 5 closed or a week with more than 10) or the run's judgement of a big or
-hard task, and rests on a half-life of about 2.5 days to thin wins out. The
-winners circle comes only from the run's judgement of something truly shocking,
-at most once a week; when capped, it lands as a win.
+A finished task is the first `finishing_tasks` level. A win is the second, and
+is more than an everyday thing: a task finished after slipping for days, a task
+the run judges big or hard, or, in the weekly setup's message only, more tasks
+finished than planned that week. A reminder looks only at the day, and finishing
+more than planned today isn't a win. Wins rest on a half-life of about 2.5 days
+to thin them out. A big win is the third, and rare: the project itself closes as
+done. A catch-all project, such as one for errands, stays open, so finishing its
+tasks is never a big win.
+
+`ntm:style` calls a win or a big win only from the facts the run already
+gathered; nothing reads the task list for it. It calls each once, in the first
+message after it happens: the message history records each message's type, so a
+later message sees what an earlier one celebrated.
 
 ### Theme files
 
@@ -122,8 +133,9 @@ and `files`, which says what each other file holds. A reminder's job lives in
 
 `escalation` is a ladder of levels, normal first: for Justin, none, light,
 escalated and full. `finishing_tasks` is a ladder too: typical, win and
-winners_circle. The guide says only how each level sounds. Slips set the base
-escalation level, by the slip days in the options file.
+winners_circle. The guide says only how each level sounds. Each ladder starts
+from defaults, how many levels and when each applies, and a theme may set its
+own. Slips set the base escalation level, by the slip days in the options file.
 
 The options file, `<theme>-options.yaml`, is the only file the picker reads. It
 holds the computed numbers and a checksum of the content they came from. Beside
@@ -159,7 +171,8 @@ It recomputes the half-lives, actor weights and speaker rate only when the
 checksum shows the content changed.
 
 It compares the user's response rate by escalation level and moves the bump rate
-within bounds. The levels and their thresholds stay as written by hand.
+within bounds. A `bump_rate` of 0 stays 0. The levels and their thresholds stay
+as written by hand.
 
 It prunes each theme's message history. An old entry matters only for its picks'
 rest. Once its hook, speaker and line have each been picked again in a later
@@ -171,9 +184,9 @@ history then rolls forward with an upper limit.
 Each theme has its own message history, `<Theme>-message-history`, named like
 the theme's other files: for Justin, `Dragify-message-history`.
 
-One JSON line per message: the date and time, the reminder, the picks, the
-opening words, the task ids with their planned dates at send, the user's
-feedback and the rater's verdict. A field with no value is left out.
+One JSON line per message: the date and time, the reminder, the message's type,
+the picks, the opening words, the task ids with their planned dates at send, the
+user's feedback and the rater's verdict. A field with no value is left out.
 
 The picks include the `escalation` and `finishing_tasks` names as strings, as
 the picker printed them, the first level included. Either is left out only when

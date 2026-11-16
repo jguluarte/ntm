@@ -24,15 +24,14 @@ wherever it shows the example.
 It keeps today's intro text and asks one question at a time in chat. A user who
 already has a theme can start from it: the builder sorts it into the new files.
 
-| Stage              | What the user is asked                        | What gets written                           |
-| ------------------ | --------------------------------------------- | ------------------------------------------- |
-| 1. World           | Their world, where they sit, what hooks them  | The root's `theme` and `world`              |
-| 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `finishing_tasks`; thresholds |
-| 3. Kinds           | Kinds found in the sources; which can talk    | The options file's pools and roles; `files` |
-| 4. Perspectives    | Who else would comment on their week          | The options file's `perspectives`           |
-| 5. Research        | Which kind first                              | The entry files                             |
-| 6. Terminology     | Words from the research a writer would miss   | The terminology file                        |
-| 7. Sample messages | Whether a few sample messages make them smile | Any fixes to how an escalation level sounds |
+| Stage           | What the user is asked                       | What gets written                           |
+| --------------- | -------------------------------------------- | ------------------------------------------- |
+| 1. World        | Their world, where they sit, what hooks them | The root's `theme` and `world`              |
+| 2. Levels       | How it sounds when tasks slip, and get done  | `escalation`, `finishing_tasks`; thresholds |
+| 3. Kinds        | Kinds found in the sources; which can talk   | The options file's pools and roles; `files` |
+| 4. Perspectives | Who else would comment on their week         | The options file's `perspectives`           |
+| 5. Research     | Which kind first                             | The entry files                             |
+| 6. Terminology  | Words from the research a writer would miss  | The terminology file                        |
 
 Stage 1 also asks how the user's day maps onto their world, if it does at all,
 and whether there is anything they don't want in it. The user decides what each
@@ -59,7 +58,7 @@ files, and briefs the bigger research when the theme grows.
 
 The builder aims to give every theme, the small one included, entries kept for
 `big_win`, so a big win has material of its own. A theme with none still works:
-on a big win, the picker falls back to a normal win.
+on a big win, the picker falls back to the hooks for a finished task.
 
 ## Kinds
 
@@ -128,12 +127,18 @@ the defaults for both parts, how many levels and when each applies, and a theme
 may set its own for either. The user sees a number only if they ask, and "push
 harder sooner" moves one a step.
 
-| Level | `escalation`, reached by   | `finishing_tasks`, reached by                                              |
-| ----- | -------------------------- | -------------------------------------------------------------------------- |
-| 1st   | Where every message starts | Any finished task                                                          |
-| 2nd   | A bump only                | Over 5 closed a day or 10 a week, or a big or hard task; 2.5-day half-life |
-| 3rd   | A task slipped 1 day       | Something truly shocking, at most once in 7 days                           |
-| 4th   | A task slipped 3 days      |                                                                            |
+| Level | `escalation`, reached by   | `finishing_tasks`, reached by   |
+| ----- | -------------------------- | ------------------------------- |
+| 1st   | Where every message starts | A finished task: `done`         |
+| 2nd   | A bump only                | A win: `win`; 2.5-day half-life |
+| 3rd   | A task slipped 1 day       | A finished project: `big_win`   |
+| 4th   | A task slipped 3 days      |                                 |
+
+A win is any of these: more tasks finished than planned this week, a task
+finished after slipping for days, or a task judged big or hard by the run that
+sends the message. A big win is a whole project finished: the project itself
+closes as done. The run hands the picker these as task outcomes, `done`, `win`
+and `big_win`, and the picker finds the level from them.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.

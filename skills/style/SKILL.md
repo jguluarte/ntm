@@ -37,16 +37,17 @@ anything else its rule asks of the message, such as tone or length.
 
 Pick one hook, the idea this message builds on: one entry of the theme, drawn by
 the picker as The picker, below, says. Hand it the message's type: each value
-below that holds, with commas between them, such as `evening,slipped`.
+below that holds, with commas between them, such as `evening,slipped`. Make step
+2's call on a win or a big win first.
 
-| Value                               | When                                     |
-| ----------------------------------- | ---------------------------------------- |
-| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type`   |
-| `weekly`                            | It's the weekly setup's message          |
-| `slipped`                           | A task in the facts slipped              |
-| `done`                              | A task in the facts is done              |
-| `win`                               | The facts show a win, as step 2 says     |
-| `big_win`                           | The facts show a big win, as step 2 says |
+| Value                               | When                                   |
+| ----------------------------------- | -------------------------------------- |
+| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type` |
+| `weekly`                            | It's the weekly setup's message        |
+| `slipped`                           | A task in the facts slipped            |
+| `done`                              | A task in the facts is done            |
+| `win`                               | Step 2 calls a win                     |
+| `big_win`                           | Step 2 calls a big win                 |
 
 The self-test's message, and one written in chat, take none of the first two
 rows' values. With no value at all, leave `--type` out.
@@ -71,19 +72,18 @@ entries for the hook and the speaker.
 
 Read the facts against the theme's guidance and set the tone: how hard each
 slipped task is pressed, a nod for what's done, and anything the facts ask of
-the tone. Call for a celebration only for a win or a big win. A win is any of
-these: more tasks finished than planned this week, a task finished after
-slipping for days, or a task you judge big or hard. A big win is a whole project
-finished: the project itself closes as done. Call either only from the facts you
-were handed; look nothing else up. Only the weekly setup's message counts the
-week; a reminder calls a win from the day: a task finished after slipping for
-days, or one you judge big or hard. A big win is rare: call it only when the
-facts show a project closed as done. Call a win or a big win once, in the first
-message after it happens: one that an entry Setup read already celebrated, with
-`win` or `big_win` in its `type`, isn't called again. An ordinary day of doing
-what was planned gets a nod. Slips from a while back weigh less: a task picked
-up again after a long gap is pressed less than its count of slips, as you judge
-it.
+the tone. Slips from a while back weigh less: a task picked up again after a
+long gap is pressed less than its count of slips, as you judge it.
+
+Call for a celebration only for a win or a big win; an ordinary day of doing
+what was planned gets a nod. A win is any of these: more tasks finished than
+planned this week, a task finished after slipping for days, or a task you judge
+big or hard. Only the weekly setup's message counts the week; a reminder looks
+only at the day. A big win is a whole project finished: the project itself
+closes as done. It's rare. Call either only from the facts you were handed, and
+look nothing else up. Call each once, in the first message after it happens: a
+win that a `%Message-history` entry already celebrated, with `win` or `big_win`
+in its `type`, isn't called again.
 
 ### 3. Write
 
@@ -136,7 +136,7 @@ read. An entry is one JSON line, written compact, with no spaces or line breaks
 added, and only the fields that have a value:
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"morning","type":"morning","hook":"scenes/dawn","tasks":[{"id":"ABC-12"}]}
+{"sent":"2026-11-13 08:45","reminder":"morning","type":"morning","hook":"scenes/dawn"}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
@@ -148,7 +148,8 @@ added, and only the fields that have a value:
   or by its name when you picked it yourself, such as `launch`
 - `speaker`: who step 1 picked, only when it picked one
 - `opening`: the message's first five words, as sent
-- `tasks`: each task the message is about, with its planned date when it has one
+- `tasks`: each task the message is about, with its planned date when it has
+  one, such as `"tasks":[{"id":"ABC-12","planned":"2026-11-13"}]`
 - `feedback`: the user's word on it, `keep` or `stale`
 - `verdict`: the nightly rater's
 

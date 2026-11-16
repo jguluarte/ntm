@@ -10,8 +10,8 @@ for `ntm:style`, or, with `--chances`, the chances it draws from.
 
 | Class          | What it is                           | What it owns                                                |
 | -------------- | ------------------------------------ | ----------------------------------------------------------- |
-| `Theme`        | The options file, read and checked   | Its groups, and a lottery of those that can be drawn        |
-| `OptionGroup`  | A pool whose `roles` include `hook`  | Its weight, score, options, and a lottery of those that fit |
+| `Theme`        | The options file, read and checked   | Its groups, the lottery of them, and the draw of one option |
+| `OptionGroup`  | A pool whose `roles` include `hook`  | Its weight, score, options, the lottery of those that fit   |
 | `Option`       | An entry in a pool, as `scenes/dawn` | Its weight and score, and the types it fits                 |
 | `Lottery`      | The candidates for one draw          | Its candidates, their chances, the seed, and the draw       |
 | `ThemeOptions` | A message's type, as `morning,done`  | Its reminder type and task outcomes, and the big-win rule   |
@@ -23,19 +23,23 @@ for `ntm:style`, or, with `--chances`, the chances it draws from.
 def pick_option(self):
     with self._reporting_failures():
         Lottery.set_seed(self.seed)
-        group_lottery = self.theme.lottery_for(self.options)
-        group = group_lottery.draw()
-        option_lottery = group.lottery_for(self.options)
-        option = option_lottery.draw()
+        option = self.theme.draw_for(self.options)
         return f"hook: {option.name}"
 ```
 
-The seed is set once on `Lottery`, so both draws follow from it. `group_lottery`
-holds each group with a fitting option that weighs more than 0, and `group` is
-drawn from it. `option_lottery` holds that group's fitting options, and `option`
-is drawn from it. Both lotteries apply the big-win rule: on a big win with no
-option kept for it, they draw as for a finished task. `chances_table` prints the
-same two lotteries, headed `group`, `option` and `chance in group`.
+```python
+def draw_for(self, options):
+    return self.lottery_for(options).draw().draw()
+```
+
+The picker asks the theme for the one option. The seed is set once on `Lottery`,
+so both draws follow from it. `Theme.lottery_for` is the lottery of its groups,
+each with a fitting option that weighs more than 0. Each candidate in it is that
+group's own lottery, already holding the options that fit, so drawing a group
+gives a lottery, and drawing from that gives the option. Both lotteries apply
+the big-win rule: on a big win with no option kept for it, they draw as for a
+finished task. `chances_table` prints the same lotteries, headed `group`,
+`option` and `chance in group`.
 
 ## What a test reads like
 
@@ -43,11 +47,10 @@ same two lotteries, headed `group`, `option` and `chance in group`.
 def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
     theme = Theme(fixtures.EVERY_TYPE)
     options = ThemeOptions("weekly")
-    [scenes] = theme.lottery_for(options).candidates
-    lottery = scenes.lottery_for(options)
+    [scenes_lottery] = theme.lottery_for(options).candidates
 
     expected = ["scenes/any_time", "scenes/morning_or_weekly"]
-    self.assertEqual(expected, lottery.names)
+    self.assertEqual(expected, scenes_lottery.names)
 
 
 def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):

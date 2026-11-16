@@ -1,4 +1,3 @@
-import shutil
 import tempfile
 import textwrap
 import unittest
@@ -11,7 +10,7 @@ from theme import InvalidTheme, MissingWeight, Theme, UnknownEntryFile
 class OptionsTest(unittest.TestCase):
     def test_the_options_are_every_entry_but_those_of_speaker_only_pools(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         expected = [
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
@@ -29,7 +28,7 @@ class OptionsTest(unittest.TestCase):
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -44,7 +43,7 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTLESS)
 
         with self.assertRaises(MissingWeight) as raised:
-            theme.lottery()
+            theme.lottery
 
         expected = "every option weighs 0"
         self.assertEqual(expected, str(raised.exception))
@@ -62,7 +61,7 @@ class DrawTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         expected = [
             "characters/detective", "shared_lines/any_time", "scenes/stakeout",
@@ -118,15 +117,31 @@ class EntryFilesTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
 
+class WeightsAndChecksumsTest(unittest.TestCase):
+    def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        weight = theme.weight_of("characters/detective")
+
+        expected = 0.57
+        self.assertEqual(expected, weight)
+
+    def test_the_checksum_of_a_file_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        checksum = theme.checksum_of("Casebook-characters.yaml")
+
+        expected = "9f86d081884c7d65..."
+        self.assertEqual(expected, checksum)
+
+
 class SaveTest(unittest.TestCase):
     def test_saving_writes_the_options_files_layout(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
-        options = Path(shutil.copy(fixtures.EVEN, folder))
-        theme = Theme(options)
+        saved_options = Path(folder) / "Even-options.yaml"
+        theme = Theme(fixtures.EVEN)
         theme.set_weight("scenes/noon", 0.5)
         theme.set_checksum("Even-scenes.yaml", "ab12")
-        theme.save()
-        text = options.read_text(encoding="utf-8")
+        theme.save(saved_options)
+        text = saved_options.read_text(encoding="utf-8")
 
         expected = textwrap.dedent("""\
             checksums:

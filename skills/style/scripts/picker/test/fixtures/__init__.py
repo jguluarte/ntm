@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from . import casebook as casebook
+from . import weighing as weighing
 
 FIXTURES = Path(__file__).parent
 

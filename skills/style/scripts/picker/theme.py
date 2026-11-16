@@ -1,6 +1,7 @@
 import hashlib
 import random
 from dataclasses import dataclass
+from functools import cached_property
 from pathlib import Path
 
 import jsonschema
@@ -111,6 +112,7 @@ class Theme:
         if not self._options:
             raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
 
+    @cached_property
     def lottery(self):
         draw_weights = {option: option.draw_weight for option in self._options}
 
@@ -120,7 +122,7 @@ class Theme:
         return Lottery(draw_weights, self.seed)
 
     def draw(self):
-        return self.lottery().draw()
+        return self.lottery.draw()
 
     def entries_from(self, file_name):
         names = []
@@ -134,21 +136,30 @@ class Theme:
 
         return names
 
+    def weight_of(self, entry_name):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        return entry.get(WEIGHT, 1)
+
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
 
+    def checksum_of(self, file_name):
+        return self._checksums[file_name]
+
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum
 
-    def save(self):
+    def save(self, path):
         checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
         text = yaml.dump(
             checksums_first, Dumper=_OptionsDumper, sort_keys=False,
         )
-        Path(self.path).write_text(text, encoding="utf-8")
+        Path(path).write_text(text, encoding="utf-8")
 
     @staticmethod
     def _read_options(pools_by_kind):

@@ -1,9 +1,8 @@
 import argparse
 import contextlib
-import random
 import sys
 
-from theme import Theme, ThemeOptions
+from theme import Lottery, Theme, ThemeOptions
 
 
 class Picker:
@@ -25,22 +24,21 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
+            Lottery.set_seed(self.seed)
             lottery = self.theme.lottery_for(self.options)
-            hooks = list(lottery)
-            generator = random.Random(self.seed)
-            [hook] = generator.choices(hooks, weights=lottery.values())
-            return f"hook: {hook.name}"
+            option = lottery.draw()
+            return f"hook: {option.name}"
 
     def chances_table(self):
         with self._reporting_failures():
             lottery = self.theme.lottery_for(self.options)
 
             rows = [("hook", "weight", "score", "chance")]
-            for hook, chance in lottery.items():
-                weight = f"{hook.weight:g}"
-                score = f"{hook.score:g}"
+            for option, chance in lottery.chance_by_candidate.items():
+                weight = f"{option.weight:g}"
+                score = f"{option.score:g}"
                 rounded_chance = f"{chance:.2f}"
-                rows.append((hook.name, weight, score, rounded_chance))
+                rows.append((option.name, weight, score, rounded_chance))
 
             return self._table(rows)
 

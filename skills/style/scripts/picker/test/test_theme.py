@@ -12,7 +12,7 @@ from theme import (
 
 
 def hook_names(theme, type=""):
-    return [hook.name for hook in theme.lottery_for(ThemeOptions(type))]
+    return theme.lottery_for(ThemeOptions(type)).names
 
 
 class HooksTest(unittest.TestCase):
@@ -95,7 +95,6 @@ class ChanceTest(unittest.TestCase):
     def test_entries_without_a_weight_or_score_are_equally_likely(self):
         theme = Theme(fixtures.EVEN)
         lottery = theme.lottery_for(ThemeOptions())
-        chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         expected = {
             "scenes/dawn": 0.25,
@@ -103,12 +102,11 @@ class ChanceTest(unittest.TestCase):
             "scenes/dusk": 0.25,
             "characters/host": 0.25,
         }
-        self.assertEqual(expected, chance_by_name)
+        self.assertEqual(expected, lottery.chance_by_name)
 
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
         lottery = theme.lottery_for(ThemeOptions())
-        chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -117,7 +115,7 @@ class ChanceTest(unittest.TestCase):
             "scenes/dusk": 0 * 2 ** 0 / total_draw_weight,
             "characters/host": 3 * 2 ** -1 / total_draw_weight,
         }
-        self.assertEqual(expected, chance_by_name)
+        self.assertEqual(expected, lottery.chance_by_name)
 
     def test_every_fitting_hook_weighing_0_fails_with_no_hook_has_weight(self):
         theme = Theme(fixtures.WEIGHTED)

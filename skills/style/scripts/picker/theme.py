@@ -1,5 +1,6 @@
 import enum
 import hashlib
+import random
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -113,6 +114,10 @@ class ThemeOptions:
     def is_big_win(self):
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
+    def as_finished_task(self):
+        big_win, done = TaskOutcome.BIG_WIN.value, TaskOutcome.DONE.value
+        return ThemeOptions(str(self).replace(big_win, done))
+
     def __str__(self):
         reminder = [self.reminder_type.value] if self.reminder_type else []
         outcomes = sorted(outcome.value for outcome in self.task_outcomes)
@@ -151,55 +156,49 @@ class Option:
     def kept_for_big_win(self):
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
-    def fits(self, theme_options):
-        if theme_options.is_big_win and not self.kept_for_big_win:
+    def fits(self, options):
+        if options.is_big_win and not self.kept_for_big_win:
             return False
 
-        reminder_type = theme_options.reminder_type
+        reminder_type = options.reminder_type
         if self.reminder_types and reminder_type not in self.reminder_types:
             return False
 
-        task_outcomes = theme_options.task_outcomes
+        task_outcomes = options.task_outcomes
         if self.task_outcomes and self.task_outcomes.isdisjoint(task_outcomes):
             return False
 
         return True
 
 
-class HookManager:
-    def __init__(self, hooks):
-        self._hooks = hooks
+class Lottery:
+    _generator = random.Random()
 
-    def lottery_for(self, theme_options):
-        hooks = self._responding_to(theme_options)
-        total = sum(hook.draw_weight for hook in hooks)
+    @classmethod
+    def set_seed(cls, seed):
+        cls._generator.seed(seed)
 
-        if total == 0:
-            raise NoHookHasWeight(theme_options)
+    def __init__(self, draw_weights):
+        total = sum(draw_weights.values())
+        self.chance_by_candidate = {
+            candidate: draw_weight / total
+            for candidate, draw_weight in draw_weights.items()
+        }
 
-        return {hook: hook.draw_weight / total for hook in hooks}
+    @property
+    def names(self):
+        return [candidate.name for candidate in self.chance_by_candidate]
 
-    def _responding_to(self, theme_options):
-        if not self._hooks:
-            raise NoHooks()
+    @property
+    def chance_by_name(self):
+        chances = self.chance_by_candidate.items()
+        return {candidate.name: chance for candidate, chance in chances}
 
-        hooks = self._hooks_that_fit(theme_options)
-
-        if not hooks and theme_options.is_big_win:
-            hooks = self._hooks_that_fit(self._as_normal_win(theme_options))
-
-        if not hooks:
-            raise MissingHook(theme_options)
-
-        return hooks
-
-    def _hooks_that_fit(self, theme_options):
-        return [hook for hook in self._hooks if hook.fits(theme_options)]
-
-    @staticmethod
-    def _as_normal_win(theme_options):
-        big_win, done = TaskOutcome.BIG_WIN.value, TaskOutcome.DONE.value
-        return ThemeOptions(str(theme_options).replace(big_win, done))
+    def draw(self):
+        candidates = list(self.chance_by_candidate)
+        chances = self.chance_by_candidate.values()
+        [winner] = self._generator.choices(candidates, weights=chances)
+        return winner
 
 
 class _OptionsDumper(yaml.SafeDumper):
@@ -222,11 +221,26 @@ class Theme:
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
-        hooks = self._read_hooks(self._fields[POOLS_BY_KIND])
-        self._hook_manager = HookManager(hooks)
+        self._options = self._read_options(self._fields[POOLS_BY_KIND])
 
-    def lottery_for(self, theme_options):
-        return self._hook_manager.lottery_for(theme_options)
+    def lottery_for(self, options):
+        if not self._options:
+            raise NoHooks()
+
+        fitting = self._options_that_fit(options)
+
+        if not fitting and options.is_big_win:
+            fitting = self._options_that_fit(options.as_finished_task())
+
+        if not fitting:
+            raise MissingHook(options)
+
+        draw_weights = {option: option.draw_weight for option in fitting}
+
+        if not any(draw_weights.values()):
+            raise NoHookHasWeight(options)
+
+        return Lottery(draw_weights)
 
     def entries_from(self, file_name):
         names = []
@@ -256,16 +270,19 @@ class Theme:
         )
         Path(self.path).write_text(text, encoding="utf-8")
 
+    def _options_that_fit(self, options):
+        return [option for option in self._options if option.fits(options)]
+
     @staticmethod
-    def _read_hooks(pools_by_kind):
-        hooks = []
+    def _read_options(pools_by_kind):
+        options = []
 
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    hooks.append(Option.from_entry(kind, slug, entry))
+                    options.append(Option.from_entry(kind, slug, entry))
 
-        return hooks
+        return options
 
     @staticmethod
     def _load(path):

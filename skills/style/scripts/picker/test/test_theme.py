@@ -132,7 +132,7 @@ class ChanceTest(unittest.TestCase):
 
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
-        theme = Theme(fixtures.CASEBOOK)
+        theme = Theme(fixtures.casebook.OPTIONS)
         hooks = hook_names(theme)
 
         expected = [
@@ -185,7 +185,7 @@ class SchemaTest(unittest.TestCase):
 
 class EntryFilesTest(unittest.TestCase):
     def test_the_entries_from_a_file_are_those_of_every_pool_naming_it(self):
-        theme = Theme(fixtures.CASEBOOK)
+        theme = Theme(fixtures.casebook.OPTIONS)
         entries = theme.entries_from("Casebook-characters.yaml")
 
         expected = [

@@ -155,7 +155,7 @@ class ChancesTableTest(unittest.TestCase):
         self.assertEqual(expected, rows)
 
     def test_the_documented_example_shows_the_documented_chances(self):
-        picker = Picker(Theme(fixtures.CASEBOOK))
+        picker = Picker(Theme(fixtures.casebook.OPTIONS))
         rows = picker.chances_table().splitlines()
 
         expected = [

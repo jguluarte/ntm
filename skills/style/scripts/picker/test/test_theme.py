@@ -117,11 +117,11 @@ class ChanceTest(unittest.TestCase):
 
 
 class DrawTest(unittest.TestCase):
-    def test_a_seeded_draw_returns_one_option(self):
-        theme = Theme(fixtures.EVEN, seed=2)
-        option = theme.draw_from(ThemeOptions())
+    def test_a_draw_returns_the_one_option_that_fits(self):
+        theme = Theme(fixtures.EVERY_TYPE)
+        option = theme.draw_from(ThemeOptions("weekly,big_win"))
 
-        expected = "characters/host"
+        expected = "scenes/big_win"
         self.assertEqual(expected, option.name)
 
 

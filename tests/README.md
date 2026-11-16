@@ -34,7 +34,7 @@ path, so a test imports their classes by name.
 | ----------------------- | ---------------------------------------------------------------------- |
 | `test_theme.py`         | The lottery `Theme` builds, one entry file's entries, saving, failures |
 | `test_theme_options.py` | The types `ThemeOptions` reads or refuses                              |
-| `test_lottery.py`       | The chances a `Lottery` gives, and what a seed draws                   |
+| `test_lottery.py`       | The chances a `Lottery` gives, and that a seed draws the same          |
 | `test_entry_file.py`    | The line counts and checksum `EntryFile` reads                         |
 | `test_picker.py`        | What the picker's command line builds, prints or fails with            |
 | `test_recalculate.py`   | What `start` builds from its command line, saves or fails with         |

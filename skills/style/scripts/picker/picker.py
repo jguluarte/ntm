@@ -66,8 +66,9 @@ class Picker:
         return drawn
 
     @classmethod
-    def _chance_rows(cls, name_heading, chance_heading, chances, history=None):
-        shows_days = history is not None and history.has_file
+    def _chance_rows(
+            cls, name_heading, chance_heading, chances, history=History()):
+        shows_days = history.has_file
         days_heading = ["days since used"] if shows_days else []
         rows = [
             (name_heading, "weight", "score", *days_heading, chance_heading),
@@ -75,9 +76,12 @@ class Picker:
         for candidate, chance in chances.items():
             weight = f"{candidate.weight:g}"
             score = f"{candidate.score:g}"
-            days = [cls._shown_days(history, candidate)] if shows_days else []
+            days_cell = (
+                [cls._shown_days(history, candidate)] if shows_days else []
+            )
             rounded_chance = f"{chance:.2f}"
-            rows.append((candidate.name, weight, score, *days, rounded_chance))
+            row = (candidate.name, weight, score, *days_cell, rounded_chance)
+            rows.append(row)
 
         return rows
 

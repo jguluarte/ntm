@@ -13,7 +13,7 @@ for `ntm:style`, or, with `--chances`, the chances it draws from.
 | `Theme`        | The options file, read and checked   | Its groups, and a lottery of those that can be drawn        |
 | `OptionGroup`  | A pool whose `roles` include `hook`  | Its weight, score, options, and a lottery of those that fit |
 | `Option`       | An entry in a pool, as `scenes/dawn` | Its weight and score, and the types it fits                 |
-| `Lottery`      | The candidates for one draw          | Its candidates, their chances, and the draw                 |
+| `Lottery`      | The candidates for one draw          | Its candidates, their chances, the seed, and the draw       |
 | `ThemeOptions` | A message's type, as `morning,done`  | Its reminder type and task outcomes, and the big-win rule   |
 | `Picker`       | One run of the `hook` subcommand     | The theme, options and seed, and what it prints             |
 
@@ -22,20 +22,20 @@ for `ntm:style`, or, with `--chances`, the chances it draws from.
 ```python
 def pick_option(self):
     with self._reporting_failures():
-        generator = random.Random(self.seed)
+        Lottery.set_seed(self.seed)
         group_lottery = self.theme.lottery_for(self.options)
-        group = group_lottery.draw(generator)
+        group = group_lottery.draw()
         option_lottery = group.lottery_for(self.options)
-        option = option_lottery.draw(generator)
+        option = option_lottery.draw()
         return f"hook: {option.name}"
 ```
 
-`group_lottery` holds each group with a fitting option that weighs more than 0,
-and `group` is drawn from it. `option_lottery` holds that group's fitting
-options, and `option` is drawn from it. Both lotteries apply the big-win rule:
-on a big win with no option kept for it, they draw as for a finished task.
-`chances_table` prints the same two lotteries, headed `group`, `option` and
-`chance in group`.
+The seed is set once on `Lottery`, so both draws follow from it. `group_lottery`
+holds each group with a fitting option that weighs more than 0, and `group` is
+drawn from it. `option_lottery` holds that group's fitting options, and `option`
+is drawn from it. Both lotteries apply the big-win rule: on a big win with no
+option kept for it, they draw as for a finished task. `chances_table` prints the
+same two lotteries, headed `group`, `option` and `chance in group`.
 
 ## What a test reads like
 

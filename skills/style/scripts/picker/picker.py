@@ -30,7 +30,7 @@ class Picker:
             generator = random.Random(self.seed)
             kind_chances = self.theme.kind_chances_for(self.theme_options)
             kind = self._draw(generator, kind_chances)
-            hook_chances = self.theme.hook_chances_for(
+            hook_chances = self.theme.lottery_for(
                 self.theme_options, kind.name,
             )
             hook = self._draw(generator, hook_chances)
@@ -42,7 +42,7 @@ class Picker:
             hook_chances = {}
             for kind in kind_chances:
                 hook_chances.update(
-                    self.theme.hook_chances_for(self.theme_options, kind.name),
+                    self.theme.lottery_for(self.theme_options, kind.name),
                 )
 
             kind_rows = self._chance_rows("kind", "chance", kind_chances)

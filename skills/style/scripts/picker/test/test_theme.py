@@ -16,7 +16,7 @@ class HooksTest(unittest.TestCase):
 
     def test_a_kinds_hooks_are_the_entries_of_its_pool(self):
         theme = Theme(fixtures.EVEN)
-        chances = theme.hook_chances_for(ThemeOptions(), "scenes")
+        chances = theme.lottery_for(ThemeOptions(), "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/dawn", "scenes/noon", "scenes/dusk"]
@@ -36,7 +36,7 @@ class FitTest(unittest.TestCase):
     def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
         theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("weekly")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/any_time", "scenes/morning_or_weekly"]
@@ -45,7 +45,7 @@ class FitTest(unittest.TestCase):
     def test_an_entry_fits_only_when_a_task_outcome_it_names_happened(self):
         theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening,slipped")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = [
@@ -57,7 +57,7 @@ class FitTest(unittest.TestCase):
     def test_an_entry_naming_both_kinds_needs_both(self):
         theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/any_time", "scenes/evening"]
@@ -66,7 +66,7 @@ class FitTest(unittest.TestCase):
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
         theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("evening,big_win")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/big_win", "scenes/evening_big_win"]
@@ -75,7 +75,7 @@ class FitTest(unittest.TestCase):
     def test_on_a_big_win_an_entry_still_fits_only_its_reminder_types(self):
         theme = Theme(fixtures.EVERY_TYPE)
         theme_options = ThemeOptions.parse("morning,done,big_win")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/big_win"]
@@ -84,7 +84,7 @@ class FitTest(unittest.TestCase):
     def test_a_big_win_with_nothing_kept_for_it_fits_as_a_normal_win(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
         theme_options = ThemeOptions.parse("evening,big_win")
-        chances = theme.hook_chances_for(theme_options, "scenes")
+        chances = theme.lottery_for(theme_options, "scenes")
         hooks = [hook.name for hook in chances]
 
         expected = ["scenes/evening_done"]
@@ -149,7 +149,7 @@ class KindChanceTest(unittest.TestCase):
 class HookChanceTest(unittest.TestCase):
     def test_entries_without_a_weight_or_score_are_equally_likely(self):
         theme = Theme(fixtures.EVEN)
-        chances = theme.hook_chances_for(ThemeOptions(), "scenes")
+        chances = theme.lottery_for(ThemeOptions(), "scenes")
         chance_by_name = {hook.name: chance for hook, chance in chances.items()}
 
         expected = {
@@ -159,7 +159,7 @@ class HookChanceTest(unittest.TestCase):
 
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        chances = theme.hook_chances_for(ThemeOptions(), "scenes")
+        chances = theme.lottery_for(ThemeOptions(), "scenes")
         chance_by_name = {hook.name: chance for hook, chance in chances.items()}
 
         total_draw_weight = 0.5 + 2 + 0

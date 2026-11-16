@@ -207,7 +207,7 @@ class HookManager:
 
         return self._chances_of(draw_weights)
 
-    def hook_chances_for(self, theme_options, kind):
+    def lottery_for(self, theme_options, kind):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
         draw_weights = {hook: hook.draw_weight for hook in hooks}
@@ -255,8 +255,8 @@ class Theme:
     def kind_chances_for(self, theme_options):
         return self._hook_manager.kind_chances_for(theme_options)
 
-    def hook_chances_for(self, theme_options, kind):
-        return self._hook_manager.hook_chances_for(theme_options, kind)
+    def lottery_for(self, theme_options, kind):
+        return self._hook_manager.lottery_for(theme_options, kind)
 
     @staticmethod
     def _read_hook_pools(pools_by_kind):

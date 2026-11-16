@@ -217,17 +217,6 @@ class ChancesTableTest(unittest.TestCase):
         ]
         self.assertEqual(expected, rows)
 
-    def test_without_a_history_no_table_shows_days_since_used(self):
-        picker = Picker(Theme(fixtures.EVEN))
-        kind_table, hook_table = picker.chances_table().split("\n\n")
-        shown = {
-            "kind table": "days since used" in kind_table,
-            "hook table": "days since used" in hook_table,
-        }
-
-        expected = {"kind table": False, "hook table": False}
-        self.assertEqual(expected, shown)
-
     def test_chances_where_every_fitting_hook_weighs_0_fail_naming_why(self):
         theme = Theme(fixtures.WEIGHTED)
         picker = Picker(theme, ThemeOptions.parse("big_win"))

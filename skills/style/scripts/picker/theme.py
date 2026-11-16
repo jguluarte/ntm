@@ -157,12 +157,12 @@ class Theme:
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum
 
-    def save(self):
+    def save(self, path=None):
         checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
         text = yaml.dump(
             checksums_first, Dumper=_OptionsDumper, sort_keys=False,
         )
-        Path(self.path).write_text(text, encoding="utf-8")
+        Path(path or self.path).write_text(text, encoding="utf-8")
 
     @staticmethod
     def _read_options(pools_by_kind):

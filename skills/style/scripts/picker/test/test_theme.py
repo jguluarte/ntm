@@ -1,4 +1,3 @@
-import shutil
 import tempfile
 import textwrap
 import unittest
@@ -137,12 +136,12 @@ class WeightsAndChecksumsTest(unittest.TestCase):
 class SaveTest(unittest.TestCase):
     def test_saving_writes_the_options_files_layout(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
-        options = Path(shutil.copy(fixtures.EVEN, folder))
-        theme = Theme(options)
+        saved_options = Path(folder) / "Even-options.yaml"
+        theme = Theme(fixtures.EVEN)
         theme.set_weight("scenes/noon", 0.5)
         theme.set_checksum("Even-scenes.yaml", "ab12")
-        theme.save()
-        text = options.read_text(encoding="utf-8")
+        theme.save(saved_options)
+        text = saved_options.read_text(encoding="utf-8")
 
         expected = textwrap.dedent("""\
             checksums:

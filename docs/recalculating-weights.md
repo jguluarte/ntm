@@ -211,8 +211,8 @@ rates from starting shares, every score 0, the checksums and an empty `weeks`.
 files, moves the bump rate and prunes. `report` writes the weekly theme report.
 
 `Theme` and `History` are shared with the picker, one class each, from a module
-beside the schema that both scripts import; `History` comes with the picker's
-history slice. To decide: where that module lives, since it reaches across skill
+beside the schema that both scripts import; `History` is in `theme.py` beside
+`Theme`. To decide: where that module lives, since it reaches across skill
 folders as the schema does.
 
 ## The build order

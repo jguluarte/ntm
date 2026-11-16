@@ -13,8 +13,9 @@ class RecalculationTest(unittest.TestCase):
 
         recalculation.weigh_entries()
 
-        self.assertEqual(0.5, theme.weight_of("characters/three_lines"))
         self.assertEqual(0.25, theme.weight_of("characters/one_line"))
+        self.assertEqual(0.5, theme.weight_of("characters/three_lines"))
+        self.assertEqual(0.75, theme.weight_of("characters/nine_lines"))
         self.assertEqual(1.0, theme.weight_of("characters/no_lines"))
 
     def test_recording_gives_the_entry_file_its_own_checksum(self):

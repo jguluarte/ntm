@@ -100,8 +100,8 @@ level, carries since its last use.
 
 The picker applies every threshold, rest and cap, and prints
 `escalation: <name>` and `finishing_tasks: <name>`. The run passes it the slip
-days and each finished task's outcome: `done`, `win` or `big_win`. The writer
-gets the names as printed.
+days and the message's type, which names `done`, `win` or `big_win` as
+`ntm:style` calls them. The writer gets the names as printed.
 
 The bump is the theme's choice. In a theme that presses on a good day, the
 picker can bump the escalation level one step with no slip behind it, capped at
@@ -110,11 +110,19 @@ raised level, whether slips or a bump raised it, over a half-life: 3 days for
 Justin. So a good stretch still gets read. A theme that never presses has a
 `bump_rate` of 0, and only slips raise its level.
 
-A finished task is the first `finishing_tasks` level. A win is the second: more
-tasks finished than planned this week, a task finished after slipping for days,
-or a task the run judges big or hard. Wins rest on a half-life of about 2.5 days
-to thin them out. A big win is the third: a whole project finished, when the
-last open task under a project closes.
+A finished task is the first `finishing_tasks` level. A win is the second, and
+is more than an everyday thing: a task finished after slipping for days, a task
+the run judges big or hard, or, in the weekly setup's message only, more tasks
+finished than planned that week. A reminder looks only at the day, and finishing
+more than planned today isn't a win. Wins rest on a half-life of about 2.5 days
+to thin them out. A big win is the third, and rare: the project itself closes as
+done. A catch-all project, such as one for errands, stays open, so finishing its
+tasks is never a big win.
+
+`ntm:style` calls a win or a big win only from the facts the run already
+gathered; nothing reads the task list for it. It calls each once, in the first
+message after it happens: the message history records each message's type, so a
+later message sees what an earlier one celebrated.
 
 ### Theme files
 
@@ -176,9 +184,9 @@ history then rolls forward with an upper limit.
 Each theme has its own message history, `<Theme>-message-history`, named like
 the theme's other files: for Justin, `Dragify-message-history`.
 
-One JSON line per message: the date and time, the reminder, the picks, the
-opening words, the task ids with their planned dates at send, the user's
-feedback and the rater's verdict. A field with no value is left out.
+One JSON line per message: the date and time, the reminder, the message's type,
+the picks, the opening words, the task ids with their planned dates at send, the
+user's feedback and the rater's verdict. A field with no value is left out.
 
 The picks include the `escalation` and `finishing_tasks` names as strings, as
 the picker printed them, the first level included. Either is left out only when

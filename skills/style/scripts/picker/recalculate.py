@@ -66,5 +66,4 @@ if __name__ == "__main__":
         recalculation.weigh_entries()
         recalculation.record_checksums()
         recalculation.save_options_file()
-
-    print(f"saved: {theme.path}")
+        print(f"saved: {theme.path}")

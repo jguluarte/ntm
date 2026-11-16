@@ -33,7 +33,7 @@ class CommandLineTest(unittest.TestCase):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
 
-        self.assertIsNone(picker.seed)
+        self.assertIsNone(picker.theme.seed)
 
     def test_the_type_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
@@ -93,9 +93,9 @@ class CommandLineTest(unittest.TestCase):
 
 class PickOptionTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_option(self):
-        theme = Theme(fixtures.EVEN)
         drawn = {
-            seed: Picker(theme, seed=seed).pick_option() for seed in range(6)
+            seed: Picker(Theme(fixtures.EVEN, seed)).pick_option()
+            for seed in range(6)
         }
 
         expected = {
@@ -119,8 +119,10 @@ class PickOptionTest(unittest.TestCase):
         self.assertGreater(len(drawn), 1)
 
     def test_an_option_weighing_0_is_never_drawn(self):
-        theme = Theme(fixtures.WEIGHTED)
-        drawn = {Picker(theme, seed=seed).pick_option() for seed in range(50)}
+        drawn = {
+            Picker(Theme(fixtures.WEIGHTED, seed)).pick_option()
+            for seed in range(50)
+        }
 
         expected = {
             "hook: scenes/dawn", "hook: scenes/noon", "hook: characters/host",

@@ -2,29 +2,25 @@ import argparse
 import contextlib
 import sys
 
-from theme import Lottery, Theme, ThemeOptions
+from theme import Theme, ThemeOptions
 
 
 class Picker:
-    def __init__(
-            self, theme, options=ThemeOptions(), seed=None,
-            shows_chances=False):
+    def __init__(self, theme, options=ThemeOptions(), shows_chances=False):
         self.theme = theme
         self.options = options
-        self.seed = seed
         self.shows_chances = shows_chances
 
     @classmethod
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
-            theme = Theme(flags.options)
+            theme = Theme(flags.options, flags.seed)
             options = ThemeOptions(flags.type)
-            return cls(theme, options, flags.seed, flags.shows_chances)
+            return cls(theme, options, flags.shows_chances)
 
     def pick_option(self):
         with self._reporting_failures():
-            Lottery.set_seed(self.seed)
             option = self.theme.draw_from(self.options)
             return f"hook: {option.name}"
 

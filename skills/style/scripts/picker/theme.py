@@ -171,13 +171,8 @@ class Option:
 
 
 class Lottery:
-    _generator = random.Random()
-
-    @classmethod
-    def set_seed(cls, seed):
-        cls._generator.seed(seed)
-
-    def __init__(self, draw_weights):
+    def __init__(self, draw_weights, seed=None):
+        self._generator = random.Random(seed)
         total = sum(draw_weights.values())
         self.chance_by_candidate = {
             candidate: draw_weight / total
@@ -215,8 +210,9 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 
 
 class Theme:
-    def __init__(self, path):
+    def __init__(self, path, seed=None):
         self.path = path
+        self.seed = seed
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
@@ -239,7 +235,7 @@ class Theme:
         if not any(draw_weights.values()):
             raise MissingWeight(options)
 
-        return Lottery(draw_weights)
+        return Lottery(draw_weights, self.seed)
 
     def draw_from(self, options):
         return self.lottery_for(options).draw()

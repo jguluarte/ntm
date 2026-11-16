@@ -141,16 +141,16 @@ class PickHookTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_fitting_hook_shows_its_chance_with_a_half_rounding_up(self):
+    def test_each_fitting_hook_shows_its_weight_score_and_rounded_chance(self):
         picker = Picker(Theme(fixtures.WEIGHTED))
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "hook             chance",
-            "scenes/dawn        0.13",
-            "scenes/noon        0.50",
-            "scenes/dusk        0.00",
-            "characters/host    0.38",
+            "hook             weight  score  chance",
+            "scenes/dawn         0.5      0    0.13",
+            "scenes/noon           1      1    0.50",
+            "scenes/dusk           0      0    0.00",
+            "characters/host       3     -1    0.38",
         ]
         self.assertEqual(expected, rows)
 
@@ -159,10 +159,10 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "hook                   chance",
-            "characters/detective     0.33",
-            "shared_lines/any_time    0.13",
-            "scenes/stakeout          0.54",
+            "hook                   weight  score  chance",
+            "characters/detective     0.57    0.2    0.33",
+            "shared_lines/any_time    0.25      0    0.13",
+            "scenes/stakeout             1    0.1    0.54",
         ]
         self.assertEqual(expected, rows)
 

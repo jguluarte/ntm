@@ -31,22 +31,32 @@ class Picker:
             hooks = list(chances)
             generator = random.Random(self.seed)
             [hook] = generator.choices(hooks, weights=chances.values())
-            return f"hook: {hook}"
+            return f"hook: {hook.name}"
 
     def chances_table(self):
         with self._reporting_failures():
             chances = self.theme.hook_chances_for(self.theme_options)
 
-            rows = [("hook", "chance")]
+            rows = [("hook", "weight", "score", "chance")]
             for hook, chance in chances.items():
-                rows.append((hook, self._to_hundredths(chance)))
+                weight, score = f"{hook.weight:g}", f"{hook.score:g}"
+                rounded_chance = self._to_hundredths(chance)
+                rows.append((hook.name, weight, score, rounded_chance))
 
-            hook_width = max(len(hook) for hook, _ in rows)
-            chance_width = max(len(chance) for _, chance in rows)
-            return "\n".join(
-                f"{ hook.ljust(hook_width) }  { chance.rjust(chance_width) }"
-                for hook, chance in rows
-            )
+            return self._table(rows)
+
+    @staticmethod
+    def _table(rows):
+        widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        lines = []
+        for name, *numbers in rows:
+            cells = [name.ljust(widths[0])]
+            for number, width in zip(numbers, widths[1:]):
+                cells.append(number.rjust(width))
+
+            lines.append("  ".join(cells))
+
+        return "\n".join(lines)
 
     @staticmethod
     def _to_hundredths(chance):

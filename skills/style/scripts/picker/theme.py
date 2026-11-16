@@ -166,7 +166,7 @@ class HookManager:
         if total == 0:
             raise NoHookHasWeight(theme_options)
 
-        return {hook.name: hook.draw_weight / total for hook in hooks}
+        return {hook: hook.draw_weight / total for hook in hooks}
 
     def _responding_to(self, theme_options):
         if not self._hooks:

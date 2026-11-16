@@ -23,7 +23,7 @@ python3 picker.py hook --options <file> [--type <list>] --chances
 | `--options` | The theme's options file, as YAML                                   |
 | `--type`    | The message's reminder type and task outcomes, as `evening,slipped` |
 | `--seed`    | A whole number, for a repeatable pick                               |
-| `--chances` | Shows each hook's chance instead of drawing one                     |
+| `--chances` | Shows each hook's weight, score and chance instead of drawing one   |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
@@ -39,8 +39,8 @@ slug.
 hook: characters/detective
 ```
 
-With `--chances`, it prints each hook that fits and its chance instead, as "How
-likely each hook is" shows.
+With `--chances`, it prints each hook that fits with its weight, score and
+chance instead, as "How likely each hook is" shows.
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
@@ -91,8 +91,9 @@ halves it. An entry without a `weight` weighs 1, and one without a `score`
 scores 0. A hook's chance is its draw weight over the total draw weight of every
 hook that fits. A hook that weighs 0 is never drawn.
 
-`--chances` prints each hook that fits, in file order, with its chance, rounded
-to two places with a half rounding up: 0.125 shows as 0.13.
+`--chances` prints each hook that fits, in file order, with its `weight`, its
+`score` and its chance. The chance is rounded to two places with a half rounding
+up: 0.125 shows as 0.13.
 
 In `Casebook-options.yaml`, the detective weighs 0.57 and scores 0.2. 2 to the
 power of 0.2 is about 1.149, so its draw weight is 0.57 × 1.149, about 0.65.
@@ -101,8 +102,8 @@ in all. The detective's chance is 0.65 / 1.98, which shows as 0.33.
 
 ```
 python3 picker.py hook --options Casebook-options.yaml --chances
-hook                   chance
-characters/detective     0.33
-shared_lines/any_time    0.13
-scenes/stakeout          0.54
+hook                   weight  score  chance
+characters/detective     0.57    0.2    0.33
+shared_lines/any_time    0.25      0    0.13
+scenes/stakeout             1    0.1    0.54
 ```

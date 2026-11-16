@@ -95,13 +95,13 @@ class PickTest(unittest.TestCase):
         seed = 3
         runs = 10
 
-        theme = Theme(fixtures.EVEN, seed)
-        picker = Picker(theme)
-        first = [picker.pick() for _ in range(runs)]
+        first_theme = Theme(fixtures.EVEN, seed)
+        first_picker = Picker(first_theme)
+        first = [first_picker.pick() for _ in range(runs)]
 
-        theme = Theme(fixtures.EVEN, seed)
-        picker = Picker(theme)
-        second = [picker.pick() for _ in range(runs)]
+        second_theme = Theme(fixtures.EVEN, seed)
+        second_picker = Picker(second_theme)
+        second = [second_picker.pick() for _ in range(runs)]
 
         self.assertEqual(first, second)
 

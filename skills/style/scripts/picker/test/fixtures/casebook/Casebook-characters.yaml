@@ -11,13 +11,12 @@ characters:
     lines:
       - The answer was on the table the whole time.
       - Nobody leaves this room until I have finished.
+      - File it under closed.
     riffs:
       - line: Every lie leaves a crumb.
         bend: >-
           Treat the slipped task as the crumb that gives away what the user did
           instead.
-      - line: File it under closed.
-        type: done
 
 shared_lines:
   about: >-
@@ -25,7 +24,3 @@ shared_lines:
   any_time:
     lines:
       - Somebody in this house is lying.
-  big_win:
-    type: big_win
-    lines:
-      - Gather everyone in the drawing room.

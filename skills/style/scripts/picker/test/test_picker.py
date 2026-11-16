@@ -2,7 +2,7 @@ import unittest
 
 import fixtures
 from picker import Picker
-from theme import Theme, ThemeOptions
+from theme import Theme
 
 
 def make_picker_args(options, **flags):
@@ -15,13 +15,6 @@ def make_picker_args(options, **flags):
 
 
 class CommandLineTest(unittest.TestCase):
-    def test_only_an_option_fitting_the_type_is_drawn(self):
-        args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
-        picker = Picker.from_args(args)
-        drawn = picker.pick()
-
-        self.assertEqual("hook: scenes/big_win", drawn)
-
     def test_the_seed_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
@@ -33,12 +26,6 @@ class CommandLineTest(unittest.TestCase):
         picker = Picker.from_args(args)
 
         self.assertEqual(3, picker.theme.seed)
-
-    def test_the_type_is_optional(self):
-        args = make_picker_args(fixtures.EVEN)
-        picker = Picker.from_args(args)
-
-        self.assertEqual(ThemeOptions(), picker.options)
 
     def test_the_chances_flag_sets_shows_chances(self):
         args = make_picker_args(fixtures.EVEN) + ["--chances"]
@@ -68,15 +55,6 @@ class CommandLineTest(unittest.TestCase):
 
         why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
-        args = make_picker_args(fixtures.EVEN, type="night")
-
-        with self.assertRaises(SystemExit) as exited:
-            Picker.from_args(args)
-
-        expected = "Picker FAILED: UnknownOption: not an option: night"
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
@@ -123,21 +101,9 @@ class PickTest(unittest.TestCase):
 
         self.assertNotIn("hook: scenes/dusk", drawn)
 
-    def test_a_message_no_option_fits_fails_with_missing_options(self):
-        theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        options = ThemeOptions("morning")
-        picker = Picker(theme, options)
-
-        with self.assertRaises(SystemExit) as exited:
-            picker.pick()
-
-        why = "no option fits morning"
-        expected = f"Picker FAILED: MissingOptions: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_fitting_option_shows_weight_score_and_rounded_chance(self):
+    def test_each_option_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
         picker = Picker(theme)
         rows = picker.chances_table().splitlines()
@@ -151,14 +117,13 @@ class ChancesTableTest(unittest.TestCase):
         ]
         self.assertEqual(expected, rows)
 
-    def test_chances_where_every_fitting_option_weighs_0_fail_naming_why(self):
-        theme = Theme(fixtures.WEIGHTED)
-        options = ThemeOptions("big_win")
-        picker = Picker(theme, options)
+    def test_chances_where_every_option_weighs_0_fail_naming_why(self):
+        theme = Theme(fixtures.WEIGHTLESS)
+        picker = Picker(theme)
 
         with self.assertRaises(SystemExit) as exited:
             picker.chances_table()
 
-        why = "every option that fits big_win weighs 0"
+        why = "every option weighs 0"
         expected = f"Picker FAILED: MissingWeight: {why}"
         self.assertEqual(expected, exited.exception.code)

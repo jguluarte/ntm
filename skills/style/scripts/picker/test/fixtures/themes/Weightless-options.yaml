@@ -2,5 +2,5 @@ pools:
   scenes:
     roles: [hook]
     entries:
-      dawn:
-        type: night
+      dusk:
+        weight: 0

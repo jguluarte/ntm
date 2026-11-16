@@ -10,8 +10,6 @@ pools:
     roles: [hook]
     entries:
       any_time:
-      big_win:
-        type: big_win
 
   scenes:
     file: Casebook-scenes.yaml

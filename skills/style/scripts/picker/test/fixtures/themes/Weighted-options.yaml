@@ -8,9 +8,6 @@ pools:
         score: 1
       dusk:
         weight: 0
-      big_win:
-        type: big_win
-        weight: 0
   characters:
     roles: [hook]
     entries:

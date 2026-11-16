@@ -48,13 +48,11 @@ class Picker:
     @staticmethod
     def _table(rows):
         widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        name_width, *cell_widths = widths
         lines = []
-        for name, *numbers in rows:
-            cells = [name.ljust(widths[0])]
-            for number, width in zip(numbers, widths[1:]):
-                cells.append(number.rjust(width))
-
-            lines.append("  ".join(cells))
+        for name, *cells in rows:
+            right_aligned = map(str.rjust, cells, cell_widths)
+            lines.append("  ".join([name.ljust(name_width), *right_aligned]))
 
         return "\n".join(lines)
 

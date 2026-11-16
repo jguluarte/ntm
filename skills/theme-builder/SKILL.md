@@ -1,16 +1,21 @@
 ---
 name: theme-builder
 description: >-
-    Builds the user's theme, the `%Theme` every reminder is written in, with
-    them in chat, one part at a time. Run by setup during onboarding, or by the
-    user to build a new theme or rebuild theirs ("build me a new theme", "start
-    my theme over", "switch my reminders to a different show").
+    Builds a theme with the user in chat, one stage at a time: a world they
+    enjoy, saved as a set of files every reminder can be written in, and added
+    to their themes. Run by setup during onboarding, or by the user to build
+    another theme ("build me a new theme", "add a theme from another show").
 ---
 
 # ntm:theme-builder
 
 The theme is what ntm writes every reminder in, so the user keeps reading them.
-This skill builds it with them, one part at a time, and saves it as `%Theme`.
+This skill builds one with them, one stage at a time, as a set of files named
+after it, and adds it beside their other themes.
+
+`Casebook`, a made-up detective story, is the example in this skill and in
+`${CLAUDE_PLUGIN_ROOT}/references/theme-files.md`. It shows the shape of a
+theme's files, and nothing more. Never build `Casebook` or copy from it.
 
 ## Usage
 
@@ -20,12 +25,16 @@ This skill builds it with them, one part at a time, and saves it as `%Theme`.
 
 ## Setup
 
-When `ntm:setup` runs this skill, it already holds where their databases go. Go
-to step 1.
+When `ntm:setup` runs this skill, it already holds where their databases go.
+Skip the ready-check, and look for an unfinished theme.
 
 Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
 loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
 run with its result line.
+
+A `<Theme>.yaml` in their backend that All themes, in `%Settings`, doesn't list
+is an unfinished theme. Offer to pick it up after its last saved stage, judged
+from what its files hold; on a no, start a new one.
 
 ## Building the theme
 
@@ -56,17 +65,30 @@ your user from your memories about them.
 ### 2. Build it with them
 
 Build the theme with them as the theme guide,
-`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: from the
-parts it describes, or from a theme they already have.
+`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: stage by
+stage, or from a theme they already have.
 
-### 3. Save `%Theme`
+Save each stage's part as it finishes, so a later chat picks it up instead of
+starting over. Each file holds what you built with them, never the guide's own
+text.
 
-Save their theme in the parts the guide describes: during setup, create `%Theme`
-under the theme's name, such as `Casebook`; otherwise, once they say yes,
-replace their `%Theme`. Each part holds what you built with them, never the
-guide's own text: How to connect this theme to ntm's flow holds what their week,
-morning, afternoon and evening are in their theme.
+Each of the theme's files is a database in their backend, beside their other
+databases, titled with its file name, such as `Casebook.yaml`. A YAML file's
+text sits in one fenced `yaml` block. No other theme is touched: when another
+theme already has the name they pick, ask them for another.
+
+### 3. Switch it on
+
+Once the last stage is done, create the theme's `%Message-history` from its
+template,
+`${CLAUDE_PLUGIN_ROOT}/skills/setup/references/databases/message-history.md`,
+named after the theme, such as `Casebook-message-history`, beside its files.
+
+Then add the theme's root to the end of All themes, in the Themes part of
+`%Settings`, or where the user asks for it. When it's their first theme, it is
+also This week's theme. The weekly setup job takes their themes in turn.
 
 ## Result
 
-Tell the user in a line that their theme is saved, and where `%Theme` lives.
+Tell the user in a line that their theme is switched on, and where its files
+live.

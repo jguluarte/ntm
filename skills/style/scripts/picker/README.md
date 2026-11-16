@@ -3,8 +3,9 @@
 The picker picks what each message is built on: a hook, drawn at random from a
 theme.
 
-It reads a theme's options file and prints the hook it drew. It runs on Python 3
-with PyYAML and jsonschema.
+It reads a theme's options file and prints the hook it drew. Beside it,
+`recalculate.py` writes a new theme's weights and checksums into its options
+file. Both run on Python 3 with PyYAML and jsonschema.
 
 `references/theme-files.md` describes the options file. Its schema,
 `options.schema.yaml`, sits beside the picker in the style skill. The picker
@@ -100,3 +101,59 @@ characters/detective     0.57    0.2    0.33
 shared_lines/any_time    0.25      0    0.13
 scenes/stakeout             1    0.1    0.54
 ```
+
+## Writing the numbers
+
+```
+python3 recalculate.py start --options <file> <entry file>...
+```
+
+`start` gives a new theme its first weights and checksums, in its options file.
+It sets the `weight` of each entry in the entry files it is handed, records each
+entry file's checksum, the SHA-256 of its text exactly as handed over, in full,
+then saves the options file in place and prints one line naming it:
+
+```
+saved: Casebook-options.yaml
+```
+
+When it can't, it prints one line on stderr and exits 1, as the picker does, and
+leaves the options file as it was. An entry file that no pool names as its
+`file` fails with `UnknownEntryFile`, as when `Casebook`'s entry files are
+handed in with another theme's options file:
+
+```
+Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml
+```
+
+### The weight
+
+An entry with only a few lines would repeat itself if it were drawn as often as
+one with many, so it is drawn less until it has enough lines to vary. An entry
+with 3 lines is drawn half as readily as it could be, one with 9 lines three
+quarters as readily, and one with 1 line a quarter.
+
+```
+weight = lines / (lines + LINES_AT_HALF_WEIGHT)
+```
+
+`lines` counts the entry's `lines` and `riffs`; other keys, such as a scene's
+`setting`, aren't lines. `LINES_AT_HALF_WEIGHT` is 3, the number of lines at
+which an entry weighs half. The weight is rounded to two places, and is 1.0 for
+an entry with no lines.
+
+| lines | weight |
+| ----- | ------ |
+| 1     | 0.25   |
+| 3     | 0.5    |
+| 9     | 0.75   |
+
+In `Casebook`, the detective's 2 lines and 2 riffs weigh 0.57, and `any_time`'s
+one line weighs 0.25.
+
+### What it keeps
+
+Everything it doesn't compute stays as it was: `type`, `roles`, `file`, `score`,
+the half-lives and `speaker_rate`. Saving keeps the key order and lists on one
+line, and loses the file's comments and blank lines: the options file is written
+by ntm, not annotated by hand.

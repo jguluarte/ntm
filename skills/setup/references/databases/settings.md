@@ -64,8 +64,8 @@ Claude's built-in browser
 
 ## Themes
 
-<!-- Each theme by its root. Today the root is the `%Theme` database: write its
-title. -->
+<!-- Each theme by its root's title. Leave both empty: `ntm:theme-builder` fills
+them in when it switches a theme on. -->
 
 - This week's theme: <theme's root>
 

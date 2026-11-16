@@ -23,15 +23,21 @@ update `expected/` in the same PR and say so in its description: the user sees
 the rename in the diff and can push back before merging. When it isn't, put the
 name back. `git log tests/expected/` is the record of every name change.
 
-## The picker
+## The style skill's scripts
 
-`skills/style/scripts/picker/test/` holds the tests of the picker,
-`skills/style/scripts/picker/`, written as `unittest` test cases and run by
-pytest. `pyproject.toml` puts the picker's folder on Python's import path, so a
-test imports the picker's classes by name. `test_theme.py` loads options files
-into `Theme` and checks the hooks it finds, their chances, or the failure it
-raises; `test_theme_options.py` checks the combinations `ThemeOptions` parses or
-refuses; `test_picker.py` checks what the command line builds, and what
-`pick_hook()` and `chances_table()` print or fail with. `fixtures/` holds the
-options files they read, each named for what it holds or lacks, and
-`Casebook-options.yaml`, the example in `references/theme-files.md`.
+`skills/style/scripts/picker/test/` holds the tests of the picker and
+`recalculate.py`, in `skills/style/scripts/picker/`, written as `unittest` test
+cases and run by pytest. `pyproject.toml` puts that folder on Python's import
+path, so a test imports their classes by name.
+
+| File                    | What it checks                                                         |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `test_theme.py`         | The hooks `Theme` finds, an entry file's entries, saving, and failures |
+| `test_theme_options.py` | The combinations `ThemeOptions` parses or refuses                      |
+| `test_entry_file.py`    | The line counts and checksum `EntryFile` reads                         |
+| `test_picker.py`        | What the picker's command line builds, prints or fails with            |
+| `test_recalculate.py`   | What `start` builds from its command line, saves or fails with         |
+
+`fixtures/` holds the options files they read, each named for what it holds or
+lacks, and the example in `references/theme-files.md`: `Casebook-options.yaml`
+and its two entry files.

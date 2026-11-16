@@ -38,12 +38,12 @@ path, so a test imports their classes by name.
 | `test_picker.py`        | What the picker's command line builds, prints or fails with            |
 | `test_recalculate.py`   | What `start` builds from its command line, saves or fails with         |
 
-`fixtures/` holds the files they read, in a folder for each class that reads
-them. Each file is named for what it holds or lacks; `Casebook` is the example
-in `references/theme-files.md`.
+`fixtures/` holds the themes they read. A theme with several files has a folder
+of its own, whose `__init__.py` names each file. A one-file theme is an options
+file named for what it holds or lacks.
 
-| Folder            | What it holds                                      |
-| ----------------- | -------------------------------------------------- |
-| `themes/`         | Options files `Theme` loads                        |
-| `invalid-themes/` | Options files `Theme` refuses, named for the fault |
-| `entry-files/`    | Entry files `EntryFile` reads                      |
+| Folder            | What it holds                                                   |
+| ----------------- | --------------------------------------------------------------- |
+| `casebook/`       | The example in `references/theme-files.md`: options and entries |
+| `themes/`         | One-file themes `Theme` loads                                   |
+| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault            |

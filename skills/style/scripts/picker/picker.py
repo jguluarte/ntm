@@ -28,33 +28,33 @@ class Picker:
     def pick_hook(self):
         with self._reporting_failures():
             generator = random.Random(self.seed)
-            kind_chances = self.theme.kind_chances_for(self.theme_options)
-            kind = self._draw(generator, kind_chances)
-            hook_chances = self.theme.lottery_for(
+            kind_lottery = self.theme.kind_lottery_for(self.theme_options)
+            kind = self._draw(generator, kind_lottery)
+            hook_lottery = self.theme.hook_lottery_for(
                 self.theme_options, kind.name,
             )
-            hook = self._draw(generator, hook_chances)
+            hook = self._draw(generator, hook_lottery)
             return f"hook: {hook.name}"
 
     def chances_table(self):
         with self._reporting_failures():
-            kind_chances = self.theme.kind_chances_for(self.theme_options)
+            kind_lottery = self.theme.kind_lottery_for(self.theme_options)
             hook_chances = {}
-            for kind in kind_chances:
+            for kind in kind_lottery:
                 hook_chances.update(
-                    self.theme.lottery_for(self.theme_options, kind.name),
+                    self.theme.hook_lottery_for(self.theme_options, kind.name),
                 )
 
-            kind_rows = self._chance_rows("kind", "chance", kind_chances)
+            kind_rows = self._chance_rows("kind", "chance", kind_lottery)
             hook_rows = self._chance_rows(
                 "hook", "chance in kind", hook_chances,
             )
             return f"{ self._table(kind_rows) }\n\n{ self._table(hook_rows) }"
 
     @staticmethod
-    def _draw(generator, chances):
-        candidates = list(chances)
-        [drawn] = generator.choices(candidates, weights=chances.values())
+    def _draw(generator, lottery):
+        candidates = list(lottery)
+        [drawn] = generator.choices(candidates, weights=lottery.values())
         return drawn
 
     @classmethod

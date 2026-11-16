@@ -62,7 +62,7 @@ class FitTest(unittest.TestCase):
         ]
         self.assertEqual(expected, hooks)
 
-    def test_an_entry_naming_both_kinds_needs_both(self):
+    def test_an_entry_naming_a_reminder_type_and_an_outcome_needs_both(self):
         theme = Theme(fixtures.EVERY_TYPE)
         hooks = hook_names(theme, "evening")
 

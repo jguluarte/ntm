@@ -27,18 +27,18 @@ class Picker:
 
     def pick_hook(self):
         with self._reporting_failures():
-            chances = self.theme.lottery_for(self.theme_options)
-            hooks = list(chances)
+            lottery = self.theme.lottery_for(self.theme_options)
+            hooks = list(lottery)
             generator = random.Random(self.seed)
-            [hook] = generator.choices(hooks, weights=chances.values())
+            [hook] = generator.choices(hooks, weights=lottery.values())
             return f"hook: {hook.name}"
 
     def chances_table(self):
         with self._reporting_failures():
-            chances = self.theme.lottery_for(self.theme_options)
+            lottery = self.theme.lottery_for(self.theme_options)
 
             rows = [("hook", "weight", "score", "chance")]
-            for hook, chance in chances.items():
+            for hook, chance in lottery.items():
                 weight, score = f"{hook.weight:g}", f"{hook.score:g}"
                 rounded_chance = self._to_hundredths(chance)
                 rows.append((hook.name, weight, score, rounded_chance))

@@ -91,8 +91,8 @@ class FitTest(unittest.TestCase):
 class ChanceTest(unittest.TestCase):
     def test_entries_without_a_weight_or_score_are_equally_likely(self):
         theme = Theme(fixtures.EVEN)
-        chances = theme.lottery_for(ThemeOptions())
-        chance_by_name = {hook.name: chance for hook, chance in chances.items()}
+        lottery = theme.lottery_for(ThemeOptions())
+        chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         expected = {
             "scenes/dawn": 0.25,
@@ -104,8 +104,8 @@ class ChanceTest(unittest.TestCase):
 
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        chances = theme.lottery_for(ThemeOptions())
-        chance_by_name = {hook.name: chance for hook, chance in chances.items()}
+        lottery = theme.lottery_for(ThemeOptions())
+        chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {

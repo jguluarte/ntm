@@ -159,7 +159,7 @@ class HookManager:
     def __init__(self, hooks):
         self._hooks = hooks
 
-    def chances_for(self, theme_options):
+    def lottery_for(self, theme_options):
         hooks = self._responding_to(theme_options)
         total = sum(hook.draw_weight for hook in hooks)
 
@@ -200,7 +200,7 @@ class Theme:
         self._hook_manager = HookManager(hooks)
 
     def lottery_for(self, theme_options):
-        return self._hook_manager.chances_for(theme_options)
+        return self._hook_manager.lottery_for(theme_options)
 
     @staticmethod
     def _read_hooks(pools_by_kind):

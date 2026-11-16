@@ -57,4 +57,4 @@ $defs:
         type: number
 
   reminder_type_or_task_outcome:
-    enum: [morning, afternoon, evening, weekly, slipped, done, big_win]
+    enum: [morning, afternoon, evening, weekly, slipped, done, win, big_win]

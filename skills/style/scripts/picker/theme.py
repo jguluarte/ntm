@@ -40,6 +40,7 @@ class ReminderType(enum.Enum):
 class TaskOutcome(enum.Enum):
     SLIPPED = "slipped"
     DONE = "done"
+    WIN = "win"
     BIG_WIN = "big_win"
 
     @classmethod

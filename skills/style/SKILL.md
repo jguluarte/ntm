@@ -36,21 +36,7 @@ anything else its rule asks of the message, such as tone or length.
 ### 1. Pick
 
 Pick one hook, the idea this message builds on: one entry of the theme, drawn by
-the picker as The picker, below, says. Hand it the message's type: each value
-below that holds, with commas between them, such as `evening,slipped`. Make step
-2's call on a win or a big win first.
-
-| Value                               | When                                   |
-| ----------------------------------- | -------------------------------------- |
-| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type` |
-| `weekly`                            | It's the weekly setup's message        |
-| `slipped`                           | A task in the facts slipped            |
-| `done`                              | A task in the facts is done            |
-| `win`                               | Step 2 calls a win                     |
-| `big_win`                           | Step 2 calls a big win                 |
-
-The self-test's message, and one written in chat, take none of the first two
-rows' values. With no value at all, leave `--type` out.
+the picker as The picker, below, says.
 
 The hook comes back as `<kind>/<slug>`. Its entry is under `<kind>`, keyed
 `<slug>`, in the file the `<kind>` pool names in `%Theme-options`.
@@ -85,6 +71,21 @@ look nothing else up. Call each once, in the first message after it happens: a
 win that a `%Message-history` entry already celebrated, with `win` or `big_win`
 in its `type`, isn't called again.
 
+Work out the message's type: each value below that holds, with commas between
+them, such as `evening,slipped`.
+
+| Value                               | When                                   |
+| ----------------------------------- | -------------------------------------- |
+| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type` |
+| `weekly`                            | It's the weekly setup's message        |
+| `slipped`                           | A task in the facts slipped            |
+| `done`                              | A task in the facts is done            |
+| `win`                               | You called a win                       |
+| `big_win`                           | You called a big win                   |
+
+The self-test's message, and one written in chat, take none of the first two
+rows' values.
+
 ### 3. Write
 
 Start the `ntm:writer` agent, and hand it the facts, the tone, the hook, the
@@ -113,11 +114,11 @@ yourself, as step 1 says, and keep no line. That isn't a failure.
 Read `%Theme-options` and take the text of its `yaml` block. Write that text to
 a file named for the theme, such as `Casebook-options.yaml`, in this session's
 working folder, exactly as read: never retype it from memory or summarize it.
-Then run the picker on that file, with the message's type from step 1:
+Then run the picker on that file:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook \
-    --options <the file> --type <the message's type>
+    --options <the file>
 ```
 
 It prints one line: `hook: <kind>/<slug>`, the hook it drew.
@@ -142,7 +143,7 @@ added, and only the fields that have a value:
 - `sent`: when it went out, 24-hour, in the user's timezone
 - `reminder`: which message it is: the reminder's type, such as `morning`, or
   `weekly`, or `self-test`
-- `type`: the message's type from step 1, exactly as built, such as
+- `type`: the message's type from step 2, exactly as built, such as
   `evening,done,win`, only when it has one
 - `hook`: what step 1 picked, as the picker printed it, such as `scenes/dawn`,
   or by its name when you picked it yourself, such as `launch`

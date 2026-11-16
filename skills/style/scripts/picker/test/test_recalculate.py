@@ -76,7 +76,6 @@ class RecalculationTest(unittest.TestCase):
         expected = {
             "characters/detective": 0.57,
             "shared_lines/any_time": 0.25,
-            "shared_lines/big_win": 0.25,
             "scenes/stakeout": 1.0,
         }
         self.assertEqual(expected, read_weights(options))

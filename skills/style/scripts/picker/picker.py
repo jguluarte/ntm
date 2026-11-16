@@ -2,13 +2,12 @@ import argparse
 import contextlib
 import sys
 
-from theme import Theme, ThemeOptions
+from theme import Theme
 
 
 class Picker:
-    def __init__(self, theme, options=ThemeOptions(), shows_chances=False):
+    def __init__(self, theme, shows_chances=False):
         self.theme = theme
-        self.options = options
         self.shows_chances = shows_chances
 
     @classmethod
@@ -16,17 +15,16 @@ class Picker:
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options, flags.seed)
-            options = ThemeOptions(flags.type)
-            return cls(theme, options, flags.shows_chances)
+            return cls(theme, flags.shows_chances)
 
     def pick(self):
         with self._reporting_failures():
-            option = self.theme.draw_from(self.options)
+            option = self.theme.draw()
             return f"hook: {option.name}"
 
     def chances_table(self):
         with self._reporting_failures():
-            lottery = self.theme.lottery_for(self.options)
+            lottery = self.theme.lottery()
 
             rows = [("hook", "weight", "score", "chance")]
             for option, chance in lottery.chance_by_candidate.items():
@@ -56,7 +54,6 @@ class Picker:
         subcommands = parser.add_subparsers(required=True)
         subcommand = subcommands.add_parser("hook", exit_on_error=False)
         subcommand.add_argument("--options", required=True)
-        subcommand.add_argument("--type", default="")
         subcommand.add_argument("--seed", type=int)
         subcommand.add_argument(
             "--chances", dest="shows_chances", action="store_true",

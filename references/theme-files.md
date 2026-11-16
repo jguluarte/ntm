@@ -184,12 +184,11 @@ if it names any, and one of the things it names happened, if it names any. So
 task, `type: [evening, slipped]` only an evening with a slipped task, and
 `type: [morning, weekly]` either reminder.
 
-A win is any of these: more tasks finished than planned this week, a task
-finished after slipping for days, or a task judged big or hard by the run that
-sends the message. A big win is a whole project finished: the project itself
-closes as done. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference says what happens when none of them
-fits.
+A win is any of these: every task planned for today finished, a task finished
+after slipping for days, or a task judged big or hard by the run that sends the
+message. A big win is a whole project finished: the project itself closes as
+done. A message with a big win takes its hook only from the entries kept for
+`big_win`; the picker's reference says what happens when none of them fits.
 
 ## The options file
 

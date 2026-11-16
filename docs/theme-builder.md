@@ -134,11 +134,11 @@ harder sooner" moves one a step.
 | 3rd   | A task slipped 1 day       | A finished project: `big_win`   |
 | 4th   | A task slipped 3 days      |                                 |
 
-A win is any of these: more tasks finished than planned this week, a task
-finished after slipping for days, or a task judged big or hard by the run that
-sends the message. A big win is a whole project finished: the project itself
-closes as done. The run hands the picker these as task outcomes, `done`, `win`
-and `big_win`, and the picker finds the level from them.
+A win is any of these: every task planned for today finished, a task finished
+after slipping for days, or a task judged big or hard by the run that sends the
+message. A big win is a whole project finished: the project itself closes as
+done. The run hands the picker these as task outcomes, `done`, `win` and
+`big_win`, and the picker finds the level from them.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.

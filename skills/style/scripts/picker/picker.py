@@ -38,10 +38,10 @@ class Picker:
             kind_chances = self.theme.kind_chances_for(self.theme_options)
             kind = self._draw(generator, kind_chances)
             hook_chances = self.theme.hook_chances_for(
-                self.theme_options, kind, self.history,
+                self.theme_options, kind.name, self.history,
             )
             hook = self._draw(generator, hook_chances)
-            return f"hook: {hook}"
+            return f"hook: {hook.name}"
 
     def chances_table(self):
         with self._reporting_failures():
@@ -50,7 +50,7 @@ class Picker:
             for kind in kind_chances:
                 hook_chances.update(
                     self.theme.hook_chances_for(
-                        self.theme_options, kind, self.history,
+                        self.theme_options, kind.name, self.history,
                     ),
                 )
 
@@ -61,27 +61,33 @@ class Picker:
 
     @staticmethod
     def _draw(generator, chances):
-        names = list(chances)
-        [name] = generator.choices(names, weights=chances.values())
-        return name
+        candidates = list(chances)
+        [drawn] = generator.choices(candidates, weights=chances.values())
+        return drawn
 
     def _hook_rows(self, hook_chances):
         if not self.history.has_file:
             return self._chance_rows("hook", "chance in kind", hook_chances)
 
-        rows = [("hook", "days since used", "chance in kind")]
+        rows = [
+            ("hook", "weight", "score", "days since used", "chance in kind"),
+        ]
         for hook, chance in hook_chances.items():
-            days = self.history.days_since_used(hook)
+            weight, score = f"{hook.weight:g}", f"{hook.score:g}"
+            days = self.history.days_since_used(hook.name)
             shown_days = "never" if days is None else str(days)
-            rows.append((hook, shown_days, self._to_hundredths(chance)))
+            rounded_chance = self._to_hundredths(chance)
+            rows.append((hook.name, weight, score, shown_days, rounded_chance))
 
         return rows
 
     @classmethod
     def _chance_rows(cls, name_heading, chance_heading, chances):
-        rows = [(name_heading, chance_heading)]
-        for name, chance in chances.items():
-            rows.append((name, cls._to_hundredths(chance)))
+        rows = [(name_heading, "weight", "score", chance_heading)]
+        for candidate, chance in chances.items():
+            weight, score = f"{candidate.weight:g}", f"{candidate.score:g}"
+            rounded_chance = cls._to_hundredths(chance)
+            rows.append((candidate.name, weight, score, rounded_chance))
 
         return rows
 

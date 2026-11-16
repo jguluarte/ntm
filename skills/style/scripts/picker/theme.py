@@ -241,6 +241,10 @@ class _Pool:
         return cls(kind, weight, score, hooks)
 
     @property
+    def name(self):
+        return self.kind
+
+    @property
     def draw_weight(self):
         return self.weight * 2 ** self.score
 
@@ -261,7 +265,7 @@ class HookManager:
         draw_weights = {}
         for pool in self._pools_by_kind.values():
             if pool.can_be_drawn_for(drawn_for):
-                draw_weights[pool.kind] = pool.draw_weight
+                draw_weights[pool] = pool.draw_weight
 
         if not draw_weights:
             raise NoHookHasWeight(theme_options)
@@ -274,12 +278,12 @@ class HookManager:
         rested_draw_weights = {}
         for hook in hooks:
             days = history.days_since_used(hook.name)
-            rested_draw_weights[hook.name] = hook.rested_draw_weight(days)
+            rested_draw_weights[hook] = hook.rested_draw_weight(days)
 
         if any(rested_draw_weights.values()):
             return self._chances_of(rested_draw_weights)
 
-        draw_weights = {hook.name: hook.draw_weight for hook in hooks}
+        draw_weights = {hook: hook.draw_weight for hook in hooks}
         return self._chances_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):
@@ -303,8 +307,8 @@ class HookManager:
     def _chances_of(draw_weights):
         total = sum(draw_weights.values())
         return {
-            name: draw_weight / total
-            for name, draw_weight in draw_weights.items()
+            candidate: draw_weight / total
+            for candidate, draw_weight in draw_weights.items()
         }
 
     @staticmethod

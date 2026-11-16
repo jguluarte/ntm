@@ -186,15 +186,15 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "kind        chance",
-            "scenes        0.88",
-            "characters    0.13",
+            "kind        weight  score  chance",
+            "scenes         3.5      1    0.88",
+            "characters       2     -1    0.13",
             "",
-            "hook             chance in kind",
-            "scenes/dawn                0.20",
-            "scenes/noon                0.80",
-            "scenes/dusk                0.00",
-            "characters/host            1.00",
+            "hook             weight  score  chance in kind",
+            "scenes/dawn         0.5      0            0.20",
+            "scenes/noon           1      1            0.80",
+            "scenes/dusk           0      0            0.00",
+            "characters/host       3     -1            1.00",
         ]
         self.assertEqual(expected, rows)
 
@@ -205,15 +205,15 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "kind        chance",
-            "scenes        0.50",
-            "characters    0.50",
+            "kind        weight  score  chance",
+            "scenes           1      0    0.50",
+            "characters       1      0    0.50",
             "",
-            "hook             days since used  chance in kind",
-            "scenes/dawn                    2            0.20",
-            "scenes/noon                never            0.40",
-            "scenes/dusk                never            0.40",
-            "characters/host                2            1.00",
+            "hook             weight  score  days since used  chance in kind",
+            "scenes/dawn           1      0                2            0.20",
+            "scenes/noon           1      0            never            0.40",
+            "scenes/dusk           1      0            never            0.40",
+            "characters/host       1      0                2            1.00",
         ]
         self.assertEqual(expected, rows)
 

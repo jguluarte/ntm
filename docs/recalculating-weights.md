@@ -106,7 +106,8 @@ part of hooks from pools whose `roles` hold speaker; from the first formulas.
 A pool's weight when the picker draws a kind: the square root of its size,
 counting lines for line groups, so 9 entries start at 3 and 75 at about 8.7. It
 moves with reactions through a `score` on the pool, moved like an entry's by
-each message whose hook came from it. To decide: that score.
+each message whose hook came from it. The picker counts that score when it draws
+a kind, and a pool without one scores 0.
 
 ### `bump_rate`
 

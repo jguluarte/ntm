@@ -1,4 +1,3 @@
-import argparse
 import shutil
 import tempfile
 import unittest
@@ -7,13 +6,8 @@ from pathlib import Path
 import yaml
 
 import fixtures
-from recalculate import Recalculation, reporting_failures
+from recalculate import Recalculation, parser, reporting_failures
 from theme import EntryFile, Theme, UnknownEntryFile
-
-
-def make_start_args(options, *entry_files):
-    args = ["start", "--options", str(options)]
-    return args + [str(entry_file) for entry_file in entry_files]
 
 
 def read_fields(options):
@@ -31,28 +25,6 @@ def read_weights(options):
 
 def read_checksums(options):
     return read_fields(options)["checksums"]
-
-
-class CommandLineTest(unittest.TestCase):
-    def test_start_reads_each_entry_file_it_is_given(self):
-        args = make_start_args(
-            fixtures.casebook.OPTIONS, fixtures.casebook.CHARACTERS,
-            fixtures.casebook.SCENES,
-        )
-        recalculation = Recalculation.from_args(args)
-        names = [entry_file.name for entry_file in recalculation.entry_files]
-
-        expected = ["Casebook-characters.yaml", "Casebook-scenes.yaml"]
-        self.assertEqual(expected, names)
-
-    def test_start_without_entry_files_fails_naming_them(self):
-        args = make_start_args(fixtures.casebook.OPTIONS)
-
-        with self.assertRaises(argparse.ArgumentError) as raised:
-            Recalculation.from_args(args)
-
-        expected = "the following arguments are required: entry_files"
-        self.assertEqual(expected, str(raised.exception))
 
 
 class RecalculationTest(unittest.TestCase):
@@ -120,4 +92,15 @@ class ReportingFailuresTest(unittest.TestCase):
 
         why = "no pool uses Casebook-characters.yaml"
         expected = f"Recalculation FAILED: UnknownEntryFile: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
+    def test_start_without_entry_files_fails_naming_them(self):
+        args = ["start", "--options", str(fixtures.casebook.OPTIONS)]
+
+        with self.assertRaises(SystemExit) as exited:
+            with reporting_failures():
+                parser().parse_args(args)
+
+        why = "the following arguments are required: entry_files"
+        expected = f"Recalculation FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)

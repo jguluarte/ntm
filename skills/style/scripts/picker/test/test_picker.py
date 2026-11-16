@@ -18,14 +18,14 @@ class CommandLineTest(unittest.TestCase):
     def test_hook_draws_from_the_options_file_with_the_seed(self):
         args = make_picker_args(fixtures.EVEN, seed=2)
         picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
+        drawn = picker.pick_option()
 
         self.assertEqual("hook: characters/host", drawn)
 
     def test_hook_draws_only_hooks_fitting_the_type(self):
         args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
+        drawn = picker.pick_option()
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
@@ -92,11 +92,11 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
 
-class PickHookTest(unittest.TestCase):
+class PickOptionTest(unittest.TestCase):
     def test_each_seed_draws_its_declared_hook(self):
         theme = Theme(fixtures.EVEN)
         drawn = {
-            seed: Picker(theme, seed=seed).pick_hook() for seed in range(6)
+            seed: Picker(theme, seed=seed).pick_option() for seed in range(6)
         }
 
         expected = {
@@ -114,14 +114,14 @@ class PickHookTest(unittest.TestCase):
 
         attempts = 50
         drawn = {
-            picker.pick_hook() for _ in range(attempts)
+            picker.pick_option() for _ in range(attempts)
         }
 
         self.assertGreater(len(drawn), 1)
 
     def test_a_hook_weighing_0_is_never_drawn(self):
         theme = Theme(fixtures.WEIGHTED)
-        drawn = {Picker(theme, seed=seed).pick_hook() for seed in range(50)}
+        drawn = {Picker(theme, seed=seed).pick_option() for seed in range(50)}
 
         expected = {
             "hook: scenes/dawn", "hook: scenes/noon", "hook: characters/host",
@@ -133,7 +133,7 @@ class PickHookTest(unittest.TestCase):
         picker = Picker(theme, ThemeOptions("morning"))
 
         with self.assertRaises(SystemExit) as exited:
-            picker.pick_hook()
+            picker.pick_option()
 
         why = "no hook fits morning"
         expected = f"Picker FAILED: MissingHook: {why}"

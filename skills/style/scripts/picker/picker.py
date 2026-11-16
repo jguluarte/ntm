@@ -48,7 +48,9 @@ class Picker:
         name_width, *cell_widths = widths
         lines = []
         for name, *cells in rows:
-            right_aligned = map(str.rjust, cells, cell_widths)
+            right_aligned = [
+                cell.rjust(width) for cell, width in zip(cells, cell_widths)
+            ]
             lines.append("  ".join([name.ljust(name_width), *right_aligned]))
 
         return "\n".join(lines)

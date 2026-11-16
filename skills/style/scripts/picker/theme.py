@@ -1,3 +1,4 @@
+import copy
 import enum
 import hashlib
 import random
@@ -94,8 +95,8 @@ class ThemeOptions:
         reminder_types = ReminderType.named_in(values)
         task_outcomes = TaskOutcome.named_in(values)
 
-        options = reminder_types | task_outcomes
-        unknown = values - {option.value for option in options}
+        known = reminder_types | task_outcomes
+        unknown = values - {member.value for member in known}
         if unknown:
             raise UnknownOption(unknown)
 
@@ -110,8 +111,10 @@ class ThemeOptions:
         return TaskOutcome.BIG_WIN in self.task_outcomes
 
     def as_finished_task(self):
-        big_win, done = TaskOutcome.BIG_WIN.value, TaskOutcome.DONE.value
-        return ThemeOptions(str(self).replace(big_win, done))
+        finished_task = copy.copy(self)
+        without_big_win = self.task_outcomes - {TaskOutcome.BIG_WIN}
+        finished_task.task_outcomes = without_big_win | {TaskOutcome.DONE}
+        return finished_task
 
     def __str__(self):
         reminder = [self.reminder_type.value] if self.reminder_type else []
@@ -222,10 +225,10 @@ class Theme:
             raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no pool gives a hook")
 
     def lottery_for(self, options):
-        fitting = self._options_that_fit(options)
+        fitting = self._fitting(options)
 
         if not fitting and options.is_big_win:
-            fitting = self._options_that_fit(options.as_finished_task())
+            fitting = self._fitting(options.as_finished_task())
 
         if not fitting:
             raise MissingOptions(options)
@@ -265,7 +268,7 @@ class Theme:
         )
         Path(self.path).write_text(text, encoding="utf-8")
 
-    def _options_that_fit(self, options):
+    def _fitting(self, options):
         return [option for option in self._options if option.fits(options)]
 
     @staticmethod

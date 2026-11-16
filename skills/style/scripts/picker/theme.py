@@ -107,17 +107,22 @@ class Theme:
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._options = self._read_options(self._fields[POOLS_BY_KIND])
+        self._lottery = None
 
         if not self._options:
             raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
 
     def lottery(self):
+        if self._lottery:
+            return self._lottery
+
         draw_weights = {option: option.draw_weight for option in self._options}
 
         if not any(draw_weights.values()):
             raise MissingWeight()
 
-        return Lottery(draw_weights, self.seed)
+        self._lottery = Lottery(draw_weights, self.seed)
+        return self._lottery
 
     def draw(self):
         return self.lottery().draw()

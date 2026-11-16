@@ -4,6 +4,30 @@ import fixtures
 from picker import Picker, chances_table, parser, reporting_failures
 from theme import Theme
 
+SEED = 3
+RUNS = 10
+ATTEMPTS = 50
+
+
+class PickTest(unittest.TestCase):
+    def test_the_same_seed_gives_the_same_picks(self):
+        first_theme = Theme(fixtures.EVEN, seed=SEED)
+        first_picker = Picker(first_theme)
+        first = [first_picker.pick() for _ in range(RUNS)]
+
+        second_theme = Theme(fixtures.EVEN, seed=SEED)
+        second_picker = Picker(second_theme)
+        second = [second_picker.pick() for _ in range(RUNS)]
+
+        self.assertEqual(first, second)
+
+    def test_each_pick_draws_again(self):
+        theme = Theme(fixtures.EVEN, seed=SEED)
+        picker = Picker(theme)
+        picks = {picker.pick() for _ in range(ATTEMPTS)}
+
+        self.assertGreater(len(picks), 1)
+
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_option_shows_weight_score_and_rounded_chance(self):

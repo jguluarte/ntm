@@ -18,12 +18,12 @@ python3 picker.py hook --options <file> [--type <list>] [--seed <number>]
 python3 picker.py hook --options <file> [--type <list>] --chances
 ```
 
-| Flag        | What it is                                                          |
-| ----------- | ------------------------------------------------------------------- |
-| `--options` | The theme's options file, as YAML                                   |
-| `--type`    | The message's reminder type and task outcomes, as `evening,slipped` |
-| `--seed`    | A whole number, for a repeatable pick                               |
-| `--chances` | Shows each kind and hook with its weight, score and chance          |
+| Flag        | What it is                                                                                   |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| `--options` | The theme's options file, as YAML                                                            |
+| `--type`    | The message's reminder type and task outcomes, as `evening,slipped`                          |
+| `--seed`    | A whole number, for a repeatable pick                                                        |
+| `--chances` | Tables of each kind's and fitting hook's weight, score and chance, printed instead of a hook |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
@@ -91,8 +91,7 @@ hook: shared_lines/big_win
 
 A pool and an entry each carry a `weight` and a `score`. A pool's numbers set
 how likely its kind is against the other kinds, and an entry's how likely it is
-against the other entries of its kind. Without a `weight`, a pool or entry
-weighs 1; without a `score`, it scores 0.
+against the other entries of its kind.
 
 | Number                    | What it is                                                           |
 | ------------------------- | -------------------------------------------------------------------- |
@@ -107,8 +106,7 @@ never drawn.
 
 `--chances` prints the kinds that can be drawn, then the fitting hooks of each
 of those kinds, both in file order, each with its `weight`, its `score` and its
-chance. Each chance is rounded to two places with a half rounding up: 0.125
-shows as 0.13.
+chance.
 
 ### An example
 
@@ -131,7 +129,7 @@ Overall, `noon` is drawn 0.875 × 0.8 = 0.7 of the time.
 python3 picker.py hook --options Weighted-options.yaml --chances
 kind        weight  score  chance
 scenes         3.5      1    0.88
-characters       2     -1    0.13
+characters       2     -1    0.12
 
 hook             weight  score  chance in kind
 scenes/dawn         0.5      0            0.20
@@ -139,6 +137,3 @@ scenes/noon           1      1            0.80
 scenes/dusk           0      0            0.00
 characters/host       3     -1            1.00
 ```
-
-0.875 and 0.125 show as 0.88 and 0.13, so rounded chances can add up to just
-over 1.

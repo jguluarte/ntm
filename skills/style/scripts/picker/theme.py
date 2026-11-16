@@ -1,6 +1,7 @@
 import hashlib
 import random
 from dataclasses import dataclass
+from functools import cached_property
 from pathlib import Path
 
 import jsonschema
@@ -107,25 +108,21 @@ class Theme:
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._options = self._read_options(self._fields[POOLS_BY_KIND])
-        self._lottery = None
 
         if not self._options:
             raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
 
+    @cached_property
     def lottery(self):
-        if self._lottery:
-            return self._lottery
-
         draw_weights = {option: option.draw_weight for option in self._options}
 
         if not any(draw_weights.values()):
             raise MissingWeight()
 
-        self._lottery = Lottery(draw_weights, self.seed)
-        return self._lottery
+        return Lottery(draw_weights, self.seed)
 
     def draw(self):
-        return self.lottery().draw()
+        return self.lottery.draw()
 
     def entries_from(self, file_name):
         names = []

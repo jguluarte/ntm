@@ -32,7 +32,7 @@ class PickTest(unittest.TestCase):
 class ChancesTableTest(unittest.TestCase):
     def test_each_option_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery()
+        lottery = theme.lottery
         rows = chances_table(lottery).splitlines()
 
         expected = [

@@ -10,7 +10,7 @@ from theme import InvalidTheme, MissingWeight, Theme, UnknownEntryFile
 class OptionsTest(unittest.TestCase):
     def test_the_options_are_every_entry_but_those_of_speaker_only_pools(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         expected = [
             "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
@@ -28,7 +28,7 @@ class OptionsTest(unittest.TestCase):
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -43,7 +43,7 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTLESS)
 
         with self.assertRaises(MissingWeight) as raised:
-            theme.lottery()
+            theme.lottery
 
         expected = "every option weighs 0"
         self.assertEqual(expected, str(raised.exception))
@@ -61,7 +61,7 @@ class DrawTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        lottery = theme.lottery()
+        lottery = theme.lottery
 
         expected = [
             "characters/detective", "shared_lines/any_time", "scenes/stakeout",

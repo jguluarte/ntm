@@ -65,7 +65,7 @@ if __name__ == "__main__":
         theme = Theme(flags.options, flags.seed)
 
         if flags.shows_chances:
-            lottery = theme.lottery()
+            lottery = theme.lottery
             print(chances_table(lottery))
 
         else:

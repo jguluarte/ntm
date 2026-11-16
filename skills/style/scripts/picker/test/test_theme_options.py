@@ -8,25 +8,30 @@ from theme import (
 )
 
 
-class ParseTest(unittest.TestCase):
-    def test_a_reminder_type_and_task_outcomes_parse_into_one_combination(self):
-        theme_options = ThemeOptions.parse("evening,slipped,big_win")
+class ThemeOptionsTest(unittest.TestCase):
+    def test_a_type_reads_as_its_reminder_type_and_task_outcomes(self):
+        options = ThemeOptions("evening,slipped,big_win")
 
-        task_outcomes = frozenset({TaskOutcome.SLIPPED, TaskOutcome.BIG_WIN})
-        expected = ThemeOptions(ReminderType.EVENING, task_outcomes)
+        task_outcomes = {TaskOutcome.SLIPPED, TaskOutcome.BIG_WIN}
+        self.assertEqual(ReminderType.EVENING, options.reminder_type)
+        self.assertEqual(task_outcomes, options.task_outcomes)
 
-        self.assertEqual(expected, theme_options)
+    def test_no_type_reads_as_no_reminder_type_and_no_task_outcomes(self):
+        options = ThemeOptions()
+
+        self.assertIsNone(options.reminder_type)
+        self.assertEqual(set(), options.task_outcomes)
 
     def test_a_value_that_isnt_an_option_fails_with_unknown_option(self):
         with self.assertRaises(UnknownOption) as raised:
-            ThemeOptions.parse("evening,night")
+            ThemeOptions("evening,night")
 
         expected = "not an option: night"
         self.assertEqual(expected, str(raised.exception))
 
     def test_two_reminder_types_fail_with_more_than_one_reminder_type(self):
         with self.assertRaises(MoreThanOneReminderType) as raised:
-            ThemeOptions.parse("morning,evening")
+            ThemeOptions("morning,evening")
 
         expected = "more than one reminder type: evening, morning"
         self.assertEqual(expected, str(raised.exception))

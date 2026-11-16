@@ -50,6 +50,7 @@ $defs:
           $ref: "#/$defs/reminder_type_or_task_outcome"
       weight:
         type: number
+        minimum: 0
       line_half_life_days:
         type: number
       score:

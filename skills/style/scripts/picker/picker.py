@@ -1,49 +1,67 @@
 import argparse
 import contextlib
-import random
 import sys
 
-from theme import InvalidOptions, Theme, ThemeOptions
+from theme import Theme, ThemeOptions
 
 
 class Picker:
-    def __init__(self, theme, theme_options=ThemeOptions(), seed=None):
+    def __init__(self, theme, options=ThemeOptions(), shows_chances=False):
         self.theme = theme
-        self.theme_options = theme_options
-        self.seed = seed
+        self.options = options
+        self.shows_chances = shows_chances
 
     @classmethod
     def from_args(cls, args):
         with cls._reporting_failures():
             flags = cls._parser().parse_args(args)
-            theme = Theme(flags.options)
-            return cls(theme, flags.theme_options, flags.seed)
+            theme = Theme(flags.options, flags.seed)
+            options = ThemeOptions(flags.type)
+            return cls(theme, options, flags.shows_chances)
 
-    def pick_hook(self):
+    def pick(self):
         with self._reporting_failures():
-            hooks = self.theme.hooks_for(self.theme_options)
-            generator = random.Random(self.seed)
-            return f"hook: { generator.choice(hooks) }"
+            option = self.theme.draw_from(self.options)
+            return f"hook: {option.name}"
 
-    @classmethod
-    def _parser(cls):
-        parser = argparse.ArgumentParser(exit_on_error=False)
-        subcommands = parser.add_subparsers(required=True)
-        hook = subcommands.add_parser("hook", exit_on_error=False)
-        hook.add_argument("--options", required=True)
-        hook.add_argument(
-            "--type", dest="theme_options", type=cls._parse_theme_options,
-            default=ThemeOptions(),
-        )
-        hook.add_argument("--seed", type=int)
-        return parser
+    def chances_table(self):
+        with self._reporting_failures():
+            lottery = self.theme.lottery_for(self.options)
+
+            rows = [("hook", "weight", "score", "chance")]
+            for option, chance in lottery.chance_by_candidate.items():
+                weight = f"{option.weight:g}"
+                score = f"{option.score:g}"
+                rounded_chance = f"{chance:.2f}"
+                rows.append((option.name, weight, score, rounded_chance))
+
+            return self._table(rows)
 
     @staticmethod
-    def _parse_theme_options(text):
-        try:
-            return ThemeOptions.parse(text)
-        except InvalidOptions as invalid:
-            raise argparse.ArgumentTypeError(str(invalid)) from None
+    def _table(rows):
+        widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        name_width, *cell_widths = widths
+        lines = []
+        for name, *cells in rows:
+            right_aligned = [
+                cell.rjust(width) for cell, width in zip(cells, cell_widths)
+            ]
+            lines.append("  ".join([name.ljust(name_width), *right_aligned]))
+
+        return "\n".join(lines)
+
+    @staticmethod
+    def _parser():
+        parser = argparse.ArgumentParser(exit_on_error=False)
+        subcommands = parser.add_subparsers(required=True)
+        subcommand = subcommands.add_parser("hook", exit_on_error=False)
+        subcommand.add_argument("--options", required=True)
+        subcommand.add_argument("--type", default="")
+        subcommand.add_argument("--seed", type=int)
+        subcommand.add_argument(
+            "--chances", dest="shows_chances", action="store_true",
+        )
+        return parser
 
     @staticmethod
     @contextlib.contextmanager
@@ -60,6 +78,8 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     picker = Picker.from_args(args)
-    selections = picker.pick_hook()
+    if picker.shows_chances:
+        print(picker.chances_table())
 
-    print(selections)
+    else:
+        print(picker.pick())

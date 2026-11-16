@@ -188,8 +188,8 @@ A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
 sends the message. A big win is a whole project finished: the project itself
 closes as done. A message with a big win takes its hook only from the entries
-kept for `big_win`; the picker's reference says what happens when none of them
-fits.
+kept for `big_win`, or, when none of them fits, from the entries that fit
+`done`.
 
 ## The options file
 
@@ -277,6 +277,7 @@ The picker keeps the entries whose `type` fits, as `type` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools
 together, each entry counting once at its weight. An entry's score raises or
 lowers its chance, and an entry picked recently is less likely while it rests.
+An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
 from its entry file, and one line or riff is drawn from it, keeping only riffs

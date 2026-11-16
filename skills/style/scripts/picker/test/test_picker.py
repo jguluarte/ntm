@@ -15,17 +15,10 @@ def make_picker_args(options, **flags):
 
 
 class CommandLineTest(unittest.TestCase):
-    def test_hook_draws_from_the_options_file_with_the_seed(self):
-        args = make_picker_args(fixtures.EVEN, seed=2)
-        picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
-
-        self.assertEqual("hook: scenes/dawn", drawn)
-
-    def test_hook_draws_only_hooks_fitting_the_type(self):
+    def test_only_an_option_fitting_the_type_is_drawn(self):
         args = make_picker_args(fixtures.EVERY_TYPE, type="weekly,big_win")
         picker = Picker.from_args(args)
-        drawn = picker.pick_hook()
+        drawn = picker.pick()
 
         self.assertEqual("hook: scenes/big_win", drawn)
 
@@ -33,13 +26,31 @@ class CommandLineTest(unittest.TestCase):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
 
-        self.assertIsNone(picker.seed)
+        self.assertIsNone(picker.theme.seed)
+
+    def test_the_seed_flag_sets_the_themes_seed(self):
+        args = make_picker_args(fixtures.EVEN, seed=3)
+        picker = Picker.from_args(args)
+
+        self.assertEqual(3, picker.theme.seed)
 
     def test_the_type_is_optional(self):
         args = make_picker_args(fixtures.EVEN)
         picker = Picker.from_args(args)
 
-        self.assertEqual(ThemeOptions(), picker.theme_options)
+        self.assertEqual(ThemeOptions(), picker.options)
+
+    def test_the_chances_flag_sets_shows_chances(self):
+        args = make_picker_args(fixtures.EVEN) + ["--chances"]
+        picker = Picker.from_args(args)
+
+        self.assertTrue(picker.shows_chances)
+
+    def test_the_chances_flag_is_optional(self):
+        args = make_picker_args(fixtures.EVEN)
+        picker = Picker.from_args(args)
+
+        self.assertFalse(picker.shows_chances)
 
     def test_a_missing_options_flag_fails_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
@@ -59,14 +70,13 @@ class CommandLineTest(unittest.TestCase):
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
-    def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
-        args = make_picker_args(fixtures.EVEN, type="morning,evening")
+    def test_a_type_that_isnt_an_option_fails_with_unknown_option(self):
+        args = make_picker_args(fixtures.EVEN, type="night")
 
         with self.assertRaises(SystemExit) as exited:
             Picker.from_args(args)
 
-        why = "argument --type: more than one reminder type: evening, morning"
-        expected = f"Picker FAILED: ArgumentError: {why}"
+        expected = "Picker FAILED: UnknownOption: not an option: night"
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
@@ -80,40 +90,75 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
 
-class PickHookTest(unittest.TestCase):
-    def test_each_seed_draws_its_declared_hook(self):
+class PickTest(unittest.TestCase):
+    def test_the_same_seed_gives_the_same_pick(self):
+        seed = 3
+        runs = 10
+
+        first_theme = Theme(fixtures.EVEN, seed)
+        first_picker = Picker(first_theme)
+        first = [first_picker.pick() for _ in range(runs)]
+
+        second_theme = Theme(fixtures.EVEN, seed)
+        second_picker = Picker(second_theme)
+        second = [second_picker.pick() for _ in range(runs)]
+
+        self.assertEqual(first, second)
+
+    def test_without_a_seed_runs_draw_different_options(self):
         theme = Theme(fixtures.EVEN)
-        drawn = {
-            seed: Picker(theme, seed=seed).pick_hook() for seed in range(6)
-        }
-
-        expected = {
-            0: "hook: characters/host",
-            1: "hook: scenes/noon",
-            2: "hook: scenes/dawn",
-            3: "hook: scenes/noon",
-            4: "hook: scenes/noon",
-            5: "hook: scenes/dusk",
-        }
-        self.assertEqual(expected, drawn)
-
-    def test_without_a_seed_runs_draw_different_hooks(self):
-        picker = Picker(Theme(fixtures.EVEN))
+        picker = Picker(theme)
 
         attempts = 50
-        drawn = {
-            picker.pick_hook() for _ in range(attempts)
-        }
+        drawn = {picker.pick() for _ in range(attempts)}
 
         self.assertGreater(len(drawn), 1)
 
-    def test_a_message_no_hook_fits_fails_with_missing_hook(self):
+    def test_an_option_weighing_0_is_never_drawn(self):
+        theme = Theme(fixtures.WEIGHTED)
+        picker = Picker(theme)
+
+        attempts = 50
+        drawn = {picker.pick() for _ in range(attempts)}
+
+        self.assertNotIn("hook: scenes/dusk", drawn)
+
+    def test_a_message_no_option_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        picker = Picker(theme, ThemeOptions.parse("morning"))
+        options = ThemeOptions("morning")
+        picker = Picker(theme, options)
 
         with self.assertRaises(SystemExit) as exited:
-            picker.pick_hook()
+            picker.pick()
 
-        why = "no hook fits morning"
-        expected = f"Picker FAILED: MissingHook: {why}"
+        why = "no option fits morning"
+        expected = f"Picker FAILED: MissingOptions: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
+
+class ChancesTableTest(unittest.TestCase):
+    def test_each_fitting_option_shows_weight_score_and_rounded_chance(self):
+        theme = Theme(fixtures.WEIGHTED)
+        picker = Picker(theme)
+        rows = picker.chances_table().splitlines()
+
+        expected = [
+            "hook             weight  score  chance",
+            "scenes/dawn         0.5      0    0.12",
+            "scenes/noon           1      1    0.50",
+            "scenes/dusk           0      0    0.00",
+            "characters/host       3     -1    0.38",
+        ]
+        self.assertEqual(expected, rows)
+
+    def test_chances_where_every_fitting_option_weighs_0_fail_naming_why(self):
+        theme = Theme(fixtures.WEIGHTED)
+        options = ThemeOptions("big_win")
+        picker = Picker(theme, options)
+
+        with self.assertRaises(SystemExit) as exited:
+            picker.chances_table()
+
+        why = "every option that fits big_win weighs 0"
+        expected = f"Picker FAILED: MissingWeight: {why}"
         self.assertEqual(expected, exited.exception.code)

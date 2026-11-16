@@ -136,8 +136,8 @@ harder sooner" moves one a step.
 
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
-sends the message. A big win is a whole project finished: the last open task in
-a project closes. The run hands the picker these as task outcomes, `done`, `win`
+sends the message. A big win is a whole project finished: the project itself
+closes as done. The run hands the picker these as task outcomes, `done`, `win`
 and `big_win`, and the picker finds the level from them.
 
 A bump raises a message one level with no slip behind it, likelier the longer

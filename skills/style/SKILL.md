@@ -74,12 +74,11 @@ slipped task is pressed, a nod for what's done, and anything the facts ask of
 the tone. Call for a celebration only for a win or a big win. A win is any of
 these: more tasks finished than planned this week, a task finished after
 slipping for days, or a task you judge big or hard. A big win is a whole project
-finished: the last open task in a project closes. Call either only from the
-facts you were handed; look nothing else up. A big win is rare: when the facts
-don't plainly show a whole project finished, it isn't one. An ordinary day of
-doing what was planned gets a nod. Slips from a while back weigh less: a task
-picked up again after a long gap is pressed less than its count of slips, as you
-judge it.
+finished: the project itself closes as done. Call either only from the facts you
+were handed; look nothing else up. A big win is rare: call it only when they
+show a project closed as done. An ordinary day of doing what was planned gets a
+nod. Slips from a while back weigh less: a task picked up again after a long gap
+is pressed less than its count of slips, as you judge it.
 
 ### 3. Write
 

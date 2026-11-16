@@ -39,21 +39,10 @@ $defs:
   entry:
     type: [object, "null"]
     properties:
-      type:
-        if:
-          type: array
-        then:
-          minItems: 1
-          items:
-            $ref: "#/$defs/reminder_type_or_task_outcome"
-        else:
-          $ref: "#/$defs/reminder_type_or_task_outcome"
       weight:
         type: number
+        minimum: 0
       line_half_life_days:
         type: number
       score:
         type: number
-
-  reminder_type_or_task_outcome:
-    enum: [morning, afternoon, evening, weekly, slipped, done, win, big_win]

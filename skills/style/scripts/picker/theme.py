@@ -1,6 +1,7 @@
-import enum
 import hashlib
+import random
 from dataclasses import dataclass
+from functools import cached_property
 from pathlib import Path
 
 import jsonschema
@@ -13,8 +14,8 @@ POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
-TYPE = "type"
 WEIGHT = "weight"
+SCORE = "score"
 HOOK_ROLE = "hook"
 
 ABOUT = "about"
@@ -22,60 +23,14 @@ LINES = "lines"
 RIFFS = "riffs"
 
 
-class ReminderType(enum.Enum):
-    MORNING = "morning"
-    AFTERNOON = "afternoon"
-    EVENING = "evening"
-    WEEKLY = "weekly"
-
-    @classmethod
-    def named_in(cls, values):
-        known = {reminder_type.value for reminder_type in cls}
-        return {cls(value) for value in values & known}
-
-
-class TaskOutcome(enum.Enum):
-    SLIPPED = "slipped"
-    DONE = "done"
-    WIN = "win"
-    BIG_WIN = "big_win"
-
-    @classmethod
-    def named_in(cls, values):
-        known = {task_outcome.value for task_outcome in cls}
-        return {cls(value) for value in values & known}
-
-
 class InvalidTheme(ValueError):
     def __init__(self, where, why):
         super().__init__(f"{where}: {why}")
 
 
-class InvalidOptions(ValueError):
-    pass
-
-
-class UnknownOption(InvalidOptions):
-    def __init__(self, values):
-        listed = ", ".join(sorted(values))
-        super().__init__(f"not an option: {listed}")
-
-
-class MoreThanOneReminderType(InvalidOptions):
-    def __init__(self, reminder_types):
-        values = sorted(reminder_type.value for reminder_type in reminder_types)
-        listed = ", ".join(values)
-        super().__init__(f"more than one reminder type: {listed}")
-
-
-class NoHooks(ValueError):
+class MissingWeight(ValueError):
     def __init__(self):
-        super().__init__("no pool in the options file gives a hook")
-
-
-class MissingHook(ValueError):
-    def __init__(self, theme_options):
-        super().__init__(f"no hook fits {theme_options}")
+        super().__init__("every option weighs 0")
 
 
 class UnknownEntryFile(ValueError):
@@ -84,101 +39,51 @@ class UnknownEntryFile(ValueError):
 
 
 @dataclass(frozen=True)
-class ThemeOptions:
-    reminder_type: ReminderType | None = None
-    task_outcomes: frozenset[TaskOutcome] = frozenset()
-
-    @classmethod
-    def parse(cls, text):
-        values = set(text.split(","))
-        reminder_types = ReminderType.named_in(values)
-        task_outcomes = TaskOutcome.named_in(values)
-
-        options = reminder_types | task_outcomes
-        unknown = values - {option.value for option in options}
-        if unknown:
-            raise UnknownOption(unknown)
-
-        if len(reminder_types) > 1:
-            raise MoreThanOneReminderType(reminder_types)
-
-        reminder_type = reminder_types.pop() if reminder_types else None
-        return cls(reminder_type, frozenset(task_outcomes))
-
-    @property
-    def is_big_win(self):
-        return TaskOutcome.BIG_WIN in self.task_outcomes
-
-    def __str__(self):
-        reminder = [self.reminder_type.value] if self.reminder_type else []
-        outcomes = sorted(outcome.value for outcome in self.task_outcomes)
-        return ",".join(reminder + outcomes)
-
-
-@dataclass(frozen=True)
 class Option:
     kind: str
     slug: str
-    reminder_types: frozenset[ReminderType]
-    task_outcomes: frozenset[TaskOutcome]
+    weight: float
+    score: float
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
-        types = (entry or {}).get(TYPE, [])
-        values = {types} if isinstance(types, str) else set(types)
-        reminder_types = frozenset(ReminderType.named_in(values))
-        task_outcomes = frozenset(TaskOutcome.named_in(values))
-        return cls(kind, slug, reminder_types, task_outcomes)
+        fields = entry or {}
+        weight = fields.get(WEIGHT, 1)
+        score = fields.get(SCORE, 0)
+        return cls(kind, slug, weight, score)
 
     @property
     def name(self):
         return f"{self.kind}/{self.slug}"
 
     @property
-    def kept_for_big_win(self):
-        return TaskOutcome.BIG_WIN in self.task_outcomes
-
-    def fits(self, theme_options):
-        if theme_options.is_big_win and not self.kept_for_big_win:
-            return False
-
-        reminder_type = theme_options.reminder_type
-        if self.reminder_types and reminder_type not in self.reminder_types:
-            return False
-
-        task_outcomes = theme_options.task_outcomes
-        if self.task_outcomes and self.task_outcomes.isdisjoint(task_outcomes):
-            return False
-
-        return True
+    def draw_weight(self):
+        return self.weight * 2 ** self.score
 
 
-class HookManager:
-    def __init__(self, hooks):
-        self._hooks = hooks
+class Lottery:
+    def __init__(self, draw_weights, seed=None):
+        self._generator = random.Random(seed)
+        total = sum(draw_weights.values())
+        self.chance_by_candidate = {
+            candidate: draw_weight / total
+            for candidate, draw_weight in draw_weights.items()
+        }
 
-    def responding_to(self, theme_options):
-        if not self._hooks:
-            raise NoHooks()
+    @property
+    def names(self):
+        return [candidate.name for candidate in self.chance_by_candidate]
 
-        names = self._names_that_fit(theme_options)
+    @property
+    def chance_by_name(self):
+        chances = self.chance_by_candidate.items()
+        return {candidate.name: chance for candidate, chance in chances}
 
-        if not names and theme_options.is_big_win:
-            names = self._names_that_fit(self._as_normal_win(theme_options))
-
-        if not names:
-            raise MissingHook(theme_options)
-
-        return names
-
-    def _names_that_fit(self, theme_options):
-        return [hook.name for hook in self._hooks if hook.fits(theme_options)]
-
-    @staticmethod
-    def _as_normal_win(theme_options):
-        without_big_win = theme_options.task_outcomes - {TaskOutcome.BIG_WIN}
-        task_outcomes = without_big_win | {TaskOutcome.DONE}
-        return ThemeOptions(theme_options.reminder_type, task_outcomes)
+    def draw(self):
+        candidates = list(self.chance_by_candidate)
+        chances = self.chance_by_candidate.values()
+        [winner] = self._generator.choices(candidates, weights=chances)
+        return winner
 
 
 class _OptionsDumper(yaml.SafeDumper):
@@ -196,16 +101,28 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 
 
 class Theme:
-    def __init__(self, path):
+    def __init__(self, path, seed=None):
         self.path = path
+        self.seed = seed
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
-        hooks = self._read_hooks(self._fields[POOLS_BY_KIND])
-        self._hook_manager = HookManager(hooks)
+        self._options = self._read_options(self._fields[POOLS_BY_KIND])
 
-    def hooks_for(self, theme_options):
-        return self._hook_manager.responding_to(theme_options)
+        if not self._options:
+            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
+
+    @cached_property
+    def lottery(self):
+        draw_weights = {option: option.draw_weight for option in self._options}
+
+        if not any(draw_weights.values()):
+            raise MissingWeight()
+
+        return Lottery(draw_weights, self.seed)
+
+    def draw(self):
+        return self.lottery.draw()
 
     def entries_from(self, file_name):
         names = []
@@ -219,32 +136,42 @@ class Theme:
 
         return names
 
+    def weight_of(self, entry_name):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        return entry.get(WEIGHT, 1)
+
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
 
+    def checksum_of(self, file_name):
+        return self._checksums[file_name]
+
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum
 
-    def save(self):
+    def save(self, path):
         checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
         text = yaml.dump(
             checksums_first, Dumper=_OptionsDumper, sort_keys=False,
         )
-        Path(self.path).write_text(text, encoding="utf-8")
+        Path(path).write_text(text, encoding="utf-8")
 
     @staticmethod
-    def _read_hooks(pools_by_kind):
-        hooks = []
+    def _read_options(pools_by_kind):
+        options = []
 
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    hooks.append(Option.from_entry(kind, slug, entry))
+                    option = Option.from_entry(kind, slug, entry)
+                    options.append(option)
 
-        return hooks
+        return options
 
     @staticmethod
     def _load(path):

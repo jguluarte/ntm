@@ -3,4 +3,7 @@ pools:
     roles: [hook]
     entries:
       dawn:
-        type: night
+      noon:
+        weight: 0
+      dusk:
+        weight: 0

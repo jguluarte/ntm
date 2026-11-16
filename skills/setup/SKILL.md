@@ -22,10 +22,10 @@ section with the user.
 Saving a section also adds its part to their user plugin, `ntm-user`, which you
 build up as you go. It holds two skills:
 
-| Skill              | What it holds                                                                |
-| ------------------ | ---------------------------------------------------------------------------- |
-| `ntm-user:backend` | How the rest of ntm works with their backend, and where their databases live |
-| `ntm-user:notify`  | How they receive notifications: their channel                                |
+| Skill              | What it holds                                                             |
+| ------------------ | ------------------------------------------------------------------------- |
+| `ntm-user:backend` | How the rest of ntm works with their backend, and where `%Settings` lives |
+| `ntm-user:notify`  | How they receive notifications: their channel                             |
 
 The user plugin's version, in its `plugin.json`, is the version of the installed
 `ntm` it was built from: built from ntm 0.4.0, it is 0.4.0. `ntm-user:backend`
@@ -43,6 +43,11 @@ Everything else they set up lives in their databases and their jobs.
 
 A database's template, in `references/databases/`, holds `<!-- -->` comments for
 you: write the database without them.
+
+Create each database other than a theme's files under its default name, its `%`
+name in words, such as Paused dates, without asking the user about it. The one
+name they confirm is `%Settings`'s, in ntm backend assets, since every run
+starts from it.
 
 ## Pre-requisites
 
@@ -125,9 +130,9 @@ ntm's version, from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 
 Then start their user plugin, as The user plugin says, with `ntm-user:backend`:
 the backend guide's Names through Databases, filled in with their task list, and
-where `%Settings` lives. Label names stay out of it; they live in `%Settings`.
-The backend guide is the file you read in Connect to a backend. Bundle their
-connector at the same time.
+where `%Settings` lives. Label and database names stay out of it; they live in
+`%Settings`. The backend guide is the file you read in Connect to a backend.
+Bundle their connector at the same time.
 
 ### ntm features
 
@@ -140,15 +145,14 @@ everything.
 | Price watch     | What they want to buy, watched until the price is right |
 
 Note which features they're installing. Then confirm what those features need in
-four rounds, each covering every picked feature together: labels, then settings,
-then databases, then jobs. Price watch's Amazon labels depend on whether they
-want Amazon price alerts, so ask that question at the start of the labels round.
+three rounds, each covering every picked feature together: labels, then
+settings, then jobs. Price watch's Amazon labels depend on whether they want
+Amazon price alerts, so ask that question at the start of the labels round.
 
 Show only what the picked features need, with the defaults below. A label's
-default name is ntm's, without the `$`. A database's is its `%` name in words,
-such as Paused dates. When the user wants more on any of it, the feature's rules
-(`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md` or
-`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) say more.
+default name is ntm's, without the `$`. When the user wants more on any of it,
+the feature's rules (`${CLAUDE_PLUGIN_ROOT}/references/rules/task-management.md`
+or `${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`) say more.
 
 In the jobs round, ask which model the jobs run on: the default is the one
 running this chat. A job never starts on :00 or :30, where every scheduled task
@@ -223,10 +227,14 @@ composable on purpose.
    closed in the last week.
 3. `/ntm:clean`
 4. `/ntm:plan --auto week`
-5. Hand the messenger agent `type: weekly`, with last week from step 2 and the
-   week ahead from step 4. End the run with what it returns; for a delivery
-   block, that is its title and message, without the `NOTIFY VIA FINAL REPLY`
-   line.
+5. When the Themes part of `%Settings` lists more than one theme under All
+   themes, write the next one after This week's theme as This week's theme, back
+   to the first after the last, and save `%Settings`.
+6. Read the `weekly` rule in `%Message-rules`; it says what the message covers.
+   Send the week's message as the core rules' Sending a message in the user's
+   style says. Its facts are what the rule asks for, from last week in step 2
+   and the week ahead in step 4, as counts and the few tasks worth naming, so
+   the message fits a push. End the run with what that returns.
 
 ###### Reminders
 
@@ -238,11 +246,11 @@ Each reminder begins with `/ntm:ready-check`. The morning reminder then runs
 
 ##### Labels
 
-| Label                 | For                                             |
-| --------------------- | ----------------------------------------------- |
-| `$price-watch`        | What they want to buy                           |
-| `$has-amazon-alert`   | An item with an Amazon price alert              |
-| `$amazon-unavailable` | An item not on Amazon in a condition they allow |
+| Label                 | For                                |
+| --------------------- | ---------------------------------- |
+| `$price-watch`        | What they want to buy              |
+| `$has-amazon-alert`   | An item with an Amazon price alert |
+| `$amazon-unavailable` | An item not sold new on Amazon     |
 
 `$price-watch` goes on the project that holds what they want to buy: ask which
 project, or what to call a new one. The two Amazon labels are only for Amazon
@@ -291,46 +299,16 @@ What it runs, for Create the jobs:
 
 Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
-template, and say in a line where each one lives. Add where each one lives to
-`ntm-user:backend`. Write the settings into the `%Settings` database, with the
-labels' real names, dropping Planning when they skipped task management,
-Shopping when they skipped price watch, and the label rows for labels you didn't
-create. Keep the jobs and their model for Create the jobs, after the self-test.
+template, and say in a line where each one lives. Write the settings into the
+`%Settings` database, with the labels' and databases' real names, dropping
+Planning and Databases when they skipped task management, Shopping when they
+skipped price watch, and the label rows for labels you didn't create. Keep the
+jobs and their model for Create the jobs, after the self-test.
 
 ### Create a theme
 
-Send this text as written, in one message. Then add anything else you think is
-important for them to know before they pick one, based on what you know about
-your user from your memories about them.
-
-> The theme is what your reminders are created with, that way messages are
-> always unique and ultimately bring you joy. This is how reminders are never
-> exactly the same, so it doesn't become noise you ignore.
->
-> Consider something you enjoy, like a book or maybe a show. Reality competition
-> shows in particular typically follow a kind of formula that allows ntm to
-> introduce a wider variety of reminders. If you decide to schedule things a
-> week at a time, then the weekly plan is sort of like the season preview. Each
-> day has a preview of what is to come (sometimes a quick synopsis of
-> yesterday), the afternoon is whatever would normally happen in the first half
-> of the episode, and the evening is how an episode ends. This pattern is
-> something an LLM is particularly good at following.
->
-> It's now up to you to get creative, pick something that brings you happiness
-> and will make you smile. When you're slacking off, imagine how they could
-> motivate you? Do you need to be shamed? Do you need a cheerleader? Do you need
-> a demon to stalk you? The world is your oyster - make it so!
-
-Then build the theme with them as `references/theme.md` says: from the parts it
-describes, or from a theme they already have.
-
-Confirm the names of the `%Theme` and `%Message-history` databases. Then save
-the theme: create the `%Theme` database with their theme in the parts
-`references/theme.md` describes, and `%Message-history` from its template. Each
-`%Theme` part holds what you built with them, never the reference's own text:
-How to connect this theme to ntm's flow holds what their week, morning,
-afternoon and evening are in their theme. Add where each one lives to
-`ntm-user:backend`.
+Load `ntm:theme-builder` and follow it through its Result, then come back here:
+it builds their first theme with them and switches it on.
 
 ### Notifications
 

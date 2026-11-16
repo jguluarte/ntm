@@ -38,7 +38,7 @@ know.
 ## The task list
 
 `ntm-user:backend` says how to read and write the user's task list, and where
-each database lives, `%Settings` included.
+`%Settings` lives.
 
 A `$` name, such as `$price-watch`, is a label's default name. `%Settings` holds
 the real names of the user's labels, under Labels.
@@ -79,28 +79,44 @@ of it as it was.
 ## Databases
 
 ntm keeps its own records in databases on the task list. A `%` name, such as
-`%Settings`, is a database's default title.
+`%Settings`, is a database's default title. `%Settings` holds the real names of
+the others under Databases; a theme's files are named after the theme.
 
 Find each part of a database by its name, and save it back whole with only your
 change.
 
-Every user has the three below.
+Every user has `%Settings` and at least one theme.
 
 ### `%Settings`
 
 The values the user agreed to in setup, such as their timezone, their label
 names and how they want to be notified. `ntm:ready-check` loads it at the start
-of a run, and skills read the part they need.
+of a run, and skills read the part they need. Its Themes part lists the user's
+themes and names this week's.
 
-### `%Theme`
+### Themes
 
-The style ntm's messages to the user are written in. `ntm:style` reads it before
-each message, and changes it with the user when they ask.
+A user can have several themes. `%Theme` refers to a theme's collection of
+files, each named after the theme. In a run, each name below means this week's
+theme's file; `references/theme-files.md` gives each file's shape.
 
-### `%Message-history`
+| How we refer to it in the plugin | example                    |
+| -------------------------------- | -------------------------- |
+| `%Theme`                         | `Casebook`                 |
+| `%Theme-options`                 | `Casebook-options`         |
+| `%Message-history`               | `Casebook-message-history` |
 
-What ntm's messages have said, so the next ones don't repeat it, and the
-reminder can count how many days a task has slipped. `ntm:style` keeps it.
+#### `%Theme`
+
+The style ntm's messages to the user are written in. `ntm:style` reads it for
+each message, hands the writer agent only what that message needs, and changes
+it with the user when they ask.
+
+#### `%Message-history`
+
+An entry for each message ntm writes in the theme: when it went out, what was
+picked for it, which tasks it was about, and how it landed. `ntm:style` reads it
+and keeps it.
 
 ## Results
 
@@ -114,7 +130,23 @@ When a skill or agent fails, it returns one line that starts with its own name:
 `Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
 words, naming tasks as Talking to the user about tasks says.
 
-A job's final reply is what its last step returned, in one line. When a step
-returned a `NOTIFY VIA FINAL REPLY` block, the final reply is instead everything
-after that line, as written, and nothing else unless the skill says what follows
-it: the scheduled task's own push shows it.
+A job's final reply is the line its last step returned, then anything that skill
+says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
+holds the block's title and message, as written, without its first line: the
+scheduled task's own push shows it.
+
+## Sending a message in the user's style
+
+The sender decides whether there's a message, and gathers its facts as its own
+file says. Then:
+
+1. Follow `ntm:style`, loading it first if the sender hasn't, to turn the facts
+   into a title and message.
+2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
+   the message, keeping every task id, and send it once more.
+3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
+   message as `ntm:style`'s Keeping `%Message-history` says.
+
+The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
+`ntm:style` ended with it. When `ntm:style` kept the picker's failure line, it
+is the result's last line.

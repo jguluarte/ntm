@@ -8,12 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: ./.github/actions/setup
-      - run: . ./.env && make lint
+      - uses: jetify-com/devbox-install-action@v0.16.0
+        with:
+          enable-cache: true
+      - run: devbox run -- direnv allow .
+      - run: devbox run -- direnv exec . make lint
 
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: ./.github/actions/setup
-      - run: . ./.env && make test
+      - uses: jetify-com/devbox-install-action@v0.16.0
+        with:
+          enable-cache: true
+      - run: devbox run -- direnv allow .
+      - run: devbox run -- direnv exec . make test

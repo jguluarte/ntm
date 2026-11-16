@@ -3,14 +3,14 @@
 ## Reminders
 
 - Load all tasks with today's date
-- Load the message history
+- For the afternoon and evening, load the tasks today's earlier reminders
+  covered
 
 If there are no tasks, you can exit with nothing to send.
 
-Include relevant details if any tasks have carried over (use their days slipped
-and the dates they slipped from to see if this is a pattern, or how many times
-it has been missed). That information could influence how the `%Theme` is
-applied to the message content.
+Include relevant details if any tasks have slipped: how many times, and the
+dates they slipped from, to see if this is a pattern. That information shapes
+what the message says.
 
 ### Morning
 

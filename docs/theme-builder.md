@@ -24,15 +24,14 @@ wherever it shows the example.
 It keeps today's intro text and asks one question at a time in chat. A user who
 already has a theme can start from it: the builder sorts it into the new files.
 
-| Stage              | What the user is asked                        | What gets written                           |
-| ------------------ | --------------------------------------------- | ------------------------------------------- |
-| 1. World           | Their world, where they sit, what hooks them  | The root's `theme` and `world`              |
-| 2. Levels          | How it sounds when tasks slip, and get done   | `escalation`, `finishing_tasks`; thresholds |
-| 3. Kinds           | Kinds found in the sources; which can talk    | The options file's pools and roles; `files` |
-| 4. Perspectives    | Who else would comment on their week          | The options file's `perspectives`           |
-| 5. Research        | Which kind first                              | The entry files                             |
-| 6. Terminology     | Words from the research a writer would miss   | The terminology file                        |
-| 7. Sample messages | Whether a few sample messages make them smile | Any fixes to how an escalation level sounds |
+| Stage           | What the user is asked                       | What gets written                           |
+| --------------- | -------------------------------------------- | ------------------------------------------- |
+| 1. World        | Their world, where they sit, what hooks them | The root's `theme` and `world`              |
+| 2. Levels       | How it sounds when tasks slip, and get done  | `escalation`, `finishing_tasks`; thresholds |
+| 3. Kinds        | Kinds found in the sources; which can talk   | The options file's pools and roles; `files` |
+| 4. Perspectives | Who else would comment on their week         | The options file's `perspectives`           |
+| 5. Research     | Which kind first                             | The entry files                             |
+| 6. Terminology  | Words from the research a writer would miss  | The terminology file                        |
 
 Stage 1 also asks how the user's day maps onto their world, if it does at all,
 and whether there is anything they don't want in it. The user decides what each

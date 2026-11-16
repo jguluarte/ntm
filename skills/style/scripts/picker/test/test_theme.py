@@ -55,6 +55,13 @@ class FitTest(unittest.TestCase):
         expected = ["scenes/any_time", "scenes/evening"]
         self.assertEqual(expected, hooks)
 
+    def test_an_entry_typed_win_fits_a_message_with_a_win(self):
+        theme = Theme(fixtures.EVERY_TYPE)
+        hooks = theme.hooks_for(ThemeOptions.parse("evening,win"))
+
+        expected = ["scenes/any_time", "scenes/evening", "scenes/win"]
+        self.assertEqual(expected, hooks)
+
     def test_a_big_win_fits_only_entries_kept_for_big_win(self):
         theme = Theme(fixtures.EVERY_TYPE)
         hooks = theme.hooks_for(ThemeOptions.parse("evening,big_win"))
@@ -123,7 +130,7 @@ class SchemaTest(unittest.TestCase):
 
         options = [
             "morning", "afternoon", "evening", "weekly", "slipped", "done",
-            "big_win",
+            "win", "big_win",
         ]
         where = "$.pools.scenes.entries.dawn.type"
         expected = f"{where}: 'night' is not one of {options}"

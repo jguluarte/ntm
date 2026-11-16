@@ -118,6 +118,22 @@ class EntryFilesTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
 
+class WeightsAndChecksumsTest(unittest.TestCase):
+    def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        weight = theme.weight_of("characters/detective")
+
+        expected = 0.57
+        self.assertEqual(expected, weight)
+
+    def test_the_checksum_of_a_file_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        checksum = theme.checksum_of("Casebook-characters.yaml")
+
+        expected = "9f86d081884c7d65..."
+        self.assertEqual(expected, checksum)
+
+
 class SaveTest(unittest.TestCase):
     def test_saving_writes_the_options_files_layout(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())

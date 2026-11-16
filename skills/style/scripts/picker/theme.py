@@ -139,11 +139,20 @@ class Theme:
 
         return names
 
+    def weight_of(self, entry_name):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        return entry.get(WEIGHT, 1)
+
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
+
+    def checksum_of(self, file_name):
+        return self._checksums[file_name]
 
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum

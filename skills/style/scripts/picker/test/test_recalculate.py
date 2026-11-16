@@ -36,8 +36,8 @@ def read_checksums(options):
 class CommandLineTest(unittest.TestCase):
     def test_start_reads_each_entry_file_it_is_given(self):
         args = make_start_args(
-            fixtures.CASEBOOK, fixtures.CASEBOOK_CHARACTERS,
-            fixtures.CASEBOOK_SCENES,
+            fixtures.casebook.OPTIONS, fixtures.casebook.CHARACTERS,
+            fixtures.casebook.SCENES,
         )
         recalculation = Recalculation.from_args(args)
         names = [entry_file.name for entry_file in recalculation.entry_files]
@@ -46,7 +46,7 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, names)
 
     def test_start_without_entry_files_fails_naming_them(self):
-        args = make_start_args(fixtures.CASEBOOK)
+        args = make_start_args(fixtures.casebook.OPTIONS)
 
         with self.assertRaises(argparse.ArgumentError) as raised:
             Recalculation.from_args(args)
@@ -57,8 +57,8 @@ class CommandLineTest(unittest.TestCase):
 
 class RecalculationTest(unittest.TestCase):
     def setUp(self):
-        self.characters = EntryFile(fixtures.CASEBOOK_CHARACTERS)
-        self.scenes = EntryFile(fixtures.CASEBOOK_SCENES)
+        self.characters = EntryFile(fixtures.casebook.CHARACTERS)
+        self.scenes = EntryFile(fixtures.casebook.SCENES)
 
     def copy_of(self, options):
         folder = self.enterContext(tempfile.TemporaryDirectory())
@@ -68,7 +68,7 @@ class RecalculationTest(unittest.TestCase):
         return Recalculation(Theme(options), [self.characters, self.scenes])
 
     def test_weighing_gives_the_documented_example_its_own_weights(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
+        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
         recalculation = self.recalculation_of(options)
         recalculation.weigh_entries()
         recalculation.save_options_file()
@@ -82,7 +82,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(expected, read_weights(options))
 
     def test_recording_writes_each_entry_files_own_checksum(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
+        options = self.copy_of(fixtures.casebook.OPTIONS_WITHOUT_NUMBERS)
         recalculation = self.recalculation_of(options)
         recalculation.record_checksums()
         recalculation.save_options_file()
@@ -94,13 +94,13 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(expected, read_checksums(options))
 
     def test_recalculating_the_documented_example_leaves_its_pools_alone(self):
-        options = self.copy_of(fixtures.CASEBOOK)
+        options = self.copy_of(fixtures.casebook.OPTIONS)
         recalculation = self.recalculation_of(options)
         recalculation.weigh_entries()
         recalculation.record_checksums()
         recalculation.save_options_file()
 
-        expected = read_fields(fixtures.CASEBOOK)["pools"]
+        expected = read_fields(fixtures.casebook.OPTIONS)["pools"]
         self.assertEqual(expected, read_fields(options)["pools"])
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):

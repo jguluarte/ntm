@@ -1,16 +1,18 @@
 from pathlib import Path
 
+from . import casebook as casebook
+
 FIXTURES = Path(__file__).parent
-EVEN = FIXTURES / "Even-options.yaml"
-CASEBOOK = FIXTURES / "Casebook-options.yaml"
-CASEBOOK_CHARACTERS = FIXTURES / "Casebook-characters.yaml"
-CASEBOOK_SCENES = FIXTURES / "Casebook-scenes.yaml"
-WITHOUT_NUMBERS = FIXTURES / "Without-numbers-options.yaml"
-EVERY_TYPE = FIXTURES / "Every-type-options.yaml"
-WITHOUT_BIG_WIN = FIXTURES / "Without-big-win-options.yaml"
-SPEAKERS_ONLY = FIXTURES / "Speakers-only-options.yaml"
-WITHOUT_POOLS = FIXTURES / "Without-pools-options.yaml"
-POOL_WITHOUT_ROLES = FIXTURES / "Pool-without-roles-options.yaml"
-UNKNOWN_ROLE = FIXTURES / "Unknown-role-options.yaml"
-UNKNOWN_TYPE = FIXTURES / "Unknown-type-options.yaml"
-NOT_THERE = FIXTURES / "Not-there-options.yaml"
+
+THEMES = FIXTURES / "themes"
+EVEN = THEMES / "Even-options.yaml"
+EVERY_TYPE = THEMES / "Every-type-options.yaml"
+WITHOUT_BIG_WIN = THEMES / "Without-big-win-options.yaml"
+SPEAKERS_ONLY = THEMES / "Speakers-only-options.yaml"
+NOT_THERE = THEMES / "Not-there-options.yaml"
+
+INVALID_THEMES = FIXTURES / "invalid-themes"
+WITHOUT_POOLS = INVALID_THEMES / "Without-pools-options.yaml"
+POOL_WITHOUT_ROLES = INVALID_THEMES / "Pool-without-roles-options.yaml"
+UNKNOWN_ROLE = INVALID_THEMES / "Unknown-role-options.yaml"
+UNKNOWN_TYPE = INVALID_THEMES / "Unknown-type-options.yaml"

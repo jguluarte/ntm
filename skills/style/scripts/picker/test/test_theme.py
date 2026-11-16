@@ -95,7 +95,7 @@ class FitTest(unittest.TestCase):
 
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
-        hooks = Theme(fixtures.CASEBOOK).hooks_for(ThemeOptions())
+        hooks = Theme(fixtures.casebook.OPTIONS).hooks_for(ThemeOptions())
 
         expected = [
             "characters/detective", "shared_lines/any_time", "scenes/stakeout",
@@ -139,7 +139,7 @@ class SchemaTest(unittest.TestCase):
 
 class EntryFilesTest(unittest.TestCase):
     def test_the_entries_from_a_file_are_those_of_every_pool_naming_it(self):
-        theme = Theme(fixtures.CASEBOOK)
+        theme = Theme(fixtures.casebook.OPTIONS)
         entries = theme.entries_from("Casebook-characters.yaml")
 
         expected = [

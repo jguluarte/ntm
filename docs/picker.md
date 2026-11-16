@@ -8,14 +8,14 @@ a chance that comes from weights and scores. It prints `hook: scenes/dawn` for
 
 ## The classes
 
-| Class         | What it is                           | What it owns                                                |
-| ------------- | ------------------------------------ | ----------------------------------------------------------- |
-| `Theme`       | The options file, read and checked   | Its groups, and a lottery of those that can be drawn        |
-| `OptionGroup` | A pool whose `roles` include `hook`  | Its weight, score, options, and a lottery of those that fit |
-| `Option`      | An entry in a pool, as `scenes/dawn` | Its weight and score, and the types it fits                 |
-| `Lottery`     | The candidates for one draw          | Its candidates, their names and chances, and the draw       |
-| `MessageType` | A message's type, as `morning,done`  | Its reminder type and task outcomes, and the big-win rule   |
-| `Picker`      | One run of the `hook` subcommand     | The theme, message type and seed, and what it prints        |
+| Class          | What it is                           | What it owns                                                |
+| -------------- | ------------------------------------ | ----------------------------------------------------------- |
+| `Theme`        | The options file, read and checked   | Its groups, and a lottery of those that can be drawn        |
+| `OptionGroup`  | A pool whose `roles` include `hook`  | Its weight, score, options, and a lottery of those that fit |
+| `Option`       | An entry in a pool, as `scenes/dawn` | Its weight and score, and the types it fits                 |
+| `Lottery`      | The candidates for one draw          | Its candidates, their chances, and the draw                 |
+| `ThemeOptions` | A message's type, as `morning,done`  | Its reminder type and task outcomes, and the big-win rule   |
+| `Picker`       | One run of the `hook` subcommand     | The theme, options and seed, and what it prints             |
 
 ## One draw, top to bottom
 
@@ -23,8 +23,8 @@ a chance that comes from weights and scores. It prints `hook: scenes/dawn` for
 def pick_hook(self):
     with self._reporting_failures():
         generator = random.Random(self.seed)
-        group = self.theme.lottery_for(self.message_type).draw(generator)
-        option = group.lottery_for(self.message_type).draw(generator)
+        group = self.theme.lottery_for(self.options).draw(generator)
+        option = group.lottery_for(self.options).draw(generator)
         return f"hook: {option.name}"
 ```
 
@@ -39,9 +39,9 @@ same two lotteries, headed `group`, `option` and `chance in group`.
 ```python
 def test_an_entry_fits_only_the_reminder_types_its_type_names(self):
     theme = Theme(fixtures.EVERY_TYPE)
-    message_type = MessageType("weekly")
-    [scenes] = theme.lottery_for(message_type).candidates
-    lottery = scenes.lottery_for(message_type)
+    options = ThemeOptions("weekly")
+    [scenes] = theme.lottery_for(options).candidates
+    lottery = scenes.lottery_for(options)
 
     expected = ["scenes/any_time", "scenes/morning_or_weekly"]
     self.assertEqual(expected, lottery.names)
@@ -54,19 +54,19 @@ def test_a_type_that_isnt_a_valid_combination_fails_naming_it(self):
         Picker.from_args(args)
 
     why = "more than one reminder type: evening, morning"
-    expected = f"Picker FAILED: InvalidMessageType: {why}"
+    expected = f"Picker FAILED: InvalidOptions: {why}"
     self.assertEqual(expected, exited.exception.code)
 ```
 
 ## When the picker can't draw
 
-| Name                 | Raised when                               | Message                                         |
-| -------------------- | ----------------------------------------- | ----------------------------------------------- |
-| `InvalidTheme`       | The file breaks the schema or has no hook | `$.pools: no pool gives a hook`                 |
-| `InvalidMessageType` | The type has an unknown word              | `not a reminder type or task outcome: night`    |
-|                      | The type has two reminder types           | `more than one reminder type: evening, morning` |
-| `MissingOption`      | No option fits, after the big-win rule    | `no option fits morning,big_win`                |
-| `MissingWeight`      | Every option that fits weighs 0           | `every option that fits big_win weighs 0`       |
+| Name             | Raised when                               | Message                                         |
+| ---------------- | ----------------------------------------- | ----------------------------------------------- |
+| `InvalidTheme`   | The file breaks the schema or has no hook | `$.pools: no pool gives a hook`                 |
+| `InvalidOptions` | The type has an unknown word              | `not a reminder type or task outcome: night`    |
+|                  | The type has two reminder types           | `more than one reminder type: evening, morning` |
+| `MissingOptions` | No option fits, after the big-win rule    | `no option fits morning,big_win`                |
+| `MissingWeight`  | Every option that fits weighs 0           | `every option that fits big_win weighs 0`       |
 
 Invalid means an input is wrong. Missing means the inputs are fine, but there is
 nothing to draw.

@@ -28,6 +28,10 @@ def read_weights(options):
     }
 
 
+def read_checksums(options):
+    return read_fields(options)["checksums"]
+
+
 class CommandLineTest(unittest.TestCase):
     def test_start_reads_each_entry_file_it_is_given(self):
         args = make_start_args(
@@ -51,24 +55,23 @@ class CommandLineTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
 
-class StartTest(unittest.TestCase):
+class RecalculationTest(unittest.TestCase):
     def setUp(self):
-        self.entry_files = [
-            EntryFile(fixtures.CASEBOOK_CHARACTERS),
-            EntryFile(fixtures.CASEBOOK_SCENES),
-        ]
+        self.characters = EntryFile(fixtures.CASEBOOK_CHARACTERS)
+        self.scenes = EntryFile(fixtures.CASEBOOK_SCENES)
 
     def copy_of(self, options):
         folder = self.enterContext(tempfile.TemporaryDirectory())
         return Path(shutil.copy(options, folder))
 
-    def start(self, options):
-        return Recalculation(Theme(options), self.entry_files).start()
+    def recalculation_of(self, options):
+        return Recalculation(Theme(options), [self.characters, self.scenes])
 
-    def test_start_gives_the_documented_example_its_own_weights(self):
+    def test_weighing_gives_the_documented_example_its_own_weights(self):
         options = self.copy_of(fixtures.WITHOUT_NUMBERS)
-        self.start(options)
-        weights = read_weights(options)
+        recalculation = self.recalculation_of(options)
+        recalculation.weigh_entries()
+        recalculation.save_options_file()
 
         expected = {
             "characters/detective": 0.57,
@@ -76,42 +79,35 @@ class StartTest(unittest.TestCase):
             "shared_lines/big_win": 0.25,
             "scenes/stakeout": 1.0,
         }
-        self.assertEqual(expected, weights)
+        self.assertEqual(expected, read_weights(options))
 
-    def test_start_writes_each_entry_files_checksum(self):
+    def test_recording_writes_each_entry_files_own_checksum(self):
         options = self.copy_of(fixtures.WITHOUT_NUMBERS)
-        self.start(options)
-        checksums = read_fields(options)["checksums"]
+        recalculation = self.recalculation_of(options)
+        recalculation.record_checksums()
+        recalculation.save_options_file()
 
         expected = {
-            entry_file.name: entry_file.checksum
-            for entry_file in self.entry_files
+            "Casebook-characters.yaml": self.characters.checksum,
+            "Casebook-scenes.yaml": self.scenes.checksum,
         }
-        self.assertEqual(expected, checksums)
+        self.assertEqual(expected, read_checksums(options))
 
-    def test_start_keeps_every_value_it_doesnt_compute(self):
+    def test_a_recalculation_keeps_every_value_it_doesnt_compute(self):
         options = self.copy_of(fixtures.CASEBOOK)
-        self.start(options)
-        pools = read_fields(options)["pools"]
+        recalculation = self.recalculation_of(options)
+        recalculation.weigh_entries()
+        recalculation.record_checksums()
+        recalculation.save_options_file()
 
         expected = read_fields(fixtures.CASEBOOK)["pools"]
-        self.assertEqual(expected, pools)
-
-    def test_start_prints_each_file_it_recounted(self):
-        options = self.copy_of(fixtures.WITHOUT_NUMBERS)
-        printed = self.start(options)
-
-        expected = (
-            "recounted: Casebook-characters.yaml\n"
-            "recounted: Casebook-scenes.yaml"
-        )
-        self.assertEqual(expected, printed)
+        self.assertEqual(expected, read_fields(options)["pools"])
 
     def test_an_entry_file_no_pool_uses_fails_in_one_line(self):
-        options = self.copy_of(fixtures.EVEN)
+        recalculation = self.recalculation_of(fixtures.EVEN)
 
         with self.assertRaises(SystemExit) as exited:
-            self.start(options)
+            recalculation.weigh_entries()
 
         why = "no pool uses Casebook-characters.yaml"
         expected = f"Recalculation FAILED: UnknownEntryFile: {why}"

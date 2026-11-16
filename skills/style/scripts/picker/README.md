@@ -84,20 +84,19 @@ hook: shared_lines/big_win
 python3 recalculate.py start --options <file> <entry file>...
 ```
 
-`start` writes a new theme's weights and checksums. For each entry file, it sets
-the `weight` of each of the file's entries, then writes the file's checksum, the
-SHA-256 of its text exactly as handed over, in full. It saves the options file
-in place, and prints a line for each entry file:
+`start` gives a new theme its first weights and checksums, in its options file.
+It sets the `weight` of each entry in the entry files it is handed, records each
+entry file's checksum, the SHA-256 of its text exactly as handed over, in full,
+then saves the options file in place and prints one line naming it:
 
 ```
-recounted: Casebook-characters.yaml
-recounted: Casebook-scenes.yaml
+saved: Casebook-options.yaml
 ```
 
-When it can't, it prints one line on stderr, exits 1 and changes nothing, as the
-picker does. An entry file that no pool names as its `file` reads as
-`UnknownEntryFile`, as when `Casebook`'s entry files are handed in with another
-theme's options file:
+When it can't, it prints one line on stderr and exits 1, as the picker does, and
+leaves the options file as it was. An entry file that no pool names as its
+`file` reads as `UnknownEntryFile`, as when `Casebook`'s entry files are handed
+in with another theme's options file:
 
 ```
 Recalculation FAILED: UnknownEntryFile: no pool uses Casebook-characters.yaml

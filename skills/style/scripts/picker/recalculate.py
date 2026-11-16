@@ -14,29 +14,32 @@ class Recalculation:
 
     @classmethod
     def from_args(cls, args):
-        with cls._reporting_failures():
+        with cls._reporting_any_failure_in_one_line():
             flags = cls._parser().parse_args(args)
             theme = Theme(flags.options)
             entry_files = [EntryFile(path) for path in flags.entry_files]
             return cls(theme, entry_files)
 
-    def start(self):
-        with self._reporting_failures():
-            printed = [
-                self._recount(entry_file) for entry_file in self.entry_files
-            ]
-            self.theme.save()
-            return "\n".join(printed)
+    def weigh_entries(self):
+        with self._reporting_any_failure_in_one_line():
+            for entry_file in self.entry_files:
+                self._weigh_entries_from(entry_file)
 
-    def _recount(self, entry_file):
+    def record_checksums(self):
+        with self._reporting_any_failure_in_one_line():
+            for entry_file in self.entry_files:
+                self.theme.set_checksum(entry_file.name, entry_file.checksum)
+
+    def save_options_file(self):
+        with self._reporting_any_failure_in_one_line():
+            self.theme.save()
+
+    def _weigh_entries_from(self, entry_file):
         line_counts = entry_file.line_counts
         for entry_name in self.theme.entries_from(entry_file.name):
             if entry_name in line_counts:
                 weight = self._weight_for(line_counts[entry_name])
                 self.theme.set_weight(entry_name, weight)
-
-        self.theme.set_checksum(entry_file.name, entry_file.checksum)
-        return f"recounted: {entry_file.name}"
 
     @staticmethod
     def _weight_for(line_count):
@@ -56,11 +59,10 @@ class Recalculation:
 
     @staticmethod
     @contextlib.contextmanager
-    def _reporting_failures():
+    def _reporting_any_failure_in_one_line():
         try:
             yield
         except Exception as failure:
-            # Every failure, a bug included, is one line for the skill to read.
             why = " ".join(str(failure).split())
             sys.exit(
                 f"Recalculation FAILED: { type(failure).__name__ }: {why}"
@@ -68,9 +70,9 @@ class Recalculation:
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
+    recalculation = Recalculation.from_args(sys.argv[1:])
+    recalculation.weigh_entries()
+    recalculation.record_checksums()
+    recalculation.save_options_file()
 
-    recalculation = Recalculation.from_args(args)
-    printed = recalculation.start()
-
-    print(printed)
+    print(f"saved: {recalculation.theme.path}")

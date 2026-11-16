@@ -196,7 +196,7 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 
 class Theme:
     def __init__(self, path):
-        self._path = path
+        self.path = path
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
@@ -232,7 +232,7 @@ class Theme:
         text = yaml.dump(
             checksums_first, Dumper=_OptionsDumper, sort_keys=False,
         )
-        Path(self._path).write_text(text, encoding="utf-8")
+        Path(self.path).write_text(text, encoding="utf-8")
 
     @staticmethod
     def _read_hooks(pools_by_kind):

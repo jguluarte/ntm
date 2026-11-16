@@ -39,9 +39,6 @@ slug.
 hook: characters/detective
 ```
 
-With `--chances`, it prints each kind and each hook in its kind with its weight,
-score and chance instead, as "How likely each kind and hook is" shows.
-
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
 type. An options file that breaks the schema reads as `InvalidTheme`, with where

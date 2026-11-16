@@ -23,7 +23,7 @@ python3 picker.py hook --options <file> [--type <list>] --chances
 | `--options` | The theme's options file, as YAML                                   |
 | `--type`    | The message's reminder type and task outcomes, as `evening,slipped` |
 | `--seed`    | A whole number, for a repeatable pick                               |
-| `--chances` | Shows each kind's and each hook's chance instead of drawing one     |
+| `--chances` | Shows each kind and hook with its weight, score and chance          |
 
 A seed makes a pick repeatable: the same seed and options file draw the same
 hook, for tests and for looking into why a hook was picked. Without `--seed`,
@@ -39,8 +39,8 @@ slug.
 hook: characters/detective
 ```
 
-With `--chances`, it prints the chance of each kind and of each hook in its kind
-instead, as "How likely each kind and hook is" shows.
+With `--chances`, it prints each kind and each hook in its kind with its weight,
+score and chance instead, as "How likely each kind and hook is" shows.
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
@@ -106,8 +106,9 @@ kind keeps its full weight however few of its hooks fit. A hook that weighs 0 is
 never drawn.
 
 `--chances` prints the kinds that can be drawn, then the fitting hooks of each
-of those kinds, both in file order. Each chance is rounded to two places with a
-half rounding up: 0.125 shows as 0.13.
+of those kinds, both in file order, each with its `weight`, its `score` and its
+chance. Each chance is rounded to two places with a half rounding up: 0.125
+shows as 0.13.
 
 ### An example
 
@@ -128,15 +129,15 @@ Overall, `noon` is drawn 0.875 × 0.8 = 0.7 of the time.
 
 ```
 python3 picker.py hook --options Weighted-options.yaml --chances
-kind        chance
-scenes        0.88
-characters    0.13
+kind        weight  score  chance
+scenes         3.5      1    0.88
+characters       2     -1    0.13
 
-hook             chance in kind
-scenes/dawn                0.20
-scenes/noon                0.80
-scenes/dusk                0.00
-characters/host            1.00
+hook             weight  score  chance in kind
+scenes/dawn         0.5      0            0.20
+scenes/noon           1      1            0.80
+scenes/dusk           0      0            0.00
+characters/host       3     -1            1.00
 ```
 
 0.875 and 0.125 show as 0.88 and 0.13, so rounded chances can add up to just

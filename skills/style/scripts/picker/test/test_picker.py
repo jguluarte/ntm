@@ -146,15 +146,15 @@ class ChancesTableTest(unittest.TestCase):
         rows = picker.chances_table().splitlines()
 
         expected = [
-            "kind        chance",
-            "scenes        0.88",
-            "characters    0.13",
+            "kind        weight  score  chance",
+            "scenes         3.5      1    0.88",
+            "characters       2     -1    0.13",
             "",
-            "hook             chance in kind",
-            "scenes/dawn                0.20",
-            "scenes/noon                0.80",
-            "scenes/dusk                0.00",
-            "characters/host            1.00",
+            "hook             weight  score  chance in kind",
+            "scenes/dawn         0.5      0            0.20",
+            "scenes/noon           1      1            0.80",
+            "scenes/dusk           0      0            0.00",
+            "characters/host       3     -1            1.00",
         ]
         self.assertEqual(expected, rows)
 

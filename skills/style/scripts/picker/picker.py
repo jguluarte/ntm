@@ -30,9 +30,11 @@ class Picker:
             generator = random.Random(self.seed)
             kind_chances = self.theme.kind_chances_for(self.theme_options)
             kind = self._draw(generator, kind_chances)
-            hook_chances = self.theme.hook_chances_for(self.theme_options, kind)
+            hook_chances = self.theme.hook_chances_for(
+                self.theme_options, kind.name,
+            )
             hook = self._draw(generator, hook_chances)
-            return f"hook: {hook}"
+            return f"hook: {hook.name}"
 
     def chances_table(self):
         with self._reporting_failures():
@@ -40,31 +42,43 @@ class Picker:
             hook_chances = {}
             for kind in kind_chances:
                 hook_chances.update(
-                    self.theme.hook_chances_for(self.theme_options, kind),
+                    self.theme.hook_chances_for(self.theme_options, kind.name),
                 )
 
-            kind_table = self._table("kind", "chance", kind_chances)
-            hook_table = self._table("hook", "chance in kind", hook_chances)
-            return f"{kind_table}\n\n{hook_table}"
+            kind_rows = self._chance_rows("kind", "chance", kind_chances)
+            hook_rows = self._chance_rows(
+                "hook", "chance in kind", hook_chances,
+            )
+            return f"{ self._table(kind_rows) }\n\n{ self._table(hook_rows) }"
 
     @staticmethod
     def _draw(generator, chances):
-        names = list(chances)
-        [name] = generator.choices(names, weights=chances.values())
-        return name
+        candidates = list(chances)
+        [drawn] = generator.choices(candidates, weights=chances.values())
+        return drawn
 
     @classmethod
-    def _table(cls, name_heading, chance_heading, chances):
-        rows = [(name_heading, chance_heading)]
-        for name, chance in chances.items():
-            rows.append((name, cls._to_hundredths(chance)))
+    def _chance_rows(cls, name_heading, chance_heading, chances):
+        rows = [(name_heading, "weight", "score", chance_heading)]
+        for candidate, chance in chances.items():
+            weight, score = f"{candidate.weight:g}", f"{candidate.score:g}"
+            rounded_chance = cls._to_hundredths(chance)
+            rows.append((candidate.name, weight, score, rounded_chance))
 
-        name_width = max(len(name) for name, _ in rows)
-        chance_width = max(len(chance) for _, chance in rows)
-        return "\n".join(
-            f"{ name.ljust(name_width) }  { chance.rjust(chance_width) }"
-            for name, chance in rows
-        )
+        return rows
+
+    @staticmethod
+    def _table(rows):
+        widths = [max(len(cell) for cell in column) for column in zip(*rows)]
+        lines = []
+        for name, *numbers in rows:
+            cells = [name.ljust(widths[0])]
+            for number, width in zip(numbers, widths[1:]):
+                cells.append(number.rjust(width))
+
+            lines.append("  ".join(cells))
+
+        return "\n".join(lines)
 
     @staticmethod
     def _to_hundredths(chance):

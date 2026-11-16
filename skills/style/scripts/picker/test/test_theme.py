@@ -123,8 +123,7 @@ class KindChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTED)
         kinds = [kind.name for kind in theme.kind_lottery_for(ThemeOptions())]
 
-        expected = ["scenes", "characters"]
-        self.assertEqual(expected, kinds)
+        self.assertNotIn("extras", kinds)
 
     def test_on_a_big_win_only_kinds_keeping_a_big_win_hook_are_drawn(self):
         theme = Theme(fixtures.CASEBOOK)

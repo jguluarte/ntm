@@ -10,7 +10,7 @@ def hook_names(theme, type=None):
     theme_options = ThemeOptions.parse(type) if type else ThemeOptions()
     hooks = []
     for kind in theme.kind_lottery_for(theme_options):
-        hooks += theme.hook_lottery_for(theme_options, kind.name)
+        hooks += theme.hook_lottery_for(theme_options, kind)
 
     return [hook.name for hook in hooks]
 
@@ -25,7 +25,8 @@ class HooksTest(unittest.TestCase):
 
     def test_a_kinds_hooks_are_the_entries_of_its_pool(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         hooks = [hook.name for hook in lottery]
 
         expected = ["scenes/dawn", "scenes/noon", "scenes/dusk"]
@@ -146,7 +147,8 @@ class KindChanceTest(unittest.TestCase):
 class HookChanceTest(unittest.TestCase):
     def test_entries_without_a_weight_or_score_are_equally_likely(self):
         theme = Theme(fixtures.EVEN)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         expected = {
@@ -156,7 +158,8 @@ class HookChanceTest(unittest.TestCase):
 
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.hook_lottery_for(ThemeOptions(), "scenes")
+        scenes, characters = theme.kind_lottery_for(ThemeOptions())
+        lottery = theme.hook_lottery_for(ThemeOptions(), scenes)
         chance_by_name = {hook.name: chance for hook, chance in lottery.items()}
 
         total_draw_weight = 0.5 + 2 + 0

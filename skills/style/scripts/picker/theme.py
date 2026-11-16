@@ -113,7 +113,7 @@ class ThemeOptions:
 
 @dataclass(frozen=True)
 class Option:
-    kind: str
+    kind_name: str
     slug: str
     reminder_types: frozenset[ReminderType]
     task_outcomes: frozenset[TaskOutcome]
@@ -121,7 +121,7 @@ class Option:
     score: float
 
     @classmethod
-    def from_entry(cls, kind, slug, entry):
+    def from_entry(cls, kind_name, slug, entry):
         fields = entry or {}
         types = fields.get(TYPE, [])
         values = {types} if isinstance(types, str) else set(types)
@@ -129,11 +129,13 @@ class Option:
         task_outcomes = frozenset(TaskOutcome.named_in(values))
         weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
         score = fields.get(SCORE, DEFAULT_SCORE)
-        return cls(kind, slug, reminder_types, task_outcomes, weight, score)
+        return cls(
+            kind_name, slug, reminder_types, task_outcomes, weight, score,
+        )
 
     @property
     def name(self):
-        return f"{self.kind}/{self.slug}"
+        return f"{self.kind_name}/{self.slug}"
 
     @property
     def draw_weight(self):
@@ -159,25 +161,21 @@ class Option:
 
 
 @dataclass(frozen=True)
-class _Pool:
-    kind: str
+class Kind:
+    name: str
     weight: float
     score: float
     hooks: tuple[Option, ...]
 
     @classmethod
-    def from_fields(cls, kind, fields):
+    def from_fields(cls, name, fields):
         hooks = tuple(
-            Option.from_entry(kind, slug, entry)
+            Option.from_entry(name, slug, entry)
             for slug, entry in fields[ENTRIES_BY_SLUG].items()
         )
         weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
         score = fields.get(SCORE, DEFAULT_SCORE)
-        return cls(kind, weight, score, hooks)
-
-    @property
-    def name(self):
-        return self.kind
+        return cls(name, weight, score, hooks)
 
     @property
     def draw_weight(self):
@@ -192,15 +190,15 @@ class _Pool:
 
 
 class HookManager:
-    def __init__(self, pools):
-        self._pools_by_kind = {pool.kind: pool for pool in pools}
+    def __init__(self, kinds):
+        self._kinds = kinds
 
     def kind_lottery_for(self, theme_options):
         drawn_for = self._theme_options_to_draw_for(theme_options)
         draw_weights = {}
-        for pool in self._pools_by_kind.values():
-            if pool.can_be_drawn_for(drawn_for):
-                draw_weights[pool] = pool.draw_weight
+        for kind in self._kinds:
+            if kind.can_be_drawn_for(drawn_for):
+                draw_weights[kind] = kind.draw_weight
 
         if not draw_weights:
             raise NoHookHasWeight(theme_options)
@@ -209,12 +207,12 @@ class HookManager:
 
     def hook_lottery_for(self, theme_options, kind):
         drawn_for = self._theme_options_to_draw_for(theme_options)
-        hooks = self._pools_by_kind[kind].hooks_that_fit(drawn_for)
+        hooks = kind.hooks_that_fit(drawn_for)
         draw_weights = {hook: hook.draw_weight for hook in hooks}
         return self._lottery_of(draw_weights)
 
     def _theme_options_to_draw_for(self, theme_options):
-        if not self._pools_by_kind:
+        if not self._kinds:
             raise NoHooks()
 
         if self._any_hook_fits(theme_options):
@@ -227,8 +225,7 @@ class HookManager:
         raise MissingHook(theme_options)
 
     def _any_hook_fits(self, theme_options):
-        pools = self._pools_by_kind.values()
-        return any(pool.hooks_that_fit(theme_options) for pool in pools)
+        return any(kind.hooks_that_fit(theme_options) for kind in self._kinds)
 
     @staticmethod
     def _lottery_of(draw_weights):
@@ -249,8 +246,8 @@ class Theme:
     def __init__(self, path):
         fields = self._load(path)
         self._validate(fields)
-        pools = self._read_hook_pools(fields[POOLS_BY_KIND])
-        self._hook_manager = HookManager(pools)
+        kinds = self._read_kinds(fields[POOLS_BY_KIND])
+        self._hook_manager = HookManager(kinds)
 
     def kind_lottery_for(self, theme_options):
         return self._hook_manager.kind_lottery_for(theme_options)
@@ -259,14 +256,14 @@ class Theme:
         return self._hook_manager.hook_lottery_for(theme_options, kind)
 
     @staticmethod
-    def _read_hook_pools(pools_by_kind):
-        pools = []
+    def _read_kinds(pools_by_kind):
+        kinds = []
 
-        for kind, fields in pools_by_kind.items():
+        for name, fields in pools_by_kind.items():
             if HOOK_ROLE in fields[ROLES]:
-                pools.append(_Pool.from_fields(kind, fields))
+                kinds.append(Kind.from_fields(name, fields))
 
-        return pools
+        return kinds
 
     @staticmethod
     def _load(path):

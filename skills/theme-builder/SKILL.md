@@ -15,8 +15,7 @@ after it, and adds it beside their other themes.
 
 `Casebook`, a made-up detective story, is the example in this skill and in
 `${CLAUDE_PLUGIN_ROOT}/references/theme-files.md`. It shows the shape of a
-theme's files, and nothing more. Never build `Casebook` or copy from it: every
-theme comes from the user's own world.
+theme's files, and nothing more. Never build `Casebook` or copy from it.
 
 ## Usage
 

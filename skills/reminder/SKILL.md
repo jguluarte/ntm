@@ -32,6 +32,10 @@ Load what the Reminders part of `%Message-rules` says to load. Where it says
 today's tasks, that is every task planned for today, open and done, so an
 evening where everything got done still gets its message.
 
+For each done task in a project, look up whether the project has any open task
+left. For the week, count the tasks planned for a day this week, and the tasks
+done this week, planned or not.
+
 A task slipped once for each date its `Planned date history` comment lists, as
 ntm's core rules describe it; a task with no comment hasn't slipped.
 
@@ -58,7 +62,8 @@ are:
 - today's tasks, each with its id and title, whether it's done, its estimate
   when it has one, how many times it slipped, and the dates it slipped from
 - for each done task in a project, whether it was the project's last open task
-- how many tasks were planned this week, and how many got done
+- how many tasks were planned this week, and how many got done this week,
+  planned or not
 - for the afternoon and evening, the tasks the earlier reminders covered, each
   with its id, title and where it's planned now
 - anything else the rule asks of the message, such as tone or length, already

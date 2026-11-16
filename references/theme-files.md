@@ -271,7 +271,7 @@ For each message, the run hands the picker the options file's text, the recent
 picks and the message's type. The recent picks come from `%Message-history`,
 which records each message's hook, speaker, line drawn and when it went out. The
 run works out the type: which reminder this is, whether a task in it has
-slipped, whether one got done, and whether that's a win or a big win.
+slipped, whether one got done, and whether there's a win or a big win.
 
 The picker keeps the entries whose `type` fits, as `type` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools

@@ -217,10 +217,10 @@ rate from starting shares, every score 0, the checksums and an empty `weeks`.
 `update`, in the Sunday morning job, takes in the verdicts, recounts changed
 files, moves the bump rate and prunes. `report` writes the weekly theme report.
 
-`Theme` and `History` are shared with the picker, one class each, from a module
-beside the schema that both scripts import; `History` comes with the picker's
-history slice. To decide: where that module lives, since it reaches across skill
-folders as the schema does.
+`Theme` and `History` are shared with the picker, one class each, in `theme.py`,
+beside the schema in the style skill's picker folder; `History` comes with the
+picker's history slice. The picker and `recalculate.py` import `theme.py`, and
+the theme builder runs `recalculate.py start`.
 
 ## The build order
 

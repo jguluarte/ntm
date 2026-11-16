@@ -53,7 +53,7 @@ parts are the same in every theme:
 | `theme`           | The theme's name                                                             |
 | `world`           | The theme's world, and where the user sits in it                             |
 | `escalation`      | How the theme reads a task that slipped, and how it escalates with each slip |
-| `finishing_tasks` | How the theme marks a finished task, and a big win                           |
+| `finishing_tasks` | How the theme marks a finished task, up to a big win                         |
 | `files`           | Every other file of the theme, grouped by how the writer gets data from it   |
 
 `escalation` and `finishing_tasks` each hold one paragraph, or levels, the first
@@ -174,7 +174,8 @@ a message is, and what happened to its tasks.
 | `weekly`    | Which reminder | The weekly planning message       |
 | `slipped`   | What happened  | A task in the message has slipped |
 | `done`      | What happened  | A task in the message got done    |
-| `big_win`   | What happened  | A big effort, as below            |
+| `win`       | What happened  | A win, as below                   |
+| `big_win`   | What happened  | A big win, as below               |
 
 A message is one reminder, and any number of things can have happened in it. An
 entry fits a message when the message is one of the reminders its `type` names,
@@ -183,10 +184,10 @@ if it names any, and one of the things it names happened, if it names any. So
 task, `type: [evening, slipped]` only an evening with a slipped task, and
 `type: [morning, weekly]` either reminder.
 
-A big win is one of these: several tasks closed in one day that had been planned
-across several days, a task with a big estimate finally closed, or a task that
-slipped many times finally closed. An ordinary day of doing what was planned is
-never a big win. A message with a big win takes its hook only from the entries
+A win is any of these: more tasks finished than planned this week, a task
+finished after slipping for days, or a task judged big or hard by the run that
+sends the message. A big win is a whole project finished: the project itself
+closes as done. A message with a big win takes its hook only from the entries
 kept for `big_win`; the picker's reference says what happens when none of them
 fits.
 
@@ -270,7 +271,7 @@ For each message, the run hands the picker the options file's text, the recent
 picks and the message's type. The recent picks come from `%Message-history`,
 which records each message's hook, speaker, line drawn and when it went out. The
 run works out the type: which reminder this is, whether a task in it has
-slipped, whether one got done, and whether it's a big win.
+slipped, whether one got done, and whether there's a win or a big win.
 
 The picker keeps the entries whose `type` fits, as `type` above says. Each
 message gets exactly one hook, drawn from all the entries in hook pools

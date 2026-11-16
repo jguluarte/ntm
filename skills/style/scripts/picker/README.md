@@ -67,7 +67,7 @@ The order of entries in a file doesn't change their chances. With a fixed
 ### The message's type
 
 `--type` takes at most one reminder type, `morning`, `afternoon`, `evening` or
-`weekly`, and any of the task outcomes `slipped`, `done` and `big_win`,
+`weekly`, and any of the task outcomes `slipped`, `done`, `win` and `big_win`,
 separated by commas. The picker draws from the hooks whose `type` fits the
 message's, as `references/theme-files.md` says, or, without `--type`, from the
 hooks without `type`. On a big win it draws from the hooks kept for `big_win`,

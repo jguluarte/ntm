@@ -278,7 +278,8 @@ class Theme:
         for kind, pool in pools_by_kind.items():
             if HOOK_ROLE in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    options.append(Option.from_entry(kind, slug, entry))
+                    option = Option.from_entry(kind, slug, entry)
+                    options.append(option)
 
         return options
 

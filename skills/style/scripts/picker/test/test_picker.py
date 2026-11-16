@@ -92,30 +92,31 @@ class CommandLineTest(unittest.TestCase):
 
 class PickTest(unittest.TestCase):
     def test_the_same_seed_gives_the_same_pick(self):
-        seeds = range(10)
+        seed = 3
+        runs = 10
 
-        first = [
-            Picker(Theme(fixtures.EVEN, seed)).pick() for seed in seeds
-        ]
+        theme = Theme(fixtures.EVEN, seed)
+        picker = Picker(theme)
+        first = [picker.pick() for _ in range(runs)]
 
-        second = [
-            Picker(Theme(fixtures.EVEN, seed)).pick() for seed in seeds
-        ]
+        theme = Theme(fixtures.EVEN, seed)
+        picker = Picker(theme)
+        second = [picker.pick() for _ in range(runs)]
 
         self.assertEqual(first, second)
 
     def test_without_a_seed_runs_draw_different_options(self):
-        picker = Picker(Theme(fixtures.EVEN))
+        theme = Theme(fixtures.EVEN)
+        picker = Picker(theme)
 
         attempts = 50
-        drawn = {
-            picker.pick() for _ in range(attempts)
-        }
+        drawn = {picker.pick() for _ in range(attempts)}
 
         self.assertGreater(len(drawn), 1)
 
     def test_an_option_weighing_0_is_never_drawn(self):
-        picker = Picker(Theme(fixtures.WEIGHTED))
+        theme = Theme(fixtures.WEIGHTED)
+        picker = Picker(theme)
 
         attempts = 50
         drawn = {picker.pick() for _ in range(attempts)}
@@ -124,7 +125,8 @@ class PickTest(unittest.TestCase):
 
     def test_a_message_no_option_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
-        picker = Picker(theme, ThemeOptions("morning"))
+        options = ThemeOptions("morning")
+        picker = Picker(theme, options)
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick()
@@ -136,7 +138,8 @@ class PickTest(unittest.TestCase):
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_fitting_option_shows_weight_score_and_rounded_chance(self):
-        picker = Picker(Theme(fixtures.WEIGHTED))
+        theme = Theme(fixtures.WEIGHTED)
+        picker = Picker(theme)
         rows = picker.chances_table().splitlines()
 
         expected = [
@@ -150,7 +153,8 @@ class ChancesTableTest(unittest.TestCase):
 
     def test_chances_where_every_fitting_option_weighs_0_fail_naming_why(self):
         theme = Theme(fixtures.WEIGHTED)
-        picker = Picker(theme, ThemeOptions("big_win"))
+        options = ThemeOptions("big_win")
+        picker = Picker(theme, options)
 
         with self.assertRaises(SystemExit) as exited:
             picker.chances_table()

@@ -101,6 +101,17 @@ class PickTest(unittest.TestCase):
 
         self.assertNotIn("hook: scenes/dusk", drawn)
 
+    def test_a_pick_where_every_option_weighs_0_fails_naming_why(self):
+        theme = Theme(fixtures.WEIGHTLESS)
+        picker = Picker(theme)
+
+        with self.assertRaises(SystemExit) as exited:
+            picker.pick()
+
+        why = "every option weighs 0"
+        expected = f"Picker FAILED: MissingWeight: {why}"
+        self.assertEqual(expected, exited.exception.code)
+
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_option_shows_weight_score_and_rounded_chance(self):

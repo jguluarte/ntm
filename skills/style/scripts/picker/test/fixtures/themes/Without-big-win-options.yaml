@@ -1,0 +1,10 @@
+pools:
+  scenes:
+    roles: [hook]
+    entries:
+      evening_done:
+        type: [evening, done]
+      slipped:
+        type: slipped
+      morning_slipped:
+        type: [morning, slipped]

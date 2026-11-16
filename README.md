@@ -73,7 +73,17 @@ Your scheduled jobs run it first; run it yourself if something seems off.
 Writes ntm's messages to you in the theme you created during setup, so they
 sound like something you enjoy and keep changing instead of repeating. A task
 you keep putting off gets a stronger nudge the longer it slips. Ask it to write
-something in your style, or to change how your reminders sound.
+something in your style, or to change how your reminders sound. When a reminder
+is a keeper, or one has gone stale, say so in that reminder's chat, and ntm
+notes it to keep your reminders fresh.
+
+### `/ntm:theme-builder`
+
+Builds a theme with you, one stage at a time: something you enjoy, like a show
+or a book, how it talks to you when you're on track or slacking off, and the
+people, scenes and moments your reminders draw on. Setup runs it for your first
+theme; run it again any time you want another. Your themes take turns, a week
+each. If you stop partway, it picks up where you left off.
 
 ## Task management
 
@@ -126,9 +136,10 @@ its own each day.
 ### `/ntm:run-price-watch`
 
 Checks the things you want to buy, the tasks in the project you picked for them
-in setup, and tells you when one is a good deal today. Its daily result, in the
-scheduled task, also lists any item that needs something from you, such as a
-target price.
+in setup, and tells you when one is a good deal today. The alert is a plain push
+with the price, the store and a link to the store's page. Its daily result, in
+the scheduled task, gives each deal's full details, and lists any item that
+needs something from you, such as a target price.
 
 ### `/ntm:sync-price-watch-to-amazon`
 

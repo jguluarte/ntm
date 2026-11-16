@@ -97,280 +97,203 @@ pools:
     entries:
       any_time: {}
 
-      big_win:
-        type: big_win
+      big_win: {}
 
   motifs:
     file: Dragify-motifs.yaml
     roles: [hook]
     entries:
-      previously_on:
-        type: [morning, weekly]
+      previously_on: {}
 
-      werk_room_entrance:
-        type: [morning, weekly]
+      werk_room_entrance: {}
 
-      the_morning_after:
-        type: [morning, slipped]
+      the_morning_after: {}
 
-      video_message:
-        type: morning
+      video_message: {}
 
-      challenge_announcement:
-        type: [morning, weekly]
+      challenge_announcement: {}
 
-      picking_teams:
-        type: morning
+      picking_teams: {}
 
-      werk_room_walkthrough:
-        type: afternoon
+      werk_room_walkthrough: {}
 
-      the_twist:
-        type: afternoon
+      the_twist: {}
 
-      getting_ready:
-        type: afternoon
+      getting_ready: {}
 
       confessional: {}
 
-      design_challenge:
-        type: afternoon
+      design_challenge: {}
 
       reading_challenge: {}
 
       puppets: {}
 
-      untucked:
-        type: evening
+      untucked: {}
 
       snatch_game: {}
 
-      rusical:
-        type: afternoon
+      rusical: {}
 
-      girl_group:
-        type: afternoon
+      girl_group: {}
 
       talent_show: {}
 
-      makeover:
-        type: afternoon
+      makeover: {}
 
       the_roast: {}
 
-      the_ball:
-        type: afternoon
+      the_ball: {}
 
       the_runway: {}
 
-      the_reveal:
-        type: done
+      the_reveal: {}
 
-      the_critiques:
-        type: slipped
+      the_critiques: {}
 
-      safe:
-        type: done
+      safe: {}
 
-      deliberation:
-        type: evening
+      deliberation: {}
 
-      lip_sync_for_your_life:
-        type: [evening, slipped]
+      lip_sync_for_your_life: {}
 
-      shantay_you_stay:
-        type: done
+      shantay_you_stay: {}
 
-      challenge_win:
-        type: big_win
+      challenge_win: {}
 
-      rupeter_badge:
-        type: done
+      rupeter_badge: {}
 
-      lip_sync_for_your_legacy:
-        type: done
+      lip_sync_for_your_legacy: {}
 
-      sashay_away:
-        type: [evening, slipped]
+      sashay_away: {}
 
-      mirror_message:
-        type: [evening, slipped]
+      mirror_message: {}
 
-      closing_line:
-        type: evening
+      closing_line: {}
 
-      porkchop:
-        type: [weekly, slipped]
+      porkchop: {}
 
-      the_save:
-        type: slipped
+      the_save: {}
 
-      returning_queen:
-        type: slipped
+      returning_queen: {}
 
-      lalaparuza:
-        type: slipped
+      lalaparuza: {}
 
-      reunion:
-        type: weekly
+      reunion: {}
 
-      the_crowning:
-        type: big_win
+      the_crowning: {}
 
-      meet_our_monsters:
-        type: weekly
+      meet_our_monsters: {}
 
-      fright_feat:
-        type: morning
+      fright_feat: {}
 
-      the_boudoir:
-        type: afternoon
+      the_boudoir: {}
 
       floor_show: {}
 
       four_tenets: {}
 
-      boulets_judgment:
-        type: evening
+      boulets_judgment: {}
 
-      who_should_go_home:
-        type: [evening, slipped]
+      who_should_go_home: {}
 
-      the_cauldron:
-        type: [evening, slipped]
+      the_cauldron: {}
 
-      extermination:
-        type: slipped
+      extermination: {}
 
-      the_plea:
-        type: slipped
+      the_plea: {}
 
-      later_that_night:
-        type: [evening, slipped]
+      later_that_night: {}
 
-      key_of_life_and_death:
-        type: slipped
+      key_of_life_and_death: {}
 
-      extermination_survivor:
-        type: done
+      extermination_survivor: {}
 
-      supermonster_crowning:
-        type: big_win
+      supermonster_crowning: {}
 
   references:
     file: Dragify-references.yaml
     roles: [hook]
     entries:
-      season_1_filter:
-        type: slipped
+      season_1_filter: {}
 
-      susan_lucci:
-        type: slipped
+      susan_lucci: {}
 
-      jujubees_unbeaten_run:
-        type: [weekly, slipped]
+      jujubees_unbeaten_run: {}
 
       mimi_lifts_india: {}
 
-      chads_cher:
-        type: done
+      chads_cher: {}
 
       dida_and_natalie_cole: {}
 
       party_city: {}
 
-      coco_and_alyssa:
-        type: slipped
+      coco_and_alyssa: {}
 
-      alyssas_katy_perry:
-        type: slipped
+      alyssas_katy_perry: {}
 
-      lil_poundcake:
-        type: slipped
+      lil_poundcake: {}
 
-      ornacia:
-        type: morning
+      ornacia: {}
 
       kennedys_leap: {}
 
-      the_beyonce_curse:
-        type: slipped
+      the_beyonce_curse: {}
 
-      gaga_in_the_werk_room:
-        type: morning
+      gaga_in_the_werk_room: {}
 
-      sheas_finale:
-        type: [weekly, slipped]
+      sheas_finale: {}
 
-      monets_fake_split:
-        type: afternoon
+      monets_fake_split: {}
 
-      not_next_time:
-        type: slipped
+      not_next_time: {}
 
-      the_six_way_lip_sync:
-        type: morning
+      the_six_way_lip_sync: {}
 
-      sorry_not_sorry:
-        type: done
+      sorry_not_sorry: {}
 
       silky_strips_in_untucked: {}
 
-      rus_meh:
-        type: done
+      rus_meh: {}
 
-      jans_face_crack:
-        type: done
+      jans_face_crack: {}
 
       nicki_detests_it: {}
 
-      the_virtual_finale:
-        type: done
+      the_virtual_finale: {}
 
-      kandys_boombox:
-        type: morning
+      kandys_boombox: {}
 
-      ru_flips_off_utica:
-        type: slipped
+      ru_flips_off_utica: {}
 
       mary_queen_of_scots: {}
 
-      willow_pills_variety_show:
-        type: done
+      willow_pills_variety_show: {}
 
       dejas_lil_jon: {}
 
-      boss_bitch:
-        type: done
+      boss_bitch: {}
 
-      the_immunity_potion:
-        type: slipped
+      the_immunity_potion: {}
 
       nymphias_bananas: {}
 
-      the_badonka_dunk_tank:
-        type: slipped
+      the_badonka_dunk_tank: {}
 
-      onyas_crown_lip_sync:
-        type: done
+      onyas_crown_lip_sync: {}
 
-      myki_ranked_last:
-        type: big_win
+      myki_ranked_last: {}
 
-      nini_cocos_streak:
-        type: done
+      nini_cocos_streak: {}
 
-      the_she_mergency_button:
-        type: afternoon
+      the_she_mergency_button: {}
 
-      dancing_on_my_own:
-        type: [evening, slipped]
+      dancing_on_my_own: {}
 
-      shut_up_and_drive:
-        type: slipped
+      shut_up_and_drive: {}
 
-      ben_eliminates_herself:
-        type: afternoon
+      ben_eliminates_herself: {}
 
       lifes_not_fair: {}
 
@@ -378,106 +301,76 @@ pools:
 
       club_96: {}
 
-      kylies_slip:
-        type: done
+      kylies_slip: {}
 
       silkys_barbie_girl: {}
 
-      the_spoken_word_lip_sync:
-        type: evening
+      the_spoken_word_lip_sync: {}
 
-      frock_destroyers:
-        type: done
+      frock_destroyers: {}
 
       uk_hun: {}
 
-      the_lockdown_break:
-        type: slipped
+      the_lockdown_break: {}
 
-      ginny_lemon_walks_off:
-        type: slipped
+      ginny_lemon_walks_off: {}
 
       biminis_katie_price: {}
 
-      danny_beards_clean_run:
-        type: big_win
+      danny_beards_clean_run: {}
 
-      love_most_of_ya:
-        type: [evening, done]
+      love_most_of_ya: {}
 
-      jimbos_mirror_message:
-        type: [evening, slipped]
+      jimbos_mirror_message: {}
 
-      eve_6000s_reveal:
-        type: done
+      eve_6000s_reveal: {}
 
-      kita_mean_wins_at_home:
-        type: big_win
+      kita_mean_wins_at_home: {}
 
-      the_mud_wrestling_cage:
-        type: slipped
+      the_mud_wrestling_cage: {}
 
-      vander_volunteers:
-        type: done
+      vander_volunteers: {}
 
-      landons_spiders:
-        type: done
+      landons_spiders: {}
 
-      landon_cider_the_first_king:
-        type: big_win
+      landon_cider_the_first_king: {}
 
-      saint_wins_resurrection:
-        type: big_win
+      saint_wins_resurrection: {}
 
-      jay_kay_dies_twice:
-        type: slipped
+      jay_kay_dies_twice: {}
 
-      asias_stolen_wig:
-        type: done
+      asias_stolen_wig: {}
 
-      crystal_labeijas_walk_off:
-        type: slipped
+      crystal_labeijas_walk_off: {}
 
-      dorian_corey_on_shade:
-        type: slipped
+      dorian_corey_on_shade: {}
 
-      junior_labeijas_opulence:
-        type: big_win
+      junior_labeijas_opulence: {}
 
-      courtney_comes_back:
-        type: slipped
+      courtney_comes_back: {}
 
       pink_flamingos: {}
 
-      rocky_horror_at_midnight:
-        type: weekly
+      rocky_horror_at_midnight: {}
 
       no_wire_hangers: {}
 
-      baby_janes_rat:
-        type: slipped
+      baby_janes_rat: {}
 
       ready_for_my_close_up: {}
 
-      the_curtain_dress:
-        type: done
+      the_curtain_dress: {}
 
-      little_edies_costume:
-        type: morning
+      little_edies_costume: {}
 
-      picture_it:
-        type: weekly
+      picture_it: {}
 
-      i_dont_know_her:
-        type: slipped
+      i_dont_know_her: {}
 
-      diana_in_the_rain:
-        type: big_win
+      diana_in_the_rain: {}
 
-      judy_at_carnegie_hall:
-        type: big_win
+      judy_at_carnegie_hall: {}
 
-      chers_farewell_tour:
-        type: slipped
+      chers_farewell_tour: {}
 
       the_wig_in_the_toilet: {}

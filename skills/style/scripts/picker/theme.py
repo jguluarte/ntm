@@ -69,19 +69,14 @@ class MoreThanOneReminderType(InvalidOptions):
         super().__init__(f"more than one reminder type: {listed}")
 
 
-class NoHooks(ValueError):
-    def __init__(self):
-        super().__init__("no pool in the options file gives a hook")
+class MissingOptions(ValueError):
+    def __init__(self, options):
+        super().__init__(f"no option fits {options}")
 
 
-class MissingHook(ValueError):
-    def __init__(self, theme_options):
-        super().__init__(f"no hook fits {theme_options}")
-
-
-class NoHookHasWeight(ValueError):
-    def __init__(self, theme_options):
-        super().__init__(f"every hook that fits {theme_options} weighs 0")
+class MissingWeight(ValueError):
+    def __init__(self, options):
+        super().__init__(f"every option that fits {options} weighs 0")
 
 
 class UnknownEntryFile(ValueError):
@@ -223,22 +218,22 @@ class Theme:
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._options = self._read_options(self._fields[POOLS_BY_KIND])
 
-    def lottery_for(self, options):
         if not self._options:
-            raise NoHooks()
+            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no pool gives a hook")
 
+    def lottery_for(self, options):
         fitting = self._options_that_fit(options)
 
         if not fitting and options.is_big_win:
             fitting = self._options_that_fit(options.as_finished_task())
 
         if not fitting:
-            raise MissingHook(options)
+            raise MissingOptions(options)
 
         draw_weights = {option: option.draw_weight for option in fitting}
 
         if not any(draw_weights.values()):
-            raise NoHookHasWeight(options)
+            raise MissingWeight(options)
 
         return Lottery(draw_weights)
 

@@ -128,15 +128,15 @@ class PickOptionTest(unittest.TestCase):
         }
         self.assertEqual(expected, drawn)
 
-    def test_a_message_no_hook_fits_fails_with_missing_hook(self):
+    def test_a_message_no_option_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
         picker = Picker(theme, ThemeOptions("morning"))
 
         with self.assertRaises(SystemExit) as exited:
             picker.pick_option()
 
-        why = "no hook fits morning"
-        expected = f"Picker FAILED: MissingHook: {why}"
+        why = "no option fits morning"
+        expected = f"Picker FAILED: MissingOptions: {why}"
         self.assertEqual(expected, exited.exception.code)
 
 
@@ -173,6 +173,6 @@ class ChancesTableTest(unittest.TestCase):
         with self.assertRaises(SystemExit) as exited:
             picker.chances_table()
 
-        why = "every hook that fits big_win weighs 0"
-        expected = f"Picker FAILED: NoHookHasWeight: {why}"
+        why = "every option that fits big_win weighs 0"
+        expected = f"Picker FAILED: MissingWeight: {why}"
         self.assertEqual(expected, exited.exception.code)

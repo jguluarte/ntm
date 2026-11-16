@@ -6,7 +6,7 @@ from pathlib import Path
 
 import fixtures
 from theme import (
-    InvalidTheme, MissingHook, NoHookHasWeight, NoHooks, Theme, ThemeOptions,
+    InvalidTheme, MissingOptions, MissingWeight, Theme, ThemeOptions,
     UnknownEntryFile,
 )
 
@@ -25,13 +25,11 @@ class HooksTest(unittest.TestCase):
         ]
         self.assertEqual(expected, hooks)
 
-    def test_a_theme_whose_pools_give_no_hook_fails_with_no_hooks(self):
-        theme = Theme(fixtures.SPEAKERS_ONLY)
+    def test_a_theme_with_only_speaker_pools_fails(self):
+        with self.assertRaises(InvalidTheme) as raised:
+            Theme(fixtures.SPEAKERS_ONLY)
 
-        with self.assertRaises(NoHooks) as raised:
-            theme.lottery_for(ThemeOptions())
-
-        expected = "no pool in the options file gives a hook"
+        expected = "$.pools: no pool gives a hook"
         self.assertEqual(expected, str(raised.exception))
 
 
@@ -81,13 +79,13 @@ class FitTest(unittest.TestCase):
         expected = ["scenes/evening_done"]
         self.assertEqual(expected, hooks)
 
-    def test_a_big_win_with_no_normal_win_hook_fails_with_missing_hook(self):
+    def test_a_big_win_no_entry_fits_fails_with_missing_options(self):
         theme = Theme(fixtures.WITHOUT_BIG_WIN)
 
-        with self.assertRaises(MissingHook) as raised:
+        with self.assertRaises(MissingOptions) as raised:
             theme.lottery_for(ThemeOptions("morning,big_win"))
 
-        expected = "no hook fits morning,big_win"
+        expected = "no option fits morning,big_win"
         self.assertEqual(expected, str(raised.exception))
 
 
@@ -117,13 +115,13 @@ class ChanceTest(unittest.TestCase):
         }
         self.assertEqual(expected, lottery.chance_by_name)
 
-    def test_every_fitting_hook_weighing_0_fails_with_no_hook_has_weight(self):
+    def test_every_fitting_entry_weighing_0_fails_with_missing_weight(self):
         theme = Theme(fixtures.WEIGHTED)
 
-        with self.assertRaises(NoHookHasWeight) as raised:
+        with self.assertRaises(MissingWeight) as raised:
             theme.lottery_for(ThemeOptions("big_win"))
 
-        expected = "every hook that fits big_win weighs 0"
+        expected = "every option that fits big_win weighs 0"
         self.assertEqual(expected, str(raised.exception))
 
 

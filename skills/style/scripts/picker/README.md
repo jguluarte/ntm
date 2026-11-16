@@ -42,19 +42,23 @@ hook: characters/detective
 
 When it can't pick, it prints one line on stderr,
 `Picker FAILED: <failure>: <why>`, and exits 1. `<failure>` is the failure's
-type. An options file that breaks the schema reads as `InvalidTheme`, with where
-in the file and what is wrong. A `--type` that names something other than a
-reminder type or task outcome reads as `UnknownOption`, and one that names more
-than one reminder type as `MoreThanOneReminderType`. A theme where no pool gives
-a hook reads as `NoHooks`, one with no hook that fits the message as
-`MissingHook`, and one where every hook that fits weighs 0 as `NoHookHasWeight`.
+type.
+
+An options file that breaks the schema, or where no pool gives a hook, reads as
+`InvalidTheme`, with where in the file and what is wrong. A `--type` that names
+something other than a reminder type or task outcome reads as `UnknownOption`,
+and one that names more than one reminder type as `MoreThanOneReminderType`.
+
+When the file and the type are fine but there is nothing to draw, a message no
+option fits reads as `MissingOptions`, and one where every option that fits
+weighs 0 as `MissingWeight`.
 
 ```
 Picker FAILED: InvalidTheme: $.pools.scenes: 'roles' is a required property
+Picker FAILED: InvalidTheme: $.pools: no pool gives a hook
 Picker FAILED: UnknownOption: not an option: night
-Picker FAILED: NoHooks: no pool in the options file gives a hook
-Picker FAILED: MissingHook: no hook fits morning,slipped
-Picker FAILED: NoHookHasWeight: every hook that fits big_win weighs 0
+Picker FAILED: MissingOptions: no option fits morning,slipped
+Picker FAILED: MissingWeight: every option that fits big_win weighs 0
 ```
 
 ## How it picks

@@ -121,7 +121,7 @@ tasks is never a big win.
 
 The run calls a win or a big win only from the facts it already gathered;
 nothing reads the task list for it. It calls each once, in the first message
-after it happens: the message history records each message's levels, so a later
+after it happens: the message history records each message's type, so a later
 message sees what an earlier one celebrated.
 
 ### Theme files
@@ -185,9 +185,10 @@ history then rolls forward with an upper limit.
 Each theme has its own message history, `<Theme>-message-history`, named like
 the theme's other files: for Justin, `Dragify-message-history`.
 
-One JSON line per message: the date and time, the reminder type, the picks, the
-levels, the opening words, the task ids with their planned dates at send, the
-user's feedback and the rater's verdict. A field with no value is left out.
+One JSON line per message: the date and time, the reminder, the message's type,
+the picks, the levels, the opening words, the task ids with their planned dates
+at send, the user's feedback and the rater's verdict. A field with no value is
+left out.
 
 The levels are the `escalation` and `finishing_tasks` names as strings, as the
 run worked them out, the first level included.

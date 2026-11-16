@@ -39,13 +39,14 @@ Pick one hook, the idea this message builds on: one entry of the theme, drawn by
 the picker as The picker, below, says. Hand it the message's type: each value
 below that holds, with commas between them, such as `evening,slipped`.
 
-| Value                               | When                                        |
-| ----------------------------------- | ------------------------------------------- |
-| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type`      |
-| `weekly`                            | It's the weekly setup's message             |
-| `slipped`                           | A task in the facts slipped                 |
-| `done`                              | A task in the facts is done                 |
-| `big_win`                           | The facts show a big effort, as step 2 says |
+| Value                               | When                                     |
+| ----------------------------------- | ---------------------------------------- |
+| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type`   |
+| `weekly`                            | It's the weekly setup's message          |
+| `slipped`                           | A task in the facts slipped              |
+| `done`                              | A task in the facts is done              |
+| `win`                               | The facts show a win, as step 2 says     |
+| `big_win`                           | The facts show a big win, as step 2 says |
 
 The self-test's message, and one written in chat, take none of the first two
 rows' values. With no value at all, leave `--type` out.
@@ -70,12 +71,12 @@ entries for the hook and the speaker.
 
 Read the facts against the theme's guidance and set the tone: how hard each
 slipped task is pressed, a nod for what's done, and anything the facts ask of
-the tone. Call for a celebration only for a big effort: several tasks closed in
-one day that were planned across several days, a task with a big estimate
-finally closed, or one that slipped many times finally closed. An ordinary day
-of doing what was planned gets a nod. Slips from a while back weigh less: a task
-picked up again after a long gap is pressed less than its count of slips, as you
-judge it.
+the tone. Call for a celebration only for a win or a big win. A win is any of
+these: more tasks finished than planned this week, a task finished after
+slipping for days, or a task you judge big or hard. A big win is a whole project
+finished: the last open task in a project closes. An ordinary day of doing what
+was planned gets a nod. Slips from a while back weigh less: a task picked up
+again after a long gap is pressed less than its count of slips, as you judge it.
 
 ### 3. Write
 

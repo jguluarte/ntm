@@ -57,6 +57,8 @@ are:
 - what the message must cover, as the rule says, in plain words
 - today's tasks, each with its id and title, whether it's done, its estimate
   when it has one, how many times it slipped, and the dates it slipped from
+- for each done task in a project, whether it was the project's last open task
+- how many tasks were planned this week, and how many got done
 - for the afternoon and evening, the tasks the earlier reminders covered, each
   with its id, title and where it's planned now
 - anything else the rule asks of the message, such as tone or length, already

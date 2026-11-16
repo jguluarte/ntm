@@ -23,16 +23,19 @@ a chance that comes from weights and scores. It prints `hook: scenes/dawn` for
 def pick_hook(self):
     with self._reporting_failures():
         generator = random.Random(self.seed)
-        group = self.theme.lottery_for(self.options).draw(generator)
-        option = group.lottery_for(self.options).draw(generator)
+        group_lottery = self.theme.lottery_for(self.options)
+        group = group_lottery.draw(generator)
+        option_lottery = group.lottery_for(self.options)
+        option = option_lottery.draw(generator)
         return f"hook: {option.name}"
 ```
 
-The theme's lottery holds each group with a fitting option that weighs more than
-0; the first draw picks one. The group's lottery holds its fitting options; the
-second draw picks the hook. Both apply the big-win rule: on a big win with no
-option kept for it, they draw as for a finished task. `chances_table` prints the
-same two lotteries, headed `group`, `option` and `chance in group`.
+`group_lottery` holds each group with a fitting option that weighs more than 0,
+and `group` is drawn from it. `option_lottery` holds that group's fitting
+options, and `option`, the hook, is drawn from it. Both lotteries apply the
+big-win rule: on a big win with no option kept for it, they draw as for a
+finished task. `chances_table` prints the same two lotteries, headed `group`,
+`option` and `chance in group`.
 
 ## What a test reads like
 

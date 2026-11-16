@@ -31,8 +31,8 @@ def pick_hook(self):
 The theme's lottery holds each group with a fitting option that weighs more than
 0; the first draw picks one. The group's lottery holds its fitting options; the
 second draw picks the hook. Both apply the big-win rule: on a big win with no
-option kept for it, they draw for a normal win. `chances_table` prints the same
-two lotteries, headed `group`, `option` and `chance in group`.
+option kept for it, they draw as for a finished task. `chances_table` prints the
+same two lotteries, headed `group`, `option` and `chance in group`.
 
 ## What a test reads like
 

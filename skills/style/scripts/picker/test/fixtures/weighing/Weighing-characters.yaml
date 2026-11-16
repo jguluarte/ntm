@@ -1,0 +1,10 @@
+characters:
+  three_lines:
+    lines:
+      - One.
+      - Two.
+      - Three.
+  one_line:
+    lines:
+      - One.
+  no_lines: {}

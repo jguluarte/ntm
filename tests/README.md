@@ -36,14 +36,15 @@ path, so a test imports their classes by name.
 | `test_lottery.py`     | The chances a `Lottery` gives, and that a seed draws the same          |
 | `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                         |
 | `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line     |
-| `test_recalculate.py` | What a `Recalculation` weighs, records and saves, or fails with        |
+| `test_recalculate.py` | What a `Recalculation` weighs and records, or fails with               |
 
 `fixtures/` holds the themes they read. A theme with several files has a folder
 of its own, whose `__init__.py` names each file. A one-file theme is an options
 file named for what it holds or lacks.
 
-| Folder            | What it holds                                                            |
-| ----------------- | ------------------------------------------------------------------------ |
-| `casebook/`       | The example in `references/theme-files.md`, with and without its numbers |
-| `themes/`         | One-file themes `Theme` loads                                            |
-| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault                     |
+| Folder            | What it holds                                               |
+| ----------------- | ----------------------------------------------------------- |
+| `casebook/`       | The example in `references/theme-files.md`                  |
+| `weighing/`       | A theme without numbers whose entries have 3, 1 and 0 lines |
+| `themes/`         | One-file themes `Theme` loads                               |
+| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault        |

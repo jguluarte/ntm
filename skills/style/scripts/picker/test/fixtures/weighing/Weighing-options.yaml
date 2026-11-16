@@ -1,0 +1,8 @@
+pools:
+  characters:
+    file: Weighing-characters.yaml
+    roles: [hook]
+    entries:
+      three_lines:
+      one_line:
+      no_lines:

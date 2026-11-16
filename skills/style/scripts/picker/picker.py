@@ -54,9 +54,10 @@ class Picker:
                 )
 
             kind_rows = self._chance_rows("kind", "chance", kind_lottery)
-            kind_table = self._table(kind_rows)
-            hook_table = self._table(self._hook_rows(hook_chances))
-            return f"{kind_table}\n\n{hook_table}"
+            hook_rows = self._chance_rows(
+                "hook", "chance in kind", hook_chances, self.history,
+            )
+            return f"{ self._table(kind_rows) }\n\n{ self._table(hook_rows) }"
 
     @staticmethod
     def _draw(generator, lottery):
@@ -64,33 +65,26 @@ class Picker:
         [drawn] = generator.choices(candidates, weights=lottery.values())
         return drawn
 
-    def _hook_rows(self, hook_chances):
-        if not self.history.has_file:
-            return self._chance_rows("hook", "chance in kind", hook_chances)
-
+    @classmethod
+    def _chance_rows(cls, name_heading, chance_heading, chances, history=None):
+        shows_days = history is not None and history.has_file
+        days_heading = ["days since used"] if shows_days else []
         rows = [
-            ("hook", "weight", "score", "days since used", "chance in kind"),
+            (name_heading, "weight", "score", *days_heading, chance_heading),
         ]
-        for hook, chance in hook_chances.items():
-            weight = f"{hook.weight:g}"
-            score = f"{hook.score:g}"
-            days = self.history.days_since_used(hook.name)
-            shown_days = "never" if days is None else str(days)
+        for candidate, chance in chances.items():
+            weight = f"{candidate.weight:g}"
+            score = f"{candidate.score:g}"
+            days = [cls._shown_days(history, candidate)] if shows_days else []
             rounded_chance = f"{chance:.2f}"
-            rows.append((hook.name, weight, score, shown_days, rounded_chance))
+            rows.append((candidate.name, weight, score, *days, rounded_chance))
 
         return rows
 
     @staticmethod
-    def _chance_rows(name_heading, chance_heading, chances):
-        rows = [(name_heading, "weight", "score", chance_heading)]
-        for candidate, chance in chances.items():
-            weight = f"{candidate.weight:g}"
-            score = f"{candidate.score:g}"
-            rounded_chance = f"{chance:.2f}"
-            rows.append((candidate.name, weight, score, rounded_chance))
-
-        return rows
+    def _shown_days(history, candidate):
+        days = history.days_since_used(candidate.name)
+        return "never" if days is None else str(days)
 
     @staticmethod
     def _table(rows):

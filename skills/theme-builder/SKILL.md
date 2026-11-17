@@ -120,7 +120,7 @@ drawn, with that line, and go on.
 
 Create the theme's `%Message-history` from its template,
 `${CLAUDE_PLUGIN_ROOT}/skills/setup/references/databases/message-history.md`,
-named after the theme, such as `Casebook-message-history`, beside its files.
+named after the theme, such as `Casebook-message-history.md`, beside its files.
 
 Then add the theme's root to the end of All themes, in the Themes part of
 `%Settings`, or where the user asks for it. When it's their first theme, it is

@@ -23,7 +23,7 @@ Run `/ntm:ready-check`, unless it already ran in this session. It loads
 `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
 with its result line. Then read `%Theme` and `%Message-history`: the theme the
 sender names, or else this week's theme, as `%Settings` names it, and that
-theme's history, found by its name, such as `Casebook-message-history`.
+theme's history, found by its name, such as `Casebook-message-history.md`.
 
 ## What you write from
 
@@ -40,11 +40,11 @@ the theme. The perspective is who or what tells the message: a speaker, or a
 piece of the world that tells it, such as a scene. The reference is another
 piece of the world it draws on.
 
-Take the first pick from the theme's picks list, `<Theme>-picks`, such as
-`Casebook-picks`, and save the list without it. The list is a YAML list, each
-item a `perspective:` and a `reference:`. When there is no list, or it's empty,
-load `ntm:refresh-picks` and follow it, then take the first pick from the new
-list.
+Take the first pick from the theme's picks list, `<Theme>-picks.yaml`, such as
+`Casebook-picks.yaml`, and save the list without it. The list is a YAML list,
+each item a `perspective:` and a `reference:`. When there is no list, or it's
+empty, load `ntm:refresh-picks` and follow it, then take the first pick from the
+new list.
 
 When it ends with `Nothing to refresh:`, the theme isn't built for the picker:
 pick both yourself from the theme, from different kinds, and keep no line. That

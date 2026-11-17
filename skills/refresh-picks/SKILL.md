@@ -122,12 +122,12 @@ list there, or creating `%Theme-picks` when there is none.
 
 ## Result
 
-For a job, return `Refreshed <Theme>-picks: 25 picks`, such as
-`Refreshed Casebook-picks: 25 picks`. When there's no `%Theme-options`,
+For a job, return `Refreshed <Theme>-picks.yaml: 25 picks`, such as
+`Refreshed Casebook-picks.yaml: 25 picks`. When there's no `%Theme-options`,
 `Nothing to refresh: no <Theme>-options.yaml`.
 
 For the weekly setup job, two lines come first, or the failure line in their
-place: `Rated <Theme>-message-history: <n> acted, <n> ignored`, then
+place: `Rated <Theme>-message-history.md: <n> acted, <n> ignored`, then
 `Adjusted <Theme>-options.yaml`. With nothing to rate, they're one line,
 `Nothing to rate`.
 

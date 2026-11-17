@@ -2,9 +2,10 @@ import argparse
 import contextlib
 import sys
 
-from theme import EntryFile, Theme
+from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
+LEAST_SPEAKER_RATE = 0.6
 
 
 class Recalculation:
@@ -15,6 +16,12 @@ class Recalculation:
     def weigh_entries(self):
         for entry_file in self.entry_files:
             self._weigh_entries_from(entry_file)
+
+    def work_out_speaker_rate(self):
+        speakers = self._total_weight_of(SPEAKER_ROLE)
+        other_perspectives = self._total_weight_of(PERSPECTIVE_ROLE)
+        speaker_rate = self._speaker_rate_for(speakers, other_perspectives)
+        self.theme.set_speaker_rate(speaker_rate)
 
     def record_checksums(self):
         for entry_file in self.entry_files:
@@ -30,12 +37,24 @@ class Recalculation:
                 weight = self._weight_for(line_counts[entry_name])
                 self.theme.set_weight(entry_name, weight)
 
+    def _total_weight_of(self, role):
+        entry_names = self.theme.entries_with_role(role)
+        return sum(self.theme.weight_of(name) for name in entry_names)
+
     @staticmethod
     def _weight_for(line_count):
         if not line_count:
             return 1.0
 
         return round(line_count / (line_count + LINES_AT_HALF_WEIGHT), 2)
+
+    @staticmethod
+    def _speaker_rate_for(speakers, other_perspectives):
+        if not speakers:
+            return 0
+
+        share = speakers / (speakers + other_perspectives)
+        return round(max(share, LEAST_SPEAKER_RATE), 2)
 
 
 def parser():
@@ -64,6 +83,7 @@ if __name__ == "__main__":
         recalculation = Recalculation(theme, entry_files)
 
         recalculation.weigh_entries()
+        recalculation.work_out_speaker_rate()
         recalculation.record_checksums()
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

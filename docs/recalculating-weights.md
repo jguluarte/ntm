@@ -64,7 +64,7 @@ picker's first draft; where they give a number, it is kept.
 | -------------- | ------------ | --------------------- | ------------------- | ---------- |
 | `weight`       | Entry        | When its file changes | 1                   | 0 to 1     |
 | `score`        | Entry, pool  | Each week             | 0                   | -1 to 1    |
-| `speaker_rate` | Top level    | Only by hand          | 0.5                 | 0 to 1     |
+| `speaker_rate` | Top level    | When a file changes   | 0.5                 | 0 to 1     |
 | `weight`       | Pool         | Each week             | Square root of size | Above 0    |
 | `bump_rate`    | `escalation` | Each week, with data  | 1.0; 0 with no bump | 0.1 to 0.9 |
 | `checksums`    | Top level    | When a file changes   | None                | None       |
@@ -89,9 +89,12 @@ instead. To decide: the 0.1 and the 0.3.
 How often the perspective is a speaker: one rate for the theme, and the speaker
 is drawn from all its speaker pools together. The rest of the time, the
 perspective is an option from a pool whose `roles` hold perspective. The rate is
-0.5 unless the theme's options file sets its own, and no run changes it. To
-decide: whether the recalculation moves it from how the user responds to
-speakers.
+the speakers' share of the weight, and at least 0.6 when the theme has speakers:
+`max(speakers / (speakers + other perspectives), 0.6)`, each side the sum of its
+entries' weights, rounded to two places. So the perspective is usually a
+speaker, and a theme with more speakers to offer has them more often still. A
+theme without speakers gets 0, and one without other perspectives gets 1. The
+recalculation works it out with the weights; it is never set by hand.
 
 ### A kind's `weight`
 
@@ -200,10 +203,10 @@ numbers for both the recalculation and the theme builder
 | The command | A method per thing it does; named with the skill                 |
 
 `start`, for the theme builder, gives a new theme its first numbers with no
-history: weights from lines, square-root kind weights, every score 0, the
-checksums and an empty `weeks`. `update`, in the Sunday morning job, takes in
-the verdicts, recounts changed files, moves the bump rate and prunes. `report`
-writes the weekly theme report.
+history: weights from lines, the speaker rate from those weights, square-root
+kind weights, every score 0, the checksums and an empty `weeks`. `update`, in
+the Sunday morning job, takes in the verdicts, recounts changed files, moves the
+bump rate and prunes. `report` writes the weekly theme report.
 
 `Theme` and `History` are shared with the picker, one class each, in `theme.py`,
 beside the schema in the style skill's picker folder; `History` comes with the
@@ -216,7 +219,8 @@ PRs near 400 lines that each run, tested in the picker's style. The first is
 also what the theme builder needs, so it comes first; the rest follow the
 picker's history slice.
 
-1. Weights and checksums from the entry files, written into the options file.
+1. Weights, the speaker rate and checksums from the entry files, written into
+   the options file.
 2. Scores from verdicts, and `weeks`.
 3. The bump rate.
 4. Pruning.

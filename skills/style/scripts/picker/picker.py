@@ -28,7 +28,9 @@ def parser():
 
 
 def pick_text(perspective, reference):
-    return f"perspective: {perspective.name}\nreference: {reference.name}"
+    perspective_name = perspective.line or perspective.name
+    reference_name = reference.line or reference.name
+    return f"perspective: {perspective_name}\nreference: {reference_name}"
 
 
 def chances_table(lottery):

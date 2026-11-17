@@ -10,11 +10,12 @@ python3 picker.py pick --options <file> [--seed <number>]
 python3 picker.py pick --options <file> --chances
 ```
 
-The same `--seed` draws the same picks. `pick` prints the two options it drew;
-`--chances` prints each perspective instead, with its weight, score and chance:
+The same `--seed` draws the same picks. `pick` prints the two options it drew,
+each down to its drawn line when it has lines; `--chances` prints each
+perspective instead, with its weight, score and chance:
 
 ```
-perspective: characters/detective
+perspective: characters/detective/riffs/0
 reference: scenes/stakeout
 
 perspective           weight  score  chance

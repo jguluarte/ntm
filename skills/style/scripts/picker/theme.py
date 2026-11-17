@@ -1,6 +1,6 @@
 import hashlib
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import jsonschema
@@ -25,6 +25,7 @@ ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
 LINE_LISTS = [LINES, RIFFS]
+LINE_WEIGHT = 1
 
 
 class InvalidTheme(ValueError):
@@ -53,6 +54,7 @@ class Option:
     slug: str
     weight: float
     score: float
+    line: str | None = None
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
@@ -139,11 +141,21 @@ class Theme:
         draw_weights = {option: option.draw_weight for option in references}
         return self._lottery_of(draw_weights)
 
+    def line_lottery_of(self, entry_name):
+        line_names = [
+            f"{entry_name}/{key}/{index}"
+            for key, count in self.line_counts_of(entry_name).items()
+            for index in range(count)
+        ]
+        return self._lottery_of(dict.fromkeys(line_names, LINE_WEIGHT))
+
     def draw_perspective(self):
-        return self.perspective_lottery().draw()
+        perspective = self.perspective_lottery().draw()
+        return self._with_line_drawn(perspective)
 
     def draw_reference_outside(self, kind):
-        return self.reference_lottery_outside(kind).draw()
+        reference = self.reference_lottery_outside(kind).draw()
+        return self._with_line_drawn(reference)
 
     def entries_from(self, file_name):
         names = []
@@ -202,6 +214,13 @@ class Theme:
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entries_by_slug[slug] = {**self._entry(entry_name), **fields}
+
+    def _with_line_drawn(self, option):
+        if not self.line_counts_of(option.name):
+            return option
+
+        line = self.line_lottery_of(option.name).draw()
+        return replace(option, line=line)
 
     def _lottery_of(self, draw_weights):
         if not any(draw_weights.values()):

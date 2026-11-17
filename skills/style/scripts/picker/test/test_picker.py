@@ -39,7 +39,7 @@ class PickTextTest(unittest.TestCase):
         rows = pick_text(perspective, reference).splitlines()
 
         expected = [
-            "perspective: characters/detective",
+            "perspective: characters/detective/riffs/0",
             "reference: scenes/stakeout",
         ]
         self.assertEqual(expected, rows)

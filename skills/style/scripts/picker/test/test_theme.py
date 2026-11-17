@@ -43,6 +43,34 @@ class ReferenceTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
 
+class LineTest(unittest.TestCase):
+    def test_each_line_and_riff_of_an_entry_has_an_equal_chance(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        lottery = theme.line_lottery_of("characters/detective")
+
+        expected = {
+            "characters/detective/lines/0": 0.25,
+            "characters/detective/lines/1": 0.25,
+            "characters/detective/lines/2": 0.25,
+            "characters/detective/riffs/0": 0.25,
+        }
+        self.assertEqual(expected, lottery.chance_by_candidate)
+
+    def test_an_option_with_lines_is_drawn_with_one_of_them(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        reference = theme.draw_reference_outside("scenes")
+
+        expected = "shared_lines/any_time/lines/0"
+        self.assertEqual(expected, reference.line)
+
+    def test_an_option_without_lines_is_drawn_without_one(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        reference = theme.draw_reference_outside("shared_lines")
+
+        expected = None
+        self.assertEqual(expected, reference.line)
+
+
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)

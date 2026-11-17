@@ -136,21 +136,21 @@ class Theme:
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._days_since_use = dict(days_since_use or {})
+        self._speakers = self._read_options(SPEAKER_ROLE)
+        self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
+        self._references = self._read_options(REFERENCE_ROLE)
 
     def perspective_lottery(self):
         speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
-        speakers = self._read_options(SPEAKER_ROLE)
-        other_perspectives = self._read_options(PERSPECTIVE_ROLE)
         draw_weights = {
-            **self._scaled_to(speaker_rate, speakers),
-            **self._scaled_to(1 - speaker_rate, other_perspectives),
+            **self._scaled_to(speaker_rate, self._speakers),
+            **self._scaled_to(1 - speaker_rate, self._other_perspectives),
         }
         return self._lottery_of(draw_weights)
 
     def reference_lottery_outside(self, kind):
-        every_reference = self._read_options(REFERENCE_ROLE)
         references = [
-            option for option in every_reference if option.kind != kind
+            option for option in self._references if option.kind != kind
         ]
 
         if not references:
@@ -164,9 +164,6 @@ class Theme:
 
     def draw_reference_outside(self, kind):
         return self.reference_lottery_outside(kind).draw()
-
-    def rest(self, option):
-        self._days_since_use[option.name] = 0
 
     def entries_from(self, file_name):
         names = []

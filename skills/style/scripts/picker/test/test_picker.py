@@ -30,15 +30,6 @@ class PickTest(unittest.TestCase):
 
         self.assertGreater(len(picks), 1)
 
-    def test_a_pick_rests_its_reference_before_the_next_pick(self):
-        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
-        picker = Picker(theme)
-        perspective, reference = picker.pick()
-        lottery = theme.reference_lottery_outside(perspective.kind)
-        chance = lottery.chance_by_name[reference.name]
-
-        self.assertAlmostEqual(0.52, chance, places=2)
-
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):

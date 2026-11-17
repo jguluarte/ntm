@@ -13,8 +13,6 @@ class Picker:
     def pick(self):
         perspective = self.theme.draw_perspective()
         reference = self.theme.draw_reference_outside(perspective.kind)
-        self.theme.rest(perspective)
-        self.theme.rest(reference)
         return perspective, reference
 
 

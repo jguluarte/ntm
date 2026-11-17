@@ -11,19 +11,19 @@ database's with a `%`, such as `%Settings`. The mark isn't part of the name.
 Setup records your labels' and databases' real names in `%Settings`, and where
 `%Settings` itself lives in `ntm-user:backend`, so yours can be anything.
 
-| In ntm                | Our name in Linear        |
-| --------------------- | ------------------------- |
-| `$no-autoschedule`    | `no-autoschedule`         |
-| `$pending-shipment`   | `pending-shipment`        |
-| `$price-watch`        | `price-watch`             |
-| `$has-amazon-alert`   | `has-amazon-alert`        |
-| `$amazon-unavailable` | `amazon-unavailable`      |
-| `%Settings`           | `Settings`                |
-| `%Message-rules`      | `Message rules`           |
-| `%Message-history`    | `<Theme>-message-history` |
-| `%Paused-dates`       | `Paused dates`            |
-| `%Estimator-log`      | `Estimator log`           |
-| `%Theme`              | `<Theme>`                 |
+| In ntm                | Our name in Linear           |
+| --------------------- | ---------------------------- |
+| `$no-autoschedule`    | `no-autoschedule`            |
+| `$pending-shipment`   | `pending-shipment`           |
+| `$price-watch`        | `price-watch`                |
+| `$has-amazon-alert`   | `has-amazon-alert`           |
+| `$amazon-unavailable` | `amazon-unavailable`         |
+| `%Settings`           | `Settings`                   |
+| `%Message-rules`      | `Message rules`              |
+| `%Message-history`    | `<Theme>-message-history.md` |
+| `%Paused-dates`       | `Paused dates`               |
+| `%Estimator-log`      | `Estimator log`              |
+| `%Theme`              | `<Theme>.yaml`               |
 
 These are the names the plugin's author uses; the marks keep the plugin's files
 consistent and still leave you free to name yours differently.

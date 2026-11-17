@@ -21,9 +21,9 @@ agent reads the parts of `%Theme` a message needs, and never `%Message-history`.
 
 Run `/ntm:ready-check`, unless it already ran in this session. It loads
 `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
-with its result line. Then read `%Theme` and `%Message-history`: this week's
-theme, as `%Settings` names it, and that theme's history, found by its name,
-such as `Casebook-message-history`.
+with its result line. Then read `%Theme` and `%Message-history`: the theme the
+sender names, or else this week's theme, as `%Settings` names it, and that
+theme's history, found by its name, such as `Casebook-message-history.md`.
 
 ## What you write from
 
@@ -40,11 +40,11 @@ the theme. The perspective is who or what tells the message: a speaker, or a
 piece of the world that tells it, such as a scene. The reference is another
 piece of the world it draws on.
 
-Take the first pick from the theme's picks list, `<Theme>-picks`, such as
-`Casebook-picks`, and save the list without it. The list is a YAML list, each
-item a `perspective:` and a `reference:`. When there is no list, or it's empty,
-load `ntm:refresh-picks` and follow it, then take the first pick from the new
-list.
+Take the first pick from the theme's picks list, `<Theme>-picks.yaml`, such as
+`Casebook-picks.yaml`, and save the list without it. The list is a YAML list,
+each item a `perspective:` and a `reference:`. When there is no list, or it's
+empty, load `ntm:refresh-picks` and follow it, then take the first pick from the
+new list.
 
 When it ends with `Nothing to refresh:`, the theme isn't built for the picker:
 pick both yourself from the theme, from different kinds, and keep no line. That
@@ -112,16 +112,16 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose first five words aren't the
-`opening` of a recent entry, or the start of an older entry's `line`. Its title
-and message are what gets sent, and step 1's pick goes into its entry.
+Take the version with the lowest probability whose first five words aren't any
+entry's `opening`. Its title and message are what gets sent, and step 1's pick
+goes into its entry.
 
 ## Keeping `%Message-history`
 
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
-final reply, add its entry at the top of the Entries part of the history Setup
-read. An entry is one JSON line, written compact, with no spaces or line breaks
-added, and only the fields that have a value:
+final reply, add its entry as the first line of the Entries part's `jsonl`
+block, in the history Setup read. An entry is one JSON line, written compact,
+with no spaces or line breaks added, and only the fields that have a value:
 
 ```
 {"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}

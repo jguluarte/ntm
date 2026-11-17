@@ -64,8 +64,9 @@ Claude's built-in browser
 
 ## Themes
 
-<!-- Each theme by its root's title. Leave both empty: `ntm:theme-builder` fills
-them in when it switches a theme on. -->
+<!-- Each theme by its root's title, such as `Casebook.yaml`; the theme's name
+is that title without `.yaml`. Leave both empty: `ntm:theme-builder` fills them
+in when it switches a theme on. -->
 
 - This week's theme: <theme's root>
 

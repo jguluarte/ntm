@@ -100,12 +100,12 @@ A user can have several themes. `%Theme` refers to a theme's collection of
 files, each named after the theme. In a run, each name below means this week's
 theme's file; `references/theme-files.md` gives each file's shape.
 
-| How we refer to it in the plugin | example                    |
-| -------------------------------- | -------------------------- |
-| `%Theme`                         | `Casebook`                 |
-| `%Theme-options`                 | `Casebook-options`         |
-| `%Theme-picks`                   | `Casebook-picks`           |
-| `%Message-history`               | `Casebook-message-history` |
+| How we refer to it in the plugin | example                       |
+| -------------------------------- | ----------------------------- |
+| `%Theme`                         | `Casebook.yaml`               |
+| `%Theme-options`                 | `Casebook-options.yaml`       |
+| `%Theme-picks`                   | `Casebook-picks.yaml`         |
+| `%Message-history`               | `Casebook-message-history.md` |
 
 #### `%Theme`
 

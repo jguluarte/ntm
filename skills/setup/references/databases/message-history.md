@@ -1,4 +1,4 @@
-# <Theme>-message-history
+# <Theme>-message-history.md
 
 Keep: 8 weeks
 

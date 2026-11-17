@@ -17,12 +17,11 @@ class Recalculation:
         for entry_file in self.entry_files:
             self._weigh_entries_from(entry_file)
 
-    def compute_speaker_rate(self):
+    def work_out_speaker_rate(self):
         speakers = self._total_weight_of(SPEAKER_ROLE)
         other_perspectives = self._total_weight_of(PERSPECTIVE_ROLE)
-        share = speakers / (speakers + other_perspectives)
-        speaker_rate = max(share, LEAST_SPEAKER_RATE) if speakers else 0
-        self.theme.set_speaker_rate(round(speaker_rate, 2))
+        speaker_rate = self._speaker_rate_for(speakers, other_perspectives)
+        self.theme.set_speaker_rate(speaker_rate)
 
     def record_checksums(self):
         for entry_file in self.entry_files:
@@ -48,6 +47,14 @@ class Recalculation:
             return 1.0
 
         return round(line_count / (line_count + LINES_AT_HALF_WEIGHT), 2)
+
+    @staticmethod
+    def _speaker_rate_for(speakers, other_perspectives):
+        if not speakers:
+            return 0
+
+        share = speakers / (speakers + other_perspectives)
+        return round(max(share, LEAST_SPEAKER_RATE), 2)
 
 
 def parser():
@@ -76,7 +83,7 @@ if __name__ == "__main__":
         recalculation = Recalculation(theme, entry_files)
 
         recalculation.weigh_entries()
-        recalculation.compute_speaker_rate()
+        recalculation.work_out_speaker_rate()
         recalculation.record_checksums()
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

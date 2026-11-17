@@ -22,15 +22,24 @@ class RecalculationTest(unittest.TestCase):
         theme = Theme(fixtures.casebook.OPTIONS)
         recalculation = Recalculation(theme, [])
 
-        recalculation.compute_speaker_rate()
+        recalculation.work_out_speaker_rate()
 
         self.assertEqual(0.6, theme.speaker_rate)
 
-    def test_a_theme_of_only_speakers_always_has_a_speaker(self):
-        theme = Theme(fixtures.EVEN)
+    def test_speakers_with_more_of_the_weight_are_the_perspective_more(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        theme.set_weight("characters/detective", 3.0)
         recalculation = Recalculation(theme, [])
 
-        recalculation.compute_speaker_rate()
+        recalculation.work_out_speaker_rate()
+
+        self.assertEqual(0.75, theme.speaker_rate)
+
+    def test_a_theme_of_only_speakers_always_has_a_speaker(self):
+        theme = Theme(fixtures.SPEAKERS_ONLY)
+        recalculation = Recalculation(theme, [])
+
+        recalculation.work_out_speaker_rate()
 
         self.assertEqual(1.0, theme.speaker_rate)
 
@@ -38,7 +47,7 @@ class RecalculationTest(unittest.TestCase):
         theme = Theme(fixtures.weighing.OPTIONS)
         recalculation = Recalculation(theme, [])
 
-        recalculation.compute_speaker_rate()
+        recalculation.work_out_speaker_rate()
 
         self.assertEqual(0, theme.speaker_rate)
 

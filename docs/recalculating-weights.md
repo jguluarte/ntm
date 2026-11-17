@@ -100,8 +100,8 @@ the history's picks. With no history, `daily` is the user's reminders a day, or
 How often the perspective is a speaker: one rate for the theme, and the speaker
 is drawn from all its speaker pools together. The rest of the time, the
 perspective is an option from a pool whose `roles` hold perspective. The rate is
-the speakers' share of the weight on offer, and at least 0.6 when the theme has
-speakers: `max(speakers / (speakers + others), 0.6)`, each side the sum of its
+the speakers' share of the weight, and at least 0.6 when the theme has speakers:
+`max(speakers / (speakers + other perspectives), 0.6)`, each side the sum of its
 entries' weights, rounded to two places. So the perspective is usually a
 speaker, and a theme with more speakers to offer has them more often still. A
 theme without speakers gets 0, and one without other perspectives gets 1. The

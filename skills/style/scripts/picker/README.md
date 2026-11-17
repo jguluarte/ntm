@@ -26,5 +26,5 @@ A failure prints one line on stderr and exits 1, as
 `Picker FAILED: MissingWeight: every option weighs 0`.
 
 `python3 recalculate.py start --options <file> <entry file>...` gives a new
-theme its first weights and checksums and prints `saved: <file>`, or one
-`Recalculation FAILED:` line.
+theme its first weights, line counts and checksums and prints `saved: <file>`,
+or one `Recalculation FAILED:` line.

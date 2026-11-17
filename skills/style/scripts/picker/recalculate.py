@@ -29,9 +29,11 @@ class Recalculation:
             if entry_name in line_counts:
                 weight = self._weight_for(line_counts[entry_name])
                 self.theme.set_weight(entry_name, weight)
+                self.theme.set_line_counts(entry_name, line_counts[entry_name])
 
     @staticmethod
-    def _weight_for(line_count):
+    def _weight_for(line_counts):
+        line_count = sum(line_counts.values())
         if not line_count:
             return 1.0
 

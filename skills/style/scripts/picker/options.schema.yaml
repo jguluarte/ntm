@@ -46,3 +46,7 @@ $defs:
         type: number
       score:
         type: number
+      lines:
+        type: integer
+      riffs:
+        type: integer

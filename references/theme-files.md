@@ -217,6 +217,7 @@ its checksum differs.
 | `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
 | `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
+| `lines`, `riffs`      | How many lines and riffs the entry holds, from its entry file; the picker draws one          |
 | `score`               | How well messages built on the entry landed, from `%Message-history`                         |
 
 An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,

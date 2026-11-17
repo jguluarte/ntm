@@ -24,6 +24,7 @@ SPEAKER_ROLE = "speaker"
 ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
+LINE_LISTS = [LINES, RIFFS]
 
 
 class InvalidTheme(ValueError):
@@ -157,16 +158,17 @@ class Theme:
         return names
 
     def weight_of(self, entry_name):
-        kind, slug = entry_name.split("/")
-        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
-        entry = entries_by_slug[slug] or {}
-        return entry.get(WEIGHT, 1)
+        return self._entry(entry_name).get(WEIGHT, 1)
 
     def set_weight(self, entry_name, weight):
-        kind, slug = entry_name.split("/")
-        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
-        entry = entries_by_slug[slug] or {}
-        entries_by_slug[slug] = {**entry, WEIGHT: weight}
+        self._update_entry(entry_name, {WEIGHT: weight})
+
+    def line_counts_of(self, entry_name):
+        entry = self._entry(entry_name)
+        return {key: entry[key] for key in LINE_LISTS if key in entry}
+
+    def set_line_counts(self, entry_name, line_counts):
+        self._update_entry(entry_name, line_counts)
 
     def checksum_of(self, file_name):
         return self._checksums[file_name]
@@ -191,6 +193,15 @@ class Theme:
                     options.append(option)
 
         return options
+
+    def _entry(self, entry_name):
+        kind, slug = entry_name.split("/")
+        return self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG][slug] or {}
+
+    def _update_entry(self, entry_name, fields):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entries_by_slug[slug] = {**self._entry(entry_name), **fields}
 
     def _lottery_of(self, draw_weights):
         if not any(draw_weights.values()):
@@ -230,8 +241,9 @@ class EntryFile:
 
         for kind, entries_by_slug in cls._without_about(fields):
             for slug, entry in cls._without_about(entries_by_slug):
-                lines = entry.get(LINES, []) + entry.get(RIFFS, [])
-                line_counts[f"{kind}/{slug}"] = len(lines)
+                line_counts[f"{kind}/{slug}"] = {
+                    key: len(entry[key]) for key in LINE_LISTS if key in entry
+                }
 
         return line_counts
 

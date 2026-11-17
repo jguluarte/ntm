@@ -14,6 +14,8 @@ pools:
         weight: 0.57
         line_half_life_days: 9
         score: 0.2
+        lines: 3
+        riffs: 1
 
   shared_lines:
     file: Casebook-characters.yaml
@@ -24,6 +26,7 @@ pools:
         weight: 0.25
         line_half_life_days: 4
         score: 0.0
+        lines: 1
 
   scenes:
     file: Casebook-scenes.yaml

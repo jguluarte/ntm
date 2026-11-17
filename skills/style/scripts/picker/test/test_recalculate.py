@@ -18,6 +18,22 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.75, theme.weight_of("characters/nine_lines"))
         self.assertEqual(1.0, theme.weight_of("characters/no_lines"))
 
+    def test_weighing_records_how_many_lines_each_entry_holds(self):
+        theme = Theme(fixtures.weighing.OPTIONS)
+        entry_file = EntryFile(fixtures.weighing.CHARACTERS)
+        recalculation = Recalculation(theme, [entry_file])
+
+        recalculation.weigh_entries()
+
+        one_line_counts = theme.line_counts_of("characters/one_line")
+        three_lines_counts = theme.line_counts_of("characters/three_lines")
+        nine_lines_counts = theme.line_counts_of("characters/nine_lines")
+        no_lines_counts = theme.line_counts_of("characters/no_lines")
+        self.assertEqual({"lines": 1}, one_line_counts)
+        self.assertEqual({"lines": 3}, three_lines_counts)
+        self.assertEqual({"lines": 9}, nine_lines_counts)
+        self.assertEqual({}, no_lines_counts)
+
     def test_recording_gives_the_entry_file_its_own_checksum(self):
         theme = Theme(fixtures.weighing.OPTIONS)
         entry_file = EntryFile(fixtures.weighing.CHARACTERS)

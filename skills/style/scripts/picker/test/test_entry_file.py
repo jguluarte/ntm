@@ -9,8 +9,8 @@ class EntryFileTest(unittest.TestCase):
         entry_file = EntryFile(fixtures.casebook.CHARACTERS)
 
         expected = {
-            "characters/detective": 4,
-            "shared_lines/any_time": 1,
+            "characters/detective": {"lines": 3, "riffs": 1},
+            "shared_lines/any_time": {"lines": 1},
         }
         self.assertEqual(expected, entry_file.line_counts)
 

@@ -162,7 +162,7 @@ shared_lines:
 ## The options file
 
 The options file holds what the theme offers the picker, and the numbers the
-weekly recalculation computes. It is the only theme file the picker reads.
+picker draws by. It is the only theme file the picker reads.
 
 It holds one pool per kind of entry. A pool is keyed by its kind, names its
 file, and lists the entries that can be picked, each by its slug.
@@ -207,9 +207,9 @@ pools:
         score: 0.1
 ```
 
-The theme builder writes the pools and computes the first numbers. The weekly
-recalculation updates each `score` every week, and recomputes a file's other
-numbers when its checksum differs.
+The theme builder writes the pools, then runs the recalculation, a script that
+computes each `weight`, the `speaker_rate` and the `checksums` from the theme's
+files.
 
 | Field          | What it is                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |

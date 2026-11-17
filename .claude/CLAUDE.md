@@ -47,8 +47,9 @@ his installed copy.
   into `main`, it's a merge commit. Merged branches auto-delete.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.5`
   in with a merge commit.
-- Versions are set at merge; PR branches don't change them. He doesn't want
-  patch version bumps.
+- Versions are set at merge; PR branches don't change them. No patch bump for
+  each change merged into the integration branch; a patch version is planned,
+  like a release.
 
 ## Commits
 

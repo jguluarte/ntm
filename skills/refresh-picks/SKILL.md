@@ -75,11 +75,13 @@ Read the options file. When its text differs from the `yaml` block of
 ## Result
 
 For a job, return `Refreshed <Theme>-picks: 25 picks`, such as
-`Refreshed Casebook-picks: 25 picks`.
+`Refreshed Casebook-picks: 25 picks`. When there's no `%Theme-options`,
+`Nothing to refresh: no <Theme>-options`.
 
 The scripts need Python 3 with PyYAML and jsonschema, and nothing guarantees
 them where this runs: without them, a script stops with a Python error. Any
-other output, or a step you can't do, means the run failed: save nothing, and
-end with the `Recalculation FAILED:` or `Picker FAILED:` line the script
-printed, or else `Refresh picks FAILED: <why>`, with the last line it printed or
-what you couldn't do. In chat, tell the user the same in plain words.
+output other than the `saved:` line and the list of picks, or a step you can't
+do, means the run failed: save nothing, and end with the `Recalculation FAILED:`
+or `Picker FAILED:` line the script printed, or else
+`Refresh-picks FAILED: <why>`, with the last line it printed or what you
+couldn't do. In chat, tell the user the same in plain words.

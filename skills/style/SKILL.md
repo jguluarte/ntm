@@ -21,9 +21,9 @@ agent reads the parts of `%Theme` a message needs, and never `%Message-history`.
 
 Run `/ntm:ready-check`, unless it already ran in this session. It loads
 `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
-with its result line. Then read `%Theme` and `%Message-history`: this week's
-theme, as `%Settings` names it, and that theme's history, found by its name,
-such as `Casebook-message-history`.
+with its result line. Then read `%Theme` and `%Message-history`: the theme the
+sender names, or else this week's theme, as `%Settings` names it, and that
+theme's history, found by its name, such as `Casebook-message-history`.
 
 ## What you write from
 
@@ -112,16 +112,16 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose first five words aren't the
-`opening` of a recent entry, or the start of an older entry's `line`. Its title
-and message are what gets sent, and step 1's pick goes into its entry.
+Take the version with the lowest probability whose first five words aren't any
+entry's `opening`. Its title and message are what gets sent, and step 1's pick
+goes into its entry.
 
 ## Keeping `%Message-history`
 
 Once `ntm-user:notify` has sent the message, or handed it back for the job's
-final reply, add its entry at the top of the Entries part of the history Setup
-read. An entry is one JSON line, written compact, with no spaces or line breaks
-added, and only the fields that have a value:
+final reply, add its entry as the first line of the Entries part's `jsonl`
+block, in the history Setup read. An entry is one JSON line, written compact,
+with no spaces or line breaks added, and only the fields that have a value:
 
 ```
 {"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}

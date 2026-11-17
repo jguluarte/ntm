@@ -111,9 +111,10 @@ weren't worked out, with its failure line, and go on.
 ### 4. Draw its first picks
 
 When step 3 passed, load `ntm:refresh-picks` and follow it for this theme, so
-its `%Theme-picks` is drawn on the new numbers. When it ends with a failure
-line, tell the user in a line that the theme's picks weren't drawn, with that
-line, and go on.
+its `%Theme-picks` is drawn on the new numbers. When `ntm:setup` runs this
+skill, skip `ntm:refresh-picks`'s ready-check too, as Setup says. When it ends
+with a failure line, tell the user in a line that the theme's picks weren't
+drawn, with that line, and go on.
 
 ### 5. Switch it on
 

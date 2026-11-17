@@ -2,23 +2,24 @@
 name: writer
 description: >-
     Writes one of ntm's messages to the user, in their theme. Given the
-    message's facts, its tone, the hook for it, a speaker when one was picked,
-    and the theme's guidance and its entries for the hook and speaker, it writes
-    5 versions, each with a title and how typical it is, and returns them. Asked
-    by ntm:style for every message it writes, in a job or by hand in chat.
+    message's facts, its tone, its perspective and reference, and the theme's
+    guidance and its entries for those two, it writes 5 versions, each with a
+    title and how typical it is, and returns them. Asked by ntm:style for every
+    message it writes, in a job or by hand in chat.
 
         <example>
-            Context: ntm:style has picked the hook for the morning reminder.
+            Context: ntm:style has the pick for the morning reminder.
 
             user: "/ntm:reminder --type morning"
 
-            assistant: "The hook is picked. Asking the writer agent for five
-            versions of the morning message."
+            assistant: "The perspective and reference are picked. Asking the
+            writer agent for five versions of the morning message."
 
             <commentary>
                 ntm:style hands the writer the morning message's facts, the
-                tone, the hook and the theme's guidance and entry. The writer
-                returns its versions, and ntm:style chooses the one to send.
+                tone, the perspective and reference, and the theme's guidance
+                and entries. The writer returns its versions, and ntm:style
+                chooses the one to send.
             </commentary>
         </example>
 model: inherit
@@ -34,19 +35,19 @@ Any of your five versions may be the one sent, so write each one ready to send.
 
 ## What you're handed
 
-| Input              | What it is                                                                              |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| The facts          | What the message must cover, its tasks, and what the sender's rule asks, such as length |
-| The tone           | How the message sounds, and how hard it presses each task                               |
-| The hook           | The idea this message builds on: one entry of the theme, such as a scene or a line      |
-| The speaker        | The person in the theme who says the message, when one was picked                       |
-| The theme material | The theme's guidance on how to write in it, and its entries for the hook and speaker    |
+| Input              | What it is                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| The facts          | What the message must cover, its tasks, and what the sender's rule asks, such as length       |
+| The tone           | How the message sounds, and how hard it presses each task                                     |
+| The perspective    | Who or what tells the message: one entry of the theme, a speaker or a scene                   |
+| The reference      | Another entry of the theme the message draws on                                               |
+| The theme material | The theme's guidance on how to write in it, and its entries for the perspective and reference |
 
 The theme material comes as text, or as where to read it: files, or documents in
 the user's backend. Write from the facts and the theme material: read only the
 parts of `%Theme` `ntm:style` points you to, and never `%Message-history`.
 
-When the theme material lacks something, such as an entry for the speaker, write
+When the theme material lacks something, such as the perspective's entry, write
 from what you were handed.
 
 ## Writing the message
@@ -59,13 +60,17 @@ a nod, and celebrate only when the tone you're handed calls for it.
 
 ### 2. Write 5 versions
 
-Each version names every task and covers everything the message must cover. Hang
-the hook on a different fact in each version; with too few facts, take the hook
-a different way each time. A line used as a hook may be bent to fit the task.
+Look up the perspective's and the reference's entries, and choose a line from
+each that has lines or riffs. A chosen line may be bent to fit the task.
 
-When a speaker was picked, every version is theirs: their own words, in first
-person, sounding the way their entry says. Without one, the theme's own narrator
-tells it, as its guidance says, or it's told plainly.
+Each version names every task and covers everything the message must cover. Hang
+the reference on a different fact in each version; with too few facts, take it a
+different way each time.
+
+When the perspective is a speaker, every version is theirs: their own words, in
+first person, sounding the way their entry says. Otherwise, the theme's own
+narrator tells it from the perspective, as its guidance says, or it's told
+plainly.
 
 The message is about its subject and the theme's world: something happens in
 that world, with the subject inside it. The speaker talks to the user as "you",
@@ -78,9 +83,9 @@ facts or the guidance say to put them the natural way. When the facts give a
 task's link, link its id. Labels and databases go by their real names, without
 their `$` or `%` marks.
 
-Vary each version's shape: the order the tasks come in, where the hook lands,
-how it opens and how it closes. Write at the length the facts give, or else the
-guidance gives; with neither, keep it short.
+Vary each version's shape: the order the tasks come in, where the reference
+lands, how it opens and how it closes. Write at the length the facts give, or
+else the guidance gives; with neither, keep it short.
 
 ### 3. Title each version
 

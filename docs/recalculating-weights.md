@@ -66,7 +66,7 @@ picker's first draft; where they give a number, it is kept.
 | `score`               | Entry, pool  | Each week             | 0                   | -1 to 1    |
 | `half_life_days`      | Pool         | Each week             | None: no rest       | Above 0    |
 | `line_half_life_days` | Entry        | Each week             | None: no rest       | Above 0    |
-| `speaker_rate`        | Top level    | Each week             | 0.5                 | 0 to 1     |
+| `speaker_rate`        | Top level    | Only by hand          | 0.5                 | 0 to 1     |
 | `weight`              | Pool         | Each week             | Square root of size | Above 0    |
 | `bump_rate`           | `escalation` | Each week, with data  | 1.0; 0 with no bump | 0.1 to 0.9 |
 | `checksums`           | Top level    | When a file changes   | None                | None       |
@@ -97,13 +97,12 @@ the history's picks. With no history, `daily` is the user's reminders a day, or
 
 ### The theme's `speaker_rate`
 
-How often the perspective is a speaker, aiming for half of all messages: one
-rate for the theme, and the speaker is drawn from all its speaker pools
-together. The rest of the time, the perspective is an option from a pool whose
-`roles` hold perspective. `(0.5 - people) / (1 - people)` while `people` is
-under 0.5, and 0 from there, where `people` is the part of hooks from pools
-whose `roles` hold speaker; from the first formulas. A theme whose every hook
-pool is a speaker pool has no `speaker_rate`: every hook already speaks.
+How often the perspective is a speaker: one rate for the theme, and the speaker
+is drawn from all its speaker pools together. The rest of the time, the
+perspective is an option from a pool whose `roles` hold perspective. The rate is
+0.5 unless the theme's options file sets its own, and no run changes it. To
+decide: whether the recalculation moves it from how the user responds to
+speakers.
 
 ### A kind's `weight`
 
@@ -131,10 +130,10 @@ A theme that never presses on a good day, as the theme builder asks, has a
 Each entry file's SHA-256. Linear's document list gives each file's last-edited
 time without its text, so the run fetches an entry file only when it was edited
 since the options file was saved. When its checksum differs, the script
-recomputes what comes from that file: weights, half-lives, the kind's starting
-weight and the speaker rate. An edit reaches the numbers at the next weekly run;
-until then the picker draws on the old ones. To decide: an entry the file gained
-or lost is only reported, for the theme builder.
+recomputes what comes from that file: weights, half-lives and the kind's
+starting weight. An edit reaches the numbers at the next weekly run; until then
+the picker draws on the old ones. To decide: an entry the file gained or lost is
+only reported, for the theme builder.
 
 ## Pruning the history
 
@@ -213,10 +212,10 @@ numbers for both the recalculation and the theme builder
 | The command | A method per thing it does; named with the skill                 |
 
 `start`, for the theme builder, gives a new theme its first numbers with no
-history: weights from lines, square-root kind weights, half-lives and speaker
-rate from starting shares, every score 0, the checksums and an empty `weeks`.
-`update`, in the Sunday morning job, takes in the verdicts, recounts changed
-files, moves the bump rate and prunes. `report` writes the weekly theme report.
+history: weights from lines, square-root kind weights, half-lives from starting
+shares, every score 0, the checksums and an empty `weeks`. `update`, in the
+Sunday morning job, takes in the verdicts, recounts changed files, moves the
+bump rate and prunes. `report` writes the weekly theme report.
 
 `Theme` and `History` are shared with the picker, one class each, in `theme.py`,
 beside the schema in the style skill's picker folder; `History` comes with the
@@ -230,7 +229,7 @@ also what the theme builder needs, so it comes first; the rest follow the
 picker's history slice.
 
 1. Weights and checksums from the entry files, written into the options file.
-2. Half-lives and the speaker rate.
+2. Half-lives.
 3. Scores from verdicts, and `weeks`.
 4. The bump rate.
 5. Pruning.

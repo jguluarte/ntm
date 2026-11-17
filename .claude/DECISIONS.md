@@ -86,17 +86,26 @@ The pick is a bandit. Each value has a score, minus a penalty that halves over a
 computed half-life since its last use, and a weighted random draw takes one, so
 a value's place in its list means nothing.
 
-Each message gets one hook, from the pool of motifs, references and actors'
-lines. It names a speaker only sometimes, drawn from all the theme's speaker
-pools, at one rate for the theme. Messages may talk to the user as "you", and
+Each message gets one pick: a perspective and a reference, two pieces from
+different pools. The perspective is usually a speaker, and sometimes a reference
+that carries one, such as a challenge or a scene. At the theme's `speaker_rate`,
+the perspective is a speaker. A speaker is only ever drawn as the perspective. A
+reference is any piece of the world other than a speaker. A pool's role is
+perspective, reference or speaker. Messages may talk to the user as "you", and
 never use their name or a pet name.
 
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
-It draws only theme pieces: the hook, sometimes a speaker, and a line from the
-hook. It reads the options file and the recent picks, and nothing about the day.
-Nothing carries from one message to the next except rest: the penalty a value
-carries since its last use.
+It draws only theme pieces: the perspective and the reference, each with a line
+when its entry holds lines. It reads the options file and the recent picks, and
+nothing about the day. One pick shapes the next only through rest: the penalty a
+value carries since its last use. A week is drawn in order, so each pick rests
+on those before it as well as on the history.
+
+On Sunday, after the recalculation, the picker draws 25 picks into one ordered
+list, `<Theme>-picks`: 22 for the week's messages and 3 spare for messages
+written in chat. Every message takes the first pick and saves the list without
+it. If the list runs out before Sunday, a message runs the picker for its own.
 
 The levels are separate from the theme pieces. The run that sends the message
 works out the `escalation` and `finishing_tasks` levels from the day's facts,
@@ -176,7 +185,7 @@ within bounds. A `bump_rate` of 0 stays 0. The levels and their thresholds stay
 as written by hand.
 
 It prunes each theme's message history. An old entry matters only for its picks'
-rest. Once its hook, speaker and line have each been picked again in a later
+rest. Once its two pieces and their lines have each been picked again in a later
 entry, and its feedback and verdict are in the scores, the job drops it. Each
 history then rolls forward with an upper limit.
 

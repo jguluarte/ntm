@@ -8,27 +8,22 @@ pools:
   characters:
     file: Casebook-characters.yaml
     roles: [speaker]
-    half_life_days: 3
     entries:
       detective:
         weight: 0.57
-        line_half_life_days: 9
         score: 0.2
 
   shared_lines:
     file: Casebook-characters.yaml
     roles: [reference]
-    half_life_days: 5
     entries:
       any_time:
         weight: 0.25
-        line_half_life_days: 4
         score: 0.0
 
   scenes:
     file: Casebook-scenes.yaml
     roles: [perspective, reference]
-    half_life_days: 6
     entries:
       stakeout:
         weight: 1.0

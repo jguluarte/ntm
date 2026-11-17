@@ -69,11 +69,11 @@ closes as done.
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
-| Group            | What the writer gets                                                                     |
-| ---------------- | ---------------------------------------------------------------------------------------- |
-| `by_entry`       | The file's and the kind's `about`, and the picked entry with only its drawn line or riff |
-| `fully_read`     | All of it, for every message: guidance, or the terminology file                          |
-| `for_the_picker` | Nothing: only the picker reads it, the options file                                      |
+| Group            | What the writer gets                                            |
+| ---------------- | --------------------------------------------------------------- |
+| `by_entry`       | The file's and the kind's `about`, and the picked entry         |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file |
+| `for_the_picker` | Nothing: only the picker reads it, the options file             |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -179,27 +179,22 @@ pools:
   characters:
     file: Casebook-characters.yaml
     roles: [hook, speaker]
-    half_life_days: 3
     entries:
       detective:
         weight: 0.57
-        line_half_life_days: 9
         score: 0.2
 
   shared_lines:
     file: Casebook-characters.yaml
     roles: [hook]
-    half_life_days: 5
     entries:
       any_time:
         weight: 0.25
-        line_half_life_days: 4
         score: 0.0
 
   scenes:
     file: Casebook-scenes.yaml
     roles: [hook]
-    half_life_days: 6
     entries:
       stakeout:
         weight: 1.0
@@ -210,34 +205,27 @@ The theme builder writes the pools and computes the first numbers. The nightly
 job updates each `score` every night, and recomputes a file's other numbers when
 its checksum differs.
 
-| Field                 | What it is                                                                                   |
-| --------------------- | -------------------------------------------------------------------------------------------- |
-| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
-| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
-| `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
-| `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
-| `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
-| `score`               | How well messages built on the entry landed, from `%Message-history`                         |
+| Field          | What it is                                                                                   |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| `checksums`    | Each entry file's SHA-256, over its text as stored; shortened above                          |
+| `speaker_rate` | How often a message names a speaker, from 0 to 1; one for the theme                          |
+| `weight`       | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
+| `score`        | How well messages built on the entry landed, from `%Message-history`                         |
 
 An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
-rounded to two places, or 1.0 with neither. An entry's line half-life comes from
-how many lines it has and how often it is picked.
+rounded to two places, or 1.0 with neither.
 
 ## The pick
 
-For each message, the run hands the picker the options file's text and the
-recent picks. The recent picks come from `%Message-history`, which records each
-message's hook, speaker, line drawn and when it went out.
+For each message, the run hands the picker the options file's text.
 
 Each message gets exactly one hook, drawn from all the entries in hook pools
 together, each entry counting once at its weight. An entry's score raises or
-lowers its chance, and an entry picked recently is less likely while it rests.
-An entry without a `weight` weighs 1, and one without a `score` scores 0.
+lowers its chance. An entry without a `weight` weighs 1, and one without a
+`score` scores 0.
 
-When the picked entry holds lines or riffs, the run hands the picker that entry
-from its entry file, and one line or riff is drawn from it. A recently used line
-rests the same way an entry does. That line or riff is what the writer builds
-on.
+When the picked entry holds lines or riffs, the writer looks it up in its entry
+file and chooses one to build on.
 
 Sometimes a speaker is added, drawn from all speaker pools together, at the
 theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no
@@ -251,7 +239,7 @@ not know or would misuse, each with what it means in the theme.
 ## The message history
 
 The file ntm writes as it goes: an entry for each message sent in the theme,
-holding only this theme's messages. The pick reads it for rest, and the nightly
-job for scores. The theme builder creates it when it switches the theme on, from
-its template. The root's `files` leaves it out: the writer never reads it, and
-ntm finds it by its name.
+holding only this theme's messages. The nightly job reads it for scores. The
+theme builder creates it when it switches the theme on, from its template. The
+root's `files` leaves it out: the writer never reads it, and ntm finds it by its
+name.

@@ -29,8 +29,6 @@ $defs:
         minItems: 1
         items:
           enum: [perspective, reference, speaker]
-      half_life_days:
-        type: number
       entries:
         type: object
         additionalProperties:
@@ -42,7 +40,5 @@ $defs:
       weight:
         type: number
         minimum: 0
-      line_half_life_days:
-        type: number
       score:
         type: number

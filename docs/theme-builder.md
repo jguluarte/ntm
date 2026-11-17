@@ -183,11 +183,11 @@ Each stage saves its part in the user's backend as it finishes, so an unfinished
 theme waits there, and a later chat picks it up instead of starting over. When
 the last stage is done, the builder switches the theme on. It creates
 `<Theme>-message-history` from its template, and runs the nightly job's script
-(`docs/nightly-job.md`) to compute the first numbers into the options file, so
-the formulas live in one place. Then it adds the root to the end of All themes,
-in the Themes part of `%Settings`, or where the user asks for it. The weekly
-job's rotation decides when it is used. No other theme or history is touched; a
-name already taken gets another.
+to compute the first numbers into the options file, so the formulas live in one
+place. Then it adds the root to the end of All themes, in the Themes part of
+`%Settings`, or where the user asks for it. The weekly job's rotation decides
+when it is used. No other theme or history is touched; a name already taken gets
+another.
 
 ## Coming back
 

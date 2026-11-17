@@ -1,7 +1,7 @@
 pools:
   characters:
     file: Weighing-characters.yaml
-    roles: [hook]
+    roles: [perspective]
     entries:
       one_line:
       three_lines:

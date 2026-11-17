@@ -1,7 +1,9 @@
 import unittest
 
 import fixtures
-from picker import Picker, chances_table, parser, reporting_failures
+from picker import (
+    Picker, chances_table, parser, pick_text, reporting_failures,
+)
 from theme import Theme
 
 SEED = 3
@@ -29,14 +31,28 @@ class PickTest(unittest.TestCase):
         self.assertGreater(len(picks), 1)
 
 
+class PickTextTest(unittest.TestCase):
+    def test_a_pick_shows_its_perspective_and_then_its_reference(self):
+        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        picker = Picker(theme)
+        perspective, reference = picker.pick()
+        rows = pick_text(perspective, reference).splitlines()
+
+        expected = [
+            "perspective: characters/detective",
+            "reference: scenes/stakeout",
+        ]
+        self.assertEqual(expected, rows)
+
+
 class ChancesTableTest(unittest.TestCase):
-    def test_each_option_shows_weight_score_and_rounded_chance(self):
+    def test_each_perspective_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery
+        lottery = theme.perspective_lottery()
         rows = chances_table(lottery).splitlines()
 
         expected = [
-            "hook             weight  score  chance",
+            "perspective      weight  score  chance",
             "scenes/dawn         0.5      0    0.12",
             "scenes/noon           1      1    0.50",
             "scenes/dusk           0      0    0.00",
@@ -70,14 +86,14 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_a_missing_options_flag_fails_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
-                parser().parse_args(["hook"])
+                parser().parse_args(["pick"])
 
         why = "the following arguments are required: --options"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "seven"]
+        args = ["pick", "--options", str(fixtures.EVEN), "--seed", "seven"]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

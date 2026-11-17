@@ -4,31 +4,49 @@ import unittest
 from pathlib import Path
 
 import fixtures
-from theme import InvalidTheme, MissingWeight, Theme, UnknownEntryFile
+from theme import (
+    InvalidTheme, MissingReference, MissingWeight, Theme, UnknownEntryFile,
+)
 
 
-class OptionsTest(unittest.TestCase):
-    def test_the_options_are_every_entry_but_those_of_speaker_only_pools(self):
-        theme = Theme(fixtures.EVEN)
-        lottery = theme.lottery
+class PerspectiveTest(unittest.TestCase):
+    def test_the_perspective_is_a_speaker_at_the_speaker_rate(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        chances = theme.perspective_lottery().chance_by_name
 
-        expected = [
-            "scenes/dawn", "scenes/noon", "scenes/dusk", "characters/host",
-        ]
+        self.assertAlmostEqual(0.4, chances["characters/detective"])
+        self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
+
+
+class ReferenceTest(unittest.TestCase):
+    def test_a_reference_comes_from_outside_the_perspectives_pool(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        lottery = theme.reference_lottery_outside("scenes")
+
+        expected = ["shared_lines/any_time"]
         self.assertEqual(expected, lottery.names)
 
-    def test_a_theme_with_only_speaker_pools_fails(self):
-        with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.SPEAKERS_ONLY)
+    def test_a_speakers_reference_comes_from_every_reference_pool(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        lottery = theme.reference_lottery_outside("characters")
 
-        expected = "$.pools: no options found"
+        expected = ["shared_lines/any_time", "scenes/stakeout"]
+        self.assertEqual(expected, lottery.names)
+
+    def test_a_theme_of_only_speakers_fails_with_missing_reference(self):
+        theme = Theme(fixtures.SPEAKERS_ONLY)
+
+        with self.assertRaises(MissingReference) as raised:
+            theme.reference_lottery_outside("narrators")
+
+        expected = "no reference outside narrators"
         self.assertEqual(expected, str(raised.exception))
 
 
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery
+        lottery = theme.perspective_lottery()
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -43,7 +61,7 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTLESS)
 
         with self.assertRaises(MissingWeight) as raised:
-            theme.lottery
+            theme.perspective_lottery()
 
         expected = "every option weighs 0"
         self.assertEqual(expected, str(raised.exception))
@@ -52,7 +70,7 @@ class ChanceTest(unittest.TestCase):
 class DrawTest(unittest.TestCase):
     def test_a_draw_returns_the_only_option_weighing_above_0(self):
         theme = Theme(fixtures.MOSTLY_WEIGHTLESS)
-        option = theme.draw()
+        option = theme.draw_perspective()
 
         expected = "scenes/dawn"
         self.assertEqual(expected, option.name)
@@ -61,11 +79,9 @@ class DrawTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        lottery = theme.lottery
+        lottery = theme.perspective_lottery()
 
-        expected = [
-            "characters/detective", "shared_lines/any_time", "scenes/stakeout",
-        ]
+        expected = ["characters/detective", "scenes/stakeout"]
         self.assertEqual(expected, lottery.names)
 
     def test_a_file_without_pools_fails(self):
@@ -86,7 +102,8 @@ class SchemaTest(unittest.TestCase):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(fixtures.UNKNOWN_ROLE)
 
-        why = "'hooks' is not one of ['hook', 'speaker']"
+        roles = "['perspective', 'reference', 'speaker']"
+        why = f"'perspectives' is not one of {roles}"
         expected = f"$.pools.scenes.roles[0]: {why}"
         self.assertEqual(expected, str(raised.exception))
 
@@ -148,14 +165,14 @@ class SaveTest(unittest.TestCase):
               Even-scenes.yaml: ab12
             pools:
               scenes:
-                roles: [hook]
+                roles: [reference]
                 entries:
                   dawn:
                   noon:
                     weight: 0.5
                   dusk:
               characters:
-                roles: [hook, speaker]
+                roles: [speaker]
                 entries:
                   host:
               narrators:

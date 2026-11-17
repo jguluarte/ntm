@@ -1,6 +1,6 @@
 pools:
   scenes:
-    roles: [hook]
+    roles: [perspective]
     entries:
       dawn:
         weight: 0.5
@@ -9,7 +9,7 @@ pools:
       dusk:
         weight: 0
   characters:
-    roles: [hook]
+    roles: [perspective]
     entries:
       host:
         weight: 3

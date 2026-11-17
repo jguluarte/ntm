@@ -160,24 +160,21 @@ stays with that person.
 
 ### Recalculating the picker's weights
 
-The full recalculation reads the whole theme, so it runs only when the theme
-changes. The weekly setup job runs `ntm:refresh-picks`, which draws the week's
-picks. Between runs, the picker draws on the numbers the last run left.
+The full recalculation, `recalculate.py start`, reads the whole theme, so it
+runs only when the theme changes: the theme builder runs it. It works out the
+entry weights and the speaker rate, and records checksums.
 
-It rates each message by whether the user acted on its tasks: closing one,
-moving its date or clearing the day all count. ntm's own date changes are known
-from each task's `Planned date history`, and set aside. It then updates the
-weights from what was picked and the feedback, so variety holds over time.
+Each week, the weekly setup job runs `ntm:refresh-picks`. It rates the past
+week's messages, `acted` or `ignored`, by whether the user acted on their tasks:
+closing one, moving its date or clearing the day all count. ntm's own date
+changes are known from each task's `Planned date history`, and set aside. It
+then runs `recalculate.py adjust`, which moves each picked entry's weight from
+the verdicts and feedback, within bounds, so variety holds over time. Then it
+draws the week's picks. Between runs, the picker draws on the numbers the last
+run left. The levels and their thresholds stay as written by hand.
 
-It recomputes the actor weights and speaker rate only when the checksum shows
-the content changed.
-
-The rater is part of the recalculation: it gives each message its verdict. The
-levels and their thresholds stay as written by hand.
-
-It prunes each theme's message history. An old entry matters only until a
-recalculation has used it: once its picks, feedback and verdict are in the
-weights, the job drops it. Each history then rolls forward with an upper limit.
+The style skill prunes each theme's message history; the adjustment prunes
+nothing.
 
 ### The message history
 
@@ -199,8 +196,9 @@ rules' "Explaining how ntm works" section covers it.
 
 ### The 0.5.0 update note
 
-It lands last, before release. It offers the theme builder and reads the user's
-current theme to pre-fill it.
+It lands last, before release. No step is an offer. The theme builder starts
+from the user's 0.4 theme and answers its own questions from it, and the new
+theme is written over the old `%Theme` and `%Message-history`.
 
 ### The theme builder
 

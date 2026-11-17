@@ -12,26 +12,37 @@ from theme import (
 class PerspectiveTest(unittest.TestCase):
     def test_the_perspective_is_a_speaker_at_the_speaker_rate(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        chances = theme.perspective_lottery().chance_by_name
+        lottery = theme.perspective_lottery()
+        chances = lottery.chance_by_candidate.items()
+        chance_by_name = {option.name: chance for option, chance in chances}
 
-        self.assertAlmostEqual(0.4, chances["characters/detective"])
-        self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
+        self.assertAlmostEqual(0.4, chance_by_name["characters/detective"])
+        self.assertAlmostEqual(0.6, chance_by_name["scenes/stakeout"])
+
+    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        speaker_rate = theme.speaker_rate
+
+        expected = 0.4
+        self.assertEqual(expected, speaker_rate)
 
 
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         lottery = theme.reference_lottery_outside("scenes")
+        names = [option.name for option in lottery.chance_by_candidate]
 
         expected = ["shared_lines/any_time"]
-        self.assertEqual(expected, lottery.names)
+        self.assertEqual(expected, names)
 
     def test_a_speakers_reference_comes_from_every_reference_pool(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         lottery = theme.reference_lottery_outside("characters")
+        names = [option.name for option in lottery.chance_by_candidate]
 
         expected = ["shared_lines/any_time", "scenes/stakeout"]
-        self.assertEqual(expected, lottery.names)
+        self.assertEqual(expected, names)
 
     def test_a_theme_of_only_speakers_fails_with_missing_reference(self):
         theme = Theme(fixtures.SPEAKERS_ONLY)
@@ -47,6 +58,8 @@ class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
         lottery = theme.perspective_lottery()
+        chances = lottery.chance_by_candidate.items()
+        chance_by_name = {option.name: chance for option, chance in chances}
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -55,7 +68,7 @@ class ChanceTest(unittest.TestCase):
             "scenes/dusk": 0 * 2 ** 0 / total_draw_weight,
             "characters/host": 3 * 2 ** -1 / total_draw_weight,
         }
-        self.assertEqual(expected, lottery.chance_by_name)
+        self.assertEqual(expected, chance_by_name)
 
     def test_every_option_weighing_0_fails_with_missing_weight(self):
         theme = Theme(fixtures.WEIGHTLESS)
@@ -80,9 +93,10 @@ class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         lottery = theme.perspective_lottery()
+        names = [option.name for option in lottery.chance_by_candidate]
 
         expected = ["characters/detective", "scenes/stakeout"]
-        self.assertEqual(expected, lottery.names)
+        self.assertEqual(expected, names)
 
     def test_a_file_without_pools_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
@@ -133,21 +147,21 @@ class EntryFilesTest(unittest.TestCase):
         expected = "no pool uses Even-scenes.yaml"
         self.assertEqual(expected, str(raised.exception))
 
+    def test_the_entries_in_a_role_are_those_of_every_pool_holding_it(self):
+        theme = Theme(fixtures.EVEN)
+        entries = theme.entries_with_role("speaker")
 
-class WeightsAndChecksumsTest(unittest.TestCase):
+        expected = ["characters/host", "narrators/chorus"]
+        self.assertEqual(expected, entries)
+
+
+class WeightsTest(unittest.TestCase):
     def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         weight = theme.weight_of("characters/detective")
 
         expected = 0.57
         self.assertEqual(expected, weight)
-
-    def test_the_checksum_of_a_file_is_the_one_its_options_file_gives(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
-        checksum = theme.checksum_of("Casebook-characters.yaml")
-
-        expected = "9f86d081884c7d65..."
-        self.assertEqual(expected, checksum)
 
 
 class SaveTest(unittest.TestCase):
@@ -157,12 +171,14 @@ class SaveTest(unittest.TestCase):
         theme = Theme(fixtures.EVEN)
         theme.set_weight("scenes/noon", 0.5)
         theme.set_checksum("Even-scenes.yaml", "ab12")
+        theme.set_speaker_rate(0.25)
         theme.save(saved_options)
         text = saved_options.read_text(encoding="utf-8")
 
         expected = textwrap.dedent("""\
             checksums:
               Even-scenes.yaml: ab12
+            speaker_rate: 0.25
             pools:
               scenes:
                 roles: [reference]

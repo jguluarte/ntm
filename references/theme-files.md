@@ -5,20 +5,19 @@ enough material to keep each message different. This file describes the files a
 theme is made of, for the skills that build, pick from and score a theme, and
 for anyone curious.
 
-## Where themes are going
+## How ntm uses a theme
 
-A script, the picker, will pick what each message draws on, and a writer writes
-the message from the picks. For a script to pick, a theme has to be data in a
-known shape, and this file is that shape. Today `ntm:theme-builder` builds a
-theme's files with the user. `ntm:style` runs the picker when a theme has an
-options file, and picks the hook itself when it doesn't. The rest of this file
-describes theme files, and the picker that reads them, as they will work.
+A script, the picker, picks what each message draws on, and the writer writes
+the message from the pick. For a script to pick, a theme has to be data in a
+known shape, and this file is that shape. `ntm:theme-builder` builds a theme's
+files with the user. Each message takes the first pick from the theme's picks
+list, `<Theme>-picks`. When there is no list, or it's empty, `ntm:style` runs
+the picker, and when the picker fails, it picks both itself.
 
-A user will be able to have several themes. The Themes part of `%Settings` lists
-each one by its root and names this week's theme, the one everything picked in a
-week comes from. Each week, the weekly job moves to the next theme in the list,
-in order, back to the first after the last. With one theme, it is always that
-one.
+A user can have several themes. The Themes part of `%Settings` lists each one by
+its root and names this week's theme, the one everything picked in a week comes
+from. Each week, the weekly job moves to the next theme in the list, in order,
+back to the first after the last. With one theme, it is always that one.
 
 ## A theme's files
 
@@ -69,11 +68,11 @@ closes as done.
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
-| Group            | What the writer gets                                                                     |
-| ---------------- | ---------------------------------------------------------------------------------------- |
-| `by_entry`       | The file's and the kind's `about`, and the picked entry with only its drawn line or riff |
-| `fully_read`     | All of it, for every message: guidance, or the terminology file                          |
-| `for_the_picker` | Nothing: only the picker reads it, the options file                                      |
+| Group            | What the writer gets                                            |
+| ---------------- | --------------------------------------------------------------- |
+| `by_entry`       | The file's and the kind's `about`, and the picked entry         |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file |
+| `for_the_picker` | Nothing: only the picker reads it, the options file             |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -158,14 +157,16 @@ shared_lines:
 ## The options file
 
 The options file holds what the theme offers the picker, and the numbers the
-nightly job computes. It is the only theme file the picker reads.
+weekly recalculation computes. It is the only theme file the picker reads.
 
 It holds one pool per kind of entry. A pool is keyed by its kind, names its
 file, and lists the entries that can be picked, each by its slug.
 
-A pool's `roles` say what its entries can be drawn as: a hook, a speaker, or
-both. The hook is what a message is built on. The speaker is who says the
-message.
+A pool's `roles` say what its entries can be drawn as: a perspective, a
+reference, a speaker, or more than one. The perspective is usually a speaker,
+who says the message, and sometimes a piece of the world that carries one, such
+as a scene. A reference is any piece of the world other than a speaker. A
+speaker is only ever drawn as the perspective.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -178,70 +179,56 @@ speaker_rate: 0.4
 pools:
   characters:
     file: Casebook-characters.yaml
-    roles: [hook, speaker]
-    half_life_days: 3
+    roles: [speaker]
     entries:
       detective:
         weight: 0.57
-        line_half_life_days: 9
         score: 0.2
 
   shared_lines:
     file: Casebook-characters.yaml
-    roles: [hook]
-    half_life_days: 5
+    roles: [reference]
     entries:
       any_time:
         weight: 0.25
-        line_half_life_days: 4
         score: 0.0
 
   scenes:
     file: Casebook-scenes.yaml
-    roles: [hook]
-    half_life_days: 6
+    roles: [perspective, reference]
     entries:
       stakeout:
         weight: 1.0
         score: 0.1
 ```
 
-The theme builder writes the pools and computes the first numbers. The nightly
-job updates each `score` every night, and recomputes a file's other numbers when
-its checksum differs.
+The theme builder writes the pools and computes the first numbers. The weekly
+recalculation updates each `score` every week, and recomputes a file's other
+numbers when its checksum differs.
 
-| Field                 | What it is                                                                                   |
-| --------------------- | -------------------------------------------------------------------------------------------- |
-| `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
-| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
-| `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
-| `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
-| `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
-| `score`               | How well messages built on the entry landed, from `%Message-history`                         |
+| Field          | What it is                                                                           |
+| -------------- | ------------------------------------------------------------------------------------ |
+| `checksums`    | Each entry file's SHA-256, over its text as stored; shortened above                  |
+| `speaker_rate` | How often the perspective is a speaker, from 0 to 1; one for the theme               |
+| `weight`       | How likely the entry is to be drawn: 1 without lines or riffs, less the fewer it has |
+| `score`        | How well messages built on the entry landed, from the message history                |
 
 An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
-rounded to two places, or 1.0 with neither. An entry's line half-life comes from
-how many lines it has and how often it is picked.
+rounded to two places, or 1.0 with neither.
 
 ## The pick
 
-For each message, the run hands the picker the options file's text and the
-recent picks. The recent picks come from `%Message-history`, which records each
-message's hook, speaker, line drawn and when it went out.
+For each message, the run hands the picker the options file's text.
 
-Each message gets exactly one hook, drawn from all the entries in hook pools
-together, each entry counting once at its weight. An entry's score raises or
-lowers its chance, and an entry picked recently is less likely while it rests.
+Each message gets one pick: a perspective and a reference, from different pools.
+At the theme's `speaker_rate`, the perspective is drawn from all speaker pools
+together; the rest of the time, from all perspective pools together. The
+reference is drawn from all reference pools outside the perspective's pool. Each
+entry counts once at its weight. An entry's score raises or lowers its chance.
 An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
-When the picked entry holds lines or riffs, the run hands the picker that entry
-from its entry file, and one line or riff is drawn from it. A recently used line
-rests the same way an entry does. That line or riff is what the writer builds
-on.
-
-Sometimes a speaker is added, drawn from all speaker pools together, at the
-theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no
-`speaker_rate`: every hook already speaks.
+The picker prints the two entry keys. The writer looks each entry up in its
+entry file and, when it holds lines or riffs, chooses one to build on.
 
 ## The terminology file
 
@@ -251,7 +238,7 @@ not know or would misuse, each with what it means in the theme.
 ## The message history
 
 The file ntm writes as it goes: an entry for each message sent in the theme,
-holding only this theme's messages. The pick reads it for rest, and the nightly
-job for scores. The theme builder creates it when it switches the theme on, from
-its template. The root's `files` leaves it out: the writer never reads it, and
-ntm finds it by its name.
+holding only this theme's messages. The weekly recalculation reads it for
+scores. The theme builder creates it when it switches the theme on, from its
+template. The root's `files` leaves it out: the writer never reads it, and ntm
+finds it by its name.

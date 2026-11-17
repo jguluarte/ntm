@@ -1,12 +1,12 @@
 pools:
   scenes:
-    roles: [hook]
+    roles: [reference]
     entries:
       dawn:
       noon:
       dusk:
   characters:
-    roles: [hook, speaker]
+    roles: [speaker]
     entries:
       host:
   narrators:

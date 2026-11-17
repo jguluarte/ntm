@@ -1,6 +1,6 @@
 pools:
   scenes:
-    roles: [hook]
+    roles: [perspective]
     entries:
       dawn:
       noon:

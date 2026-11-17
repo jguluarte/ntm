@@ -1,7 +1,6 @@
 import hashlib
 import random
 from dataclasses import dataclass
-from functools import cached_property
 from pathlib import Path
 
 import jsonschema
@@ -10,13 +9,17 @@ import yaml
 OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 CHECKSUMS_BY_FILE = "checksums"
+SPEAKER_RATE = "speaker_rate"
+DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 WEIGHT = "weight"
 SCORE = "score"
-HOOK_ROLE = "hook"
+PERSPECTIVE_ROLE = "perspective"
+REFERENCE_ROLE = "reference"
+SPEAKER_ROLE = "speaker"
 
 ABOUT = "about"
 LINES = "lines"
@@ -31,6 +34,11 @@ class InvalidTheme(ValueError):
 class MissingWeight(ValueError):
     def __init__(self):
         super().__init__("every option weighs 0")
+
+
+class MissingReference(ValueError):
+    def __init__(self, kind):
+        super().__init__(f"no reference outside {kind}")
 
 
 class UnknownEntryFile(ValueError):
@@ -103,26 +111,38 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 class Theme:
     def __init__(self, path, seed=None):
         self.path = path
-        self.seed = seed
+        self._seeds = random.Random(seed)
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
-        self._options = self._read_options(self._fields[POOLS_BY_KIND])
+        self._speakers = self._read_options(SPEAKER_ROLE)
+        self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
+        self._references = self._read_options(REFERENCE_ROLE)
 
-        if not self._options:
-            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
+    def perspective_lottery(self):
+        speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        draw_weights = {
+            **self._scaled_to(speaker_rate, self._speakers),
+            **self._scaled_to(1 - speaker_rate, self._other_perspectives),
+        }
+        return self._lottery_of(draw_weights)
 
-    @cached_property
-    def lottery(self):
-        draw_weights = {option: option.draw_weight for option in self._options}
+    def reference_lottery_outside(self, kind):
+        references = [
+            option for option in self._references if option.kind != kind
+        ]
 
-        if not any(draw_weights.values()):
-            raise MissingWeight()
+        if not references:
+            raise MissingReference(kind)
 
-        return Lottery(draw_weights, self.seed)
+        draw_weights = {option: option.draw_weight for option in references}
+        return self._lottery_of(draw_weights)
 
-    def draw(self):
-        return self.lottery.draw()
+    def draw_perspective(self):
+        return self.perspective_lottery().draw()
+
+    def draw_reference_outside(self, kind):
+        return self.reference_lottery_outside(kind).draw()
 
     def entries_from(self, file_name):
         names = []
@@ -161,17 +181,28 @@ class Theme:
         )
         Path(path).write_text(text, encoding="utf-8")
 
-    @staticmethod
-    def _read_options(pools_by_kind):
+    def _read_options(self, role):
         options = []
 
-        for kind, pool in pools_by_kind.items():
-            if HOOK_ROLE in pool[ROLES]:
+        for kind, pool in self._fields[POOLS_BY_KIND].items():
+            if role in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     option = Option.from_entry(kind, slug, entry)
                     options.append(option)
 
         return options
+
+    def _lottery_of(self, draw_weights):
+        if not any(draw_weights.values()):
+            raise MissingWeight()
+
+        return Lottery(draw_weights, self._seeds.random())
+
+    @staticmethod
+    def _scaled_to(share, options):
+        total = sum(option.draw_weight for option in options)
+        scale = share / total if total else 0
+        return {option: option.draw_weight * scale for option in options}
 
     @staticmethod
     def _load(path):

@@ -228,7 +228,11 @@ class MessageHistoryTest(unittest.TestCase):
         self.assertEqual(expected, messages)
 
     def test_a_history_of_blank_lines_has_no_messages(self):
-        history = MessageHistory(fixtures.scoring.BLANK_MESSAGE_HISTORY)
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        blank_history = Path(folder) / "Blank-message-history.jsonl"
+        blank_history.write_text("\n  \n\n", encoding="utf-8")
+
+        history = MessageHistory(blank_history)
         messages = history.sent_since(date(2026, 11, 9))
 
         self.assertEqual([], messages)

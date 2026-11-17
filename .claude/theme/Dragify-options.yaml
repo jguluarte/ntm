@@ -100,8 +100,6 @@ pools:
     entries:
       any_time: {}
 
-      big_win: {}
-
   motifs:
     file: Dragify-motifs.yaml
     roles: [perspective, reference]

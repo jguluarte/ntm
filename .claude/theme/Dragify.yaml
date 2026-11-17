@@ -44,7 +44,7 @@ files:
       for some their riffs: lines to bend toward the task, or to keep for one
       occasion. Then the lines any actor can say: the lines fans repeat as
       catchphrases, many from queens who aren't actors here, and a few kept for
-      a big win or the winner's circle.
+      the `win` and `winners_circle` levels.
 
     Dragify-motifs.yaml: >-
       The motifs: the shows' challenges, rituals and scenes a message can be
@@ -57,7 +57,7 @@ files:
       that a message can call back to, each with what happened, what fans use it
       for and how to call back to it on a task, and for some the show it comes
       from and a `type` naming the messages it fits. Then the landmark wins kept
-      for the winner's circle, in the same shape.
+      for the `winners_circle` level, in the same shape.
 
   fully_read:
     Dragify-terminology.md: >-

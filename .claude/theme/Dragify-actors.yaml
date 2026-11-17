@@ -2263,7 +2263,7 @@ any_actor_lines:
   about: >-
     Lines any speaker can quote: the lines fans repeat as catchphrases, and
     lines from actors here that fit anyone's mouth. Many come from queens who
-    aren't actors here. The `any_time` lines fit any message; the `big_win` and
+    aren't actors here. The `any_time` lines fit any message; the `win` and
     `winners_circle` lines fit only the occasion their `about` names.
 
   any_time:
@@ -2306,14 +2306,12 @@ any_actor_lines:
       - I'm not crying, it's my fucking eyelash.
       - You better work!
 
-  big_win:
+  win:
     about: >-
       Only after a big effort: several tasks closed in one day that had been
       planned across several days, a task with a big estimate finally closed, or
       a task that slipped many times finally closed. Never for an ordinary day
       of doing what was planned.
-
-    type: big_win
 
     lines:
       - Con-drag-ulations, you are the winner of this week's challenge!

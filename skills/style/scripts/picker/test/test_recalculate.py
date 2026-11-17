@@ -1,4 +1,8 @@
+import tempfile
 import unittest
+from pathlib import Path
+
+import yaml
 
 import fixtures
 from recalculate import Recalculation, parser, reporting_failures
@@ -52,13 +56,17 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0, theme.speaker_rate)
 
     def test_recording_gives_the_entry_file_its_own_checksum(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        saved_options = Path(folder) / "Weighing-options.yaml"
         theme = Theme(fixtures.weighing.OPTIONS)
         entry_file = EntryFile(fixtures.weighing.CHARACTERS)
         recalculation = Recalculation(theme, [entry_file])
 
         recalculation.record_checksums()
+        theme.save(saved_options)
 
-        checksum = theme.checksum_of("Weighing-characters.yaml")
+        fields = yaml.safe_load(saved_options.read_text(encoding="utf-8"))
+        checksum = fields["checksums"]["Weighing-characters.yaml"]
         self.assertEqual(entry_file.checksum, checksum)
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):

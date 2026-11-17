@@ -78,15 +78,6 @@ class Lottery:
             for candidate, draw_weight in draw_weights.items()
         }
 
-    @property
-    def names(self):
-        return [candidate.name for candidate in self.chance_by_candidate]
-
-    @property
-    def chance_by_name(self):
-        chances = self.chance_by_candidate.items()
-        return {candidate.name: chance for candidate, chance in chances}
-
     def draw(self):
         candidates = list(self.chance_by_candidate)
         chances = self.chance_by_candidate.values()
@@ -179,9 +170,6 @@ class Theme:
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
-
-    def checksum_of(self, file_name):
-        return self._checksums[file_name]
 
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum

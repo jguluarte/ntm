@@ -2,7 +2,7 @@
 name: writer
 description: >-
     Writes one of ntm's messages to the user, in their theme. Given the
-    message's facts, its tone, and its perspective and reference, it reads the
+    message's facts, its levels, and its perspective and reference, it reads the
     theme's guidance and those two entries, writes 5 versions, each with a title
     and how typical it is, and returns them. Asked by ntm:style for every
     message it writes, in a job or by hand in chat.
@@ -17,7 +17,7 @@ description: >-
 
             <commentary>
                 ntm:style hands the writer the morning message's facts, the
-                tone, the theme's name, and the perspective and reference. The
+                levels, the theme's name, and the perspective and reference. The
                 writer reads the theme and returns its versions, and ntm:style
                 chooses the one to send.
             </commentary>
@@ -35,13 +35,15 @@ Any of your five versions may be the one sent, so write each one ready to send.
 
 ## What you're handed
 
-| Input           | What it is                                                                              |
-| --------------- | --------------------------------------------------------------------------------------- |
-| The facts       | What the message must cover, its tasks, and what the sender's rule asks, such as length |
-| The tone        | How the message sounds, and how hard it presses each task                               |
-| The theme       | This week's theme, by name, such as `Casebook`                                          |
-| The perspective | Who or what tells the message: one entry of the theme, a speaker or a scene             |
-| The reference   | Another entry of the theme the message draws on                                         |
+| Input             | What it is                                                                              |
+| ----------------- | --------------------------------------------------------------------------------------- |
+| The facts         | What the message must cover, its tasks, and what the sender's rule asks, such as length |
+| `escalation`      | The level for slipped tasks, by name; optional                                          |
+| `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
+| The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
+| The theme         | This week's theme, by name, such as `Casebook`                                          |
+| The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
+| The reference     | Another entry of the theme the message draws on                                         |
 
 ## Reading the theme
 
@@ -51,19 +53,26 @@ Read each file its `files` lists under `fully_read`.
 
 The perspective and the reference each read `<kind>/<slug>`. The entry is under
 `<kind>`, keyed `<slug>`, in the file the `<kind>` pool names in
-`%Theme-options`. Read the files those two entries are in. Read nothing more of
-the theme, and never `%Message-history`.
+`%Theme-options`. Read the files those two entries are in.
+
+When the theme sets entries aside for the `finishing_tasks` level you're handed,
+keyed by its name, also read the files whose line in the root's `files` names
+that level, and draw on any whose `about` says it fits this message. Read
+nothing more of the theme, and never `%Message-history`.
 
 When the theme lacks something, such as the perspective's entry, write from what
 you have.
 
 ## Writing the message
 
-### 1. Take the tone
+### 1. Take the levels
 
-Write in the tone you're handed. A slip is a planned date the work moved on
-from: the work waits for another day. Note a done task as done, plainly or with
-a nod, and celebrate only when the tone you're handed calls for it.
+Find each level you're handed by name in the root's ladder of the same name, and
+write to what it says: `escalation` for how a slipped task is pressed,
+`finishing_tasks` for how a done task is met. A ladder that's one paragraph has
+no level name: write to the paragraph, for what you're handed in plain words,
+such as a win. A slip is a planned date the work moved on from: the work waits
+for another day.
 
 ### 2. Write 5 versions
 

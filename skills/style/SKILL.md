@@ -43,8 +43,13 @@ piece of the world it draws on.
 Take the first pick from the theme's picks list, `<Theme>-picks`, such as
 `Casebook-picks`, and save the list without it. The list is a YAML list, each
 item a `perspective:` and a `reference:`. When there is no list, or it's empty,
-run the picker, as The picker, below, says. When the picker fails, pick both
-yourself from the theme, from different kinds.
+load `ntm:refresh-picks` and follow it, then take the first pick from the new
+list.
+
+When it ends with `Nothing to refresh:`, the theme isn't built for the picker:
+pick both yourself from the theme, from different kinds, and keep no line. That
+isn't a failure. When it ends with a failure line, pick both yourself the same
+way, and keep that line for the result.
 
 ### 2. Work out the levels
 
@@ -110,38 +115,6 @@ start it, end with `Writer FAILED: can't start the writer`.
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
 and message are what gets sent, and step 1's pick goes into its entry.
-
-## The picker
-
-The picker is a script in this skill that draws a pick from the theme's options
-file. It reads that file from a path and touches no backend, and
-`%Theme-options` lives in the user's backend, so hand it over this way.
-
-A theme without `%Theme-options` isn't built for the picker: pick both yourself,
-as step 1 says, and keep no line. That isn't a failure.
-
-Read `%Theme-options` and take the text of its `yaml` block. Write that text to
-a file named for the theme, such as `Casebook-options.yaml`, in this session's
-working folder, exactly as read: never retype it from memory or summarize it.
-Then run the picker on that file:
-
-```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py pick \
-    --options <the file>
-```
-
-It prints two lines, the pick it drew:
-
-```
-perspective: cast/chief
-reference: scenes/fog
-```
-
-It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
-this runs: without them, the script stops with a Python error. Any other output,
-or a part of this you can't do, means the picker failed. Keep one line for the
-result: the `Picker FAILED: <failure>: <why>` line it printed, or else
-`Picker FAILED: <why>`, with the last line it printed or what you couldn't do.
 
 ## Keeping `%Message-history`
 

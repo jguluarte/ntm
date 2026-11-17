@@ -94,13 +94,13 @@ perspective, reference or speaker. Messages may talk to the user as "you", and
 never use their name or a pet name.
 
 The picker is a Python script, standard library plus PyYAML, kept inside
-`ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
-It draws only the two entry keys, the perspective's and the reference's. It
-reads the options file only: no message history, and nothing about time. Nothing
-carries from one pick to the next. The writer looks each entry up and chooses a
-line from it.
+`ntm:style` at `skills/style/scripts/picker/`. `ntm:style` and
+`ntm:refresh-picks` run it. It draws only the two entry keys, the perspective's
+and the reference's. It reads the options file only: no message history, and
+nothing about time. Nothing carries from one pick to the next. The writer looks
+each entry up and chooses a line from it.
 
-On Sunday, after the recalculation, the picker draws 25 picks into one ordered
+On Sunday, `ntm:refresh-picks` has the picker draw 25 picks into one ordered
 list, `<Theme>-picks`: 22 for the week's messages and 3 spare for messages
 written in chat. Every message takes the first pick and saves the list without
 it. If the list runs out before Sunday, a message runs the picker for its own.
@@ -108,11 +108,10 @@ it. If the list runs out before Sunday, a message runs the picker for its own.
 The levels are separate from the theme pieces. The run that sends the message
 works out the `escalation` and `finishing_tasks` levels from the day's facts,
 and applies every threshold, rest and cap. It hands the writer the pick, the
-level names and the reminder type, which the writer may draw on. A theme's
-winners'-circle entries, its `winners_circle` lines for any actor and its
-`winners_circle` references, are not picker pieces and stay out of the options
-file. When the `finishing_tasks` level is high enough, the writer may look them
-up for the day and draw on them.
+level names and the reminder type, which the writer may draw on. A theme may
+keep entries under the name of a `finishing_tasks` level. They are not picker
+pieces and stay out of the options file. The writer may draw on the entries kept
+under the message's `finishing_tasks` level.
 
 The bump is the theme's choice. In a theme that presses on a good day, the run
 can bump the escalation level one step with no slip behind it, capped at the
@@ -168,11 +167,9 @@ stays with that person.
 
 ### Recalculating the picker's weights
 
-It runs once a week, as a job of its own early on Sunday morning. The session
-limit is then fully open, the run stays clear of the user's Sunday evening, and
-it takes in the whole previous calendar week; the weekly job that evening plans
-with fresh numbers. Between runs, the picker draws on the numbers the last run
-left. One run a week keeps it cheap.
+The full recalculation reads the whole theme, so it runs only when the theme
+changes. The weekly setup job runs `ntm:refresh-picks`, which draws the week's
+picks. Between runs, the picker draws on the numbers the last run left.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known

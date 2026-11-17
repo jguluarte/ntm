@@ -80,7 +80,7 @@ theme already has the name they pick, ask them for another.
 ### 3. Work out its numbers
 
 Before this run ends, when it wrote or changed the theme's files, run the
-recalculation, as The recalculation, below, says. When it fails, tell the user
+recalculation, as Initial calculation, below, says. When it fails, tell the user
 in a line that the theme's numbers weren't refreshed, with its failure line, and
 go on.
 
@@ -94,12 +94,13 @@ Then add the theme's root to the end of All themes, in the Themes part of
 `%Settings`, or where the user asks for it. When it's their first theme, it is
 also This week's theme. The weekly setup job takes their themes in turn.
 
-## The recalculation
+## Initial calculation
 
 The recalculation is a script in `ntm:style` that works out the numbers in the
 theme's options file: each entry's weight, the theme's speaker rate, and each
 entry file's checksum. It reads files from paths and touches no backend, and the
-theme's files live in the user's backend, so hand them over this way.
+theme's files live in the user's backend, so hand them over this way. We use the
+same script to perform initial calculations on it as well.
 
 Read `%Theme-options` and each entry file its pools name, and take the text of
 each one's `yaml` block. Write each text to a file named for its database, such

@@ -115,12 +115,15 @@ class Theme:
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
+        self._speaker_rate = self._fields.pop(
+            SPEAKER_RATE, DEFAULT_SPEAKER_RATE,
+        )
         self._speakers = self._read_options(SPEAKER_ROLE)
         self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
         self._references = self._read_options(REFERENCE_ROLE)
 
     def perspective_lottery(self):
-        speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        speaker_rate = self.speaker_rate
         draw_weights = {
             **self._scaled_to(speaker_rate, self._speakers),
             **self._scaled_to(1 - speaker_rate, self._other_perspectives),
@@ -185,15 +188,15 @@ class Theme:
 
     @property
     def speaker_rate(self):
-        return self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        return self._speaker_rate
 
     def set_speaker_rate(self, speaker_rate):
-        self._fields[SPEAKER_RATE] = speaker_rate
+        self._speaker_rate = speaker_rate
 
     def save(self, path):
         in_schema_order = {
             CHECKSUMS_BY_FILE: self._checksums,
-            SPEAKER_RATE: self.speaker_rate,
+            SPEAKER_RATE: self._speaker_rate,
             **self._fields,
         }
         text = yaml.dump(

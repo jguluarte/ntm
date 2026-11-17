@@ -37,7 +37,7 @@ anything else its rule asks of the message, such as tone or length.
 
 The message is built on one pick: a perspective and a reference, two entries of
 the theme. The perspective is who or what tells the message: a speaker, or a
-piece of the world that carries one, such as a scene. The reference is another
+piece of the world that tells it, such as a scene. The reference is another
 piece of the world it draws on.
 
 Take the first pick from the theme's picks list, `<Theme>-picks`, such as
@@ -123,7 +123,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py pick \
 It prints two lines, the pick it drew:
 
 ```
-perspective: characters/detective
+perspective: cast/chief
 reference: scenes/fog
 ```
 
@@ -141,7 +141,7 @@ read. An entry is one JSON line, written compact, with no spaces or line breaks
 added, and only the fields that have a value:
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"morning","picks":{"perspective":"characters/detective","reference":"scenes/fog"}}
+{"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone

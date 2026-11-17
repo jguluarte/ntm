@@ -66,6 +66,6 @@ files:
 
   for_the_picker:
     Dragify-options.yaml: >-
-      The pools the job picks from: the actors as speakers, the motifs as
-      perspectives or references, and the references and the lines any actor can
-      say as references.
+      What the job picks from per message: a perspective, which is a speaker
+      from the actors or a motif, and a reference from the lines any actor can
+      say, the motifs or the references.

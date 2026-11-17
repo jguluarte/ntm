@@ -108,11 +108,10 @@ it. If the list runs out before Sunday, a message runs the picker for its own.
 The levels are separate from the theme pieces. The run that sends the message
 works out the `escalation` and `finishing_tasks` levels from the day's facts,
 and applies every threshold, rest and cap. It hands the writer the pick, the
-level names and the reminder type, which the writer may draw on. A theme's
-winners'-circle entries, its `winners_circle` lines for any actor and its
-`winners_circle` references, are not picker pieces and stay out of the options
-file. When the `finishing_tasks` level is high enough, the writer may look them
-up for the day and draw on them.
+level names and the reminder type, which the writer may draw on. A theme may
+keep entries under the name of a `finishing_tasks` level. They are not picker
+pieces and stay out of the options file. The writer may draw on the entries kept
+under the message's `finishing_tasks` level.
 
 The bump is the theme's choice. In a theme that presses on a good day, the run
 can bump the escalation level one step with no slip behind it, capped at the

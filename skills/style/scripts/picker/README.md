@@ -32,3 +32,7 @@ drawn, each item a `perspective:` and a `reference:`.
 `python3 recalculate.py start --options <file> <entry file>...` gives a new
 theme its first weights, speaker rate and checksums and prints `saved: <file>`,
 or one `Recalculation FAILED:` line.
+
+`python3 recalculate.py adjust --options <file> --history <file> --since <date>`
+moves the scores of each message's picks by its `verdict` and `feedback`, for
+the history's lines sent on or after that date, and prints the same.

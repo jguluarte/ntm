@@ -89,7 +89,8 @@ picks up where you left off.
 ### `/ntm:refresh-picks`
 
 Chooses, once a week, what each of the week's messages draws on from your theme,
-so your reminders keep changing. Your weekly setup runs it for you.
+so your reminders keep changing. It leans toward what got you moving the week
+before. Your weekly setup runs it for you.
 
 ## Task management
 

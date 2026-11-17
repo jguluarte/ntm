@@ -1,20 +1,35 @@
 import argparse
 import contextlib
+import json
 import sys
+from dataclasses import dataclass
+from datetime import date, datetime
+from pathlib import Path
 
 from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
 LEAST_SPEAKER_RATE = 0.6
+SCORE_CHANGE_BY_VERDICT = {"acted": 0.1, "ignored": -0.1}
+SCORE_CHANGE_BY_FEEDBACK = {"keep": 0.25, "stale": -0.5}
+LOWEST_SCORE = -2
+HIGHEST_SCORE = 1
+
+SENT = "sent"
+PICKS = "picks"
+VERDICT = "verdict"
+FEEDBACK = "feedback"
+
+START_COMMAND = "start"
+ADJUST_COMMAND = "adjust"
 
 
 class Recalculation:
-    def __init__(self, theme, entry_files):
+    def __init__(self, theme):
         self.theme = theme
-        self.entry_files = entry_files
 
-    def weigh_entries(self):
-        for entry_file in self.entry_files:
+    def weigh_entries(self, entry_files):
+        for entry_file in entry_files:
             self._weigh_entries_from(entry_file)
 
     def work_out_speaker_rate(self):
@@ -23,9 +38,13 @@ class Recalculation:
         speaker_rate = self._speaker_rate_for(speakers, other_perspectives)
         self.theme.set_speaker_rate(speaker_rate)
 
-    def record_checksums(self):
-        for entry_file in self.entry_files:
+    def record_checksums(self, entry_files):
+        for entry_file in entry_files:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
+
+    def adjust_scores(self, messages):
+        for message in messages:
+            self._adjust_scores_from(message)
 
     def save_options_file(self):
         self.theme.save(self.theme.path)
@@ -40,6 +59,13 @@ class Recalculation:
     def _total_weight_of(self, role):
         entry_names = self.theme.entries_with_role(role)
         return sum(self.theme.weight_of(name) for name in entry_names)
+
+    def _adjust_scores_from(self, message):
+        score_change = self._score_change_for(message)
+        for entry_name in message.picks:
+            if self.theme.has_entry(entry_name):
+                score = self.theme.score_of(entry_name) + score_change
+                self.theme.set_score(entry_name, self._bounded(score))
 
     @staticmethod
     def _weight_for(line_count):
@@ -56,13 +82,65 @@ class Recalculation:
         share = speakers / (speakers + other_perspectives)
         return round(max(share, LEAST_SPEAKER_RATE), 2)
 
+    @staticmethod
+    def _score_change_for(message):
+        verdict_change = SCORE_CHANGE_BY_VERDICT.get(message.verdict, 0)
+        feedback_change = SCORE_CHANGE_BY_FEEDBACK.get(message.feedback, 0)
+        return verdict_change + feedback_change
+
+    @staticmethod
+    def _bounded(score):
+        bounded_score = min(max(score, LOWEST_SCORE), HIGHEST_SCORE)
+        return round(bounded_score, 2)
+
+
+@dataclass(frozen=True)
+class Message:
+    sent: datetime
+    picks: tuple
+    verdict: str | None
+    feedback: str | None
+
+    @classmethod
+    def from_line(cls, line):
+        fields = json.loads(line)
+        sent = datetime.fromisoformat(fields[SENT])
+        picks = tuple(fields.get(PICKS, {}).values())
+        return cls(sent, picks, fields.get(VERDICT), fields.get(FEEDBACK))
+
+
+class MessageHistory:
+    def __init__(self, path):
+        messages = [Message.from_line(line) for line in self._lines_in(path)]
+        self._messages = sorted(messages, key=lambda message: message.sent)
+
+    def sent_since(self, day):
+        return [
+            message for message in self._messages if message.sent.date() >= day
+        ]
+
+    @staticmethod
+    def _lines_in(path):
+        history_file = Path(path)
+
+        if not history_file.exists():
+            return []
+
+        lines = history_file.read_text(encoding="utf-8").splitlines()
+        return [line for line in lines if line.strip()]
+
 
 def parser():
     command_line = argparse.ArgumentParser(exit_on_error=False)
-    subcommands = command_line.add_subparsers(required=True)
-    subcommand = subcommands.add_parser("start", exit_on_error=False)
-    subcommand.add_argument("--options", required=True)
-    subcommand.add_argument("entry_files", nargs="+")
+    subcommands = command_line.add_subparsers(dest="command", required=True)
+    start = subcommands.add_parser(START_COMMAND, exit_on_error=False)
+    start.add_argument("--options", required=True)
+    start.add_argument("entry_files", nargs="+")
+
+    adjust = subcommands.add_parser(ADJUST_COMMAND, exit_on_error=False)
+    adjust.add_argument("--options", required=True)
+    adjust.add_argument("--history", required=True)
+    adjust.add_argument("--since", type=date.fromisoformat, required=True)
     return command_line
 
 
@@ -79,11 +157,20 @@ if __name__ == "__main__":
     with reporting_failures():
         flags = parser().parse_args(sys.argv[1:])
         theme = Theme(flags.options)
-        entry_files = [EntryFile(path) for path in flags.entry_files]
-        recalculation = Recalculation(theme, entry_files)
+        recalculation = Recalculation(theme)
 
-        recalculation.weigh_entries()
-        recalculation.work_out_speaker_rate()
-        recalculation.record_checksums()
+        if flags.command == START_COMMAND:
+            entry_files = [EntryFile(path) for path in flags.entry_files]
+
+            recalculation.weigh_entries(entry_files)
+            recalculation.work_out_speaker_rate()
+            recalculation.record_checksums(entry_files)
+
+        elif flags.command == ADJUST_COMMAND:
+            history = MessageHistory(flags.history)
+            messages = history.sent_since(flags.since)
+
+            recalculation.adjust_scores(messages)
+
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

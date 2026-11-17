@@ -104,6 +104,7 @@ theme's file; `references/theme-files.md` gives each file's shape.
 | -------------------------------- | -------------------------- |
 | `%Theme`                         | `Casebook`                 |
 | `%Theme-options`                 | `Casebook-options`         |
+| `%Theme-picks`                   | `Casebook-picks`           |
 | `%Message-history`               | `Casebook-message-history` |
 
 #### `%Theme`

@@ -185,6 +185,8 @@ pools:
         weight: 0.57
         line_half_life_days: 9
         score: 0.2
+        lines: 3
+        riffs: 1
 
   shared_lines:
     file: Casebook-characters.yaml
@@ -195,6 +197,7 @@ pools:
         weight: 0.25
         line_half_life_days: 4
         score: 0.0
+        lines: 1
 
   scenes:
     file: Casebook-scenes.yaml
@@ -217,7 +220,7 @@ its checksum differs.
 | `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
 | `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |
-| `lines`, `riffs`      | How many lines and riffs the entry holds, from its entry file; the picker draws one          |
+| `lines`, `riffs`      | How many lines and riffs the entry holds, from its entry file; the picker draws one of them  |
 | `score`               | How well messages built on the entry landed, from `%Message-history`                         |
 
 An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
@@ -235,10 +238,10 @@ together, each entry counting once at its weight. An entry's score raises or
 lowers its chance, and an entry picked recently is less likely while it rests.
 An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
-When the picked entry holds lines or riffs, the run hands the picker that entry
-from its entry file, and one line or riff is drawn from it. A recently used line
-rests the same way an entry does. That line or riff is what the writer builds
-on.
+When the picked entry holds lines or riffs, the picker draws one of them from
+the entry's counts in the options file, and names it by its path in the entry
+file, such as `characters/detective/riffs/0`. A recently used line rests the
+same way an entry does. That line or riff is what the writer builds on.
 
 Sometimes a speaker is added, drawn from all speaker pools together, at the
 theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no

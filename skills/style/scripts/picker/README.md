@@ -11,7 +11,7 @@ python3 picker.py pick --options <file> --chances
 ```
 
 The same `--seed` draws the same picks. `pick` prints the two options it drew,
-each down to its drawn line when it has lines; `--chances` prints each
+each with its drawn line's path when it has lines; `--chances` prints each
 perspective instead, with its weight, score and chance:
 
 ```

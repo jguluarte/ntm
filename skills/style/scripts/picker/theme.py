@@ -10,6 +10,7 @@ OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 CHECKSUMS_BY_FILE = "checksums"
 SPEAKER_RATE = "speaker_rate"
+DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
@@ -120,10 +121,12 @@ class Theme:
 
     @property
     def perspective_lottery(self):
-        speaker_rate = self._fields.get(SPEAKER_RATE, 0.5)
-        speakers = self._scaled_to(speaker_rate, self._speakers)
-        others = self._scaled_to(1 - speaker_rate, self._other_perspectives)
-        return self._lottery_of({**speakers, **others})
+        speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        draw_weights = {
+            **self._scaled_to(speaker_rate, self._speakers),
+            **self._scaled_to(1 - speaker_rate, self._other_perspectives),
+        }
+        return self._lottery_of(draw_weights)
 
     def reference_lottery_outside(self, kind):
         references = [

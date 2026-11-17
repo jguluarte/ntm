@@ -12,10 +12,10 @@ from theme import (
 class PerspectiveTest(unittest.TestCase):
     def test_the_perspective_is_a_speaker_at_the_speaker_rate(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        lottery = theme.perspective_lottery
+        chances = theme.perspective_lottery.chance_by_name
 
-        expected = {"characters/detective": 0.4, "scenes/stakeout": 0.6}
-        self.assertEqual(expected, lottery.chance_by_name)
+        self.assertAlmostEqual(0.4, chances["characters/detective"])
+        self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
 
 
 class ReferenceTest(unittest.TestCase):

@@ -27,6 +27,10 @@ def parser():
     return command_line
 
 
+def pick_text(perspective, reference):
+    return f"perspective: {perspective.name}\nreference: {reference.name}"
+
+
 def chances_table(lottery):
     rows = [("perspective", "weight", "score", "chance")]
     for option, chance in lottery.chance_by_candidate.items():
@@ -72,5 +76,4 @@ if __name__ == "__main__":
         else:
             picker = Picker(theme)
             perspective, reference = picker.pick()
-            print(f"perspective: {perspective.name}")
-            print(f"reference: {reference.name}")
+            print(pick_text(perspective, reference))

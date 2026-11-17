@@ -1,7 +1,9 @@
 import unittest
 
 import fixtures
-from picker import Picker, chances_table, parser, reporting_failures
+from picker import (
+    Picker, chances_table, parser, pick_text, reporting_failures,
+)
 from theme import Theme
 
 SEED = 3
@@ -9,15 +11,6 @@ RUNS = 10
 
 
 class PickTest(unittest.TestCase):
-    def test_a_pick_is_a_perspective_and_a_reference(self):
-        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
-        picker = Picker(theme)
-
-        perspective, reference = picker.pick()
-
-        self.assertEqual("characters/detective", perspective.name)
-        self.assertEqual("scenes/stakeout", reference.name)
-
     def test_the_same_seed_gives_the_same_picks(self):
         first_theme = Theme(fixtures.EVEN, seed=SEED)
         first_picker = Picker(first_theme)
@@ -36,6 +29,20 @@ class PickTest(unittest.TestCase):
         picks = {picker.pick() for _ in range(RUNS)}
 
         self.assertGreater(len(picks), 1)
+
+
+class PickTextTest(unittest.TestCase):
+    def test_a_pick_shows_its_perspective_and_then_its_reference(self):
+        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        picker = Picker(theme)
+        perspective, reference = picker.pick()
+        rows = pick_text(perspective, reference).splitlines()
+
+        expected = [
+            "perspective: characters/detective",
+            "reference: scenes/stakeout",
+        ]
+        self.assertEqual(expected, rows)
 
 
 class ChancesTableTest(unittest.TestCase):

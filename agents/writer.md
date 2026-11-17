@@ -52,8 +52,12 @@ Read each file its `files` lists under `fully_read`.
 
 The perspective and the reference each read `<kind>/<slug>`. The entry is under
 `<kind>`, keyed `<slug>`, in the file the `<kind>` pool names in
-`%Theme-options`. Read the files those two entries are in. Read nothing more of
-the theme, and never `%Message-history`.
+`%Theme-options`. Read the files those two entries are in.
+
+When the `finishing_tasks` level you're handed is its ladder's top level, also
+read the files the root's `files` says hold `winners_circle` entries, and draw
+on those entries as their `about` says. Read nothing more of the theme, and
+never `%Message-history`.
 
 When the theme lacks something, such as the perspective's entry, write from what
 you have.

@@ -93,7 +93,8 @@ finishing_tasks: >-
 files:
   by_entry:
     Casebook-characters.yaml: >-
-      The people of the story, and lines any of them can say.
+      The people of the story, and lines any of them can say, a few kept for
+      the winner's circle.
 
     Casebook-scenes.yaml: >-
       Recurring scenes a message can be set in.
@@ -124,6 +125,11 @@ ntm reads. Prose sits in `>-` folded text.
 An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus a
 `bend`, which says how to turn the line toward a task.
 
+Entries for the top `finishing_tasks` level sit under the key `winners_circle`:
+a kind of that name, or an entry of that name within a kind, such as lines any
+character can say. The options file leaves them out, and the root's `files` says
+which files hold them. The writer reads them only at that level.
+
 <!-- prettier-ignore -->
 ```yaml
 about: >-
@@ -152,6 +158,9 @@ shared_lines:
   any_time:
     lines:
       - Somebody in this house is lying.
+  winners_circle:
+    lines:
+      - The case of the decade, solved.
 ```
 
 ## The options file

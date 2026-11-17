@@ -100,7 +100,7 @@ and the reference's. It reads the options file only: no message history, and
 nothing about time. Nothing carries from one pick to the next. The writer looks
 each entry up and chooses a line from it.
 
-On Sunday, after the recalculation, the picker draws 25 picks into one ordered
+On Sunday, `ntm:refresh-picks` has the picker draw 25 picks into one ordered
 list, `<Theme>-picks`: 22 for the week's messages and 3 spare for messages
 written in chat. Every message takes the first pick and saves the list without
 it. If the list runs out before Sunday, a message runs the picker for its own.
@@ -167,9 +167,9 @@ stays with that person.
 
 ### Recalculating the picker's weights
 
-It runs once a week, in the weekly setup job: `ntm:refresh-picks` runs the
-recalculation, then draws the week's picks. Between runs, the picker draws on
-the numbers the last run left. One run a week keeps it cheap.
+The full recalculation reads the whole theme, so it runs only when the theme
+changes. The weekly setup job runs `ntm:refresh-picks`, which draws the week's
+picks. Between runs, the picker draws on the numbers the last run left.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known

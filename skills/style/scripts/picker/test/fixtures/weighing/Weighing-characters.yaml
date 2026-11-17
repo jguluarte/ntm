@@ -6,7 +6,9 @@ characters:
     lines:
       - One.
       - Two.
-      - Three.
+    riffs:
+      - line: Three.
+        bend: Three, bent.
   nine_lines:
     lines:
       - One.

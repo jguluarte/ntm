@@ -16,6 +16,10 @@ class Recalculation:
         for entry_file in self.entry_files:
             self._weigh_entries_from(entry_file)
 
+    def record_line_counts(self):
+        for entry_file in self.entry_files:
+            self._record_line_counts_from(entry_file)
+
     def record_checksums(self):
         for entry_file in self.entry_files:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
@@ -29,6 +33,11 @@ class Recalculation:
             if entry_name in line_counts:
                 weight = self._weight_for(line_counts[entry_name])
                 self.theme.set_weight(entry_name, weight)
+
+    def _record_line_counts_from(self, entry_file):
+        line_counts = entry_file.line_counts
+        for entry_name in self.theme.entries_from(entry_file.name):
+            if entry_name in line_counts:
                 self.theme.set_line_counts(entry_name, line_counts[entry_name])
 
     @staticmethod
@@ -66,6 +75,7 @@ if __name__ == "__main__":
         recalculation = Recalculation(theme, entry_files)
 
         recalculation.weigh_entries()
+        recalculation.record_line_counts()
         recalculation.record_checksums()
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

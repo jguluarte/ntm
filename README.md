@@ -82,8 +82,9 @@ notes it to keep your reminders fresh.
 Builds a theme with you, one stage at a time: something you enjoy, like a show
 or a book, how it talks to you when you're on track or slacking off, and the
 people, scenes and moments your reminders draw on. Setup runs it for your first
-theme; run it again any time you want another. Your themes take turns, a week
-each. If you stop partway, it picks up where you left off.
+theme; run it again any time you want another, and it sends you a test message
+in the new theme. Your themes take turns, a week each. If you stop partway, it
+picks up where you left off.
 
 ### `/ntm:refresh-picks`
 

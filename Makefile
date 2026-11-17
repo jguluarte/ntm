@@ -1,6 +1,6 @@
 
 .PHONY: lint lint-markdown lint-yaml lint-python lint-absolute-line-length
-.PHONY: lint-fix lint-fix-markdown test test-names test-picker
+.PHONY: lint-fix lint-fix-prettier lint-fix-markdown test test-names test-picker
 
 LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 YAML_FILES := $(shell git ls-files -- '*.yml' '*.yaml')
@@ -23,7 +23,9 @@ lint-python:
 lint-absolute-line-length:
 	@awk '$(TOO_LONG) $(REPORT)' $(LINT_FILES)
 
-lint-fix: lint-fix-markdown
+lint-fix: lint-fix-prettier lint-fix-markdown
+
+lint-fix-prettier:
 	prettier --write .
 
 lint-fix-markdown:

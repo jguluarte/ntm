@@ -110,7 +110,8 @@ class Message:
 class MessageHistory:
     def __init__(self, path):
         lines = Path(path).read_text(encoding="utf-8").splitlines()
-        self._messages = [Message.from_line(line) for line in lines if line]
+        messages = [Message.from_line(line) for line in lines if line]
+        self._messages = sorted(messages, key=lambda message: message.sent)
 
     def sent_since(self, day):
         return [

@@ -189,6 +189,16 @@ class ScoresTest(unittest.TestCase):
 
         self.assertEqual(-2, theme.score_of("clues/badge"))
 
+    def test_a_score_that_reached_the_highest_falls_with_a_later_message(self):
+        theme = Theme(fixtures.scoring.OPTIONS)
+        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
+        messages = history.sent_since(date(2026, 11, 9))
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores(messages)
+
+        self.assertAlmostEqual(1 - 0.1, theme.score_of("cast/chief"))
+
 
 class MessageHistoryTest(unittest.TestCase):
     def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):

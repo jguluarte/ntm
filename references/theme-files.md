@@ -204,8 +204,7 @@ pools:
 
 The theme builder writes the pools, then runs the recalculation, a script that
 computes each `weight`, the `speaker_rate` and the `checksums` from the theme's
-files. The weekly recalculation updates each `score` every week, and recomputes
-a file's other numbers when its checksum differs.
+files.
 
 | Field          | What it is                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |

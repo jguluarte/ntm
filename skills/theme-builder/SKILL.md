@@ -79,9 +79,10 @@ theme already has the name they pick, ask them for another.
 
 ### 3. Work out its numbers
 
-Once the last stage is done, run the recalculation, as The recalculation, below,
-says. When it fails, tell the user in a line that the theme's numbers weren't
-refreshed, with its failure line, and go on.
+Before this run ends, when it wrote or changed the theme's files, run the
+recalculation, as The recalculation, below, says. When it fails, tell the user
+in a line that the theme's numbers weren't refreshed, with its failure line, and
+go on.
 
 ### 4. Switch it on
 

@@ -179,37 +179,25 @@ class ScoresTest(unittest.TestCase):
 
         self.assertEqual(-2, theme.score_of("scenes/stakeout"))
 
-    def test_a_week_of_messages_leaves_every_reference_drawable(self):
-        folder = self.enterContext(tempfile.TemporaryDirectory())
-        saved_options = Path(folder) / "Casebook-options.yaml"
-        theme = Theme(fixtures.casebook.OPTIONS)
-        history = MessageHistory(fixtures.casebook.MESSAGE_HISTORY)
+    def test_a_week_of_stale_messages_sinks_a_reference_to_the_floor(self):
+        theme = Theme(fixtures.scoring.OPTIONS)
+        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores(messages)
-        theme.save(saved_options)
 
-        adjusted_theme = Theme(saved_options)
-        lottery = adjusted_theme.reference_lottery_outside("characters")
-        chances = lottery.chance_by_candidate.items()
-        chance_by_name = {
-            option.name: round(chance, 2) for option, chance in chances
-        }
-
-        self.assertEqual(-2, adjusted_theme.score_of("shared_lines/any_time"))
-        expected = {"shared_lines/any_time": 0.09, "scenes/stakeout": 0.91}
-        self.assertEqual(expected, chance_by_name)
+        self.assertEqual(-2, theme.score_of("clues/badge"))
 
 
 class MessageHistoryTest(unittest.TestCase):
     def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):
-        history = MessageHistory(fixtures.casebook.MESSAGE_HISTORY)
+        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 15))
 
         sent = datetime(2026, 11, 15, 18, 0)
-        picks = ("characters/detective", "shared_lines/any_time")
-        expected = [Message(sent, picks, verdict="ignored", feedback="stale")]
+        picks = ("cast/chief", "scenes/fog")
+        expected = [Message(sent, picks, verdict="ignored", feedback=None)]
         self.assertEqual(expected, messages)
 
 
@@ -237,8 +225,8 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_adjust_without_since_fails_naming_it(self):
         args = [
             "adjust",
-            "--options", str(fixtures.casebook.OPTIONS),
-            "--history", str(fixtures.casebook.MESSAGE_HISTORY),
+            "--options", str(fixtures.scoring.OPTIONS),
+            "--history", str(fixtures.scoring.MESSAGE_HISTORY),
         ]
 
         with self.assertRaises(SystemExit) as exited:

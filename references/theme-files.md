@@ -124,6 +124,11 @@ ntm reads. Prose sits in `>-` folded text.
 An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus a
 `bend`, which says how to turn the line toward a task.
 
+A theme may set entries aside for one of its `finishing_tasks` levels, keyed by
+the level's name: a kind of that name, or an entry of that name within a kind.
+Each has an `about` saying when it fits. A file that holds them names the level
+in its line in the root's `files`.
+
 <!-- prettier-ignore -->
 ```yaml
 about: >-

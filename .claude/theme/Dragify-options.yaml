@@ -1,9 +1,11 @@
 # What the job picks from per message: a speaker from the actors, and a hook
 # from the actors, the lines any actor can say, the motifs or the references.
+speaker_rate: 0.5
+
 pools:
   actors:
     file: Dragify-actors.yaml
-    roles: [hook, speaker]
+    roles: [speaker]
     entries:
       rupaul: {}
 
@@ -93,7 +95,7 @@ pools:
 
   any_actor_lines:
     file: Dragify-actors.yaml
-    roles: [hook]
+    roles: [reference]
     entries:
       any_time: {}
 
@@ -101,7 +103,7 @@ pools:
 
   motifs:
     file: Dragify-motifs.yaml
-    roles: [hook]
+    roles: [perspective, reference]
     entries:
       previously_on: {}
 
@@ -213,7 +215,7 @@ pools:
 
   references:
     file: Dragify-references.yaml
-    roles: [hook]
+    roles: [reference]
     entries:
       season_1_filter: {}
 

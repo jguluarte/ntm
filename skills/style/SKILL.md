@@ -141,7 +141,7 @@ added, and only the fields that have a value:
 - `tasks`: each task the message is about, with its planned date when it has
   one, such as `"tasks":[{"id":"ABC-12","planned":"2026-11-13"}]`
 - `feedback`: the user's word on it, `keep` or `stale`
-- `verdict`: the nightly rater's
+- `verdict`: `acted` or `ignored`, written by the weekly setup job
 
 Then drop the entries older than the `Keep:` line, and save.
 

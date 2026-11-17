@@ -2,12 +2,13 @@
 name: style
 description: >-
     Turns a message's facts into a finished message in the user's style: picks
-    what it draws on from their `%Theme`, sets the tone, has the writer agent
-    write versions, chooses one, and records it in `%Message-history` once it's
-    sent. Loaded for every message ntm sends in the user's style. In chat,
-    writes something in the user's style when they ask, changes their theme with
-    them ("make my reminders meaner"), and notes it when the user says a message
-    is a keeper or has gone stale ("keep that one", "that one's stale").
+    what it draws on from their `%Theme`, works out the message's levels, has
+    the writer agent write versions, chooses one, and records it in
+    `%Message-history` once it's sent. Loaded for every message ntm sends in the
+    user's style. In chat, writes something in the user's style when they ask,
+    changes their theme with them ("make my reminders meaner"), and notes it
+    when the user says a message is a keeper or has gone stale ("keep that one",
+    "that one's stale").
 ---
 
 # ntm:style
@@ -42,25 +43,46 @@ piece of the world it draws on.
 Take the first pick from the theme's picks list, `<Theme>-picks`, such as
 `Casebook-picks`, and save the list without it. The list is a YAML list, each
 item a `perspective:` and a `reference:`. When there is no list, or it's empty,
-run the picker, as The picker, below, says. When the picker fails, pick both
-yourself from the theme, from different kinds.
+load `ntm:refresh-picks` and follow it, then take the first pick from the new
+list.
 
-### 2. Set the tone
+When it ends with `Nothing to refresh:`, the theme isn't built for the picker:
+pick both yourself from the theme, from different kinds, and keep no line. That
+isn't a failure. When it ends with a failure line, pick both yourself the same
+way, and keep that line for the result.
 
-Read the facts against the theme's guidance and set the tone: how hard each
-slipped task is pressed, a nod for what's done, and anything the facts ask of
-the tone. Slips from a while back weigh less: a task picked up again after a
-long gap is pressed less than its count of slips, as you judge it.
+### 2. Work out the levels
 
-Call for a celebration only for a win or a big win; an ordinary day of doing
-what was planned gets a nod. A win is any of these: more tasks finished than
-planned this week, a task finished after slipping for days, or a task you judge
-big or hard. Only the weekly setup's message counts the week; a reminder looks
-only at the day. A big win is a whole project finished: the project itself
-closes as done. It's rare. Call either only from the facts you were handed, and
-look nothing else up. Call each once, in the first message after it happens: a
-win that a `%Message-history` entry already celebrated, with `win` or `big_win`
-in its `type`, isn't called again.
+The theme's root gives two ladders, `escalation` and `finishing_tasks`, each a
+set of levels from the first up, keyed by name. Work out one level on each from
+the facts, judged against the ladder's own words:
+
+| Ladder            | When                 | Level                       |
+| ----------------- | -------------------- | --------------------------- |
+| `escalation`      | Nothing slipped      | The first                   |
+| `escalation`      | A task slipped       | Higher                      |
+| `escalation`      | A task kept slipping | Higher still, up to the top |
+| `finishing_tasks` | Nothing is done      | None                        |
+| `finishing_tasks` | A task is done       | The first                   |
+| `finishing_tasks` | A win                | The second                  |
+| `finishing_tasks` | A big win            | The third                   |
+
+The task that slipped most sets the `escalation` level. Slips from a while back
+weigh less: a task picked up again after a long gap counts for less than its
+slips, as you judge it.
+
+When the root gives a ladder as one paragraph, that ladder has no level name.
+For `finishing_tasks`, hand the writer what you called in its place, in plain
+words: a task done, a win or a big win.
+
+A win is any of these: more tasks finished than planned this week, a task
+finished after slipping for days, or a task you judge big or hard. Only the
+weekly setup's message counts the week; a reminder looks only at the day. A big
+win is a whole project finished: the project itself closes as done. It's rare.
+Call either only from the facts you were handed, and look nothing else up. Call
+each once, in the first message after it happens: a win that a
+`%Message-history` entry already celebrated, with `win` or `big_win` in its
+`type`, isn't called again.
 
 Work out the message's type: each value below that holds, with commas between
 them, such as `evening,slipped`.
@@ -79,10 +101,11 @@ rows' values.
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the tone, the theme's name,
-and the perspective and the reference, each as `<kind>/<slug>`. It reads the
-theme itself. It returns 5 versions, each with a title, a message, and a
-probability from 0 to 1 of how likely a reader would be to predict it.
+Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
+such as `morning` or `self-test`, the theme's name, and the perspective and the
+reference, each as `<kind>/<slug>`. It reads the theme itself. It returns 5
+versions, each with a title, a message, and a probability from 0 to 1 of how
+likely a reader would be to predict it.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
@@ -92,38 +115,6 @@ start it, end with `Writer FAILED: can't start the writer`.
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
 and message are what gets sent, and step 1's pick goes into its entry.
-
-## The picker
-
-The picker is a script in this skill that draws a pick from the theme's options
-file. It reads that file from a path and touches no backend, and
-`%Theme-options` lives in the user's backend, so hand it over this way.
-
-A theme without `%Theme-options` isn't built for the picker: pick both yourself,
-as step 1 says, and keep no line. That isn't a failure.
-
-Read `%Theme-options` and take the text of its `yaml` block. Write that text to
-a file named for the theme, such as `Casebook-options.yaml`, in this session's
-working folder, exactly as read: never retype it from memory or summarize it.
-Then run the picker on that file:
-
-```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py pick \
-    --options <the file>
-```
-
-It prints two lines, the pick it drew:
-
-```
-perspective: cast/chief
-reference: scenes/fog
-```
-
-It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
-this runs: without them, the script stops with a Python error. Any other output,
-or a part of this you can't do, means the picker failed. Keep one line for the
-result: the `Picker FAILED: <failure>: <why>` line it printed, or else
-`Picker FAILED: <why>`, with the last line it printed or what you couldn't do.
 
 ## Keeping `%Message-history`
 
@@ -141,6 +132,9 @@ added, and only the fields that have a value:
   `weekly`, or `self-test`
 - `type`: the message's type from step 2, exactly as built, such as
   `evening,done,win`, only when it has one
+- `levels`: step 2's level on each ladder by name, only the ladders that have
+  one, such as
+  `"levels":{"escalation":"raised_eyebrow","finishing_tasks":"case_closed"}`
 - `picks`: step 1's `perspective` and `reference`, as the picker printed them,
   or by name when you picked them yourself
 - `opening`: the message's first five words, as sent

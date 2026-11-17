@@ -85,6 +85,11 @@ people, scenes and moments your reminders draw on. Setup runs it for your first
 theme; run it again any time you want another. Your themes take turns, a week
 each. If you stop partway, it picks up where you left off.
 
+### `/ntm:refresh-picks`
+
+Chooses, once a week, what each of the week's messages draws on from your theme,
+so your reminders keep changing. Your weekly setup runs it for you.
+
 ## Task management
 
 These skills plan your days, remind you about them and keep your task list tidy.

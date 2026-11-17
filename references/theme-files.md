@@ -11,8 +11,8 @@ A script, the picker, picks what each message draws on, and the writer writes
 the message from the pick. For a script to pick, a theme has to be data in a
 known shape, and this file is that shape. `ntm:theme-builder` builds a theme's
 files with the user. Each message takes the first pick from the theme's picks
-list, `<Theme>-picks`. When there is no list, or it's empty, `ntm:style` runs
-the picker, and when the picker fails, it picks both itself.
+list, `<Theme>-picks`. When there is no list, or it's empty, `ntm:style` follows
+`ntm:refresh-picks` for a new one, and when that fails, it picks both itself.
 
 A user can have several themes. The Themes part of `%Settings` lists each one by
 its root and names this week's theme, the one everything picked in a week comes
@@ -123,6 +123,11 @@ ntm reads. Prose sits in `>-` folded text.
 
 An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus a
 `bend`, which says how to turn the line toward a task.
+
+A theme may set entries aside for one of its `finishing_tasks` levels, keyed by
+the level's name: a kind of that name, or an entry of that name within a kind.
+Each has an `about` saying when it fits. A file that holds them names the level
+in its line in the root's `files`.
 
 <!-- prettier-ignore -->
 ```yaml

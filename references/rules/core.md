@@ -104,6 +104,7 @@ theme's file; `references/theme-files.md` gives each file's shape.
 | -------------------------------- | -------------------------- |
 | `%Theme`                         | `Casebook`                 |
 | `%Theme-options`                 | `Casebook-options`         |
+| `%Theme-picks`                   | `Casebook-picks`           |
 | `%Message-history`               | `Casebook-message-history` |
 
 #### `%Theme`
@@ -148,5 +149,5 @@ file says. Then:
    message as `ntm:style`'s Keeping `%Message-history` says.
 
 The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
-`ntm:style` ended with it. When `ntm:style` kept the picker's failure line, it
-is the result's last line.
+`ntm:style` ended with it. When `ntm:style` kept a failure line from
+`ntm:refresh-picks`, it is the result's last line.

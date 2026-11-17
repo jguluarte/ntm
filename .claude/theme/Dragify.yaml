@@ -66,6 +66,6 @@ files:
 
   for_the_picker:
     Dragify-options.yaml: >-
-      The pools the job picks from: the actors as speakers and hooks, and the
-      lines any actor can say, the motifs and the references as hooks, each with
-      `type` where it has one.
+      The pools the job picks from: the actors as speakers, the motifs as
+      perspectives or references, and the references and the lines any actor can
+      say as references.

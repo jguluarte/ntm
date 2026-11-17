@@ -113,13 +113,6 @@ keep entries under the name of a `finishing_tasks` level. They are not picker
 pieces and stay out of the options file. The writer may draw on the entries kept
 under the message's `finishing_tasks` level.
 
-The bump is the theme's choice. In a theme that presses on a good day, the run
-can bump the escalation level one step with no slip behind it, capped at the
-top. The bump's chance grows with the days since the last message at a raised
-level, whether slips or a bump raised it, over a half-life: 3 days for Justin.
-So a good stretch still gets read. A theme that never presses has a `bump_rate`
-of 0, and only slips raise its level.
-
 A finished task is the first `finishing_tasks` level. A win is the second, and
 is more than an everyday thing: a task finished after slipping for days, a task
 the run judges big or hard, or, in the weekly setup's message only, more tasks
@@ -179,9 +172,8 @@ weights from what was picked and the feedback, so variety holds over time.
 It recomputes the actor weights and speaker rate only when the checksum shows
 the content changed.
 
-It compares the user's response rate by escalation level and moves the bump rate
-within bounds. A `bump_rate` of 0 stays 0. The levels and their thresholds stay
-as written by hand.
+The rater is part of the recalculation: it gives each message its verdict. The
+levels and their thresholds stay as written by hand.
 
 It prunes each theme's message history. An old entry matters only until a
 recalculation has used it: once its picks, feedback and verdict are in the
@@ -224,11 +216,14 @@ it's big enough.
 ### Justin's theme
 
 It's built on a `dragify` branch, which never merges anywhere and is deleted
-once the theme is in Linear.
+once the theme is in Linear. The bump, raising the escalation level on a good
+day with no slip behind it, is his own and not part of 0.5.
 
 ### Release
 
-`release-0.5` merges into main, and the version is tagged there.
+`/ntm:update` and its 0.5.0 note are core functionality, needed for release.
+`release-0.5` merges into main, and the version is tagged there. Fixing drift
+between the docs and the plugin is separate work, outside the release.
 
 ## Patterns every file follows
 
@@ -390,10 +385,6 @@ settings, and it may not need a feature.
 Its default pattern makes too much busywork, and setup needs better guidelines.
 
 ## Unknowns: one experiment each
-
-### The bundled Linear connector
-
-Does it ask for its own sign-in, and does a job created afterwards carry it?
 
 ### The cost of reading Settings and the theme
 

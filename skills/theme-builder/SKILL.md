@@ -32,9 +32,10 @@ Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
 loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
 run with its result line.
 
-A `<Theme>.yaml` in their backend that All themes, in `%Settings`, doesn't list
-is an unfinished theme. Offer to pick it up after its last saved stage, judged
-from what its files hold; on a no, start a new one.
+A theme's root in their backend, a YAML database whose text has a `theme` part,
+is an unfinished theme when All themes, in `%Settings`, doesn't list it. Offer
+to pick it up after its last saved stage, judged from what its files hold; on a
+no, start a new one.
 
 ## Building the theme
 

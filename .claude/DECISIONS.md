@@ -221,7 +221,8 @@ day with no slip behind it, is his own and not part of 0.5.
 
 `/ntm:update` and its 0.5.0 note are core functionality, needed for release.
 `release-0.5` merges into main, and the version is tagged there. Fixing drift
-between the docs and the plugin is separate work, outside the release.
+between the docs and the plugin is separate work, outside the release; it ships
+as a planned patch version after 0.5.0.
 
 ## Patterns every file follows
 

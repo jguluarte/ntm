@@ -1,377 +1,378 @@
-# What the job picks from per message: a perspective, which is a speaker from
-# the actors or a motif, and a reference from the lines any actor can say, the
-# motifs or the references.
+checksums:
+  Dragify-actors.yaml: 7961a9d87ce292bb6ecf27192a0a57235af9c28111403e00006d03922618fd91
+  Dragify-motifs.yaml: 4ad5871c09c4786aa5cf92dd5aaf2afcd2830e9a8ca3038d5ebbe6fa4cc0b1eb
+  Dragify-references.yaml: a64f82e59f3ebb89713f4598dc445dde4a132f28acb4114d7c74577620ddad0e
 speaker_rate: 0.6
-
 pools:
   actors:
     file: Dragify-actors.yaml
     roles: [speaker]
     entries:
-      rupaul: {}
-
-      michelle_visage: {}
-
-      ross_mathews: {}
-
-      carson_kressley: {}
-
-      ts_madison: {}
-
-      law_roach: {}
-
-      alan_carr: {}
-
-      graham_norton: {}
-
-      brooke_lynn_hytes: {}
-
-      pangina_heals: {}
-
-      nicky_doll: {}
-
-      dracmorda: {}
-
-      swanthula: {}
-
-      bianca_del_rio: {}
-
-      latrice_royale: {}
-
-      alyssa_edwards: {}
-
-      katya: {}
-
-      trixie_mattel: {}
-
-      alaska: {}
-
-      tatianna: {}
-
-      detox: {}
-
-      raven: {}
-
-      laganja_estranja: {}
-
-      vanessa_vanjie_mateo: {}
-
-      kandy_muse: {}
-
-      plane_jane: {}
-
-      mo_heart: {}
-
-      jinkx_monsoon: {}
-
-      bob_the_drag_queen: {}
-
-      willam: {}
-
-      monet_x_change: {}
-
-      baga_chipz: {}
-
-      tammie_brown: {}
-
-      jujubee: {}
-
-      roxxxy_andrews: {}
-
-      adore_delano: {}
-
-      ginger_minj: {}
-
-      jasmine_masters: {}
-
-      valentina: {}
-
-      jaida_essence_hall: {}
-
-      heidi_n_closet: {}
-
-      jimbo: {}
-
-      koco_caine: {}
-
+      rupaul:
+        weight: 0.91
+      michelle_visage:
+        weight: 0.8
+      ross_mathews:
+        weight: 0.8
+      carson_kressley:
+        weight: 0.83
+      ts_madison:
+        weight: 0.77
+      law_roach:
+        weight: 0.84
+      alan_carr:
+        weight: 0.83
+      graham_norton:
+        weight: 0.83
+      brooke_lynn_hytes:
+        weight: 0.84
+      pangina_heals:
+        weight: 0.77
+      nicky_doll:
+        weight: 0.7
+      dracmorda:
+        weight: 0.9
+      swanthula:
+        weight: 0.89
+      bianca_del_rio:
+        weight: 0.79
+      latrice_royale:
+        weight: 0.8
+      alyssa_edwards:
+        weight: 0.82
+      katya:
+        weight: 0.8
+      trixie_mattel:
+        weight: 0.75
+      alaska:
+        weight: 0.79
+      tatianna:
+        weight: 0.79
+      detox:
+        weight: 0.79
+      raven:
+        weight: 0.77
+      laganja_estranja:
+        weight: 0.62
+      vanessa_vanjie_mateo:
+        weight: 0.5
+      kandy_muse:
+        weight: 0.62
+      plane_jane:
+        weight: 0.62
+      mo_heart:
+        weight: 0.79
+      jinkx_monsoon:
+        weight: 0.79
+      bob_the_drag_queen:
+        weight: 0.75
+      willam:
+        weight: 0.62
+      monet_x_change:
+        weight: 0.5
+      baga_chipz:
+        weight: 0.57
+      tammie_brown:
+        weight: 0.75
+      jujubee:
+        weight: 0.85
+      roxxxy_andrews:
+        weight: 0.7
+      adore_delano:
+        weight: 0.84
+      ginger_minj:
+        weight: 0.77
+      jasmine_masters:
+        weight: 0.67
+      valentina:
+        weight: 0.79
+      jaida_essence_hall:
+        weight: 0.75
+      heidi_n_closet:
+        weight: 0.62
+      jimbo:
+        weight: 0.77
+      koco_caine:
+        weight: 0.75
   any_actor_lines:
     file: Dragify-actors.yaml
     roles: [reference]
     entries:
-      any_time: {}
-
+      any_time:
+        weight: 0.93
   motifs:
     file: Dragify-motifs.yaml
     roles: [perspective, reference]
     entries:
-      previously_on: {}
-
-      werk_room_entrance: {}
-
-      the_morning_after: {}
-
-      video_message: {}
-
-      challenge_announcement: {}
-
-      picking_teams: {}
-
-      werk_room_walkthrough: {}
-
-      the_twist: {}
-
-      getting_ready: {}
-
-      confessional: {}
-
-      design_challenge: {}
-
-      reading_challenge: {}
-
-      puppets: {}
-
-      untucked: {}
-
-      snatch_game: {}
-
-      rusical: {}
-
-      girl_group: {}
-
-      talent_show: {}
-
-      makeover: {}
-
-      the_roast: {}
-
-      the_ball: {}
-
-      the_runway: {}
-
-      the_reveal: {}
-
-      the_critiques: {}
-
-      safe: {}
-
-      deliberation: {}
-
-      lip_sync_for_your_life: {}
-
-      shantay_you_stay: {}
-
-      challenge_win: {}
-
-      rupeter_badge: {}
-
-      lip_sync_for_your_legacy: {}
-
-      sashay_away: {}
-
-      mirror_message: {}
-
-      closing_line: {}
-
-      porkchop: {}
-
-      the_save: {}
-
-      returning_queen: {}
-
-      lalaparuza: {}
-
-      reunion: {}
-
-      the_crowning: {}
-
-      meet_our_monsters: {}
-
-      fright_feat: {}
-
-      the_boudoir: {}
-
-      floor_show: {}
-
-      four_tenets: {}
-
-      boulets_judgment: {}
-
-      who_should_go_home: {}
-
-      the_cauldron: {}
-
-      extermination: {}
-
-      the_plea: {}
-
-      later_that_night: {}
-
-      key_of_life_and_death: {}
-
-      extermination_survivor: {}
-
-      supermonster_crowning: {}
-
+      previously_on:
+        weight: 1.0
+      werk_room_entrance:
+        weight: 1.0
+      the_morning_after:
+        weight: 1.0
+      video_message:
+        weight: 1.0
+      challenge_announcement:
+        weight: 1.0
+      picking_teams:
+        weight: 1.0
+      werk_room_walkthrough:
+        weight: 1.0
+      the_twist:
+        weight: 1.0
+      getting_ready:
+        weight: 1.0
+      confessional:
+        weight: 1.0
+      design_challenge:
+        weight: 1.0
+      reading_challenge:
+        weight: 1.0
+      puppets:
+        weight: 1.0
+      untucked:
+        weight: 1.0
+      snatch_game:
+        weight: 1.0
+      rusical:
+        weight: 1.0
+      girl_group:
+        weight: 1.0
+      talent_show:
+        weight: 1.0
+      makeover:
+        weight: 1.0
+      the_roast:
+        weight: 1.0
+      the_ball:
+        weight: 1.0
+      the_runway:
+        weight: 1.0
+      the_reveal:
+        weight: 1.0
+      the_critiques:
+        weight: 1.0
+      safe:
+        weight: 1.0
+      deliberation:
+        weight: 1.0
+      lip_sync_for_your_life:
+        weight: 1.0
+      shantay_you_stay:
+        weight: 1.0
+      challenge_win:
+        weight: 1.0
+      rupeter_badge:
+        weight: 1.0
+      lip_sync_for_your_legacy:
+        weight: 1.0
+      sashay_away:
+        weight: 1.0
+      mirror_message:
+        weight: 1.0
+      closing_line:
+        weight: 1.0
+      porkchop:
+        weight: 1.0
+      the_save:
+        weight: 1.0
+      returning_queen:
+        weight: 1.0
+      lalaparuza:
+        weight: 1.0
+      reunion:
+        weight: 1.0
+      the_crowning:
+        weight: 1.0
+      meet_our_monsters:
+        weight: 1.0
+      fright_feat:
+        weight: 1.0
+      the_boudoir:
+        weight: 1.0
+      floor_show:
+        weight: 1.0
+      four_tenets:
+        weight: 1.0
+      boulets_judgment:
+        weight: 1.0
+      who_should_go_home:
+        weight: 1.0
+      the_cauldron:
+        weight: 1.0
+      extermination:
+        weight: 1.0
+      the_plea:
+        weight: 1.0
+      later_that_night:
+        weight: 1.0
+      key_of_life_and_death:
+        weight: 1.0
+      extermination_survivor:
+        weight: 1.0
+      supermonster_crowning:
+        weight: 1.0
   references:
     file: Dragify-references.yaml
     roles: [reference]
     entries:
-      season_1_filter: {}
-
-      susan_lucci: {}
-
-      jujubees_unbeaten_run: {}
-
-      mimi_lifts_india: {}
-
-      chads_cher: {}
-
-      dida_and_natalie_cole: {}
-
-      party_city: {}
-
-      coco_and_alyssa: {}
-
-      alyssas_katy_perry: {}
-
-      lil_poundcake: {}
-
-      ornacia: {}
-
-      kennedys_leap: {}
-
-      the_beyonce_curse: {}
-
-      gaga_in_the_werk_room: {}
-
-      sheas_finale: {}
-
-      monets_fake_split: {}
-
-      not_next_time: {}
-
-      the_six_way_lip_sync: {}
-
-      sorry_not_sorry: {}
-
-      silky_strips_in_untucked: {}
-
-      rus_meh: {}
-
-      jans_face_crack: {}
-
-      nicki_detests_it: {}
-
-      the_virtual_finale: {}
-
-      kandys_boombox: {}
-
-      ru_flips_off_utica: {}
-
-      mary_queen_of_scots: {}
-
-      willow_pills_variety_show: {}
-
-      dejas_lil_jon: {}
-
-      boss_bitch: {}
-
-      the_immunity_potion: {}
-
-      nymphias_bananas: {}
-
-      the_badonka_dunk_tank: {}
-
-      onyas_crown_lip_sync: {}
-
-      myki_ranked_last: {}
-
-      nini_cocos_streak: {}
-
-      the_she_mergency_button: {}
-
-      dancing_on_my_own: {}
-
-      shut_up_and_drive: {}
-
-      ben_eliminates_herself: {}
-
-      lifes_not_fair: {}
-
-      the_same_wig: {}
-
-      club_96: {}
-
-      kylies_slip: {}
-
-      silkys_barbie_girl: {}
-
-      the_spoken_word_lip_sync: {}
-
-      frock_destroyers: {}
-
-      uk_hun: {}
-
-      the_lockdown_break: {}
-
-      ginny_lemon_walks_off: {}
-
-      biminis_katie_price: {}
-
-      danny_beards_clean_run: {}
-
-      love_most_of_ya: {}
-
-      jimbos_mirror_message: {}
-
-      eve_6000s_reveal: {}
-
-      kita_mean_wins_at_home: {}
-
-      the_mud_wrestling_cage: {}
-
-      vander_volunteers: {}
-
-      landons_spiders: {}
-
-      landon_cider_the_first_king: {}
-
-      saint_wins_resurrection: {}
-
-      jay_kay_dies_twice: {}
-
-      asias_stolen_wig: {}
-
-      crystal_labeijas_walk_off: {}
-
-      dorian_corey_on_shade: {}
-
-      junior_labeijas_opulence: {}
-
-      courtney_comes_back: {}
-
-      pink_flamingos: {}
-
-      rocky_horror_at_midnight: {}
-
-      no_wire_hangers: {}
-
-      baby_janes_rat: {}
-
-      ready_for_my_close_up: {}
-
-      the_curtain_dress: {}
-
-      little_edies_costume: {}
-
-      picture_it: {}
-
-      i_dont_know_her: {}
-
-      diana_in_the_rain: {}
-
-      judy_at_carnegie_hall: {}
-
-      chers_farewell_tour: {}
-
-      the_wig_in_the_toilet: {}
+      season_1_filter:
+        weight: 1.0
+      susan_lucci:
+        weight: 1.0
+      jujubees_unbeaten_run:
+        weight: 1.0
+      mimi_lifts_india:
+        weight: 1.0
+      chads_cher:
+        weight: 1.0
+      dida_and_natalie_cole:
+        weight: 1.0
+      party_city:
+        weight: 1.0
+      coco_and_alyssa:
+        weight: 1.0
+      alyssas_katy_perry:
+        weight: 1.0
+      lil_poundcake:
+        weight: 1.0
+      ornacia:
+        weight: 1.0
+      kennedys_leap:
+        weight: 1.0
+      the_beyonce_curse:
+        weight: 1.0
+      gaga_in_the_werk_room:
+        weight: 1.0
+      sheas_finale:
+        weight: 1.0
+      monets_fake_split:
+        weight: 1.0
+      not_next_time:
+        weight: 1.0
+      the_six_way_lip_sync:
+        weight: 1.0
+      sorry_not_sorry:
+        weight: 1.0
+      silky_strips_in_untucked:
+        weight: 1.0
+      rus_meh:
+        weight: 1.0
+      jans_face_crack:
+        weight: 1.0
+      nicki_detests_it:
+        weight: 1.0
+      the_virtual_finale:
+        weight: 1.0
+      kandys_boombox:
+        weight: 1.0
+      ru_flips_off_utica:
+        weight: 1.0
+      mary_queen_of_scots:
+        weight: 1.0
+      willow_pills_variety_show:
+        weight: 1.0
+      dejas_lil_jon:
+        weight: 1.0
+      boss_bitch:
+        weight: 1.0
+      the_immunity_potion:
+        weight: 1.0
+      nymphias_bananas:
+        weight: 1.0
+      the_badonka_dunk_tank:
+        weight: 1.0
+      onyas_crown_lip_sync:
+        weight: 1.0
+      myki_ranked_last:
+        weight: 1.0
+      nini_cocos_streak:
+        weight: 1.0
+      the_she_mergency_button:
+        weight: 1.0
+      dancing_on_my_own:
+        weight: 1.0
+      shut_up_and_drive:
+        weight: 1.0
+      ben_eliminates_herself:
+        weight: 1.0
+      lifes_not_fair:
+        weight: 1.0
+      the_same_wig:
+        weight: 1.0
+      club_96:
+        weight: 1.0
+      kylies_slip:
+        weight: 1.0
+      silkys_barbie_girl:
+        weight: 1.0
+      the_spoken_word_lip_sync:
+        weight: 1.0
+      frock_destroyers:
+        weight: 1.0
+      uk_hun:
+        weight: 1.0
+      the_lockdown_break:
+        weight: 1.0
+      ginny_lemon_walks_off:
+        weight: 1.0
+      biminis_katie_price:
+        weight: 1.0
+      danny_beards_clean_run:
+        weight: 1.0
+      love_most_of_ya:
+        weight: 1.0
+      jimbos_mirror_message:
+        weight: 1.0
+      eve_6000s_reveal:
+        weight: 1.0
+      kita_mean_wins_at_home:
+        weight: 1.0
+      the_mud_wrestling_cage:
+        weight: 1.0
+      vander_volunteers:
+        weight: 1.0
+      landons_spiders:
+        weight: 1.0
+      landon_cider_the_first_king:
+        weight: 1.0
+      saint_wins_resurrection:
+        weight: 1.0
+      jay_kay_dies_twice:
+        weight: 1.0
+      asias_stolen_wig:
+        weight: 1.0
+      crystal_labeijas_walk_off:
+        weight: 1.0
+      dorian_corey_on_shade:
+        weight: 1.0
+      junior_labeijas_opulence:
+        weight: 1.0
+      courtney_comes_back:
+        weight: 1.0
+      pink_flamingos:
+        weight: 1.0
+      rocky_horror_at_midnight:
+        weight: 1.0
+      no_wire_hangers:
+        weight: 1.0
+      baby_janes_rat:
+        weight: 1.0
+      ready_for_my_close_up:
+        weight: 1.0
+      the_curtain_dress:
+        weight: 1.0
+      little_edies_costume:
+        weight: 1.0
+      picture_it:
+        weight: 1.0
+      i_dont_know_her:
+        weight: 1.0
+      diana_in_the_rain:
+        weight: 1.0
+      judy_at_carnegie_hall:
+        weight: 1.0
+      chers_farewell_tour:
+        weight: 1.0
+      the_wig_in_the_toilet:
+        weight: 1.0

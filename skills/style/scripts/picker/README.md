@@ -25,6 +25,10 @@ scenes/stakeout            1    0.1    0.60
 A failure prints one line on stderr and exits 1, as
 `Picker FAILED: MissingWeight: every option weighs 0`.
 
+`python3 pick_list.py draw --options <file> --count <number> [--seed <number>]`
+draws that many picks in a row and prints them as a YAML list, in the order
+drawn, each item a `perspective:` and a `reference:`.
+
 `python3 recalculate.py start --options <file> <entry file>...` gives a new
 theme its first weights, speaker rate and checksums and prints `saved: <file>`,
 or one `Recalculation FAILED:` line.

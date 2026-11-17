@@ -168,11 +168,9 @@ stays with that person.
 
 ### Recalculating the picker's weights
 
-It runs once a week, as a job of its own early on Sunday morning. The session
-limit is then fully open, the run stays clear of the user's Sunday evening, and
-it takes in the whole previous calendar week; the weekly job that evening plans
-with fresh numbers. Between runs, the picker draws on the numbers the last run
-left. One run a week keeps it cheap.
+It runs once a week, in the weekly setup job: `ntm:refresh-picks` runs the
+recalculation, then draws the week's picks. Between runs, the picker draws on
+the numbers the last run left. One run a week keeps it cheap.
 
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known

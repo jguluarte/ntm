@@ -96,11 +96,11 @@ never use their name or a pet name.
 
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
-It draws only theme pieces: the perspective and the reference, each with a line
-when its entry holds lines. It reads the options file and the recent picks, and
-nothing about the day. One pick shapes the next only through rest: the penalty a
-value carries since its last use. A week is drawn in order, so each pick rests
-on those before it as well as on the history.
+It draws only the two entry keys, the perspective's and the reference's. It
+reads the options file and the recent picks, and nothing about the day. One pick
+shapes the next only through rest: the penalty a piece carries since its last
+use. A week is drawn in order, so each pick rests on those before it as well as
+on the history. The writer looks each entry up and chooses a line from it.
 
 On Sunday, after the recalculation, the picker draws 25 picks into one ordered
 list, `<Theme>-picks`: 22 for the week's messages and 3 spare for messages
@@ -185,9 +185,9 @@ within bounds. A `bump_rate` of 0 stays 0. The levels and their thresholds stay
 as written by hand.
 
 It prunes each theme's message history. An old entry matters only for its picks'
-rest. Once its two pieces and their lines have each been picked again in a later
-entry, and its feedback and verdict are in the scores, the job drops it. Each
-history then rolls forward with an upper limit.
+rest. Once its two pieces have each been picked again in a later entry, and its
+feedback and verdict are in the scores, the job drops it. Each history then
+rolls forward with an upper limit.
 
 ### The message history
 

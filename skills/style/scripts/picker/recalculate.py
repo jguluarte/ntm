@@ -105,20 +105,29 @@ class Message:
     def from_line(cls, line):
         fields = json.loads(line)
         sent = datetime.fromisoformat(fields[SENT])
-        picks = tuple(fields[PICKS].values())
+        picks = tuple(fields.get(PICKS, {}).values())
         return cls(sent, picks, fields.get(VERDICT), fields.get(FEEDBACK))
 
 
 class MessageHistory:
     def __init__(self, path):
-        lines = Path(path).read_text(encoding="utf-8").splitlines()
-        messages = [Message.from_line(line) for line in lines if line]
+        messages = [Message.from_line(line) for line in self._lines_in(path)]
         self._messages = sorted(messages, key=lambda message: message.sent)
 
     def sent_since(self, day):
         return [
             message for message in self._messages if message.sent.date() >= day
         ]
+
+    @staticmethod
+    def _lines_in(path):
+        history_file = Path(path)
+
+        if not history_file.exists():
+            return []
+
+        lines = history_file.read_text(encoding="utf-8").splitlines()
+        return [line for line in lines if line.strip()]
 
 
 def parser():

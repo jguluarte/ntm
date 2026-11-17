@@ -36,6 +36,9 @@ out in last week's theme, the one This week's theme named before the job moved
 it on: rate and adjust that theme, and draw for this week's. With one theme,
 they're the same.
 
+When the theme has no `%Message-history`, or no entry in it was sent in the last
+seven days, there's nothing to rate: go on to Refresh.
+
 A failure in step 1 or 2 ends this part: keep its failure line for the result,
 and go on to Refresh.
 
@@ -125,7 +128,8 @@ For a job, return `Refreshed <Theme>-picks: 25 picks`, such as
 
 For the weekly setup job, two lines come first, or the failure line in their
 place: `Rated <Theme>-message-history: <n> acted, <n> ignored`, then
-`Adjusted <Theme>-options`.
+`Adjusted <Theme>-options`. With nothing to rate, they're one line,
+`Nothing to rate`.
 
 The picker needs Python 3 with PyYAML and jsonschema, and nothing guarantees
 them where this runs: without them, it stops with a Python error. Any output

@@ -205,6 +205,17 @@ class ScoresTest(unittest.TestCase):
 
         self.assertAlmostEqual(1 - 0.1, theme.score_of("cast/chief"))
 
+    def test_the_messages_with_picks_count_when_one_has_none(self):
+        theme = Theme(fixtures.scoring.OPTIONS)
+        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY_WITHOUT_PICKS)
+        messages = history.sent_since(date(2026, 11, 9))
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores(messages)
+
+        self.assertAlmostEqual(0.75 + 0.1, theme.score_of("cast/chief"))
+        self.assertAlmostEqual(0.75 + 0.1, theme.score_of("scenes/fog"))
+
 
 class MessageHistoryTest(unittest.TestCase):
     def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):
@@ -215,6 +226,22 @@ class MessageHistoryTest(unittest.TestCase):
         picks = ("cast/chief", "scenes/fog")
         expected = [Message(sent, picks, verdict="ignored", feedback=None)]
         self.assertEqual(expected, messages)
+
+    def test_a_history_of_blank_lines_has_no_messages(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        blank_history = Path(folder) / "Blank-message-history.jsonl"
+        blank_history.write_text("\n  \n\n", encoding="utf-8")
+
+        history = MessageHistory(blank_history)
+        messages = history.sent_since(date(2026, 11, 9))
+
+        self.assertEqual([], messages)
+
+    def test_a_history_file_that_is_not_there_has_no_messages(self):
+        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY_NOT_THERE)
+        messages = history.sent_since(date(2026, 11, 9))
+
+        self.assertEqual([], messages)
 
 
 class ReportingFailuresTest(unittest.TestCase):

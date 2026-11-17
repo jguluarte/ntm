@@ -5,20 +5,19 @@ enough material to keep each message different. This file describes the files a
 theme is made of, for the skills that build, pick from and score a theme, and
 for anyone curious.
 
-## Where themes are going
+## How ntm uses a theme
 
-A script, the picker, will pick what each message draws on, and a writer writes
-the message from the picks. For a script to pick, a theme has to be data in a
-known shape, and this file is that shape. Today `ntm:theme-builder` builds a
-theme's files with the user. `ntm:style` runs the picker when a theme has an
-options file, and makes the pick itself when it doesn't. The rest of this file
-describes theme files, and the picker that reads them, as they will work.
+A script, the picker, picks what each message draws on, and the writer writes
+the message from the pick. For a script to pick, a theme has to be data in a
+known shape, and this file is that shape. `ntm:theme-builder` builds a theme's
+files with the user. Each message takes the first pick from the theme's picks
+list, `<Theme>-picks`. When there is no list, or it's empty, `ntm:style` runs
+the picker, and when the picker fails, it picks both itself.
 
-A user will be able to have several themes. The Themes part of `%Settings` lists
-each one by its root and names this week's theme, the one everything picked in a
-week comes from. Each week, the weekly job moves to the next theme in the list,
-in order, back to the first after the last. With one theme, it is always that
-one.
+A user can have several themes. The Themes part of `%Settings` lists each one by
+its root and names this week's theme, the one everything picked in a week comes
+from. Each week, the weekly job moves to the next theme in the list, in order,
+back to the first after the last. With one theme, it is always that one.
 
 ## A theme's files
 

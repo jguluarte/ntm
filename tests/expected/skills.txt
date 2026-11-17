@@ -3,6 +3,7 @@ help
 pause
 plan
 ready-check
+refresh-picks
 reminder
 review
 run-price-watch

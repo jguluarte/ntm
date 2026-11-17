@@ -8,99 +8,155 @@ pools:
     file: Dragify-actors.yaml
     roles: [speaker]
     entries:
-      rupaul: {}
+      rupaul:
+        lines: 30
 
-      michelle_visage: {}
+      michelle_visage:
+        lines: 12
 
-      ross_mathews: {}
+      ross_mathews:
+        lines: 12
 
-      carson_kressley: {}
+      carson_kressley:
+        lines: 15
 
-      ts_madison: {}
+      ts_madison:
+        lines: 10
 
-      law_roach: {}
+      law_roach:
+        lines: 16
 
-      alan_carr: {}
+      alan_carr:
+        lines: 15
 
-      graham_norton: {}
+      graham_norton:
+        lines: 15
 
-      brooke_lynn_hytes: {}
+      brooke_lynn_hytes:
+        lines: 16
 
-      pangina_heals: {}
+      pangina_heals:
+        lines: 10
 
-      nicky_doll: {}
+      nicky_doll:
+        lines: 7
 
-      dracmorda: {}
+      dracmorda:
+        lines: 26
 
-      swanthula: {}
+      swanthula:
+        lines: 24
 
-      bianca_del_rio: {}
+      bianca_del_rio:
+        lines: 11
 
-      latrice_royale: {}
+      latrice_royale:
+        lines: 12
 
-      alyssa_edwards: {}
+      alyssa_edwards:
+        lines: 14
 
-      katya: {}
+      katya:
+        lines: 12
 
-      trixie_mattel: {}
+      trixie_mattel:
+        lines: 9
 
-      alaska: {}
+      alaska:
+        lines: 11
 
-      tatianna: {}
+      tatianna:
+        lines: 11
 
-      detox: {}
+      detox:
+        lines: 11
 
-      raven: {}
+      raven:
+        lines: 10
 
-      laganja_estranja: {}
+      laganja_estranja:
+        lines: 5
 
-      vanessa_vanjie_mateo: {}
+      vanessa_vanjie_mateo:
+        lines: 3
 
-      kandy_muse: {}
+      kandy_muse:
+        lines: 5
 
-      plane_jane: {}
+      plane_jane:
+        lines: 5
 
-      mo_heart: {}
+      mo_heart:
+        lines: 11
 
-      jinkx_monsoon: {}
+      jinkx_monsoon:
+        lines: 11
 
-      bob_the_drag_queen: {}
+      bob_the_drag_queen:
+        lines: 9
 
-      willam: {}
+      willam:
+        lines: 5
 
-      monet_x_change: {}
+      monet_x_change:
+        lines: 3
 
-      baga_chipz: {}
+      baga_chipz:
+        lines: 4
 
-      tammie_brown: {}
+      tammie_brown:
+        lines: 5
+        riffs: 4
 
-      jujubee: {}
+      jujubee:
+        lines: 12
+        riffs: 5
 
-      roxxxy_andrews: {}
+      roxxxy_andrews:
+        lines: 3
+        riffs: 4
 
-      adore_delano: {}
+      adore_delano:
+        lines: 12
+        riffs: 4
 
-      ginger_minj: {}
+      ginger_minj:
+        lines: 5
+        riffs: 5
 
-      jasmine_masters: {}
+      jasmine_masters:
+        lines: 4
+        riffs: 2
 
-      valentina: {}
+      valentina:
+        lines: 5
+        riffs: 6
 
-      jaida_essence_hall: {}
+      jaida_essence_hall:
+        lines: 5
+        riffs: 4
 
-      heidi_n_closet: {}
+      heidi_n_closet:
+        lines: 3
+        riffs: 2
 
-      jimbo: {}
+      jimbo:
+        lines: 5
+        riffs: 5
 
-      koco_caine: {}
+      koco_caine:
+        lines: 3
+        riffs: 6
 
   any_actor_lines:
     file: Dragify-actors.yaml
     roles: [reference]
     entries:
-      any_time: {}
+      any_time:
+        lines: 37
 
-      big_win: {}
+      big_win:
+        lines: 5
 
   motifs:
     file: Dragify-motifs.yaml

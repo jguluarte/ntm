@@ -1054,33 +1054,6 @@ motifs:
     type:
       - weekly
 
-  the_crowning:
-    name: The crowning
-
-    show: Drag Race
-
-    about: >-
-      The finale: the last queens perform, and one is crowned America's Next
-      Drag Superstar.
-
-    on_the_show: >-
-      In most seasons since Season 9, a lip sync tournament decides it. The
-      winner gets the crown, the tears and the speech. All Stars 4 crowned two
-      queens at once.
-
-    staging: >-
-      Crown the big effort: the finale, the crown, the winner's speech. Name
-      every day it took and every time it slipped on the way here. Several big
-      efforts done in one day share a double crown.
-
-    phrases:
-      - America's Next Drag Superstar
-      - Queen of All Queens
-      - I'm just ready to rule the fucking world!
-
-    type:
-      - win
-
   meet_our_monsters:
     name: Meet our monsters
 
@@ -1428,6 +1401,36 @@ motifs:
     type:
       - done
 
+winners_circle:
+  about: >-
+    Finales, for the winner's circle only: something truly impressive and
+    shocking, or going above and beyond, never an ordinary win. Stage each like
+    a motif, with the task that earned the winner's circle as the one crowned.
+
+  the_crowning:
+    name: The crowning
+
+    show: Drag Race
+
+    about: >-
+      The finale: the last queens perform, and one is crowned America's Next
+      Drag Superstar.
+
+    on_the_show: >-
+      In most seasons since Season 9, a lip sync tournament decides it. The
+      winner gets the crown, the tears and the speech. All Stars 4 crowned two
+      queens at once.
+
+    staging: >-
+      Crown the big effort: the finale, the crown, the winner's speech. Name
+      every day it took and every time it slipped on the way here. Several big
+      efforts done in one day share a double crown.
+
+    phrases:
+      - America's Next Drag Superstar
+      - Queen of All Queens
+      - I'm just ready to rule the fucking world!
+
   supermonster_crowning:
     name: Supermonster crowning
 
@@ -1449,6 +1452,3 @@ motifs:
     phrases:
       - The World's Next Drag Supermonster
       - Queen of the Underworld
-
-    type:
-      - win

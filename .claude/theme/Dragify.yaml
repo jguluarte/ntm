@@ -50,7 +50,8 @@ files:
       The motifs: the shows' challenges, rituals and scenes a message can be
       staged as, each with its show, what it is, how it plays on the show, how
       to stage a task in it, the phrases said at that moment, and for some a
-      `type` naming the messages it fits.
+      `type` naming the messages it fits. Then the two crownings kept for the
+      `winners_circle` level, in the same shape.
 
     Dragify-references.yaml: >-
       The references: single moments from the shows and the culture around them

@@ -182,8 +182,6 @@ pools:
         weight: 1.0
       reunion:
         weight: 1.0
-      the_crowning:
-        weight: 1.0
       meet_our_monsters:
         weight: 1.0
       fright_feat:
@@ -209,8 +207,6 @@ pools:
       key_of_life_and_death:
         weight: 1.0
       extermination_survivor:
-        weight: 1.0
-      supermonster_crowning:
         weight: 1.0
   references:
     file: Dragify-references.yaml

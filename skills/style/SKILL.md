@@ -66,7 +66,9 @@ The task that slipped most sets the `escalation` level. Slips from a while back
 weigh less: a task picked up again after a long gap counts for less than its
 slips, as you judge it.
 
-When the root gives a ladder as one paragraph, that ladder has no level.
+When the root gives a ladder as one paragraph, that ladder has no level name.
+For `finishing_tasks`, hand the writer what you called in its place, in plain
+words: a task done, a win or a big win.
 
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task you judge big or hard. Only the
@@ -94,11 +96,11 @@ rows' values.
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the levels by name, which
-message it is, such as `morning` or `self-test`, the theme's name, and the
-perspective and the reference, each as `<kind>/<slug>`. It reads the theme
-itself. It returns 5 versions, each with a title, a message, and a probability
-from 0 to 1 of how likely a reader would be to predict it.
+Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
+such as `morning` or `self-test`, the theme's name, and the perspective and the
+reference, each as `<kind>/<slug>`. It reads the theme itself. It returns 5
+versions, each with a title, a message, and a probability from 0 to 1 of how
+likely a reader would be to predict it.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
@@ -158,7 +160,8 @@ added, and only the fields that have a value:
 - `type`: the message's type from step 2, exactly as built, such as
   `evening,done,win`, only when it has one
 - `levels`: step 2's level on each ladder by name, only the ladders that have
-  one, such as `"levels":{"escalation":"light","finishing_tasks":"typical"}`
+  one, such as
+  `"levels":{"escalation":"raised_eyebrow","finishing_tasks":"case_closed"}`
 - `picks`: step 1's `perspective` and `reference`, as the picker printed them,
   or by name when you picked them yourself
 - `opening`: the message's first five words, as sent

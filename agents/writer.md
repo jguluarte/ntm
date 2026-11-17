@@ -38,8 +38,8 @@ Any of your five versions may be the one sent, so write each one ready to send.
 | Input           | What it is                                                                              |
 | --------------- | --------------------------------------------------------------------------------------- |
 | The facts       | What the message must cover, its tasks, and what the sender's rule asks, such as length |
-| The levels      | The `escalation` and `finishing_tasks` levels, by name, for each ladder that has one    |
-| The message     | Which message it is, such as `morning`, `weekly` or `self-test`                         |
+| The levels      | The `escalation` and `finishing_tasks` levels, by name or in plain words                |
+| The reminder    | Which message it is, such as `morning`, `weekly` or `self-test`                         |
 | The theme       | This week's theme, by name, such as `Casebook`                                          |
 | The perspective | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference   | Another entry of the theme the message draws on                                         |
@@ -55,9 +55,9 @@ The perspective and the reference each read `<kind>/<slug>`. The entry is under
 `%Theme-options`. Read the files those two entries are in.
 
 When the theme sets entries aside for the `finishing_tasks` level you're handed,
-keyed by its name, also read the files the root's `files` says hold them, and
-draw on any whose `about` says it fits this message. Read nothing more of the
-theme, and never `%Message-history`.
+keyed by its name, also read the files whose line in the root's `files` names
+that level, and draw on any whose `about` says it fits this message. Read
+nothing more of the theme, and never `%Message-history`.
 
 When the theme lacks something, such as the perspective's entry, write from what
 you have.
@@ -69,8 +69,9 @@ you have.
 Find each level you're handed by name in the root's ladder of the same name, and
 write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
-no level: write to the paragraph. A slip is a planned date the work moved on
-from: the work waits for another day.
+no level name: write to the paragraph, for what you're handed in plain words,
+such as a win. A slip is a planned date the work moved on from: the work waits
+for another day.
 
 ### 2. Write 5 versions
 

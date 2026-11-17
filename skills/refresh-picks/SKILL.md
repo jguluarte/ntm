@@ -20,13 +20,9 @@ Run by the weekly setup job, by `ntm:style` when `%Theme-picks` runs out, and by
 
 ## Setup
 
-When `ntm:theme-builder` runs this skill, it already holds where the databases
-go, and the theme is the one it built. Skip the ready-check.
-
-Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
-loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
-run with its result line. The theme is this week's theme, as `%Settings` names
-it.
+Run `/ntm:ready-check` if needed (if it isn't already loaded in the context).
+The theme is the one `ntm:theme-builder` built, when it runs this skill, or else
+this week's theme, as `%Settings` names it.
 
 Then read the theme's `%Theme-options`, such as `Casebook-options`. When there
 is none, the theme isn't built for the picker: end the run with

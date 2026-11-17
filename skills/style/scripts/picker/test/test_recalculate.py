@@ -233,3 +233,18 @@ class ReportingFailuresTest(unittest.TestCase):
         why = "the following arguments are required: entry_files"
         expected = f"Recalculation FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
+
+    def test_adjust_without_since_fails_naming_it(self):
+        args = [
+            "adjust",
+            "--options", str(fixtures.casebook.OPTIONS),
+            "--history", str(fixtures.casebook.MESSAGE_HISTORY),
+        ]
+
+        with self.assertRaises(SystemExit) as exited:
+            with reporting_failures():
+                parser().parse_args(args)
+
+        why = "the following arguments are required: --since"
+        expected = f"Recalculation FAILED: ArgumentError: {why}"
+        self.assertEqual(expected, exited.exception.code)

@@ -3,7 +3,7 @@ import contextlib
 import json
 import sys
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
@@ -120,10 +120,15 @@ class MessageHistory:
 
 def parser():
     command_line = argparse.ArgumentParser(exit_on_error=False)
-    subcommands = command_line.add_subparsers(required=True)
+    subcommands = command_line.add_subparsers(dest="command", required=True)
     subcommand = subcommands.add_parser("start", exit_on_error=False)
     subcommand.add_argument("--options", required=True)
     subcommand.add_argument("entry_files", nargs="+")
+
+    subcommand = subcommands.add_parser("adjust", exit_on_error=False)
+    subcommand.add_argument("--options", required=True)
+    subcommand.add_argument("--history", required=True)
+    subcommand.add_argument("--since", type=date.fromisoformat, required=True)
     return command_line
 
 
@@ -140,11 +145,21 @@ if __name__ == "__main__":
     with reporting_failures():
         flags = parser().parse_args(sys.argv[1:])
         theme = Theme(flags.options)
-        entry_files = [EntryFile(path) for path in flags.entry_files]
-        recalculation = Recalculation(theme, entry_files)
 
-        recalculation.weigh_entries()
-        recalculation.work_out_speaker_rate()
-        recalculation.record_checksums()
+        if flags.command == "start":
+            entry_files = [EntryFile(path) for path in flags.entry_files]
+            recalculation = Recalculation(theme, entry_files)
+
+            recalculation.weigh_entries()
+            recalculation.work_out_speaker_rate()
+            recalculation.record_checksums()
+
+        else:
+            history = MessageHistory(flags.history)
+            messages = history.sent_since(flags.since)
+            recalculation = Recalculation(theme)
+
+            recalculation.adjust_scores(messages)
+
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

@@ -82,9 +82,8 @@ price, store, link, conditions and sale end.
 
 ### The pick
 
-The pick is a bandit. Each value has a score, minus a penalty that halves over a
-computed half-life since its last use, and a weighted random draw takes one, so
-a value's place in its list means nothing.
+The pick is a bandit. Each value has a weight, and a weighted random draw on the
+weights takes each piece, so a value's place in its list means nothing.
 
 Each message gets one pick: a perspective and a reference, two pieces from
 different pools. The perspective is usually a speaker, and sometimes a reference
@@ -97,10 +96,9 @@ never use their name or a pet name.
 The picker is a Python script, standard library plus PyYAML, kept inside
 `ntm:style` at `skills/style/scripts/picker/`, since only `ntm:style` runs it.
 It draws only the two entry keys, the perspective's and the reference's. It
-reads the options file and the recent picks, and nothing about the day. One pick
-shapes the next only through rest: the penalty a piece carries since its last
-use. A week is drawn in order, so each pick rests on those before it as well as
-on the history. The writer looks each entry up and chooses a line from it.
+reads the options file only: no message history, and nothing about time. Nothing
+carries from one pick to the next. The writer looks each entry up and chooses a
+line from it.
 
 On Sunday, after the recalculation, the picker draws 25 picks into one ordered
 list, `<Theme>-picks`: 22 for the week's messages and 3 spare for messages
@@ -110,7 +108,11 @@ it. If the list runs out before Sunday, a message runs the picker for its own.
 The levels are separate from the theme pieces. The run that sends the message
 works out the `escalation` and `finishing_tasks` levels from the day's facts,
 and applies every threshold, rest and cap. It hands the writer the pick, the
-level names and the reminder type, which the writer may draw on.
+level names and the reminder type, which the writer may draw on. A theme's
+winners'-circle entries, its `winners_circle` lines for any actor and its
+`winners_circle` references, are not picker pieces and stay out of the options
+file. When the `finishing_tasks` level is high enough, the writer may look them
+up for the day and draw on them.
 
 The bump is the theme's choice. In a theme that presses on a good day, the run
 can bump the escalation level one step with no slip behind it, capped at the
@@ -175,19 +177,18 @@ left. One run a week keeps it cheap.
 It rates each message by whether the user acted on its tasks: closing one,
 moving its date or clearing the day all count. ntm's own date changes are known
 from each task's `Planned date history`, and set aside. It then updates the
-scores.
+weights from what was picked and the feedback, so variety holds over time.
 
-It recomputes the half-lives, actor weights and speaker rate only when the
-checksum shows the content changed.
+It recomputes the actor weights and speaker rate only when the checksum shows
+the content changed.
 
 It compares the user's response rate by escalation level and moves the bump rate
 within bounds. A `bump_rate` of 0 stays 0. The levels and their thresholds stay
 as written by hand.
 
-It prunes each theme's message history. An old entry matters only for its picks'
-rest. Once its two pieces have each been picked again in a later entry, and its
-feedback and verdict are in the scores, the job drops it. Each history then
-rolls forward with an upper limit.
+It prunes each theme's message history. An old entry matters only until a
+recalculation has used it: once its picks, feedback and verdict are in the
+weights, the job drops it. Each history then rolls forward with an upper limit.
 
 ### The message history
 

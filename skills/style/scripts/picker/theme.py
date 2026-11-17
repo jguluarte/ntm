@@ -1,7 +1,9 @@
 import hashlib
+import json
 import math
 import random
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import jsonschema
@@ -30,6 +32,11 @@ NEVER_USED = math.inf
 ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
+
+SENT = "sent"
+PICKS = "picks"
+PIECES_OF_A_PICK = ("perspective", "reference")
+ONE_DAY = timedelta(days=1)
 
 
 class InvalidTheme(ValueError):
@@ -244,6 +251,25 @@ class Theme:
             jsonschema.validate(fields, cls._load(OPTIONS_SCHEMA))
         except jsonschema.ValidationError as error:
             raise InvalidTheme(error.json_path, error.message) from None
+
+
+class History:
+    def __init__(self, path):
+        text = Path(path).read_text(encoding="utf-8")
+        self._messages = [json.loads(line) for line in text.splitlines()]
+
+    def days_since_use(self, now):
+        days_by_name = {}
+
+        for message in self._messages:
+            sent = datetime.fromisoformat(message[SENT])
+            days = (now - sent) / ONE_DAY
+            for piece in PIECES_OF_A_PICK:
+                name = message[PICKS][piece]
+                newest_so_far = days_by_name.get(name, NEVER_USED)
+                days_by_name[name] = min(days, newest_so_far)
+
+        return days_by_name
 
 
 class EntryFile:

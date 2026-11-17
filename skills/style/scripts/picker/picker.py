@@ -1,8 +1,9 @@
 import argparse
 import contextlib
 import sys
+from datetime import datetime
 
-from theme import Theme
+from theme import History, Theme
 
 
 class Picker:
@@ -22,6 +23,10 @@ def parser():
     subcommands = command_line.add_subparsers(required=True)
     subcommand = subcommands.add_parser("pick", exit_on_error=False)
     subcommand.add_argument("--options", required=True)
+    subcommand.add_argument("--history")
+    subcommand.add_argument(
+        "--now", type=datetime.fromisoformat, default=datetime.now(),
+    )
     subcommand.add_argument("--seed", type=int)
     subcommand.add_argument(
         "--chances", dest="shows_chances", action="store_true",
@@ -70,7 +75,13 @@ def reporting_failures():
 if __name__ == "__main__":
     with reporting_failures():
         flags = parser().parse_args(sys.argv[1:])
-        theme = Theme(flags.options, flags.seed)
+        days_since_use = {}
+
+        if flags.history:
+            history = History(flags.history)
+            days_since_use = history.days_since_use(flags.now)
+
+        theme = Theme(flags.options, flags.seed, days_since_use)
 
         if flags.shows_chances:
             lottery = theme.perspective_lottery()

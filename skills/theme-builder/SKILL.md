@@ -77,12 +77,17 @@ databases, titled with its file name, such as `Casebook.yaml`. A YAML file's
 text sits in one fenced `yaml` block. No other theme is touched: when another
 theme already has the name they pick, ask them for another.
 
-### 3. Work out its numbers
+### 3. Work out its numbers and draw its picks
 
 Before this run ends, when it wrote or changed the theme's files, run the
 recalculation, as Initial calculation, below, says. When it fails, tell the user
 in a line that the theme's numbers weren't refreshed, with its failure line, and
 go on.
+
+When it passed, load `ntm:refresh-picks` and follow it for this theme, so its
+`%Theme-picks` is drawn on the new numbers. When it ends with a failure line,
+tell the user in a line that the theme's picks weren't drawn, with that line,
+and go on.
 
 ### 4. Switch it on
 

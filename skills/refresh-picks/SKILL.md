@@ -1,14 +1,16 @@
 ---
 name: refresh-picks
 description: >-
-    Refreshes the week's picks for this week's theme: draws 25 picks from its
-    `%Theme-options` into `%Theme-picks`, which each message takes its pick
-    from. Run by the weekly setup job, and by ntm:style when the list runs out.
+    Refreshes a theme's picks: draws 25 picks from its `%Theme-options` into
+    `%Theme-picks`, which each message takes its pick from. Run by the weekly
+    setup job and by ntm:style when the list runs out, for this week's theme,
+    and by ntm:theme-builder for the theme it built.
 ---
 
 # ntm:refresh-picks
 
-Run by the weekly setup job, and by `ntm:style` when `%Theme-picks` runs out.
+Run by the weekly setup job, by `ntm:style` when `%Theme-picks` runs out, and by
+`ntm:theme-builder` for the theme it built.
 
 ## Usage
 
@@ -18,11 +20,16 @@ Run by the weekly setup job, and by `ntm:style` when `%Theme-picks` runs out.
 
 ## Setup
 
-Run `/ntm:ready-check`, unless it already ran in this session. It loads
-`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
-with its result line. Then read `%Theme-options`: this week's theme's, as
-`%Settings` names it, such as `Casebook-options`. When there is none, the theme
-isn't built for the picker: end the run with
+When `ntm:theme-builder` runs this skill, it already holds where the databases
+go, and the theme is the one it built. Skip the ready-check.
+
+Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
+loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
+run with its result line. The theme is this week's theme, as `%Settings` names
+it.
+
+Then read the theme's `%Theme-options`, such as `Casebook-options`. When there
+is none, the theme isn't built for the picker: end the run with
 `Nothing to refresh: no <Theme>-options`.
 
 ## Refresh

@@ -6,7 +6,6 @@ LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 YAML_FILES := $(shell git ls-files -- '*.yml' '*.yaml')
 
 TOO_LONG = length > $(ABSOLUTE_MAXIMUM_LINE_LENGTH)
-UNBREAKABLE = length - length($$NF) <= $(ABSOLUTE_MAXIMUM_LINE_LENGTH)
 REPORT = { print FILENAME; bad = 1; nextfile } END { exit bad }
 
 lint: lint-markdown lint-yaml lint-python lint-absolute-line-length
@@ -22,7 +21,7 @@ lint-python:
 	ruff check
 
 lint-absolute-line-length:
-	@awk '$(TOO_LONG) && !($(UNBREAKABLE)) $(REPORT)' $(LINT_FILES)
+	@awk '$(TOO_LONG) $(REPORT)' $(LINT_FILES)
 
 lint-fix:
 	prettier --write .

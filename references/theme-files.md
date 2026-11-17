@@ -11,8 +11,9 @@ A script, the picker, picks what each message draws on, and the writer writes
 the message from the pick. For a script to pick, a theme has to be data in a
 known shape, and this file is that shape. `ntm:theme-builder` builds a theme's
 files with the user. Each message takes the first pick from the theme's picks
-list, `<Theme>-picks`. When there is no list, or it's empty, `ntm:style` follows
-`ntm:refresh-picks` for a new one, and when that fails, it picks both itself.
+list, `<Theme>-picks.yaml`. When there is no list, or it's empty, `ntm:style`
+follows `ntm:refresh-picks` for a new one, and when that fails, it picks both
+itself.
 
 A user can have several themes. The Themes part of `%Settings` lists each one by
 its root and names this week's theme, the one everything picked in a week comes
@@ -24,18 +25,21 @@ back to the first after the last. With one theme, it is always that one.
 A theme named `<Theme>` is a set of files, each named after it, so a theme's
 files sort together:
 
-| File                        | What it is                                             |
-| --------------------------- | ------------------------------------------------------ |
-| `<Theme>.yaml`              | The root: the writer's guide, and the list of files    |
-| `<Theme>-options.yaml`      | What the theme offers the picker, and its numbers      |
-| `<Theme>-<descriptor>.yaml` | An entry file, named for what it holds, such as scenes |
-| `<Theme>-terminology.md`    | Words the writer would otherwise get wrong; optional   |
-| `<Theme>-message-history`   | Each message sent in the theme, and how it landed      |
+| File                         | What it is                                             |
+| ---------------------------- | ------------------------------------------------------ |
+| `<Theme>.yaml`               | The root: the writer's guide, and the list of files    |
+| `<Theme>-options.yaml`       | What the theme offers the picker, and its numbers      |
+| `<Theme>-<descriptor>.yaml`  | An entry file, named for what it holds, such as scenes |
+| `<Theme>-terminology.md`     | Words the writer would otherwise get wrong; optional   |
+| `<Theme>-message-history.md` | Each message sent in the theme, and how it landed      |
+| `<Theme>-picks.yaml`         | The next picks, drawn by `ntm:refresh-picks`           |
 
 Each file is a database: a page of text in the user's backend, found by its
-title, which is the file's name. For a Linear user, each file is one Linear
-document. A YAML file's text sits in one fenced `yaml` block in its document, so
-a backend that stores markdown keeps it intact.
+title, which is the file's name, extension included, such as
+`Casebook-options.yaml`. A theme's name is its root's title without `.yaml`:
+`Casebook`. For a Linear user, each file is one Linear document. A YAML file's
+text sits in one fenced `yaml` block in its document, so a backend that stores
+markdown keeps it intact.
 
 The run fetches the text from the backend and hands it to the picker, which
 touches no backend.

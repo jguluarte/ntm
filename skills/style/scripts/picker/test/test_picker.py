@@ -9,6 +9,15 @@ RUNS = 10
 
 
 class PickTest(unittest.TestCase):
+    def test_a_pick_is_a_perspective_and_a_reference(self):
+        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        picker = Picker(theme)
+
+        perspective, reference = picker.pick()
+
+        self.assertEqual("characters/detective", perspective.name)
+        self.assertEqual("scenes/stakeout", reference.name)
+
     def test_the_same_seed_gives_the_same_picks(self):
         first_theme = Theme(fixtures.EVEN, seed=SEED)
         first_picker = Picker(first_theme)
@@ -32,11 +41,11 @@ class PickTest(unittest.TestCase):
 class ChancesTableTest(unittest.TestCase):
     def test_each_option_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.lottery
+        lottery = theme.perspective_lottery
         rows = chances_table(lottery).splitlines()
 
         expected = [
-            "hook             weight  score  chance",
+            "perspective      weight  score  chance",
             "scenes/dawn         0.5      0    0.12",
             "scenes/noon           1      1    0.50",
             "scenes/dusk           0      0    0.00",

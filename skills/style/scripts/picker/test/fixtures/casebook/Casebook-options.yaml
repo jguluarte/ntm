@@ -7,7 +7,7 @@ speaker_rate: 0.4
 pools:
   characters:
     file: Casebook-characters.yaml
-    roles: [hook, speaker]
+    roles: [perspective, speaker]
     half_life_days: 3
     entries:
       detective:
@@ -17,7 +17,7 @@ pools:
 
   shared_lines:
     file: Casebook-characters.yaml
-    roles: [hook]
+    roles: [reference]
     half_life_days: 5
     entries:
       any_time:
@@ -27,7 +27,7 @@ pools:
 
   scenes:
     file: Casebook-scenes.yaml
-    roles: [hook]
+    roles: [perspective, reference]
     half_life_days: 6
     entries:
       stakeout:

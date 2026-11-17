@@ -10,8 +10,9 @@ class Picker:
         self.theme = theme
 
     def pick(self):
-        option = self.theme.draw()
-        return f"hook: {option.name}"
+        perspective = self.theme.draw_perspective()
+        reference = self.theme.draw_reference_outside(perspective.kind)
+        return perspective, reference
 
 
 def parser():
@@ -27,7 +28,7 @@ def parser():
 
 
 def chances_table(lottery):
-    rows = [("hook", "weight", "score", "chance")]
+    rows = [("perspective", "weight", "score", "chance")]
     for option, chance in lottery.chance_by_candidate.items():
         weight = f"{option.weight:g}"
         score = f"{option.score:g}"
@@ -65,9 +66,11 @@ if __name__ == "__main__":
         theme = Theme(flags.options, flags.seed)
 
         if flags.shows_chances:
-            lottery = theme.lottery
+            lottery = theme.perspective_lottery
             print(chances_table(lottery))
 
         else:
             picker = Picker(theme)
-            print(picker.pick())
+            perspective, reference = picker.pick()
+            print(f"perspective: {perspective.name}")
+            print(f"reference: {reference.name}")

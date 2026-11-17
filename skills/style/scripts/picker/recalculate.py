@@ -1,11 +1,20 @@
 import argparse
 import contextlib
+import json
 import sys
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
 
 from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
 LEAST_SPEAKER_RATE = 0.6
+
+SENT = "sent"
+PICKS = "picks"
+VERDICT = "verdict"
+FEEDBACK = "feedback"
 
 
 class Recalculation:
@@ -55,6 +64,32 @@ class Recalculation:
 
         share = speakers / (speakers + other_perspectives)
         return round(max(share, LEAST_SPEAKER_RATE), 2)
+
+
+@dataclass(frozen=True)
+class Message:
+    sent: datetime
+    picks: tuple
+    verdict: str | None
+    feedback: str | None
+
+    @classmethod
+    def from_line(cls, line):
+        fields = json.loads(line)
+        sent = datetime.fromisoformat(fields[SENT])
+        picks = tuple(fields[PICKS].values())
+        return cls(sent, picks, fields.get(VERDICT), fields.get(FEEDBACK))
+
+
+class MessageHistory:
+    def __init__(self, path):
+        lines = Path(path).read_text(encoding="utf-8").splitlines()
+        self._messages = [Message.from_line(line) for line in lines if line]
+
+    def sent_since(self, day):
+        return [
+            message for message in self._messages if message.sent.date() >= day
+        ]
 
 
 def parser():

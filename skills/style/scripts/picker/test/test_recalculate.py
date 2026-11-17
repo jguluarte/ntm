@@ -1,11 +1,14 @@
 import tempfile
 import unittest
+from datetime import date, datetime
 from pathlib import Path
 
 import yaml
 
 import fixtures
-from recalculate import Recalculation, parser, reporting_failures
+from recalculate import (
+    Message, MessageHistory, Recalculation, parser, reporting_failures,
+)
 from theme import EntryFile, Theme, UnknownEntryFile
 
 
@@ -80,6 +83,17 @@ class RecalculationTest(unittest.TestCase):
 
         expected = "no pool uses Casebook-characters.yaml"
         self.assertEqual(expected, str(raised.exception))
+
+
+class MessageHistoryTest(unittest.TestCase):
+    def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):
+        history = MessageHistory(fixtures.casebook.MESSAGE_HISTORY)
+        messages = history.sent_since(date(2026, 11, 15))
+
+        sent = datetime(2026, 11, 15, 18, 0)
+        picks = ("characters/detective", "shared_lines/any_time")
+        expected = [Message(sent, picks, verdict="ignored", feedback="stale")]
+        self.assertEqual(expected, messages)
 
 
 class ReportingFailuresTest(unittest.TestCase):

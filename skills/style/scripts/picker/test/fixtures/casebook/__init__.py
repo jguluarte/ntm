@@ -4,3 +4,4 @@ CASEBOOK = Path(__file__).parent
 OPTIONS = CASEBOOK / "Casebook-options.yaml"
 CHARACTERS = CASEBOOK / "Casebook-characters.yaml"
 SCENES = CASEBOOK / "Casebook-scenes.yaml"
+MESSAGE_HISTORY = CASEBOOK / "Casebook-message-history.jsonl"

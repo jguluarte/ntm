@@ -1,7 +1,7 @@
 # What the job picks from per message: a perspective, which is a speaker from
 # the actors or a motif, and a reference from the lines any actor can say, the
 # motifs or the references.
-speaker_rate: 0.5
+speaker_rate: 0.6
 
 pools:
   actors:

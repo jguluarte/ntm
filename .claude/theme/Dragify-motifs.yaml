@@ -9,7 +9,7 @@ about: >-
   standing in, in their own manner.
 
   When a message carries several tasks, the staging's task is the one its `type`
-  is about: a finished one for `done` or `big_win`, the one slipped longest for
+  is about: a finished one for `done` or `win`, the one slipped longest for
   `slipped`, and otherwise the first one the facts list. The other tasks fill
   the scene's other parts.
 
@@ -782,7 +782,7 @@ motifs:
       - I have never won before, but I'mma take it.
 
     type:
-      - big_win
+      - win
 
   rupeter_badge:
     name: RuPeter badge
@@ -1079,7 +1079,7 @@ motifs:
       - I'm just ready to rule the fucking world!
 
     type:
-      - big_win
+      - win
 
   meet_our_monsters:
     name: Meet our monsters
@@ -1451,4 +1451,4 @@ motifs:
       - Queen of the Underworld
 
     type:
-      - big_win
+      - win

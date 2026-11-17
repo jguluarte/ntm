@@ -13,9 +13,9 @@ about: >-
   with no `show` belongs to neither show.
 
   When a message carries several tasks, the callback's task is the one its
-  `type` is about: a finished one for `done` or `big_win`, the one slipped
-  longest for `slipped`, and otherwise the first one the facts list. The other
-  tasks fill any other parts the moment has.
+  `type` is about: a finished one for `done` or `win`, the one slipped longest
+  for `slipped`, and otherwise the first one the facts list. The other tasks
+  fill any other parts the moment has.
 
 references:
   # Drag Race, Seasons 1 to 10
@@ -693,7 +693,7 @@ references:
       read out what came after, win by win, up to the crown.
 
     type:
-      - big_win
+      - win
 
   nini_cocos_streak:
     name: Nini Coco's streak
@@ -1016,7 +1016,7 @@ references:
       day, no lip sync needed, until the last one, and it won that too.
 
     type:
-      - big_win
+      - win
 
   love_most_of_ya:
     name: Love most of ya
@@ -1100,7 +1100,7 @@ references:
       crowd cheering from the next room.
 
     type:
-      - big_win
+      - win
 
   # Dragula
 
@@ -1179,7 +1179,7 @@ references:
       been finished here, and now one has.
 
     type:
-      - big_win
+      - win
 
   saint_wins_resurrection:
     name: Saint wins Resurrection
@@ -1200,7 +1200,7 @@ references:
       opened.
 
     type:
-      - big_win
+      - win
 
   jay_kay_dies_twice:
     name: Jay Kay dies twice
@@ -1296,7 +1296,7 @@ references:
       the room.
 
     type:
-      - big_win
+      - win
 
   courtney_comes_back:
     name: Courtney comes back
@@ -1481,7 +1481,7 @@ references:
       back after the rain: the whole set, start to finish.
 
     type:
-      - big_win
+      - win
 
   judy_at_carnegie_hall:
     name: Judy at Carnegie Hall
@@ -1499,7 +1499,7 @@ references:
       of the stage, calling it back for one more bow after the last song.
 
     type:
-      - big_win
+      - win
 
   chers_farewell_tour:
     name: Cher's farewell tour

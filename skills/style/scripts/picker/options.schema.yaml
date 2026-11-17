@@ -8,6 +8,10 @@ properties:
     type: object
     additionalProperties:
       type: string
+  speaker_rate:
+    type: number
+    minimum: 0
+    maximum: 1
   pools:
     type: object
     additionalProperties:
@@ -27,10 +31,6 @@ $defs:
           enum: [hook, speaker]
       half_life_days:
         type: number
-      speaker_rate:
-        type: number
-        minimum: 0
-        maximum: 1
       entries:
         type: object
         additionalProperties:

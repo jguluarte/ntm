@@ -2,12 +2,13 @@ checksums:
   Casebook-characters.yaml: 9f86d081884c7d65...
   Casebook-scenes.yaml: 2c26b46b68ffc68f...
 
+speaker_rate: 0.4
+
 pools:
   characters:
     file: Casebook-characters.yaml
     roles: [hook, speaker]
     half_life_days: 3
-    speaker_rate: 0.4
     entries:
       detective:
         weight: 0.57

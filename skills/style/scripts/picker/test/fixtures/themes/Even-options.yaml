@@ -6,10 +6,10 @@ pools:
       noon:
       dusk:
   characters:
-    roles: [perspective, speaker]
+    roles: [speaker]
     entries:
       host:
   narrators:
-    roles: [perspective, speaker]
+    roles: [speaker]
     entries:
       chorus:

@@ -7,7 +7,7 @@ speaker_rate: 0.4
 pools:
   characters:
     file: Casebook-characters.yaml
-    roles: [perspective, speaker]
+    roles: [speaker]
     half_life_days: 3
     entries:
       detective:

@@ -165,11 +165,11 @@ class SaveTest(unittest.TestCase):
                     weight: 0.5
                   dusk:
               characters:
-                roles: [perspective, speaker]
+                roles: [speaker]
                 entries:
                   host:
               narrators:
-                roles: [perspective, speaker]
+                roles: [speaker]
                 entries:
                   chorus:
         """)

@@ -182,17 +182,12 @@ class Theme:
         options = []
 
         for kind, pool in self._fields[POOLS_BY_KIND].items():
-            if role in self._drawn_as(pool):
+            if role in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     option = Option.from_entry(kind, slug, entry)
                     options.append(option)
 
         return options
-
-    @staticmethod
-    def _drawn_as(pool):
-        roles = pool[ROLES]
-        return [SPEAKER_ROLE] if SPEAKER_ROLE in roles else roles
 
     def _lottery_of(self, draw_weights):
         if not any(draw_weights.values()):

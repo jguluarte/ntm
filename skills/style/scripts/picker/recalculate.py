@@ -5,6 +5,7 @@ import sys
 from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
+LEAST_SPEAKER_RATE = 0.6
 
 
 class Recalculation:
@@ -19,7 +20,8 @@ class Recalculation:
     def compute_speaker_rate(self):
         speakers = self._total_weight_of(SPEAKER_ROLE)
         other_perspectives = self._total_weight_of(PERSPECTIVE_ROLE)
-        speaker_rate = speakers / (speakers + other_perspectives)
+        share = speakers / (speakers + other_perspectives)
+        speaker_rate = max(share, LEAST_SPEAKER_RATE) if speakers else 0
         self.theme.set_speaker_rate(round(speaker_rate, 2))
 
     def record_checksums(self):

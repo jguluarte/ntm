@@ -18,18 +18,29 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.75, theme.weight_of("characters/nine_lines"))
         self.assertEqual(1.0, theme.weight_of("characters/no_lines"))
 
-    def test_the_speaker_rate_is_the_speakers_share_of_the_weight(self):
+    def test_a_speaker_is_the_perspective_at_least_6_times_in_10(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        characters = EntryFile(fixtures.casebook.CHARACTERS)
-        scenes = EntryFile(fixtures.casebook.SCENES)
-        recalculation = Recalculation(theme, [characters, scenes])
+        recalculation = Recalculation(theme, [])
 
         recalculation.compute_speaker_rate()
 
-        detective = 0.57
-        stakeout = 1.0
-        expected = round(detective / (detective + stakeout), 2)
-        self.assertEqual(expected, theme.speaker_rate)
+        self.assertEqual(0.6, theme.speaker_rate)
+
+    def test_a_theme_of_only_speakers_always_has_a_speaker(self):
+        theme = Theme(fixtures.EVEN)
+        recalculation = Recalculation(theme, [])
+
+        recalculation.compute_speaker_rate()
+
+        self.assertEqual(1.0, theme.speaker_rate)
+
+    def test_a_theme_without_speakers_never_has_a_speaker(self):
+        theme = Theme(fixtures.weighing.OPTIONS)
+        recalculation = Recalculation(theme, [])
+
+        recalculation.compute_speaker_rate()
+
+        self.assertEqual(0, theme.speaker_rate)
 
     def test_recording_gives_the_entry_file_its_own_checksum(self):
         theme = Theme(fixtures.weighing.OPTIONS)

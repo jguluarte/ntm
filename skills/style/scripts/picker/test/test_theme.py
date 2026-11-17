@@ -17,6 +17,13 @@ class PerspectiveTest(unittest.TestCase):
         self.assertAlmostEqual(0.4, chances["characters/detective"])
         self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
 
+    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        speaker_rate = theme.speaker_rate
+
+        expected = 0.4
+        self.assertEqual(expected, speaker_rate)
+
 
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
@@ -141,7 +148,7 @@ class EntryFilesTest(unittest.TestCase):
         self.assertEqual(expected, entries)
 
 
-class StoredNumbersTest(unittest.TestCase):
+class WeightsAndChecksumsTest(unittest.TestCase):
     def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         weight = theme.weight_of("characters/detective")
@@ -155,13 +162,6 @@ class StoredNumbersTest(unittest.TestCase):
 
         expected = "9f86d081884c7d65..."
         self.assertEqual(expected, checksum)
-
-    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
-        speaker_rate = theme.speaker_rate
-
-        expected = 0.4
-        self.assertEqual(expected, speaker_rate)
 
 
 class SaveTest(unittest.TestCase):

@@ -3,10 +3,12 @@ name: refresh-picks
 description: >-
     Refreshes the week's picks for this week's theme: draws 25 picks from its
     `%Theme-options` into `%Theme-picks`, which each message takes its pick
-    from. Run by the weekly setup job.
+    from. Run by the weekly setup job, and by ntm:style when the list runs out.
 ---
 
 # ntm:refresh-picks
+
+Run by the weekly setup job, and by `ntm:style` when `%Theme-picks` runs out.
 
 ## Usage
 

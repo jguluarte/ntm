@@ -20,6 +20,9 @@ PICKS = "picks"
 VERDICT = "verdict"
 FEEDBACK = "feedback"
 
+START_COMMAND = "start"
+ADJUST_COMMAND = "adjust"
+
 
 class Recalculation:
     def __init__(self, theme):
@@ -121,14 +124,14 @@ class MessageHistory:
 def parser():
     command_line = argparse.ArgumentParser(exit_on_error=False)
     subcommands = command_line.add_subparsers(dest="command", required=True)
-    subcommand = subcommands.add_parser("start", exit_on_error=False)
-    subcommand.add_argument("--options", required=True)
-    subcommand.add_argument("entry_files", nargs="+")
+    start = subcommands.add_parser(START_COMMAND, exit_on_error=False)
+    start.add_argument("--options", required=True)
+    start.add_argument("entry_files", nargs="+")
 
-    subcommand = subcommands.add_parser("adjust", exit_on_error=False)
-    subcommand.add_argument("--options", required=True)
-    subcommand.add_argument("--history", required=True)
-    subcommand.add_argument("--since", type=date.fromisoformat, required=True)
+    adjust = subcommands.add_parser(ADJUST_COMMAND, exit_on_error=False)
+    adjust.add_argument("--options", required=True)
+    adjust.add_argument("--history", required=True)
+    adjust.add_argument("--since", type=date.fromisoformat, required=True)
     return command_line
 
 
@@ -147,14 +150,14 @@ if __name__ == "__main__":
         theme = Theme(flags.options)
         recalculation = Recalculation(theme)
 
-        if flags.command == "start":
+        if flags.command == START_COMMAND:
             entry_files = [EntryFile(path) for path in flags.entry_files]
 
             recalculation.weigh_entries(entry_files)
             recalculation.work_out_speaker_rate()
             recalculation.record_checksums(entry_files)
 
-        else:
+        elif flags.command == ADJUST_COMMAND:
             history = MessageHistory(flags.history)
             messages = history.sent_since(flags.since)
 

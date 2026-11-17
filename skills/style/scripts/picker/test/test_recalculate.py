@@ -11,8 +11,7 @@ from recalculate import (
 )
 from theme import EntryFile, Theme, UnknownEntryFile
 
-SENT = datetime(2026, 11, 13, 8, 45)
-PICKS = ("characters/detective", "scenes/stakeout")
+SEND_TIME = datetime(2026, 11, 13, 8, 45)
 
 
 class RecalculationTest(unittest.TestCase):
@@ -91,7 +90,8 @@ class RecalculationTest(unittest.TestCase):
 class ScoresTest(unittest.TestCase):
     def test_an_acted_on_message_raises_both_its_picks(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict="acted", feedback=None)
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -103,7 +103,8 @@ class ScoresTest(unittest.TestCase):
 
     def test_an_ignored_message_lowers_both_its_picks(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict="ignored", feedback=None)
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict="ignored", feedback=None)
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -115,7 +116,8 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_message_the_user_keeps_raises_both_its_picks(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict=None, feedback="keep")
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict=None, feedback="keep")
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -127,7 +129,8 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_message_the_user_calls_stale_lowers_both_its_picks(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict=None, feedback="stale")
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict=None, feedback="stale")
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -139,7 +142,8 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_message_with_no_verdict_or_feedback_moves_nothing(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict=None, feedback=None)
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict=None, feedback=None)
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -152,7 +156,7 @@ class ScoresTest(unittest.TestCase):
     def test_a_pick_the_options_file_no_longer_has_is_skipped(self):
         theme = Theme(fixtures.casebook.OPTIONS)
         picks = ("characters/detective", "scenes/fog")
-        message = Message(SENT, picks, verdict="acted", feedback=None)
+        message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message])
@@ -163,7 +167,8 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_score_rises_no_higher_than_1(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict="acted", feedback="keep")
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict="acted", feedback="keep")
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message] * 4)
@@ -172,14 +177,15 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_score_sinks_no_lower_than_minus_2(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        message = Message(SENT, PICKS, verdict="ignored", feedback="stale")
+        picks = ("characters/detective", "scenes/stakeout")
+        message = Message(SEND_TIME, picks, verdict="ignored", feedback="stale")
         recalculation = Recalculation(theme)
 
         recalculation.adjust_scores([message] * 4)
 
         self.assertEqual(-2, theme.score_of("scenes/stakeout"))
 
-    def test_a_week_of_stale_messages_sinks_a_reference_to_the_floor(self):
+    def test_a_reference_called_stale_all_week_sinks_to_the_lowest_score(self):
         theme = Theme(fixtures.scoring.OPTIONS)
         history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))

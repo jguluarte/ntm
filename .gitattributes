@@ -1,2 +1,4 @@
 *.lock linguist-generated=true skip-absolute-line-length
 .claude-plugin/plugin.json skip-absolute-line-length
+*.png filter=lfs diff=lfs merge=lfs -text skip-absolute-line-length
+*.svg skip-absolute-line-length

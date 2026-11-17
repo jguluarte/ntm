@@ -1,0 +1,6 @@
+pools:
+  scenes:
+    roles: [perspective]
+    entries:
+      dusk:
+        weight: 0

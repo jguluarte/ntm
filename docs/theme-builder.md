@@ -56,10 +56,6 @@ research also notes what it found and left for later, such as more kinds,
 sources and people. That list is kept in the user's backend beside the theme's
 files, and briefs the bigger research when the theme grows.
 
-The builder aims to give every theme, the small one included, entries kept for
-`big_win`, so a big win has material of its own. A theme with none still works:
-on a big win, the picker falls back to the hooks for a finished task.
-
 ## Kinds
 
 A kind is one sort of material in the world. Each kind has its own pool in the
@@ -97,9 +93,7 @@ browser reaches them. The builder asks the first time a page needs it, at stage
 3 or in the research, and agents use a tab each. Without it they skip those
 pages and say so in their report.
 
-The research follows what `world` says to leave out, and how it maps the user's
-day: entries that fit one part of the day are tagged with `type` for the
-morning, the afternoon, the evening or the week.
+The research follows what `world` says to leave out.
 
 When a kind turns up little, the research reports it, and the builder tells the
 user what came back thin. A world with little to draw on may not work well for
@@ -137,8 +131,7 @@ harder sooner" moves one a step.
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
 sends the message. A big win is a whole project finished: the project itself
-closes as done. The run hands the picker these as task outcomes, `done`, `win`
-and `big_win`, and the picker finds the level from them.
+closes as done. The run works these out.
 
 A bump raises a message one level with no slip behind it, likelier the longer
 since the last raised one (3-day half-life), so a good stretch still gets read.
@@ -182,9 +175,6 @@ It prints one plain line per problem, naming the file and entry. The builder
 fixes what it can, and asks the user only when a fix is a choice. A failing
 theme is never added to `%Settings`. The builder's test run of picks uses the
 same picker.
-
-A theme that keeps nothing for `big_win` passes; the check says so, and the
-builder offers to add some.
 
 ## Saving and switching on
 

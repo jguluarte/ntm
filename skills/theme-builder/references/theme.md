@@ -50,7 +50,7 @@ decides how many each has. Most themes start from these:
 | 3rd   | A task has slipped                                       | A big win: a project finished |
 | 4th   | A task has kept slipping                                 |                               |
 
-The `type` part of `theme-files.md` says what a win and a big win are.
+`theme-files.md`, under The root, says what a win and a big win are.
 
 ## The kinds
 
@@ -75,9 +75,6 @@ forward, or a riff that bends a line to the task, stretches across many
 reminders.
 
 Every quote or line comes from the user: they say it, or confirm that one you
-offer is true to their world. Keep a few entries for `big_win`, so a big win has
-material of its own. Give any other entry a `type` only when it truly belongs to
-the reminder types or task outcomes it names; in a theme this small, most
-entries have none.
+offer is true to their world.
 
 Add each entry to its entry file and to its kind's pool in the options file.

@@ -8,6 +8,10 @@ properties:
     type: object
     additionalProperties:
       type: string
+  speaker_rate:
+    type: number
+    minimum: 0
+    maximum: 1
   pools:
     type: object
     additionalProperties:
@@ -24,13 +28,9 @@ $defs:
         type: array
         minItems: 1
         items:
-          enum: [hook, speaker]
+          enum: [perspective, reference, speaker]
       half_life_days:
         type: number
-      speaker_rate:
-        type: number
-        minimum: 0
-        maximum: 1
       entries:
         type: object
         additionalProperties:
@@ -39,15 +39,6 @@ $defs:
   entry:
     type: [object, "null"]
     properties:
-      type:
-        if:
-          type: array
-        then:
-          minItems: 1
-          items:
-            $ref: "#/$defs/reminder_type_or_task_outcome"
-        else:
-          $ref: "#/$defs/reminder_type_or_task_outcome"
       weight:
         type: number
         minimum: 0
@@ -55,6 +46,3 @@ $defs:
         type: number
       score:
         type: number
-
-  reminder_type_or_task_outcome:
-    enum: [morning, afternoon, evening, weekly, slipped, done, win, big_win]

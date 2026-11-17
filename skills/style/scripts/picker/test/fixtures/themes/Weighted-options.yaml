@@ -1,6 +1,6 @@
 pools:
   scenes:
-    roles: [hook]
+    roles: [perspective]
     entries:
       dawn:
         weight: 0.5
@@ -8,11 +8,8 @@ pools:
         score: 1
       dusk:
         weight: 0
-      big_win:
-        type: big_win
-        weight: 0
   characters:
-    roles: [hook]
+    roles: [perspective]
     entries:
       host:
         weight: 3

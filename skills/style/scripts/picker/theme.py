@@ -1,5 +1,3 @@
-import copy
-import enum
 import hashlib
 import random
 from dataclasses import dataclass
@@ -11,42 +9,21 @@ import yaml
 OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
 CHECKSUMS_BY_FILE = "checksums"
+SPEAKER_RATE = "speaker_rate"
+DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
-TYPE = "type"
 WEIGHT = "weight"
 SCORE = "score"
-HOOK_ROLE = "hook"
+PERSPECTIVE_ROLE = "perspective"
+REFERENCE_ROLE = "reference"
+SPEAKER_ROLE = "speaker"
 
 ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
-
-
-class ReminderType(enum.Enum):
-    MORNING = "morning"
-    AFTERNOON = "afternoon"
-    EVENING = "evening"
-    WEEKLY = "weekly"
-
-    @classmethod
-    def named_in(cls, values):
-        known = {reminder_type.value for reminder_type in cls}
-        return {cls(value) for value in values & known}
-
-
-class TaskOutcome(enum.Enum):
-    SLIPPED = "slipped"
-    DONE = "done"
-    WIN = "win"
-    BIG_WIN = "big_win"
-
-    @classmethod
-    def named_in(cls, values):
-        known = {task_outcome.value for task_outcome in cls}
-        return {cls(value) for value in values & known}
 
 
 class InvalidTheme(ValueError):
@@ -54,31 +31,14 @@ class InvalidTheme(ValueError):
         super().__init__(f"{where}: {why}")
 
 
-class InvalidOptions(ValueError):
-    pass
-
-
-class UnknownOption(InvalidOptions):
-    def __init__(self, values):
-        listed = ", ".join(sorted(values))
-        super().__init__(f"not an option: {listed}")
-
-
-class MoreThanOneReminderType(InvalidOptions):
-    def __init__(self, reminder_types):
-        values = sorted(reminder_type.value for reminder_type in reminder_types)
-        listed = ", ".join(values)
-        super().__init__(f"more than one reminder type: {listed}")
-
-
-class MissingOptions(ValueError):
-    def __init__(self, options):
-        super().__init__(f"no option fits {options}")
-
-
 class MissingWeight(ValueError):
-    def __init__(self, options):
-        super().__init__(f"every option that fits {options} weighs 0")
+    def __init__(self):
+        super().__init__("every option weighs 0")
+
+
+class MissingReference(ValueError):
+    def __init__(self, kind):
+        super().__init__(f"no reference outside {kind}")
 
 
 class UnknownEntryFile(ValueError):
@@ -86,62 +46,19 @@ class UnknownEntryFile(ValueError):
         super().__init__(f"no pool uses {file_name}")
 
 
-@dataclass(init=False)
-class ThemeOptions:
-    reminder_type: ReminderType | None
-    task_outcomes: frozenset[TaskOutcome]
-
-    def __init__(self, type=""):
-        values = set(type.split(",")) if type else set()
-        reminder_types = ReminderType.named_in(values)
-        task_outcomes = TaskOutcome.named_in(values)
-
-        known = reminder_types | task_outcomes
-        unknown = values - {member.value for member in known}
-        if unknown:
-            raise UnknownOption(unknown)
-
-        if len(reminder_types) > 1:
-            raise MoreThanOneReminderType(reminder_types)
-
-        self.reminder_type = reminder_types.pop() if reminder_types else None
-        self.task_outcomes = frozenset(task_outcomes)
-
-    @property
-    def is_big_win(self):
-        return TaskOutcome.BIG_WIN in self.task_outcomes
-
-    def as_finished_task(self):
-        finished_task = copy.copy(self)
-        without_big_win = self.task_outcomes - {TaskOutcome.BIG_WIN}
-        finished_task.task_outcomes = without_big_win | {TaskOutcome.DONE}
-        return finished_task
-
-    def __str__(self):
-        reminder = [self.reminder_type.value] if self.reminder_type else []
-        outcomes = sorted(outcome.value for outcome in self.task_outcomes)
-        return ",".join(reminder + outcomes)
-
-
 @dataclass(frozen=True)
 class Option:
     kind: str
     slug: str
-    reminder_types: frozenset[ReminderType]
-    task_outcomes: frozenset[TaskOutcome]
     weight: float
     score: float
 
     @classmethod
     def from_entry(cls, kind, slug, entry):
         fields = entry or {}
-        types = fields.get(TYPE, [])
-        values = {types} if isinstance(types, str) else set(types)
-        reminder_types = frozenset(ReminderType.named_in(values))
-        task_outcomes = frozenset(TaskOutcome.named_in(values))
         weight = fields.get(WEIGHT, 1)
         score = fields.get(SCORE, 0)
-        return cls(kind, slug, reminder_types, task_outcomes, weight, score)
+        return cls(kind, slug, weight, score)
 
     @property
     def name(self):
@@ -150,24 +67,6 @@ class Option:
     @property
     def draw_weight(self):
         return self.weight * 2 ** self.score
-
-    @property
-    def kept_for_big_win(self):
-        return TaskOutcome.BIG_WIN in self.task_outcomes
-
-    def fits(self, options):
-        if options.is_big_win and not self.kept_for_big_win:
-            return False
-
-        reminder_type = options.reminder_type
-        if self.reminder_types and reminder_type not in self.reminder_types:
-            return False
-
-        task_outcomes = options.task_outcomes
-        if self.task_outcomes and self.task_outcomes.isdisjoint(task_outcomes):
-            return False
-
-        return True
 
 
 class Lottery:
@@ -212,33 +111,38 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 class Theme:
     def __init__(self, path, seed=None):
         self.path = path
-        self.seed = seed
+        self._seeds = random.Random(seed)
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
-        self._options = self._read_options(self._fields[POOLS_BY_KIND])
+        self._speakers = self._read_options(SPEAKER_ROLE)
+        self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
+        self._references = self._read_options(REFERENCE_ROLE)
 
-        if not self._options:
-            raise InvalidTheme(f"$.{POOLS_BY_KIND}", "no options found")
+    def perspective_lottery(self):
+        speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        draw_weights = {
+            **self._scaled_to(speaker_rate, self._speakers),
+            **self._scaled_to(1 - speaker_rate, self._other_perspectives),
+        }
+        return self._lottery_of(draw_weights)
 
-    def lottery_for(self, options):
-        fitting = self._fitting(options)
+    def reference_lottery_outside(self, kind):
+        references = [
+            option for option in self._references if option.kind != kind
+        ]
 
-        if not fitting and options.is_big_win:
-            fitting = self._fitting(options.as_finished_task())
+        if not references:
+            raise MissingReference(kind)
 
-        if not fitting:
-            raise MissingOptions(options)
+        draw_weights = {option: option.draw_weight for option in references}
+        return self._lottery_of(draw_weights)
 
-        draw_weights = {option: option.draw_weight for option in fitting}
+    def draw_perspective(self):
+        return self.perspective_lottery().draw()
 
-        if not any(draw_weights.values()):
-            raise MissingWeight(options)
-
-        return Lottery(draw_weights, self.seed)
-
-    def draw_from(self, options):
-        return self.lottery_for(options).draw()
+    def draw_reference_outside(self, kind):
+        return self.reference_lottery_outside(kind).draw()
 
     def entries_from(self, file_name):
         names = []
@@ -252,36 +156,53 @@ class Theme:
 
         return names
 
+    def weight_of(self, entry_name):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        return entry.get(WEIGHT, 1)
+
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
 
+    def checksum_of(self, file_name):
+        return self._checksums[file_name]
+
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum
 
-    def save(self):
+    def save(self, path):
         checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
         text = yaml.dump(
             checksums_first, Dumper=_OptionsDumper, sort_keys=False,
         )
-        Path(self.path).write_text(text, encoding="utf-8")
+        Path(path).write_text(text, encoding="utf-8")
 
-    def _fitting(self, options):
-        return [option for option in self._options if option.fits(options)]
-
-    @staticmethod
-    def _read_options(pools_by_kind):
+    def _read_options(self, role):
         options = []
 
-        for kind, pool in pools_by_kind.items():
-            if HOOK_ROLE in pool[ROLES]:
+        for kind, pool in self._fields[POOLS_BY_KIND].items():
+            if role in pool[ROLES]:
                 for slug, entry in pool[ENTRIES_BY_SLUG].items():
                     option = Option.from_entry(kind, slug, entry)
                     options.append(option)
 
         return options
+
+    def _lottery_of(self, draw_weights):
+        if not any(draw_weights.values()):
+            raise MissingWeight()
+
+        return Lottery(draw_weights, self._seeds.random())
+
+    @staticmethod
+    def _scaled_to(share, options):
+        total = sum(option.draw_weight for option in options)
+        scale = share / total if total else 0
+        return {option: option.draw_weight * scale for option in options}
 
     @staticmethod
     def _load(path):

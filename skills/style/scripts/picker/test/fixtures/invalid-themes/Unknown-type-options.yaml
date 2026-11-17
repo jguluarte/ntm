@@ -1,6 +1,0 @@
-pools:
-  scenes:
-    roles: [hook]
-    entries:
-      dawn:
-        type: night

@@ -12,13 +12,6 @@ class Recalculation:
         self.theme = theme
         self.entry_files = entry_files
 
-    @classmethod
-    def from_args(cls, args):
-        flags = cls._parser().parse_args(args)
-        theme = Theme(flags.options)
-        entry_files = [EntryFile(path) for path in flags.entry_files]
-        return cls(theme, entry_files)
-
     def weigh_entries(self):
         for entry_file in self.entry_files:
             self._weigh_entries_from(entry_file)
@@ -28,7 +21,7 @@ class Recalculation:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
 
     def save_options_file(self):
-        self.theme.save()
+        self.theme.save(self.theme.path)
 
     def _weigh_entries_from(self, entry_file):
         line_counts = entry_file.line_counts
@@ -44,14 +37,14 @@ class Recalculation:
 
         return round(line_count / (line_count + LINES_AT_HALF_WEIGHT), 2)
 
-    @staticmethod
-    def _parser():
-        parser = argparse.ArgumentParser(exit_on_error=False)
-        subcommands = parser.add_subparsers(required=True)
-        start = subcommands.add_parser("start", exit_on_error=False)
-        start.add_argument("--options", required=True)
-        start.add_argument("entry_files", nargs="+")
-        return parser
+
+def parser():
+    command_line = argparse.ArgumentParser(exit_on_error=False)
+    subcommands = command_line.add_subparsers(required=True)
+    subcommand = subcommands.add_parser("start", exit_on_error=False)
+    subcommand.add_argument("--options", required=True)
+    subcommand.add_argument("entry_files", nargs="+")
+    return command_line
 
 
 @contextlib.contextmanager
@@ -65,9 +58,12 @@ def reporting_failures():
 
 if __name__ == "__main__":
     with reporting_failures():
-        recalculation = Recalculation.from_args(sys.argv[1:])
+        flags = parser().parse_args(sys.argv[1:])
+        theme = Theme(flags.options)
+        entry_files = [EntryFile(path) for path in flags.entry_files]
+        recalculation = Recalculation(theme, entry_files)
+
         recalculation.weigh_entries()
         recalculation.record_checksums()
         recalculation.save_options_file()
-
-    print(f"saved: {recalculation.theme.path}")
+        print(f"saved: {theme.path}")

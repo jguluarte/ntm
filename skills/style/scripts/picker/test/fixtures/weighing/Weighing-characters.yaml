@@ -1,0 +1,21 @@
+characters:
+  one_line:
+    lines:
+      - One.
+  three_lines:
+    lines:
+      - One.
+      - Two.
+      - Three.
+  nine_lines:
+    lines:
+      - One.
+      - Two.
+      - Three.
+      - Four.
+      - Five.
+      - Six.
+      - Seven.
+      - Eight.
+      - Nine.
+  no_lines: {}

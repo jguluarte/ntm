@@ -60,6 +60,11 @@ parts are the same in every theme:
 level first, each keyed by its name in the theme's words and saying how it
 sounds.
 
+A win is any of these: more tasks finished than planned this week, a task
+finished after slipping for days, or a task judged big or hard by the run that
+sends the message. A big win is a whole project finished: the project itself
+closes as done.
+
 `files` has three groups. Under each, a file's name maps to a line or two on
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
@@ -114,15 +119,11 @@ which is never an entry.
 Each entry is keyed by a slug, a short key such as `detective`, which the
 options file uses to name it. Within a theme, the entries of a kind share their
 keys, and their optional keys, when present, come in the same order. Key names
-are the theme's own, except `about`, `lines`, `riffs`, `line`, `bend` and
-`type`, which ntm reads. Prose sits in `>-` folded text.
+are the theme's own, except `about`, `lines`, `riffs`, `line` and `bend`, which
+ntm reads. Prose sits in `>-` folded text.
 
-An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus
-either a `bend`, which says how to turn the line toward a task, or a `type`, for
-a line that fits as it is on the reminder types and task outcomes it names.
-
-A group of lines kept for one reminder type or task outcome is an entry with
-that `type`, such as `big_win` below.
+An entry may carry `lines` it quotes, and `riffs`. A riff is a `line` plus a
+`bend`, which says how to turn the line toward a task.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -139,13 +140,12 @@ characters:
     lines:
       - The answer was on the table the whole time.
       - Nobody leaves this room until I have finished.
+      - File it under closed.
     riffs:
       - line: Every lie leaves a crumb.
         bend: >-
           Treat the slipped task as the crumb that gives away what the user
           did instead.
-      - line: File it under closed.
-        type: done
 
 shared_lines:
   about: >-
@@ -153,43 +153,7 @@ shared_lines:
   any_time:
     lines:
       - Somebody in this house is lying.
-  big_win:
-    type: big_win
-    lines:
-      - Gather everyone in the drawing room.
 ```
-
-## `type`
-
-An entry or riff that fits only some messages says which with `type`: one
-reminder type or task outcome, or a list. No `type` means any message. The
-reminder types and task outcomes are one fixed set, of two kinds: which reminder
-a message is, and what happened to its tasks.
-
-| `type`      | Kind           | What it names                     |
-| ----------- | -------------- | --------------------------------- |
-| `morning`   | Which reminder | The morning reminder              |
-| `afternoon` | Which reminder | The afternoon reminder            |
-| `evening`   | Which reminder | The evening reminder              |
-| `weekly`    | Which reminder | The weekly planning message       |
-| `slipped`   | What happened  | A task in the message has slipped |
-| `done`      | What happened  | A task in the message got done    |
-| `win`       | What happened  | A win, as below                   |
-| `big_win`   | What happened  | A big win, as below               |
-
-A message is one reminder, and any number of things can have happened in it. An
-entry fits a message when the message is one of the reminders its `type` names,
-if it names any, and one of the things it names happened, if it names any. So
-`type: evening` fits any evening, `type: slipped` any message with a slipped
-task, `type: [evening, slipped]` only an evening with a slipped task, and
-`type: [morning, weekly]` either reminder.
-
-A win is any of these: more tasks finished than planned this week, a task
-finished after slipping for days, or a task judged big or hard by the run that
-sends the message. A big win is a whole project finished: the project itself
-closes as done. A message with a big win takes its hook only from the entries
-kept for `big_win`, or, when none of them fits, from the entries that fit
-`done`.
 
 ## The options file
 
@@ -197,8 +161,7 @@ The options file holds what the theme offers the picker, and the numbers the
 nightly job computes. It is the only theme file the picker reads.
 
 It holds one pool per kind of entry. A pool is keyed by its kind, names its
-file, and lists the entries that can be picked, each by its slug, with its
-`type` copied from the entry file.
+file, and lists the entries that can be picked, each by its slug.
 
 A pool's `roles` say what its entries can be drawn as: a hook, a speaker, or
 both. The hook is what a message is built on. The speaker is who says the
@@ -232,11 +195,6 @@ pools:
         weight: 0.25
         line_half_life_days: 4
         score: 0.0
-      big_win:
-        type: big_win
-        weight: 0.25
-        line_half_life_days: 30
-        score: 0.0
 
   scenes:
     file: Casebook-scenes.yaml
@@ -267,22 +225,19 @@ how many lines it has and how often it is picked.
 
 ## The pick
 
-For each message, the run hands the picker the options file's text, the recent
-picks and the message's type. The recent picks come from `%Message-history`,
-which records each message's hook, speaker, line drawn and when it went out. The
-run works out the type: which reminder this is, whether a task in it has
-slipped, whether one got done, and whether there's a win or a big win.
+For each message, the run hands the picker the options file's text and the
+recent picks. The recent picks come from `%Message-history`, which records each
+message's hook, speaker, line drawn and when it went out.
 
-The picker keeps the entries whose `type` fits, as `type` above says. Each
-message gets exactly one hook, drawn from all the entries in hook pools
+Each message gets exactly one hook, drawn from all the entries in hook pools
 together, each entry counting once at its weight. An entry's score raises or
 lowers its chance, and an entry picked recently is less likely while it rests.
 An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
 When the picked entry holds lines or riffs, the run hands the picker that entry
-from its entry file, and one line or riff is drawn from it, keeping only riffs
-whose `type` fits. A recently used line rests the same way an entry does. That
-line or riff is what the writer builds on.
+from its entry file, and one line or riff is drawn from it. A recently used line
+rests the same way an entry does. That line or riff is what the writer builds
+on.
 
 Sometimes a speaker is added, drawn from all speaker pools together, at the
 theme's `speaker_rate`. A theme whose every hook pool is a speaker pool has no

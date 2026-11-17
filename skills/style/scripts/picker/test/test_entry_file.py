@@ -11,7 +11,6 @@ class EntryFileTest(unittest.TestCase):
         expected = {
             "characters/detective": 4,
             "shared_lines/any_time": 1,
-            "shared_lines/big_win": 1,
         }
         self.assertEqual(expected, entry_file.line_counts)
 

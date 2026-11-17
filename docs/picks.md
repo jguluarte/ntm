@@ -54,28 +54,25 @@ it as well as on the history.
 
 The Sunday job draws the week at about 04:00, after it recalculates the numbers
 and moves to this week's theme. A small script of its own builds one picker,
-seeded with the date, and calls `pick()` once per message: each of the three
-reminder types on each of the seven days, and the weekly message, 22 in all.
-Where a pick is kept says only which message gets it; every pick is drawn the
-same way.
+seeded with the date, and calls `pick()` 25 times: the week's 22 messages, three
+reminders a day and the weekly one, and 3 spare for messages written in chat.
 
-The week is kept in `<Theme>-picks`, replaced each Sunday, by day and reminder:
+`<Theme>-picks` keeps them as one list, in order, beside the theme's other files
+in the user's backend, replaced each Sunday:
 
 <!-- prettier-ignore -->
 ```yaml
-weekly:
-  perspective: { option: scenes/stakeout }
+- perspective: { option: characters/detective, line: File it under closed. }
+  flavor: { option: scenes/stakeout }
+- perspective: { option: scenes/stakeout }
   flavor: { option: shared_lines/any_time, line: Everyone here is lying. }
-2026-11-16:
-  morning:
-    perspective: { option: characters/detective, line: File it under closed. }
-    flavor: { option: scenes/stakeout }
 ```
 
-`<Theme>-picks` sits beside the theme's other files, in the user's backend. A
-reminder reads only its own pick, under today's date and its type, and runs no
-script. It copies the pick into its history entry's `picks`. A message with no
-pick drawn for it, such as one written in chat, runs the picker for its own.
+Every message, a reminder, the weekly one or one written in chat, takes the
+first pick and saves the list without it: one small read and one small write, no
+script, and the list shows what is left. It copies the pick into its history
+entry's `picks`. If the list runs out before Sunday, a message runs the picker
+for its own.
 
 ## What the reminder adds
 

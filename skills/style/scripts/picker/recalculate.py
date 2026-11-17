@@ -22,12 +22,11 @@ FEEDBACK = "feedback"
 
 
 class Recalculation:
-    def __init__(self, theme, entry_files=()):
+    def __init__(self, theme):
         self.theme = theme
-        self.entry_files = entry_files
 
-    def weigh_entries(self):
-        for entry_file in self.entry_files:
+    def weigh_entries(self, entry_files):
+        for entry_file in entry_files:
             self._weigh_entries_from(entry_file)
 
     def work_out_speaker_rate(self):
@@ -36,8 +35,8 @@ class Recalculation:
         speaker_rate = self._speaker_rate_for(speakers, other_perspectives)
         self.theme.set_speaker_rate(speaker_rate)
 
-    def record_checksums(self):
-        for entry_file in self.entry_files:
+    def record_checksums(self, entry_files):
+        for entry_file in entry_files:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
 
     def adjust_scores(self, messages):
@@ -146,19 +145,18 @@ if __name__ == "__main__":
     with reporting_failures():
         flags = parser().parse_args(sys.argv[1:])
         theme = Theme(flags.options)
+        recalculation = Recalculation(theme)
 
         if flags.command == "start":
             entry_files = [EntryFile(path) for path in flags.entry_files]
-            recalculation = Recalculation(theme, entry_files)
 
-            recalculation.weigh_entries()
+            recalculation.weigh_entries(entry_files)
             recalculation.work_out_speaker_rate()
-            recalculation.record_checksums()
+            recalculation.record_checksums(entry_files)
 
         else:
             history = MessageHistory(flags.history)
             messages = history.sent_since(flags.since)
-            recalculation = Recalculation(theme)
 
             recalculation.adjust_scores(messages)
 

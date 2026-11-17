@@ -14,8 +14,7 @@ description: >-
 
 The user's style is their `%Theme`, the database that says how every message to
 them is written. This skill reads `%Theme` and `%Message-history`. The writer
-agent reads only the parts of `%Theme` this skill points it to, and never
-`%Message-history`.
+agent reads the parts of `%Theme` a message needs, and never `%Message-history`.
 
 ## Setup
 
@@ -45,13 +44,6 @@ Take the first pick from the theme's picks list, `<Theme>-picks`, such as
 item a `perspective:` and a `reference:`. When there is no list, or it's empty,
 run the picker, as The picker, below, says. When the picker fails, pick both
 yourself from the theme, from different kinds.
-
-Each comes as `<kind>/<slug>`. Its entry is under `<kind>`, keyed `<slug>`, in
-the file the `<kind>` pool names in `%Theme-options`.
-
-The theme material is what the writer gets of the theme: its guidance, which is
-every part that says how to write (its registers, its levels, its flow), and the
-entries for the perspective and the reference.
 
 ### 2. Set the tone
 
@@ -87,9 +79,9 @@ rows' values.
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the tone, the perspective,
-the reference, and the theme material, as text or as exactly which parts of
-`%Theme` to read. It returns 5 versions, each with a title, a message, and a
+Start the `ntm:writer` agent, and hand it the facts, the tone, the theme's name,
+and the perspective and the reference, each as `<kind>/<slug>`. It reads the
+theme itself. It returns 5 versions, each with a title, a message, and a
 probability from 0 to 1 of how likely a reader would be to predict it.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't

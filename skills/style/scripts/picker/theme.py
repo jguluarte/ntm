@@ -159,6 +159,11 @@ class Theme:
 
         return names
 
+    def has_entry(self, entry_name):
+        kind, _, slug = entry_name.partition("/")
+        pools = self._fields[POOLS_BY_KIND]
+        return kind in pools and slug in pools[kind][ENTRIES_BY_SLUG]
+
     def weight_of(self, entry_name):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
@@ -170,6 +175,18 @@ class Theme:
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, WEIGHT: weight}
+
+    def score_of(self, entry_name):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        return entry.get(SCORE, 0)
+
+    def set_score(self, entry_name, score):
+        kind, slug = entry_name.split("/")
+        entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
+        entry = entries_by_slug[slug] or {}
+        entries_by_slug[slug] = {**entry, SCORE: score}
 
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum

@@ -142,8 +142,9 @@ its level.
 ## Roles and perspectives
 
 Entries that talk, in a manner of their own, can be a speaker; entries with
-something to build on (lines, a scene, a moment to call back to) can be a hook.
-In `Casebook`, characters are both; shared lines and scenes are hooks.
+something to build on (lines, a scene, a moment to call back to) can be a
+reference. In `Casebook`, characters are speakers; shared lines and scenes are
+references.
 
 A perspective is a group a speaker comes from. The builder asks who else would
 comment on the user's week, and looks in the research for groups that comment in

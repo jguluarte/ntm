@@ -8,8 +8,8 @@ are at the end.
 
 It keeps each theme's numbers current, so the picker can stay a small, fast
 script that only reads them. It is the one part of ntm that learns from how the
-user reacted: which hooks land, which kinds work, and whether a raised level
-gets more done.
+user reacted: which perspectives and references land, which kinds work, and
+whether a raised level gets more done.
 
 ## Who does what
 
@@ -80,11 +80,11 @@ One line weighs 0.25, nine weigh 0.75.
 ### `score`
 
 How well the messages built on an entry landed. Each judged message moves the
-score of its `picks.hook` and `picks.speaker` a step toward 1 if it landed, -1
-if it missed: `score + 0.1 * (target - score)`, so about the last ten decide it.
-A `keep` or `stale` steps by 0.3. The first formulas counted every message, and
-pruning drops old ones, so the score moves a step at a time instead. To decide:
-the 0.1 and the 0.3.
+score of its `picks.perspective` and `picks.reference` a step toward 1 if it
+landed, -1 if it missed: `score + 0.1 * (target - score)`, so about the last ten
+decide it. A `keep` or `stale` steps by 0.3. The first formulas counted every
+message, and pruning drops old ones, so the score moves a step at a time
+instead. To decide: the 0.1 and the 0.3.
 
 ### `half_life_days` and `line_half_life_days`
 
@@ -92,24 +92,25 @@ The days until a picked entry, or a drawn line, wins back half the chance it
 lost: half the time it takes to work through the pool, or the entry's lines.
 `entries / (daily * share) / 2` and `lines / (daily * share) / 2`, from the
 first formulas: `daily` is messages a day, `share` the pool's or entry's part of
-the history's hooks. With no history, `daily` is the user's reminders a day, or
+the history's picks. With no history, `daily` is the user's reminders a day, or
 3, and shares come from the weights.
 
 ### The theme's `speaker_rate`
 
-How often a message names a speaker, aiming for half of all messages: one rate
-for the theme, and the speaker is drawn from all its speaker pools together.
-`(0.5 - people) / (1 - people)` while `people` is under 0.5, and 0 from there,
-where `people` is the part of hooks from pools whose `roles` hold speaker; from
-the first formulas. A theme whose every hook pool is a speaker pool has no
-`speaker_rate`: every hook already speaks.
+How often the perspective is a speaker, aiming for half of all messages: one
+rate for the theme, and the speaker is drawn from all its speaker pools
+together. The rest of the time, the perspective is an option from a pool whose
+`roles` hold perspective. `(0.5 - people) / (1 - people)` while `people` is
+under 0.5, and 0 from there, where `people` is the part of hooks from pools
+whose `roles` hold speaker; from the first formulas. A theme whose every hook
+pool is a speaker pool has no `speaker_rate`: every hook already speaks.
 
 ### A kind's `weight`
 
 A pool's weight when the picker draws a kind: the square root of its size,
 counting lines for line groups, so 9 entries start at 3 and 75 at about 8.7. It
 moves with reactions through a `score` on the pool, moved like an entry's by
-each message whose hook came from it. To decide: that score.
+each message whose perspective or reference came from it. To decide: that score.
 
 ### `bump_rate`
 
@@ -142,11 +143,11 @@ been reselected later....we don't need the past references to it. then it can
 just maintain a rolling forward and causes an upper limit on that theme's
 message history file."
 
-Each entry holds a `picks` object, exactly what the picker printed: `hook`,
-`speaker`, `line`, `escalation`, `finishing_tasks`, later `role` and `bump`.
-Those keys hold for every theme; only their values are the theme's. A judged
-entry goes once every value in its `picks` appears under the same key in a later
-entry.
+Each entry holds a `picks` object, exactly what the picker printed:
+`perspective`, `reference`, `line`, `escalation`, `finishing_tasks`, later
+`role` and `bump`. Those keys hold for every theme; only their values are the
+theme's. A judged entry goes once every value in its `picks` appears under the
+same key in a later entry.
 
 Nothing is lost. Its verdict and feedback reached the scores and `weeks` in the
 run that judged it, and the picker needs only each value's latest use, which

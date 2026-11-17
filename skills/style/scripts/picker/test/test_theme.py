@@ -21,16 +21,23 @@ class PerspectiveTest(unittest.TestCase):
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        reference = theme.draw_reference_outside("scenes")
+        lottery = theme.reference_lottery_outside("scenes")
 
-        expected = "shared_lines/any_time"
-        self.assertEqual(expected, reference.name)
+        expected = ["shared_lines/any_time"]
+        self.assertEqual(expected, lottery.names)
+
+    def test_a_speakers_reference_comes_from_every_reference_pool(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        lottery = theme.reference_lottery_outside("characters")
+
+        expected = ["shared_lines/any_time", "scenes/stakeout"]
+        self.assertEqual(expected, lottery.names)
 
     def test_a_theme_of_only_speakers_fails_with_missing_reference(self):
         theme = Theme(fixtures.SPEAKERS_ONLY)
 
         with self.assertRaises(MissingReference) as raised:
-            theme.draw_reference_outside("narrators")
+            theme.reference_lottery_outside("narrators")
 
         expected = "no reference outside narrators"
         self.assertEqual(expected, str(raised.exception))

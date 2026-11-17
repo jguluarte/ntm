@@ -1,7 +1,6 @@
 import hashlib
 import random
 from dataclasses import dataclass
-from functools import cached_property
 from pathlib import Path
 
 import jsonschema
@@ -119,17 +118,14 @@ class Theme:
         self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
         self._references = self._read_options(REFERENCE_ROLE)
 
-    @cached_property
+    @property
     def perspective_lottery(self):
         speaker_rate = self._fields.get(SPEAKER_RATE, 0.5)
         speakers = self._scaled_to(speaker_rate, self._speakers)
         others = self._scaled_to(1 - speaker_rate, self._other_perspectives)
         return self._lottery_of({**speakers, **others})
 
-    def draw_perspective(self):
-        return self.perspective_lottery.draw()
-
-    def draw_reference_outside(self, kind):
+    def reference_lottery_outside(self, kind):
         references = [
             option for option in self._references if option.kind != kind
         ]
@@ -138,8 +134,13 @@ class Theme:
             raise MissingReference(kind)
 
         draw_weights = {option: option.draw_weight for option in references}
-        lottery = self._lottery_of(draw_weights)
-        return lottery.draw()
+        return self._lottery_of(draw_weights)
+
+    def draw_perspective(self):
+        return self.perspective_lottery.draw()
+
+    def draw_reference_outside(self, kind):
+        return self.reference_lottery_outside(kind).draw()
 
     def entries_from(self, file_name):
         names = []

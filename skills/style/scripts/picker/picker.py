@@ -21,9 +21,9 @@ def parser():
     subcommands = command_line.add_subparsers(required=True)
     subcommand = subcommands.add_parser("pick", exit_on_error=False)
     subcommand.add_argument("--options", required=True)
-    subcommand.add_argument("--history")
+    subcommand.add_argument("--history", required=True)
     subcommand.add_argument(
-        "--now", type=datetime.fromisoformat, default=datetime.now(),
+        "--now", type=datetime.fromisoformat, required=True,
     )
     subcommand.add_argument("--seed", type=int)
     subcommand.add_argument(
@@ -73,12 +73,8 @@ def reporting_failures():
 if __name__ == "__main__":
     with reporting_failures():
         flags = parser().parse_args(sys.argv[1:])
-        days_since_use = {}
-
-        if flags.history:
-            history = History(flags.history)
-            days_since_use = history.days_since_use(flags.now)
-
+        history = History(flags.history)
+        days_since_use = history.days_since_use(flags.now)
         theme = Theme(flags.options, flags.seed, days_since_use)
 
         if flags.shows_chances:

@@ -84,12 +84,13 @@ class ReportingFailuresTest(unittest.TestCase):
         expected = f"Picker FAILED: FileNotFoundError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
-    def test_a_missing_options_flag_fails_naming_it(self):
+    def test_missing_flags_fail_naming_each_required_one(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
                 parser().parse_args(["pick"])
 
-        why = "the following arguments are required: --options"
+        required = "--options, --history, --now"
+        why = f"the following arguments are required: {required}"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 

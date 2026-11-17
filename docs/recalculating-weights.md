@@ -105,14 +105,14 @@ each message whose perspective or reference came from it. To decide: that score.
 
 ### `bump_rate`
 
-How readily the picker raises a calm day's level by one. Each week the script
-compares how often messages at a raised `picks.escalation` got a reaction with
+How readily the run raises a calm day's level by one. Each week the script
+compares how often messages at a raised `escalation` level got a reaction with
 those at the first level. More often by over 5 in 100: up a step. Less often by
 as much: down a step. It waits for 10 judged messages on each side. A step comes
 once a week, so 0.05 takes 16 weeks to go from one bound to the other. To
 decide: the step; recommended 0.1, about two months from one bound to the other.
 Also the 5 in 100, the 10 messages, the bounds, and whether a theme starts at
-the picker's 1.0, above the bounds, or at 0.9.
+1.0, above the bounds, or at 0.9.
 
 A theme that never presses on a good day, as the theme builder asks, has a
 `bump_rate` of 0, and the script never moves it.
@@ -129,22 +129,17 @@ the theme builder.
 
 ## Pruning the history
 
-The rule, in the owner's words: "Once all of the things from an old entry have
-been reselected later....we don't need the past references to it. then it can
-just maintain a rolling forward and causes an upper limit on that theme's
-message history file."
+An old entry matters only until a recalculation has used it. Once its picks,
+feedback and verdict are in the weights, the run drops it, so each history rolls
+forward with an upper limit.
 
 Each entry holds a `picks` object, exactly what the picker printed:
-`perspective`, `reference`, `line`, `escalation`, `finishing_tasks`, later
-`role` and `bump`. Those keys hold for every theme; only their values are the
-theme's. A judged entry goes once every value in its `picks` appears under the
-same key in a later entry.
+`perspective` and `reference`. Those keys hold for every theme; only their
+values are the theme's.
 
 Nothing is lost: its verdict and feedback reached the scores and `weeks` in the
-run that judged it. A history never holds more entries than its theme has
-values, plus the week's entries waiting to be judged. `ntm:style`, the history
-template and `references/theme-files.md` take the `picks` shape in the picker's
-history slice.
+run that judged it. A history holds only the entries since the last run, about
+16 in a normal week.
 
 ## When it runs
 
@@ -169,15 +164,15 @@ themes'.
 An estimate, sized from a theme in daily use. In a normal week's run the model
 reads:
 
-| What                              | Size                                        |
-| --------------------------------- | ------------------------------------------- |
-| The history, fetched whole        | 30 KB: 250 bytes an entry, 100 kept, 16 new |
-| The options file                  | 7 KB in, 7 KB back out                      |
-| The week's tasks, with comments   | Up to 30 KB: 16 tasks at 1 to 2 KB          |
-| `%Settings` and the document list | About 1 KB                                  |
-| All of it                         | About 75 KB                                 |
+| What                              | Size                               |
+| --------------------------------- | ---------------------------------- |
+| The history, fetched whole        | 4 KB: 250 bytes an entry, 16 new   |
+| The options file                  | 7 KB in, 7 KB back out             |
+| The week's tasks, with comments   | Up to 30 KB: 16 tasks at 1 to 2 KB |
+| `%Settings` and the document list | About 1 KB                         |
+| All of it                         | About 50 KB                        |
 
-At about 3 bytes a token, that is about 25,000 tokens a week, mostly reading,
+At about 3 bytes a token, that is about 17,000 tokens a week, mostly reading,
 spent in its own job on Sunday morning. It is less when a day's reminders name
 the same tasks, as they mostly do. The script handles every number, line count,
 checksum and the pruning without the model reading them.
@@ -203,21 +198,19 @@ numbers for both the recalculation and the theme builder
 | The command | A method per thing it does; named with the skill                 |
 
 `start`, for the theme builder, gives a new theme its first numbers with no
-history: weights from lines, the speaker rate from those weights, square-root
-kind weights, every score 0, the checksums and an empty `weeks`. `update`, in
-the Sunday morning job, takes in the verdicts, recounts changed files, moves the
-bump rate and prunes. `report` writes the weekly theme report.
+history: weights from lines, the speaker rate from those weights, and the
+checksums. `update`, in the Sunday morning job, takes in the verdicts, recounts
+changed files, moves the bump rate and prunes. `report` writes the weekly theme
+report.
 
-`Theme` and `History` are shared with the picker, one class each, in `theme.py`,
-beside the schema in the style skill's picker folder; `History` comes with the
-picker's history slice. The picker and `recalculate.py` import `theme.py`, and
+`Theme` is shared with the picker, in `theme.py`, beside the schema in the style
+skill's picker folder. The picker and `recalculate.py` import `theme.py`, and
 the theme builder runs `recalculate.py start`.
 
 ## The build order
 
 PRs near 400 lines that each run, tested in the picker's style. The first is
-also what the theme builder needs, so it comes first; the rest follow the
-picker's history slice.
+also what the theme builder needs, so it comes first; the rest follow.
 
 1. Weights, the speaker rate and checksums from the entry files, written into
    the options file.

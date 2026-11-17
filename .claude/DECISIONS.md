@@ -196,8 +196,9 @@ rules' "Explaining how ntm works" section covers it.
 
 ### The 0.5.0 update note
 
-It lands last, before release. It offers the theme builder and reads the user's
-current theme to pre-fill it.
+It lands last, before release. No step is an offer. The theme builder starts
+from the user's 0.4 theme and answers its own questions from it, and the new
+theme is written over the old `%Theme` and `%Message-history`.
 
 ### The theme builder
 

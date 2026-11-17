@@ -79,14 +79,14 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_a_missing_options_flag_fails_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
-                parser().parse_args(["hook"])
+                parser().parse_args(["pick"])
 
         why = "the following arguments are required: --options"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["hook", "--options", str(fixtures.EVEN), "--seed", "seven"]
+        args = ["pick", "--options", str(fixtures.EVEN), "--seed", "seven"]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

@@ -18,7 +18,7 @@ class Picker:
 def parser():
     command_line = argparse.ArgumentParser(exit_on_error=False)
     subcommands = command_line.add_subparsers(required=True)
-    subcommand = subcommands.add_parser("hook", exit_on_error=False)
+    subcommand = subcommands.add_parser("pick", exit_on_error=False)
     subcommand.add_argument("--options", required=True)
     subcommand.add_argument("--seed", type=int)
     subcommand.add_argument(

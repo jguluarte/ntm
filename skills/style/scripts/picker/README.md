@@ -6,11 +6,11 @@ options from different pools of a theme's options file, each at its chance.
 and jsonschema.
 
 ```
-python3 picker.py hook --options <file> [--seed <number>]
-python3 picker.py hook --options <file> --chances
+python3 picker.py pick --options <file> [--seed <number>]
+python3 picker.py pick --options <file> --chances
 ```
 
-The same `--seed` draws the same picks. `hook` prints the two options it drew;
+The same `--seed` draws the same picks. `pick` prints the two options it drew;
 `--chances` prints each perspective instead, with its weight, score and chance:
 
 ```

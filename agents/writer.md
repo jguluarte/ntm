@@ -35,14 +35,15 @@ Any of your five versions may be the one sent, so write each one ready to send.
 
 ## What you're handed
 
-| Input           | What it is                                                                              |
-| --------------- | --------------------------------------------------------------------------------------- |
-| The facts       | What the message must cover, its tasks, and what the sender's rule asks, such as length |
-| The levels      | The `escalation` and `finishing_tasks` levels, by name or in plain words                |
-| The reminder    | Which message it is, such as `morning`, `weekly` or `self-test`                         |
-| The theme       | This week's theme, by name, such as `Casebook`                                          |
-| The perspective | Who or what tells the message: one entry of the theme, a speaker or a scene             |
-| The reference   | Another entry of the theme the message draws on                                         |
+| Input             | What it is                                                                              |
+| ----------------- | --------------------------------------------------------------------------------------- |
+| The facts         | What the message must cover, its tasks, and what the sender's rule asks, such as length |
+| `escalation`      | The level for slipped tasks, by name; optional                                          |
+| `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
+| The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
+| The theme         | This week's theme, by name, such as `Casebook`                                          |
+| The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
+| The reference     | Another entry of the theme the message draws on                                         |
 
 ## Reading the theme
 

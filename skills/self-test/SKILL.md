@@ -4,8 +4,8 @@ description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a throwaway
-    task, and write and read a throwaway database, then clean up and have the
-    messenger agent send a success message. Each step's result is shown as it
+    task, and write and read a throwaway database, then clean up and send a
+    success message in the user's style. Each step's result is shown as it
     passes or fails. The first thing to run after installing ntm and ntm-user
     ("test ntm", "run the self test", "is everything wired up?"), and the smoke
     test for a backend the user described themselves.
@@ -17,8 +17,7 @@ A test that this user's setup is complete, and that their task list can do the
 core interactions every backend must support, on a task and a database made for
 the purpose. Run it in a new chat after installing `ntm-user`, and again after
 `ntm-user` is rebuilt. Never run it unasked: a run writes to the task list, and
-the messenger agent sends a push. Once the user starts it, run it without
-asking.
+sends a push. Once the user starts it, run it without asking.
 
 ## Usage
 
@@ -45,9 +44,14 @@ Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 ### 2. What setup made
 
 The step passes when setup made everything it was supposed to: every database
-`ntm-user:backend` says where it lives opens, and every label under Labels in
-`%Settings` is on the task list, by its name there. Name each one that's
-missing.
+under Databases in `%Settings` opens, as do this week's `%Theme` and
+`%Message-history`, and every label under Labels in `%Settings` is on the task
+list, by its name there. Name each one that's missing.
+
+When `%Settings` names no This week's theme yet, the user hasn't finished their
+first theme, and that isn't a failure: the theme's databases don't count against
+the step, and its line says there's no theme yet, and that finishing it with
+`/ntm:theme-builder` fills it in.
 
 Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
 skills it runs. With Planning in `%Settings`, expect the weekly setup and the
@@ -121,10 +125,21 @@ behind didn't pass.
 
 ### 13. Send the success message
 
-Only when every step before it passed. Ask the messenger agent for a `freeform`
-message: `ntm is ready; the self-test passed`. It passes when the messenger
-returns `Sent:`, or a delivery block, which you show the user. Any other return
-fails the step.
+Only when every step before it passed. Send it as the core rules' Sending a
+message in the user's style says. Its one fact is
+`ntm is ready; the self-test passed`. It passes when `ntm-user:notify` returns
+`Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
+other return fails the step.
+
+The picker has to work. When `ntm:style` keeps a failure line from
+`ntm:refresh-picks`, send nothing: the step fails, with that line as its why,
+saying what is wrong. A theme with no `%Theme-options` isn't built for the
+picker, and that isn't a failure: the step passes, and its line says the theme
+has no options file.
+
+With no theme yet, send the fact as it is with `ntm-user:notify`, without
+`ntm:style`. The step passes on the same returns, and its line says the message
+is plain until the user finishes their theme with `/ntm:theme-builder`.
 
 ## Result
 

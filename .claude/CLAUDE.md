@@ -47,8 +47,9 @@ his installed copy.
   into `main`, it's a merge commit. Merged branches auto-delete.
 - Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.5`
   in with a merge commit.
-- Versions are set at merge; PR branches don't change them. He doesn't want
-  patch version bumps.
+- Versions are set at merge; PR branches don't change them. No patch bump for
+  each change merged into the integration branch; a patch version is planned,
+  like a release.
 
 ## Commits
 
@@ -61,7 +62,9 @@ his installed copy.
 
 ## Lint
 
-80 columns everywhere: prose, frontmatter, fenced blocks. Indents are 4 spaces.
+80 columns everywhere: prose, frontmatter, fenced blocks. Indents are 4 spaces,
+except in YAML files, which use 2: Prettier formats them that way, and
+`make lint` holds every tracked YAML file to `yamllint --strict`.
 `tools/reflow.py` stays outside the repo. Tables and unbreakable text (a URL, a
 code span) are exempt. Every line has a hard cap of 120 columns, tables and
 unbreakable text included, checked by `make lint`. A long `description:` is a

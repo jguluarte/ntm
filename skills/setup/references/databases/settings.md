@@ -1,27 +1,12 @@
 # Settings
 
-<!--
-The values the user chose in setup. Setup writes this database from this
-template, with the user's answers, for the features they picked. The user can
-edit, delete or add any part; anything they add goes in its own subsection, in
-their words. These comments are for the agent, and are never written into the
-user's database.
--->
-
 ## About you
-
-<!--
-Timezone is an IANA name. It decides what today is for the user, and their jobs
-run in it.
--->
 
 - Timezone: America/Los_Angeles
 
 ## Labels
 
-<!--
-Each label ntm uses, by ntm's name, with its name on the user's task list.
--->
+When you rename a label on your task list, change its name here too.
 
 | Label                 | Name on your task list |
 | --------------------- | ---------------------- |
@@ -31,13 +16,17 @@ Each label ntm uses, by ntm's name, with its name on the user's task list.
 | `$has-amazon-alert`   | `has-amazon-alert`     |
 | `$amazon-unavailable` | `amazon-unavailable`   |
 
-## Planning
+## Databases
 
-<!--
-Planning never picks a task with one of the labels to exclude from
-auto-scheduling. A `$` name there means the user's own name for that label, from
-Labels.
--->
+When you rename a database on your task list, change its name here too.
+
+| Database         | Name on your task list |
+| ---------------- | ---------------------- |
+| `%Message-rules` | `Message rules`        |
+| `%Paused-dates`  | `Paused dates`         |
+| `%Estimator-log` | `Estimator log`        |
+
+## Planning
 
 - Days to plan: weekdays
 - Tasks a day: one
@@ -49,13 +38,6 @@ Labels.
 - `$pending-shipment`
 
 ## Shopping
-
-<!--
-Country is where the stores must deliver, and Currency is the one every price is
-in. Amazon interface is the browser ntm uses to keep the user's Amazon price
-alerts: Claude's built-in browser, or their own browser through the Claude
-extension. `off` when they want no Amazon price alerts.
--->
 
 ### Country
 
@@ -71,11 +53,7 @@ Claude's built-in browser
 
 ## Notifications
 
-<!--
-How the user wants to be notified, in their words, such as quiet hours. Their
-channel lives in `ntm-user:notify`, which reads its Pushover keys here when it
-sends. Write Pushover keys only for a Pushover user, with their keys in full.
--->
+<!-- Write Pushover keys only for a Pushover user, with their keys in full. -->
 
 ### Pushover keys
 
@@ -83,3 +61,19 @@ sends. Write Pushover keys only for a Pushover user, with their keys in full.
 | --------- | ------------- |
 | App token | `<app token>` |
 | User key  | `<user key>`  |
+
+## Themes
+
+<!-- Each theme by its root's title, such as `Casebook.yaml`; the theme's name
+is that title without `.yaml`. Leave both empty: `ntm:theme-builder` fills them
+in when it switches a theme on. -->
+
+- This week's theme: <theme's root>
+
+### All themes
+
+- <theme's root>
+
+## ntm version
+
+- Last synced: <ntm's version>

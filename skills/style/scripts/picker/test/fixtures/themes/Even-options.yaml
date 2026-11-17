@@ -1,0 +1,15 @@
+pools:
+  scenes:
+    roles: [reference]
+    entries:
+      dawn:
+      noon:
+      dusk:
+  characters:
+    roles: [speaker]
+    entries:
+      host:
+  narrators:
+    roles: [speaker]
+    entries:
+      chorus:

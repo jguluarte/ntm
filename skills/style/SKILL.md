@@ -14,8 +14,7 @@ description: >-
 
 The user's style is their `%Theme`, the database that says how every message to
 them is written. This skill reads `%Theme` and `%Message-history`. The writer
-agent reads only the parts of `%Theme` this skill points it to, and never
-`%Message-history`.
+agent reads the parts of `%Theme` a message needs, and never `%Message-history`.
 
 ## Setup
 
@@ -35,24 +34,16 @@ anything else its rule asks of the message, such as tone or length.
 
 ### 1. Pick
 
-Pick one hook, the idea this message builds on: one entry of the theme, drawn by
-the picker as The picker, below, says.
+The message is built on one pick: a perspective and a reference, two entries of
+the theme. The perspective is who or what tells the message: a speaker, or a
+piece of the world that tells it, such as a scene. The reference is another
+piece of the world it draws on.
 
-The hook comes back as `<kind>/<slug>`. Its entry is under `<kind>`, keyed
-`<slug>`, in the file the `<kind>` pool names in `%Theme-options`.
-
-When the picker fails, pick the hook yourself: one motif, or one line from the
-theme's examples. Take one that no recent `%Message-history` entry used, from
-each entry's `hook`, or for an older entry, judging from its `line` which motif
-it used. Recent entries are those from the last two weeks, or from the span the
-theme's `Repeat limit:` line gives, when it has one.
-
-Pick a speaker, the person in the theme who says the message, only when the
-theme names people who talk.
-
-The theme material is what the writer gets of the theme: its guidance, which is
-every part that says how to write (its registers, its levels, its flow), and the
-entries for the hook and the speaker.
+Take the first pick from the theme's picks list, `<Theme>-picks`, such as
+`Casebook-picks`, and save the list without it. The list is a YAML list, each
+item a `perspective:` and a `reference:`. When there is no list, or it's empty,
+run the picker, as The picker, below, says. When the picker fails, pick both
+yourself from the theme, from different kinds.
 
 ### 2. Set the tone
 
@@ -88,10 +79,10 @@ rows' values.
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the tone, the hook, the
-speaker, and the theme material, as text or as exactly which parts of `%Theme`
-to read. It returns 5 versions, each with a title, a message, and a probability
-from 0 to 1 of how likely a reader would be to predict it.
+Start the `ntm:writer` agent, and hand it the facts, the tone, the theme's name,
+and the perspective and the reference, each as `<kind>/<slug>`. It reads the
+theme itself. It returns 5 versions, each with a title, a message, and a
+probability from 0 to 1 of how likely a reader would be to predict it.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
@@ -100,16 +91,16 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 Take the version with the lowest probability whose first five words aren't the
 `opening` of a recent entry, or the start of an older entry's `line`. Its title
-and message are what gets sent, and step 1's hook and speaker go into its entry.
+and message are what gets sent, and step 1's pick goes into its entry.
 
 ## The picker
 
-The picker is a script in this skill that draws a hook from the theme's options
+The picker is a script in this skill that draws a pick from the theme's options
 file. It reads that file from a path and touches no backend, and
 `%Theme-options` lives in the user's backend, so hand it over this way.
 
-A theme without `%Theme-options` isn't built for the picker: pick the hook
-yourself, as step 1 says, and keep no line. That isn't a failure.
+A theme without `%Theme-options` isn't built for the picker: pick both yourself,
+as step 1 says, and keep no line. That isn't a failure.
 
 Read `%Theme-options` and take the text of its `yaml` block. Write that text to
 a file named for the theme, such as `Casebook-options.yaml`, in this session's
@@ -117,11 +108,16 @@ working folder, exactly as read: never retype it from memory or summarize it.
 Then run the picker on that file:
 
 ```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py hook \
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/picker.py pick \
     --options <the file>
 ```
 
-It prints one line: `hook: <kind>/<slug>`, the hook it drew.
+It prints two lines, the pick it drew:
+
+```
+perspective: cast/chief
+reference: scenes/fog
+```
 
 It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
 this runs: without them, the script stops with a Python error. Any other output,
@@ -137,7 +133,7 @@ read. An entry is one JSON line, written compact, with no spaces or line breaks
 added, and only the fields that have a value:
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"morning","type":"morning","hook":"scenes/dawn"}
+{"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
@@ -145,9 +141,8 @@ added, and only the fields that have a value:
   `weekly`, or `self-test`
 - `type`: the message's type from step 2, exactly as built, such as
   `evening,done,win`, only when it has one
-- `hook`: what step 1 picked, as the picker printed it, such as `scenes/dawn`,
-  or by its name when you picked it yourself, such as `launch`
-- `speaker`: who step 1 picked, only when it picked one
+- `picks`: step 1's `perspective` and `reference`, as the picker printed them,
+  or by name when you picked them yourself
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has
   one, such as `"tasks":[{"id":"ABC-12","planned":"2026-11-13"}]`

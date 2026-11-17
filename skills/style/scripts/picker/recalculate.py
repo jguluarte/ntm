@@ -10,6 +10,10 @@ from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
 LEAST_SPEAKER_RATE = 0.6
+SCORE_CHANGE_BY_VERDICT = {"acted": 0.1, "ignored": -0.1}
+SCORE_CHANGE_BY_FEEDBACK = {"keep": 0.25, "stale": -0.5}
+LOWEST_SCORE = -2
+HIGHEST_SCORE = 1
 
 SENT = "sent"
 PICKS = "picks"
@@ -18,7 +22,7 @@ FEEDBACK = "feedback"
 
 
 class Recalculation:
-    def __init__(self, theme, entry_files):
+    def __init__(self, theme, entry_files=()):
         self.theme = theme
         self.entry_files = entry_files
 
@@ -36,6 +40,10 @@ class Recalculation:
         for entry_file in self.entry_files:
             self.theme.set_checksum(entry_file.name, entry_file.checksum)
 
+    def adjust_scores(self, messages):
+        for message in messages:
+            self._adjust_scores_from(message)
+
     def save_options_file(self):
         self.theme.save(self.theme.path)
 
@@ -49,6 +57,13 @@ class Recalculation:
     def _total_weight_of(self, role):
         entry_names = self.theme.entries_with_role(role)
         return sum(self.theme.weight_of(name) for name in entry_names)
+
+    def _adjust_scores_from(self, message):
+        score_change = self._score_change_for(message)
+        for entry_name in message.picks:
+            if self.theme.has_entry(entry_name):
+                score = self.theme.score_of(entry_name) + score_change
+                self.theme.set_score(entry_name, self._bounded(score))
 
     @staticmethod
     def _weight_for(line_count):
@@ -64,6 +79,17 @@ class Recalculation:
 
         share = speakers / (speakers + other_perspectives)
         return round(max(share, LEAST_SPEAKER_RATE), 2)
+
+    @staticmethod
+    def _score_change_for(message):
+        verdict_change = SCORE_CHANGE_BY_VERDICT.get(message.verdict, 0)
+        feedback_change = SCORE_CHANGE_BY_FEEDBACK.get(message.feedback, 0)
+        return verdict_change + feedback_change
+
+    @staticmethod
+    def _bounded(score):
+        bounded_score = min(max(score, LOWEST_SCORE), HIGHEST_SCORE)
+        return round(bounded_score, 2)
 
 
 @dataclass(frozen=True)

@@ -11,6 +11,9 @@ from recalculate import (
 )
 from theme import EntryFile, Theme, UnknownEntryFile
 
+SENT = datetime(2026, 11, 13, 8, 45)
+PICKS = ("characters/detective", "scenes/stakeout")
+
 
 class RecalculationTest(unittest.TestCase):
     def test_weighing_gives_each_entry_its_weight_from_its_lines(self):
@@ -83,6 +86,120 @@ class RecalculationTest(unittest.TestCase):
 
         expected = "no pool uses Casebook-characters.yaml"
         self.assertEqual(expected, str(raised.exception))
+
+
+class ScoresTest(unittest.TestCase):
+    def test_an_acted_on_message_raises_both_its_picks(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict="acted", feedback=None)
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        stakeout_score = theme.score_of("scenes/stakeout")
+        self.assertAlmostEqual(0.2 + 0.1, detective_score)
+        self.assertAlmostEqual(0.1 + 0.1, stakeout_score)
+
+    def test_an_ignored_message_lowers_both_its_picks(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict="ignored", feedback=None)
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        stakeout_score = theme.score_of("scenes/stakeout")
+        self.assertAlmostEqual(0.2 - 0.1, detective_score)
+        self.assertAlmostEqual(0.1 - 0.1, stakeout_score)
+
+    def test_a_message_the_user_keeps_raises_both_its_picks(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict=None, feedback="keep")
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        stakeout_score = theme.score_of("scenes/stakeout")
+        self.assertAlmostEqual(0.2 + 0.25, detective_score)
+        self.assertAlmostEqual(0.1 + 0.25, stakeout_score)
+
+    def test_a_message_the_user_calls_stale_lowers_both_its_picks(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict=None, feedback="stale")
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        stakeout_score = theme.score_of("scenes/stakeout")
+        self.assertAlmostEqual(0.2 - 0.5, detective_score)
+        self.assertAlmostEqual(0.1 - 0.5, stakeout_score)
+
+    def test_a_message_with_no_verdict_or_feedback_moves_nothing(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict=None, feedback=None)
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        stakeout_score = theme.score_of("scenes/stakeout")
+        self.assertEqual(0.2, detective_score)
+        self.assertEqual(0.1, stakeout_score)
+
+    def test_a_pick_the_options_file_no_longer_has_is_skipped(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        picks = ("characters/detective", "scenes/fog")
+        message = Message(SENT, picks, verdict="acted", feedback=None)
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message])
+
+        detective_score = theme.score_of("characters/detective")
+        self.assertAlmostEqual(0.2 + 0.1, detective_score)
+        self.assertFalse(theme.has_entry("scenes/fog"))
+
+    def test_a_score_rises_no_higher_than_1(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict="acted", feedback="keep")
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message] * 4)
+
+        self.assertEqual(1, theme.score_of("characters/detective"))
+
+    def test_a_score_sinks_no_lower_than_minus_2(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        message = Message(SENT, PICKS, verdict="ignored", feedback="stale")
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores([message] * 4)
+
+        self.assertEqual(-2, theme.score_of("scenes/stakeout"))
+
+    def test_a_week_of_messages_leaves_every_reference_drawable(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        saved_options = Path(folder) / "Casebook-options.yaml"
+        theme = Theme(fixtures.casebook.OPTIONS)
+        history = MessageHistory(fixtures.casebook.MESSAGE_HISTORY)
+        messages = history.sent_since(date(2026, 11, 9))
+        recalculation = Recalculation(theme)
+
+        recalculation.adjust_scores(messages)
+        theme.save(saved_options)
+
+        adjusted_theme = Theme(saved_options)
+        lottery = adjusted_theme.reference_lottery_outside("characters")
+        chances = lottery.chance_by_candidate.items()
+        chance_by_name = {
+            option.name: round(chance, 2) for option, chance in chances
+        }
+
+        self.assertEqual(-2, adjusted_theme.score_of("shared_lines/any_time"))
+        expected = {"shared_lines/any_time": 0.09, "scenes/stakeout": 0.91}
+        self.assertEqual(expected, chance_by_name)
 
 
 class MessageHistoryTest(unittest.TestCase):

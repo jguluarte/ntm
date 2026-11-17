@@ -31,11 +31,15 @@ files sort together:
 | `<Theme>-<descriptor>.yaml` | An entry file, named for what it holds, such as scenes |
 | `<Theme>-terminology.md`    | Words the writer would otherwise get wrong; optional   |
 | `<Theme>-message-history`   | Each message sent in the theme, and how it landed      |
+| `<Theme>-picks`             | The next picks, drawn by `ntm:refresh-picks`           |
 
 Each file is a database: a page of text in the user's backend, found by its
-title, which is the file's name. For a Linear user, each file is one Linear
-document. A YAML file's text sits in one fenced `yaml` block in its document, so
-a backend that stores markdown keeps it intact.
+title. A theme's name is its root's title without `.yaml`: `Casebook`. A YAML or
+markdown file is titled with its file name, extension included, such as
+`Casebook-options.yaml`. The message history and the picks list have no
+extension: `Casebook-message-history`, `Casebook-picks`. For a Linear user, each
+file is one Linear document. A YAML file's text sits in one fenced `yaml` block
+in its document, so a backend that stores markdown keeps it intact.
 
 The run fetches the text from the backend and hands it to the picker, which
 touches no backend.

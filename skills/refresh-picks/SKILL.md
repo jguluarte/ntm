@@ -25,9 +25,9 @@ Run `/ntm:ready-check` if needed (if it isn't already loaded in the context).
 The theme is the one `ntm:theme-builder` built, when it runs this skill, or else
 this week's theme, as `%Settings` names it.
 
-Then read the theme's `%Theme-options`, such as `Casebook-options`. When there
-is none, the theme isn't built for the picker: end the run with
-`Nothing to refresh: no <Theme>-options`.
+Then read the theme's `%Theme-options`, such as `Casebook-options.yaml`. When
+there is none, the theme isn't built for the picker: end the run with
+`Nothing to refresh: no <Theme>-options.yaml`.
 
 ## Rate the past week
 
@@ -124,11 +124,11 @@ list there, or creating `%Theme-picks` when there is none.
 
 For a job, return `Refreshed <Theme>-picks: 25 picks`, such as
 `Refreshed Casebook-picks: 25 picks`. When there's no `%Theme-options`,
-`Nothing to refresh: no <Theme>-options`.
+`Nothing to refresh: no <Theme>-options.yaml`.
 
 For the weekly setup job, two lines come first, or the failure line in their
 place: `Rated <Theme>-message-history: <n> acted, <n> ignored`, then
-`Adjusted <Theme>-options`. With nothing to rate, they're one line,
+`Adjusted <Theme>-options.yaml`. With nothing to rate, they're one line,
 `Nothing to rate`.
 
 The picker needs Python 3 with PyYAML and jsonschema, and nothing guarantees

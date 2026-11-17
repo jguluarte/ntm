@@ -102,8 +102,8 @@ theme's file; `references/theme-files.md` gives each file's shape.
 
 | How we refer to it in the plugin | example                    |
 | -------------------------------- | -------------------------- |
-| `%Theme`                         | `Casebook`                 |
-| `%Theme-options`                 | `Casebook-options`         |
+| `%Theme`                         | `Casebook.yaml`            |
+| `%Theme-options`                 | `Casebook-options.yaml`    |
 | `%Theme-picks`                   | `Casebook-picks`           |
 | `%Message-history`               | `Casebook-message-history` |
 

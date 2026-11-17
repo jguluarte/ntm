@@ -48,8 +48,9 @@ Any of your five versions may be the one sent, so write each one ready to send.
 ## Reading the theme
 
 The theme is a set of documents in the user's backend, each found by its title.
-Read the root, titled with the theme's name: the guide on how to write in it.
-Read each file its `files` lists under `fully_read`.
+Read the root, titled with the theme's name and `.yaml`, such as
+`Casebook.yaml`: the guide on how to write in it. Read each file its `files`
+lists under `fully_read`.
 
 The perspective and the reference each read `<kind>/<slug>`. The entry is under
 `<kind>`, keyed `<slug>`, in the file the `<kind>` pool names in

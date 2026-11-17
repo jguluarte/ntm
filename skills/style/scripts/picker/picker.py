@@ -12,6 +12,8 @@ class Picker:
     def pick(self):
         perspective = self.theme.draw_perspective()
         reference = self.theme.draw_reference_outside(perspective.kind)
+        self.theme.rest(perspective)
+        self.theme.rest(reference)
         return perspective, reference
 
 
@@ -32,12 +34,13 @@ def pick_text(perspective, reference):
 
 
 def chances_table(lottery):
-    rows = [("perspective", "weight", "score", "chance")]
+    rows = [("perspective", "weight", "score", "rest", "chance")]
     for option, chance in lottery.chance_by_candidate.items():
         weight = f"{option.weight:g}"
         score = f"{option.score:g}"
+        rest = f"{option.rest:.2f}"
         rounded_chance = f"{chance:.2f}"
-        rows.append((option.name, weight, score, rounded_chance))
+        rows.append((option.name, weight, score, rest, rounded_chance))
 
     return _table(rows)
 

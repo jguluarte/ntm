@@ -213,7 +213,7 @@ its checksum differs.
 | Field                 | What it is                                                                                   |
 | --------------------- | -------------------------------------------------------------------------------------------- |
 | `checksums`           | Each entry file's SHA-256, over its text as stored; shortened above                          |
-| `half_life_days`      | The days until a picked entry wins back half the chance it lost; per pool                    |
+| `half_life_days`      | The days until a picked entry wins back half the score its pick took; per pool               |
 | `speaker_rate`        | How often a message names a speaker, from 0 to 1; one for the theme                          |
 | `weight`              | How likely the entry is against other hooks: 1 without lines or riffs, less the fewer it has |
 | `line_half_life_days` | The days until a used line wins back half the chance it lost; per entry with lines or riffs  |

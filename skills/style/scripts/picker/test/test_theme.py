@@ -67,6 +67,36 @@ class ChanceTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
 
+class RestTest(unittest.TestCase):
+    def test_an_option_never_used_has_its_whole_chance(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        chances = theme.reference_lottery_outside("characters").chance_by_name
+
+        self.assertAlmostEqual(0.81, chances["scenes/stakeout"], places=2)
+
+    def test_an_option_just_used_rests_and_its_chance_drops(self):
+        days_since_use = {"scenes/stakeout": 0}
+        theme = Theme(fixtures.casebook.OPTIONS, days_since_use=days_since_use)
+        chances = theme.reference_lottery_outside("characters").chance_by_name
+
+        self.assertAlmostEqual(0.52, chances["scenes/stakeout"], places=2)
+
+    def test_an_option_wins_back_half_its_rest_over_its_pools_half_life(self):
+        scenes_half_life_days = 6
+        days_since_use = {"scenes/stakeout": scenes_half_life_days}
+        theme = Theme(fixtures.casebook.OPTIONS, days_since_use=days_since_use)
+        chances = theme.reference_lottery_outside("characters").chance_by_name
+
+        self.assertAlmostEqual(0.68, chances["scenes/stakeout"], places=2)
+
+    def test_a_pool_without_a_half_life_wins_back_half_its_rest_in_a_day(self):
+        days_since_use = {"scenes/noon": 1}
+        theme = Theme(fixtures.WEIGHTED, days_since_use=days_since_use)
+        chances = theme.perspective_lottery().chance_by_name
+
+        self.assertAlmostEqual(0.33, chances["scenes/noon"], places=2)
+
+
 class DrawTest(unittest.TestCase):
     def test_a_draw_returns_the_only_option_weighing_above_0(self):
         theme = Theme(fixtures.MOSTLY_WEIGHTLESS)

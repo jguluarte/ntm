@@ -30,6 +30,15 @@ class PickTest(unittest.TestCase):
 
         self.assertGreater(len(picks), 1)
 
+    def test_a_pick_rests_its_reference_before_the_next_pick(self):
+        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        picker = Picker(theme)
+        perspective, reference = picker.pick()
+        lottery = theme.reference_lottery_outside(perspective.kind)
+        chance = lottery.chance_by_name[reference.name]
+
+        self.assertAlmostEqual(0.52, chance, places=2)
+
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
@@ -46,17 +55,18 @@ class PickTextTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_perspective_shows_weight_score_and_rounded_chance(self):
-        theme = Theme(fixtures.WEIGHTED)
+    def test_each_perspective_shows_weight_score_rest_and_rounded_chance(self):
+        days_since_use = {"scenes/noon": 0}
+        theme = Theme(fixtures.WEIGHTED, days_since_use=days_since_use)
         lottery = theme.perspective_lottery()
         rows = chances_table(lottery).splitlines()
 
         expected = [
-            "perspective      weight  score  chance",
-            "scenes/dawn         0.5      0    0.12",
-            "scenes/noon           1      1    0.50",
-            "scenes/dusk           0      0    0.00",
-            "characters/host       3     -1    0.38",
+            "perspective      weight  score  rest  chance",
+            "scenes/dawn         0.5      0  0.00    0.20",
+            "scenes/noon           1      1  2.00    0.20",
+            "scenes/dusk           0      0  0.00    0.00",
+            "characters/host       3     -1  0.00    0.60",
         ]
         self.assertEqual(expected, rows)
 

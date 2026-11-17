@@ -1,4 +1,5 @@
 import hashlib
+import math
 import random
 from dataclasses import dataclass
 from pathlib import Path
@@ -14,12 +15,17 @@ DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
 FILE = "file"
 ROLES = "roles"
+HALF_LIFE_DAYS = "half_life_days"
+DEFAULT_HALF_LIFE_DAYS = 1
 ENTRIES_BY_SLUG = "entries"
 WEIGHT = "weight"
 SCORE = "score"
 PERSPECTIVE_ROLE = "perspective"
 REFERENCE_ROLE = "reference"
 SPEAKER_ROLE = "speaker"
+
+REST_AT_USE = 2
+NEVER_USED = math.inf
 
 ABOUT = "about"
 LINES = "lines"
@@ -52,21 +58,28 @@ class Option:
     slug: str
     weight: float
     score: float
+    half_life_days: float
+    days_since_use: float
 
     @classmethod
-    def from_entry(cls, kind, slug, entry):
+    def from_entry(cls, kind, slug, entry, half_life_days, days_since_use):
         fields = entry or {}
         weight = fields.get(WEIGHT, 1)
         score = fields.get(SCORE, 0)
-        return cls(kind, slug, weight, score)
+        return cls(kind, slug, weight, score, half_life_days, days_since_use)
 
     @property
     def name(self):
         return f"{self.kind}/{self.slug}"
 
     @property
+    def rest(self):
+        half_lives = self.days_since_use / self.half_life_days
+        return REST_AT_USE / 2 ** half_lives
+
+    @property
     def draw_weight(self):
-        return self.weight * 2 ** self.score
+        return self.weight * 2 ** (self.score - self.rest)
 
 
 class Lottery:
@@ -109,27 +122,28 @@ _OptionsDumper.add_representer(type(None), _OptionsDumper.represent_bare_entry)
 
 
 class Theme:
-    def __init__(self, path, seed=None):
+    def __init__(self, path, seed=None, days_since_use=None):
         self.path = path
         self._seeds = random.Random(seed)
         self._fields = self._load(path)
         self._validate(self._fields)
         self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
-        self._speakers = self._read_options(SPEAKER_ROLE)
-        self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
-        self._references = self._read_options(REFERENCE_ROLE)
+        self._days_since_use = dict(days_since_use or {})
 
     def perspective_lottery(self):
         speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+        speakers = self._read_options(SPEAKER_ROLE)
+        other_perspectives = self._read_options(PERSPECTIVE_ROLE)
         draw_weights = {
-            **self._scaled_to(speaker_rate, self._speakers),
-            **self._scaled_to(1 - speaker_rate, self._other_perspectives),
+            **self._scaled_to(speaker_rate, speakers),
+            **self._scaled_to(1 - speaker_rate, other_perspectives),
         }
         return self._lottery_of(draw_weights)
 
     def reference_lottery_outside(self, kind):
+        every_reference = self._read_options(REFERENCE_ROLE)
         references = [
-            option for option in self._references if option.kind != kind
+            option for option in every_reference if option.kind != kind
         ]
 
         if not references:
@@ -143,6 +157,9 @@ class Theme:
 
     def draw_reference_outside(self, kind):
         return self.reference_lottery_outside(kind).draw()
+
+    def rest(self, option):
+        self._days_since_use[option.name] = 0
 
     def entries_from(self, file_name):
         names = []
@@ -186,9 +203,21 @@ class Theme:
 
         for kind, pool in self._fields[POOLS_BY_KIND].items():
             if role in pool[ROLES]:
-                for slug, entry in pool[ENTRIES_BY_SLUG].items():
-                    option = Option.from_entry(kind, slug, entry)
-                    options.append(option)
+                options += self._read_pool(kind, pool)
+
+        return options
+
+    def _read_pool(self, kind, pool):
+        half_life_days = pool.get(HALF_LIFE_DAYS, DEFAULT_HALF_LIFE_DAYS)
+        options = []
+
+        for slug, entry in pool[ENTRIES_BY_SLUG].items():
+            name = f"{kind}/{slug}"
+            days_since_use = self._days_since_use.get(name, NEVER_USED)
+            option = Option.from_entry(
+                kind, slug, entry, half_life_days, days_since_use,
+            )
+            options.append(option)
 
         return options
 

@@ -46,9 +46,9 @@ class PickTextTest(unittest.TestCase):
 
 
 class ChancesTableTest(unittest.TestCase):
-    def test_each_option_shows_weight_score_and_rounded_chance(self):
+    def test_each_perspective_shows_weight_score_and_rounded_chance(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.perspective_lottery
+        lottery = theme.perspective_lottery()
         rows = chances_table(lottery).splitlines()
 
         expected = [

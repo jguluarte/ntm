@@ -119,7 +119,6 @@ class Theme:
         self._other_perspectives = self._read_options(PERSPECTIVE_ROLE)
         self._references = self._read_options(REFERENCE_ROLE)
 
-    @property
     def perspective_lottery(self):
         speaker_rate = self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
         draw_weights = {
@@ -140,7 +139,7 @@ class Theme:
         return self._lottery_of(draw_weights)
 
     def draw_perspective(self):
-        return self.perspective_lottery.draw()
+        return self.perspective_lottery().draw()
 
     def draw_reference_outside(self, kind):
         return self.reference_lottery_outside(kind).draw()

@@ -12,7 +12,7 @@ from theme import (
 class PerspectiveTest(unittest.TestCase):
     def test_the_perspective_is_a_speaker_at_the_speaker_rate(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        chances = theme.perspective_lottery.chance_by_name
+        chances = theme.perspective_lottery().chance_by_name
 
         self.assertAlmostEqual(0.4, chances["characters/detective"])
         self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
@@ -46,7 +46,7 @@ class ReferenceTest(unittest.TestCase):
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
         theme = Theme(fixtures.WEIGHTED)
-        lottery = theme.perspective_lottery
+        lottery = theme.perspective_lottery()
 
         total_draw_weight = 0.5 + 2 + 0 + 1.5
         expected = {
@@ -61,7 +61,7 @@ class ChanceTest(unittest.TestCase):
         theme = Theme(fixtures.WEIGHTLESS)
 
         with self.assertRaises(MissingWeight) as raised:
-            theme.perspective_lottery
+            theme.perspective_lottery()
 
         expected = "every option weighs 0"
         self.assertEqual(expected, str(raised.exception))
@@ -79,7 +79,7 @@ class DrawTest(unittest.TestCase):
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
         theme = Theme(fixtures.casebook.OPTIONS)
-        lottery = theme.perspective_lottery
+        lottery = theme.perspective_lottery()
 
         expected = ["characters/detective", "scenes/stakeout"]
         self.assertEqual(expected, lottery.names)

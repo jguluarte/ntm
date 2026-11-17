@@ -17,6 +17,13 @@ class PerspectiveTest(unittest.TestCase):
         self.assertAlmostEqual(0.4, chances["characters/detective"])
         self.assertAlmostEqual(0.6, chances["scenes/stakeout"])
 
+    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
+        theme = Theme(fixtures.casebook.OPTIONS)
+        speaker_rate = theme.speaker_rate
+
+        expected = 0.4
+        self.assertEqual(expected, speaker_rate)
+
 
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
@@ -133,6 +140,13 @@ class EntryFilesTest(unittest.TestCase):
         expected = "no pool uses Even-scenes.yaml"
         self.assertEqual(expected, str(raised.exception))
 
+    def test_the_entries_in_a_role_are_those_of_every_pool_holding_it(self):
+        theme = Theme(fixtures.EVEN)
+        entries = theme.entries_with_role("speaker")
+
+        expected = ["characters/host", "narrators/chorus"]
+        self.assertEqual(expected, entries)
+
 
 class WeightsAndChecksumsTest(unittest.TestCase):
     def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
@@ -157,12 +171,14 @@ class SaveTest(unittest.TestCase):
         theme = Theme(fixtures.EVEN)
         theme.set_weight("scenes/noon", 0.5)
         theme.set_checksum("Even-scenes.yaml", "ab12")
+        theme.set_speaker_rate(0.25)
         theme.save(saved_options)
         text = saved_options.read_text(encoding="utf-8")
 
         expected = textwrap.dedent("""\
             checksums:
               Even-scenes.yaml: ab12
+            speaker_rate: 0.25
             pools:
               scenes:
                 roles: [reference]

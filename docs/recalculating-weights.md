@@ -60,16 +60,14 @@ the question.
 Plain words, then the formula. "The first formulas" were written for the
 picker's first draft; where they give a number, it is kept.
 
-| Number                | Where        | Changes               | Default             | Bounds     |
-| --------------------- | ------------ | --------------------- | ------------------- | ---------- |
-| `weight`              | Entry        | When its file changes | 1                   | 0 to 1     |
-| `score`               | Entry, pool  | Each week             | 0                   | -1 to 1    |
-| `half_life_days`      | Pool         | Each week             | None: no rest       | Above 0    |
-| `line_half_life_days` | Entry        | Each week             | None: no rest       | Above 0    |
-| `speaker_rate`        | Top level    | Only by hand          | 0.5                 | 0 to 1     |
-| `weight`              | Pool         | Each week             | Square root of size | Above 0    |
-| `bump_rate`           | `escalation` | Each week, with data  | 1.0; 0 with no bump | 0.1 to 0.9 |
-| `checksums`           | Top level    | When a file changes   | None                | None       |
+| Number         | Where        | Changes               | Default             | Bounds     |
+| -------------- | ------------ | --------------------- | ------------------- | ---------- |
+| `weight`       | Entry        | When its file changes | 1                   | 0 to 1     |
+| `score`        | Entry, pool  | Each week             | 0                   | -1 to 1    |
+| `speaker_rate` | Top level    | When a file changes   | 0.5                 | 0 to 1     |
+| `weight`       | Pool         | Each week             | Square root of size | Above 0    |
+| `bump_rate`    | `escalation` | Each week, with data  | 1.0; 0 with no bump | 0.1 to 0.9 |
+| `checksums`    | Top level    | When a file changes   | None                | None       |
 
 ### An entry's `weight`
 
@@ -86,23 +84,17 @@ decide it. A `keep` or `stale` steps by 0.3. The first formulas counted every
 message, and pruning drops old ones, so the score moves a step at a time
 instead. To decide: the 0.1 and the 0.3.
 
-### `half_life_days` and `line_half_life_days`
-
-The days until a picked entry, or a drawn line, wins back half the chance it
-lost: half the time it takes to work through the pool, or the entry's lines.
-`entries / (daily * share) / 2` and `lines / (daily * share) / 2`, from the
-first formulas: `daily` is messages a day, `share` the pool's or entry's part of
-the history's picks. With no history, `daily` is the user's reminders a day, or
-3, and shares come from the weights.
-
 ### The theme's `speaker_rate`
 
 How often the perspective is a speaker: one rate for the theme, and the speaker
 is drawn from all its speaker pools together. The rest of the time, the
 perspective is an option from a pool whose `roles` hold perspective. The rate is
-0.5 unless the theme's options file sets its own, and no run changes it. To
-decide: whether the recalculation moves it from how the user responds to
-speakers.
+the speakers' share of the weight, and at least 0.6 when the theme has speakers:
+`max(speakers / (speakers + other perspectives), 0.6)`, each side the sum of its
+entries' weights, rounded to two places. So the perspective is usually a
+speaker, and a theme with more speakers to offer has them more often still. A
+theme without speakers gets 0, and one without other perspectives gets 1. The
+recalculation works it out with the weights; it is never set by hand.
 
 ### A kind's `weight`
 
@@ -130,10 +122,10 @@ A theme that never presses on a good day, as the theme builder asks, has a
 Each entry file's SHA-256. Linear's document list gives each file's last-edited
 time without its text, so the run fetches an entry file only when it was edited
 since the options file was saved. When its checksum differs, the script
-recomputes what comes from that file: weights, half-lives and the kind's
-starting weight. An edit reaches the numbers at the next weekly run; until then
-the picker draws on the old ones. To decide: an entry the file gained or lost is
-only reported, for the theme builder.
+recomputes what comes from that file: weights and the kind's starting weight. An
+edit reaches the numbers at the next weekly run; until then the picker draws on
+the old ones. To decide: an entry the file gained or lost is only reported, for
+the theme builder.
 
 ## Pruning the history
 
@@ -148,12 +140,11 @@ Each entry holds a `picks` object, exactly what the picker printed:
 theme's. A judged entry goes once every value in its `picks` appears under the
 same key in a later entry.
 
-Nothing is lost. Its verdict and feedback reached the scores and `weeks` in the
-run that judged it, and the picker needs only each value's latest use, which
-stays. So a history never holds more entries than its theme has values, plus the
-week's entries waiting to be judged. `ntm:style`, the history template and
-`references/theme-files.md` take the `picks` shape in the picker's history
-slice.
+Nothing is lost: its verdict and feedback reached the scores and `weeks` in the
+run that judged it. A history never holds more entries than its theme has
+values, plus the week's entries waiting to be judged. `ntm:style`, the history
+template and `references/theme-files.md` take the `picks` shape in the picker's
+history slice.
 
 ## When it runs
 
@@ -212,9 +203,9 @@ numbers for both the recalculation and the theme builder
 | The command | A method per thing it does; named with the skill                 |
 
 `start`, for the theme builder, gives a new theme its first numbers with no
-history: weights from lines, square-root kind weights, half-lives from starting
-shares, every score 0, the checksums and an empty `weeks`. `update`, in the
-Sunday morning job, takes in the verdicts, recounts changed files, moves the
+history: weights from lines, the speaker rate from those weights, square-root
+kind weights, every score 0, the checksums and an empty `weeks`. `update`, in
+the Sunday morning job, takes in the verdicts, recounts changed files, moves the
 bump rate and prunes. `report` writes the weekly theme report.
 
 `Theme` and `History` are shared with the picker, one class each, in `theme.py`,
@@ -228,14 +219,14 @@ PRs near 400 lines that each run, tested in the picker's style. The first is
 also what the theme builder needs, so it comes first; the rest follow the
 picker's history slice.
 
-1. Weights and checksums from the entry files, written into the options file.
-2. Half-lives.
-3. Scores from verdicts, and `weeks`.
-4. The bump rate.
-5. Pruning.
-6. The skill and its job: judging, the hand-off, the Sunday morning job, which
+1. Weights, the speaker rate and checksums from the entry files, written into
+   the options file.
+2. Scores from verdicts, and `weeks`.
+3. The bump rate.
+4. Pruning.
+5. The skill and its job: judging, the hand-off, the Sunday morning job, which
    setup creates and shows with the user's other jobs, the README.
-7. The weekly theme report.
+6. The weekly theme report.
 
 ## Open questions
 

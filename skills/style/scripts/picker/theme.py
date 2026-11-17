@@ -156,6 +156,15 @@ class Theme:
 
         return names
 
+    def entries_with_role(self, role):
+        names = []
+
+        for kind, pool in self._fields[POOLS_BY_KIND].items():
+            if role in pool[ROLES]:
+                names += [f"{kind}/{slug}" for slug in pool[ENTRIES_BY_SLUG]]
+
+        return names
+
     def weight_of(self, entry_name):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
@@ -174,10 +183,21 @@ class Theme:
     def set_checksum(self, file_name, checksum):
         self._checksums[file_name] = checksum
 
+    @property
+    def speaker_rate(self):
+        return self._fields.get(SPEAKER_RATE, DEFAULT_SPEAKER_RATE)
+
+    def set_speaker_rate(self, speaker_rate):
+        self._fields[SPEAKER_RATE] = speaker_rate
+
     def save(self, path):
-        checksums_first = {CHECKSUMS_BY_FILE: self._checksums, **self._fields}
+        in_schema_order = {
+            CHECKSUMS_BY_FILE: self._checksums,
+            SPEAKER_RATE: self.speaker_rate,
+            **self._fields,
+        }
         text = yaml.dump(
-            checksums_first, Dumper=_OptionsDumper, sort_keys=False,
+            in_schema_order, Dumper=_OptionsDumper, sort_keys=False,
         )
         Path(path).write_text(text, encoding="utf-8")
 

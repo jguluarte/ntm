@@ -2,7 +2,7 @@ import argparse
 import contextlib
 import sys
 
-from theme import EntryFile, Theme
+from theme import PERSPECTIVE_ROLE, SPEAKER_ROLE, EntryFile, Theme
 
 LINES_AT_HALF_WEIGHT = 3
 
@@ -15,6 +15,12 @@ class Recalculation:
     def weigh_entries(self):
         for entry_file in self.entry_files:
             self._weigh_entries_from(entry_file)
+
+    def compute_speaker_rate(self):
+        speakers = self._total_weight_of(SPEAKER_ROLE)
+        other_perspectives = self._total_weight_of(PERSPECTIVE_ROLE)
+        speaker_rate = speakers / (speakers + other_perspectives)
+        self.theme.set_speaker_rate(round(speaker_rate, 2))
 
     def record_checksums(self):
         for entry_file in self.entry_files:
@@ -29,6 +35,10 @@ class Recalculation:
             if entry_name in line_counts:
                 weight = self._weight_for(line_counts[entry_name])
                 self.theme.set_weight(entry_name, weight)
+
+    def _total_weight_of(self, role):
+        entry_names = self.theme.entries_with_role(role)
+        return sum(self.theme.weight_of(name) for name in entry_names)
 
     @staticmethod
     def _weight_for(line_count):
@@ -64,6 +74,7 @@ if __name__ == "__main__":
         recalculation = Recalculation(theme, entry_files)
 
         recalculation.weigh_entries()
+        recalculation.compute_speaker_rate()
         recalculation.record_checksums()
         recalculation.save_options_file()
         print(f"saved: {theme.path}")

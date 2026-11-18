@@ -1,12 +1,12 @@
 ---
 name: update
 description: >-
-    Brings the user's setup up to the installed version of ntm, with them in
-    chat: shows what changed since their last update, walks them through what
-    each new version asks of them, and rebuilds their ntm-user plugin when a
-    version needs it. Run by the user in chat after installing a new version of
-    ntm, never by a job ("update ntm", "what's new in ntm", "I installed a new
-    version").
+    Brings the user's setup up to the installed version of ntm: shows what
+    changed since their last update, walks them through what each new version
+    asks of them, and rebuilds their ntm-user plugin when a version needs it.
+    Run by the user in chat after installing a new version of ntm ("update ntm",
+    "what's new in ntm", "I installed a new version"), or by ntm:ready-check
+    when no new version needs the user.
 ---
 
 # ntm:update
@@ -22,9 +22,9 @@ the installed one, a version at a time, following each version's update note.
 
 ## Setup
 
-Run `/ntm:ready-check`, unless it already ran in this session. It loads
-`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
-with its result line.
+Run `/ntm:ready-check`, unless it already ran in this session or loaded this
+skill. It loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it
+fails, end the run with its result line.
 
 ## Updating
 

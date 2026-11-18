@@ -2,10 +2,11 @@
 name: ready-check
 description: >-
     Proves this session can run an ntm job and loads the user's settings and
-    ntm's core rules for it: ntm-user loads, and the task list answers with the
-    user's `%Settings`. On a failure, says what is wrong and how to fix it. Run
-    at the start of a job, or by hand ("can you see my todo list?", "check the
-    connection", "is ntm ready?").
+    ntm's core rules for it: ntm-user loads, the task list answers with the
+    user's `%Settings`, and their setup is on the installed version of ntm,
+    updated here when no new version needs them. On a failure, says what is
+    wrong and how to fix it. Run at the start of a job, or by hand ("can you see
+    my todo list?", "check the connection", "is ntm ready?").
 ---
 
 # ntm:ready-check
@@ -42,11 +43,29 @@ If the read fails, name the failure from what went wrong:
 Read ntm's core rules, `${CLAUDE_PLUGIN_ROOT}/references/rules/core.md`, and
 follow them for the rest of the run.
 
+### 4. Compare the versions
+
+Compare theirs, Last synced under ntm version in `%Settings`, with the installed
+one, `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`. Theirs is
+0.4.0 when there is none. When they match, or the installed one can't be read,
+the check is done.
+
+When the installed version is newer, find the update notes as step 1 of
+`ntm:update` says, and read each one's first line, Needs the user:
+
+- None says yes: load `ntm:update` and follow it, then the check is done. With
+  no notes, that only records the version.
+- Any says yes: the check is done, with an update waiting.
+
 ## Result
 
-One line: `Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A
-backend error names the error, shortened. In a job, the failure line ends the
-run, and the job's own push delivers it.
+`Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A backend error
+names the error, shortened. In a job, the failure line ends the run, and the
+job's own push delivers it.
+
+With an update waiting, `Ready-check OK` is followed by
+`Update waiting: setup at <theirs>, ntm at <installed>. Run /ntm:update in chat.`
+The run goes on, and its last result ends with that line too.
 
 | Failure                | Fix                                                               |
 | ---------------------- | ----------------------------------------------------------------- |

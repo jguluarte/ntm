@@ -9,3 +9,5 @@ description: >-
 # ntm:help
 
 Read `${CLAUDE_PLUGIN_ROOT}/README.md` and render it to the user, word for word.
+Leave out its "Install ntm" section, and the link to it in Getting started's
+first step: whoever asks for help has ntm installed.

@@ -60,7 +60,7 @@ How the published release is identified is open.
 
 ## 0.5: the Theme
 
-Built on `release-0.5`.
+Released on `main`: 0.5.0 on 2026-11-17, then 0.5.1 and 0.5.2.
 
 ### The goal
 
@@ -213,16 +213,17 @@ it's big enough.
 
 ### Justin's theme
 
-It's built on a `dragify` branch, which never merges anywhere and is deleted
-once the theme is in Linear. The bump, raising the escalation level on a good
-day with no slip behind it, is his own and not part of 0.5.
+It lives only in his Linear. Theme content never goes into the repo; the
+`dragify` branch it was reviewed on is deleted. The bump, raising the escalation
+level on a good day with no slip behind it, is his own and not part of 0.5.
 
 ### Release
 
-`/ntm:update` and its 0.5.0 note are core functionality, needed for release.
-`release-0.5` merges into main, and the version is tagged there. Fixing drift
-between the docs and the plugin is separate work, outside the release; it ships
-as a planned patch version after 0.5.0.
+`/ntm:update` and its 0.5.0 note shipped with 0.5.0. Versions are tagged on
+`main` as `v<version>`, with a GitHub release titled `ntm <version>` and the
+plugin file attached. From 0.5.2 the repo is also a plugin marketplace,
+`jguluarte/ntm`. Fixing drift between the docs and the plugin ships in whatever
+patch version is current when it's done.
 
 ## Patterns every file follows
 
@@ -414,6 +415,6 @@ path under the working directory works.
 
 ## Justin's installed copy
 
-ntm 0.4.0 and ntm-user 0.4.0 in his Cowork, migrated 2026-11-11, with five jobs:
-Price watch, Morning, Afternoon and Evening reminders, and Weekly planning.
-Touch none of it unasked.
+ntm 0.5 in his Cowork, upgraded 2026-11-17; he installs new versions from the
+marketplace himself. Five jobs: Price watch, Morning, Afternoon and Evening
+reminders, and Weekly planning. Touch none of it unasked.

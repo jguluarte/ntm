@@ -74,7 +74,7 @@ write to what it says: `escalation` for how a slipped task is pressed,
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slip is a planned date the work moved on from: the work waits
 for another day. The `escalation` level carries how much a task has slipped: say
-that it slipped, in a theme appropriate way. That doesn't mean counting plainly.
+that it slipped, in a theme appropriate way. That doesn't mean counting.
 
 ### 2. Write 5 versions
 

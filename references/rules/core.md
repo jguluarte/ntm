@@ -22,8 +22,8 @@ Where a message links a task, the id is the link:
 `the kitchen faucet ([ABC-15](<url>))`.
 
 Write times and estimates in full words, in the user's language: `2 hours`,
-`~20 minutes`. Use the real names of labels and databases, never their `$` or
-`%` marks.
+`~20 minutes`. In chat, use the real names of labels and databases, never their
+`$` or `%` marks; a message the writer writes names neither.
 
 ## Explaining how ntm works
 

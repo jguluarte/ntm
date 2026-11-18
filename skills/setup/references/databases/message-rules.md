@@ -8,8 +8,8 @@
 
 If there are no tasks, you can exit with nothing to send.
 
-When any tasks have slipped, count how many times it has slipped recently. This
-will influence the escalation level to provide to the writer.
+When any tasks have slipped, the message presses harder the more often they've
+slipped lately.
 
 ### Morning
 

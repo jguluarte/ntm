@@ -73,7 +73,9 @@ write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slip is a planned date the work moved on from: the work waits
-for another day.
+for another day. The `escalation` level carries how much a task has slipped: say
+that it slipped, in the theme's way, and never count its slips or give the dates
+it slipped from.
 
 ### 2. Write 5 versions
 
@@ -95,10 +97,10 @@ to the task, or to the room, and calls the user only "you", never by name or by
 a pet name.
 
 Name each task in a few natural words, with its id in parentheses. Any fact you
-use stays exact: ids, counts and names as given, and dates as given, unless the
-facts or the guidance say to put them the natural way. When the facts give a
-task's link, link its id. Labels and databases go by their real names, without
-their `$` or `%` marks.
+use, other than a slip, stays exact: ids, counts and names as given, and dates
+as given, unless the facts or the guidance say to put them the natural way. When
+the facts give a task's link, link its id. Labels and databases go by their real
+names, without their `$` or `%` marks.
 
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or

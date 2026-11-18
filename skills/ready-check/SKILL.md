@@ -51,7 +51,7 @@ one, `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`. Theirs is
 the check is done.
 
 When the installed version is newer, find the update notes as step 1 of
-`ntm:update` says, and read each one's Needs the user line:
+`ntm:update` says, and read each one's first line, Needs the user:
 
 - None says yes: load `ntm:update` and follow it, then the check is done. With
   no notes, that only records the version.

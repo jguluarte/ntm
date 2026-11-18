@@ -4,6 +4,8 @@ One note per version of ntm, named for the version, such as `0.5.0.md`.
 `ntm:update` follows each note newer than the user's version, oldest first.
 
 ```
+Needs the user: <yes or no>
+
 ## What's new
 
 <The changelog, for the user, in plain words.>
@@ -13,8 +15,6 @@ One note per version of ntm, named for the version, such as `0.5.0.md`.
 <What to offer, and what to do, for a user coming from an older version.>
 
 Rebuild ntm-user: <yes or no>
-
-Needs the user: <yes or no>
 ```
 
 Say which steps are offers: the user agrees to those before they're made.

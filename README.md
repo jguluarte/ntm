@@ -23,7 +23,7 @@ says so in a way that they don't ignore. Hopefully it'll help you too!
 Ntm comes as two plugins. `ntm` is the one you install. `ntm-user` is a plugin
 of your own: setup builds it from your answers, and you install it too.
 
-1. Install `ntm`.
+1. Install `ntm`, as [Install ntm](#install-ntm) shows.
 2. Run `/ntm:setup`. It connects your task list, sets up the features and theme
    you pick, and builds your plugin.
 3. Install the plugin setup built for you.
@@ -33,6 +33,22 @@ of your own: setup builds it from your answers, and you install it too.
 
 These are different components of ntm that work in concert to make your AI act
 like an actual assistant.
+
+### Install ntm
+
+Add ntm as a marketplace once, then install `ntm` from it. New versions then
+come to you from the marketplace.
+
+In Cowork, open **Customize > Plugins**, select **Add marketplace** and enter
+`jguluarte/ntm`. Turn on **Sync automatically**, then install `ntm`.
+
+In Claude Code, run `/plugin marketplace add jguluarte/ntm` and install `ntm`
+from `/plugin`. Under **Marketplaces** there, select ntm and **Enable
+auto-update**.
+
+You can also upload a `.plugin` file from ntm's
+[releases](https://github.com/jguluarte/ntm/releases), and repeat that for each
+new version.
 
 ## Core skills
 

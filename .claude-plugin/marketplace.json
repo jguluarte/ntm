@@ -1,0 +1,6 @@
+{
+    "name": "ntm",
+    "description": "Ntm runs a personal task system on your own task list.",
+    "owner": { "name": "Justin", "url": "https://github.com/jguluarte" },
+    "plugins": [{ "name": "ntm", "source": "./" }]
+}

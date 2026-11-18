@@ -74,8 +74,7 @@ write to what it says: `escalation` for how a slipped task is pressed,
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slip is a planned date the work moved on from: the work waits
 for another day. The `escalation` level carries how much a task has slipped: say
-that it slipped, in the theme's way, and never count its slips or give the dates
-it slipped from.
+that it slipped, in a theme appropriate way. That doesn't mean counting plainly.
 
 ### 2. Write 5 versions
 
@@ -96,11 +95,12 @@ that world, with the subject inside it. The message talks to the user as "you",
 to the task, or to the room, and calls the user only "you", never by name or by
 a pet name.
 
-Name each task in a few natural words, with its id in parentheses. Any fact you
-use, other than a slip, stays exact: ids, counts and names as given, and dates
-as given, unless the facts or the guidance say to put them the natural way. When
-the facts give a task's link, link its id. Labels and databases go by their real
-names, without their `$` or `%` marks.
+Name each task in a few "theme-natural" words, with its id in parenthesis as a
+link to the task itself. Any fact you use should also be written in a theme
+appropriate way.
+
+Labels and databases should NOT be used in written messages, those are for you
+not the user you're writing for.
 
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or

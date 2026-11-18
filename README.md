@@ -61,7 +61,8 @@ setup asks, once you've installed the plugin it built.
 
 Run it after you install a new version of ntm. It tells you what's new since
 your last update, helps you set up anything the new version offers, and rebuilds
-your own plugin when the new version needs it.
+your own plugin when the new version needs it. When a new version needs nothing
+from you, your next scheduled job brings you up to it on its own.
 
 ### `/ntm:ready-check`
 

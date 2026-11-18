@@ -55,19 +55,22 @@ When the installed version is newer, find the update notes as step 1 of
 
 - None says yes: load `ntm:update` and follow it, then the check is done. With
   no notes, that only records the version.
-- Any says yes: the failure is Setup at \<theirs\>, ntm at \<installed\>.
+- Any says yes: the check is done, with an update waiting.
 
 ## Result
 
-One line: `Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A
-backend error names the error, shortened. In a job, the failure line ends the
-run, and the job's own push delivers it.
+`Ready-check OK`, or `Ready-check FAILED: <failure> — <fix>`. A backend error
+names the error, shortened. In a job, the failure line ends the run, and the
+job's own push delivers it.
 
-| Failure                                   | Fix                                                               |
-| ----------------------------------------- | ----------------------------------------------------------------- |
-| Not configured                            | Run /ntm:setup and install the ntm-user plugin it builds          |
-| Connector not attached                    | Attach the task list's connector to the job, or connect it again  |
-| Sign-in expired                           | Reconnect the task list's connector                               |
-| Wrong account                             | Reconnect the connector with the account that holds the task list |
-| Backend error                             | Usually temporary; if it repeats, check the backend's status page |
-| Setup at \<theirs\>, ntm at \<installed\> | Run /ntm:update in chat                                           |
+With an update waiting, `Ready-check OK` is followed by
+`Update waiting: setup at <theirs>, ntm at <installed>. Run /ntm:update in chat.`
+The run goes on, and its last result ends with that line too.
+
+| Failure                | Fix                                                               |
+| ---------------------- | ----------------------------------------------------------------- |
+| Not configured         | Run /ntm:setup and install the ntm-user plugin it builds          |
+| Connector not attached | Attach the task list's connector to the job, or connect it again  |
+| Sign-in expired        | Reconnect the task list's connector                               |
+| Wrong account          | Reconnect the connector with the account that holds the task list |
+| Backend error          | Usually temporary; if it repeats, check the backend's status page |

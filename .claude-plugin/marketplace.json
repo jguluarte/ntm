@@ -1,6 +1,9 @@
 {
     "name": "ntm",
-    "description": "Ntm runs a personal task system on your own task list.",
-    "owner": { "name": "Justin", "url": "https://github.com/jguluarte" },
+    "description": "Neurodivergent Task Manager (ntm) helps to manage things you need to do day to day.",
+    "owner": {
+        "name": "Justin Guluarte",
+        "url": "https://github.com/jguluarte"
+    },
     "plugins": [{ "name": "ntm", "source": "./" }]
 }

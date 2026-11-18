@@ -5,12 +5,11 @@ Read `.claude/DECISIONS.md` for what's decided and what's next.
 ## The repo
 
 A Claude plugin: markdown skills and agents, and a few JSON files. The base
-plugin is `ntm` and the user's generated plugin is `ntm-user`. 0.5 is built on
-`release-0.5`, an integration branch: branch from it and open every PR against
-it. It may hold mismatches between files while each file is rebuilt in its own
-PR; it only has to be right before release. Don't author from the old
-`release-0.4` or `v0.4` branches (kept on the remote for history for now), or
-his installed copy.
+plugin is `ntm` and the user's generated plugin is `ntm-user`. 0.5 is released
+on `main`. Patch work branches from `main` and opens every PR against it. A
+bigger version gets its own integration branch, such as `release-0.6`, which may
+hold mismatches between files until release. Don't author from old release
+branches or his installed copy.
 
 ## Justin owns the plugin
 
@@ -30,7 +29,7 @@ his installed copy.
 
 - Each PR is a chunk of work a person can review and know in one sitting. Each
   thing in it lands with the work that first needs it.
-- Small PRs against `release-0.5`, one Opus agent per PR, briefed with
+- Small PRs against `main`, one Opus agent per PR, briefed with
   `.claude/briefs/COMMON.md` and `.claude/briefs/PR.md`. Subagents can't start
   agents; the orchestrator does any fan-out.
 - The orchestrator runs in Claude Code on his laptop. The remote is `jguluarte`;
@@ -43,10 +42,11 @@ his installed copy.
   agents don't.
 - Merges happen on his say-so, and what lands is intentional commits. Usually
   that's a squash merge with a written message, one short paragraph on the net
-  change. When each commit is already intentional, as when `release-0.5` merges
-  into `main`, it's a merge commit. Merged branches auto-delete.
-- Once he's reviewing a PR: no amend, rebase or force-push. Bring `release-0.5`
-  in with a merge commit.
+  change. An integration branch lands on `main` from a copy of its history,
+  rebased onto `main` with working steps squashed and intentional commits kept,
+  through a merge commit. Merged branches auto-delete.
+- Once he's reviewing a PR: no amend, rebase or force-push. Bring `main` in with
+  a merge commit.
 - Versions are set at merge; PR branches don't change them. No patch bump for
   each change merged into the integration branch; a patch version is planned,
   like a release.

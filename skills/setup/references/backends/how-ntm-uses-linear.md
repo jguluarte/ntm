@@ -103,6 +103,20 @@ An estimate is the last line of a task's description, in full words:
 `Estimate: 2 hours`. Linear has an estimate field of its own; we leave it empty,
 and the line in the description is the estimate.
 
+## Cleanup
+
+`ntm:clean` tidies the task list each week, and a backend can add a cleanup of
+its own.
+
+Ours takes every closed task out of its project. Linear doesn't archive closed
+issues while their project is open, so on its free plan they count against the
+issue limit. First it adds a `Former project` comment to the task with the
+project's link:
+
+    Former project: <the project's link>
+
+Its count reads `took <n> closed tasks out of projects`.
+
 ## Databases
 
 ntm keeps its records in databases, such as `%Settings` and `%Message-rules`. A

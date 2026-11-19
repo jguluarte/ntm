@@ -109,7 +109,11 @@ and the line in the description is the estimate.
 own, for anything it lets pile up.
 
 Ours takes every closed task out of its project. Linear doesn't archive closed
-issues while their project is open, so they pile up there.
+issues while their project is open, so they pile up there. First it adds a
+`Former project` comment to the task with the project's link, which Linear shows
+as the project:
+
+    Former project: <the project's link>
 
 ## Databases
 

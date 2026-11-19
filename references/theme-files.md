@@ -72,11 +72,11 @@ closes as done.
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
-| Group            | What the writer gets                                             |
-| ---------------- | ---------------------------------------------------------------- |
-| `by_entry`       | All of it, when a picked entry is in it                          |
-| `fully_read`     | All of it, for every message: guidance, or the terminology file  |
-| `for_the_picker` | Each pool's `file`, to find the picked entries: the options file |
+| Group            | What the writer gets                                                                            |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `by_entry`       | All of it, when a picked entry is in it or its line names the message's `finishing_tasks` level |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file                                 |
+| `for_the_picker` | Each pool's `file`, to find the picked entries: the options file                                |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -228,8 +228,8 @@ rounded to two places, or 1.0 with neither.
 ## The pick
 
 Each message takes the first pick of `<Theme>-picks.yaml`. The picker runs in
-`ntm:refresh-picks`, 25 picks at a time, and for a message only when the list
-has run out.
+`ntm:refresh-picks`, which draws 25 picks at a time, weekly and whenever the
+list runs out.
 
 Each message gets one pick: a perspective and a reference, from different pools.
 At the theme's `speaker_rate`, the perspective is drawn from all speaker pools

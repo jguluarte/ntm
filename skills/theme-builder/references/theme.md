@@ -43,12 +43,12 @@ mockery are all welcome when they want them. Push for vivid.
 Write the levels in the root's `escalation` and `finishing_tasks`. The user
 decides how many each has. Most themes start from these:
 
-| Level | `escalation`                                             | `finishing_tasks`             |
-| ----- | -------------------------------------------------------- | ----------------------------- |
-| 1st   | Where every message starts                               | A finished task               |
-| 2nd   | Now and then with no slip, so a good run still gets read | A win                         |
-| 3rd   | A task has slipped                                       | A big win: a project finished |
-| 4th   | A task has kept slipping                                 |                               |
+| Level | `escalation`               | `finishing_tasks`             |
+| ----- | -------------------------- | ----------------------------- |
+| 1st   | Where every message starts | A finished task               |
+| 2nd   | A task has slipped once    | A win                         |
+| 3rd   | A task has slipped again   | A big win: a project finished |
+| 4th   | A task has kept slipping   |                               |
 
 `theme-files.md`, under The root, says what a win and a big win are.
 

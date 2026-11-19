@@ -41,8 +41,8 @@ title, which is the file's name, extension included, such as
 text sits in one fenced `yaml` block in its document, so a backend that stores
 markdown keeps it intact.
 
-The run fetches the text from the backend and hands it to the picker, which
-touches no backend.
+The run fetches the text from the backend and writes it to a file for the
+picker, which touches no backend.
 
 The examples below are from `Casebook`, a made-up detective story.
 
@@ -72,11 +72,11 @@ closes as done.
 what it holds. Each file is listed by its full name, which follows the pattern
 in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
 
-| Group            | What the writer gets                                            |
-| ---------------- | --------------------------------------------------------------- |
-| `by_entry`       | The file's and the kind's `about`, and the picked entry         |
-| `fully_read`     | All of it, for every message: guidance, or the terminology file |
-| `for_the_picker` | Nothing: only the picker reads it, the options file             |
+| Group            | What the writer gets                                             |
+| ---------------- | ---------------------------------------------------------------- |
+| `by_entry`       | All of it, when a picked entry is in it                          |
+| `fully_read`     | All of it, for every message: guidance, or the terminology file  |
+| `for_the_picker` | Each pool's `file`, to find the picked entries: the options file |
 
 <!-- prettier-ignore -->
 ```yaml
@@ -227,7 +227,9 @@ rounded to two places, or 1.0 with neither.
 
 ## The pick
 
-For each message, the run hands the picker the options file's text.
+Each message takes the first pick of `<Theme>-picks.yaml`. The picker runs in
+`ntm:refresh-picks`, 25 picks at a time, and for a message only when the list
+has run out.
 
 Each message gets one pick: a perspective and a reference, from different pools.
 At the theme's `speaker_rate`, the perspective is drawn from all speaker pools
@@ -236,8 +238,8 @@ reference is drawn from all reference pools outside the perspective's pool. Each
 entry counts once at its weight. An entry's score raises or lowers its chance.
 An entry without a `weight` weighs 1, and one without a `score` scores 0.
 
-The picker prints the two entry keys. The writer looks each entry up in its
-entry file and, when it holds lines or riffs, chooses one to build on.
+The picker prints each pick's two entry keys. The writer looks each entry up in
+its entry file and, when it holds lines or riffs, chooses one to build on.
 
 ## The terminology file
 

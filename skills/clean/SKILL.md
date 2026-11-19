@@ -6,7 +6,7 @@ description: |-
     - Removing paused dates that have passed from `%Paused-dates`
     - Doing the backend's own cleanup, from `ntm-user:backend`
 
-    This is run via scheduled job. It reports back the things it changed.
+    This is run via scheduled job. It reports back how much it changed.
 ---
 
 # ntm:clean
@@ -35,11 +35,11 @@ Then do the cleanup `ntm-user:backend` lists, if any.
 
 ## Result
 
-For a job, return one line of counts, with each backend cleanup's count, in a
-few words, at the end:
+For a job, return one line of counts, with each of the backend's cleanup counts
+last:
 
 ```
-Cleaned <today>: cleared <n> planned dates, removed <n> paused dates
+Cleaned <today>: cleared <n> planned dates, removed <n> paused dates, <backend>
 ```
 
 Leave out a count of none. When every count is none, return `Nothing to clean.`;

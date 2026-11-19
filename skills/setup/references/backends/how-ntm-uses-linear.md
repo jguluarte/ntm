@@ -105,15 +105,17 @@ and the line in the description is the estimate.
 
 ## Cleanup
 
-`ntm:clean` tidies the task list each week. A backend can add a cleanup of its
-own, for anything it lets pile up.
+`ntm:clean` tidies the task list each week, and a backend can add a cleanup of
+its own.
 
 Ours takes every closed task out of its project. Linear doesn't archive closed
-issues while their project is open, so they pile up there. First it adds a
-`Former project` comment to the task with the project's link, which Linear shows
-as the project:
+issues while their project is open, so on its free plan they count against the
+issue limit. First it adds a `Former project` comment to the task with the
+project's link:
 
     Former project: <the project's link>
+
+Its count reads `took <n> closed tasks out of projects`.
 
 ## Databases
 

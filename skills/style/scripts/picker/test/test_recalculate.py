@@ -216,7 +216,6 @@ class MessageHistoryTest(unittest.TestCase):
 
         expected = [
             datetime(2026, 11, 12, 8, 45),
-            datetime(2026, 11, 13, 18, 0),
             datetime(2026, 11, 15, 18, 0),
         ]
         self.assertEqual(expected, sent)
@@ -265,7 +264,7 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_adjust_without_since_fails_naming_it(self):
         args = [
             "adjust",
-            "--options", str(scotland_yard.OPTIONS),
+            "--options", str(baker_street.OPTIONS),
             "--history", str(scotland_yard.MESSAGE_HISTORY),
         ]
 

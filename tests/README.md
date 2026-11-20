@@ -38,14 +38,15 @@ Python's import path, so a test imports their classes by name.
 | `test_pick_list.py`   | The list of picks `pick_list.py` prints, and its failure lines                |
 | `test_recalculate.py` | What a `Recalculation` weighs, scores and records, reading messages, failures |
 
-`fixtures/` holds the sample themes they read, in five sets. Each set is a
-package, such as `fixtures.baker_street`, whose `__init__.py` names its files. A
-one-file theme is an options file named for what it holds or lacks.
+`fixtures/` holds the sample themes and message history they read, in five sets.
+Each set is a package, such as `fixtures.baker_street`, whose `__init__.py`
+names its files. A one-file theme is an options file named for what it holds or
+lacks.
 
 | Folder                | What it holds                                                            |
 | --------------------- | ------------------------------------------------------------------------ |
 | `casebook/`           | One-file themes `Theme` loads                                            |
 | `baker_street/`       | A theme with every number filled in, and its characters and scenes files |
-| `scotland_yard/`      | A theme with scores, and a week of message history that moves them       |
+| `scotland_yard/`      | A message history written newest first                                   |
 | `witness_statements/` | A theme without numbers whose entries have 1, 3, 9 and 0 lines           |
 | `invalid_casebook/`   | One-file themes `Theme` refuses, named for the fault                     |

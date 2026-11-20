@@ -33,7 +33,6 @@ Python's import path, so a test imports their classes by name.
 | File                  | What it checks                                                                  |
 | --------------------- | ------------------------------------------------------------------------------- |
 | `test_theme.py`       | The lottery `Theme` builds, one entry file's entries, saving, failures          |
-| `test_lottery.py`     | The chances a `Lottery` gives, and that a seed draws the same                   |
 | `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                                  |
 | `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line              |
 | `test_pick_list.py`   | The list of picks `pick_list.py` prints, and its failure lines                  |

@@ -310,7 +310,8 @@ How reminders reach them, as a conversation. Suggest Pushover: reminders arrive
 in their own app, which a phone's focus settings can treat differently from
 everything else. Say that it needs an inexpensive license they buy for
 themselves. Otherwise, fall back to the AI app's own push, which chats at them
-when each job finishes.
+when each job finishes. It needs the AI app on their phone, with its
+notifications allowed.
 
 With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how.

@@ -147,17 +147,19 @@ browser signed in to Amazon. The price watch tells you when it's time.
 ## Skills that run on their own
 
 These run from your scheduled jobs or from other skills, so they stay out of the
-`/` menu. You can still type one's full name to run it yourself.
+`/` menu. To run one yourself, ask for it in chat.
 
 ### `/ntm:ready-check`
 
 Checks that ntm can reach your task list, and says how to fix it when it can't.
-Your scheduled jobs run it first; run it yourself if something seems off.
+Your scheduled jobs run it first. If something seems off, ask in chat: "is ntm
+ready?"
 
 ### `/ntm:refresh-picks`
 
-Keeps your reminders changing week to week, leaning toward what got you moving
-the week before. Your weekly setup runs it for you.
+Keeps your reminders changing week to week. It chooses, from your theme, who or
+what tells each one and what it draws on, and chooses again when those run out
+or you build a new theme. Your weekly setup runs it for you.
 
 ### `/ntm:recalculate-theme-scores`
 

@@ -44,10 +44,9 @@ Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 
 ### 2. What setup made
 
-The step passes when setup made everything it was supposed to: every database
-under Databases in `%Settings` opens, as do this week's `%Theme` and
-`%Message-history`, and every label under Labels in `%Settings` is on the task
-list, by its name there. Name each one that's missing.
+Every database under Databases in `%Settings` opens, as do this week's `%Theme`
+and `%Message-history`, and every label under Labels in `%Settings` is on the
+task list, by its name there. Name each one that's missing.
 
 Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
 skills it runs. With Planning in `%Settings`, expect the weekly setup and the
@@ -124,8 +123,7 @@ test database and anything step 12 made. When the task list can't delete one,
 take it off the task or empty it, for a rerun to reuse. Do the same for any test
 task an earlier self-test left behind. Touch nothing else on the task list.
 
-It fails when anything can't be cleaned up: a run that leaves its test data
-behind didn't pass.
+It fails when anything can't be cleaned up.
 
 ### 14. Send the success message
 
@@ -135,11 +133,8 @@ message in the user's style says. Its one fact is
 `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
 other return fails the step.
 
-The picker has to work. When `ntm:style` keeps a failure line from
-`ntm:refresh-picks`, send nothing: the step fails, with that line as its why,
-saying what is wrong. A theme with no `%Theme-options` isn't built for the
-picker, and that isn't a failure: the step passes, and its line says the theme
-has no options file.
+When `ntm:style` keeps a failure line from `ntm:refresh-picks`, send nothing:
+the step fails, with that line as its why.
 
 ## Result
 

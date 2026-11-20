@@ -85,7 +85,8 @@ narrator tells it from the perspective, as its guidance says, or it's told
 plainly.
 
 The message is about its subject and the theme's world: something happens in
-that world, with the subject inside it. The message talks to the user as "you",
+that world, with the subject inside it. Set the message where the reminder falls
+in the world's day, as `world` maps it. The message talks to the user as "you",
 to the task, or to the room, and calls the user only "you", never by name or by
 a pet name.
 

@@ -55,8 +55,8 @@ Send it as the core rules' Sending a message in the user's style says. Its facts
 are:
 
 - what the rule asks of the message today, such as its tone and length, in plain
-  words that name no task. How hard it presses on a slipped task is
-  `ntm:style`'s to work out, from each task's slips.
+  words. How hard it presses on a slipped task is `ntm:style`'s to work out,
+  from each task's slips.
 - today's tasks, each with its id, link and title, its parent when it has one,
   whether it's done, its estimate when it has one, how many times it slipped,
   and the dates it slipped from

@@ -82,11 +82,13 @@ them, without sending anything. The writer reads the theme itself. It returns 5
 versions, each with a title, a message, and a probability from 0 to 1 of how
 likely a reader would be to predict it.
 
-The message's facts are what the rule asks of the message, and each task by its
-title and whether it's done, nothing more. A slipped task goes over as one the
-user meant to do earlier and hasn't, and tasks that belong together, such as
-sub-tasks of one task, as one group. How hard to press goes over only as the
-`escalation` level, or the call in its place.
+The message's facts are what the rule asks of the message; each task by its
+title and whether it's done; and, for the afternoon and evening, what changed
+among today's tasks since the earlier reminders, by title: a task added, done or
+moved off today. Nothing more. A slipped task goes over as one the user meant to
+do earlier and hasn't, and tasks that belong together, such as sub-tasks of one
+task, as one group. How hard to press goes over only as the `escalation` level,
+or the call in its place.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.

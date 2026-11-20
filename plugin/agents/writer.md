@@ -69,7 +69,7 @@ write to what it says: `escalation` for how a slipped task is pressed,
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slip is a planned date the work moved on from. For the user,
 the task is still waiting: say that, in the theme's way; the `escalation` level
-carries how long.
+carries how hard it's pressed.
 
 ### 2. Write 5 versions
 
@@ -101,8 +101,8 @@ you, not the user you're writing for: say the thing itself.
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or
 else the guidance gives; with neither, keep it short. When you're handed caps,
-each message stays within its cap, counted as sent, links included; the cap wins
-over any other length.
+each message stays within its cap, counted as sent; the cap wins over any other
+length.
 
 ### 3. Title each version
 

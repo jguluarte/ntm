@@ -72,8 +72,9 @@ weigh less: a task picked up again after a long gap counts for less than its
 slips, as you judge it.
 
 When the root gives a ladder as one paragraph, that ladder has no level name.
-For `finishing_tasks`, hand the writer what you called in its place, in plain
-words: a task done, a win or a big win.
+Hand the writer what you called in its place, in plain words: for `escalation`,
+a task slipped or kept slipping; for `finishing_tasks`, a task done, a win or a
+big win.
 
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task you judge big or hard. Only the

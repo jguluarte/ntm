@@ -177,14 +177,16 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(-2, theme.score_of("scenes/stakeout"))
 
     def test_a_score_that_reached_the_highest_falls_with_a_later_message(self):
-        theme = Theme(scotland_yard.OPTIONS)
-        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
-        messages = history.sent_since(date(2026, 11, 9))
+        theme = Theme(baker_street.OPTIONS)
+        picks = ("characters/detective", "scenes/stakeout")
+        kept = Message(SEND_TIME, picks, verdict="acted", feedback="keep")
+        ignored = Message(SEND_TIME, picks, verdict="ignored", feedback=None)
         recalculation = Recalculation(theme)
 
-        recalculation.adjust_scores(messages)
+        recalculation.adjust_scores([kept] * 4 + [ignored])
 
-        self.assertAlmostEqual(1 - 0.1, theme.score_of("cast/chief"))
+        detective_score = theme.score_of("characters/detective")
+        self.assertAlmostEqual(1 - 0.1, detective_score)
 
 
 class MessageTest(unittest.TestCase):
@@ -206,6 +208,18 @@ class MessageHistoryTest(unittest.TestCase):
         picks = ("cast/chief", "scenes/fog")
         expected = [Message(sent, picks, verdict="ignored", feedback=None)]
         self.assertEqual(expected, messages)
+
+    def test_the_messages_since_a_day_come_oldest_first(self):
+        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
+        messages = history.sent_since(date(2026, 11, 12))
+        sent = [message.sent for message in messages]
+
+        expected = [
+            datetime(2026, 11, 12, 8, 45),
+            datetime(2026, 11, 13, 18, 0),
+            datetime(2026, 11, 15, 18, 0),
+        ]
+        self.assertEqual(expected, sent)
 
     def test_a_history_of_blank_lines_has_no_messages(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())

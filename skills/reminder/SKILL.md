@@ -60,7 +60,8 @@ are:
   from
 - for the afternoon and evening, the tasks the earlier reminders covered, each
   with its id, link and title, and where it's planned now
-- the tone, length or anything else the rule asks of today's message
+- the tone, length or anything else the rule asks of the message, decided for
+  today
 
 ## Result
 

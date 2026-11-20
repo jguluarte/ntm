@@ -104,8 +104,9 @@ fix with what to fix, and what `ntm-user:notify` returned, such as:
 
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When
-`ntm-user:notify` returns its delivery block, its title and message replace that
-one line, and the To fix part and the sync ending follow.
+`ntm-user:notify` returns its delivery block, its title and message take the
+place of the result line, followed by the To fix part and the sync ending when
+there are any.
 
 Then give each deal these lines, from its `best:` line:
 

@@ -37,7 +37,7 @@ class PickTest(unittest.TestCase):
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
-        theme = Theme(casebook.ONE_OF_EACH)
+        theme = Theme(casebook.ONE_PICK)
         picker = Picker(theme)
         perspective, reference = picker.pick()
         rows = pick_text(perspective, reference).splitlines()

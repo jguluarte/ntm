@@ -16,7 +16,9 @@ FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 WEIGHT = "weight"
+DEFAULT_WEIGHT = 1
 SCORE = "score"
+DEFAULT_SCORE = 0
 PERSPECTIVE_ROLE = "perspective"
 REFERENCE_ROLE = "reference"
 SPEAKER_ROLE = "speaker"
@@ -24,6 +26,9 @@ SPEAKER_ROLE = "speaker"
 ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
+
+SEQUENCE_TAG = "tag:yaml.org,2002:seq"
+NULL_TAG = "tag:yaml.org,2002:null"
 
 
 class InvalidTheme(ValueError):
@@ -56,8 +61,8 @@ class Option:
     @classmethod
     def from_entry(cls, kind, slug, entry):
         fields = entry or {}
-        weight = fields.get(WEIGHT, 1)
-        score = fields.get(SCORE, 0)
+        weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
+        score = fields.get(SCORE, DEFAULT_SCORE)
         return cls(kind, slug, weight, score)
 
     @property
@@ -87,12 +92,10 @@ class Lottery:
 
 class _OptionsDumper(yaml.SafeDumper):
     def represent_list_on_one_line(self, items):
-        return self.represent_sequence(
-            "tag:yaml.org,2002:seq", items, flow_style=True,
-        )
+        return self.represent_sequence(SEQUENCE_TAG, items, flow_style=True)
 
     def represent_bare_entry(self, _):
-        return self.represent_scalar("tag:yaml.org,2002:null", "")
+        return self.represent_scalar(NULL_TAG, "")
 
 
 _OptionsDumper.add_representer(list, _OptionsDumper.represent_list_on_one_line)
@@ -168,7 +171,7 @@ class Theme:
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
-        return entry.get(WEIGHT, 1)
+        return entry.get(WEIGHT, DEFAULT_WEIGHT)
 
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
@@ -180,7 +183,7 @@ class Theme:
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
-        return entry.get(SCORE, 0)
+        return entry.get(SCORE, DEFAULT_SCORE)
 
     def set_score(self, entry_name, score):
         kind, slug = entry_name.split("/")

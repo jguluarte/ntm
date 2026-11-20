@@ -1,6 +1,6 @@
 pools:
   characters:
-    file: Weighing-characters.yaml
+    file: Witness-statements-characters.yaml
     roles: [perspective]
     entries:
       one_line:

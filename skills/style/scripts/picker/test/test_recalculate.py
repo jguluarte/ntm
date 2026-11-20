@@ -16,8 +16,8 @@ SEND_TIME = datetime(2026, 11, 13, 8, 45)
 
 class RecalculationTest(unittest.TestCase):
     def test_weighing_gives_each_entry_its_weight_from_its_lines(self):
-        theme = Theme(fixtures.weighing.OPTIONS)
-        entry_file = EntryFile(fixtures.weighing.CHARACTERS)
+        theme = Theme(fixtures.witness_statements.OPTIONS)
+        entry_file = EntryFile(fixtures.witness_statements.CHARACTERS)
         recalculation = Recalculation(theme)
 
         recalculation.weigh_entries([entry_file])
@@ -45,7 +45,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.75, theme.speaker_rate)
 
     def test_a_theme_of_only_speakers_always_has_a_speaker(self):
-        theme = Theme(fixtures.SPEAKERS_ONLY)
+        theme = Theme(fixtures.casebook.SPEAKERS_ONLY)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -53,7 +53,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(1.0, theme.speaker_rate)
 
     def test_a_theme_without_speakers_never_has_a_speaker(self):
-        theme = Theme(fixtures.weighing.OPTIONS)
+        theme = Theme(fixtures.witness_statements.OPTIONS)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -62,20 +62,20 @@ class RecalculationTest(unittest.TestCase):
 
     def test_recording_gives_the_entry_file_its_own_checksum(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
-        saved_options = Path(folder) / "Weighing-options.yaml"
-        theme = Theme(fixtures.weighing.OPTIONS)
-        entry_file = EntryFile(fixtures.weighing.CHARACTERS)
+        saved_options = Path(folder) / "Witness-statements-options.yaml"
+        theme = Theme(fixtures.witness_statements.OPTIONS)
+        entry_file = EntryFile(fixtures.witness_statements.CHARACTERS)
         recalculation = Recalculation(theme)
 
         recalculation.record_checksums([entry_file])
         theme.save(saved_options)
 
         fields = yaml.safe_load(saved_options.read_text(encoding="utf-8"))
-        checksum = fields["checksums"]["Weighing-characters.yaml"]
+        checksum = fields["checksums"]["Witness-statements-characters.yaml"]
         self.assertEqual(entry_file.checksum, checksum)
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
-        theme = Theme(fixtures.EVEN)
+        theme = Theme(fixtures.casebook.EVEN)
         characters = EntryFile(fixtures.baker_street.CHARACTERS)
         scenes = EntryFile(fixtures.baker_street.SCENES)
         recalculation = Recalculation(theme)

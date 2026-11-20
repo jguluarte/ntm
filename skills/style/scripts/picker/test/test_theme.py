@@ -45,7 +45,7 @@ class ReferenceTest(unittest.TestCase):
         self.assertEqual(expected, names)
 
     def test_a_theme_of_only_speakers_fails_with_missing_reference(self):
-        theme = Theme(fixtures.SPEAKERS_ONLY)
+        theme = Theme(fixtures.casebook.SPEAKERS_ONLY)
 
         with self.assertRaises(MissingReference) as raised:
             theme.reference_lottery_outside("narrators")
@@ -56,7 +56,7 @@ class ReferenceTest(unittest.TestCase):
 
 class ChanceTest(unittest.TestCase):
     def test_a_chance_is_the_weight_times_2_to_the_score_over_the_total(self):
-        theme = Theme(fixtures.WEIGHTED)
+        theme = Theme(fixtures.casebook.WEIGHTED)
         lottery = theme.perspective_lottery()
         chances = lottery.chance_by_candidate.items()
         chance_by_name = {option.name: chance for option, chance in chances}
@@ -71,7 +71,7 @@ class ChanceTest(unittest.TestCase):
         self.assertEqual(expected, chance_by_name)
 
     def test_every_option_weighing_0_fails_with_missing_weight(self):
-        theme = Theme(fixtures.WEIGHTLESS)
+        theme = Theme(fixtures.casebook.WEIGHTLESS)
 
         with self.assertRaises(MissingWeight) as raised:
             theme.perspective_lottery()
@@ -82,7 +82,7 @@ class ChanceTest(unittest.TestCase):
 
 class DrawTest(unittest.TestCase):
     def test_a_draw_returns_the_only_option_weighing_above_0(self):
-        theme = Theme(fixtures.MOSTLY_WEIGHTLESS)
+        theme = Theme(fixtures.casebook.MOSTLY_WEIGHTLESS)
         option = theme.draw_perspective()
 
         expected = "scenes/dawn"
@@ -100,21 +100,21 @@ class SchemaTest(unittest.TestCase):
 
     def test_a_file_without_pools_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.WITHOUT_POOLS)
+            Theme(fixtures.invalid_casebook.WITHOUT_POOLS)
 
         expected = "$: 'pools' is a required property"
         self.assertEqual(expected, str(raised.exception))
 
     def test_a_pool_without_roles_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.POOL_WITHOUT_ROLES)
+            Theme(fixtures.invalid_casebook.POOL_WITHOUT_ROLES)
 
         expected = "$.pools.scenes: 'roles' is a required property"
         self.assertEqual(expected, str(raised.exception))
 
     def test_an_unknown_role_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.UNKNOWN_ROLE)
+            Theme(fixtures.invalid_casebook.UNKNOWN_ROLE)
 
         roles = "['perspective', 'reference', 'speaker']"
         why = f"'perspectives' is not one of {roles}"
@@ -123,7 +123,7 @@ class SchemaTest(unittest.TestCase):
 
     def test_a_negative_weight_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
-            Theme(fixtures.NEGATIVE_WEIGHT)
+            Theme(fixtures.invalid_casebook.NEGATIVE_WEIGHT)
 
         where = "$.pools.scenes.entries.dawn.weight"
         expected = f"{where}: -1 is less than the minimum of 0"
@@ -139,7 +139,7 @@ class EntryFilesTest(unittest.TestCase):
         self.assertEqual(expected, entries)
 
     def test_a_file_no_pool_names_fails_with_unknown_entry_file(self):
-        theme = Theme(fixtures.EVEN)
+        theme = Theme(fixtures.casebook.EVEN)
 
         with self.assertRaises(UnknownEntryFile) as raised:
             theme.entries_from("Even-scenes.yaml")
@@ -148,7 +148,7 @@ class EntryFilesTest(unittest.TestCase):
         self.assertEqual(expected, str(raised.exception))
 
     def test_the_entries_in_a_role_are_those_of_every_pool_holding_it(self):
-        theme = Theme(fixtures.EVEN)
+        theme = Theme(fixtures.casebook.EVEN)
         entries = theme.entries_with_role("speaker")
 
         expected = ["characters/host", "narrators/chorus"]
@@ -168,7 +168,7 @@ class SaveTest(unittest.TestCase):
     def test_saving_writes_the_options_files_layout(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
         saved_options = Path(folder) / "Even-options.yaml"
-        theme = Theme(fixtures.EVEN)
+        theme = Theme(fixtures.casebook.EVEN)
         theme.set_weight("scenes/noon", 0.5)
         theme.set_checksum("Even-scenes.yaml", "ab12")
         theme.set_speaker_rate(0.25)

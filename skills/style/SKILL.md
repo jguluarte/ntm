@@ -69,8 +69,8 @@ big win.
 A win is more tasks finished than planned this week, which only the weekly
 setup's message counts; a task finished after slipping for days; or a task you
 judge big or hard. A big win, which is rare, is a whole project closed as done.
-Call each only from the facts you were handed, and once: skip one that a
-`%Message-history` entry already has as `win` or `big_win` in its `type`.
+Call each only from the facts you were handed, and once: skip one a
+`%Message-history` entry already called, with `win` or `big_win` in its `type`.
 
 Work out the message's type: each value below that holds, with commas between
 them, such as `evening,slipped`.
@@ -87,10 +87,10 @@ them, such as `evening,slipped`.
 ### 3. Write
 
 Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
-such as `morning` or `self-test`, the theme's name, and the perspective and the
-reference, each as `<kind>/<slug>`. It reads the theme itself. It returns 5
-versions, each with a title, a message, and a probability from 0 to 1 of how
-likely a reader would be to predict it.
+such as `morning`, `weekly` or `self-test`, the theme's name, and the
+perspective and the reference, each as `<kind>/<slug>`. It reads the theme
+itself. It returns 5 versions, each with a title, a message, and a probability
+from 0 to 1 of how likely a reader would be to predict it.
 
 Hand a slipped task over as slipped, without its slip count or dates: the
 `escalation` level, or the call in its place, carries those.
@@ -117,7 +117,8 @@ Setup read: one compact JSON line, with only the fields that have a value.
 - `sent`: when it went out, 24-hour, in the user's timezone
 - `reminder`: the reminder step 3 handed the writer, such as `morning`
 - `type`: step 2's type, such as `evening,done,win`
-- `levels`: step 2's level names, such as `{"escalation":"raised_eyebrow"}`
+- `levels`: step 2's level names, such as
+  `{"escalation":"going_cold","finishing_tasks":"case_closed"}`
 - `picks`: step 1's `perspective` and `reference`, as the picker printed them or
   as you named them
 - `opening`: the message's first five words, as sent

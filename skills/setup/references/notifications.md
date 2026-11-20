@@ -21,9 +21,3 @@ gave, titled `ntm test`, with the message
 
 When it returns `Sent:`, ask them to say when it arrives. When it returns
 `Notify FAILED:`, show them why, and ask for the key again.
-
-## The AI app's own push
-
-Nothing to set up: the Create the jobs step turns push notifications on for each
-job, and the push shows the job's final reply. They need the AI app on their
-phone, with its notifications allowed.

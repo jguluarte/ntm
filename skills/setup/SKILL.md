@@ -226,8 +226,7 @@ What each job runs, in order, for Create the jobs.
 6. `/ntm:refresh-picks`
 7. Send the week's message as the core rules' Sending a message in the user's
    style says. Its facts are what the `weekly` rule in `%Message-rules` asks
-   for, from steps 2 and 4, as counts and the few tasks worth naming. End the
-   run with what that returns.
+   for, from steps 2 and 4, as counts and the few tasks worth naming.
 
 ###### Reminders
 
@@ -310,7 +309,8 @@ How reminders reach them, as a conversation. Suggest Pushover: reminders arrive
 in their own app, which a phone's focus settings can treat differently from
 everything else. Say that it needs an inexpensive license they buy for
 themselves. Otherwise, fall back to the AI app's own push, which chats at them
-when each job finishes.
+when each job finishes. It needs the AI app on their phone, with its
+notifications allowed.
 
 With Pushover, they give their user key and an app token, and you send one test
 push; `references/notifications.md` says how.
@@ -320,9 +320,9 @@ and save it under Notifications in the `%Settings` database. For Pushover, save
 their keys there too, in Pushover keys. Then add `ntm-user:notify` to their user
 plugin, as The user plugin says; near its top, it follows their Notifications in
 `%Settings`. For Pushover, build it from `references/notify/pushover.md`. For
-the AI app's own push, build it from the same file without Keys or
-`--app-token`. In place of Send and Result, it returns `NOTIFY VIA FINAL REPLY`,
-then the title, then the message, for the job to end its run with.
+the AI app's own push, build it from the same file without Keys. In place of
+Send and Result, it returns `NOTIFY VIA FINAL REPLY`, then the title, then the
+message, for the job to end its run with.
 
 ### Install and self-test
 

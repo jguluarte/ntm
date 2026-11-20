@@ -95,8 +95,8 @@ Take the version with the lowest probability whose first five words aren't any
 entry's `opening`. Its title and message are what gets sent, and step 1's pick
 goes into its entry.
 
-When `ntm-user:notify` answered `Notify TOO LONG`, do step 3 once more, with
-that line handed to the writer too, then this step.
+When `ntm-user:notify` answered `Notify TOO LONG`, do step 3 again, with that
+line handed to the writer too, then this step.
 
 ## Keeping `%Message-history`
 

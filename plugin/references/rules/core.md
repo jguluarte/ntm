@@ -123,8 +123,8 @@ file says. Then:
 
 1. Load `ntm:style` unless the sender has, and follow it to turn the facts into
    a title and message.
-2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, follow
-   `ntm:style` once more with that line, and send what it gives.
+2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, do what
+   the end of `ntm:style`'s Choose step says, once, and send what it gives.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
    message as `ntm:style`'s Keeping `%Message-history` says.
 

@@ -35,7 +35,7 @@ what will make the user actually read it?
 
 | Input             | What it is                                                                              |
 | ----------------- | --------------------------------------------------------------------------------------- |
-| The facts         | What the message must cover, its tasks, and what the sender's rule asks, such as length |
+| The facts         | What the message is about: its tasks, and the sender's rule, such as the length it asks |
 | `escalation`      | The level for slipped tasks, by name or in plain words; optional                        |
 | `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
 | The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
@@ -67,9 +67,9 @@ Find each level you're handed by name in the root's ladder of the same name, and
 write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
 no level name: write to the paragraph, for what you're handed in plain words,
-such as a win. A slip is a planned date the work moved on from: the work waits
-for another day. Say that a task slipped, in the theme's way; the `escalation`
-level carries how much.
+such as a win. A slip is a planned date the work moved on from. For the user,
+the task is still waiting: say that, in the theme's way; the `escalation` level
+carries how long.
 
 ### 2. Write 5 versions
 
@@ -91,11 +91,12 @@ it, set the message where the reminder falls there. The message talks to the
 user as "you", to the task, or to the room, and calls the user only "you", never
 by name or by a pet name.
 
-Name each task in a few "theme-natural" words, with no id and no link. Any fact
-you use should also be written in a theme appropriate way.
+Name each task in a few "theme-natural" words, with no id and no link. The facts
+are what the message is about, not its words: tell each as the perspective would
+if they'd seen it themselves, in their own words.
 
-Labels and databases should NOT be used in written messages, those are for you
-not the user you're writing for.
+ntm's words for things, such as slipped, and its labels and databases, are for
+you, not the user you're writing for: say the thing itself.
 
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or

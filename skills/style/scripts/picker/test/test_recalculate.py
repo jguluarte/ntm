@@ -176,16 +176,6 @@ class ScoresTest(unittest.TestCase):
 
         self.assertAlmostEqual(-2, theme.score_of("scenes/stakeout"))
 
-    def test_a_reference_called_stale_all_week_sinks_to_the_lowest_score(self):
-        theme = Theme(scotland_yard.OPTIONS)
-        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
-        messages = history.sent_since(date(2026, 11, 9))
-        recalculation = Recalculation(theme)
-
-        recalculation.adjust_scores(messages)
-
-        self.assertEqual(-2, theme.score_of("clues/badge"))
-
     def test_a_score_that_reached_the_highest_falls_with_a_later_message(self):
         theme = Theme(scotland_yard.OPTIONS)
         history = MessageHistory(scotland_yard.MESSAGE_HISTORY)

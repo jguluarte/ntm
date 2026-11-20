@@ -207,8 +207,10 @@ class ScoresTest(unittest.TestCase):
 
     def test_the_messages_with_picks_count_when_one_has_none(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
-        history_file = Path(folder) / "Message-history.jsonl"
-        history_file.write_text(
+        history_without_picks = (
+            Path(folder) / "Without-picks-message-history.jsonl"
+        )
+        history_without_picks.write_text(
             '{"sent":"2026-11-15 18:00","verdict":"ignored"}\n'
             '{"sent":"2026-11-14 18:00","verdict":"acted",'
             '"picks":{"perspective":"cast/chief","reference":"scenes/fog"}}\n',
@@ -216,7 +218,7 @@ class ScoresTest(unittest.TestCase):
         )
 
         theme = Theme(fixtures.scotland_yard.OPTIONS)
-        history = MessageHistory(history_file)
+        history = MessageHistory(history_without_picks)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 

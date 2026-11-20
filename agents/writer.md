@@ -38,7 +38,7 @@ Any of your five versions may be the one sent, so write each one ready to send.
 | Input             | What it is                                                                              |
 | ----------------- | --------------------------------------------------------------------------------------- |
 | The facts         | What the message must cover, its tasks, and what the sender's rule asks, such as length |
-| `escalation`      | The level for slipped tasks, by name; optional                                          |
+| `escalation`      | The level for slipped tasks, by name or in plain words; optional                        |
 | `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
 | The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
 | The theme         | The theme the sender names, or else this week's, by name, such as `Casebook`            |

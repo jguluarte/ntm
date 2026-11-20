@@ -109,7 +109,8 @@ versions, each with a title, a message, and a probability from 0 to 1 of how
 likely a reader would be to predict it.
 
 A slipped task goes in the facts as slipped, without its slip count or the dates
-it slipped from: the `escalation` level carries those.
+it slipped from: the `escalation` level, or the call in its place, carries
+those.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.

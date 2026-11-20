@@ -1,5 +1,6 @@
 ---
 name: clean
+user-invocable: false
 description: |-
     Tidies the user's task list by:
     - Clearing stale planned dates
@@ -7,7 +8,6 @@ description: |-
     - Doing the backend's own cleanup, from `ntm-user:backend`
 
     This is run via scheduled job. It reports back how much it changed.
-user-invocable: false
 ---
 
 # ntm:clean

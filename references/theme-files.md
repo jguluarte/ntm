@@ -37,9 +37,9 @@ parts are the same in every theme:
 | `finishing_tasks` | How the theme marks a finished task, up to a big win                         |
 | `files`           | Every other file of the theme, grouped by how the writer gets data from it   |
 
-`escalation` and `finishing_tasks` each hold one paragraph, or levels, the first
-level first, each keyed by its name in the theme's words and saying how it
-sounds.
+`escalation` and `finishing_tasks` each hold levels from the first up, each
+keyed by its name in the theme's words and saying how it sounds. One paragraph
+may stand in for the levels.
 
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task judged big or hard by the run that
@@ -63,13 +63,23 @@ world: >-
   A detective story set in a foggy city. The user is the client who hired the
   detective; each task is a case on the detective's desk.
 
-escalation: >-
-  A slipped task is a case going cold. One slip draws a raised eyebrow, three
-  draw a lecture on neglect, five and the inspector starts asking questions.
+escalation:
+  fresh_case: >-
+    Nothing has slipped. The detective is dry and curious.
+  going_cold: >-
+    One slip. A raised eyebrow and a remark about cold trails.
+  cold_case: >-
+    Two slips. A slow lecture on neglect.
+  inspector_calls: >-
+    It keeps slipping. The inspector starts asking the user questions.
 
-finishing_tasks: >-
-  A finished task is a case closed, filed with quiet satisfaction. A big win
-  gets the whole cast in the drawing room for the reveal.
+finishing_tasks:
+  case_closed: >-
+    A finished task, filed with quiet satisfaction.
+  breakthrough: >-
+    A win. The detective allows a rare smile.
+  the_reveal: >-
+    A big win. The whole cast gathers in the drawing room for the reveal.
 
 files:
   by_entry:

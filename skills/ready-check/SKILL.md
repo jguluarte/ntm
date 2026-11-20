@@ -65,7 +65,7 @@ job's own push delivers it.
 
 With an update waiting, `Ready-check OK` is followed by
 `Update waiting: setup at <theirs>, ntm at <installed>. Run /ntm:update in chat.`
-The run goes on, and its last result ends with that line too.
+The run goes on.
 
 | Failure                | Fix                                                               |
 | ---------------------- | ----------------------------------------------------------------- |

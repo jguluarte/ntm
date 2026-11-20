@@ -14,10 +14,9 @@ python3 recalculate.py adjust --options <file> --history <file> --since <date>
 `draw` prints that many picks as a YAML list, in the order drawn, each item a
 `perspective:` and a `reference:`. The same `--seed` draws the same picks.
 
-`start` gives a new theme its first weights, speaker rate and checksums.
-`adjust` moves the scores of each message's picks by its `verdict` and
-`feedback`, for the history's lines sent on or after `--since`. Both print
-`saved: <file>`.
+`start` gives a new theme its first weights and speaker rate. `adjust` moves the
+scores of each message's picks by its `verdict` and `feedback`, for the
+history's lines sent on or after `--since`. Both print `saved: <file>`.
 
 A failure prints one `Picker FAILED:` or `Recalculation FAILED:` line on stderr
 and exits 1.

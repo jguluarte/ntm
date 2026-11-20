@@ -166,10 +166,6 @@ speaker is only ever drawn as the perspective.
 
 <!-- prettier-ignore -->
 ```yaml
-checksums:
-  Casebook-characters.yaml: 9f86d081884c7d65...
-  Casebook-scenes.yaml: 2c26b46b68ffc68f...
-
 speaker_rate: 0.4
 
 pools:
@@ -203,7 +199,6 @@ The recalculation, a script, computes every number here. An entry without a
 
 | Field          | What it is                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |
-| `checksums`    | Each entry file's SHA-256, over its text as stored; shortened above                  |
 | `speaker_rate` | How often the perspective is a speaker, from 0 to 1; one for the theme               |
 | `weight`       | How likely the entry is to be drawn: 1 without lines or riffs, less the fewer it has |
 | `score`        | How well messages built on the entry landed, from the message history                |

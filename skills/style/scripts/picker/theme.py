@@ -1,4 +1,3 @@
-import hashlib
 import random
 from dataclasses import dataclass
 from pathlib import Path
@@ -8,7 +7,6 @@ import yaml
 
 OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
-CHECKSUMS_BY_FILE = "checksums"
 SPEAKER_RATE = "speaker_rate"
 DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
@@ -108,7 +106,6 @@ class Theme:
         self._seeds = random.Random(seed)
         self._fields = self._load(path)
         self._validate(self._fields)
-        self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._speaker_rate = self._fields.pop(
             SPEAKER_RATE, DEFAULT_SPEAKER_RATE,
         )
@@ -191,9 +188,6 @@ class Theme:
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, SCORE: score}
 
-    def set_checksum(self, file_name, checksum):
-        self._checksums[file_name] = checksum
-
     @property
     def speaker_rate(self):
         return self._speaker_rate
@@ -202,11 +196,7 @@ class Theme:
         self._speaker_rate = speaker_rate
 
     def save(self, path):
-        in_schema_order = {
-            CHECKSUMS_BY_FILE: self._checksums,
-            SPEAKER_RATE: self._speaker_rate,
-            **self._fields,
-        }
+        in_schema_order = {SPEAKER_RATE: self._speaker_rate, **self._fields}
         text = yaml.dump(
             in_schema_order, Dumper=_OptionsDumper, sort_keys=False,
         )
@@ -252,7 +242,6 @@ class EntryFile:
     def __init__(self, path):
         contents = Path(path).read_bytes()
         self.name = Path(path).name
-        self.checksum = hashlib.sha256(contents).hexdigest()
         self.line_counts = self._count_lines(yaml.safe_load(contents))
 
     @classmethod

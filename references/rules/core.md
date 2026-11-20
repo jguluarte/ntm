@@ -22,18 +22,14 @@ Where a message links a task, the id is the link:
 `the kitchen faucet ([ABC-15](<url>))`.
 
 Write times and estimates in full words, in the user's language: `2 hours`,
-`~20 minutes`. In chat, use the real names of labels and databases, never their
-`$` or `%` marks; a message the writer writes names neither.
+`~20 minutes`. In chat, use the real names of labels and databases.
 
 ## Explaining how ntm works
 
-ntm is here to make things easier for the user and help them get things done, so
-it keeps what they have to think about small.
-
-In the normal flow, ntm takes care of its own workings without explaining them.
-When the user asks in chat how something works, explain gladly: start at the
-top, and go one layer deeper each time they ask, matched to what they already
-know.
+ntm keeps what the user has to think about small, and takes care of its own
+workings without explaining them. When the user asks in chat how something
+works, explain from the top, one layer deeper each time they ask, matched to
+what they already know.
 
 ## The task list
 
@@ -63,9 +59,8 @@ was missed: ntm carries the work to today or clears the date.
 ### Planned date history
 
 A task's `Planned date history` comment lists the planned dates it slipped from,
-oldest first. `ntm:plan --auto day` adds the old date when it carries the task
-to today, and `ntm:clean` adds it when it clears a stale date: update the
-comment in place, or add it when the task has none.
+oldest first. Add a new date at the end of the comment, or start the comment
+when the task has none.
 
     Planned date history:
     - 2026-11-10
@@ -79,45 +74,29 @@ of it as it was.
 ## Databases
 
 ntm keeps its own records in databases on the task list. A `%` name, such as
-`%Settings`, is a database's default title. `%Settings` holds the real names of
-the others under Databases; a theme's files are named after the theme.
-
-Find each part of a database by its name, and save it back whole with only your
-change.
-
-Every user has `%Settings` and at least one theme.
+`%Settings`, is a database's default title. Find each part of a database by its
+name, and save it back whole with only your change.
 
 ### `%Settings`
 
 The values the user agreed to in setup, such as their timezone, their label
-names and how they want to be notified. `ntm:ready-check` loads it at the start
-of a run, and skills read the part they need. Its Themes part lists the user's
-themes and names this week's.
+names and how they want to be notified, and the real names of the other
+databases, under Databases. `ntm:ready-check` loads it at the start of a run,
+and skills read the part they need.
 
 ### Themes
 
-A user can have several themes, each a set of files named after it. In a run,
-each name below means the file of the theme the run names, or else of this
-week's theme; `references/theme-files.md` gives each file's shape.
+A user has one or more themes, each a set of files named after it. The Themes
+part of `%Settings` lists them and names this week's. In a run, each name below
+means the file of the theme the run names, or else of this week's theme;
+`references/theme-files.md` gives each file's shape.
 
-| How we refer to it in the plugin | example                       |
-| -------------------------------- | ----------------------------- |
-| `%Theme`                         | `Casebook.yaml`               |
-| `%Theme-options`                 | `Casebook-options.yaml`       |
-| `%Theme-picks`                   | `Casebook-picks.yaml`         |
-| `%Message-history`               | `Casebook-message-history.md` |
-
-#### `%Theme`
-
-The style ntm's messages to the user are written in. `ntm:style` reads it for
-each message and changes it with the user when they ask. The writer agent reads
-it for every message.
-
-#### `%Message-history`
-
-An entry for each message ntm writes in the theme: when it went out, what was
-picked for it, which tasks it was about, and how it landed. `ntm:style` reads it
-and keeps it.
+| Name               | Example                       | What it is                                              |
+| ------------------ | ----------------------------- | ------------------------------------------------------- |
+| `%Theme`           | `Casebook.yaml`               | The root: the style messages to the user are written in |
+| `%Theme-options`   | `Casebook-options.yaml`       | What the theme offers the picker                        |
+| `%Theme-picks`     | `Casebook-picks.yaml`         | The next picks; each message takes the first            |
+| `%Message-history` | `Casebook-message-history.md` | Each message sent in the theme, and how it landed       |
 
 ## Results
 
@@ -142,8 +121,8 @@ scheduled task's own push shows it. When `ntm:ready-check` returned an
 The sender decides whether there's a message, and gathers its facts as its own
 file says. Then:
 
-1. Follow `ntm:style`, loading it first if the sender hasn't, to turn the facts
-   into a title and message.
+1. Load `ntm:style` unless the sender has, and follow it to turn the facts into
+   a title and message.
 2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
    the message, keeping every task id, and send it once more.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the

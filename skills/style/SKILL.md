@@ -14,8 +14,7 @@ description: >-
 # ntm:style
 
 The user's style is their `%Theme`, the database that says how every message to
-them is written. This skill reads `%Theme` and `%Message-history`. The writer
-agent reads the parts of `%Theme` a message needs, and never `%Message-history`.
+them is written.
 
 ## Setup
 
@@ -24,12 +23,6 @@ Run `/ntm:ready-check`, unless it already ran in this session. It loads
 with its result line. Then read `%Theme` and `%Message-history`: the theme the
 sender names, or else this week's theme, as `%Settings` names it, and that
 theme's history, found by its name, such as `Casebook-message-history.md`.
-
-## What you write from
-
-The sender hands over the facts, as its own file says. They hold what the
-message must cover, and may hold its tasks and what's known of each, and
-anything else its rule asks of the message, such as tone or length.
 
 ## Writing a message
 
@@ -46,10 +39,8 @@ each item a `perspective:` and a `reference:`. When there is no list, or it's
 empty, load `ntm:refresh-picks` and follow it, then take the first pick from the
 new list.
 
-When it ends with `Nothing to refresh:`, the theme isn't built for the picker:
-pick both yourself from the theme, from different kinds, and keep no line. That
-isn't a failure. When it ends with a failure line, pick both yourself the same
-way, and keep that line for the result.
+When it ends with `Nothing to refresh:` or a failure line, pick both yourself
+from the theme, from different kinds, and keep a failure line for the result.
 
 ### 2. Work out the levels
 
@@ -67,50 +58,30 @@ the facts, judged against the ladder's own words:
 | `finishing_tasks` | A win                | The second                  |
 | `finishing_tasks` | A big win            | The third                   |
 
-The task that slipped most sets the `escalation` level. Slips from a while back
-weigh less: a task picked up again after a long gap counts for less than its
-slips, as you judge it.
+The task that slipped most sets the `escalation` level, and slips from a while
+back weigh less, as you judge it.
 
 When the root gives a ladder as one paragraph, that ladder has no level name.
 Hand the writer what you called in its place, in plain words: for `escalation`,
 a task slipped or kept slipping; for `finishing_tasks`, a task done, a win or a
 big win.
 
-A win is any of these: more tasks finished than planned this week, a task
-finished after slipping for days, or a task you judge big or hard. Only the
-weekly setup's message counts the week; a reminder looks only at the day. A big
-win is a whole project finished: the project itself closes as done. It's rare.
-Call either only from the facts you were handed, and look nothing else up. Call
-each once, in the first message after it happens: a win that a
-`%Message-history` entry already celebrated, with `win` or `big_win` in its
-`type`, isn't called again.
-
-Work out the message's type: each value below that holds, with commas between
-them, such as `evening,slipped`.
-
-| Value                               | When                                   |
-| ----------------------------------- | -------------------------------------- |
-| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type` |
-| `weekly`                            | It's the weekly setup's message        |
-| `slipped`                           | A task in the facts slipped            |
-| `done`                              | A task in the facts is done            |
-| `win`                               | You called a win                       |
-| `big_win`                           | You called a big win                   |
-
-The self-test's message, and one written in chat, take none of the first two
-rows' values.
+A win is more tasks finished than planned this week, which only the weekly
+setup's message counts; a task finished after slipping for days; or a task you
+judge big or hard. A big win, which is rare, is a whole project closed as done.
+Call each only from the facts you were handed, and once: skip one a
+`%Message-history` entry already called, with `win` or `big_win` in its `type`.
 
 ### 3. Write
 
 Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
-such as `morning` or `self-test`, the theme's name, and the perspective and the
-reference, each as `<kind>/<slug>`. It reads the theme itself. It returns 5
-versions, each with a title, a message, and a probability from 0 to 1 of how
-likely a reader would be to predict it.
+such as `morning`, `weekly` or `self-test`, the theme's name, and the
+perspective and the reference, each as `<kind>/<slug>`. It reads the theme
+itself. It returns 5 versions, each with a title, a message, and a probability
+from 0 to 1 of how likely a reader would be to predict it.
 
-A slipped task goes in the facts as slipped, without its slip count or the dates
-it slipped from: the `escalation` level, or the call in its place, carries
-those.
+Hand a slipped task over as slipped, without its slip count or dates: the
+`escalation` level, or the call in its place, carries those.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
@@ -123,32 +94,26 @@ goes into its entry.
 
 ## Keeping `%Message-history`
 
-Once `ntm-user:notify` has sent the message, or handed it back for the job's
-final reply, add its entry as the first line of the Entries part's `jsonl`
-block, in the history Setup read. An entry is one JSON line, written compact,
-with no spaces or line breaks added, and only the fields that have a value:
+Once the message is sent, or handed back for the job's final reply, add its
+entry as the first line of the Entries part's `jsonl` block, in the history
+Setup read: one compact JSON line, with only the fields that have a value.
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
+{"sent":"2026-11-13 08:45","type":"win","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
-- `reminder`: which message it is: the reminder's type, such as `morning`, or
-  `weekly`, or `self-test`
-- `type`: the message's type from step 2, exactly as built, such as
-  `evening,done,win`, only when it has one
-- `levels`: step 2's level on each ladder by name, only the ladders that have
-  one, such as
-  `"levels":{"escalation":"raised_eyebrow","finishing_tasks":"case_closed"}`
-- `picks`: step 1's `perspective` and `reference`, as the picker printed them,
-  or by name when you picked them yourself
+- `type`: the wins step 2 called: `win`, `big_win`, or both as `win,big_win`
+- `picks`: step 1's `perspective` and `reference`, as the picker printed them or
+  as you named them
 - `opening`: the message's first five words, as sent
 - `tasks`: each task the message is about, with its planned date when it has
-  one, such as `"tasks":[{"id":"ABC-12","planned":"2026-11-13"}]`
+  one, such as `[{"id":"ABC-12","planned":"2026-11-13"}]`
 - `feedback`: the user's word on it, `keep` or `stale`
 - `verdict`: `acted` or `ignored`, written by the weekly setup job
 
-Then drop the entries older than the `Keep:` line, and save.
+Then drop the entries older than the history's `Keep:` line, such as
+`Keep: 8 weeks`, and save.
 
 ## In chat
 

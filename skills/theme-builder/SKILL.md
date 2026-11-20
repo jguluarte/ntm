@@ -25,17 +25,15 @@ theme's files, and nothing more. Never build `Casebook` or copy from it.
 
 ## Setup
 
-When `ntm:setup` runs this skill, it already holds where their databases go.
-Skip the ready-check, and look for an unfinished theme.
+When `ntm:setup` runs this skill, it already holds where their databases go:
+skip the ready-check, here and in `ntm:refresh-picks`. Otherwise, run
+`/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
 
-Otherwise, run `/ntm:ready-check`, unless it already ran in this session. It
-loads `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the
-run with its result line.
-
-A theme's root in their backend, a YAML database whose text has a `theme` part,
-is an unfinished theme when All themes, in `%Settings`, doesn't list it. Offer
-to pick it up after its last saved stage, judged from what its files hold; on a
-no, start a new one.
+A theme's root is a YAML database with a `theme` part. One that All themes, in
+`%Settings`, doesn't list is unfinished: offer to pick it up where its files
+leave off.
 
 ## Building the theme
 
@@ -65,32 +63,24 @@ your user from your memories about them.
 
 ### 2. Build it with them
 
-Build the theme with them as the theme guide,
-`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: stage by
-stage, or from a theme they already have.
+Build the theme with them one stage at a time, as the theme guide,
+`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: the
+world, the levels, the kinds and the entries.
 
-Save each stage's part as it finishes, so a later chat picks it up instead of
-starting over. Each file holds what you built with them, never the guide's own
-text.
-
-Each of the theme's files is a database in their backend, beside their other
-databases, titled with its file name, such as `Casebook.yaml`. A YAML file's
-text sits in one fenced `yaml` block. No other theme is touched: when another
-theme already has the name they pick, ask them for another.
+Save each stage's part in the theme's files, beside their other databases, as it
+finishes, so a later chat picks it up. When another theme has the name they
+pick, ask for another.
 
 ### 3. Work out its numbers
 
-When this run wrote or changed the theme's files, run the recalculation, a
-script in `ntm:style` that works out the numbers in the theme's options file:
-each entry's weight, the theme's speaker rate, and each entry file's checksum.
-It reads files from paths and touches no backend, and the theme's files live in
-the user's backend, so hand them over this way.
+When this run wrote or changed the theme's files, run the recalculation, which
+works out the numbers in `%Theme-options`: each entry's weight, the theme's
+speaker rate and each entry file's checksum.
 
-Read `%Theme-options` and each entry file its pools name, and take the text of
-each one's `yaml` block. Write each text to a file named for its database, such
-as `Casebook-options.yaml` and `Casebook-scenes.yaml`, in this session's working
-folder, exactly as read: never retype it from memory or summarize it. Then run
-the recalculation on those files:
+Write the text of the `yaml` block of `%Theme-options`, and of each entry file
+its pools name, to a file named for its database, such as
+`Casebook-options.yaml` and `Casebook-scenes.yaml`, in this session's working
+folder, exactly as read, never from memory. Then run:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py start \
@@ -98,24 +88,17 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py start \
 ```
 
 It writes the numbers into the options file and prints one line,
-`saved: <the options file>`. Save that file's text, exactly as the script wrote
-it, as the `yaml` block of `%Theme-options`.
-
-It needs Python 3 with PyYAML and jsonschema, and nothing guarantees them where
-this runs: without them, the script stops with a Python error. Any other output,
-or a part of this you can't do, means the recalculation failed. Its failure line
-is the `Recalculation FAILED: <failure>: <why>` line it printed, or else
-`Recalculation FAILED: <why>`, with the last line it printed or what you
-couldn't do. When it fails, tell the user in a line that the theme's numbers
-weren't worked out, with its failure line, and go on.
+`saved: <the options file>`; anything else, or a part of this you can't do, is
+`Recalculation FAILED: <why>`. Save that file's text, exactly as the script
+wrote it, as the `yaml` block of `%Theme-options`. On a failure, tell the user
+in a line that the theme's numbers weren't worked out, with its failure line,
+and go on.
 
 ### 4. Draw its first picks
 
-When step 3 passed, load `ntm:refresh-picks` and follow it for this theme, so
-its `%Theme-picks` is drawn on the new numbers. When `ntm:setup` runs this
-skill, skip `ntm:refresh-picks`'s ready-check too, as Setup says. When it ends
-with a failure line, tell the user in a line that the theme's picks weren't
-drawn, with that line, and go on.
+When step 3 passed, load `ntm:refresh-picks` and follow it for this theme. When
+it ends with a failure line, tell the user in a line that the theme's picks
+weren't drawn, with that line, and go on.
 
 ### 5. Switch it on
 
@@ -125,17 +108,16 @@ named after the theme, such as `Casebook-message-history.md`, beside its files.
 
 Then add the theme's root to the end of All themes, in the Themes part of
 `%Settings`, or where the user asks for it. When it's their first theme, it is
-also This week's theme. The weekly setup job takes their themes in turn.
+also This week's theme.
 
 ### 6. Send a test message
 
 When `ntm:setup` runs this skill, skip this step: its self-test sends the first
 message. Otherwise, send one message as the core rules' Sending a message in the
 user's style says, written in this theme in place of This week's theme. Its one
-fact is that the theme, by its name, is built and switched on. It's sent when
-`ntm-user:notify` returns `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which
-you show the user. On any other return, tell the user in a line that the test
-message didn't go out, with what it returned, and go on: the theme stays on.
+fact is that the theme, by its name, is built and switched on. Show the user any
+`NOTIFY VIA FINAL REPLY` block it returns. When it isn't sent, tell the user in
+a line, with what it returned, and go on: the theme stays on.
 
 ## Result
 

@@ -76,8 +76,8 @@ setup asks, once you've installed the plugin it built.
 
 Run it after you install a new version of ntm. It tells you what's new since
 your last update, helps you set up anything the new version offers, and rebuilds
-your own plugin when the new version needs it. When a new version needs nothing
-from you, your next scheduled job brings you up to it on its own.
+your own plugin when needed. When a new version needs nothing from you, ntm
+brings your setup up to it on its own.
 
 ### `/ntm:style`
 
@@ -85,17 +85,15 @@ Writes ntm's messages to you in the theme you created during setup, so they
 sound like something you enjoy and keep changing instead of repeating. A task
 you keep putting off gets a stronger nudge the longer it slips. Ask it to write
 something in your style, or to change how your reminders sound. When a reminder
-is a keeper, or one has gone stale, say so in that reminder's chat, and ntm
-notes it to keep your reminders fresh.
+is a keeper or has gone stale, say so in its chat, and ntm notes it to keep your
+reminders fresh.
 
 ### `/ntm:theme-builder`
 
-Builds a theme with you, one stage at a time: something you enjoy, like a show
-or a book, how it talks to you when you're on track or slacking off, and the
-people, scenes and moments your reminders draw on. Setup runs it for your first
-theme; run it again any time you want another, and it sends you a test message
-in the new theme. Your themes take turns, a week each. If you stop partway, it
-picks up where you left off.
+Builds a theme with you from something you enjoy, like a show or a book. Setup
+runs it for your first theme; run it again any time you want another. Your
+themes take turns, a week each. If you stop partway, it picks up where you left
+off.
 
 ## Task management
 
@@ -112,8 +110,7 @@ only.
 
 Picks what you'll work on each day: one small task a weekday, unless you chose
 otherwise in setup. Scheduled jobs plan your week ahead, and each morning move
-unfinished work to today. Each planned day a task misses is kept in a Planned
-date history comment on the task. Run it yourself to plan together, such as
+unfinished work to today. Run it yourself to plan together, such as
 `/ntm:plan next week around the garage`.
 
 ### `/ntm:pause`
@@ -137,10 +134,9 @@ its own each day.
 ### `/ntm:run-price-watch`
 
 Checks the things you want to buy, the tasks in the project you picked for them
-in setup, and tells you when one is a good deal today. The alert is a plain push
-with the price, the store and a link to the store's page. Its daily result, in
-the scheduled task, gives each deal's full details, and lists any item that
-needs something from you, such as a target price.
+in setup, and tells you when one is a good deal today, with a link to the store.
+Its daily result, in the scheduled task, gives each deal's full details, and
+lists any item that needs something from you, such as a target price.
 
 ### `/ntm:sync-price-watch-to-amazon`
 
@@ -160,9 +156,13 @@ Your scheduled jobs run it first; run it yourself if something seems off.
 
 ### `/ntm:refresh-picks`
 
-Chooses, once a week, what each of the week's messages draws on from your theme,
-so your reminders keep changing. It leans toward what got you moving the week
-before. Your weekly setup runs it for you.
+Keeps your reminders changing week to week, leaning toward what got you moving
+the week before. Your weekly setup runs it for you.
+
+### `/ntm:recalculate-theme-scores`
+
+Sees which of last week's messages got you to act on your tasks, and tunes your
+theme toward what worked. Your weekly setup runs it for you.
 
 ### `/ntm:reminder`
 
@@ -172,5 +172,5 @@ you set up. Scheduled jobs run it for you at the times you picked.
 ### `/ntm:clean`
 
 Clears dates on previously planned tasks that didn't finish, removes pause dates
-that have since passed, and does any extra tidying your task list app needs.
-Your weekly setup runs it for you.
+that have since passed, and takes closed tasks out of their projects when your
+task list app counts them against its limits. Your weekly setup runs it for you.

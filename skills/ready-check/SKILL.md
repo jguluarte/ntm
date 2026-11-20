@@ -46,17 +46,12 @@ follow them for the rest of the run.
 
 ### 4. Compare the versions
 
-Compare theirs, Last synced under ntm version in `%Settings`, with the installed
-one, `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`. Theirs is
-0.4.0 when there is none. When they match, or the installed one can't be read,
-the check is done.
+Find their version, the installed one and the update notes as step 1 of
+`ntm:update` says. When the versions match, the check is done.
 
-When the installed version is newer, find the update notes as step 1 of
-`ntm:update` says, and read each one's first line, Needs the user:
-
-- None says yes: load `ntm:update` and follow it, then the check is done. With
-  no notes, that only records the version.
-- Any says yes: the check is done, with an update waiting.
+When the installed version is newer, read each note's first line, Needs the
+user. When one says yes, the check is done, with an update waiting. Otherwise,
+load `ntm:update` and follow it, then the check is done.
 
 ## Result
 

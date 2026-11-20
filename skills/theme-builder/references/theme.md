@@ -1,10 +1,9 @@
 # Building the theme
 
-The theme is what ntm writes every reminder in, so the user keeps reading them.
-Build it with them one stage at a time, from what they picked. Each section
-below is a stage: what to ask them, and what it writes in the theme's files. For
-a theme they already have, sort it into these files and build what's missing
-with them.
+Build the theme with the user one stage at a time, from what they picked. Each
+section below is a stage: what to ask them, and what it writes in the theme's
+files. For a theme they already have, sort it into these files and build what's
+missing with them.
 
 `${CLAUDE_PLUGIN_ROOT}/references/theme-files.md` gives each file's shape.
 
@@ -22,9 +21,8 @@ open a reminder: a joke, a jab, a running bit, a story that picks up where
 yesterday left off. Several can combine.
 
 Ask how their day maps onto the world, if it does at all: the weekly plan, and
-the morning, afternoon and evening reminders. The intro's example is one way.
-The user decides what each part of the day is or is not. Ask too whether there
-is anything they don't want in it.
+the morning, afternoon and evening reminders. The intro's example is one way;
+it's theirs to decide. Ask too whether there is anything they don't want in it.
 
 Agree the theme's name with them, since it names each of the theme's files, and
 write it as the root's `theme`. Write the rest in its `world`: the world and
@@ -53,8 +51,6 @@ decides how many each has. Most themes start from these:
 | 3rd   | A task has slipped twice | A big win: a project finished |
 | 4th   | A task has kept slipping |                               |
 
-`theme-files.md`, under The root, says what a win and a big win are.
-
 ## The kinds
 
 Derive the theme's kinds from the world's own material, as the user describes it
@@ -71,11 +67,8 @@ Ask the user how involved they would like to be with their theme's content. When
 they want less of a part in it, offer entries a few at a time, for a yes or no
 on each.
 
-Write a few entries of each kind with them; about 20 in all, an estimate and not
-a rule, is more than a week of messages. Variety comes from how many entries
-there are and how many ways each one can be used: a running scene that moves
-forward, or a riff that bends a line to the task, stretches across many
-reminders.
+Write a few entries of each kind with them, about 20 in all. Favour ones that
+can be used many ways, such as a running scene that moves forward.
 
 Every quote or line comes from the user: they say it, or confirm that one you
 offer is true to their world.

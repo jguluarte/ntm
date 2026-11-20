@@ -240,9 +240,11 @@ class Theme:
 
 class EntryFile:
     def __init__(self, path):
-        contents = Path(path).read_bytes()
+        with open(path, encoding="utf-8") as file:
+            fields = yaml.safe_load(file)
+
         self.name = Path(path).name
-        self.line_counts = self._count_lines(yaml.safe_load(contents))
+        self.line_counts = self._count_lines(fields)
 
     @classmethod
     def _count_lines(cls, fields):

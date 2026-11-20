@@ -1,9 +1,9 @@
 # Rating the past week
 
 The weekly setup job rates last week's messages before the draw: did the user
-act on each one? The verdicts move the scores of the theme those messages went
-out in, so the picker leans toward what got the user moving. Every file below is
-that theme's.
+act on each one? The verdicts move the scores of last week's theme, the one This
+week's theme in `%Settings` named before the job moved it on, so the picker
+leans toward what got the user moving. Every file below is that theme's.
 
 ## Rate
 

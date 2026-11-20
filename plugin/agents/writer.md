@@ -102,10 +102,8 @@ ntm's own words, such as planned date, and its labels and databases, are for
 you. The message never uses them: it says what happened the way the user would.
 
 Vary each version's shape: the order things come in, where the reference lands,
-how it opens and how it closes. Write at the length the facts give, or else the
-guidance gives; with neither, keep it short. When you're handed length caps,
-each title and message stays within its cap, whatever length the facts or the
-guidance give.
+how it opens and how it closes. When you're handed length caps, each title and
+message stays within its cap.
 
 ### 3. Title each version
 

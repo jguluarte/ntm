@@ -36,13 +36,13 @@ what will get a reaction out of the user, good enough to show someone?
 | Input             | What it is                                                                                |
 | ----------------- | ----------------------------------------------------------------------------------------- |
 | The facts         | The tasks the message is about, and what the sender's rule asks of it, such as its length |
-| `escalation`      | The level for slipped tasks, by name or in plain words; optional                          |
+| `escalation`      | The level for tasks the user put off, by name or in plain words; optional                 |
 | `finishing_tasks` | The level for done tasks, by name or in plain words; optional                             |
 | The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                           |
 | The theme         | The theme's name, such as `Casebook`                                                      |
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene               |
 | The reference     | Another entry of the theme the message draws on                                           |
-| The caps          | The most characters a title and a message may have; optional                              |
+| Length caps       | The most characters the user's notifications allow in a title and in a message; optional  |
 
 ## Reading the theme
 
@@ -64,11 +64,10 @@ when its `about` fits this message. Read nothing more of the theme, and never
 ### 1. Take the levels
 
 Find each level you're handed by name in the root's ladder of the same name, and
-write to what it says: `escalation` for how a slipped task is pressed,
-`finishing_tasks` for how a done task is met. A ladder that's one paragraph has
-no level name: write to the paragraph, for what you're handed in plain words,
-such as a win. A slipped task is one the user meant to do on an earlier day and
-hasn't done.
+write to what it says: `escalation` for how hard a task the user put off is
+pressed, `finishing_tasks` for how a done task is met. A ladder that's one
+paragraph has no level name: write to the paragraph, for what you're handed in
+plain words, such as a win.
 
 ### 2. Write 5 versions
 
@@ -98,15 +97,14 @@ you what the message is about; they aren't wording to work in. Whoever tells the
 message already knows them, and says them their own way: reshaped to fit, and
 still true.
 
-ntm's own words, such as slipped or planned date, and its labels and databases,
-are for you. The message never uses them: it says what happened the way the user
-would.
+ntm's own words, such as planned date, and its labels and databases, are for
+you. The message never uses them: it says what happened the way the user would.
 
 Vary each version's shape: the order things come in, where the reference lands,
 how it opens and how it closes. Write at the length the facts give, or else the
-guidance gives; with neither, keep it short. When you're handed caps, each title
-and message stays within its cap, whatever length the facts or the guidance
-give.
+guidance gives; with neither, keep it short. When you're handed length caps,
+each title and message stays within its cap, whatever length the facts or the
+guidance give.
 
 ### 3. Title each version
 

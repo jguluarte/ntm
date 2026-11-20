@@ -1,8 +1,8 @@
 # Theme files
 
 A theme is what ntm writes every reminder in: a world the user enjoys, with
-enough material to keep each message different. A script, the picker, draws what
-each message uses from it, so a theme is data in the shapes below.
+enough material to keep each message different. A script, the picker, draws each
+message's pick from it, so a theme is data in the shapes below.
 
 ## A theme's files
 

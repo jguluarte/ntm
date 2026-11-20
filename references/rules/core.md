@@ -59,7 +59,7 @@ was missed: ntm carries the work to today or clears the date.
 ### Planned date history
 
 A task's `Planned date history` comment lists the planned dates it slipped from,
-oldest first. A new date goes at the end of the comment, or starts the comment
+oldest first. Add a new date at the end of the comment, or start the comment
 when the task has none.
 
     Planned date history:
@@ -91,7 +91,7 @@ part of `%Settings` lists them and names this week's. In a run, each name below
 means the file of the theme the run names, or else of this week's theme;
 `references/theme-files.md` gives each file's shape.
 
-| In the plugin      | Example                       | What it is                                              |
+| Name               | Example                       | What it is                                              |
 | ------------------ | ----------------------------- | ------------------------------------------------------- |
 | `%Theme`           | `Casebook.yaml`               | The root: the style messages to the user are written in |
 | `%Theme-options`   | `Casebook-options.yaml`       | What the theme offers the picker                        |
@@ -121,7 +121,8 @@ scheduled task's own push shows it. When `ntm:ready-check` returned an
 The sender decides whether there's a message, and gathers its facts as its own
 file says. Then:
 
-1. Follow `ntm:style` to turn the facts into a title and message.
+1. Load `ntm:style` unless the sender has, and follow it to turn the facts into
+   a title and message.
 2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
    the message, keeping every task id, and send it once more.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the

@@ -31,6 +31,9 @@ write it as the root's `theme`. Write the rest in its `world`: the world and
 where they sit in it, what hooks them, how their day maps onto it, what stays
 out, and who tells the story when no one in particular speaks.
 
+Write any of the world's words a writer would otherwise get wrong in the
+terminology file.
+
 ## The levels
 
 The different ways the theme talks to them: an everyday one, how it snaps back
@@ -59,8 +62,8 @@ and as you know it. Propose kinds, each with an `about` saying what an entry is
 and how a message uses one, and the keys its entries share. The user keeps,
 renames or drops them.
 
-Write each entry file, a pool for each kind in the options file, and the root's
-`files`.
+Write each entry file, a pool for each kind in the options file, with its
+`roles`, and the root's `files`.
 
 ## The entries
 

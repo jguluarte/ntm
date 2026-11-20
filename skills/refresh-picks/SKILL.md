@@ -4,9 +4,9 @@ user-invocable: false
 description: >-
     Refreshes a theme's picks: draws 25 picks from its `%Theme-options` into
     `%Theme-picks`, which each message takes its pick from. For the weekly setup
-    job, it first runs ntm:recalculate-theme-scores. Run by the weekly setup job
-    and by ntm:style when the list runs out, for this week's theme, and by
-    ntm:theme-builder for the theme it built.
+    job, it first runs ntm:recalculate-theme-scores. Run by the weekly setup
+    job, by ntm:style when the list runs out, and by ntm:theme-builder for the
+    theme it built.
 ---
 
 # ntm:refresh-picks
@@ -20,26 +20,23 @@ description: >-
 ## Setup
 
 Run `/ntm:ready-check`, unless it already ran in this session. The theme is the
-one `ntm:theme-builder` built, when it runs this skill, or else this week's
-theme, as `%Settings` names it.
+one the run names, or else this week's theme, as `%Settings` names it.
+
+For the weekly setup job, load `ntm:recalculate-theme-scores` and follow it
+first. Keep its lines for the result, and go on even when it fails.
 
 Then read the theme's `%Theme-options`, such as `Casebook-options.yaml`. When
 there is none, the theme isn't built for the picker: end the run with
 `Nothing to refresh: no <Theme>-options.yaml`.
 
-For the weekly setup job, load `ntm:recalculate-theme-scores` and follow it
-before the draw. Keep its lines for the result, and go on to the draw even when
-it fails.
-
 ## Refresh
 
 ### 1. Hand over the options file
 
-When `ntm:recalculate-theme-scores` saved this theme's `%Theme-options`, as it
-does with one theme, its file is already in the working folder. Otherwise, write
-the text of its `yaml` block to a file named for its database, such as
-`Casebook-options.yaml`, in this session's working folder, exactly as read,
-never from memory.
+When `ntm:recalculate-theme-scores` saved this theme's `%Theme-options`, its
+file is already in the working folder. Otherwise, write the text of its `yaml`
+block to a file named for its database, such as `Casebook-options.yaml`, in this
+session's working folder, exactly as read, never from memory.
 
 ### 2. Draw the week's picks
 

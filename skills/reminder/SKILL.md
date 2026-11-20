@@ -3,7 +3,7 @@ name: reminder
 description: >-
     Sends one of the user's daily reminders about their todo list, morning,
     afternoon or evening: checks that ntm can run, gathers today's tasks and how
-    many days each has slipped, works out from the user's message rule what the
+    many times each has slipped, works out from the user's message rule what the
     reminder says, has ntm:style write it in the user's style, and sends it. Run
     by a job, as /ntm:reminder --type morning, afternoon or evening.
 ---

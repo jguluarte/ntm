@@ -32,5 +32,3 @@ Note changes as necessary, and what is outstanding.
 The weekly reminder is a combination of describing what happened last week, and
 what is scheduled for the upcoming week. By the time you're reading this, you
 should have all of that information in your context.
-
-It is fine to include task ids in the message body.

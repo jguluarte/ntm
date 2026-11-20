@@ -18,7 +18,7 @@ For `ABC-15`, titled "Replace the leaking kitchen faucet", say:
 
 > You already fixed the faucet (ABC-15).
 
-Where a message links a task, the id is the link:
+Where a reply links a task, the id is the link:
 `the kitchen faucet ([ABC-15](<url>))`.
 
 Write times and estimates in full words, in the user's language: `2 hours`,
@@ -110,7 +110,7 @@ When a skill or agent fails, it returns one line that starts with its own name:
 `Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
 words, naming tasks as Talking to the user about tasks says.
 
-A job's final reply is the line its last step returned, then anything that skill
+A job's final reply is what its last step returned, then anything that skill
 says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
 holds the block's title and message, as written, without its first line: the
 scheduled task's own push shows it. When `ntm:ready-check` returned an
@@ -123,11 +123,13 @@ file says. Then:
 
 1. Load `ntm:style` unless the sender has, and follow it to turn the facts into
    a title and message.
-2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
-   the message, keeping every task id, and send it once more.
+2. Send them with `ntm-user:notify`.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
    message as `ntm:style`'s Keeping `%Message-history` says.
 
 The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
-`ntm:style` ended with it. When `ntm:style` kept a failure line from
-`ntm:refresh-picks`, it is the result's last line.
+`ntm:style` ended with it. After `Sent: <title>`, the sender adds the message,
+so the user can answer it in this chat. Then it adds each task the message is
+about, one per line: its id as a link to the task, then its title, as in
+`[ABC-15](<url>) Replace the leaking kitchen faucet`. When `ntm:style` kept a
+failure line from `ntm:refresh-picks`, it is the result's last line.

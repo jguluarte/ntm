@@ -12,11 +12,15 @@ SEED = 3
 RUNS = 10
 
 
+def seeded_theme(theme):
+    return Theme(theme, seed=SEED)
+
+
 class PickTest(unittest.TestCase):
     def test_the_same_seed_gives_the_same_picks(self):
-        first_theme = Theme(casebook.EVEN, seed=SEED)
+        first_theme = seeded_theme(casebook.EVEN)
         first_picker = Picker(first_theme)
-        second_theme = Theme(casebook.EVEN, seed=SEED)
+        second_theme = seeded_theme(casebook.EVEN)
         second_picker = Picker(second_theme)
 
         first = [first_picker.pick() for _ in range(RUNS)]
@@ -25,7 +29,7 @@ class PickTest(unittest.TestCase):
         self.assertEqual(first, second)
 
     def test_each_pick_draws_again(self):
-        theme = Theme(casebook.EVEN, seed=SEED)
+        theme = seeded_theme(casebook.EVEN)
         picker = Picker(theme)
 
         picks = {picker.pick() for _ in range(RUNS)}
@@ -35,7 +39,7 @@ class PickTest(unittest.TestCase):
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
-        theme = Theme(baker_street.OPTIONS, seed=SEED)
+        theme = seeded_theme(baker_street.OPTIONS)
         picker = Picker(theme)
         perspective, reference = picker.pick()
         rows = pick_text(perspective, reference).splitlines()

@@ -3,15 +3,14 @@ import unittest
 from fixtures import baker_street
 from pick_list import parser, pick_list_text
 from picker import Picker, reporting_failures
-from theme import Theme
+from test_picker import seeded_theme
 
-SEED = 3
 COUNT = 4
 
 
 class PickListTextTest(unittest.TestCase):
     def test_the_picks_show_as_a_list_in_the_order_drawn(self):
-        theme = Theme(baker_street.OPTIONS, seed=SEED)
+        theme = seeded_theme(baker_street.OPTIONS)
         picker = Picker(theme)
         picks = [picker.pick() for _ in range(COUNT)]
         rows = pick_list_text(picks).splitlines()

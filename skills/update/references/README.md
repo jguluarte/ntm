@@ -19,3 +19,6 @@ Rebuild ntm-user: <yes or no>
 
 Needs the user is yes when following the note needs the user to answer questions
 or install something. A note that rebuilds `ntm-user` always does.
+
+A yes can name a condition, such as `yes, when their task list is in Linear`.
+Where it doesn't hold, the yes is a no.

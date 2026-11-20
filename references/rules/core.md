@@ -96,10 +96,9 @@ themes and names this week's.
 
 ### Themes
 
-A user can have several themes. `%Theme` refers to a theme's collection of
-files, each named after the theme. In a run, each name below means the file of
-the theme the run names, or else of this week's theme;
-`references/theme-files.md` gives each file's shape.
+A user can have several themes, each a set of files named after it. In a run,
+each name below means the file of the theme the run names, or else of this
+week's theme; `references/theme-files.md` gives each file's shape.
 
 | How we refer to it in the plugin | example                       |
 | -------------------------------- | ----------------------------- |

@@ -116,11 +116,10 @@ and it is among the tasks closed today, canceled included.
 ### 12. The backend's cleanup
 
 Do the cleanup `ntm-user:backend` lists, on the test task alone. When the
-cleanup only acts on certain tasks, make the test task one of them first. Make
-nothing for this that the task list can't delete; use what the user already has,
-such as one of their projects. The task then shows what the cleanup says it
-leaves. With no cleanup listed, the step passes, and its line says there is
-none.
+cleanup only acts on certain tasks, make the test task one of them first. Use
+what the user already has for this, such as one of their projects, and make only
+what step 13 can delete. The task then shows what the cleanup says it leaves.
+With no cleanup listed, the step passes, and its line says there is none.
 
 ### 13. Clean up
 

@@ -186,8 +186,8 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(-2, theme.score_of("scenes/stakeout"))
 
     def test_a_reference_called_stale_all_week_sinks_to_the_lowest_score(self):
-        theme = Theme(fixtures.scoring.OPTIONS)
-        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
+        theme = Theme(fixtures.scotland_yard.OPTIONS)
+        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 
@@ -196,8 +196,8 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(-2, theme.score_of("clues/badge"))
 
     def test_a_score_that_reached_the_highest_falls_with_a_later_message(self):
-        theme = Theme(fixtures.scoring.OPTIONS)
-        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
+        theme = Theme(fixtures.scotland_yard.OPTIONS)
+        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 
@@ -215,7 +215,7 @@ class ScoresTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-        theme = Theme(fixtures.scoring.OPTIONS)
+        theme = Theme(fixtures.scotland_yard.OPTIONS)
         history = MessageHistory(history_file)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
@@ -228,7 +228,7 @@ class ScoresTest(unittest.TestCase):
 
 class MessageHistoryTest(unittest.TestCase):
     def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):
-        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY)
+        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 15))
 
         sent = datetime(2026, 11, 15, 18, 0)
@@ -280,8 +280,8 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_adjust_without_since_fails_naming_it(self):
         args = [
             "adjust",
-            "--options", str(fixtures.scoring.OPTIONS),
-            "--history", str(fixtures.scoring.MESSAGE_HISTORY),
+            "--options", str(fixtures.scotland_yard.OPTIONS),
+            "--history", str(fixtures.scotland_yard.MESSAGE_HISTORY),
         ]
 
         with self.assertRaises(SystemExit) as exited:

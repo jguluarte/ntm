@@ -3,9 +3,9 @@ name: writer
 description: >-
     Writes one of ntm's messages to the user, in their theme. Given the
     message's facts, its levels, and its perspective and reference, it reads the
-    theme's guidance and those two entries, writes 5 versions, each with a title
-    and how typical it is, and returns them. Asked by ntm:style for every
-    message it writes, in a job or by hand in chat.
+    theme's guidance and the files those two entries are in, writes 5 versions,
+    each with a title and how typical it is, and returns them. Asked by
+    ntm:style for every message it writes, in a job or by hand in chat.
 
         <example>
             Context: ntm:style has the pick for the morning reminder.

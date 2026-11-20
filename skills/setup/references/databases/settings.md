@@ -68,11 +68,9 @@ Claude's built-in browser
 is that title without `.yaml`. Leave both empty: `ntm:theme-builder` fills them
 in when it switches a theme on. -->
 
-- This week's theme: <theme's root>
+- This week's theme:
 
 ### All themes
-
-- <theme's root>
 
 ## ntm version
 

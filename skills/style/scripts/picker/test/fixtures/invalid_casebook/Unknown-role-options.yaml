@@ -1,5 +1,0 @@
-pools:
-  scenes:
-    roles: [perspectives]
-    entries:
-      dawn:

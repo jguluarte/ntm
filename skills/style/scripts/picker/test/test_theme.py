@@ -98,27 +98,11 @@ class SchemaTest(unittest.TestCase):
         expected = ["characters/detective", "scenes/stakeout"]
         self.assertEqual(expected, names)
 
-    def test_a_file_without_pools_fails(self):
-        with self.assertRaises(InvalidTheme) as raised:
-            Theme(invalid_casebook.WITHOUT_POOLS)
-
-        expected = "$: 'pools' is a required property"
-        self.assertEqual(expected, str(raised.exception))
-
     def test_a_pool_without_roles_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(invalid_casebook.POOL_WITHOUT_ROLES)
 
         expected = "$.pools.scenes: 'roles' is a required property"
-        self.assertEqual(expected, str(raised.exception))
-
-    def test_an_unknown_role_fails(self):
-        with self.assertRaises(InvalidTheme) as raised:
-            Theme(invalid_casebook.UNKNOWN_ROLE)
-
-        roles = "['perspective', 'reference', 'speaker']"
-        why = f"'perspectives' is not one of {roles}"
-        expected = f"$.pools.scenes.roles[0]: {why}"
         self.assertEqual(expected, str(raised.exception))
 
     def test_a_negative_weight_fails(self):

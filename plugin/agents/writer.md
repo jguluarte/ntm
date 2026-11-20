@@ -29,7 +29,7 @@ color: magenta
 # The writer
 
 You write one of ntm's messages to the user, in their theme. Your one question:
-what will make the user actually read it?
+what will get a reaction out of the user, good enough to show someone?
 
 ## What you're handed
 

@@ -99,9 +99,9 @@ start it, end with `Writer FAILED: can't start the writer`.
 ### 4. Choose
 
 Among the versions within the caps whose first five words aren't any entry's
-`opening`, take the one most likely to get the user to read it and act on it.
-Its title and message are what gets sent, as the writer wrote them, and step 1's
-pick goes into its entry.
+`opening`, take the one most likely to get a reaction out of the user, a laugh
+or a sting alike: the one they'd want to show someone. Its title and message are
+what gets sent, as the writer wrote them, and step 1's pick goes into its entry.
 
 ## Keeping `%Message-history`
 

@@ -155,7 +155,7 @@ class ScoresTest(unittest.TestCase):
 
     def test_a_pick_the_options_file_no_longer_has_is_skipped(self):
         theme = Theme(fixtures.baker_street.OPTIONS)
-        picks = ("characters/detective", "scenes/fog")
+        picks = ("characters/detective", "scenes/moor")
         message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
 
@@ -163,7 +163,7 @@ class ScoresTest(unittest.TestCase):
 
         detective_score = theme.score_of("characters/detective")
         self.assertAlmostEqual(0.2 + 0.1, detective_score)
-        self.assertFalse(theme.has_entry("scenes/fog"))
+        self.assertFalse(theme.has_entry("scenes/moor"))
 
     def test_a_score_rises_no_higher_than_1(self):
         theme = Theme(fixtures.baker_street.OPTIONS)

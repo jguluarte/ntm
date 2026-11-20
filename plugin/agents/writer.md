@@ -73,7 +73,9 @@ hasn't done.
 ### 2. Write 5 versions
 
 Look up the perspective's and the reference's entries. A line or riff from
-either may be used, bent to fit the message; none has to be.
+either may be used, bent to fit the message; none has to be. Drawing on an entry
+doesn't mean naming it. When you name one, use as much of its name as the user
+needs to know who or what it is.
 
 Each version covers every task and does what the sender's rule asks. Tasks that
 belong together may be told as one thing. The reference colours the message, as

@@ -99,7 +99,7 @@ entry as the first line of the Entries part's `jsonl` block, in the history
 Setup read: one compact JSON line, with only the fields that have a value.
 
 ```
-{"sent":"2026-11-13 08:45","type":"win","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
+{"sent":"2026-11-13 08:45","type":"win","picks":{"perspective":"characters/detective","reference":"scenes/stakeout"}}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone

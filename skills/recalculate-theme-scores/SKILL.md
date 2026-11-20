@@ -43,11 +43,12 @@ to rate.
 
 ### 2. Adjust the scores
 
-Write the text of `%Theme-options`' `yaml` block and of `%Message-history`'s
-`jsonl` block each to a file named for its database, such as
-`Casebook-options.yaml` and `Casebook-message-history.jsonl`, in this session's
-working folder, exactly as read, never from memory. Then run the recalculation
-on them, with `--since` the date seven days before today:
+Write the text of `%Theme-options`' `yaml` block, exactly as read, and of
+`%Message-history`'s `jsonl` block, as step 1 saved it, each to a file named for
+its database, such as `Casebook-options.yaml` and
+`Casebook-message-history.jsonl`, in this session's working folder, never from
+memory. Then run the recalculation on them, with `--since` the date seven days
+before today:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py \
@@ -65,5 +66,5 @@ For a job, return `Rated <Theme>-message-history.md: <n> acted, <n> ignored`,
 then `Adjusted <Theme>-options.yaml`.
 
 Nothing to rate, or a failure, ends the run there, with its line in place of the
-rest: `Nothing to rate`, `Rating FAILED: <why>`, or step 2's
+rest: `Nothing to rate`, `Recalculate-theme-scores FAILED: <why>`, or step 2's
 `Recalculation FAILED:` line. In chat, tell the user the same in plain words.

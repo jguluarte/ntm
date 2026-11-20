@@ -119,14 +119,11 @@ class SaveTest(unittest.TestCase):
         saved_options = Path(folder) / "Even-options.yaml"
         theme = Theme(casebook.EVEN)
         theme.set_weight("scenes/noon", 0.5)
-        theme.set_checksum("Even-scenes.yaml", "ab12")
         theme.set_speaker_rate(0.25)
         theme.save(saved_options)
         text = saved_options.read_text(encoding="utf-8")
 
         expected = textwrap.dedent("""\
-            checksums:
-              Even-scenes.yaml: ab12
             speaker_rate: 0.25
             pools:
               scenes:

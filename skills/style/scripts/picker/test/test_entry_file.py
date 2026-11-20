@@ -13,11 +13,3 @@ class EntryFileTest(unittest.TestCase):
             "shared_lines/any_time": 1,
         }
         self.assertEqual(expected, entry_file.line_counts)
-
-    def test_the_checksum_is_the_sha256_of_the_files_bytes(self):
-        entry_file = EntryFile(baker_street.SCENES)
-
-        expected = (
-            "4afb4bce8e58bfced5bfd26c0efc1847793791a497f115de11b2a30d6d03ed94"
-        )
-        self.assertEqual(expected, entry_file.checksum)

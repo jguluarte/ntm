@@ -1,4 +1,3 @@
-import hashlib
 import random
 from dataclasses import dataclass
 from pathlib import Path
@@ -8,7 +7,6 @@ import yaml
 
 OPTIONS_SCHEMA = Path(__file__).with_name("options.schema.yaml")
 
-CHECKSUMS_BY_FILE = "checksums"
 SPEAKER_RATE = "speaker_rate"
 DEFAULT_SPEAKER_RATE = 0.5
 POOLS_BY_KIND = "pools"
@@ -16,7 +14,9 @@ FILE = "file"
 ROLES = "roles"
 ENTRIES_BY_SLUG = "entries"
 WEIGHT = "weight"
+DEFAULT_WEIGHT = 1
 SCORE = "score"
+DEFAULT_SCORE = 0
 PERSPECTIVE_ROLE = "perspective"
 REFERENCE_ROLE = "reference"
 SPEAKER_ROLE = "speaker"
@@ -24,6 +24,9 @@ SPEAKER_ROLE = "speaker"
 ABOUT = "about"
 LINES = "lines"
 RIFFS = "riffs"
+
+SEQUENCE_TAG = "tag:yaml.org,2002:seq"
+NULL_TAG = "tag:yaml.org,2002:null"
 
 
 class InvalidTheme(ValueError):
@@ -56,8 +59,8 @@ class Option:
     @classmethod
     def from_entry(cls, kind, slug, entry):
         fields = entry or {}
-        weight = fields.get(WEIGHT, 1)
-        score = fields.get(SCORE, 0)
+        weight = fields.get(WEIGHT, DEFAULT_WEIGHT)
+        score = fields.get(SCORE, DEFAULT_SCORE)
         return cls(kind, slug, weight, score)
 
     @property
@@ -87,12 +90,10 @@ class Lottery:
 
 class _OptionsDumper(yaml.SafeDumper):
     def represent_list_on_one_line(self, items):
-        return self.represent_sequence(
-            "tag:yaml.org,2002:seq", items, flow_style=True,
-        )
+        return self.represent_sequence(SEQUENCE_TAG, items, flow_style=True)
 
     def represent_bare_entry(self, _):
-        return self.represent_scalar("tag:yaml.org,2002:null", "")
+        return self.represent_scalar(NULL_TAG, "")
 
 
 _OptionsDumper.add_representer(list, _OptionsDumper.represent_list_on_one_line)
@@ -105,7 +106,6 @@ class Theme:
         self._seeds = random.Random(seed)
         self._fields = self._load(path)
         self._validate(self._fields)
-        self._checksums = self._fields.pop(CHECKSUMS_BY_FILE, {})
         self._speaker_rate = self._fields.pop(
             SPEAKER_RATE, DEFAULT_SPEAKER_RATE,
         )
@@ -168,7 +168,7 @@ class Theme:
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
-        return entry.get(WEIGHT, 1)
+        return entry.get(WEIGHT, DEFAULT_WEIGHT)
 
     def set_weight(self, entry_name, weight):
         kind, slug = entry_name.split("/")
@@ -180,16 +180,13 @@ class Theme:
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
-        return entry.get(SCORE, 0)
+        return entry.get(SCORE, DEFAULT_SCORE)
 
     def set_score(self, entry_name, score):
         kind, slug = entry_name.split("/")
         entries_by_slug = self._fields[POOLS_BY_KIND][kind][ENTRIES_BY_SLUG]
         entry = entries_by_slug[slug] or {}
         entries_by_slug[slug] = {**entry, SCORE: score}
-
-    def set_checksum(self, file_name, checksum):
-        self._checksums[file_name] = checksum
 
     @property
     def speaker_rate(self):
@@ -199,11 +196,7 @@ class Theme:
         self._speaker_rate = speaker_rate
 
     def save(self, path):
-        in_schema_order = {
-            CHECKSUMS_BY_FILE: self._checksums,
-            SPEAKER_RATE: self._speaker_rate,
-            **self._fields,
-        }
+        in_schema_order = {SPEAKER_RATE: self._speaker_rate, **self._fields}
         text = yaml.dump(
             in_schema_order, Dumper=_OptionsDumper, sort_keys=False,
         )
@@ -247,10 +240,11 @@ class Theme:
 
 class EntryFile:
     def __init__(self, path):
-        contents = Path(path).read_bytes()
+        with open(path, encoding="utf-8") as file:
+            fields = yaml.safe_load(file)
+
         self.name = Path(path).name
-        self.checksum = hashlib.sha256(contents).hexdigest()
-        self.line_counts = self._count_lines(yaml.safe_load(contents))
+        self.line_counts = self._count_lines(fields)
 
     @classmethod
     def _count_lines(cls, fields):

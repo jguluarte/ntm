@@ -114,7 +114,7 @@ A job's final reply is the line its last step returned, then anything that skill
 says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
 holds the block's title and message, as written, without its first line: the
 scheduled task's own push shows it. When `ntm:ready-check` returned an
-`Update waiting:` line, the reply ends with it.
+`Update waiting:` or `Update applied:` line, the reply ends with it.
 
 ## Sending a message in the user's style
 

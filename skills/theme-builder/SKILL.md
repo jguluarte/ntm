@@ -74,8 +74,8 @@ pick, ask for another.
 ### 3. Work out its numbers
 
 When this run wrote or changed the theme's files, run the recalculation, which
-works out the numbers in `%Theme-options`: each entry's weight, the theme's
-speaker rate and each entry file's checksum.
+works out the numbers in `%Theme-options`: each entry's weight and the theme's
+speaker rate.
 
 Write the text of the `yaml` block of `%Theme-options`, and of each entry file
 its pools name, to a file named for its database, such as

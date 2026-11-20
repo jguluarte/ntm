@@ -1,6 +1,8 @@
+import tempfile
 import unittest
+from pathlib import Path
 
-import fixtures
+from fixtures import baker_street, casebook
 from picker import (
     Picker, chances_table, parser, pick_text, reporting_failures,
 )
@@ -10,11 +12,15 @@ SEED = 3
 RUNS = 10
 
 
+def seeded_theme(theme):
+    return Theme(theme, seed=SEED)
+
+
 class PickTest(unittest.TestCase):
     def test_the_same_seed_gives_the_same_picks(self):
-        first_theme = Theme(fixtures.EVEN, seed=SEED)
+        first_theme = seeded_theme(casebook.EVEN)
         first_picker = Picker(first_theme)
-        second_theme = Theme(fixtures.EVEN, seed=SEED)
+        second_theme = seeded_theme(casebook.EVEN)
         second_picker = Picker(second_theme)
 
         first = [first_picker.pick() for _ in range(RUNS)]
@@ -23,7 +29,7 @@ class PickTest(unittest.TestCase):
         self.assertEqual(first, second)
 
     def test_each_pick_draws_again(self):
-        theme = Theme(fixtures.EVEN, seed=SEED)
+        theme = seeded_theme(casebook.EVEN)
         picker = Picker(theme)
 
         picks = {picker.pick() for _ in range(RUNS)}
@@ -33,7 +39,7 @@ class PickTest(unittest.TestCase):
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
-        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        theme = seeded_theme(baker_street.OPTIONS)
         picker = Picker(theme)
         perspective, reference = picker.pick()
         rows = pick_text(perspective, reference).splitlines()
@@ -47,7 +53,7 @@ class PickTextTest(unittest.TestCase):
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_perspective_shows_weight_score_and_rounded_chance(self):
-        theme = Theme(fixtures.WEIGHTED)
+        theme = Theme(casebook.WEIGHTED)
         lottery = theme.perspective_lottery()
         rows = chances_table(lottery).splitlines()
 
@@ -63,7 +69,7 @@ class ChancesTableTest(unittest.TestCase):
 
 class ReportingFailuresTest(unittest.TestCase):
     def test_a_pick_where_every_option_weighs_0_fails_naming_why(self):
-        theme = Theme(fixtures.WEIGHTLESS)
+        theme = Theme(casebook.WEIGHTLESS)
         picker = Picker(theme)
 
         with self.assertRaises(SystemExit) as exited:
@@ -75,11 +81,14 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        missing_options = Path(folder) / "Missing-options.yaml"
+
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
-                Theme(fixtures.NOT_THERE)
+                Theme(missing_options)
 
-        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
+        why = f"[Errno 2] No such file or directory: '{missing_options}'"
         expected = f"Picker FAILED: FileNotFoundError: {why}"
         self.assertEqual(expected, exited.exception.code)
 
@@ -93,7 +102,7 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["pick", "--options", str(fixtures.EVEN), "--seed", "seven"]
+        args = ["pick", "--options", str(casebook.EVEN), "--seed", "seven"]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

@@ -25,26 +25,28 @@ name back. `git log tests/expected/` is the record of every name change.
 
 ## The style skill's scripts
 
-`skills/style/scripts/picker/test/` holds the tests of the picker and
-`recalculate.py`, in `skills/style/scripts/picker/`, written as `unittest` test
-cases and run by pytest. `pyproject.toml` puts that folder on Python's import
-path, so a test imports their classes by name.
+`skills/style/scripts/picker/test/` holds the tests of the picker,
+`pick_list.py` and `recalculate.py`, in `skills/style/scripts/picker/`, written
+as `unittest` test cases and run by pytest. `pyproject.toml` puts that folder on
+Python's import path, so a test imports their classes by name.
 
-| File                  | What it checks                                                         |
-| --------------------- | ---------------------------------------------------------------------- |
-| `test_theme.py`       | The lottery `Theme` builds, one entry file's entries, saving, failures |
-| `test_lottery.py`     | The chances a `Lottery` gives, and that a seed draws the same          |
-| `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                         |
-| `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line     |
-| `test_recalculate.py` | What a `Recalculation` weighs and records, or fails with               |
+| File                  | What it checks                                                                  |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `test_theme.py`       | The lottery `Theme` builds, one entry file's entries, saving, failures          |
+| `test_lottery.py`     | The chances a `Lottery` gives, and that a seed draws the same                   |
+| `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                                  |
+| `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line              |
+| `test_pick_list.py`   | The list of picks `pick_list.py` prints, and its failure lines                  |
+| `test_recalculate.py` | What a `Recalculation` weighs, scores and records, a `MessageHistory`, failures |
 
-`fixtures/` holds the themes they read. A theme with several files has a folder
-of its own, whose `__init__.py` names each file. A one-file theme is an options
-file named for what it holds or lacks.
+`fixtures/` holds the sample themes they read, in five sets. Each set is a
+package, such as `fixtures.baker_street`, whose `__init__.py` names its files. A
+one-file theme is an options file named for what it holds or lacks.
 
-| Folder            | What it holds                                                  |
-| ----------------- | -------------------------------------------------------------- |
-| `casebook/`       | The example in `references/theme-files.md`                     |
-| `weighing/`       | A theme without numbers whose entries have 1, 3, 9 and 0 lines |
-| `themes/`         | One-file themes `Theme` loads                                  |
-| `invalid-themes/` | One-file themes `Theme` refuses, named for the fault           |
+| Folder                | What it holds                                                            |
+| --------------------- | ------------------------------------------------------------------------ |
+| `casebook/`           | One-file themes `Theme` loads                                            |
+| `baker_street/`       | A theme with every number filled in, and its characters and scenes files |
+| `scotland_yard/`      | A theme with scores, and a week of message history that moves them       |
+| `witness_statements/` | A theme without numbers whose entries have 1, 3, 9 and 0 lines           |
+| `invalid_casebook/`   | One-file themes `Theme` refuses, named for the fault                     |

@@ -72,12 +72,13 @@ hasn't done.
 
 ### 2. Write 5 versions
 
-Look up the perspective's and the reference's entries, and choose a line from
-each that has lines or riffs. A chosen line may be bent to fit the message.
+Look up the perspective's and the reference's entries. A line or riff from
+either may be used, bent to fit the message; none has to be.
 
 Each version covers every task and does what the sender's rule asks. Tasks that
-belong together may be told as one thing. Hang the reference on a different fact
-in each version; with too few facts, take it a different way each time.
+belong together may be told as one thing. The reference colours the message, as
+much as it fits: with tasks it doesn't suit, a passing nod is enough. Use it a
+different way in each version.
 
 When the perspective is a speaker, every version is theirs: their own words, in
 first person, sounding the way their entry says. Otherwise, the theme's own
@@ -92,8 +93,8 @@ by name or by a pet name.
 
 Call a task, or a group of them, by a few "theme-natural" words. The facts tell
 you what the message is about; they aren't wording to work in. Whoever tells the
-message already knows them, and says them their own way: reshaped to fit the
-perspective and the reference, and still true.
+message already knows them, and says them their own way: reshaped to fit, and
+still true.
 
 ntm's own words, such as slipped or planned date, and its labels and databases,
 are for you. The message never uses them: it says what happened the way the user

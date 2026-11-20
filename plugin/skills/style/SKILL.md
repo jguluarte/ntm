@@ -74,20 +74,24 @@ Call each only from the facts you were handed, and once: skip one a
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the message's facts, the levels, the
+Start the `ntm:writer` agent, and hand it the facts, as below, the levels, the
 reminder, such as `morning`, `weekly` or `self-test`, the theme's name, and the
 perspective and the reference, each as `<kind>/<slug>`. Hand it too the caps
 `ntm-user:notify` gives on a title and a message: read `ntm-user:notify` for
 them, without sending anything. The writer reads the theme itself. It returns 5
 versions, each with a title and a message.
 
-The message's facts are what the rule asks of the message; each task by its
-title and whether it's done; and, for the afternoon and evening, what changed
-among today's tasks since the earlier reminders, by title: a task added, done or
-moved off today. Nothing more. A slipped task goes over as one the user meant to
-do earlier and hasn't, and tasks that belong together, such as sub-tasks of one
-task, as one group. How hard to press goes over only as the `escalation` level,
-or the call in its place.
+For a reminder, the writer gets less than the sender gathered: what the rule
+asks of the message; each task by its title and whether it's done; and, for the
+afternoon and evening, what changed among today's tasks since the earlier
+reminders, by title: a task added, done or moved off today. Nothing more. A
+slipped task goes over as one the user meant to do earlier and hasn't. Tasks
+that belong together, such as sub-tasks of one task, go over as one group: what
+they share and how many, in place of their titles. How hard to press goes over
+only as the `escalation` level, or the call in its place.
+
+Any other message's facts go over as its sender gathered them, with each task by
+its title.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
@@ -96,7 +100,8 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 Among the versions within the caps whose first five words aren't any entry's
 `opening`, take the one most likely to get the user to read it and act on it.
-Its title and message are what gets sent, and step 1's pick goes into its entry.
+Its title and message are what gets sent, as the writer wrote them, and step 1's
+pick goes into its entry.
 
 ## Keeping `%Message-history`
 

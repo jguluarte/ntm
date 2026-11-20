@@ -113,21 +113,22 @@ one when there isn't one, then find it by its title, and it holds the contents.
 Cancel the test task, or mark it done when the task list has no canceled status,
 and it is among the tasks closed today, canceled included.
 
-### 12. Do the backend's cleanup
+### 12. The backend's cleanup
 
 Do the cleanup `ntm-user:backend` lists, on the test task alone. When the
 cleanup only acts on certain tasks, make the test task one of them first.
-Anything that takes is made for the purpose, named `ntm self-test`, or is the
-one an earlier self-test left behind. The task then shows what the cleanup says
-it leaves. With no cleanup listed, the step passes, and its line says there is
-none.
+Anything this needs, such as a project, is one named `ntm self-test`: the one an
+earlier self-test left behind, or a new one. The task then shows what the
+cleanup says it leaves. With no cleanup listed, the step passes, and its line
+says there is none.
 
 ### 13. Clean up
 
 Runs after a failure too. Cancel the task if it's still open, and delete the
 test label, the test database and anything step 12 made. When the task list
-can't delete one, empty it, for a rerun to reuse. Do the same for any test task
-an earlier self-test left behind. Touch nothing else on the task list.
+can't delete one, take it off the task or empty it, for a rerun to reuse. Do the
+same for any test task an earlier self-test left behind. Touch nothing else on
+the task list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.

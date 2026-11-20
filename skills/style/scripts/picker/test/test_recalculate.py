@@ -186,27 +186,15 @@ class ScoresTest(unittest.TestCase):
 
         self.assertAlmostEqual(1 - 0.1, theme.score_of("cast/chief"))
 
-    def test_the_messages_with_picks_count_when_one_has_none(self):
-        folder = self.enterContext(tempfile.TemporaryDirectory())
-        history_without_picks = (
-            Path(folder) / "Without-picks-message-history.jsonl"
-        )
-        history_without_picks.write_text(
-            '{"sent":"2026-11-15 18:00","verdict":"ignored"}\n'
-            '{"sent":"2026-11-14 18:00","verdict":"acted",'
-            '"picks":{"perspective":"cast/chief","reference":"scenes/fog"}}\n',
-            encoding="utf-8",
-        )
 
-        theme = Theme(scotland_yard.OPTIONS)
-        history = MessageHistory(history_without_picks)
-        messages = history.sent_since(date(2026, 11, 9))
-        recalculation = Recalculation(theme)
+class MessageTest(unittest.TestCase):
+    def test_a_message_recorded_without_picks_has_none(self):
+        line = '{"sent":"2026-11-15 18:00","verdict":"ignored"}'
+        message = Message.from_line(line)
 
-        recalculation.adjust_scores(messages)
-
-        self.assertAlmostEqual(0.75 + 0.1, theme.score_of("cast/chief"))
-        self.assertAlmostEqual(0.75 + 0.1, theme.score_of("scenes/fog"))
+        sent = datetime(2026, 11, 15, 18, 0)
+        expected = Message(sent, (), verdict="ignored", feedback=None)
+        self.assertEqual(expected, message)
 
 
 class MessageHistoryTest(unittest.TestCase):

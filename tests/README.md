@@ -30,13 +30,13 @@ name back. `git log tests/expected/` is the record of every name change.
 as `unittest` test cases and run by pytest. `pyproject.toml` puts that folder on
 Python's import path, so a test imports their classes by name.
 
-| File                  | What it checks                                                                  |
-| --------------------- | ------------------------------------------------------------------------------- |
-| `test_theme.py`       | The lottery `Theme` builds, one entry file's entries, saving, failures          |
-| `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                                  |
-| `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line              |
-| `test_pick_list.py`   | The list of picks `pick_list.py` prints, and its failure lines                  |
-| `test_recalculate.py` | What a `Recalculation` weighs, scores and records, a `MessageHistory`, failures |
+| File                  | What it checks                                                                |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `test_theme.py`       | The lottery `Theme` builds, one entry file's entries, saving, failures        |
+| `test_entry_file.py`  | The line counts and checksum `EntryFile` reads                                |
+| `test_picker.py`      | What a `Picker` picks, the chances table, and the one failure line            |
+| `test_pick_list.py`   | The list of picks `pick_list.py` prints, and its failure lines                |
+| `test_recalculate.py` | What a `Recalculation` weighs, scores and records, reading messages, failures |
 
 `fixtures/` holds the sample themes they read, in five sets. Each set is a
 package, such as `fixtures.baker_street`, whose `__init__.py` names its files. A

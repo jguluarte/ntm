@@ -74,17 +74,19 @@ Call each only from the facts you were handed, and once: skip one a
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
-such as `morning`, `weekly` or `self-test`, the theme's name, and the
+Start the `ntm:writer` agent, and hand it the message's facts, the levels, the
+reminder, such as `morning`, `weekly` or `self-test`, the theme's name, and the
 perspective and the reference, each as `<kind>/<slug>`. Hand it too the caps
 `ntm-user:notify` gives on a title and a message: read `ntm-user:notify` for
 them, without sending anything. The writer reads the theme itself. It returns 5
 versions, each with a title, a message, and a probability from 0 to 1 of how
 likely a reader would be to predict it.
 
-Hand each task over by its title, without its id or link. Hand a slipped task
-over as one the user meant to do earlier and hasn't, without its slip count or
-dates: the `escalation` level, or the call in its place, carries those.
+The message's facts are what the rule asks of the message, and each task by its
+title and whether it's done, nothing more. A slipped task goes over as one the
+user meant to do earlier and hasn't, and tasks that belong together, such as
+sub-tasks of one task, as one group. How hard to press goes over only as the
+`escalation` level, or the call in its place.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.

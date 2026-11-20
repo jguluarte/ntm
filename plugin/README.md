@@ -36,6 +36,7 @@ the self-test passes.
 
 Tries out everything setup built, and cleans up after itself. When your task
 list can't delete a task, it tests on one of your open tasks and puts it back.
+With none, it asks for one thing you need to do, and adds it as your first task.
 It ends with a test message, on your phone if you use Pushover. Run it when
 setup asks, once you've installed the plugin it built.
 

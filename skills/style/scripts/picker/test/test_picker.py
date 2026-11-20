@@ -2,8 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from fixtures import baker_street
-from fixtures import casebook
+from fixtures import baker_street, casebook
 from picker import (
     Picker, chances_table, parser, pick_text, reporting_failures,
 )

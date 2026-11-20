@@ -5,10 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from fixtures import baker_street
-from fixtures import casebook
-from fixtures import scotland_yard
-from fixtures import witness_statements
+from fixtures import baker_street, casebook, scotland_yard, witness_statements
 from recalculate import (
     Message, MessageHistory, Recalculation, parser, reporting_failures,
 )

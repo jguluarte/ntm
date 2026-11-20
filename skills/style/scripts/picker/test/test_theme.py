@@ -3,9 +3,7 @@ import textwrap
 import unittest
 from pathlib import Path
 
-from fixtures import baker_street
-from fixtures import casebook
-from fixtures import invalid_casebook
+from fixtures import baker_street, casebook, invalid_casebook
 from theme import (
     InvalidTheme, MissingReference, MissingWeight, Theme, UnknownEntryFile,
 )

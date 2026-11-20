@@ -45,8 +45,8 @@ Follow `/ntm:ready-check`. The step passes when you reach `Ready-check OK`.
 ### 2. What setup made
 
 Every database under Databases in `%Settings` opens, as do this week's `%Theme`
-and `%Message-history`, and every label under Labels is on the task list. Name
-each one that's missing.
+and `%Message-history`, and every label under Labels in `%Settings` is on the
+task list, by its name there. Name each one that's missing.
 
 Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
 skills it runs. With Planning in `%Settings`, expect the weekly setup and the

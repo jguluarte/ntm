@@ -72,18 +72,6 @@ judge big or hard. A big win, which is rare, is a whole project closed as done.
 Call each only from the facts you were handed, and once: skip one a
 `%Message-history` entry already called, with `win` or `big_win` in its `type`.
 
-Work out the message's type: each value below that holds, with commas between
-them, such as `evening,slipped`.
-
-| Value                               | When                                   |
-| ----------------------------------- | -------------------------------------- |
-| `morning`, `afternoon` or `evening` | `ntm:reminder` runs with that `--type` |
-| `weekly`                            | It's the weekly setup's message        |
-| `slipped`                           | A task in the facts slipped            |
-| `done`                              | A task in the facts is done            |
-| `win`                               | You called a win                       |
-| `big_win`                           | You called a big win                   |
-
 ### 3. Write
 
 Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
@@ -111,14 +99,11 @@ entry as the first line of the Entries part's `jsonl` block, in the history
 Setup read: one compact JSON line, with only the fields that have a value.
 
 ```
-{"sent":"2026-11-13 08:45","reminder":"self-test","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
+{"sent":"2026-11-13 08:45","type":"win","picks":{"perspective":"cast/chief","reference":"scenes/fog"}}
 ```
 
 - `sent`: when it went out, 24-hour, in the user's timezone
-- `reminder`: the reminder step 3 handed the writer, such as `morning`
-- `type`: step 2's type, such as `evening,done,win`
-- `levels`: step 2's level names, such as
-  `{"escalation":"going_cold","finishing_tasks":"case_closed"}`
+- `type`: the wins step 2 called: `win`, `big_win`, or both as `win,big_win`
 - `picks`: step 1's `perspective` and `reference`, as the picker printed them or
   as you named them
 - `opening`: the message's first five words, as sent

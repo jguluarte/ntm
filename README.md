@@ -84,8 +84,9 @@ brings your setup up to it on its own.
 Writes ntm's messages to you in the theme you created during setup, so they
 sound like something you enjoy and keep changing instead of repeating. A task
 you keep putting off gets a stronger nudge the longer it slips. Ask it to write
-something in your style, or to change how your reminders sound. Tell it in a
-reminder's chat when that reminder is a keeper or has gone stale.
+something in your style, or to change how your reminders sound. When a reminder
+is a keeper or has gone stale, say so in its chat, and ntm notes it to keep your
+reminders fresh.
 
 ### `/ntm:theme-builder`
 

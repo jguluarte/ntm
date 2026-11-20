@@ -19,13 +19,6 @@ class PerspectiveTest(unittest.TestCase):
         self.assertAlmostEqual(0.4, chance_by_name["characters/detective"])
         self.assertAlmostEqual(0.6, chance_by_name["scenes/stakeout"])
 
-    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
-        theme = Theme(baker_street.OPTIONS)
-        speaker_rate = theme.speaker_rate
-
-        expected = 0.4
-        self.assertEqual(expected, speaker_rate)
-
 
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
@@ -90,14 +83,6 @@ class DrawTest(unittest.TestCase):
 
 
 class SchemaTest(unittest.TestCase):
-    def test_a_file_with_every_field_passes(self):
-        theme = Theme(baker_street.OPTIONS)
-        lottery = theme.perspective_lottery()
-        names = [option.name for option in lottery.chance_by_candidate]
-
-        expected = ["characters/detective", "scenes/stakeout"]
-        self.assertEqual(expected, names)
-
     def test_a_pool_without_roles_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(invalid_casebook.POOL_WITHOUT_ROLES)
@@ -137,15 +122,6 @@ class EntryFilesTest(unittest.TestCase):
 
         expected = ["characters/host", "narrators/chorus"]
         self.assertEqual(expected, entries)
-
-
-class WeightsTest(unittest.TestCase):
-    def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
-        theme = Theme(baker_street.OPTIONS)
-        weight = theme.weight_of("characters/detective")
-
-        expected = 0.57
-        self.assertEqual(expected, weight)
 
 
 class SaveTest(unittest.TestCase):

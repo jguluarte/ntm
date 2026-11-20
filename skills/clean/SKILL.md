@@ -19,13 +19,16 @@ Cleans up stale information in the backend.
 /ntm:clean
 ```
 
-## Clean
+## Setup
 
 Run `/ntm:ready-check`, unless it already ran in this session. It loads
 `ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
-with its result line. Then find all non-closed tasks which have a planned date
-in the past. Add that stale date to its `Planned date history` comment, then
-clear the date.
+with its result line.
+
+## Clean
+
+Find all non-closed tasks which have a planned date in the past. For each, add
+that stale date to its `Planned date history` comment, then clear the date.
 
 Read the Paused dates part of `%Paused-dates`, and find the paused dates that
 have passed: a day, or a range's last day, before today. Take those off the

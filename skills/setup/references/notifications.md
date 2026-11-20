@@ -8,12 +8,8 @@ They need the Pushover app on their phone, signed in. Their user key is on their
 Pushover dashboard once they sign in at pushover.net. The app token comes from
 an application they create there; any name works, such as ntm.
 
-If they'd like an icon for it, offer ntm's, which they can open and save. The
-price watch has one too.
-
-- ntm: <https://github.com/jguluarte/ntm/raw/main/assets/ntm-pushover-72.png>
-- Price watch:
-  <https://github.com/jguluarte/ntm/raw/main/assets/price-watch-pushover-72.png>
+If they'd like an icon for it, offer ntm's, which they can open and save:
+<https://github.com/jguluarte/ntm/raw/main/assets/ntm-pushover-72.png>
 
 When you repeat a key back to them, show only its last four characters.
 

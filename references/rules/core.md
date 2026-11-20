@@ -96,10 +96,9 @@ themes and names this week's.
 
 ### Themes
 
-A user can have several themes. `%Theme` refers to a theme's collection of
-files, each named after the theme. In a run, each name below means the file of
-the theme the run names, or else of this week's theme;
-`references/theme-files.md` gives each file's shape.
+A user can have several themes, each a set of files named after it. In a run,
+each name below means the file of the theme the run names, or else of this
+week's theme; `references/theme-files.md` gives each file's shape.
 
 | How we refer to it in the plugin | example                       |
 | -------------------------------- | ----------------------------- |
@@ -112,7 +111,7 @@ the theme the run names, or else of this week's theme;
 
 The style ntm's messages to the user are written in. `ntm:style` reads it for
 each message and changes it with the user when they ask. The writer agent reads
-the parts each message needs.
+it for every message.
 
 #### `%Message-history`
 
@@ -135,7 +134,8 @@ words, naming tasks as Talking to the user about tasks says.
 A job's final reply is the line its last step returned, then anything that skill
 says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
 holds the block's title and message, as written, without its first line: the
-scheduled task's own push shows it.
+scheduled task's own push shows it. When `ntm:ready-check` returned an
+`Update waiting:` line, the reply ends with it.
 
 ## Sending a message in the user's style
 

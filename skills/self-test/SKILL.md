@@ -4,11 +4,12 @@ description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a throwaway
-    task, and write and read a throwaway database, then clean up and send a
-    success message in the user's style. Each step's result is shown as it
-    passes or fails. The first thing to run after installing ntm and ntm-user
-    ("test ntm", "run the self test", "is everything wired up?"), and the smoke
-    test for a backend the user described themselves.
+    task, write and read a throwaway database, and do the backend's own cleanup
+    on the task, then clean up and send a success message in the user's style.
+    Each step's result is shown as it passes or fails. The first thing to run
+    after installing ntm and ntm-user ("test ntm", "run the self test", "is
+    everything wired up?"), and the smoke test for a backend the user described
+    themselves.
 ---
 
 # ntm:self-test
@@ -35,7 +36,7 @@ timezone, like `2026-11-09 14:03:27`.
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "3. Create a task: the task list takes a new
 task. Pass." A call that fails for a backend reason gets one retry. At the first
-failure, say why and skip to step 12.
+failure, say why and skip to step 13.
 
 ### 1. Connectivity
 
@@ -112,18 +113,26 @@ one when there isn't one, then find it by its title, and it holds the contents.
 Cancel the test task, or mark it done when the task list has no canceled status,
 and it is among the tasks closed today, canceled included.
 
-### 12. Clean up
+### 12. The backend's cleanup
 
-Runs after a failure too. Cancel the task if it's still open, and delete the
-test label and the test database. When the task list can't delete them, take the
-label off the task and empty the database, for a rerun to reuse. Do the same for
-any test task an earlier self-test left behind. Touch nothing else on the task
-list.
+Do the cleanup `ntm-user:backend` lists, on the test task alone. When the
+cleanup only acts on certain tasks, make the test task one of them first. Use
+what the user already has for this, such as one of their projects, and make only
+what step 13 can delete. The task then shows what the cleanup says it leaves.
+With no cleanup listed, the step passes, and its line says there is none.
+
+### 13. Clean up
+
+Runs after a failure too. Cancel the task if it's still open, take it out of
+anything of the user's that step 12 put it in, and delete the test label, the
+test database and anything step 12 made. When the task list can't delete one,
+take it off the task or empty it, for a rerun to reuse. Do the same for any test
+task an earlier self-test left behind. Touch nothing else on the task list.
 
 It fails when anything can't be cleaned up: a run that leaves its test data
 behind didn't pass.
 
-### 13. Send the success message
+### 14. Send the success message
 
 Only when every step before it passed. Send it as the core rules' Sending a
 message in the user's style says. Its one fact is

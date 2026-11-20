@@ -1,9 +1,27 @@
-# Rating the past week
+---
+name: recalculate-theme-scores
+user-invocable: false
+description: >-
+    Rates how last week's messages landed, `acted` or `ignored`, and adjusts the
+    scores of last week's theme from them, so the picker leans toward what got
+    the user moving. The weekly setup job runs it through ntm:refresh-picks,
+    before the week's picks are drawn.
+---
 
-The weekly setup job rates last week's messages before the draw: did the user
-act on each one? The verdicts move the scores of last week's theme, the one This
-week's theme in `%Settings` named before the job moved it on, so the picker
-leans toward what got the user moving. Every file below is that theme's.
+# ntm:recalculate-theme-scores
+
+## Usage
+
+```
+/ntm:recalculate-theme-scores
+```
+
+## Setup
+
+Run `/ntm:ready-check`, unless it already ran in this session.
+
+The theme is last week's theme, the one This week's theme in `%Settings` named
+before the weekly setup job moved it on. Every file below is that theme's.
 
 ## Rate
 
@@ -20,10 +38,8 @@ Use the tasks the weekly setup job already looked up, and look up only the rest.
 Read a task's `Planned date history` only when its date changed.
 
 Write `acted` or `ignored` as each entry's `verdict`, and save
-`%Message-history`. Its line is
-`Rated <Theme>-message-history.md: <n> acted, <n> ignored`, or
-`Rating FAILED: <why>`. With no entry sent in the last seven days, it is
-`Nothing to rate`.
+`%Message-history`. With no entry sent in the last seven days, there's nothing
+to rate.
 
 ### 2. Adjust the scores
 
@@ -41,8 +57,13 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py \
 
 It updates the options file and prints one line, `saved: <the options file>`;
 anything else is `Recalculation FAILED: <why>`. Save that file's text, exactly
-as the script wrote it, as the `yaml` block of `%Theme-options`. Its line is
-`Adjusted <Theme>-options.yaml`.
+as the script wrote it, as the `yaml` block of `%Theme-options`.
 
-Nothing to rate, or a failure, ends the rating there. Keep its lines for the
-result, and go on to the draw.
+## Result
+
+For a job, return `Rated <Theme>-message-history.md: <n> acted, <n> ignored`,
+then `Adjusted <Theme>-options.yaml`.
+
+Nothing to rate, or a failure, ends the run there, with its line in place of the
+rest: `Nothing to rate`, `Rating FAILED: <why>`, or step 2's
+`Recalculation FAILED:` line. In chat, tell the user the same in plain words.

@@ -250,7 +250,7 @@ not know or would misuse, each with what it means in the theme.
 
 The file ntm writes as it goes: an entry for each message sent in the theme,
 holding only this theme's messages. For the weekly setup job,
-`ntm:refresh-picks` rates the week's messages in it, then runs the recalculation
-on it to adjust each entry's `score`. The theme builder creates it when it
-switches the theme on, from its template. The root's `files` leaves it out: the
-writer never reads it, and ntm finds it by its name.
+`ntm:recalculate-theme-scores` rates the week's messages in it, then runs the
+recalculation on it to adjust each entry's `score`. The theme builder creates it
+when it switches the theme on, from its template. The root's `files` leaves it
+out: the writer never reads it, and ntm finds it by its name.

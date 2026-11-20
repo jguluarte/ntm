@@ -164,6 +164,11 @@ Chooses, once a week, what each of the week's messages draws on from your theme,
 so your reminders keep changing. It leans toward what got you moving the week
 before. Your weekly setup runs it for you.
 
+### `/ntm:recalculate-theme-scores`
+
+Sees which of last week's messages got you to act on your tasks, and tunes your
+theme toward what worked. Your weekly setup runs it for you.
+
 ### `/ntm:reminder`
 
 Sends your morning, afternoon and evening reminders to your phone, in the style

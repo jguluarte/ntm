@@ -226,8 +226,7 @@ What each job runs, in order, for Create the jobs.
 6. `/ntm:refresh-picks`
 7. Send the week's message as the core rules' Sending a message in the user's
    style says. Its facts are what the `weekly` rule in `%Message-rules` asks
-   for, from steps 2 and 4, as counts and the few tasks worth naming. End the
-   run with what that returns.
+   for, from steps 2 and 4, as counts and the few tasks worth naming.
 
 ###### Reminders
 

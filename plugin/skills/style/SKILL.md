@@ -63,8 +63,8 @@ back weigh less, as you judge it.
 
 When the root gives a ladder as one paragraph, that ladder has no level name.
 Hand the writer what you called in its place, in plain words: for `escalation`,
-a task slipped or kept slipping; for `finishing_tasks`, a task done, a win or a
-big win.
+a task put off, or put off again and again; for `finishing_tasks`, a task done,
+a win or a big win.
 
 A win is more tasks finished than planned this week, which only the weekly
 setup's message counts; a task finished after slipping for days; or a task you
@@ -74,23 +74,35 @@ Call each only from the facts you were handed, and once: skip one a
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
-such as `morning`, `weekly` or `self-test`, the theme's name, and the
-perspective and the reference, each as `<kind>/<slug>`. It reads the theme
-itself. It returns 5 versions, each with a title, a message, and a probability
-from 0 to 1 of how likely a reader would be to predict it.
+Start the `ntm:writer` agent, and hand it the levels, the reminder, such as
+`morning`, `weekly` or `self-test`, the theme's name, the perspective and the
+reference, each as `<kind>/<slug>`, and the facts, as below. Hand it too the
+maximum length `ntm-user:notify` gives for a title and for a message: read
+`ntm-user:notify` for it, without sending anything. The writer reads the theme
+itself. It returns 5 versions, each with a title and a message.
 
-Hand a slipped task over as slipped, without its slip count or dates: the
-`escalation` level, or the call in its place, carries those.
+For a reminder, the writer gets less than the sender gathered: what the rule
+asks of the message; each task by its title and whether it's done; and, for the
+afternoon and evening, what changed among today's tasks since the earlier
+reminders, by title: a task added, done or moved off today. Nothing more. A
+slipped task goes over as one the user meant to do earlier and hasn't. Tasks
+that belong together, such as sub-tasks of one task, go over as one group: what
+they share and how many, in place of their titles. How hard to press goes over
+only as the `escalation` level, or the call in its place.
+
+Any other message's facts go over as its sender gathered them, with each task by
+its title.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose first five words aren't any
-entry's `opening`. Its title and message are what gets sent, and step 1's pick
-goes into its entry.
+Among the versions within the maximum length whose first five words aren't any
+entry's `opening`, take the one most likely to get a reaction out of the user, a
+laugh or a sting alike: the one they'd want to show someone. Its title and
+message are what gets sent, as the writer wrote them, and step 1's pick goes
+into its entry.
 
 ## Keeping `%Message-history`
 

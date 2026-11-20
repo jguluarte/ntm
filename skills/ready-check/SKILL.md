@@ -1,5 +1,6 @@
 ---
 name: ready-check
+user-invocable: false
 description: >-
     Proves this session can run an ntm job and loads the user's settings and
     ntm's core rules for it: ntm-user loads, and the task list answers with the

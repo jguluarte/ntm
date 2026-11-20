@@ -1,5 +1,6 @@
 ---
 name: reminder
+user-invocable: false
 description: >-
     Sends one of the user's daily reminders about their todo list, morning,
     afternoon or evening: checks that ntm can run, gathers today's tasks and how

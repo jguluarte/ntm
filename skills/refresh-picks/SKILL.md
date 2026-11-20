@@ -1,5 +1,6 @@
 ---
 name: refresh-picks
+user-invocable: false
 description: >-
     Refreshes a theme's picks: draws 25 picks from its `%Theme-options` into
     `%Theme-picks`, which each message takes its pick from. For the weekly setup

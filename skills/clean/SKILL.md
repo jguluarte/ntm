@@ -1,5 +1,6 @@
 ---
 name: clean
+user-invocable: false
 description: |-
     Tidies the user's task list by:
     - Clearing stale planned dates

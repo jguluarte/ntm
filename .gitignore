@@ -1,5 +1,5 @@
 .devbox/
-.claude/settings.local.json
+.claude/
 __pycache__/
 .venv/
 .pytest_cache/

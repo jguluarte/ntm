@@ -46,6 +46,8 @@ follow them for the rest of the run.
 
 ### 4. Compare the versions
 
+When `ntm:update` ran this check, the check is done.
+
 Find their version, the installed one and the update notes as step 1 of
 `ntm:update` says. When the versions match, the check is done.
 

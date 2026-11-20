@@ -70,7 +70,9 @@ Create the below task. It should get an id, and it is the test task.
 | Project     | none                                     |
 
 When the step doesn't run, the test task is one of the user's open tasks with no
-planned date, and the step's line names it. With none, steps 4 to 9 don't run.
+planned date: note its title, description, labels and comments, to check and put
+back later. The step's line names it, and says its history on the task list will
+show the test's changes. With none, steps 4 to 9 don't run.
 
 ### 4. Read it back
 
@@ -97,8 +99,10 @@ new text. Then delete the comment, and it's gone.
 
 ### 9. Change it
 
-Add the line `ntm self-test, <timestamp>` to its description, and the task shows
-it. Then take the line out, and the description is as it was.
+Runs when step 3 made the test task.
+
+Change its description to `This is a changed test, it can safely be removed`,
+and the task shows it.
 
 ### 10. Store data
 
@@ -129,10 +133,11 @@ With no cleanup listed, the step passes, and its line says there is none.
 ### 13. Clean up
 
 Runs after a failure too. Delete everything the run made. When the test task is
-one of the user's, put its planned date, labels, comments and description back
-as step 3 found them. Touch nothing else on the task list.
+one of the user's, clear its planned date, and put its labels and comments back
+as step 3 noted them. Touch nothing else on the task list.
 
-It fails when anything can't be cleaned up.
+It fails when anything can't be cleaned up, and its line names what's left and
+on which task.
 
 ### 14. Send the success message
 

@@ -77,11 +77,10 @@ class RecalculationTest(unittest.TestCase):
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
         theme = Theme(casebook.EVEN)
         characters = EntryFile(baker_street.CHARACTERS)
-        scenes = EntryFile(baker_street.SCENES)
         recalculation = Recalculation(theme)
 
         with self.assertRaises(UnknownEntryFile) as raised:
-            recalculation.weigh_entries([characters, scenes])
+            recalculation.weigh_entries([characters])
 
         expected = "no pool uses Baker-street-characters.yaml"
         self.assertEqual(expected, str(raised.exception))

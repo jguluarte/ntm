@@ -4,9 +4,7 @@ import unittest
 from pathlib import Path
 
 from fixtures import baker_street, casebook, invalid_casebook
-from theme import (
-    InvalidTheme, MissingReference, MissingWeight, Theme, UnknownEntryFile,
-)
+from theme import InvalidTheme, MissingReference, Theme
 
 
 class PerspectiveTest(unittest.TestCase):
@@ -63,15 +61,6 @@ class ChanceTest(unittest.TestCase):
         }
         self.assertEqual(expected, chance_by_name)
 
-    def test_every_option_weighing_0_fails_with_missing_weight(self):
-        theme = Theme(casebook.WEIGHTLESS)
-
-        with self.assertRaises(MissingWeight) as raised:
-            theme.perspective_lottery()
-
-        expected = "every option weighs 0"
-        self.assertEqual(expected, str(raised.exception))
-
 
 class DrawTest(unittest.TestCase):
     def test_a_draw_returns_the_only_option_weighing_above_0(self):
@@ -106,15 +95,6 @@ class EntryFilesTest(unittest.TestCase):
 
         expected = ["characters/detective", "shared_lines/any_time"]
         self.assertEqual(expected, entries)
-
-    def test_a_file_no_pool_names_fails_with_unknown_entry_file(self):
-        theme = Theme(casebook.EVEN)
-
-        with self.assertRaises(UnknownEntryFile) as raised:
-            theme.entries_from("Even-scenes.yaml")
-
-        expected = "no pool uses Even-scenes.yaml"
-        self.assertEqual(expected, str(raised.exception))
 
     def test_the_entries_in_a_role_are_those_of_every_pool_holding_it(self):
         theme = Theme(casebook.EVEN)

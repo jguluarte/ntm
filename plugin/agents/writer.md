@@ -4,8 +4,8 @@ description: >-
     Writes one of ntm's messages to the user, in their theme. Given the
     message's facts, its levels, and its perspective and reference, it reads the
     theme's guidance and the files those two entries are in, writes 5 versions,
-    each with a title and how typical it is, and returns them. Asked by
-    ntm:style for every message it writes, in a job or by hand in chat.
+    each with a title, and returns them. Asked by ntm:style for every message it
+    writes, in a job or by hand in chat.
 
         <example>
             Context: ntm:style has the pick for the morning reminder.
@@ -109,12 +109,6 @@ give.
 
 Give each version its own title in the theme, saying what this message is about.
 
-### 4. Rate how typical each version is
-
-Give each version a probability from 0 to 1: how likely a reader would be to
-predict it. The version anyone would write first is near 1; one nobody would see
-coming is near 0.
-
 ## What you return
 
 The versions, with a `---` line between them, and nothing else. In each version,
@@ -122,11 +116,9 @@ The versions, with a `---` line between them, and nothing else. In each version,
 
 ```
 title: <title>
-probability: <0 to 1>
 message: <the message>
 ---
 title: <title>
-probability: <0 to 1>
 message: <the message>
 ```
 

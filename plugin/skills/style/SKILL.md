@@ -79,8 +79,7 @@ reminder, such as `morning`, `weekly` or `self-test`, the theme's name, and the
 perspective and the reference, each as `<kind>/<slug>`. Hand it too the caps
 `ntm-user:notify` gives on a title and a message: read `ntm-user:notify` for
 them, without sending anything. The writer reads the theme itself. It returns 5
-versions, each with a title, a message, and a probability from 0 to 1 of how
-likely a reader would be to predict it.
+versions, each with a title and a message.
 
 The message's facts are what the rule asks of the message; each task by its
 title and whether it's done; and, for the afternoon and evening, what changed
@@ -95,9 +94,9 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Among the versions within the caps, take the one with the lowest probability
-whose first five words aren't any entry's `opening`. Its title and message are
-what gets sent, and step 1's pick goes into its entry.
+Among the versions within the caps whose first five words aren't any entry's
+`opening`, take the one most likely to get the user to read it and act on it.
+Its title and message are what gets sent, and step 1's pick goes into its entry.
 
 ## Keeping `%Message-history`
 

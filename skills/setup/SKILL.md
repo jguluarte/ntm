@@ -294,9 +294,10 @@ Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
 template, without asking, under its default name: its `%` name in words, such as
 Paused dates. Say in a line where each one lives. Write the settings into
-`%Settings` with the real names, leaving out Planning and Databases without task
-management, Shopping without price watch, and the rows of labels you didn't
-create. Keep the jobs and their model for Create the jobs, after the self-test.
+`%Settings` with the real names, leaving out Planning and Databases when they
+skipped task management, Shopping when they skipped price watch, and the rows of
+labels you didn't create. Keep the jobs and their model for Create the jobs,
+after the self-test.
 
 ### Create a theme
 

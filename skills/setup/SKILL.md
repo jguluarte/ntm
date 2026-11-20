@@ -320,9 +320,9 @@ and save it under Notifications in the `%Settings` database. For Pushover, save
 their keys there too, in Pushover keys. Then add `ntm-user:notify` to their user
 plugin, as The user plugin says; near its top, it follows their Notifications in
 `%Settings`. For Pushover, build it from `references/notify/pushover.md`. For
-the AI app's own push, build it from the same file without Keys or
-`--app-token`. In place of Send and Result, it returns `NOTIFY VIA FINAL REPLY`,
-then the title, then the message, for the job to end its run with.
+the AI app's own push, build it from the same file without Keys. In place of
+Send and Result, it returns `NOTIFY VIA FINAL REPLY`, then the title, then the
+message, for the job to end its run with.
 
 ### Install and self-test
 

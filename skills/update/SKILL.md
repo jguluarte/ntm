@@ -43,8 +43,9 @@ the user.
 
 ### 3. Rebuild the user plugin
 
-When any note says `Rebuild ntm-user: yes`, rebuild the user plugin once, after
-the last note, as The user plugin, ntm backend assets and Notifications in
+When any note says `Rebuild ntm-user: yes`, and any condition it names holds,
+rebuild the user plugin once, after the last note, as The user plugin, ntm
+backend assets and Notifications in
 `${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` build it, filled in from their
 installed `ntm-user`'s skills and `.mcp.json`. Their `%Settings` and keys stay
 as they are. Have them install it, then run `/ntm:self-test` in a new chat.

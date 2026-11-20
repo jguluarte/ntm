@@ -52,8 +52,9 @@ Find their version, the installed one and the update notes as step 1 of
 `ntm:update` says. When the versions match, the check is done.
 
 When the installed version is newer, read each note's first line, Needs the
-user. When one says yes, the check is done, with an update waiting. Otherwise,
-load `ntm:update` and follow it, then the check is done, with an update applied.
+user. When one says yes, and any condition it names holds, the check is done,
+with an update waiting. Otherwise, load `ntm:update` and follow it, then the
+check is done, with an update applied.
 
 ## Result
 

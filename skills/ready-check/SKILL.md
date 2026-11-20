@@ -2,11 +2,11 @@
 name: ready-check
 description: >-
     Proves this session can run an ntm job and loads the user's settings and
-    ntm's core rules for it: ntm-user loads, the task list answers with the
-    user's `%Settings`, and their setup is on the installed version of ntm,
-    updated here when no new version needs them. On a failure, says what is
-    wrong and how to fix it. Run at the start of a job, or by hand ("can you see
-    my todo list?", "check the connection", "is ntm ready?").
+    ntm's core rules for it: ntm-user loads, and the task list answers with the
+    user's `%Settings`. Updates their setup to the installed version of ntm when
+    no new version needs them, or says an update is waiting. On a failure, says
+    what is wrong and how to fix it. Run at the start of a job, or by hand ("can
+    you see my todo list?", "check the connection", "is ntm ready?").
 ---
 
 # ntm:ready-check
@@ -65,7 +65,7 @@ job's own push delivers it.
 
 With an update waiting, `Ready-check OK` is followed by
 `Update waiting: setup at <theirs>, ntm at <installed>. Run /ntm:update in chat.`
-The run goes on, and its last result ends with that line too.
+The run goes on.
 
 | Failure                | Fix                                                               |
 | ---------------------- | ----------------------------------------------------------------- |

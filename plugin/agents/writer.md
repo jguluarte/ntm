@@ -42,6 +42,7 @@ what will make the user actually read it?
 | The theme         | The theme's name, such as `Casebook`                                                    |
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference     | Another entry of the theme the message draws on                                         |
+| The caps          | The most characters a title and a message may have; optional                            |
 
 ## Reading the theme
 
@@ -99,11 +100,14 @@ not the user you're writing for.
 
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or
-else the guidance gives; with neither, keep it short.
+else the guidance gives; with neither, keep it short. When you're handed caps,
+each message stays within its cap, counted as sent, links included; the cap wins
+over any other length.
 
 ### 3. Title each version
 
-Give each version its own title in the theme, saying what this message is about.
+Give each version its own title in the theme, saying what this message is about,
+within its cap.
 
 ### 4. Rate how typical each version is
 

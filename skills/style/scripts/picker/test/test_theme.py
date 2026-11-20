@@ -90,7 +90,7 @@ class DrawTest(unittest.TestCase):
 
 
 class SchemaTest(unittest.TestCase):
-    def test_the_documented_example_passes(self):
+    def test_a_file_with_every_field_passes(self):
         theme = Theme(fixtures.baker_street.OPTIONS)
         lottery = theme.perspective_lottery()
         names = [option.name for option in lottery.chance_by_candidate]

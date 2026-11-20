@@ -41,7 +41,7 @@ Any of your five versions may be the one sent, so write each one ready to send.
 | `escalation`      | The level for slipped tasks, by name; optional                                          |
 | `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
 | The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
-| The theme         | This week's theme, by name, such as `Casebook`                                          |
+| The theme         | The theme the sender names, or else this week's, by name, such as `Casebook`            |
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference     | Another entry of the theme the message draws on                                         |
 

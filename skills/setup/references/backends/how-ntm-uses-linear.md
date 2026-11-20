@@ -24,6 +24,8 @@ Setup records your labels' and databases' real names in `%Settings`, and where
 | `%Paused-dates`       | `Paused dates`               |
 | `%Estimator-log`      | `Estimator log`              |
 | `%Theme`              | `<Theme>.yaml`               |
+| `%Theme-options`      | `<Theme>-options.yaml`       |
+| `%Theme-picks`        | `<Theme>-picks.yaml`         |
 
 These are the names the plugin's author uses; the marks keep the plugin's files
 consistent and still leave you free to name yours differently.

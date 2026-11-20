@@ -97,8 +97,9 @@ themes and names this week's.
 ### Themes
 
 A user can have several themes. `%Theme` refers to a theme's collection of
-files, each named after the theme. In a run, each name below means this week's
-theme's file; `references/theme-files.md` gives each file's shape.
+files, each named after the theme. In a run, each name below means the file of
+the theme the run names, or else of this week's theme;
+`references/theme-files.md` gives each file's shape.
 
 | How we refer to it in the plugin | example                       |
 | -------------------------------- | ----------------------------- |
@@ -110,8 +111,8 @@ theme's file; `references/theme-files.md` gives each file's shape.
 #### `%Theme`
 
 The style ntm's messages to the user are written in. `ntm:style` reads it for
-each message, hands the writer agent only what that message needs, and changes
-it with the user when they ask.
+each message and changes it with the user when they ask. The writer agent reads
+the parts each message needs.
 
 #### `%Message-history`
 

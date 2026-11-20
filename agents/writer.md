@@ -85,10 +85,10 @@ narrator tells it from the perspective, as its guidance says, or it's told
 plainly.
 
 The message is about its subject and the theme's world: something happens in
-that world, with the subject inside it. Set the message where the reminder falls
-in the world's day, as `world` maps it. The message talks to the user as "you",
-to the task, or to the room, and calls the user only "you", never by name or by
-a pet name.
+that world, with the subject inside it. When `world` maps the user's day onto
+it, set the message where the reminder falls there. The message talks to the
+user as "you", to the task, or to the room, and calls the user only "you", never
+by name or by a pet name.
 
 Name each task in a few "theme-natural" words, with its id in parenthesis as a
 link to the task itself. Any fact you use should also be written in a theme

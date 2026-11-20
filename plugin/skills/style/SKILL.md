@@ -74,12 +74,12 @@ Call each only from the facts you were handed, and once: skip one a
 
 ### 3. Write
 
-Start the `ntm:writer` agent, and hand it the facts, as below, the levels, the
-reminder, such as `morning`, `weekly` or `self-test`, the theme's name, and the
-perspective and the reference, each as `<kind>/<slug>`. Hand it too the caps
-`ntm-user:notify` gives on a title and a message: read `ntm-user:notify` for
-them, without sending anything. The writer reads the theme itself. It returns 5
-versions, each with a title and a message.
+Start the `ntm:writer` agent, and hand it the levels, the reminder, such as
+`morning`, `weekly` or `self-test`, the theme's name, the perspective and the
+reference, each as `<kind>/<slug>`, and the facts, as below. Hand it too the
+caps `ntm-user:notify` gives on a title and a message: read `ntm-user:notify`
+for them, without sending anything. The writer reads the theme itself. It
+returns 5 versions, each with a title and a message.
 
 For a reminder, the writer gets less than the sender gathered: what the rule
 asks of the message; each task by its title and whether it's done; and, for the

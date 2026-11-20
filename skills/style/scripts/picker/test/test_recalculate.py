@@ -5,10 +5,10 @@ from pathlib import Path
 
 import yaml
 
-import fixtures.baker_street
-import fixtures.casebook
-import fixtures.scotland_yard
-import fixtures.witness_statements
+from fixtures import baker_street
+from fixtures import casebook
+from fixtures import scotland_yard
+from fixtures import witness_statements
 from recalculate import (
     Message, MessageHistory, Recalculation, parser, reporting_failures,
 )
@@ -19,8 +19,8 @@ SEND_TIME = datetime(2026, 11, 13, 8, 45)
 
 class RecalculationTest(unittest.TestCase):
     def test_weighing_gives_each_entry_its_weight_from_its_lines(self):
-        theme = Theme(fixtures.witness_statements.OPTIONS)
-        entry_file = EntryFile(fixtures.witness_statements.CHARACTERS)
+        theme = Theme(witness_statements.OPTIONS)
+        entry_file = EntryFile(witness_statements.CHARACTERS)
         recalculation = Recalculation(theme)
 
         recalculation.weigh_entries([entry_file])
@@ -31,7 +31,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(1.0, theme.weight_of("characters/no_lines"))
 
     def test_a_speaker_is_the_perspective_at_least_6_times_in_10(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -39,7 +39,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.6, theme.speaker_rate)
 
     def test_speakers_with_more_of_the_weight_are_the_perspective_more(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         theme.set_weight("characters/detective", 3.0)
         recalculation = Recalculation(theme)
 
@@ -48,7 +48,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.75, theme.speaker_rate)
 
     def test_a_theme_of_only_speakers_always_has_a_speaker(self):
-        theme = Theme(fixtures.casebook.SPEAKERS_ONLY)
+        theme = Theme(casebook.SPEAKERS_ONLY)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -56,7 +56,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(1.0, theme.speaker_rate)
 
     def test_a_theme_without_speakers_never_has_a_speaker(self):
-        theme = Theme(fixtures.witness_statements.OPTIONS)
+        theme = Theme(witness_statements.OPTIONS)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -66,8 +66,8 @@ class RecalculationTest(unittest.TestCase):
     def test_recording_gives_the_entry_file_its_own_checksum(self):
         folder = self.enterContext(tempfile.TemporaryDirectory())
         saved_options = Path(folder) / "Witness-statements-options.yaml"
-        theme = Theme(fixtures.witness_statements.OPTIONS)
-        entry_file = EntryFile(fixtures.witness_statements.CHARACTERS)
+        theme = Theme(witness_statements.OPTIONS)
+        entry_file = EntryFile(witness_statements.CHARACTERS)
         recalculation = Recalculation(theme)
 
         recalculation.record_checksums([entry_file])
@@ -78,9 +78,9 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(entry_file.checksum, checksum)
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
-        theme = Theme(fixtures.casebook.EVEN)
-        characters = EntryFile(fixtures.baker_street.CHARACTERS)
-        scenes = EntryFile(fixtures.baker_street.SCENES)
+        theme = Theme(casebook.EVEN)
+        characters = EntryFile(baker_street.CHARACTERS)
+        scenes = EntryFile(baker_street.SCENES)
         recalculation = Recalculation(theme)
 
         with self.assertRaises(UnknownEntryFile) as raised:
@@ -92,7 +92,7 @@ class RecalculationTest(unittest.TestCase):
 
 class ScoresTest(unittest.TestCase):
     def test_an_acted_on_message_raises_both_its_picks(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
@@ -105,7 +105,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 + 0.1, stakeout_score)
 
     def test_an_ignored_message_lowers_both_its_picks(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="ignored", feedback=None)
         recalculation = Recalculation(theme)
@@ -118,7 +118,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 - 0.1, stakeout_score)
 
     def test_a_message_the_user_keeps_raises_both_its_picks(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback="keep")
         recalculation = Recalculation(theme)
@@ -131,7 +131,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 + 0.25, stakeout_score)
 
     def test_a_message_the_user_calls_stale_lowers_both_its_picks(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback="stale")
         recalculation = Recalculation(theme)
@@ -144,7 +144,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 - 0.5, stakeout_score)
 
     def test_a_message_with_no_verdict_or_feedback_moves_nothing(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback=None)
         recalculation = Recalculation(theme)
@@ -157,7 +157,7 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(0.1, stakeout_score)
 
     def test_a_pick_the_options_file_no_longer_has_is_skipped(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/moor")
         message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
@@ -169,7 +169,7 @@ class ScoresTest(unittest.TestCase):
         self.assertFalse(theme.has_entry("scenes/moor"))
 
     def test_a_score_rises_no_higher_than_1(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="acted", feedback="keep")
         recalculation = Recalculation(theme)
@@ -179,7 +179,7 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(1, theme.score_of("characters/detective"))
 
     def test_a_score_sinks_no_lower_than_minus_2(self):
-        theme = Theme(fixtures.baker_street.OPTIONS)
+        theme = Theme(baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="ignored", feedback="stale")
         recalculation = Recalculation(theme)
@@ -189,8 +189,8 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(-2, theme.score_of("scenes/stakeout"))
 
     def test_a_reference_called_stale_all_week_sinks_to_the_lowest_score(self):
-        theme = Theme(fixtures.scotland_yard.OPTIONS)
-        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
+        theme = Theme(scotland_yard.OPTIONS)
+        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 
@@ -199,8 +199,8 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(-2, theme.score_of("clues/badge"))
 
     def test_a_score_that_reached_the_highest_falls_with_a_later_message(self):
-        theme = Theme(fixtures.scotland_yard.OPTIONS)
-        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
+        theme = Theme(scotland_yard.OPTIONS)
+        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 
@@ -220,7 +220,7 @@ class ScoresTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-        theme = Theme(fixtures.scotland_yard.OPTIONS)
+        theme = Theme(scotland_yard.OPTIONS)
         history = MessageHistory(history_without_picks)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
@@ -233,7 +233,7 @@ class ScoresTest(unittest.TestCase):
 
 class MessageHistoryTest(unittest.TestCase):
     def test_the_messages_since_a_day_are_those_sent_on_or_after_it(self):
-        history = MessageHistory(fixtures.scotland_yard.MESSAGE_HISTORY)
+        history = MessageHistory(scotland_yard.MESSAGE_HISTORY)
         messages = history.sent_since(date(2026, 11, 15))
 
         sent = datetime(2026, 11, 15, 18, 0)
@@ -272,7 +272,7 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_start_without_entry_files_fails_naming_them(self):
-        args = ["start", "--options", str(fixtures.baker_street.OPTIONS)]
+        args = ["start", "--options", str(baker_street.OPTIONS)]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
@@ -285,8 +285,8 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_adjust_without_since_fails_naming_it(self):
         args = [
             "adjust",
-            "--options", str(fixtures.scotland_yard.OPTIONS),
-            "--history", str(fixtures.scotland_yard.MESSAGE_HISTORY),
+            "--options", str(scotland_yard.OPTIONS),
+            "--history", str(scotland_yard.MESSAGE_HISTORY),
         ]
 
         with self.assertRaises(SystemExit) as exited:

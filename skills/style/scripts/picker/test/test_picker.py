@@ -2,8 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import fixtures.baker_street
-import fixtures.casebook
+from fixtures import baker_street
+from fixtures import casebook
 from picker import (
     Picker, chances_table, parser, pick_text, reporting_failures,
 )
@@ -15,9 +15,9 @@ RUNS = 10
 
 class PickTest(unittest.TestCase):
     def test_the_same_seed_gives_the_same_picks(self):
-        first_theme = Theme(fixtures.casebook.EVEN, seed=SEED)
+        first_theme = Theme(casebook.EVEN, seed=SEED)
         first_picker = Picker(first_theme)
-        second_theme = Theme(fixtures.casebook.EVEN, seed=SEED)
+        second_theme = Theme(casebook.EVEN, seed=SEED)
         second_picker = Picker(second_theme)
 
         first = [first_picker.pick() for _ in range(RUNS)]
@@ -26,7 +26,7 @@ class PickTest(unittest.TestCase):
         self.assertEqual(first, second)
 
     def test_each_pick_draws_again(self):
-        theme = Theme(fixtures.casebook.EVEN, seed=SEED)
+        theme = Theme(casebook.EVEN, seed=SEED)
         picker = Picker(theme)
 
         picks = {picker.pick() for _ in range(RUNS)}
@@ -36,7 +36,7 @@ class PickTest(unittest.TestCase):
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
-        theme = Theme(fixtures.baker_street.OPTIONS, seed=SEED)
+        theme = Theme(baker_street.OPTIONS, seed=SEED)
         picker = Picker(theme)
         perspective, reference = picker.pick()
         rows = pick_text(perspective, reference).splitlines()
@@ -50,7 +50,7 @@ class PickTextTest(unittest.TestCase):
 
 class ChancesTableTest(unittest.TestCase):
     def test_each_perspective_shows_weight_score_and_rounded_chance(self):
-        theme = Theme(fixtures.casebook.WEIGHTED)
+        theme = Theme(casebook.WEIGHTED)
         lottery = theme.perspective_lottery()
         rows = chances_table(lottery).splitlines()
 
@@ -66,7 +66,7 @@ class ChancesTableTest(unittest.TestCase):
 
 class ReportingFailuresTest(unittest.TestCase):
     def test_a_pick_where_every_option_weighs_0_fails_naming_why(self):
-        theme = Theme(fixtures.casebook.WEIGHTLESS)
+        theme = Theme(casebook.WEIGHTLESS)
         picker = Picker(theme)
 
         with self.assertRaises(SystemExit) as exited:
@@ -99,11 +99,7 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = [
-            "pick",
-            "--options", str(fixtures.casebook.EVEN),
-            "--seed", "seven",
-        ]
+        args = ["pick", "--options", str(casebook.EVEN), "--seed", "seven"]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

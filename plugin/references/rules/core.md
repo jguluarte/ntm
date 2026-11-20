@@ -123,8 +123,9 @@ file says. Then:
 
 1. Load `ntm:style` unless the sender has, and follow it to turn the facts into
    a title and message.
-2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, tighten
-   the message, keeping every task id, and send it once more.
+2. Send them with `ntm-user:notify`. When it answers `Notify TOO LONG`, hand
+   that line back to `ntm:style` once for a new title and message, and send
+   those.
 3. Once it returns `Sent:` or its `NOTIFY VIA FINAL REPLY` block, record the
    message as `ntm:style`'s Keeping `%Message-history` says.
 

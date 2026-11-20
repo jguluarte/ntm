@@ -80,8 +80,10 @@ perspective and the reference, each as `<kind>/<slug>`. It reads the theme
 itself. It returns 5 versions, each with a title, a message, and a probability
 from 0 to 1 of how likely a reader would be to predict it.
 
-When `ntm-user:notify` gives a cap on a title or a message, hand the writer
-those caps too.
+Read `ntm-user:notify`, without sending anything, for any cap it gives on a
+title or a message, and hand the writer those caps too. When the sender hands
+back a `Notify TOO LONG` line, start the writer once more with what you handed
+it and that line, and choose again.
 
 Hand a slipped task over as slipped, without its slip count or dates: the
 `escalation` level, or the call in its place, carries those.

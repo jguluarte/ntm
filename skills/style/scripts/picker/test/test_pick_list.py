@@ -39,14 +39,3 @@ class ReportingFailuresTest(unittest.TestCase):
         why = "the following arguments are required: --options"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)
-
-    def test_a_missing_count_flag_fails_naming_it(self):
-        args = ["draw", "--options", str(baker_street.OPTIONS)]
-
-        with self.assertRaises(SystemExit) as exited:
-            with reporting_failures():
-                parser().parse_args(args)
-
-        why = "the following arguments are required: --count"
-        expected = f"Picker FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)

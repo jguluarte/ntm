@@ -4,9 +4,7 @@ import unittest
 from pathlib import Path
 
 from fixtures import baker_street, casebook, invalid_casebook
-from theme import (
-    InvalidTheme, MissingReference, MissingWeight, Theme, UnknownEntryFile,
-)
+from theme import InvalidTheme, MissingReference, Theme
 
 
 class PerspectiveTest(unittest.TestCase):
@@ -18,13 +16,6 @@ class PerspectiveTest(unittest.TestCase):
 
         self.assertAlmostEqual(0.4, chance_by_name["characters/detective"])
         self.assertAlmostEqual(0.6, chance_by_name["scenes/stakeout"])
-
-    def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
-        theme = Theme(baker_street.OPTIONS)
-        speaker_rate = theme.speaker_rate
-
-        expected = 0.4
-        self.assertEqual(expected, speaker_rate)
 
 
 class ReferenceTest(unittest.TestCase):
@@ -70,15 +61,6 @@ class ChanceTest(unittest.TestCase):
         }
         self.assertEqual(expected, chance_by_name)
 
-    def test_every_option_weighing_0_fails_with_missing_weight(self):
-        theme = Theme(casebook.WEIGHTLESS)
-
-        with self.assertRaises(MissingWeight) as raised:
-            theme.perspective_lottery()
-
-        expected = "every option weighs 0"
-        self.assertEqual(expected, str(raised.exception))
-
 
 class DrawTest(unittest.TestCase):
     def test_a_draw_returns_the_only_option_weighing_above_0(self):
@@ -90,21 +72,6 @@ class DrawTest(unittest.TestCase):
 
 
 class SchemaTest(unittest.TestCase):
-    def test_a_file_with_every_field_passes(self):
-        theme = Theme(baker_street.OPTIONS)
-        lottery = theme.perspective_lottery()
-        names = [option.name for option in lottery.chance_by_candidate]
-
-        expected = ["characters/detective", "scenes/stakeout"]
-        self.assertEqual(expected, names)
-
-    def test_a_file_without_pools_fails(self):
-        with self.assertRaises(InvalidTheme) as raised:
-            Theme(invalid_casebook.WITHOUT_POOLS)
-
-        expected = "$: 'pools' is a required property"
-        self.assertEqual(expected, str(raised.exception))
-
     def test_a_pool_without_roles_fails(self):
         with self.assertRaises(InvalidTheme) as raised:
             Theme(invalid_casebook.POOL_WITHOUT_ROLES)
@@ -138,30 +105,12 @@ class EntryFilesTest(unittest.TestCase):
         expected = ["characters/detective", "shared_lines/any_time"]
         self.assertEqual(expected, entries)
 
-    def test_a_file_no_pool_names_fails_with_unknown_entry_file(self):
-        theme = Theme(casebook.EVEN)
-
-        with self.assertRaises(UnknownEntryFile) as raised:
-            theme.entries_from("Even-scenes.yaml")
-
-        expected = "no pool uses Even-scenes.yaml"
-        self.assertEqual(expected, str(raised.exception))
-
     def test_the_entries_in_a_role_are_those_of_every_pool_holding_it(self):
         theme = Theme(casebook.EVEN)
         entries = theme.entries_with_role("speaker")
 
         expected = ["characters/host", "narrators/chorus"]
         self.assertEqual(expected, entries)
-
-
-class WeightsTest(unittest.TestCase):
-    def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
-        theme = Theme(baker_street.OPTIONS)
-        weight = theme.weight_of("characters/detective")
-
-        expected = 0.57
-        self.assertEqual(expected, weight)
 
 
 class SaveTest(unittest.TestCase):

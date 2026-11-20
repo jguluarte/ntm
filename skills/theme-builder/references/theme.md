@@ -67,9 +67,8 @@ Ask the user how involved they would like to be with their theme's content. When
 they want less of a part in it, offer entries a few at a time, for a yes or no
 on each.
 
-Write a few entries of each kind with them, about 20 in all. An entry that can
-be used many ways, such as a running scene that moves forward, stretches across
-many reminders.
+Write a few entries of each kind with them, about 20 in all. Favour ones that
+can be used many ways, such as a running scene that moves forward.
 
 Every quote or line comes from the user: they say it, or confirm that one you
 offer is true to their world.

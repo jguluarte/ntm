@@ -26,13 +26,14 @@ theme's files, and nothing more. Never build `Casebook` or copy from it.
 ## Setup
 
 When `ntm:setup` runs this skill, it already holds where their databases go:
-skip the ready-check. Otherwise, run `/ntm:ready-check`, unless it already ran
-in this session. It loads `ntm-user:backend`, `%Settings` and ntm's core rules;
-if it fails, end the run with its result line.
+skip the ready-check, here and in `ntm:refresh-picks`. Otherwise, run
+`/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
 
-A theme's root in their backend, a YAML database with a `theme` part, that All
-themes in `%Settings` doesn't list is unfinished: offer to pick it up where its
-files leave off.
+A theme's root is a YAML database with a `theme` part. One that All themes, in
+`%Settings`, doesn't list is unfinished: offer to pick it up where its files
+leave off.
 
 ## Building the theme
 
@@ -62,10 +63,9 @@ your user from your memories about them.
 
 ### 2. Build it with them
 
-Build the theme with them as the theme guide,
-`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says, one
-stage at a time: the world, the levels, the kinds and the entries. For a theme
-they already have, the guide starts from it.
+Build the theme with them one stage at a time, as the theme guide,
+`${CLAUDE_PLUGIN_ROOT}/skills/theme-builder/references/theme.md`, says: the
+world, the levels, the kinds and the entries.
 
 Save each stage's part in the theme's files, beside their other databases, as it
 finishes, so a later chat picks it up. When another theme has the name they
@@ -98,9 +98,8 @@ why, and go on.
 ### 4. Draw its first picks
 
 When step 3 passed, load `ntm:refresh-picks` and follow it for this theme. When
-`ntm:setup` runs this skill, skip `ntm:refresh-picks`'s ready-check too, as
-Setup says. When it ends with a failure line, tell the user in a line that the
-theme's picks weren't drawn, with that line, and go on.
+it ends with a failure line, tell the user in a line that the theme's picks
+weren't drawn, with that line, and go on.
 
 ### 5. Switch it on
 

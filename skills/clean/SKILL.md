@@ -40,11 +40,7 @@ Then do the cleanup `ntm-user:backend` lists, if any.
 
 For a job, return one line of counts, with each of the backend's cleanup counts
 last:
-
-```
-Cleaned <today>: cleared <n> planned dates, removed <n> paused dates,
-    <backend's counts>
-```
+`Cleaned <today>: cleared <n> planned dates, removed <n> paused dates, <backend's counts>`
 
 Leave out a count of none. When every count is none, return `Nothing to clean.`;
 when the task list can't be read, `Clean FAILED: <what went wrong>`. In chat,

@@ -79,11 +79,6 @@ your last update, helps you set up anything the new version offers, and rebuilds
 your own plugin when the new version needs it. When a new version needs nothing
 from you, your next scheduled job brings you up to it on its own.
 
-### `/ntm:ready-check`
-
-Checks that ntm can reach your task list, and says how to fix it when it can't.
-Your scheduled jobs run it first; run it yourself if something seems off.
-
 ### `/ntm:style`
 
 Writes ntm's messages to you in the theme you created during setup, so they
@@ -102,17 +97,10 @@ theme; run it again any time you want another, and it sends you a test message
 in the new theme. Your themes take turns, a week each. If you stop partway, it
 picks up where you left off.
 
-### `/ntm:refresh-picks`
-
-Chooses, once a week, what each of the week's messages draws on from your theme,
-so your reminders keep changing. It leans toward what got you moving the week
-before. Your weekly setup runs it for you.
-
 ## Task management
 
-These skills plan your days, remind you about them and keep your task list tidy.
-Some run on their own from your scheduled jobs; you can run any of them
-yourself, any time.
+These skills plan your days and keep your task list tidy. Some run on their own
+from your scheduled jobs; you can run any of them yourself, any time.
 
 ### `/ntm:today`
 
@@ -128,11 +116,6 @@ unfinished work to today. Each planned day a task misses is kept in a Planned
 date history comment on the task. Run it yourself to plan together, such as
 `/ntm:plan next week around the garage`.
 
-### `/ntm:reminder`
-
-Sends your morning, afternoon and evening reminders to your phone, in the style
-you set up. Scheduled jobs run it for you at the times you picked.
-
 ### `/ntm:pause`
 
 Marks days off, such as a holiday or a busy week, so nothing new gets planned
@@ -144,11 +127,6 @@ it alone to see your pauses.
 Goes through your task list with you, a project at a time: closes what's done or
 no longer needed, then estimates each task and breaks up the big ones. Stop
 whenever you like.
-
-### `/ntm:clean`
-
-Clears dates on previously planned tasks that didn't finish, removes pause dates
-that have since passed, and does any extra tidying your task list app needs.
 
 ## Price watch
 
@@ -169,3 +147,30 @@ needs something from you, such as a target price.
 If you turned on Amazon price alerts, this sets one for each item you're
 watching, and removes the alerts for tasks you've closed. Run it in chat, in a
 browser signed in to Amazon. The price watch tells you when it's time.
+
+## Skills that run on their own
+
+These run from your scheduled jobs or from other skills, so they stay out of the
+`/` menu. You can still type one's full name to run it yourself.
+
+### `/ntm:ready-check`
+
+Checks that ntm can reach your task list, and says how to fix it when it can't.
+Your scheduled jobs run it first; run it yourself if something seems off.
+
+### `/ntm:refresh-picks`
+
+Chooses, once a week, what each of the week's messages draws on from your theme,
+so your reminders keep changing. It leans toward what got you moving the week
+before. Your weekly setup runs it for you.
+
+### `/ntm:reminder`
+
+Sends your morning, afternoon and evening reminders to your phone, in the style
+you set up. Scheduled jobs run it for you at the times you picked.
+
+### `/ntm:clean`
+
+Clears dates on previously planned tasks that didn't finish, removes pause dates
+that have since passed, and does any extra tidying your task list app needs.
+Your weekly setup runs it for you.

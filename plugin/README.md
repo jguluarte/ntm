@@ -137,7 +137,8 @@ theme toward what worked. Your weekly setup runs it for you.
 ### `/ntm:reminder`
 
 Sends your morning, afternoon and evening reminders to your phone, in the style
-you set up. Scheduled jobs run it for you at the times you picked.
+you set up. Scheduled jobs run it for you at the times you picked. Each job's
+chat in Claude shows the reminder, then a link to each task it's about.
 
 ### `/ntm:clean`
 

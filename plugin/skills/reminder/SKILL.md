@@ -67,3 +67,7 @@ are:
 
 `Not sent: no tasks planned today`, or what sending returned. After
 `Sent: <title>`, add the message, so the user can answer it in this chat.
+
+After the message, list each task it is about, one per line: its id as a link to
+the task, then its title, as in
+`[ABC-15](<url>) Replace the leaking kitchen faucet`.

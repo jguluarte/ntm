@@ -91,9 +91,8 @@ it, set the message where the reminder falls there. The message talks to the
 user as "you", to the task, or to the room, and calls the user only "you", never
 by name or by a pet name.
 
-Name each task in a few "theme-natural" words, with its id in parenthesis as a
-link to the task itself. Any fact you use should also be written in a theme
-appropriate way.
+Name each task in a few "theme-natural" words, with no id and no link. Any fact
+you use should also be written in a theme appropriate way.
 
 Labels and databases should NOT be used in written messages, those are for you
 not the user you're writing for.

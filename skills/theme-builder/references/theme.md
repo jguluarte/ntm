@@ -59,8 +59,8 @@ and as you know it. Propose kinds, each with an `about` saying what an entry is
 and how a message uses one, and the keys its entries share. The user keeps,
 renames or drops them.
 
-Write each entry file, a pool for each kind in the options file, and the root's
-`files`.
+Write each entry file, a pool for each kind in the options file, with its
+`roles`, and the root's `files`.
 
 ## The entries
 

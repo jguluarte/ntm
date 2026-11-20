@@ -157,8 +157,9 @@ ready?"
 
 ### `/ntm:refresh-picks`
 
-Keeps your reminders changing week to week, leaning toward what got you moving
-the week before. Your weekly setup runs it for you.
+Draws the week's picks from your theme, so your reminders keep changing, and
+draws more when they run out or you build a new theme. Your weekly setup runs it
+for you.
 
 ### `/ntm:recalculate-theme-scores`
 

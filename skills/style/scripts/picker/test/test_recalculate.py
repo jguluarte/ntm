@@ -206,8 +206,17 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(1 - 0.1, theme.score_of("cast/chief"))
 
     def test_the_messages_with_picks_count_when_one_has_none(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        history_file = Path(folder) / "Message-history.jsonl"
+        history_file.write_text(
+            '{"sent":"2026-11-15 18:00","verdict":"ignored"}\n'
+            '{"sent":"2026-11-14 18:00","verdict":"acted",'
+            '"picks":{"perspective":"cast/chief","reference":"scenes/fog"}}\n',
+            encoding="utf-8",
+        )
+
         theme = Theme(fixtures.scoring.OPTIONS)
-        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY_WITHOUT_PICKS)
+        history = MessageHistory(history_file)
         messages = history.sent_since(date(2026, 11, 9))
         recalculation = Recalculation(theme)
 

@@ -1,6 +1,6 @@
 
 .PHONY: lint lint-markdown lint-yaml lint-python lint-absolute-line-length
-.PHONY: lint-fix test test-names test-picker
+.PHONY: lint-fix test test-names test-picker test-plugin
 
 LINT_FILES := $(shell git ls-files -- ':(attr:!skip-absolute-line-length)')
 YAML_FILES := $(shell git ls-files -- '*.yml' '*.yaml')
@@ -27,10 +27,13 @@ lint-fix:
 	prettier --write .
 	markdownlint-cli2 --fix
 
-test: test-names test-picker
+test: test-names test-picker test-plugin
 
 test-names:
 	bats tests
 
 test-picker:
 	pytest
+
+test-plugin:
+	claude plugin validate .

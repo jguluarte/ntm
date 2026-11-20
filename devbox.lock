@@ -39,6 +39,44 @@
         }
       }
     },
+    "claude-code@2.1.325": {
+      "last_modified": "2026-11-16T14:48:49Z",
+      "resolved": "github:NixOS/nixpkgs/e21fec321d73511849707a7585e4ea155ee4bf40#claude-code",
+      "source": "devbox-search",
+      "version": "2.1.325",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/8p584c8zba8xpi6ldr6mxaisfxpwl342-claude-code-2.1.325",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/8p584c8zba8xpi6ldr6mxaisfxpwl342-claude-code-2.1.325"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3lp8dw0wmdxi4ivz7l0fbv0awmia9jqy-claude-code-2.1.325",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3lp8dw0wmdxi4ivz7l0fbv0awmia9jqy-claude-code-2.1.325"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3r7q2hj4y7lm0vx3bcnx8ncx7m7pk7qz-claude-code-2.1.325",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3r7q2hj4y7lm0vx3bcnx8ncx7m7pk7qz-claude-code-2.1.325"
+        }
+      }
+    },
     "direnv@2.38.2": {
       "last_modified": "2026-11-06T15:06:19Z",
       "resolved": "github:NixOS/nixpkgs/4fe25e12eb9f4c744966dd3de5a05246cf098601#direnv",

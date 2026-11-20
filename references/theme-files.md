@@ -1,24 +1,8 @@
 # Theme files
 
 A theme is what ntm writes every reminder in: a world the user enjoys, with
-enough material to keep each message different. This file describes the files a
-theme is made of, for the skills that build, pick from and score a theme, and
-for anyone curious.
-
-## How ntm uses a theme
-
-A script, the picker, picks what each message draws on, and the writer writes
-the message from the pick. For a script to pick, a theme has to be data in a
-known shape, and this file is that shape. `ntm:theme-builder` builds a theme's
-files with the user. Each message takes the first pick from the theme's picks
-list, `<Theme>-picks.yaml`. When there is no list, or it's empty, `ntm:style`
-follows `ntm:refresh-picks` for a new one, and when that fails, it picks both
-itself.
-
-A user can have several themes. The Themes part of `%Settings` lists each one by
-its root and names this week's theme, the one everything picked in a week comes
-from. Each week, the weekly job moves to the next theme in the list, in order,
-back to the first after the last. With one theme, it is always that one.
+enough material to keep each message different. A script, the picker, draws what
+each message uses from it, so a theme is data in the shapes below.
 
 ## A theme's files
 
@@ -34,15 +18,9 @@ files sort together:
 | `<Theme>-message-history.md` | Each message sent in the theme, and how it landed      |
 | `<Theme>-picks.yaml`         | The next picks, drawn by `ntm:refresh-picks`           |
 
-Each file is a database: a page of text in the user's backend, found by its
-title, which is the file's name, extension included, such as
+Each file is a database, titled with its file name, such as
 `Casebook-options.yaml`. A theme's name is its root's title without `.yaml`:
-`Casebook`. For a Linear user, each file is one Linear document. A YAML file's
-text sits in one fenced `yaml` block in its document, so a backend that stores
-markdown keeps it intact.
-
-The run fetches the text from the backend and writes it to a file for the
-picker, which touches no backend.
+`Casebook`. A YAML file's text sits in one fenced `yaml` block.
 
 The examples below are from `Casebook`, a made-up detective story.
 
@@ -68,9 +46,8 @@ finished after slipping for days, or a task judged big or hard by the run that
 sends the message. A big win is a whole project finished: the project itself
 closes as done.
 
-`files` has three groups. Under each, a file's name maps to a line or two on
-what it holds. Each file is listed by its full name, which follows the pattern
-in the table of a theme's files above, such as `<Theme>-<descriptor>.yaml`.
+`files` has three groups. Under each, a file's full name maps to a line or two
+on what it holds.
 
 | Group            | What the writer gets                                                                            |
 | ---------------- | ----------------------------------------------------------------------------------------------- |
@@ -211,9 +188,8 @@ pools:
         score: 0.1
 ```
 
-The theme builder writes the pools, then runs the recalculation, a script that
-computes each `weight`, the `speaker_rate` and the `checksums` from the theme's
-files.
+The recalculation, a script, computes every number here. An entry without a
+`weight` weighs 1, and one without a `score` scores 0.
 
 | Field          | What it is                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |
@@ -222,25 +198,6 @@ files.
 | `weight`       | How likely the entry is to be drawn: 1 without lines or riffs, less the fewer it has |
 | `score`        | How well messages built on the entry landed, from the message history                |
 
-An entry's `weight` is `lines / (lines + 3)`, counting its `lines` and `riffs`,
-rounded to two places, or 1.0 with neither.
-
-## The pick
-
-Each message takes the first pick of `<Theme>-picks.yaml`. The picker runs in
-`ntm:refresh-picks`, which draws 25 picks at a time, weekly and whenever the
-list runs out.
-
-Each message gets one pick: a perspective and a reference, from different pools.
-At the theme's `speaker_rate`, the perspective is drawn from all speaker pools
-together; the rest of the time, from all perspective pools together. The
-reference is drawn from all reference pools outside the perspective's pool. Each
-entry counts once at its weight. An entry's score raises or lowers its chance.
-An entry without a `weight` weighs 1, and one without a `score` scores 0.
-
-The picker prints each pick's two entry keys. The writer looks each entry up in
-its entry file and, when it holds lines or riffs, chooses one to build on.
-
 ## The terminology file
 
 An optional markdown file, read whole: only the words a writer would otherwise
@@ -248,9 +205,5 @@ not know or would misuse, each with what it means in the theme.
 
 ## The message history
 
-The file ntm writes as it goes: an entry for each message sent in the theme,
-holding only this theme's messages. For the weekly setup job,
-`ntm:refresh-picks` rates the week's messages in it, then runs the recalculation
-on it to adjust each entry's `score`. The theme builder creates it when it
-switches the theme on, from its template. The root's `files` leaves it out: the
-writer never reads it, and ntm finds it by its name.
+An entry for each message sent in the theme, and how it landed. The root's
+`files` leaves it out.

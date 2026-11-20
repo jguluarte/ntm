@@ -22,14 +22,16 @@ today?
 
 ## Setup
 
-Load `ntm-user:backend` and read the price watch rules,
-`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`. Then run
-`/ntm:ready-check`, unless it already ran in this session. If it fails, end the
-run with its result line.
+Run `/ntm:ready-check`, unless it already ran in this session. It loads
+`ntm-user:backend`, `%Settings` and ntm's core rules; if it fails, end the run
+with its result line.
+
+Read the price watch rules,
+`${CLAUDE_PLUGIN_ROOT}/references/rules/price-watch.md`.
 
 ## The run
 
-### 1. Find pricewatch items
+### 1. Find the watched items
 
 These are the open tasks `$price-watch` covers.
 

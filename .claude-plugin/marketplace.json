@@ -5,5 +5,5 @@
         "name": "Justin Guluarte",
         "url": "https://github.com/jguluarte"
     },
-    "plugins": [{ "name": "ntm", "source": "./" }]
+    "plugins": [{ "name": "ntm", "source": "./plugin" }]
 }

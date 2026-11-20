@@ -1,0 +1,13 @@
+---
+name: help
+description: >-
+    Shows the user ntm's README: how to get started and what each of its skills
+    does. Run when the user asks about ntm ("what does ntm do", "help with ntm",
+    "how do I use ntm").
+---
+
+# ntm:help
+
+Read `${CLAUDE_PLUGIN_ROOT}/README.md` and render it to the user, word for word.
+Leave out its "Skills that run on their own" section: whoever asks for help
+wants the skills they run.

@@ -37,3 +37,4 @@ test-picker:
 
 test-plugin:
 	claude plugin validate .
+	claude plugin validate plugin

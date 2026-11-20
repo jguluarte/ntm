@@ -6,11 +6,11 @@ setup() {
 }
 
 find_skills() {
-    ls skills/*/SKILL.md | cut -d / -f 2
+    ls plugin/skills/*/SKILL.md | cut -d / -f 3
 }
 
 find_agents() {
-    basename -s .md agents/*.md
+    basename -s .md plugin/agents/*.md
 }
 
 load_file() {
@@ -30,7 +30,7 @@ expected_settings() {
 }
 
 find_settings() {
-    settings_in .claude-plugin/plugin.json
+    settings_in plugin/.claude-plugin/plugin.json
 }
 
 expect_none() {

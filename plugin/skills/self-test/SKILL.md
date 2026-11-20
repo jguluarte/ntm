@@ -5,13 +5,13 @@ description: >-
     every backend must: check setup made their databases, labels and jobs, then
     create, read, find, plan, label, comment on, change and close a task, do the
     backend's own cleanup on it, and write and read a database, skipping any
-    step that would make what the task list can't delete, and testing on one of
-    the user's open tasks, or a first task they name and keep, when it can't
-    make one. It then cleans up and sends a success message in the user's style.
-    Each step's result is shown as it passes, fails or doesn't run. The first
-    thing to run after installing ntm and ntm-user ("test ntm", "run the self
-    test", "is everything wired up?"), and the smoke test for a backend the user
-    described themselves.
+    step that would make something for the test that the task list can't delete,
+    and testing on one of the user's open tasks, or a first task they name and
+    keep, when it can't make one. It then cleans up and sends a success message
+    in the user's style. Each step's result is shown as it passes, fails or
+    doesn't run. The first thing to run after installing ntm and ntm-user ("test
+    ntm", "run the self test", "is everything wired up?"), and the smoke test
+    for a backend the user described themselves.
 ---
 
 # ntm:self-test
@@ -37,10 +37,10 @@ ntm's core rules and `%Settings`, which holds the user's label names.
 `<timestamp>` is the date and time the run starts, to the second, in the user's
 timezone, like `2026-11-09 14:03:27`.
 
-A step that makes something runs only when `ntm-user:backend` says the task list
-can delete it. When it doesn't run, its line says why: the task list can't
-delete it, or `ntm-user:backend` doesn't say whether it can. For example, "10.
-Store data: not run, the task list can't delete a database."
+A step that makes something for the test runs only when `ntm-user:backend` says
+the task list can delete it. When it doesn't run, its line says why: the task
+list can't delete it, or `ntm-user:backend` doesn't say whether it can. For
+example, "10. Store data: not run, the task list can't delete a database."
 
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "3. Create a task: the task list takes a new
@@ -86,8 +86,8 @@ When they have none, ask:
 
 Create their answer as their task, titled in their words. It is the test task,
 and it stays: the step's line names it and says it's theirs to keep. With no one
-to answer, such as in a job, steps 4 to 9 don't run, and the step's line says
-there was no task to test on.
+to answer, such as in a job, or when they'd rather not, steps 4 to 9 don't run,
+and the step's line says there was no task to test on.
 
 ### 4. Read it back
 

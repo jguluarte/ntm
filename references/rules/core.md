@@ -111,7 +111,7 @@ week's theme; `references/theme-files.md` gives each file's shape.
 
 The style ntm's messages to the user are written in. `ntm:style` reads it for
 each message and changes it with the user when they ask. The writer agent reads
-the parts each message needs.
+it for every message.
 
 #### `%Message-history`
 

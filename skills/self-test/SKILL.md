@@ -48,11 +48,6 @@ under Databases in `%Settings` opens, as do this week's `%Theme` and
 `%Message-history`, and every label under Labels in `%Settings` is on the task
 list, by its name there. Name each one that's missing.
 
-When `%Settings` names no This week's theme yet, the user hasn't finished their
-first theme, and that isn't a failure: the theme's databases don't count against
-the step, and its line says there's no theme yet, and that finishing it with
-`/ntm:theme-builder` fills it in.
-
 Then look for their jobs among their scheduled tasks, knowing each by the `ntm:`
 skills it runs. With Planning in `%Settings`, expect the weekly setup and the
 morning, afternoon and evening reminders; with Shopping, the price watch. A job
@@ -136,10 +131,6 @@ The picker has to work. When `ntm:style` keeps a failure line from
 saying what is wrong. A theme with no `%Theme-options` isn't built for the
 picker, and that isn't a failure: the step passes, and its line says the theme
 has no options file.
-
-With no theme yet, send the fact as it is with `ntm-user:notify`, without
-`ntm:style`. The step passes on the same returns, and its line says the message
-is plain until the user finishes their theme with `/ntm:theme-builder`.
 
 ## Result
 

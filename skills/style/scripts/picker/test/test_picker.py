@@ -1,6 +1,6 @@
 import unittest
 
-from fixtures import baker_street, casebook
+from fixtures import casebook
 from picker import (
     Picker, chances_table, parser, pick_text, reporting_failures,
 )
@@ -37,15 +37,12 @@ class PickTest(unittest.TestCase):
 
 class PickTextTest(unittest.TestCase):
     def test_a_pick_shows_its_perspective_and_then_its_reference(self):
-        theme = seeded_theme(baker_street.OPTIONS)
+        theme = Theme(casebook.ONE_OF_EACH)
         picker = Picker(theme)
         perspective, reference = picker.pick()
         rows = pick_text(perspective, reference).splitlines()
 
-        expected = [
-            "perspective: characters/detective",
-            "reference: scenes/stakeout",
-        ]
+        expected = ["perspective: characters/host", "reference: scenes/dawn"]
         self.assertEqual(expected, rows)
 
 

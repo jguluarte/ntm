@@ -3,7 +3,9 @@ import textwrap
 import unittest
 from pathlib import Path
 
-import fixtures
+import fixtures.baker_street
+import fixtures.casebook
+import fixtures.invalid_casebook
 from theme import (
     InvalidTheme, MissingReference, MissingWeight, Theme, UnknownEntryFile,
 )

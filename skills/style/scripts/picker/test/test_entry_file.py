@@ -1,6 +1,6 @@
 import unittest
 
-import fixtures
+import fixtures.baker_street
 from theme import EntryFile
 
 

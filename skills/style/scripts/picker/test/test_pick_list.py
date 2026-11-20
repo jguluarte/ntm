@@ -1,6 +1,6 @@
 import unittest
 
-import fixtures
+import fixtures.baker_street
 from pick_list import parser, pick_list_text
 from picker import Picker, reporting_failures
 from theme import Theme

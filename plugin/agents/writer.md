@@ -42,7 +42,7 @@ what will get a reaction out of the user, good enough to show someone?
 | The theme         | The theme's name, such as `Casebook`                                                      |
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene               |
 | The reference     | Another entry of the theme the message draws on                                           |
-| Length caps       | The most characters the user's notifications allow in a title and in a message; optional  |
+| Maximum length    | The most characters the user's notifications allow in a title and in a message; optional  |
 
 ## Reading the theme
 
@@ -102,8 +102,8 @@ ntm's own words, such as planned date, and its labels and databases, are for
 you. The message never uses them: it says what happened the way the user would.
 
 Vary each version's shape: the order things come in, where the reference lands,
-how it opens and how it closes. When you're handed length caps, each title and
-message stays within its cap.
+how it opens and how it closes. When you're handed a maximum length, each title
+and message stays within it.
 
 ### 3. Title each version
 

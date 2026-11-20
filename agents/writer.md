@@ -39,7 +39,7 @@ what will make the user actually read it?
 | `escalation`      | The level for slipped tasks, by name or in plain words; optional                        |
 | `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
 | The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
-| The theme         | The theme the sender names, or else this week's, by name, such as `Casebook`            |
+| The theme         | The theme's name, such as `Casebook`                                                    |
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference     | Another entry of the theme the message draws on                                         |
 
@@ -51,12 +51,12 @@ write in it, and each file its `files` lists under `fully_read`.
 
 The perspective and the reference each read `<kind>/<slug>`: the entry under
 `<kind>`, keyed `<slug>`, in the file the `<kind>` pool names in
-`%Theme-options`. Read the files those two entries are in.
+`<Theme>-options.yaml`. Read the files those two entries are in.
 
 When a file's line in the root's `files` names the `finishing_tasks` level
 you're handed, read that file too, and draw on what it sets aside for that level
 when its `about` fits this message. Read nothing more of the theme, and never
-`%Message-history`.
+`<Theme>-message-history.md`.
 
 ## Writing the message
 

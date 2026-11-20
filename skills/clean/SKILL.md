@@ -7,6 +7,7 @@ description: |-
     - Doing the backend's own cleanup, from `ntm-user:backend`
 
     This is run via scheduled job. It reports back how much it changed.
+user-invocable: false
 ---
 
 # ntm:clean

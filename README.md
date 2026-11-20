@@ -47,7 +47,8 @@ of your own: setup builds it from your answers, and you install it too.
    your jobs.
 
 These are different components of ntm that work in concert to make your AI act
-like an actual assistant.
+like an actual assistant. A skill that only your scheduled jobs run stays out of
+the `/` menu; type its full name to run it yourself.
 
 ## Core skills
 
@@ -149,6 +150,7 @@ whenever you like.
 
 Clears dates on previously planned tasks that didn't finish, removes pause dates
 that have since passed, and does any extra tidying your task list app needs.
+Your weekly setup runs it for you.
 
 ## Price watch
 

@@ -11,7 +11,7 @@ from theme import (
 
 class PerspectiveTest(unittest.TestCase):
     def test_the_perspective_is_a_speaker_at_the_speaker_rate(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         lottery = theme.perspective_lottery()
         chances = lottery.chance_by_candidate.items()
         chance_by_name = {option.name: chance for option, chance in chances}
@@ -20,7 +20,7 @@ class PerspectiveTest(unittest.TestCase):
         self.assertAlmostEqual(0.6, chance_by_name["scenes/stakeout"])
 
     def test_the_speaker_rate_is_the_one_its_options_file_gives(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         speaker_rate = theme.speaker_rate
 
         expected = 0.4
@@ -29,7 +29,7 @@ class PerspectiveTest(unittest.TestCase):
 
 class ReferenceTest(unittest.TestCase):
     def test_a_reference_comes_from_outside_the_perspectives_pool(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         lottery = theme.reference_lottery_outside("scenes")
         names = [option.name for option in lottery.chance_by_candidate]
 
@@ -37,7 +37,7 @@ class ReferenceTest(unittest.TestCase):
         self.assertEqual(expected, names)
 
     def test_a_speakers_reference_comes_from_every_reference_pool(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         lottery = theme.reference_lottery_outside("characters")
         names = [option.name for option in lottery.chance_by_candidate]
 
@@ -91,7 +91,7 @@ class DrawTest(unittest.TestCase):
 
 class SchemaTest(unittest.TestCase):
     def test_the_documented_example_passes(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         lottery = theme.perspective_lottery()
         names = [option.name for option in lottery.chance_by_candidate]
 
@@ -132,8 +132,8 @@ class SchemaTest(unittest.TestCase):
 
 class EntryFilesTest(unittest.TestCase):
     def test_the_entries_from_a_file_are_those_of_every_pool_naming_it(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
-        entries = theme.entries_from("Casebook-characters.yaml")
+        theme = Theme(fixtures.baker_street.OPTIONS)
+        entries = theme.entries_from("Baker-street-characters.yaml")
 
         expected = ["characters/detective", "shared_lines/any_time"]
         self.assertEqual(expected, entries)
@@ -157,7 +157,7 @@ class EntryFilesTest(unittest.TestCase):
 
 class WeightsTest(unittest.TestCase):
     def test_the_weight_of_an_entry_is_the_one_its_options_file_gives(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         weight = theme.weight_of("characters/detective")
 
         expected = 0.57

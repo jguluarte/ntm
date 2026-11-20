@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from . import casebook as casebook
+from . import baker_street as baker_street
 from . import scoring as scoring
 from . import weighing as weighing
 

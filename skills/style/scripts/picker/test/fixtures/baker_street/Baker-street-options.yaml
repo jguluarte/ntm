@@ -1,12 +1,12 @@
 checksums:
-  Casebook-characters.yaml: 9f86d081884c7d65...
-  Casebook-scenes.yaml: 2c26b46b68ffc68f...
+  Baker-street-characters.yaml: 9f86d081884c7d65...
+  Baker-street-scenes.yaml: 2c26b46b68ffc68f...
 
 speaker_rate: 0.4
 
 pools:
   characters:
-    file: Casebook-characters.yaml
+    file: Baker-street-characters.yaml
     roles: [speaker]
     entries:
       detective:
@@ -14,7 +14,7 @@ pools:
         score: 0.2
 
   shared_lines:
-    file: Casebook-characters.yaml
+    file: Baker-street-characters.yaml
     roles: [reference]
     entries:
       any_time:
@@ -22,7 +22,7 @@ pools:
         score: 0.0
 
   scenes:
-    file: Casebook-scenes.yaml
+    file: Baker-street-scenes.yaml
     roles: [perspective, reference]
     entries:
       stakeout:

@@ -11,7 +11,7 @@ COUNT = 4
 
 class PickListTextTest(unittest.TestCase):
     def test_the_picks_show_as_a_list_in_the_order_drawn(self):
-        theme = Theme(fixtures.casebook.OPTIONS, seed=SEED)
+        theme = Theme(fixtures.baker_street.OPTIONS, seed=SEED)
         picker = Picker(theme)
         picks = [picker.pick() for _ in range(COUNT)]
         rows = pick_list_text(picks).splitlines()
@@ -42,7 +42,7 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_a_missing_count_flag_fails_naming_it(self):
-        args = ["draw", "--options", str(fixtures.casebook.OPTIONS)]
+        args = ["draw", "--options", str(fixtures.baker_street.OPTIONS)]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

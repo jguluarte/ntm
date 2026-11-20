@@ -28,7 +28,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(1.0, theme.weight_of("characters/no_lines"))
 
     def test_a_speaker_is_the_perspective_at_least_6_times_in_10(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         recalculation = Recalculation(theme)
 
         recalculation.work_out_speaker_rate()
@@ -36,7 +36,7 @@ class RecalculationTest(unittest.TestCase):
         self.assertEqual(0.6, theme.speaker_rate)
 
     def test_speakers_with_more_of_the_weight_are_the_perspective_more(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         theme.set_weight("characters/detective", 3.0)
         recalculation = Recalculation(theme)
 
@@ -76,20 +76,20 @@ class RecalculationTest(unittest.TestCase):
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
         theme = Theme(fixtures.EVEN)
-        characters = EntryFile(fixtures.casebook.CHARACTERS)
-        scenes = EntryFile(fixtures.casebook.SCENES)
+        characters = EntryFile(fixtures.baker_street.CHARACTERS)
+        scenes = EntryFile(fixtures.baker_street.SCENES)
         recalculation = Recalculation(theme)
 
         with self.assertRaises(UnknownEntryFile) as raised:
             recalculation.weigh_entries([characters, scenes])
 
-        expected = "no pool uses Casebook-characters.yaml"
+        expected = "no pool uses Baker-street-characters.yaml"
         self.assertEqual(expected, str(raised.exception))
 
 
 class ScoresTest(unittest.TestCase):
     def test_an_acted_on_message_raises_both_its_picks(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
@@ -102,7 +102,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 + 0.1, stakeout_score)
 
     def test_an_ignored_message_lowers_both_its_picks(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="ignored", feedback=None)
         recalculation = Recalculation(theme)
@@ -115,7 +115,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 - 0.1, stakeout_score)
 
     def test_a_message_the_user_keeps_raises_both_its_picks(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback="keep")
         recalculation = Recalculation(theme)
@@ -128,7 +128,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 + 0.25, stakeout_score)
 
     def test_a_message_the_user_calls_stale_lowers_both_its_picks(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback="stale")
         recalculation = Recalculation(theme)
@@ -141,7 +141,7 @@ class ScoresTest(unittest.TestCase):
         self.assertAlmostEqual(0.1 - 0.5, stakeout_score)
 
     def test_a_message_with_no_verdict_or_feedback_moves_nothing(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict=None, feedback=None)
         recalculation = Recalculation(theme)
@@ -154,7 +154,7 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(0.1, stakeout_score)
 
     def test_a_pick_the_options_file_no_longer_has_is_skipped(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/fog")
         message = Message(SEND_TIME, picks, verdict="acted", feedback=None)
         recalculation = Recalculation(theme)
@@ -166,7 +166,7 @@ class ScoresTest(unittest.TestCase):
         self.assertFalse(theme.has_entry("scenes/fog"))
 
     def test_a_score_rises_no_higher_than_1(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="acted", feedback="keep")
         recalculation = Recalculation(theme)
@@ -176,7 +176,7 @@ class ScoresTest(unittest.TestCase):
         self.assertEqual(1, theme.score_of("characters/detective"))
 
     def test_a_score_sinks_no_lower_than_minus_2(self):
-        theme = Theme(fixtures.casebook.OPTIONS)
+        theme = Theme(fixtures.baker_street.OPTIONS)
         picks = ("characters/detective", "scenes/stakeout")
         message = Message(SEND_TIME, picks, verdict="ignored", feedback="stale")
         recalculation = Recalculation(theme)
@@ -248,14 +248,14 @@ class ReportingFailuresTest(unittest.TestCase):
     def test_a_failure_exits_with_one_line_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
-                raise UnknownEntryFile("Casebook-characters.yaml")
+                raise UnknownEntryFile("Baker-street-characters.yaml")
 
-        why = "no pool uses Casebook-characters.yaml"
+        why = "no pool uses Baker-street-characters.yaml"
         expected = f"Recalculation FAILED: UnknownEntryFile: {why}"
         self.assertEqual(expected, exited.exception.code)
 
     def test_start_without_entry_files_fails_naming_them(self):
-        args = ["start", "--options", str(fixtures.casebook.OPTIONS)]
+        args = ["start", "--options", str(fixtures.baker_street.OPTIONS)]
 
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():

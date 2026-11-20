@@ -31,6 +31,9 @@ write it as the root's `theme`. Write the rest in its `world`: the world and
 where they sit in it, what hooks them, how their day maps onto it, what stays
 out, and who tells the story when no one in particular speaks.
 
+Write any of the world's words a writer would otherwise get wrong in the
+terminology file.
+
 ## The levels
 
 The different ways the theme talks to them: an everyday one, how it snaps back

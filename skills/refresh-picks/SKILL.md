@@ -6,6 +6,7 @@ description: >-
     job, it first rates how the past week's messages landed. Run by the weekly
     setup job and by ntm:style when the list runs out, for this week's theme,
     and by ntm:theme-builder for the theme it built.
+user-invocable: false
 ---
 
 # ntm:refresh-picks

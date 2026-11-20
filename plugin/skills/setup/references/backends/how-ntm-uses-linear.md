@@ -35,10 +35,12 @@ consistent and still leave you free to name yours differently.
 ntm needs one place that holds every task. Each task has an id you can read, a
 title, a description, a link that opens it, and a status. ntm reads every open
 task at once, and for reports, the tasks closed over a span of days, with when
-each one closed.
+each one closed. ntm also needs to know which of tasks, comments, labels,
+projects and databases the task list can delete.
 
 Our task list is a Linear team. The team's key starts every task's id, `HOME` in
-`HOME-12`; we picked one we're happy to read in reminders.
+`HOME-12`; we picked one we're happy to read in reminders. Linear's connector
+can delete a comment, but not an issue, a document, a label or a project.
 
 ## Status groups
 
@@ -145,5 +147,6 @@ that read before every job.
 None of this is required. It's what worked for us in Linear. If your tasks live
 somewhere else, or you'd arrange Linear differently, work out with your agent
 what plays each part: the list, the groups, the planned date, the labels, the
-databases. Setup records your answers in `ntm-user:backend`, and
-`/ntm:self-test` shows whether they hold. The choices are yours.
+databases, and what your task list can delete. Setup records your answers in
+`ntm-user:backend`, and `/ntm:self-test` shows whether they hold. The choices
+are yours.

@@ -3,22 +3,26 @@ name: self-test
 description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check setup made their databases, labels and jobs, then
-    create, read, find, plan, label, comment on, change and close a throwaway
-    task, write and read a throwaway database, and do the backend's own cleanup
-    on the task, then clean up and send a success message in the user's style.
-    Each step's result is shown as it passes or fails. The first thing to run
-    after installing ntm and ntm-user ("test ntm", "run the self test", "is
-    everything wired up?"), and the smoke test for a backend the user described
-    themselves.
+    create, read, find, plan, label, comment on, change and close a task, do the
+    backend's own cleanup on it, and write and read a database, skipping any
+    step that would make something for the test that the task list can't delete,
+    and testing on one of the user's open tasks, or a first task they name and
+    keep, when it can't make one. It then cleans up and sends a success message
+    in the user's style. Each step's result is shown as it passes, fails or
+    doesn't run. The first thing to run after installing ntm and ntm-user ("test
+    ntm", "run the self test", "is everything wired up?"), and the smoke test
+    for a backend the user described themselves.
 ---
 
 # ntm:self-test
 
 A test that this user's setup is complete, and that their task list can do the
-core interactions every backend must support, on a task and a database made for
-the purpose. Run it in a new chat after installing `ntm-user`, and again after
-`ntm-user` is rebuilt. Never run it unasked: a run writes to the task list, and
-sends a push. Once the user starts it, run it without asking.
+core interactions every backend must support. It deletes what it makes for the
+test, and puts back what it changes, so it leaves nothing behind, pass or fail.
+Run it in a new chat after installing `ntm-user`, and again after `ntm-user` is
+rebuilt. Never run it unasked: a run writes to the task list, and sends a push.
+Once the user starts it, run it without asking, apart from step 3's one question
+when there's no task to test on.
 
 ## Usage
 
@@ -32,6 +36,11 @@ Do each step on the task list as `ntm-user:backend` teaches. Step 1 loads it,
 ntm's core rules and `%Settings`, which holds the user's label names.
 `<timestamp>` is the date and time the run starts, to the second, in the user's
 timezone, like `2026-11-09 14:03:27`.
+
+A step that makes something for the test runs only when `ntm-user:backend` says
+the task list can delete it. When it doesn't run, its line says why: the task
+list can't delete it, or `ntm-user:backend` doesn't say whether it can. For
+example, "10. Store data: not run, the task list can't delete a database."
 
 Run the steps in order. As each one finishes, tell the user in one line what it
 tested and whether it passed, like "3. Create a task: the task list takes a new
@@ -56,13 +65,29 @@ say you couldn't check the jobs, and go on.
 
 ### 3. Create a task
 
-Create the below task. It should get an id.
+When the task list can delete a task, create the below throwaway task. It should
+get an id, and it is the test task.
 
 | Field       | Value                                    |
 | ----------- | ---------------------------------------- |
 | Title       | ntm self-test, <timestamp>               |
 | Description | This is a test, it can safely be removed |
 | Project     | none                                     |
+
+Otherwise, the test task is one of the user's open tasks with no planned date:
+note its title, description, labels and comments, to check and put back later.
+The step's line names it, and says its history on the task list will show the
+test's changes.
+
+When they have none, ask:
+
+> To test your task list, I'll add one real task to it. What's one thing you
+> need to do? A few words is enough.
+
+Create their answer as their task, titled in their words. It is the test task,
+and it stays: the step's line names it and says it's theirs to keep. With no one
+to answer, such as in a job, or when they'd rather not, steps 4 to 9 don't run,
+and the step's line says there was no task to test on.
 
 ### 4. Read it back
 
@@ -79,23 +104,24 @@ its planned date, and it has none.
 
 ### 7. Label it
 
-Add the label `ntm-self-test`, creating it when the task list doesn't have it
-yet, and the task shows it. Then remove it, and the task has no labels.
+Add one of the labels under Labels in `%Settings` that it doesn't have, and the
+task shows it. Then remove it, and the task has the labels it had.
 
 ### 8. Comment on it
 
 Comment on it, then change the comment's text, and the task's comments show the
-new text.
+new text. Then delete the comment, and it's gone.
 
 ### 9. Change it
+
+Runs on the throwaway task from step 3.
 
 Change its description to `This is a changed test, it can safely be removed`,
 and the task shows it.
 
 ### 10. Store data
 
-Write the below database, into the one an earlier self-test left behind or a new
-one when there isn't one, then find it by its title, and it holds the contents.
+Write the below database, then find it by its title, and it holds the contents.
 
 | Field    | Value                      |
 | -------- | -------------------------- |
@@ -104,10 +130,14 @@ one when there isn't one, then find it by its title, and it holds the contents.
 
 ### 11. Close it
 
+Runs on the throwaway task from step 3.
+
 Cancel the test task, or mark it done when the task list has no canceled status,
 and it is among the tasks closed today, canceled included.
 
 ### 12. The backend's cleanup
+
+Runs on the throwaway task from step 3.
 
 Do the cleanup `ntm-user:backend` lists, on the test task alone. When the
 cleanup only acts on certain tasks, make the test task one of them first. Use
@@ -117,17 +147,16 @@ With no cleanup listed, the step passes, and its line says there is none.
 
 ### 13. Clean up
 
-Runs after a failure too. Cancel the task if it's still open, take it out of
-anything of the user's that step 12 put it in, and delete the test label, the
-test database and anything step 12 made. When the task list can't delete one,
-take it off the task or empty it, for a rerun to reuse. Do the same for any test
-task an earlier self-test left behind. Touch nothing else on the task list.
+Runs after a failure too. Delete everything the run made for the test. When the
+test task is the user's, it stays: clear its planned date, and put its labels
+and comments back as they were in step 3. Touch nothing else on the task list.
 
-It fails when anything can't be cleaned up.
+It fails when anything can't be cleaned up, and its line names what's left and
+on which task.
 
 ### 14. Send the success message
 
-Only when every step before it passed. Send it as the core rules' Sending a
+Only when no step before it has failed. Send it as the core rules' Sending a
 message in the user's style says. Its one fact is
 `ntm is ready; the self-test passed`. It passes when `ntm-user:notify` returns
 `Sent:`, or its `NOTIFY VIA FINAL REPLY` block, which you show the user. Any
@@ -143,6 +172,8 @@ the fix when it's plain: for a ready-check failure, the fix in its failure line,
 which is `/ntm:setup` when `ntm-user` isn't installed; for anything missing from
 the user's setup, or a call that errored on a backend the user described
 themselves, telling ntm in chat what to fix.
+
+When steps didn't run, add one line naming them, and why.
 
 When step 2 didn't find some jobs, add one line naming them, and how to schedule
 them if they want them. For example:

@@ -9,8 +9,7 @@ description: >-
 
 # ntm:update
 
-Follows each version's update note, oldest first, until the user's setup matches
-the installed ntm.
+Follows each new version's update note.
 
 ## Usage
 

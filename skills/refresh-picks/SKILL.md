@@ -18,25 +18,25 @@ description: >-
 
 ## Setup
 
-Run `/ntm:ready-check` if needed (if it isn't already loaded in the context).
-The theme is the one `ntm:theme-builder` built, when it runs this skill, or else
-this week's theme, as `%Settings` names it.
+Run `/ntm:ready-check`, unless it already ran in this session. The theme is the
+one `ntm:theme-builder` built, when it runs this skill, or else this week's
+theme, as `%Settings` names it.
 
 Then read the theme's `%Theme-options`, such as `Casebook-options.yaml`. When
 there is none, the theme isn't built for the picker: end the run with
 `Nothing to refresh: no <Theme>-options.yaml`.
 
 For the weekly setup job, rate the past week before the draw, as
-`references/rating.md` says.
+`${CLAUDE_PLUGIN_ROOT}/skills/refresh-picks/references/rating.md` says.
 
 ## Refresh
 
 ### 1. Hand over the options file
 
-When the rating saved this theme's `%Theme-options`, its file is already in the
-working folder. Otherwise, write the text of its `yaml` block to a file named
-for its database, such as `Casebook-options.yaml`, in this session's working
-folder, exactly as read: never retype it from memory or summarize it.
+When the rating saved this theme's `%Theme-options`, as it does with one theme,
+its file is already in the working folder. Otherwise, write the text of its
+`yaml` block to a file named for its database, such as `Casebook-options.yaml`,
+in this session's working folder, exactly as read, never from memory.
 
 ### 2. Draw the week's picks
 
@@ -64,7 +64,7 @@ list there, or creating `%Theme-picks` when there is none.
 For a job, return `Refreshed <Theme>-picks.yaml: 25 picks`. For the weekly setup
 job, the rating's lines come first.
 
-Any output from the draw other than the picks, or a step you can't do, means it
-failed: save no picks, and end with the `Picker FAILED:` line it printed, or
-else `Refresh-picks FAILED: <why>`. In chat, tell the user the same in plain
-words.
+Any output from the draw other than the picks, or a Refresh step you can't do,
+means it failed: save no picks, and end with the `Picker FAILED:` line it
+printed, or else `Refresh-picks FAILED: <why>`. In chat, tell the user the same
+in plain words.

@@ -1,22 +1,23 @@
 # Rating the past week
 
 The weekly setup job rates last week's messages before the draw: did the user
-act on each one? The verdicts move the theme's scores, so the picker leans
-toward what got the user moving.
+act on each one? The verdicts move the scores of the theme those messages went
+out in, so the picker leans toward what got the user moving. Every file below is
+that theme's.
 
 ## Rate
 
 ### 1. Rate the messages
 
-Read the `%Message-history` of the theme last week's messages went out in. Rate
-each entry sent in the last seven days that has `tasks` and no `verdict`.
+Read the theme's `%Message-history`. Rate each entry sent in the last seven days
+that has `tasks` and no `verdict`.
 
 The user acted on a message when, since it was sent, they closed one of its
 tasks or changed a task's planned date. When the task's `Planned date history`
-lists its `planned` date from the entry, ntm moved it, not the user.
+lists the entry's planned date, ntm moved it, not the user.
 
-Use the closed and stale tasks the weekly setup job already looked up. Look up
-only the rest, and a task's `Planned date history` only when its date changed.
+Use the tasks the weekly setup job already looked up, and look up only the rest.
+Read a task's `Planned date history` only when its date changed.
 
 Write `acted` or `ignored` as each entry's `verdict`, and save
 `%Message-history`. Its line is
@@ -29,8 +30,8 @@ Write `acted` or `ignored` as each entry's `verdict`, and save
 Write the text of `%Theme-options`' `yaml` block and of `%Message-history`'s
 `jsonl` block each to a file named for its database, such as
 `Casebook-options.yaml` and `Casebook-message-history.jsonl`, in this session's
-working folder, exactly as read. Then run the recalculation on them, with
-`--since` the date seven days before today:
+working folder, exactly as read, never from memory. Then run the recalculation
+on them, with `--since` the date seven days before today:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py \

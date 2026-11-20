@@ -10,9 +10,6 @@ description: >-
 
 # ntm:refresh-picks
 
-Run by the weekly setup job, by `ntm:style` when `%Theme-picks` runs out, and by
-`ntm:theme-builder` for the theme it built.
-
 ## Usage
 
 ```
@@ -37,13 +34,8 @@ For the weekly setup job, rate the past week before the draw, as
 ### 1. Hand over the options file
 
 When the rating saved this theme's `%Theme-options`, its file is already in the
-working folder: go on to the draw.
-
-Otherwise, the picker reads the options file from a path and touches no backend,
-so hand it over this way.
-
-Take the text of `%Theme-options`' `yaml` block. Write that text to a file named
-for the theme, such as `Casebook-options.yaml`, in this session's working
+working folder. Otherwise, write the text of its `yaml` block to a file named
+for its database, such as `Casebook-options.yaml`, in this session's working
 folder, exactly as read: never retype it from memory or summarize it.
 
 ### 2. Draw the week's picks
@@ -69,15 +61,10 @@ list there, or creating `%Theme-picks` when there is none.
 
 ## Result
 
-For a job, return `Refreshed <Theme>-picks.yaml: 25 picks`, such as
-`Refreshed Casebook-picks.yaml: 25 picks`. When there's no `%Theme-options`,
-`Nothing to refresh: no <Theme>-options.yaml`.
+For a job, return `Refreshed <Theme>-picks.yaml: 25 picks`. For the weekly setup
+job, the rating's lines come first.
 
-For the weekly setup job, the rating's lines come first.
-
-The picker needs Python 3 with PyYAML and jsonschema, and nothing guarantees
-them where this runs: without them, it stops with a Python error. Any output
-from the draw other than the list of picks, or a step of Refresh you can't do,
-means the refresh failed: save no picks, and end with the `Picker FAILED:` line
-it printed, or else `Refresh-picks FAILED: <why>`, with the last line it printed
-or what you couldn't do. In chat, tell the user the same in plain words.
+Any output from the draw other than the picks, or a step you can't do, means it
+failed: save no picks, and end with the `Picker FAILED:` line it printed, or
+else `Refresh-picks FAILED: <why>`. In chat, tell the user the same in plain
+words.

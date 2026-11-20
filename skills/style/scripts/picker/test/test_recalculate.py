@@ -238,7 +238,10 @@ class MessageHistoryTest(unittest.TestCase):
         self.assertEqual([], messages)
 
     def test_a_history_file_that_is_not_there_has_no_messages(self):
-        history = MessageHistory(fixtures.scoring.MESSAGE_HISTORY_NOT_THERE)
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        missing_history = Path(folder) / "Missing-message-history.jsonl"
+
+        history = MessageHistory(missing_history)
         messages = history.sent_since(date(2026, 11, 9))
 
         self.assertEqual([], messages)

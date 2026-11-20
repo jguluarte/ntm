@@ -12,7 +12,6 @@ WEIGHTED = THEMES / "Weighted-options.yaml"
 WEIGHTLESS = THEMES / "Weightless-options.yaml"
 MOSTLY_WEIGHTLESS = THEMES / "Mostly-weightless-options.yaml"
 SPEAKERS_ONLY = THEMES / "Speakers-only-options.yaml"
-NOT_THERE = THEMES / "Not-there-options.yaml"
 
 INVALID_THEMES = FIXTURES / "invalid-themes"
 WITHOUT_POOLS = INVALID_THEMES / "Without-pools-options.yaml"

@@ -1,4 +1,6 @@
+import tempfile
 import unittest
+from pathlib import Path
 
 import fixtures
 from picker import (
@@ -75,11 +77,14 @@ class ReportingFailuresTest(unittest.TestCase):
         self.assertEqual(expected, exited.exception.code)
 
     def test_an_options_file_that_isnt_there_fails_naming_it(self):
+        folder = self.enterContext(tempfile.TemporaryDirectory())
+        missing_options = Path(folder) / "Missing-options.yaml"
+
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
-                Theme(fixtures.NOT_THERE)
+                Theme(missing_options)
 
-        why = f"[Errno 2] No such file or directory: '{fixtures.NOT_THERE}'"
+        why = f"[Errno 2] No such file or directory: '{missing_options}'"
         expected = f"Picker FAILED: FileNotFoundError: {why}"
         self.assertEqual(expected, exited.exception.code)
 

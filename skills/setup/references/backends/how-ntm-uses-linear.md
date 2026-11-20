@@ -35,10 +35,11 @@ consistent and still leave you free to name yours differently.
 ntm needs one place that holds every task. Each task has an id you can read, a
 title, a description, a link that opens it, and a status. ntm reads every open
 task at once, and for reports, the tasks closed over a span of days, with when
-each one closed.
+each one closed. The self-test makes only what the task list can delete.
 
 Our task list is a Linear team. The team's key starts every task's id, `HOME` in
-`HOME-12`; we picked one we're happy to read in reminders.
+`HOME-12`; we picked one we're happy to read in reminders. Linear's connector
+can delete a comment, but not an issue, a document, a label or a project.
 
 ## Status groups
 

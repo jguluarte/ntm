@@ -91,12 +91,9 @@ start it, end with `Writer FAILED: can't start the writer`.
 
 ### 4. Choose
 
-Take the version with the lowest probability whose first five words aren't any
-entry's `opening`. Its title and message are what gets sent, and step 1's pick
-goes into its entry.
-
-When `ntm-user:notify` answered `Notify TOO LONG`, do step 3 again, with that
-line handed to the writer too, then this step.
+Among the versions within the caps, take the one with the lowest probability
+whose first five words aren't any entry's `opening`. Its title and message are
+what gets sent, and step 1's pick goes into its entry.
 
 ## Keeping `%Message-history`
 

@@ -43,7 +43,6 @@ what will make the user actually read it?
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference     | Another entry of the theme the message draws on                                         |
 | The caps          | The most characters a title and a message may have; optional                            |
-| Too long          | A `Notify TOO LONG` line: the last message chosen went over its cap; optional           |
 
 ## Reading the theme
 
@@ -103,8 +102,7 @@ Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or
 else the guidance gives; with neither, keep it short. When you're handed caps,
 each message stays within its cap, counted as sent, links included; the cap wins
-over any other length. When you're handed `Notify TOO LONG`, write each version
-well under the cap it names.
+over any other length.
 
 ### 3. Title each version
 

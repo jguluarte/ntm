@@ -75,12 +75,12 @@ Call each only from the facts you were handed, and once: skip one a
 ### 3. Write
 
 Start the `ntm:writer` agent, and hand it the facts, the levels, the reminder,
-such as `morning`, `weekly` or `self-test`, the theme's name, the perspective
-and the reference, each as `<kind>/<slug>`, and the caps `ntm-user:notify` gives
-on a title and a message; read `ntm-user:notify` for them, without sending
-anything. The writer reads the theme itself. It returns 5 versions, each with a
-title, a message, and a probability from 0 to 1 of how likely a reader would be
-to predict it.
+such as `morning`, `weekly` or `self-test`, the theme's name, and the
+perspective and the reference, each as `<kind>/<slug>`. Hand it too the caps
+`ntm-user:notify` gives on a title and a message: read `ntm-user:notify` for
+them, without sending anything. The writer reads the theme itself. It returns 5
+versions, each with a title, a message, and a probability from 0 to 1 of how
+likely a reader would be to predict it.
 
 Hand each task over without its id or link, and a slipped task as slipped,
 without its slip count or dates: the `escalation` level, or the call in its

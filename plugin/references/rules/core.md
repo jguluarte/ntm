@@ -129,7 +129,7 @@ file says. Then:
 
 The sender's result is what `ntm-user:notify` returned, or `Writer FAILED:` when
 `ntm:style` ended with it. After `Sent: <title>`, the sender adds the message,
-so the user can answer it in this chat, then each task the message is about, one
-per line: its id as a link to the task, then its title, as in
+so the user can answer it in this chat. Then it adds each task the message is
+about, one per line: its id as a link to the task, then its title, as in
 `[ABC-15](<url>) Replace the leaking kitchen faucet`. When `ntm:style` kept a
 failure line from `ntm:refresh-picks`, it is the result's last line.

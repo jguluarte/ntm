@@ -3,8 +3,6 @@ import unittest
 from datetime import date, datetime
 from pathlib import Path
 
-import yaml
-
 from fixtures import baker_street, casebook, scotland_yard, witness_statements
 from recalculate import (
     Message, MessageHistory, Recalculation, parser, reporting_failures,
@@ -59,20 +57,6 @@ class RecalculationTest(unittest.TestCase):
         recalculation.work_out_speaker_rate()
 
         self.assertEqual(0, theme.speaker_rate)
-
-    def test_recording_gives_the_entry_file_its_own_checksum(self):
-        folder = self.enterContext(tempfile.TemporaryDirectory())
-        saved_options = Path(folder) / "Witness-statements-options.yaml"
-        theme = Theme(witness_statements.OPTIONS)
-        entry_file = EntryFile(witness_statements.CHARACTERS)
-        recalculation = Recalculation(theme)
-
-        recalculation.record_checksums([entry_file])
-        theme.save(saved_options)
-
-        fields = yaml.safe_load(saved_options.read_text(encoding="utf-8"))
-        checksum = fields["checksums"]["Witness-statements-characters.yaml"]
-        self.assertEqual(entry_file.checksum, checksum)
 
     def test_an_entry_file_no_pool_uses_fails_with_unknown_entry_file(self):
         theme = Theme(casebook.EVEN)

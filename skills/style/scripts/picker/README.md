@@ -1,38 +1,22 @@
 # The picker
 
-The picker draws the pick for a message: a perspective and a reference, two
-options from different pools of a theme's options file, each at its chance.
-`references/theme-files.md` describes that file. It needs Python 3 with PyYAML
-and jsonschema.
+The picker draws a theme's picks, each a perspective and a reference, from its
+options file, and works out the numbers it draws by.
+`references/theme-files.md`, at the plugin's root, describes that file. It needs
+Python 3 with PyYAML and jsonschema.
 
 ```
-python3 picker.py pick --options <file> [--seed <number>]
-python3 picker.py pick --options <file> --chances
+python3 pick_list.py draw --options <file> --count <number> [--seed <number>]
+python3 recalculate.py start --options <file> <entry file>...
+python3 recalculate.py adjust --options <file> --history <file> --since <date>
 ```
 
-The same `--seed` draws the same picks. `pick` prints the two options it drew;
-`--chances` prints each perspective instead, with its weight, score and chance:
+`draw` prints that many picks as a YAML list, in the order drawn, each item a
+`perspective:` and a `reference:`. The same `--seed` draws the same picks.
 
-```
-perspective: characters/detective
-reference: scenes/stakeout
+`start` gives a new theme its first weights and speaker rate. `adjust` moves the
+scores of each message's picks by its `verdict` and `feedback`, for the
+history's lines sent on or after `--since`. Both print `saved: <file>`.
 
-perspective           weight  score  chance
-characters/detective    0.57    0.2    0.40
-scenes/stakeout            1    0.1    0.60
-```
-
-A failure prints one line on stderr and exits 1, as
-`Picker FAILED: MissingWeight: every option weighs 0`.
-
-`python3 pick_list.py draw --options <file> --count <number> [--seed <number>]`
-draws that many picks in a row and prints them as a YAML list, in the order
-drawn, each item a `perspective:` and a `reference:`.
-
-`python3 recalculate.py start --options <file> <entry file>...` gives a new
-theme its first weights, speaker rate and checksums and prints `saved: <file>`,
-or one `Recalculation FAILED:` line.
-
-`python3 recalculate.py adjust --options <file> --history <file> --since <date>`
-moves the scores of each message's picks by its `verdict` and `feedback`, for
-the history's lines sent on or after that date, and prints the same.
+A failure prints one `Picker FAILED:` or `Recalculation FAILED:` line on stderr
+and exits 1.

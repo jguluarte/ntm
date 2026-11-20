@@ -38,10 +38,6 @@ class Recalculation:
         speaker_rate = self._speaker_rate_for(speakers, other_perspectives)
         self.theme.set_speaker_rate(speaker_rate)
 
-    def record_checksums(self, entry_files):
-        for entry_file in entry_files:
-            self.theme.set_checksum(entry_file.name, entry_file.checksum)
-
     def adjust_scores(self, messages):
         for message in messages:
             self._adjust_scores_from(message)
@@ -164,7 +160,6 @@ if __name__ == "__main__":
 
             recalculation.weigh_entries(entry_files)
             recalculation.work_out_speaker_rate()
-            recalculation.record_checksums(entry_files)
 
         elif flags.command == ADJUST_COMMAND:
             history = MessageHistory(flags.history)

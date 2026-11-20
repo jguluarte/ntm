@@ -1,13 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: A theme's options file
-description: Written by the theme builder, and read by the picker in ntm:style.
+description: >-
+  Written by the theme builder and the recalculation, and read by the picker.
 type: object
 required: [pools]
 properties:
-  checksums:
-    type: object
-    additionalProperties:
-      type: string
   speaker_rate:
     type: number
     minimum: 0

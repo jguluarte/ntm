@@ -1,9 +1,0 @@
-pools:
-  characters:
-    roles: [speaker]
-    entries:
-      host:
-  scenes:
-    roles: [reference]
-    entries:
-      dawn:

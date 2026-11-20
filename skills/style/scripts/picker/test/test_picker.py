@@ -1,9 +1,7 @@
 import unittest
 
 from fixtures import baker_street, casebook
-from picker import (
-    Picker, chances_table, parser, pick_text, reporting_failures,
-)
+from picker import Picker, pick_text, reporting_failures
 from theme import Theme
 
 SEED = 3
@@ -49,22 +47,6 @@ class PickTextTest(unittest.TestCase):
         self.assertEqual(expected, rows)
 
 
-class ChancesTableTest(unittest.TestCase):
-    def test_each_perspective_shows_weight_score_and_rounded_chance(self):
-        theme = Theme(casebook.WEIGHTED)
-        lottery = theme.perspective_lottery()
-        rows = chances_table(lottery).splitlines()
-
-        expected = [
-            "perspective      weight  score  chance",
-            "scenes/dawn         0.5      0    0.12",
-            "scenes/noon           1      1    0.50",
-            "scenes/dusk           0      0    0.00",
-            "characters/host       3     -1    0.38",
-        ]
-        self.assertEqual(expected, rows)
-
-
 class ReportingFailuresTest(unittest.TestCase):
     def test_a_pick_where_every_option_weighs_0_fails_naming_why(self):
         theme = Theme(casebook.WEIGHTLESS)
@@ -76,13 +58,4 @@ class ReportingFailuresTest(unittest.TestCase):
 
         why = "every option weighs 0"
         expected = f"Picker FAILED: MissingWeight: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_missing_options_flag_fails_naming_it(self):
-        with self.assertRaises(SystemExit) as exited:
-            with reporting_failures():
-                parser().parse_args(["pick"])
-
-        why = "the following arguments are required: --options"
-        expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)

@@ -20,6 +20,3 @@ history's lines sent on or after `--since`. Both print `saved: <file>`.
 
 A failure prints one `Picker FAILED:` or `Recalculation FAILED:` line on stderr
 and exits 1.
-
-`python3 picker.py pick --options <file> [--seed <number>]` prints one pick;
-with `--chances`, each perspective's weight, score and chance instead.

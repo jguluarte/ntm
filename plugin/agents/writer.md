@@ -33,16 +33,16 @@ what will make the user actually read it?
 
 ## What you're handed
 
-| Input             | What it is                                                                              |
-| ----------------- | --------------------------------------------------------------------------------------- |
-| The facts         | What the message is about: its tasks, and the sender's rule, such as the length it asks |
-| `escalation`      | The level for slipped tasks, by name or in plain words; optional                        |
-| `finishing_tasks` | The level for done tasks, by name or in plain words; optional                           |
-| The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                         |
-| The theme         | The theme's name, such as `Casebook`                                                    |
-| The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
-| The reference     | Another entry of the theme the message draws on                                         |
-| The caps          | The most characters a title and a message may have; optional                            |
+| Input             | What it is                                                                                |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| The facts         | The tasks the message is about, and what the sender's rule asks of it, such as its length |
+| `escalation`      | The level for slipped tasks, by name or in plain words; optional                          |
+| `finishing_tasks` | The level for done tasks, by name or in plain words; optional                             |
+| The reminder      | Which message it is, such as `morning`, `weekly` or `self-test`                           |
+| The theme         | The theme's name, such as `Casebook`                                                      |
+| The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene               |
+| The reference     | Another entry of the theme the message draws on                                           |
+| The caps          | The most characters a title and a message may have; optional                              |
 
 ## Reading the theme
 
@@ -67,17 +67,17 @@ Find each level you're handed by name in the root's ladder of the same name, and
 write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
 no level name: write to the paragraph, for what you're handed in plain words,
-such as a win. A slip is a planned date the work moved on from. For the user,
-the task is still waiting: say that, in the theme's way; the `escalation` level
-carries how hard it's pressed.
+such as a win. A slipped task is one the user meant to do on an earlier day and
+hasn't. Say it's still waiting, in the theme's way; the `escalation` level
+carries how hard to press.
 
 ### 2. Write 5 versions
 
 Look up the perspective's and the reference's entries, and choose a line from
 each that has lines or riffs. A chosen line may be bent to fit the task.
 
-Each version names every task and covers everything the message must cover. Hang
-the reference on a different fact in each version; with too few facts, take it a
+Each version names every task and does what the sender's rule asks. Hang the
+reference on a different fact in each version; with too few facts, take it a
 different way each time.
 
 When the perspective is a speaker, every version is theirs: their own words, in
@@ -91,23 +91,23 @@ it, set the message where the reminder falls there. The message talks to the
 user as "you", to the task, or to the room, and calls the user only "you", never
 by name or by a pet name.
 
-Name each task in a few "theme-natural" words, with no id and no link. The facts
-are what the message is about, not its words: tell each as the perspective would
-if they'd seen it themselves, in their own words.
+Name each task in a few "theme-natural" words. The facts tell you what the
+message is about; they aren't wording to work in. Whoever tells the message
+already knows them, and says them their own way.
 
-ntm's words for things, such as slipped, and its labels and databases, are for
-you, not the user you're writing for: say the thing itself.
+ntm's own words, such as slipped or planned date, and its labels and databases,
+are for you. The message never uses them: it says what happened the way the user
+would.
 
 Vary each version's shape: the order the tasks come in, where the reference
 lands, how it opens and how it closes. Write at the length the facts give, or
 else the guidance gives; with neither, keep it short. When you're handed caps,
-each message stays within its cap, counted as sent; the cap wins over any other
-length.
+each title and message stays within its cap, whatever length the facts or the
+guidance give.
 
 ### 3. Title each version
 
-Give each version its own title in the theme, saying what this message is about,
-within its cap.
+Give each version its own title in the theme, saying what this message is about.
 
 ### 4. Rate how typical each version is
 

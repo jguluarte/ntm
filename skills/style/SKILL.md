@@ -72,8 +72,9 @@ weigh less: a task picked up again after a long gap counts for less than its
 slips, as you judge it.
 
 When the root gives a ladder as one paragraph, that ladder has no level name.
-For `finishing_tasks`, hand the writer what you called in its place, in plain
-words: a task done, a win or a big win.
+Hand the writer what you called in its place, in plain words: for `escalation`,
+a task slipped or kept slipping; for `finishing_tasks`, a task done, a win or a
+big win.
 
 A win is any of these: more tasks finished than planned this week, a task
 finished after slipping for days, or a task you judge big or hard. Only the
@@ -108,7 +109,8 @@ versions, each with a title, a message, and a probability from 0 to 1 of how
 likely a reader would be to predict it.
 
 A slipped task goes in the facts as slipped, without its slip count or the dates
-it slipped from: the `escalation` level carries those.
+it slipped from: the `escalation` level, or the call in its place, carries
+those.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.

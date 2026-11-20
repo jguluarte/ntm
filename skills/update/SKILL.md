@@ -1,18 +1,16 @@
 ---
 name: update
 description: >-
-    Brings the user's setup up to the installed version of ntm: shows what
-    changed since their last update, walks them through what each new version
-    asks of them, and rebuilds their ntm-user plugin when a version needs it.
-    Run by the user in chat after installing a new version of ntm ("update ntm",
-    "what's new in ntm", "I installed a new version"), or by ntm:ready-check
-    when no new version needs the user.
+    Brings the user's setup up to the installed version of ntm, following each
+    new version's update note. Run by the user in chat after installing a new
+    version ("update ntm", "what's new in ntm", "I installed a new version"), or
+    by ntm:ready-check when no new version needs the user.
 ---
 
 # ntm:update
 
-Brings the user's setup from the version of ntm it was last brought up to, to
-the installed one, a version at a time, following each version's update note.
+Follows each version's update note, oldest first, until the user's setup matches
+the installed ntm.
 
 ## Usage
 
@@ -48,10 +46,8 @@ the user.
 
 When any note says `Rebuild ntm-user: yes`, rebuild the user plugin once, after
 the last note, as The user plugin, ntm backend assets and Notifications in
-`${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` say. Fill it in from their
-installed `ntm-user`: their task list and where `%Settings` lives from
-`ntm-user:backend`, their channel from `ntm-user:notify`, and their connector
-from the installed plugin's `.mcp.json`. Have them install it, then run
+`${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` say, filled in from their
+installed `ntm-user`'s skills and `.mcp.json`. Have them install it, then run
 `/ntm:self-test` in a new chat.
 
 ### 4. Record the version

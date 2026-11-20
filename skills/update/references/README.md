@@ -12,13 +12,10 @@ Needs the user: <yes or no>
 
 ## For ntm:update
 
-<What to offer, and what to do, for a user coming from an older version.>
+<What to do, step by step, for a user coming from an older version.>
 
 Rebuild ntm-user: <yes or no>
 ```
 
-Say which steps are offers: the user agrees to those before they're made.
-
-Needs the user is yes when following the note needs the user there, to answer
-questions, install something or agree to an offer. A note that rebuilds
-`ntm-user` always needs the user. A version with no note needs nothing.
+Needs the user is yes when following the note needs the user to answer questions
+or install something. A note that rebuilds `ntm-user` always does.

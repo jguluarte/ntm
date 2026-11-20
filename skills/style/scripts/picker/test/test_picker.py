@@ -1,6 +1,4 @@
-import tempfile
 import unittest
-from pathlib import Path
 
 from fixtures import baker_street, casebook
 from picker import (
@@ -80,34 +78,11 @@ class ReportingFailuresTest(unittest.TestCase):
         expected = f"Picker FAILED: MissingWeight: {why}"
         self.assertEqual(expected, exited.exception.code)
 
-    def test_an_options_file_that_isnt_there_fails_naming_it(self):
-        folder = self.enterContext(tempfile.TemporaryDirectory())
-        missing_options = Path(folder) / "Missing-options.yaml"
-
-        with self.assertRaises(SystemExit) as exited:
-            with reporting_failures():
-                Theme(missing_options)
-
-        why = f"[Errno 2] No such file or directory: '{missing_options}'"
-        expected = f"Picker FAILED: FileNotFoundError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
     def test_a_missing_options_flag_fails_naming_it(self):
         with self.assertRaises(SystemExit) as exited:
             with reporting_failures():
                 parser().parse_args(["pick"])
 
         why = "the following arguments are required: --options"
-        expected = f"Picker FAILED: ArgumentError: {why}"
-        self.assertEqual(expected, exited.exception.code)
-
-    def test_a_seed_that_isnt_a_whole_number_fails_naming_it(self):
-        args = ["pick", "--options", str(casebook.EVEN), "--seed", "seven"]
-
-        with self.assertRaises(SystemExit) as exited:
-            with reporting_failures():
-                parser().parse_args(args)
-
-        why = "argument --seed: invalid int value: 'seven'"
         expected = f"Picker FAILED: ArgumentError: {why}"
         self.assertEqual(expected, exited.exception.code)

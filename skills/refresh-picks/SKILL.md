@@ -23,9 +23,10 @@ Run `/ntm:ready-check`, unless it already ran in this session. The theme is the
 one the run names, or else this week's theme, as `%Settings` names it.
 
 For the weekly setup job, load `ntm:recalculate-theme-scores` and follow it
-first. Keep its lines for the result, and go on even when it fails.
+first, for last week's theme. Keep its lines for the result, and go on even when
+it fails.
 
-Then read the theme's `%Theme-options`, such as `Casebook-options.yaml`. When
+Then read this theme's `%Theme-options`, such as `Casebook-options.yaml`. When
 there is none, the theme isn't built for the picker: end the run with
 `Nothing to refresh: no <Theme>-options.yaml`.
 
@@ -56,8 +57,8 @@ It prints the picks as a YAML list, in the order drawn:
 
 ### 3. Save
 
-Save what the draw printed as the `yaml` block of `%Theme-picks`, replacing the
-list there, or creating `%Theme-picks` when there is none.
+Save what the draw printed as the `yaml` block of this theme's `%Theme-picks`,
+replacing the list there, or creating `%Theme-picks` when there is none.
 
 ## Result
 

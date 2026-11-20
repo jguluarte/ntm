@@ -34,12 +34,11 @@ today's tasks, that is every task planned for today, open and done, so an
 evening where everything got done still gets its message.
 
 A task slipped once for each date its `Planned date history` comment lists, as
-ntm's core rules describe it; a task with no comment hasn't slipped.
+ntm's core rules describe it.
 
 For the afternoon and evening, the rule compares against the tasks today's
-earlier reminders covered. `ntm:style`'s Setup read today's `%Message-history`
-entries, and the ids in their `tasks` are those tasks. Look up each one's title
-and where it's planned now.
+earlier reminders covered: the ids under `tasks` in today's `%Message-history`
+entries. Look up each one's title and where it's planned now.
 
 ## The message rule
 
@@ -56,18 +55,14 @@ Send it as the core rules' Sending a message in the user's style says. Its facts
 are:
 
 - what the message must cover, as the rule says, in plain words
-- today's tasks, each with its id, the link that opens it and its title, whether
-  it's done, its estimate when it has one, how many times it slipped, and the
-  dates it slipped from
+- today's tasks, each with its id, link and title, whether it's done, its
+  estimate when it has one, how many times it slipped, and the dates it slipped
+  from
 - for the afternoon and evening, the tasks the earlier reminders covered, each
-  with its id, the link that opens it, its title and where it's planned now
-- anything else the rule asks of the message, such as tone or length, already
-  decided for today
+  with its id, link and title, and where it's planned now
+- the tone, length or anything else the rule asks of today's message
 
 ## Result
 
-`Not sent: no tasks planned today`, or the sender's result the core rules'
-Sending a message in the user's style gives.
-
-The reply shows the message's title and message as sent, so the user can answer
-it in this chat: after `Sent: <title>`, add the message.
+`Not sent: no tasks planned today`, or what sending returned. After
+`Sent: <title>`, add the message, so the user can answer it in this chat.

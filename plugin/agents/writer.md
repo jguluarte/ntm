@@ -68,12 +68,12 @@ write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slipped task is one the user meant to do on an earlier day and
-hasn't done. The `escalation` level says how hard the message presses on it.
+hasn't done.
 
 ### 2. Write 5 versions
 
 Look up the perspective's and the reference's entries, and choose a line from
-each that has lines or riffs. A chosen line may be bent to fit the task.
+each that has lines or riffs. A chosen line may be bent to fit the message.
 
 Each version covers every task and does what the sender's rule asks. Tasks that
 belong together may be told as one thing. Hang the reference on a different fact

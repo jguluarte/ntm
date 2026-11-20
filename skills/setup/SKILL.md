@@ -217,8 +217,7 @@ For example:
 > | Afternoon reminder | Weekdays | 14:45 |
 > | Evening reminder   | Weekdays | 20:45 |
 
-What each job runs, in order, for Create the jobs. The jobs are lean, and
-composable on purpose.
+What each job runs, in order, for Create the jobs.
 
 ###### Weekly setup
 

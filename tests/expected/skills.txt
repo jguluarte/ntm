@@ -3,6 +3,7 @@ help
 pause
 plan
 ready-check
+recalculate-theme-scores
 refresh-picks
 reminder
 review

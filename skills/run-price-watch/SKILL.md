@@ -35,8 +35,8 @@ These are the open tasks `$price-watch` covers.
 
 #### If Amazon alerts are on
 
-When Amazon alerts are on, they need syncing if an open watched task has neither
-Amazon label, or a closed task still has `$has-amazon-alert`.
+They need syncing if an open watched task has neither Amazon label, or a closed
+task still has `$has-amazon-alert`.
 
 ### 2. Check each task
 
@@ -64,9 +64,8 @@ Price watch: <count> deal(s)
 
 A deal's second line is there only when its price needs one. When the seller
 isn't the store, the store reads `<store>, sold by <seller>`, here and in the
-result. Write it plain, as shown, with no task id and no style. When
-`ntm-user:notify` answers `Notify TOO LONG`, break into multiple messages as
-needed.
+result. Send it as shown, outside the user's style; when `ntm-user:notify`
+answers `Notify TOO LONG`, split it into several pushes.
 
 ## The user's replies
 
@@ -105,9 +104,9 @@ fix with what to fix, and what `ntm-user:notify` returned, such as:
 
 When Amazon alerts need syncing, end the line with
 `Amazon alerts need syncing. Run /ntm:sync-price-watch-to-amazon.` When
-`ntm-user:notify` returns its delivery block, return its title and message in
-place of that line, without the `NOTIFY VIA FINAL REPLY` line, then the To fix
-part and the sync ending when there are any.
+`ntm-user:notify` returns its delivery block, its title and message take the
+place of the result line, followed by the To fix part and the sync ending when
+there are any.
 
 Then give each deal these lines, from its `best:` line:
 

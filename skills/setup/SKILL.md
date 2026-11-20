@@ -44,11 +44,6 @@ Everything else they set up lives in their databases and their jobs.
 A database's template, in `references/databases/`, holds `<!-- -->` comments for
 you: write the database without them.
 
-Create each database other than a theme's files under its default name, its `%`
-name in words, such as Paused dates, without asking the user about it. The one
-name they confirm is `%Settings`'s, in ntm backend assets, since every run
-starts from it.
-
 ## Pre-requisites
 
 ### Already set up
@@ -226,15 +221,13 @@ What each job runs, in order, for Create the jobs.
    closed in the last week.
 3. `/ntm:clean`
 4. `/ntm:plan --auto week`
-5. When the Themes part of `%Settings` lists more than one theme under All
-   themes, write the next one after This week's theme as This week's theme, back
-   to the first after the last, and save `%Settings`.
+5. With more than one theme under All themes in `%Settings`, make the next one
+   This week's theme, back to the first after the last, and save `%Settings`.
 6. `/ntm:refresh-picks`
-7. Read the `weekly` rule in `%Message-rules`; it says what the message covers.
-   Send the week's message as the core rules' Sending a message in the user's
-   style says. Its facts are what the rule asks for, from last week in step 2
-   and the week ahead in step 4, as counts and the few tasks worth naming, so
-   the message fits a push. End the run with what that returns.
+7. Send the week's message as the core rules' Sending a message in the user's
+   style says. Its facts are what the `weekly` rule in `%Message-rules` asks
+   for, from steps 2 and 4, as counts and the few tasks worth naming. End the
+   run with what that returns.
 
 ###### Reminders
 
@@ -299,11 +292,12 @@ What it runs, for Create the jobs:
 
 Create the labels on the task list, with `$price-watch` on its project (as the
 backend guide's Projects and labels says), then each database above from its
-template, and say in a line where each one lives. Write the settings into the
-`%Settings` database, with the labels' and databases' real names, dropping
-Planning and Databases when they skipped task management, Shopping when they
-skipped price watch, and the label rows for labels you didn't create. Keep the
-jobs and their model for Create the jobs, after the self-test.
+template, without asking, under its default name: its `%` name in words, such as
+Paused dates. Say in a line where each one lives. Write the settings into
+`%Settings` with the real names, leaving out Planning and Databases when they
+skipped task management, Shopping when they skipped price watch, and the rows of
+labels you didn't create. Keep the jobs and their model for Create the jobs,
+after the self-test.
 
 ### Create a theme
 

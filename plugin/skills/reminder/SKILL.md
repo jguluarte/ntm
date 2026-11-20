@@ -65,4 +65,5 @@ are:
 
 ## Result
 
-`Not sent: no tasks planned today`, or what sending returned.
+`Not sent: no tasks planned today`, or the sender's result, as the core rules'
+Sending a message in the user's style gives it.

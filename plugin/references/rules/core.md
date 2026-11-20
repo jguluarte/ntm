@@ -18,7 +18,7 @@ For `ABC-15`, titled "Replace the leaking kitchen faucet", say:
 
 > You already fixed the faucet (ABC-15).
 
-Where a message links a task, the id is the link:
+Where a reply links a task, the id is the link:
 `the kitchen faucet ([ABC-15](<url>))`.
 
 Write times and estimates in full words, in the user's language: `2 hours`,
@@ -110,7 +110,7 @@ When a skill or agent fails, it returns one line that starts with its own name:
 `Clean FAILED: <what went wrong>`. In chat, tell the user the same in plain
 words, naming tasks as Talking to the user about tasks says.
 
-A job's final reply is the line its last step returned, then anything that skill
+A job's final reply is what its last step returned, then anything that skill
 says to add. When that step returned a `NOTIFY VIA FINAL REPLY` block, the reply
 holds the block's title and message, as written, without its first line: the
 scheduled task's own push shows it. When `ntm:ready-check` returned an

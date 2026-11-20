@@ -63,8 +63,8 @@ back weigh less, as you judge it.
 
 When the root gives a ladder as one paragraph, that ladder has no level name.
 Hand the writer what you called in its place, in plain words: for `escalation`,
-a task slipped or kept slipping; for `finishing_tasks`, a task done, a win or a
-big win.
+a task put off, or put off again and again; for `finishing_tasks`, a task done,
+a win or a big win.
 
 A win is more tasks finished than planned this week, which only the weekly
 setup's message counts; a task finished after slipping for days; or a task you
@@ -82,9 +82,9 @@ them, without sending anything. The writer reads the theme itself. It returns 5
 versions, each with a title, a message, and a probability from 0 to 1 of how
 likely a reader would be to predict it.
 
-Hand each task over without its id or link, and a slipped task as slipped,
-without its slip count or dates: the `escalation` level, or the call in its
-place, carries those.
+Hand each task over by its title, without its id or link. Hand a slipped task
+over as one the user meant to do earlier and hasn't, without its slip count or
+dates: the `escalation` level, or the call in its place, carries those.
 
 When it returns `Writer FAILED:`, end with that line. When this session can't
 start it, end with `Writer FAILED: can't start the writer`.

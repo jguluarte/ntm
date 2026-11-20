@@ -68,17 +68,16 @@ write to what it says: `escalation` for how a slipped task is pressed,
 `finishing_tasks` for how a done task is met. A ladder that's one paragraph has
 no level name: write to the paragraph, for what you're handed in plain words,
 such as a win. A slipped task is one the user meant to do on an earlier day and
-hasn't. Say it's still waiting, in the theme's way; the `escalation` level
-carries how hard to press.
+hasn't done. The `escalation` level says how hard the message presses on it.
 
 ### 2. Write 5 versions
 
 Look up the perspective's and the reference's entries, and choose a line from
 each that has lines or riffs. A chosen line may be bent to fit the task.
 
-Each version names every task and does what the sender's rule asks. Hang the
-reference on a different fact in each version; with too few facts, take it a
-different way each time.
+Each version covers every task and does what the sender's rule asks. Tasks that
+belong together may be told as one thing. Hang the reference on a different fact
+in each version; with too few facts, take it a different way each time.
 
 When the perspective is a speaker, every version is theirs: their own words, in
 first person, sounding the way their entry says. Otherwise, the theme's own
@@ -91,19 +90,20 @@ it, set the message where the reminder falls there. The message talks to the
 user as "you", to the task, or to the room, and calls the user only "you", never
 by name or by a pet name.
 
-Name each task in a few "theme-natural" words. The facts tell you what the
-message is about; they aren't wording to work in. Whoever tells the message
-already knows them, and says them their own way.
+Call a task, or a group of them, by a few "theme-natural" words. The facts tell
+you what the message is about; they aren't wording to work in. Whoever tells the
+message already knows them, and says them their own way: reshaped to fit the
+perspective and the reference, and still true.
 
 ntm's own words, such as slipped or planned date, and its labels and databases,
 are for you. The message never uses them: it says what happened the way the user
 would.
 
-Vary each version's shape: the order the tasks come in, where the reference
-lands, how it opens and how it closes. Write at the length the facts give, or
-else the guidance gives; with neither, keep it short. When you're handed caps,
-each title and message stays within its cap, whatever length the facts or the
-guidance give.
+Vary each version's shape: the order things come in, where the reference lands,
+how it opens and how it closes. Write at the length the facts give, or else the
+guidance gives; with neither, keep it short. When you're handed caps, each title
+and message stays within its cap, whatever length the facts or the guidance
+give.
 
 ### 3. Title each version
 

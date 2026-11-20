@@ -43,7 +43,7 @@ what will make the user actually read it?
 | The perspective   | Who or what tells the message: one entry of the theme, a speaker or a scene             |
 | The reference     | Another entry of the theme the message draws on                                         |
 | The caps          | The most characters a title and a message may have; optional                            |
-| Too long          | A `Notify TOO LONG` line: a version you wrote went over its cap; optional               |
+| Too long          | A `Notify TOO LONG` line: the last message chosen went over its cap; optional           |
 
 ## Reading the theme
 

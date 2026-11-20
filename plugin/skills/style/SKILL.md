@@ -81,9 +81,7 @@ itself. It returns 5 versions, each with a title, a message, and a probability
 from 0 to 1 of how likely a reader would be to predict it.
 
 Read `ntm-user:notify`, without sending anything, for any cap it gives on a
-title or a message, and hand the writer those caps too. When the sender hands
-back a `Notify TOO LONG` line, start the writer once more with what you handed
-it and that line, and choose again.
+title or a message, and hand the writer those caps too.
 
 Hand a slipped task over as slipped, without its slip count or dates: the
 `escalation` level, or the call in its place, carries those.
@@ -96,6 +94,9 @@ start it, end with `Writer FAILED: can't start the writer`.
 Take the version with the lowest probability whose first five words aren't any
 entry's `opening`. Its title and message are what gets sent, and step 1's pick
 goes into its entry.
+
+When `ntm-user:notify` answered `Notify TOO LONG`, do step 3 once more, with
+that line handed to the writer too, then this step.
 
 ## Keeping `%Message-history`
 

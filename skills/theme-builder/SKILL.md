@@ -88,12 +88,11 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/style/scripts/picker/recalculate.py start \
 ```
 
 It writes the numbers into the options file and prints one line,
-`saved: <the options file>`. Save that file's text, exactly as the script wrote
-it, as the `yaml` block of `%Theme-options`.
-
-Any other output, or a part of this you can't do, means it failed: tell the user
-in a line that the theme's numbers weren't worked out, with what it printed or
-why, and go on.
+`saved: <the options file>`; anything else, or a part of this you can't do, is
+`Recalculation FAILED: <why>`. Save that file's text, exactly as the script
+wrote it, as the `yaml` block of `%Theme-options`. On a failure, tell the user
+in a line that the theme's numbers weren't worked out, with its failure line,
+and go on.
 
 ### 4. Draw its first picks
 

@@ -87,11 +87,11 @@ narrator tells it from the perspective, as its guidance says, or it's told
 plainly.
 
 The message is about its subject and the theme's world: something happens in
-that world, with the subject inside it, plainly enough that someone who knows
-the world would place it at once, however lightly the reference is used. When
-`world` maps the user's day onto it, set the message where the reminder falls
-there. The message talks to the user as "you", to the task, or to the room, and
-calls the user only "you", never by name or by a pet name.
+that world, with the subject inside it. However lightly the reference is used,
+someone who knows the world would place the message at once. When `world` maps
+the user's day onto it, set the message where the reminder falls there. The
+message talks to the user as "you", to the task, or to the room, and calls the
+user only "you", never by name or by a pet name.
 
 Call a task, or a group of them, by a few "theme-natural" words. The facts tell
 you what the message is about; they aren't wording to work in. Whoever tells the

@@ -53,7 +53,7 @@ Find their version, the installed one and the update notes as step 1 of
 
 When the installed version is newer, read each note's first line, Needs the
 user. When one says yes, the check is done, with an update waiting. Otherwise,
-load `ntm:update` and follow it, then the check is done.
+load `ntm:update` and follow it, then the check is done, with an update applied.
 
 ## Result
 
@@ -63,6 +63,8 @@ job's own push delivers it.
 
 With an update waiting, `Ready-check OK` is followed by
 `Update waiting: setup at <theirs>, ntm at <installed>. Run /ntm:update in chat.`
+With an update applied, it is followed by
+`Update applied: setup at <installed>.` and the notes' What's new in a sentence.
 The run goes on.
 
 | Failure                | Fix                                                               |

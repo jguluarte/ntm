@@ -2,11 +2,13 @@
 name: refresh-picks
 user-invocable: false
 description: >-
-    Refreshes a theme's picks: draws 25 picks from its `%Theme-options` into
-    `%Theme-picks`, which each message takes its pick from. For the weekly setup
-    job, it first runs ntm:recalculate-theme-scores. Run by the weekly setup
-    job, by ntm:style when the list runs out, and by ntm:theme-builder for the
-    theme it built.
+    Keeps your reminders changing week to week. It chooses, from your theme, who
+    or what tells each one and what it draws on, and chooses again when those
+    run out or you build a new theme. Your weekly setup runs it for you. It
+    draws 25 picks from a theme's `%Theme-options` into `%Theme-picks`, which
+    each message takes its pick from; for the weekly setup job, it first runs
+    ntm:recalculate-theme-scores. Also run by ntm:style when the picks run out,
+    and by ntm:theme-builder for the theme it built.
 ---
 
 # ntm:refresh-picks

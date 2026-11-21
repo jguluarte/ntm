@@ -1,13 +1,11 @@
 ---
 name: clean
 user-invocable: false
-description: |-
-    Tidies the user's task list by:
-    - Clearing stale planned dates
-    - Removing paused dates that have passed from `%Paused-dates`
-    - Doing the backend's own cleanup, from `ntm-user:backend`
-
-    This is run via scheduled job. It reports back how much it changed.
+description: >-
+    Clears dates on previously planned tasks that didn't finish, removes pause
+    dates that have since passed, and takes closed tasks out of their projects
+    when your task list app counts them against its limits. Your weekly setup
+    runs it for you. It reports back how much it changed.
 ---
 
 # ntm:clean

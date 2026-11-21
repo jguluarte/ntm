@@ -84,9 +84,9 @@ unfinished work to today. Run it yourself to plan together, such as
 
 ### `/ntm:pause`
 
-Marks days off, such as a holiday or a busy week, so nothing new gets planned
-for them. Name the days in your own words, like `/ntm:pause next week`, or run
-it alone to see your pauses.
+Skip days you want to take off, such as a holiday or a busy week, so nothing new
+gets planned for them. Example: `/ntm:pause next week`, or run it alone to see
+which future dates are paused.
 
 ### `/ntm:review`
 

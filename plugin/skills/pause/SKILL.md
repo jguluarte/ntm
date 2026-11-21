@@ -1,10 +1,10 @@
 ---
 name: pause
 description: >-
-    Marks days off, such as a holiday or a busy week, so nothing new gets
-    planned for them. Name the days in your own words, like `/ntm:pause next
-    week`, or run it alone to see your pauses. Run by you in chat ("pause
-    Friday", "pause next week", "unpause the 12th", "show my pauses").
+    Skip days you want to take off, such as a holiday or a busy week, so nothing
+    new gets planned for them. Example: `/ntm:pause next week`, or run it alone
+    to see which future dates are paused. ("skip Friday", "pause next week",
+    "unpause the 12th").
 ---
 
 # ntm:pause

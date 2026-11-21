@@ -2,10 +2,10 @@
 name: self-test
 user-invocable: false
 description: >-
-    Tries out everything setup built, and cleans up after itself. Run by you in
-    a new chat once setup asks, after you install the plugin it built ("run the
-    ntm self-test", "test ntm", "run the self test", "is everything wired up?").
-    It is also the smoke test for a backend you described yourself.
+    Tries out everything setup built, and cleans up after itself. Requested by
+    you in a new chat once setup asks, after you install the plugin it built
+    ("run the ntm self-test", "test ntm", "run the self test", "is everything
+    wired up?").
 ---
 
 # ntm:self-test

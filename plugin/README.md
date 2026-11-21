@@ -23,8 +23,8 @@ them.
 
 ### `/ntm:help`
 
-Shows you this page in the chat, any time you want to know what ntm does or what
-one of its skills is for.
+Shows you ntm's guide in the chat, any time you want to know what ntm does or
+what one of its skills is for.
 
 ### `/ntm:setup`
 

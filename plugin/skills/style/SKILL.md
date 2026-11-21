@@ -9,8 +9,8 @@ description: >-
     something in your style, or to change how your reminders sound. When a
     reminder is a keeper or has gone stale, say so in its chat, and ntm notes it
     to keep your reminders fresh. Loaded for every message ntm sends in your
-    style. In chat: "make my reminders meaner", "keep that one", "that one's
-    stale".
+    style, or run by you in chat ("make my reminders meaner", "keep that one",
+    "that one's stale").
 ---
 
 # ntm:style

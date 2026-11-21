@@ -1,13 +1,14 @@
 ---
 name: plan
 description: >-
-    Plans the user's task list by setting planned dates, one task a weekday by
-    default, and returns the plan. --auto day carries earlier days' unfinished
-    work to today and gives an empty today a task; --auto with a range such as
-    week gives each empty weekday in it a task; anything else plans with the
-    user in chat. Run by the morning reminder and weekly setup jobs, or by the
-    user ("plan my week", "plan my todo list", "plan Thursday around the
-    garage").
+    Picks what you'll work on each day: one small task a weekday, unless you
+    chose otherwise in setup. Scheduled jobs plan your week ahead, and each
+    morning move unfinished work to today. Run it yourself to plan together,
+    such as `/ntm:plan next week around the garage`. `--auto day` carries
+    earlier days' unfinished work to today and gives an empty today a task;
+    `--auto` with a range such as `week` gives each empty weekday in it a task.
+    Run by the morning reminder and weekly setup jobs, or by you in chat ("plan
+    my week", "plan my todo list", "plan Thursday around the garage").
 ---
 
 # ntm:plan

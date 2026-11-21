@@ -1,11 +1,11 @@
 ---
 name: review
 description: >-
-    Reviews the user's task list with them in chat: closes obsolete or duplicate
-    tasks, then estimates unreviewed ones and breaks up big ones, with their
-    approval. Run by the user in chat, never by a job ("let's review my list",
-    "review my todo list", "review the kitchen project", "estimate the garage
-    work").
+    Goes through your task list with you, a project at a time: closes what's
+    done or no longer needed, then estimates each task and breaks up the big
+    ones. Stop whenever you like. Run by you in chat, never by a job ("let's
+    review my list", "review my todo list", "review the kitchen project",
+    "estimate the garage work").
 ---
 
 # ntm:review

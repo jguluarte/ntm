@@ -1,11 +1,10 @@
 ---
 name: sync-price-watch-to-amazon
 description: >-
-    Keeps Amazon price alerts in step with the price watch on the user's todo
-    list. Sets an alert for each watched item that doesn't have one, and removes
-    the alert once its task closes. Needs a browser Claude can use, signed in to
-    Amazon. Run when the user asks, or when the price watch says Amazon alerts
-    need syncing.
+    If you turned on Amazon price alerts, this sets one for each item you're
+    watching, and removes the alerts for tasks you've closed. Run it in chat, in
+    a browser signed in to Amazon. The price watch tells you when it's time. Run
+    when you ask, or when the price watch says Amazon alerts need syncing.
 ---
 
 # ntm:sync-price-watch-to-amazon

@@ -1,9 +1,10 @@
 ---
 name: today
 description: >-
-    Lists what's planned on the user's todo list, by default every open task
-    planned for today, or any scope the user describes ("what's due today",
-    "what's on tap?", "tasks today"). Read-only. Run by the user.
+    Lists what's planned on your task list: every open task planned for today.
+    Add a few words to narrow it down, such as `/ntm:today errands` for today's
+    errands only. Read-only. Run by you in chat ("what's due today", "what's on
+    tap?", "tasks today").
 ---
 
 # ntm:today

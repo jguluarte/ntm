@@ -1,10 +1,12 @@
 ---
 name: update
 description: >-
-    Brings the user's setup up to the installed version of ntm, following each
-    new version's update note. Run by the user in chat after installing a new
-    version ("update ntm", "what's new in ntm", "I installed a new version"), or
-    by ntm:ready-check when no new version needs the user.
+    Run it after you install a new version of ntm. It tells you what's new since
+    your last update, helps you set up anything the new version offers, and
+    rebuilds your own plugin when needed. When a new version needs nothing from
+    you, ntm brings your setup up to it on its own. Run by you in chat ("update
+    ntm", "what's new in ntm", "I installed a new version"), or by
+    ntm:ready-check when no new version needs you.
 ---
 
 # ntm:update

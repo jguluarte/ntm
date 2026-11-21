@@ -2,17 +2,10 @@
 name: self-test
 user-invocable: false
 description: >-
-    A test that the user's setup is complete and their task list can do what
-    every backend must: check setup made their databases, labels and jobs, then
-    create, read, find, plan, label, comment on, change and close a task, do the
-    backend's own cleanup on it, and write and read a database, skipping any
-    step that would make something for the test that the task list can't delete,
-    and testing on one of the user's open tasks, or a first task they name and
-    keep, when it can't make one. It then cleans up and sends a success message
-    in the user's style. Each step's result is shown as it passes, fails or
-    doesn't run. The first thing to run after installing ntm and ntm-user ("test
-    ntm", "run the self test", "is everything wired up?"), and the smoke test
-    for a backend the user described themselves.
+    Tries out everything setup built, and cleans up after itself. Run by you in
+    a new chat once setup asks, after you install the plugin it built ("run the
+    ntm self-test", "test ntm", "run the self test", "is everything wired up?").
+    It is also the smoke test for a backend you described yourself.
 ---
 
 # ntm:self-test

@@ -2,14 +2,15 @@
 name: style
 user-invocable: false
 description: >-
-    Turns a message's facts into a finished message in the user's style: picks
-    what it draws on from their `%Theme`, works out the message's levels, has
-    the writer agent write versions, chooses one, and records it in
-    `%Message-history` once it's sent. Loaded for every message ntm sends in the
-    user's style. In chat, writes something in the user's style when they ask,
-    changes their theme with them ("make my reminders meaner"), and notes it
-    when the user says a message is a keeper or has gone stale ("keep that one",
-    "that one's stale").
+    Writes ntm's messages to you in the theme you created during setup, so they
+    sound like something you enjoy and keep changing instead of repeating. Each
+    one aims to get a reaction out of you, a laugh or a sting. A task you keep
+    putting off gets a stronger nudge the longer it slips. Ask in chat for
+    something in your style, or to change how your reminders sound. When a
+    reminder is a keeper or has gone stale, say so in its chat, and ntm notes it
+    to keep your reminders fresh. Loaded for every message ntm sends in your
+    style. In chat: "make my reminders meaner", "keep that one", "that one's
+    stale".
 ---
 
 # ntm:style

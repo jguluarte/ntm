@@ -4,7 +4,8 @@ description: >-
     Checks the things you want to buy, the tasks in the project you picked for
     them in setup, and tells you when one is a good deal today, with a link to
     the store. Run by the daily price watch job. ("check my watched items", "run
-    price watch")
+    price watch") In chat, it takes your replies about a watched item ("I bought
+    it", "skip this sale", "trust this store").
 ---
 
 # ntm:run-price-watch

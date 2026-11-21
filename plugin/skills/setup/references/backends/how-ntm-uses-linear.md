@@ -148,5 +148,5 @@ None of this is required. It's what worked for us in Linear. If your tasks live
 somewhere else, or you'd arrange Linear differently, work out with your agent
 what plays each part: the list, the groups, the planned date, the labels, the
 databases, and what your task list can delete. Setup records your answers in
-`ntm-user:backend`, and `/ntm:self-test` shows whether they hold. The choices
-are yours.
+`ntm-user:backend`, and the self-test shows whether they hold. The choices are
+yours.

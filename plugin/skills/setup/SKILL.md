@@ -27,6 +27,9 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where `%Settings` lives |
 | `ntm-user:notify`  | How they receive notifications: their channel                             |
 
+Both skills' frontmatter has `user-invocable: false` right after `name:`: ntm
+loads them, so they stay out of the `/` menu.
+
 The user plugin's version, in its `plugin.json`, is the version of the installed
 `ntm` it was built from: built from ntm 0.4.0, it is 0.4.0. `ntm-user:backend`
 opens with one Built line: that version and the date, in this shape:
@@ -330,7 +333,7 @@ Package their user plugin and have them install it. Then hand off with one
 prompt for a new chat:
 
 ```
-Run /ntm:self-test.
+Run the ntm self-test.
 ```
 
 Tell them, in a line meant to make them smile, that a passing self-test sends a

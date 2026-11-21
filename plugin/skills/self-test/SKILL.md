@@ -1,5 +1,6 @@
 ---
 name: self-test
+user-invocable: false
 description: >-
     A test that the user's setup is complete and their task list can do what
     every backend must: check setup made their databases, labels and jobs, then

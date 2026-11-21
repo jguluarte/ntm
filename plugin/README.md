@@ -8,7 +8,7 @@ of your own: setup builds it from your answers, and you install it too.
 1. Run `/ntm:setup`. It connects your task list, sets up the features and theme
    you pick, and builds your plugin.
 2. Install the plugin setup built for you.
-3. In a new chat, run `/ntm:self-test` to try everything out.
+3. In a new chat, say "run the ntm self-test" to try everything out.
 4. Go back to setup's chat and tell it the test passed. Setup then schedules
    your jobs.
 
@@ -32,13 +32,14 @@ This acts as a setup wizard to make sure you have everything needed to run ntm.
 It builds a plugin of your own for you to install, and schedules your jobs once
 the self-test passes.
 
-### `/ntm:self-test`
+### `ntm:self-test`
 
 Tries out everything setup built, and cleans up after itself. When your task
 list can't delete a task, it tests on one of your open tasks and puts it back.
 With none, it asks for one thing you need to do, and adds it as your first task.
-It ends with a test message, on your phone if you use Pushover. Run it when
-setup asks, once you've installed the plugin it built.
+It ends with a test message, on your phone if you use Pushover. When setup asks,
+once you've installed the plugin it built, say "run the ntm self-test" in a new
+chat.
 
 ### `/ntm:update`
 
@@ -47,12 +48,12 @@ your last update, helps you set up anything the new version offers, and rebuilds
 your own plugin when needed. When a new version needs nothing from you, ntm
 brings your setup up to it on its own.
 
-### `/ntm:style`
+### `ntm:style`
 
 Writes ntm's messages to you in the theme you created during setup, so they
 sound like something you enjoy and keep changing instead of repeating. Each one
 aims to get a reaction out of you, a laugh or a sting. A task you keep putting
-off gets a stronger nudge the longer it slips. Ask it to write something in your
+off gets a stronger nudge the longer it slips. Ask in chat for something in your
 style, or to change how your reminders sound. When a reminder is a keeper or has
 gone stale, say so in its chat, and ntm notes it to keep your reminders fresh.
 

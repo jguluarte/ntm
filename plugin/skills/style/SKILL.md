@@ -1,5 +1,6 @@
 ---
 name: style
+user-invocable: false
 description: >-
     Turns a message's facts into a finished message in the user's style: picks
     what it draws on from their `%Theme`, works out the message's levels, has

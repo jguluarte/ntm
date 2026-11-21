@@ -2,12 +2,13 @@
 name: ready-check
 user-invocable: false
 description: >-
-    Proves this session can run an ntm job and loads the user's settings and
-    ntm's core rules for it: ntm-user loads, and the task list answers with the
-    user's `%Settings`. Updates their setup to the installed version of ntm when
-    no new version needs them, or says an update is waiting. On a failure, says
-    what is wrong and how to fix it. Run at the start of a job, or by hand ("can
-    you see my todo list?", "check the connection", "is ntm ready?").
+    Checks that ntm can reach your task list, and says how to fix it when it
+    can't. Your scheduled jobs run it first. If something seems off, ask in
+    chat: "is ntm ready?" It also loads your `%Settings` and ntm's core rules
+    for the job, and brings your setup up to the installed version of ntm when
+    no new version needs you, or says an update is waiting. Run at the start of
+    a job, or by you in chat ("can you see my todo list?", "check the
+    connection", "is ntm ready?").
 ---
 
 # ntm:ready-check

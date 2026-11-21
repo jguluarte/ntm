@@ -2,10 +2,10 @@
 name: recalculate-theme-scores
 user-invocable: false
 description: >-
-    Rates how last week's messages landed, `acted` or `ignored`, and adjusts the
-    scores of last week's theme from them, so the picker leans toward what got
-    the user moving. The weekly setup job runs it through ntm:refresh-picks,
-    before the week's picks are drawn.
+    Sees which of last week's messages got you to act on your tasks, and tunes
+    your theme toward what worked. Your weekly setup runs it for you. It rates
+    each message `acted` or `ignored` and adjusts the scores of last week's
+    theme. It runs through ntm:refresh-picks, before the week's picks are drawn.
 ---
 
 # ntm:recalculate-theme-scores

@@ -96,8 +96,8 @@ browser signed in to Amazon. The price watch tells you when it's time.
 
 ## Skills that run on their own
 
-These run from your scheduled jobs or from other skills, so they stay out of the
-`/` menu. To run one yourself, ask for it in chat.
+These run from your scheduled jobs, from other skills, or when you ask, so they
+stay out of the `/` menu. To run one yourself, ask for it in chat.
 
 ### `ntm:self-test`
 

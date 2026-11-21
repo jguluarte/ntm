@@ -27,8 +27,8 @@ build up as you go. It holds two skills:
 | `ntm-user:backend` | How the rest of ntm works with their backend, and where `%Settings` lives |
 | `ntm-user:notify`  | How they receive notifications: their channel                             |
 
-Both skills' frontmatter has `user-invocable: false` right after `name:`: ntm
-loads them, so they stay out of the `/` menu.
+Write `user-invocable: false` into both skills' frontmatter, right after
+`name:`. ntm loads them, so they stay out of the `/` menu.
 
 The user plugin's version, in its `plugin.json`, is the version of the installed
 `ntm` it was built from: built from ntm 0.4.0, it is 0.4.0. `ntm-user:backend`

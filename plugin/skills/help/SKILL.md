@@ -1,9 +1,9 @@
 ---
 name: help
 description: >-
-    Shows the user ntm's README: how to get started and what each of its skills
-    does. Run when the user asks about ntm ("what does ntm do", "help with ntm",
-    "how do I use ntm").
+    Shows you this page in the chat, any time you want to know what ntm does or
+    what one of its skills is for. Run by you in chat ("what does ntm do", "help
+    with ntm", "how do I use ntm").
 ---
 
 # ntm:help

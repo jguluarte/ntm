@@ -1,10 +1,10 @@
 ---
 name: pause
 description: >-
-    The user's pauses, the days that get nothing new planned on their task list
-    automatically. Pauses or unpauses days, or shows the pauses, with the user
-    in chat ("pause Friday", "pause next week", "unpause the 12th", "show my
-    pauses").
+    Marks days off, such as a holiday or a busy week, so nothing new gets
+    planned for them. Name the days in your own words, like `/ntm:pause next
+    week`, or run it alone to see your pauses. Run by you in chat ("pause
+    Friday", "pause next week", "unpause the 12th", "show my pauses").
 ---
 
 # ntm:pause

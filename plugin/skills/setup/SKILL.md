@@ -1,10 +1,11 @@
 ---
 name: setup
 description: >-
-    The ntm wizard. Takes a new user from a fresh install to a connected task
-    list, a theme, the features they pick and reminders on their phone, building
-    their ntm-user plugin as it goes. Run when the user says "set up ntm", "get
-    started" or "set up my todo list", or installs ntm for the first time.
+    This acts as a setup wizard to make sure you have everything needed to run
+    ntm. It builds a plugin of your own for you to install, and schedules your
+    jobs once the self-test passes. Run by you in chat ("set up ntm", "get
+    started", "set up my todo list"), or when you install ntm for the first
+    time.
 ---
 
 # ntm:setup

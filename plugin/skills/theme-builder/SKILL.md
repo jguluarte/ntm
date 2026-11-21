@@ -1,10 +1,10 @@
 ---
 name: theme-builder
 description: >-
-    Builds a theme with the user in chat, one stage at a time: a world they
-    enjoy, saved as a set of files every reminder can be written in, and added
-    to their themes. Run by setup during onboarding, or by the user to build
-    another theme ("build me a new theme", "add a theme from another show").
+    Builds a theme with you from something you enjoy, like a show or a book.
+    Setup runs it for your first theme; run it again any time you want another.
+    Run by you in chat ("build me a new theme", "add a theme from another
+    show").
 ---
 
 # ntm:theme-builder
